@@ -1,0 +1,105 @@
+.fr-display-xl {
+  font-size: 4.5rem;
+  line-height: 5rem;
+  font-weight: 700;
+  margin: 0 0 2rem;
+
+  @media (min-width: 769px) {
+    & {
+      font-size: 5rem;
+      line-height: 5.5rem;
+    }
+  }
+}
+
+.fr-display-lg {
+  font-size: 4rem;
+  line-height: 4.5rem;
+  font-weight: 700;
+  margin: 0 0 2rem;
+
+  @media (min-width: 769px) {
+    & {
+      font-size: 4.5rem;
+      line-height: 5rem;
+    }
+  }
+}
+
+.fr-display-md {
+  font-size: 3.5rem;
+  line-height: 4rem;
+  font-weight: 700;
+  margin: 0 0 2rem;
+
+  @media (min-width: 769px) {
+    & {
+      font-size: 4rem;
+      line-height: 4.5rem;
+    }
+  }
+}
+
+.fr-display-sm {
+  font-size: 3rem;
+  line-height: 3.5rem;
+  font-weight: 700;
+  margin: 0 0 2rem;
+
+  @media (min-width: 769px) {
+    & {
+      font-size: 3.5rem;
+      line-height: 4rem;
+    }
+  }
+}
+
+.fr-display-xs {
+  font-size: 2.5rem;
+  line-height: 3rem;
+  font-weight: 700;
+  margin: 0 0 2rem;
+
+  @media (min-width: 769px) {
+    & {
+      font-size: 3rem;
+      line-height: 3.5rem;
+    }
+  }
+}
+
+.fr-text {
+  font-size: 1rem;
+  line-height: 1.5rem;
+
+  &--lead,
+  &--xl {
+    font-size: 1.25rem;
+    line-height: 2rem;
+
+    @media screen (min-width: 769px) {
+      font-size: 1.375rem;
+      line-height: 2.25rem;
+    }
+  }
+
+  &--lg {
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+
+    @media screen (min-width: 769px) {
+      font-size: 1.25rem;
+      line-height: 2rem;
+    }
+  }
+
+  &--sm {
+    font-size: 0.875rem;
+    line-height:  1.5rem;
+  }
+
+  &--xs {
+    font-size: 0.75rem;
+    line-height: 1.25rem;
+  }
+}

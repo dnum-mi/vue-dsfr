@@ -35,6 +35,9 @@
   --scroll-shadow: rgba(30,30,30,0.16);
   --overlay: hsla(0,0%,61.2%,0.32);
 
+  --color-hover: rgba(0, 0, 221, 0.5);
+  --color-active: rgba(41, 41, 255, 0.5);
+
   --block-color-hover: hsla(0,0%,87.8%,0.5);
   --block-color-active: hsla(0,0%,76.1%,0.5);
 
@@ -147,7 +150,11 @@
   --g200: #383838;
   --w: #1e1e1e;
   --g100-g800: #1e1e1e;
+  --g600-g400: #cecece;
   --focus: #5398ff;
   --rm500: #f7bfc3;
   --overlay: rgba(206, 206, 206, 0.08);
+
+  --color-hover: rgba(71, 71, 255, 0.5);
+  --color-active: rgba(0, 0, 243, 0.5);
 }
