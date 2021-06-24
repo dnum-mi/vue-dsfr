@@ -1,0 +1,25 @@
+/*
+  DSFR Normalize
+*/
+
+body {
+  font-family: Marianne, arial, sans-serif;
+  text-rendering: optimizeSpeed;
+  -webkit-text-size-adjust: 100%;
+  font-size: 1rem;
+  line-height: 1.5rem;
+}
+
+h1 {
+  font-size: 2rem;
+  line-height: 2.5rem;
+}
+
+h1, h2 {
+  font-weight: 700;
+  margin: 0 0 1rem;
+}
+
+button, input {
+  font-family: Marianne, Arial, sans-serif;
+}

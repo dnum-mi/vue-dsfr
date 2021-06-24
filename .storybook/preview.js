@@ -1,3 +1,6 @@
+import '../src/assets/variables-dsfr.css'
+import '../src/assets/fonts-dsfr.css'
+import '../src/assets/reset-dsfr.css'
 
 export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },
