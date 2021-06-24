@@ -1,6 +1,7 @@
 <template>
   <button :class="{ 'fr-btn': true, 'fr-btn--secondary': secondary }">
     {{ label }}
+    <slot />
   </button>
 </template>
 
@@ -12,8 +13,13 @@ export default {
       type: String,
       default: 'OK',
     },
-    icon: Boolean,
+    icon: {
+      type: String,
+      default: undefined,
+    },
     secondary: Boolean,
+    iconLeft: Boolean,
+    iconRight: Boolean,
   },
 }
 </script>

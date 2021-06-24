@@ -59,3 +59,30 @@ Secondary.args = {
   dark: false,
   secondary: true,
 }
+
+export const ButtonWithIcon = (args) => ({
+  components: { DsfrButton },
+  data () {
+    return {
+      ...args,
+    }
+  },
+  template: `
+    <div :data-rf-theme="dark ? 'dark' : ''" style="background-color: var(--w); padding: 1rem;">
+      <DsfrButton
+        :label="label"
+        :disabled="disabled"
+        :iconLeft="iconLeft"
+        :iconRight="iconRight"
+        @click="onClick"
+      >
+        <v-icon name="ri-checkbox-circle-line" />
+        Mon texte de bouton
+      </DsfrButton>
+    </div>
+  `,
+})
+ButtonWithIcon.args = {
+  iconLeft: true,
+  iconRight: false,
+}
