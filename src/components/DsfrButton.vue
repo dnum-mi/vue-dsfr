@@ -1,5 +1,5 @@
 <template>
-  <button :class="{ primary: true }">
+  <button :class="{ primary: primary }">
     {{ label }}
   </button>
 </template>
