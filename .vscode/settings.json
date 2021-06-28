@@ -1,3 +1,3 @@
 {
-  "jest.jestCommandLine": "jest"
+  "jest.jestCommandLine": "./node_modules/.bin/jest"
 }
