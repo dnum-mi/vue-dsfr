@@ -11,7 +11,7 @@ export default {
   props: {
     label: {
       type: String,
-      default: 'OK',
+      default: undefined,
     },
     icon: {
       type: String,

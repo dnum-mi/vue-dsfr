@@ -1,4 +1,10 @@
+import OhVueIcon from 'oh-vue-icons/dist/v3/icon.es'
+
+import { RiCheckboxCircleLine } from 'oh-vue-icons/icons'
+
 import DsfrButton from '../DsfrButton/DsfrButton.vue'
+
+OhVueIcon.add(RiCheckboxCircleLine)
 
 export default {
   component: DsfrButton,
@@ -61,7 +67,10 @@ Secondary.args = {
 }
 
 export const ButtonWithIcon = (args) => ({
-  components: { DsfrButton },
+  components: {
+    DsfrButton,
+    VIcon: OhVueIcon,
+  },
   data () {
     return {
       ...args,
@@ -75,9 +84,10 @@ export const ButtonWithIcon = (args) => ({
         :iconLeft="iconLeft"
         :iconRight="iconRight"
         @click="onClick"
+        style="display: flex; justify-content: center;"
       >
         <v-icon name="ri-checkbox-circle-line" />
-        Mon texte de bouton
+        <span>Mon texte de bouton</span>
       </DsfrButton>
     </div>
   `,
