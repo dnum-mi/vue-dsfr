@@ -1,3 +1,6 @@
+# Dossier temporaire avec fichiers générés par VuePress
+.temp/
+
 # Created by https://www.toptal.com/developers/gitignore/api/node,visualstudiocode,intellij,windows,macos,linux
 # Edit at https://www.toptal.com/developers/gitignore?templates=node,visualstudiocode,intellij,windows,macos,linux
 
