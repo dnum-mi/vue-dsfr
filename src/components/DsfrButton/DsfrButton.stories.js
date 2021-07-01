@@ -12,7 +12,7 @@ export default {
   argTypes: {
     secondary: { control: 'boolean' },
     dark: { control: 'boolean' },
-    label: { control: 'text', value: 'Test default' },
+    label: { control: 'text' },
     onClick: {},
     disabled: { control: 'boolean' },
   },
