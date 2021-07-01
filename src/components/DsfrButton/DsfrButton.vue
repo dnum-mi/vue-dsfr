@@ -26,8 +26,9 @@ export default {
 <style scoped>
 .fr-btn {
   border: 0;
-  background-color: var(--bf500);
   padding: 0.5rem 1.5rem;
+  font-size: 1rem;
+  background-color: var(--bf500);
   color: var(--w-bf500);
 
   &[disabled] {
