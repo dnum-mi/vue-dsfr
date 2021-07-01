@@ -45,9 +45,43 @@ export default defineComponent({
       default: '',
     },
   },
+  emits: ['update:modelValue'],
 })
 </script>
 
-<style lang="scss" scoped>
+<style lang="postcss" scoped>
+.fr-label {
+  font-size: 0.8rem;
+  display: block;
+  color: var(--g800);
 
+  &.invisible {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+}
+
+.fr-input {
+  margin: 0;
+  border: 0;
+  border-radius: 0.25rem 0.25rem 0 0;
+  max-height: none;
+  font-size: 1rem;
+  box-shadow: inset 0 -2px 0 0 var(--g600);
+  color: var(--g800);
+  background-color: var(--g200);
+
+  &::placeholder {
+    font-style: italic;
+    color: var(--g600-g400);
+    opacity: 1;
+  }
+}
 </style>
