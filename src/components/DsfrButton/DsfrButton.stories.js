@@ -13,8 +13,8 @@ export default {
     secondary: { control: 'boolean' },
     dark: { control: 'boolean' },
     label: { control: 'text' },
-    onClick: {},
     disabled: { control: 'boolean' },
+    onClick: { action: 'clicked' },
   },
 }
 
@@ -79,20 +79,28 @@ export const ButtonWithIcon = (args) => ({
   template: `
     <div :data-rf-theme="dark ? 'dark' : ''" style="background-color: var(--w); padding: 1rem;">
       <DsfrButton
-        :label="label"
         :disabled="disabled"
-        :iconLeft="iconLeft"
-        :iconRight="iconRight"
         @click="onClick"
-        style="display: flex; justify-content: center;"
+        style="display: flex; align-items: end; margin: 1rem 0;"
       >
         <v-icon name="ri-checkbox-circle-line" />
-        <span>Mon texte de bouton</span>
+        <span>{{ label }}</span>
+      </DsfrButton>
+
+      <DsfrButton
+        :disabled="disabled"
+        @click="onClick"
+        :secondary="true"
+        style="display: flex; align-items: end; margin: 1rem 0;"
+      >
+        <v-icon name="ri-checkbox-circle-line" />
+        <span>{{ label }}</span>
       </DsfrButton>
     </div>
   `,
 })
 ButtonWithIcon.args = {
-  iconLeft: true,
-  iconRight: false,
+  label: 'Texte du bouton',
+  disabled: false,
+  dark: false,
 }
