@@ -72,6 +72,7 @@ export default defineComponent({
   margin: 0;
   border: 0;
   border-radius: 0.25rem 0.25rem 0 0;
+  padding: 0.5rem;
   max-height: none;
   font-size: 1rem;
   box-shadow: inset 0 -2px 0 0 var(--g600);
