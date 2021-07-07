@@ -1,5 +1,8 @@
 <template>
-  <div class="fr-search-bar">
+  <div
+    class="fr-search-bar"
+    :class="{ 'fr-search-bar--lg': large }"
+  >
     <DsfrInput
       :id="id"
       type="search"
@@ -14,11 +17,12 @@
       title="Rechercher"
       @click="$emit('search')"
     >
-      {{ buttonText }}
       <v-icon
-        v-if="!hideIcon"
+        v-if="!hideIcon || large"
+        class="fr-search-bar__icon"
         name="ri-search-2-line"
       />
+      <span class="fr-btn__text">{{ buttonText }}</span>
     </DsfrButton>
   </div>
 </template>
@@ -49,6 +53,7 @@ export default {
       type: String,
       default: '',
     },
+    large: Boolean,
     buttonText: {
       type: String,
       default: '',
@@ -84,8 +89,55 @@ export default {
 </script>
 
 <style scoped>
+.fr-search-bar {
+  display: flex;
+
+}
+
+:deep(.ov-icon) {
+  font-size: 1.25rem;
+  vertical-align: -0.1em;
+}
 :deep(.fr-input) {
   box-shadow: inset 0 -2px 0 0 var(--bf500);
   border-radius: 0.25rem 0 0 0;
+}
+
+.fr-search-bar--lg :deep(.fr-input) {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+
+  @media (max-width: 768px) {
+    & {
+      padding-top: 0.5rem;
+      padding-bottom: 0.5rem;
+    }
+  }
+}
+
+.fr-search-bar--lg :deep(.fr-btn) {
+  font-size: 1.25rem;
+  line-height: 2rem;
+  min-height: 3.5rem;
+  padding: 0.75rem 2rem;
+  flex-direction: row;
+
+  & .fr-btn__text {
+    margin-left: 0.25rem;
+    margin-right: 0.25rem;
+  }
+
+  @media (max-width: 768px) {
+    & {
+      font-size: inherit;
+      line-height: inherit;
+      min-height: inherit;
+      padding: 0.5rem 1.5rem;
+    }
+
+    & .fr-btn__text {
+      display: none;
+    }
+  }
 }
 </style>
