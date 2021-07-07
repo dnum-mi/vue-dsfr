@@ -15,7 +15,10 @@
       @click="$emit('search')"
     >
       {{ buttonText }}
-      <v-icon name="ri-search-2-line" v-if="!hideIcon" />
+      <v-icon
+        v-if="!hideIcon"
+        name="ri-search-2-line"
+      />
     </DsfrButton>
   </div>
 </template>
@@ -81,7 +84,7 @@ export default {
 </script>
 
 <style scoped>
-::v-deep .fr-input {
+:deep(.fr-input) {
   box-shadow: inset 0 -2px 0 0 var(--bf500);
   border-radius: 0.25rem 0 0 0;
 }
