@@ -6,7 +6,7 @@ export const getRandomAlphaNum = () => {
 }
 
 export const getRandomId = (prefix = 'pre', suffix = 'suf') => {
-  return prefix + getRandomString(5) + suffix
+  return prefix + '-' + getRandomString(5) + '-' + suffix
 }
 
 export const getRandomString = length => {

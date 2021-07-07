@@ -2,6 +2,9 @@ import { render } from '@testing-library/vue'
 
 import SearchBar from './DsfrSearchBar.vue'
 
+jest.mock('oh-vue-icons/dist/v3/icon.es')
+jest.mock('oh-vue-icons/icons')
+
 describe('SearchBar', () => {
   it('should render searchbar with visible label', () => {
     // Given

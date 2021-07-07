@@ -87,6 +87,9 @@ h6 {
   }
 }
 
+p {
+  margin: 0 0 2.5rem;
+}
 
 button, input {
   font-family: Marianne, Arial, sans-serif;
@@ -99,6 +102,12 @@ button {
     cursor: not-allowed;
     outline-style: none;
   }
+}
+
+input {
+  outline-color: var(--focus);
+  outline-offset: 2px;
+  outline-width: 2px;
 }
 
 .message {

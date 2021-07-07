@@ -102,4 +102,38 @@
     font-size: 0.75rem;
     line-height: 1.25rem;
   }
+
+  &--regular {
+    font-weight: 400 !important;
+  }
+}
+
+.fr-message-text {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-size: 0.75rem;
+  line-height: 1.25rem;
+  margin-top: 1rem;
+  margin-bottom: 0;
+}
+
+.fr-error-text {
+  color: var(--error);
+}
+
+.fr-valid-text {
+  color: var(--success);
+}
+
+.flex {
+  display: flex;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.items-center {
+  align-items: center;
 }

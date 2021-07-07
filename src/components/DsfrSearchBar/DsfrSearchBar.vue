@@ -28,6 +28,7 @@
 </template>
 
 <script>
+import { defineComponent } from 'vue'
 import VIcon from 'oh-vue-icons/dist/v3/icon.es'
 import { RiSearch2Line } from 'oh-vue-icons/icons'
 
@@ -37,7 +38,7 @@ import DsfrButton from '../DsfrButton/DsfrButton.vue'
 
 VIcon.add(RiSearch2Line)
 
-export default {
+export default defineComponent({
   name: 'SearchBar',
   components: {
     DsfrInput,
@@ -85,7 +86,7 @@ export default {
       },
     }
   },
-}
+})
 </script>
 
 <style scoped>
