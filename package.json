@@ -66,6 +66,7 @@
     "lint-staged": "^11.0.0",
     "postcss": "^8.3.5",
     "postcss-flexbugs-fixes": "^4.2.1",
+    "postcss-nested": "^5.0.5",
     "postcss-preset-env": "^6.7.0",
     "rollup-plugin-visualizer": "^5.5.0",
     "storybook-builder-vite": "^0.0.10",
