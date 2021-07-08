@@ -1,7 +1,6 @@
 {
   "name": "vue-dsfr",
   "version": "0.2.0",
-  "private": true,
   "files": ["dist"],
   "main": "./dist/vue-dsfr.umd.js",
   "module": "./dist/vue-dsfr.es.js",
