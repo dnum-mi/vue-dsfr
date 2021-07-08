@@ -11,6 +11,9 @@
       "require": "./dist/vue-dsfr.umd.js"
     }
   },
+  "publishConfig": {
+    "@laruiss:registry": "https://npm.pkg.github.com"
+  },
   "scripts": {
     "docs:dev": "vuepress dev docs",
     "docs:build": "vuepress build docs",
