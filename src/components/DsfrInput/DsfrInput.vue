@@ -10,7 +10,7 @@
   </label>
   <input
     :id="id"
-    type="search"
+    :type="type"
     class="fr-input"
     :placeholder="placeholder"
     :value="modelValue"
@@ -46,8 +46,12 @@ export default defineComponent({
       type: String,
       default: '',
     },
+    type: {
+      type: String,
+      default: 'text',
+    },
   },
-  emits: ['update:modelValue'],
+  emits: ['update:modelValue', 'keydown', 'input'],
 })
 </script>
 
