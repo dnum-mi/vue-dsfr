@@ -79,6 +79,14 @@ module.exports = {
   //   "tsx",
   //   "node"
   // ],
+  moduleFileExtensions: [
+    'js',
+    'json',
+    'jsx',
+    'ts',
+    'tsx',
+    'vue',
+  ],
 
   // A map from regular expressions to module names or to arrays of module names that allow to stub out resources with a single module
   // moduleNameMapper: {},
@@ -94,7 +102,6 @@ module.exports = {
 
   // A preset that is used as a base for Jest's configuration
   // preset: undefined,
-  preset: '@vue/cli-plugin-unit-jest',
 
   // Run tests from one or more projects
   // projects: undefined,
@@ -178,12 +185,21 @@ module.exports = {
 
   // A map from regular expressions to paths to transformers
   // transform: undefined,
+  transform: {
+    // '^.+\\.svg$': 'jest-svg-transformer',
+    // '.+\\.(css|styl|less|sass|scss|png|jpg|ttf|woff|woff2)$': 'jest-transform-stub',
+    '^.+\\.js$': 'babel-jest',
+    '^.+\\.vue$': 'vue-jest',
+  },
 
   // An array of regexp pattern strings that are matched against all source file paths, matched files will skip transformation
   // transformIgnorePatterns: [
   //   "/node_modules/",
   //   "\\.pnp\\.[^\\/]+$"
   // ],
+  transformIgnorePatterns: [
+    // '/node_modules(?![\\\\/]oh-vue-icons[\\\\/])/',
+  ],
 
   // An array of regexp pattern strings that are matched against all modules before the module loader will automatically return a mock for them
   // unmockedModulePathPatterns: undefined,

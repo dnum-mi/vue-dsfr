@@ -8,7 +8,7 @@
     "dev": "vite",
     "build": "vite build",
     "serve": "vite preview",
-    "test": "npm run test:unit",
+    "test": "jest",
     "format": "npm run lint -- --fix",
     "lint": "eslint ./src/**/*.{vue,js,jsx,ts,tsx}",
     "storybook": "start-storybook -p 6006",
@@ -16,6 +16,7 @@
   },
   "dependencies": {
     "core-js": "^3.8.3",
+    "jest-transform-stub": "^2.0.0",
     "oh-vue-icons": "^0.4.3",
     "vue": "^3.0.5",
     "vuepress": "^2.0.0-beta.20"
@@ -49,6 +50,8 @@
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^4.3.1",
     "eslint-plugin-vue": "^7.12.1",
+    "jest": "^26.6.3",
+    "jest-svg-transformer": "^1.0.0",
     "lint-staged": "^11.0.0",
     "postcss": "^8.3.5",
     "postcss-flexbugs-fixes": "^4.2.1",

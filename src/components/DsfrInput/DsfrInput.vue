@@ -29,7 +29,9 @@ export default defineComponent({
   props: {
     id: {
       type: String,
-      default: getRandomId('search', 'input'),
+      default () {
+        return getRandomId('basic', 'input')
+      },
     },
     label: {
       type: String,
