@@ -28,7 +28,7 @@ export default defineConfig({
   build: {
     lib: {
       name: 'vue-dsfr',
-      entry: path.resolve(projectDir, 'src', 'main.js'),
+      entry: path.resolve(projectDir, 'src', 'index.js'),
     },
     rollupOptions: {
       external: ['vue'],

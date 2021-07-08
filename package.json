@@ -2,6 +2,18 @@
   "name": "vue-dsfr",
   "version": "0.2.0",
   "private": true,
+  "files": ["dist"],
+  "main": "./dist/vue-dsfr.umd.js",
+  "module": "./dist/vue-dsfr.es.js",
+  "exports": {
+    ".": {
+      "import": "./dist/vue-dsfr.es.js",
+      "require": "./dist/vue-dsfr.umd.js"
+    }
+  },
+  "publishConfig": {
+    "@laruiss:registry": "https://npm.pkg.github.com"
+  },
   "scripts": {
     "docs:dev": "vuepress dev docs",
     "docs:build": "vuepress build docs",

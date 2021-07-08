@@ -1,0 +1,5 @@
+export { default as DsfrButton } from './DsfrButton/DsfrButton.vue'
+export { default as DsfrInput } from './DsfrInput/DsfrInput.vue'
+export { default as DsfrRadioButton } from './DsfrRadioButton/DsfrRadioButton.vue'
+export { default as DsfrRadioButtonSet } from './DsfrRadioButton/DsfrRadioButtonSet.vue'
+export { default as DsfrSearchBar } from './DsfrSearchBar/DsfrSearchBar.vue'
