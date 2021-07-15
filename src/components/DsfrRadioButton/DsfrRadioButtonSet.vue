@@ -105,16 +105,22 @@ export default {
   font-weight: 400;
 }
 
-.fr-fieldset--inline .fr-fieldset__content {
-  display: flex;
-  align-items: baseline;
-  justify-content: flex-start;
-  flex-wrap: wrap;
-  margin: -0.75rem 0;
-}
+.fr-fieldset--inline {
+  & .fr-fieldset__content {
+    display: flex;
+    align-items: baseline;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    margin: -0.75rem 0;
+  }
 
-.fr-fieldset--inline .fr-radio-group {
-  display: inline-flex;
+  & :deep(.fr-radio-group) {
+    display: inline-flex;
+  }
+
+  & :deep(.fr-radio-group:not(:last-child) input[type="radio" i] + label) {
+    margin-right: 1.75rem;
+}
 }
 
 .fr-fieldset--error :deep(.fr-label) {
