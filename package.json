@@ -1,7 +1,9 @@
 {
   "name": "vue-dsfr",
   "version": "0.2.0",
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "main": "./dist/vue-dsfr.umd.js",
   "module": "./dist/vue-dsfr.es.js",
   "exports": {
@@ -51,7 +53,7 @@
     "@vitejs/plugin-vue-jsx": "^1.1.6",
     "@vue/compiler-sfc": "^3.0.5",
     "@vue/eslint-config-standard": "^6.0.0",
-    "@vue/test-utils": "^2.0.0-0",
+    "@vue/test-utils": "^2.0.0-rc.10",
     "autoprefixer": "^9.8.6",
     "babel-loader": "^8.2.2",
     "cypress": "^7.6.0",
@@ -73,6 +75,7 @@
     "vite": "^2.3.8",
     "vue-jest": "^5.0.0-0",
     "vue-loader": "^16.2.0",
+    "vue-router": "^4.0.10",
     "vuepress-vite": "^2.0.0-beta.20",
     "yorkie": "^2.0.0"
   },
