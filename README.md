@@ -1,34 +1,45 @@
-# vue-dsfr
+# VueDsfr
 
-## Project setup
+## Cloner le projet
+
+```shell
+git clone https://github.com/laruiss/vue-dsfr
+```
+
+## Installer les dépendances
+
 ```
 npm install
 ```
 
-### Compiles and hot-reloads for development
+### Lancer le storybook
+
 ```
-npm run serve
+npm run storybook
 ```
 
-### Compiles and minifies for production
+### Compiler et minifier pour la production
+
 ```
 npm run build
 ```
 
-### Run your unit tests
+### Lancer les tests
+
 ```
-npm run test:unit
+npm run test
 ```
 
-### Run your end-to-end tests
-```
-npm run test:e2e
-```
+### Linter les fichiers (CI)
 
-### Lints and fixes files
 ```
 npm run lint
 ```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+### Linter et réparer les fichiers
+
+```
+npm run format
+```
+
+# Plus d'informations dans la [documentation du Storybook](https://github.com/laruiss/vue-dsfr/tree/docs/add-docs/src/stories/docs)

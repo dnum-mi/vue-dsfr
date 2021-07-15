@@ -1,0 +1,37 @@
+import { Meta } from '@storybook/addon-docs';
+
+<Meta title="Docs/Guide" />
+
+# Comment débuter
+
+## Utiliser la bibliothèque en tant que plugin
+
+### Installer le plugin
+
+Afin d'installer le plugin tapez cette commande dans votre console au sein de votre répertoire de projet :
+
+```shell
+npm install @laruiss/vue-dsfr@0.2.0-alpha.1
+```
+
+### Ajouter le plugin
+
+Ajouter le plugin comme spécifié dans la [documentation Vue.js](https://v3.vuejs.org/guide/plugins.html#using-a-plugin 'Using a plugin').
+
+Exemple :
+
+```js
+// main.js
+import { createApp } from 'vue'
+import App from './App.vue'
+import VueDsfr from '@laruiss/vue-dsfr'
+
+const app = createApp(App)
+
+app.use(VueDsfr)
+app.mount('#app')
+```
+
+## Utiliser la bibliothèque de composants sans plugin
+
+(Bientôt disponible)
