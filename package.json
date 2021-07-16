@@ -25,7 +25,8 @@
     "format": "npm run lint -- --fix",
     "lint": "eslint ./src/**/*.{vue,js,jsx,ts,tsx}",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "semantic-release": "semantic-release"
   },
   "dependencies": {
     "core-js": "^3.8.3",
@@ -71,6 +72,7 @@
     "postcss-nested": "^5.0.5",
     "postcss-preset-env": "^6.7.0",
     "rollup-plugin-visualizer": "^5.5.0",
+    "semantic-release": "^17.4.4",
     "storybook-builder-vite": "^0.0.12",
     "vite": "^2.3.8",
     "vue-jest": "^5.0.0-0",
@@ -85,5 +87,12 @@
   },
   "lint-staged": {
     "*.{vue,js,jsx,ts,tsx}": "npm run lint"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/laruiss/vue-dsfr.git"
+  },
+  "release": {
+    "branches": ["main", { "name": "beta", "prerelease": true, "branch": "develop" }]
   }
 }
