@@ -76,6 +76,7 @@
     "vue-jest": "^5.0.0-0",
     "vue-loader": "^16.2.0",
     "vue-router": "^4.0.10",
+    "vue-router-mock": "^0.0.3",
     "vuepress-vite": "^2.0.0-beta.20",
     "yorkie": "^2.0.0"
   },
