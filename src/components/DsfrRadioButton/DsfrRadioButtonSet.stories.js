@@ -2,7 +2,7 @@ import DsfrRadioButtonSet from './DsfrRadioButtonSet.vue'
 
 export default {
   component: DsfrRadioButtonSet,
-  title: 'Basic/DsfrRadioButtonSet',
+  title: 'Basic/DsfrRadioButton',
   argTypes: {
     dark: { control: 'boolean' },
     disabled: { control: 'boolean' },
@@ -71,6 +71,49 @@ export const RadioButtonSetInError = (args) => ({
 })
 RadioButtonSetInError.args = {
   error: "Texte de l'erreur",
+  legend: 'Légende des champs',
+  inline: false,
+  selectedValue: 1,
+  disabled: false,
+  options: [
+    {
+      label: 'Valeur 1',
+      value: '1',
+      hint: 'Description 1',
+    },
+    {
+      label: 'Valeur 2',
+      value: '2',
+      disabled: true,
+      hint: 'Description 2',
+    },
+    {
+      label: 'Valeur 3',
+      value: '3',
+      hint: 'Description 3',
+    },
+  ],
+}
+
+export const RadioButtonSetInSuccess = (args) => ({
+  components: { DsfrRadioButtonSet },
+  data () {
+    return args
+  },
+  template: `
+  <div :data-rf-theme="dark ? 'dark' : ''" style="background-color: var(--w); padding: 1rem;">
+    <DsfrRadioButtonSet
+      :legend="legend"
+      v-model="selectedValue"
+      :options="options"
+      :disabled="disabled"
+      :valid-message="validMessage"
+      :inline="inline"
+    />
+  </div>`,
+})
+RadioButtonSetInSuccess.args = {
+  validMessage: 'Succès au chocolat',
   legend: 'Légende des champs',
   inline: false,
   selectedValue: 1,

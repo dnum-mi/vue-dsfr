@@ -140,8 +140,13 @@
 }
 
 [data-rf-theme="dark"] {
-  --bf500: #bfbfe3;
+  --bf500: #9a9aff;
+  --bf500-plain: #000091;
   --w-bf500: #000091;
+  --bf300-plain: #9a9aff;
+  --bf200-bf300: #9a9aff;
+  --bf100-g750: #2a2a2a;
+  --t-w: #fff;
   --t-plain: transparent;
   --g800: #fff;
   --g700: #f0f0f0;
@@ -149,12 +154,26 @@
   --g400: #9c9c9c;
   --g300: #6a6a6a;
   --g200: #383838;
+  --g100: #2a2a2a;
   --w: #1e1e1e;
   --g100-g800: #1e1e1e;
   --g600-g400: #cecece;
   --focus: #5398ff;
   --rm500: #f7bfc3;
-  --overlay: rgba(206, 206, 206, 0.08);
+  --beige: #2a2a2a;
+  --g800-plain: #1e1e1e;
+  --g600-g400: #cecece;
+  --g400-t: transparent;
+  --g100-g800: #1e1e1e;
+  --w-g750: #2a2a2a;
+  --focus: #5398ff;
+  --info: #2b8bf7;
+  --success: #00eb5e;
+  --error: #f33;
+  --rm300: #383838;
+  --rm500: #f7bfc3;
+  --scroll-shadow: #1e1e1e;
+  --overlay: rgba(206, 206, 206, 0.32);
 
   --color-hover: rgba(71, 71, 255, 0.5);
   --color-active: rgba(0, 0, 243, 0.5);

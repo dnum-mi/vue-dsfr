@@ -8,7 +8,7 @@ OhVueIcon.add(RiCheckboxCircleLine)
 
 export default {
   component: DsfrButton,
-  title: 'Basic/Button',
+  title: 'Basic/DsfrButton',
   argTypes: {
     secondary: { control: 'boolean' },
     dark: { control: 'boolean' },

@@ -10,23 +10,23 @@
       :disabled="disabled"
     >
       <legend
-        v-if="legend"
-        id="radio-legend"
-        class="fr-fieldset__legend"
+        id="checkboxes-legend"
+        class="fr-fieldset__legend fr-text--regular"
       >
-        {{ legend }}
+        Légende de l'ensemble des champs
       </legend>
-
       <div class="fr-fieldset__content">
-        <DsfrRadioButton
+        <DsfrCheckbox
           v-for="option in options"
-          :key="option.value"
+          :id="option.id"
+          :key="option.id || option.name"
+          data-testid="t-checkbox"
+          :name="option.name"
           :label="option.label"
           :disabled="option.disabled"
-          :model-value="modelValue"
-          :value="option.value"
+          :model-value="option.checked"
           :hint="option.hint"
-          @update:modelValue="$emit('update:modelValue', $event)"
+          @update:model-value="onChange({ name: option.name, checked: $event })"
         />
       </div>
       <p
@@ -42,7 +42,7 @@
 </template>
 
 <script>
-import DsfrRadioButton from './DsfrRadioButton.vue'
+import DsfrCheckbox from './DsfrCheckbox.vue'
 import VIcon from 'oh-vue-icons/dist/v3/icon.es'
 import {
   RiErrorWarningLine,
@@ -52,13 +52,11 @@ import {
 VIcon.add(RiErrorWarningLine, RiCheckboxCircleLine)
 
 export default {
-  name: 'DsfrRadioButtonSet',
-
+  name: 'DsfrCheckboxSet',
   components: {
-    DsfrRadioButton,
+    DsfrCheckbox,
     VIcon,
   },
-
   props: {
     disabled: Boolean,
     inline: Boolean,
@@ -74,13 +72,13 @@ export default {
       type: String,
       default: '',
     },
-    modelValue: {
-      type: [String, Number],
-      required: true,
-    },
     options: {
       type: Array,
-      default () { return [] },
+      default: () => [],
+    },
+    modelValue: {
+      type: Array,
+      default: () => [],
     },
   },
 
@@ -97,19 +95,24 @@ export default {
       return this.errorMessage ? 'ri-error-warning-line' : 'ri-checkbox-circle-line'
     },
   },
+
+  methods: {
+    onChange ({ name, checked }) {
+      const selected = checked
+        ? [...this.modelValue, name]
+        : [...this.modelValue.filter(val => val !== name)]
+      this.$emit('update:modelValue', selected)
+    },
+  },
 }
 </script>
 
 <style scoped>
-.line-1 {
-  margin-left: 0.25rem;
-  line-height: 1rem;
-}
-.fr-fieldset__legend {
+.fr-fieldset legend {
   margin-bottom: 1rem;
   font-size: 1rem;
   line-height: 1.5rem;
-  font-weight: 400;
+  font-weight: 700!important;
 }
 
 .fr-fieldset--inline {
@@ -121,13 +124,21 @@ export default {
     margin: -0.75rem 0;
   }
 
-  & :deep(.fr-radio-group) {
+  & :deep(.fr-checkbox-group) {
     display: inline-flex;
   }
 
-  & :deep(.fr-radio-group:not(:last-child) input[type="radio" i] + label) {
+  & :deep(.fr-checkbox-group:not(:last-child) input[type="checkbox" i] + label) {
     margin-right: 1.75rem;
   }
+}
+
+.fr-fieldset--valid :deep(.fr-label) {
+  color: var(--success);
+}
+
+.fr-fieldset--valid :deep(.fr-hint-text) {
+  color: var(--success);
 }
 
 .fr-fieldset--error :deep(.fr-label) {
@@ -138,11 +149,11 @@ export default {
   color: var(--error);
 }
 
-.fr-fieldset--valid :deep(.fr-label) {
-  color: var(--success);
-}
+.fr-message-text {
+  line-height: 0.75rem;
 
-.fr-fieldset--valid :deep(.fr-hint-text) {
-  color: var(--success);
+  & span {
+    margin-left: 0.25rem;
+  }
 }
 </style>
