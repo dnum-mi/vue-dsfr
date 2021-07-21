@@ -1,4 +1,4 @@
-import { mount, RouterLinkStub } from '@vue/test-utils'
+import { mount } from '@vue/test-utils'
 
 import DsfrBreadcrumb from './DsfrBreadcrumb.vue'
 
@@ -24,16 +24,13 @@ describe('DsfrBreadcrumb', () => {
 
     // When
     const wrapper = mount(DsfrBreadcrumb, {
-      stubs: {
-        RouterLink: RouterLinkStub,
-      },
       propsData: {
         links,
       },
     })
 
     const navEl = wrapper.findComponent('[role="navigation"]')
-    const currentItemEl = wrapper.findAllComponents('li')
+    const currentItemEl = wrapper.findAll('[data-test="lis"]')
 
     // Then
     expect(navEl.element.tagName).toBe('NAV')

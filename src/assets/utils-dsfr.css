@@ -126,6 +126,18 @@
   color: var(--success);
 }
 
+.fr-collapse:not(.fr-collapse--expanded)::before {
+  margin-top: -99999px;
+  margin-top: var(--collapse);
+}
+.fr-collapse::before {
+  display: block;
+  content: '';
+  content: var(--collapser);
+  transition: margin-top 0.3s;
+  margin-top: 0;
+}
+
 .flex {
   display: flex;
 }
@@ -136,4 +148,8 @@
 
 .items-center {
   align-items: center;
+}
+
+.relative {
+  position: relative;
 }

@@ -97,6 +97,12 @@ button, input {
 
 button {
   cursor: pointer;
+  outline-color: var(--focus);
+  outline-offset: 2px;
+  outline-width: 2px;
+  appearance: none;
+  font-family: inherit;
+  border: none;
 
   &[disabled] {
     cursor: not-allowed;
@@ -104,11 +110,66 @@ button {
   }
 }
 
+
 input {
   outline-color: var(--focus);
   outline-offset: 2px;
   outline-width: 2px;
 }
+
+ol {
+  counter-reset: list-number;
+}
+ol, ul {
+  padding-bottom: var(--is-list) 0.5rem;
+}
+ol, ul {
+  list-style-type: none;
+  margin-block-start: 0;
+  margin-block-end: 0;
+  padding-inline-start: 0;
+  padding-inline-end: 0;
+}
+ul, ol, dl {
+  padding-left: 40px;
+}
+
+ol > li {
+  counter-increment: list-number;
+}
+ol > li, ul > li {
+  padding-bottom: var(--is-list) 0.5rem;
+}
+ol > li::before {
+  content: var(--is-list) counters(list-number, ".") ".";
+  font-weight: var(--is-list) 700;
+}
+ol > li::before, ul > li::before {
+  padding-right: var(--is-list) 0.5rem;
+}
+
+a {
+  color: #0052CC;
+  text-decoration: none;
+}
+a {
+  outline-color: var(--focus);
+}
+a {
+  cursor: pointer;
+}
+a {
+  outline-offset: 2px;
+  outline-width: 2px;
+}
+a {
+  box-shadow: var(--is-link) 0 1px 0 0 currentColor;
+}
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
 
 .message {
   font-size: 0.8rem;

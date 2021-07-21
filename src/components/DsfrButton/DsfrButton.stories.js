@@ -2,7 +2,7 @@ import OhVueIcon from 'oh-vue-icons/dist/v3/icon.es'
 
 import { RiCheckboxCircleLine } from 'oh-vue-icons/icons'
 
-import DsfrButton from '../DsfrButton/DsfrButton.vue'
+import DsfrButton from './DsfrButton.vue'
 
 OhVueIcon.add(RiCheckboxCircleLine)
 

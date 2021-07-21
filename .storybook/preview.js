@@ -1,3 +1,6 @@
+import { defineComponent } from 'vue'
+import { app } from '@storybook/vue3'
+
 import '../src/assets/variables-dsfr.css'
 import '../src/assets/fonts-dsfr.css'
 import '../src/assets/reset-dsfr.css'
@@ -13,3 +16,16 @@ export const parameters = {
     },
   },
 }
+
+
+const RouterLink = defineComponent({
+  name: 'router-link',
+  props: {
+    to: String,
+  },
+  template: `
+    <a :href="to" v-bind="$attrs"><slot /></a>
+  `,
+})
+
+app.component('router-link', RouterLink);
