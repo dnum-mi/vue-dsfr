@@ -103,6 +103,10 @@ export default defineComponent({
   box-shadow: inset 0 -2px 0 0 var(--bf500);
   border-radius: 0.25rem 0 0 0;
 }
+:deep(.fr-btn) {
+  box-shadow: inset 0 -2px 0 0 var(--bf500);
+  border-radius: 0 0.25rem 0 0;
+}
 
 .fr-search-bar--lg :deep(.fr-input) {
   padding-top: 1rem;
