@@ -2,7 +2,7 @@ import DsfrCard from './DsfrCard.vue'
 
 export default {
   component: DsfrCard,
-  title: 'Basic/DsfrCard',
+  title: 'Basic/Carte (Card)',
   argTypes: {
     dark: { control: 'boolean' },
     noArrow: { control: 'boolean' },

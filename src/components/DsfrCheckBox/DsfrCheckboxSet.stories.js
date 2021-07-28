@@ -2,7 +2,7 @@ import DsfrCheckboxSet from './DsfrCheckboxSet.vue'
 
 export default {
   component: DsfrCheckboxSet,
-  title: 'Basic/DsfrCheckbox',
+  title: 'Basic/Cases à cocher (Checkboxes)',
   argTypes: {
     dark: { control: 'boolean' },
     disabled: { control: 'boolean' },
