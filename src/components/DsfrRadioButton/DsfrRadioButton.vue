@@ -34,7 +34,7 @@ export default defineComponent({
     id: {
       type: String,
       default () {
-        return getRandomId('basic', 'radio')
+        return getRandomId('basic', 'checkbox')
       },
     },
     modelValue: {
