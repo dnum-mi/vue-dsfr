@@ -6,6 +6,7 @@ export default {
   argTypes: {
     dark: { control: 'boolean' },
     label: { control: 'text' },
+    name: { control: 'text' },
     hint: { control: 'text' },
     disabled: { control: 'boolean' },
     checked: { control: 'boolean' },
@@ -18,7 +19,7 @@ export default {
 export const Checkbox = (args) => ({
   components: { DsfrCheckbox },
   data () {
-    return args
+    return { ...args }
   },
   template: `
     <div :data-rf-theme="dark ? 'dark' : ''" style="background-color: var(--w); padding: 1rem;">
@@ -27,6 +28,7 @@ export const Checkbox = (args) => ({
         :disabled="disabled"
         :modelValue="checked"
         :hint="hint"
+        :name="name || 'name1'"
         @update:modelValue="updateChecked($event)"
       />
     </div>
@@ -43,6 +45,7 @@ Checkbox.args = {
   dark: false,
   checked: false,
   label: 'Checkbox 1',
+  name: 'name1',
   value: false,
   hint: 'Description 1',
 }

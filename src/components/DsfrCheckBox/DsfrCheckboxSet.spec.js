@@ -58,7 +58,7 @@ describe('DsfrCheckboxSet', () => {
         id: '1',
         name: 'name1',
         label: firstLabelText,
-        checked: false,
+        checked: true,
         hint: firstHintText,
       },
       {
@@ -85,17 +85,11 @@ describe('DsfrCheckboxSet', () => {
         options,
       },
     })
-    await fireEvent(
-      getByText(firstLabelText),
-      new MouseEvent('click', {
-        bubbles: true,
-        cancelable: true,
-      }),
-    )
+    await fireEvent.click(getByText(firstLabelText))
 
     // Then
     expect(getByTestId('input-checkbox-1')).toBeInTheDocument()
     expect(getByTestId('input-checkbox-1')).toHaveAttribute('name', 'name1')
-    expect(getByTestId('input-checkbox-1')).toHaveAttribute('checked')
+    expect(getByTestId('input-checkbox-1').checked).toBe(true)
   })
 })
