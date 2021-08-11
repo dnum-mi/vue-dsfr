@@ -40,6 +40,7 @@ CheckboxSet.args = {
   legend: 'Légende des champs',
   selectedValue: [],
   inline: false,
+  dark: false,
   options: [
     {
       label: 'Valeur 1',
@@ -86,6 +87,7 @@ export const CheckboxSetAvecErreur = (args) => ({
   },
 })
 CheckboxSetAvecErreur.args = {
+  dark: false,
   legend: 'Légende des champs',
   selectedValue: [],
   inline: false,
@@ -137,6 +139,7 @@ export const CheckboxSetAvecSucces = (args) => ({
 })
 
 CheckboxSetAvecSucces.args = {
+  dark: false,
   legend: 'Légende des champs',
   selectedValue: [],
   inline: false,
@@ -188,6 +191,7 @@ export const CheckboxSetInline = (args) => ({
   },
 })
 CheckboxSetInline.args = {
+  dark: false,
   legend: 'Légende des champs en ligne',
   selectedValue: [],
   inline: true,
@@ -240,6 +244,7 @@ export const CheckboxSetInlineAvecErreur = (args) => ({
   },
 })
 CheckboxSetInlineAvecErreur.args = {
+  dark: false,
   legend: 'Légende des champs en ligne',
   selectedValue: [],
   inline: true,
@@ -292,6 +297,7 @@ export const CheckboxSetInlineAvecSucces = (args) => ({
   },
 })
 CheckboxSetInlineAvecSucces.args = {
+  dark: false,
   legend: 'Légende des champs en ligne',
   selectedValue: [],
   inline: true,
