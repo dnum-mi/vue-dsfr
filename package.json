@@ -1,6 +1,6 @@
 {
   "name": "@laruiss/vue-dsfr",
-  "version": "1.0.0-beta.4",
+  "version": "1.0.0-beta.1",
   "files": [
     "dist"
   ],
@@ -21,7 +21,8 @@
     }
   },
   "publishConfig": {
-    "@laruiss:registry": "https://npm.pkg.github.com"
+    "@laruiss:registry": "https://npm.pkg.github.com",
+    "access": "public"
   },
   "scripts": {
     "docs:dev": "vuepress dev docs",
@@ -103,8 +104,8 @@
     "rollup-plugin-postcss": "^4.0.0",
     "rollup-plugin-terser": "^7.0.2",
     "rollup-plugin-visualizer": "^5.5.0",
-    "semantic-release": "^17.4.4",
     "rollup-plugin-vue": "^6.0.0",
+    "semantic-release": "^17.4.4",
     "storybook-builder-vite": "^0.0.12",
     "vite": "^2.3.8",
     "vue-jest": "^5.0.0-0",
@@ -125,6 +126,13 @@
     "url": "https://github.com/laruiss/vue-dsfr.git"
   },
   "release": {
-    "branches": ["main", { "name": "beta", "prerelease": true, "branch": "develop" }]
+    "branches": [
+      "main",
+      {
+        "name": "beta",
+        "prerelease": true,
+        "branch": "develop"
+      }
+    ]
   }
 }
