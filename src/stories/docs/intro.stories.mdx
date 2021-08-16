@@ -1,17 +1,20 @@
 import { Meta } from '@storybook/addon-docs';
 
+import GithubIcon from './github-fill.svg'
+import MailIcon from './mail-fill.svg'
+
 <Meta title="Docs/Introduction" />
 
 # Qu'est-ce que VueDsfr
 
-VueDsfr est un portage du [Système de design français](https://www.systeme-de-design.gouv.fr/)
-en [Vue 3](https://v3.vuejs.org/) sous forme de bibliothèque de composants.
+VueDsfr est un **portage** du [**Système de design français**](https://www.systeme-de-design.gouv.fr/)
+en [**Vue 3**](https://v3.vuejs.org/) sous forme de **bibliothèque de composants**.
 
 # Qui sont les acteurs du projet
 
-- [Clément Debroize](mailto:clement.debroize@interieur.gouv.fr)
-- [Pierre-Louis Egaud](mailto:pierre.egaud@gmail.com)
-- [Stanislas Ormières](mailto:stan@stormier.ninja)
+- **Clément Debroize** [<img src={MailIcon} style={{height: '1.25rem', 'position': 'relative', top: '0.25rem' }} />](mailto:clement.debroize@interieur.gouv.fr) [<img src={GithubIcon} style={{height: '1.25rem', 'position': 'relative', top: '0.25rem' }} />](https://github.com/DaBadBunny)
+- **Pierre-Louis Egaud** [<img src={MailIcon} style={{height: '1.25rem', 'position': 'relative', top: '0.25rem' }} />](mailto:pierre.egaud@gmail.com) [<img src={GithubIcon} style={{height: '1.25rem', 'position': 'relative', top: '0.25rem' }} />](https://github.com/plegaud)
+- **Stanislas Ormières** [<img src={MailIcon} style={{height: '1.25rem', 'position': 'relative', top: '0.25rem' }} />](mailto:stan@stormier.ninja) [<img src={GithubIcon} style={{height: '1.25rem', 'position': 'relative', top: '0.25rem' }} />](https://github.com/laruiss)
 
 # Pourquoi VueDsfr
 
@@ -33,7 +36,7 @@ Ce projet de bibliothèque de composants
 - doit mettre à disposition deux types de documentation :
   - une pour aider au développement
   - une autre pour l'utilisation
-- doit publier un site complet avec les composants et leurs variants testables dans celui-ci
+- doit publier un site complet avec les composants et leurs variants testables dans celui-ci dans un storybook
 - doit avoir un site déployé avec ce storybook disponible pour tous
 - doit avoir une couverture de test minimale
 - doit contenir le moins de CSS global possible et le CSS scopé inclus dans les composants
@@ -42,11 +45,22 @@ Ce projet de bibliothèque de composants
 
 # Quels sont les choix techniques retenus
 
-Le serveur de développement est [Vite](https://vitejs.dev).
+Le JavaScript est linté avec [ESLint](https://eslint.org/) et formatté selon [StandardJS](https://standardjs.org)
+avec une seule modification : les virgules
+doivent être ajoutées pour tout ce qui est en multiligne (`"comma-dangle": ["error", "always-multiline"]`
+cf. [Documentation ESLint]((https://eslint.org/docs/rules/comma-dangle#options)))
 
-Le CSS est écrit avec [PostCSS](https://postcss.org/) et notamment le plugin [postcss-preset-env](https://preset-env.cssdb.org/).
+Le serveur de développement est celui de [Storybook](https://storybook.js.org/), toute la documentation est faite avec
+Storybook, et le site pour tester les composants est le storybook lui-même.
 
-Toute la documentation est faite avec [Storybook](https://storybook.js.org/), et le site pour tester les composants
-est le storybook lui-même.
+Le CSS est écrit avec [PostCSS](https://postcss.org/) et notamment
+le plugin [postcss-preset-env](https://preset-env.cssdb.org/).
 
-Les tests sont faits avec [Jest](https://jestjs.io) et dans un futur proche avec [Cypress](https://www.cypress.io/).
+Storybook est configuré pour utiliser [Vite](https://vitejs.dev) et PostCSS.
+
+Les tests sont faits avec [Jest](https://jestjs.io) et [Vue Testing Library](https://testing-library.com/docs/vue-testing-library/intro/),
+et dans un futur proche avec [Cypress](https://www.cypress.io/).
+
+Les icônes sont toujours celles de [RemixIcon](https://remixicon.com/), grâce à [Oh, Vue Icons!](https://github.com/Renovamen/oh-vue-icons/)
+
+La bibliothèque est compilée avec [Rollup](https://rollupjs.org/).

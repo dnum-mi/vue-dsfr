@@ -8,7 +8,7 @@ OhVueIcon.add(RiCheckboxCircleLine)
 
 export default {
   component: DsfrTabs,
-  title: 'Basic/Onglets (Tabs)',
+  title: 'Basic/Onglets - Tabs',
   argTypes: {
     dark: { control: 'boolean' },
     tabListName: { control: 'text' },
