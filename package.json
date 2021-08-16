@@ -38,6 +38,7 @@
     "lint": "eslint ./src/**/*.{vue,js,jsx,ts,tsx}",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
+    "prepublishOnly": "npm run build:lib",
     "semantic-release": "semantic-release"
   },
   "dependencies": {
