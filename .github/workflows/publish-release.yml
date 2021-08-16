@@ -2,7 +2,8 @@ name: Release
 on:
   push:
     branches:
-      - main
+      - beta
+
 jobs:
   release:
     name: Release
@@ -13,11 +14,13 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v2
         with:
+          always-auth: true
           node-version: 16
+          registry-url: ${{ secrets.REGISTRY_URL }}
       - name: Install dependencies
         run: npm ci
       - name: Release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          # NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NPM_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: npx semantic-release
