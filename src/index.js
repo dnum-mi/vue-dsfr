@@ -1,5 +1,6 @@
 import * as components from './components/index.js'
 import './main.css'
+import './assets/fonts-dsfr.css'
 
 export default {
   install: (app, options) => {
@@ -8,3 +9,5 @@ export default {
     })
   },
 }
+
+export * from './components/index.js'

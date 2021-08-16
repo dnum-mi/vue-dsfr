@@ -55,7 +55,7 @@ export default defineComponent({
 })
 </script>
 
-<style lang="postcss" scoped>
+<style scoped>
 .fr-label {
   font-size: 0.8rem;
   display: block;
