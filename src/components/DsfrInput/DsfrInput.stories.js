@@ -8,6 +8,7 @@ export default {
     label: { control: 'text' },
     labelVisible: { control: 'boolean' },
     placeholder: { control: 'text' },
+    modelValue: { controle: 'text' },
   },
 }
 
@@ -23,19 +24,20 @@ export const LabelNotVisible = (args) => ({
   template: `
     <div :data-rf-theme="dark ? 'dark' : ''" style="background-color: var(--w); padding: 1rem;">
       <DsfrInput
+        :modelValue="modelValue"
         :label="label"
         :placeholder="placeholder"
-        :dark="dark"
         :labelVisible="labelVisible"
       />
     </div>
   `,
 })
 LabelNotVisible.args = {
+  dark: false,
   label: 'Label champ de saisie',
   labelVisible: false,
   placeholder: 'Placeholder',
-  dark: false,
+  modelValue: undefined,
 }
 
 export const LabelVisible = (args) => ({
@@ -50,18 +52,19 @@ export const LabelVisible = (args) => ({
   template: `
     <div :data-rf-theme="dark ? 'dark' : ''" style="background-color: var(--w); padding: 1rem;">
       <DsfrInput
+        :modelValue="modelValue"
         :label="label"
         :labelVisible="true"
         :placeholder="placeholder"
-        :dark="dark"
       />
     </div>
   `,
 })
 
 LabelVisible.args = {
+  dark: false,
   label: 'Label champ de saisie',
   labelVisible: true,
   placeholder: 'Placeholder',
-  dark: false,
+  modelValue: undefined,
 }
