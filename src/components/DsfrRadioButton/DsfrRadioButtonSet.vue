@@ -26,7 +26,7 @@
           :model-value="modelValue"
           :value="option.value"
           :hint="option.hint"
-          @update:modelValue="$emit('update:modelValue', $event)"
+          @update:modelValue="onChange"
         />
       </div>
       <p
@@ -95,6 +95,15 @@ export default {
     },
     messageIcon () {
       return this.errorMessage ? 'ri-error-warning-line' : 'ri-checkbox-circle-line'
+    },
+  },
+
+  methods: {
+    onChange ($event) {
+      if ($event === this.modelValue) {
+        return
+      }
+      this.$emit('update:modelValue', $event)
     },
   },
 }

@@ -11,6 +11,7 @@ export default {
     options: { control: 'object' },
     modelValue: { control: 'text' },
     error: { control: 'text' },
+    onChange: { action: 'changed' },
   },
 }
 
@@ -26,10 +27,12 @@ export const RadioButtonSet = (args) => ({
       v-model="selectedValue"
       :options="options"
       :inline="inline"
+      @update:model-value="onChange"
     />
   </div>`,
 })
 RadioButtonSet.args = {
+  dark: false,
   legend: 'Légende des champs',
   selectedValue: 1,
   inline: false,
@@ -66,10 +69,12 @@ export const RadioButtonSetInError = (args) => ({
       :disabled="disabled"
       :error-message="error"
       :inline="inline"
+      @update:model-value="onChange"
     />
   </div>`,
 })
 RadioButtonSetInError.args = {
+  dark: false,
   error: "Texte de l'erreur",
   legend: 'Légende des champs',
   inline: false,
@@ -109,10 +114,12 @@ export const RadioButtonSetInSuccess = (args) => ({
       :disabled="disabled"
       :valid-message="validMessage"
       :inline="inline"
+      @update:model-value="onChange"
     />
   </div>`,
 })
 RadioButtonSetInSuccess.args = {
+  dark: false,
   validMessage: 'Succès au chocolat',
   legend: 'Légende des champs',
   inline: false,
@@ -151,10 +158,12 @@ export const RadioButtonSetDisabled = (args) => ({
       :options="options"
       :disabled="disabled"
       :inline="inline"
+      @update:model-value="onChange"
     />
   </div>`,
 })
 RadioButtonSetDisabled.args = {
+  dark: false,
   legend: 'Légende des champs',
   inline: false,
   selectedValue: 1,
@@ -191,10 +200,12 @@ export const RadioButtonSetInline = (args) => ({
       :options="options"
       :disabled="disabled"
       :inline="inline"
+      @update:model-value="onChange"
     />
   </div>`,
 })
 RadioButtonSetInline.args = {
+  dark: false,
   legend: 'Légende des champs en ligne',
   selectedValue: 1,
   disabled: true,

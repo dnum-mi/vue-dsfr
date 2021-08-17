@@ -7,14 +7,13 @@ export default {
   argTypes: {
     dark: { control: 'boolean' },
     label: { control: 'text' },
-    disabled: { control: 'boolean' },
     options: { control: 'object' },
-    checkedValue: { control: 'text' },
+    modelValue: { control: 'text' },
     onChange: { action: 'changed' },
   },
 }
 
-export const RadioButton = (args) => ({
+export const RadioButton = (args, { argTypes }) => ({
   components: { DsfrRadioButton },
   data () {
     return args
@@ -26,7 +25,7 @@ export const RadioButton = (args) => ({
         :key="option.value"
         :label="option.label"
         :disabled="option.disabled"
-        :modelValue="checkedValue"
+        :modelValue="modelValue"
         :value="option.value"
         :hint="option.hint"
         @update:modelValue="updateCheckedValue($event)"
@@ -35,15 +34,17 @@ export const RadioButton = (args) => ({
   `,
   methods: {
     updateCheckedValue (val) {
+      if (val === this.modelValue) {
+        return
+      }
       this.onChange(val)
-      this.checkedValue = val
+      this.modelValue = val
     },
   },
 })
 RadioButton.args = {
-  disabled: false,
   dark: false,
-  checkedValue: '36',
+  modelValue: '3',
   options: [
     {
       label: 'Valeur 1',
