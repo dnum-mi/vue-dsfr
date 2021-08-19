@@ -59,7 +59,6 @@ export default defineComponent({
       type: String,
       default: '',
     },
-    dark: Boolean,
     hideIcon: Boolean,
     labelVisible: Boolean,
     modelValue: {

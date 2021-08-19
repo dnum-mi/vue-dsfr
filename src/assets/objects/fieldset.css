@@ -1,0 +1,27 @@
+.fr-fieldset {
+  color: var(--g800);
+  position: relative;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.fr-fieldset--error,
+.fr-fieldset--valid {
+  & .fr-fieldset__content::before {
+    content: "";
+    position: absolute;
+    top: 0rem;
+    bottom: 2.25rem;
+    left: -0.5rem;
+    width: 2px;
+  }
+}
+
+.fr-fieldset--valid .fr-fieldset__content::before {
+  background-color: var(--success);
+}
+
+.fr-fieldset--error .fr-fieldset__content::before {
+  background-color: var(--error);
+}
