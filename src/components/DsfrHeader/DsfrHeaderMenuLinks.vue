@@ -8,7 +8,7 @@
     >
       <router-link
         class="fr-link"
-        :href="quickLink.path"
+        :to="quickLink.path"
       >
         <VIcon
           v-if="quickLink.icon && !quickLink.iconRight"
