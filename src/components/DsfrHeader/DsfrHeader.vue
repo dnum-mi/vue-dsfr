@@ -118,7 +118,7 @@
               <DsfrSearchBar
                 :model-value="modelValue"
                 style="justify-content: flex-end"
-                @update:model-value="$emit('update:modelValue', $event)"
+                @update:modelValue="$emit('update:modelValue', $event)"
                 @search="$emit('search', $event)"
               />
             </div>
