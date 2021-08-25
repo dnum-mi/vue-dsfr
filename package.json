@@ -6,20 +6,6 @@
   ],
   "main": "./dist/vue-dsfr.umd.js",
   "module": "./dist/vue-dsfr.esm.js",
-  "exports": {
-    ".": {
-      "import": "./dist/vue-dsfr.esm.js",
-      "require": "./dist/vue-dsfr.umd.js"
-    },
-    "./css": {
-      "import": "./dist/vue-dsfr.css",
-      "require": "./dist/vue-dsfr.css"
-    },
-    "./fonts": {
-      "import": "./dist/vue-dsfr-fonts.css",
-      "require": "./dist/vue-dsfr-fonts.css"
-    }
-  },
   "publishConfig": {
     "@laruiss:registry": "https://npm.pkg.github.com",
     "access": "public"
