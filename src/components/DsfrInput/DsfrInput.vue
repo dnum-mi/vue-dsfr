@@ -16,6 +16,7 @@
     :value="modelValue"
     @input="$emit('update:modelValue', $event.target.value)"
     @keydown.esc="$emit('update:modelValue', '')"
+    @keydown="$emit('keydown', $event)"
   >
 </template>
 

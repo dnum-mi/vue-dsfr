@@ -10,8 +10,8 @@
       :model-value="modelValue"
       :label-visible="labelVisible"
       :label="label"
-      @input="$emit('update:modelValue', $event.target.value)"
-      @keydown.esc="$emit('update:modelValue', '')"
+      @update:modelValue="$emit('update:modelValue', $event)"
+      @keydown.enter="$emit('search')"
     />
     <DsfrButton
       title="Rechercher"
@@ -39,7 +39,7 @@ import DsfrButton from '../DsfrButton/DsfrButton.vue'
 VIcon.add(RiSearch2Line)
 
 export default defineComponent({
-  name: 'SearchBar',
+  name: 'DsfrSearchBar',
   components: {
     DsfrInput,
     DsfrButton,
