@@ -100,6 +100,10 @@
     "vuepress-vite": "^2.0.0-beta.20",
     "yorkie": "^2.0.0"
   },
+  "peerDependencies": {
+    "oh-vue-icons": "^0.4.3",
+    "vue-router": "^4.0.10"
+  },
   "gitHooks": {
     "pre-commit": "lint-staged"
   },

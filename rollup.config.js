@@ -25,6 +25,7 @@ const postcssPlugins = [
 const baseOutput = {
   globals: {
     vue: 'vue',
+    'vue-router': 'vue-router',
     'oh-vue-icons/dist/v3/icon.es': 'VIcon',
     'oh-vue-icons/icons': 'icons',
   },
@@ -32,7 +33,7 @@ const baseOutput = {
 
 const baseConfig = {
   input: 'src/index.js',
-  external: ['vue', 'oh-vue-icons/dist/v3/icon.es', 'oh-vue-icons/icons'],
+  external: ['vue', 'vue-router', 'oh-vue-icons/dist/v3/icon.es', 'oh-vue-icons/icons'],
   output: {
     globals: baseOutput.globals,
   },
