@@ -1,25 +1,11 @@
 {
   "name": "@laruiss/vue-dsfr",
-  "version": "1.0.0-beta.1",
+  "version": "1.0.0-beta.5",
   "files": [
     "dist"
   ],
   "main": "./dist/vue-dsfr.umd.js",
   "module": "./dist/vue-dsfr.esm.js",
-  "exports": {
-    ".": {
-      "import": "./dist/vue-dsfr.esm.js",
-      "require": "./dist/vue-dsfr.umd.js"
-    },
-    "./css": {
-      "import": "./dist/vue-dsfr.css",
-      "require": "./dist/vue-dsfr.css"
-    },
-    "./fonts": {
-      "import": "./dist/vue-dsfr-fonts.css",
-      "require": "./dist/vue-dsfr-fonts.css"
-    }
-  },
   "publishConfig": {
     "@laruiss:registry": "https://npm.pkg.github.com",
     "access": "public"
@@ -114,6 +100,10 @@
     "vuepress-vite": "^2.0.0-beta.20",
     "yorkie": "^2.0.0"
   },
+  "peerDependencies": {
+    "oh-vue-icons": "^0.4.3",
+    "vue-router": "^4.0.10"
+  },
   "gitHooks": {
     "pre-commit": "lint-staged"
   },
@@ -123,15 +113,5 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/laruiss/vue-dsfr.git"
-  },
-  "release": {
-    "branches": [
-      "main",
-      {
-        "name": "beta",
-        "prerelease": true,
-        "branch": "develop"
-      }
-    ]
   }
 }
