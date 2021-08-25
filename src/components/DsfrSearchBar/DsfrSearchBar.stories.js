@@ -2,7 +2,7 @@ import DsfrSearchBar from './DsfrSearchBar.vue'
 
 export default {
   components: DsfrSearchBar,
-  title: 'Basic/Barre de recherche (Search bar)',
+  title: 'Éléments/Barre de recherche - Search bar',
   argTypes: {
     label: { control: 'text' },
     dark: { control: 'boolean' },
@@ -10,6 +10,7 @@ export default {
     labelVisible: { control: 'boolean' },
     placeholder: { control: 'text' },
     buttonText: { control: 'text' },
+    modelValue: { control: 'text' },
     large: { control: 'boolean' },
   },
 }
@@ -30,6 +31,7 @@ export const IconOnly = (args) => ({
         :labelVisible="labelVisible"
         :button-text="buttonText"
         :hide-icon="hideIcon"
+        v-model="modelValue"
       />
     </div>
   `,
@@ -41,6 +43,7 @@ IconOnly.args = {
   placeholder: 'Rechercher',
   buttonText: '',
   labelVisible: false,
+  modelValue: '',
 }
 
 export const TextNoIcon = (args) => ({
@@ -70,6 +73,8 @@ TextNoIcon.args = {
   placeholder: 'Rechercher',
   buttonText: 'Rechercher',
   labelVisible: false,
+  large: false,
+  modelValue: '',
 }
 
 export const SearchBarLarge = (args) => ({
@@ -100,5 +105,6 @@ SearchBarLarge.args = {
   placeholder: 'Rechercher',
   buttonText: 'Rechercher',
   labelVisible: false,
+  modelValue: '',
   large: true,
 }

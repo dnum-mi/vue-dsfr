@@ -2,10 +2,10 @@ import DsfrLogo from './DsfrLogo.vue'
 
 export default {
   component: DsfrLogo,
-  title: 'Basic/Logo Officiel (Official logo)',
+  title: 'Basic/Logo Officiel - Official logo',
   argTypes: {
     dark: { control: 'boolean' },
-    text: { control: 'text' },
+    text: { control: 'object' },
     size: {
       options: ['small', 'normal', 'large'],
       control: { type: 'radio' },
@@ -13,7 +13,7 @@ export default {
   },
 }
 
-export const Logo = (args, { argTypes }) => ({
+export const Logo = (args) => ({
   components: {
     DsfrLogo,
   },
@@ -25,14 +25,13 @@ export const Logo = (args, { argTypes }) => ({
       <DsfrLogo
         :small="size === 'small'"
         :large="size === 'large'"
-      >
-        {{ text }}
-      </DsfrLogo>
+        :logoText="text"
+      />
     </div>
   `,
 })
 Logo.args = {
   dark: false,
-  text: 'République Française',
+  text: ['République', 'Française'],
   size: 'normal',
 }

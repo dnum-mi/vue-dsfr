@@ -2,9 +2,15 @@
   DSFR Reset/Normalize
 */
 
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
 :root {
   font-size: 100%;
+  box-sizing: border-box;
 }
+
 
 body {
   font-family: Marianne, arial, sans-serif;
@@ -155,35 +161,46 @@ input {
   }
 }
 
+ol, ul {
+  margin: 0;
+  padding: 0;
+  margin-block-start: var(--xl-block);
+  margin-block-end: var(--xl-block);
+  --xl-size: var(--xl-base);
+}
+
 ol {
   counter-reset: list-number;
 }
-ol, ul {
-  padding-bottom: var(--is-list) 0.5rem;
+
+ul {
+  list-style-type: var(--ul-type);
+  padding-inline-start: var(--ul-start);
 }
-ol, ul {
-  list-style-type: none;
-  margin-block-start: 0;
-  margin-block-end: 0;
-  padding-inline-start: 0;
-  padding-inline-end: 0;
+
+ul > li::marker {
+  font-size: calc(var(--xl-size) * 0.9);
 }
-ul, ol, dl {
-  padding-left: 40px;
+
+ol {
+  list-style-type: var(--ol-type);
+  padding-inline-start: var(--ol-start);
+  counter-reset: li-counter;
 }
 
 ol > li {
-  counter-increment: list-number;
+  counter-increment: li-counter;
 }
-ol > li, ul > li {
-  padding-bottom: var(--is-list) 0.5rem;
+
+ol > li::marker {
+  content: var(--ol-content);
+  font-size: var(--xl-size);
+  font-weight: bold;
 }
-ol > li::before {
-  content: var(--is-list) counters(list-number, ".") ".";
-  font-weight: var(--is-list) 700;
-}
-ol > li::before, ul > li::before {
-  padding-right: var(--is-list) 0.5rem;
+
+li {
+  --xl-base: calc(var(--xl-size) * 0.9);
+  padding-bottom: var(--li-bottom);
 }
 
 

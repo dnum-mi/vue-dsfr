@@ -59,7 +59,6 @@ export default defineComponent({
       type: String,
       default: '',
     },
-    dark: Boolean,
     hideIcon: Boolean,
     labelVisible: Boolean,
     modelValue: {
@@ -92,7 +91,6 @@ export default defineComponent({
 <style scoped>
 .fr-search-bar {
   display: flex;
-
 }
 
 :deep(.ov-icon) {
