@@ -43,20 +43,12 @@
 
 <script>
 import DsfrRadioButton from './DsfrRadioButton.vue'
-import VIcon from 'oh-vue-icons/dist/v3/icon.es'
-import {
-  RiErrorWarningLine,
-  RiCheckboxCircleLine,
-} from 'oh-vue-icons/icons'
-
-VIcon.add(RiErrorWarningLine, RiCheckboxCircleLine)
 
 export default {
   name: 'DsfrRadioButtonSet',
 
   components: {
     DsfrRadioButton,
-    VIcon,
   },
 
   props: {

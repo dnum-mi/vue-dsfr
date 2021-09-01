@@ -47,20 +47,9 @@
 <script>
 import { defineComponent } from 'vue'
 import { getRandomId } from '../../utils/random-utils.js'
-import VIcon from 'oh-vue-icons/dist/v3/icon.es'
-import {
-  RiCheckLine,
-  RiErrorWarningLine,
-  RiCheckboxCircleLine,
-} from 'oh-vue-icons/icons'
-
-VIcon.add(RiCheckLine, RiErrorWarningLine, RiCheckboxCircleLine)
 
 export default defineComponent({
   name: 'DsfrCheckBox',
-  components: {
-    VIcon,
-  },
   props: {
     id: {
       type: String,

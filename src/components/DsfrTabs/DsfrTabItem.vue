@@ -26,14 +26,8 @@
 </template>
 
 <script>
-import VIcon from 'oh-vue-icons/dist/v3/icon.es'
-
 export default {
   name: 'DsfrTabItem',
-
-  components: {
-    VIcon,
-  },
 
   props: {
     selected: Boolean,

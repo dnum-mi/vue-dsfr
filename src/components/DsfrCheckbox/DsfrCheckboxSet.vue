@@ -43,19 +43,11 @@
 
 <script>
 import DsfrCheckbox from './DsfrCheckbox.vue'
-import VIcon from 'oh-vue-icons/dist/v3/icon.es'
-import {
-  RiErrorWarningLine,
-  RiCheckboxCircleLine,
-} from 'oh-vue-icons/icons'
-
-VIcon.add(RiErrorWarningLine, RiCheckboxCircleLine)
 
 export default {
   name: 'DsfrCheckboxSet',
   components: {
     DsfrCheckbox,
-    VIcon,
   },
   props: {
     disabled: Boolean,
