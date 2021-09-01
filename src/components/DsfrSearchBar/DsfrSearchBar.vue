@@ -29,21 +29,16 @@
 
 <script>
 import { defineComponent } from 'vue'
-import VIcon from 'oh-vue-icons/dist/v3/icon.es'
-import { RiSearch2Line } from 'oh-vue-icons/icons'
 
 import { getRandomId } from '../../utils/random-utils.js'
 import DsfrInput from '../DsfrInput/DsfrInput.vue'
 import DsfrButton from '../DsfrButton/DsfrButton.vue'
-
-VIcon.add(RiSearch2Line)
 
 export default defineComponent({
   name: 'DsfrSearchBar',
   components: {
     DsfrInput,
     DsfrButton,
-    VIcon,
   },
   props: {
     id: {
