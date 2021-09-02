@@ -6,31 +6,20 @@
       v-for="quickLink in links"
       :key="quickLink.path"
     >
-      <router-link
-        class="fr-link"
-        :to="quickLink.path"
-        :class="{
-          'flex': true,
-          'reverse': quickLink.iconRight,
-        }"
-      >
-        <VIcon
-          v-if="quickLink.icon"
-          :name="quickLink.icon"
-          :class="{
-            'icon-right': quickLink.iconRight,
-            'icon-left': !quickLink.iconRight,
-          }"
-        />
-        <span>{{ quickLink.label }}</span>
-      </router-link>
+      <DsfrHeaderMenuLink
+        v-bind="quickLink"
+      />
     </li>
   </ul>
 </template>
 
 <script>
+import DsfrHeaderMenuLink from './DsfrHeaderMenuLink.vue'
 export default {
   name: 'DsfrMenuLinks',
+  components: {
+    DsfrHeaderMenuLink,
+  },
   props: {
     links: {
       type: Array,
