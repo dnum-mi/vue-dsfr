@@ -356,7 +356,6 @@ export default {
   min-height: 2rem;
   padding: 0.25rem 0.75rem;
   border-radius: 1rem;
-  flex-direction: row;
   overflow: initial;
   max-width: none;
   max-height: none;
