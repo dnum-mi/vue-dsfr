@@ -13,3 +13,5 @@ export default {
 }
 
 export * from './components/index.js'
+
+export { VIcon }
