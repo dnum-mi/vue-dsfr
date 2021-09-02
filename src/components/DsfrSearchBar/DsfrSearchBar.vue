@@ -20,7 +20,7 @@
       <v-icon
         v-if="!hideIcon || large"
         class="fr-search-bar__icon"
-        name="ri-search-2-line"
+        name="ri-search-line"
       />
       <span class="fr-btn__text">{{ buttonText }}</span>
     </DsfrButton>
