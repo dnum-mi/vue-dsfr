@@ -9,18 +9,20 @@
       <router-link
         class="fr-link"
         :to="quickLink.path"
+        :class="{
+          'flex': true,
+          'reverse': quickLink.iconRight,
+        }"
       >
         <VIcon
-          v-if="quickLink.icon && !quickLink.iconRight"
+          v-if="quickLink.icon"
           :name="quickLink.icon"
-          style="margin-right: 0.25rem"
+          :class="{
+            'icon-right': quickLink.iconRight,
+            'icon-left': !quickLink.iconRight,
+          }"
         />
-        {{ quickLink.label }}
-        <VIcon
-          v-if="quickLink.icon && quickLink.iconRight"
-          :name="quickLink.icon"
-          style="margin-left: 0.25rem"
-        />
+        <span>{{ quickLink.label }}</span>
       </router-link>
     </li>
   </ul>
@@ -48,9 +50,24 @@ export default {
   min-height: 2rem;
   padding: 0.25rem 0.75rem;
   border-radius: 1rem;
-  flex-direction: row;
   overflow: initial;
   max-width: none;
   max-height: none;
+}
+
+.icon-left {
+  margin-right: 0.5rem
+}
+.icon-right {
+  margin-left: 0.5rem
+}
+
+.flex {
+  display: flex;
+  align-items: center;
+}
+
+.reverse {
+  flex-direction: row-reverse;
 }
 </style>
