@@ -20,7 +20,7 @@ export default {
   },
 }
 
-export const Primary = (args) => ({
+export const BoutonSimple = (args) => ({
   components: { DsfrButton },
   data () {
     return {
@@ -32,18 +32,45 @@ export const Primary = (args) => ({
       <DsfrButton
         :label="label"
         :disabled="disabled"
+        :secondary="secondary"
+        :icon="icon"
+        :iconRight="iconRight"
         @click="onClick"
       />
     </div>
   `,
 })
-Primary.args = {
+BoutonSimple.args = {
+  dark: false,
   label: 'Label bouton',
   disabled: false,
-  dark: false,
+  secondary: false,
+  icon: '',
+  iconRight: false,
 }
 
-export const PrimaryWithIcon = (args) => ({
+export const BoutonPrimaire = (args) => ({
+  components: { DsfrButton },
+  data () {
+    return {
+      ...args,
+    }
+  },
+  template: `
+    <div :data-rf-theme="dark ? 'dark' : ''" style="background-color: var(--w); padding: 1rem;">
+      <DsfrButton
+        :label="label"
+        @click="onClick"
+      />
+    </div>
+  `,
+})
+BoutonPrimaire.args = {
+  dark: false,
+  label: 'Label bouton',
+}
+
+export const BoutonPrimaireAvecIcone = (args) => ({
   components: { DsfrButton },
   data () {
     return {
@@ -62,7 +89,7 @@ export const PrimaryWithIcon = (args) => ({
     </div>
   `,
 })
-PrimaryWithIcon.args = {
+BoutonPrimaireAvecIcone.args = {
   dark: false,
   label: 'Label bouton',
   disabled: false,
@@ -70,7 +97,7 @@ PrimaryWithIcon.args = {
   iconRight: false,
 }
 
-export const Secondary = (args) => ({
+export const BoutonSecondaire = (args) => ({
   components: { DsfrButton },
   data () {
     return {
@@ -88,14 +115,14 @@ export const Secondary = (args) => ({
     </div>
   `,
 })
-Secondary.args = {
+BoutonSecondaire.args = {
   label: 'Label bouton secondaire',
   disabled: false,
   dark: false,
   secondary: true,
 }
 
-export const ButtonWithIcon = (args) => ({
+export const SuiteDeBoutons = (args) => ({
   components: {
     DsfrButton,
     VIcon: OhVueIcon,
@@ -107,51 +134,44 @@ export const ButtonWithIcon = (args) => ({
   },
   template: `
     <div :data-rf-theme="dark ? 'dark' : ''" style="background-color: var(--w); padding: 1rem;">
-      <div style="margin: 1rem 0;">
+      <div style="margin: 1rem 0;" v-for="btn in btns">
         <DsfrButton
-          :disabled="disabled"
+          :disabled="btn.disabled"
+          :secondary="btn.secondary"
           @click="onClick"
-          :label="label"
-          icon="ri-checkbox-circle-line"
-        />
-      </div>
-
-      <div style="margin: 1rem 0;">
-        <DsfrButton
-          :disabled="disabled"
-          secondary
-          @click="onClick"
-          :label="label"
-          icon="ri-checkbox-circle-line"
-        />
-      </div>
-
-      <div style="margin: 1rem 0;">
-        <DsfrButton
-          :disabled="disabled"
-          @click="onClick"
-          :label="label"
-          icon="ri-checkbox-circle-line"
-          icon-right
-        />
-      </div>
-
-      <div style="margin: 1rem 0;">
-        <DsfrButton
-          :disabled="disabled"
-          secondary
-          @click="onClick"
-          :label="label"
-          icon="ri-checkbox-circle-line"
-          icon-right
+          :label="btn.label"
+          :icon="btn.icon"
+          :iconRight="btn.iconRight"
         />
       </div>
 
     </div>
   `,
 })
-ButtonWithIcon.args = {
+SuiteDeBoutons.args = {
+  dark: false,
   label: 'Texte du bouton',
   disabled: false,
-  dark: false,
+  btns: [
+    {
+      label: 'Label 1',
+      icon: 'ri-checkbox-circle-line',
+    },
+    {
+      label: 'Label 2',
+      secondary: true,
+      icon: 'ri-checkbox-circle-line',
+    },
+    {
+      label: 'Label 3',
+      icon: 'ri-checkbox-circle-line',
+      iconRight: true,
+    },
+    {
+      label: 'Label 4',
+      secondary: true,
+      icon: 'ri-checkbox-circle-line',
+      iconRight: true,
+    },
+  ],
 }
