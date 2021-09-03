@@ -46,16 +46,8 @@
 </template>
 
 <script>
-import VIcon from 'oh-vue-icons/dist/v3/icon.es'
-import { RiArrowRightLine } from 'oh-vue-icons/icons'
-
-VIcon.add(RiArrowRightLine)
-
 export default {
   name: 'DsfrCard',
-  components: {
-    VIcon,
-  },
   props: {
     imgSrc: {
       type: String,

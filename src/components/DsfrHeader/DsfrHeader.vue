@@ -24,7 +24,7 @@
                   @click="showSearchModal"
                 >
                   <VIcon
-                    name="ri-search-2-line"
+                    name="ri-search-line"
                   />
                 </button>
                 <button
@@ -132,18 +132,12 @@
 import DsfrLogo from '../DsfrLogo/DsfrLogo.vue'
 import DsfrSearchBar from '../DsfrSearchBar/DsfrSearchBar.vue'
 import DsfrHeaderMenuLinks from './DsfrHeaderMenuLinks.vue'
-import VIcon from 'oh-vue-icons/dist/v3/icon.es'
-import { RiMenuLine, RiCloseLine, RiSearch2Line } from 'oh-vue-icons/icons'
-
-VIcon.add(RiMenuLine, RiCloseLine, RiSearch2Line)
-
 export default {
   name: 'DsfrHeader',
   components: {
     DsfrLogo,
     DsfrHeaderMenuLinks,
     DsfrSearchBar,
-    VIcon,
   },
   props: {
     serviceTitle: {

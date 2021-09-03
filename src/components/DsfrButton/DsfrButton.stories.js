@@ -14,6 +14,8 @@ export default {
     dark: { control: 'boolean' },
     label: { control: 'text' },
     disabled: { control: 'boolean' },
+    icon: { control: 'text' },
+    iconRight: { control: 'boolean' },
     onClick: { action: 'clicked' },
   },
 }
@@ -39,6 +41,33 @@ Primary.args = {
   label: 'Label bouton',
   disabled: false,
   dark: false,
+}
+
+export const PrimaryWithIcon = (args) => ({
+  components: { DsfrButton },
+  data () {
+    return {
+      ...args,
+    }
+  },
+  template: `
+    <div :data-rf-theme="dark ? 'dark' : ''" style="background-color: var(--w); padding: 1rem;">
+      <DsfrButton
+        :label="label"
+        :disabled="disabled"
+        :icon="icon"
+        :icon-right="iconRight"
+        @click="onClick"
+      />
+    </div>
+  `,
+})
+PrimaryWithIcon.args = {
+  dark: false,
+  label: 'Label bouton',
+  disabled: false,
+  icon: 'ri-search-line',
+  iconRight: false,
 }
 
 export const Secondary = (args) => ({
@@ -78,24 +107,46 @@ export const ButtonWithIcon = (args) => ({
   },
   template: `
     <div :data-rf-theme="dark ? 'dark' : ''" style="background-color: var(--w); padding: 1rem;">
-      <DsfrButton
-        :disabled="disabled"
-        @click="onClick"
-        style="display: flex; align-items: end; margin: 1rem 0;"
-      >
-        <v-icon name="ri-checkbox-circle-line" />
-        <span>{{ label }}</span>
-      </DsfrButton>
+      <div style="margin: 1rem 0;">
+        <DsfrButton
+          :disabled="disabled"
+          @click="onClick"
+          :label="label"
+          icon="ri-checkbox-circle-line"
+        />
+      </div>
 
-      <DsfrButton
-        :disabled="disabled"
-        @click="onClick"
-        :secondary="true"
-        style="display: flex; align-items: end; margin: 1rem 0;"
-      >
-        <v-icon name="ri-checkbox-circle-line" />
-        <span>{{ label }}</span>
-      </DsfrButton>
+      <div style="margin: 1rem 0;">
+        <DsfrButton
+          :disabled="disabled"
+          secondary
+          @click="onClick"
+          :label="label"
+          icon="ri-checkbox-circle-line"
+        />
+      </div>
+
+      <div style="margin: 1rem 0;">
+        <DsfrButton
+          :disabled="disabled"
+          @click="onClick"
+          :label="label"
+          icon="ri-checkbox-circle-line"
+          icon-right
+        />
+      </div>
+
+      <div style="margin: 1rem 0;">
+        <DsfrButton
+          :disabled="disabled"
+          secondary
+          @click="onClick"
+          :label="label"
+          icon="ri-checkbox-circle-line"
+          icon-right
+        />
+      </div>
+
     </div>
   `,
 })

@@ -7,6 +7,8 @@ import '../src/assets/reset-dsfr.css'
 import '../src/assets/objects-dsfr.css'
 import '../src/assets/utils-dsfr.css'
 
+import VIcon from '../src/icons.js'
+
 export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },
   controls: {
@@ -39,3 +41,4 @@ const RouterLink = defineComponent({
 })
 
 app.component('router-link', RouterLink);
+app.component('VIcon', VIcon)

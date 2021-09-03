@@ -2,11 +2,24 @@
   <button
     :class="{
       'fr-btn': true,
-      'fr-btn--secondary': secondary
+      'fr-btn--secondary': secondary,
+      'flex': true,
+      'reverse': iconRight,
     }"
   >
-    {{ label }}
-    <slot />
+    <VIcon
+      v-if="icon"
+      :name="icon"
+      :class="{
+        'icon-right': iconRight,
+        'icon-left': !iconRight,
+      }"
+    />
+
+    <span>
+      {{ label }}
+      <slot />
+    </span>
   </button>
 </template>
 
@@ -19,6 +32,11 @@ export default {
       default: undefined,
     },
     secondary: Boolean,
+    icon: {
+      type: String,
+      default: undefined,
+    },
+    iconRight: Boolean,
   },
 }
 </script>
@@ -48,5 +66,20 @@ export default {
     color: var(--g600-g400);
     box-shadow: inset 0 0 0 1px var(--g400);
   }
+}
+.icon-left {
+  margin-right: 0.5rem
+}
+.icon-right {
+  margin-left: 0.5rem
+}
+
+.flex {
+  display: flex;
+  align-items: center;
+}
+
+.reverse {
+  flex-direction: row-reverse;
 }
 </style>
