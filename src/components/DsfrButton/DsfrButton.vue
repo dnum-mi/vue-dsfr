@@ -6,6 +6,8 @@
       'flex': true,
       'reverse': iconRight,
     }"
+    :disabled="disabled"
+    :aria-disabled="disabled"
   >
     <VIcon
       v-if="icon"
@@ -27,6 +29,7 @@
 export default {
   name: 'DsfrButton',
   props: {
+    disabled: Boolean,
     label: {
       type: String,
       default: undefined,
