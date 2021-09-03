@@ -7,7 +7,7 @@
   "main": "./dist/vue-dsfr.umd.js",
   "module": "./dist/vue-dsfr.esm.js",
   "publishConfig": {
-    "@laruiss:registry": "https://npm.pkg.github.com",
+    "@laruiss:registry": "https://registry.npmjs.com",
     "access": "public"
   },
   "scripts": {
