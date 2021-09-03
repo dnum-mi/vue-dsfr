@@ -1,29 +1,36 @@
 import fs from 'fs'
-import postcss from 'postcss'
 
+import mkdirp from 'mkdirp'
+import postcss from 'postcss'
 import atImport from 'postcss-import'
 import postcssNested from 'postcss-nested'
 import postcssPresetEnv from 'postcss-preset-env'
-import postcssFontBase64 from 'postcss-font-base64'
+import postcssUrl from 'postcss-url'
 import csso from 'postcss-csso'
 
 const postcssPlugins = [
   atImport(),
   postcssNested,
-  postcssFontBase64(),
+  postcssUrl({ url: 'inline' }),
   postcssPresetEnv({
-    "autoprefixer": {
-      "flexbox": "no-2009"
+    autoprefixer: {
+      flexbox: 'no-2009',
     },
-    "stage": 1,
-    "features": {
-      "custom-properties": false
-    }
+    stage: 1,
+    features: {
+      'custom-properties': false,
+    },
   }),
   csso,
 ]
 
-fs.readFile('./src/main.css', (err, css) => {
+mkdirp.sync('dist')
+
+fs.readFile('./src/main.css', 'utf8', (err, css) => {
+  if (err) {
+    console.error(err)
+    throw err
+  }
   postcss(postcssPlugins)
     .process(css, { from: 'src/main.css', to: 'dist/vue-dsfr.css' })
     .then(result => {
@@ -34,13 +41,38 @@ fs.readFile('./src/main.css', (err, css) => {
     })
 })
 
-fs.readFile('./src/assets/fonts-dsfr.css', (err, css) => {
+fs.readFile('src/assets/fonts-dsfr.css', 'utf8', (err, css) => {
+  if (err) {
+    console.error(err)
+    throw err
+  }
   postcss(postcssPlugins)
-    .process(css, { from: 'src/vue-dsfr-fonts.css', to: 'dist/vue-dsfr-fonts.css' })
+    .process(css, {
+      from: 'src/assets/fonts-dsfr.css',
+      to: 'dist/fonts-dsfr.css',
+    })
     .then(result => {
       fs.writeFile('dist/vue-dsfr-fonts.css', result.css, () => true)
       if (result.map) {
         fs.writeFile('dist/vue-dsfr-fonts.css.map', result.map.toString(), () => true)
+      }
+    })
+})
+
+fs.readFile('src/assets/fonts-essential-dsfr.css', 'utf8', (err, css) => {
+  if (err) {
+    console.error(err)
+    throw err
+  }
+  postcss(postcssPlugins)
+    .process(css, {
+      from: 'src/assets/fonts-dsfr.css',
+      to: 'dist/fonts-dsfr.css',
+    })
+    .then(result => {
+      fs.writeFile('dist/vue-dsfr-fonts-essential.css', result.css, () => true)
+      if (result.map) {
+        fs.writeFile('dist/vue-dsfr-fonts-essential.css.map', result.map.toString(), () => true)
       }
     })
 })

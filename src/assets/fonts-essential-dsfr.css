@@ -1,0 +1,19 @@
+@font-face {
+  font-family: Marianne;
+  src:url(./fonts/Marianne/Marianne-Regular.woff2) format("woff2"),
+    url(./fonts/Marianne/Marianne-Regular.woff) format("woff");
+  font-weight: 400;
+  font-style:normal;
+}
+
+@font-face {
+  font-family: Spectral;
+  src:url(./fonts/Spectral/Spectral-Regular.ttf) format("ttf");
+  font-weight: 400;
+  font-style:normal;
+}
+
+:root {
+  --marianne-family: Marianne, Arial, sans-serif;
+  --spectral-family: Spectral, Arial, sans-serif;
+}
