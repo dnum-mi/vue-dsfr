@@ -1,45 +1,46 @@
 # VueDsfr
 
-## Cloner le projet
+**VueDsfr** est un portage en [Vue 3](https://v3.vuejs.org) du
+[Système de Design Français](https://www.systeme-de-design.gouv.fr/) (ou DSFR) sous forme de bibliothèque
+de composants. Il peut s'utiliser facilement en tant que plugin.
+
+## Installer la bibliothèque
 
 ```shell
-git clone https://github.com/laruiss/vue-dsfr
+npm install @laruiss/vue-dsfr@beta
 ```
 
-## Installer les dépendances
+N.B. : le `@beta` est important pour avoir la dernière version.
 
-```
-npm install
-```
+## Utiliser la bibliothèque en tant le plugin Vue 3
 
-### Lancer le storybook
+```js
+import { createApp } from 'vue'
+import App from './App.vue'
+import VueDsfr from '@laruiss/vue-dsfr'            // Import (par défaut) de la bibliothèque
 
-```
-npm run storybook
-```
+import '@laruiss/vue-dsfr/dist/vue-dsfr-fonts.css' // Import des polices
+import '@laruiss/vue-dsfr/dist/vue-dsfr.css'       // Import des styles globaux
 
-### Compiler et minifier pour la production
-
-```
-npm run build
-```
-
-### Lancer les tests
-
-```
-npm run test
+const app = createApp(App)
+  .use(VueDsfr)                                    // Ajout en tant que plugin
+  .mount('#app')
 ```
 
-### Linter les fichiers (CI)
+Et ensuite, les composants sont utilisables directement dans les composants de l'application :
 
-```
-npm run lint
+```html
+<template>
+  <DsfrHeader
+    logo-text="Gouvernement"
+    service-title="Bureau des légendes"
+  />
+  <div class="fr-container">
+    <router-view />
+  </div>
+</template>
 ```
 
-### Linter et réparer les fichiers
+# Plus d'informations
 
-```
-npm run format
-```
-
-# Plus d'informations dans la [documentation du Storybook](https://github.com/laruiss/vue-dsfr/tree/docs/add-docs/src/stories/docs)
+Veuillez consulter [le site officiel](https://vue-dsfr.netlify.app/) pour plus d'information.
