@@ -164,6 +164,7 @@ export default {
   flex-wrap: wrap;
   transform: translateY(4px);
   padding-left: 0;
+  list-style: none;
 }
 
 .fr-breadcrumb li {
