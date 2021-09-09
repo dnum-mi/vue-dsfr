@@ -2,10 +2,6 @@
   // See http://go.microsoft.com/fwlink/?LinkId=827846
   // for the documentation about the extensions.json format
   "recommendations": [
-    // Syntax highlighting and more for .vue files
-    // https://github.com/vuejs/vetur
-    "octref.vetur",
-
     // Language support for Vue 3
     // https://github.com/johnsoncodehk/volar
     "johnsoncodehk.volar",
@@ -46,10 +42,6 @@
     // https://gitlab.com/versionlens/vscode-versionlens
     "pflannery.vscode-versionlens",
 
-    // Snippets that will supercharge your Vue workflow
-    // https://github.com/sdras/vue-vscode-snippets
-    "sdras.vue-vscode-snippets",
-
     // 💬Conventional Commits for VSCode.
     // https://github.com/vivaxy/vscode-conventional-commits
     "vivaxy.vscode-conventional-commits",
@@ -65,10 +57,6 @@
     // View a Git Graph of your repository, and perform Git actions from the graph.
     // https://github.com/mhutchie/vscode-git-graph
     "mhutchie.git-graph",
-
-    // 🌍 All in one i18n extension for VS Code
-    // https://github.com/lokalise/i18n-ally
-    "lokalise.i18n-ally",
 
     // Utility to change files icons
     // https://github.com/vscode-icons/vscode-icons
