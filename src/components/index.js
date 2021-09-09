@@ -1,3 +1,4 @@
+export { default as DsfrAlert } from './DsfrAlert/DsfrAlert.vue'
 export { default as DsfrBreadcrumb } from './DsfrBreadcrumb/DsfrBreadcrumb.vue'
 export { default as DsfrButton } from './DsfrButton/DsfrButton.vue'
 export { default as DsfrCard } from './DsfrCard/DsfrCard.vue'
