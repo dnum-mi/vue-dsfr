@@ -74,14 +74,9 @@ export default defineComponent({
       type: String,
       default: 'medium',
     },
+    closed: Boolean,
     sm: Boolean,
     closeable: Boolean,
-  },
-
-  data () {
-    return {
-      closed: false,
-    }
   },
 
   computed: {
@@ -112,7 +107,7 @@ export default defineComponent({
 
   methods: {
     close () {
-      this.closed = true
+      this.$emit('close')
     },
   },
 })
