@@ -23,7 +23,7 @@
           v-for="(link, index) in links"
           :key="index"
           class="relative"
-          data-test="lis"
+          :data-testid="`lis`"
         >
           <router-link
             class="fr-breadcrumb__link"

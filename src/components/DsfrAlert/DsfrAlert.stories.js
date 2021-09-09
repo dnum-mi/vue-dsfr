@@ -32,6 +32,12 @@ export default {
       options: ['medium', 'small'],
       description: '**Taille de l\'alerte** : `medium` (Taille moyenne), `small` (Petite taille).',
     },
+    closed: {
+      control: 'boolean',
+    },
+    onClose: {
+      action: 'close',
+    },
   },
 }
 
@@ -49,9 +55,20 @@ export const Alerte = (args) => ({
         :description="description"
         :type="type"
         :size="size"
+        closeable
+        :closed="closed"
+        @close="close"
       />
     </div>
   `,
+
+  methods: {
+    close () {
+      this.closed = true
+      this.onClose()
+      setTimeout(() => { this.closed = false }, 2000)
+    },
+  },
 })
 Alerte.args = {
   dark: false,
@@ -59,6 +76,7 @@ Alerte.args = {
   description: 'Description du message',
   type: 'error',
   size: 'medium',
+  closed: false,
 }
 
 export const Alertes = (args) => ({
@@ -138,6 +156,7 @@ export const AlertesFermables = (args) => ({
   data () {
     return {
       ...args,
+      closed: Array.from({ length: 6 }).map(() => false),
     }
   },
   template: `
@@ -146,13 +165,17 @@ export const AlertesFermables = (args) => ({
         <DsfrAlert
           title="Titre de l'info"
           description="Description de l'info"
-          closable
-        />
+          :closed="closed[0]"
+          closeable
+          @close="close(0)"
+          />
       </div>
       <div style="margin: 1rem 0;">
         <DsfrAlert
           description="Description de l'info"
-          closable
+          :closed="closed[1]"
+          closeable
+          @close="close(1)"
           sm
         />
       </div>
@@ -161,14 +184,18 @@ export const AlertesFermables = (args) => ({
           type="success"
           title="Titre du succès"
           description="Description du succès"
-          closable
+          :closed="closed[2]"
+          @close="close(2)"
+          closeable
         />
       </div>
       <div style="margin: 1rem 0;">
         <DsfrAlert
           type="success"
           description="Description du succès"
-          closable
+          :closed="closed[3]"
+          @close="close(3)"
+          closeable
           sm
         />
       </div>
@@ -177,19 +204,31 @@ export const AlertesFermables = (args) => ({
           type="error"
           title="Titre de l'erreur"
           description="Description de l'erreur"
-          closable
+          :closed="closed[4]"
+          @close="close(4)"
+          closeable
         />
       </div>
       <div style="margin: 1rem 0;">
         <DsfrAlert
           type="error"
           description="Description de l'erreur"
-          closable
+          :closed="closed[5]"
+          @close="close(5)"
+          closeable
           sm
         />
       </div>
     </div>
   `,
+
+  methods: {
+    close (idx) {
+      this.closed[idx] = true
+      this.onClose()
+      setTimeout(() => { this.closed[idx] = false }, 3000)
+    },
+  },
 })
 AlertesFermables.args = {
   dark: false,

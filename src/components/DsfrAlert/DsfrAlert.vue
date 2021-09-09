@@ -24,10 +24,11 @@
         </p>
       </div>
       <button
+        v-if="closeable"
         class="close-icon"
         title="Fermer"
         aria-label="Fermer"
-        @click="close"
+        @click="onClick"
       >
         <VIcon
           scale="1"
@@ -79,6 +80,8 @@ export default defineComponent({
     closeable: Boolean,
   },
 
+  emits: ['close'],
+
   computed: {
     small () {
       return this.size === 'small' || this.sm
@@ -106,7 +109,7 @@ export default defineComponent({
   },
 
   methods: {
-    close () {
+    onClick () {
       this.$emit('close')
     },
   },
