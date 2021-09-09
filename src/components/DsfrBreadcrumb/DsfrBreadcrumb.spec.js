@@ -1,9 +1,9 @@
-import { mount } from '@vue/test-utils'
+import { render } from '@testing-library/vue'
 
 import DsfrBreadcrumb from './DsfrBreadcrumb.vue'
 
 describe('DsfrBreadcrumb', () => {
-  it('should mount DsfrBreadcrumb with right content', () => {
+  it('should render DsfrBreadcrumb with right content', async () => {
     // Given
     const secondLinkText = 'Lien 2'
     const currentPageText = 'Lien 3'
@@ -23,17 +23,17 @@ describe('DsfrBreadcrumb', () => {
     ]
 
     // When
-    const wrapper = mount(DsfrBreadcrumb, {
+    const { getByRole, findAllByTestId } = render(DsfrBreadcrumb, {
       propsData: {
         links,
       },
     })
 
-    const navEl = wrapper.findComponent('[role="navigation"]')
-    const currentItemEl = wrapper.findAll('[data-test="lis"]')
+    const navEl = getByRole('navigation')
+    const currentItemEl = await findAllByTestId('lis')
 
     // Then
-    expect(navEl.element.tagName).toBe('NAV')
+    expect(navEl.tagName).toBe('NAV')
     expect(currentItemEl).toHaveLength(3)
   })
 })

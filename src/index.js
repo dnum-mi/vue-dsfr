@@ -1,6 +1,4 @@
 import * as components from './components/index.js'
-import './main.css'
-import './assets/fonts-dsfr.css'
 import VIcon from './icons.js'
 
 export default {

@@ -9,7 +9,7 @@ import {
 } from 'vue-router-mock'
 
 jest.mock('oh-vue-icons/dist/v3/icon.es', () => ({ add () {}, template: '<span />' }))
-jest.mock('oh-vue-icons/icons', () => ({}))
+jest.mock('oh-vue-icons/icons/ri/index.js', () => ({}))
 
 // create one router per test file
 const router = createRouterMock()
