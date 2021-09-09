@@ -24,6 +24,7 @@
         </p>
       </div>
       <button
+        v-if="closeable"
         class="close-icon"
         title="Fermer"
         aria-label="Fermer"
