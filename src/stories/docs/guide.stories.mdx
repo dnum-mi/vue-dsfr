@@ -4,37 +4,98 @@ import { Meta } from '@storybook/addon-docs';
 
 # Comment débuter
 
-Ceci est le guide d̛’utilisation de la bibliothèque. Si vous cherchez à contribuer, veuillez vous référer au
+Ceci est le guide d̛’utilisation de la bibliothèque. Si vous cherchez à contribuer, se référer au
 [Guide du développeur](?path=/story/docs-guide-du-développeur--page).
 
 ## Utiliser la bibliothèque en tant que plugin
 
 ### Installer le plugin
 
-Afin d'installer le plugin tapez cette commande dans votre console au sein de votre répertoire de projet :
+Afin d'installer le plugin taper cette commande dans votre console au sein de votre répertoire de projet :
 
 ```shell
-npm install @laruiss/vue-dsfr
+npm install @laruiss/vue-dsfr@beta
 ```
+
+*N.B. : Bien indiquer le `@beta` pour avoir la dernière version.
 
 ### Ajouter le plugin
 
-Ajouter le plugin comme spécifié dans la [documentation Vue.js](https://v3.vuejs.org/guide/plugins.html#using-a-plugin 'Using a plugin').
+À partir d'un fichier `main.js` simple comme celui-ci :
+
+```js
+import { createApp } from 'vue'
+import App from './App.vue'
+
+const app = createApp(App)
+  .mount('#app')
+```
+
+Ajouter le plugin :
 
 Exemple :
 
 ```js
-// main.js
 import { createApp } from 'vue'
 import App from './App.vue'
-import VueDsfr from '@laruiss/vue-dsfr'
+import VueDsfr from '@laruiss/vue-dsfr' // Import (par défaut) de la bibliothèque
 
 const app = createApp(App)
+  .use(VueDsfr)                         // Ajout en tant que plugin
+  .mount('#app')
+```
 
-app.use(VueDsfr)
-app.mount('#app')
+Pour ajouter les styles globaux :
+
+```js
+import { createApp } from 'vue'
+import App from './App.vue'
+import VueDsfr from '@laruiss/vue-dsfr'      // Import (par défaut) de la bibliothèque
+
+import '@laruiss/vue-dsfr/dist/vue-dsfr.css' // Import des styles globaux
+
+const app = createApp(App)
+  .use(VueDsfr)                              // Ajout en tant que plugin
+  .mount('#app')
+```
+
+Pour ajouter Les styles globaux et les polices (recommandé) :
+
+```js
+import { createApp } from 'vue'
+import App from './App.vue'
+import VueDsfr from '@laruiss/vue-dsfr'            // Import (par défaut) de la bibliothèque
+
+import '@laruiss/vue-dsfr/dist/vue-dsfr-fonts.css' // Import des polices
+import '@laruiss/vue-dsfr/dist/vue-dsfr.css'       // Import des styles globaux
+
+const app = createApp(App)
+  .use(VueDsfr)                                    // Ajout en tant que plugin
+  .mount('#app')
 ```
 
 ## Utiliser la bibliothèque de composants sans plugin
 
-(Bientôt disponible)
+Pour les petits projets, il est possible de ne pas importer tous les composants, et de sélectionner
+les composants utilisés :
+
+```js
+import { createApp } from 'vue'
+import App from './App.vue'
+import {
+  DsfrHeader,
+  DsfrButton,
+  DsfrBreadcrumb,
+  DsfrCard,
+} from '@laruiss/vue-dsfr'                                   // Imports nommés de la bibliothèque
+
+import '@laruiss/vue-dsfr/dist/vue-dsfr-fonts-essential.css' // Import des polices (sans les variants bold/italic)
+import '@laruiss/vue-dsfr/dist/vue-dsfr.css'                 // Import des styles globaux
+
+const app = createApp(App)
+  .component('DsfrHeader', DsfrHeader)                       // Enregistrement global du composant DsfrHeader
+  .component('DsfrButton', DsfrButton)                       // Enregistrement global du composant DsfrButton
+  .component('DsfrBreadcrumb', DsfrBreadcrumb)               // Enregistrement global du composant DsfrBreadcrumb
+  .component('DsfrCard', DsfrCard)                           // Enregistrement global du composant DsfrCard
+  .mount('#app')
+```
