@@ -1,0 +1,8 @@
+a.sbdocs {
+  color: #000091 !important;
+  outline-color: #000091 !important;
+}
+
+a.sbdocs:hover {
+  text-decoration: underline;
+}
