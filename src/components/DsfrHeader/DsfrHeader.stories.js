@@ -4,7 +4,7 @@ import VIcon from 'oh-vue-icons/dist/v3/icon.es'
 import {
   RiNotification3Line,
   RiPhoneLine,
-} from 'oh-vue-icons/icons'
+} from 'oh-vue-icons/icons/ri/index.js'
 
 VIcon.add(
   RiNotification3Line,

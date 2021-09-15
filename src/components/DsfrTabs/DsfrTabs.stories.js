@@ -2,7 +2,7 @@ import DsfrTabs from './DsfrTabs.vue'
 
 import OhVueIcon from 'oh-vue-icons/dist/v3/icon.es'
 
-import { RiCheckboxCircleLine } from 'oh-vue-icons/icons'
+import { RiCheckboxCircleLine } from 'oh-vue-icons/icons/ri/index.js'
 
 OhVueIcon.add(RiCheckboxCircleLine)
 

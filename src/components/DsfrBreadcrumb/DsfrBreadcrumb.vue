@@ -26,12 +26,14 @@
           :data-testid="`lis`"
         >
           <router-link
+            v-if="link.to"
             class="fr-breadcrumb__link"
             :to="link.to"
             :aria-current="index === links.length - 1 ? 'page' : undefined"
           >
             {{ link.text }}
           </router-link>
+          {{ link.to ? '' : link.text }}
           <v-icon
             v-if="index !== links.length - 1"
             class="icon"
@@ -66,7 +68,7 @@ export default {
     },
     links: {
       type: Array,
-      default: () => [{ text: 'test' }],
+      default: () => [{ text: '' }],
     },
   },
   data () {
@@ -188,5 +190,4 @@ export default {
 .fade-leave-to {
   opacity: 0;
 }
-
 </style>

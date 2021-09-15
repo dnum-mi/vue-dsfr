@@ -58,7 +58,7 @@ describe('DsfrTag', () => {
 })
 
 describe('DsfrTags', () => {
-  it('should render nice nav tabs', () => {
+  it('should render two tags', () => {
     // Given
     const label = 'Tag simple'
     const label2 = 'Tag simple 2'
