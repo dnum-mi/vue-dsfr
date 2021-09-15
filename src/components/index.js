@@ -11,3 +11,4 @@ export { default as DsfrRadioButton } from './DsfrRadioButton/DsfrRadioButton.vu
 export { default as DsfrRadioButtonSet } from './DsfrRadioButton/DsfrRadioButtonSet.vue'
 export { default as DsfrSearchBar } from './DsfrSearchBar/DsfrSearchBar.vue'
 export { default as DsfrTabs } from './DsfrTabs/DsfrTabs.vue'
+export { default as DsfrTags } from './DsfrTags/DsfrTags.vue'
