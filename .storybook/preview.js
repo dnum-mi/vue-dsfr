@@ -7,6 +7,8 @@ import '../src/assets/reset-dsfr.css'
 import '../src/assets/objects-dsfr.css'
 import '../src/assets/utils-dsfr.css'
 
+import './theme.css'
+
 import VIcon from '../src/icons.js'
 
 export const parameters = {
