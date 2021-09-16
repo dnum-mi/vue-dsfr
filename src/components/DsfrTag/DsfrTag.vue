@@ -48,10 +48,11 @@ export default defineComponent({
     :is="is"
     class="fr-tag"
     :to="to"
+    :disabled="disabled"
     :href="href"
     :class="{
       'reverse': iconRight,
-      'fr-tag--sm': sm
+      'fr-tag--sm': sm,
     }"
   >
     <VIcon
