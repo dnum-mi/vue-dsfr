@@ -5,12 +5,12 @@ import DsfrLogo from './DsfrLogo.vue'
 describe('DsfrLogo', () => {
   it('should render flag, text and motto', () => {
     // Given
-    const text = 'République française'
+    const text = 'Gouvernement'
 
     // When
     const { getByText } = render(DsfrLogo, {
-      slots: {
-        default: text,
+      props: {
+        logoText: text,
       },
     })
 

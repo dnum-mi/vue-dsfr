@@ -2,6 +2,8 @@ import { fireEvent, render } from '@testing-library/vue'
 
 import DsfrCheckboxSet from './DsfrCheckboxSet.vue'
 
+const VIcon = { props: ['name'], template: '<i :class="name"></i>' }
+
 describe('DsfrCheckboxSet', () => {
   it('should render a group of checkboxes in fieldset', () => {
     // Given
@@ -35,6 +37,11 @@ describe('DsfrCheckboxSet', () => {
 
     // When
     const { getByText, getAllByTestId } = render(DsfrCheckboxSet, {
+      global: {
+        components: {
+          VIcon,
+        },
+      },
       props: {
         legend: legendText,
         options,
@@ -58,21 +65,21 @@ describe('DsfrCheckboxSet', () => {
         id: '1',
         name: 'name1',
         label: firstLabelText,
-        checked: true,
+        modelValue: true,
         hint: firstHintText,
       },
       {
         id: '2',
         name: 'name2',
         label: secondLabelText,
-        checked: false,
+        modelValue: false,
         hint: secondHintText,
       },
       {
         id: '3',
         name: 'name3',
         label: thirdLabelText,
-        checked: false,
+        modelValue: false,
         hint: thirdHintText,
       },
     ]
@@ -80,6 +87,11 @@ describe('DsfrCheckboxSet', () => {
 
     // When
     const { getByText, getByTestId } = render(DsfrCheckboxSet, {
+      global: {
+        components: {
+          VIcon,
+        },
+      },
       props: {
         legend: legendText,
         options,
@@ -91,5 +103,6 @@ describe('DsfrCheckboxSet', () => {
     expect(getByTestId('input-checkbox-1')).toBeInTheDocument()
     expect(getByTestId('input-checkbox-1')).toHaveAttribute('name', 'name1')
     expect(getByTestId('input-checkbox-1').checked).toBe(true)
+    expect(getByTestId('input-checkbox-2').checked).toBe(false)
   })
 })

@@ -10,7 +10,7 @@
         :key="index"
         :icon="tabTitle.icon"
         :panel-id="`${getIdFromIndex(index)}-panel`"
-        :tab-id="getIdFromIndex(index)"
+        :tab-id="tabTitle.id || getIdFromIndex(index)"
         :selected="isSelected(index)"
         @click="selectIndex(index)"
       >

@@ -2,6 +2,8 @@ import { render } from '@testing-library/vue'
 
 import SearchBar from './DsfrSearchBar.vue'
 
+const VIcon = { props: ['name'], template: '<i :class="name"></i>' }
+
 describe('SearchBar', () => {
   it('should render searchbar with visible label', () => {
     // Given
@@ -10,6 +12,11 @@ describe('SearchBar', () => {
 
     // When
     const { getByText } = render(SearchBar, {
+      global: {
+        components: {
+          VIcon,
+        },
+      },
       props: {
         labelVisible,
         label,
@@ -28,6 +35,11 @@ describe('SearchBar', () => {
 
     // When
     const { getByText } = render(SearchBar, {
+      global: {
+        components: {
+          VIcon,
+        },
+      },
       props: {
         labelVisible,
         label,
