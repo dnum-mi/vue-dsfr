@@ -38,7 +38,7 @@
                   @click="showMenu"
                 >
                   <VIcon
-                    name="ri-menu-line"
+                    name="ri-menu-fill"
                   />
                 </button>
               </div>
@@ -112,7 +112,7 @@
               />
             </div>
             <div
-              v-show="searchModalOpened"
+              v-if="searchModalOpened"
               class="flex  justify-center  items-center"
             >
               <DsfrSearchBar
