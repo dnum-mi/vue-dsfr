@@ -157,6 +157,7 @@ export const SuiteDeBoutons = (args) => ({
     </div>
   `,
 })
+
 SuiteDeBoutons.args = {
   dark: false,
   label: 'Texte du bouton',

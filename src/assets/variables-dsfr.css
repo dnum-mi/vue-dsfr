@@ -32,15 +32,14 @@
   --error: #e10600;
   --rm300: #f7bfc3;
   --rm500: #e1000f;
-  --scroll-shadow: rgba(30,30,30,0.16);
-  --overlay: hsla(0,0%,61.2%,0.32);
+  --scroll-shadow: rgba(30, 30, 30, 0.16);
+  --overlay: rgba(156, 156, 156, 0.32);
 
   --color-hover: rgba(0, 0, 221, 0.5);
   --color-active: rgba(41, 41, 255, 0.5);
 
   --block-color-hover: hsla(0,0%,87.8%,0.5);
   --block-color-active: hsla(0,0%,76.1%,0.5);
-
 
   --in-content-page-background: rgb(28,27,34);
   --in-content-page-color: rgb(251,251,254);
@@ -78,6 +77,23 @@
   --dialog-warning-text-color: var(--red-40);
   --is-link: '';
   scrollbar-color: rgba(249,249,250,.4) rgba(20,20,25,.3);
+  --ul-type: none;
+  --ol-type: none;
+
+  --link-underline: 0 1px 0 0 currentColor;
+  --link-blank-font: normal normal normal 1rem/1 dsfr-icons;
+  --link-blank-content: "\00a0";
+  --ul-type: "●\00a0\00a0";
+  --ol-type: decimal;
+  --ul-start: 1rem;
+  --ol-start: 1.5rem;
+  --xl-block: 0.5rem;
+  --li-bottom: 0.25rem;
+  --xl-base: 1em;
+  --ol-content: counters(li-counter, ".") ".\00a0\00a0";
+
+  --block-color-hover: rgba(224, 224, 224, 0.5);
+  --block-color-active: rgba(194, 194, 194, 0.5);
 }
 
 :host, :root {
