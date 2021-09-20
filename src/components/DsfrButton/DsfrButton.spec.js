@@ -2,6 +2,8 @@ import { render } from '@testing-library/vue'
 
 import DsfrButton from './DsfrButton.vue'
 
+const VIcon = { props: ['name'], template: '<i :class="name"></i>' }
+
 describe('DsfrButton', () => {
   it('should mount DsfrButton with right content', () => {
     // Given
@@ -9,6 +11,11 @@ describe('DsfrButton', () => {
 
     // When
     const { getByText } = render(DsfrButton, {
+      global: {
+        components: {
+          VIcon,
+        },
+      },
       slots: {
         default: label,
       },
@@ -24,6 +31,11 @@ describe('DsfrButton', () => {
 
     // When
     const { getByText } = render(DsfrButton, {
+      global: {
+        components: {
+          VIcon,
+        },
+      },
       props: {
         secondary: true,
       },
@@ -33,6 +45,6 @@ describe('DsfrButton', () => {
     })
 
     // Then
-    expect(getByText(label)).toHaveClass('fr-btn--secondary')
+    expect(getByText(label).parentNode).toHaveClass('fr-btn--secondary')
   })
 })

@@ -1,0 +1,228 @@
+.fr-btns-group {
+  --ul-type: none;
+  --ol-type: none;
+  --ul-start: 0;
+  --ol-start: 0;
+  --xl-block: 0;
+  --li-bottom: 0;
+  --ol-content: none;
+  display: flex;
+  align-items: stretch;
+  flex-wrap: wrap;
+  margin-right: 0;
+  margin-left: 0;
+  /**
+* fr-btns-group--inline : aligne les boutons horizontalement dans tout les cas
+* fr-btns-group--inline-(sm/md/lg) : permet de passer en horizontal à partir de la valeur du breakpoint appliqué (sm, md, lg)
+*/
+  /**
+* fr-btns-group--left : (Défaut) aligne les boutons sur la gauche (en lecture L-t-R)
+*/
+  /**
+* fr-btns-group--right : aligne les boutons sur la droite
+*/
+  /**
+* fr-btns-group--center : aligne les boutons au centre du conteneur
+*/
+  /**
+* fr-btns-group--equisized : Fixe la largeur des boutons à celle du plus grand. Géré en grande partie en JS.
+*/
+  /**
+* fr-btns-group--sm : Fixe les boutons à la taille SM
+*/
+  /**
+* fr-btns-group--md : (défaut) Fixe les boutons à la taille MD
+*/
+  /**
+* fr-btns-group--lg : Fixe les boutons à la taille LG (sans modfifieur => MD)
+*/
+}
+
+.fr-btns-group>li {
+  width: 100%;
+  max-width: 100%;
+}
+
+.fr-btns-group .fr-btn {
+  width: 100%;
+  margin-right: 0;
+  margin-left: 0;
+}
+
+.fr-btns-group .fr-btn {
+  margin-bottom: 1rem;
+  justify-content: center;
+}
+
+.fr-btns-group--inline {
+  width: calc(100% + 1rem);
+}
+
+.fr-btns-group--inline .fr-btn {
+  width: auto;
+  margin-right: 1rem;
+  max-width: 100%;
+}
+
+.fr-btns-group--inline>li {
+  display: inline-flex;
+  max-width: 100%;
+  width: auto;
+}
+
+.fr-btns-group--inline>li::before {
+  content: none;
+}
+
+.fr-btns-group--inline.fr-btns-group--right {
+  margin-left: -1rem;
+}
+
+.fr-btns-group--inline.fr-btns-group--right .fr-btn {
+  margin-right: 0;
+  margin-left: 1rem;
+}
+
+.fr-btns-group--inline.fr-btns-group--right.fr-btns-group--inline-reverse {
+  flex-direction: row-reverse;
+  justify-content: flex-start;
+}
+
+.fr-btns-group--inline.fr-btns-group--center, .fr-btns-group--inline.fr-btns-group--left {
+  margin-right: -1rem;
+}
+
+.fr-btns-group--inline.fr-btns-group--center .fr-btn, .fr-btns-group--inline.fr-btns-group--left .fr-btn {
+  margin-right: 1rem;
+  margin-left: 0;
+}
+
+.fr-btns-group--left, .fr-btns-group--left li {
+  justify-content: flex-start;
+  text-align: left;
+}
+
+.fr-btns-group--right, .fr-btns-group--right li {
+  justify-content: flex-end;
+  text-align: right;
+}
+
+.fr-btns-group--center, .fr-btns-group--center li {
+  justify-content: center;
+  text-align: center;
+}
+
+.fr-btns-group--equisized .fr-btn {
+  justify-content: center;
+}
+
+@media (min-width: 36em) {
+  .fr-btns-group--inline-sm {
+    width: calc(100% + 1rem);
+  }
+  .fr-btns-group--inline-sm .fr-btn {
+    width: auto;
+    margin-right: 1rem;
+    max-width: 100%;
+  }
+  .fr-btns-group--inline-sm>li {
+    display: inline-flex;
+    max-width: 100%;
+    width: auto;
+  }
+  .fr-btns-group--inline-sm>li::before {
+    content: none;
+  }
+  .fr-btns-group--inline-sm.fr-btns-group--right {
+    margin-left: -1rem;
+  }
+  .fr-btns-group--inline-sm.fr-btns-group--right .fr-btn {
+    margin-right: 0;
+    margin-left: 1rem;
+  }
+  .fr-btns-group--inline-sm.fr-btns-group--right.fr-btns-group--inline-reverse {
+    flex-direction: row-reverse;
+    justify-content: flex-start;
+  }
+  .fr-btns-group--inline-sm.fr-btns-group--center, .fr-btns-group--inline-sm.fr-btns-group--left {
+    margin-right: -1rem;
+  }
+  .fr-btns-group--inline-sm.fr-btns-group--center .fr-btn, .fr-btns-group--inline-sm.fr-btns-group--left .fr-btn {
+    margin-right: 1rem;
+    margin-left: 0;
+  }
+}
+
+@media (min-width: 48em) {
+  .fr-btns-group--inline-md {
+    width: calc(100% + 1rem);
+  }
+  .fr-btns-group--inline-md .fr-btn {
+    width: auto;
+    margin-right: 1rem;
+    max-width: 100%;
+  }
+  .fr-btns-group--inline-md>li {
+    display: inline-flex;
+    max-width: 100%;
+    width: auto;
+  }
+  .fr-btns-group--inline-md>li::before {
+    content: none;
+  }
+  .fr-btns-group--inline-md.fr-btns-group--right {
+    margin-left: -1rem;
+  }
+  .fr-btns-group--inline-md.fr-btns-group--right .fr-btn {
+    margin-right: 0;
+    margin-left: 1rem;
+  }
+  .fr-btns-group--inline-md.fr-btns-group--right.fr-btns-group--inline-reverse {
+    flex-direction: row-reverse;
+    justify-content: flex-start;
+  }
+  .fr-btns-group--inline-md.fr-btns-group--center, .fr-btns-group--inline-md.fr-btns-group--left {
+    margin-right: -1rem;
+  }
+  .fr-btns-group--inline-md.fr-btns-group--center .fr-btn, .fr-btns-group--inline-md.fr-btns-group--left .fr-btn {
+    margin-right: 1rem;
+    margin-left: 0;
+  }
+}
+
+@media (min-width: 62em) {
+  .fr-btns-group--inline-lg {
+    width: calc(100% + 1rem);
+  }
+  .fr-btns-group--inline-lg .fr-btn {
+    width: auto;
+    margin-right: 1rem;
+    max-width: 100%;
+  }
+  .fr-btns-group--inline-lg>li {
+    display: inline-flex;
+    max-width: 100%;
+    width: auto;
+  }
+  .fr-btns-group--inline-lg>li::before {
+    content: none;
+  }
+  .fr-btns-group--inline-lg.fr-btns-group--right {
+    margin-left: -1rem;
+  }
+  .fr-btns-group--inline-lg.fr-btns-group--right .fr-btn {
+    margin-right: 0;
+    margin-left: 1rem;
+  }
+  .fr-btns-group--inline-lg.fr-btns-group--right.fr-btns-group--inline-reverse {
+    flex-direction: row-reverse;
+    justify-content: flex-start;
+  }
+  .fr-btns-group--inline-lg.fr-btns-group--center, .fr-btns-group--inline-lg.fr-btns-group--left {
+    margin-right: -1rem;
+  }
+  .fr-btns-group--inline-lg.fr-btns-group--center .fr-btn, .fr-btns-group--inline-lg.fr-btns-group--left .fr-btn {
+    margin-right: 1rem;
+    margin-left: 0;
+  }
+}

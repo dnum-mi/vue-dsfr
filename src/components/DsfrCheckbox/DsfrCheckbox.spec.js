@@ -2,6 +2,8 @@ import { render } from '@testing-library/vue'
 
 import CheckBox from './DsfrCheckbox.vue'
 
+const VIcon = { props: ['name'], template: '<i :class="name"></i>' }
+
 describe('DsfrCheckbox', () => {
   it('should render a checkbox with label in div', () => {
     // Given
@@ -10,9 +12,15 @@ describe('DsfrCheckbox', () => {
 
     // When
     const { getByText, getByLabelText } = render(CheckBox, {
+      global: {
+        components: {
+          VIcon,
+        },
+      },
       props: {
         label,
         modelValue,
+        name: 'label-1',
       },
     })
 
@@ -35,9 +43,15 @@ describe('DsfrCheckbox', () => {
 
     // When
     const { getByText, getByLabelText } = render(CheckBox, {
+      global: {
+        components: {
+          VIcon,
+        },
+      },
       props: {
         label,
         modelValue,
+        name: 'label-1',
         disabled,
       },
     })

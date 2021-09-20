@@ -5,6 +5,7 @@
   >
     <button
       :id="tabId"
+      :data-testid="`test-${tabId}`"
       class="fr-tabs__tab"
       :tabindex="selected ? 0 : -1"
       role="tab"

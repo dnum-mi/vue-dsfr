@@ -18,7 +18,7 @@
     "build": "run-p build:css build:js",
     "build:css": "node build-css.mjs",
     "build:js": "cross-env NODE_ENV=production rollup --config rollup.config.js",
-    "serve": "vite preview",
+    "demo-app": "vite",
     "test": "jest",
     "format": "npm run lint -- --fix",
     "lint": "eslint ./src/**/*.{vue,js,jsx,ts,tsx}",

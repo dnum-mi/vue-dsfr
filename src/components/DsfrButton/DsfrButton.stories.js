@@ -14,7 +14,10 @@ export default {
       control: 'boolean',
       description: 'Indique si le bouton est un bouton **secondaire**',
     },
-    dark: { control: 'boolean', description: 'Permet de voir le composant dans les deux **thèmes** : **clair** (`false`, défaut) et **sombre* (`true`).\n\n*N.B. : Ne fait pas partie du composant.*' },
+    dark: {
+      control: 'boolean',
+      description: 'Permet de voir le composant dans les deux **thèmes** : **clair** (`false`, défaut) et **sombre* (`true`).\n\n*N.B. : Ne fait pas partie du composant.*',
+    },
     label: {
       control: 'text',
       description: '**Texte** du bouton',
@@ -154,6 +157,7 @@ export const SuiteDeBoutons = (args) => ({
     </div>
   `,
 })
+
 SuiteDeBoutons.args = {
   dark: false,
   label: 'Texte du bouton',

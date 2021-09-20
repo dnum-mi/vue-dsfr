@@ -2,6 +2,8 @@ import { render } from '@testing-library/vue'
 
 import DsfrBreadcrumb from './DsfrBreadcrumb.vue'
 
+const VIcon = { props: ['name'], template: '<i :class="name"></i>' }
+
 describe('DsfrBreadcrumb', () => {
   it('should render DsfrBreadcrumb with right content', async () => {
     // Given
@@ -24,6 +26,11 @@ describe('DsfrBreadcrumb', () => {
 
     // When
     const { getByRole, findAllByTestId } = render(DsfrBreadcrumb, {
+      global: {
+        components: {
+          VIcon,
+        },
+      },
       propsData: {
         links,
       },

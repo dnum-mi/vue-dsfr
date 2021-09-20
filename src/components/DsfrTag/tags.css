@@ -1,0 +1,32 @@
+
+.fr-tags-group {
+  --ul-type: none;
+  --ol-type: none;
+  --ul-start: 0;
+  --ol-start: 0;
+  --xl-block: 0;
+  --li-bottom: 0;
+  --ol-content: none;
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 0;
+}
+
+.fr-tags-group > li {
+  display: inline-flex;
+}
+
+.fr-tags-group .fr-tag {
+  margin-right: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.fr-tags-group a.fr-tag, .fr-tags-group button.fr-tag {
+  margin-right: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.fr-tags-group a.fr-tag--sm, .fr-tags-group button.fr-tag--sm {
+  margin-right: 1.5rem;
+  margin-bottom: 1.5rem;
+}

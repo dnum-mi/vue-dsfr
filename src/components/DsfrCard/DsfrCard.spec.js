@@ -2,6 +2,8 @@ import { render } from '@testing-library/vue'
 
 import DsfrCard from './DsfrCard.vue'
 
+const VIcon = { props: ['name'], template: '<i :class="name"></i>' }
+
 describe('DsfrCard', () => {
   it('should render a nice card', () => {
     // Given
@@ -17,6 +19,11 @@ describe('DsfrCard', () => {
     // When
 
     const { getByText, getByTestId } = render(DsfrCard, {
+      global: {
+        components: {
+          VIcon,
+        },
+      },
       props: {
         altImg,
         detail,
