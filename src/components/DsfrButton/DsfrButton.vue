@@ -3,7 +3,7 @@
     :class="{
       'fr-btn': true,
       'fr-btn--secondary': secondary,
-      'flex': true,
+      'inline-flex': true,
       'reverse': iconRight,
     }"
     :disabled="disabled"
@@ -54,8 +54,8 @@ export default {
   margin-left: 0.5rem
 }
 
-.flex {
-  display: flex;
+.inline-flex {
+  display: inline-flex;
   align-items: center;
 }
 
