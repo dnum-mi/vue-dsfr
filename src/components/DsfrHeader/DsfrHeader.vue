@@ -38,7 +38,7 @@
                   @click="showMenu"
                 >
                   <VIcon
-                    name="ri-menu-line"
+                    name="ri-menu-fill"
                   />
                 </button>
               </div>
