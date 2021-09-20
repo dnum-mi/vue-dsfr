@@ -12,7 +12,10 @@ export const Modal = (args) => ({
     DsfrButton,
   },
   data () {
-    return { ...args }
+    return {
+      ...args,
+      actions: args.actions.map(action => ({ ...action, onClick: args.onClick })),
+    }
   },
   template: `
   <div :data-rf-theme="dark ? 'dark' : ''" style="background-color: var(--w); padding: 1rem;">

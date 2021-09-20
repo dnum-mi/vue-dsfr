@@ -22,7 +22,11 @@ export default {
 
   data () {
     return {
-      close: () => this.$emit('close'),
+      closeIfEscape: ($event) => {
+        if ($event.key === 'Escape') {
+          this.close()
+        }
+      },
     }
   },
 
@@ -36,11 +40,15 @@ export default {
 
   methods: {
     startListeningToEscape () {
-      document.addEventListener('keydown', this.close)
+      document.addEventListener('keydown', this.closeIfEscape)
     },
 
     stopListeningToEscape () {
-      document.removeEventListener('keydown', this.close)
+      document.removeEventListener('keydown', this.closeIfEscape)
+    },
+
+    close () {
+      this.$emit('close')
     },
   },
 }
