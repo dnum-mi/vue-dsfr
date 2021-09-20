@@ -48,6 +48,7 @@ export const GroupeDeBoutons = (args) => ({
   data () {
     return {
       ...args,
+      buttons: args.buttons.map(btn => ({ ...btn, onClick: args.onClick })),
     }
   },
   template: `
@@ -70,7 +71,7 @@ GroupeDeBoutons.args = {
   align: 'center',
   inline: false,
   reverse: false,
-  size: 'default',
+  size: undefined,
   buttons: [
     {
       label: 'Label 1',
