@@ -12,12 +12,13 @@
     <VIcon
       v-if="icon"
       :name="icon"
+      :label="iconOnly ? label : undefined"
       :class="{
         'icon-right': iconRight,
-        'icon-left': !iconRight,
+        'icon-left': !iconOnly && !iconRight,
       }"
     />
-    <span>{{ label }}</span>
+    <span v-if="!iconOnly">{{ label }}</span>
   </component>
 </template>
 
@@ -29,6 +30,7 @@ export default {
       type: String,
       default: '',
     },
+    iconOnly: Boolean,
     iconRight: Boolean,
     icon: {
       type: String,
