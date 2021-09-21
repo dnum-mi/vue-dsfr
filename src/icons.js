@@ -2,6 +2,8 @@ import VIcon from 'oh-vue-icons/dist/v3/icon.es'
 import {
   RiAlertFill,
   RiAlertLine,
+  RiChat1Line,
+  RiDoubleQuotesL,
   RiQuestionFill,
   RiQuestionLine,
   RiInformationFill,
@@ -69,11 +71,14 @@ import {
   RiInstagramFill,
   RiLinkedinBoxFill,
   RiYoutubeFill,
+  RiChatQuoteLine,
 } from 'oh-vue-icons/icons/ri/index.js'
 
 VIcon.add(
   RiAlertFill,
   RiAlertLine,
+  RiChat1Line,
+  RiDoubleQuotesL,
   RiQuestionFill,
   RiQuestionLine,
   RiInformationFill,
@@ -141,6 +146,7 @@ VIcon.add(
   RiInstagramFill,
   RiLinkedinBoxFill,
   RiYoutubeFill,
+  RiChatQuoteLine,
 )
 
 export default VIcon
