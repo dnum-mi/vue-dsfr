@@ -68,8 +68,8 @@ describe('DsfrTable', () => {
 
     // Then
     expect(trs).toHaveLength(4)
-    expect(successEl).toHaveLength(4)
-    expect(errorEl).toHaveLength(4)
-    expect(infoEl).toHaveLength(4)
+    expect(successEl).toHaveLength(1)
+    expect(errorEl).toHaveLength(1)
+    expect(infoEl).toHaveLength(1)
   })
 })
