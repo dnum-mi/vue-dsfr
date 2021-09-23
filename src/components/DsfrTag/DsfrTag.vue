@@ -87,6 +87,23 @@ export default defineComponent({
 .reverse {
   flex-direction: row-reverse;
 }
+
+.success {
+  color: var(--success);
+  background-color: var(--bg-success);
+}
+.error {
+  color: var(--error);
+  background-color: var(--bg-error);
+}
+.warning {
+  color: var(--warning);
+  background-color: var(--bg-warning);
+}
+.info {
+  color: var(--info);
+  background-color: var(--bg-info);
+}
 </style>
 
 <style src="./tag.css" />
