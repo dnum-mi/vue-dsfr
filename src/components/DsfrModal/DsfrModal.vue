@@ -73,7 +73,14 @@ export default {
                 aria-controls="fr-modal-1"
                 @click="close"
               >
-                Fermer
+                <VIcon
+                  scale="0.85"
+                  :style="{ top: '0.05em', position: 'relative' }"
+                  name="ri-close-line"
+                />
+                <span>
+                  Fermer
+                </span>
               </button>
             </div>
             <div class="fr-modal__content">
