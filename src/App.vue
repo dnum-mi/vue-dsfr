@@ -11,6 +11,7 @@ const close = () => {
   )
 }
 
+// eslint-disable-next-line no-unused-vars
 const actions = [
   {
     label: 'Valider',
@@ -28,7 +29,6 @@ const actions = [
     onClick: () => { isModalOpen.value = false },
   },
 ]
-
 </script>
 
 <template>

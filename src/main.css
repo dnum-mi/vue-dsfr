@@ -1,4 +1,6 @@
 @import url(./assets/variables-dsfr.css);
+@import url(./assets/core.css);
+@import url(./assets/utilities.css);
 @import url(./assets/reset-dsfr.css);
 @import url(./assets/objects-dsfr.css);
 @import url(./assets/utils-dsfr.css);
