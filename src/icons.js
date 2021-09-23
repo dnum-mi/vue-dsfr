@@ -64,6 +64,11 @@ import {
   RiPauseCircleLine,
   RiFilePdfFill,
   RiFilePdfLine,
+  RiFacebookCircleFill,
+  RiTwitterFill,
+  RiInstagramFill,
+  RiLinkedinBoxFill,
+  RiYoutubeFill,
 } from 'oh-vue-icons/icons/ri/index.js'
 
 VIcon.add(
@@ -131,6 +136,11 @@ VIcon.add(
   RiPauseCircleLine,
   RiFilePdfFill,
   RiFilePdfLine,
+  RiFacebookCircleFill,
+  RiTwitterFill,
+  RiInstagramFill,
+  RiLinkedinBoxFill,
+  RiYoutubeFill,
 )
 
 export default VIcon

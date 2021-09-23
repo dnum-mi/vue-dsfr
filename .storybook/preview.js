@@ -3,6 +3,8 @@ import { app } from '@storybook/vue3'
 
 import '../src/assets/variables-dsfr.css'
 import '../src/assets/fonts-dsfr.css'
+import '../src/assets/core.css'
+import '../src/assets/utilities.css'
 import '../src/assets/reset-dsfr.css'
 import '../src/assets/objects-dsfr.css'
 import '../src/assets/utils-dsfr.css'
