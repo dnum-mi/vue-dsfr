@@ -5,13 +5,17 @@ export default {
   title: 'Basic/Liste déroulante - Select',
   argTypes: {
     dark: { control: 'boolean' },
+    required: {
+      control: 'boolean',
+      description: 'Option permettant de rendre ce champ de formulaire obligatoire et d\'assigner au label un astérisque afin de rendre ce changement visible',
+    },
     label: {
       control: 'text',
-      description: 'Label associé au select, un texte d\'appoint permettant le focus en cas de clic',
+      description: 'Label associé au select, donne le focus sur ce dernier au clic',
     },
     options: {
       control: 'array',
-      description: 'Options sélectionnables par le select à lui passer sous forme de tableau',
+      description: 'Liste des options proposées par le select à lui passer sous forme de tableau',
     },
     description: {
       control: 'text',
@@ -31,7 +35,7 @@ export default {
     },
     disabled: {
       control: 'boolean',
-      description: 'Cette option empêche toute interaction avec le select',
+      description: 'Option empêchant toute interaction avec le select',
     },
   },
 }
@@ -48,6 +52,7 @@ export const Select = (args) => ({
   template: `
   <div :data-rf-theme="dark ? 'dark' : ''" style="background-color: var(--w); padding: 1rem;">
     <DsfrSelect
+      :required="required"
       :label="label"
       :options="options"
       :description="description"
@@ -76,4 +81,5 @@ Select.args = {
   errorMessage: '',
   disabled: false,
   modelValue: undefined,
+  required: false,
 }

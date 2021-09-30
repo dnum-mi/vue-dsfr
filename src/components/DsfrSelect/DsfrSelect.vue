@@ -5,6 +5,7 @@ export default {
   name: 'DsfrSelect',
 
   props: {
+    required: Boolean,
     selectId: {
       type: String,
       default () {
@@ -37,30 +38,34 @@ export default {
     },
     disabled: Boolean,
   },
+
+  computed: {
+    message () {
+      return this.errorMessage || this.successMessage
+    },
+    messageType () {
+      return this.errorMessage ? 'error' : 'valid'
+    },
+  },
 }
 </script>
 
 <template>
   <div
     class="fr-select-group"
-    :class="{
-      'fr-select-group--error': errorMessage,
-      'fr-select-group--valid': successMessage,
-    }"
+    :class="{ [`fr-select-group--${messageType}`]: message }"
   >
     <label
       class="fr-label"
       :for="selectId"
     >
-      {{ label }}
+      {{ label }} {{ required ? '*' : '' }}
       <span class="fr-hint-text">{{ description }}</span>
     </label>
+
     <select
       :id="selectId"
-      :class="{
-        'fr-select--error': errorMessage,
-        'fr-select--valid': successMessage,
-      }"
+      :class="{ [`fr-select--${messageType}`]: message }"
       class="fr-select"
       name="select"
       :disabled="disabled"
@@ -71,29 +76,25 @@ export default {
         disabled
         hidden
       >
-        Selectionnez une option
+        Sélectionnez une option
       </option>
+
       <option
         v-for="(option, index) in options"
         :key="index"
         :selected="modelValue === option"
+        :value="typeof option === 'object' ? option.value : option"
       >
-        {{ option }}
+        {{ typeof option === 'object' ? option.text : option }}
       </option>
     </select>
+
     <p
-      v-if="errorMessage"
-      id="select-error-desc-error"
-      class="fr-error-text"
+      v-if="message"
+      :id="`select-${messageType}-desc-${messageType}`"
+      :class="`fr-${messageType}-text`"
     >
-      {{ errorMessage }}
-    </p>
-    <p
-      v-if="successMessage"
-      id="select-valid-desc-valid"
-      class="fr-valid-text"
-    >
-      {{ successMessage }}
+      {{ message }}
     </p>
   </div>
 </template>
@@ -110,6 +111,10 @@ export default {
   &:first-child {
       margin-top: -0.75rem;
   }
+}
+
+select:disabled {
+  cursor: not-allowed;
 }
 
 .fr-label {
