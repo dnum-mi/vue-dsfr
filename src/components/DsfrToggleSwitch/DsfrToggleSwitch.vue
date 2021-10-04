@@ -63,6 +63,10 @@ export default defineComponent({
 <style src="./toggles.css" />
 
 <style scoped>
+.fr-toggle__label {
+  color: var(--g800);
+}
+
 .fr-toggle__label::after {
   content: ' ';
 }
