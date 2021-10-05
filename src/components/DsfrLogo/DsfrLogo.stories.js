@@ -4,11 +4,21 @@ export default {
   component: DsfrLogo,
   title: 'Basic/Logo Officiel - Official logo',
   argTypes: {
-    dark: { control: 'boolean' },
-    text: { control: 'object' },
-    size: {
-      options: ['small', 'normal', 'large'],
-      control: { type: 'radio' },
+    dark: {
+      control: 'boolean',
+      description: 'Permet de voir le composant dans les deux **thèmes** : **clair** (`false`, défaut) et **sombre** (`true`).\n\n*N.B. : Ne fait pas partie du composant.*',
+    },
+    logoText: {
+      control: 'object',
+      description: '`string` ou tableau (`Array`) de `string` à afficher entre la Marianne et la devise. Si un tableau est donné, chaque `string` sera sur une ligne distincte',
+    },
+    small: {
+      control: 'boolean',
+      description: 'Indique si le logo doit avoir une **petite taille**',
+    },
+    large: {
+      control: 'boolean',
+      description: 'Indique si le logo doit avoir une **grande taille**',
     },
   },
 }
@@ -23,15 +33,16 @@ export const Logo = (args) => ({
   template: `
     <div :data-rf-theme="dark ? 'dark' : ''" style="background-color: var(--w); padding: 1rem;">
       <DsfrLogo
-        :small="size === 'small'"
-        :large="size === 'large'"
-        :logoText="text"
+        :small="small"
+        :large="large"
+        :logoText="logoText"
       />
     </div>
   `,
 })
 Logo.args = {
   dark: false,
-  text: ['République', 'Française'],
-  size: 'normal',
+  logoText: ['République', 'Française'],
+  small: false,
+  large: false,
 }

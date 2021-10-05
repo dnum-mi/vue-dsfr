@@ -2,8 +2,8 @@
   <p
     class="fr-logo"
     :class="{
-      'fr-logo--sm': small,
-      'fr-logo--lg': large,
+      'fr-logo--sm': small && !large,
+      'fr-logo--lg': large && !small,
     }"
     v-html="text"
   />
@@ -17,7 +17,7 @@ export default {
     large: Boolean,
     logoText: {
       type: [String, Array],
-      default: () => ['République', 'Française'],
+      default: () => 'Gouvernement',
     },
   },
 
