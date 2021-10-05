@@ -27,10 +27,9 @@ export default {
       options: ['error', 'success', 'info'],
       description: '**Type** de l\'alerte : `error` (Erreur), `success` (Succès), ou `info` (Information)',
     },
-    size: {
-      control: 'radio',
-      options: ['medium', 'small'],
-      description: '**Taille de l\'alerte** : `medium` (Taille moyenne), `small` (Petite taille).',
+    small: {
+      control: 'boolean',
+      description: 'Indique si la taille de l’alert doit être de taille moyenne (`false`, défaut), ou petite (`true`).',
     },
     closed: {
       control: 'boolean',
@@ -54,7 +53,7 @@ export const Alerte = (args) => ({
         :title="title"
         :description="description"
         :type="type"
-        :size="size"
+        :small="small"
         closeable
         :closed="closed"
         @close="close"
@@ -75,7 +74,7 @@ Alerte.args = {
   title: 'Titre alerte',
   description: 'Description du message',
   type: 'error',
-  size: 'medium',
+  small: false,
   closed: false,
 }
 
@@ -235,5 +234,4 @@ AlertesFermables.args = {
   title: 'Titre alerte',
   description: 'Description du message',
   type: 'error',
-  size: 'medium',
 }
