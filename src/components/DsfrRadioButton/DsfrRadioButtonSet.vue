@@ -21,11 +21,7 @@
         <DsfrRadioButton
           v-for="option in options"
           :key="option.value"
-          :label="option.label"
-          :disabled="option.disabled"
-          :model-value="modelValue"
-          :value="option.value"
-          :hint="option.hint"
+          v-bind="option"
           @update:modelValue="onChange"
         />
       </div>

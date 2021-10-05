@@ -5,14 +5,37 @@ export default {
   title: 'Basic/Case à cocher - Checkbox',
   argTypes: {
     dark: { control: 'boolean' },
-    disabled: { control: 'boolean' },
-    errorMessage: { control: 'text' },
-    validMessage: { control: 'text' },
-    inline: { control: 'boolean' },
-    legend: { control: 'text' },
-    options: { control: 'object' },
-    success: { control: 'text' },
-    onChange: { action: 'changed' },
+    disabled: {
+      control: 'boolean',
+      description: 'Indique si l’ensemble des checkboxes doivent être désactivées (`true`) ou non (`false`, défaut)',
+    },
+    errorMessage: {
+      control: 'text',
+      description: 'Message à afficher en cas d’ensemble de champs valide',
+    },
+    validMessage: {
+      control: 'text',
+      description: 'Message à afficher en cas d’ensemble de champs valide',
+    },
+    inline: {
+      control: 'boolean',
+      description: 'Indique si les checkboxes doivent apparaître sur une seule ligne (`true`) ou non (`false`, défaut)',
+    },
+    legend: {
+      control: 'text',
+      description: 'Titre de l’ensemble (Set) des checkboxes',
+    },
+    options: {
+      control: 'object',
+      description: 'Tableau de `string` (la valeur `value` de la checkbox sera identique au `label`) ou d’objets contenant les props à passer à chaque composant DsfrCheckbox, sauf `modelValue` qui sera calculée à partir de `modelValue` du DsfrCheckboxSet.',
+    },
+    onChange: {
+      action: 'changed',
+    },
+    modelValue: {
+      control: 'object',
+      description: 'Tableau des valeurs sélectionnées (cochées) du groupe de checkboxes',
+    },
   },
 }
 
@@ -25,42 +48,45 @@ export const CheckboxSet = (args) => ({
   <div :data-rf-theme="dark ? 'dark' : ''" style="background-color: var(--w); padding: 1rem;">
     <DsfrCheckboxSet
       :legend="legend"
-      v-model="selectedValue"
+      v-model="modelValue"
       :options="options"
       :inline="inline"
+      :disabled="disabled"
+      :errorMessage="errorMessage"
+      :validMessage="validMessage"
     />
   </div>`,
   watch: {
-    selectedValue (val) {
+    modelValue (val) {
       this.onChange(val)
     },
   },
 })
 CheckboxSet.args = {
-  legend: 'Légende des champs',
-  selectedValue: [],
-  inline: false,
   dark: false,
+  legend: 'Légende des champs',
+  disabled: false,
+  inline: false,
+  errorMessage: '',
+  validMessage: '',
+  modelValue: [],
   options: [
     {
       label: 'Valeur 1',
       id: 'name1',
       name: 'name1',
-      checked: false,
       hint: 'Description 1',
     },
     {
       label: 'Valeur 2',
       id: 'name2',
       name: 'name2',
-      checked: false,
       hint: 'Description 2',
     },
     {
       label: 'Valeur 3',
       id: 'name3',
       name: 'name3',
-      checked: false,
     },
   ],
 }
@@ -74,14 +100,14 @@ export const CheckboxSetAvecErreur = (args) => ({
   <div :data-rf-theme="dark ? 'dark' : ''" style="background-color: var(--w); padding: 1rem;">
     <DsfrCheckboxSet
       :legend="legend"
-      v-model="selectedValue"
+      v-model="modelValue"
       :error-message="errorMessage"
       :options="options"
       :inline="inline"
     />
   </div>`,
   watch: {
-    selectedValue (val) {
+    modelValue (val) {
       this.onChange(val)
     },
   },
@@ -89,9 +115,10 @@ export const CheckboxSetAvecErreur = (args) => ({
 CheckboxSetAvecErreur.args = {
   dark: false,
   legend: 'Légende des champs',
-  selectedValue: [],
+  disabled: false,
   inline: false,
   errorMessage: 'Message d\'erreur',
+  modelValue: [],
   options: [
     {
       label: 'Valeur 1',
@@ -125,14 +152,14 @@ export const CheckboxSetAvecSucces = (args) => ({
   <div :data-rf-theme="dark ? 'dark' : ''" style="background-color: var(--w); padding: 1rem;">
     <DsfrCheckboxSet
       :legend="legend"
-      v-model="selectedValue"
+      v-model="modelValue"
       :valid-message="validMessage"
       :options="options"
       :inline="inline"
     />
   </div>`,
   watch: {
-    selectedValue (val) {
+    modelValue (val) {
       this.onChange(val)
     },
   },
@@ -141,7 +168,7 @@ export const CheckboxSetAvecSucces = (args) => ({
 CheckboxSetAvecSucces.args = {
   dark: false,
   legend: 'Légende des champs',
-  selectedValue: [],
+  modelValue: [],
   inline: false,
   validMessage: 'Message de succès',
   options: [
@@ -177,7 +204,7 @@ export const CheckboxSetInline = (args) => ({
   <div :data-rf-theme="dark ? 'dark' : ''" style="background-color: var(--w); padding: 1rem;">
     <DsfrCheckboxSet
       :legend="legend"
-      v-model="selectedValue"
+      v-model="modelValue"
       :error-message="errorMessage"
       :valid-message="validMessage"
       :options="options"
@@ -185,7 +212,7 @@ export const CheckboxSetInline = (args) => ({
     />
   </div>`,
   watch: {
-    selectedValue (val) {
+    modelValue (val) {
       this.onChange(val)
     },
   },
@@ -193,7 +220,7 @@ export const CheckboxSetInline = (args) => ({
 CheckboxSetInline.args = {
   dark: false,
   legend: 'Légende des champs en ligne',
-  selectedValue: [],
+  modelValue: [],
   inline: true,
   errorMessage: '',
   validMessage: '',
@@ -230,7 +257,7 @@ export const CheckboxSetInlineAvecErreur = (args) => ({
   <div :data-rf-theme="dark ? 'dark' : ''" style="background-color: var(--w); padding: 1rem;">
     <DsfrCheckboxSet
       :legend="legend"
-      v-model="selectedValue"
+      v-model="modelValue"
       :error-message="errorMessage"
       :valid-message="validMessage"
       :options="options"
@@ -238,7 +265,7 @@ export const CheckboxSetInlineAvecErreur = (args) => ({
     />
   </div>`,
   watch: {
-    selectedValue (val) {
+    modelValue (val) {
       this.onChange(val)
     },
   },
@@ -246,7 +273,7 @@ export const CheckboxSetInlineAvecErreur = (args) => ({
 CheckboxSetInlineAvecErreur.args = {
   dark: false,
   legend: 'Légende des champs en ligne',
-  selectedValue: [],
+  modelValue: [],
   inline: true,
   errorMessage: 'Message d\'erreur',
   validMessage: '',
@@ -283,7 +310,7 @@ export const CheckboxSetInlineAvecSucces = (args) => ({
   <div :data-rf-theme="dark ? 'dark' : ''" style="background-color: var(--w); padding: 1rem;">
     <DsfrCheckboxSet
       :legend="legend"
-      v-model="selectedValue"
+      v-model="modelValue"
       :error-message="errorMessage"
       :valid-message="validMessage"
       :options="options"
@@ -291,7 +318,7 @@ export const CheckboxSetInlineAvecSucces = (args) => ({
     />
   </div>`,
   watch: {
-    selectedValue (val) {
+    modelValue (val) {
       this.onChange(val)
     },
   },
@@ -299,7 +326,7 @@ export const CheckboxSetInlineAvecSucces = (args) => ({
 CheckboxSetInlineAvecSucces.args = {
   dark: false,
   legend: 'Légende des champs en ligne',
-  selectedValue: [],
+  modelValue: [],
   inline: true,
   errorMessage: '',
   validMessage: 'Message de succès',

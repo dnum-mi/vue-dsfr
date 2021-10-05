@@ -14,6 +14,10 @@ export default {
       control: 'boolean',
       description: 'Permet de voir le composant dans les deux **thèmes** : **clair** (`false`, défaut) et **sombre* (`true`).\n\n*N.B. : Ne fait pas partie du composant.*',
     },
+    noCaption: {
+      control: 'boolean',
+      description: 'Indique si la balise caption doit être visible (`false`, défaut) ou cachée (`true`)',
+    },
     headers: {
       control: 'object',
       description: 'Permet de voir la ligne des titres des colonnes du tableau',
@@ -65,6 +69,7 @@ const rows = [
     },
   ],
 ]
+const noCaption = false
 
 export const TableauSimple = (args) => ({
   components: {
@@ -83,6 +88,7 @@ export const TableauSimple = (args) => ({
         :title="title"
         :headers="headers"
         :rows="rows"
+        :no-caption="noCaption"
       />
     </div>
   `,
@@ -90,7 +96,8 @@ export const TableauSimple = (args) => ({
 })
 TableauSimple.args = {
   dark: false,
-  title: title,
-  headers: headers,
-  rows: rows,
+  title,
+  headers,
+  rows,
+  noCaption,
 }

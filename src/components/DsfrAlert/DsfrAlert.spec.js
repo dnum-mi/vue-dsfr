@@ -38,6 +38,7 @@ describe('DsfrAlert', () => {
     // Given
     const alertTitle = 'Titre de l’alerte'
     const alertDescription = 'Description de l’alerte'
+    const type = 'error'
 
     // When
     const { emitted, getByTitle } = render(DsfrAlert, {
@@ -49,9 +50,9 @@ describe('DsfrAlert', () => {
       props: {
         title: alertTitle,
         description: alertDescription,
-        type: 'error',
         closed: false,
         closeable: true,
+        type,
       },
     })
 

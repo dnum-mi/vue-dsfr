@@ -1,3 +1,4 @@
+import { fireEvent } from '@testing-library/dom'
 import { render } from '@testing-library/vue'
 
 import DsfrCard from './DsfrCard.vue'
@@ -5,10 +6,10 @@ import DsfrCard from './DsfrCard.vue'
 const VIcon = { props: ['name'], template: '<i :class="name"></i>' }
 
 describe('DsfrCard', () => {
-  it('should render a nice card', () => {
+  it('should render a nice card', async () => {
     // Given
     const detail = 'Détail'
-    const link = 'https://duckduckgo.com'
+    const link = '/path'
     const title = 'Qu’est-ce que le Pass Culture et comment l’obtenir ?'
     const description = `La carte donne des aperçus cliquables d’une page de contenu
     à l’utilisateur. Elle fait généralement partie d'une collection ou liste d’aperçus
@@ -33,9 +34,10 @@ describe('DsfrCard', () => {
         link,
       },
     })
+    const linkEl = getByTestId('fr-card')
+    await fireEvent.click(linkEl)
 
     // Then
-
     expect(getByText(detail)).toHaveClass('fr-card__detail')
     expect(getByTestId('card-link')).toHaveClass('fr-card__link')
     expect(getByTestId('card-link')).toHaveAttribute('to', link)

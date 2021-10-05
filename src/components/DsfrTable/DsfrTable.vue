@@ -1,11 +1,18 @@
 <template>
-  <div class="fr-table">
-    <table class="simple-table">
+  <div
+    class="fr-table"
+    :class="{ 'fr-table--no-caption': noCaption }"
+  >
+    <table
+      v-if="isWithContent"
+      class="simple-table"
+    >
       <caption class="caption">
         {{ title }}
       </caption>
       <thead>
         <tr
+          v-if="headers"
           class="header"
         >
           <th
@@ -16,7 +23,7 @@
           </th>
         </tr>
       </thead>
-      <tbody>
+      <tbody v-if="rows">
         <tr
           v-for="(row, i) in rows"
           :key="i"
@@ -58,8 +65,14 @@ export default defineComponent({
       type: Array,
       default: () => [],
     },
+    noCaption: Boolean,
   },
 
+  computed: {
+    isWithContent () {
+      return this.headers?.length || this.rows?.length
+    },
+  },
 })
 </script>
 

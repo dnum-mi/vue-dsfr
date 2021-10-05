@@ -1,86 +1,59 @@
 <template>
-  <div
-    :id="panelId"
-    class="fr-tabs__panel"
-    :class="{
-      'fr-tabs__panel--selected': selected,
-    }"
-    role="tabpanel"
-    :aria-labelledby="tabId"
-    :tabindex="selected ? 0 : -1"
+  <transition
+    name="slide-fade"
+    mode="in-out"
   >
-    <slot />
-  </div>
+    <div
+      v-show="selected"
+      :id="panelId"
+      class="fr-tabs__panel"
+      :class="{
+        'fr-tabs__panel--selected': selected,
+      }"
+      role="tabpanel"
+      :aria-labelledby="tabId"
+      :tabindex="selected ? 0 : -1"
+    >
+      <slot />
+    </div>
+  </transition>
 </template>
 
-<script>
-export default {
-  props: {
-    selected: Boolean,
-    panelId: {
-      type: String,
-      required: true,
-    },
-    tabId: {
-      type: String,
-      required: true,
-    },
+<script setup>
+import { computed } from 'vue'
+
+const props = defineProps({
+  asc: Boolean,
+  selected: Boolean,
+  panelId: {
+    type: String,
+    required: true,
   },
-}
+  tabId: {
+    type: String,
+    required: true,
+  },
+})
+const values = { true: '100%', false: '-100%' }
+const translateValueFrom = computed(() => values[props.asc])
+const translateValueTo = computed(() => values[!props.asc])
 </script>
 
 <style scoped>
-.fr-tabs__panel {
-  --link-underline: 0 1px 0 0 currentColor;
-  --link-blank-font: normal normal normal 1rem/1 dsfr-icons;
-  --link-blank-content: "\00a0";
-  --ul-type: "●\00a0\00a0";
-  --ol-type: decimal;
-  --ul-start: 1rem;
-  --ol-start: 1.5rem;
-  --xl-block: 0.5rem;
-  --li-bottom: 0.25rem;
-  --xl-base: 1em;
-  --ol-content: counters(li-counter, ".") ".\00a0\00a0";
-  display: block;
-  position: relative;
-  left: 0;
-  width: 100%;
-  height: auto;
-  padding: 1rem;
-  margin-top: 2.5rem;
-  margin-right: -100%;
-  flex: 0 0 100%;
-  transition: visibility 0.3s, transform 0.3s;
-  transform: translateX(0);
-  color: var(--g700);
-
-  &:focus, &:focus-visible {
-    outline-offset: calc(-1rem + 2px);
-  }
-
-  &:not(.fr-tabs__panel--selected) {
-    visibility: hidden;
-    display: none;
-  }
+.slide-fade-enter-active {
+  transition: all 0.3s ease-out;
 }
 
-.fr-tabs__panel--ltr {
-  transform: translate(100%);
-  transition: transform 0.3s;
+.slide-fade-leave-active {
+  transition: all 0.3s cubic-bezier(1, 0.5, 0.8, 1);
 }
 
-.fr-tabs__panel--rtl {
-  transform: translate(-100%);
-  transition: transform 0.3s;
+.slide-fade-enter-from {
+  transform: translateX(v-bind(translateValueFrom));
+  opacity: 0;
 }
-
-@media (min-width: 48em) {
-  .fr-tabs__panel {
-    padding: 2rem;
-  }
-  .fr-tabs__panel:focus, .fr-tabs__panel:focus-visible {
-    outline-offset: calc(-2rem + 2px);
-  }
+.slide-fade-leave-to {
+  transform: translateX(v-bind(translateValueTo));
+  opacity: 0;
 }
 </style>

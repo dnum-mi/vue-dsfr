@@ -18,4 +18,13 @@ describe('DsfrLogo', () => {
     expect(getByText(text)).toBeInTheDocument()
     expect(getByText(text)).toHaveClass('fr-logo')
   })
+
+  it('should render flag, text and motto', () => {
+    // When
+    const { getByText } = render(DsfrLogo)
+
+    // Then
+    expect(getByText('Gouvernement')).toBeInTheDocument()
+    expect(getByText('Gouvernement')).toHaveClass('fr-logo')
+  })
 })

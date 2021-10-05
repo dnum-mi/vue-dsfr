@@ -3,6 +3,8 @@ import { render } from '@testing-library/vue'
 import DsfrTable from './DsfrTable.vue'
 import DsfrTag from '../DsfrTag/DsfrTag.vue'
 
+const VIcon = { props: ['name'], template: '<i :class="name"></i>' }
+
 describe('DsfrTable', () => {
   it('should render simple table', () => {
     // Given
@@ -51,6 +53,7 @@ describe('DsfrTable', () => {
     const { container } = render(DsfrTable, {
       global: {
         components: {
+          VIcon,
           DsfrTag,
         },
       },
@@ -71,5 +74,28 @@ describe('DsfrTable', () => {
     expect(successEl).toHaveLength(1)
     expect(errorEl).toHaveLength(1)
     expect(infoEl).toHaveLength(1)
+  })
+
+  it('should render empty table', () => {
+    // Given
+    const title = 'Utilisateurs'
+
+    // When
+    const { container } = render(DsfrTable, {
+      global: {
+        components: {
+          VIcon,
+          DsfrTag,
+        },
+      },
+      props: {
+        title,
+      },
+    })
+
+    const trs = container.querySelectorAll('tr')
+
+    // Then
+    expect(trs).toHaveLength(0)
   })
 })
