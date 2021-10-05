@@ -2,6 +2,8 @@ import { render } from '@testing-library/vue'
 
 import DsfrToggleSwitch from './DsfrToggleSwitch.vue'
 
+const VIcon = { props: ['name'], template: '<i :class="name"></i>' }
+
 describe('DsfrToggleSwitch', () => {
   it('should render toggle switch', () => {
     // Given
@@ -12,6 +14,11 @@ describe('DsfrToggleSwitch', () => {
 
     // When
     const { getByText, getByTestId } = render(DsfrToggleSwitch, {
+      global: {
+        components: {
+          VIcon,
+        },
+      },
       props: {
         disabled,
         hint,
@@ -36,26 +43,26 @@ describe('DsfrToggleSwitch', () => {
     const label = 'Label du switch'
     const hint = 'Indice du switch'
     const disabled = true
-    const inputId = '2'
 
     // When
-    const { getByText, getByTestId } = render(DsfrToggleSwitch, {
+    const { getByText } = render(DsfrToggleSwitch, {
+      global: {
+        components: {
+          VIcon,
+        },
+      },
       props: {
         disabled,
         hint,
-        inputId,
         label,
       },
     })
 
     const labelEl = getByText(label)
     const hintEl = getByText(hint)
-    const inputEl = getByTestId(inputId)
 
     // Then
     expect(labelEl).toBeInTheDocument()
     expect(hintEl).toBeInTheDocument()
-    expect(inputEl).toBeInTheDocument()
-    expect(inputEl).toBeDisabled()
   })
 })
