@@ -57,6 +57,10 @@ export default defineComponent({
       type: Array,
       default: () => [],
     },
+    title: {
+      type: String,
+      default: '',
+    },
   },
 })
 </script>
