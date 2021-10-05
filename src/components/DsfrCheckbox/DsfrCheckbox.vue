@@ -98,64 +98,22 @@ export default defineComponent({
 </script>
 
 <style scoped>
-.fr-checkbox-group {
-  position: relative;
-
-  &:last-child {
-      margin-bottom: -0.75rem;
-  }
-  &:first-child {
-      margin-top: -0.75rem;
-  }
+.fr-checkbox-group input[type="checkbox"] + label::before {
+  display: none;
 }
 
-.fr-hint-text {
-  margin: 0;
-  grid-row: 2;
-  grid-column: 1;
-  display: block;
-  font-size: 0.75rem;
-  line-height: 1.25rem;
-  color: var(--g600);
+.fr-checkbox-group input[type="checkbox"] + label {
+  margin-left: 0;
 }
 
-.fr-checkbox-group--error::before {
-  background-color: var(--error);
-}
-.fr-checkbox-group--error::before {
-  content: "";
-  position: absolute;
-  top: 0.75rem;
-  left: -0.5rem;
-  width: 2px;
-  height: 1.5rem;
-  background-color: var(--error);
-}
-.fr-checkbox-group--valid::before {
-  background-color: var(--success);
-}
-.fr-checkbox-group--valid::before {
-  content: "";
-  position: absolute;
-  top: 0.75rem;
-  left: -0.5rem;
-  width: 2px;
-  height: 1.5rem;
-  background-color: var(--success);
+.fr-error-text::before {
+  display: none;
+  content: normal;
 }
 
-.fr-checkbox-group--error {
-  .fr-label,
-  .fr-hint-text {
-    color: var(--error);
-  }
-}
-
-.fr-checkbox-group--valid {
-  .fr-label,
-  .fr-hint-text {
-    color: var(--success);
-  }
+.fr-valid-text::before {
+  display: none;
+  content: normal;
 }
 
 .fr-message-text {
@@ -164,43 +122,6 @@ export default defineComponent({
 
   & span {
     margin-left: 0.25rem;
-  }
-}
-
-input[type="checkbox"] {
-  position: absolute;
-  opacity: 0;
-
-  & + label {
-    position: relative;
-    padding: 0.75rem 0;
-    -webkit-tap-highlight-color: transparent;
-    display: grid;
-    grid-row: 1;
-    grid-column: 2;
-    align-items: center;
-    grid-template-columns: 1fr 2rem;
-    text-align: left;
-    direction: rtl;
-  }
-}
-
-input[type="radio"][disabled] + label,
-fieldset[disabled] input[type="radio"] + label
- {
-  color: var(--g600-g400);
-  filter: grayscale(1);
-  cursor: not-allowed;
-}
-.fr-label {
-  display: block;
-  font-size: 1rem;
-  line-height: 1.5rem;
-  color: var(--g800);
-
-  @nest input[type="checkbox"]:disabled + & {
-    color: var(--g600-g400);
-    cursor: not-allowed;
   }
 }
 
@@ -234,5 +155,4 @@ fieldset[disabled] input[type="radio"] + label
     cursor: not-allowed;
   }
 }
-
 </style>

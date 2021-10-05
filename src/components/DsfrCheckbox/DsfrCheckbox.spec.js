@@ -9,6 +9,7 @@ describe('DsfrCheckbox', () => {
     // Given
     const label = 'Check box label'
     const modelValue = true
+    const validMessage = 'Message de succès'
 
     // When
     const { getByText, getByLabelText } = render(CheckBox, {
@@ -21,6 +22,7 @@ describe('DsfrCheckbox', () => {
         label,
         modelValue,
         name: 'label-1',
+        validMessage,
       },
     })
 
@@ -40,6 +42,7 @@ describe('DsfrCheckbox', () => {
     const label = 'Check box label'
     const modelValue = true
     const disabled = true
+    const errorMessage = 'Message d’erreur'
 
     // When
     const { getByText, getByLabelText } = render(CheckBox, {
@@ -53,6 +56,7 @@ describe('DsfrCheckbox', () => {
         modelValue,
         name: 'label-1',
         disabled,
+        errorMessage,
       },
     })
 
