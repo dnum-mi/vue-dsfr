@@ -43,4 +43,24 @@ describe('DsfrBreadcrumb', () => {
     expect(navEl.tagName).toBe('NAV')
     expect(currentItemEl).toHaveLength(3)
   })
+
+  it('should render DsfrBreadcrumb with no content', async () => {
+    // Given
+
+    // When
+    const { getByRole } = render(DsfrBreadcrumb, {
+      global: {
+        components: {
+          VIcon,
+        },
+      },
+      propsData: {
+      },
+    })
+
+    const navEl = getByRole('navigation')
+
+    // Then
+    expect(navEl.tagName).toBe('NAV')
+  })
 })

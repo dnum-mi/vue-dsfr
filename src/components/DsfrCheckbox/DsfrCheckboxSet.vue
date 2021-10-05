@@ -13,7 +13,7 @@
         id="checkboxes-legend"
         class="fr-fieldset__legend fr-text--regular"
       >
-        Légende de l'ensemble des champs
+        {{ legend }}
       </legend>
       <div class="fr-fieldset__content">
         <DsfrCheckbox
@@ -24,7 +24,7 @@
           :name="option.name"
           :label="option.label"
           :disabled="option.disabled"
-          :model-value="option.checked"
+          :model-value="modelValue.includes(option.value)"
           :hint="option.hint"
           @update:model-value="onChange({ name: option.name, checked: $event })"
         />
@@ -35,7 +35,7 @@
         :class="additionalMessageClass"
       >
         <v-icon :name="messageIcon" />
-        <span class="line-1">{{ message }}</span>
+        <span>{{ message }}</span>
       </p>
     </fieldset>
   </div>
@@ -46,9 +46,11 @@ import DsfrCheckbox from './DsfrCheckbox.vue'
 
 export default {
   name: 'DsfrCheckboxSet',
+
   components: {
     DsfrCheckbox,
   },
+
   props: {
     disabled: Boolean,
     inline: Boolean,
@@ -92,60 +94,27 @@ export default {
     onChange ({ name, checked }) {
       const selected = checked
         ? [...this.modelValue, name]
-        : [...this.modelValue.filter(val => val !== name)]
+        : this.modelValue.filter(val => val !== name)
       this.$emit('update:modelValue', selected)
     },
   },
 }
 </script>
 
+<style src="./DsfrCheckboxSet.css" />
+
 <style scoped>
-.fr-fieldset legend {
-  margin-bottom: 1rem;
-  font-size: 1rem;
-  line-height: 1.5rem;
-  font-weight: 700!important;
-}
-
-.fr-fieldset--inline {
-  & .fr-fieldset__content {
-    display: flex;
-    align-items: baseline;
-    justify-content: flex-start;
-    flex-wrap: wrap;
-    margin: -0.75rem 0;
-  }
-
-  & :deep(.fr-checkbox-group) {
-    display: inline-flex;
-  }
-
-  & :deep(.fr-checkbox-group:not(:last-child) input[type="checkbox" i] + label) {
-    margin-right: 1.75rem;
-  }
-}
-
-.fr-fieldset--valid :deep(.fr-label) {
-  color: var(--success);
-}
-
-.fr-fieldset--valid :deep(.fr-hint-text) {
-  color: var(--success);
-}
-
-.fr-fieldset--error :deep(.fr-label) {
-  color: var(--error);
-}
-
-.fr-fieldset--error :deep(.fr-hint-text) {
-  color: var(--error);
+.fr-error-text::before,
+.fr-valid-text::before {
+  display: none;
+  content: normal;
 }
 
 .fr-message-text {
-  line-height: 0.75rem;
-
   & span {
     margin-left: 0.25rem;
   }
+
+  line-height: 0.75rem;
 }
 </style>

@@ -9,7 +9,10 @@
           <div class="fr-header__brand  fr-enlarge-link">
             <div class="fr-header__brand-top">
               <div class="fr-header__logo">
-                <DsfrLogo :logo-text="logoText" />
+                <DsfrLogo
+                  :logo-text="logoText"
+                  data-testid="header-logo"
+                />
               </div>
               <div
                 v-if="showSearch || (quickLinks && quickLinks.length)"
@@ -35,6 +38,7 @@
                   aria-haspopup="menu"
                   aria-label="Menu"
                   title="Menu"
+                  data-testid="open-menu-btn"
                   @click="showMenu"
                 >
                   <VIcon
@@ -98,6 +102,7 @@
             <button
               class="fr-link--close  fr-link"
               aria-controls="header-navigation"
+              data-testid="close-modal-btn"
               @click="hideModal"
             >
               <VIcon
@@ -163,7 +168,7 @@ export default {
     showSearch: Boolean,
     logoText: {
       type: [String, Array],
-      default: () => ['Gouvernement'],
+      default: () => 'Gouvernement',
     },
   },
   emits: ['update:modelValue', 'search'],

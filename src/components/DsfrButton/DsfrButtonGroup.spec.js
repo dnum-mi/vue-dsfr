@@ -6,7 +6,7 @@ import DsfrButtonGroup from './DsfrButtonGroup.vue'
 const VIcon = { props: ['name'], template: '<i :class="name"></i>' }
 
 describe('DsfrButtonGroup', () => {
-  it('should mount DsfrButtonGroup with right content', async () => {
+  it('should mount DsfrButtonGroup with content', async () => {
     // Given
     const labelPrimary = 'Button primary'
     const labelSecondary = 'Button secondary'
@@ -48,7 +48,36 @@ describe('DsfrButtonGroup', () => {
     expect(firstButtonSpan.parentNode).not.toHaveClass('fr-btn--secondary')
     expect(secondButtonSpan.parentNode).toHaveClass('fr-btn--secondary')
     expect(wrapper).toHaveClass('extra-class')
+    expect(wrapper).not.toHaveClass('fr-btns-group--right')
+    expect(wrapper).not.toHaveClass('fr-btns-group--inline-sm')
     expect(onClickFirst).toHaveBeenCalled()
     expect(onClickSecond).toHaveBeenCalled()
+  })
+
+  it('should mount small DsfrButtonGroup right-aligned content', async () => {
+    // Given
+    const size = 'small'
+    const align = 'right'
+
+    // When
+    const { getByTestId } = render(DsfrButtonGroup, {
+      global: {
+        components: {
+          VIcon,
+        },
+      },
+      props: {
+        class: 'extra-class',
+        size,
+        align,
+      },
+    })
+
+    const wrapper = getByTestId('fr-btns')
+
+    // Then
+    expect(wrapper).toHaveClass('extra-class')
+    expect(wrapper).toHaveClass('fr-btns-group--right')
+    expect(wrapper).toHaveClass('fr-btns-group--inline-sm')
   })
 })
