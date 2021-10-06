@@ -40,6 +40,9 @@ export default {
       control: 'boolean',
       description: 'Option empêchant toute interaction avec le `select`',
     },
+    onChange: {
+      action: 'change',
+    },
   },
 }
 
@@ -47,11 +50,13 @@ export const Select = (args) => ({
   components: {
     DsfrSelect,
   },
+
   data () {
     return {
       ...args,
     }
   },
+
   template: `
   <div :data-rf-theme="dark ? 'dark' : ''" style="background-color: var(--w); padding: 1rem;">
     <DsfrSelect
@@ -66,6 +71,12 @@ export const Select = (args) => ({
     />
   </div>
   `,
+
+  watch: {
+    modelValue (newVal) {
+      this.onChange(newVal)
+    },
+  },
 })
 
 Select.args = {
