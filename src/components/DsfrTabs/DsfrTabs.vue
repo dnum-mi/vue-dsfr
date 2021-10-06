@@ -62,6 +62,8 @@ export default {
     },
   },
 
+  emits: ['select-tab'],
+
   data () {
     return {
       getRandomId,
@@ -86,6 +88,7 @@ export default {
     async selectIndex (idx) {
       this.asc = idx > this.selectedIndex
       this.selectedIndex = idx
+      this.$emit('select-tab', idx)
     },
   },
 }
