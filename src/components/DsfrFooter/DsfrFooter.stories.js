@@ -11,7 +11,10 @@ export default {
   component: DsfrFooter,
   title: 'Éléments/Pied de page - Footer',
   argTypes: {
-    dark: { control: 'boolean' },
+    dark: {
+      control: 'boolean',
+      description: 'Permet de voir le composant dans les deux **thèmes** : **clair** (`false`, défaut) et **sombre** (`true`).\n\n*N.B. : Ne fait pas partie du composant.*',
+    },
     beforeMandatoryLinks: {
       control: 'object',
       description: 'Liste de liens précédant les liens par défaut (liens obligatoires)',

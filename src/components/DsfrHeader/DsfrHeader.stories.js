@@ -15,15 +15,39 @@ export default {
   component: DsfrHeader,
   title: 'Éléments/En-tête - Header',
   argTypes: {
-    dark: { control: 'boolean' },
-    logoText: { control: 'object' },
-    serviceTitle: { control: 'text' },
-    serviceDescription: { control: 'text' },
-    showSearch: { control: 'boolean' },
-    homeTo: { control: 'text' },
-    quickLinks: { control: 'array' },
+    dark: {
+      control: 'boolean',
+      description: 'Permet de voir le composant dans les deux **thèmes** : **clair** (`false`, défaut) et **sombre** (`true`).\n\n*N.B. : Ne fait pas partie du composant.*',
+    },
+    logoText: {
+      control: 'object',
+      description: 'Texte ou liste de texte (chaque élément du tableau sera sur une ligne) tu logo',
+    },
+    serviceTitle: {
+      control: 'text',
+      description: 'Titre principal de l’en-tête (ex.: Nom du service)',
+    },
+    serviceDescription: {
+      control: 'text',
+      description: 'Sous-titre de l’en-tête (ex.: Description du service)',
+    },
+    showSearch: {
+      control: 'boolean',
+      description: 'Indique si le champs de recherche doit être affiché (`true`) ou non (`false`, défaut)',
+    },
+    homeTo: {
+      control: 'text',
+      description: 'Lien cible au clic sur le logo ou le titre',
+    },
+    quickLinks: {
+      control: 'array',
+      description: 'Tableau des liens d’accès rapide, chaque objet contiendra les props suivantes :\n\n- label: (`\'Notifications\'`, par ex.)\n\n- path: (`\'/notification\'` par ex.)\n\n- `icon` pour le nom de l’icône à afficher (`\'ri-phone-line\'` par ex.)\n\n- `iconRight` (`true` pour afficher l’icône à droite, `false` par défaut)',
+    },
+    modelValue: {
+      control: 'text',
+      description: 'Contenu du champs de saisie de la barre de recherche',
+    },
     actionOnLogo: { action: 'clicked on logo' },
-    modelValue: { controle: 'text' },
     onChangeSearchInput: { action: 'search changed' },
   },
 }

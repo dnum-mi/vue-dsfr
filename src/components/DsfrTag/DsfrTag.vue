@@ -3,6 +3,7 @@ import { defineComponent } from 'vue'
 
 export default defineComponent({
   name: 'DsfrTag',
+
   props: {
     label: {
       type: String,
@@ -21,9 +22,11 @@ export default defineComponent({
       default: undefined,
     },
     disabled: Boolean,
+    iconOnly: Boolean,
     iconRight: Boolean,
-    sm: Boolean,
+    small: Boolean,
   },
+
   computed: {
     is () {
       return this.link
@@ -51,20 +54,22 @@ export default defineComponent({
     :disabled="disabled"
     :href="href"
     :class="{
-      'reverse': iconRight,
-      'fr-tag--sm': sm,
+      'row-reverse': iconRight && !iconOnly,
+      'fr-tag--sm': small,
     }"
   >
     <VIcon
       v-if="icon"
       :name="icon"
+      :label="iconOnly ? label : undefined"
       :scale="0.9"
       :class="{
-        'icon-right': iconRight,
-        'icon-left': !iconRight,
+        'icon-right': iconRight && !iconOnly,
+        'icon-left': !iconRight && !iconOnly,
       }"
     />
-    <span>{{ label }}</span>
+    <span v-if="!iconOnly">{{ label }}</span>
+    <slot />
   </component>
 </template>
 
@@ -84,7 +89,7 @@ export default defineComponent({
   align-items: center;
 }
 
-.reverse {
+.row-reverse {
   flex-direction: row-reverse;
 }
 

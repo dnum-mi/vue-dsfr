@@ -1,7 +1,7 @@
 import DsfrFollow from './DsfrFollow.vue'
 
 export default {
-  title: 'Basic/Lettres d\'information et réseaux',
+  title: 'Éléments/Lettres d’information et réseaux - Follow',
   name: '',
   component: DsfrFollow,
 
@@ -12,7 +12,7 @@ export default {
     },
     networks: {
       control: 'object',
-      description: 'Liste des différents réseaux sociaux',
+      description: 'Liste des différents réseaux sociaux ; doit avoir 2 props : `name` (forcément parmi les valeurs suivantes : `\'facebook\'`, `\'twitter\'`, `\'youtube\'`, `\'linkedin\'`, `\'instagram\'`)  et `url`',
     },
   },
 }

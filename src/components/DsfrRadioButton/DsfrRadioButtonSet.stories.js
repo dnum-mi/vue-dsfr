@@ -2,15 +2,40 @@ import DsfrRadioButtonSet from './DsfrRadioButtonSet.vue'
 
 export default {
   component: DsfrRadioButtonSet,
-  title: 'Basic/Boutons radio - Radio button',
+  title: 'Basic/Boutons radio - Radio button/Groupe de boutons',
   argTypes: {
-    dark: { control: 'boolean' },
-    disabled: { control: 'boolean' },
-    inline: { control: 'boolean' },
-    legend: { control: 'text' },
-    options: { control: 'object' },
-    modelValue: { control: 'text' },
-    error: { control: 'text' },
+    dark: {
+      control: 'boolean',
+      description: 'Permet de voir le composant dans les deux **thèmes** : **clair** (`false`, défaut) et **sombre** (`true`).\n\n*N.B. : Ne fait pas partie du composant.*',
+    },
+    disabled: {
+      control: 'boolean',
+      description: 'Indique si le bouton radio doit être désactivé (`true`) ou non (`false`, défaut)',
+    },
+    inline: {
+      control: 'boolean',
+      description: 'Indique si les boutons doivent être affichés en ligne (`true`) ou chacun sur une ligne (`false`, défaut)',
+    },
+    legend: {
+      control: 'text',
+      description: 'Titre du groupe de bouton',
+    },
+    options: {
+      control: 'object',
+      description: 'Tableau d’objets : chaque objet contient les props à passer à `DsfrRadioButton`',
+    },
+    modelValue: {
+      control: 'text',
+      description: 'Valeur de la case cochée',
+    },
+    errorMessage: {
+      control: 'text',
+      description: 'Texte du message à afficher en cas d’erreur',
+    },
+    validMessage: {
+      control: 'text',
+      description: 'Texte du message à afficher en cas de succès',
+    },
     onChange: { action: 'changed' },
   },
 }

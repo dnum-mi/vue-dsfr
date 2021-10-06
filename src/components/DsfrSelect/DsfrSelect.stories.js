@@ -4,7 +4,10 @@ export default {
   component: DsfrSelect,
   title: 'Basic/Liste déroulante - Select',
   argTypes: {
-    dark: { control: 'boolean' },
+    dark: {
+      control: 'boolean',
+      description: 'Permet de voir le composant dans les deux **thèmes** : **clair** (`false`, défaut) et **sombre** (`true`).\n\n*N.B. : Ne fait pas partie du composant.*',
+    },
     required: {
       control: 'boolean',
       description: 'Option permettant de rendre ce champ de formulaire obligatoire et d’assigner au label un astérisque afin de rendre ce changement visible',
@@ -37,6 +40,9 @@ export default {
       control: 'boolean',
       description: 'Option empêchant toute interaction avec le `select`',
     },
+    onChange: {
+      action: 'change',
+    },
   },
 }
 
@@ -44,11 +50,13 @@ export const Select = (args) => ({
   components: {
     DsfrSelect,
   },
+
   data () {
     return {
       ...args,
     }
   },
+
   template: `
   <div :data-rf-theme="dark ? 'dark' : ''" style="background-color: var(--w); padding: 1rem;">
     <DsfrSelect
@@ -63,6 +71,12 @@ export const Select = (args) => ({
     />
   </div>
   `,
+
+  watch: {
+    modelValue (newVal) {
+      this.onChange(newVal)
+    },
+  },
 })
 
 Select.args = {

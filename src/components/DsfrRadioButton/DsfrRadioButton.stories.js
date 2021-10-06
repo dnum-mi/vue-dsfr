@@ -3,12 +3,24 @@ import DsfrRadioButton from './DsfrRadioButton.vue'
 
 export default {
   component: DsfrRadioButton,
-  title: 'Basic/Boutons radio - Radio button',
+  title: 'Basic/Boutons radio - Radio button/Boutons',
   argTypes: {
-    dark: { control: 'boolean' },
-    label: { control: 'text' },
-    options: { control: 'object' },
-    modelValue: { control: 'text' },
+    dark: {
+      control: 'boolean',
+      description: 'Permet de voir le composant dans les deux **thèmes** : **clair** (`false`, défaut) et **sombre** (`true`).\n\n*N.B. : Ne fait pas partie du composant.*',
+    },
+    options: {
+      control: 'object',
+      description: 'Tableau d’objets : chaque objet contient les props à passer à `DsfrRadioButton` - *N.B. : Ne fait pas partie du composant',
+    },
+    label: {
+      control: 'text',
+      description: 'Label du bouton radio',
+    },
+    modelValue: {
+      control: 'text',
+      description: 'Valeur de la case cochée',
+    },
     onChange: { action: 'changed' },
   },
 }
