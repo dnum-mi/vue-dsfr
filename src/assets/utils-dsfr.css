@@ -242,6 +242,10 @@
   justify-content: center;
 }
 
+.row-reverse {
+  flex-direction: row-reverse;
+}
+
 .items-center {
   align-items: center;
 }
