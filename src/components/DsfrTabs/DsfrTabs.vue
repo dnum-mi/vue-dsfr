@@ -30,6 +30,7 @@
         {{ tabContent }}
       </p>
     </DsfrTabContent>
+    <slot />
   </div>
 </template>
 
@@ -57,7 +58,7 @@ export default {
     },
     tabContents: {
       type: Array,
-      required: true,
+      default: () => [],
     },
   },
 
