@@ -5,13 +5,34 @@ export default {
   title: 'Éléments/Barre de recherche - Search bar',
   argTypes: {
     label: { control: 'text' },
-    dark: { control: 'boolean' },
-    hideIcon: { control: 'boolean' },
-    labelVisible: { control: 'boolean' },
-    placeholder: { control: 'text' },
-    buttonText: { control: 'text' },
-    modelValue: { control: 'text' },
-    large: { control: 'boolean' },
+    dark: {
+      control: 'boolean',
+      description: 'Permet de voir le composant dans les deux **thèmes** : **clair** (`false`, défaut) et **sombre** (`true`).\n\n*N.B. : Ne fait pas partie du composant.*',
+    },
+    hideIcon: {
+      control: 'boolean',
+      description: 'Indique si l’icône doit être masqué (`true`) ou non (`false`, défaut)',
+    },
+    labelVisible: {
+      control: 'boolean',
+      description: 'Indique si le label doit être visible (`true`) ou non (`false`, défaut)',
+    },
+    placeholder: {
+      control: 'text',
+      description: 'Texte à afficher si le champ de recherhe n’est pas rempli',
+    },
+    buttonText: {
+      control: 'text',
+      description: 'Texte du bouton de la barre de recherche',
+    },
+    modelValue: {
+      control: 'text',
+      description: 'Contenu du champ de recherche',
+    },
+    large: {
+      control: 'boolean',
+      description: 'Indique si la barre de recherche doit prendre plus de largeur (`true) ou non (`false`, défaut)',
+    },
   },
 }
 

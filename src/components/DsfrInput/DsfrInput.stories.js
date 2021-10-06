@@ -4,11 +4,25 @@ export default {
   component: DsfrInput,
   title: 'Basic/Champs de saisie - Input',
   argTypes: {
-    dark: { control: 'boolean' },
-    label: { control: 'text' },
-    labelVisible: { control: 'boolean' },
-    placeholder: { control: 'text' },
-    modelValue: { controle: 'text' },
+    dark: {
+      control: 'boolean',
+      description: 'Permet de voir le composant dans les deux **thèmes** : **clair** (`false`, défaut) et **sombre** (`true`).\n\n*N.B. : Ne fait pas partie du composant.*',
+    },
+    label: {
+      control: 'text',
+      description: 'Label du champ de saisie',
+    },
+    labelVisible: {
+      control: 'boolean',
+      description: 'Indique si le label doit être visible (`true`) ou non (`false`, défaut)',
+    },
+    placeholder: {
+      control: 'text',
+      description: 'Contenu du champ à afficher lorsqu’il n’est pas rempli par l’utilisateur',
+    },
+    modelValue: {
+      control: 'text',
+    },
   },
 }
 

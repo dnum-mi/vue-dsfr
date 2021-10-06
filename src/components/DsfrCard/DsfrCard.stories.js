@@ -4,15 +4,42 @@ export default {
   component: DsfrCard,
   title: 'Éléments/Carte - Card',
   argTypes: {
-    dark: { control: 'boolean' },
-    noArrow: { control: 'boolean' },
-    altImg: { control: 'text' },
-    detail: { control: 'text' },
-    description: { control: 'text' },
-    imgSrc: { control: 'text' },
-    link: { control: 'text' },
-    title: { control: 'text' },
-    horizontal: { control: 'boolean' },
+    dark: {
+      control: 'boolean',
+      description: 'Permet de voir le composant dans les deux **thèmes** : **clair** (`false`, défaut) et **sombre** (`true`).\n\n*N.B. : Ne fait pas partie du composant.*',
+    },
+    noArrow: {
+      control: 'boolean',
+      description: 'Indique si la carte doit afficher une flèche vers la droite (`false`, défaut) ou non (`true`)',
+    },
+    altImg: {
+      control: 'text',
+      description: 'Texte alternatif à ajouter à l’image de la carte',
+    },
+    detail: {
+      control: 'text',
+      description: 'Texte de détail de la carte',
+    },
+    description: {
+      control: 'text',
+      description: 'Texte de description de la carte',
+    },
+    imgSrc: {
+      control: 'text',
+      description: 'URL de l’image de la carte',
+    },
+    link: {
+      control: 'text',
+      description: 'URL cible de la carte',
+    },
+    title: {
+      control: 'text',
+      description: 'Titre de la carte',
+    },
+    horizontal: {
+      control: 'boolean',
+      description: 'Indique si le contenu de la carte doit être horizontal (passe de toute façon en vertical sur mobile)',
+    },
   },
 }
 

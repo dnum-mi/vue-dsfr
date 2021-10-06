@@ -4,6 +4,12 @@ import DsfrButton from '../DsfrButton/DsfrButton.vue'
 export default {
   component: DsfrModal,
   title: 'Éléments/Modale - Modal',
+  argTypes: {
+    actions: {
+      control: 'object',
+      description: 'Tableau d’objets : chaque objet contiendra les props à donner à `DsfrButton`',
+    },
+  },
 }
 
 export const Modal = (args) => ({
@@ -11,12 +17,14 @@ export const Modal = (args) => ({
     DsfrModal,
     DsfrButton,
   },
+
   data () {
     return {
       ...args,
       actions: args.actions.map(action => ({ ...action, onClick: args.onClick })),
     }
   },
+
   template: `
   <div :data-rf-theme="dark ? 'dark' : ''" style="background-color: var(--w); padding: 1rem;">
     <DsfrButton

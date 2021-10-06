@@ -33,7 +33,7 @@
           >
             {{ link.text }}
           </router-link>
-          {{ link.to ? '' : link.text }}
+          <a v-else>{{ link.text }}</a>
           <v-icon
             v-if="index !== links.length - 1"
             class="icon"

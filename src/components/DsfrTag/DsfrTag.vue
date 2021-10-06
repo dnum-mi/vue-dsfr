@@ -3,6 +3,7 @@ import { defineComponent } from 'vue'
 
 export default defineComponent({
   name: 'DsfrTag',
+
   props: {
     label: {
       type: String,
