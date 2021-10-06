@@ -2,16 +2,40 @@ import DsfrCheckbox from './DsfrCheckbox.vue'
 
 export default {
   component: DsfrCheckbox,
-  title: 'Basic/Case à cocher - Checkbox',
+  title: 'Basic/Case à cocher - Checkbox/Cases',
   argTypes: {
-    dark: { control: 'boolean' },
-    label: { control: 'text' },
-    name: { control: 'text' },
-    hint: { control: 'text' },
-    disabled: { control: 'boolean' },
-    checked: { control: 'boolean' },
-    errorMessage: { control: 'text' },
-    validMessage: { control: 'text' },
+    dark: {
+      control: 'boolean',
+      description: 'Permet de voir le composant dans les deux **thèmes** : **clair** (`false`, défaut) et **sombre** (`true`).\n\n*N.B. : Ne fait pas partie du composant.*',
+    },
+    label: {
+      control: 'text',
+      description: 'Label de la case à cocher',
+    },
+    name: {
+      control: 'text',
+      description: 'Valeur de l’attribut `name` de la case à cocher',
+    },
+    hint: {
+      control: 'text',
+      description: 'Indice de la case à cocher',
+    },
+    disabled: {
+      control: 'boolean',
+      description: 'Indique si la case à cocher est désactivée',
+    },
+    checked: {
+      control: 'boolean',
+      description: 'Indique si la case à cocher est cochée',
+    },
+    errorMessage: {
+      control: 'text',
+      description: 'Texte du message à afficher en cas d’erreur',
+    },
+    validMessage: {
+      control: 'text',
+      description: 'Texte du message à afficher en cas de succès',
+    },
     onChange: { action: 'changed' },
   },
 }

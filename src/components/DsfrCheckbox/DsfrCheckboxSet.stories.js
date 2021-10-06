@@ -2,20 +2,24 @@ import DsfrCheckboxSet from './DsfrCheckboxSet.vue'
 
 export default {
   component: DsfrCheckboxSet,
-  title: 'Basic/Case à cocher - Checkbox',
+  title: 'Basic/Case à cocher - Checkbox/Groupe de cases',
   argTypes: {
-    dark: { control: 'boolean' },
+    dark: {
+      control: 'boolean',
+      description: 'Permet de voir le composant dans les deux **thèmes** : **clair** (`false`, défaut) et **sombre** (`true`).\n\n*N.B. : Ne fait pas partie du composant.*',
+    },
+
     disabled: {
       control: 'boolean',
       description: 'Indique si l’ensemble des checkboxes doivent être désactivées (`true`) ou non (`false`, défaut)',
     },
     errorMessage: {
       control: 'text',
-      description: 'Message à afficher en cas d’ensemble de champs valide',
+      description: 'Texte du message à afficher en cas d’erreur',
     },
     validMessage: {
       control: 'text',
-      description: 'Message à afficher en cas d’ensemble de champs valide',
+      description: 'Texte du message à afficher en cas de succès',
     },
     inline: {
       control: 'boolean',
@@ -29,12 +33,12 @@ export default {
       control: 'object',
       description: 'Tableau de `string` (la valeur `value` de la checkbox sera identique au `label`) ou d’objets contenant les props à passer à chaque composant DsfrCheckbox, sauf `modelValue` qui sera calculée à partir de `modelValue` du DsfrCheckboxSet.',
     },
-    onChange: {
-      action: 'changed',
-    },
     modelValue: {
       control: 'object',
       description: 'Tableau des valeurs sélectionnées (cochées) du groupe de checkboxes',
+    },
+    onChange: {
+      action: 'changed',
     },
   },
 }

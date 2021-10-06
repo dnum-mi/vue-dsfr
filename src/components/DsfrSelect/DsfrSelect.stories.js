@@ -4,7 +4,10 @@ export default {
   component: DsfrSelect,
   title: 'Basic/Liste déroulante - Select',
   argTypes: {
-    dark: { control: 'boolean' },
+    dark: {
+      control: 'boolean',
+      description: 'Permet de voir le composant dans les deux **thèmes** : **clair** (`false`, défaut) et **sombre** (`true`).\n\n*N.B. : Ne fait pas partie du composant.*',
+    },
     required: {
       control: 'boolean',
       description: 'Option permettant de rendre ce champ de formulaire obligatoire et d’assigner au label un astérisque afin de rendre ce changement visible',

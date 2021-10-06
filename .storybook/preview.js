@@ -27,7 +27,32 @@ export const parameters = {
         'Docs',
         ['Introduction', 'Guide d’utilisation', 'Guide du développeur'],
         'Basic',
-        ['Titres', 'Titres Alternatifs']
+        [
+          'Titres',
+          'Titres Alternatifs',
+          'Alertes',
+          'Fil d’Ariane - Breadcrumb',
+          'Logo Officiel - Official logo',
+          'Boutons - Button',
+          'Groupe de Boutons - ButtonGroup',
+          'Champs de saisie - Input',
+          'Case à cocher - Checkbox',
+          'Boutons radio - Radio button',
+          'Liste déroulante - Select',
+          'Interrupteur - Toggle switch',
+          'Étiquettes - Tags',
+        ],
+        'Éléments',
+        [
+          'Carte - Card',
+          'Barre de recherche - Search bar',
+          'En-tête - Header',
+          'Lettres d’information et réseaux - Follow',
+          'Pied de page - Footer',
+          'Modale - Modal',
+          'Onglets - Tabs', ['Onglets', 'Titre', 'Onglets'],
+          'Table'
+        ],
       ],
     },
   }

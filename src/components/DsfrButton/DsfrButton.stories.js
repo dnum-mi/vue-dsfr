@@ -10,21 +10,30 @@ export default {
   component: DsfrButton,
   title: 'Basic/Boutons - Button',
   argTypes: {
-    secondary: {
-      control: 'boolean',
-      description: 'Indique si le bouton est un bouton **secondaire**',
-    },
     dark: {
       control: 'boolean',
       description: 'Permet de voir le composant dans les deux **thèmes** : **clair** (`false`, défaut) et **sombre** (`true`).\n\n*N.B. : Ne fait pas partie du composant.*',
+    },
+    secondary: {
+      control: 'boolean',
+      description: 'Indique si le bouton est un bouton **secondaire**',
     },
     label: {
       control: 'text',
       description: '**Texte** du bouton',
     },
-    disabled: { control: 'boolean', description: 'Indique si le bouton est **inactivé**' },
-    icon: { control: 'text', description: '**Nom de l’icône** (tel que sur le site [RemixIcon](https://remixicon.com), exemple: `"ri-search-line"`) à afficher à côté du texte du bouton.\n\n Par défaut, l’icône est à gauche' },
-    iconRight: { control: 'boolean', description: 'Indique si l’icône doit **s’afficher à droite** (`true`)' },
+    disabled: {
+      control: 'boolean',
+      description: 'Indique si le bouton est **inactivé**',
+    },
+    icon: {
+      control: 'text',
+      description: '**Nom de l’icône** (tel que sur le site [RemixIcon](https://remixicon.com), exemple: `"ri-search-line"`) à afficher à côté du texte du bouton.\n\n Par défaut, l’icône est à gauche',
+    },
+    iconRight: {
+      control: 'boolean',
+      description: 'Indique si l’icône doit **s’afficher à droite** (`true`)',
+    },
     onClick: { action: 'clicked' },
   },
 }

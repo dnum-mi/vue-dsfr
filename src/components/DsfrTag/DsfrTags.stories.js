@@ -18,7 +18,7 @@ export default {
   argTypes: {
     dark: {
       control: 'boolean',
-      description: 'Permet de voir le composant dans les deux **thèmes** : **clair** (`false`, défaut) et **sombre* (`true`).\n\n*N.B. : Ne fait pas partie du composant.*',
+      description: 'Permet de voir le composant dans les deux **thèmes** : **clair** (`false`, défaut) et **sombre** (`true`).\n\n*N.B. : Ne fait pas partie du composant.*',
     },
     label: {
       control: 'text',
@@ -36,7 +36,7 @@ export default {
       control: 'boolean',
       description: 'Indique si l’icône doit **s’afficher à droite** (`true`)',
     },
-    sm: {
+    small: {
       control: 'boolean',
       description: 'Indique si le tag doit être petit',
     },
@@ -63,9 +63,9 @@ const tags = [
     { label: 'Tag avec icône à droite', icon: 'ri-arrow-right-line', iconRight: true },
   ],
   [
-    { label: 'Petit tag sans icône', sm: true },
-    { label: 'Petit tag avec icône à gauche', icon: 'ri-arrow-left-line', sm: true },
-    { label: 'Petit tag avec icône à droite', icon: 'ri-arrow-right-line', iconRight: true, sm: true },
+    { label: 'Petit tag sans icône', small: true },
+    { label: 'Petit tag avec icône à gauche', icon: 'ri-arrow-left-line', small: true },
+    { label: 'Petit tag avec icône à droite', icon: 'ri-arrow-right-line', iconRight: true, small: true },
   ],
   [
     { label: 'Tag cliquable sans icône', link: 'https://vue-dsfr.netlify.app' },
@@ -73,9 +73,9 @@ const tags = [
     { label: 'Tag cliquable avec icône à droite', icon: 'ri-arrow-right-line', iconRight: true, link: 'https://vue-dsfr.netlify.app' },
   ],
   [
-    { label: 'Petit tag cliquable sans icône', sm: true, link: 'https://vue-dsfr.netlify.app' },
-    { label: 'Petit tag cliquable avec icône à gauche', icon: 'ri-arrow-left-line', sm: true, link: 'https://vue-dsfr.netlify.app' },
-    { label: 'Petit tag cliquable avec icône à droite', icon: 'ri-arrow-right-line', iconRight: true, sm: true, link: 'https://vue-dsfr.netlify.app' },
+    { label: 'Petit tag cliquable sans icône', small: true, link: 'https://vue-dsfr.netlify.app' },
+    { label: 'Petit tag cliquable avec icône à gauche', icon: 'ri-arrow-left-line', small: true, link: 'https://vue-dsfr.netlify.app' },
+    { label: 'Petit tag cliquable avec icône à droite', icon: 'ri-arrow-right-line', iconRight: true, small: true, link: 'https://vue-dsfr.netlify.app' },
   ],
 ]
 
@@ -92,7 +92,7 @@ export const Etiquette = (args) => ({
       :tagName="tagName"
       :iconRight="iconRight"
       :disabled="disabled"
-      :sm="sm"
+      :small="small"
     />
   </div>
   `,
@@ -103,7 +103,7 @@ Etiquette.args = {
   icon: '',
   iconRight: false,
   disabled: false,
-  sm: false,
+  small: false,
   tagName: undefined,
 }
 
@@ -154,9 +154,9 @@ export const EtiquettesSimplesPetites = (args) => ({
   data () {
     // {
     //   tags: [
-    //     { label: 'Petit tag sans icône', sm: true },
-    //     { label: 'Petit tag avec icône à gauche', icon: 'ri-arrow-left-line', sm: true },
-    //     { label: 'Petit tag avec icône à droite', icon: 'ri-arrow-right-line', iconRight: true, sm: true },
+    //     { label: 'Petit tag sans icône', small: true },
+    //     { label: 'Petit tag avec icône à gauche', icon: 'ri-arrow-left-line', small: true },
+    //     { label: 'Petit tag avec icône à droite', icon: 'ri-arrow-right-line', iconRight: true, small: true },
     //   ],
     // }
     return args
@@ -204,9 +204,9 @@ export const EtiquettesCliquablesPetites = (args) => ({
   data () {
     // {
     //   tags: [
-    //     { label: 'Tag cliquable sans icône', sm: true, link: 'https://vue-dsfr.netlify.app' },
-    //     { label: 'Tag cliquable avec icône à gauche', icon: 'ri-arrow-left-line', sm: true, link: 'https://vue-dsfr.netlify.app' },
-    //     { label: 'Tag cliquable avec icône à droite', icon: 'ri-arrow-right-line', iconRight: true, sm: true, link: 'https://vue-dsfr.netlify.app' },
+    //     { label: 'Tag cliquable sans icône', small: true, link: 'https://vue-dsfr.netlify.app' },
+    //     { label: 'Tag cliquable avec icône à gauche', icon: 'ri-arrow-left-line', small: true, link: 'https://vue-dsfr.netlify.app' },
+    //     { label: 'Tag cliquable avec icône à droite', icon: 'ri-arrow-right-line', iconRight: true, small: true, link: 'https://vue-dsfr.netlify.app' },
     //   ]
     // }
     return args
