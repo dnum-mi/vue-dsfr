@@ -36,6 +36,10 @@ export default {
       control: 'boolean',
       description: 'Indique si l’icône doit **s’afficher à droite** (`true`)',
     },
+    iconOnly: {
+      control: 'boolean',
+      description: 'Indique si l’icône doit apparaître seule (le `label` sera dans l’attribut `aria-label` de l’icône)',
+    },
     small: {
       control: 'boolean',
       description: 'Indique si le tag doit être petit',
@@ -91,6 +95,7 @@ export const Etiquette = (args) => ({
       :icon="icon"
       :tagName="tagName"
       :iconRight="iconRight"
+      :iconOnly="iconOnly"
       :disabled="disabled"
       :small="small"
     />
@@ -102,6 +107,7 @@ Etiquette.args = {
   label: 'Étiquette',
   icon: '',
   iconRight: false,
+  iconOnly: false,
   disabled: false,
   small: false,
   tagName: undefined,
