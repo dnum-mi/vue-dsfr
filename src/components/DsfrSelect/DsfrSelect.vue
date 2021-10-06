@@ -39,6 +39,8 @@ export default {
     disabled: Boolean,
   },
 
+  emits: ['update:modelValue'],
+
   computed: {
     message () {
       return this.errorMessage || this.successMessage
@@ -69,6 +71,7 @@ export default {
       class="fr-select"
       name="select"
       :disabled="disabled"
+      @change="$emit('update:modelValue', $event.target.value)"
     >
       <option
         value=""
