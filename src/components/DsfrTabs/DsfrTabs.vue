@@ -9,8 +9,8 @@
         v-for="(tabTitle, index) in tabTitles"
         :key="index"
         :icon="tabTitle.icon"
-        :panel-id="`${getIdFromIndex(index)}-panel`"
-        :tab-id="tabTitle.id || getIdFromIndex(index)"
+        :panel-id="tabTitle.panelId || `${getIdFromIndex(index)}-panel`"
+        :tab-id="tabTitle.tabId || getIdFromIndex(index)"
         :selected="isSelected(index)"
         @click="selectIndex(index)"
       >
@@ -20,8 +20,8 @@
     <DsfrTabContent
       v-for="(tabContent, index) in tabContents"
       :key="index"
-      :panel-id="`${getIdFromIndex(index)}-panel`"
-      :tab-id="getIdFromIndex(index)"
+      :panel-id="tabTitle[index].panelId || `${getIdFromIndex(index)}-panel`"
+      :tab-id="tabTitle[index].tabId || getIdFromIndex(index)"
       :selected="isSelected(index)"
       :asc="asc"
     >
@@ -81,7 +81,7 @@ export default {
       if (this.generatedIds[idx]) {
         return this.generatedIds[idx]
       }
-      const id = getRandomId('tabpanel')
+      const id = getRandomId('tab')
       this.generatedIds[idx] = id
       return id
     },
