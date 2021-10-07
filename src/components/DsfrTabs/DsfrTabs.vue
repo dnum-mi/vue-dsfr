@@ -9,10 +9,12 @@
         v-for="(tabTitle, index) in tabTitles"
         :key="index"
         :icon="tabTitle.icon"
-        :panel-id="`${getIdFromIndex(index)}-panel`"
-        :tab-id="tabTitle.id || getIdFromIndex(index)"
+        :panel-id="tabTitle.panelId || `${getIdFromIndex(index)}-panel`"
+        :tab-id="tabTitle.tabId || getIdFromIndex(index)"
         :selected="isSelected(index)"
         @click="selectIndex(index)"
+        @next="selectNext()"
+        @previous="selectPrevious()"
       >
         {{ tabTitle.title }}
       </DsfrTabItem>
@@ -20,8 +22,8 @@
     <DsfrTabContent
       v-for="(tabContent, index) in tabContents"
       :key="index"
-      :panel-id="`${getIdFromIndex(index)}-panel`"
-      :tab-id="getIdFromIndex(index)"
+      :panel-id="tabTitles[index].panelId || `${getIdFromIndex(index)}-panel`"
+      :tab-id="tabTitles[index].tabId || getIdFromIndex(index)"
       :selected="isSelected(index)"
       :asc="asc"
     >
@@ -81,7 +83,7 @@ export default {
       if (this.generatedIds[idx]) {
         return this.generatedIds[idx]
       }
-      const id = getRandomId('tabpanel')
+      const id = getRandomId('tab')
       this.generatedIds[idx] = id
       return id
     },
@@ -89,6 +91,14 @@ export default {
       this.asc = idx > this.selectedIndex
       this.selectedIndex = idx
       this.$emit('select-tab', idx)
+    },
+    async selectPrevious () {
+      const newIndex = this.selectedIndex === 0 ? this.tabTitles.length - 1 : this.selectedIndex - 1
+      this.selectIndex(newIndex)
+    },
+    async selectNext () {
+      const newIndex = this.selectedIndex === this.tabTitles.length - 1 ? 0 : this.selectedIndex + 1
+      this.selectIndex(newIndex)
     },
   },
 }
