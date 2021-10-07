@@ -105,17 +105,6 @@ export default {
 <style src="./select.css" />
 
 <style scoped>
-.fr-select-group {
-  position: relative;
-
-  &:last-child {
-      margin-bottom: -0.75rem;
-  }
-  &:first-child {
-      margin-top: -0.75rem;
-  }
-}
-
 select:disabled {
   cursor: not-allowed;
 }
