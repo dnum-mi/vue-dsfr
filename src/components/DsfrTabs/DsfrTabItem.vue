@@ -12,6 +12,8 @@
       :aria-selected="selected"
       :aria-controls="panelId"
       @click="$emit('click', $event)"
+      @keydown.right="$emit('next')"
+      @keydown.left="$emit('previous')"
     >
       <span
         v-if="icon"
@@ -46,7 +48,7 @@ export default {
     },
   },
 
-  emits: ['click'],
+  emits: ['click', 'next', 'previous'],
 
 }
 </script>

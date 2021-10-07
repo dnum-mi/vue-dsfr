@@ -42,7 +42,12 @@ const tabTitles = [
   { title: 'Titre 3', icon: 'ri-checkbox-circle-line' },
   { title: 'Titre 4', icon: 'ri-checkbox-circle-line' },
 ]
-const tabContents = ['Contenu 1 avec seulement des string', 'Contenu2 avec seulement des string', 'Contenu3 avec seulement des string', 'Contenu4 avec seulement des string']
+const tabContents = [
+  'Contenu 1 avec seulement des string',
+  'Contenu2 avec seulement des string',
+  'Contenu3 avec seulement des string',
+  'Contenu4 avec seulement des string',
+]
 
 export const OngletsSimples = (args) => ({
   components: { DsfrTabs, DsfrTabItem },
