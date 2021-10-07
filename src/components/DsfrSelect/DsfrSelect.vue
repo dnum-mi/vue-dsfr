@@ -105,10 +105,6 @@ export default {
 <style src="./select.css" />
 
 <style scoped>
-.fr-select-group {
-  position: relative;
-}
-
 select:disabled {
   cursor: not-allowed;
 }
