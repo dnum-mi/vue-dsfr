@@ -62,11 +62,6 @@
     // https://github.com/vscode-icons/vscode-icons
     "vscode-icons-team.vscode-icons",
 
-    // A customizable extension for colorizing matching brackets
-    // https://github.com/CoenraadS/BracketPair
-    // (Archived, not maintained, but still working and the best...)
-    "coenraads.bracket-pair-colorizer",
-
     // Makes indentation easier to read
     // https://github.com/oderwat/vscode-indent-rainbow
     "oderwat.indent-rainbow",
