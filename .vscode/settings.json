@@ -1,5 +1,6 @@
 {
   "jest.jestCommandLine": "./node_modules/.bin/jest",
+  "editor.bracketPairColorization.enabled": true,
   "conventionalCommits.scopes": [
     "releases"
   ]
