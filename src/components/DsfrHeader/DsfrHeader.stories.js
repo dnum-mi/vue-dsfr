@@ -79,6 +79,7 @@ export const EnTete = (args, { argTypes }) => ({
         @click="onClickOnLogo"
         :model-value="modelValue"
         @update:model-value="$emit('update:modelValue', $event)"
+        @show-hide-notif="showNotif"
       />
     </div>
   `,
@@ -87,6 +88,10 @@ export const EnTete = (args, { argTypes }) => ({
       $event.preventDefault()
       $event.stopPropagation()
       this.actionOnLogo($event)
+    },
+    showNotif (index) {
+      this.quickLinks[index].showNotif = !this.quickLinks[index].showNotif
+      alert(this.quickLinks[index].showNotif)
     },
   },
 })
@@ -99,8 +104,8 @@ EnTete.args = {
   modelValue: '',
   homeTo: '#',
   quickLinks: [
-    { label: 'Lien1', path: '/path1', icon: '' },
-    { label: 'Lien2', path: '/path2', icon: 'ri-notification-3-line' },
-    { label: 'Lien3', path: '/path3', icon: 'ri-phone-line', iconRight: true },
+    { id: 1, label: 'Lien1', path: '/path1', icon: '' },
+    { id: 2, label: 'Lien2', path: '', icon: 'ri-notification-3-line', showNotif: true },
+    { id: 3, label: 'Lien3', path: '/path3', icon: 'ri-phone-line', iconRight: true },
   ],
 }

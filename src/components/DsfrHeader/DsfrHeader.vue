@@ -76,6 +76,7 @@
               <DsfrHeaderMenuLinks
                 v-if="!menuOpened"
                 :links="quickLinks"
+                @show-hide-notif="showNotif"
               />
             </div>
             <div
@@ -114,6 +115,7 @@
               <DsfrHeaderMenuLinks
                 v-if="menuOpened"
                 :links="quickLinks"
+                @show-hide-notif="showNotif"
               />
             </div>
             <div
@@ -171,7 +173,7 @@ export default {
       default: () => 'Gouvernement',
     },
   },
-  emits: ['update:modelValue', 'search'],
+  emits: ['update:modelValue', 'search', 'show-hide-notif'],
   data () {
     return {
       menuOpened: false,
@@ -195,6 +197,13 @@ export default {
     showSearchModal () {
       this.showModal()
       this.searchModalOpened = true
+    },
+    showNotif (idLink) {
+      const index = this.quickLinks.findIndex((e) => e.id === idLink)
+      // ici, on déclenche l'événement show-hide-notif du parent,
+      // dont la méthode devra inverser la valeur de la propriété showNotif de l'élément
+      // du tableau quickLinks qui correspond à l'index
+      this.$emit('show-hide-notif', index)
     },
   },
 }

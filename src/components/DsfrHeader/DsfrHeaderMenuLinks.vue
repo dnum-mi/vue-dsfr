@@ -3,8 +3,8 @@
     class="fr-links-group"
   >
     <li
-      v-for="quickLink in links"
-      :key="quickLink.path"
+      v-for="(quickLink, index) in links"
+      :key="index"
     >
       <DsfrHeaderMenuLink
         v-bind="quickLink"
@@ -30,13 +30,14 @@ export default {
     },
   },
 
+  emits: ['show-hide-notif'],
   data () {
     return {}
   },
 
   methods: {
-    showNotif (showNotif) {
-      alert(showNotif)
+    showNotif (idLink) {
+      this.$emit('show-hide-notif', idLink)
     },
   },
 }
