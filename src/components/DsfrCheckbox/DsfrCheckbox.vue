@@ -144,12 +144,18 @@ export default defineComponent({
   outline-offset: 2px;
   outline-width: 2px;
 
+  @nest input:focus + label & {
+    outline-style: solid;
+  }
+
   @nest input[type="checkbox"]:checked + label & {
+    outline-color: var(--focus);
     background-color: var(--bf500);
     color: var(--g100);
   }
 
   @nest input[type="checkbox"]:disabled + label & {
+    outline-color: var(--focus);
     background-color: var(--g200);
     border: 1px solid var(--g400);
     cursor: not-allowed;

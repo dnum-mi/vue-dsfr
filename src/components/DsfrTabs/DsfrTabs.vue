@@ -41,6 +41,7 @@ import { getRandomId } from '../../utils/random-utils.js'
 
 import DsfrTabItem from './DsfrTabItem.vue'
 import DsfrTabContent from './DsfrTabContent.vue'
+
 export default {
   name: 'DsfrTabs',
 
