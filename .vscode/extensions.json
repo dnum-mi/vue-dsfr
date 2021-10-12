@@ -6,6 +6,10 @@
     // https://github.com/johnsoncodehk/volar
     "johnsoncodehk.volar",
 
+    // Language support for PostCSS
+    // https://github.com/csstools/postcss-language
+    "csstools.postcss",
+
     // Peek and go-to-definition for .vue files
     // https://github.com/fuzinato/vscode-vue-peek
     "dariofuzinato.vue-peek",
@@ -61,11 +65,6 @@
     // Utility to change files icons
     // https://github.com/vscode-icons/vscode-icons
     "vscode-icons-team.vscode-icons",
-
-    // A customizable extension for colorizing matching brackets
-    // https://github.com/CoenraadS/BracketPair
-    // (Archived, not maintained, but still working and the best...)
-    "coenraads.bracket-pair-colorizer",
 
     // Makes indentation easier to read
     // https://github.com/oderwat/vscode-indent-rainbow

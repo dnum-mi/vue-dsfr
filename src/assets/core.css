@@ -233,13 +233,13 @@ a {
   outline-width: 2px;
 }
 
-a:focus {
+/* a:focus {
   outline-style: solid;
-}
+} */
 
-a:focus:not(:focus-visible) {
+/* a:focus:not(:focus-visible) {
   outline-style: none;
-}
+} */
 
 a:focus-visible {
   outline-style: solid;
@@ -262,13 +262,13 @@ button {
   outline-width: 2px;
 }
 
-button:focus {
+/* button:focus {
   outline-style: solid;
-}
+} */
 
-button:focus:not(:focus-visible) {
+/* button:focus:not(:focus-visible) {
   outline-style: none;
-}
+} */
 
 button:focus-visible {
   outline-style: solid;
@@ -291,13 +291,13 @@ input {
   outline-width: 2px;
 }
 
-input:focus {
+/* input:focus {
   outline-style: solid;
-}
+} */
 
-input:focus:not(:focus-visible) {
+/* input:focus:not(:focus-visible) {
   outline-style: none;
-}
+} */
 
 input:focus-visible {
   outline-style: solid;
@@ -316,15 +316,15 @@ input[type="checkbox"] + label::before, input[type="radio"] + label::before {
   outline-width: 2px;
 }
 
-input[type="checkbox"]:focus + label::before,
+/* input[type="checkbox"]:focus + label::before,
 input[type="radio"]:focus + label::before {
   outline-style: solid;
-}
+} */
 
-input[type="checkbox"]:focus:not(:focus-visible) + label::before,
+/* input[type="checkbox"]:focus:not(:focus-visible) + label::before,
 input[type="radio"]:focus:not(:focus-visible) + label::before {
   outline-style: none;
-}
+} */
 
 input[type="checkbox"]:focus-visible + label::before,
 input[type="radio"]:focus-visible + label::before {
@@ -360,13 +360,13 @@ select {
   outline-width: 2px;
 }
 
-select:focus {
+/* select:focus {
   outline-style: solid;
-}
+} */
 
-select:focus:not(:focus-visible) {
+/* select:focus:not(:focus-visible) {
   outline-style: none;
-}
+} */
 
 select:focus-visible {
   outline-style: solid;
@@ -389,13 +389,13 @@ textarea {
   outline-width: 2px;
 }
 
-textarea:focus {
+/* textarea:focus {
   outline-style: solid;
-}
+} */
 
-textarea:focus:not(:focus-visible) {
+/* textarea:focus:not(:focus-visible) {
   outline-style: none;
-}
+} */
 
 textarea:focus-visible {
   outline-style: solid;
@@ -414,13 +414,13 @@ textarea:disabled {
   outline-width: 2px;
 }
 
-[tabindex]:focus {
+/* [tabindex]:focus {
   outline-style: solid;
-}
+} */
 
-[tabindex]:focus:not(:focus-visible) {
+/* [tabindex]:focus:not(:focus-visible) {
   outline-style: none;
-}
+} */
 
 [tabindex]:focus-visible {
   outline-style: solid;
@@ -435,14 +435,14 @@ video[controls], audio[controls] {
   outline-width: 2px;
 }
 
-video:focus[controls], audio:focus[controls] {
+/* video:focus[controls], audio:focus[controls] {
   outline-style: solid;
-}
+} */
 
-video:focus:not(:focus-visible)[controls],
+/* video:focus:not(:focus-visible)[controls],
 audio:focus:not(:focus-visible)[controls] {
   outline-style: none;
-}
+} */
 
 video:focus-visible[controls], audio:focus-visible[controls] {
   outline-style: solid;
@@ -469,9 +469,9 @@ video:not([href]), audio:not([href]) {
   outline-style: solid;
 }
 
-[contenteditable]:not([contenteditable="false"]):focus:not(:focus-visible) {
+/* [contenteditable]:not([contenteditable="false"]):focus:not(:focus-visible) {
   outline-style: none;
-}
+} */
 
 [contenteditable]:not([contenteditable="false"]):focus-visible {
   outline-style: solid;
@@ -482,14 +482,14 @@ details, details > summary:first-of-type {
   outline-width: 2px;
 }
 
-details:focus, details > summary:first-of-type:focus {
+/* details:focus, details > summary:first-of-type:focus {
   outline-style: solid;
-}
+} */
 
-details:focus:not(:focus-visible),
+/* details:focus:not(:focus-visible),
 details > summary:first-of-type:focus:not(:focus-visible) {
   outline-style: none;
-}
+} */
 
 details:focus-visible, details > summary:first-of-type:focus-visible {
   outline-style: solid;
