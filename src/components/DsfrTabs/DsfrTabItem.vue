@@ -5,6 +5,7 @@
   >
     <button
       :id="tabId"
+      ref="button"
       :data-testid="`test-${tabId}`"
       class="fr-tabs__tab"
       :tabindex="selected ? 0 : -1"
@@ -50,5 +51,12 @@ export default {
 
   emits: ['click', 'next', 'previous'],
 
+  watch: {
+    selected (newValue, oldValue) {
+      if (newValue) {
+        this.$refs.button.focus()
+      }
+    },
+  },
 }
 </script>
