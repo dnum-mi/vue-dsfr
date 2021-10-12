@@ -6,6 +6,10 @@
     // https://github.com/johnsoncodehk/volar
     "johnsoncodehk.volar",
 
+    // Language support for PostCSS
+    // https://github.com/csstools/postcss-language
+    "csstools.postcss",
+
     // Peek and go-to-definition for .vue files
     // https://github.com/fuzinato/vscode-vue-peek
     "dariofuzinato.vue-peek",
