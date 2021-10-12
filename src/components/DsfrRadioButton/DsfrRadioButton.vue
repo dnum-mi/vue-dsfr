@@ -143,10 +143,6 @@ input[type="radio"]:checked + label::before {
   border: 1px solid var(--bf500);
 }
 
-input[type="radio"]:focus:not(:focus-visible) + label::before {
-    outline-style: none;
-}
-
 input[type="radio"] {
     position: absolute;
     opacity: 0;
