@@ -8,6 +8,7 @@
     >
       <DsfrHeaderMenuLink
         v-bind="quickLink"
+        @show-hide-notif="showNotif"
       />
     </li>
   </ul>
@@ -15,19 +16,28 @@
 
 <script>
 import DsfrHeaderMenuLink from './DsfrHeaderMenuLink.vue'
+
 export default {
   name: 'DsfrMenuLinks',
   components: {
     DsfrHeaderMenuLink,
   },
+
   props: {
     links: {
       type: Array,
       default: () => undefined,
     },
   },
+
   data () {
     return {}
+  },
+
+  methods: {
+    showNotif (showNotif) {
+      alert(showNotif)
+    },
   },
 }
 </script>

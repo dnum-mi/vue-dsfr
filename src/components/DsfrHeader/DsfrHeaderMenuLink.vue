@@ -8,6 +8,7 @@
       'flex': true,
       'reverse': iconRight,
     }"
+    @click="$emit('show-hide-notif', !showNotif)"
   >
     <VIcon
       v-if="icon"
@@ -28,7 +29,7 @@ export default {
   props: {
     path: {
       type: String,
-      default: '',
+      default: undefined,
     },
     iconOnly: Boolean,
     iconRight: Boolean,
@@ -40,10 +41,14 @@ export default {
       type: String,
       default: '',
     },
+    showNotif: Boolean,
   },
+
+  emits: ['show-hide-notif'],
   computed: {
     is () {
-      return this.path.startsWith('http') ? 'a' : 'router-link'
+      if (!this.path) return 'button'
+      else return this.path.startsWith('http') ? 'a' : 'router-link'
     },
     to () {
       return this.path.startsWith('http') ? undefined : this.path
