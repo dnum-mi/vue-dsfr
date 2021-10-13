@@ -8,7 +8,7 @@
       'flex': true,
       'reverse': iconRight,
     }"
-    @click="$emit('show-hide-notif', id)"
+    @click.stop="onClick"
   >
     <VIcon
       v-if="icon"
@@ -27,14 +27,11 @@
 export default {
   name: 'DsfrHeaderMenuLink',
   props: {
-    id: {
-      type: Number,
-      default: 0,
-    },
     path: {
       type: String,
       default: undefined,
     },
+    button: Boolean,
     iconOnly: Boolean,
     iconRight: Boolean,
     icon: {
@@ -45,20 +42,24 @@ export default {
       type: String,
       default: '',
     },
-    showNotif: Boolean,
+    onClick: {
+      type: Function,
+      default: () => {},
+    },
   },
 
-  emits: ['show-hide-notif'],
   computed: {
     is () {
-      if (this.path !== undefined) return 'button'
-      else return this.path.startsWith('http') ? 'a' : 'router-link'
+      if (this.button) {
+        return 'button'
+      }
+      return this.path.startsWith('http') ? 'a' : 'router-link'
     },
     to () {
-      return this.path.startsWith('http') ? undefined : this.path
+      return (this.button || this.path.startsWith('http')) ? undefined : this.path
     },
     href () {
-      return this.path.startsWith('http') ? this.path : undefined
+      return (!this.button && this.path.startsWith('http')) ? this.path : undefined
     },
   },
 }

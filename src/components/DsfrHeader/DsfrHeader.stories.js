@@ -41,13 +41,20 @@ export default {
     },
     quickLinks: {
       control: 'array',
-      description: 'Tableau des liens d’accès rapide, chaque objet contiendra les props suivantes :\n\n- label: (`\'Notifications\'`, par ex.)\n\n- path: (`\'/notification\'` par ex.)\n\n- `icon` pour le nom de l’icône à afficher (`\'ri-phone-line\'` par ex.)\n\n- `iconRight` (`true` pour afficher l’icône à droite, `false` par défaut)',
+      description: `Tableau des liens d’accès rapide, chaque objet contiendra les props suivantes :
+
+- \`label\`: (\`'Notifications'\`, par ex.)
+- \`path\`: (\`'/notification'\` par ex.)
+- \`icon\` pour le nom de l’icône à afficher (\`'ri-phone-line'\` par ex.)
+- \`iconRight\` (\`true\` pour afficher l’icône à droite, \`false\` par défaut)
+- \`button\`: (\`true\` pour avoir une balise \`button\`, \`false\` pour laisser en balise \`a\`)`,
     },
     modelValue: {
       control: 'text',
       description: 'Contenu du champs de saisie de la barre de recherche',
     },
     actionOnLogo: { action: 'clicked on logo' },
+    actionOnLink: { action: 'clicked on quickLink' },
     onChangeSearchInput: { action: 'search changed' },
   },
 }
@@ -65,6 +72,15 @@ export const EnTete = (args, { argTypes }) => ({
   data () {
     return {
       ...args,
+      quickLincks: args.quickLinks.map((link, idx) => {
+        if (idx === 0) {
+          link.onClick = ($event) => {
+            $event.preventDefault()
+            this.actionOnLink()
+          }
+        }
+        return link
+      }),
     }
   },
   template: `
@@ -79,7 +95,6 @@ export const EnTete = (args, { argTypes }) => ({
         @click="onClickOnLogo"
         :model-value="modelValue"
         @update:model-value="$emit('update:modelValue', $event)"
-        @show-hide-notif="showNotif"
       />
     </div>
   `,
@@ -88,10 +103,6 @@ export const EnTete = (args, { argTypes }) => ({
       $event.preventDefault()
       $event.stopPropagation()
       this.actionOnLogo($event)
-    },
-    showNotif (index) {
-      this.quickLinks[index].showNotif = !this.quickLinks[index].showNotif
-      alert(this.quickLinks[index].showNotif)
     },
   },
 })
@@ -104,8 +115,8 @@ EnTete.args = {
   modelValue: '',
   homeTo: '#',
   quickLinks: [
-    { id: 1, label: 'Lien1', path: '/path1', icon: '' },
-    { id: 2, label: 'Lien2', path: '', icon: 'ri-notification-3-line', showNotif: true },
-    { id: 3, label: 'Lien3', path: '/path3', icon: 'ri-phone-line', iconRight: true },
+    { label: 'Lien2', path: '', icon: 'ri-notification-3-line', iconOnly: true, button: true },
+    { label: 'Lien1', path: '/path1', icon: '' },
+    { label: 'Lien3', path: '/path3', icon: 'ri-phone-line', iconRight: true },
   ],
 }

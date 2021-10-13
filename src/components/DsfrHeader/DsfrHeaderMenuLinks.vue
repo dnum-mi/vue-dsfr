@@ -8,7 +8,6 @@
     >
       <DsfrHeaderMenuLink
         v-bind="quickLink"
-        @show-hide-notif="showNotif"
       />
     </li>
   </ul>
@@ -27,17 +26,6 @@ export default {
     links: {
       type: Array,
       default: () => undefined,
-    },
-  },
-
-  emits: ['show-hide-notif'],
-  data () {
-    return {}
-  },
-
-  methods: {
-    showNotif (idLink) {
-      this.$emit('show-hide-notif', idLink)
     },
   },
 }
