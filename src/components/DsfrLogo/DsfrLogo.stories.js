@@ -35,7 +35,7 @@ export const Logo = (args) => ({
       <DsfrLogo
         :small="small"
         :large="large"
-        :logoText="logoText"
+        :logo-text="logoText"
       />
     </div>
   `,
