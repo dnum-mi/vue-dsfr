@@ -3,8 +3,8 @@
     class="fr-links-group"
   >
     <li
-      v-for="quickLink in links"
-      :key="quickLink.path"
+      v-for="(quickLink, index) in links"
+      :key="index"
     >
       <DsfrHeaderMenuLink
         v-bind="quickLink"
@@ -15,19 +15,18 @@
 
 <script>
 import DsfrHeaderMenuLink from './DsfrHeaderMenuLink.vue'
+
 export default {
   name: 'DsfrMenuLinks',
   components: {
     DsfrHeaderMenuLink,
   },
+
   props: {
     links: {
       type: Array,
       default: () => undefined,
     },
-  },
-  data () {
-    return {}
   },
 }
 </script>
