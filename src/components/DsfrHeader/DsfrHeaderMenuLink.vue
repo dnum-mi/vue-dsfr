@@ -8,6 +8,7 @@
       'flex': true,
       'reverse': iconRight,
     }"
+    @click.stop="onClick"
   >
     <VIcon
       v-if="icon"
@@ -28,8 +29,9 @@ export default {
   props: {
     path: {
       type: String,
-      default: '',
+      default: undefined,
     },
+    button: Boolean,
     iconOnly: Boolean,
     iconRight: Boolean,
     icon: {
@@ -40,16 +42,24 @@ export default {
       type: String,
       default: '',
     },
+    onClick: {
+      type: Function,
+      default: () => {},
+    },
   },
+
   computed: {
     is () {
+      if (this.button) {
+        return 'button'
+      }
       return this.path.startsWith('http') ? 'a' : 'router-link'
     },
     to () {
-      return this.path.startsWith('http') ? undefined : this.path
+      return (this.button || this.path.startsWith('http')) ? undefined : this.path
     },
     href () {
-      return this.path.startsWith('http') ? this.path : undefined
+      return (!this.button && this.path.startsWith('http')) ? this.path : undefined
     },
   },
 }

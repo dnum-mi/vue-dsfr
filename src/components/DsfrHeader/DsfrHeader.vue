@@ -171,7 +171,9 @@ export default {
       default: () => 'Gouvernement',
     },
   },
+
   emits: ['update:modelValue', 'search'],
+
   data () {
     return {
       menuOpened: false,
@@ -179,6 +181,7 @@ export default {
       modalOpened: false,
     }
   },
+
   methods: {
     hideModal () {
       this.modalOpened = false
