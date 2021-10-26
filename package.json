@@ -1,9 +1,10 @@
 {
   "name": "@laruiss/vue-dsfr",
-  "version": "1.0.0-beta.5",
+  "version": "1.0.0-beta.26",
   "files": [
     "dist"
   ],
+  "license": "MIT",
   "main": "./dist/vue-dsfr.umd.js",
   "module": "./dist/vue-dsfr.esm.js",
   "publishConfig": {
