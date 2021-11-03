@@ -31,7 +31,7 @@ export default {
     },
     large: {
       control: 'boolean',
-      description: 'Indique si la barre de recherche doit prendre plus de largeur (`true) ou non (`false`, défaut)',
+      description: 'Indique si la barre de recherche doit prendre plus de hauteur (`true`) ou non (`false`, défaut)',
     },
   },
 }
@@ -53,6 +53,7 @@ export const IconOnly = (args) => ({
         :button-text="buttonText"
         :hide-icon="hideIcon"
         v-model="modelValue"
+        :large="large"
       />
     </div>
   `,
@@ -65,6 +66,7 @@ IconOnly.args = {
   buttonText: '',
   labelVisible: false,
   modelValue: '',
+  large: false,
 }
 
 export const TextNoIcon = (args) => ({

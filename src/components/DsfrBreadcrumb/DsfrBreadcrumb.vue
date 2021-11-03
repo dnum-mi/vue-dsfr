@@ -56,9 +56,11 @@ VIcon.add(RiArrowRightSLine)
 
 export default {
   name: 'DsfrBreadcrumb',
+
   components: {
     VIcon,
   },
+
   props: {
     breadcrumbId: {
       type: String,
@@ -71,6 +73,7 @@ export default {
       default: () => [{ text: '' }],
     },
   },
+
   data () {
     return {
       hideButton: false,
