@@ -62,7 +62,10 @@ export default {
       :for="selectId"
     >
       {{ label }} {{ required ? '*' : '' }}
-      <span class="fr-hint-text">{{ description }}</span>
+      <span
+        v-if="description"
+        class="fr-hint-text"
+      >{{ description }}</span>
     </label>
 
     <select
