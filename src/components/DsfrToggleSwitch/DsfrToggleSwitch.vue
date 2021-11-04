@@ -73,6 +73,7 @@ export default defineComponent({
 
 .fr-toggle__label::before {
   content: '';
+  margin-right: 0;
 }
 
 .after {
