@@ -72,3 +72,10 @@ export default {
 </template>
 
 <style src="./tiles.css" />
+
+<style scoped>
+.fr-tile__desc,
+.fr-tile__title {
+  color: var(--g800);
+}
+</style>
