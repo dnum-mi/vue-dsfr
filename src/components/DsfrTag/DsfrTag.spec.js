@@ -45,7 +45,7 @@ describe('DsfrTag', () => {
       props: {
         label,
         icon,
-        sm: true,
+        small: true,
       },
     })
 

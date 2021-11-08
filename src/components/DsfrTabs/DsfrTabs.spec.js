@@ -14,7 +14,7 @@ describe('DsfrTabs', () => {
     const title3 = 'Titre 3'
 
     const tabTitles = [
-      { title: title1, id: 'tab1' },
+      { title: title1, tabId: 'tab1' },
       { title: title2 },
       { title: title3 },
       { title: 'Titre 4' },
