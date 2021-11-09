@@ -1,3 +1,5 @@
+export { default as DsfrAccordion } from './DsfrAccordion/DsfrAccordion.vue'
+export { default as DsfrAccordionsGroup } from './DsfrAccordion/DsfrAccordionsGroup.vue'
 export { default as DsfrAlert } from './DsfrAlert/DsfrAlert.vue'
 export { default as DsfrBreadcrumb } from './DsfrBreadcrumb/DsfrBreadcrumb.vue'
 export { default as DsfrButton } from './DsfrButton/DsfrButton.vue'
