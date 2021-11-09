@@ -48,18 +48,8 @@
 <script>
 import { getRandomId } from '../../utils/random-utils.js'
 
-import VIcon from 'oh-vue-icons/dist/v3/icon.es'
-
-import { RiArrowRightSLine } from 'oh-vue-icons/icons'
-
-VIcon.add(RiArrowRightSLine)
-
 export default {
   name: 'DsfrBreadcrumb',
-
-  components: {
-    VIcon,
-  },
 
   props: {
     breadcrumbId: {
