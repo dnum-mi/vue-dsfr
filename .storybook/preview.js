@@ -1,5 +1,6 @@
 import { defineComponent } from 'vue'
 import { app } from '@storybook/vue3'
+import { FocusTrap } from 'focus-trap-vue'
 
 import '../src/assets/variables-dsfr.css'
 import '../src/assets/fonts-dsfr.css'
@@ -71,3 +72,4 @@ const RouterLink = defineComponent({
 
 app.component('router-link', RouterLink);
 app.component('VIcon', VIcon)
+app.component('FocusTrap', FocusTrap)

@@ -1,4 +1,6 @@
 <script>
+import { FocusTrap } from 'focus-trap-vue'
+
 import DsfrButtonGroup from '../DsfrButton/DsfrButtonGroup.vue'
 
 export default {
@@ -6,6 +8,7 @@ export default {
 
   components: {
     DsfrButtonGroup,
+    FocusTrap,
   },
 
   props: {
@@ -27,7 +30,18 @@ export default {
           this.close()
         }
       },
+      isTrapActive: this.opened,
     }
+  },
+
+  watch: {
+    opened (newValue, oldValue) {
+      if (newValue) {
+        setTimeout(() => {
+          this.isTrapActive = newValue
+        }, 100)
+      }
+    },
   },
 
   mounted () {
@@ -55,53 +69,56 @@ export default {
 </script>
 
 <template>
-  <dialog
-    id="fr-modal-1"
-    aria-labelledby="fr-modal-title-modal-1"
-    role="dialog"
-    class="fr-modal"
-    :class="{'fr-modal--opened': opened}"
-  >
-    <div class="fr-container fr-container--fluid fr-container-md">
-      <div class="fr-grid-row fr-grid-row--center">
-        <div class="fr-col-12 fr-col-md-8 fr-col-lg-6">
-          <div class="fr-modal__body">
-            <div class="fr-modal__header">
-              <button
-                class="fr-link--close fr-link"
-                title="Fermer la fenêtre modale"
-                aria-controls="fr-modal-1"
-                @click="close"
+  <focus-trap v-model:active="isTrapActive">
+    <div
+      id="fr-modal-1"
+      aria-labelledby="fr-modal-title-modal-1"
+      role="dialog"
+      class="fr-modal"
+      :class="{'fr-modal--opened': opened}"
+    >
+      <div class="fr-container fr-container--fluid fr-container-md">
+        <div class="fr-grid-row fr-grid-row--center">
+          <div class="fr-col-12 fr-col-md-8 fr-col-lg-6">
+            <div class="fr-modal__body">
+              <div class="fr-modal__header">
+                <button
+                  class="fr-link--close fr-link"
+                  title="Fermer la fenêtre modale"
+                  aria-controls="fr-modal-1"
+                  tabindex="0"
+                  @click="close"
+                >
+                  <VIcon
+                    scale="0.85"
+                    :style="{ top: '0.05em', position: 'relative' }"
+                    name="ri-close-line"
+                  />
+                  <span>
+                    Fermer
+                  </span>
+                </button>
+              </div>
+              <div class="fr-modal__content">
+                <slot />
+              </div>
+              <div
+                v-if="actions && actions.length"
+                class="fr-modal__footer"
               >
-                <VIcon
-                  scale="0.85"
-                  :style="{ top: '0.05em', position: 'relative' }"
-                  name="ri-close-line"
+                <DsfrButtonGroup
+                  align="right"
+                  :buttons="actions"
+                  inline
+                  reverse
                 />
-                <span>
-                  Fermer
-                </span>
-              </button>
-            </div>
-            <div class="fr-modal__content">
-              <slot />
-            </div>
-            <div
-              v-if="actions && actions.length"
-              class="fr-modal__footer"
-            >
-              <DsfrButtonGroup
-                align="right"
-                :buttons="actions"
-                inline
-                reverse
-              />
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </dialog>
+  </focus-trap>
 </template>
 
 <style src="./modal.css" />
