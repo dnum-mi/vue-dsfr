@@ -95,10 +95,10 @@
   --block-color-hover: rgba(224, 224, 224, 0.5);
   --block-color-active: rgba(194, 194, 194, 0.5);
 
-  --bg-success: #00894122;
-  --bg-error: #e1060022;
-  --bg-warning: #f902;
-  --bg-info: #0762c822;
+  --bg-success: #f2fbf9;
+  --bg-error: #fdf2f3;
+  --bg-warning: #fffaf5;
+  --bg-info: #f1f6fc;
 }
 
 :host, :root {
@@ -199,8 +199,8 @@
   --color-hover: rgba(71, 71, 255, 0.5);
   --color-active: rgba(0, 0, 243, 0.5);
 
-  --bg-success: #00eb5e33;
-  --bg-error: #f333;
-  --bg-warning: #f903;
-  --bg-info: #2b8bf733;
+  --bg-success: #f2fbf9;
+  --bg-error: #fdf2f3;
+  --bg-warning: #fffaf5;
+  --bg-info: #f1f6fc;
 }
