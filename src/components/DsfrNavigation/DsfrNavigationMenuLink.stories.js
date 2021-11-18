@@ -2,7 +2,7 @@ import DsfrNavigationMenuLink from './DsfrNavigationMenuLink.vue'
 
 export default {
   component: DsfrNavigationMenuLink,
-  title: 'Éléments/Navigation Principale - Main Navigation/Lien menu',
+  title: 'Composants/Navigation Principale/2. Lien de menu, sous-menu ou mega-menu - DsfrNavigationMenuLink',
   argTypes: {
     dark: {
       control: 'boolean',
@@ -19,7 +19,7 @@ export default {
   },
 }
 
-export const LienMenu = (args) => ({
+export const NavigationLienMenu = (args) => ({
   components: {
     DsfrNavigationMenuLink,
   },
@@ -37,7 +37,7 @@ export const LienMenu = (args) => ({
     </div>
   `,
 })
-LienMenu.args = {
+NavigationLienMenu.args = {
   dark: false,
   to: '#test-navigation-menu-link',
   text: 'Lien de menu',

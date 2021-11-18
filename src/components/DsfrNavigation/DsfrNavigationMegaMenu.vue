@@ -29,7 +29,7 @@ export default {
     },
     menus: {
       type: Array,
-      required: true,
+      default: () => [],
     },
     expandedId: {
       type: String,
@@ -93,6 +93,7 @@ export default {
             <VIcon name="ri-arrow-right-line" />
           </a>
         </div>
+        <slot />
         <DsfrNavigationMegaMenuCategory
           v-for="(menu, idx) of menus"
           :key="idx"
@@ -104,7 +105,6 @@ export default {
 </template>
 
 <style scoped>
-
 .fr-collapse--expanded {
   max-height: none !important;
 }

@@ -9,7 +9,7 @@ VIcon.add(RiExternalLinkLine)
 
 export default {
   component: DsfrFooter,
-  title: 'Éléments/Pied de page - Footer',
+  title: 'Composants/Pied de page - DsfrFooter',
   argTypes: {
     dark: {
       control: 'boolean',

@@ -2,7 +2,7 @@ import DsfrTile from './DsfrTile.vue'
 
 export default {
   components: DsfrTile,
-  title: 'Éléments/Tuile - Tile',
+  title: 'Composants/Tuile - DsfrTile',
   argTypes: {
     dark: {
       control: 'boolean',

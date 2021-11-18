@@ -2,7 +2,7 @@ import DsfrQuote from './DsfrQuote.vue'
 
 export default {
   component: DsfrQuote,
-  title: 'Basic/Citations',
+  title: 'Composants/Citations - DsfrQuote',
   argTypes: {
     dark: {
       control: 'boolean',

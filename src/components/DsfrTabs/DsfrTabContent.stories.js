@@ -2,7 +2,7 @@ import DsfrTabContent from './DsfrTabContent.vue'
 
 export default {
   component: DsfrTabContent,
-  title: 'Éléments/Onglets - Tabs/Contenu',
+  title: 'Composants/Onglets - DsfrTabs',
   argTypes: {
     dark: {
       control: 'boolean',

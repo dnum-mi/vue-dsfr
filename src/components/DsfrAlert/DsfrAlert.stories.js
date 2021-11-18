@@ -8,7 +8,7 @@ OhVueIcon.add(RiErrorWarningLine)
 
 export default {
   component: DsfrAlert,
-  title: 'Basic/Alertes',
+  title: 'Composants/Alertes - DsfrAlert',
   argTypes: {
     dark: {
       control: 'boolean',

@@ -3,7 +3,7 @@ import DsfrRadioButton from './DsfrRadioButton.vue'
 
 export default {
   component: DsfrRadioButton,
-  title: 'Basic/Boutons radio - Radio button/Boutons',
+  title: 'Composants/Boutons radio/Boutons radio - DsfrRadioButtons',
   argTypes: {
     dark: {
       control: 'boolean',

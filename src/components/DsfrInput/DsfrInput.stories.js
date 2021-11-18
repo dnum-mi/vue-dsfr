@@ -2,7 +2,7 @@ import DsfrInput from './DsfrInput.vue'
 
 export default {
   component: DsfrInput,
-  title: 'Basic/Champs de saisie - Input',
+  title: 'Composants/Champs de saisie - DsfrInput',
   argTypes: {
     dark: {
       control: 'boolean',

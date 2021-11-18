@@ -2,7 +2,7 @@ import DsfrAccordion from './DsfrAccordion.vue'
 
 export default {
   component: DsfrAccordion,
-  title: 'Éléments/Accordéon - Accordion/Simple',
+  title: 'Composants/Accordéon - DsfrAccordion',
   argTypes: {
     dark: {
       control: 'boolean',

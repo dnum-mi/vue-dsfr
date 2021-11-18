@@ -2,7 +2,7 @@ import DsfrPicture from './DsfrPicture.vue'
 
 export default {
   component: DsfrPicture,
-  title: 'Basic/Image - Picture',
+  title: 'Composants/Image - DsfrPicture',
   argTypes: {
     dark: {
       control: 'boolean',

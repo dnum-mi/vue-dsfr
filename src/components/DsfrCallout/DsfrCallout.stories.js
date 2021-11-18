@@ -10,7 +10,7 @@ export default {
   components: {
     DsfrCallout,
   },
-  title: 'Éléments/Mise en Avant - Callout',
+  title: 'Composants/Mise en Avant - DsfrCallout',
   argTypes: {
     dark: {
       control: 'boolean',

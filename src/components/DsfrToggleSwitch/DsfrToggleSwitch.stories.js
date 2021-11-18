@@ -2,7 +2,7 @@ import DsfrToggleSwitch from './DsfrToggleSwitch.vue'
 
 export default {
   component: DsfrToggleSwitch,
-  title: 'Basic/Interrupteur - Toggle switch',
+  title: 'Composants/Interrupteur - DsfrToggleSwitch',
   argTypes: {
     dark: {
       control: 'boolean',

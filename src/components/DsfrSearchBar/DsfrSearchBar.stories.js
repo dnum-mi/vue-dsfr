@@ -2,7 +2,7 @@ import DsfrSearchBar from './DsfrSearchBar.vue'
 
 export default {
   components: DsfrSearchBar,
-  title: 'Éléments/Barre de recherche - Search bar',
+  title: 'Composants/Barre de recherche - DsfrSearchBar',
   argTypes: {
     label: { control: 'text' },
     dark: {

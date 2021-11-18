@@ -2,7 +2,7 @@ import DsfrVideo from './DsfrVideo.vue'
 
 export default {
   component: DsfrVideo,
-  title: 'Basic/Vidéo - Video',
+  title: 'Composants/Vidéo - DsfrVideo',
   argTypes: {
     dark: {
       control: 'boolean',

@@ -2,7 +2,7 @@ import DsfrHighlight from './DsfrHighlight.vue'
 
 export default {
   component: DsfrHighlight,
-  title: 'Éléments/Mise en Exergue - Highlight',
+  title: 'Composants/Mise en Exergue - DsfrHighlight',
   argTypes: {
     dark: {
       control: 'boolean',

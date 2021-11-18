@@ -14,7 +14,7 @@ VIcon.add(
 
 export default {
   component: DsfrTags,
-  title: 'Basic/Étiquettes - Tags',
+  title: 'Composants/Étiquettes - DsfrTags',
   argTypes: {
     dark: {
       control: 'boolean',
