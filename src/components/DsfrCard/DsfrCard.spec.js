@@ -1,7 +1,25 @@
 import { fireEvent } from '@testing-library/dom'
 import { render } from '@testing-library/vue'
 
+import { createRouter, createWebHistory } from 'vue-router'
+
 import DsfrCard from './DsfrCard.vue'
+
+const router = createRouter({
+  history: createWebHistory('/'),
+  routes: [
+    {
+      path: '/',
+      name: 'Home',
+      component: { template: '<div />' },
+    },
+    {
+      path: '/path',
+      name: 'One',
+      component: { template: '<div />' },
+    },
+  ],
+})
 
 const VIcon = { props: ['name'], template: '<i :class="name"></i>' }
 
@@ -21,6 +39,7 @@ describe('DsfrCard', () => {
 
     const { getByText, getByTestId } = render(DsfrCard, {
       global: {
+        plugins: [router],
         components: {
           VIcon,
         },
@@ -34,13 +53,17 @@ describe('DsfrCard', () => {
         link,
       },
     })
+
+    await router.isReady()
+
     const linkEl = getByTestId('fr-card')
+
     await fireEvent.click(linkEl)
 
     // Then
     expect(getByText(detail)).toHaveClass('fr-card__detail')
     expect(getByTestId('card-link')).toHaveClass('fr-card__link')
-    expect(getByTestId('card-link')).toHaveAttribute('to', link)
+    expect(getByTestId('card-link')).toHaveAttribute('href', link)
     expect(getByTestId('fr-card')).toHaveClass('fr-card')
     expect(getByTestId('card-img')).toHaveAttribute('src', imgSrc)
     expect(getByTestId('card-img')).toHaveAttribute('alt', altImg)

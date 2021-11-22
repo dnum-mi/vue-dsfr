@@ -1,6 +1,28 @@
 import { render } from '@testing-library/vue'
+import { createRouter, createWebHistory } from 'vue-router'
 
 import DsfrBreadcrumb from './DsfrBreadcrumb.vue'
+
+const router = createRouter({
+  history: createWebHistory('/'),
+  routes: [
+    {
+      path: '/',
+      name: 'Home',
+      component: { template: '<div />' },
+    },
+    {
+      path: '/path1',
+      name: 'One',
+      component: { template: '<div />' },
+    },
+    {
+      path: '/path2',
+      name: 'Two',
+      component: { template: '<div />' },
+    },
+  ],
+})
 
 const VIcon = { props: ['name'], template: '<i :class="name"></i>' }
 
@@ -12,11 +34,11 @@ describe('DsfrBreadcrumb', () => {
 
     const links = [
       {
-        to: '/lien-1',
+        to: 'path1',
         text: 'Lien 1',
       },
       {
-        to: '/lien-2',
+        to: '/path2',
         text: secondLinkText,
       },
       {
@@ -27,6 +49,7 @@ describe('DsfrBreadcrumb', () => {
     // When
     const { getByRole, findAllByTestId } = render(DsfrBreadcrumb, {
       global: {
+        plugins: [router],
         components: {
           VIcon,
         },
@@ -35,6 +58,8 @@ describe('DsfrBreadcrumb', () => {
         links,
       },
     })
+
+    await router.isReady()
 
     const navEl = getByRole('navigation')
     const currentItemEl = await findAllByTestId('lis')
@@ -50,6 +75,7 @@ describe('DsfrBreadcrumb', () => {
     // When
     const { getByRole } = render(DsfrBreadcrumb, {
       global: {
+        plugins: [router],
         components: {
           VIcon,
         },
@@ -57,6 +83,8 @@ describe('DsfrBreadcrumb', () => {
       propsData: {
       },
     })
+
+    await router.isReady()
 
     const navEl = getByRole('navigation')
 

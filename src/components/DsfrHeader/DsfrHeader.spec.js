@@ -1,12 +1,38 @@
 import { fireEvent } from '@testing-library/dom'
 import { render } from '@testing-library/vue'
+import { createRouter, createWebHistory } from 'vue-router'
 
 import DsfrHeader from './DsfrHeader.vue'
 
+const router = createRouter({
+  history: createWebHistory('/'),
+  routes: [
+    {
+      path: '/',
+      name: 'Home',
+      component: { template: '<div />' },
+    },
+    {
+      path: '/path1',
+      name: 'One',
+      component: { template: '<div />' },
+    },
+    {
+      path: '/path2',
+      name: 'Two',
+      component: { template: '<div />' },
+    },
+    {
+      path: '/path3',
+      name: 'Three',
+      component: { template: '<div />' },
+    },
+  ],
+})
 const VIcon = { props: ['name'], template: '<i :class="name"></i>' }
 
 describe('DsfrHeader', () => {
-  it('should render DsfrHeader with a logo', () => {
+  it('should render DsfrHeader with a logo', async () => {
     // Given
     const logoText = 'Gouvernement'
     const serviceTitle = 'Nom du service'
@@ -15,6 +41,7 @@ describe('DsfrHeader', () => {
     // When
     const { getByText } = render(DsfrHeader, {
       global: {
+        plugins: [router],
         components: {
           VIcon,
         },
@@ -24,6 +51,9 @@ describe('DsfrHeader', () => {
         serviceDescription,
       },
     })
+
+    await router.isReady()
+
     const logo = getByText(logoText)
 
     // Then
@@ -45,6 +75,7 @@ describe('DsfrHeader', () => {
     // When
     const { getByTestId } = render(DsfrHeader, {
       global: {
+        plugins: [router],
         components: {
           VIcon,
         },
@@ -57,6 +88,9 @@ describe('DsfrHeader', () => {
         showSearch,
       },
     })
+
+    await router.isReady()
+
     const logo = getByTestId('header-logo')
     const openMenuBtn = getByTestId('open-menu-btn')
     const closeModalBtn = getByTestId('close-modal-btn')
