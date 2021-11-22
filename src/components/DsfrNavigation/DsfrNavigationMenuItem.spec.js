@@ -18,4 +18,23 @@ describe('DsfrNavigationMenuItem', () => {
     expect(liEl).not.toHaveClass('fr-menu__item--active')
     expect(liEl).toHaveAttribute('id')
   })
+
+  it('should render an active navigation item', () => {
+    const content = 'Contenu d’un item de menu de navigation'
+
+    const { getByText } = render(DsfrNavigationMenuItem, {
+      props: {
+        active: true,
+      },
+      slots: {
+        default: content,
+      },
+    })
+
+    const liEl = getByText(content)
+
+    expect(liEl).toHaveClass('fr-menu__item')
+    expect(liEl).toHaveClass('fr-menu__item--active')
+    expect(liEl).toHaveAttribute('id')
+  })
 })
