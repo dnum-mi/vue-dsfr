@@ -1,11 +1,13 @@
 <script>
 import { getRandomId } from '../../utils/random-utils.js'
+import DsfrNavigationMenuItem from './DsfrNavigationMenuItem.vue'
 import DsfrNavigationMenuLink from './DsfrNavigationMenuLink.vue'
 
 export default {
   name: 'DsfrNavigationMenu',
 
   components: {
+    DsfrNavigationMenuItem,
     DsfrNavigationMenuLink,
   },
 
@@ -20,7 +22,7 @@ export default {
     },
     links: {
       type: Array,
-      required: true,
+      default: () => [],
     },
     expandedId: {
       type: String,
@@ -28,7 +30,7 @@ export default {
     },
   },
 
-  emits: ['click'],
+  emits: ['toggle-id'],
 
   computed: {
     expanded () {
@@ -43,7 +45,7 @@ export default {
     class="fr-nav__btn"
     :aria-expanded="expanded"
     :aria-controls="id"
-    @click="$emit('click', id)"
+    @click="$emit('toggle-id', id)"
   >
     <span>{{ title }}</span>
     <VIcon
@@ -55,19 +57,20 @@ export default {
   <div
     :id="id"
     class="fr-collapse fr-menu"
+    data-testid="navigation-menu"
     :class="{ 'fr-collapse--expanded': expanded }"
   >
     <ul class="fr-menu__list">
-      <li
+      <slot />
+      <DsfrNavigationMenuItem
         v-for="(link, idx) of links"
         :key="idx"
-        class="fr-menu__item"
       >
         <DsfrNavigationMenuLink
           v-bind="link"
           @click="link.onClick"
         />
-      </li>
+      </DsfrNavigationMenuItem>
     </ul>
   </div>
 </template>
