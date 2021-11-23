@@ -13,7 +13,7 @@ VIcon.add(
 
 export default {
   component: DsfrHeader,
-  title: 'Éléments/En-tête - Header',
+  title: 'Composants/En-tête - DsfrHeader',
   argTypes: {
     dark: {
       control: 'boolean',

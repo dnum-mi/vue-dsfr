@@ -3,7 +3,7 @@ import DsfrButton from '../DsfrButton/DsfrButton.vue'
 
 export default {
   component: DsfrModal,
-  title: 'Éléments/Modale - Modal',
+  title: 'Composants/Modale - DsfrModal',
   argTypes: {
     actions: {
       control: 'object',

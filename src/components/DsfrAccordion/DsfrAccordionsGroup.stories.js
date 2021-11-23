@@ -3,7 +3,7 @@ import DsfrAccordion from './DsfrAccordion.vue'
 
 export default {
   component: DsfrAccordionsGroup,
-  title: 'Éléments/Accordéon - Accordion/Groupe',
+  title: 'Composants/Accordéon - DsfrAccordionsGroup',
   argTypes: {
     dark: {
       control: 'boolean',
@@ -31,7 +31,7 @@ export default {
   },
 }
 
-export const AccordeonSimple = (args) => ({
+export const AccordeonGroupe = (args) => ({
   components: {
     DsfrAccordionsGroup,
     DsfrAccordion,
@@ -74,7 +74,7 @@ export const AccordeonSimple = (args) => ({
   </div>
   `,
 })
-AccordeonSimple.args = {
+AccordeonGroupe.args = {
   dark: false,
   title1: 'Un titre d’accordéon',
   expanded1: false,

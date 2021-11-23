@@ -7,7 +7,7 @@ app.component('DsfrTag', DsfrTag)
 
 export default {
   components: DsfrTable,
-  title: 'Éléments/Table',
+  title: 'Composants/Table - DsfrTable',
   argTypes: {
     title: { control: 'text' },
     dark: {
