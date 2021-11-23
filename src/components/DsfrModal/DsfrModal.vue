@@ -17,6 +17,15 @@ export default {
       type: Array,
       default: () => [],
     },
+    isAlert: Boolean,
+    origin: {
+      type: Object,
+      default: () => {},
+    },
+    title: {
+      type: String,
+      required: true,
+    },
   },
 
   emits: [
@@ -34,12 +43,24 @@ export default {
     }
   },
 
+  computed: {
+    role () {
+      return this.isAlert ? 'alertdialog' : 'dialog'
+    },
+  },
+
   watch: {
     opened (newValue, oldValue) {
       if (newValue) {
         setTimeout(() => {
           this.isTrapActive = newValue
+          this.$refs.closeBtn.focus()
         }, 100)
+        return
+      }
+
+      if (this.isTrapActive) {
+        this.close()
       }
     },
   },
@@ -49,7 +70,7 @@ export default {
   },
 
   beforeUnmount () {
-    this.startListeningToEscape()
+    this.stopListeningToEscape()
   },
 
   methods: {
@@ -61,7 +82,10 @@ export default {
       document.removeEventListener('keydown', this.closeIfEscape)
     },
 
-    close () {
+    async close () {
+      this.isTrapActive = false
+      await this.$nextTick()
+      this.origin.focus()
       this.$emit('close')
     },
   },
@@ -69,11 +93,14 @@ export default {
 </script>
 
 <template>
-  <focus-trap v-model:active="isTrapActive">
+  <focus-trap
+    v-if="opened"
+    v-model:active="isTrapActive"
+  >
     <div
       id="fr-modal-1"
       aria-labelledby="fr-modal-title-modal-1"
-      role="dialog"
+      :role="role"
       class="fr-modal"
       :class="{'fr-modal--opened': opened}"
     >
@@ -83,11 +110,12 @@ export default {
             <div class="fr-modal__body">
               <div class="fr-modal__header">
                 <button
+                  ref="closeBtn"
                   class="fr-link--close fr-link"
                   title="Fermer la fenêtre modale"
                   aria-controls="fr-modal-1"
                   tabindex="0"
-                  @click="close"
+                  @click="close()"
                 >
                   <VIcon
                     scale="0.85"
@@ -100,6 +128,17 @@ export default {
                 </button>
               </div>
               <div class="fr-modal__content">
+                <h1
+                  id="fr-modal-title-modal-1"
+                  class="fr-modal__title"
+                >
+                  <VIcon
+                    scale="1.5"
+                    name="ri-arrow-right-line"
+                    style="vertical-align: -0.125em"
+                  />
+                  {{ title }}
+                </h1>
                 <slot />
               </div>
               <div

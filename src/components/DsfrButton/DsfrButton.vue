@@ -1,5 +1,6 @@
 <template>
   <button
+    ref="btn"
     :class="{
       'fr-btn': true,
       'fr-btn--secondary': secondary,
@@ -40,6 +41,12 @@ export default {
       default: undefined,
     },
     iconRight: Boolean,
+  },
+
+  methods: {
+    focus () {
+      this.$refs.btn.focus()
+    },
   },
 }
 </script>

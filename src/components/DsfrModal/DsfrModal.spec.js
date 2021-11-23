@@ -23,7 +23,6 @@ describe('DsfrModal', () => {
     const modalEl = getByRole('dialog', { hidden: true })
     const modalContentEl = getByText(content)
 
-    expect(modalEl).toBeInTheDocument()
     expect(modalEl).toHaveClass('fr-modal')
     expect(modalContentEl).toBeInTheDocument()
     expect(modalContentEl).toHaveClass('fr-modal__content')

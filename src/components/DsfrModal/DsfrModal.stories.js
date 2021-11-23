@@ -5,9 +5,16 @@ export default {
   component: DsfrModal,
   title: 'Composants/Modale - DsfrModal',
   argTypes: {
+    dark: {
+      control: 'boolean',
+      description: 'Permet de voir le composant dans les deux **thèmes** : **clair** (`false`, défaut) et **sombre** (`true`).\n\n*N.B. : Ne fait pas partie du composant.*',
+    },
     actions: {
       control: 'object',
       description: 'Tableau d’objets : chaque objet contiendra les props à donner à `DsfrButton`',
+    },
+    onClick: {
+      action: 'close',
     },
   },
 }
@@ -21,7 +28,7 @@ export const Modal = (args) => ({
   data () {
     return {
       ...args,
-      actions: args.actions.map(action => ({ ...action, onClick: args.onClick })),
+      actions: args.actions.map(action => ({ ...action, onClick: () => { args.onClick(); this.onClose() } })),
     }
   },
 
@@ -30,22 +37,21 @@ export const Modal = (args) => ({
     <DsfrButton
       label="Ouvre la modale"
       @click="open()"
+      ref="modalOrigin"
     />
     <DsfrModal
+      ref="modal"
       :opened="opened"
       :actions="actions"
-      @close="onClose"
+      :title="title"
+      :origin="$refs.modalOrigin"
+      @close="onClose()"
     >
-      <h1
-        id="fr-modal-title-modal-1"
-        class="fr-modal__title"
-      >
-        <span class="fr-fi-arrow-right-line fr-fi--lg" />Titre de la modale
-      </h1>
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas varius tortor nibh, sit amet tempor nibh finibus et. Aenean eu enim justo. Vestibulum aliquam hendrerit molestie. Mauris malesuada nisi sit amet augue accumsan tincidunt. Maecenas tincidunt, velit ac porttitor pulvinar, tortor eros facilisis libero, vitae commodo nunc quam et ligula. Ut nec ipsum sapien. Interdum et malesuada fames ac ante ipsum primis in faucibus. Integer id nisi nec nulla luctus lacinia non eu turpis. Etiam in ex imperdiet justo tincidunt egestas. Ut porttitor urna ac augue cursus tincidunt sit amet sed orci.</p>
     </DsfrModal>
   </div>
   `,
+
   methods: {
     onClose () {
       this.opened = false
@@ -55,10 +61,10 @@ export const Modal = (args) => ({
     },
   },
 })
-
 Modal.args = {
   dark: false,
   opened: false,
+  title: 'Titre de la modale',
   actions: [
     {
       label: 'Valider',
