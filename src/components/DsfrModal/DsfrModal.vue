@@ -20,7 +20,7 @@ export default {
     isAlert: Boolean,
     origin: {
       type: Object,
-      default: () => {},
+      default: () => ({ focus () {} }),
     },
     title: {
       type: String,
