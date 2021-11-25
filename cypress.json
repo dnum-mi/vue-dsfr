@@ -1,9 +1,9 @@
 {
-  "testFiles": "cypress/specs/**.spec.js",
+  "testFiles": "cypress/tests/**/*.e2e.js",
   "pluginsFile": "cypress/plugins/index.js",
   "component": {
     "componentFolder": "src",
-    "testFiles": "**.e2e.js*",
+    "testFiles": "**/*.e2e.js*",
     "viewportHeight": 500,
     "viewportWidth": 700
   }

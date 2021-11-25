@@ -23,6 +23,10 @@ export default defineConfig({
         find: '@',
         replacement: path.resolve(projectDir, 'src'),
       },
+      {
+        find: 'vue',
+        replacement: 'vue/dist/vue.esm-bundler.js',
+      },
     ],
   },
   build: {
