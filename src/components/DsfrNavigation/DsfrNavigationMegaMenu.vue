@@ -58,6 +58,7 @@ export default {
   </button>
   <div
     :id="id"
+    data-testid="mega-menu-wrapper"
     class="fr-collapse fr-mega-menu"
     tabindex="-1"
     :class="{ 'fr-collapse--expanded': expanded }"

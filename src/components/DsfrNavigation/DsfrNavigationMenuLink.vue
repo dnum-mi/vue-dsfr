@@ -33,6 +33,7 @@ export default {
   <a
     v-if="isExternal"
     class="fr-nav__link"
+    data-testid="nav-external-link"
     :href="to"
     @click="$emit('toggle-id', id)"
   >
@@ -41,6 +42,7 @@ export default {
   <router-link
     v-else
     class="fr-nav__link"
+    data-testid="nav-router-link"
     :to="to"
     @click="$emit('toggle-id', id)"
   >
