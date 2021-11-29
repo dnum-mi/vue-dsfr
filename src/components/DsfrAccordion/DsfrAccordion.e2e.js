@@ -36,7 +36,7 @@ const AccordionWrapper = {
       <li>
         <DsfrAccordion
           id="accordion1"
-          title="Titre de mon accordéon"
+          :title="title1"
         >
           Contenu de l’accordéon
         </DsfrAccordion>

@@ -20,8 +20,10 @@
     "build:css": "node build-css.mjs",
     "build:js": "cross-env NODE_ENV=production rollup --config rollup.config.js",
     "demo-app": "vite",
-    "test": "jest",
+    "test": "run-s test:unit test:ct-ci",
+    "test:unit": "jest",
     "test:ct": "cypress open-ct",
+    "test:ct-ci": "cypress run-ct",
     "format": "npm run lint -- --fix",
     "lint": "eslint ./src/**/*.{vue,js,jsx,ts,tsx}",
     "storybook": "start-storybook -p 6006 -s public",
@@ -110,7 +112,8 @@
     "vue-router": "^4.0.10"
   },
   "gitHooks": {
-    "pre-commit": "lint-staged"
+    "pre-commit": "lint-staged",
+    "pre-push": "npm test"
   },
   "lint-staged": {
     "*.{vue,js,jsx,ts,tsx}": "npm run lint"

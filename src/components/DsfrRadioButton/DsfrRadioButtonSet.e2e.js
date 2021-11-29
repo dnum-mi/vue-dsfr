@@ -37,13 +37,15 @@ describe('DsfrRadioButtonSet', () => {
         ],
       },
     })
+      .get('.fr-radio-group:first-child input')
+      .should('not.have.focus')
 
     cy.tab()
-      .type(' ')
       .get('.fr-radio-group:first-child input')
       .should('have.focus')
-      // .click()
-      .type('{rightArrow}')
+      .get('.fr-radio-group')
+      .contains('Valeur 3')
+      .click({ force: true })
       .get('.fr-radio-group:nth-child(3) input')
       .should('have.focus')
   })
