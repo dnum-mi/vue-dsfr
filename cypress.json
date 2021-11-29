@@ -1,6 +1,7 @@
 {
   "testFiles": "cypress/tests/**/*.e2e.js",
   "pluginsFile": "cypress/plugins/index.js",
+  "video": false,
   "component": {
     "componentFolder": "src",
     "testFiles": "**/*.e2e.js*",
