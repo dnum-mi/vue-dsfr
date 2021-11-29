@@ -22,7 +22,7 @@ export default {
     },
     links: {
       type: Array,
-      default: () => [],
+      required: true,
     },
     expandedId: {
       type: String,
