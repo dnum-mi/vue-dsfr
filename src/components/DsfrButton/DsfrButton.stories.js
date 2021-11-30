@@ -46,7 +46,7 @@ export const BoutonSimple = (args) => ({
     }
   },
   template: `
-    <div :data-rf-theme="dark ? 'dark' : ''" style="background-color: var(--w); padding: 1rem;">
+    <div :data-fr-theme="dark ? 'dark' : ''" style="background-color: var(--w); padding: 1rem;">
       <DsfrButton
         :label="label"
         :disabled="disabled"
@@ -75,7 +75,7 @@ export const BoutonPrimaire = (args) => ({
     }
   },
   template: `
-    <div :data-rf-theme="dark ? 'dark' : ''" style="background-color: var(--w); padding: 1rem;">
+    <div :data-fr-theme="dark ? 'dark' : ''" style="background-color: var(--w); padding: 1rem;">
       <DsfrButton
         :label="label"
         @click="onClick"
@@ -96,7 +96,7 @@ export const BoutonPrimaireAvecIcone = (args) => ({
     }
   },
   template: `
-    <div :data-rf-theme="dark ? 'dark' : ''" style="background-color: var(--w); padding: 1rem;">
+    <div :data-fr-theme="dark ? 'dark' : ''" style="background-color: var(--w); padding: 1rem;">
       <DsfrButton
         :label="label"
         :disabled="disabled"
@@ -123,7 +123,7 @@ export const BoutonSecondaire = (args) => ({
     }
   },
   template: `
-    <div :data-rf-theme="dark ? 'dark' : ''" style="background-color: var(--w); padding: 1rem;">
+    <div :data-fr-theme="dark ? 'dark' : ''" style="background-color: var(--w); padding: 1rem;">
       <DsfrButton
         :label="label"
         :disabled="disabled"
@@ -151,7 +151,7 @@ export const SuiteDeBoutons = (args) => ({
     }
   },
   template: `
-    <div :data-rf-theme="dark ? 'dark' : ''" style="background-color: var(--w); padding: 1rem;">
+    <div :data-fr-theme="dark ? 'dark' : ''" style="background-color: var(--w); padding: 1rem;">
       <div style="margin: 1rem 0;" v-for="btn in btns">
         <DsfrButton
           :disabled="btn.disabled"

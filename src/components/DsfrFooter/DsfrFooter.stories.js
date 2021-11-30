@@ -60,7 +60,7 @@ export const PiedDePage = (args) => ({
     return args
   },
   template: `
-  <div :data-rf-theme="dark ? 'dark' : ''" style="background-color: var(--w); padding: 1rem;">
+  <div :data-fr-theme="dark ? 'dark' : ''" style="background-color: var(--w); padding: 1rem;">
     <DsfrFooter
       :a11y-compliance="a11yCompliance"
       :before-mandatory-links="beforeMandatoryLinks"

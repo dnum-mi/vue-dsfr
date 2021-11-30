@@ -276,7 +276,7 @@ export default {
   padding-top: 1.65625rem;
 }
 
-:root[data-fr-theme="dark"] .fr-header__logo .fr-logo::after {
+:root[data-fr-scheme="dark"] .fr-header__logo .fr-logo::after {
   background-position: -1.96875rem 100%;
 }
 
@@ -439,24 +439,24 @@ export default {
   color: var(--bf500);
 }
 
-:root:not([data-fr-theme="dark"]) .fr-header__navbar .fr-btn {
+:root:not(:root[data-fr-scheme="dark"]) .fr-header__navbar .fr-btn {
   --color-hover: var(--block-color-hover);
   --color-active: var(--block-color-active);
 }
 
-:root:not([data-fr-theme="dark"]) [class*="fr-scheme-light"] .fr-header__navbar .fr-btn,
-:root:not([data-fr-theme="dark"]) [class*="--scheme-light-"] .fr-header__navbar .fr-btn {
+:root:not(:root[data-fr-scheme="dark"]) [class*="fr-scheme-light"] .fr-header__navbar .fr-btn,
+:root:not(:root[data-fr-scheme="dark"]) [class*="--scheme-light-"] .fr-header__navbar .fr-btn {
   --color-hover: var(--block-color-hover);
   --color-active: var(--block-color-active);
 }
 
-:root:not([data-fr-theme="dark"]) [class*="fr-scheme-dark"] .fr-header__navbar .fr-btn,
-:root:not([data-fr-theme="dark"]) [class*="--scheme-dark-"] .fr-header__navbar .fr-btn {
+:root:not(:root[data-fr-scheme="dark"]) [class*="fr-scheme-dark"] .fr-header__navbar .fr-btn,
+:root:not(:root[data-fr-scheme="dark"]) [class*="--scheme-dark-"] .fr-header__navbar .fr-btn {
   --color-hover: var(--block-color-hover);
   --color-active: var(--block-color-active);
 }
 
-:root[data-fr-theme="dark"] .fr-header__navbar .fr-btn {
+:root[data-fr-scheme="dark"] .fr-header__navbar .fr-btn {
   --color-hover: var(--block-color-hover);
   --color-active: var(--block-color-active);
 }

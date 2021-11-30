@@ -42,7 +42,7 @@ export const Video = (args) => ({
     return args
   },
   template: `
-  <div :data-rf-theme="dark ? 'dark' : ''" style="background-color: var(--w); padding: 1rem;">
+  <div :data-fr-theme="dark ? 'dark' : ''" style="background-color: var(--w); padding: 1rem;">
     <DsfrVideo
       :src="src"
       :legend="legend"

@@ -44,7 +44,7 @@ export const IconOnly = (args) => ({
     return args
   },
   template: `
-    <div :data-rf-theme="dark ? 'dark' : ''" style="background-color: var(--w); padding: 1rem;">
+    <div :data-fr-theme="dark ? 'dark' : ''" style="background-color: var(--w); padding: 1rem;">
       <DsfrSearchBar
         :label="label"
         :dark="dark"
@@ -77,7 +77,7 @@ export const TextNoIcon = (args) => ({
     return args
   },
   template: `
-    <div :data-rf-theme="dark ? 'dark' : ''" style="background-color: var(--w); padding: 1rem;">
+    <div :data-fr-theme="dark ? 'dark' : ''" style="background-color: var(--w); padding: 1rem;">
       <DsfrSearchBar
         :label="label"
         :dark="dark"
@@ -108,7 +108,7 @@ export const SearchBarLarge = (args) => ({
     return args
   },
   template: `
-    <div :data-rf-theme="dark ? 'dark' : ''" style="background-color: var(--w); padding: 1rem;">
+    <div :data-fr-theme="dark ? 'dark' : ''" style="background-color: var(--w); padding: 1rem;">
       <DsfrSearchBar
         :label="label"
         :dark="dark"

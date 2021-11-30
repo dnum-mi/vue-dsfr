@@ -37,7 +37,7 @@ export const ContenuDOnglet = (args) => ({
   },
 
   template: `
-  <div :data-rf-theme="dark ? 'dark' : ''" style="background-color: var(--w); padding: 1rem;">
+  <div :data-fr-theme="dark ? 'dark' : ''" style="background-color: var(--w); padding: 1rem;">
     <div class="fr-tabs" style="overflow: visible">
       <DsfrTabContent
         panel-id="tab-content-3"

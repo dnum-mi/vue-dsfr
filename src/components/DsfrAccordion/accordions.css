@@ -105,24 +105,24 @@
   background-color: var(--t-plain);
 }
 
-:root:not([data-fr-theme="dark"]) .fr-accordion .fr-accordion__btn {
+:root:not(:root[data-fr-scheme="dark"]) .fr-accordion .fr-accordion__btn {
   --color-hover: var(--block-color-hover);
   --color-active: var(--block-color-active);
 }
 
-:root:not([data-fr-theme="dark"]) [class*="fr-scheme-light"] .fr-accordion .fr-accordion__btn,
-:root:not([data-fr-theme="dark"]) [class*="--scheme-light-"] .fr-accordion .fr-accordion__btn {
+:root:not(:root[data-fr-scheme="dark"]) [class*="fr-scheme-light"] .fr-accordion .fr-accordion__btn,
+:root:not(:root[data-fr-scheme="dark"]) [class*="--scheme-light-"] .fr-accordion .fr-accordion__btn {
   --color-hover: var(--block-color-hover);
   --color-active: var(--block-color-active);
 }
 
-:root:not([data-fr-theme="dark"]) [class*="fr-scheme-dark"] .fr-accordion .fr-accordion__btn,
-:root:not([data-fr-theme="dark"]) [class*="--scheme-dark-"] .fr-accordion .fr-accordion__btn {
+:root:not(:root[data-fr-scheme="dark"]) [class*="fr-scheme-dark"] .fr-accordion .fr-accordion__btn,
+:root:not(:root[data-fr-scheme="dark"]) [class*="--scheme-dark-"] .fr-accordion .fr-accordion__btn {
   --color-hover: var(--block-color-hover);
   --color-active: var(--block-color-active);
 }
 
-:root[data-fr-theme="dark"] .fr-accordion .fr-accordion__btn {
+:root[data-fr-scheme="dark"] .fr-accordion .fr-accordion__btn {
   --color-hover: var(--block-color-hover);
   --color-active: var(--block-color-active);
 }

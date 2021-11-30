@@ -13,7 +13,7 @@ export const TitresHn = (args) => ({
     return args
   },
   template: `
-    <div :data-rf-theme="dark ? 'dark' : ''" style="background-color: var(--w); color: var(--g800); padding: 1rem;">
+    <div :data-fr-theme="dark ? 'dark' : ''" style="background-color: var(--w); color: var(--g800); padding: 1rem;">
       <h1>Titre h1</h1>
       <h2>Titre h2</h2>
       <h3>Titre h3</h3>
@@ -32,7 +32,7 @@ export const TitresAlternatifs = (args) => ({
     return args
   },
   template: `
-    <div :data-rf-theme="dark ? 'dark' : ''" style="background-color: var(--w); color: var(--g800); padding: 1rem;">
+    <div :data-fr-theme="dark ? 'dark' : ''" style="background-color: var(--w); color: var(--g800); padding: 1rem;">
       <div class="fr-display-xl">Titre xl</div>
       <div class="fr-display-lg">Titre lg</div>
       <div class="fr-display-md">Titre md</div>

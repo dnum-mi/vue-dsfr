@@ -160,7 +160,7 @@
   --checkbox-checked-active-bgcolor: var(--in-content-primary-button-background-active);
 }
 
-[data-rf-theme="dark"] {
+[data-fr-theme="dark"] {
   --bf500: #9a9aff;
   --bf500-plain: #000091;
   --w-bf500: #000091;

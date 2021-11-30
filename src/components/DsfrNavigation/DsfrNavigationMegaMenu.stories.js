@@ -57,7 +57,7 @@ export const NavigationMegaMenu = (args) => ({
   },
 
   template: `
-  <div :data-rf-theme="dark ? 'dark' : ''" style="background-color: var(--w); padding: 1rem; position: relative;">
+  <div :data-fr-theme="dark ? 'dark' : ''" style="background-color: var(--w); padding: 1rem; position: relative;">
     <DsfrNavigation>
       <DsfrNavigationItem>
         <DsfrNavigationMegaMenu

@@ -84,7 +84,7 @@ export const EnTete = (args, { argTypes }) => ({
     }
   },
   template: `
-    <div :data-rf-theme="dark ? 'dark' : ''" style="background-color: var(--w);">
+    <div :data-fr-theme="dark ? 'dark' : ''" style="background-color: var(--w);">
       <DsfrHeader
         :service-title="serviceTitle"
         :service-description="serviceDescription"

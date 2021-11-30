@@ -26,7 +26,7 @@ export const Modal = (args) => ({
   },
 
   template: `
-  <div :data-rf-theme="dark ? 'dark' : ''" style="background-color: var(--w); padding: 1rem;">
+  <div :data-fr-theme="dark ? 'dark' : ''" style="background-color: var(--w); padding: 1rem;">
     <DsfrButton
       label="Ouvre la modale"
       @click="open()"

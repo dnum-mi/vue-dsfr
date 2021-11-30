@@ -284,24 +284,24 @@
   box-shadow: 0 1px 0 0 var(--g300);
 }
 
-:root:not([data-fr-theme="dark"]) .fr-tabs__tab:not([aria-selected=true]) {
+:root:not(:root[data-fr-scheme="dark"]) .fr-tabs__tab:not([aria-selected=true]) {
   --color-hover: rgba(182, 182, 255, 0.5);
   --color-active: rgba(119, 119, 255, 0.5);
 }
 
-:root:not([data-fr-theme="dark"]) [class*="fr-scheme-light"] .fr-tabs__tab:not([aria-selected=true]),
-:root:not([data-fr-theme="dark"]) [class*="--scheme-light-"] .fr-tabs__tab:not([aria-selected=true]) {
+:root:not(:root[data-fr-scheme="dark"]) [class*="fr-scheme-light"] .fr-tabs__tab:not([aria-selected=true]),
+:root:not(:root[data-fr-scheme="dark"]) [class*="--scheme-light-"] .fr-tabs__tab:not([aria-selected=true]) {
   --color-hover: rgba(182, 182, 255, 0.5);
   --color-active: rgba(119, 119, 255, 0.5);
 }
 
-:root:not([data-fr-theme="dark"]) [class*="fr-scheme-dark"] .fr-tabs__tab:not([aria-selected=true]),
-:root:not([data-fr-theme="dark"]) [class*="--scheme-dark-"] .fr-tabs__tab:not([aria-selected=true]) {
+:root:not(:root[data-fr-scheme="dark"]) [class*="fr-scheme-dark"] .fr-tabs__tab:not([aria-selected=true]),
+:root:not(:root[data-fr-scheme="dark"]) [class*="--scheme-dark-"] .fr-tabs__tab:not([aria-selected=true]) {
   --color-hover: rgba(79, 79, 79, 0.5);
   --color-active: rgba(115, 115, 115, 0.5);
 }
 
-:root[data-fr-theme="dark"] .fr-tabs__tab:not([aria-selected=true]) {
+:root[data-fr-scheme="dark"] .fr-tabs__tab:not([aria-selected=true]) {
   --color-hover: rgba(79, 79, 79, 0.5);
   --color-active: rgba(115, 115, 115, 0.5);
 }

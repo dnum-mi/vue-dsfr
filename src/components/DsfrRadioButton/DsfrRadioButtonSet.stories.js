@@ -46,7 +46,7 @@ export const RadioButtonSet = (args) => ({
     return args
   },
   template: `
-  <div :data-rf-theme="dark ? 'dark' : ''" style="background-color: var(--w); padding: 1rem;">
+  <div :data-fr-theme="dark ? 'dark' : ''" style="background-color: var(--w); padding: 1rem;">
     <DsfrRadioButtonSet
       :legend="legend"
       v-model="selectedValue"
@@ -86,7 +86,7 @@ export const RadioButtonSetInError = (args) => ({
     return args
   },
   template: `
-  <div :data-rf-theme="dark ? 'dark' : ''" style="background-color: var(--w); padding: 1rem;">
+  <div :data-fr-theme="dark ? 'dark' : ''" style="background-color: var(--w); padding: 1rem;">
     <DsfrRadioButtonSet
       :legend="legend"
       v-model="selectedValue"
@@ -131,7 +131,7 @@ export const RadioButtonSetInSuccess = (args) => ({
     return args
   },
   template: `
-  <div :data-rf-theme="dark ? 'dark' : ''" style="background-color: var(--w); padding: 1rem;">
+  <div :data-fr-theme="dark ? 'dark' : ''" style="background-color: var(--w); padding: 1rem;">
     <DsfrRadioButtonSet
       :legend="legend"
       v-model="selectedValue"
@@ -176,7 +176,7 @@ export const RadioButtonSetDisabled = (args) => ({
     return args
   },
   template: `
-  <div :data-rf-theme="dark ? 'dark' : ''" style="background-color: var(--w); padding: 1rem;">
+  <div :data-fr-theme="dark ? 'dark' : ''" style="background-color: var(--w); padding: 1rem;">
     <DsfrRadioButtonSet
       :legend="legend"
       v-model="selectedValue"
@@ -218,7 +218,7 @@ export const RadioButtonSetInline = (args) => ({
     return args
   },
   template: `
-  <div :data-rf-theme="dark ? 'dark' : ''" style="background-color: var(--w); padding: 1rem;">
+  <div :data-fr-theme="dark ? 'dark' : ''" style="background-color: var(--w); padding: 1rem;">
     <DsfrRadioButtonSet
       :legend="legend"
       v-model="selectedValue"

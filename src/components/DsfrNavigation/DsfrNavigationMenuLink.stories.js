@@ -29,7 +29,7 @@ export const NavigationLienMenu = (args) => ({
   },
 
   template: `
-    <div :data-rf-theme="dark ? 'dark' : ''" style="background-color: var(--w); padding: 1rem;">
+    <div :data-fr-theme="dark ? 'dark' : ''" style="background-color: var(--w); padding: 1rem;">
       <DsfrNavigationMenuLink
         :to="to"
         :text="text"

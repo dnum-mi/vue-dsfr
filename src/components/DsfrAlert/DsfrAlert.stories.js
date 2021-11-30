@@ -48,7 +48,7 @@ export const Alerte = (args) => ({
     }
   },
   template: `
-    <div :data-rf-theme="dark ? 'dark' : ''" style="background-color: var(--w); padding: 1rem;">
+    <div :data-fr-theme="dark ? 'dark' : ''" style="background-color: var(--w); padding: 1rem;">
       <DsfrAlert
         :title="title"
         :description="description"
@@ -86,7 +86,7 @@ export const Alertes = (args) => ({
     }
   },
   template: `
-    <div :data-rf-theme="dark ? 'dark' : ''" style="background-color: var(--w); padding: 1rem;">
+    <div :data-fr-theme="dark ? 'dark' : ''" style="background-color: var(--w); padding: 1rem;">
       <div style="margin: 1rem 0;">
         <DsfrAlert
           title="Titre de l'info"
@@ -122,7 +122,7 @@ export const PetitesAlertes = (args) => ({
     }
   },
   template: `
-    <div :data-rf-theme="dark ? 'dark' : ''" style="background-color: var(--w); padding: 1rem;">
+    <div :data-fr-theme="dark ? 'dark' : ''" style="background-color: var(--w); padding: 1rem;">
       <div style="margin: 1rem 0;">
         <DsfrAlert
           description="Description de l'info"
@@ -159,7 +159,7 @@ export const AlertesFermables = (args) => ({
     }
   },
   template: `
-    <div :data-rf-theme="dark ? 'dark' : ''" style="background-color: var(--w); padding: 1rem;">
+    <div :data-fr-theme="dark ? 'dark' : ''" style="background-color: var(--w); padding: 1rem;">
       <div style="margin: 1rem 0;">
         <DsfrAlert
           title="Titre de l'info"

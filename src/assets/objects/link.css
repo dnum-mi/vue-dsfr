@@ -69,24 +69,24 @@
   background-color: var(--t-plain);
 }
 
-:root:not([data-fr-theme="dark"]) .fr-link {
+:root:not(:root[data-fr-scheme="dark"]) .fr-link {
   --color-hover: var(--block-color-hover);
   --color-active: var(--block-color-active);
 }
 
-:root:not([data-fr-theme="dark"]) [class*="fr-scheme-light"] .fr-link,
-:root:not([data-fr-theme="dark"]) [class*="--scheme-light-"] .fr-link {
+:root:not(:root[data-fr-scheme="dark"]) [class*="fr-scheme-light"] .fr-link,
+:root:not(:root[data-fr-scheme="dark"]) [class*="--scheme-light-"] .fr-link {
   --color-hover: var(--block-color-hover);
   --color-active: var(--block-color-active);
 }
 
-:root:not([data-fr-theme="dark"]) [class*="fr-scheme-dark"] .fr-link,
-:root:not([data-fr-theme="dark"]) [class*="--scheme-dark-"] .fr-link {
+:root:not(:root[data-fr-scheme="dark"]) [class*="fr-scheme-dark"] .fr-link,
+:root:not(:root[data-fr-scheme="dark"]) [class*="--scheme-dark-"] .fr-link {
   --color-hover: var(--block-color-hover);
   --color-active: var(--block-color-active);
 }
 
-:root[data-fr-theme="dark"] .fr-link {
+:root[data-fr-scheme="dark"] .fr-link {
   --color-hover: var(--block-color-hover);
   --color-active: var(--block-color-active);
 }

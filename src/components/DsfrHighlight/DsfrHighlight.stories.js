@@ -33,7 +33,7 @@ export const MiseEnExergue = (args) => ({
   },
 
   template: `
-    <div :data-rf-theme="dark ? 'dark' : ''" style="background-color: var(--w);">
+    <div :data-fr-theme="dark ? 'dark' : ''" style="background-color: var(--w);">
       <DsfrHighlight
         :text="text"
         :small="small"

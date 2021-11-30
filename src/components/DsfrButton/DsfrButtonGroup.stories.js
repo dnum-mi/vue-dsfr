@@ -52,7 +52,7 @@ export const GroupeDeBoutons = (args) => ({
     }
   },
   template: `
-    <div :data-rf-theme="dark ? 'dark' : ''" style="background-color: var(--w); padding: 1rem;">
+    <div :data-fr-theme="dark ? 'dark' : ''" style="background-color: var(--w); padding: 1rem;">
       <div style="margin: 1rem 0;">
         <DsfrButtonGroup
           :buttons="buttons"

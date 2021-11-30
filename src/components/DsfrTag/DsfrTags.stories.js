@@ -89,7 +89,7 @@ export const Etiquette = (args) => ({
     return args
   },
   template: `
-  <div :data-rf-theme="dark ? 'dark' : ''" style="background-color: var(--w); padding: 1rem;">
+  <div :data-fr-theme="dark ? 'dark' : ''" style="background-color: var(--w); padding: 1rem;">
     <DsfrTag
       :label="label"
       :icon="icon"
@@ -119,7 +119,7 @@ export const GroupeDEtiquettes = (args) => ({
     return args
   },
   template: `
-  <div :data-rf-theme="dark ? 'dark' : ''" style="background-color: var(--w); padding: 1rem;">
+  <div :data-fr-theme="dark ? 'dark' : ''" style="background-color: var(--w); padding: 1rem;">
     <DsfrTags
       :tags="tags"
     />
@@ -143,7 +143,7 @@ export const EtiquettesSimples = (args) => ({
     return args
   },
   template: `
-  <div :data-rf-theme="dark ? 'dark' : ''" style="background-color: var(--w); padding: 1rem;">
+  <div :data-fr-theme="dark ? 'dark' : ''" style="background-color: var(--w); padding: 1rem;">
     <DsfrTags
       :tags="tags"
     />
@@ -168,7 +168,7 @@ export const EtiquettesSimplesPetites = (args) => ({
     return args
   },
   template: `
-  <div :data-rf-theme="dark ? 'dark' : ''" style="background-color: var(--w); padding: 1rem;">
+  <div :data-fr-theme="dark ? 'dark' : ''" style="background-color: var(--w); padding: 1rem;">
     <DsfrTags
       :tags="tags"
     />
@@ -193,7 +193,7 @@ export const EtiquettesCliquables = (args) => ({
     return args
   },
   template: `
-  <div :data-rf-theme="dark ? 'dark' : ''" style="background-color: var(--w); padding: 1rem;">
+  <div :data-fr-theme="dark ? 'dark' : ''" style="background-color: var(--w); padding: 1rem;">
     <DsfrTags
       :tags="tags"
     />
@@ -218,7 +218,7 @@ export const EtiquettesCliquablesPetites = (args) => ({
     return args
   },
   template: `
-  <div :data-rf-theme="dark ? 'dark' : ''" style="background-color: var(--w); padding: 1rem;">
+  <div :data-fr-theme="dark ? 'dark' : ''" style="background-color: var(--w); padding: 1rem;">
     <DsfrTags
       :tags="tags"
     />
