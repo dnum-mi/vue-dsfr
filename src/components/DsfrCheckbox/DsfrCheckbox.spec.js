@@ -12,7 +12,7 @@ describe('DsfrCheckbox', () => {
     const validMessage = 'Message de succès'
 
     // When
-    const { getByText, getByLabelText } = render(CheckBox, {
+    const { getByText, getByLabelText, getByRole } = render(CheckBox, {
       global: {
         components: {
           VIcon,
@@ -26,11 +26,14 @@ describe('DsfrCheckbox', () => {
       },
     })
 
+    const input = getByRole('checkbox')
     const labelEl = getByText(label)
     const inputCheckBox = getByLabelText(label)
 
     // Then
     expect(labelEl).toHaveClass('fr-label')
+    expect(input.checked).toBe(true)
+    expect(input).toHaveAttribute('aria-checked', 'true')
     expect(inputCheckBox).toBeInTheDocument()
     expect(labelEl.getAttribute('for')).toBe(inputCheckBox.id)
     expect(inputCheckBox.getAttribute('type')).toBe('checkbox')
@@ -40,12 +43,12 @@ describe('DsfrCheckbox', () => {
   it('should render a checkbox with label in div', () => {
     // Given
     const label = 'Check box label'
-    const modelValue = true
+    const modelValue = false
     const disabled = true
     const errorMessage = 'Message d’erreur'
 
     // When
-    const { getByText, getByLabelText } = render(CheckBox, {
+    const { getByText, getByLabelText, getByRole } = render(CheckBox, {
       global: {
         components: {
           VIcon,
@@ -60,12 +63,15 @@ describe('DsfrCheckbox', () => {
       },
     })
 
+    const input = getByRole('checkbox')
     const labelEl = getByText(label)
     const inputCheckBox = getByLabelText(label)
 
     // Then
     expect(labelEl).toHaveClass('fr-label')
     expect(inputCheckBox).toBeInTheDocument()
+    expect(input.checked).toBe(false)
+    expect(input).toHaveAttribute('aria-checked', 'false')
     expect(labelEl.getAttribute('for')).toBe(inputCheckBox.id)
     expect(inputCheckBox.getAttribute('type')).toBe('checkbox')
     expect(inputCheckBox).toHaveAttribute('disabled')

@@ -38,7 +38,9 @@ export default {
         :key="idx"
         class="fr-mega-menu__item"
       >
-        <DsfrNavigationMenuLink v-bind="link" />
+        <DsfrNavigationMenuLink
+          v-bind="link"
+        />
       </li>
     </ul>
   </div>

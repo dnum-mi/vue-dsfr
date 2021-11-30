@@ -22,6 +22,12 @@ export default {
     }
   },
 
+  methods: {
+    toggleExpanded () {
+      this.expanded = !this.expanded
+    },
+  },
+
 }
 </script>
 
@@ -32,7 +38,7 @@ export default {
         class="fr-accordion__btn"
         :aria-expanded="expanded"
         :aria-controls="id"
-        @click="expanded = !expanded"
+        @click="toggleExpanded()"
       >
         <VIcon
           v-show="!expanded"

@@ -10,7 +10,7 @@ export default {
     },
     id: {
       control: 'string',
-      description: 'Valeur de l’attribut `id` de ce sous-menu.\n\n *N.B. : Il est recommandé de ne pas le donner, la bibliothèque lui en donnera un aléatoire*.',
+      description: 'Valeur de l’attribut `id` de ce sous-menu. *N.B. : Il est recommandé de ne pas le donner, la bibliothèque lui en donnera un aléatoire*.',
     },
     links: {
       control: 'array',
@@ -22,7 +22,7 @@ export default {
     },
     expandedId: {
       control: 'text',
-      description: 'Indique l’id de l’élément "ouvert" ou "déplié" dans le menu.\n\nPermet au composant de savoir s’il doit être déplié (si `expandedId` est identique à son `id`) ou non (si `expandedId` est différent de son `id`)',
+      description: 'Indique l’id de l’élément "ouvert" ou "déplié" dans le menu. Permet au composant de savoir s’il doit être déplié (si `expandedId` est identique à son `id`) ou non (si `expandedId` est différent de son `id`)',
     },
   },
 }

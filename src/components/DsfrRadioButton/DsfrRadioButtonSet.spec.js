@@ -11,7 +11,7 @@ describe('DsfrRadioButtonSet', () => {
     const selectedValue = 1
 
     // When
-    const { getByText } = render(RadioButtonSet, {
+    const { getByText, getByRole } = render(RadioButtonSet, {
       global: {
         components: {
           VIcon,
@@ -23,6 +23,7 @@ describe('DsfrRadioButtonSet', () => {
       },
     })
 
+    getByRole('radiogroup')
     const legendEl = getByText(legend)
 
     // Then

@@ -1,40 +1,38 @@
-import DsfrModal from './DsfrModal.vue'
+import { mount } from '@cypress/vue'
 import DsfrButton from '../DsfrButton/DsfrButton.vue'
+import DsfrModal from './DsfrModal.vue'
+import VIcon from '../../icons.js'
+import '../../main.css'
 
-export default {
-  component: DsfrModal,
-  title: 'Composants/Modale - DsfrModal',
-  argTypes: {
-    dark: {
-      control: 'boolean',
-      description: 'Permet de voir le composant dans les deux **thèmes** : **clair** (`false`, défaut) et **sombre** (`true`).\n\n*N.B. : Ne fait pas partie du composant.*',
-    },
-    actions: {
-      control: 'object',
-      description: 'Tableau d’objets : chaque objet contiendra les props à donner à `DsfrButton`',
-    },
-    onClick: {
-      action: 'close',
-    },
-  },
-}
-
-export const Modal = (args) => ({
+const ModalWrapper = {
   components: {
     DsfrModal,
     DsfrButton,
+    VIcon,
   },
 
   data () {
     return {
-      ...args,
-      actions: args.actions.map(action => ({ ...action, onClick: () => { args.onClick(); this.onClose() } })),
+      opened: false,
+      title: 'Titre de la modale',
+      actions: [
+        {
+          label: 'Valider',
+          onClick: () => this.close(),
+        },
+        {
+          label: 'Annuler',
+          secondary: true,
+          onClick: () => this.close(),
+        },
+      ],
     }
   },
 
   template: `
-  <div :data-rf-theme="dark ? 'dark' : ''" style="background-color: var(--w); padding: 1rem;">
+  <div>
     <DsfrButton
+      id="modal-opener"
       label="Ouvre la modale"
       @click="open()"
       ref="modalOrigin"
@@ -45,7 +43,7 @@ export const Modal = (args) => ({
       :actions="actions"
       :title="title"
       :origin="$refs.modalOrigin"
-      @close="onClose()"
+      @close="close()"
     >
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas varius tortor nibh, sit amet tempor nibh finibus et. Aenean eu enim justo. Vestibulum aliquam hendrerit molestie. Mauris malesuada nisi sit amet augue accumsan tincidunt. Maecenas tincidunt, velit ac porttitor pulvinar, tortor eros facilisis libero, vitae commodo nunc quam et ligula. Ut nec ipsum sapien. Interdum et malesuada fames ac ante ipsum primis in faucibus. Integer id nisi nec nulla luctus lacinia non eu turpis. Etiam in ex imperdiet justo tincidunt egestas. Ut porttitor urna ac augue cursus tincidunt sit amet sed orci.</p>
     </DsfrModal>
@@ -53,25 +51,39 @@ export const Modal = (args) => ({
   `,
 
   methods: {
-    onClose () {
+    close () {
       this.opened = false
     },
     open () {
       this.opened = true
     },
   },
-})
-Modal.args = {
-  dark: false,
-  opened: false,
-  title: 'Titre de la modale',
-  actions: [
-    {
-      label: 'Valider',
-    },
-    {
-      label: 'Annuler',
-      secondary: true,
-    },
-  ],
 }
+
+describe('DsfrModal', () => {
+  it('should mount a button, and a modal on click that traps focus and exits on ESC', () => {
+    mount(ModalWrapper)
+      .get('button')
+      .contains('Ouvre la modale')
+      .type('{enter}')
+
+    cy.get('.fr-link--close')
+      .should('have.focus')
+
+    cy.get('.fr-link--close')
+      .tab()
+
+    cy.get('.fr-link--close')
+      .should('not.have.focus')
+
+    cy.tab().tab()
+
+    cy.get('.fr-link--close')
+      .should('have.focus')
+
+    cy.tab().type('{esc}')
+
+    cy.get('button')
+      .contains('Ouvre la modale')
+  })
+})

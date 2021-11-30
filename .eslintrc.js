@@ -31,5 +31,16 @@ module.exports = {
         jest: true,
       },
     },
+    {
+      files: [
+        '**/src/**/*.e2e.{j,t}s?(x)',
+      ],
+      env: {
+        'cypress/globals': true,
+      },
+      extends: [
+        'plugin:cypress/recommended',
+      ],
+    },
   ],
 }
