@@ -50,6 +50,7 @@ export const RadioButtonSet = (args) => ({
     <DsfrRadioButtonSet
       :legend="legend"
       v-model="selectedValue"
+      name="radio-set"
       :options="options"
       :inline="inline"
       @update:model-value="onChange"
@@ -90,6 +91,7 @@ export const RadioButtonSetInError = (args) => ({
     <DsfrRadioButtonSet
       :legend="legend"
       v-model="selectedValue"
+      name="radio-errors"
       :options="options"
       :disabled="disabled"
       :error-message="error"
@@ -135,6 +137,7 @@ export const RadioButtonSetInSuccess = (args) => ({
     <DsfrRadioButtonSet
       :legend="legend"
       v-model="selectedValue"
+      name="radio-success"
       :options="options"
       :disabled="disabled"
       :valid-message="validMessage"
@@ -180,6 +183,7 @@ export const RadioButtonSetDisabled = (args) => ({
     <DsfrRadioButtonSet
       :legend="legend"
       v-model="selectedValue"
+      name="radio-disabled"
       :options="options"
       :disabled="disabled"
       :inline="inline"
@@ -222,6 +226,7 @@ export const RadioButtonSetInline = (args) => ({
     <DsfrRadioButtonSet
       :legend="legend"
       v-model="selectedValue"
+      name="radio-inline"
       :options="options"
       :disabled="disabled"
       :inline="inline"

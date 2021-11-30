@@ -33,13 +33,9 @@ export const RadioButton = (args, { argTypes }) => ({
   template: `
     <div :data-fr-theme="dark ? 'dark' : ''" style="background-color: var(--w); padding: 1rem;">
       <DsfrRadioButton
-        v-for="option in options"
-        :key="option.value"
-        :label="option.label"
-        :disabled="option.disabled"
+        v-for="option of options"
         :modelValue="modelValue"
-        :value="option.value"
-        :hint="option.hint"
+        v-bind="option"
         @update:modelValue="updateCheckedValue($event)"
       />
     </div>
@@ -62,16 +58,19 @@ RadioButton.args = {
       label: 'Valeur 1',
       value: '1',
       hint: 'Description 1',
+      name: 'Choix',
     },
     {
       label: 'Valeur 2',
       value: '2',
       disabled: true,
       hint: 'Description 2',
+      name: 'Choix',
     },
     {
       label: 'Valeur 3',
       value: '3',
+      name: 'Choix',
     },
   ],
 }

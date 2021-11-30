@@ -10,12 +10,16 @@
       :disabled="disabled"
     >
       <legend
-        id="checkboxes-legend"
+        :id="titleId"
         class="fr-fieldset__legend fr-text--regular"
       >
         {{ legend }}
       </legend>
-      <div class="fr-fieldset__content">
+      <div
+        class="fr-fieldset__content"
+        role="group"
+        :aria-labelledby="titleId"
+      >
         <DsfrCheckbox
           v-for="option in options"
           :id="option.id"
@@ -43,6 +47,7 @@
 
 <script>
 import DsfrCheckbox from './DsfrCheckbox.vue'
+import { getRandomId } from '../../utils/random-utils.js'
 
 export default {
   name: 'DsfrCheckboxSet',
@@ -52,6 +57,12 @@ export default {
   },
 
   props: {
+    titleId: {
+      type: String,
+      default () {
+        return getRandomId('checkbox', 'group')
+      },
+    },
     disabled: Boolean,
     inline: Boolean,
     errorMessage: {

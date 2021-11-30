@@ -15,6 +15,10 @@
       @click="$emit('click', $event)"
       @keydown.right="$emit('next')"
       @keydown.left="$emit('previous')"
+      @keydown.down="$emit('next')"
+      @keydown.up="$emit('previous')"
+      @keydown.home="$emit('first')"
+      @keydown.end="$emit('last')"
     >
       <span
         v-if="icon"
@@ -49,7 +53,7 @@ export default {
     },
   },
 
-  emits: ['click', 'next', 'previous'],
+  emits: ['click', 'next', 'previous', 'first', 'last'],
 
   watch: {
     selected (newValue, oldValue) {

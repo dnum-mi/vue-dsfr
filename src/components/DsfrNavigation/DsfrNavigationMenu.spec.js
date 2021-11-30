@@ -1,7 +1,9 @@
 import { render } from '@testing-library/vue'
 import { createRouter, createWebHistory } from 'vue-router'
 
-import DsfrNavigationMegaMenuCategory from './DsfrNavigationMegaMenuCategory.vue'
+import DsfrNavigationMenu from './DsfrNavigationMenu.vue'
+
+const VIcon = { props: ['name'], template: '<i :class="name"></i>' }
 
 const router = createRouter({
   history: createWebHistory('/'),
@@ -12,11 +14,9 @@ const router = createRouter({
   }],
 })
 
-const VIcon = { props: ['name'], template: '<i :class="name"></i>' }
-
-describe('DsfrNavigationMegaMenuCategory', () => {
+describe('DsfrNavigationMenu', () => {
   it('should render a navigation mega menu', async () => {
-    const title = 'Nom de catégorie'
+    const title = 'Titre du menu'
     const links = [
       {
         text: 'Lien 1',
@@ -40,7 +40,7 @@ describe('DsfrNavigationMegaMenuCategory', () => {
       },
     ]
 
-    const { getAllByTestId, getByText } = render(DsfrNavigationMegaMenuCategory, {
+    const { getByText, getByTestId, getAllByTestId } = render(DsfrNavigationMenu, {
       global: {
         plugins: [router],
         components: {
@@ -55,10 +55,11 @@ describe('DsfrNavigationMegaMenuCategory', () => {
 
     await router.isReady()
 
+    const button = getByText(title).parentElement
+    const menuWrapper = getByTestId('navigation-menu')
     const linkEls = getAllByTestId('nav-router-link')
-    const h5El = getByText(title)
 
-    expect(h5El).toHaveClass('fr-nav__link')
-    expect(linkEls.length).toBe(links.length)
+    expect(menuWrapper.id).toBe(button.getAttribute('aria-controls'))
+    expect(linkEls).toHaveLength(links.length)
   })
 })

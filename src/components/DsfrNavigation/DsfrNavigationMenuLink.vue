@@ -19,7 +19,7 @@ export default {
     },
   },
 
-  emits: ['click'],
+  emits: ['toggle-id'],
 
   computed: {
     isExternal () {
@@ -33,17 +33,25 @@ export default {
   <a
     v-if="isExternal"
     class="fr-nav__link"
+    data-testid="nav-external-link"
     :href="to"
-    @click="$emit('click', id)"
+    @click="$emit('toggle-id', id)"
   >
     {{ text }}
   </a>
   <router-link
     v-else
     class="fr-nav__link"
+    data-testid="nav-router-link"
     :to="to"
-    @click="$emit('click', id)"
+    @click="$emit('toggle-id', id)"
   >
     {{ text }}
   </router-link>
 </template>
+
+<style scoped>
+.fr-nav__link {
+  color: currentColor;
+}
+</style>

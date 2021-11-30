@@ -3,8 +3,11 @@
     <input
       :id="id"
       type="radio"
+      role="radio"
+      :name="name"
       :value="value"
       :checked="modelValue === value"
+      :aria-checked="modelValue === value"
       :disabled="disabled"
       @click="$emit('update:modelValue', value)"
     >
@@ -36,6 +39,10 @@ export default defineComponent({
       default () {
         return getRandomId('basic', 'checkbox')
       },
+    },
+    name: {
+      type: String,
+      required: true,
     },
     modelValue: {
       type: [String, Number],
