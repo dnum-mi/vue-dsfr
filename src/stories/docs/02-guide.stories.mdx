@@ -1,6 +1,6 @@
 import { Meta } from '@storybook/addon-docs';
 
-<Meta title="Docs/Guide d’utilisation" />
+<Meta title="Docs/2. Guide d’utilisation" />
 
 # Comment débuter
 
@@ -8,6 +8,11 @@ Ceci est le guide d̛’utilisation de la bibliothèque. Si vous cherchez à con
 [Guide du développeur](?path=/story/docs-guide-du-développeur--page).
 
 ## Utiliser la bibliothèque en tant que plugin
+
+| Notes :              |
+|:---------------------------|
+| Pour utiliser cette bibliothèque, il vous faudra **[Vue 3](https://v3.vuejs.org/)** et **[Vue-Router 4](https://next.router.vuejs.org/)**. Par conséquent, si vous utilisez Nuxt, il vous faut **[Nuxt 3](https://v3.nuxtjs.org/)**. |
+| Il est fortement conseillé d’utiliser **[Vite](https://vitejs.dev)** plutôt que Vue-CLI. |
 
 ### Installer le plugin
 
@@ -17,7 +22,10 @@ Afin d'installer le plugin taper cette commande dans votre console au sein de vo
 npm install @laruiss/vue-dsfr@beta
 ```
 
-*N.B. : Bien indiquer le `@beta` pour avoir la dernière version.
+| Note :              |
+|:---------------------------|
+| Bien indiquer le **`@beta`** pour avoir la dernière version. |
+
 
 ### Ajouter le plugin
 
@@ -31,9 +39,7 @@ const app = createApp(App)
   .mount('#app')
 ```
 
-Ajouter le plugin :
-
-Exemple :
+ajouter les lignes commentées :
 
 ```js
 import { createApp } from 'vue'

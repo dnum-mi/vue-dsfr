@@ -2,7 +2,7 @@ import DsfrBreadcrumb from './DsfrBreadcrumb.vue'
 
 export default {
   component: DsfrBreadcrumb,
-  title: 'Basic/Fil d’Ariane - Breadcrumb',
+  title: 'Composants/Fil d’Ariane - DsfrBreadcrumb',
   argTypes: {
     dark: {
       control: 'boolean',

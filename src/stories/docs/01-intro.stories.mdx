@@ -3,7 +3,7 @@ import { Meta } from '@storybook/addon-docs';
 import GithubIcon from './github-fill.svg'
 import MailIcon from './mail-fill.svg'
 
-<Meta title="Docs/Introduction" />
+<Meta title="Docs/1. Introduction" />
 
 # Qu'est-ce que VueDsfr
 
@@ -45,10 +45,12 @@ Ce projet de bibliothèque de composants
 
 # Quels sont les choix techniques retenus
 
+La bibliothèque est faite avec [Vue 3](https://v3.vuejs.org/) et [Vue-router 4](https://next.router.vuejs.org/).
+
 Le JavaScript est linté avec [ESLint](https://eslint.org/) et formatté selon [StandardJS](https://standardjs.org)
 avec une seule modification : les virgules
 doivent être ajoutées pour tout ce qui est en multiligne (`"comma-dangle": ["error", "always-multiline"]`
-cf. [Documentation ESLint]((https://eslint.org/docs/rules/comma-dangle#options)))
+cf. [Documentation ESLint]((https://eslint.org/docs/rules/comma-dangle#options))).
 
 Le serveur de développement est celui de [Storybook](https://storybook.js.org/), toute la documentation est faite avec
 Storybook, et le site pour tester les composants est le storybook lui-même.

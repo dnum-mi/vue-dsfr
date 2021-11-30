@@ -2,7 +2,7 @@ import DsfrSelect from './DsfrSelect.vue'
 
 export default {
   component: DsfrSelect,
-  title: 'Basic/Liste déroulante - Select',
+  title: 'Composants/Liste déroulante - DsfrSelect',
   argTypes: {
     dark: {
       control: 'boolean',

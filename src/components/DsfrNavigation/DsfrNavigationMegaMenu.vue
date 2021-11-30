@@ -29,7 +29,7 @@ export default {
     },
     menus: {
       type: Array,
-      required: true,
+      default: () => [],
     },
     expandedId: {
       type: String,
@@ -37,7 +37,7 @@ export default {
     },
   },
 
-  emits: ['click'],
+  emits: ['toggle-id'],
 
   computed: {
     expanded () {
@@ -52,12 +52,13 @@ export default {
     class="fr-nav__btn"
     :aria-expanded="expanded"
     :aria-controls="id"
-    @click="$emit('click', id)"
+    @click="$emit('toggle-id', id)"
   >
     {{ title }}
   </button>
   <div
     :id="id"
+    data-testid="mega-menu-wrapper"
     class="fr-collapse fr-mega-menu"
     tabindex="-1"
     :class="{ 'fr-collapse--expanded': expanded }"
@@ -66,7 +67,7 @@ export default {
       <button
         class="fr-link--close fr-link"
         aria-controls="mega-menu-695"
-        @click="$emit('click', id)"
+        @click="$emit('toggle-id', id)"
       >
         <VIcon
           scale="0.85"
@@ -93,6 +94,7 @@ export default {
             <VIcon name="ri-arrow-right-line" />
           </a>
         </div>
+        <slot />
         <DsfrNavigationMegaMenuCategory
           v-for="(menu, idx) of menus"
           :key="idx"
@@ -104,7 +106,6 @@ export default {
 </template>
 
 <style scoped>
-
 .fr-collapse--expanded {
   max-height: none !important;
 }

@@ -75,10 +75,15 @@ export default {
 <style src="./breadcrumb.css" />
 
 <style scoped>
+.fr-collapse--expanded {
+  overflow: initial;
+}
+
 .fr-breadcrumb__link:not([aria-current])::after {
   content: normal;
   display: none;
 }
+
 .fr-breadcrumb__link:not([aria-current]) {
   margin-right: 0;
 }

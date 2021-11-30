@@ -15,6 +15,8 @@
         @click="selectIndex(index)"
         @next="selectNext()"
         @previous="selectPrevious()"
+        @first="selectFirst()"
+        @last="selectLast()"
       >
         {{ tabTitle.title }}
       </DsfrTabItem>
@@ -100,6 +102,12 @@ export default {
     async selectNext () {
       const newIndex = this.selectedIndex === this.tabTitles.length - 1 ? 0 : this.selectedIndex + 1
       this.selectIndex(newIndex)
+    },
+    async selectFirst () {
+      this.selectIndex(0)
+    },
+    async selectLast () {
+      this.selectIndex(this.tabTitles.length - 1)
     },
   },
 }

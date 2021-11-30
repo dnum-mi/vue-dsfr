@@ -1,7 +1,7 @@
 import DsfrFollow from './DsfrFollow.vue'
 
 export default {
-  title: 'Éléments/Lettres d’information et réseaux - Follow',
+  title: 'Composants/Lettres d’information et réseaux - DsfrFollow',
   name: '',
   component: DsfrFollow,
 

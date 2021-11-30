@@ -17,10 +17,14 @@
         {{ legend }}
       </legend>
 
-      <div class="fr-fieldset__content">
+      <div
+        class="fr-fieldset__content"
+        role="radiogroup"
+      >
         <DsfrRadioButton
-          v-for="option in options"
+          v-for="option of options"
           :key="option.value"
+          :name="name"
           v-bind="option"
           @update:modelValue="onChange"
         />
@@ -50,6 +54,10 @@ export default {
   props: {
     disabled: Boolean,
     inline: Boolean,
+    name: {
+      type: String,
+      default: 'no-name',
+    },
     errorMessage: {
       type: String,
       default: '',

@@ -2,7 +2,7 @@ import DsfrLogo from './DsfrLogo.vue'
 
 export default {
   component: DsfrLogo,
-  title: 'Basic/Logo Officiel - Official logo',
+  title: 'Composants/Logo Officiel - DsfrLogo',
   argTypes: {
     dark: {
       control: 'boolean',

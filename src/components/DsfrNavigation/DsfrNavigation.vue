@@ -21,6 +21,10 @@ export default {
       type: String,
       default: () => getRandomId('menu'),
     },
+    label: {
+      type: String,
+      default: 'Menu principal',
+    },
     navItems: {
       type: Array,
       default: () => [],
@@ -51,7 +55,7 @@ export default {
     :id="id"
     class="fr-nav"
     role="navigation"
-    aria-label="Menu principal"
+    :aria-label="label"
   >
     <ul class="fr-nav__list">
       <slot />
@@ -69,13 +73,13 @@ export default {
           v-else-if="navItem.title && navItem.links"
           v-bind="navItem"
           :expanded-id="expandedMenuId"
-          @click="toggle($event)"
+          @toggle-id="toggle($event)"
         />
         <DsfrNavigationMegaMenu
           v-else-if="navItem.title && navItem.menus"
           v-bind="navItem"
           :expanded-id="expandedMenuId"
-          @click="toggle($event)"
+          @toggle-id="toggle($event)"
         />
       </DsfrNavigationItem>
     </ul>
