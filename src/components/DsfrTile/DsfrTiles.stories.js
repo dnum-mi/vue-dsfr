@@ -1,7 +1,7 @@
 import DsfrTiles from './DsfrTiles.vue'
 
 export default {
-  components: DsfrTiles,
+  component: DsfrTiles,
   title: 'Composants/Jeu de Tuiles - DsfrTiles',
   argTypes: {
     dark: {

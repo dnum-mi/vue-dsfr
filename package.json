@@ -14,6 +14,7 @@
   "scripts": {
     "docs:dev": "vuepress dev docs",
     "docs:build": "vuepress build docs",
+    "check-exports": "node ./ci/check-exports.mjs",
     "dev": "npm run storybook",
     "prebuild": "rimraf dist",
     "build": "run-p build:css build:js",

@@ -1,7 +1,7 @@
 import DsfrTile from './DsfrTile.vue'
 
 export default {
-  components: DsfrTile,
+  component: DsfrTile,
   title: 'Composants/Tuile - DsfrTile',
   argTypes: {
     dark: {

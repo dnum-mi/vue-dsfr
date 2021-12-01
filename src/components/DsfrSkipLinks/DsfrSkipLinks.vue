@@ -1,8 +1,7 @@
 <script>
-import { defineComponent } from 'vue'
 
-export default defineComponent({
-  name: '',
+export default {
+  name: 'DsfrSkipLinks',
 
   props: {
     links: {
@@ -10,7 +9,7 @@ export default defineComponent({
       required: true,
     },
   },
-})
+}
 </script>
 
 <template>
@@ -35,4 +34,10 @@ export default defineComponent({
   </div>
 </template>
 
-<style src="./skiplink.css" />
+<style src="./skiplinks.css" />
+
+<style scoped>
+.fr-skiplinks {
+  top: 0;
+}
+</style>

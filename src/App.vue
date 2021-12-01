@@ -29,10 +29,28 @@ const actions = [
     onClick: () => { isModalOpen.value = false },
   },
 ]
+
+const links = [
+  {
+    id: '#header',
+    text: 'Allons au header',
+  },
+  {
+    id: '#content',
+    text: 'Allons au content',
+  },
+  {
+    id: '#footer',
+    text: 'Allons au footer',
+  },
+]
 </script>
 
 <template>
-  <div>
+  <div style="position: relative;">
+    <DsfrSkipLinks
+      :links="links"
+    />
     <h1>App</h1>
     <DsfrButton
       class="m1"
@@ -65,7 +83,6 @@ const actions = [
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
 }
 
 .m1 {

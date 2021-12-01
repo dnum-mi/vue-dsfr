@@ -1,9 +1,10 @@
+import DsfrSocialNetworks from './DsfrSocialNetworks.vue'
 import DsfrFollow from './DsfrFollow.vue'
 
 export default {
-  title: 'Composants/Lettres d’information et réseaux/Lettre d’info + Réseaux - DsfrFollow',
+  title: 'Composants/Lettres d’information et réseaux/Réseaux sociaux - DsfrSocialNetworks',
   name: '',
-  component: DsfrFollow,
+  component: DsfrSocialNetworks,
 
   argTypes: {
     dark: {
@@ -14,15 +15,11 @@ export default {
       control: 'object',
       description: 'Liste des différents réseaux sociaux ; doit avoir 2 props : `name` (forcément parmi les valeurs suivantes : `\'facebook\'`, `\'twitter\'`, `\'youtube\'`, `\'linkedin\'`, `\'instagram\'`)  et `url`',
     },
-    newsletterData: {
-      control: 'object',
-      description: 'Objet contenant en propriété les props attendues par DsfrSocialNetworks',
-    },
   },
 }
 
-export const Suivre = (args) => ({
-  components: { DsfrFollow },
+export const ReseauxSociaux = (args) => ({
+  components: { DsfrSocialNetworks, DsfrFollow },
   data () {
     return {
       ...args,
@@ -30,14 +27,17 @@ export const Suivre = (args) => ({
   },
   template: `
     <div :data-rf-theme="dark ? 'dark' : ''" style="background-color: var(--w); padding: 1rem;">
-      <DsfrFollow
-        :networks="networks"
-        :newsletter-data="newsletterData"
-      />
+      <DsfrFollow>
+        <div class="fr-col-12">
+          <DsfrSocialNetworks
+            :networks="networks"
+          />
+        </div>
+      </DsfrFollow>
     </div>
   `,
 })
-Suivre.args = {
+ReseauxSociaux.args = {
   dark: false,
   networks: [
     {
@@ -61,14 +61,4 @@ Suivre.args = {
       href: 'https://www.instagram.com',
     },
   ],
-  newsletterData: {
-    title: 'Titre de la lettre d’informations',
-    description: 'Description de la lettre d’informations',
-    email: '',
-    labelEmail: 'Label du champ adresse électronique',
-    placeholder: 'james.bond@mi6.gov.uk',
-    hintText: 'Mise en garde concernant l’abonnement à la lettre d’information',
-    buttonText: 'S’abonner',
-    buttonTitle: 'Titre du bouton (valeur de l’attribut `title` de la balise `button`)',
-  },
 }

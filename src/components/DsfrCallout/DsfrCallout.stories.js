@@ -7,10 +7,8 @@ import DsfrCallout from './DsfrCallout'
 OhVueIcon.add(RiInformationLine)
 
 export default {
-  components: {
-    DsfrCallout,
-  },
-  title: 'Composants/Mise en Avant - DsfrCallout',
+  component: DsfrCallout,
+  title: 'Composants/Mise en Avant - Callout',
   argTypes: {
     dark: {
       control: 'boolean',

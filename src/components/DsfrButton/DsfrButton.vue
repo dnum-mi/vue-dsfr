@@ -51,7 +51,7 @@ export default {
 }
 </script>
 
-<style src="./button.css" />
+<style src="./button.main.css" />
 
 <style scoped>
 .icon-left {

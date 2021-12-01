@@ -1,25 +1,36 @@
+/*!
+ * DSFR v1.2.1 | SPDX-License-Identifier: MIT | License-Filename: LICENSE.md | restricted use (see terms and conditions)
+ */
+
+/* ------------------------------------ *\
+  BUTTON
+\* ------------------------------------ */
 .fr-btn {
   --link-underline: none;
   --link-blank-font: none;
   --link-blank-content: none;
-  margin: 0;
+  --text-spacing: 0;
+  --title-spacing: 0;
   display: inline-flex;
   flex-direction: row;
   align-items: center;
   z-index: 1;
-}
 
-.fr-btn {
+  --blend-full-size: 100%;
   font-size: 1rem;
   line-height: 1.5rem;
   min-height: 2.5rem;
   padding: 0.5rem 1.5rem;
+  --blend: var(--background-action-high-blue-france-blend);
+  background-color: var(--background-action-high-blue-france);
+  color: var(--text-inverted-blue-france);
 }
-
+/* 
 .fr-btn:not([class*="fr-btn--icon-"])[class^="fr-fi-"],
 .fr-btn:not([class*="fr-btn--icon-"])[class*=" fr-fi-"] {
   flex-direction: row;
   overflow: hidden;
+  white-space: nowrap;
   max-width: 2.5rem;
   max-height: 2.5rem;
   padding-left: 0.5rem;
@@ -33,7 +44,8 @@
   font-size: 1.5rem;
 }
 
-.fr-btn--icon-left[class^="fr-fi-"], .fr-btn--icon-left[class*=" fr-fi-"] {
+.fr-btn--icon-left[class^="fr-fi-"],
+.fr-btn--icon-left[class*=" fr-fi-"] {
   flex-direction: row;
   overflow: initial;
   max-width: none;
@@ -47,7 +59,8 @@
   font-size: 1rem;
 }
 
-.fr-btn--icon-right[class^="fr-fi-"], .fr-btn--icon-right[class*=" fr-fi-"] {
+.fr-btn--icon-right[class^="fr-fi-"],
+.fr-btn--icon-right[class*=" fr-fi-"] {
   flex-direction: row-reverse;
   overflow: initial;
   max-width: none;
@@ -60,6 +73,7 @@
   margin-left: 0.5rem;
   font-size: 1rem;
 }
+*/
 
 .fr-btn--sm {
   font-size: 0.875rem;
@@ -67,11 +81,12 @@
   min-height: 2rem;
   padding: 0.25rem 1rem;
 }
-
+/* 
 .fr-btn--sm:not([class*="fr-btn--icon-"])[class^="fr-fi-"],
 .fr-btn--sm:not([class*="fr-btn--icon-"])[class*=" fr-fi-"] {
   flex-direction: row;
   overflow: hidden;
+  white-space: nowrap;
   max-width: 2rem;
   max-height: 2rem;
   padding-left: 0.5rem;
@@ -126,6 +141,7 @@
 .fr-btn--lg:not([class*="fr-btn--icon-"])[class*=" fr-fi-"] {
   flex-direction: row;
   overflow: hidden;
+  white-space: nowrap;
   max-width: 3.5rem;
   max-height: 3.5rem;
   padding-left: 0.75rem;
@@ -168,79 +184,31 @@
   margin-left: 0.5rem;
   font-size: 1.5rem;
 }
+*/
 
-.fr-btn {
-  background-color: var(--bf500);
-  color: var(--w-bf500);
-}
+.fr-btn:disabled,
+.fr-btn[disabled],
+a.fr-btn:not([href]) {
+  color: var(--text-disabled-grey);
 
-:root:not([data-fr-theme="dark"]) .fr-btn {
-  --color-hover: rgba(0, 0, 221, 0.5);
-  --color-active: rgba(41, 41, 255, 0.5);
-}
-
-:root:not([data-fr-theme="dark"]) [class*="fr-scheme-light"] .fr-btn,
-:root:not([data-fr-theme="dark"]) [class*="--scheme-light-"] .fr-btn {
-  --color-hover: rgba(0, 0, 221, 0.5);
-  --color-active: rgba(41, 41, 255, 0.5);
-}
-
-:root:not([data-fr-theme="dark"]) [class*="fr-scheme-dark"] .fr-btn,
-:root:not([data-fr-theme="dark"]) [class*="--scheme-dark-"] .fr-btn {
-  --color-hover: rgba(71, 71, 255, 0.5);
-  --color-active: rgba(0, 0, 243, 0.5);
-}
-
-:root[data-fr-theme="dark"] .fr-btn {
-  --color-hover: rgba(71, 71, 255, 0.5);
-  --color-active: rgba(0, 0, 243, 0.5);
-}
-
-button.fr-btn[disabled], a.fr-btn:not([href]) {
-  color: var(--g600-g400);
-  background-color: var(--g200);
+  --blend: var(--background-disabled-grey-blend);
+  background-color: var(--background-disabled-grey);
 }
 
 .fr-btn--secondary {
-  background-color: var(--t-plain);
-  color: var(--bf500);
-  box-shadow: inset 0 0 0 1px var(--bf500);
+  background-color: transparent;
+
+  --blend: inherit;
+  color: var(--text-action-high-blue-france);
+  box-shadow: inset 0 0 0 1px var(--border-action-high-blue-france);
 }
 
-:root:not([data-fr-theme="dark"]) .fr-btn--secondary {
-  --color-hover: var(--block-color-hover);
-  --color-active: var(--block-color-active);
-}
+.fr-btn--secondary:disabled,
+.fr-btn--secondary[disabled],
+a.fr-btn--secondary:not([href]) {
+  color: var(--text-disabled-grey);
+  box-shadow: inset 0 0 0 1px var(--border-disabled-grey);
+  background-color: transparent;
 
-:root:not([data-fr-theme="dark"]) [class*="fr-scheme-light"] .fr-btn--secondary,
-:root:not([data-fr-theme="dark"]) [class*="--scheme-light-"] .fr-btn--secondary {
-  --color-hover: var(--block-color-hover);
-  --color-active: var(--block-color-active);
-}
-
-:root:not([data-fr-theme="dark"]) [class*="fr-scheme-dark"] .fr-btn--secondary,
-:root:not([data-fr-theme="dark"]) [class*="--scheme-dark-"] .fr-btn--secondary {
-  --color-hover: var(--block-color-hover);
-  --color-active: var(--block-color-active);
-}
-
-:root[data-fr-theme="dark"] .fr-btn--secondary {
-  --color-hover: var(--block-color-hover);
-  --color-active: var(--block-color-active);
-}
-
-button.fr-btn--secondary[disabled], a.fr-btn--secondary:not([href]) {
-  color: var(--g600-g400);
-  box-shadow: inset 0 0 0 1px var(--g400);
-  background-color: var(--t-plain);
-}
-
-@media (hover: hover) and (pointer: fine) {
-  .fr-btn:not(a):not(:disabled):hover, a.fr-btn[href]:hover {
-    background-image: linear-gradient(0deg, var(--color-hover), var(--color-hover));
-  }
-
-  .fr-btn:not(a):not(:disabled):active, a.fr-btn[href]:active {
-    background-image: linear-gradient(0deg, var(--color-active), var(--color-active));
-  }
+  --blend: inherit;
 }

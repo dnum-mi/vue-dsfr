@@ -15,14 +15,10 @@
     />
     <DsfrButton
       title="Rechercher"
+      :icon="!hideIcon && 'ri-search-line'"
       @click="$emit('search')"
     >
-      <v-icon
-        v-if="!hideIcon || large"
-        class="fr-search-bar__icon"
-        name="ri-search-line"
-      />
-      <span class="fr-btn__text">{{ buttonText }}</span>
+      {{ buttonText }}
     </DsfrButton>
   </div>
 </template>
@@ -83,6 +79,8 @@ export default defineComponent({
 })
 </script>
 
+<style src="./search.main.css" />
+
 <style scoped>
 .fr-search-bar {
   display: flex;
@@ -100,7 +98,7 @@ export default defineComponent({
   box-shadow: inset 0 -2px 0 0 var(--bf500);
   border-radius: 0 0.25rem 0 0;
 }
-
+/*
 .fr-search-bar--lg :deep(.fr-input) {
   padding-top: 1rem;
   padding-bottom: 1rem;
@@ -137,5 +135,5 @@ export default defineComponent({
       display: none;
     }
   }
-}
+} */
 </style>
