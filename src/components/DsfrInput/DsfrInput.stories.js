@@ -23,6 +23,10 @@ export default {
     modelValue: {
       control: 'text',
     },
+    disabled: {
+      control: 'boolean',
+      description: 'Permet de désactiver le champ, la saisie sera impossible',
+    },
   },
 }
 
@@ -36,12 +40,13 @@ export const LabelNotVisible = (args) => ({
     }
   },
   template: `
-    <div :data-rf-theme="dark ? 'dark' : ''" style="background-color: var(--w); padding: 1rem;">
+    <div :data-fr-theme="dark ? 'dark' : ''" style="background-color: var(--w); padding: 1rem;">
       <DsfrInput
         :model-value="modelValue"
         :label="label"
         :placeholder="placeholder"
         :label-visible="labelVisible"
+        :disabled="disabled"
       />
     </div>
   `,
@@ -52,6 +57,7 @@ LabelNotVisible.args = {
   labelVisible: false,
   placeholder: 'Placeholder',
   modelValue: '',
+  disabled: false,
 }
 
 export const LabelVisible = (args) => ({
@@ -70,6 +76,7 @@ export const LabelVisible = (args) => ({
         :label="label"
         :label-visible="labelVisible"
         :placeholder="placeholder"
+        :disabled="disabled"
       />
     </div>
   `,
@@ -80,4 +87,5 @@ LabelVisible.args = {
   labelVisible: true,
   placeholder: 'Placeholder',
   modelValue: '',
+  disabled: false,
 }

@@ -14,6 +14,7 @@
     class="fr-input"
     :placeholder="placeholder"
     :value="modelValue"
+    :disabled="disabled"
     @input="$emit('update:modelValue', $event.target.value)"
     @keydown.esc="$emit('update:modelValue', '')"
     @keydown="$emit('keydown', $event)"
@@ -51,6 +52,7 @@ export default defineComponent({
       type: String,
       default: 'text',
     },
+    disabled: Boolean,
   },
   emits: ['update:modelValue', 'keydown', 'input'],
 })
