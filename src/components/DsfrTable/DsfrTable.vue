@@ -28,6 +28,7 @@
           v-for="(row, i) in rows"
           :key="i"
           class="body-row"
+          @dblclick="$emit('dbl-click-row', row[0])"
         >
           <DsfrTableCell
             v-for="(field, j) in row"
@@ -67,6 +68,8 @@ export default defineComponent({
     },
     noCaption: Boolean,
   },
+
+  emits: ['dbl-click-row'],
 
   computed: {
     isWithContent () {

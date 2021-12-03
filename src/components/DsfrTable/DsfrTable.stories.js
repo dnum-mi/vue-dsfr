@@ -89,9 +89,15 @@ export const TableauSimple = (args) => ({
         :headers="headers"
         :rows="rows"
         :no-caption="noCaption"
+        @dbl-click-row="openRow"
       />
     </div>
   `,
+  methods: {
+    openRow (row) {
+      console.log(row)
+    },
+  },
 
 })
 TableauSimple.args = {
