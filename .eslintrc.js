@@ -7,10 +7,7 @@ module.exports = {
   env: {
     node: true,
   },
-  extends: [
-    'plugin:vue/vue3-recommended',
-    '@vue/standard',
-  ],
+  extends: ['plugin:vue/vue3-recommended', '@vue/standard', 'plugin:storybook/recommended'],
   parserOptions: {
     parser: '@babel/eslint-parser',
   },
@@ -22,25 +19,17 @@ module.exports = {
   },
   overrides: [
     {
-      files: [
-        '**/__tests__/*.{j,t}s?(x)',
-        '**/tests/unit/*.{j,t}s?(x)',
-        '**/src/**/*.spec.{j,t}s?(x)',
-      ],
+      files: ['**/__tests__/*.{j,t}s?(x)', '**/tests/unit/*.{j,t}s?(x)', '**/src/**/*.spec.{j,t}s?(x)'],
       env: {
         jest: true,
       },
     },
     {
-      files: [
-        '**/src/**/*.e2e.{j,t}s?(x)',
-      ],
+      files: ['**/src/**/*.e2e.{j,t}s?(x)'],
       env: {
         'cypress/globals': true,
       },
-      extends: [
-        'plugin:cypress/recommended',
-      ],
+      extends: ['plugin:cypress/recommended'],
     },
   ],
 }
