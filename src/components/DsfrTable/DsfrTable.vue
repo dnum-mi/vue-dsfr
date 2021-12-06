@@ -4,37 +4,30 @@
     :class="{ 'fr-table--no-caption': noCaption }"
   >
     <table
-      v-if="isWithContent"
       class="simple-table"
     >
       <caption class="caption">
         {{ title }}
       </caption>
       <thead>
-        <tr
-          v-if="headers"
-          class="header"
-        >
-          <th
-            v-for="header in headers"
-            :key="header"
-          >
-            {{ header }}
-          </th>
-        </tr>
+        <!-- @slot Slot "header" pour les en-têtes du tableau. Sera dans `<thead>` -->
+        <slot name="header" />
+        <DsfrTableHeaders
+          v-if="headers && headers.length"
+          :headers="headers"
+        />
       </thead>
-      <tbody v-if="rows">
-        <tr
-          v-for="(row, i) in rows"
-          :key="i"
-          class="body-row"
-        >
-          <DsfrTableCell
-            v-for="(field, j) in row"
-            :key="`${i}-${j}`"
-            :field="field"
+      <tbody>
+        <!-- @slot Slot par défaut pour le corps du tableau. Sera dans `<tbody>` -->
+        <slot />
+        <template v-if="rows && rows.length">
+          <DsfrTableRow
+            v-for="(row, i) of rows"
+            :key="i"
+            :row-data="row.rowData || row"
+            :row-attrs="row.rowAttrs || {}"
           />
-        </tr>
+        </template>
       </tbody>
     </table>
   </div>
@@ -43,13 +36,15 @@
 <script>
 import { defineComponent } from 'vue'
 
-import DsfrTableCell from './DsfrTableCell.vue'
+import DsfrTableRow from './DsfrTableRow.vue'
+import DsfrTableHeaders from './DsfrTableHeaders.vue'
 
 export default defineComponent({
   name: 'DsfrTable',
 
   components: {
-    DsfrTableCell,
+    DsfrTableRow,
+    DsfrTableHeaders,
   },
 
   props: {
@@ -62,7 +57,7 @@ export default defineComponent({
       default: () => [],
     },
     rows: {
-      type: Array,
+      type: [Array, Object],
       default: () => [],
     },
     noCaption: Boolean,
@@ -79,7 +74,7 @@ export default defineComponent({
 <style src="./table.css" />
 
 <style scoped>
-.fr-table td {
+.fr-table :deep(td) {
   color: var(--g800);
 }
 </style>

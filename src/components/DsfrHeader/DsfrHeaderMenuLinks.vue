@@ -17,7 +17,7 @@
 import DsfrHeaderMenuLink from './DsfrHeaderMenuLink.vue'
 
 export default {
-  name: 'DsfrMenuLinks',
+  name: 'DsfrHeaderMenuLinks',
   components: {
     DsfrHeaderMenuLink,
   },
