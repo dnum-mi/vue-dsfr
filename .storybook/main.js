@@ -14,6 +14,7 @@ module.exports = {
       }
     },
   ],
+  staticDirs: ['../public'],
   // "core": {
   //   "builder": "storybook-builder-vite"
   // }
