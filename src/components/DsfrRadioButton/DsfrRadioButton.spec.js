@@ -9,6 +9,7 @@ describe('DsfrRadioButton', () => {
     // Given
     const label = 'Radio button label'
     const value = 1
+    const name = 'radio-button-name'
 
     // When
     const { getByText, getByDisplayValue } = render(RadioButton, {
@@ -20,6 +21,7 @@ describe('DsfrRadioButton', () => {
       props: {
         label,
         value,
+        name,
       },
     })
 

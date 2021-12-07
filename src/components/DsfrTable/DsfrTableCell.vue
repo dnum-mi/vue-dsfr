@@ -9,6 +9,10 @@ export default defineComponent({
       type: [String, Object],
       default: undefined,
     },
+    cellAttrs: {
+      type: Object,
+      default: () => ({}),
+    },
   },
 
   computed: {
@@ -18,34 +22,22 @@ export default defineComponent({
     isComponent () {
       return this.isObject ? this.field.component : false
     },
-    classField () {
-      return {
-        label: typeof this.field === 'object',
-        [this.field.color]: true,
-      }
+    isString () {
+      return typeof this.field === 'string'
     },
   },
 })
 </script>
 
 <template>
-  <td>
+  <td v-bind="cellAttrs">
     <component
       :is="isComponent"
       v-if="isComponent"
       v-bind="field"
     />
-    <span v-else>
-      {{ field }}
-    </span>
+    <template v-else>
+      {{ isString ? field : field.text }}
+    </template>
   </td>
 </template>
-
-<style scoped>
-.label {
-  display: inline-block;
-  width: 7rem;
-  text-align: center;
-  border-radius: 2rem;
-}
-</style>
