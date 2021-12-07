@@ -3,11 +3,13 @@ import DsfrTag from '../DsfrTag/DsfrTag.vue'
 
 import { app } from '@storybook/vue3'
 
+import './table.stories.css'
+
 app.component('DsfrTag', DsfrTag)
 
 export default {
-  components: DsfrTable,
-  title: 'Composants/Table - DsfrTable',
+  component: DsfrTable,
+  title: 'Composants/Tableau/Tableau entier - DsfrTable',
   argTypes: {
     title: { control: 'text' },
     dark: {
@@ -20,11 +22,17 @@ export default {
     },
     headers: {
       control: 'object',
-      description: 'Permet de voir la ligne des titres des colonnes du tableau',
+      description: 'Liste des en-têtes du tableau (tableau de string). Il existe un slot nommé `headers` pour gérer les en-têtes avec d’autres composants. C’est la même props attendue par <a href="/?path=/docs/composants-tableau-en-t%C3%AAtes-de-tableau-dsfrtableheaders--en-tetes-de-tableau">DsfrTableHeaders</a>',
     },
     rows: {
       control: 'object',
-      description: 'Permet de voir les lignes du tableau, on peut afficher un composant ou un texte simple',
+      description: 'Données des lignes du tableau. Chaque élément doit être un objet contenant les props attendues par <a href="/?path=/docs/composants-tableau-ligne-de-tableau-dsfrtablerow--ligne-de-tableau-simple">DsfrTableRow</a>',
+    },
+    onClickCell: {
+      action: 'clicked on cell',
+    },
+    onClickRow: {
+      action: 'clicked on row',
     },
   },
 }
@@ -44,23 +52,35 @@ const rows = [
       class: 'error',
     },
   ],
-  [
-    'DEBROIZE',
-    'Clément',
-    'clement.debroize@ninja.com',
-    '01 02 03 04 05',
-    '06 01 02 03 04',
-    {
-      component: 'DsfrTag',
-      label: 'Succès',
-      class: 'success',
+  {
+    rowAttrs: {
+      onClick: () => {},
+      class: 'pointer',
     },
-  ],
+    rowData: [
+      'DEBROIZE',
+      'Clément',
+      'clement.debroize@ninja.com',
+      '01 02 03 04 05',
+      '06 01 02 03 04',
+      {
+        component: 'DsfrTag',
+        label: 'Succès',
+        class: 'success',
+      },
+    ],
+  },
   [
     'ORMIERES',
     'Stan',
     'stan.ormieres@ninja.com',
-    '01 02 03 04 05',
+    {
+      text: '01 02 03 04 05',
+      cellAttrs: {
+        class: 'pointer',
+        onClick: () => {},
+      },
+    },
     '06 01 02 03 04',
     {
       component: 'DsfrTag',
@@ -71,7 +91,7 @@ const rows = [
 ]
 const noCaption = false
 
-export const TableauSimple = (args) => ({
+export const TableauEntier = (args) => ({
   components: {
     DsfrTable,
   },
@@ -79,6 +99,12 @@ export const TableauSimple = (args) => ({
   data () {
     return {
       ...args,
+      rows: args.rows
+        .map(
+          rowData => Array.isArray(rowData)
+            ? rowData.map(field => field.cellAttrs?.onClick ? { ...field, cellAttrs: { ...field.cellAttrs, onClick () { args.onClickCell(field) } } } : field)
+            : ({ ...rowData, rowAttrs: { ...rowData.rowAttrs, onClick () { args.onClickRow(rowData) } } }),
+        ),
     }
   },
 
@@ -94,7 +120,7 @@ export const TableauSimple = (args) => ({
   `,
 
 })
-TableauSimple.args = {
+TableauEntier.args = {
   dark: false,
   title,
   headers,
