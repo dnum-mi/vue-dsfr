@@ -11,12 +11,12 @@ Ceci est le guide d̛’utilisation de la bibliothèque. Si vous cherchez à con
 
 | Notes :              |
 |:---------------------------|
-| Pour utiliser cette bibliothèque, il vous faudra **[Vue 3](https://v3.vuejs.org/)** et **[Vue-Router 4](https://next.router.vuejs.org/)**. Par conséquent, si vous utilisez Nuxt, il vous faut **[Nuxt 3](https://v3.nuxtjs.org/)**. |
+| Pour utiliser cette bibliothèque, il vous faudra **[Vue 3](https://v3.vuejs.org/)** et **[Vue-Router 4](https://next.router.vuejs.org/)**. Par conséquent, si vous utilisez Nuxt, il vous faut **[Nuxt 3](https://v3.nuxtjs.org/)** (plus de détails plus loin). |
 | Il est fortement conseillé d’utiliser **[Vite](https://vitejs.dev)** plutôt que Vue-CLI. |
 
-### Installer le plugin
+### Installer la bibliothèque
 
-Afin d'installer le plugin taper cette commande dans votre console au sein de votre répertoire de projet :
+Afin d'installer la bibliothèque, taper cette commande dans votre console au sein du répertoire du projet :
 
 ```shell
 npm install @laruiss/vue-dsfr@beta
@@ -28,6 +28,8 @@ npm install @laruiss/vue-dsfr@beta
 
 
 ### Ajouter le plugin
+
+#### Dans une application Vite (recommandé) ou Vue-CLI
 
 À partir d'un fichier `main.js` simple comme celui-ci :
 
@@ -79,6 +81,31 @@ const app = createApp(App)
   .use(VueDsfr)                                    // Ajout en tant que plugin
   .mount('#app')
 ```
+
+#### Dans nuxt 3
+
+La bibliothèque VueDsfr fournit bien plusieurs build (esm et umd entre autres) et Nuxt3 sait lequel choisir.
+
+Cependant nous utilisons la bibliothèque `oh-vue-icons` avec leur build ESM pour être sûr de n'embarquer que les icônes
+utilisées. Il faut donc transpiler `oh-vue-icons`.
+
+Pour ce faire, ajouter ceci dans `nuxt.config.js` :
+
+```javascript
+import { defineNuxtConfig } from 'nuxt3';
+
+// https://v3.nuxtjs.org/docs/directory-structure/nuxt.config
+export default defineNuxtConfig({
+  build: {
+    transpile: [
+      'oh-vue-icons/dist/v3/icon.es',
+      'oh-vue-icons/icons/ri/index.js',
+    ],
+  },
+});
+```
+
+[Un exemple ici](https://stackblitz.com/edit/nuxt-starter-suunj6?file=app.vue)
 
 ## Utiliser la bibliothèque de composants sans plugin
 
