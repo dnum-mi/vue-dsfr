@@ -60,7 +60,7 @@ export default defineComponent({
 
 <style scoped>
 .fr-label {
-  font-size: 0.8rem;
+  font-size: 1rem;
   display: block;
   color: var(--g800);
 
@@ -78,7 +78,7 @@ export default defineComponent({
 }
 
 .fr-input {
-  margin: 0;
+  margin: 0.5rem 0 0 0;
   border: 0;
   border-radius: 0.25rem 0.25rem 0 0;
   padding: 0.5rem;
