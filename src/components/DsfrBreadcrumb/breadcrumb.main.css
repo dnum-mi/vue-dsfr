@@ -1,19 +1,26 @@
+/*!
+ * DSFR v1.2.1 | SPDX-License-Identifier: MIT | License-Filename: LICENSE.md | restricted use (see terms and conditions)
+ */
+
 /* ------------------------------------ *\
   BREADCRUMB
 \* ------------------------------------ */
 
 /**
 un padding de 4px et une marge négative en compensation sont mis en place afin d'éviter de couper le focus.
- */
-
+*/
 .fr-breadcrumb {
   margin: 1rem 0 2rem;
   font-size: 0.75rem;
   line-height: 1.25rem;
+
+  --text-spacing: 0 0 0.5rem;
   position: relative;
+
   /**
-   * margin-bottom de 2v pour créer cet espace entre chaque ligne
-   */
+  * margin-bottom de 2v pour créer cet espace entre chaque ligne
+  */
+  color: var(--text-mention-grey);
 }
 
 .fr-breadcrumb__button {
@@ -57,9 +64,10 @@ un padding de 4px et une marge négative en compensation sont mis en place afin 
   font-size: 0.75rem;
   line-height: 1.25rem;
   margin-bottom: 0.5rem;
+
   /**
-     * flèche séparatrice en font-icon
-     */
+    * flèche séparatrice en font-icon
+    */
 }
 
 .fr-breadcrumb__link:not([aria-current]) {
@@ -67,11 +75,8 @@ un padding de 4px et une marge négative en compensation sont mis en place afin 
 }
 
 .fr-breadcrumb__link:not([aria-current])::after {
-  font: normal normal normal 1rem/1 dsfr-icons;
-  content: "";
-}
-
-.fr-breadcrumb__link:not([aria-current])::after {
+  font: normal normal normal 1rem/1 dsfr-icon;
+  content: "";
   position: absolute;
   top: 0.125rem;
   right: -1.25rem;
@@ -84,18 +89,7 @@ un padding de 4px et une marge négative en compensation sont mis en place afin 
   --link-blank-content: none;
   pointer-events: none;
   cursor: default;
-}
-
-.fr-breadcrumb {
-  color: var(--g600);
-}
-
-.fr-breadcrumb__button {
-  background-color: var(--t-plain);
-}
-
-.fr-breadcrumb__link[aria-current] {
-  color: var(--g800);
+  color: var(--text-active-grey);
 }
 
 @media (min-width: 48em) {
