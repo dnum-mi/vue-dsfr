@@ -102,10 +102,31 @@ export default defineNuxtConfig({
       'oh-vue-icons/icons/ri/index.js',
     ],
   },
-});
+})
 ```
 
-[Un exemple ici](https://stackblitz.com/edit/nuxt-starter-suunj6?file=app.vue)
+Ensuite, il faut ajouter le plugin en créant le dossier `/plugins` s’il n’existe pas et en créant dedans un fichier `vue-dsfr.js`
+avec le contenu suivant :
+
+```javascript
+// /plugins/vue-dsfr.js
+
+import { defineNuxtPlugin } from '#app'
+import VueDsfr from '@laruiss/vue-dsfr'
+
+export default defineNuxtPlugin((nuxtApp) => {
+  nuxtApp.vueApp.use(VueDsfr)
+})
+```
+
+Enfin, il faudra ajouter les feuilles CSS :
+
+```javascript
+import '@laruiss/vue-dsfr/dist/vue-dsfr-fonts.css'
+import '@laruiss/vue-dsfr/dist/vue-dsfr.css'
+```
+
+Vous pouvez voir une implémentation **[sur Stackblitz ici](https://stackblitz.com/edit/nuxt-starter-suunj6?file=app.vue)**.
 
 ## Utiliser la bibliothèque de composants sans plugin
 
@@ -131,4 +152,51 @@ const app = createApp(App)
   .component('DsfrBreadcrumb', DsfrBreadcrumb)               // Enregistrement global du composant DsfrBreadcrumb
   .component('DsfrCard', DsfrCard)                           // Enregistrement global du composant DsfrCard
   .mount('#app')
+```
+
+## Ajouter des icônes
+
+Pour ajouter des icônes qui ne sont pas importées dans la bibliothèque, voici comment procéder :
+
+1. Créer un fichier `icons.js` avec un contenu comme dans l’exemple ci-dessous :
+2. Importer `icons.js` depuis `main.js` :
+
+```javascript
+// /src/icons.js/
+
+// Importer le composant VIcon de la bibliothèque
+import { VIcon } from '@laruiss/vue-dsfr'
+
+// Importer les icônes souhaitées depuis `oh-vue-icons`
+import {
+  RiAddLine,
+  RiChatCheckLine,
+  RiFileList2Line,
+  RiLogoutBoxLine,
+  RiMenuLine,
+  RiNotification3Line,
+  RiQuestionLine,
+  RiUserLine,
+} from 'oh-vue-icons/icons/ri/index.js'
+
+// Ajouter les icônes au composant VIcon
+VIcon.add(
+  RiAddLine,
+  RiChatCheckLine,
+  RiFileList2Line,
+  RiLogoutBoxLine,
+  RiMenuLine,
+  RiNotification3Line,
+  RiQuestionLine,
+  RiUserLine,
+)
+```
+
+```javascript
+// main.js
+(...)
+
+import './icons.js'
+
+(...)
 ```
