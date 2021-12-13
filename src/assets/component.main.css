@@ -564,7 +564,7 @@ un padding de 4px et une marge négative en compensation sont mis en place afin 
   margin-bottom: 0;
   color: var(--text-default-error);
 }
-/* 
+/*
 .fr-error-text::before {
   font: normal normal normal 1rem/1 dsfr-icon;
   content: "";
@@ -805,7 +805,7 @@ un padding de 4px et une marge négative en compensation sont mis en place afin 
   margin-left: -0.75rem;
   margin-right: -0.75rem;
 }
-/* 
+/*
 .fr-link:not([class*="fr-link--icon-"])[class^="fr-fi-"], .fr-link:not([class*="fr-link--icon-"])[class*=" fr-fi-"] {
   flex-direction: row;
   overflow: hidden;
@@ -875,7 +875,7 @@ un padding de 4px et une marge négative en compensation sont mis en place afin 
   margin-left: -0.75rem;
   margin-right: -0.75rem;
 }
-/* 
+/*
 .fr-link--sm:not([class*="fr-link--icon-"])[class^="fr-fi-"], .fr-link--sm:not([class*="fr-link--icon-"])[class*=" fr-fi-"] {
   flex-direction: row;
   overflow: hidden;
@@ -945,7 +945,7 @@ un padding de 4px et une marge négative en compensation sont mis en place afin 
   margin-left: -1rem;
   margin-right: -1rem;
 }
-/* 
+/*
 .fr-link--lg:not([class*="fr-link--icon-"])[class^="fr-fi-"], .fr-link--lg:not([class*="fr-link--icon-"])[class*=" fr-fi-"] {
   flex-direction: row;
   overflow: hidden;
@@ -1143,7 +1143,7 @@ un padding de 4px et une marge négative en compensation sont mis en place afin 
   font-weight: 700;
   --blend-full-size: 100%;
 }
-/* 
+/*
 .fr-sidemenu .fr-sidemenu__link[aria-current]::after,
 .fr-sidemenu .fr-sidemenu__btn[aria-current]::after {
   content: "";
@@ -2214,7 +2214,7 @@ un padding de 4px et une marge négative en compensation sont mis en place afin 
   padding: 0.75rem 0;
   color: var(--text-action-high-grey);
 }
-/* 
+/*
 .fr-accordion__btn::before {
   font: normal normal normal 1.5rem/1 dsfr-icon;
   content: "";
@@ -2271,7 +2271,7 @@ un padding de 4px et une marge négative en compensation sont mis en place afin 
   box-shadow: inset 0 0 0 1px var(--border-plain-grey), inset 2.5rem 0 0 0 var(--background-flat-grey);
 }
 
-.fr-alert::before {
+/* .fr-alert::before {
   font: normal normal normal 1.5rem/1 dsfr-icon;
   position: absolute;
   top: 0;
@@ -2279,7 +2279,7 @@ un padding de 4px et une marge négative en compensation sont mis en place afin 
   height: 100%;
   padding: 1rem 0.5rem;
   color: var(--text-inverted-grey);
-}
+} */
 
 .fr-alert__title {
   font-weight:  700 ;
@@ -2315,7 +2315,7 @@ un padding de 4px et une marge négative en compensation sont mis en place afin 
 .fr-alert + .fr-alert {
   margin-top: 1rem;
 }
-
+/*
 .fr-alert--info::before {
   content: "";
 }
@@ -2330,7 +2330,7 @@ un padding de 4px et une marge négative en compensation sont mis en place afin 
 
 .fr-alert--warning::before {
   content: "";
-}
+} */
 
 .fr-alert--sm {
   padding: 0.5rem 2.25rem 0.25rem 3rem;
@@ -2378,7 +2378,7 @@ un padding de 4px et une marge négative en compensation sont mis en place afin 
   background-color: var(--background-action-high-blue-france);
   color: var(--text-inverted-blue-france);
 }
-/* 
+/*
 .fr-btn:not([class*="fr-btn--icon-"])[class^="fr-fi-"], .fr-btn:not([class*="fr-btn--icon-"])[class*=" fr-fi-"] {
   flex-direction: row;
   overflow: hidden;
@@ -2476,7 +2476,7 @@ un padding de 4px et une marge négative en compensation sont mis en place afin 
   min-height: 3.5rem;
   padding: 0.75rem 2rem;
 }
-/* 
+/*
 .fr-btn--lg:not([class*="fr-btn--icon-"])[class^="fr-fi-"], .fr-btn--lg:not([class*="fr-btn--icon-"])[class*=" fr-fi-"] {
   flex-direction: row;
   overflow: hidden;
@@ -2636,7 +2636,7 @@ un padding de 4px et une marge négative en compensation sont mis en place afin 
 .fr-btns-group--equisized .fr-btn {
   justify-content: center;
 }
-/* 
+/*
 .fr-btns-group--sm .fr-btn:not([class^="fr-fi-"]):not([class*=" fr-fi-"]) {
   font-size: 0.875rem;
   line-height: 1.5rem;
@@ -3733,7 +3733,7 @@ un padding de 4px et une marge négative en compensation sont mis en place afin 
   margin: 0 0.25rem;
   white-space: nowrap;
 }
-/* 
+/*
 .fr-tabs__tab:not([class*="fr-tabs__tab--icon-"])[class^="fr-fi-"], .fr-tabs__tab:not([class*="fr-tabs__tab--icon-"])[class*=" fr-fi-"] {
   flex-direction: row;
   overflow: hidden;
@@ -4147,7 +4147,7 @@ un padding de 4px et une marge négative en compensation sont mis en place afin 
   color: var(--text-action-high-blue-france);
   box-shadow: inset 0 0 0 1px var(--border-default-grey);
 }
-/* 
+/*
 .fr-share__link:not([class*="fr-share__link--icon-"])[class^="fr-fi-"], .fr-share__link:not([class*="fr-share__link--icon-"])[class*=" fr-fi-"] {
   flex-direction: row;
   overflow: hidden;
@@ -4209,7 +4209,7 @@ un padding de 4px et une marge négative en compensation sont mis en place afin 
   padding-left: 0.75rem;
   padding-right: 0.75rem;
 }
-/* 
+/*
 .fr-share__link--facebook::before {
   font: normal normal normal 1.5rem/1 dsfr-icon;
   content: "";
@@ -4232,7 +4232,7 @@ un padding de 4px et une marge négative en compensation sont mis en place afin 
   padding-left: 0.75rem;
   padding-right: 0.75rem;
 }
-/* 
+/*
 .fr-share__link--twitter::before {
   font: normal normal normal 1.5rem/1 dsfr-icon;
   content: "";
@@ -4693,7 +4693,7 @@ un padding de 4px et une marge négative en compensation sont mis en place afin 
   --blend: var(--background-contrast-grey-blend);
   background-color: var(--background-contrast-grey);
 }
-/* 
+/*
 .fr-tag--icon-left[class^="fr-fi-"], .fr-tag--icon-left[class*=" fr-fi-"] {
   flex-direction: row;
   overflow: initial;
@@ -4984,7 +4984,7 @@ a.fr-tag--beige-gris-galet, button.fr-tag--beige-gris-galet, input[type="button"
   position: relative;
   display: block;
 }
-/* 
+/*
 .fr-input-wrap[class^="fr-fi-"]::before, .fr-input-wrap[class*=" fr-fi-"]::before {
   font-size: 1rem !important;
   position: absolute;
@@ -4999,7 +4999,7 @@ a.fr-tag--beige-gris-galet, button.fr-tag--beige-gris-galet, input[type="button"
   flex-direction: row;
   width: 100%;
 }
-/* 
+/*
 .fr-input-wrap.fr-fi-calendar-line > .fr-input[type=date]::-webkit-calendar-picker-indicator {
   display: block;
   margin-right: -2rem;
@@ -5063,7 +5063,7 @@ textarea.fr-input {
   background-color: var(--background-contrast-grey);
   box-shadow: inset 0.25rem 0 0 0 var(--border-default-blue-france);
 }
-/* 
+/*
 .fr-callout[class^="fr-fi-"]::before, .fr-callout[class*=" fr-fi-"]::before {
   display: block;
   margin: -0.5rem 0 0.5rem;
@@ -5308,7 +5308,7 @@ textarea.fr-input {
   margin-bottom: 1rem;
   color: var(--text-title-grey);
 }
-/* 
+/*
 .fr-modal__title[class^="fr-fi-"], .fr-modal__title[class*=" fr-fi-"] {
   margin-right: 0.5rem;
 } */
@@ -5700,7 +5700,7 @@ textarea.fr-input {
   margin-left: 0.25rem;
   font-size: 1rem;
 } */
-/* 
+/*
 .fr-consent-service__collapse .fr-consent-service__collapse-btn[aria-expanded="true"]::before {
   font: normal normal normal 1rem/1 dsfr-icon;
   content: "";
@@ -6167,7 +6167,7 @@ textarea.fr-input {
   margin-left: 0;
   margin-right: 0.5rem;
   font-size: 1.5rem;
-} 
+}
 
 .fr-header__navbar .fr-btn--menu::before {
   font: normal normal normal 1.5rem/1 dsfr-icon;
@@ -6190,7 +6190,7 @@ textarea.fr-input {
   max-width: none;
   max-height: none;
 }
-/* 
+/*
 .fr-header .fr-links-group .fr-link::before {
   font: normal normal normal 1rem/1 dsfr-icon;
   margin-left: -0.25rem;
