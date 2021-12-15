@@ -10,9 +10,7 @@
   </label>
   <input
     :id="id"
-    :type="type"
     class="fr-input"
-    :placeholder="placeholder"
     :value="modelValue"
     @input="$emit('update:modelValue', $event.target.value)"
     @keydown.esc="$emit('update:modelValue', '')"
@@ -42,14 +40,6 @@ export default defineComponent({
     modelValue: {
       type: String,
       default: '',
-    },
-    placeholder: {
-      type: String,
-      default: '',
-    },
-    type: {
-      type: String,
-      default: 'text',
     },
   },
   emits: ['update:modelValue', 'keydown', 'input'],
