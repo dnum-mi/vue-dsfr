@@ -139,6 +139,7 @@ export default {
                   />
                   {{ title }}
                 </h1>
+                <!-- @slot Slot par défaut pour le contenu de la liste. Sera dans `<ul class="fr-modal__title">` -->
                 <slot />
               </div>
               <div

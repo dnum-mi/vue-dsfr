@@ -14,6 +14,7 @@
       :aria-labelledby="tabId"
       :tabindex="selected ? 0 : -1"
     >
+      <!-- @slot Slot par défaut pour le contenu de l’onglet. Sera dans `<div class="fr-tabs__panel">` -->
       <slot />
     </div>
   </transition>

@@ -50,7 +50,7 @@ export const CelluleDeTableauSimple = (args) => ({
   },
 
   template: `
-    <div :data-rf-theme="dark ? 'dark' : ''" style="background-color: var(--w); padding: 1rem;">
+    <div :data-fr-theme="dark ? 'dark' : ''" style="background-color: var(--grey-1000-50); padding: 1rem;">
       <DsfrTable
         :title="title"
       >
@@ -86,7 +86,7 @@ export const CelluleDeTableauAvecComposant = (args) => ({
   },
 
   template: `
-    <div :data-rf-theme="dark ? 'dark' : ''" style="background-color: var(--w); padding: 1rem;">
+    <div :data-fr-theme="dark ? 'dark' : ''" style="background-color: var(--grey-1000-50); padding: 1rem;">
       <DsfrTable
         :title="title"
       >
@@ -123,7 +123,7 @@ export const CelluleDeTableauComplexe = (args) => ({
   },
 
   template: `
-    <div :data-rf-theme="dark ? 'dark' : ''" style="background-color: var(--w); padding: 1rem;">
+    <div :data-fr-theme="dark ? 'dark' : ''" style="background-color: var(--grey-1000-50); padding: 1rem;">
       <DsfrTable
         :title="title"
       >

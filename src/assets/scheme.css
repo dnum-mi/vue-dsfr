@@ -5,7 +5,7 @@
   SCHEME
 \* ------------------------------------ */
 :root[data-fr-theme],
-:root [data-fr-theme] {
+[data-fr-theme] {
   --grey-50-1000: #161616;
   --grey-75-975: #1e1e1e;
   --grey-100-950: #242424;
@@ -621,8 +621,7 @@
   --artwork-decorative-red-marianne: var(--red-marianne-950-100);
 }
 
-:root[data-fr-theme="dark"],
-:root [data-fr-theme="dark"] {
+[data-fr-theme="dark"] {
   --grey-50-1000: #fff;
   --grey-75-975: #f6f6f6;
   --grey-100-950: #eee;

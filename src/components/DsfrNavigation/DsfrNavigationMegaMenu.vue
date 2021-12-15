@@ -83,6 +83,7 @@ export default {
           </h4>
           <p class="fr-text--sm">
             {{ description }}
+            <!-- @slot Slot par défaut pour le contenu de la description du mega-menu. Sera dans `<p class="fr-text--sm">` -->
             <slot name="description" />
           </p>
           <a
@@ -94,6 +95,7 @@ export default {
             <VIcon name="ri-arrow-right-line" />
           </a>
         </div>
+        <!-- @slot Slot par défaut pour le contenu du mega-menu. Sera dans `<div class="fr-grid-row fr-grid-row--gutters">` -->
         <slot />
         <DsfrNavigationMegaMenuCategory
           v-for="(menu, idx) of menus"

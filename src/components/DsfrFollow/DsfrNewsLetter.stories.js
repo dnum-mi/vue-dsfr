@@ -57,7 +57,7 @@ export const NewsletterSimple = (args) => ({
   },
 
   template: `
-  <div :data-rf-theme="dark ? 'dark' : ''" style="background-color: var(--w); padding: 1rem;">
+  <div :data-fr-theme="dark ? 'dark' : ''" style="background-color: var(--grey-1000-50); padding: 1rem;">
     <DsfrFollow>
       <div class="fr-col-12">
         <DsfrNewsLetter

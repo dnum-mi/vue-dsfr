@@ -21,6 +21,7 @@
 
     <span>
       {{ label }}
+      <!-- @slot Slot par défaut pour le contenu du bouton. Sera dans `<button class="fr-btn"><span">` -->
       <slot />
     </span>
   </button>

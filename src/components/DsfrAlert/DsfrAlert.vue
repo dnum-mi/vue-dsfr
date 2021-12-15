@@ -131,7 +131,7 @@ export default defineComponent({
     position: absolute;
     top: 0.5rem;
     left: 0.5rem;
-    color: var(--w);
+    color: var(--grey-1000-50);
   }
 
   & .fr-alert__description {
@@ -143,7 +143,7 @@ export default defineComponent({
   position: absolute;
   top: 1rem;
   left: 0.5rem;
-  color: var(--w);
+  color: var(--grey-1000-50);
 }
 
 .alert-content {

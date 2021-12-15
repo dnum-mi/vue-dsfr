@@ -124,6 +124,7 @@ export default {
           <p
             class="fr-footer__content-desc"
           >
+            <!-- @slot Slot #description pour le contenu de la description du footer. Sera dans `<p class="fr-footer__content-desc">` -->
             <slot name="description">
               {{ descText }}
             </slot>
