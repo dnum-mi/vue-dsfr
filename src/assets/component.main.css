@@ -1,6 +1,6 @@
 /*!
- * DSFR v1.2.1 | SPDX-License-Identifier: MIT | License-Filename: LICENSE.md | restricted use (see terms and conditions)
- */
+* DSFR v1.2.1 | SPDX-License-Identifier: MIT | License-Filename: LICENSE.md | restricted use (see terms and conditions)
+*/
 
 /* COMPONENT MAIN */
 /* ------------------------------------ *\
@@ -158,7 +158,7 @@
   height: 100%;
 }
 
-.fr-card:not(.fr-card--no-arrow) .fr-card__body::after {
+/* .fr-card:not(.fr-card--no-arrow) .fr-card__body::after {
   font: normal normal normal 1.5rem/1 dsfr-icon;
   content: "";
   width: 1.5rem;
@@ -166,7 +166,7 @@
   margin-top: auto;
   margin-left: auto;
   color: var(--text-action-high-blue-france);
-}
+} */
 
 .fr-card__img {
   position: relative;
@@ -245,13 +245,13 @@
   background-image: linear-gradient(0deg, var(--border-default-grey), var(--border-default-grey));
 }
 
-.fr-quote::before {
+/* .fr-quote::before {
   font: normal normal normal 2rem/1 dsfr-icon;
   content: "";
   display: block;
   padding-bottom: 0.5rem;
   color: var(--artwork-minor-blue-france);
-}
+} */
 
 .fr-quote--column {
   display: flex;
@@ -484,14 +484,14 @@ un padding de 4px et une marge négative en compensation sont mis en place afin 
   margin-right: 1.5rem;
 }
 
-.fr-breadcrumb__link:not([aria-current])::after {
+/* .fr-breadcrumb__link:not([aria-current])::after {
   font: normal normal normal 1rem/1 dsfr-icon;
   content: "";
   position: absolute;
   top: 0.125rem;
   right: -1.25rem;
   pointer-events: none;
-}
+} */
 
 .fr-breadcrumb__link[aria-current] {
   --link-underline: none;
@@ -564,8 +564,8 @@ un padding de 4px et une marge négative en compensation sont mis en place afin 
   margin-bottom: 0;
   color: var(--text-default-error);
 }
-/*
-.fr-error-text::before {
+
+/* .fr-error-text::before {
   font: normal normal normal 1rem/1 dsfr-icon;
   content: "";
   display: inline-block;
@@ -585,13 +585,13 @@ un padding de 4px et une marge négative en compensation sont mis en place afin 
   margin-bottom: 0;
   color: var(--text-default-success);
 }
-
+/*
 .fr-valid-text::before {
   font: normal normal normal 1rem/1 dsfr-icon;
   content: "";
   display: inline-block;
   margin-right: 0.25rem;
-}
+} */
 
 .fr-form-group {
   margin-bottom: 2rem;
@@ -805,7 +805,7 @@ un padding de 4px et une marge négative en compensation sont mis en place afin 
   margin-left: -0.75rem;
   margin-right: -0.75rem;
 }
-/*
+
 .fr-link:not([class*="fr-link--icon-"])[class^="fr-fi-"], .fr-link:not([class*="fr-link--icon-"])[class*=" fr-fi-"] {
   flex-direction: row;
   overflow: hidden;
@@ -861,7 +861,7 @@ un padding de 4px et une marge négative en compensation sont mis en place afin 
 .fr-link--align-on-content.fr-link--icon-right[class^="fr-fi-"], .fr-link--align-on-content.fr-link--icon-right[class*=" fr-fi-"] {
   margin-left: -0.75rem;
   margin-right: -0.5rem;
-} */
+}
 
 .fr-link--sm {
   font-size: 0.875rem;
@@ -875,7 +875,7 @@ un padding de 4px et une marge négative en compensation sont mis en place afin 
   margin-left: -0.75rem;
   margin-right: -0.75rem;
 }
-/*
+
 .fr-link--sm:not([class*="fr-link--icon-"])[class^="fr-fi-"], .fr-link--sm:not([class*="fr-link--icon-"])[class*=" fr-fi-"] {
   flex-direction: row;
   overflow: hidden;
@@ -931,7 +931,7 @@ un padding de 4px et une marge négative en compensation sont mis en place afin 
 .fr-link--sm.fr-link--align-on-content.fr-link--icon-right[class^="fr-fi-"], .fr-link--sm.fr-link--align-on-content.fr-link--icon-right[class*=" fr-fi-"] {
   margin-left: -0.75rem;
   margin-right: -0.5rem;
-} */
+}
 
 .fr-link--lg {
   font-size: 1.25rem;
@@ -945,7 +945,7 @@ un padding de 4px et une marge négative en compensation sont mis en place afin 
   margin-left: -1rem;
   margin-right: -1rem;
 }
-/*
+
 .fr-link--lg:not([class*="fr-link--icon-"])[class^="fr-fi-"], .fr-link--lg:not([class*="fr-link--icon-"])[class*=" fr-fi-"] {
   flex-direction: row;
   overflow: hidden;
@@ -1001,7 +1001,7 @@ un padding de 4px et une marge négative en compensation sont mis en place afin 
 .fr-link--lg.fr-link--align-on-content.fr-link--icon-right[class^="fr-fi-"], .fr-link--lg.fr-link--align-on-content.fr-link--icon-right[class*=" fr-fi-"] {
   margin-left: -1rem;
   margin-right: -0.625rem;
-} */
+}
 
 .fr-link--close {
   font-size: 0.875rem;
@@ -1019,13 +1019,13 @@ un padding de 4px et une marge négative en compensation sont mis en place afin 
   margin-left: auto;
 }
 
-.fr-link--close::before {
+/* .fr-link--close::before {
   font: normal normal normal 1.5rem/1 dsfr-icon;
   content: "";
   margin-right: -0.25rem;
   margin-left: 0.5rem;
   font-size: 1rem;
-}
+} */
 
 /* ------------------------------------ *\
   SIDEMENU
@@ -1143,7 +1143,7 @@ un padding de 4px et une marge négative en compensation sont mis en place afin 
   font-weight: 700;
   --blend-full-size: 100%;
 }
-/*
+
 .fr-sidemenu .fr-sidemenu__link[aria-current]::after,
 .fr-sidemenu .fr-sidemenu__btn[aria-current]::after {
   content: "";
@@ -1152,7 +1152,7 @@ un padding de 4px et une marge négative en compensation sont mis en place afin 
   bottom: 0.75rem;
   left: 0;
   width: 2px;
-} */
+}
 
 .fr-sidemenu .fr-sidemenu__btn[aria-expanded] {
   display: flex;
@@ -1184,11 +1184,11 @@ un padding de 4px et une marge négative en compensation sont mis en place afin 
   */
 }
 
-/* .fr-sidemenu .fr-sidemenu__inner > .fr-sidemenu__btn::before {
+.fr-sidemenu .fr-sidemenu__inner > .fr-sidemenu__btn::before {
   margin-right: 1rem;
 }
 
-.fr-sidemenu .fr-sidemenu__inner > .fr-sidemenu__btn::after {
+/* .fr-sidemenu .fr-sidemenu__inner > .fr-sidemenu__btn::after {
   font: normal normal normal 1rem/1 dsfr-icon;
   content: "";
   margin-left: 0.5rem;
@@ -2214,8 +2214,8 @@ un padding de 4px et une marge négative en compensation sont mis en place afin 
   padding: 0.75rem 0;
   color: var(--text-action-high-grey);
 }
-/*
-.fr-accordion__btn::before {
+
+/* .fr-accordion__btn::before {
   font: normal normal normal 1.5rem/1 dsfr-icon;
   content: "";
   margin-right: -0.25rem;
@@ -2229,9 +2229,9 @@ un padding de 4px et une marge négative en compensation sont mis en place afin 
   font-weight: 700;
 }
 
-.fr-accordion__btn[aria-expanded="true"]::before {
+/* .fr-accordion__btn[aria-expanded="true"]::before {
   content: "";
-}
+} */
 
 .fr-accordion .fr-collapse {
   --ul-type: "●\00a0\00a0";
@@ -2271,7 +2271,7 @@ un padding de 4px et une marge négative en compensation sont mis en place afin 
   box-shadow: inset 0 0 0 1px var(--border-plain-grey), inset 2.5rem 0 0 0 var(--background-flat-grey);
 }
 
-/* .fr-alert::before {
+.fr-alert::before {
   font: normal normal normal 1.5rem/1 dsfr-icon;
   position: absolute;
   top: 0;
@@ -2279,7 +2279,7 @@ un padding de 4px et une marge négative en compensation sont mis en place afin 
   height: 100%;
   padding: 1rem 0.5rem;
   color: var(--text-inverted-grey);
-} */
+}
 
 .fr-alert__title {
   font-weight:  700 ;
@@ -2315,8 +2315,8 @@ un padding de 4px et une marge négative en compensation sont mis en place afin 
 .fr-alert + .fr-alert {
   margin-top: 1rem;
 }
-/*
-.fr-alert--info::before {
+
+/* .fr-alert--info::before {
   content: "";
 }
 
@@ -2378,7 +2378,7 @@ un padding de 4px et une marge négative en compensation sont mis en place afin 
   background-color: var(--background-action-high-blue-france);
   color: var(--text-inverted-blue-france);
 }
-/*
+
 .fr-btn:not([class*="fr-btn--icon-"])[class^="fr-fi-"], .fr-btn:not([class*="fr-btn--icon-"])[class*=" fr-fi-"] {
   flex-direction: row;
   overflow: hidden;
@@ -2468,7 +2468,7 @@ un padding de 4px et une marge négative en compensation sont mis en place afin 
   margin-right: -0.25rem;
   margin-left: 0.5rem;
   font-size: 1rem;
-} */
+}
 
 .fr-btn--lg {
   font-size: 1.25rem;
@@ -2476,7 +2476,7 @@ un padding de 4px et une marge négative en compensation sont mis en place afin 
   min-height: 3.5rem;
   padding: 0.75rem 2rem;
 }
-/*
+
 .fr-btn--lg:not([class*="fr-btn--icon-"])[class^="fr-fi-"], .fr-btn--lg:not([class*="fr-btn--icon-"])[class*=" fr-fi-"] {
   flex-direction: row;
   overflow: hidden;
@@ -2517,7 +2517,7 @@ un padding de 4px et une marge négative en compensation sont mis en place afin 
   margin-right: -0.375rem;
   margin-left: 0.5rem;
   font-size: 1.5rem;
-} */
+}
 
 .fr-btns-group {
   --ul-type: none;
@@ -2636,7 +2636,7 @@ un padding de 4px et une marge négative en compensation sont mis en place afin 
 .fr-btns-group--equisized .fr-btn {
   justify-content: center;
 }
-/*
+
 .fr-btns-group--sm .fr-btn:not([class^="fr-fi-"]):not([class*=" fr-fi-"]) {
   font-size: 0.875rem;
   line-height: 1.5rem;
@@ -2845,7 +2845,7 @@ un padding de 4px et une marge négative en compensation sont mis en place afin 
   margin-right: -0.375rem;
   margin-left: 0.5rem;
   font-size: 1.5rem;
-} */
+}
 
 .fr-btn:disabled, .fr-btn[disabled], a.fr-btn:not([href]) {
   color: var(--text-disabled-grey);
@@ -3219,7 +3219,7 @@ un padding de 4px et une marge négative en compensation sont mis en place afin 
   margin: 0;
   width: 100%;
 }
-
+/*
 .fr-checkbox-group input[type="checkbox"] + label::before {
   font: normal normal normal 1rem/1 dsfr-icon;
   content: "";
@@ -3237,7 +3237,7 @@ un padding de 4px et une marge négative en compensation sont mis en place afin 
   color: transparent;
   border-radius: 0.25rem;
   box-shadow: inset 0 0 0 1px var(--border-action-high-grey);
-}
+} */
 
 .fr-checkbox-group:first-child {
   margin-top: -0.75rem;
@@ -3370,13 +3370,13 @@ un padding de 4px et une marge négative en compensation sont mis en place afin 
   margin-right: -0.5rem;
 }
 
-.fr-content-media__transcription .fr-link::before {
+/* .fr-content-media__transcription .fr-link::before {
   font: normal normal normal 1.5rem/1 dsfr-icon;
   content: "";
   margin-right: -0.25rem;
   margin-left: 0.5rem;
   font-size: 1rem;
-}
+} */
 
 .fr-content-media--sm .fr-content-media__img, .fr-content-media--sm .fr-responsive-vid,
 .fr-content-media--sm .fr-content-media__caption, .fr-content-media--sm .fr-content-media__transcription {
@@ -3491,7 +3491,7 @@ un padding de 4px et une marge négative en compensation sont mis en place afin 
   color: var(--text-active-blue-france);
 }
 
-.fr-toggle label::after {
+/* .fr-toggle label::after {
   font: normal normal normal 1rem/1 dsfr-icon;
   content: "";
   display: flex;
@@ -3509,7 +3509,7 @@ un padding de 4px et une marge négative en compensation sont mis en place afin 
   box-shadow: inset 0 0 0 1px var(--border-action-high-blue-france);
   --blend: var(--background-default-grey-blend);
   background-color: var(--background-default-grey);
-}
+} */
 
 .fr-toggle .fr-hint-text {
   display: block;
@@ -3733,7 +3733,7 @@ un padding de 4px et une marge négative en compensation sont mis en place afin 
   margin: 0 0.25rem;
   white-space: nowrap;
 }
-/*
+
 .fr-tabs__tab:not([class*="fr-tabs__tab--icon-"])[class^="fr-fi-"], .fr-tabs__tab:not([class*="fr-tabs__tab--icon-"])[class*=" fr-fi-"] {
   flex-direction: row;
   overflow: hidden;
@@ -3761,7 +3761,7 @@ un padding de 4px et une marge négative en compensation sont mis en place afin 
   margin-left: -0.25rem;
   margin-right: 0.5rem;
   font-size: 1rem;
-} */
+}
 
 .fr-tabs {
   --ul-type: none;
@@ -3993,13 +3993,13 @@ un padding de 4px et une marge négative en compensation sont mis en place afin 
   padding-right: 0.25rem;
 }
 
-.fr-pagination__link--first::before {
+/* .fr-pagination__link--first::before {
   font: normal normal normal 1.5rem/1 dsfr-icon;
   content: "";
   margin-left: 0;
   margin-right: 0.25rem;
   font-size: 1.5rem;
-}
+} */
 
 .fr-pagination__link--prev {
   font-size: 1rem;
@@ -4016,13 +4016,13 @@ un padding de 4px et une marge négative en compensation sont mis en place afin 
   padding-right: 0.25rem;
 }
 
-.fr-pagination__link--prev::before {
+/* .fr-pagination__link--prev::before {
   font: normal normal normal 1.5rem/1 dsfr-icon;
   content: "";
   margin-left: 0;
   margin-right: 0.25rem;
   font-size: 1.5rem;
-}
+} */
 
 .fr-pagination__link--next {
   font-size: 1rem;
@@ -4039,13 +4039,13 @@ un padding de 4px et une marge négative en compensation sont mis en place afin 
   padding-right: 0.25rem;
 }
 
-.fr-pagination__link--next::before {
+/* .fr-pagination__link--next::before {
   font: normal normal normal 1.5rem/1 dsfr-icon;
   content: "";
   margin-left: 0;
   margin-right: 0.25rem;
   font-size: 1.5rem;
-}
+} */
 
 .fr-pagination__link--last {
   font-size: 1rem;
@@ -4061,14 +4061,14 @@ un padding de 4px et une marge négative en compensation sont mis en place afin 
   padding-left: 0.25rem;
   padding-right: 0.25rem;
 }
-
+/*
 .fr-pagination__link--last::before {
   font: normal normal normal 1.5rem/1 dsfr-icon;
   content: "";
   margin-left: 0;
   margin-right: 0.25rem;
   font-size: 1.5rem;
-}
+} */
 
 .fr-pagination__link--first, .fr-pagination__link--prev {
   margin-right: 0.875rem;
@@ -4147,7 +4147,7 @@ un padding de 4px et une marge négative en compensation sont mis en place afin 
   color: var(--text-action-high-blue-france);
   box-shadow: inset 0 0 0 1px var(--border-default-grey);
 }
-/*
+
 .fr-share__link:not([class*="fr-share__link--icon-"])[class^="fr-fi-"], .fr-share__link:not([class*="fr-share__link--icon-"])[class*=" fr-fi-"] {
   flex-direction: row;
   overflow: hidden;
@@ -4162,7 +4162,7 @@ un padding de 4px et une marge négative en compensation sont mis en place afin 
   margin-left: 0;
   margin-right: 0.75rem;
   font-size: 1.5rem;
-} */
+}
 
 .fr-share {
   --text-spacing: 0 0 1rem;
@@ -4209,8 +4209,8 @@ un padding de 4px et une marge négative en compensation sont mis en place afin 
   padding-left: 0.75rem;
   padding-right: 0.75rem;
 }
-/*
-.fr-share__link--facebook::before {
+
+/* .fr-share__link--facebook::before {
   font: normal normal normal 1.5rem/1 dsfr-icon;
   content: "";
   margin-left: 0;
@@ -4232,8 +4232,8 @@ un padding de 4px et une marge négative en compensation sont mis en place afin 
   padding-left: 0.75rem;
   padding-right: 0.75rem;
 }
-/*
-.fr-share__link--twitter::before {
+
+/* .fr-share__link--twitter::before {
   font: normal normal normal 1.5rem/1 dsfr-icon;
   content: "";
   margin-left: 0;
@@ -4256,13 +4256,13 @@ un padding de 4px et une marge négative en compensation sont mis en place afin 
   padding-right: 0.75rem;
 }
 
-.fr-share__link--linkedin::before {
+/* .fr-share__link--linkedin::before {
   font: normal normal normal 1.5rem/1 dsfr-icon;
   content: "";
   margin-left: 0;
   margin-right: 0.75rem;
   font-size: 1.5rem;
-}
+} */
 
 .fr-share__link--mail {
   font-size: 0.875rem;
@@ -4279,13 +4279,13 @@ un padding de 4px et une marge négative en compensation sont mis en place afin 
   padding-right: 0.75rem;
 }
 
-.fr-share__link--mail::before {
+/* .fr-share__link--mail::before {
   font: normal normal normal 1.5rem/1 dsfr-icon;
   content: "";
   margin-left: 0;
   margin-right: 0.75rem;
   font-size: 1.5rem;
-}
+} */
 
 .fr-share__link--copy {
   font-size: 0.875rem;
@@ -4302,13 +4302,13 @@ un padding de 4px et une marge négative en compensation sont mis en place afin 
   padding-right: 0.75rem;
 }
 
-.fr-share__link--copy::before {
+/* .fr-share__link--copy::before {
   font: normal normal normal 1.5rem/1 dsfr-icon;
   content: "";
   margin-left: 0;
   margin-right: 0.75rem;
   font-size: 1.5rem;
-}
+} */
 
 .fr-share__link:disabled, .fr-share__link[disabled], a.fr-share__link:not([href]) {
   color: var(--text-disabled-grey);
@@ -4693,7 +4693,7 @@ un padding de 4px et une marge négative en compensation sont mis en place afin 
   --blend: var(--background-contrast-grey-blend);
   background-color: var(--background-contrast-grey);
 }
-/*
+
 .fr-tag--icon-left[class^="fr-fi-"], .fr-tag--icon-left[class*=" fr-fi-"] {
   flex-direction: row;
   overflow: initial;
@@ -4752,7 +4752,7 @@ un padding de 4px et une marge négative en compensation sont mis en place afin 
   margin-right: -0.25rem;
   margin-left: 0.25rem;
   font-size: 1rem;
-} */
+}
 
 .fr-tags-group {
   --ul-type: none;
@@ -4984,7 +4984,7 @@ a.fr-tag--beige-gris-galet, button.fr-tag--beige-gris-galet, input[type="button"
   position: relative;
   display: block;
 }
-/*
+
 .fr-input-wrap[class^="fr-fi-"]::before, .fr-input-wrap[class*=" fr-fi-"]::before {
   font-size: 1rem !important;
   position: absolute;
@@ -4992,20 +4992,20 @@ a.fr-tag--beige-gris-galet, button.fr-tag--beige-gris-galet, input[type="button"
   right: 0.75rem;
   bottom: 0.75rem;
   margin: auto;
-} */
+}
 
 .fr-input-wrap--addon {
   display: flex;
   flex-direction: row;
   width: 100%;
 }
-/*
+
 .fr-input-wrap.fr-fi-calendar-line > .fr-input[type=date]::-webkit-calendar-picker-indicator {
   display: block;
   margin-right: -2rem;
   z-index: 1;
   opacity: 0;
-} */
+}
 
 .fr-input-wrap .fr-input {
   padding-right: 2.5rem;
@@ -5063,11 +5063,11 @@ textarea.fr-input {
   background-color: var(--background-contrast-grey);
   box-shadow: inset 0.25rem 0 0 0 var(--border-default-blue-france);
 }
-/*
+
 .fr-callout[class^="fr-fi-"]::before, .fr-callout[class*=" fr-fi-"]::before {
   display: block;
   margin: -0.5rem 0 0.5rem;
-} */
+}
 
 .fr-callout__title {
   font-weight:  700 ;
@@ -5308,10 +5308,10 @@ textarea.fr-input {
   margin-bottom: 1rem;
   color: var(--text-title-grey);
 }
-/*
+
 .fr-modal__title[class^="fr-fi-"], .fr-modal__title[class*=" fr-fi-"] {
   margin-right: 0.5rem;
-} */
+}
 
 .fr-modal__body.fr-scroll-shadow .fr-modal__footer {
   box-shadow: 0 -8px 8px 0 rgba(0, 0, 0, 0.1), 0 -8px 16px -16px rgba(0, 0, 0, 0.32);
@@ -5404,13 +5404,13 @@ textarea.fr-input {
   flex-direction: row;
 }
 
-.fr-nav__btn::after {
+/* .fr-nav__btn::after {
   font: normal normal normal 1rem/1 dsfr-icon;
   content: "";
   margin-left: 0.5rem;
   margin-right: 0;
   transition: transform 0.3s;
-}
+} */
 
 .fr-nav__btn[aria-expanded="true"]::after {
   transform: rotate(-180deg);
@@ -5699,8 +5699,8 @@ textarea.fr-input {
   margin-right: -0.25rem;
   margin-left: 0.25rem;
   font-size: 1rem;
-} */
-/*
+}
+
 .fr-consent-service__collapse .fr-consent-service__collapse-btn[aria-expanded="true"]::before {
   font: normal normal normal 1rem/1 dsfr-icon;
   content: "";
@@ -5962,7 +5962,7 @@ textarea.fr-input {
   box-shadow: 0 -1px 0 0 var(--border-default-blue-france);
 }
 
-.fr-follow .fr-link--facebook::before {
+/* .fr-follow .fr-link--facebook::before {
   content: "";
 }
 
@@ -5980,7 +5980,7 @@ textarea.fr-input {
 
 .fr-follow .fr-link--youtube::before {
   content: "";
-}
+} */
 
 .fr-follow .fr-input {
   --blend: var(--background-default-grey-blend);
@@ -6162,14 +6162,14 @@ textarea.fr-input {
   color: var(--text-action-high-blue-france);
 }
 
-/* .fr-header__navbar .fr-btn::before {
+.fr-header__navbar .fr-btn::before {
   font: normal normal normal 1.5rem/1 dsfr-icon;
   margin-left: 0;
   margin-right: 0.5rem;
   font-size: 1.5rem;
 }
 
-.fr-header__navbar .fr-btn--menu::before {
+/* .fr-header__navbar .fr-btn--menu::before {
   font: normal normal normal 1.5rem/1 dsfr-icon;
   content: "";
 }
@@ -6190,13 +6190,13 @@ textarea.fr-input {
   max-width: none;
   max-height: none;
 }
-/*
+
 .fr-header .fr-links-group .fr-link::before {
   font: normal normal normal 1rem/1 dsfr-icon;
   margin-left: -0.25rem;
   margin-right: 0.5rem;
   font-size: 1rem;
-} */
+}
 
 .fr-header__tools-links {
   display: none;
@@ -6718,9 +6718,9 @@ textarea.fr-input {
   .fr-callout {
     padding: 2rem 3rem;
   }
-  /* .fr-callout[class^="fr-fi-"]::before, .fr-callout[class*=" fr-fi-"]::before {
+  .fr-callout[class^="fr-fi-"]::before, .fr-callout[class*=" fr-fi-"]::before {
     margin: -1rem 0 1rem -2rem;
-  } */
+  }
   .fr-callout__title {
     font-size:  1.5rem ;
     line-height:  2rem ;
@@ -6772,12 +6772,12 @@ textarea.fr-input {
     max-width: none;
     max-height: none;
   }
-  /* .fr-search-bar--lg .fr-btn::before {
+  .fr-search-bar--lg .fr-btn::before {
     font: normal normal normal 2rem/1 dsfr-icon;
     margin-left: -0.375rem;
     margin-right: 0.5rem;
     font-size: 1.5rem;
-  } */
+  }
   .fr-search-bar--lg .fr-input {
     padding-top: 1rem;
     padding-bottom: 1rem;
@@ -6959,269 +6959,269 @@ textarea.fr-input {
     max-height: none;
   }
   .fr-pagination__link--next.fr-pagination__link--lg-label::before, .fr-pagination__link--last.fr-pagination__link--lg-label::before {
-    font: normal normal normal 1.5rem/1 dsfr-icon;
-    margin-right: -0.375rem;
-    margin-left: 0.5rem;
-    font-size: 1.5rem;
-  }
-  .fr-footer__content {
-    margin-top: 0;
-    flex-basis: calc(100% - (100% / 2));
-  }
-  .fr-nav__list {
-    flex-direction: row;
-    flex-wrap: nowrap;
-    margin: 0 -1rem;
-  }
-  .fr-nav__list > *:first-child:nth-last-child(2) ~ *,
-  .fr-nav__list > *:first-child:nth-last-child(3) ~ *,
-  .fr-nav__list > *:first-child:nth-last-child(4) ~ * {
-    margin-left: 1.25rem;
-  }
-  .fr-nav__list > .fr-nav__link,
-  .fr-nav__list > .fr-nav__btn,
-  .fr-nav__list > * > .fr-nav__link,
-  .fr-nav__list > * > .fr-nav__btn {
-    padding: 1rem;
-    margin: 0;
-    width: auto;
-    height: 100%;
-    min-height: 3.5rem;
-    font-weight: normal;
-  }
-  .fr-nav__list > .fr-nav__link[aria-current],
-  .fr-nav__list > .fr-nav__btn[aria-current],
-  .fr-nav__list > * > .fr-nav__link[aria-current],
-  .fr-nav__list > * > .fr-nav__btn[aria-current] {
-    /**
-            * Pour conserver le souligné de selection  par dessus la barre de mega-menu
-            */
-  }
-  .fr-nav__list > .fr-nav__link[aria-current]::before,
-  .fr-nav__list > .fr-nav__btn[aria-current]::before,
-  .fr-nav__list > * > .fr-nav__link[aria-current]::before,
-  .fr-nav__list > * > .fr-nav__btn[aria-current]::before {
-    position: absolute;
-    top: auto;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 2px;
-    margin-top: 0;
-  }
-  .fr-nav__list > .fr-nav__link[aria-current]:not([aria-expanded="true"]),
-  .fr-nav__list > .fr-nav__btn[aria-current]:not([aria-expanded="true"]),
-  .fr-nav__list > * > .fr-nav__link[aria-current]:not([aria-expanded="true"]),
-  .fr-nav__list > * > .fr-nav__btn[aria-current]:not([aria-expanded="true"]) {
-    z-index: 3500;
-  }
-  .fr-nav__item {
-    align-items: flex-start;
-    box-shadow: none;
-  }
-  .fr-nav__item--align-right {
-    align-items: flex-end;
-  }
-  .fr-nav__link, .fr-nav__btn {
-    font-size:  0.875rem ;
-    line-height:  1.5rem ;
-  }
-  .fr-nav__btn {
-    padding: 1rem 0.75rem 1rem 1rem;
-    justify-content: flex-start;
-  }
-  .fr-menu {
-    position: absolute;
-    top: 100%;
-    margin-top: -0.25rem;
-    padding-top: 0.25rem;
-  }
-  .fr-menu::after {
-    content: "";
-    display: block;
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    margin: 0.25rem 1rem 2rem;
-    z-index: -1;
-    --blend: var(--background-elevated-grey-blend);
-    background-color: var(--background-elevated-grey);
-  }
-  .fr-menu__list {
-    padding: 0 0 2rem;
-    width: 20rem;
-  }
-  .fr-menu .fr-nav__link {
-    padding: 0.75rem 1rem;
-    box-shadow: 0 calc(-1rem - 1px) 0 -1rem var(--border-default-grey);
-  }
-  .fr-menu .fr-nav__link::before {
-    left: 0;
-  }
-  .fr-mega-menu {
-    position: absolute;
-    top: 100%;
-    right: 0;
-    left: 0;
-    margin: -2px 0 0;
-    padding: 0 0 2.25rem;
-  }
-  .fr-mega-menu > .fr-container::before {
-    content: "";
-    display: block;
-    height: 2px;
-    margin-left: -1rem;
-    margin-right: -1rem;
-    margin-bottom: 1rem;
-    --blend: var(--background-open-blue-france-blend);
-    background-color: var(--background-open-blue-france);
-  }
-  .fr-mega-menu .fr-link--close {
-    display: flex;
-  }
-  .fr-mega-menu .fr-nav__link {
-    padding: 0.75rem 1rem;
-  }
-  .fr-mega-menu__leader {
-    padding-top: 0;
-    padding-left: 0;
-    padding-right: 0;
-  }
-  .fr-nav__btn[aria-expanded="true"] {
-    color: var(--text-active-blue-france);
-    --blend: var(--background-open-blue-france-blend);
-    background-color: var(--background-open-blue-france);
-  }
-  .fr-mega-menu__list {
-    box-shadow: none;
-  }
-  .fr-mega-menu__category {
-    box-shadow: 0 calc(1rem + 1px) 0 -1rem var(--border-default-grey);
-  }
-  .fr-consent-manager__header .fr-consent-service__title {
-    width: 44%;
-  }
-  .fr-consent-manager__header .fr-consent-service__radios {
-    width: 56%;
-    position: absolute;
-    justify-content: flex-end;
-  }
-  .fr-header__body-row {
-    padding: 1.5rem 0;
-  }
-  .fr-header__brand {
-    margin-top: -1rem;
-    margin-bottom: -1rem;
-    flex-wrap: nowrap;
-    width: auto;
-  }
-  .fr-header__brand-top {
-    width: auto;
-  }
-  .fr-header__logo, .fr-header__operator, .fr-header__service {
-    padding: 1rem;
-  }
-  .fr-header__logo:not(:last-child), .fr-header__operator:not(:last-child), .fr-header__service:not(:last-child) {
-    margin-right: 0.5rem;
-  }
-  .fr-header__service {
-    margin-left: 0;
-    margin-right: 0;
-    width: auto;
-    box-shadow: none;
-  }
-  .fr-header .fr-modal {
-    margin: 0;
-    width: auto;
-    height: auto;
-    visibility: inherit;
-    opacity: 1;
-    position: initial;
-    background-color: transparent;
-    overflow: initial;
-  }
-  .fr-header .fr-modal > * > .fr-link--close {
-    display: none;
-  }
-  .fr-header .fr-modal > .fr-container {
-    padding-top: 0;
-    padding-bottom: 0;
-    height: auto;
-  }
-  .fr-header__navbar {
-    display: none;
-  }
-  .fr-header__tools {
-    flex-direction: column;
-    align-items: flex-end;
-    text-align: right;
-    padding-left: 1rem;
-    padding-right: 1rem;
-    margin-left: auto;
-    flex: 1 0 auto;
-  }
-  .fr-header__tools-links + .fr-header__search {
-    margin-top: 1rem;
-  }
-  .fr-header__tools .fr-header__search {
-    max-width: 25rem;
-    margin-left: auto;
-  }
-  .fr-header__tools-links {
-    display: initial;
-  }
-  .fr-header .fr-header__menu-links {
-    display: none;
-  }
-  .fr-header .fr-nav {
-    justify-content: flex-start;
-  }
-  .fr-header .fr-nav__list {
-    max-width: calc(100% + 1rem);
-  }
-  .fr-header .fr-nav .fr-menu::after,
-  .fr-header .fr-nav .fr-mega-menu {
-    box-shadow: 0 8px 8px 0 rgba(0, 0, 0, 0.1), 0 8px 16px -16px rgba(0, 0, 0, 0.32);
-  }
-  .fr-header .fr-header__menu {
-    box-shadow: inset 0 1px 0 0 var(--border-default-grey) !important;
-  }
-}
+     font: normal normal normal 1.5rem/1 dsfr-icon;
+     margin-right: -0.375rem;
+     margin-left: 0.5rem;
+     font-size: 1.5rem;
+   }
+   .fr-footer__content {
+     margin-top: 0;
+     flex-basis: calc(100% - (100% / 2));
+   }
+   .fr-nav__list {
+     flex-direction: row;
+     flex-wrap: nowrap;
+     margin: 0 -1rem;
+   }
+   .fr-nav__list > *:first-child:nth-last-child(2) ~ *,
+   .fr-nav__list > *:first-child:nth-last-child(3) ~ *,
+   .fr-nav__list > *:first-child:nth-last-child(4) ~ * {
+     margin-left: 1.25rem;
+   }
+   .fr-nav__list > .fr-nav__link,
+   .fr-nav__list > .fr-nav__btn,
+   .fr-nav__list > * > .fr-nav__link,
+   .fr-nav__list > * > .fr-nav__btn {
+     padding: 1rem;
+     margin: 0;
+     width: auto;
+     height: 100%;
+     min-height: 3.5rem;
+     font-weight: normal;
+   }
+   .fr-nav__list > .fr-nav__link[aria-current],
+   .fr-nav__list > .fr-nav__btn[aria-current],
+   .fr-nav__list > * > .fr-nav__link[aria-current],
+   .fr-nav__list > * > .fr-nav__btn[aria-current] {
+     /**
+              * Pour conserver le souligné de selection  par dessus la barre de mega-menu
+              */
+   }
+   .fr-nav__list > .fr-nav__link[aria-current]::before,
+   .fr-nav__list > .fr-nav__btn[aria-current]::before,
+   .fr-nav__list > * > .fr-nav__link[aria-current]::before,
+   .fr-nav__list > * > .fr-nav__btn[aria-current]::before {
+     position: absolute;
+     top: auto;
+     bottom: 0;
+     left: 0;
+     width: 100%;
+     height: 2px;
+     margin-top: 0;
+   }
+   .fr-nav__list > .fr-nav__link[aria-current]:not([aria-expanded="true"]),
+   .fr-nav__list > .fr-nav__btn[aria-current]:not([aria-expanded="true"]),
+   .fr-nav__list > * > .fr-nav__link[aria-current]:not([aria-expanded="true"]),
+   .fr-nav__list > * > .fr-nav__btn[aria-current]:not([aria-expanded="true"]) {
+     z-index: 3500;
+   }
+   .fr-nav__item {
+     align-items: flex-start;
+     box-shadow: none;
+   }
+   .fr-nav__item--align-right {
+     align-items: flex-end;
+   }
+   .fr-nav__link, .fr-nav__btn {
+     font-size:  0.875rem ;
+     line-height:  1.5rem ;
+   }
+   .fr-nav__btn {
+     padding: 1rem 0.75rem 1rem 1rem;
+     justify-content: flex-start;
+   }
+   .fr-menu {
+     position: absolute;
+     top: 100%;
+     margin-top: -0.25rem;
+     padding-top: 0.25rem;
+   }
+   .fr-menu::after {
+     content: "";
+     display: block;
+     position: absolute;
+     top: 0;
+     right: 0;
+     bottom: 0;
+     left: 0;
+     margin: 0.25rem 1rem 2rem;
+     z-index: -1;
+     --blend: var(--background-elevated-grey-blend);
+     background-color: var(--background-elevated-grey);
+   }
+   .fr-menu__list {
+     padding: 0 0 2rem;
+     width: 20rem;
+   }
+   .fr-menu .fr-nav__link {
+     padding: 0.75rem 1rem;
+     box-shadow: 0 calc(-1rem - 1px) 0 -1rem var(--border-default-grey);
+   }
+   .fr-menu .fr-nav__link::before {
+     left: 0;
+   }
+   .fr-mega-menu {
+     position: absolute;
+     top: 100%;
+     right: 0;
+     left: 0;
+     margin: -2px 0 0;
+     padding: 0 0 2.25rem;
+   }
+   .fr-mega-menu > .fr-container::before {
+     content: "";
+     display: block;
+     height: 2px;
+     margin-left: -1rem;
+     margin-right: -1rem;
+     margin-bottom: 1rem;
+     --blend: var(--background-open-blue-france-blend);
+     background-color: var(--background-open-blue-france);
+   }
+   .fr-mega-menu .fr-link--close {
+     display: flex;
+   }
+   .fr-mega-menu .fr-nav__link {
+     padding: 0.75rem 1rem;
+   }
+   .fr-mega-menu__leader {
+     padding-top: 0;
+     padding-left: 0;
+     padding-right: 0;
+   }
+   .fr-nav__btn[aria-expanded="true"] {
+     color: var(--text-active-blue-france);
+     --blend: var(--background-open-blue-france-blend);
+     background-color: var(--background-open-blue-france);
+   }
+   .fr-mega-menu__list {
+     box-shadow: none;
+   }
+   .fr-mega-menu__category {
+     box-shadow: 0 calc(1rem + 1px) 0 -1rem var(--border-default-grey);
+   }
+   .fr-consent-manager__header .fr-consent-service__title {
+     width: 44%;
+   }
+   .fr-consent-manager__header .fr-consent-service__radios {
+     width: 56%;
+     position: absolute;
+     justify-content: flex-end;
+   }
+   .fr-header__body-row {
+     padding: 1.5rem 0;
+   }
+   .fr-header__brand {
+     margin-top: -1rem;
+     margin-bottom: -1rem;
+     flex-wrap: nowrap;
+     width: auto;
+   }
+   .fr-header__brand-top {
+     width: auto;
+   }
+   .fr-header__logo, .fr-header__operator, .fr-header__service {
+     padding: 1rem;
+   }
+   .fr-header__logo:not(:last-child), .fr-header__operator:not(:last-child), .fr-header__service:not(:last-child) {
+     margin-right: 0.5rem;
+   }
+   .fr-header__service {
+     margin-left: 0;
+     margin-right: 0;
+     width: auto;
+     box-shadow: none;
+   }
+   .fr-header .fr-modal {
+     margin: 0;
+     width: auto;
+     height: auto;
+     visibility: inherit;
+     opacity: 1;
+     position: initial;
+     background-color: transparent;
+     overflow: initial;
+   }
+   .fr-header .fr-modal > * > .fr-link--close {
+     display: none;
+   }
+   .fr-header .fr-modal > .fr-container {
+     padding-top: 0;
+     padding-bottom: 0;
+     height: auto;
+   }
+   .fr-header__navbar {
+     display: none;
+   }
+   .fr-header__tools {
+     flex-direction: column;
+     align-items: flex-end;
+     text-align: right;
+     padding-left: 1rem;
+     padding-right: 1rem;
+     margin-left: auto;
+     flex: 1 0 auto;
+   }
+   .fr-header__tools-links + .fr-header__search {
+     margin-top: 1rem;
+   }
+   .fr-header__tools .fr-header__search {
+     max-width: 25rem;
+     margin-left: auto;
+   }
+   .fr-header__tools-links {
+     display: initial;
+   }
+   .fr-header .fr-header__menu-links {
+     display: none;
+   }
+   .fr-header .fr-nav {
+     justify-content: flex-start;
+   }
+   .fr-header .fr-nav__list {
+     max-width: calc(100% + 1rem);
+   }
+   .fr-header .fr-nav .fr-menu::after,
+   .fr-header .fr-nav .fr-mega-menu {
+     box-shadow: 0 8px 8px 0 rgba(0, 0, 0, 0.1), 0 8px 16px -16px rgba(0, 0, 0, 0.32);
+   }
+   .fr-header .fr-header__menu {
+     box-shadow: inset 0 1px 0 0 var(--border-default-grey) !important;
+   }
+ }
 
-@media (min-width: 78em) {
-  .fr-consent-manager__header .fr-consent-service__title {
-    width: 50%;
-  }
-  .fr-consent-manager__header .fr-consent-service__radios {
-    width: 50%;
-  }
-}
+ @media (min-width: 78em) {
+   .fr-consent-manager__header .fr-consent-service__title {
+     width: 50%;
+   }
+   .fr-consent-manager__header .fr-consent-service__radios {
+     width: 50%;
+   }
+ }
 
-@media (hover: hover) and (pointer: fine) {
-  .fr-radio-rich input[type="radio"]:not(:disabled) + label {
-    --hsla: hsla(var(--blend), var(--a));
-    --blend-size: 0%;
-    --blend-position: 50%;
-    background-repeat: no-repeat;
-    background-size: var(--blend-size);
-    background-position: var(--blend-position);
-    background-image: radial-gradient(circle at center, var(--hsla), var(--hsla) 3%);
-  }
-  .fr-radio-rich input[type="radio"]:not(:disabled) + label:hover, .fr-radio-rich input[type="radio"]:not(:disabled) + label:active {
-    --blend-size: var(--blend-full-size);
-  }
-  .fr-radio-rich input[type="radio"]:not(:disabled) + label:hover {
-    --a: 0.3;
-  }
-  .fr-radio-rich input[type="radio"]:not(:disabled) + label:active {
-    --a: 0.5;
-  }
-  .fr-header__brand.fr-enlarge-link a[href]:hover {
-    --a: 0.1;
-  }
-  .fr-header__brand.fr-enlarge-link a[href]:active {
-    --a: 0.2;
-  }
-}
+ @media (hover: hover) and (pointer: fine) {
+   .fr-radio-rich input[type="radio"]:not(:disabled) + label {
+     --hsla: hsla(var(--blend), var(--a));
+     --blend-size: 0%;
+     --blend-position: 50%;
+     background-repeat: no-repeat;
+     background-size: var(--blend-size);
+     background-position: var(--blend-position);
+     background-image: radial-gradient(circle at center, var(--hsla), var(--hsla) 3%);
+   }
+   .fr-radio-rich input[type="radio"]:not(:disabled) + label:hover, .fr-radio-rich input[type="radio"]:not(:disabled) + label:active {
+     --blend-size: var(--blend-full-size);
+   }
+   .fr-radio-rich input[type="radio"]:not(:disabled) + label:hover {
+     --a: 0.3;
+   }
+   .fr-radio-rich input[type="radio"]:not(:disabled) + label:active {
+     --a: 0.5;
+   }
+   .fr-header__brand.fr-enlarge-link a[href]:hover {
+     --a: 0.1;
+   }
+   .fr-header__brand.fr-enlarge-link a[href]:active {
+     --a: 0.2;
+   }
+ }
