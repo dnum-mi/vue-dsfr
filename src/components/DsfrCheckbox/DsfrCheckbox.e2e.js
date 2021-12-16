@@ -386,4 +386,54 @@ describe('DsfrCheckboxSet', () => {
       .find('.fr-hint-text')
       .should('not.exist')
   })
+
+  it('should mount a Checkboxes Set in line', () => {
+    const legend = 'Légende des champs'
+    const disabled = false
+    const inline = true
+    const errorMessage = ''
+    const validMessage = ''
+    const modelValue = []
+    const options = [
+      {
+        label: 'Valeur 1',
+        id: 'name1',
+        name: 'name1',
+        hint: 'Description 1',
+      },
+      {
+        label: 'Valeur 2',
+        id: 'name2',
+        name: 'name2',
+        hint: 'Description 2',
+      },
+      {
+        label: 'Valeur 3',
+        id: 'name3',
+        name: 'name3',
+      },
+    ]
+
+    mount(DsfrCheckboxSet, {
+      global: {
+        components: {
+          VIcon,
+          DsfrCheckbox,
+        },
+      },
+      props: {
+        legend,
+        disabled,
+        inline,
+        errorMessage,
+        validMessage,
+        modelValue,
+        options,
+      },
+    })
+      .get('.fr-form-group')
+      .should('be.visible')
+      .find('.fr-fieldset--inline')
+      .should('be.visible')
+  })
 })
