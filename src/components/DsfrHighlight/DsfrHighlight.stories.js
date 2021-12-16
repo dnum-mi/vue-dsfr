@@ -44,6 +44,7 @@ export const MiseEnExergue = (args) => ({
 })
 
 MiseEnExergue.args = {
+  dark: false,
   small: false,
   large: false,
   text: 'Texte original de la mise en exergue',

@@ -46,6 +46,8 @@ export default defineComponent({
 })
 </script>
 
+<style src="./input.main.css" />
+
 <style scoped>
 .fr-label {
   font-size: 0.8rem;
