@@ -40,7 +40,7 @@ export default {
   <div class="fr-follow">
     <div class="fr-container">
       <div class="fr-grid-row">
-        <!-- @slot Slot par défaut pour le contenu de la liste. Sera dans `<div class="fr-grid-row">` -->
+        <!-- @slot Slot par défaut pour le contenu. Sera dans `<div class="fr-grid-row">` -->
         <slot />
         <div
           v-if="newsletterData"
@@ -63,6 +63,6 @@ export default {
 
 <style scoped>
 .fr-follow {
-  color: var(--g800);
+  color: var(--text-default-grey);
 }
 </style>
