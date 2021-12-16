@@ -183,9 +183,12 @@ export default {
   </footer>
 </template>
 
-<style src="./footer.css" />
+<style src="./footer.main.css" />
 
 <style scoped>
+.fr-footer {
+  color: var(--text-default-grey);
+}
 .no-content-after {
   --link-blank-content: '';
 }
