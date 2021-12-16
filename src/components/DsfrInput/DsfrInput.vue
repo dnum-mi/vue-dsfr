@@ -10,14 +10,11 @@
   </label>
   <input
     :id="id"
-    :type="type"
     class="fr-input"
-    :placeholder="placeholder"
     :value="modelValue"
-    :disabled="disabled"
+    v-bind="$attrs"
     @input="$emit('update:modelValue', $event.target.value)"
     @keydown.esc="$emit('update:modelValue', '')"
-    @keydown="$emit('keydown', $event)"
   >
 </template>
 
@@ -44,15 +41,6 @@ export default defineComponent({
       type: String,
       default: '',
     },
-    placeholder: {
-      type: String,
-      default: '',
-    },
-    type: {
-      type: String,
-      default: 'text',
-    },
-    disabled: Boolean,
   },
   emits: ['update:modelValue', 'keydown', 'input'],
 })
