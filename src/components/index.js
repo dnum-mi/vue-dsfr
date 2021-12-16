@@ -22,6 +22,7 @@ export { default as DsfrNavigationMegaMenuCategory } from './DsfrNavigation/Dsfr
 export { default as DsfrNavigationMenu } from './DsfrNavigation/DsfrNavigationMenu.vue'
 export { default as DsfrNavigationMenuItem } from './DsfrNavigation/DsfrNavigationMenuItem.vue'
 export { default as DsfrNavigationMenuLink } from './DsfrNavigation/DsfrNavigationMenuLink.vue'
+export { default as DsfrPagination } from './DsfrPagination/DsfrPagination.vue'
 export { default as DsfrPicture } from './DsfrMedia/DsfrPicture.vue'
 export { default as DsfrRadioButton } from './DsfrRadioButton/DsfrRadioButton.vue'
 export { default as DsfrRadioButtonSet } from './DsfrRadioButton/DsfrRadioButtonSet.vue'
