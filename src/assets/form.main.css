@@ -1,8 +1,12 @@
-/* ------------------------------------ *\
-  FORMS
-\* ------------------------------------ */
+/*!
+* DSFR v1.2.1 | SPDX-License-Identifier: MIT | License-Filename: LICENSE.md | restricted use (see terms and conditions)
+*/
 
-.fr-select-group:not(:last-child), .fr-input-group:not(:last-child) {
+/* ------------------------------------ *\
+  FORM
+\* ------------------------------------ */
+.fr-select-group:not(:last-child),
+.fr-input-group:not(:last-child) {
   margin-bottom: 1.5rem;
 }
 
@@ -16,33 +20,44 @@
   display: block;
   font-size: 1rem;
   line-height: 1.5rem;
+  color: var(--text-label-grey);
+
+  /**
+    * Modificateur au niveau du label pour appliquer un état d'erreur au label
+    */
+
+  /**
+    * Modificateur au niveau du label pour appliquer un état de succès au label
+    */
 }
 
-.fr-label + .fr-input, .fr-label + .fr-input-wrap, .fr-label + .fr-select {
+.fr-label + .fr-input,
+.fr-label + .fr-input-wrap,
+.fr-label + .fr-select {
   margin-top: 0.5rem;
 }
 
 /**
- * Style du texte d'aide
- */
-
+* Style du texte d'aide
+*/
 .fr-hint-text {
   display: block;
   font-size: 0.75rem;
   line-height: 1.25rem;
   margin-top: 0;
   margin-bottom: 0;
+  color: var(--text-mention-grey);
 }
 
-.fr-hint-text + .fr-input, .fr-hint-text + .fr-input-wrap,
+.fr-hint-text + .fr-input,
+.fr-hint-text + .fr-input-wrap,
 .fr-hint-text + .fr-select {
   margin-top: 0.5rem;
 }
 
 /**
- * Style du texte d'erreur
- */
-
+* Style du texte d'erreur
+*/
 .fr-error-text {
   display: flex;
   flex-direction: row;
@@ -51,19 +66,19 @@
   line-height: 1.25rem;
   margin-top: 1rem;
   margin-bottom: 0;
+  color: var(--text-default-error);
 }
 
-.fr-error-text::before {
-  font: normal normal normal 1rem/1 dsfr-icons;
-  content: "";
+/* .fr-error-text::before {
+  font: normal normal normal 1rem/1 dsfr-icon;
+  content: "";
   display: inline-block;
   margin-right: 0.25rem;
-}
+} */
 
 /**
- * Style du texte de l'état validé
- */
-
+* Style du texte de l'état validé
+*/
 .fr-valid-text {
   display: flex;
   flex-direction: row;
@@ -72,37 +87,51 @@
   line-height: 1.25rem;
   margin-top: 1rem;
   margin-bottom: 0;
+  color: var(--text-default-success);
 }
 
-.fr-valid-text::before {
-  font: normal normal normal 1rem/1 dsfr-icons;
-  content: "";
+/* .fr-valid-text::before {
+  font: normal normal normal 1rem/1 dsfr-icon;
+  content: "";
   display: inline-block;
   margin-right: 0.25rem;
-}
+} */
 
 .fr-form-group {
   margin-bottom: 2rem;
 }
 
 /**
- * Style d'un ensemble de champs
- */
-
+* Style d'un ensemble de champs
+*/
 .fr-fieldset {
   position: relative;
   margin: 0;
   padding: 0;
   border: 0;
+
   /**
-   * Modificateur pour afficher les éléments en inline
-   *//**
-   * Modificateur pour gérer l'état d'erreur
-   *//**
-   * Modificateur pour gérer l'état de validation
-   *//**
-   * Mixin disabled pour gérer l'état disabled
-   */
+  * Modificateur pour afficher les éléments en inline
+  */
+
+  /**
+  * Modificateur pour gérer l'état d'erreur
+  */
+
+  /**
+  * Modificateur pour gérer l'état de validation
+  */
+  /**
+    * Mixin disabled pour gérer l'état disabled
+    */
+
+  /**
+    * Modificateur pour gérer l'état d'erreur
+    */
+
+  /**
+    * Modificateur pour gérer l'état de validation
+    */
 }
 
 .fr-fieldset .fr-hint-text {
@@ -114,6 +143,7 @@
   font-size: 1rem;
   line-height: 1.5rem;
   font-weight: 700;
+  color: var(--text-title-grey);
 }
 
 .fr-fieldset__legend .fr-hint-text {
@@ -182,6 +212,7 @@
   bottom: 0.75rem;
   left: -0.5rem;
   width: 2px;
+  box-shadow: inset 2px 0 0 0 var(--border-plain-error);
 }
 
 .fr-fieldset--valid .fr-fieldset__content::before {
@@ -191,94 +222,72 @@
   bottom: 0.75rem;
   left: -0.5rem;
   width: 2px;
+  box-shadow: inset 2px 0 0 0 var(--border-plain-success);
 }
 
-.fr-fieldset[disabled] .fr-label, .fr-fieldset:disabled .fr-label {
-  color: var(--g600-g400);
-}
-
-.fr-select-group, .fr-input-group {
+.fr-select-group,
+.fr-input-group {
   /**
-   * Modificateur au niveau du groupe pour appliquer un état validé aux labels
-   *//**
-   * Modificateur au niveau du groupe pour appliquer un état d'erreur aux labels
-   *//**
-   * Modificateur au niveau du groupe pour appliquer un état inactif aux labels
-   */
-}
+    * Modificateur au niveau du groupe pour appliquer un état validé aux labels
+    */
 
-.fr-select-group--valid .fr-label, .fr-input-group--valid .fr-label {
-  color: var(--success);
-}
-
-.fr-select-group--error .fr-label, .fr-input-group--error .fr-label {
-  color: var(--error);
-}
-
-.fr-select-group--disabled .fr-label, .fr-input-group--disabled .fr-label {
-  color: var(--g600-g400);
-}
-
-.fr-label {
-  color: var(--g800);
   /**
-   * Modificateur au niveau du label pour appliquer un état d'erreur au label
-   */
+    * Modificateur au niveau du groupe pour appliquer un état d'erreur aux labels
+    */
+
+  /**
+    * Modificateur au niveau du groupe pour appliquer un état inactif aux labels
+    */
+}
+
+.fr-select-group--valid label,
+.fr-input-group--valid label {
+  color: var(--text-default-success);
+}
+
+.fr-select-group--error label,
+.fr-input-group--error label {
+  color: var(--text-default-error);
+}
+
+.fr-select-group--disabled label,
+.fr-input-group--disabled label {
+  color: var(--text-disabled-grey);
 }
 
 .fr-label--error {
-  color: var(--error);
+  color: var(--text-default-error);
+}
+
+.fr-label--success {
+  color: var(--text-default-success);
 }
 
 /**
- * Style du texte d'aide
- */
-
-.fr-hint-text {
-  color: var(--g600);
-}
+  * Style du texte d'aide
+  */
 
 /**
- * Style du texte d'erreur
- */
-
-.fr-error-text {
-  color: var(--error);
-}
+  * Style du texte d'erreur
+  */
 
 /**
- * Style du texte de l'état validé
- */
-
-.fr-valid-text {
-  color: var(--success);
-}
+  * Style du texte de l'état validé
+  */
 
 /**
- * Style d'un ensemble de champs
- */
+  * Style d'un ensemble de champs
+  */
 
-.fr-fieldset {
-  color: var(--g800);
-  /**
-   * Modificateur pour gérer l'état d'erreur
-   *//**
-   * Modificateur pour gérer l'état de validation
-   */
+.fr-fieldset:disabled label,
+.fr-fieldset[disabled] label {
+  color: var(--text-disabled-grey);
 }
 
-.fr-fieldset--error .fr-fieldset__content::before {
-  background-color: var(--error);
+.fr-fieldset--error label {
+  color: var(--text-default-error);
 }
 
-.fr-fieldset--error .fr-label {
-  color: var(--error);
-}
-
-.fr-fieldset--valid .fr-fieldset__content::before {
-  background-color: var(--success);
-}
-
-.fr-fieldset--valid .fr-label {
-  color: var(--success);
+.fr-fieldset--valid label {
+  color: var(--text-default-success);
 }

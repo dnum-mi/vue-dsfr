@@ -38,7 +38,10 @@
         class="fr-message-text  flex  items-center"
         :class="additionalMessageClass"
       >
-        <v-icon :name="messageIcon" />
+        <v-icon
+          :name="messageIcon"
+          class="message-icon"
+        />
         <span>{{ message }}</span>
       </p>
     </fieldset>
@@ -115,6 +118,10 @@ export default {
 <style src="./DsfrCheckboxSet.css" />
 
 <style scoped>
+.message-icon {
+  margin-right: 0.25rem;
+}
+
 .fr-error-text::before,
 .fr-valid-text::before {
   display: none;

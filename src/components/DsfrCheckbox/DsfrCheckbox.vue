@@ -40,7 +40,10 @@
       class="fr-message-text  flex  items-center"
       :class="additionalMessageClass"
     >
-      <v-icon :name="messageIcon" />
+      <v-icon
+        :name="messageIcon"
+        class="message-icon"
+      />
       <span class="line-1">{{ message }}</span>
     </p>
   </div>
@@ -100,22 +103,16 @@ export default defineComponent({
 </script>
 
 <style scoped>
-.fr-checkbox-group input[type="checkbox"] + label::before {
-  display: none;
+.message-icon {
+  margin-right: 0.25rem;
+}
+
+.fr-checkbox-group {
+  color: var(--text-default-grey);
 }
 
 .fr-checkbox-group input[type="checkbox"] + label {
   margin-left: 0;
-}
-
-.fr-error-text::before {
-  display: none;
-  content: normal;
-}
-
-.fr-valid-text::before {
-  display: none;
-  content: normal;
 }
 
 .fr-message-text {
@@ -140,27 +137,31 @@ export default defineComponent({
   grid-row: 1;
   grid-column: 2;
   transition: background-color 0.1s, color 0.1s;
-  border: 1px solid var(--g800);
-  color: var(--t-plain);
-  outline-color: var(--focus);
+  border: 1px solid var(--text-default-grey);
+  color: transparent;
   outline-offset: 2px;
   outline-width: 2px;
+  outline-color: #0a76f6;
 
-  @nest input:focus + label & {
+  input:focus-visible + label & {
     outline-style: solid;
   }
 
-  @nest input[type="checkbox"]:checked + label & {
-    outline-color: var(--focus);
-    background-color: var(--bf500);
-    color: var(--g100);
+  input[type="checkbox"]:checked + label & {
+    --blend: var(--background-active-blue-france-blend);
+    background-color: var(--background-active-blue-france);
+    color: var(--text-inverted-grey);
   }
 
-  @nest input[type="checkbox"]:disabled + label & {
-    outline-color: var(--focus);
-    background-color: var(--g200);
-    border: 1px solid var(--g400);
-    cursor: not-allowed;
+  input[type="checkbox"]:disabled + label & {
+    box-shadow: inset 0 0 0 1px var(--border-disabled-grey);
+  }
+
+  input[type="checkbox"]:disabled:checked + label,
+  input[type="checkbox"][disabled]:checked + label & {
+    --blend: var(--background-disabled-grey-blend);
+    background-color: var(--background-disabled-grey);
+    color: var(--text-disabled-grey);
   }
 }
 </style>

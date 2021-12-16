@@ -2,7 +2,7 @@
 @import url(./assets/reset-dsfr.css);
 @import url(./assets/scheme.css);
 @import url(./assets/core.main.css);
-/* @import url(./assets/component.main.css); */
+@import url(./assets/component.main.css);
 @import url(./assets/objects-dsfr.css);
 @import url(./assets/utils-dsfr.css);
 /* @import url(./assets/utilities.css); */
