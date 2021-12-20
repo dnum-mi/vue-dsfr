@@ -96,7 +96,7 @@ export default defineComponent({
       return this.errorMessage ? 'fr-error-text' : 'fr-valid-text'
     },
     messageIcon () {
-      return this.errorMessage ? 'ri-error-warning-line' : 'ri-checkbox-circle-line'
+      return this.errorMessage ? 'ri-alert-line' : 'ri-checkbox-circle-line'
     },
   },
 })
