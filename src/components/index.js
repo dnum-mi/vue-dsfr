@@ -17,6 +17,7 @@ export { default as DsfrHeaderMenuLink } from './DsfrHeader/DsfrHeaderMenuLink.v
 export { default as DsfrHeaderMenuLinks } from './DsfrHeader/DsfrHeaderMenuLinks.vue'
 export { default as DsfrHighlight } from './DsfrHighlight/DsfrHighlight.vue'
 export { default as DsfrInput } from './DsfrInput/DsfrInput.vue'
+export { default as DsfrInputGroup } from './DsfrInput/DsfrInputGroup.vue'
 export { default as DsfrLogo } from './DsfrLogo/DsfrLogo.vue'
 export { default as DsfrModal } from './DsfrModal/DsfrModal.vue'
 export { default as DsfrNavigation } from './DsfrNavigation/DsfrNavigation.vue'

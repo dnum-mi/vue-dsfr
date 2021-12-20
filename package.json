@@ -26,7 +26,7 @@
     "test:ct": "cypress open-ct",
     "test:ct-ci": "cypress run-ct",
     "format": "npm run lint -- --fix",
-    "lint": "eslint ./src/**/*.{vue,js,jsx,ts,tsx}",
+    "lint": "eslint ./src/**/*.{vue,js}",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
     "prepublishOnly": "npm run build",
