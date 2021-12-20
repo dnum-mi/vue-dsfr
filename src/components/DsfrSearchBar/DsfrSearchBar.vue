@@ -64,7 +64,7 @@ export default defineComponent({
       type="search"
       :placeholder="placeholder"
       :model-value="modelValue"
-      :label-visible="labelVisible"
+      :label-visible="false"
       :label="label"
       @update:modelValue="$emit('update:modelValue', $event)"
       @keydown.enter="$emit('search')"

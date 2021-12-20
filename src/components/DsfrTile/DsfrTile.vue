@@ -50,8 +50,8 @@ export default defineComponent({
         >{{ title }}</a>
         <component
           :is="linkComponent"
-          v-else
-          class="fr-tile__link"
+          v-if="!isExternalLink"
+          class="fr-tile__link so-test"
           :to="to"
         >
           {{ title }}

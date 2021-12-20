@@ -1,7 +1,8 @@
 import { fireEvent } from '@testing-library/dom'
 import { render } from '@testing-library/vue'
 
-import '@gouvfr/dsfr/dist/core/core.module.js'
+// import '@gouvfr/dsfr/dist/core/core.module.js'
+import { spy } from '@/../tests/unit/test-utils.js'
 
 import DsfrButtonGroup from './DsfrButtonGroup.vue'
 
@@ -12,8 +13,8 @@ describe('DsfrButtonGroup', () => {
     // Given
     const labelPrimary = 'Button primary'
     const labelSecondary = 'Button secondary'
-    const onClickFirst = jest.fn()
-    const onClickSecond = jest.fn()
+    const onClickFirst = spy()
+    const onClickSecond = spy()
     const buttonsProps = [
       {
         label: labelPrimary,
@@ -52,8 +53,8 @@ describe('DsfrButtonGroup', () => {
     expect(wrapper).toHaveClass('extra-class')
     expect(wrapper).not.toHaveClass('fr-btns-group--right')
     expect(wrapper).not.toHaveClass('fr-btns-group--inline-sm')
-    expect(onClickFirst).toHaveBeenCalled()
-    expect(onClickSecond).toHaveBeenCalled()
+    expect(onClickFirst.callCount).toBe(1)
+    expect(onClickSecond.callCount).toBe(1)
   })
 
   it('should mount small DsfrButtonGroup right-aligned content', async () => {

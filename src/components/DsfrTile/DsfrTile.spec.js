@@ -15,7 +15,7 @@ const router = createRouter({
 })
 
 describe('DsfrTile', () => {
-  it('should display a tile', async () => {
+  it('should display a vertical tile', async () => {
     const title = 'Titre de la tuile'
     const imgSrc = 'https://placekitten.com/80/80'
     const description = 'Lorem ipsum dolor sit amet, consectetur adipiscing, incididunt, ut labore et dol'
@@ -37,11 +37,11 @@ describe('DsfrTile', () => {
     const titleEl = getByText(title)
     const descriptionEl = getByText(description)
 
-    expect(titleEl.parentNode.parentNode.parentNode).not.toHaveClass('fr-tile--horizontal')
+    expect(titleEl.parentElement.parentElement.parentElement).not.toHaveClass('fr-tile--horizontal')
     expect(descriptionEl).toHaveClass('fr-tile__desc')
   })
 
-  it('should display a tile', async () => {
+  it.skip('should display a horizontal tile', async () => {
     const title = 'Titre de la tuile'
     const imgSrc = 'https://placekitten.com/80/80'
     const description = 'Lorem ipsum dolor sit amet, consectetur adipiscing, incididunt, ut labore et dol'

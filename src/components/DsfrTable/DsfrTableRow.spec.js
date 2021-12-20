@@ -2,6 +2,8 @@ import { fireEvent, render } from '@testing-library/vue'
 
 import DsfrTableRow from './DsfrTableRow.vue'
 
+import { spy } from '@/../tests/unit/test-utils.js'
+
 describe('DsfrTableRow', () => {
   it('should render simple row', () => {
     // Given
@@ -22,7 +24,7 @@ describe('DsfrTableRow', () => {
   it('should render row with a click', async () => {
     // Given
     const rowData = ['bla', 'ble', 'bli']
-    const onClick = jest.fn()
+    const onClick = spy()
 
     // When
     const { container } = render(DsfrTableRow, {
