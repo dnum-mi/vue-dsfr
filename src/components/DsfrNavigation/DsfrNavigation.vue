@@ -87,7 +87,7 @@ export default {
   </nav>
 </template>
 
-<style src="./navigation.css" />
+<style src="./navigation.main.css" />
 
 <style scoped>
 .fr-nav__list {
