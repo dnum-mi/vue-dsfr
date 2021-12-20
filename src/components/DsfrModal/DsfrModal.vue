@@ -161,4 +161,10 @@ export default {
   </focus-trap>
 </template>
 
-<style src="./modal.css" />
+<style src="./modal.main.css" />
+
+<style scoped>
+.fr-modal {
+  color: var(--text-default-grey);
+}
+</style>

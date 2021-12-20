@@ -1,3 +1,9 @@
+/*!
+ * DSFR v1.2.1 | SPDX-License-Identifier: MIT | License-Filename: LICENSE.md | restricted use (see terms and conditions)
+ */
+/* ------------------------------------ *\
+  MODAL
+\* ------------------------------------ */
 .fr-modal {
   border: none;
   color: inherit;
@@ -18,9 +24,15 @@
   height: 100%;
   z-index: 5500;
   transition: opacity 0.3s, visibility 0.3s;
+
   /**
   * Modifier pour fixer la modale en haut en mobile (par defaut en bas)
   */
+  background-color: var(--background-overlay);
+}
+
+.fr-modal > .fr-container {
+  pointer-events: none;
 }
 
 .fr-modal:focus {
@@ -60,10 +72,13 @@
 }
 
 .fr-modal__body {
+  pointer-events: all;
   overflow-y: auto;
   flex: 1 1 auto;
   max-height: calc(100vh - 2rem);
   box-shadow: 0 8px 8px 0 rgba(0, 0, 0, 0.1), 0 8px 16px -16px rgba(0, 0, 0, 0.32);
+  --blend: var(--background-default-grey-blend);
+  background-color: var(--background-default-grey);
 }
 
 .fr-modal__header {
@@ -87,6 +102,8 @@
   position: sticky;
   bottom: 0;
   transition: box-shadow 0.3s;
+  --blend: var(--background-default-grey-blend);
+  background-color: var(--background-default-grey);
 }
 
 .fr-modal__footer .fr-btns-group {
@@ -95,37 +112,23 @@
 }
 
 .fr-modal__title {
-  font-weight: 700;
   font-size: 1.375rem;
   line-height: 1.75rem;
   font-weight: 700;
   margin-top: 0;
   margin-bottom: 1rem;
+  color: var(--text-title-grey);
 }
-
-.fr-modal__title[class^="fr-fi-"], .fr-modal__title[class*=" fr-fi-"] {
+/*
+.fr-modal__title[class^="fr-fi-"],
+.fr-modal__title[class*=" fr-fi-"] {
   margin-right: 0.5rem;
-}
-
-.fr-modal {
-  background-color: var(--overlay);
-}
-
-.fr-modal__body {
-  background-color: var(--w);
-}
+} */
 
 .fr-modal__body.fr-scroll-shadow .fr-modal__footer {
   box-shadow: 0 -8px 8px 0 rgba(0, 0, 0, 0.1), 0 -8px 16px -16px rgba(0, 0, 0, 0.32);
-  background-color: var(--w-g750);
-}
-
-.fr-modal__title {
-  color: var(--g800);
-}
-
-.fr-modal__footer {
-  background-color: var(--w);
+  --blend: var(--background-elevated-grey-blend);
+  background-color: var(--background-elevated-grey);
 }
 
 @media (min-width: 48em) {
@@ -147,7 +150,7 @@
   }
 
   .fr-modal__body {
-    max-height: 80vh;
+    max-height: 80vh !important;
   }
 
   .fr-modal__header {
@@ -157,17 +160,11 @@
   .fr-modal__content {
     padding-left: 2rem;
     padding-right: 2rem;
-  }
-
-  .fr-modal__content {
     margin-bottom: 4rem;
   }
 
   .fr-modal__footer {
     padding: 2rem;
-  }
-
-  .fr-modal__footer {
     margin-top: -3rem;
   }
 
