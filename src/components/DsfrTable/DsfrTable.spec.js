@@ -65,9 +65,9 @@ describe('DsfrTable', () => {
     })
 
     const trs = container.querySelectorAll('tr')
-    const successEl = container.querySelectorAll('.success')
-    const errorEl = container.querySelectorAll('.error')
-    const infoEl = container.querySelectorAll('.info')
+    const successEl = container.querySelectorAll('p.success')
+    const errorEl = container.querySelectorAll('p.error')
+    const infoEl = container.querySelectorAll('p.info')
 
     // Then
     expect(trs).toHaveLength(4)
