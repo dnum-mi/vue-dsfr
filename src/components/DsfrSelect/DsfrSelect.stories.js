@@ -46,7 +46,7 @@ export default {
   },
 }
 
-export const Select = (args) => ({
+export const ListeDeroulante = (args) => ({
   components: {
     DsfrSelect,
   },
@@ -79,7 +79,7 @@ export const Select = (args) => ({
   },
 })
 
-Select.args = {
+ListeDeroulante.args = {
   dark: false,
   options: [
     'Option 1',
@@ -94,6 +94,58 @@ Select.args = {
   successMessage: '',
   errorMessage: '',
   disabled: false,
+  modelValue: 'Option 2',
+  required: false,
+}
+
+export const ListeDeroulanteInactive = (args) => ({
+  components: {
+    DsfrSelect,
+  },
+
+  data () {
+    return {
+      ...args,
+    }
+  },
+
+  template: `
+  <div :data-fr-theme="dark ? 'dark' : ''" style="background-color: var(--grey-1000-50); padding: 1rem;">
+    <DsfrSelect
+      :required="required"
+      :label="label"
+      :options="options"
+      :description="description"
+      :success-message="successMessage"
+      :error-message="errorMessage"
+      :disabled="disabled"
+      v-model="modelValue"
+    />
+  </div>
+  `,
+
+  watch: {
+    modelValue (newVal) {
+      this.onChange(newVal)
+    },
+  },
+})
+
+ListeDeroulanteInactive.args = {
+  dark: false,
+  options: [
+    'Option 1',
+    'Option 2',
+    'Option 3',
+    'Option 4',
+    'Option 5',
+    'Option 6',
+  ],
+  label: 'Selection d’options',
+  description: 'Je suis une description, je décris, c’est ma raison d’être',
+  successMessage: '',
+  errorMessage: '',
+  disabled: true,
   modelValue: 'Option 2',
   required: false,
 }
