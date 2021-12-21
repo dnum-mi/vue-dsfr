@@ -71,10 +71,10 @@ export default defineComponent({
 })
 </script>
 
-<style src="./table.css" />
+<style src="./table.main.css" />
 
 <style scoped>
 .fr-table :deep(td) {
-  color: var(--g800);
+  color: var(--text-default-grey);
 }
 </style>

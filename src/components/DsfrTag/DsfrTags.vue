@@ -32,4 +32,4 @@ export default defineComponent({
   </ul>
 </template>
 
-<style src="./tags.css" />
+<style src="./tag.main.css" />

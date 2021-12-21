@@ -7,10 +7,8 @@ import DsfrCallout from './DsfrCallout'
 OhVueIcon.add(RiInformationLine)
 
 export default {
-  components: {
-    DsfrCallout,
-  },
-  title: 'Composants/Mise en Avant - DsfrCallout',
+  component: DsfrCallout,
+  title: 'Composants/Mise en Avant - Callout',
   argTypes: {
     dark: {
       control: 'boolean',
@@ -51,7 +49,7 @@ export const MiseEnAvantSimple = (args) => ({
   },
 
   template: `
-    <div :data-rf-theme="dark ? 'dark' : ''" style="background-color: var(--w); padding: 1rem;">
+    <div :data-fr-theme="dark ? 'dark' : ''" style="background-color: var(--grey-1000-50); padding: 1rem;">
       <DsfrCallout
         :title="title"
         :content="content"
@@ -86,7 +84,7 @@ export const MiseEnAvant = (args) => ({
   },
 
   template: `
-    <div :data-rf-theme="dark ? 'dark' : ''" style="background-color: var(--w); padding: 1rem;">
+    <div :data-fr-theme="dark ? 'dark' : ''" style="background-color: var(--grey-1000-50); padding: 1rem;">
       <DsfrCallout
         :title="title"
         :content="content"

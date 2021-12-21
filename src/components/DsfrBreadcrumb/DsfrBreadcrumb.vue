@@ -22,7 +22,7 @@
         <li
           v-for="(link, index) in links"
           :key="index"
-          class="fr-breadcrumb__item  relative"
+          class="fr-breadcrumb__item  relative  align-center"
           :data-testid="`lis`"
         >
           <router-link
@@ -33,7 +33,11 @@
           >
             {{ link.text }}
           </router-link>
-          <a v-else>{{ link.text }}</a>
+          <a
+            v-else
+            class="fr-breadcrumb__link"
+            :aria-current="index === links.length - 1 ? 'page' : undefined"
+          >{{ link.text }}</a>
           <v-icon
             v-if="index !== links.length - 1"
             class="icon"
@@ -72,7 +76,7 @@ export default {
 }
 </script>
 
-<style src="./breadcrumb.css" />
+<style src="./breadcrumb.main.css" />
 
 <style scoped>
 .fr-collapse--expanded {
@@ -97,8 +101,13 @@ export default {
 
 .icon {
   position: relative;
-  top: 0.1rem;
+  top: -0.25rem;
   font-size: 1rem;
   pointer-events: none;
+}
+
+.align-center {
+  display: flex;
+  align-items: center;
 }
 </style>

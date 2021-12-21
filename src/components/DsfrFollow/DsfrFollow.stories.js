@@ -1,7 +1,7 @@
 import DsfrFollow from './DsfrFollow.vue'
 
 export default {
-  title: 'Composants/Lettres d’information et réseaux - DsfrFollow',
+  title: 'Composants/Lettres d’information et réseaux/Lettre d’info + Réseaux - DsfrFollow',
   name: '',
   component: DsfrFollow,
 
@@ -14,10 +14,14 @@ export default {
       control: 'object',
       description: 'Liste des différents réseaux sociaux ; doit avoir 2 props : `name` (forcément parmi les valeurs suivantes : `\'facebook\'`, `\'twitter\'`, `\'youtube\'`, `\'linkedin\'`, `\'instagram\'`)  et `url`',
     },
+    newsletterData: {
+      control: 'object',
+      description: 'Objet contenant en propriété les props attendues par DsfrSocialNetworks',
+    },
   },
 }
 
-export const ReseauxSociaux = (args) => ({
+export const Suivre = (args) => ({
   components: { DsfrFollow },
   data () {
     return {
@@ -25,14 +29,15 @@ export const ReseauxSociaux = (args) => ({
     }
   },
   template: `
-    <div :data-rf-theme="dark ? 'dark' : ''" style="background-color: var(--w); padding: 1rem;">
+    <div :data-fr-theme="dark ? 'dark' : ''" style="background-color: var(--grey-1000-50); padding: 1rem;">
       <DsfrFollow
         :networks="networks"
+        :newsletter-data="newsletterData"
       />
     </div>
   `,
 })
-ReseauxSociaux.args = {
+Suivre.args = {
   dark: false,
   networks: [
     {
@@ -56,4 +61,14 @@ ReseauxSociaux.args = {
       href: 'https://www.instagram.com',
     },
   ],
+  newsletterData: {
+    title: 'Titre de la lettre d’informations',
+    description: 'Description de la lettre d’informations',
+    email: '',
+    labelEmail: 'Label du champ adresse électronique',
+    placeholder: 'james.bond@mi6.gov.uk',
+    hintText: 'Mise en garde concernant l’abonnement à la lettre d’information',
+    buttonText: 'S’abonner',
+    buttonTitle: 'Titre du bouton (valeur de l’attribut `title` de la balise `button`)',
+  },
 }

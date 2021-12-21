@@ -49,9 +49,3 @@ export default {
     {{ text }}
   </router-link>
 </template>
-
-<style scoped>
-.fr-nav__link {
-  color: currentColor;
-}
-</style>

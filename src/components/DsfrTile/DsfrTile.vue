@@ -71,7 +71,7 @@ export default {
   </div>
 </template>
 
-<style src="./tiles.css" />
+<style src="./tile.main.css" />
 
 <style scoped>
 .fr-tile__desc,

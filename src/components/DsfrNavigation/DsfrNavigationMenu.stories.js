@@ -50,7 +50,7 @@ export const NavigationSousMenu = (args) => ({
   },
 
   template: `
-    <div :data-rf-theme="dark ? 'dark' : ''" style="background-color: var(--w); padding: 1rem; position: relative;">
+    <div :data-fr-theme="dark ? 'dark' : ''" style="background-color: var(--grey-1000-50); padding: 1rem; position: relative;">
       <DsfrNavigation>
         <DsfrNavigationItem>
           <DsfrNavigationMenu

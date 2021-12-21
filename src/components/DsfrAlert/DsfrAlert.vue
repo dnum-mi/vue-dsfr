@@ -116,51 +116,34 @@ export default defineComponent({
 })
 </script>
 
+<style src="./alert.main.css" />
+
 <style scoped>
-.fr-alert {
-  position: relative;
-  padding: 1rem 2.25rem 0.75rem 3.5rem;
-  color: var(--g700)
-}
 
-.fr-alert--error {
-  box-shadow: inset 0 0 0 1px var(--error), inset 2.5rem 0 0 0 var(--error);
-  display: flex;
+.fr-alert,
+.close-icon {
+  color: var(--text-default-grey);
 }
-
-.fr-alert--success {
-  box-shadow: inset 0 0 0 1px var(--success), inset 2.5rem 0 0 0 var(--success);
-}
-
-.fr-alert--info {
-  box-shadow: inset 0 0 0 1px var(--info), inset 2.5rem 0 0 0 var(--info);
-}
-
 .fr-alert--sm {
   padding: .575rem 2.25rem .75rem 3.5rem;
+
+  & .alert-icon {
+    position: absolute;
+    top: 0.5rem;
+    left: 0.5rem;
+    color: var(--grey-1000-50);
+  }
 
   & .fr-alert__description {
     margin: 0;
   }
 }
 
-.fr-alert__title {
-  font-weight: 700;
-  font-size: 1.125rem;
-  line-height: 1.125rem;
-  margin: 0;
-}
-
-.fr-alert__description {
-  margin: 0.5rem 0 0 0;
-  line-height: 2rem;
-}
-
 .alert-icon {
   position: absolute;
-  top: 0.85rem;
+  top: 1rem;
   left: 0.5rem;
-  color: var(--w);
+  color: var(--grey-1000-50);
 }
 
 .alert-content {

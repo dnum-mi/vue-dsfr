@@ -113,4 +113,4 @@ export default {
 }
 </script>
 
-<style src="./tabs.css" />
+<style src="./tab.main.css" />

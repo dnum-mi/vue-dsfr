@@ -1,12 +1,13 @@
 import DsfrInput from './DsfrInput.vue'
+import DsfrInputGroup from './DsfrInputGroup.vue'
 
 export default {
   component: DsfrInput,
-  title: 'Composants/Champs de saisie - DsfrInput',
+  title: 'Composants/Champ de saisie/Champ simple - DsfrInput',
   argTypes: {
     dark: {
       control: 'boolean',
-      description: 'Permet de voir le composant dans les deux **thèmes** : **clair** (`false`, défaut) et **sombre** (`true`).\n\n*N.B. : Ne fait pas partie du composant.*',
+      description: 'Permet de voir le composant dans les deux **thèmes** : **clair** (`false`, défaut) et **sombre** (`true`). *N.B. : Ne fait pas partie du composant.*',
     },
     label: {
       control: 'text',
@@ -18,14 +19,30 @@ export default {
     },
     placeholder: {
       control: 'text',
-      description: 'Contenu du champ à afficher lorsqu’il n’est pas rempli par l’utilisateur',
+      description: 'Contenu du champ à afficher lorsqu’il n’est pas rempli par l’utilisateur. *N’est pas déclaré en tant que props, mais fait partie des attributs qui seront passés à l’élément `input` natif**',
     },
     modelValue: {
       control: 'text',
     },
     disabled: {
       control: 'boolean',
-      description: 'Permet de désactiver le champ, la saisie sera impossible',
+      description: 'Permet de désactiver le champ, la saisie sera impossible. *N’est pas déclaré en tant que props, mais fait partie des attributs qui seront passés à l’élément `input` natif*',
+    },
+    isValid: {
+      control: 'boolean',
+      description: 'Signale si le champ est en état validé (`true`) ou non (`false`, par défaut)',
+    },
+    isInvalid: {
+      control: 'boolean',
+      description: 'Signale si le champ est en état d’erreur (`true`) ou non (`false`, par défaut)',
+    },
+    errorMessage: {
+      control: 'text',
+      description: 'Message d’erreur à associer au champ. **Ne fait pas partie du composant. Il appartient à <a href="/?path=/story/composants-champ-de-saisie-champ-avec-message-associ%C3%A9-dsfrinputgroup--champ-en-erreur">DsfrInputGroup</a>**',
+    },
+    validMessage: {
+      control: 'text',
+      description: 'Message de validation à associer au champ. **Ne fait pas partie du composant. Il appartient à <a href="/?path=/story/composants-champ-de-saisie-champ-avec-message-associ%C3%A9-dsfrinputgroup--champ-valide">DsfrInputGroup</a>**',
     },
   },
 }
@@ -40,7 +57,7 @@ export const LabelNotVisible = (args) => ({
     }
   },
   template: `
-    <div :data-fr-theme="dark ? 'dark' : ''" style="background-color: var(--w); padding: 1rem;">
+    <div :data-fr-theme="dark ? 'dark' : ''" style="background-color: var(--grey-1000-50); padding: 1rem;">
       <DsfrInput
         :model-value="modelValue"
         :label="label"
@@ -70,7 +87,7 @@ export const LabelVisible = (args) => ({
     }
   },
   template: `
-    <div :data-rf-theme="dark ? 'dark' : ''" style="background-color: var(--w); padding: 1rem;">
+    <div :data-fr-theme="dark ? 'dark' : ''" style="background-color: var(--grey-1000-50); padding: 1rem;">
       <DsfrInput
         :model-value="modelValue"
         :label="label"
@@ -88,4 +105,78 @@ LabelVisible.args = {
   placeholder: 'Placeholder',
   modelValue: '',
   disabled: false,
+}
+
+export const ChampEnErreur = (args) => ({
+  components: {
+    DsfrInput,
+    DsfrInputGroup,
+  },
+
+  data () {
+    return {
+      ...args,
+    }
+  },
+
+  template: `
+    <div :data-fr-theme="dark ? 'dark' : ''" style="background-color: var(--grey-1000-50); padding: 1rem;">
+      <DsfrInputGroup
+        :error-message="errorMessage"
+      >
+        <DsfrInput
+          :model-value="modelValue"
+          :label="label"
+          :label-visible="labelVisible"
+          :placeholder="placeholder"
+          :is-invalid="isInvalid"
+        />
+      </DsfrInputGroup>
+    </div>
+  `,
+})
+ChampEnErreur.args = {
+  dark: false,
+  label: 'Label champ de saisie',
+  labelVisible: true,
+  placeholder: 'Placeholder',
+  modelValue: '',
+  errorMessage: 'Message d’erreur',
+  isInvalid: true,
+}
+
+export const ChampValide = (args) => ({
+  components: {
+    DsfrInput,
+    DsfrInputGroup,
+  },
+  data () {
+    return {
+      ...args,
+    }
+  },
+  template: `
+    <div :data-fr-theme="dark ? 'dark' : ''" style="background-color: var(--grey-1000-50); padding: 1rem;">
+      <DsfrInputGroup
+        :valid-message="validMessage"
+      >
+        <DsfrInput
+          :model-value="modelValue"
+          :label="label"
+          :label-visible="labelVisible"
+          :placeholder="placeholder"
+          :is-valid="isValid"
+        />
+      </DsfrInputGroup>
+    </div>
+  `,
+})
+ChampValide.args = {
+  dark: false,
+  label: 'Label champ de saisie',
+  labelVisible: true,
+  placeholder: 'Placeholder',
+  modelValue: '',
+  validMessage: 'Message de validation',
+  isValid: true,
 }

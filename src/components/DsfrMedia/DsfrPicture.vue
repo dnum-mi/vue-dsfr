@@ -50,6 +50,6 @@ export default {
 
 <style scoped>
 .fr-content-media__caption {
-  color: var(--g800);
+  color: var(--text-default-grey);
 }
 </style>

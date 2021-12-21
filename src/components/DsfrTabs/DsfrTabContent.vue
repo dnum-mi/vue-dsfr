@@ -14,6 +14,7 @@
       :aria-labelledby="tabId"
       :tabindex="selected ? 0 : -1"
     >
+      <!-- @slot Slot par défaut pour le contenu de l’onglet. Sera dans `<div class="fr-tabs__panel">` -->
       <slot />
     </div>
   </transition>
@@ -41,7 +42,7 @@ const translateValueTo = computed(() => values[!props.asc])
 
 <style scoped>
 .fr-tabs__panel {
-  color: var(--g800);
+  color: var(--text-default-grey);
 }
 .slide-fade-enter-active {
   transition: all 0.3s ease-out;

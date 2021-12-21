@@ -37,7 +37,7 @@ export const TitreDOnglet = (args) => ({
   },
 
   template: `
-  <div :data-rf-theme="dark ? 'dark' : ''" style="background-color: var(--w); padding: 1rem;">
+  <div :data-fr-theme="dark ? 'dark' : ''" style="background-color: var(--grey-1000-50); padding: 1rem;">
     <div class="fr-tabs" style="overflow: visible">
       <ul
         class="fr-tabs__list"
