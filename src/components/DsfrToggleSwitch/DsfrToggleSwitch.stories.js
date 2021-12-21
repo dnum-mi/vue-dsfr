@@ -35,7 +35,7 @@ export default {
   },
 }
 
-export const Etiquette = (args) => ({
+export const Interrupteur = (args) => ({
   components: { DsfrToggleSwitch },
   data () {
     return args
@@ -57,7 +57,7 @@ export const Etiquette = (args) => ({
     },
   },
 })
-Etiquette.args = {
+Interrupteur.args = {
   dark: false,
   label: 'Interrupteur 1',
   hint: 'Indice',
