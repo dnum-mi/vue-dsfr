@@ -35,13 +35,13 @@ export default {
   },
 }
 
-export const Etiquette = (args) => ({
+export const Interrupteur = (args) => ({
   components: { DsfrToggleSwitch },
   data () {
     return args
   },
   template: `
-  <div :data-rf-theme="dark ? 'dark' : ''" style="background-color: var(--w); padding: 1rem;">
+  <div :data-fr-theme="dark ? 'dark' : ''" style="background-color: var(--grey-1000-50); padding: 1rem;">
     <DsfrToggleSwitch
       v-model="modelValue"
       :label="label"
@@ -57,7 +57,7 @@ export const Etiquette = (args) => ({
     },
   },
 })
-Etiquette.args = {
+Interrupteur.args = {
   dark: false,
   label: 'Interrupteur 1',
   hint: 'Indice',

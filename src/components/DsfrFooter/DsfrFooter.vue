@@ -124,6 +124,7 @@ export default {
           <p
             class="fr-footer__content-desc"
           >
+            <!-- @slot Slot #description pour le contenu de la description du footer. Sera dans `<p class="fr-footer__content-desc">` -->
             <slot name="description">
               {{ descText }}
             </slot>
@@ -182,9 +183,12 @@ export default {
   </footer>
 </template>
 
-<style src="./footer.css" />
+<style src="./footer.main.css" />
 
 <style scoped>
+.fr-footer {
+  color: var(--text-default-grey);
+}
 .no-content-after {
   --link-blank-content: '';
 }

@@ -57,14 +57,15 @@ export default {
       @click="button.onClick"
     />
 
+    <!-- @slot Slot par défaut pour le contenu de la mise en avant. Sera dans `<div class="fr-callout">` -->
     <slot />
   </div>
 </template>
 
-<style src="./callouts.css"></style>
+<style src="./callout.main.css"></style>
 
 <style scoped>
 .fr-callout__text {
-  color: var(--g800);
+  color: var(--text-default-grey);
 }
 </style>

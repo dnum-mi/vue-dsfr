@@ -55,7 +55,7 @@ export const OngletsSimples = (args) => ({
     return args
   },
   template: `
-  <div :data-rf-theme="dark ? 'dark' : ''" style="background-color: var(--w); padding: 1rem;">
+  <div :data-fr-theme="dark ? 'dark' : ''" style="background-color: var(--grey-1000-50); padding: 1rem;">
     <DsfrTabs
       :tab-list-name="tabListName"
       :tab-titles="tabTitles"
@@ -88,7 +88,7 @@ export const OngletsComplexes = (args) => ({
   },
 
   template: `
-  <div :data-rf-theme="dark ? 'dark' : ''" style="background-color: var(--w); padding: 1rem;">
+  <div :data-fr-theme="dark ? 'dark' : ''" style="background-color: var(--grey-1000-50); padding: 1rem;">
     <DsfrTabs
       :tab-list-name="tabListName"
       :tab-titles="tabTitles"

@@ -1,26 +1,19 @@
 <script>
-export const brandIcons = {
-  facebook: 'ri-facebook-circle-fill',
-  twitter: 'ri-twitter-fill',
-  instagram: 'ri-instagram-fill',
-  linkedin: 'ri-linkedin-box-fill',
-  youtube: 'ri-youtube-fill',
-}
+import DsfrSocialNetworks from './DsfrSocialNetworks.vue'
+import DsfrNewsLetter from './DsfrNewsLetter.vue'
 
-const allowedNetworks = [
-  'facebook',
-  'twitter',
-  'instagram',
-  'linkedin',
-  'youtube',
-]
+import { allowedNetworks } from './follow-utils.js'
 
 export default {
   name: 'DsfrFollow',
 
-  components: {},
+  components: { DsfrSocialNetworks, DsfrNewsLetter },
 
   props: {
+    newsletterData: {
+      type: Object,
+      default: () => undefined,
+    },
     networks: {
       type: Array,
       default: () => [],
@@ -31,56 +24,45 @@ export default {
     },
   },
 
-  data () {
-    return {
-      brandIcons,
-    }
+  computed: {
+    hasNetworks () {
+      return this.networks && this.networks.length
+    },
+    hasNewsletter () {
+      return typeof this.newsletterData === 'object'
+    },
   },
+
 }
 </script>
+
 <template>
   <div class="fr-follow">
     <div class="fr-container">
       <div class="fr-grid-row">
-        <div class="fr-col-12">
-          <div class="fr-follow__social">
-            <p class="fr-h5 fr-mb-3v fr-mb-3v">
-              Suivez-nous
-              <br> sur les réseaux sociaux
-            </p>
-            <ul
-              v-if="networks && networks.length"
-              class="fr-links-group fr-links-group--lg"
-            >
-              <li
-                v-for="(network, idx) in networks"
-                :key="idx"
-              >
-                <a
-                  class="fr-link"
-                  :title="network.name"
-                  :href="network.href"
-                  target="_blank"
-                >
-                  <VIcon
-                    scale="1.75"
-                    :name="brandIcons[network.name]"
-                    :label="network.name"
-                  />
-                </a>
-              </li>
-            </ul>
-          </div>
+        <!-- @slot Slot par défaut pour le contenu. Sera dans `<div class="fr-grid-row">` -->
+        <slot />
+        <div
+          v-if="newsletterData"
+          :class="{ 'fr-col-12' : true, 'fr-col-md-8': hasNetworks }"
+        >
+          <DsfrNewsLetter v-bind="newsletterData" />
+        </div>
+        <div
+          v-if="hasNetworks"
+          :class="{ 'fr-col-12' : true, 'fr-col-md-4': hasNewsletter }"
+        >
+          <DsfrSocialNetworks :networks="networks" />
         </div>
       </div>
     </div>
   </div>
 </template>
 
-<style src="./follow.css" />
+<style src="./follow.main.css" />
 
 <style scoped>
 .fr-follow {
-  color: var(--g800);
+  color: var(--text-default-grey);
 }
 </style>

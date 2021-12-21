@@ -18,29 +18,8 @@ export default {
   <li
     :id="id"
     class="fr-menu__item"
-    :class="{ 'fr-menu__item--active': active }"
+    :aria-current="active ? 'page' : undefined"
   >
     <slot />
   </li>
 </template>
-
-<style scoped>
-.fr-menu__item {
-  position: relative;
-}
-
-.fr-menu__item--active {
-  color: var(--bf500);
-}
-
-.fr-menu__item--active::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    width: 2px;
-    margin: 1rem 0;
-    background-color: currentColor;
-}
-</style>

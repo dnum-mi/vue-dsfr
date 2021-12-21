@@ -73,6 +73,8 @@ export default defineComponent({
   </component>
 </template>
 
+<style src="./tag.main.css" />
+
 <style scoped>
 .ov-icon {
   margin-top: 0.1rem;
@@ -110,5 +112,3 @@ export default defineComponent({
   background-color: var(--bg-info);
 }
 </style>
-
-<style src="./tag.css" />

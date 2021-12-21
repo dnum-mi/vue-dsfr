@@ -85,12 +85,11 @@ export default {
 }
 </script>
 
-<style src="./card.css" />
+<style src="./card.main.css" />
 
 <style scoped>
-.fr-card:not(.fr-card--no-arrow) .fr-card__body::after {
-  display: none;
-  content: '';
+.fr-card {
+  color: var(--text-default-grey);
 }
 
 .fr-card__arrow {
@@ -101,6 +100,6 @@ export default {
   margin-left: auto;
   order: 4;
 
-  color: var(--bf500);
+  color: var(--text-action-high-blue-france);
 }
 </style>

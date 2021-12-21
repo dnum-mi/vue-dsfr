@@ -28,6 +28,7 @@
           :name="icon"
         />
       </span>
+      <!-- @slot Slot par défaut pour le contenu de l’onglet. Sera dans `<button class="fr-tabs__tab">` -->
       <slot />
     </button>
   </li>

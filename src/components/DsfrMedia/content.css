@@ -1,13 +1,19 @@
+/*!
+* DSFR v1.2.1 | SPDX-License-Identifier: MIT | License-Filename: LICENSE.md | restricted use (see terms and conditions)
+*/
+
 /* ------------------------------------ *\
   CONTENT
 \* ------------------------------------ */
-
 .fr-content-media {
   width: 100%;
   margin: 2.5rem 0;
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  --text-spacing: 0;
+  --title-spacing: 0;
 }
 
 .fr-content-media__img {
@@ -22,7 +28,8 @@
   padding-bottom: 56.25%;
 }
 
-.fr-content-media__img img {
+.fr-content-media__img > *,
+.fr-content-media__asset {
   object-fit: cover;
   object-position: 50% 50%;
   position: absolute;
@@ -34,7 +41,8 @@
   height: 100%;
 }
 
-.fr-content-media__caption, .fr-content-media__transcription {
+.fr-content-media__caption,
+.fr-content-media__transcription {
   width: 100%;
   margin-top: 0.5rem;
   text-align: right;
@@ -55,14 +63,13 @@
   overflow: initial;
   max-width: none;
   max-height: none;
+  margin-left: -0.75rem;
+  margin-right: -0.5rem;
 }
 
 .fr-content-media__transcription .fr-link::before {
-  font: normal normal normal 1.5rem/1 dsfr-icons;
-  content: "";
-}
-
-.fr-content-media__transcription .fr-link::before {
+  font: normal normal normal 1.5rem/1 dsfr-icon;
+  content: "";
   margin-right: -0.25rem;
   margin-left: 0.5rem;
   font-size: 1rem;
@@ -106,4 +113,5 @@
   .fr-content-media--lg .fr-content-media__transcription {
     width: 125%;
   }
+
 }

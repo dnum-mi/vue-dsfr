@@ -49,7 +49,7 @@ export const CheckboxSet = (args) => ({
     return args
   },
   template: `
-  <div :data-rf-theme="dark ? 'dark' : ''" style="background-color: var(--w); padding: 1rem;">
+  <div :data-fr-theme="dark ? 'dark' : ''" style="background-color: var(--grey-1000-50); padding: 1rem;">
     <DsfrCheckboxSet
       :legend="legend"
       v-model="modelValue"
@@ -101,7 +101,7 @@ export const CheckboxSetAvecErreur = (args) => ({
     return args
   },
   template: `
-  <div :data-rf-theme="dark ? 'dark' : ''" style="background-color: var(--w); padding: 1rem;">
+  <div :data-fr-theme="dark ? 'dark' : ''" style="background-color: var(--grey-1000-50); padding: 1rem;">
     <DsfrCheckboxSet
       :legend="legend"
       v-model="modelValue"
@@ -153,7 +153,7 @@ export const CheckboxSetAvecSucces = (args) => ({
     return args
   },
   template: `
-  <div :data-rf-theme="dark ? 'dark' : ''" style="background-color: var(--w); padding: 1rem;">
+  <div :data-fr-theme="dark ? 'dark' : ''" style="background-color: var(--grey-1000-50); padding: 1rem;">
     <DsfrCheckboxSet
       :legend="legend"
       v-model="modelValue"
@@ -205,7 +205,7 @@ export const CheckboxSetInline = (args) => ({
     return args
   },
   template: `
-  <div :data-rf-theme="dark ? 'dark' : ''" style="background-color: var(--w); padding: 1rem;">
+  <div :data-fr-theme="dark ? 'dark' : ''" style="background-color: var(--grey-1000-50); padding: 1rem;">
     <DsfrCheckboxSet
       :legend="legend"
       v-model="modelValue"
@@ -258,7 +258,7 @@ export const CheckboxSetInlineAvecErreur = (args) => ({
     return args
   },
   template: `
-  <div :data-rf-theme="dark ? 'dark' : ''" style="background-color: var(--w); padding: 1rem;">
+  <div :data-fr-theme="dark ? 'dark' : ''" style="background-color: var(--grey-1000-50); padding: 1rem;">
     <DsfrCheckboxSet
       :legend="legend"
       v-model="modelValue"
@@ -311,7 +311,7 @@ export const CheckboxSetInlineAvecSucces = (args) => ({
     return args
   },
   template: `
-  <div :data-rf-theme="dark ? 'dark' : ''" style="background-color: var(--w); padding: 1rem;">
+  <div :data-fr-theme="dark ? 'dark' : ''" style="background-color: var(--grey-1000-50); padding: 1rem;">
     <DsfrCheckboxSet
       :legend="legend"
       v-model="modelValue"

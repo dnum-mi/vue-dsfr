@@ -1,11 +1,11 @@
 import { render } from '@testing-library/vue'
 
-import DsfrFollow, { brandIcons } from './DsfrFollow.vue'
+import DsfrSocialNetworks, { brandIcons } from './DsfrSocialNetworks.vue'
 
 const VIcon = { name: 'v-icon', props: ['name'], template: '<div :class="name"></div>' }
 
-describe('DsfrFollow', () => {
-  it('should mount DsfrFollow with right content', () => {
+describe('DsfrSocialNetworks', () => {
+  it('should mount DsfrSocialNetworks with right content', () => {
     // Given
     const networks = [
       {
@@ -19,7 +19,7 @@ describe('DsfrFollow', () => {
     ]
 
     // When
-    const { container } = render(DsfrFollow, {
+    const { container } = render(DsfrSocialNetworks, {
       global: {
         components: {
           VIcon,

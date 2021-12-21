@@ -61,7 +61,7 @@ export default {
   </section>
 </template>
 
-<style src="./accordions.css" />
+<style src="./accordion.main.css" />
 
 <style scoped>
 .fr-accordion__btn {

@@ -18,8 +18,9 @@ export default {
   <li
     :id="id"
     class="fr-nav__item"
-    :class="{ 'fr-nav__item--active': active }"
+    :aria-current="active ? 'page' : undefined"
   >
+    <!-- @slot Slot par défaut pour le contenu de l’item de liste. Sera dans `<li class="fr-nav__item">` -->
     <slot />
   </li>
 </template>

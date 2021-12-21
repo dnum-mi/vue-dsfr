@@ -14,6 +14,7 @@
   "scripts": {
     "docs:dev": "vuepress dev docs",
     "docs:build": "vuepress build docs",
+    "check-exports": "node ./ci/check-exports.mjs",
     "dev": "npm run storybook",
     "prebuild": "rimraf dist",
     "build": "run-p build:css build:js",
@@ -25,7 +26,7 @@
     "test:ct": "cypress open-ct",
     "test:ct-ci": "cypress run-ct",
     "format": "npm run lint -- --fix",
-    "lint": "eslint ./src/**/*.{vue,js,jsx,ts,tsx}",
+    "lint": "eslint ./src/**/*.{vue,js}",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
     "prepublishOnly": "npm run build",

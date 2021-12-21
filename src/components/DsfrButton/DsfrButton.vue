@@ -6,6 +6,7 @@
       'fr-btn--secondary': secondary,
       'inline-flex': true,
       'reverse': iconRight,
+      'justify-center': iconOnly,
     }"
     :disabled="disabled"
     :aria-disabled="disabled"
@@ -15,12 +16,13 @@
       :name="icon"
       :class="{
         'icon-right': iconRight,
-        'icon-left': !iconRight,
+        'icon-left': !iconRight && !iconOnly,
       }"
     />
 
     <span>
       {{ label }}
+      <!-- @slot Slot par défaut pour le contenu du bouton. Sera dans `<button class="fr-btn"><span">` -->
       <slot />
     </span>
   </button>
@@ -41,6 +43,7 @@ export default {
       default: undefined,
     },
     iconRight: Boolean,
+    iconOnly: Boolean,
   },
 
   methods: {
@@ -51,7 +54,7 @@ export default {
 }
 </script>
 
-<style src="./button.css" />
+<style src="./button.main.css" />
 
 <style scoped>
 .icon-left {

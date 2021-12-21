@@ -1,0 +1,239 @@
+/*!
+* DSFR v1.2.1 | SPDX-License-Identifier: MIT | License-Filename: LICENSE.md | restricted use (see terms and conditions)
+*/
+
+/* ------------------------------------ *\
+  TAB
+\* ------------------------------------ */
+.fr-tabs__tab {
+  --link-underline: none;
+  --link-blank-font: none;
+  --link-blank-content: none;
+  --text-spacing: 0;
+  --title-spacing: 0;
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+
+  --blend-full-size: 100%;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  min-height: 2.5rem;
+  padding: 0.5rem 1rem;
+  position: relative;
+  overflow: visible;
+  font-weight: 700;
+  z-index: 1;
+  margin: 0 0.25rem;
+  white-space: nowrap;
+}
+/*
+.fr-tabs__tab:not([class*="fr-tabs__tab--icon-"])[class^="fr-fi-"],
+.fr-tabs__tab:not([class*="fr-tabs__tab--icon-"])[class*=" fr-fi-"] {
+  flex-direction: row;
+  overflow: hidden;
+  white-space: nowrap;
+  max-width: 2.5rem;
+  max-height: 2.5rem;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+}
+
+.fr-tabs__tab:not([class*="fr-tabs__tab--icon-"])[class^="fr-fi-"]::before,
+.fr-tabs__tab:not([class*="fr-tabs__tab--icon-"])[class*=" fr-fi-"]::before {
+  margin-left: 0;
+  margin-right: 0.75rem;
+  font-size: 1rem;
+}
+
+.fr-tabs__tab--icon-left[class^="fr-fi-"],
+.fr-tabs__tab--icon-left[class*=" fr-fi-"] {
+  flex-direction: row;
+  overflow: initial;
+  max-width: none;
+  max-height: none;
+}
+
+.fr-tabs__tab--icon-left[class^="fr-fi-"]::before,
+.fr-tabs__tab--icon-left[class*=" fr-fi-"]::before {
+  margin-left: -0.25rem;
+  margin-right: 0.5rem;
+  font-size: 1rem;
+} */
+
+.fr-tabs {
+  --ul-type: none;
+  --ol-type: none;
+  --ul-start: 0;
+  --ol-start: 0;
+  --xl-block: 0;
+  --li-bottom: 0;
+  --ol-content: none;
+  --link-underline: none;
+  --link-blank-font: none;
+  --link-blank-content: none;
+  position: relative;
+  overflow: hidden;
+  margin-top: -4px;
+  padding-top: 4px;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+
+  /**
+    * Animation de la hauteur du panel
+    */
+  transition: height 0.3s;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+
+  /**
+  * ul : element srollable des boutons
+  */
+
+  /**
+  * Tab button
+  */
+
+  /**
+  * Tab Panel
+  */
+  /**
+    * Tab button
+    */
+}
+
+.fr-tabs .fr-tabs {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.fr-tabs::after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 2.75rem;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  pointer-events: none;
+  box-shadow: inset 0 0 0 1px var(--border-default-grey);
+}
+
+.fr-tabs__list {
+  display: flex;
+  align-items: flex-end;
+  overflow-x: auto;
+  width: 100%;
+  height: 3rem;
+  position: absolute;
+
+  /**
+    * overflow vertical de 4px pour le focus
+    */
+  margin: -4px 0;
+  padding: 4px 0.75rem;
+}
+
+.fr-tabs__tab[aria-selected=true] {
+  pointer-events: none;
+  color: var(--text-active-blue-france);
+
+  --blend: var(--background-default-grey-blend);
+  background-color: var(--background-default-grey);
+}
+
+.fr-tabs__tab::after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  background-size: 100% 2px, 1px calc(100% - 1px), 1px calc(100% - 1px), 100% 3px;
+  background-repeat: no-repeat, no-repeat, no-repeat, no-repeat;
+  background-position: 0 0, 0 calc(100% - 1px), 100% calc(100% - 1px), 100% 100%;
+  background-image: linear-gradient(0deg, var(--border-active-blue-france), var(--border-active-blue-france)), linear-gradient(0deg, var(--border-default-grey), var(--border-default-grey)), linear-gradient(0deg, var(--border-default-grey), var(--border-default-grey)), linear-gradient(0deg, var(--background-default-grey), var(--background-default-grey));
+}
+
+.fr-tabs__tab:not([aria-selected=true])::after {
+  background-size: 0 2px, 1px 0, 1px 0, 0 3px;
+}
+
+.fr-tabs__panel {
+  --link-underline: 0 1px 0 0 currentColor;
+  --link-blank-font: normal normal normal 1rem/1 dsfr-icon;
+  --link-blank-content: "\00a0";
+  --ul-type: "●\00a0\00a0";
+  --ol-type: decimal;
+  --ul-start: 1rem;
+  --ol-start: 1.5rem;
+  --xl-block: 0.5rem;
+  --li-bottom: 0.25rem;
+  --xl-base: 1em;
+  --ol-content: counters(li-counter, ".") ".\00a0\00a0";
+  display: block;
+  position: relative;
+  left: 0;
+  width: 100%;
+  height: auto;
+  padding: 1rem;
+  margin-top: 2.5rem;
+  margin-right: -100%;
+  flex: 0 0 100%;
+  transition: visibility 0.3s, transform 0.3s;
+
+  /**
+    * Les éléments non sélectionnés sont cachés et rendus innaccessibles au focus
+    * Point d'attention : visibility hidden sur le panel et surcharge sur l'élément selected avec visibility visible créé des problèmes dans la gestion du focus en cas d'imbrication d'onglets
+    *
+    * tabs
+    * └─ panel selected
+    * └─ panel (visibility hidden, tabindex -1)
+    *    └─ tabs
+    *       └─ panel selected (visibility visible tabindex 0)
+    *            ↑ ce panel est accessible alors que caché par son panel parent
+    * solution : visibility hidden seulement sur les éléments non sélectionnés
+    **/
+}
+
+.fr-tabs__panel:focus,
+.fr-tabs__panel:focus-visible {
+  outline-offset: calc(-1rem + 2px);
+}
+
+.fr-tabs__panel:not(.fr-tabs__panel--selected) {
+  visibility: hidden;
+}
+
+.fr-tabs__tab:not([aria-selected=true]) {
+  --blend: var(--background-action-low-blue-france-blend);
+  background-color: var(--background-action-low-blue-france);
+  color: var(--text-action-high-grey);
+}
+
+.fr-tabs__tab:disabled,
+.fr-tabs__tab[disabled] {
+  color: var(--text-disabled-grey);
+
+  --blend: var(--background-disabled-grey-blend);
+  background-color: var(--background-disabled-grey);
+}
+
+@media (min-width: 48em) {
+  .fr-tabs {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .fr-tabs__panel {
+    padding: 2rem;
+  }
+
+  .fr-tabs__panel:focus,
+  .fr-tabs__panel:focus-visible {
+    outline-offset: calc(-2rem + 2px);
+  }
+}
