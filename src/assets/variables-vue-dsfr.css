@@ -1,0 +1,13 @@
+:root {
+  --error: #e10600;
+  --info: #0762c8;
+  --success: #008941;
+  --pending: #956052;
+  --warning: #956052;
+
+  --bg-error: #fdf2f3;
+  --bg-info: #f1f6fc;
+  --bg-success: #f2fbf9;
+  --bg-warning: #fffaf5;
+  --bg-pending: #fffaf5;
+}
