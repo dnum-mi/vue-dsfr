@@ -32,15 +32,15 @@ const actions = [
 
 const links = [
   {
-    id: '#header',
+    id: 'header',
     text: 'Allons au header',
   },
   {
-    id: '#content',
+    id: 'content',
     text: 'Allons au content',
   },
   {
-    id: '#footer',
+    id: 'footer',
     text: 'Allons au footer',
   },
 ]
