@@ -1,31 +1,55 @@
-/* ------------------------------------ *\
-  TILES
-\* ------------------------------------ */
+/*!
+* DSFR v1.2.1 | SPDX-License-Identifier: MIT | License-Filename: LICENSE.md | restricted use (see terms and conditions)
+*/
 
+/* ------------------------------------ *\
+  TILE
+\* ------------------------------------ */
 .fr-tile {
   position: relative;
   display: flex;
   flex-direction: column-reverse;
+
+  --text-spacing: 0;
+  --title-spacing: 0 0 0.5rem;
+
   /**
-   * Forcer la hauteur à 100% pour que les tuiles aient la même hauteur dans le contexte de la grille
-   *//**
-   * Conteneur pour l'image, on force les dimensions à 80x80 tout en permettant de mettre une image
-   * ne respectant pas cette taille :
-   * Si l'image est plus grande, elle sera croppée afin de ne jamais dépasser 80x80.
-   * Si l'image est plus petite, elle sera centrée, en hauteur, en largeur ou bien les deux.
-   *//**
-   * Partie de la tuile contenant le titre (obligatoire) et la description (optionnel)
-   *//**
-   * Titre de la tuile
-   *//**
-   * Description de la tuile
-   *//**
- * Modificateur tuile horizontale
- **//**
- * Modificateur vertical à partir du breakpoint md -> horizontal en dessous du breakpoint md
- **//**
- * Modificateur horizontal à partir du breakpoint md -> vertical en dessous du breakpoint md
- **/
+  * Forcer la hauteur à 100% pour que les tuiles aient la même hauteur dans le contexte de la grille
+  */
+
+  /**
+  * Conteneur pour l'image, on force les dimensions à 80x80 tout en permettant de mettre une image
+  * ne respectant pas cette taille :
+  * Si l'image est plus grande, elle sera croppée afin de ne jamais dépasser 80x80.
+  * Si l'image est plus petite, elle sera centrée, en hauteur, en largeur ou bien les deux.
+  */
+
+  /**
+  * Partie de la tuile contenant le titre (obligatoire) et la description (optionnel)
+  */
+
+  /**
+  * Titre de la tuile
+  */
+
+  /**
+  * Description de la tuile
+  */
+
+  /**
+* Modificateur tuile horizontale
+**/
+
+  /**
+* Modificateur vertical à partir du breakpoint md -> horizontal en dessous du breakpoint md
+**/
+
+  /**
+* Modificateur horizontal à partir du breakpoint md -> vertical en dessous du breakpoint md
+**/
+  --blend: var(--background-default-grey-blend);
+  background-color: var(--background-default-grey);
+  box-shadow: inset 0 0 0 1px var(--border-default-grey), inset 0 -0.25rem 0 0 var(--border-plain-blue-france);
 }
 
 .fr-grid-row .fr-tile {
@@ -34,6 +58,7 @@
 
 .fr-tile__link {
   display: inline-flex;
+
   --link-underline: none;
   --link-blank-font: none;
   --link-blank-content: none;
@@ -49,9 +74,10 @@
   height: 5rem;
   margin: 2rem auto 0;
   overflow: hidden;
+
   /**
-     * Dans le cas d'un svg inline sans largeur et hauteur spécifiées, on lui attribue une largeur de 100%.
-     */
+    * Dans le cas d'un svg inline sans largeur et hauteur spécifiées, on lui attribue une largeur de 100%.
+    */
 }
 
 .fr-tile__img > svg {
@@ -76,12 +102,10 @@
 }
 
 .fr-tile__title + .fr-tile__desc {
-  font-size: 1rem;
-  line-height: 1.5rem;
+  margin: 0.5rem 0 0;
 }
 
 .fr-tile__desc {
-  margin: 0.5rem 0 0;
   font-size: 1rem;
   line-height: 1.5rem;
 }
@@ -143,35 +167,9 @@
   text-align: center;
 }
 
-.fr-tile {
-  box-shadow: inset 0 -0.25rem 0 0 var(--bf500);
-  background-color: var(--beige);
-}
-
-.fr-tile.fr-enlarge-link {
-  background-color: var(--beige);
-}
-
-:root:not([data-fr-theme="dark"]) .fr-tile.fr-enlarge-link {
-  --color-hover: rgba(224, 219, 208, 0.5);
-  --color-active: rgba(199, 189, 170, 0.5);
-}
-
-:root:not([data-fr-theme="dark"]) [class*="fr-scheme-light"] .fr-tile.fr-enlarge-link,
-:root:not([data-fr-theme="dark"]) [class*="--scheme-light-"] .fr-tile.fr-enlarge-link {
-  --color-hover: rgba(224, 219, 208, 0.5);
-  --color-active: rgba(199, 189, 170, 0.5);
-}
-
-:root:not([data-fr-theme="dark"]) [class*="fr-scheme-dark"] .fr-tile.fr-enlarge-link,
-:root:not([data-fr-theme="dark"]) [class*="--scheme-dark-"] .fr-tile.fr-enlarge-link {
-  --color-hover: rgba(79, 79, 79, 0.5);
-  --color-active: rgba(115, 115, 115, 0.5);
-}
-
-:root[data-fr-theme="dark"] .fr-tile.fr-enlarge-link {
-  --color-hover: rgba(79, 79, 79, 0.5);
-  --color-active: rgba(115, 115, 115, 0.5);
+.fr-tile--grey {
+  --blend: var(--background-contrast-grey-blend);
+  background-color: var(--background-contrast-grey);
 }
 
 @media (min-width: 48em) {
@@ -227,17 +225,5 @@
   .fr-tile--horizontal-md {
     flex-direction: row-reverse;
     align-items: center;
-  }
-}
-
-@media (hover: hover) and (pointer: fine) {
-  .fr-tile.fr-enlarge-link:not(a):not(:disabled):hover,
-  a.fr-tile.fr-enlarge-link[href]:hover {
-    background-image: linear-gradient(0deg, var(--color-hover), var(--color-hover));
-  }
-
-  .fr-tile.fr-enlarge-link:not(a):not(:disabled):active,
-  a.fr-tile.fr-enlarge-link[href]:active {
-    background-image: linear-gradient(0deg, var(--color-active), var(--color-active));
   }
 }
