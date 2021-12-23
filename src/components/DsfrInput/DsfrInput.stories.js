@@ -36,6 +36,10 @@ export default {
       control: 'boolean',
       description: 'Signale si le champ est en état d’erreur (`true`) ou non (`false`, par défaut)',
     },
+    isTextarea: {
+      control: 'boolean',
+      description: 'Signale si le champ est de type textarea (`true`) ou non (`false`, par défaut)',
+    },
     errorMessage: {
       control: 'text',
       description: 'Message d’erreur à associer au champ. **Ne fait pas partie du composant. Il appartient à <a href="/?path=/story/composants-champ-de-saisie-champ-avec-message-associ%C3%A9-dsfrinputgroup--champ-en-erreur">DsfrInputGroup</a>**',
@@ -179,4 +183,36 @@ ChampValide.args = {
   modelValue: '',
   validMessage: 'Message de validation',
   isValid: true,
+}
+
+export const ChampTextarea = (args) => ({
+  components: {
+    DsfrInput,
+  },
+  data () {
+    return {
+      ...args,
+    }
+  },
+  template: `
+    <div :data-fr-theme="dark ? 'dark' : ''" style="background-color: var(--grey-1000-50); padding: 1rem;">
+      <DsfrInput
+        :model-value="modelValue"
+        :label="label"
+        :label-visible="labelVisible"
+        :placeholder="placeholder"
+        :disabled="disabled"
+        :isTextarea="isTextarea"
+      />
+    </div>
+  `,
+})
+ChampTextarea.args = {
+  dark: false,
+  label: 'Label champ de saisie',
+  labelVisible: true,
+  placeholder: 'Placeholder',
+  modelValue: '',
+  disabled: false,
+  isTextarea: true,
 }
