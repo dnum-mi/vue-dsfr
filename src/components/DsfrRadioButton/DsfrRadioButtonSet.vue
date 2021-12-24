@@ -22,10 +22,11 @@
         role="radiogroup"
       >
         <DsfrRadioButton
-          v-for="option of options"
-          :key="option.value"
+          v-for="(option, i) of options"
+          :key="option.value || i"
           :name="name"
           v-bind="option"
+          :model-value="modelValue"
           @update:modelValue="onChange"
         />
       </div>
