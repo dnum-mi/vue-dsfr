@@ -3,9 +3,10 @@ import VIcon from './icons.js'
 
 export default {
   install: (app, options) => {
-    Object.values(components).forEach(component => {
-      app.component(component.name, component)
+    Object.entries(components).forEach(([componentName, component]) => {
+      app.component(componentName, component)
     })
+
     app.component('VIcon', VIcon)
   },
 }
