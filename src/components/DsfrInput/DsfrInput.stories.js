@@ -185,7 +185,7 @@ ChampValide.args = {
   isValid: true,
 }
 
-export const ChampTextarea = (args) => ({
+export const ZoneDeTexte = (args) => ({
   components: {
     DsfrInput,
   },
@@ -202,12 +202,12 @@ export const ChampTextarea = (args) => ({
         :label-visible="labelVisible"
         :placeholder="placeholder"
         :disabled="disabled"
-        :isTextarea="isTextarea"
+        :is-textarea="isTextarea"
       />
     </div>
   `,
 })
-ChampTextarea.args = {
+ZoneDeTexte.args = {
   dark: false,
   label: 'Label champ de saisie',
   labelVisible: true,
