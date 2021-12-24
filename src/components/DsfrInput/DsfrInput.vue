@@ -8,7 +8,8 @@
   >
     {{ label }}
   </label>
-  <input
+  <component
+    :is="isComponent"
     :id="id"
     class="fr-input"
     :class="{
@@ -20,7 +21,7 @@
     :aria-aria-describedby="descriptionId || undefined"
     @input="$emit('update:modelValue', $event.target.value)"
     @keydown.esc="$emit('update:modelValue', '')"
-  >
+  />
 </template>
 
 <script>
@@ -52,8 +53,14 @@ export default defineComponent({
     },
     isInvalid: Boolean,
     isValid: Boolean,
+    isTextarea: Boolean,
   },
   emits: ['update:modelValue'],
+  computed: {
+    isComponent () {
+      return this.isTextarea ? 'textarea' : 'input'
+    },
+  },
 })
 </script>
 
