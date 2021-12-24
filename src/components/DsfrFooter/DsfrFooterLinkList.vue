@@ -13,13 +13,14 @@
           class="fr-footer__top-link"
           :to="link.to"
         >{{ link.label }}</a>
-        <router-link
+        <component
+          :is="linkComponent"
           v-else
           class="fr-footer__top-link"
           :to="link.to"
         >
           {{ link.label }}
-        </router-link>
+        </component>
       </li>
     </ul>
   </div>
@@ -39,6 +40,12 @@ export default defineComponent({
     links: {
       type: Array,
       default: () => [],
+    },
+  },
+
+  computed: {
+    linkComponent () {
+      return '$nuxt' in this ? 'nuxt-link' : 'router-link'
     },
   },
 })
