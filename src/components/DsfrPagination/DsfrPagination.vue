@@ -11,6 +11,8 @@ export default {
       default: 1,
     },
   },
+
+  emits: ['update:currentPage'],
 }
 </script>
 
@@ -23,9 +25,10 @@ export default {
     <ul class="fr-pagination__list">
       <li>
         <a
+          href="#"
           class="fr-pagination__link fr-pagination__link--first"
           title="Première page"
-          :href="links[0].url"
+          @click.prevent="$emits('update:currentPage', 1)"
         >
           <VIcon
             name="ri-skip-back-fill"
@@ -34,9 +37,10 @@ export default {
       </li>
       <li>
         <a
+          href="#"
           class="fr-pagination__link fr-pagination__link--prev fr-pagination__link--lg-label"
           title="Page précédente"
-          :href="links[currentPage - 1] != 0 ? links[currentPage - 1].url : links[currentPage].url"
+          @click.prevent="$emit('update:currentPage', currentPage > 1 ? currentPage - 1 : 1)"
         >
           <VIcon
             name="ri-play-fill"
@@ -49,19 +53,21 @@ export default {
         :key="idx"
       >
         <a
-          :href="link.url"
+          href="#"
           class="fr-pagination__link fr-displayed-lg"
           :title="link.title"
           :aria-current="link.label == currentPage ? 'page' : undefined"
+          @click.prevent="$emit('update:currentPage', +link.label)"
         >
           {{ link.label }}
         </a>
       </li>
       <li>
         <a
+          href="#"
           class="fr-pagination__link fr-pagination__link--next fr-pagination__link--lg-label"
-          :href="links[currentPage + 1] <= links.length ? links[currentPage + 1].url : links[currentPage].url"
           title="Page suivante"
+          @click.prevent="$emit('update:currentPage', currentPage < links.length ? currentPage + 1 : links.length)"
         >
           <VIcon
             name="ri-play-fill"
@@ -71,8 +77,9 @@ export default {
       <li>
         <a
           class="fr-pagination__link fr-pagination__link--last"
-          :href="links[links.length - 1].url"
+          href="#"
           title="Dernière Page"
+          @click.prevent="$emit('update:currentPage', links.length)"
         >
           <VIcon
             name="ri-skip-forward-fill"
@@ -84,3 +91,10 @@ export default {
 </template>
 
 <style src="./pagination.main.css" />
+
+<style scoped>
+.fr-pagination__link:hover {
+  background-image: linear-gradient(
+0deg, rgba(224,224,224,0.5), rgba(224,224,224,0.5));
+}
+</style>

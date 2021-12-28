@@ -32,7 +32,7 @@ export const Pagination = (args) => ({
     <div :data-fr-theme="dark ? 'dark' : ''" style="background-color: var(--w);">
       <DsfrPagination
         :links="links"
-        :currentPage="currentPage"
+        v-model:currentPage="currentPage"
       />
     </div>
   `,

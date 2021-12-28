@@ -1,4 +1,4 @@
-import { mount } from '@cypress/vue'
+/* import { mount } from '@cypress/vue'
 import DsfrPagination from './DsfrPagination.vue'
 import VIcon from '../../icons.js'
 
@@ -32,3 +32,5 @@ const PaginationWrapper = {
   </div>`,
 
 }
+
+*/
