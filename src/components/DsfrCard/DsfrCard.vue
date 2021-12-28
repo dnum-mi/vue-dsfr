@@ -10,14 +10,15 @@
         ref="title"
         class="fr-card__title"
       >
-        <router-link
+        <component
+          :is="linkComponent"
           :to="link"
           class="fr-card__link"
           data-testid="card-link"
           @click="$event.stopPropagation()"
         >
           {{ title }}
-        </router-link>
+        </component>
       </h4>
       <p class="fr-card__desc">
         {{ description }}
@@ -48,6 +49,7 @@
 <script>
 export default {
   name: 'DsfrCard',
+
   props: {
     imgSrc: {
       type: String,
@@ -75,6 +77,12 @@ export default {
     },
     noArrow: Boolean,
     horizontal: Boolean,
+  },
+
+  computed: {
+    linkComponent () {
+      return '$nuxt' in this ? 'nuxt-link' : 'router-link'
+    },
   },
 
   methods: {

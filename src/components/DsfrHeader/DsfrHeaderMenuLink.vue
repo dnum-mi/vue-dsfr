@@ -26,6 +26,7 @@
 <script>
 export default {
   name: 'DsfrHeaderMenuLink',
+
   props: {
     path: {
       type: String,
@@ -53,7 +54,7 @@ export default {
       if (this.button) {
         return 'button'
       }
-      return this.path.startsWith('http') ? 'a' : 'router-link'
+      return this.path.startsWith('http') ? 'a' : ('$nuxt' in this ? 'nuxt-link' : 'router-link')
     },
     to () {
       return (this.button || this.path.startsWith('http')) ? undefined : this.path

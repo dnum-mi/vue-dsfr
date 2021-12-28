@@ -25,16 +25,17 @@
           class="fr-breadcrumb__item  relative  align-center"
           :data-testid="`lis`"
         >
-          <router-link
+          <component
+            :is="linkComponent"
             v-if="link.to"
             class="fr-breadcrumb__link"
             :to="link.to"
             :aria-current="index === links.length - 1 ? 'page' : undefined"
           >
             {{ link.text }}
-          </router-link>
+          </component>
           <a
-            v-else
+            v-if="!link.to"
             class="fr-breadcrumb__link"
             :aria-current="index === links.length - 1 ? 'page' : undefined"
           >{{ link.text }}</a>
@@ -72,6 +73,12 @@ export default {
     return {
       hideButton: false,
     }
+  },
+
+  computed: {
+    linkComponent () {
+      return '$nuxt' in this ? 'nuxt-link' : 'router-link'
+    },
   },
 }
 </script>
