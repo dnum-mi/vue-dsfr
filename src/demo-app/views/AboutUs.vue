@@ -1,0 +1,3 @@
+<template>
+  À propos
+</template>

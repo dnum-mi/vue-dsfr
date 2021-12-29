@@ -1,5 +1,6 @@
 <script setup>
 import { ref } from 'vue'
+import DsfrNavigation from '../components/DsfrNavigation/DsfrNavigation.vue'
 
 const isModalOpen = ref(false)
 const displayAlert = ref(false)
@@ -30,6 +31,12 @@ const actions = [
   },
 ]
 
+const showNotifications = ref(false)
+
+const displayNotifications = () => {
+  showNotifications.value = true
+}
+
 const links = [
   {
     id: 'header',
@@ -44,6 +51,39 @@ const links = [
     text: 'Allons au footer',
   },
 ]
+
+const quickLinks = [
+  {
+    label: 'Notifications',
+    path: '',
+    icon: 'ri-notification-3-line',
+    iconOnly: true,
+    button: true,
+    onClick: ($event) => {
+      $event.preventDefault()
+      displayNotifications()
+    },
+  },
+  {
+    label: 'À propos',
+    to: { name: 'AboutUs' },
+  },
+  {
+    label: 'DSFR',
+    href: 'https://systeme-de-design.gouv.fr/',
+  },
+]
+
+const navItems = [
+  {
+    to: { name: 'Home' },
+    text: 'Accueil',
+  },
+  {
+    to: { name: 'AboutUs' },
+    text: 'À propos',
+  },
+]
 </script>
 
 <template>
@@ -51,13 +91,29 @@ const links = [
     <DsfrSkipLinks
       :links="links"
     />
+    <DsfrHeader
+      :quick-links="quickLinks"
+    />
+    <DsfrNavigation
+      :nav-items="navItems"
+    />
     <h1>App</h1>
+    <router-view />
     <DsfrButton
       class="m1"
       @click="isModalOpen = true"
     >
       Open modal
     </DsfrButton>
+
+    <DsfrModal
+      title="Notifications"
+      :opened="showNotifications"
+      @close="showNotifications = false"
+    >
+      Notifications
+    </DsfrModal>
+
     <teleport to="body">
       <DsfrModal
         v-if="isModalOpen"
