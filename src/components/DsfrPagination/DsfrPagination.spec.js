@@ -1,4 +1,5 @@
-/* import { render, fireEvent } from '@testing-library/vue'
+import { render, fireEvent } from '@testing-library/vue'
+import { ref } from 'vue'
 
 import Pagination from './DsfrPagination.vue'
 
@@ -14,10 +15,10 @@ describe('DsfrPagination', () => {
       { label: '4', url: '#page4', title: 'Page 4' },
       { label: '5', url: '#page5', title: 'Page 5' },
     ]
-    const currentPage = 1
+    const currentPage = ref(1)
 
     // When
-    const { getByTitle } = render(Pagination, {
+    const { getByTitle, emitted } = render(Pagination, {
       global: {
         components: {
           VIcon,
@@ -29,12 +30,13 @@ describe('DsfrPagination', () => {
       },
     })
 
-  const thirdLink = getByTitle('Page 3')
-  await fireEvent.click(thirdLink)
+    const thirdLink = getByTitle('Page 3')
+    console.log('Current page is #' + currentPage.value)
+    await fireEvent.click(thirdLink)
+    console.log('Current page is #' + currentPage.value)
 
     // Then
-  expect(currentPage).toBe(3)
+    expect(emitted()['update:currentPage']).toBeTruthy()
+    expect(emitted()['update:currentPage'][0][0]).toBe(3)
   })
 })
-
-*/
