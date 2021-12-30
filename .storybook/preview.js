@@ -22,6 +22,7 @@ export const parameters = {
       order: [
         'Docs',
         'Fondamentaux',
+        'Composables',
         'Composants',
       ],
     },

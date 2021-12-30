@@ -49,7 +49,7 @@ export const RadioButtonSet = (args) => ({
   <div :data-fr-theme="dark ? 'dark' : ''" style="background-color: var(--grey-1000-50); padding: 1rem;">
     <DsfrRadioButtonSet
       :legend="legend"
-      v-model="selectedValue"
+      v-model="modelValue"
       name="radio-set"
       :options="options"
       :inline="inline"
@@ -60,8 +60,8 @@ export const RadioButtonSet = (args) => ({
 RadioButtonSet.args = {
   dark: false,
   legend: 'Légende des champs',
-  selectedValue: 1,
   inline: false,
+  modelValue: '3',
   options: [
     {
       label: 'Valeur 1',

@@ -51,7 +51,8 @@
               v-if="serviceTitle"
               class="fr-header__service"
             >
-              <router-link
+              <component
+                :is="linkComponent"
                 :to="homeTo"
                 :title="`Accueil - ${serviceTitle}`"
                 v-bind="$attrs"
@@ -59,7 +60,7 @@
                 <p class="fr-header__service-title">
                   {{ serviceTitle }}
                 </p>
-              </router-link>
+              </component>
               <p
                 v-if="serviceDescription"
                 class="fr-header__service-tagline"
@@ -139,11 +140,13 @@ import DsfrSearchBar from '../DsfrSearchBar/DsfrSearchBar.vue'
 import DsfrHeaderMenuLinks from './DsfrHeaderMenuLinks.vue'
 export default {
   name: 'DsfrHeader',
+
   components: {
     DsfrLogo,
     DsfrHeaderMenuLinks,
     DsfrSearchBar,
   },
+
   props: {
     serviceTitle: {
       type: String,
@@ -180,6 +183,12 @@ export default {
       searchModalOpened: false,
       modalOpened: false,
     }
+  },
+
+  computed: {
+    linkComponent () {
+      return '$nuxt' in this ? 'nuxt-link' : 'router-link'
+    },
   },
 
   methods: {

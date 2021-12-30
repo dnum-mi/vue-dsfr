@@ -1,0 +1,120 @@
+import { Meta } from '@storybook/addon-docs';
+
+<Meta title="Composables/useScheme" />
+
+# `useScheme`
+
+Ce composable permet de gérer simplement le thème du site :
+
+## Utilisation basique
+
+```html
+<script>
+import { useScheme } from '@laruiss/vue-dsfr'
+
+export default {
+  mounted () {
+    useScheme() // useScheme utilise `window` et modifie `document`, il faut donc être sûr d'être côté client
+  }
+}
+</script>
+```
+
+Ceci va récupérer la préférence au niveau de l’OS de l’utilisateur et appliquer le bon thème en fonction de celui-ci.
+
+## Utilisation avancée (Composition API)
+
+Beaucoup plus simple avec la composition API :
+
+```html
+<script>
+import { onMounted, reactive, watchEffect } from 'vue'
+
+export default {
+  setup () {
+    const preferences = reactive({
+      theme: undefined,
+      scheme: undefined,
+    })
+
+    onMounted(() => {
+      const { theme, scheme, setScheme } = useScheme()
+      preferences.theme = theme.value
+      preferences.scheme = scheme.value
+
+      watchEffect(() => { preferences.theme = theme.value })
+
+      watchEffect(() => setScheme(preferences.scheme))
+    })
+
+    return {
+      preferences,
+    }
+  }
+}
+</script>
+
+<template>
+  <p>
+    Thème courant : {{preferences.theme}} ('light' ou 'dark')
+  </p>
+  <p>
+    Scheme courant : {{preferences.scheme}} ('system', 'light', ou 'dark')
+  </p>
+  <p>
+    <DsfrButton @click="preferences.scheme = 'system'">
+      System
+    </DsfrButton>
+    <DsfrButton @click="preferences.scheme = 'light'">
+      Light
+    </DsfrButton>
+    <DsfrButton @click="preferences.scheme = 'dark'">
+      Dark
+    </DsfrButton>
+  </p>
+</template>
+```
+
+## Utilisation avancée (Script setup)
+
+Beaucoup plus simple avec la composition API :
+
+```html
+<script setup>
+import { onMounted, reactive, watchEffect } from 'vue'
+
+const preferences = reactive({
+  theme: undefined,
+  scheme: undefined,
+})
+
+onMounted(() => {
+  const { theme, scheme, setScheme } = useScheme()
+  preferences.scheme = scheme.value
+
+  watchEffect(() => { preferences.theme = theme.value })
+
+  watchEffect(() => setScheme(preferences.scheme))
+})
+</script>
+
+<template>
+  <p>
+    Thème courant : {{preferences.theme}} ('light' ou 'dark')
+  </p>
+  <p>
+    Scheme courant : {{preferences.scheme}} ('system', 'light', ou 'dark')
+  </p>
+  <p>
+    <DsfrButton @click="preferences.scheme = 'system'">
+      System
+    </DsfrButton>
+    <DsfrButton @click="preferences.scheme = 'light'">
+      Light
+    </DsfrButton>
+    <DsfrButton @click="preferences.scheme = 'dark'">
+      Dark
+    </DsfrButton>
+  </p>
+</template>
+```

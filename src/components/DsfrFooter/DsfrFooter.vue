@@ -91,6 +91,9 @@ export default {
         ...this.afterMandatoryLinks,
       ]
     },
+    linkComponent () {
+      return '$nuxt' in this ? 'nuxt-link' : 'router-link'
+    },
   },
 }
 </script>
@@ -111,14 +114,15 @@ export default {
     <div class="fr-container">
       <div class="fr-footer__body">
         <div class="fr-footer__brand fr-enlarge-link">
-          <router-link
+          <component
+            :is="linkComponent"
             :to="homeLink"
             title="Retour à l’accueil"
           >
             <DsfrLogo
               :logo-text="logoText"
             />
-          </router-link>
+          </component>
         </div>
         <div class="fr-footer__content">
           <p
@@ -156,13 +160,14 @@ export default {
             :key="index"
             class="fr-footer__bottom-item"
           >
-            <router-link
+            <component
+              :is="linkComponent"
               class="fr-footer__bottom-link"
               :to="link.to"
               :data-testid="link.to"
             >
               {{ link.label }}
-            </router-link>
+            </component>
           </li>
         </ul>
         <div class="fr-footer__bottom-copy">
