@@ -13,5 +13,6 @@ export default {
 
 export * from './components/index.js'
 export * from './utils/random-utils.js'
+export * from './composables.js'
 
 export { VIcon }
