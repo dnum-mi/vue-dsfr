@@ -1,6 +1,9 @@
 <script setup>
-import { ref } from 'vue'
+import { onMounted, reactive, ref, watchEffect } from 'vue'
 import DsfrNavigation from '../components/DsfrNavigation/DsfrNavigation.vue'
+import DsfrButton from '../components/DsfrButton/DsfrButton.vue'
+import DsfrRadioButtonSet from '../components/DsfrRadioButton/DsfrRadioButtonSet.vue'
+import { useScheme } from '../composables.js'
 
 const isModalOpen = ref(false)
 const displayAlert = ref(false)
@@ -84,6 +87,35 @@ const navItems = [
     text: 'À propos',
   },
 ]
+
+const preferences = reactive({
+  theme: undefined,
+  scheme: undefined,
+})
+
+const options = [
+  {
+    label: 'System',
+    value: 'system',
+  },
+  {
+    label: 'Dark',
+    value: 'dark',
+  },
+  {
+    label: 'Light',
+    value: 'light',
+  },
+]
+
+onMounted(() => {
+  const { theme, scheme, setScheme } = useScheme()
+  preferences.scheme = scheme.value
+
+  watchEffect(() => { preferences.theme = theme.value })
+
+  watchEffect(() => setScheme(preferences.scheme))
+})
 </script>
 
 <template>
@@ -94,42 +126,64 @@ const navItems = [
     <DsfrHeader
       :quick-links="quickLinks"
     />
-    <DsfrNavigation
-      :nav-items="navItems"
-    />
-    <h1>App</h1>
-    <router-view />
-    <DsfrButton
-      class="m1"
-      @click="isModalOpen = true"
-    >
-      Open modal
-    </DsfrButton>
+    <div class="fr-container">
+      <DsfrNavigation
+        :nav-items="navItems"
+      />
+      <h1>App</h1>
+
+      <router-view />
+
+      <div>
+        <DsfrButton
+          class="my-1"
+          @click="isModalOpen = true"
+        >
+          Open modal
+        </DsfrButton>
+      </div>
+
+      <DsfrModal
+        title="Notifications"
+        :opened="showNotifications"
+        @close="showNotifications = false"
+      >
+        Notifications
+      </DsfrModal>
+
+      <p>
+        <DsfrButton @click="preferences.scheme = 'system'">
+          System
+        </DsfrButton>
+        <DsfrButton @click="preferences.scheme = 'light'">
+          Light
+        </DsfrButton>
+        <DsfrButton @click="preferences.scheme = 'dark'">
+          Dark
+        </DsfrButton>
+      </p>
+
+      <DsfrRadioButtonSet
+        v-model="preferences.scheme"
+        :options="options"
+      />
+    </div>
 
     <DsfrModal
-      title="Notifications"
-      :opened="showNotifications"
-      @close="showNotifications = false"
+      v-if="isModalOpen"
+      title="Exemple de modale"
+      :opened="isModalOpen"
+      :actions="actions"
+      @close="isModalOpen = false"
     >
-      Notifications
+      <DsfrAlert
+        :closed="!displayAlert"
+        type="success"
+        sm
+        description="Opération terminée avec succès"
+      />
+      Ceci est une modale. Elle peut se fermer sans aucun changement au clic sur le bouton "Fermer" ou bien simplement avec la touche <kbd>Échappe</kbd>
     </DsfrModal>
-
-    <teleport to="body">
-      <DsfrModal
-        v-if="isModalOpen"
-        :opened="isModalOpen"
-        :actions="actions"
-        @close="isModalOpen = false"
-      >
-        <DsfrAlert
-          :closed="!displayAlert"
-          type="success"
-          sm
-          description="Opération terminée avec succès"
-        />
-        Ceci est une modale. Elle peut se fermer sans aucun changement au clic sur le bouton "Fermer" ou bien simplement avec la touche <kbd>Échappe</kbd>
-      </DsfrModal>
-    </teleport>
   </div>
 </template>
 
@@ -137,11 +191,9 @@ const navItems = [
 #app {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
 }
 
-.m1 {
-  margin: 0.5rem;
+.my-1 {
+  margin-block: 0.5rem;
 }
 </style>

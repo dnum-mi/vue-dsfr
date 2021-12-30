@@ -19,6 +19,15 @@ module.exports = {
   },
   overrides: [
     {
+      files: ['**/*.ts?(x)'],
+      parser: '@typescript-eslint/parser',
+      plugins: ['@typescript-eslint'],
+      rules: {
+        semi: ['error', 'never'],
+        quotes: [2, 'single'],
+      },
+    },
+    {
       files: ['**/__tests__/*.{j,t}s?(x)', '**/tests/unit/*.{j,t}s?(x)', '**/src/**/*.spec.{j,t}s?(x)'],
       env: {
         jest: true,
