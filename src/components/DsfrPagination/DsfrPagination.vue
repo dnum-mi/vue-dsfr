@@ -13,6 +13,15 @@ export default {
   },
 
   emits: ['update:currentPage'],
+
+  methods: {
+    getPreviousPage () {
+      return this.currentPage > 1 ? this.currentPage - 1 : 1
+    },
+    getNextPage () {
+      return this.currentPage < this.links.length ? this.currentPage + 1 : this.links.length
+    },
+  },
 }
 </script>
 
@@ -40,7 +49,7 @@ export default {
           href="#"
           class="fr-pagination__link fr-pagination__link--prev fr-pagination__link--lg-label"
           title="Page précédente"
-          @click.prevent="$emit('update:currentPage', currentPage > 1 ? currentPage - 1 : 1)"
+          @click.prevent="$emit('update:currentPage', getPreviousPage())"
         >
           <VIcon
             name="ri-play-fill"
@@ -67,7 +76,7 @@ export default {
           href="#"
           class="fr-pagination__link fr-pagination__link--next fr-pagination__link--lg-label"
           title="Page suivante"
-          @click.prevent="$emit('update:currentPage', currentPage < links.length ? currentPage + 1 : links.length)"
+          @click.prevent="$emit('update:currentPage', getNextPage())"
         >
           <VIcon
             name="ri-play-fill"
