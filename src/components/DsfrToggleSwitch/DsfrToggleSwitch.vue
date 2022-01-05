@@ -60,11 +60,11 @@ export default defineComponent({
 })
 </script>
 
-<style src="./toggles.css" />
+<style src="./toggle.main.css" />
 
 <style scoped>
 .fr-toggle__label {
-  color: var(--g800);
+  color: var(--text-default-grey);
 }
 
 .fr-toggle__label::after {

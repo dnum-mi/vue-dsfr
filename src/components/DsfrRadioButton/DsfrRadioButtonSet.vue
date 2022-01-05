@@ -22,10 +22,11 @@
         role="radiogroup"
       >
         <DsfrRadioButton
-          v-for="option of options"
-          :key="option.value"
+          v-for="(option, i) of options"
+          :key="option.value || i"
           :name="name"
           v-bind="option"
+          :model-value="modelValue"
           @update:modelValue="onChange"
         />
       </div>
@@ -34,7 +35,10 @@
         class="fr-message-text  flex  items-center"
         :class="additionalMessageClass"
       >
-        <v-icon :name="messageIcon" />
+        <v-icon
+          :name="messageIcon"
+          class="message-icon"
+        />
         <span class="line-1">{{ message }}</span>
       </p>
     </fieldset>
@@ -90,7 +94,7 @@ export default {
       return this.errorMessage ? 'fr-error-text' : 'fr-valid-text'
     },
     messageIcon () {
-      return this.errorMessage ? 'ri-error-warning-line' : 'ri-checkbox-circle-line'
+      return this.errorMessage ? 'ri-alert-line' : 'ri-checkbox-circle-line'
     },
   },
 
@@ -105,49 +109,10 @@ export default {
 }
 </script>
 
+<style src="./radio.main.css" />
+
 <style scoped>
-.line-1 {
-  margin-left: 0.25rem;
-  line-height: 1rem;
-}
-.fr-fieldset__legend {
-  margin-bottom: 1rem;
-  font-size: 1rem;
-  line-height: 1.5rem;
-  font-weight: 400;
-}
-
-.fr-fieldset--inline {
-  & .fr-fieldset__content {
-    display: flex;
-    align-items: baseline;
-    justify-content: flex-start;
-    flex-wrap: wrap;
-    margin: -0.75rem 0;
-  }
-
-  & :deep(.fr-radio-group) {
-    display: inline-flex;
-  }
-
-  & :deep(.fr-radio-group:not(:last-child) input[type="radio" i] + label) {
-    margin-right: 1.75rem;
-  }
-}
-
-.fr-fieldset--error :deep(.fr-label) {
-  color: var(--error);
-}
-
-.fr-fieldset--error :deep(.fr-hint-text) {
-  color: var(--error);
-}
-
-.fr-fieldset--valid :deep(.fr-label) {
-  color: var(--success);
-}
-
-.fr-fieldset--valid :deep(.fr-hint-text) {
-  color: var(--success);
+.message-icon {
+  margin-right: 0.25rem;
 }
 </style>

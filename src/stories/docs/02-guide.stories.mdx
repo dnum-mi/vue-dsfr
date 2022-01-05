@@ -7,14 +7,42 @@ import { Meta } from '@storybook/addon-docs';
 Ceci est le guide d̛’utilisation de la bibliothèque. Si vous cherchez à contribuer, se référer au
 [Guide du développeur](?path=/story/docs-guide-du-développeur--page).
 
-## Utiliser la bibliothèque en tant que plugin
+## Utiliser create-vue-dsfr (recommandé)
+
+La façon la plus simple de commencer un projet est d’utiliser le package `create-vue-dsfr`, qui permet de créer un projet
+NPM avec tout le nécessaire pour développer un projet utilisant VueDsfr, que ce soit pour Vite (Vue3) ou pour Nuxt 3 (Nuxt3),
+avec ou sans TypeScript.
+
+Avec npm :
+
+```shell
+npm init vue-dsfr
+```
+
+Avec pnpm :
+
+```shell
+pnpm create vue-dsfr
+```
+
+Avec yarn :
+
+```shell
+yarn create vue-dsfr
+```
+
+Et suivez le guide !
+
+## Ajouter la bibliothèque
+
+### Utiliser la bibliothèque en tant que plugin
 
 | Notes :              |
 |:---------------------------|
-| Pour utiliser cette bibliothèque, il vous faudra **[Vue 3](https://v3.vuejs.org/)** et **[Vue-Router 4](https://next.router.vuejs.org/)**. Par conséquent, si vous utilisez Nuxt, il vous faut **[Nuxt 3](https://v3.nuxtjs.org/)** (plus de détails plus loin). |
+| Pour utiliser cette bibliothèque, il vous faudra **[Vue 3](https://v3.vuejs.org/)** (et **[Vue-Router 4](https://next.router.vuejs.org/)**). Par conséquent, si vous utilisez Nuxt, il vous faut **[Nuxt 3](https://v3.nuxtjs.org/)** (plus de détails plus loin). |
 | Il est fortement conseillé d’utiliser **[Vite](https://vitejs.dev)** plutôt que Vue-CLI. |
 
-### Installer la bibliothèque
+### Installer la bibliothèque en tant que dépendance du projet
 
 Afin d'installer la bibliothèque, taper cette commande dans votre console au sein du répertoire du projet :
 
@@ -98,7 +126,7 @@ import { defineNuxtConfig } from 'nuxt3';
 export default defineNuxtConfig({
   build: {
     transpile: [
-      'oh-vue-icons/dist/v3/icon.es',
+      'oh-vue-icons/dist/v3/icon.es.js',
       'oh-vue-icons/icons/ri/index.js',
     ],
   },

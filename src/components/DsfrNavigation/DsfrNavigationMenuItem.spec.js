@@ -15,7 +15,7 @@ describe('DsfrNavigationMenuItem', () => {
     const liEl = getByText(content)
 
     expect(liEl).toHaveClass('fr-menu__item')
-    expect(liEl).not.toHaveClass('fr-menu__item--active')
+    expect(liEl).not.toHaveAttribute('aria-current')
     expect(liEl).toHaveAttribute('id')
   })
 
@@ -34,7 +34,7 @@ describe('DsfrNavigationMenuItem', () => {
     const liEl = getByText(content)
 
     expect(liEl).toHaveClass('fr-menu__item')
-    expect(liEl).toHaveClass('fr-menu__item--active')
+    expect(liEl).toHaveAttribute('aria-current', 'page')
     expect(liEl).toHaveAttribute('id')
   })
 })

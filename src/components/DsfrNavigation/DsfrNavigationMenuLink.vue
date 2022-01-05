@@ -25,6 +25,9 @@ export default {
     isExternal () {
       return typeof this.to === 'string' && this.to.startsWith('http')
     },
+    linkComponent () {
+      return '$nuxt' in this ? 'nuxt-link' : 'router-link'
+    },
   },
 }
 </script>
@@ -39,7 +42,8 @@ export default {
   >
     {{ text }}
   </a>
-  <router-link
+  <component
+    :is="linkComponent"
     v-else
     class="fr-nav__link"
     data-testid="nav-router-link"
@@ -47,11 +51,5 @@ export default {
     @click="$emit('toggle-id', id)"
   >
     {{ text }}
-  </router-link>
+  </component>
 </template>
-
-<style scoped>
-.fr-nav__link {
-  color: currentColor;
-}
-</style>

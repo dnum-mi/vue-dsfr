@@ -105,38 +105,4 @@ export default {
   </div>
 </template>
 
-<style src="./select.css" />
-
-<style scoped>
-select:disabled {
-  cursor: not-allowed;
-}
-
-.fr-label {
-  color: var(--g800);
-}
-
-.fr-hint-text {
-  margin: 0;
-  grid-row: 2;
-  grid-column: 1;
-  display: block;
-  font-size: 0.75rem;
-  line-height: 1.25rem;
-  color: var(--g600);
-}
-
-.fr-select-group--error {
-  & .fr-label,
-  & .fr-hint-text {
-    color: var(--error);
-  }
-}
-
-.fr-select-group--valid {
-  & .fr-label,
-  & .fr-hint-text {
-    color: var(--success);
-  }
-}
-</style>
+<style src="./select.main.css" />

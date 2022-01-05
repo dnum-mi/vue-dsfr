@@ -45,9 +45,7 @@ export default {
         class="fr-responsive-vid__player"
         width="100%"
         height="100%"
-        frameborder="0"
-        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-        allowfullscreen=""
+        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; fullscreen"
       />
     </div>
     <div class="fr-content-media__caption">
@@ -69,6 +67,6 @@ export default {
 
 <style scoped>
 .fr-content-media__caption {
-  color: var(--g800);
+  color: var(--text-default-grey);
 }
 </style>

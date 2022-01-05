@@ -2,13 +2,7 @@ import { defineComponent } from 'vue'
 import { app } from '@storybook/vue3'
 import { FocusTrap } from 'focus-trap-vue'
 
-import '../src/assets/variables-dsfr.css'
-import '../src/assets/fonts-dsfr.css'
-import '../src/assets/core.css'
-import '../src/assets/utilities.css'
-import '../src/assets/reset-dsfr.css'
-import '../src/assets/objects-dsfr.css'
-import '../src/assets/utils-dsfr.css'
+import '../src/main.css'
 
 import './theme.css'
 
@@ -27,35 +21,9 @@ export const parameters = {
       method: 'alphabetical',
       order: [
         'Docs',
-        // ['1. Introduction', '2. Guide d’utilisation', '3. Guide du développeur'],
         'Fondamentaux',
+        'Composables',
         'Composants',
-        // [
-        //   'Titres',
-        //   'Titres Alternatifs',
-        //   'Alertes',
-        //   'Fil d’Ariane - Breadcrumb',
-        //   'Logo Officiel - Official logo',
-        //   'Boutons - Button',
-        //   'Groupe de Boutons - ButtonGroup',
-        //   'Champs de saisie - Input',
-        //   'Case à cocher - Checkbox',
-        //   'Boutons radio - Radio button',
-        //   'Liste déroulante - Select',
-        //   'Interrupteur - Toggle switch',
-        //   'Étiquettes - Tags',
-        // ],
-        // 'Éléments',
-        // [
-        //   'Carte - Card',
-        //   'Barre de recherche - Search bar',
-        //   'En-tête - Header',
-        //   'Lettres d’information et réseaux - Follow',
-        //   'Pied de page - Footer',
-        //   'Modale - Modal',
-        //   'Onglets - Tabs', ['Onglets', 'Titre', 'Onglets'],
-        //   'Table'
-        // ],
       ],
     },
   }

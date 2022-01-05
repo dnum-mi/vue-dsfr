@@ -46,10 +46,10 @@ export const RadioButtonSet = (args) => ({
     return args
   },
   template: `
-  <div :data-rf-theme="dark ? 'dark' : ''" style="background-color: var(--w); padding: 1rem;">
+  <div :data-fr-theme="dark ? 'dark' : ''" style="background-color: var(--grey-1000-50); padding: 1rem;">
     <DsfrRadioButtonSet
       :legend="legend"
-      v-model="selectedValue"
+      v-model="modelValue"
       name="radio-set"
       :options="options"
       :inline="inline"
@@ -60,8 +60,8 @@ export const RadioButtonSet = (args) => ({
 RadioButtonSet.args = {
   dark: false,
   legend: 'Légende des champs',
-  selectedValue: 1,
   inline: false,
+  modelValue: '3',
   options: [
     {
       label: 'Valeur 1',
@@ -87,7 +87,7 @@ export const RadioButtonSetInError = (args) => ({
     return args
   },
   template: `
-  <div :data-rf-theme="dark ? 'dark' : ''" style="background-color: var(--w); padding: 1rem;">
+  <div :data-fr-theme="dark ? 'dark' : ''" style="background-color: var(--grey-1000-50); padding: 1rem;">
     <DsfrRadioButtonSet
       :legend="legend"
       v-model="selectedValue"
@@ -133,7 +133,7 @@ export const RadioButtonSetInSuccess = (args) => ({
     return args
   },
   template: `
-  <div :data-rf-theme="dark ? 'dark' : ''" style="background-color: var(--w); padding: 1rem;">
+  <div :data-fr-theme="dark ? 'dark' : ''" style="background-color: var(--grey-1000-50); padding: 1rem;">
     <DsfrRadioButtonSet
       :legend="legend"
       v-model="selectedValue"
@@ -179,7 +179,7 @@ export const RadioButtonSetDisabled = (args) => ({
     return args
   },
   template: `
-  <div :data-rf-theme="dark ? 'dark' : ''" style="background-color: var(--w); padding: 1rem;">
+  <div :data-fr-theme="dark ? 'dark' : ''" style="background-color: var(--grey-1000-50); padding: 1rem;">
     <DsfrRadioButtonSet
       :legend="legend"
       v-model="selectedValue"
@@ -222,7 +222,7 @@ export const RadioButtonSetInline = (args) => ({
     return args
   },
   template: `
-  <div :data-rf-theme="dark ? 'dark' : ''" style="background-color: var(--w); padding: 1rem;">
+  <div :data-fr-theme="dark ? 'dark' : ''" style="background-color: var(--grey-1000-50); padding: 1rem;">
     <DsfrRadioButtonSet
       :legend="legend"
       v-model="selectedValue"

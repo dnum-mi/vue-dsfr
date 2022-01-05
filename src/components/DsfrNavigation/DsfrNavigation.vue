@@ -58,6 +58,7 @@ export default {
     :aria-label="label"
   >
     <ul class="fr-nav__list">
+      <!-- @slot Slot par défaut pour le contenu de la liste. Sera dans `<ul class="fr-nav__list">` -->
       <slot />
       <DsfrNavigationItem
         v-for="(navItem, idx) of navItems"
@@ -86,7 +87,7 @@ export default {
   </nav>
 </template>
 
-<style src="./navigation.css" />
+<style src="./navigation.main.css" />
 
 <style scoped>
 .fr-nav__list {

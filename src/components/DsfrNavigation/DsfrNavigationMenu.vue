@@ -61,6 +61,7 @@ export default {
     :class="{ 'fr-collapse--expanded': expanded }"
   >
     <ul class="fr-menu__list">
+      <!-- @slot Slot par défaut pour le contenu de l’item de liste. Sera dans `<ul class="fr-menu__list">` -->
       <slot />
       <DsfrNavigationMenuItem
         v-for="(link, idx) of links"

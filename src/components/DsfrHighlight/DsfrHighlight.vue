@@ -27,6 +27,10 @@ export default {
   </div>
 </template>
 
-<style src="./highlights.css">
+<style src="./highlight.main.css" />
 
+<style scoped>
+.fr-highlight {
+  color: var(--text-default-grey);
+}
 </style>

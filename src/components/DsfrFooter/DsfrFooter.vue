@@ -91,6 +91,9 @@ export default {
         ...this.afterMandatoryLinks,
       ]
     },
+    linkComponent () {
+      return '$nuxt' in this ? 'nuxt-link' : 'router-link'
+    },
   },
 }
 </script>
@@ -111,19 +114,21 @@ export default {
     <div class="fr-container">
       <div class="fr-footer__body">
         <div class="fr-footer__brand fr-enlarge-link">
-          <router-link
+          <component
+            :is="linkComponent"
             :to="homeLink"
             title="Retour à l’accueil"
           >
             <DsfrLogo
               :logo-text="logoText"
             />
-          </router-link>
+          </component>
         </div>
         <div class="fr-footer__content">
           <p
             class="fr-footer__content-desc"
           >
+            <!-- @slot Slot #description pour le contenu de la description du footer. Sera dans `<p class="fr-footer__content-desc">` -->
             <slot name="description">
               {{ descText }}
             </slot>
@@ -155,13 +160,14 @@ export default {
             :key="index"
             class="fr-footer__bottom-item"
           >
-            <router-link
+            <component
+              :is="linkComponent"
               class="fr-footer__bottom-link"
               :to="link.to"
               :data-testid="link.to"
             >
               {{ link.label }}
-            </router-link>
+            </component>
           </li>
         </ul>
         <div class="fr-footer__bottom-copy">
@@ -182,9 +188,12 @@ export default {
   </footer>
 </template>
 
-<style src="./footer.css" />
+<style src="./footer.main.css" />
 
 <style scoped>
+.fr-footer {
+  color: var(--text-default-grey);
+}
 .no-content-after {
   --link-blank-content: '';
 }

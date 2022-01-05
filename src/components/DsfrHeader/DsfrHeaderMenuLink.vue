@@ -2,8 +2,7 @@
   <component
     :is="is"
     class="fr-link"
-    :to="to"
-    :href="href"
+    v-bind="linkData"
     :class="{
       'flex': true,
       'reverse': iconRight,
@@ -26,9 +25,11 @@
 <script>
 export default {
   name: 'DsfrHeaderMenuLink',
+
   props: {
+    /* @deprecated Utilser `to` ou `href` à la place */
     path: {
-      type: String,
+      type: [String, Object],
       default: undefined,
     },
     button: Boolean,
@@ -46,6 +47,14 @@ export default {
       type: Function,
       default: () => {},
     },
+    to: {
+      type: [String, Object],
+      default: undefined,
+    },
+    href: {
+      type: String,
+      default: undefined,
+    },
   },
 
   computed: {
@@ -53,13 +62,28 @@ export default {
       if (this.button) {
         return 'button'
       }
-      return this.path.startsWith('http') ? 'a' : 'router-link'
+      return this.isExternalLink ? 'a' : ('$nuxt' in this ? 'nuxt-link' : 'router-link')
     },
-    to () {
-      return (this.button || this.path.startsWith('http')) ? undefined : this.path
+    isPathString () {
+      return typeof this.path === 'string'
     },
-    href () {
-      return (!this.button && this.path.startsWith('http')) ? this.path : undefined
+    isExternalLink () {
+      return this.href !== undefined || (this.isPathString && this.path.startsWith('http'))
+    },
+    actualHref () {
+      if (!this.isExternalLink) {
+        return undefined
+      }
+      return this.href !== undefined ? this.href : this.path
+    },
+    actualTo () {
+      if (this.isExternalLink) {
+        return undefined
+      }
+      return this.to || this.path
+    },
+    linkData () {
+      return this.actualTo ? { to: this.actualTo } : { href: this.actualHref }
     },
   },
 }

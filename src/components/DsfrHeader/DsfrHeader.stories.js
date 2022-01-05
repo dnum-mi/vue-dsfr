@@ -43,11 +43,13 @@ export default {
       control: 'array',
       description: `Tableau des liens d’accès rapide, chaque objet contiendra les props suivantes :
 
-- \`label\`: (\`'Notifications'\`, par ex.)
-- \`path\`: (\`'/notification'\` par ex.)
+- \`label\`: Texte du lien (\`'Notifications'\`, par ex.)
+- \`path\`: ***Déprécié : utiliser \`to\` ou \`href\`***. URL à passer à \`href\` de la balise \`<a>\` ou chemin ou objet à passer à \`to\` de \`router-link\` ou \`nuxt-link\` (\`'/notification'\` par ex.)
+- \`to\`: Chemin ou objet à passer à \`to\` de \`router-link\` ou \`nuxt-link\` (\`'/notification'\` ou \`{ name: 'Notifications' }\` par ex.)
+- \`href\`: URL à passer à \`href\` de la balise \`<a>\` (\`'https://systeme-de-design.gouv.fr\` par ex.) **pour un lien externe uniquement**.
 - \`icon\` pour le nom de l’icône à afficher (\`'ri-phone-line'\` par ex.)
-- \`iconRight\` (\`true\` pour afficher l’icône à droite, \`false\` par défaut)
-- \`button\`: (\`true\` pour avoir une balise \`button\`, \`false\` pour laisser en balise \`a\`)`,
+- \`iconRight\` \`true\` pour afficher l’icône à droite, \`false\` par défaut
+- \`button\`: \`true\` pour avoir une balise \`button\`, \`false\` pour laisser en balise \`a\``,
     },
     modelValue: {
       control: 'text',
@@ -84,7 +86,7 @@ export const EnTete = (args, { argTypes }) => ({
     }
   },
   template: `
-    <div :data-rf-theme="dark ? 'dark' : ''" style="background-color: var(--w);">
+    <div :data-fr-theme="dark ? 'dark' : ''" style="background-color: var(--grey-1000-50);">
       <DsfrHeader
         :service-title="serviceTitle"
         :service-description="serviceDescription"

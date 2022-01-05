@@ -10,14 +10,15 @@
         ref="title"
         class="fr-card__title"
       >
-        <router-link
+        <component
+          :is="linkComponent"
           :to="link"
           class="fr-card__link"
           data-testid="card-link"
           @click="$event.stopPropagation()"
         >
           {{ title }}
-        </router-link>
+        </component>
       </h4>
       <p class="fr-card__desc">
         {{ description }}
@@ -48,6 +49,7 @@
 <script>
 export default {
   name: 'DsfrCard',
+
   props: {
     imgSrc: {
       type: String,
@@ -77,6 +79,12 @@ export default {
     horizontal: Boolean,
   },
 
+  computed: {
+    linkComponent () {
+      return '$nuxt' in this ? 'nuxt-link' : 'router-link'
+    },
+  },
+
   methods: {
     goToTargetLink () {
       this.$refs.title.querySelector('.fr-card__link').click()
@@ -85,12 +93,11 @@ export default {
 }
 </script>
 
-<style src="./card.css" />
+<style src="./card.main.css" />
 
 <style scoped>
-.fr-card:not(.fr-card--no-arrow) .fr-card__body::after {
-  display: none;
-  content: '';
+.fr-card {
+  color: var(--text-default-grey);
 }
 
 .fr-card__arrow {
@@ -101,6 +108,6 @@ export default {
   margin-left: auto;
   order: 4;
 
-  color: var(--bf500);
+  color: var(--text-action-high-blue-france);
 }
 </style>

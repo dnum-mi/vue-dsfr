@@ -1,19 +1,13 @@
 <template>
   <figure class="fr-quote fr-quote--column">
-    <VIcon
-      label="Quote"
-    >
+    <div style="display: flex; color: var(--artwork-minor-blue-france)">
       <VIcon
+        label="Quote"
         name="ri-chat-1-line"
         scale="1.3"
-        fill="var(--bf500)"
       />
-      <VIcon
-        name="ri-double-quotes-l"
-        scale="0.6"
-        fill="var(--bf500)"
-      />
-    </VIcon>
+      <strong style="font-size: 1.125em; position: relative; left: -1em; top: -0.1em">«</strong>
+    </div>
 
     <blockquote
       v-if="source"
@@ -45,6 +39,7 @@
             <VIcon
               name="ri-external-link-line"
               scale="0.9"
+              style="position: relative; top: 0.1em"
             />
           </a>
           {{ typeof detail !== 'object' ? detail : '' }}
@@ -108,20 +103,13 @@ export default {
 }
 </script>
 
-<style src="./quotes.css" />
+<style src="./quote.main.css" />
 
 <style scoped>
-.fr-quote {
-  color: var(--g800);
-}
-
 .fr-quote::before {
   content: normal;
 }
 
-.fr-quote__source a {
-  box-shadow: none;
-}
 .fr-quote__source a::after {
   content: normal;
 }

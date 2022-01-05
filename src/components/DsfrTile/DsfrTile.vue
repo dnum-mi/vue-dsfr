@@ -1,6 +1,7 @@
 <script>
 export default {
   name: 'DsfrTile',
+
   props:
   {
     title: {
@@ -26,6 +27,9 @@ export default {
     isExternalLink () {
       return typeof this.to === 'string' && this.to.startsWith('http')
     },
+    linkComponent () {
+      return '$nuxt' in this ? 'nuxt-link' : 'router-link'
+    },
   },
 }
 </script>
@@ -42,13 +46,14 @@ export default {
           class="fr-tile__link"
           :href="to"
         >{{ title }}</a>
-        <router-link
+        <component
+          :is="linkComponent"
           v-else
           class="fr-tile__link"
           :to="to"
         >
           {{ title }}
-        </router-link>
+        </component>
       </h4>
       <p
         v-if="description"
@@ -71,7 +76,7 @@ export default {
   </div>
 </template>
 
-<style src="./tiles.css" />
+<style src="./tile.main.css" />
 
 <style scoped>
 .fr-tile__desc,
