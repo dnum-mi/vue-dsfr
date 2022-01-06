@@ -6,6 +6,6 @@
     "componentFolder": "src",
     "testFiles": "**/*.e2e.js*",
     "viewportHeight": 500,
-    "viewportWidth": 700
+    "viewportWidth": 1000
   }
 }
