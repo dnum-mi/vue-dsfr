@@ -35,7 +35,9 @@ export default defineComponent({
       :is="isComponent"
       v-if="isComponent"
       v-bind="field"
-    />
+    >
+      {{ field.text }}
+    </component>
     <template v-else>
       {{ isString ? field : field.text }}
     </template>
