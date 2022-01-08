@@ -9,17 +9,17 @@ const PaginationWrapper = {
     DsfrPagination,
   },
   template: `<div>
-    <DsfrPagination :links="links" v-model:currentPage="currentPage" />
+    <DsfrPagination :pages="pages" v-model:currentPage="currentPage" />
   </div>`,
   data () {
     return {
       currentPage: 1,
-      links: [
-        { label: '1', url: '#page1', title: 'Page 1' },
-        { label: '2', url: '#page2', title: 'Page 2' },
-        { label: '3', url: '#page3', title: 'Page 3' },
-        { label: '4', url: '#page4', title: 'Page 4' },
-        { label: '5', url: '#page5', title: 'Page 5' },
+      pages: [
+        { label: '1', href: '/#', title: 'Page 1' },
+        { label: '2', href: '/#', title: 'Page 2' },
+        { label: '3', href: '/#', title: 'Page 3' },
+        { label: '4', href: '/#', title: 'Page 4' },
+        { label: '5', href: '/#', title: 'Page 5' },
       ],
     }
   },
