@@ -4,86 +4,49 @@
 [Système de Design Français](https://www.systeme-de-design.gouv.fr/) (ou DSFR) sous forme de bibliothèque
 de composants. Il peut s'utiliser facilement en tant que plugin.
 
-## Pré-requis
+## Comment l’utiliser
 
-- npm : version 7 minimum
-- Node.js : version 16 minimum
+### TL;DR
 
-### Installation des pré-requis (testé sous Ubuntu 20.04)
-
-Suivez la procédure suivante en lançant les commandes détaillées ci-dessous :
-
-1. Mise à jour des dépôts :
+Avec npm :
 
 ```shell
-sudo apt update
+npm init vue-dsfr
 ```
 
-2. Installer `Node.js` :
+Avec pnpm :
 
 ```shell
-sudo apt install nodejs
+pnpm create vue-dsfr
 ```
 
-3. Vérifier la version de `npm` (7 ou supérieur) :
+Avec yarn :
 
 ```shell
-npm --version
+yarn create vue-dsfr
 ```
 
-4. Installer `nvm` (Node Version Manager) :
+Et suivez le guide !
 
-Avec la commande curl :
+### Détails :
 
-```shell
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
-```
+Cf. [le site officiel](https://vue-dsfr.netlify.app/?path=/story/docs-2-guide-d-utilisation--page)
 
-Ou avec la commande wget :
+## Comment contribuer
 
-```shell
-wget -q0- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
-```
+### TL;DR
 
-5. Fermer et rouvrir un terminal, ou bien taper la commande suivante dans tous les terminaux déjà ouverts :
+Les commits doivent suivre la spécification des **[Commits Conventionnels](https://www.conventionalcommits.org/fr/v1.0.0/)**
 
-```shell
-source ~/.bashrc
-```
+Une PR doit être faite avec une branche **à jour avec la branche `develop` en `rebase` (et sans `merge`) avant demande de fusion**,
+et **la fusion doit être demandée dans `develop`.**
 
-6. Vérifier la version de NVM installée :
+### Détails
 
-```shell
-nvm --version
-```
+Cf [le site officiel](https://vue-dsfr.netlify.app/?path=/story/docs-3-guide-du-d%C3%A9veloppeur--page)
 
-7. Vérifier qu'on pourra bien installer la version de nodejs avec la commande suivante, qui donne la liste des versions nodejs installables :
-
-```shell
-nvm ls-remote
-```
-
-8. Installer la version de nvm voulue :
-
-```shell
-nvm install <version>
-```
-
-exemple :
-
-```shell
-nvm install 16
-```
-
-9. Vérifier la version de `npm` (7 ou supérieur) :
-
-```shell
-npm --version
-```
-
-Remarque : certaines commandes peuvent demander un temps d'exécution assez conséquent (plusieurs minutes).
-
-## Installer la bibliothèque
+## Utiliser la bibliothèque dans un projet existant (ou un nouveau projet sans passer par [`create-vue-dsfr`](https://www.npmjs.com/package/create-vue-dsfr))
+### Installer la bibliothèque
 
 ```shell
 npm install @laruiss/vue-dsfr@beta
@@ -97,7 +60,7 @@ Le **`@beta`** est très important pour avoir la dernière version.
 
 ---
 
-## Utiliser la bibliothèque en tant que plugin Vue 3
+### Utiliser la bibliothèque en tant que plugin Vue 3
 
 ```js
 import { createApp } from 'vue'
