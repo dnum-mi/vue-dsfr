@@ -8,6 +8,11 @@ Ceci est le guide du développeur pour contribuer au projet de cette bibliothèq
 Si vous cherchez à utiliser cette bibliothèque, veuillez vous référer au
 [Guide d’utilisation](?path=/story/docs-guide-d-utilisation--page).
 
+## TL;DR
+Les commits doivent suivre la spécification des **[Commits Conventionnels](https://www.conventionalcommits.org/fr/v1.0.0/)**
+
+Une PR doit être faite avec une branche **à jour avec la branche `develop` en `rebase` (et sans `merge`) avant demande de fusion**,
+et **la fusion doit être demandée dans `develop`.**
 
 ## Cloner le projet
 
@@ -15,17 +20,85 @@ Si vous cherchez à utiliser cette bibliothèque, veuillez vous référer au
 git clone https://github.com/laruiss/vue-dsfr
 ```
 
-## Installer les dépendances
 
-```
-npm install
+## Pré-requis
+
+- npm : version 7 minimum
+- Node.js : version 16 minimum
+
+### Installation des pré-requis (testé sous Ubuntu 20.04)
+
+Suivez la procédure suivante en lançant les commandes détaillées ci-dessous :
+
+1. Mise à jour des dépôts :
+
+```shell
+wget -qO- https://deb.nodesource.com/setup_16.x | sudo -E bash -
 ```
 
-### Lancer le storybook
+2. Installer `Node.js` :
 
+```shell
+sudo apt install -y nodejs
 ```
-npm run storybook
+
+3. (Optionnel) Installer `nvm` (Node Version Manager) :
+
+Avec la commande curl :
+
+```shell
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
 ```
+
+Ou avec la commande wget :
+
+```shell
+wget -q0- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
+```
+
+5. Fermer et rouvrir un terminal, ou bien taper la commande suivante dans tous les terminaux déjà ouverts :
+
+```shell
+source ~/.bashrc
+```
+
+6. Vérifier la version de NVM installée :
+
+```shell
+nvm --version
+```
+
+7. Vérifier qu'on pourra bien installer la version de nodejs avec la commande suivante, qui donne la liste des versions nodejs installables :
+
+```shell
+nvm ls-remote
+```
+
+8. Installer la version de node voulue :
+
+```shell
+nvm install <version>
+```
+
+exemple :
+
+```shell
+nvm install 16
+```
+
+9. Pour faire de cette version la version par défaut :
+
+```shell
+nvm alias default 16
+```
+
+10. Vérifier la version de `npm` (7 ou supérieure) :
+
+```shell
+npm --version
+```
+
+Remarque : certaines commandes peuvent demander un temps d'exécution assez conséquent (plusieurs minutes).
 
 ## Comment contribuer au projet
 
@@ -35,6 +108,8 @@ npm run storybook
 
 ## À propos des pull-requests
 
-Les commits doivent suivre la spécification des [Commits Conventionnels](https://www.conventionalcommits.org/fr/v1.0.0/)
+Les commits doivent suivre la spécification des **[Commits Conventionnels](https://www.conventionalcommits.org/fr/v1.0.0/)** afin que
+l’outil de release automatique détecte les nouvelles fonctionnalités et les corrections d’anomalies.
 
-Les branches doivent être le plus possible à jour avec la branche `develop` en `rebase` (et sans `merge`) avant demande de fusion.
+Les branches doivent être le plus possible **à jour avec la branche `develop` en `rebase` (et sans `merge`) avant demande de fusion**,
+et **la fusion doit être demandée dans `develop`.**
