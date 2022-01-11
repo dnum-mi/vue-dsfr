@@ -31,6 +31,7 @@ describe('DsfrBreadCrumb', () => {
         links,
       },
     })
+    cy.viewport(500, 500)
       .get('.fr-breadcrumb')
       .should('be.visible')
       .get('.fr-breadcrumb__button')
