@@ -1,27 +1,3 @@
-<template>
-  <component
-    :is="is"
-    class="fr-link"
-    v-bind="linkData"
-    :class="{
-      'flex': true,
-      'reverse': iconRight,
-    }"
-    @click.stop="onClick"
-  >
-    <VIcon
-      v-if="icon"
-      :name="icon"
-      :label="iconOnly ? label : undefined"
-      :class="{
-        'icon-right': iconRight,
-        'icon-left': !iconOnly && !iconRight,
-      }"
-    />
-    <span v-if="!iconOnly">{{ label }}</span>
-  </component>
-</template>
-
 <script>
 export default {
   name: 'DsfrHeaderMenuLink',
@@ -88,6 +64,30 @@ export default {
   },
 }
 </script>
+
+<template>
+  <component
+    :is="is"
+    class="fr-link"
+    v-bind="linkData"
+    :class="{
+      'flex': true,
+      'reverse': iconRight,
+    }"
+    @click.stop="onClick"
+  >
+    <VIcon
+      v-if="icon"
+      :name="icon"
+      :label="iconOnly ? label : undefined"
+      :class="{
+        'icon-right': iconRight,
+        'icon-left': !iconOnly && !iconRight,
+      }"
+    />
+    <span v-if="!iconOnly">{{ label }}</span>
+  </component>
+</template>
 
 <style scoped>
 

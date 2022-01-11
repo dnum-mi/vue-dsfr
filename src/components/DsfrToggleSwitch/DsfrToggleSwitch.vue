@@ -1,34 +1,3 @@
-<template>
-  <div class="fr-toggle">
-    <input
-      :id="inputId"
-      :disabled="disabled"
-      type="checkbox"
-      :checked="modelValue"
-      :data-testid="inputId"
-      class="fr-toggle__input"
-      :aria-describedby="`${inputId}-hint-text`"
-      @input="$emit('update:modelValue', $event.target.checked)"
-    >
-    <label
-      class="fr-toggle__label"
-      :for="inputId"
-      data-fr-checked-label="Activé"
-      data-fr-unchecked-label="Désactivé"
-    >{{ label }}<span
-      v-if="modelValue"
-      class="after"
-    ><VIcon name="ri-check-line" /></span></label>
-    <p
-      v-if="hint"
-      :id="`${inputId}-hint-text`"
-      class="fr-hint-text"
-    >
-      {{ hint }}
-    </p>
-  </div>
-</template>
-
 <script>
 import { defineComponent } from 'vue'
 
@@ -59,6 +28,37 @@ export default defineComponent({
   emits: ['update:modelValue'],
 })
 </script>
+
+<template>
+  <div class="fr-toggle">
+    <input
+      :id="inputId"
+      :disabled="disabled"
+      type="checkbox"
+      :checked="modelValue"
+      :data-testid="inputId"
+      class="fr-toggle__input"
+      :aria-describedby="`${inputId}-hint-text`"
+      @input="$emit('update:modelValue', $event.target.checked)"
+    >
+    <label
+      class="fr-toggle__label"
+      :for="inputId"
+      data-fr-checked-label="Activé"
+      data-fr-unchecked-label="Désactivé"
+    >{{ label }}<span
+      v-if="modelValue"
+      class="after"
+    ><VIcon name="ri-check-line" /></span></label>
+    <p
+      v-if="hint"
+      :id="`${inputId}-hint-text`"
+      class="fr-hint-text"
+    >
+      {{ hint }}
+    </p>
+  </div>
+</template>
 
 <style src="./toggle.main.css" />
 

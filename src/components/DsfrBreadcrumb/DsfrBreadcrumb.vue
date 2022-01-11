@@ -1,3 +1,36 @@
+<script>
+import { getRandomId } from '../../utils/random-utils.js'
+
+export default {
+  name: 'DsfrBreadcrumb',
+
+  props: {
+    breadcrumbId: {
+      type: String,
+      default () {
+        return getRandomId('breadcrumb')
+      },
+    },
+    links: {
+      type: Array,
+      default: () => [{ text: '' }],
+    },
+  },
+
+  data () {
+    return {
+      hideButton: false,
+    }
+  },
+
+  computed: {
+    linkComponent () {
+      return '$nuxt' in this ? 'nuxt-link' : 'router-link'
+    },
+  },
+}
+</script>
+
 <template>
   <nav
     role="navigation"
@@ -49,39 +82,6 @@
     </div>
   </nav>
 </template>
-
-<script>
-import { getRandomId } from '../../utils/random-utils.js'
-
-export default {
-  name: 'DsfrBreadcrumb',
-
-  props: {
-    breadcrumbId: {
-      type: String,
-      default () {
-        return getRandomId('breadcrumb')
-      },
-    },
-    links: {
-      type: Array,
-      default: () => [{ text: '' }],
-    },
-  },
-
-  data () {
-    return {
-      hideButton: false,
-    }
-  },
-
-  computed: {
-    linkComponent () {
-      return '$nuxt' in this ? 'nuxt-link' : 'router-link'
-    },
-  },
-}
-</script>
 
 <style src="./breadcrumb.main.css" />
 

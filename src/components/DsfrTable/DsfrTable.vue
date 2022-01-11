@@ -1,38 +1,3 @@
-<template>
-  <div
-    class="fr-table"
-    :class="{ 'fr-table--no-caption': noCaption }"
-  >
-    <table
-      class="simple-table"
-    >
-      <caption class="caption">
-        {{ title }}
-      </caption>
-      <thead>
-        <!-- @slot Slot "header" pour les en-têtes du tableau. Sera dans `<thead>` -->
-        <slot name="header" />
-        <DsfrTableHeaders
-          v-if="headers && headers.length"
-          :headers="headers"
-        />
-      </thead>
-      <tbody>
-        <!-- @slot Slot par défaut pour le corps du tableau. Sera dans `<tbody>` -->
-        <slot />
-        <template v-if="rows && rows.length">
-          <DsfrTableRow
-            v-for="(row, i) of rows"
-            :key="i"
-            :row-data="row.rowData || row"
-            :row-attrs="row.rowAttrs || {}"
-          />
-        </template>
-      </tbody>
-    </table>
-  </div>
-</template>
-
 <script>
 import { defineComponent } from 'vue'
 
@@ -70,6 +35,41 @@ export default defineComponent({
   },
 })
 </script>
+
+<template>
+  <div
+    class="fr-table"
+    :class="{ 'fr-table--no-caption': noCaption }"
+  >
+    <table
+      class="simple-table"
+    >
+      <caption class="caption">
+        {{ title }}
+      </caption>
+      <thead>
+        <!-- @slot Slot "header" pour les en-têtes du tableau. Sera dans `<thead>` -->
+        <slot name="header" />
+        <DsfrTableHeaders
+          v-if="headers && headers.length"
+          :headers="headers"
+        />
+      </thead>
+      <tbody>
+        <!-- @slot Slot par défaut pour le corps du tableau. Sera dans `<tbody>` -->
+        <slot />
+        <template v-if="rows && rows.length">
+          <DsfrTableRow
+            v-for="(row, i) of rows"
+            :key="i"
+            :row-data="row.rowData || row"
+            :row-attrs="row.rowAttrs || {}"
+          />
+        </template>
+      </tbody>
+    </table>
+  </div>
+</template>
 
 <style src="./table.main.css" />
 

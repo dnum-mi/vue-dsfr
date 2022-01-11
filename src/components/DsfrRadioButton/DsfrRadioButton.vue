@@ -1,31 +1,3 @@
-<template>
-  <div class="fr-radio-group">
-    <input
-      :id="id"
-      type="radio"
-      role="radio"
-      :name="name"
-      :value="value"
-      :checked="modelValue === value"
-      :aria-checked="modelValue === value"
-      :disabled="disabled"
-      @click="$emit('update:modelValue', value)"
-    >
-    <label
-      :for="id"
-      class="fr-label"
-    >
-      {{ label }}
-      <span
-        v-if="hint"
-        class="fr-hint-text"
-      >
-        {{ hint }}
-      </span>
-    </label>
-  </div>
-</template>
-
 <script>
 import { defineComponent } from 'vue'
 
@@ -66,5 +38,33 @@ export default defineComponent({
   emits: ['update:modelValue'],
 })
 </script>
+
+<template>
+  <div class="fr-radio-group">
+    <input
+      :id="id"
+      type="radio"
+      role="radio"
+      :name="name"
+      :value="value"
+      :checked="modelValue === value"
+      :aria-checked="modelValue === value"
+      :disabled="disabled"
+      @click="$emit('update:modelValue', value)"
+    >
+    <label
+      :for="id"
+      class="fr-label"
+    >
+      {{ label }}
+      <span
+        v-if="hint"
+        class="fr-hint-text"
+      >
+        {{ hint }}
+      </span>
+    </label>
+  </div>
+</template>
 
 <style src="./radio.main.css" />

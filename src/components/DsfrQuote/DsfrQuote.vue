@@ -1,3 +1,48 @@
+<script>
+export default {
+  name: 'DsfrQuote',
+  props: {
+    quote: {
+      type: String,
+      default: undefined,
+    },
+    icon: {
+      type: String,
+      default: undefined,
+    },
+    author: {
+      type: String,
+      default: undefined,
+    },
+    details: {
+      type: Array,
+      default: () => [],
+    },
+    illustration: {
+      type: String,
+      default: undefined,
+    },
+    separator: {
+      type: String,
+      default: 'horizontal',
+    },
+    source: {
+      type: String,
+      default: '',
+    },
+    sourceUrl: {
+      type: String,
+      default: '',
+    },
+    quoteImage: {
+      type: String,
+      default: '',
+    },
+  },
+
+}
+</script>
+
 <template>
   <figure class="fr-quote fr-quote--column">
     <div style="display: flex; color: var(--artwork-minor-blue-france)">
@@ -57,51 +102,6 @@
     </figcaption>
   </figure>
 </template>
-
-<script>
-export default {
-  name: 'DsfrQuote',
-  props: {
-    quote: {
-      type: String,
-      default: undefined,
-    },
-    icon: {
-      type: String,
-      default: undefined,
-    },
-    author: {
-      type: String,
-      default: undefined,
-    },
-    details: {
-      type: Array,
-      default: () => [],
-    },
-    illustration: {
-      type: String,
-      default: undefined,
-    },
-    separator: {
-      type: String,
-      default: 'horizontal',
-    },
-    source: {
-      type: String,
-      default: '',
-    },
-    sourceUrl: {
-      type: String,
-      default: '',
-    },
-    quoteImage: {
-      type: String,
-      default: '',
-    },
-  },
-
-}
-</script>
 
 <style src="./quote.main.css" />
 
