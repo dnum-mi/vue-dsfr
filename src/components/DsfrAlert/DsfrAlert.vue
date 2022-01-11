@@ -1,44 +1,3 @@
-<template>
-  <transition name="slide-fade">
-    <div
-      v-if="!closed"
-      :id="id"
-      role="alert"
-      class="fr-alert"
-      :class="classes"
-    >
-      <VIcon
-        class="alert-icon"
-        scale="1.25"
-        :name="icon"
-      />
-      <div class="alert-content">
-        <p
-          v-if="!small"
-          class="fr-alert__title"
-        >
-          {{ title }}
-        </p>
-        <p class="fr-alert__description">
-          {{ description }}
-        </p>
-      </div>
-      <button
-        v-if="closeable"
-        class="close-icon"
-        title="Fermer"
-        aria-label="Fermer"
-        @click="onClick"
-      >
-        <VIcon
-          scale="1"
-          name="ri-close-line"
-        />
-      </button>
-    </div>
-  </transition>
-</template>
-
 <script>
 import { defineComponent } from 'vue'
 
@@ -115,6 +74,47 @@ export default defineComponent({
   },
 })
 </script>
+
+<template>
+  <transition name="slide-fade">
+    <div
+      v-if="!closed"
+      :id="id"
+      role="alert"
+      class="fr-alert"
+      :class="classes"
+    >
+      <VIcon
+        class="alert-icon"
+        scale="1.25"
+        :name="icon"
+      />
+      <div class="alert-content">
+        <p
+          v-if="!small"
+          class="fr-alert__title"
+        >
+          {{ title }}
+        </p>
+        <p class="fr-alert__description">
+          {{ description }}
+        </p>
+      </div>
+      <button
+        v-if="closeable"
+        class="close-icon"
+        title="Fermer"
+        aria-label="Fermer"
+        @click="onClick"
+      >
+        <VIcon
+          scale="1"
+          name="ri-close-line"
+        />
+      </button>
+    </div>
+  </transition>
+</template>
 
 <style src="./alert.main.css" />
 

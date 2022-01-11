@@ -1,31 +1,3 @@
-<template>
-  <div
-    class="fr-search-bar"
-    :class="{ 'fr-search-bar--lg': large }"
-    role="search"
-  >
-    <DsfrInput
-      :id="id"
-      type="search"
-      :placeholder="placeholder"
-      :model-value="modelValue"
-      :label-visible="labelVisible"
-      :label="label"
-      @update:modelValue="$emit('update:modelValue', $event)"
-      @keydown.enter="$emit('search')"
-    />
-    <DsfrButton
-      title="Rechercher"
-      :icon="!hideIcon && 'ri-search-line'"
-      :icon-only="!hideIcon"
-      :class="{'no-max-width': hideIcon}"
-      @click="$emit('search')"
-    >
-      {{ buttonText }}
-    </DsfrButton>
-  </div>
-</template>
-
 <script>
 import { defineComponent } from 'vue'
 
@@ -81,6 +53,34 @@ export default defineComponent({
   },
 })
 </script>
+
+<template>
+  <div
+    class="fr-search-bar"
+    :class="{ 'fr-search-bar--lg': large }"
+    role="search"
+  >
+    <DsfrInput
+      :id="id"
+      type="search"
+      :placeholder="placeholder"
+      :model-value="modelValue"
+      :label-visible="labelVisible"
+      :label="label"
+      @update:modelValue="$emit('update:modelValue', $event)"
+      @keydown.enter="$emit('search')"
+    />
+    <DsfrButton
+      title="Rechercher"
+      :icon="!hideIcon && 'ri-search-line'"
+      :icon-only="!hideIcon"
+      :class="{'no-max-width': hideIcon}"
+      @click="$emit('search')"
+    >
+      {{ buttonText }}
+    </DsfrButton>
+  </div>
+</template>
 
 <style src="./search.main.css" />
 

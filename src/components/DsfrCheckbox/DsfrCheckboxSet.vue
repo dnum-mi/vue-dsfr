@@ -1,53 +1,3 @@
-<template>
-  <div class="fr-form-group">
-    <fieldset
-      class="fr-fieldset"
-      :class="{
-        'fr-fieldset--error': errorMessage,
-        'fr-fieldset--valid': validMessage,
-        'fr-fieldset--inline': inline
-      }"
-      :disabled="disabled"
-    >
-      <legend
-        :id="titleId"
-        class="fr-fieldset__legend fr-text--regular"
-      >
-        {{ legend }}
-      </legend>
-      <div
-        class="fr-fieldset__content"
-        role="group"
-        :aria-labelledby="titleId"
-      >
-        <DsfrCheckbox
-          v-for="option in options"
-          :id="option.id"
-          :key="option.id || option.name"
-          data-testid="t-checkbox"
-          :name="option.name"
-          :label="option.label"
-          :disabled="option.disabled"
-          :model-value="modelValue.includes(option.value)"
-          :hint="option.hint"
-          @update:model-value="onChange({ name: option.name, checked: $event })"
-        />
-      </div>
-      <p
-        v-if="message"
-        class="fr-message-text  flex  items-center"
-        :class="additionalMessageClass"
-      >
-        <v-icon
-          :name="messageIcon"
-          class="message-icon"
-        />
-        <span>{{ message }}</span>
-      </p>
-    </fieldset>
-  </div>
-</template>
-
 <script>
 import DsfrCheckbox from './DsfrCheckbox.vue'
 import { getRandomId } from '../../utils/random-utils.js'
@@ -114,6 +64,56 @@ export default {
   },
 }
 </script>
+
+<template>
+  <div class="fr-form-group">
+    <fieldset
+      class="fr-fieldset"
+      :class="{
+        'fr-fieldset--error': errorMessage,
+        'fr-fieldset--valid': validMessage,
+        'fr-fieldset--inline': inline
+      }"
+      :disabled="disabled"
+    >
+      <legend
+        :id="titleId"
+        class="fr-fieldset__legend fr-text--regular"
+      >
+        {{ legend }}
+      </legend>
+      <div
+        class="fr-fieldset__content"
+        role="group"
+        :aria-labelledby="titleId"
+      >
+        <DsfrCheckbox
+          v-for="option in options"
+          :id="option.id"
+          :key="option.id || option.name"
+          data-testid="t-checkbox"
+          :name="option.name"
+          :label="option.label"
+          :disabled="option.disabled"
+          :model-value="modelValue.includes(option.value)"
+          :hint="option.hint"
+          @update:model-value="onChange({ name: option.name, checked: $event })"
+        />
+      </div>
+      <p
+        v-if="message"
+        class="fr-message-text  flex  items-center"
+        :class="additionalMessageClass"
+      >
+        <v-icon
+          :name="messageIcon"
+          class="message-icon"
+        />
+        <span>{{ message }}</span>
+      </p>
+    </fieldset>
+  </div>
+</template>
 
 <style src="./DsfrCheckboxSet.css" />
 

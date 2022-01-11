@@ -1,29 +1,3 @@
-<template>
-  <label
-    :class="{
-      'fr-label': true,
-      'invisible': !labelVisible,
-    }"
-    :for="id"
-  >
-    {{ label }}
-  </label>
-  <component
-    :is="isComponent"
-    :id="id"
-    class="fr-input"
-    :class="{
-      'fr-input--error': isInvalid,
-      'fr-input--valid': isValid,
-    }"
-    :value="modelValue"
-    v-bind="$attrs"
-    :aria-aria-describedby="descriptionId || undefined"
-    @input="$emit('update:modelValue', $event.target.value)"
-    @keydown.esc="$emit('update:modelValue', '')"
-  />
-</template>
-
 <script>
 import { defineComponent } from 'vue'
 
@@ -63,6 +37,32 @@ export default defineComponent({
   },
 })
 </script>
+
+<template>
+  <label
+    :class="{
+      'fr-label': true,
+      'invisible': !labelVisible,
+    }"
+    :for="id"
+  >
+    {{ label }}
+  </label>
+  <component
+    :is="isComponent"
+    :id="id"
+    class="fr-input"
+    :class="{
+      'fr-input--error': isInvalid,
+      'fr-input--valid': isValid,
+    }"
+    :value="modelValue"
+    v-bind="$attrs"
+    :aria-aria-describedby="descriptionId || undefined"
+    @input="$emit('update:modelValue', $event.target.value)"
+    @keydown.esc="$emit('update:modelValue', '')"
+  />
+</template>
 
 <style src="./input.main.css" />
 

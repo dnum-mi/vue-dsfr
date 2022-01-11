@@ -1,49 +1,3 @@
-<template>
-  <div class="fr-form-group">
-    <fieldset
-      class="fr-fieldset"
-      :class="{
-        'fr-fieldset--error': errorMessage,
-        'fr-fieldset--valid': validMessage,
-        'fr-fieldset--inline': inline
-      }"
-      :disabled="disabled"
-    >
-      <legend
-        v-if="legend"
-        id="radio-legend"
-        class="fr-fieldset__legend"
-      >
-        {{ legend }}
-      </legend>
-
-      <div
-        class="fr-fieldset__content"
-        role="radiogroup"
-      >
-        <DsfrRadioButton
-          v-for="(option, i) of options"
-          :key="option.value || i"
-          :name="name"
-          v-bind="option"
-          :model-value="modelValue"
-          @update:modelValue="onChange"
-        />
-      </div>
-      <p
-        v-if="message"
-        class="fr-message-text  flex  items-center"
-        :class="additionalMessageClass"
-      >
-        <v-icon
-          :name="messageIcon"
-          class="message-icon"
-        />
-        <span class="line-1">{{ message }}</span>
-      </p>
-    </fieldset>
-  </div>
-</template>
 
 <script>
 import DsfrRadioButton from './DsfrRadioButton.vue'
@@ -109,6 +63,52 @@ export default {
 }
 </script>
 
+<template>
+  <div class="fr-form-group">
+    <fieldset
+      class="fr-fieldset"
+      :class="{
+        'fr-fieldset--error': errorMessage,
+        'fr-fieldset--valid': validMessage,
+        'fr-fieldset--inline': inline
+      }"
+      :disabled="disabled"
+    >
+      <legend
+        v-if="legend"
+        id="radio-legend"
+        class="fr-fieldset__legend"
+      >
+        {{ legend }}
+      </legend>
+
+      <div
+        class="fr-fieldset__content"
+        role="radiogroup"
+      >
+        <DsfrRadioButton
+          v-for="(option, i) of options"
+          :key="option.value || i"
+          :name="name"
+          v-bind="option"
+          :model-value="modelValue"
+          @update:modelValue="onChange"
+        />
+      </div>
+      <p
+        v-if="message"
+        class="fr-message-text  flex  items-center"
+        :class="additionalMessageClass"
+      >
+        <v-icon
+          :name="messageIcon"
+          class="message-icon"
+        />
+        <span class="line-1">{{ message }}</span>
+      </p>
+    </fieldset>
+  </div>
+</template>
 <style src="./radio.main.css" />
 
 <style scoped>

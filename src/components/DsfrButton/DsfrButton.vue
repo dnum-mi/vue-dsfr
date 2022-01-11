@@ -1,3 +1,29 @@
+<script>
+export default {
+  name: 'DsfrButton',
+  props: {
+    disabled: Boolean,
+    label: {
+      type: String,
+      default: undefined,
+    },
+    secondary: Boolean,
+    icon: {
+      type: String,
+      default: undefined,
+    },
+    iconRight: Boolean,
+    iconOnly: Boolean,
+  },
+
+  methods: {
+    focus () {
+      this.$refs.btn.focus()
+    },
+  },
+}
+</script>
+
 <template>
   <button
     ref="btn"
@@ -27,32 +53,6 @@
     </span>
   </button>
 </template>
-
-<script>
-export default {
-  name: 'DsfrButton',
-  props: {
-    disabled: Boolean,
-    label: {
-      type: String,
-      default: undefined,
-    },
-    secondary: Boolean,
-    icon: {
-      type: String,
-      default: undefined,
-    },
-    iconRight: Boolean,
-    iconOnly: Boolean,
-  },
-
-  methods: {
-    focus () {
-      this.$refs.btn.focus()
-    },
-  },
-}
-</script>
 
 <style src="./button.main.css" />
 

@@ -1,3 +1,26 @@
+<script>
+import { defineComponent } from 'vue'
+
+export default defineComponent({
+  name: 'DsfrFooterPartners',
+
+  props: {
+    mainPartner: {
+      type: Object,
+      default: () => null,
+    },
+    subPartners: {
+      type: Array,
+      default: () => [],
+    },
+    title: {
+      type: String,
+      default: '',
+    },
+  },
+})
+</script>
+
 <template>
   <div class="fr-footer__partners">
     <h4 class="fr-footer__partners-title">
@@ -41,26 +64,3 @@
     </div>
   </div>
 </template>
-
-<script>
-import { defineComponent } from 'vue'
-
-export default defineComponent({
-  name: 'DsfrFooterPartners',
-
-  props: {
-    mainPartner: {
-      type: Object,
-      default: () => null,
-    },
-    subPartners: {
-      type: Array,
-      default: () => [],
-    },
-    title: {
-      type: String,
-      default: '',
-    },
-  },
-})
-</script>

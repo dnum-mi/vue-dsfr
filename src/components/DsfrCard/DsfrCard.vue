@@ -1,3 +1,50 @@
+<script>
+export default {
+  name: 'DsfrCard',
+
+  props: {
+    imgSrc: {
+      type: String,
+      default: undefined,
+    },
+    link: {
+      type: [String, Object],
+      default: undefined,
+    },
+    title: {
+      type: String,
+      default: 'Simple title',
+    },
+    description: {
+      type: String,
+      default: 'Simple description',
+    },
+    detail: {
+      type: String,
+      default: 'details',
+    },
+    altImg: {
+      type: String,
+      default: '',
+    },
+    noArrow: Boolean,
+    horizontal: Boolean,
+  },
+
+  computed: {
+    linkComponent () {
+      return '$nuxt' in this ? 'nuxt-link' : 'router-link'
+    },
+  },
+
+  methods: {
+    goToTargetLink () {
+      this.$refs.title.querySelector('.fr-card__link').click()
+    },
+  },
+}
+</script>
+
 <template>
   <div
     class="fr-card fr-enlarge-link"
@@ -45,53 +92,6 @@
     </div>
   </div>
 </template>
-
-<script>
-export default {
-  name: 'DsfrCard',
-
-  props: {
-    imgSrc: {
-      type: String,
-      default: undefined,
-    },
-    link: {
-      type: [String, Object],
-      default: undefined,
-    },
-    title: {
-      type: String,
-      default: 'Simple title',
-    },
-    description: {
-      type: String,
-      default: 'Simple description',
-    },
-    detail: {
-      type: String,
-      default: 'details',
-    },
-    altImg: {
-      type: String,
-      default: '',
-    },
-    noArrow: Boolean,
-    horizontal: Boolean,
-  },
-
-  computed: {
-    linkComponent () {
-      return '$nuxt' in this ? 'nuxt-link' : 'router-link'
-    },
-  },
-
-  methods: {
-    goToTargetLink () {
-      this.$refs.title.querySelector('.fr-card__link').click()
-    },
-  },
-}
-</script>
 
 <style src="./card.main.css" />
 

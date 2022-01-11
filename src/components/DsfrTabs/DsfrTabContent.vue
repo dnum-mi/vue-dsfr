@@ -1,3 +1,23 @@
+<script setup>
+import { computed } from 'vue'
+
+const props = defineProps({
+  asc: Boolean,
+  selected: Boolean,
+  panelId: {
+    type: String,
+    required: true,
+  },
+  tabId: {
+    type: String,
+    required: true,
+  },
+})
+const values = { true: '100%', false: '-100%' }
+const translateValueFrom = computed(() => values[props.asc])
+const translateValueTo = computed(() => values[!props.asc])
+</script>
+
 <template>
   <transition
     name="slide-fade"
@@ -19,26 +39,6 @@
     </div>
   </transition>
 </template>
-
-<script setup>
-import { computed } from 'vue'
-
-const props = defineProps({
-  asc: Boolean,
-  selected: Boolean,
-  panelId: {
-    type: String,
-    required: true,
-  },
-  tabId: {
-    type: String,
-    required: true,
-  },
-})
-const values = { true: '100%', false: '-100%' }
-const translateValueFrom = computed(() => values[props.asc])
-const translateValueTo = computed(() => values[!props.asc])
-</script>
 
 <style scoped>
 .fr-tabs__panel {
