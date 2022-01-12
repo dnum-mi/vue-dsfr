@@ -33,6 +33,10 @@ export default defineComponent({
       type: String,
       default: '',
     },
+    img: {
+      type: String,
+      default: '',
+    },
   },
 
   emits: ['update:modelValue'],
@@ -40,7 +44,10 @@ export default defineComponent({
 </script>
 
 <template>
-  <div class="fr-radio-group">
+  <div
+    class="fr-radio-group"
+    :class="rich ? 'fr-radio-rich' : ''"
+  >
     <input
       :id="id"
       type="radio"
@@ -64,6 +71,15 @@ export default defineComponent({
         {{ hint }}
       </span>
     </label>
+    <div
+      v-if="img"
+      class="fr-radio-rich__img"
+    >
+      <img
+        :src="img"
+        alt=""
+      >
+    </div>
   </div>
 </template>
 
