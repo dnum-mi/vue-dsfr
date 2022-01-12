@@ -31,6 +31,13 @@ const fieldWithComponent = {
   class: 'success',
 }
 
+const fieldWithComponentSimple = {
+  component: 'a',
+  text: 'Vers la page d\'accueil',
+  href: '/',
+  'aria-label': "Vers la page d'accueil",
+}
+
 const cellAttrs = {
   class: 'pointer',
   style: 'font-style: italic',
@@ -70,6 +77,42 @@ CelluleDeTableauSimple.args = {
   title,
   headers,
   field: simpleField,
+}
+
+export const CelluleDeTableauAvecElementHtml = (args) => ({
+  components: {
+    DsfrTable,
+    DsfrTableCell,
+    DsfrTableHeaders,
+  },
+
+  data () {
+    return {
+      ...args,
+    }
+  },
+
+  template: `
+    <div :data-fr-theme="dark ? 'dark' : ''" style="background-color: var(--grey-1000-50); padding: 1rem;">
+      <DsfrTable
+        :title="title"
+      >
+        <template #header>
+          <DsfrTableHeaders :headers="headers" />
+        </template>
+        <tr>
+          <DsfrTableCell :field="field" />
+        </tr>
+      </DsfrTable>
+    </div>
+  `,
+
+})
+CelluleDeTableauAvecElementHtml.args = {
+  dark: false,
+  title,
+  headers,
+  field: fieldWithComponentSimple,
 }
 
 export const CelluleDeTableauAvecComposant = (args) => ({

@@ -28,6 +28,34 @@ describe('DsfrTableCell', () => {
     expect(tdEl).toContainHTML(field)
   })
 
+  it('should render a cell with a html component', () => {
+    // Given
+    const field = {
+      component: 'a',
+      text: 'Vers la page d\'accueil',
+      href: '/',
+      'aria-label': "Vers la page d'accueil",
+    }
+
+    // When
+    const { container } = render(DsfrTableCell, {
+      global: {
+        components: {
+          DsfrTag,
+          VIcon,
+        },
+      },
+      props: {
+        field,
+      },
+    })
+
+    // Then
+    const tdEl = container.querySelector('td')
+    const a = tdEl.querySelector('a')
+    expect(a).toContainHTML(field.text)
+  })
+
   it('should render a cell with a component', () => {
     // Given
     const label = 'Label de l’étiquette'
