@@ -46,7 +46,7 @@ export default defineComponent({
     }"
     :for="id"
   >
-    {{ label }}
+    {{ label }} {{ $attrs.required ? '*' : '' }}
   </label>
   <component
     :is="isComponent"
