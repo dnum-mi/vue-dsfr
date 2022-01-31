@@ -8,7 +8,7 @@ export default {
       control: 'boolean',
       description: 'Permet de voir le composant dans les deux **thèmes** : **clair** (`false`, défaut) et **sombre* (`true`).\n\n*N.B. : Ne fait pas partie du composant.*',
     },
-    links: {
+    pages: {
       control: 'array',
       description: 'Permet de lister les pages d’un site en associant un label et une url dans une liste',
     },
@@ -31,7 +31,7 @@ export const Pagination = (args) => ({
   template: `
     <div :data-fr-theme="dark ? 'dark' : ''" style="background-color: var(--w);">
       <DsfrPagination
-        :links="links"
+        :pages="pages"
         v-model:currentPage="currentPage"
       />
     </div>
@@ -39,12 +39,46 @@ export const Pagination = (args) => ({
 })
 
 Pagination.args = {
-  links: [
-    { label: '1', url: '#page1', title: 'Page 1' },
-    { label: '2', url: '#page2', title: 'Page 2' },
-    { label: '3', url: '#page3', title: 'Page 3' },
-    { label: '4', url: '#page4', title: 'Page 4' },
-    { label: '5', url: '#page5', title: 'Page 5' },
+  pages: [
+    { label: '1', href: '/?path=/story/composants-pagination-pagination--pagination&args=currentPage:0', title: 'Page 1' },
+    { label: '2', href: '/?path=/story/composants-pagination-pagination--pagination&args=currentPage:1', title: 'Page 2' },
+    { label: '3', href: '/?path=/story/composants-pagination-pagination--pagination&args=currentPage:2', title: 'Page 3' },
+    { label: '4', href: '/?path=/story/composants-pagination-pagination--pagination&args=currentPage:3', title: 'Page 4' },
+    { label: '5', href: '/?path=/story/composants-pagination-pagination--pagination&args=currentPage:4', title: 'Page 5' },
   ],
-  currentPage: 1,
+  currentPage: 0,
+}
+
+export const PaginationTruncated = (args) => ({
+  components: {
+    DsfrPagination,
+  },
+
+  data () {
+    return { ...args }
+  },
+
+  template: `
+    <div :data-fr-theme="dark ? 'dark' : ''" style="background-color: var(--w);">
+      <DsfrPagination
+        :pages="pages"
+        v-model:currentPage="currentPage"
+      />
+    </div>
+  `,
+})
+
+PaginationTruncated.args = {
+  pages: [
+    { label: '1', href: '?path=/story/composants-pagination-pagination--pagination-truncated&args=currentPage:0', title: 'Page 1' },
+    { label: '2', href: '?path=/story/composants-pagination-pagination--pagination-truncated&args=currentPage:1', title: 'Page 2' },
+    { label: '3', href: '?path=/story/composants-pagination-pagination--pagination-truncated&args=currentPage:2', title: 'Page 3' },
+    { label: '4', href: '?path=/story/composants-pagination-pagination--pagination-truncated&args=currentPage:3', title: 'Page 4' },
+    { label: '5', href: '?path=/story/composants-pagination-pagination--pagination-truncated&args=currentPage:4', title: 'Page 5' },
+    { label: '6', href: '?path=/story/composants-pagination-pagination--pagination-truncated&args=currentPage:5', title: 'Page 6' },
+    { label: '7', href: '?path=/story/composants-pagination-pagination--pagination-truncated&args=currentPage:6', title: 'Page 7' },
+    { label: '8', href: '?path=/story/composants-pagination-pagination--pagination-truncated&args=currentPage:7', title: 'Page 8' },
+    { label: '9', href: '?path=/story/composants-pagination-pagination--pagination-truncated&args=currentPage:8', title: 'Page 9' },
+  ],
+  currentPage: 4,
 }
