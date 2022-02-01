@@ -1,13 +1,3 @@
-<template>
-  <p
-    class="fr-logo"
-    :class="{
-      'fr-logo--sm': small && !large,
-      'fr-logo--lg': large && !small,
-    }"
-    v-html="text"
-  />
-</template>
 
 <script>
 export default {
@@ -28,5 +18,16 @@ export default {
   },
 }
 </script>
+
+<template>
+  <p
+    class="fr-logo"
+    :class="{
+      'fr-logo--sm': small && !large,
+      'fr-logo--lg': large && !small,
+    }"
+    v-html="text"
+  />
+</template>
 
 <style src="./logo.main.css" />

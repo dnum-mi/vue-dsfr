@@ -1,54 +1,3 @@
-<template>
-  <div
-    class="fr-checkbox-group"
-    :class="{
-      'fr-checkbox-group--error': errorMessage,
-      'fr-checkbox-group--valid': validMessage,
-    }"
-  >
-    <input
-      :id="id"
-      :name="name"
-      type="checkbox"
-      role="checkbox"
-      :checked="modelValue"
-      :aria-checked="modelValue"
-      :disabled="disabled"
-      :data-testid="`input-checkbox-${id}`"
-      :data-test="`input-checkbox-${id}`"
-      @change="$emit('update:modelValue', $event.target.checked)"
-    >
-
-    <label
-      :for="id"
-      class="fr-label"
-    >
-      <v-icon
-        class="fr-checkbox__icon"
-        name="ri-check-line"
-      />
-      {{ label }}
-      <span
-        v-if="hint"
-        class="fr-hint-text"
-      >
-        {{ hint }}
-      </span>
-    </label>
-    <p
-      v-if="message"
-      class="fr-message-text  flex  items-center"
-      :class="additionalMessageClass"
-    >
-      <v-icon
-        :name="messageIcon"
-        class="message-icon"
-      />
-      <span class="line-1">{{ message }}</span>
-    </p>
-  </div>
-</template>
-
 <script>
 import { defineComponent } from 'vue'
 import { getRandomId } from '../../utils/random-utils.js'
@@ -101,6 +50,57 @@ export default defineComponent({
   },
 })
 </script>
+
+<template>
+  <div
+    class="fr-checkbox-group"
+    :class="{
+      'fr-checkbox-group--error': errorMessage,
+      'fr-checkbox-group--valid': validMessage,
+    }"
+  >
+    <input
+      :id="id"
+      :name="name"
+      type="checkbox"
+      role="checkbox"
+      :checked="modelValue"
+      :aria-checked="modelValue"
+      :disabled="disabled"
+      :data-testid="`input-checkbox-${id}`"
+      :data-test="`input-checkbox-${id}`"
+      @change="$emit('update:modelValue', $event.target.checked)"
+    >
+
+    <label
+      :for="id"
+      class="fr-label"
+    >
+      <v-icon
+        class="fr-checkbox__icon"
+        name="ri-check-line"
+      />
+      {{ label }}
+      <span
+        v-if="hint"
+        class="fr-hint-text"
+      >
+        {{ hint }}
+      </span>
+    </label>
+    <p
+      v-if="message"
+      class="fr-message-text  flex  items-center"
+      :class="additionalMessageClass"
+    >
+      <v-icon
+        :name="messageIcon"
+        class="message-icon"
+      />
+      <span class="line-1">{{ message }}</span>
+    </p>
+  </div>
+</template>
 
 <style scoped>
 .message-icon {

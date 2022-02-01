@@ -70,6 +70,7 @@ export default {
         <DsfrNavigationMenuLink
           v-bind="link"
           @click="link.onClick"
+          @toggle-id="$emit('toggle-id', expandedId)"
         />
       </DsfrNavigationMenuItem>
     </ul>

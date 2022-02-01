@@ -1,31 +1,3 @@
-<template>
-  <div class="fr-radio-group">
-    <input
-      :id="id"
-      type="radio"
-      role="radio"
-      :name="name"
-      :value="value"
-      :checked="modelValue === value"
-      :aria-checked="modelValue === value"
-      :disabled="disabled"
-      @click="$emit('update:modelValue', value)"
-    >
-    <label
-      :for="id"
-      class="fr-label"
-    >
-      {{ label }}
-      <span
-        v-if="hint"
-        class="fr-hint-text"
-      >
-        {{ hint }}
-      </span>
-    </label>
-  </div>
-</template>
-
 <script>
 import { defineComponent } from 'vue'
 
@@ -61,10 +33,54 @@ export default defineComponent({
       type: String,
       default: '',
     },
+    img: {
+      type: String,
+      default: '',
+    },
   },
 
   emits: ['update:modelValue'],
 })
 </script>
+
+<template>
+  <div
+    class="fr-radio-group"
+    :class="rich ? 'fr-radio-rich' : ''"
+  >
+    <input
+      :id="id"
+      type="radio"
+      role="radio"
+      :name="name"
+      :value="value"
+      :checked="modelValue === value"
+      :aria-checked="modelValue === value"
+      :disabled="disabled"
+      @click="$emit('update:modelValue', value)"
+    >
+    <label
+      :for="id"
+      class="fr-label"
+    >
+      {{ label }}
+      <span
+        v-if="hint"
+        class="fr-hint-text"
+      >
+        {{ hint }}
+      </span>
+    </label>
+    <div
+      v-if="img"
+      class="fr-radio-rich__img"
+    >
+      <img
+        :src="img"
+        alt=""
+      >
+    </div>
+  </div>
+</template>
 
 <style src="./radio.main.css" />

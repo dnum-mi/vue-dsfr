@@ -1,3 +1,81 @@
+<script>
+import DsfrLogo from '../DsfrLogo/DsfrLogo.vue'
+import DsfrSearchBar from '../DsfrSearchBar/DsfrSearchBar.vue'
+import DsfrHeaderMenuLinks from './DsfrHeaderMenuLinks.vue'
+export default {
+  name: 'DsfrHeader',
+
+  components: {
+    DsfrLogo,
+    DsfrHeaderMenuLinks,
+    DsfrSearchBar,
+  },
+
+  props: {
+    serviceTitle: {
+      type: String,
+      default: undefined,
+    },
+    serviceDescription: {
+      type: String,
+      default: undefined,
+    },
+    homeTo: {
+      type: String,
+      default: '/',
+    },
+    modelValue: {
+      type: String,
+      default: '',
+    },
+    quickLinks: {
+      type: Array,
+      default: () => undefined,
+    },
+    showSearch: Boolean,
+    logoText: {
+      type: [String, Array],
+      default: () => 'Gouvernement',
+    },
+  },
+
+  emits: ['update:modelValue', 'search'],
+
+  data () {
+    return {
+      menuOpened: false,
+      searchModalOpened: false,
+      modalOpened: false,
+    }
+  },
+
+  computed: {
+    linkComponent () {
+      return '$nuxt' in this ? 'nuxt-link' : 'router-link'
+    },
+  },
+
+  methods: {
+    hideModal () {
+      this.modalOpened = false
+      this.menuOpened = false
+      this.searchModalOpened = false
+    },
+    showModal () {
+      this.modalOpened = true
+    },
+    showMenu () {
+      this.showModal()
+      this.menuOpened = true
+    },
+    showSearchModal () {
+      this.showModal()
+      this.searchModalOpened = true
+    },
+  },
+}
+</script>
+
 <template>
   <header
     role="banner"
@@ -134,83 +212,6 @@
     </div>
   </header>
 </template>
-<script>
-import DsfrLogo from '../DsfrLogo/DsfrLogo.vue'
-import DsfrSearchBar from '../DsfrSearchBar/DsfrSearchBar.vue'
-import DsfrHeaderMenuLinks from './DsfrHeaderMenuLinks.vue'
-export default {
-  name: 'DsfrHeader',
-
-  components: {
-    DsfrLogo,
-    DsfrHeaderMenuLinks,
-    DsfrSearchBar,
-  },
-
-  props: {
-    serviceTitle: {
-      type: String,
-      default: undefined,
-    },
-    serviceDescription: {
-      type: String,
-      default: undefined,
-    },
-    homeTo: {
-      type: String,
-      default: '/',
-    },
-    modelValue: {
-      type: String,
-      default: '',
-    },
-    quickLinks: {
-      type: Array,
-      default: () => undefined,
-    },
-    showSearch: Boolean,
-    logoText: {
-      type: [String, Array],
-      default: () => 'Gouvernement',
-    },
-  },
-
-  emits: ['update:modelValue', 'search'],
-
-  data () {
-    return {
-      menuOpened: false,
-      searchModalOpened: false,
-      modalOpened: false,
-    }
-  },
-
-  computed: {
-    linkComponent () {
-      return '$nuxt' in this ? 'nuxt-link' : 'router-link'
-    },
-  },
-
-  methods: {
-    hideModal () {
-      this.modalOpened = false
-      this.menuOpened = false
-      this.searchModalOpened = false
-    },
-    showModal () {
-      this.modalOpened = true
-    },
-    showMenu () {
-      this.showModal()
-      this.menuOpened = true
-    },
-    showSearchModal () {
-      this.showModal()
-      this.searchModalOpened = true
-    },
-  },
-}
-</script>
 
 <style src="./header.main.css" />
 

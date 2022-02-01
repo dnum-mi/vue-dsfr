@@ -1,18 +1,3 @@
-<template>
-  <ul
-    class="fr-links-group"
-  >
-    <li
-      v-for="(quickLink, index) in links"
-      :key="index"
-    >
-      <DsfrHeaderMenuLink
-        v-bind="quickLink"
-      />
-    </li>
-  </ul>
-</template>
-
 <script>
 import DsfrHeaderMenuLink from './DsfrHeaderMenuLink.vue'
 
@@ -30,6 +15,21 @@ export default {
   },
 }
 </script>
+
+<template>
+  <ul
+    class="fr-links-group"
+  >
+    <li
+      v-for="(quickLink, index) in links"
+      :key="index"
+    >
+      <DsfrHeaderMenuLink
+        v-bind="quickLink"
+      />
+    </li>
+  </ul>
+</template>
 
 <style scoped>
 .fr-link {

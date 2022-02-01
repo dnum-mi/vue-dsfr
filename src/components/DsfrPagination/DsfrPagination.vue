@@ -2,24 +2,73 @@
 export default {
   name: 'DsfrPagination',
   props: {
-    links: {
+    pages: {
       type: Array,
       required: true,
+      validator (value) {
+        // Doit contenir au moins une page
+        return value?.length > 0
+      },
     },
     currentPage: {
       type: Number,
-      default: 1,
+      default: 0,
+    },
+    firstPageTitle: {
+      type: String,
+      default: 'Première page',
+    },
+    lastPageTitle: {
+      type: String,
+      default: 'Dernière page',
+    },
+    nextPageTitle: {
+      type: String,
+      default: 'Page suivante',
+    },
+    prevPageTitle: {
+      type: String,
+      default: 'Page précédente',
+    },
+    truncLimit: {
+      type: Number,
+      default: 5,
     },
   },
 
   emits: ['update:currentPage'],
-
-  methods: {
-    getPreviousPage () {
-      return this.currentPage > 1 ? this.currentPage - 1 : 1
+  computed: {
+    startIndex () {
+      return Math.min(this.pages.length - 1 - this.truncLimit, Math.max(this.currentPage - (this.truncLimit - this.truncLimit % 2) / 2, 0))
     },
-    getNextPage () {
-      return this.currentPage < this.links.length ? this.currentPage + 1 : this.links.length
+    endIndex () {
+      return Math.min(this.pages.length - 1, this.startIndex + this.truncLimit)
+    },
+    displayedPages () {
+      return this.pages.length > this.truncLimit ? this.pages.slice(this.startIndex, this.endIndex + 1) : this.pages
+    },
+  },
+  methods: {
+    tofirstPage () {
+      this.toPage(0)
+    },
+    toPreviousPage () {
+      this.toPage(Math.max(0, this.currentPage - 1))
+    },
+    toNextPage () {
+      this.toPage(Math.min(this.pages.length - 1, this.currentPage + 1))
+    },
+    toLastPage () {
+      this.toPage(this.pages.length - 1)
+    },
+    toPage (index) {
+      this.updatePage(index)
+    },
+    isCurrentPage (page) {
+      return this.pages.indexOf(page) === this.currentPage
+    },
+    updatePage (index) {
+      this.$emit('update:currentPage', index)
     },
   },
 }
@@ -34,10 +83,11 @@ export default {
     <ul class="fr-pagination__list">
       <li>
         <a
-          href="#"
+          :href="pages[0]?.href"
           class="fr-pagination__link fr-pagination__link--first"
-          title="Première page"
-          @click.prevent="$emits('update:currentPage', 1)"
+          :title="firstPageTitle"
+          :disabled="currentPage === 0 ? true : null"
+          @click.prevent="tofirstPage()"
         >
           <VIcon
             name="ri-skip-back-fill"
@@ -46,10 +96,11 @@ export default {
       </li>
       <li>
         <a
-          href="#"
+          :href="pages[Math.max(currentPage - 1, 0)].href"
           class="fr-pagination__link fr-pagination__link--prev fr-pagination__link--lg-label"
-          title="Page précédente"
-          @click.prevent="$emit('update:currentPage', getPreviousPage())"
+          :title="prevPageTitle"
+          :disabled="currentPage === 0 ? true : null"
+          @click.prevent="toPreviousPage()"
         >
           <VIcon
             name="ri-play-fill"
@@ -58,37 +109,42 @@ export default {
         </a>
       </li>
       <li
-        v-for="(link, idx) in links"
+        v-for="(page, idx) in displayedPages"
         :key="idx"
       >
         <a
-          href="#"
+          :href="page.href"
           class="fr-pagination__link fr-displayed-lg"
-          :title="link.title"
-          :aria-current="link.label == currentPage ? 'page' : undefined"
-          @click.prevent="$emit('update:currentPage', +link.label)"
+          :title="page.title"
+          :aria-current="
+            isCurrentPage(page) ? 'page' : undefined
+          "
+          :disabled="isCurrentPage(page) ? true : null"
+          @click.prevent="toPage(pages.indexOf(page))"
         >
-          {{ link.label }}
+          <span v-if="displayedPages.indexOf(page) === 0 && startIndex > 0 ">...</span>
+          {{ page.label }}
+          <span v-if="displayedPages.indexOf(page) === displayedPages.length - 1 && endIndex < pages.length - 1">...</span>
         </a>
       </li>
       <li>
         <a
-          href="#"
+          :href="pages[Math.min(currentPage + 1, pages.length - 1)].href"
           class="fr-pagination__link fr-pagination__link--next fr-pagination__link--lg-label"
-          title="Page suivante"
-          @click.prevent="$emit('update:currentPage', getNextPage())"
+          :title="nextPageTitle"
+          :disabled="currentPage === pages.length - 1 ? true : null"
+          @click.prevent="toNextPage()"
         >
-          <VIcon
-            name="ri-play-fill"
-          />
+          <VIcon name="ri-play-fill" />
         </a>
       </li>
       <li>
         <a
           class="fr-pagination__link fr-pagination__link--last"
-          href="#"
-          title="Dernière Page"
-          @click.prevent="$emit('update:currentPage', links.length)"
+          :href="pages[pages.length - 1].href"
+          :title="lastPageTitle"
+          :disabled="currentPage === pages.length - 1 ? true : null"
+          @click.prevent="toLastPage()"
         >
           <VIcon
             name="ri-skip-forward-fill"
@@ -104,6 +160,6 @@ export default {
 <style scoped>
 .fr-pagination__link:hover {
   background-image: linear-gradient(
-0deg, rgba(224,224,224,0.5), rgba(224,224,224,0.5));
+  deg, rgba(224,224,224,0.5), rgba(224,224,224,0.5));
 }
 </style>

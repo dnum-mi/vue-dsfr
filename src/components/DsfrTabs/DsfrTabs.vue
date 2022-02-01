@@ -1,43 +1,3 @@
-<template>
-  <div class="fr-tabs">
-    <ul
-      class="fr-tabs__list"
-      role="tablist"
-      :aria-label="tabListName"
-    >
-      <DsfrTabItem
-        v-for="(tabTitle, index) in tabTitles"
-        :key="index"
-        :icon="tabTitle.icon"
-        :panel-id="tabTitle.panelId || `${getIdFromIndex(index)}-panel`"
-        :tab-id="tabTitle.tabId || getIdFromIndex(index)"
-        :selected="isSelected(index)"
-        @click="selectIndex(index)"
-        @next="selectNext()"
-        @previous="selectPrevious()"
-        @first="selectFirst()"
-        @last="selectLast()"
-      >
-        {{ tabTitle.title }}
-      </DsfrTabItem>
-    </ul>
-    <DsfrTabContent
-      v-for="(tabContent, index) in tabContents"
-      :key="index"
-      :panel-id="tabTitles[index].panelId || `${getIdFromIndex(index)}-panel`"
-      :tab-id="tabTitles[index].tabId || getIdFromIndex(index)"
-      :selected="isSelected(index)"
-      :asc="asc"
-    >
-      <!-- données de test -->
-      <p>
-        {{ tabContent }}
-      </p>
-    </DsfrTabContent>
-    <slot />
-  </div>
-</template>
-
 <script>
 import { getRandomId } from '../../utils/random-utils.js'
 
@@ -112,5 +72,45 @@ export default {
   },
 }
 </script>
+
+<template>
+  <div class="fr-tabs">
+    <ul
+      class="fr-tabs__list"
+      role="tablist"
+      :aria-label="tabListName"
+    >
+      <DsfrTabItem
+        v-for="(tabTitle, index) in tabTitles"
+        :key="index"
+        :icon="tabTitle.icon"
+        :panel-id="tabTitle.panelId || `${getIdFromIndex(index)}-panel`"
+        :tab-id="tabTitle.tabId || getIdFromIndex(index)"
+        :selected="isSelected(index)"
+        @click="selectIndex(index)"
+        @next="selectNext()"
+        @previous="selectPrevious()"
+        @first="selectFirst()"
+        @last="selectLast()"
+      >
+        {{ tabTitle.title }}
+      </DsfrTabItem>
+    </ul>
+    <DsfrTabContent
+      v-for="(tabContent, index) in tabContents"
+      :key="index"
+      :panel-id="tabTitles[index].panelId || `${getIdFromIndex(index)}-panel`"
+      :tab-id="tabTitles[index].tabId || getIdFromIndex(index)"
+      :selected="isSelected(index)"
+      :asc="asc"
+    >
+      <!-- données de test -->
+      <p>
+        {{ tabContent }}
+      </p>
+    </DsfrTabContent>
+    <slot />
+  </div>
+</template>
 
 <style src="./tab.main.css" />

@@ -1,3 +1,35 @@
+<script>
+export default {
+  name: 'DsfrTabItem',
+
+  props: {
+    selected: Boolean,
+    panelId: {
+      type: String,
+      required: true,
+    },
+    icon: {
+      type: String,
+      default: undefined,
+    },
+    tabId: {
+      type: String,
+      required: true,
+    },
+  },
+
+  emits: ['click', 'next', 'previous', 'first', 'last'],
+
+  watch: {
+    selected (newValue, oldValue) {
+      if (newValue) {
+        this.$refs.button.focus()
+      }
+    },
+  },
+}
+</script>
+
 <template>
   <li
     role="presentation"
@@ -33,35 +65,3 @@
     </button>
   </li>
 </template>
-
-<script>
-export default {
-  name: 'DsfrTabItem',
-
-  props: {
-    selected: Boolean,
-    panelId: {
-      type: String,
-      required: true,
-    },
-    icon: {
-      type: String,
-      default: undefined,
-    },
-    tabId: {
-      type: String,
-      required: true,
-    },
-  },
-
-  emits: ['click', 'next', 'previous', 'first', 'last'],
-
-  watch: {
-    selected (newValue, oldValue) {
-      if (newValue) {
-        this.$refs.button.focus()
-      }
-    },
-  },
-}
-</script>
