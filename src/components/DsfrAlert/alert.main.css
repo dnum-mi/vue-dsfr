@@ -1,107 +1,112 @@
 /*!
  * DSFR v1.2.1 | SPDX-License-Identifier: MIT | License-Filename: LICENSE.md | restricted use (see terms and conditions)
  */
+ @charset "UTF-8";
 
-/* ------------------------------------ *\
-  ALERT
-\* ------------------------------------ */
-.fr-alert {
-  position: relative;
-  padding: 1rem 2.25rem 0.75rem 3.5rem;
+ /* ¯¯¯¯¯¯¯¯¯ *\
+   ALERT
+ \* ˍˍˍˍˍˍˍˍˍ */
+ .fr-alert {
+   position: relative;
+   padding: 1rem 2.25rem 0.75rem 3.5rem;
 
-  --title-spacing: 0 0 0.25rem;
-  --text-spacing: 0 0 0.25rem;
-  box-shadow: inset 0 0 0 1px var(--border-plain-grey), inset 2.5rem 0 0 0 var(--background-flat-grey);
-}
+   --title-spacing: 0 0 0.25rem;
+   --text-spacing: 0 0 0.25rem;
+   box-shadow: inset 0 0 0 1px var(--border-plain-grey), inset 2.5rem 0 0 0 var(--background-flat-grey);
+ }
 
-.fr-alert::before {
-  font: normal normal normal 1.5rem/1 dsfr-icon;
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  padding: 1rem 0.5rem;
-  color: var(--text-inverted-grey);
-}
+ .fr-alert::before {
+   font: normal 700 normal 1.5rem/1 dsfr-icon;
+   position: absolute;
+   top: 0;
+   left: 0;
+   height: 100%;
+   padding: 1rem 0.5rem;
+   color: var(--text-inverted-grey);
+ }
 
-.fr-alert__title {
-  font-weight: 700;
-  font-size: 1.125rem;
-  line-height: 1.5rem;
-}
+ .fr-alert__title {
+   font-weight: 700;
+   font-size: 1.125rem;
+   line-height: 1.5rem;
+ }
 
-.fr-alert .fr-link--close {
-  position: absolute;
-  top: 0.25rem;
-  right: 0.75rem;
-  font-size: 0.875rem;
-  line-height: 1.5rem;
-  min-height: 2rem;
-  padding: 0.25rem 0.75rem;
-  border-radius: 1rem;
-  flex-direction: row;
-  overflow: hidden;
-  white-space: nowrap;
-  max-width: 2rem;
-  max-height: 2rem;
-  padding-left: 0.5rem;
-  padding-right: 0.5rem;
-}
+ .fr-alert .fr-link--close {
+   position: absolute;
+   top: 0.25rem;
+   right: 0.75rem;
+   font-size: 0.875rem;
+   line-height: 1.5rem;
+   min-height: 2rem;
+   padding: 0.25rem 0.75rem;
+   border-radius: 1rem;
+   flex-direction: row;
+   overflow: hidden;
+   white-space: nowrap;
+   max-width: 2rem;
+   max-height: 2rem;
+   padding-left: 0.5rem;
+   padding-right: 0.5rem;
+ }
 
-.fr-alert .fr-link--close::before {
-  font: normal normal normal 1rem/1 dsfr-icon;
-  margin-left: 0;
-  margin-right: 0.5rem;
-  font-size: 1rem;
-}
+ .fr-alert .fr-link--close::before {
+   font: normal 700 normal 1rem/1 dsfr-icon;
+   margin-left: 0;
+   margin-right: 0.5rem;
+   font-size: 1rem;
+ }
 
-.fr-alert + .fr-alert {
-  margin-top: 1rem;
-}
+ .fr-alert + .fr-alert {
+   margin-top: 1rem;
+ }
 
-.fr-alert--info::before {
-  content: "";
-}
+ .fr-alert--info::before {
+   content: "";
+   font-weight: 400;
+ }
 
-.fr-alert--success::before {
-  content: "";
-}
+ .fr-alert--success::before {
+   content: "";
+   font-weight: 400;
+ }
 
-.fr-alert--error::before {
-  content: "";
-}
+ .fr-alert--error::before {
+   content: "";
+   font-weight: 400;
+ }
 
-.fr-alert--warning::before {
-  content: "";
-}
+ .fr-alert--warning::before {
+   content: "";
+   font-weight: 400;
+ }
 
-.fr-alert--sm {
-  padding: 0.5rem 2.25rem 0.25rem 3rem;
-}
+ .fr-alert--sm {
+   padding: 0.5rem 2.25rem 0.25rem 3rem;
+ }
 
-.fr-alert--sm::before {
-  padding: 0.5rem 0.5rem;
-}
+ .fr-alert--sm::before {
+   padding: 0.5rem 0.5rem;
+ }
 
-.fr-alert--info {
-  box-shadow: inset 0 0 0 1px var(--border-plain-info), inset 2.5rem 0 0 0 var(--background-flat-info);
-}
+ .fr-alert--info {
+   box-shadow: inset 0 0 0 1px var(--border-plain-info), inset 2.5rem 0 0 0 var(--background-flat-info);
+ }
 
-.fr-alert--error {
-  box-shadow: inset 0 0 0 1px var(--border-plain-error), inset 2.5rem 0 0 0 var(--background-flat-error);
-}
+ .fr-alert--error {
+   box-shadow: inset 0 0 0 1px var(--border-plain-error), inset 2.5rem 0 0 0 var(--background-flat-error);
+ }
 
-.fr-alert--success {
-  box-shadow: inset 0 0 0 1px var(--border-plain-success), inset 2.5rem 0 0 0 var(--background-flat-success);
-}
+ .fr-alert--success {
+   box-shadow: inset 0 0 0 1px var(--border-plain-success), inset 2.5rem 0 0 0 var(--background-flat-success);
+ }
 
-.fr-alert--warning {
-  box-shadow: inset 0 0 0 1px var(--border-plain-warning), inset 2.5rem 0 0 0 var(--background-flat-warning);
-}
+ .fr-alert--warning {
+   box-shadow: inset 0 0 0 1px var(--border-plain-warning), inset 2.5rem 0 0 0 var(--background-flat-warning);
+ }
 
-@media (min-width: 48em) {
-  .fr-alert__title {
-    font-size: 1.25rem;
-    line-height: 1.75rem;
-  }
-}
+ @media (min-width: 48em) {
+   .fr-alert__title {
+     font-size: 1.25rem;
+     line-height: 1.75rem;
+   }
+ }

@@ -1,10 +1,4 @@
-import OhVueIcon from 'oh-vue-icons/dist/v3/icon.es'
-
-import { RiErrorWarningLine } from 'oh-vue-icons/icons'
-
 import DsfrAlert from './DsfrAlert.vue'
-
-OhVueIcon.add(RiErrorWarningLine)
 
 export default {
   component: DsfrAlert,
@@ -23,19 +17,24 @@ export default {
       description: '**Description** de l\'alerte',
     },
     type: {
-      control: 'radio',
-      options: ['error', 'success', 'info'],
-      description: '**Type** de l\'alerte : `error` (Erreur), `success` (Succès), ou `info` (Information)',
+      options: ['error', 'success', 'info', 'warning'],
+      control: 'select',
+      description: '**Type** de l\'alerte : `error` (Erreur), `success` (Succès), `warning` (Avertissement), ou `info` (Information)',
     },
     small: {
       control: 'boolean',
-      description: 'Indique si la taille de l’alert doit être de taille moyenne (`false`, défaut), ou petite (`true`).',
+      description: 'Permet d\'obtenir une version minimaliste de l\'alerte',
+    },
+    close: {
+      description: 'Event de fermeture de l\'alerte',
     },
     closed: {
       control: 'boolean',
+      description: 'Permet d\'alterner entre l\'état ouvert ou fermé de l\'alerte',
     },
-    onClose: {
-      action: 'close',
+    closeable: {
+      control: 'boolean',
+      description: 'Ajoute la possibilité de fermer l\'alerte via un bouton en forme de croix',
     },
   },
 }
@@ -54,7 +53,7 @@ export const Alerte = (args) => ({
         :description="description"
         :type="type"
         :small="small"
-        closeable
+        :closeable="closeable"
         :closed="closed"
         @close="close"
       />
@@ -64,7 +63,6 @@ export const Alerte = (args) => ({
   methods: {
     close () {
       this.closed = true
-      this.onClose()
       setTimeout(() => { this.closed = false }, 2000)
     },
   },
@@ -76,6 +74,7 @@ Alerte.args = {
   type: 'error',
   small: false,
   closed: false,
+  closeable: true,
 }
 
 export const Alertes = (args) => ({
@@ -89,10 +88,18 @@ export const Alertes = (args) => ({
     <div :data-fr-theme="dark ? 'dark' : ''" style="background-color: var(--grey-1000-50); padding: 1rem;">
       <div style="margin: 1rem 0;">
         <DsfrAlert
+        type="info"
           title="Titre de l'info"
           description="Description de l'info"
         />
       </div>
+      <div style="margin: 1rem 0;">
+      <DsfrAlert
+      type="warning"
+        title="Titre de l'avertissement"
+        description="Description de l'avertissement"
+      />
+    </div>
       <div style="margin: 1rem 0;">
         <DsfrAlert
           type="success"
@@ -125,22 +132,30 @@ export const PetitesAlertes = (args) => ({
     <div :data-fr-theme="dark ? 'dark' : ''" style="background-color: var(--grey-1000-50); padding: 1rem;">
       <div style="margin: 1rem 0;">
         <DsfrAlert
+          type="info"
           description="Description de l'info"
-          sm
+          small="small"
         />
       </div>
+      <div style="margin: 1rem 0;">
+      <DsfrAlert
+        type="warning"
+        description="Description de l'avertissement"
+        small="small"
+      />
+    </div>
       <div style="margin: 1rem 0;">
         <DsfrAlert
           type="success"
           description="Description du succès"
-          sm
+          small="small"
         />
       </div>
       <div style="margin: 1rem 0;">
         <DsfrAlert
           type="error"
           description="Description de l'erreur"
-          sm
+          small="small"
         />
       </div>
     </div>
@@ -162,30 +177,54 @@ export const AlertesFermables = (args) => ({
     <div :data-fr-theme="dark ? 'dark' : ''" style="background-color: var(--grey-1000-50); padding: 1rem;">
       <div style="margin: 1rem 0;">
         <DsfrAlert
+        type="info"
           title="Titre de l'info"
           description="Description de l'info"
           :closed="closed[0]"
-          closeable
+          :closeable="closeable"
           @close="close(0)"
           />
       </div>
       <div style="margin: 1rem 0;">
         <DsfrAlert
+          type="info"
           description="Description de l'info"
           :closed="closed[1]"
-          closeable
+          :closeable="closeable"
+          :small="small"
           @close="close(1)"
-          sm
         />
       </div>
+
+      <div style="margin: 1rem 0;">
+      <DsfrAlert
+        type="warning"
+        title="Titre de l'avertissement"
+        description="Description de l'avertissement"
+        :closed="closed[4]"
+        :closeable="closeable"
+        @close="close(4)"
+      />
+    </div>
+    <div style="margin: 1rem 0;">
+      <DsfrAlert
+        type="warning"
+        description="Description de l'avertissement"
+        :closed="closed[5]"
+        :closeable="closeable"
+        :small="small"
+        @close="close(5)"
+      />
+    </div>
+
       <div style="margin: 1rem 0;">
         <DsfrAlert
           type="success"
           title="Titre du succès"
           description="Description du succès"
           :closed="closed[2]"
+          :closeable="closeable"
           @close="close(2)"
-          closeable
         />
       </div>
       <div style="margin: 1rem 0;">
@@ -193,9 +232,9 @@ export const AlertesFermables = (args) => ({
           type="success"
           description="Description du succès"
           :closed="closed[3]"
+          :closeable="closeable"
+          :small="small"
           @close="close(3)"
-          closeable
-          sm
         />
       </div>
       <div style="margin: 1rem 0;">
@@ -204,8 +243,8 @@ export const AlertesFermables = (args) => ({
           title="Titre de l'erreur"
           description="Description de l'erreur"
           :closed="closed[4]"
+          :closeable="closeable"
           @close="close(4)"
-          closeable
         />
       </div>
       <div style="margin: 1rem 0;">
@@ -213,18 +252,19 @@ export const AlertesFermables = (args) => ({
           type="error"
           description="Description de l'erreur"
           :closed="closed[5]"
+          :closeable="closeable"
+          :small="small"
           @close="close(5)"
-          closeable
-          sm
         />
       </div>
+
+
     </div>
   `,
 
   methods: {
     close (idx) {
       this.closed[idx] = true
-      this.onClose()
       setTimeout(() => { this.closed[idx] = false }, 3000)
     },
   },
@@ -234,4 +274,6 @@ AlertesFermables.args = {
   title: 'Titre alerte',
   description: 'Description du message',
   type: 'error',
+  closeable: true,
+  small: true,
 }

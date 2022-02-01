@@ -8,7 +8,7 @@ describe('DsfrAlert', () => {
   it('should mount small closeable Alert', () => {
     const title = 'Intitulé de l\'alert'
     const description = 'description de l\'alert'
-    const size = 'small'
+    const small = true
     const closeable = true
 
     mount(DsfrAlert, {
@@ -20,7 +20,7 @@ describe('DsfrAlert', () => {
       props: {
         title,
         description,
-        size,
+        small,
         closeable,
       },
     })
