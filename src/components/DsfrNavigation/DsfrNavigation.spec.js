@@ -189,7 +189,6 @@ describe('DsfrNavigation', () => {
     expect(menuContainer).not.toHaveClass('fr-collapse--expanded')
 
     await fireEvent.click(menu)
-    await fireEvent.click(menuItemEl)
 
     expect(navEl).toHaveClass('fr-nav')
     expect(navEl).toHaveAttribute('aria-label', label)
@@ -201,5 +200,11 @@ describe('DsfrNavigation', () => {
     expect(menuContainer).toHaveClass('fr-collapse')
     expect(menuContainer).not.toHaveClass('fr-collapse--expanded')
     expect(megaMenu.parentElement.querySelector('.fr-mega-menu')).toHaveClass('fr-collapse--expanded')
+
+    await fireEvent.click(menu)
+    await fireEvent.click(menuItemEl)
+
+    expect(megaMenu.parentElement.querySelector('.fr-mega-menu')).not.toHaveClass('fr-collapse--expanded')
+    expect(menuContainer).not.toHaveClass('fr-collapse--expanded')
   })
 })
