@@ -1,9 +1,16 @@
 <script>
 import { defineComponent } from 'vue'
+import { getRandomId } from '../../utils/random-utils.js'
 
 export default defineComponent({
   name: 'DsfrAlert',
   props: {
+    id: {
+      type: String,
+      default () {
+        return getRandomId('basic', 'alert')
+      },
+    },
     type: {
       type: String,
       default: '',
@@ -68,6 +75,7 @@ export default defineComponent({
   <transition name="slide-fade">
     <div
       v-if="!closed"
+      :id="id"
       class="fr-alert"
       :class="classes"
     >
@@ -144,5 +152,9 @@ export default defineComponent({
 .slide-fade-leave-to {
   transform: translateY(-100%);
   opacity: 0;
+}
+
+.close-icon:hover {
+    border-radius: 1rem;
 }
 </style>
