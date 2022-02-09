@@ -106,7 +106,8 @@ export default defineComponent({
   </transition>
 </template>
 
-<style src="./alert.main.css" />
+<style src="@gouvfr/dsfr/dist/component/alert/alert.main.css" />
+<!-- <style src="../../../node_modules/@gouvfr/dsfr/dist/component/alert/alert.main.css" /> -->
 
 <style scoped>
 .fr-alert,
@@ -139,10 +140,15 @@ export default defineComponent({
   right: 0.25rem;
   width: 2rem;
   height: 2rem;
+
+  &:hover {
+    border-radius: 1rem;
+  }
 }
+
 /* Enter and leave animations can use different */
 /* durations and timing functions.              */
-.slide-fade-enter-active {
+/* .slide-fade-enter-active {
   transition: all 0.5s ease-out;
 }
 .slide-fade-leave-active {
@@ -153,8 +159,5 @@ export default defineComponent({
   transform: translateY(-100%);
   opacity: 0;
 }
-
-.close-icon:hover {
-    border-radius: 1rem;
-}
+*/
 </style>

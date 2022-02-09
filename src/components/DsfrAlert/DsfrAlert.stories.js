@@ -18,7 +18,7 @@ export default {
     },
     type: {
       options: ['error', 'success', 'info', 'warning'],
-      control: 'select',
+      control: 'radio',
       description: '**Type** de l\'alerte : `error` (Erreur), `success` (Succès), `warning` (Avertissement), ou `info` (Information)',
     },
     small: {
@@ -42,22 +42,19 @@ export default {
 export const Alerte = (args) => ({
   components: { DsfrAlert },
   data () {
-    return {
-      ...args,
-    }
+    return { ...args, type: args.type || 'error' }
   },
+
   template: `
-    <div :data-fr-theme="dark ? 'dark' : ''" style="background-color: var(--grey-1000-50); padding: 1rem;">
-      <DsfrAlert
-        :title="title"
-        :description="description"
-        :type="type"
-        :small="small"
-        :closeable="closeable"
-        :closed="closed"
-        @close="close"
-      />
-    </div>
+    <DsfrAlert
+      :title="title"
+      :description="description"
+      :type="type"
+      :small="small"
+      :closeable="closeable"
+      :closed="closed"
+      @close="close"
+    />
   `,
 
   methods: {
@@ -65,6 +62,10 @@ export const Alerte = (args) => ({
       this.closed = true
       setTimeout(() => { this.closed = false }, 2000)
     },
+  },
+
+  mounted () {
+    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
   },
 })
 Alerte.args = {
@@ -85,37 +86,39 @@ export const Alertes = (args) => ({
     }
   },
   template: `
-    <div :data-fr-theme="dark ? 'dark' : ''" style="background-color: var(--grey-1000-50); padding: 1rem;">
-      <div style="margin: 1rem 0;">
+    <div style="margin: 1rem 0;">
         <DsfrAlert
-        type="info"
+          type="info"
           title="Titre de l'info"
           description="Description de l'info"
         />
-      </div>
-      <div style="margin: 1rem 0;">
+    </div>
+    <div style="margin: 1rem 0;">
       <DsfrAlert
       type="warning"
         title="Titre de l'avertissement"
         description="Description de l'avertissement"
       />
     </div>
-      <div style="margin: 1rem 0;">
-        <DsfrAlert
-          type="success"
-          title="Titre du succès"
-          description="Description du succès"
-        />
-      </div>
-      <div style="margin: 1rem 0;">
-        <DsfrAlert
-          type="error"
-          title="Titre de l'erreur"
-          description="Description de l'erreur"
-        />
-      </div>
+    <div style="margin: 1rem 0;">
+      <DsfrAlert
+        type="success"
+        title="Titre du succès"
+        description="Description du succès"
+      />
+    </div>
+    <div style="margin: 1rem 0;">
+      <DsfrAlert
+        type="error"
+        title="Titre de l'erreur"
+        description="Description de l'erreur"
+      />
     </div>
   `,
+
+  mounted () {
+    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
+  },
 })
 Alertes.args = {
   dark: false,
@@ -129,37 +132,39 @@ export const PetitesAlertes = (args) => ({
     }
   },
   template: `
-    <div :data-fr-theme="dark ? 'dark' : ''" style="background-color: var(--grey-1000-50); padding: 1rem;">
-      <div style="margin: 1rem 0;">
-        <DsfrAlert
-          type="info"
-          description="Description de l'info"
-          small="small"
-        />
-      </div>
-      <div style="margin: 1rem 0;">
+    <div style="margin: 1rem 0;">
+      <DsfrAlert
+        type="info"
+        description="Description de l'info"
+        small="small"
+      />
+    </div>
+    <div style="margin: 1rem 0;">
       <DsfrAlert
         type="warning"
         description="Description de l'avertissement"
         small="small"
       />
     </div>
-      <div style="margin: 1rem 0;">
-        <DsfrAlert
-          type="success"
-          description="Description du succès"
-          small="small"
-        />
-      </div>
-      <div style="margin: 1rem 0;">
-        <DsfrAlert
-          type="error"
-          description="Description de l'erreur"
-          small="small"
-        />
-      </div>
+    <div style="margin: 1rem 0;">
+      <DsfrAlert
+        type="success"
+        description="Description du succès"
+        small="small"
+      />
+    </div>
+    <div style="margin: 1rem 0;">
+      <DsfrAlert
+        type="error"
+        description="Description de l'erreur"
+        small="small"
+      />
     </div>
   `,
+
+  mounted () {
+    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
+  },
 })
 PetitesAlertes.args = {
   dark: false,
@@ -174,29 +179,28 @@ export const AlertesFermables = (args) => ({
     }
   },
   template: `
-    <div :data-fr-theme="dark ? 'dark' : ''" style="background-color: var(--grey-1000-50); padding: 1rem;">
-      <div style="margin: 1rem 0;">
-        <DsfrAlert
+    <div style="margin: 1rem 0;">
+      <DsfrAlert
         type="info"
-          title="Titre de l'info"
-          description="Description de l'info"
-          :closed="closed[0]"
-          :closeable="closeable"
-          @close="close(0)"
-          />
-      </div>
-      <div style="margin: 1rem 0;">
-        <DsfrAlert
-          type="info"
-          description="Description de l'info"
-          :closed="closed[1]"
-          :closeable="closeable"
-          :small="small"
-          @close="close(1)"
-        />
-      </div>
+        title="Titre de l'info"
+        description="Description de l'info"
+        :closed="closed[0]"
+        :closeable="closeable"
+        @close="close(0)"
+      />
+    </div>
+    <div style="margin: 1rem 0;">
+      <DsfrAlert
+        type="info"
+        description="Description de l'info"
+        :closed="closed[1]"
+        :closeable="closeable"
+        :small="small"
+        @close="close(1)"
+      />
+    </div>
 
-      <div style="margin: 1rem 0;">
+    <div style="margin: 1rem 0;">
       <DsfrAlert
         type="warning"
         title="Titre de l'avertissement"
@@ -217,50 +221,51 @@ export const AlertesFermables = (args) => ({
       />
     </div>
 
-      <div style="margin: 1rem 0;">
-        <DsfrAlert
-          type="success"
-          title="Titre du succès"
-          description="Description du succès"
-          :closed="closed[2]"
-          :closeable="closeable"
-          @close="close(2)"
-        />
-      </div>
-      <div style="margin: 1rem 0;">
-        <DsfrAlert
-          type="success"
-          description="Description du succès"
-          :closed="closed[3]"
-          :closeable="closeable"
-          :small="small"
-          @close="close(3)"
-        />
-      </div>
-      <div style="margin: 1rem 0;">
-        <DsfrAlert
-          type="error"
-          title="Titre de l'erreur"
-          description="Description de l'erreur"
-          :closed="closed[4]"
-          :closeable="closeable"
-          @close="close(4)"
-        />
-      </div>
-      <div style="margin: 1rem 0;">
-        <DsfrAlert
-          type="error"
-          description="Description de l'erreur"
-          :closed="closed[5]"
-          :closeable="closeable"
-          :small="small"
-          @close="close(5)"
-        />
-      </div>
-
-
+    <div style="margin: 1rem 0;">
+      <DsfrAlert
+        type="success"
+        title="Titre du succès"
+        description="Description du succès"
+        :closed="closed[2]"
+        :closeable="closeable"
+        @close="close(2)"
+      />
+    </div>
+    <div style="margin: 1rem 0;">
+      <DsfrAlert
+        type="success"
+        description="Description du succès"
+        :closed="closed[3]"
+        :closeable="closeable"
+        :small="small"
+        @close="close(3)"
+      />
+    </div>
+    <div style="margin: 1rem 0;">
+      <DsfrAlert
+        type="error"
+        title="Titre de l'erreur"
+        description="Description de l'erreur"
+        :closed="closed[4]"
+        :closeable="closeable"
+        @close="close(4)"
+      />
+    </div>
+    <div style="margin: 1rem 0;">
+      <DsfrAlert
+        type="error"
+        description="Description de l'erreur"
+        :closed="closed[5]"
+        :closeable="closeable"
+        :small="small"
+        @close="close(5)"
+      />
     </div>
   `,
+
+  mounted () {
+    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
+  },
 
   methods: {
     close (idx) {
