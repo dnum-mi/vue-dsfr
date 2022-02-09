@@ -2,7 +2,7 @@ import OhVueIcon from 'oh-vue-icons/dist/v3/icon.es'
 
 import { RiInformationLine } from 'oh-vue-icons/icons'
 
-import DsfrCallout from './DsfrCallout'
+import DsfrCallout from './DsfrCallout.vue'
 
 OhVueIcon.add(RiInformationLine)
 
