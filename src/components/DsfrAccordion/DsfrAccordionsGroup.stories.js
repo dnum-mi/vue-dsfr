@@ -40,6 +40,7 @@ export const AccordeonGroupe = (args) => ({
   data () {
     return {
       ...args,
+      expandedId: undefined,
     }
   },
 
@@ -48,7 +49,8 @@ export const AccordeonGroupe = (args) => ({
     <li>
       <DsfrAccordion
         :title="title1"
-        :expanded="expanded1"
+        :expanded-id="expandedId"
+        @expand="expandedId = $event"
       >
         Contenu de l’accordéon
       </DsfrAccordion>
@@ -56,7 +58,8 @@ export const AccordeonGroupe = (args) => ({
     <li>
       <DsfrAccordion
         :title="title2"
-        :expanded="expanded2"
+        :expanded-id="expandedId"
+        @expand="id => expandedId = id"
       >
         Contenu de l’accordéon
       </DsfrAccordion>
@@ -64,7 +67,8 @@ export const AccordeonGroupe = (args) => ({
     <li>
       <DsfrAccordion
         :title="title3"
-        :expanded="expanded3"
+        :expanded-id="expandedId"
+        @expand="id => expandedId = id"
       >
         Contenu de l’accordéon
       </DsfrAccordion>

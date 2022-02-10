@@ -2,6 +2,7 @@
 import { ref } from 'vue'
 import DsfrNavigation from '../components/DsfrNavigation/DsfrNavigation.vue'
 import DsfrButton from '../components/DsfrButton/DsfrButton.vue'
+import DsfrAccordion from '../components/DsfrAccordion/DsfrAccordion.vue.js'
 
 const isModalOpen = ref(false)
 const displayAlert = ref(false)
@@ -125,6 +126,8 @@ const navItems = [
         scale="1.25"
       />
       <span class="fr-fi-search-line" />
+
+      <DsfrAccordion />
     </div>
 
     <DsfrModal

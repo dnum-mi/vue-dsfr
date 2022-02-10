@@ -51,7 +51,6 @@ export const Citation = (args) => ({
     }
   },
   template: `
-    <div :data-fr-theme="dark ? 'dark' : ''" style="background-color: var(--grey-1000-50); padding: 1rem;">
       <DsfrQuote
         :quote="quote"
         :author="author"
@@ -61,8 +60,11 @@ export const Citation = (args) => ({
         :sourceUrl="sourceUrl"
         :quoteImage="quoteImage"
       />
-    </div>
   `,
+
+  mounted () {
+    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
+  },
 })
 Citation.args = {
   dark: false,

@@ -88,11 +88,7 @@ export default {
           :title="firstPageTitle"
           :disabled="currentPage === 0 ? true : null"
           @click.prevent="tofirstPage()"
-        >
-          <VIcon
-            name="ri-skip-back-fill"
-          />
-        </a>
+        />
       </li>
       <li>
         <a
@@ -101,12 +97,7 @@ export default {
           :title="prevPageTitle"
           :disabled="currentPage === 0 ? true : null"
           @click.prevent="toPreviousPage()"
-        >
-          <VIcon
-            name="ri-play-fill"
-            flip="horizontal"
-          />
-        </a>
+        />
       </li>
       <li
         v-for="(page, idx) in displayedPages"
@@ -134,9 +125,7 @@ export default {
           :title="nextPageTitle"
           :disabled="currentPage === pages.length - 1 ? true : null"
           @click.prevent="toNextPage()"
-        >
-          <VIcon name="ri-play-fill" />
-        </a>
+        />
       </li>
       <li>
         <a
@@ -145,17 +134,13 @@ export default {
           :title="lastPageTitle"
           :disabled="currentPage === pages.length - 1 ? true : null"
           @click.prevent="toLastPage()"
-        >
-          <VIcon
-            name="ri-skip-forward-fill"
-          />
-        </a>
+        />
       </li>
     </ul>
   </nav>
 </template>
 
-<style src="./pagination.main.css" />
+<style src="@gouvfr/dsfr/dist/component/pagination/pagination.main.css" />
 
 <style scoped>
 .fr-pagination__link:hover {

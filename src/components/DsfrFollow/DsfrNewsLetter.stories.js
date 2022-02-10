@@ -57,24 +57,26 @@ export const NewsletterSimple = (args) => ({
   },
 
   template: `
-  <div :data-fr-theme="dark ? 'dark' : ''" style="background-color: var(--grey-1000-50); padding: 1rem;">
-    <DsfrFollow>
-      <div class="fr-col-12">
-        <DsfrNewsLetter
-          :title="title"
-          :description="description"
-          v-model:email="email"
-          :labelEmail="labelEmail"
-          :inputTitle="inputTitle"
-          :placeholder="placeholder"
-          :hintText="hintText"
-          :buttonText="buttonText"
-          :buttonTitle="buttonTitle"
-        />
-      </div>
-    </DsfrFollow>
-  </div>
+  <DsfrFollow>
+    <div class="fr-col-12">
+      <DsfrNewsLetter
+        :title="title"
+        :description="description"
+        v-model:email="email"
+        :labelEmail="labelEmail"
+        :inputTitle="inputTitle"
+        :placeholder="placeholder"
+        :hintText="hintText"
+        :buttonText="buttonText"
+        :buttonTitle="buttonTitle"
+      />
+    </div>
+  </DsfrFollow>
   `,
+
+  mounted () {
+    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
+  },
 })
 
 NewsletterSimple.args = {

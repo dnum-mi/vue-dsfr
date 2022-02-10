@@ -42,17 +42,18 @@ export const Video = (args) => ({
     return args
   },
   template: `
-  <div :data-fr-theme="dark ? 'dark' : ''" style="background-color: var(--grey-1000-50); padding: 1rem;">
     <DsfrVideo
-      :src="src"
-      :legend="legend"
-      :size="size"
-      :transcription-url="transcriptionUrl"
-      :transcription-label="transcriptionLabel"
-      :format4x3="format4x3"
-    />
-  </div>
+    :src="src"
+    :legend="legend"
+    :size="size"
+    :transcription-url="transcriptionUrl"
+    :transcription-label="transcriptionLabel"
+    :format4x3="format4x3"
+  />
   `,
+  mounted () {
+    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
+  },
 })
 
 Video.args = {

@@ -1,5 +1,7 @@
 import { fireEvent, render } from '@testing-library/vue'
 
+import '@gouvfr/dsfr/dist/core/core.module.js'
+
 import DsfrAccordion from './DsfrAccordion.vue'
 
 const VIcon = { props: ['name'], template: '<i :class="name"></i>' }
@@ -17,6 +19,8 @@ describe('DsfrAccordion', () => {
       },
       props: {
         title,
+        id: 1,
+        expandedId: 1,
       },
       slots: {
         default: content,
@@ -25,8 +29,6 @@ describe('DsfrAccordion', () => {
 
     const titleEl = getByText(title)
     const contentEl = getByText(content)
-
-    expect(contentEl).not.toHaveClass('fr-collapse--expanded')
 
     await fireEvent.click(titleEl)
 

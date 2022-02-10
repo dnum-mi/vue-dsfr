@@ -87,20 +87,9 @@ export default defineComponent({
       :id="descriptionId"
       :class="messageClass"
     >
-      <v-icon
-        :name="messageIcon"
-        scale="0.8"
-        class="message-icon"
-      />
       <span>{{ message }}</span>
     </p>
   </div>
 </template>
 
-<style src="./input.main.css" />
-
-<style scoped>
-.message-icon {
-  margin-right: 0.25rem;
-}
-</style>
+<style src="@gouvfr/dsfr/dist/component/input/input.main.css" />

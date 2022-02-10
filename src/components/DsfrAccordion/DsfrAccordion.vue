@@ -1,4 +1,6 @@
 <script>
+// import '@gouvfr/dsfr/dist/component/accordion/accordion.module.js'
+
 import { getRandomId } from '../../utils/random-utils.js'
 
 export default {
@@ -10,21 +12,27 @@ export default {
         return getRandomId('accordion')
       },
     },
+    expandedId: {
+      type: String,
+      default: undefined,
+    },
     title: {
       type: String,
       default: 'Sans intitulé',
     },
   },
 
-  data () {
-    return {
-      expanded: false,
-    }
+  emits: ['expand'],
+
+  computed: {
+    expanded () {
+      return this.expandedId === this.id
+    },
   },
 
   methods: {
     toggleExpanded () {
-      this.expanded = !this.expanded
+      this.$emit('expand', this.id)
     },
   },
 

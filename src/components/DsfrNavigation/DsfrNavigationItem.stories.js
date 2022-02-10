@@ -33,17 +33,19 @@ export const ItemDeNavigation = args => ({
   },
 
   template: `
-  <div :data-fr-theme="dark ? 'dark' : ''" style="background-color: var(--grey-1000-50); padding: 1rem;">
-    <DsfrNavigation>
-      <DsfrNavigationItem :active="active">
-        <DsfrNavigationMenuLink
-          to="/"
-          text="Texte du lien de l’item de menu"
-        />
-      </DsfrNavigationItem>
-    </DsfrNavigation>
-  </div>
+  <DsfrNavigation>
+    <DsfrNavigationItem :active="active">
+      <DsfrNavigationMenuLink
+        to="/"
+        text="Texte du lien de l’item de menu"
+      />
+    </DsfrNavigationItem>
+  </DsfrNavigation>
   `,
+
+  mounted () {
+    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
+  },
 })
 ItemDeNavigation.args = {
   dark: false,

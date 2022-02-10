@@ -30,13 +30,14 @@ export const NavigationPrincipale = (args) => ({
       ...args,
     }
   },
+  mounted () {
+    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
+  },
 
   template: `
-  <div :data-fr-theme="dark ? 'dark' : ''" style="background-color: var(--grey-1000-50); padding: 1rem;">
-    <DsfrNavigation
-      :nav-items="navItems"
-    />
-  </div>
+  <DsfrNavigation
+    :nav-items="navItems"
+  />
   `,
 })
 

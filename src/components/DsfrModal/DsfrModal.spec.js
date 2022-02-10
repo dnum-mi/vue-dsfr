@@ -1,6 +1,8 @@
 import { render } from '@testing-library/vue'
 import { mount } from '@vue/test-utils'
 
+import '@gouvfr/dsfr/dist/core/core.module.js'
+
 import DsfrModal from './DsfrModal.vue'
 
 const VIcon = { props: ['name'], template: '<i :class="name"></i>' }

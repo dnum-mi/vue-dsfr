@@ -49,7 +49,6 @@ export const Card = (args) => ({
     return args
   },
   template: `
-  <div :data-fr-theme="dark ? 'dark' : ''" style="background-color: var(--grey-1000-50); padding: 1rem;">
     <DsfrCard
       :style="\`max-width: \${horizontal ? 600 : 400}px\`"
       :alt-img="altImg"
@@ -61,8 +60,11 @@ export const Card = (args) => ({
       :horizontal="horizontal"
       :no-arrow="noArrow"
     />
-  </div>
   `,
+
+  mounted () {
+    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
+  },
 })
 Card.args = {
   dark: false,

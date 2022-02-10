@@ -29,13 +29,17 @@ export const NavigationLienMenu = (args) => ({
   },
 
   template: `
-    <div :data-fr-theme="dark ? 'dark' : ''" style="background-color: var(--grey-1000-50); padding: 1rem;">
-      <DsfrNavigationMenuLink
-        :to="to"
-        :text="text"
-      />
-    </div>
+  <DsfrNavigation>
+    <DsfrNavigationMenuLink
+      :to="to"
+      :text="text"
+    />
+  </DsfrNavigation>
   `,
+
+  mounted () {
+    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
+  },
 })
 NavigationLienMenu.args = {
   dark: false,

@@ -52,19 +52,19 @@ export const GroupeDeBoutons = (args) => ({
     }
   },
   template: `
-    <div :data-fr-theme="dark ? 'dark' : ''" style="background-color: var(--grey-1000-50); padding: 1rem;">
-      <div style="margin: 1rem 0;">
-        <DsfrButtonGroup
-          :buttons="buttons"
-          :size="size"
-          :align="align"
-          :inline="inline"
-          :reverse="reverse"
-        />
-      </div>
-
-    </div>
+    <DsfrButtonGroup
+      :buttons="buttons"
+      :size="size"
+      :align="align"
+      :inline="inline"
+      :reverse="reverse"
+    />
   `,
+
+  mounted () {
+    console.log(this.reverse)
+    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
+  },
 })
 GroupeDeBoutons.args = {
   dark: false,

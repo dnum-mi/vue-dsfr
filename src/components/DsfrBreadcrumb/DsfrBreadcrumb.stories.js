@@ -39,12 +39,14 @@ export const FilDAriane = (args) => ({
     return args
   },
   template: `
-  <div :data-fr-theme="dark ? 'dark' : ''" style="background-color: var(--grey-1000-50); padding: 1rem;">
     <DsfrBreadcrumb
       :links="links"
     />
-  </div>
   `,
+
+  mounted () {
+    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
+  },
 })
 
 FilDAriane.args = {

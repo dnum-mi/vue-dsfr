@@ -59,10 +59,4 @@ export default {
   </div>
 </template>
 
-<style src="./follow.main.css" />
-
-<style scoped>
-.fr-follow {
-  color: var(--text-default-grey);
-}
-</style>
+<style src="@gouvfr/dsfr/dist/component/follow/follow.main.css" />

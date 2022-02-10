@@ -44,7 +44,6 @@ export const NavigationMegaMenuCategorie = args => ({
   },
 
   template: `
-  <div :data-fr-theme="dark ? 'dark' : ''" style="background-color: var(--grey-1000-50); padding: 1rem;">
     <DsfrNavigation>
       <DsfrNavigationItem>
         <DsfrNavigationMegaMenu
@@ -61,8 +60,11 @@ export const NavigationMegaMenuCategorie = args => ({
         </DsfrNavigationMegaMenu>
       </DsfrNavigationItem>
     </DsfrNavigation>
-  </div>
   `,
+
+  mounted () {
+    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
+  },
 })
 NavigationMegaMenuCategorie.args = {
   dark: false,

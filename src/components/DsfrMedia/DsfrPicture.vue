@@ -46,10 +46,4 @@ export default {
   </figure>
 </template>
 
-<style src="./content.css" />
-
-<style scoped>
-.fr-content-media__caption {
-  color: var(--text-default-grey);
-}
-</style>
+<style src="@gouvfr/dsfr/dist/component/content/content.css" />

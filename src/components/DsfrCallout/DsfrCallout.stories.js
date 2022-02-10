@@ -49,15 +49,17 @@ export const MiseEnAvantSimple = (args) => ({
   },
 
   template: `
-    <div :data-fr-theme="dark ? 'dark' : ''" style="background-color: var(--grey-1000-50); padding: 1rem;">
       <DsfrCallout
         :title="title"
         :content="content"
         :button="button"
         :icon="icon"
       />
-    </div>
   `,
+
+  mounted () {
+    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
+  },
 })
 MiseEnAvantSimple.args = {
   dark: false,
@@ -84,15 +86,17 @@ export const MiseEnAvant = (args) => ({
   },
 
   template: `
-    <div :data-fr-theme="dark ? 'dark' : ''" style="background-color: var(--grey-1000-50); padding: 1rem;">
       <DsfrCallout
         :title="title"
         :content="content"
         :button="button"
         :icon="icon"
       />
-    </div>
   `,
+
+  mounted () {
+    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
+  },
 })
 MiseEnAvant.args = {
   dark: false,

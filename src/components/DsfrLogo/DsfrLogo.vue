@@ -30,4 +30,4 @@ export default {
   />
 </template>
 
-<style src="./logo.main.css" />
+<style src="@gouvfr/dsfr/dist/component/logo/logo.main.css" />

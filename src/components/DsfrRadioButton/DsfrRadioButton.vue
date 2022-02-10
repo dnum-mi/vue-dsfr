@@ -40,6 +40,12 @@ export default defineComponent({
   },
 
   emits: ['update:modelValue'],
+
+  computed: {
+    rich () {
+      return !!this.img
+    },
+  },
 })
 </script>
 
@@ -83,4 +89,4 @@ export default defineComponent({
   </div>
 </template>
 
-<style src="./radio.main.css" />
+<style src="@gouvfr/dsfr/dist/component/radio/radio.main.css" />

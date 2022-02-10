@@ -58,7 +58,6 @@ export const ListeDeroulante = (args) => ({
   },
 
   template: `
-  <div :data-fr-theme="dark ? 'dark' : ''" style="background-color: var(--grey-1000-50); padding: 1rem;">
     <DsfrSelect
       :required="required"
       :label="label"
@@ -69,13 +68,16 @@ export const ListeDeroulante = (args) => ({
       :disabled="disabled"
       v-model="modelValue"
     />
-  </div>
   `,
 
   watch: {
     modelValue (newVal) {
       this.onChange(newVal)
     },
+  },
+
+  mounted () {
+    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
   },
 })
 
@@ -128,6 +130,10 @@ export const ListeDeroulanteInactive = (args) => ({
     modelValue (newVal) {
       this.onChange(newVal)
     },
+  },
+
+  mounted () {
+    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
   },
 })
 

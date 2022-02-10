@@ -36,7 +36,7 @@ export default {
   },
 }
 
-export const IconOnly = (args) => ({
+export const BarreDeRecherche = (args) => ({
   components: {
     DsfrSearchBar,
   },
@@ -44,7 +44,6 @@ export const IconOnly = (args) => ({
     return args
   },
   template: `
-    <div :data-fr-theme="dark ? 'dark' : ''" style="background-color: var(--grey-1000-50); padding: 1rem;">
       <DsfrSearchBar
         :label="label"
         :dark="dark"
@@ -55,10 +54,13 @@ export const IconOnly = (args) => ({
         v-model="modelValue"
         :large="large"
       />
-    </div>
   `,
+
+  mounted () {
+    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
+  },
 })
-IconOnly.args = {
+BarreDeRecherche.args = {
   label: 'Label de search bar',
   dark: false,
   hideIcon: false,
@@ -69,7 +71,7 @@ IconOnly.args = {
   large: false,
 }
 
-export const TextNoIcon = (args) => ({
+export const BarreDeRechercheLarge = (args) => ({
   components: {
     DsfrSearchBar,
   },
@@ -77,51 +79,22 @@ export const TextNoIcon = (args) => ({
     return args
   },
   template: `
-    <div :data-fr-theme="dark ? 'dark' : ''" style="background-color: var(--grey-1000-50); padding: 1rem;">
-      <DsfrSearchBar
-        :label="label"
-        :dark="dark"
-        :placeholder="placeholder"
-        :labelVisible="labelVisible"
-        :hide-icon="hideIcon"
-        :button-text="buttonText"
-      />
-    </div>
+    <DsfrSearchBar
+      :label="label"
+      :dark="dark"
+      :placeholder="placeholder"
+      :labelVisible="labelVisible"
+      :hide-icon="hideIcon"
+      :button-text="buttonText"
+      :large="large"
+    />
   `,
-})
-TextNoIcon.args = {
-  label: 'Label de search bar',
-  dark: false,
-  hideIcon: true,
-  placeholder: 'Rechercher',
-  buttonText: 'Rechercher',
-  labelVisible: false,
-  large: false,
-  modelValue: '',
-}
 
-export const SearchBarLarge = (args) => ({
-  components: {
-    DsfrSearchBar,
+  mounted () {
+    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
   },
-  data () {
-    return args
-  },
-  template: `
-    <div :data-fr-theme="dark ? 'dark' : ''" style="background-color: var(--grey-1000-50); padding: 1rem;">
-      <DsfrSearchBar
-        :label="label"
-        :dark="dark"
-        :placeholder="placeholder"
-        :labelVisible="labelVisible"
-        :hide-icon="hideIcon"
-        :button-text="buttonText"
-        :large="large"
-      />
-    </div>
-  `,
 })
-SearchBarLarge.args = {
+BarreDeRechercheLarge.args = {
   label: 'Label de search bar',
   dark: false,
   hideIcon: true,

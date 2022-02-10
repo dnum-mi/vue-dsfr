@@ -1,4 +1,6 @@
 <script>
+import '@gouvfr/dsfr/dist/component/navigation/navigation.module.js'
+
 import { getRandomId } from '../../utils/random-utils.js'
 import DsfrNavigationMenuItem from './DsfrNavigationMenuItem.vue'
 import DsfrNavigationMenuLink from './DsfrNavigationMenuLink.vue'
@@ -22,7 +24,7 @@ export default {
     },
     links: {
       type: Array,
-      required: true,
+      default: () => [],
     },
     expandedId: {
       type: String,
@@ -48,11 +50,6 @@ export default {
     @click="$emit('toggle-id', id)"
   >
     <span>{{ title }}</span>
-    <VIcon
-      name="ri-arrow-drop-down-line"
-      class="arrow"
-      scale="1.25"
-    />
   </button>
   <div
     :id="id"
@@ -76,29 +73,3 @@ export default {
     </ul>
   </div>
 </template>
-
-<style src="./navigation-vue-dsfr.css" />
-
-<style scoped>
-.fr-nav__btn::before,
-.fr-nav__btn::after {
-  display: none;
-  content: '';
-}
-
-.fr-menu__list {
-  list-style: none;
-}
-
-.fr-collapse--expanded {
-  max-height: none !important;
-}
-
-.arrow {
-  transition: transform 0.3s;
-
-  [aria-expanded="true"] & {
-    transform: rotate(-180deg);
-  }
-}
-</style>
