@@ -61,7 +61,7 @@ export default {
   </section>
 </template>
 
-<style src="./accordion.main.css" />
+<style src="@gouvfr/dsfr/dist/component/accordion/accordion.main.css" />
 
 <style scoped>
 .fr-accordion__btn {
