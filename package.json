@@ -5,6 +5,10 @@
     "dist",
     "types"
   ],
+  "engines": {
+    "node": "17.x.x",
+    "npm": "8.x.x"
+  },
   "types": "./types",
   "license": "MIT",
   "main": "./dist/vue-dsfr.umd.js",
@@ -30,7 +34,7 @@
     "test:ct-ci": "cypress run-ct",
     "format": "npm run lint -- --fix",
     "lint": "eslint ./src/**/*.{vue,js}",
-    "storybook": "start-storybook -p 6006",
+    "storybook": "cross-env NODE_OPTIONS=--openssl-legacy-provider start-storybook -p 6006",
     "build-storybook": "build-storybook",
     "prepublishOnly": "npm run build",
     "semantic-release": "semantic-release"
