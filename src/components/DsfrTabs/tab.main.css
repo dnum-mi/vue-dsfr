@@ -73,7 +73,6 @@
   --link-blank-font: none;
   --link-blank-content: none;
   position: relative;
-  overflow: hidden;
   margin-top: -4px;
   padding-top: 4px;
   display: flex;

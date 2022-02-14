@@ -3775,7 +3775,6 @@ un padding de 4px et une marge négative en compensation sont mis en place afin 
   --link-blank-font: none;
   --link-blank-content: none;
   position: relative;
-  overflow: hidden;
   margin-top: -4px;
   padding-top: 4px;
   display: flex;
