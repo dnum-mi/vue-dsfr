@@ -26,6 +26,21 @@ const postcssPlugins = [
 
 mkdirp.sync('dist')
 
+fs.readFile('./src/variables-fdr.css', 'utf8', (err, css) => {
+  if (err) {
+    console.error(err)
+    throw err
+  }
+  postcss(postcssPlugins)
+    .process(css, { from: 'src/assets/variables-fdr.css', to: 'dist/variables-fdr.css' })
+    .then(result => {
+      fs.writeFile('dist/variables-fdr.css', result.css, () => true)
+      if (result.map) {
+        fs.writeFile('dist/variables-fdr.css.map', result.map.toString(), () => true)
+      }
+    })
+})
+
 fs.readFile('./src/main.css', 'utf8', (err, css) => {
   if (err) {
     console.error(err)

@@ -73,11 +73,6 @@ export default {
       <p class="fr-card__detail">
         {{ detail }}
       </p>
-      <v-icon
-        v-if="!noArrow"
-        class="fr-card__arrow"
-        name="ri-arrow-right-line"
-      />
     </div>
     <div class="fr-card__img">
       <img
@@ -93,21 +88,4 @@ export default {
   </div>
 </template>
 
-<style src="./card.main.css" />
-
-<style scoped>
-.fr-card {
-  color: var(--text-default-grey);
-}
-
-.fr-card__arrow {
-  font-size: 1.5rem;
-  width: 1.5rem;
-  height: 1.5rem;
-  margin-top: auto;
-  margin-left: auto;
-  order: 4;
-
-  color: var(--text-action-high-blue-france);
-}
-</style>
+<style src="@gouvfr/dsfr/dist/component/card/card.main.css" />

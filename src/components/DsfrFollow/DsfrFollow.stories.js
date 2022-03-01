@@ -29,13 +29,15 @@ export const Suivre = (args) => ({
     }
   },
   template: `
-    <div :data-fr-theme="dark ? 'dark' : ''" style="background-color: var(--grey-1000-50); padding: 1rem;">
-      <DsfrFollow
-        :networks="networks"
-        :newsletter-data="newsletterData"
-      />
-    </div>
+    <DsfrFollow
+      :networks="networks"
+      :newsletter-data="newsletterData"
+    />
   `,
+
+  mounted () {
+    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
+  },
 })
 Suivre.args = {
   dark: false,

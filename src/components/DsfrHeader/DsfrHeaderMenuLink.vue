@@ -3,7 +3,7 @@ export default {
   name: 'DsfrHeaderMenuLink',
 
   props: {
-    /* @deprecated Utilser `to` ou `href` à la place */
+    /* @deprecated Utiliser `to` ou `href` à la place */
     path: {
       type: [String, Object],
       default: undefined,

@@ -55,26 +55,28 @@ export const ItemDeMenuDeNavigation = args => ({
   },
 
   template: `
-  <div :data-fr-theme="dark ? 'dark' : ''" style="background-color: var(--grey-1000-50); padding: 1rem;">
-    <DsfrNavigation>
-      <DsfrNavigationItem>
-        <DsfrNavigationMenu
-          title="Titre de menu"
-          @toggle-id="toggle($event)"
-          :expanded-id="expandedId"
-          :id="menuId"
-        >
-          <DsfrNavigationMenuItem :id="id" :active="active">
-            <DsfrNavigationMenuLink
-              to="/"
-              text="Texte du lien de l’item de menu"
-            />
-          </DsfrNavigationMenuItem>
-        </DsfrNavigationMenu>
-      </DsfrNavigationItem>
-    </DsfrNavigation>
-  </div>
+  <DsfrNavigation>
+    <DsfrNavigationItem>
+      <DsfrNavigationMenu
+        title="Titre de menu"
+        @toggle-id="toggle($event)"
+        :expanded-id="expandedId"
+        :id="menuId"
+      >
+        <DsfrNavigationMenuItem :id="id" :active="active">
+          <DsfrNavigationMenuLink
+            to="/"
+            text="Texte du lien de l’item de menu"
+          />
+        </DsfrNavigationMenuItem>
+      </DsfrNavigationMenu>
+    </DsfrNavigationItem>
+  </DsfrNavigation>
   `,
+
+  mounted () {
+    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
+  },
 })
 ItemDeMenuDeNavigation.args = {
   dark: false,

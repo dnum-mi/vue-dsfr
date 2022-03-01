@@ -29,13 +29,15 @@ export const Pagination = (args) => ({
   },
 
   template: `
-    <div :data-fr-theme="dark ? 'dark' : ''" style="background-color: var(--w);">
       <DsfrPagination
         :pages="pages"
         v-model:currentPage="currentPage"
       />
-    </div>
   `,
+
+  mounted () {
+    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
+  },
 })
 
 Pagination.args = {
@@ -59,13 +61,15 @@ export const PaginationTruncated = (args) => ({
   },
 
   template: `
-    <div :data-fr-theme="dark ? 'dark' : ''" style="background-color: var(--w);">
       <DsfrPagination
         :pages="pages"
         v-model:currentPage="currentPage"
       />
-    </div>
   `,
+
+  mounted () {
+    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
+  },
 })
 
 PaginationTruncated.args = {

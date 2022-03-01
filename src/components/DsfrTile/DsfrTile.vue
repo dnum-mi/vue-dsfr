@@ -76,11 +76,4 @@ export default {
   </div>
 </template>
 
-<style src="./tile.main.css" />
-
-<style scoped>
-.fr-tile__desc,
-.fr-tile__title {
-  color: var(--g800);
-}
-</style>
+<style src="@gouvfr/dsfr/dist/component/tile/tile.main.css" />

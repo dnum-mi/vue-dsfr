@@ -188,7 +188,7 @@ export default {
   </footer>
 </template>
 
-<style src="./footer.main.css" />
+<style src="@gouvfr/dsfr/dist/component/footer/footer.main.css" />
 
 <style scoped>
 .fr-footer {

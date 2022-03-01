@@ -53,19 +53,9 @@ export default {
       :id="`${id}-desc`"
       class="fr-error-text"
     >
-      <VIcon
-        name="ri-alert-line"
-        class="icon"
-      />
       {{ error }}
     </p>
   </div>
 </template>
 
-<style src="./upload.css" />
-
-<style scoped>
-.icon {
-  margin-right: 0.25rem;
-}
-</style>
+<style src="@gouvfr/dsfr/dist/component/upload/upload.css" />

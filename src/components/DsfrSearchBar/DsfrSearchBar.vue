@@ -25,8 +25,6 @@ export default defineComponent({
       type: String,
       default: '',
     },
-    hideIcon: Boolean,
-    labelVisible: Boolean,
     modelValue: {
       type: String,
       default: '',
@@ -72,9 +70,6 @@ export default defineComponent({
     />
     <DsfrButton
       title="Rechercher"
-      :icon="!hideIcon && 'ri-search-line'"
-      :icon-only="!hideIcon"
-      :class="{'no-max-width': hideIcon}"
       @click="$emit('search')"
     >
       {{ buttonText }}
@@ -82,19 +77,4 @@ export default defineComponent({
   </div>
 </template>
 
-<style src="./search.main.css" />
-
-<style scoped>
-.fr-search-bar {
-  display: flex;
-}
-
-:deep(.ov-icon) {
-  font-size: 1.25rem;
-  vertical-align: -0.1em;
-}
-
-.no-max-width {
-  max-width: none;
-}
-</style>
+<style src="@gouvfr/dsfr/dist/component/search/search.main.css" />

@@ -69,11 +69,6 @@ export default {
         aria-controls="mega-menu-695"
         @click="$emit('toggle-id', id)"
       >
-        <VIcon
-          scale="0.85"
-          :style="{ top: '0.05em', position: 'relative' }"
-          name="ri-close-line"
-        />
         Fermer
       </button>
       <div class="fr-grid-row fr-grid-row--gutters">
@@ -88,11 +83,10 @@ export default {
           </p>
           <a
             vi
-            class="fr-link fr-link--icon-right"
+            class="fr-link  fr-fi-arrow-right-line  fr-link--icon-right"
             :to="link.to"
           >
             {{ link.text }}
-            <VIcon name="ri-arrow-right-line" />
           </a>
         </div>
         <!-- @slot Slot par défaut pour le contenu du mega-menu. Sera dans `<div class="fr-grid-row fr-grid-row--gutters">` -->
@@ -110,10 +104,5 @@ export default {
 <style scoped>
 .fr-collapse--expanded {
   max-height: none !important;
-}
-
-.fr-nav__btn::after {
-  display: none;
-  content: '';
 }
 </style>

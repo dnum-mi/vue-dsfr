@@ -40,39 +40,45 @@ export const AccordeonGroupe = (args) => ({
   data () {
     return {
       ...args,
+      expandedId: undefined,
     }
   },
 
   template: `
-  <div :data-fr-theme="dark ? 'dark' : ''" style="background-color: var(--grey-1000-50); padding: 1rem;">
-    <DsfrAccordionsGroup>
-      <li>
-        <DsfrAccordion
-          :title="title1"
-          :expanded="expanded1"
-        >
-          Contenu de l’accordéon
-        </DsfrAccordion>
-      </li>
-      <li>
-        <DsfrAccordion
-          :title="title2"
-          :expanded="expanded2"
-        >
-          Contenu de l’accordéon
-        </DsfrAccordion>
-      </li>
-      <li>
-        <DsfrAccordion
-          :title="title3"
-          :expanded="expanded3"
-        >
-          Contenu de l’accordéon
-        </DsfrAccordion>
-      </li>
-    </DsfrAccordionsGroup>
-  </div>
+  <DsfrAccordionsGroup>
+    <li>
+      <DsfrAccordion
+        :title="title1"
+        :expanded-id="expandedId"
+        @expand="expandedId = $event"
+      >
+        Contenu de l’accordéon
+      </DsfrAccordion>
+    </li>
+    <li>
+      <DsfrAccordion
+        :title="title2"
+        :expanded-id="expandedId"
+        @expand="id => expandedId = id"
+      >
+        Contenu de l’accordéon
+      </DsfrAccordion>
+    </li>
+    <li>
+      <DsfrAccordion
+        :title="title3"
+        :expanded-id="expandedId"
+        @expand="id => expandedId = id"
+      >
+        Contenu de l’accordéon
+      </DsfrAccordion>
+    </li>
+  </DsfrAccordionsGroup>
   `,
+
+  mounted () {
+    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
+  },
 })
 AccordeonGroupe.args = {
   dark: false,

@@ -48,7 +48,6 @@ export const EnTeteDeTableau = (args) => ({
   },
 
   template: `
-    <div :data-fr-theme="dark ? 'dark' : ''" style="background-color: var(--grey-1000-50); padding: 1rem;">
       <DsfrTable
         :title="title"
       >
@@ -59,8 +58,10 @@ export const EnTeteDeTableau = (args) => ({
         </template>
         &lt;Corps du tableau>
       </DsfrTable>
-    </div>
   `,
+  mounted () {
+    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
+  },
 })
 EnTeteDeTableau.args = {
   dark: false,
@@ -97,7 +98,6 @@ export const EnTeteDeTableauAvecIcone = (args) => ({
   },
 
   template: `
-    <div :data-fr-theme="dark ? 'dark' : ''" style="background-color: var(--grey-1000-50); padding: 1rem;">
       <DsfrTable
         :title="title"
       >
@@ -108,8 +108,10 @@ export const EnTeteDeTableauAvecIcone = (args) => ({
         </template>
         &lt;Corps du tableau>
       </DsfrTable>
-    </div>
   `,
+  mounted () {
+    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
+  },
 })
 EnTeteDeTableauAvecIcone.args = {
   dark: false,

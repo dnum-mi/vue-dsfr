@@ -1,5 +1,7 @@
 import { render } from '@testing-library/vue'
 
+import '@gouvfr/dsfr/dist/core/core.module.js'
+
 import SearchBar from './DsfrSearchBar.vue'
 
 const VIcon = { props: ['name'], template: '<i :class="name"></i>' }
@@ -25,7 +27,6 @@ describe('SearchBar', () => {
 
     // Then
     expect(getByText(label)).toHaveClass('fr-label')
-    expect(getByText(label)).not.toHaveClass('invisible')
   })
 
   it('should render searchbar with invisible label', () => {

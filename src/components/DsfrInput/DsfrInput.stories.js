@@ -71,6 +71,9 @@ export const LabelNotVisible = (args) => ({
       />
     </div>
   `,
+  mounted () {
+    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
+  },
 })
 LabelNotVisible.args = {
   dark: false,
@@ -101,6 +104,9 @@ export const LabelVisible = (args) => ({
       />
     </div>
   `,
+  mounted () {
+    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
+  },
 })
 LabelVisible.args = {
   dark: false,
@@ -138,6 +144,9 @@ export const ChampEnErreur = (args) => ({
       </DsfrInputGroup>
     </div>
   `,
+  mounted () {
+    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
+  },
 })
 ChampEnErreur.args = {
   dark: false,
@@ -174,6 +183,9 @@ export const ChampValide = (args) => ({
       </DsfrInputGroup>
     </div>
   `,
+  mounted () {
+    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
+  },
 })
 ChampValide.args = {
   dark: false,
@@ -206,6 +218,9 @@ export const ZoneDeTexte = (args) => ({
       />
     </div>
   `,
+  mounted () {
+    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
+  },
 })
 ZoneDeTexte.args = {
   dark: false,

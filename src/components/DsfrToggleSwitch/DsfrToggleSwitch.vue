@@ -1,6 +1,8 @@
 <script>
 import { defineComponent } from 'vue'
 
+import '@gouvfr/dsfr/dist/component/toggle/toggle.module.js'
+
 import { getRandomId } from '../../utils/random-utils.js'
 
 export default defineComponent({
@@ -46,10 +48,9 @@ export default defineComponent({
       :for="inputId"
       data-fr-checked-label="Activé"
       data-fr-unchecked-label="Désactivé"
-    >{{ label }}<span
-      v-if="modelValue"
-      class="after"
-    ><VIcon name="ri-check-line" /></span></label>
+    >
+      {{ label }}
+    </label>
     <p
       v-if="hint"
       :id="`${inputId}-hint-text`"
@@ -60,34 +61,4 @@ export default defineComponent({
   </div>
 </template>
 
-<style src="./toggle.main.css" />
-
-<style scoped>
-.fr-toggle__label {
-  color: var(--text-default-grey);
-}
-
-.fr-toggle__label::after {
-  content: '';
-}
-
-.fr-toggle__label::before {
-  content: '';
-  margin-right: 0;
-}
-
-.after {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: absolute;
-  top: 1rem;
-  left: 1rem;
-  width: 1.5rem;
-  height: 1.5rem;
-  border-radius: 50%;
-  text-indent: -9999px;
-  z-index: 2001;
-  color: var(--bf500)
-}
-</style>
+<style src="@gouvfr/dsfr/dist/component/toggle/toggle.main.css" />

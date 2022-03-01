@@ -45,15 +45,6 @@ export default {
 
 <template>
   <figure class="fr-quote fr-quote--column">
-    <div style="display: flex; color: var(--artwork-minor-blue-france)">
-      <VIcon
-        label="Quote"
-        name="ri-chat-1-line"
-        scale="1.3"
-      />
-      <strong style="font-size: 1.125em; position: relative; left: -1em; top: -0.1em">«</strong>
-    </div>
-
     <blockquote
       v-if="source"
       :cite="sourceUrl"
@@ -81,11 +72,6 @@ export default {
             :href="detail.url"
           >
             {{ detail.label }}
-            <VIcon
-              name="ri-external-link-line"
-              scale="0.9"
-              style="position: relative; top: 0.1em"
-            />
           </a>
           {{ typeof detail !== 'object' ? detail : '' }}
         </li>
@@ -103,14 +89,4 @@ export default {
   </figure>
 </template>
 
-<style src="./quote.main.css" />
-
-<style scoped>
-.fr-quote::before {
-  content: normal;
-}
-
-.fr-quote__source a::after {
-  content: normal;
-}
-</style>
+<style src="@gouvfr/dsfr/dist/component/quote/quote.main.css" />

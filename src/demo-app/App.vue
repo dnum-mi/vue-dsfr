@@ -1,9 +1,8 @@
 <script setup>
-import { onMounted, reactive, ref, watchEffect } from 'vue'
+import { ref } from 'vue'
 import DsfrNavigation from '../components/DsfrNavigation/DsfrNavigation.vue'
 import DsfrButton from '../components/DsfrButton/DsfrButton.vue'
-import DsfrRadioButtonSet from '../components/DsfrRadioButton/DsfrRadioButtonSet.vue'
-import { useScheme } from '../composables.js'
+import DsfrAccordion from '../components/DsfrAccordion/DsfrAccordion.vue.js'
 
 const isModalOpen = ref(false)
 const displayAlert = ref(false)
@@ -88,34 +87,6 @@ const navItems = [
   },
 ]
 
-const preferences = reactive({
-  theme: undefined,
-  scheme: undefined,
-})
-
-const options = [
-  {
-    label: 'System',
-    value: 'system',
-  },
-  {
-    label: 'Dark',
-    value: 'dark',
-  },
-  {
-    label: 'Light',
-    value: 'light',
-  },
-]
-
-onMounted(() => {
-  const { theme, scheme, setScheme } = useScheme()
-  preferences.scheme = scheme.value
-
-  watchEffect(() => { preferences.theme = theme.value })
-
-  watchEffect(() => setScheme(preferences.scheme))
-})
 </script>
 
 <template>
@@ -130,7 +101,7 @@ onMounted(() => {
       <DsfrNavigation
         :nav-items="navItems"
       />
-      <h1>App</h1>
+      <h1>Demo app</h1>
 
       <router-view />
 
@@ -150,23 +121,13 @@ onMounted(() => {
       >
         Notifications
       </DsfrModal>
-
-      <p>
-        <DsfrButton @click="preferences.scheme = 'system'">
-          System
-        </DsfrButton>
-        <DsfrButton @click="preferences.scheme = 'light'">
-          Light
-        </DsfrButton>
-        <DsfrButton @click="preferences.scheme = 'dark'">
-          Dark
-        </DsfrButton>
-      </p>
-
-      <DsfrRadioButtonSet
-        v-model="preferences.scheme"
-        :options="options"
+      <VIcon
+        name="ri-search-line"
+        scale="1.25"
       />
+      <span class="fr-fi-search-line" />
+
+      <DsfrAccordion />
     </div>
 
     <DsfrModal

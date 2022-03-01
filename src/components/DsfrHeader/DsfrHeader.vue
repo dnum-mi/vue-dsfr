@@ -1,4 +1,6 @@
 <script>
+import '@gouvfr/dsfr/dist/component/header/header.module.js'
+
 import DsfrLogo from '../DsfrLogo/DsfrLogo.vue'
 import DsfrSearchBar from '../DsfrSearchBar/DsfrSearchBar.vue'
 import DsfrHeaderMenuLinks from './DsfrHeaderMenuLinks.vue'
@@ -213,10 +215,4 @@ export default {
   </header>
 </template>
 
-<style src="./header.main.css" />
-
-<style scoped>
-.fr-header {
-  color: var(--text-default-grey);
-}
-</style>
+<style src="@gouvfr/dsfr/dist/component/header/header.main.css" />

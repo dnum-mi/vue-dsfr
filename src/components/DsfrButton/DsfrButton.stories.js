@@ -38,35 +38,6 @@ export default {
   },
 }
 
-export const BoutonSimple = (args) => ({
-  components: { DsfrButton },
-  data () {
-    return {
-      ...args,
-    }
-  },
-  template: `
-    <div :data-fr-theme="dark ? 'dark' : ''" style="background-color: var(--grey-1000-50); padding: 1rem;">
-      <DsfrButton
-        :label="label"
-        :disabled="disabled"
-        :secondary="secondary"
-        :icon="icon"
-        :iconRight="iconRight"
-        @click="onClick"
-      />
-    </div>
-  `,
-})
-BoutonSimple.args = {
-  dark: false,
-  label: 'Label bouton',
-  disabled: false,
-  secondary: false,
-  icon: '',
-  iconRight: false,
-}
-
 export const BoutonPrimaire = (args) => ({
   components: { DsfrButton },
   data () {
@@ -75,17 +46,29 @@ export const BoutonPrimaire = (args) => ({
     }
   },
   template: `
-    <div :data-fr-theme="dark ? 'dark' : ''" style="background-color: var(--grey-1000-50); padding: 1rem;">
-      <DsfrButton
-        :label="label"
-        @click="onClick"
-      />
-    </div>
+    <DsfrButton
+      :label="label"
+      :disabled="disabled"
+      :secondary="secondary"
+      :icon="icon"
+      :icon-only="iconOnly"
+      :icon-right="iconRight"
+      @click="onClick"
+    />
   `,
+
+  mounted () {
+    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
+  },
 })
 BoutonPrimaire.args = {
   dark: false,
   label: 'Label bouton',
+  disabled: false,
+  secondary: false,
+  icon: '',
+  iconOnly: false,
+  iconRight: false,
 }
 
 export const BoutonPrimaireAvecIcone = (args) => ({
@@ -96,16 +79,18 @@ export const BoutonPrimaireAvecIcone = (args) => ({
     }
   },
   template: `
-    <div :data-fr-theme="dark ? 'dark' : ''" style="background-color: var(--grey-1000-50); padding: 1rem;">
-      <DsfrButton
-        :label="label"
-        :disabled="disabled"
-        :icon="icon"
-        :icon-right="iconRight"
-        @click="onClick"
-      />
-    </div>
+    <DsfrButton
+      :label="label"
+      :disabled="disabled"
+      :icon="icon"
+      :icon-right="iconRight"
+      @click="onClick"
+    />
   `,
+
+  mounted () {
+    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
+  },
 })
 BoutonPrimaireAvecIcone.args = {
   dark: false,
@@ -123,15 +108,17 @@ export const BoutonSecondaire = (args) => ({
     }
   },
   template: `
-    <div :data-fr-theme="dark ? 'dark' : ''" style="background-color: var(--grey-1000-50); padding: 1rem;">
-      <DsfrButton
-        :label="label"
-        :disabled="disabled"
-        :secondary="secondary"
-        @click="onClick"
-      />
-    </div>
+    <DsfrButton
+      :label="label"
+      :disabled="disabled"
+      :secondary="secondary"
+      @click="onClick"
+    />
   `,
+
+  mounted () {
+    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
+  },
 })
 BoutonSecondaire.args = {
   label: 'Label bouton secondaire',
@@ -151,20 +138,21 @@ export const SuiteDeBoutons = (args) => ({
     }
   },
   template: `
-    <div :data-fr-theme="dark ? 'dark' : ''" style="background-color: var(--grey-1000-50); padding: 1rem;">
-      <div style="margin: 1rem 0;" v-for="btn in btns">
-        <DsfrButton
-          :disabled="btn.disabled"
-          :secondary="btn.secondary"
-          @click="onClick"
-          :label="btn.label"
-          :icon="btn.icon"
-          :iconRight="btn.iconRight"
-        />
-      </div>
-
+    <div style="margin: 1rem 0;" v-for="btn in btns">
+      <DsfrButton
+        :disabled="btn.disabled"
+        :secondary="btn.secondary"
+        :label="btn.label"
+        :icon="btn.icon"
+        :iconRight="btn.iconRight"
+        @click="onClick"
+      />
     </div>
   `,
+
+  mounted () {
+    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
+  },
 })
 
 SuiteDeBoutons.args = {

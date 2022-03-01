@@ -34,5 +34,3 @@ export default {
     </div>
   </div>
 </template>
-
-<style src="./tile.main.css" />

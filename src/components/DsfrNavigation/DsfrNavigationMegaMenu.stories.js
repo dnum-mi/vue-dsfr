@@ -56,8 +56,11 @@ export const NavigationMegaMenu = (args) => ({
     },
   },
 
+  mounted () {
+    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
+  },
+
   template: `
-  <div :data-fr-theme="dark ? 'dark' : ''" style="background-color: var(--grey-1000-50); padding: 1rem; position: relative;">
     <DsfrNavigation>
       <DsfrNavigationItem>
         <DsfrNavigationMegaMenu
@@ -71,7 +74,6 @@ export const NavigationMegaMenu = (args) => ({
         />
       </DsfrNavigationItem>
     </DsfrNavigation>
-  </div>
   `,
 })
 

@@ -1,6 +1,10 @@
 <script>
 import { defineComponent } from 'vue'
 
+// TODO: Pourquoi icône 'check' quand on utilise ce js et qu’on clique sur le premier ?
+// D’autre part, pour les étiquettes sélectionnables posent problème : le JS n’est pas
+// import '@gouvfr/dsfr/dist/component/tag/tag.module.js'
+
 export default defineComponent({
   name: 'DsfrTag',
 
@@ -21,16 +25,16 @@ export default defineComponent({
       type: String,
       default: undefined,
     },
+    selected: Boolean,
     disabled: Boolean,
     iconOnly: Boolean,
-    iconRight: Boolean,
     small: Boolean,
   },
 
   computed: {
     is () {
       return this.link
-        ? (this.isExternalLink ? 'a' : 'router-view')
+        ? (this.isExternalLink ? 'a' : 'router-link')
         : ((this.disabled && this.tagName === 'p') ? 'button' : this.tagName)
     },
     isExternalLink () {
@@ -54,45 +58,31 @@ export default defineComponent({
     :disabled="disabled"
     :href="href"
     :class="{
-      'row-reverse': iconRight && !iconOnly,
       'fr-tag--sm': small,
     }"
+    :aria-pressed="selected"
   >
     <VIcon
       v-if="icon"
       :name="icon"
       :label="iconOnly ? label : undefined"
       :scale="0.9"
-      :class="{
-        'icon-right': iconRight && !iconOnly,
-        'icon-left': !iconRight && !iconOnly,
-      }"
     />
     <span v-if="!iconOnly">{{ label }}</span>
     <slot />
   </component>
 </template>
 
-<style src="./tag.main.css" />
+<style src="@gouvfr/dsfr/dist/component/tag/tag.main.css" />
 
 <style scoped>
+
 .ov-icon {
   margin-top: 0.1rem;
 }
 
-.icon-left {
-  margin-right: 0.5rem;
-}
-.icon-right {
-  margin-left: 0.5rem;
-}
-
 .fr-tag {
   align-items: center;
-}
-
-.row-reverse {
-  flex-direction: row-reverse;
 }
 
 .success {

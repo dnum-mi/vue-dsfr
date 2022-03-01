@@ -50,7 +50,7 @@ export const useScheme = (options) => {
   const force = ref(scheme.value !== SYSTEM_SCHEME)
 
   watchEffect(() => {
-    document.body.setAttribute(
+    document.body.parentElement.setAttribute(
       opts.dataThemeAttribute || DEFAULT_DATA_THEME_ATTRIBUTE,
       theme.value,
     )

@@ -37,7 +37,6 @@ export const TitreDOnglet = (args) => ({
   },
 
   template: `
-  <div :data-fr-theme="dark ? 'dark' : ''" style="background-color: var(--grey-1000-50); padding: 1rem;">
     <div class="fr-tabs" style="overflow: visible">
       <ul
         class="fr-tabs__list"
@@ -53,8 +52,10 @@ export const TitreDOnglet = (args) => ({
         </DsfrTabItem>
       </ul>
     </div>
-  </div>
   `,
+  mounted () {
+    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
+  },
 })
 TitreDOnglet.args = {
   dark: false,

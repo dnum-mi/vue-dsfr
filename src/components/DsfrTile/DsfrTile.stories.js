@@ -43,7 +43,6 @@ export const TuileSimple = (args) => ({
   },
 
   template: `
-    <div :data-fr-theme="dark ? 'dark' : ''" style="background-color: var(--grey-1000-50); padding: 1rem;">
       <DsfrTile
         :title="title"
         :imgSrc="imgSrc"
@@ -52,8 +51,10 @@ export const TuileSimple = (args) => ({
         :horizontal="horizontal"
         :to="to"
       />
-    </div>
   `,
+  mounted () {
+    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
+  },
 
 })
 TuileSimple.args = {

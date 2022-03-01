@@ -1,14 +1,6 @@
 <script>
 import { allowedNetworks } from './follow-utils.js'
 
-export const brandIcons = {
-  facebook: 'ri-facebook-circle-fill',
-  twitter: 'ri-twitter-fill',
-  instagram: 'ri-instagram-fill',
-  linkedin: 'ri-linkedin-box-fill',
-  youtube: 'ri-youtube-fill',
-}
-
 export default {
   name: 'DsfrSocialNetworks',
 
@@ -21,12 +13,6 @@ export default {
           (network) => network?.name && network.href && allowedNetworks.includes(network.name),
         ),
     },
-  },
-
-  data () {
-    return {
-      brandIcons,
-    }
   },
 }
 </script>
@@ -47,15 +33,12 @@ export default {
       >
         <a
           class="fr-link"
+          :class="`fr-link--${network.name}`"
           :title="network.name"
           :href="network.href"
           target="_blank"
         >
-          <VIcon
-            scale="1.75"
-            :name="brandIcons[network.name]"
-            :label="network.name"
-          />
+          {{ network.name }}
         </a>
       </li>
     </ul>

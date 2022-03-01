@@ -1,5 +1,6 @@
 <script>
 import { defineComponent } from 'vue'
+
 import DsfrTag from './DsfrTag.vue'
 
 export default defineComponent({
@@ -31,5 +32,3 @@ export default defineComponent({
     </li>
   </ul>
 </template>
-
-<style src="./tag.main.css" />

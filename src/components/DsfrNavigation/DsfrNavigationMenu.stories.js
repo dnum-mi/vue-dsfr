@@ -1,3 +1,5 @@
+import DsfrNavigation from './DsfrNavigation.vue'
+import DsfrNavigationItem from './DsfrNavigationItem.vue'
 import DsfrNavigationMenu from './DsfrNavigationMenu.vue'
 
 export default {
@@ -29,6 +31,8 @@ export default {
 
 export const NavigationSousMenu = (args) => ({
   components: {
+    DsfrNavigation,
+    DsfrNavigationItem,
     DsfrNavigationMenu,
   },
 
@@ -50,19 +54,21 @@ export const NavigationSousMenu = (args) => ({
   },
 
   template: `
-    <div :data-fr-theme="dark ? 'dark' : ''" style="background-color: var(--grey-1000-50); padding: 1rem; position: relative;">
-      <DsfrNavigation>
-        <DsfrNavigationItem>
-          <DsfrNavigationMenu
-            :title="title"
-            :links="links"
-            :expanded-id="expandedMenuId"
-            @click="toggle($event)"
-          />
-        </DsfrNavigationItem>
-      </DsfrNavigation>
-    </div>
+    <DsfrNavigation>
+      <DsfrNavigationItem>
+        <DsfrNavigationMenu
+          :title="title"
+          :links="links"
+          :expanded-id="expandedMenuId"
+          @click="toggle($event)"
+        />
+      </DsfrNavigationItem>
+    </DsfrNavigation>
   `,
+
+  mounted () {
+    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
+  },
 })
 NavigationSousMenu.args = {
   dark: false,

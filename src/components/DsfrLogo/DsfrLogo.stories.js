@@ -31,14 +31,15 @@ export const Logo = (args) => ({
     return args
   },
   template: `
-    <div :data-fr-theme="dark ? 'dark' : ''" style="background-color: var(--grey-1000-50); padding: 1rem;">
       <DsfrLogo
         :small="small"
         :large="large"
         :logo-text="logoText"
       />
-    </div>
   `,
+  mounted () {
+    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
+  },
 })
 Logo.args = {
   dark: false,

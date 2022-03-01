@@ -49,9 +49,6 @@ export default {
     additionalMessageClass () {
       return this.errorMessage ? 'fr-error-text' : 'fr-valid-text'
     },
-    messageIcon () {
-      return this.errorMessage ? 'ri-alert-line' : 'ri-checkbox-circle-line'
-    },
   },
 
   methods: {
@@ -105,34 +102,8 @@ export default {
         class="fr-message-text  flex  items-center"
         :class="additionalMessageClass"
       >
-        <v-icon
-          :name="messageIcon"
-          class="message-icon"
-        />
         <span>{{ message }}</span>
       </p>
     </fieldset>
   </div>
 </template>
-
-<style src="./DsfrCheckboxSet.css" />
-
-<style scoped>
-.message-icon {
-  margin-right: 0.25rem;
-}
-
-.fr-error-text::before,
-.fr-valid-text::before {
-  display: none;
-  content: normal;
-}
-
-.fr-message-text {
-  & span {
-    margin-left: 0.25rem;
-  }
-
-  line-height: 0.75rem;
-}
-</style>

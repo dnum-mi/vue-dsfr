@@ -1,4 +1,6 @@
 <script>
+import '@gouvfr/dsfr/dist/component/tab/tab.module.js'
+
 import { getRandomId } from '../../utils/random-utils.js'
 
 import DsfrTabItem from './DsfrTabItem.vue'
@@ -113,4 +115,4 @@ export default {
   </div>
 </template>
 
-<style src="./tab.main.css" />
+<style src="@gouvfr/dsfr/dist/component/tab/tab.main.css" />

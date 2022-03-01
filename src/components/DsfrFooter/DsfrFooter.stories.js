@@ -60,51 +60,53 @@ export const PiedDePage = (args) => ({
     return args
   },
   template: `
-  <div :data-fr-theme="dark ? 'dark' : ''" style="background-color: var(--grey-1000-50); padding: 1rem;">
-    <DsfrFooter
-      :a11y-compliance="a11yCompliance"
-      :before-mandatory-links="beforeMandatoryLinks"
-      :after-mandatory-links="afterMandatoryLinks"
-      :logo-text="logoText"
-      :legal-link="legalLink"
-      :personal-data-link="personalDataLink"
-      :cookies-link="cookiesLink"
-      :a11y-compliance-link="a11yComplianceLink"
-      :desc-text="descText"
-      :home-link="homeLink"
-      :partners="partners"
-    >
-      <template v-slot:footer-link-lists>
-        <DsfrFooterLinkList
-          class="fr-col-6"
-          :category-name="categoryName1"
-          :links="linkList1"
-        />
-        <DsfrFooterLinkList
-          class="fr-col-6"
-          :category-name="categoryName2"
-          :links="linkList2"
-        />
-      </template>
-      <template v-slot:description>
-        <p>
-          Un moteur de recherche qui respecte votre vie privée
-          <a href="http://www.duckduckgo.com" class="fr-external-link">
-            ici
-            <VIcon name="ri-external-link-line" />
-          </a>
-        </p>
-      </template>
-    </DsfrFooter>
-  </div>
+  <DsfrFooter
+    :a11y-compliance="a11yCompliance"
+    :before-mandatory-links="beforeMandatoryLinks"
+    :after-mandatory-links="afterMandatoryLinks"
+    :logo-text="logoText"
+    :legal-link="legalLink"
+    :personal-data-link="personalDataLink"
+    :cookies-link="cookiesLink"
+    :a11y-compliance-link="a11yComplianceLink"
+    :desc-text="descText"
+    :home-link="homeLink"
+    :partners="partners"
+  >
+    <template v-slot:footer-link-lists>
+      <DsfrFooterLinkList
+        class="fr-col-6"
+        :category-name="categoryName1"
+        :links="linkList1"
+      />
+      <DsfrFooterLinkList
+        class="fr-col-6"
+        :category-name="categoryName2"
+        :links="linkList2"
+      />
+    </template>
+    <template v-slot:description>
+      <p>
+        Un moteur de recherche qui respecte votre vie privée
+        <a href="http://www.duckduckgo.com" class="fr-external-link">
+          ici
+          <VIcon name="ri-external-link-line" />
+        </a>
+      </p>
+    </template>
+  </DsfrFooter>
   `,
+
+  mounted () {
+    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
+  },
 })
 PiedDePage.args = {
   dark: false,
   beforeMandatoryLinks: [{ label: 'Before', to: '/before' }],
   afterMandatoryLinks: [{ label: 'After', to: '/after' }],
   a11yCompliance: 'partiellement conforme',
-  logoText: ['Pyramides', 'Babyloniennes'],
+  logoText: ['République', 'des châtons'],
   legalLink: '/mentions-legales',
   personalDataLink: '/donnees-personnelles',
   cookiesLink: '/cookies',

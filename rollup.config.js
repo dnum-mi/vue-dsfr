@@ -1,5 +1,6 @@
 import vue from 'rollup-plugin-vue'
 
+import { nodeResolve } from '@rollup/plugin-node-resolve'
 import PostCSS from 'rollup-plugin-postcss'
 
 import atImport from 'postcss-import'
@@ -43,6 +44,9 @@ const baseConfig = {
       plugins: postcssPlugins,
       extract: false,
     }),
+    nodeResolve({
+      extensions: ['.css'],
+    }),
   ],
 }
 
@@ -71,6 +75,9 @@ export default [
       PostCSS({
         plugins: postcssPlugins,
         extract: false,
+      }),
+      nodeResolve({
+        extensions: ['.css'],
       }),
     ],
   },

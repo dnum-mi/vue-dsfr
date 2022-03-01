@@ -1,6 +1,6 @@
 import { render } from '@testing-library/vue'
 
-import DsfrSocialNetworks, { brandIcons } from './DsfrSocialNetworks.vue'
+import DsfrSocialNetworks from './DsfrSocialNetworks.vue'
 
 const VIcon = { name: 'v-icon', props: ['name'], template: '<div :class="name"></div>' }
 
@@ -30,8 +30,8 @@ describe('DsfrSocialNetworks', () => {
       },
     })
     const liElts = container.querySelectorAll('.fr-link')
-    const facebookIcon = container.querySelector('.' + brandIcons.facebook)
-    const twitterIcon = container.querySelector('.' + brandIcons.twitter)
+    const facebookIcon = container.querySelector('.fr-link--facebook')
+    const twitterIcon = container.querySelector('.fr-link--twitter')
 
     // Then
     expect(liElts).toHaveLength(2)

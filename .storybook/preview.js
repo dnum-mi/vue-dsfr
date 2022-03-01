@@ -2,6 +2,8 @@ import { defineComponent } from 'vue'
 import { app } from '@storybook/vue3'
 import { FocusTrap } from 'focus-trap-vue'
 
+import '@gouvfr/dsfr/dist/core/core.module.js'
+
 import '../src/main.css'
 
 import './theme.css'

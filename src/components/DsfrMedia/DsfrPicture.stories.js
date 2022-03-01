@@ -34,15 +34,16 @@ export const Image = (args) => ({
     return args
   },
   template: `
-  <div :data-fr-theme="dark ? 'dark' : ''" style="background-color: var(--grey-1000-50); padding: 1rem;">
     <DsfrPicture
       :src="src"
       :alt="alt"
       :legend="legend"
       :size="size"
     />
-  </div>
   `,
+  mounted () {
+    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
+  },
 })
 Image.args = {
   dark: false,
