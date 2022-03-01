@@ -94,6 +94,10 @@ export default {
                   data-testid="header-logo"
                 />
               </div>
+              <div class="fr-header__operator">
+                <!-- @slot Slot nommé operator pour le logo opérateur. Sera dans `<div class="fr-header__operator">` -->
+                <slot name="operator" />
+              </div>
               <div
                 v-if="showSearch || (quickLinks && quickLinks.length)"
                 class="fr-header__navbar"
