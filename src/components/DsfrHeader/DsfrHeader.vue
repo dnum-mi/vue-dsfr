@@ -30,6 +30,10 @@ export default {
       type: String,
       default: '',
     },
+    placeholder: {
+      type: String,
+      default: 'Rechercher',
+    },
     quickLinks: {
       type: Array,
       default: () => undefined,
@@ -175,6 +179,7 @@ export default {
             >
               <DsfrSearchBar
                 :model-value="modelValue"
+                :placeholder="placeholder"
                 style="justify-content: flex-end"
                 @update:model-value="$emit('update:modelValue', $event)"
                 @search="$emit('search', $event)"
@@ -213,7 +218,7 @@ export default {
             >
               <DsfrSearchBar
                 :model-value="modelValue"
-                style="justify-content: flex-end"
+                :placeholder="placeholder"
                 @update:modelValue="$emit('update:modelValue', $event)"
                 @search="$emit('search', $event)"
               />

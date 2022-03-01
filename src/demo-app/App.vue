@@ -2,7 +2,7 @@
 import { ref } from 'vue'
 import DsfrNavigation from '../components/DsfrNavigation/DsfrNavigation.vue'
 import DsfrButton from '../components/DsfrButton/DsfrButton.vue'
-import DsfrAccordion from '../components/DsfrAccordion/DsfrAccordion.vue.js'
+import DsfrAccordion from '../components/DsfrAccordion/DsfrAccordion.vue'
 
 const isModalOpen = ref(false)
 const displayAlert = ref(false)
@@ -96,6 +96,8 @@ const navItems = [
     />
     <DsfrHeader
       :quick-links="quickLinks"
+      show-search
+      placeholder="Rechercher placeholder"
     />
     <div class="fr-container">
       <DsfrNavigation
