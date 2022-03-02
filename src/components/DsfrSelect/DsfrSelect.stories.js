@@ -17,7 +17,7 @@ export default {
       description: 'Label associé au `select`, donne le focus sur ce dernier au clic',
     },
     options: {
-      control: 'array',
+      control: 'object',
       description: 'Liste des options proposées par le `select` à lui passer sous forme de tableau',
     },
     description: {

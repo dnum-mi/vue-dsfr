@@ -36,6 +36,7 @@ export { default as DsfrRadioButton } from './DsfrRadioButton/DsfrRadioButton.vu
 export { default as DsfrRadioButtonSet } from './DsfrRadioButton/DsfrRadioButtonSet.vue'
 export { default as DsfrSearchBar } from './DsfrSearchBar/DsfrSearchBar.vue'
 export { default as DsfrSelect } from './DsfrSelect/DsfrSelect.vue'
+export { default as DsfrShare } from './DsfrShare/DsfrShare.vue'
 export { default as DsfrSkipLinks } from './DsfrSkipLinks/DsfrSkipLinks.vue'
 export { default as DsfrSocialNetworks } from './DsfrFollow/DsfrSocialNetworks.vue'
 export { default as DsfrTabContent } from './DsfrTabs/DsfrTabContent.vue'

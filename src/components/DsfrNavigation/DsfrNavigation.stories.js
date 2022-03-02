@@ -9,7 +9,7 @@ export default {
       description: 'Permet de voir le composant dans les deux **thèmes** : **clair** (`false`, défaut) et **sombre** (`true`).\n\n*N.B. : Ne fait pas partie du composant.*',
     },
     navItems: {
-      control: 'array',
+      control: 'object',
       description: `Tableau d'objets. Chacun de ces objets contiendra :
 
   - soit les props d’un lien direct <a href="/?path=/story/composants-navigation-principale-2-lien-de-menu-sous-menu-ou-mega-menu-dsfrnavigationmenulink--navigation-lien-menu">DsfrNavigationMenuLink</a> de navigation (\`to\` et \`text\`)
