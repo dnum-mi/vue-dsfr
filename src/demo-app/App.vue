@@ -103,7 +103,7 @@ const navItems = [
       <DsfrNavigation
         :nav-items="navItems"
       />
-      <h1>Demo app</h1>
+      <h1>Demo VueDsfr</h1>
 
       <router-view />
 
@@ -127,6 +127,7 @@ const navItems = [
         name="ri-search-line"
         scale="1.25"
       />
+      équivaut à
       <span class="fr-fi-search-line" />
 
       <DsfrAccordion />
