@@ -40,7 +40,7 @@ export default {
       description: 'Lien cible au clic sur le logo ou le titre',
     },
     quickLinks: {
-      control: 'array',
+      control: 'object',
       description: `Tableau des liens d’accès rapide, chaque objet contiendra les props suivantes :
 
 - \`label\`: Texte du lien (\`'Notifications'\`, par ex.)
