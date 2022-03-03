@@ -34,11 +34,14 @@ export default defineComponent({
   computed: {
     is () {
       return this.link
-        ? (this.isExternalLink ? 'a' : 'router-link')
+        ? (this.isExternalLink ? 'a' : this.linkComponent)
         : ((this.disabled && this.tagName === 'p') ? 'button' : this.tagName)
     },
     isExternalLink () {
       return typeof this.link === 'string' && this.link.startsWith('http')
+    },
+    linkComponent () {
+      return '$nuxt' in this ? 'nuxt-link' : 'router-link'
     },
     to () {
       return this.isExternalLink ? undefined : this.link
