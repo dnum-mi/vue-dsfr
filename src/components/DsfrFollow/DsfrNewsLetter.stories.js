@@ -78,7 +78,6 @@ export const NewsletterSimple = (args) => ({
     document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
   },
 })
-
 NewsletterSimple.args = {
   dark: false,
   title: 'Titre de la lettre d’information',
@@ -87,7 +86,67 @@ NewsletterSimple.args = {
   labelEmail: 'Votre adresse électronique',
   inputTitle: 'Adresse électronique',
   placeholder: 'james.bond@mi6.gov.uk',
-  hintText: 'Ceci est destiné à vous aider',
+  hintText: 'En renseignant votre adresse électronique, vous acceptez de recevoir nos actualités par courriel. Vous pouvez vous désinscrire à tout moment à l’aide des liens de désinscription ou en nous contactant.',
   buttonText: 'S’abonner',
-  buttonTitle: 'Titre du bouton (attribut `title` de la balise `button`',
+  buttonTitle: 'Titre du bouton (attribut `title`) de la balise `button`',
+}
+
+export const NewsletterAvecErreur = (args) => ({
+  components: {
+    DsfrNewsLetter,
+    DsfrFollow,
+  },
+
+  data () {
+    return {
+      ...args,
+    }
+  },
+
+  watch: {
+    email (newValue, oldValue) {
+      if (/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(newValue)) { // eslint-disable-line
+        this.error = ''
+        return
+      }
+      this.error = 'Le format de l’adresse electronique saisie n’est pas valide. Le format attendu est : nom@example.org'
+    },
+  },
+
+  template: `
+  <DsfrFollow>
+    <div class="fr-col-12">
+      <DsfrNewsLetter
+        :title="title"
+        :description="description"
+        :error="error"
+        v-model:email="email"
+        :labelEmail="labelEmail"
+        :inputTitle="inputTitle"
+        :placeholder="placeholder"
+        :hintText="hintText"
+        :buttonText="buttonText"
+        :buttonTitle="buttonTitle"
+      />
+    </div>
+  </DsfrFollow>
+  `,
+
+  mounted () {
+    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
+  },
+})
+
+NewsletterAvecErreur.args = {
+  dark: false,
+  title: 'Titre de la lettre d’information',
+  description: 'Description de la lettre d’information',
+  email: 'email.superchouette.fr',
+  error: 'Le format de l’adresse electronique saisie n’est pas valide. Le format attendu est : nom@example.org',
+  labelEmail: 'Votre adresse électronique',
+  inputTitle: 'Adresse électronique',
+  placeholder: 'james.bond@mi6.gov.uk',
+  hintText: 'En renseignant votre adresse électronique, vous acceptez de recevoir nos actualités par courriel. Vous pouvez vous désinscrire à tout moment à l’aide des liens de désinscription ou en nous contactant.',
+  buttonText: 'S’abonner',
+  buttonTitle: 'Titre du bouton (attribut `title`) de la balise `button`',
 }

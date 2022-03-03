@@ -17,6 +17,10 @@ export default defineComponent({
       type: String,
       default: '',
     },
+    error: {
+      type: String,
+      default: '',
+    },
     options: {
       type: String,
       default: '',
@@ -45,6 +49,7 @@ export default defineComponent({
       type: String,
       default: 'S‘abonner à notre lettre d’information',
     },
+
   },
 
   emits: ['update:email'],
@@ -79,6 +84,7 @@ export default defineComponent({
             type="email"
             name="newsletter-email"
             :value="email"
+            autocomplete="email"
             @input="$emit('update:email', $event.target.value)"
           >
           <button
@@ -90,6 +96,13 @@ export default defineComponent({
             {{ buttonText }}
           </button>
         </div>
+        <p
+          v-if="error"
+          id="newsletter-email-desc-error"
+          class="fr-error-text"
+        >
+          {{ error }}
+        </p>
         <p
           id="fr-newsletter-hint-text"
           class="fr-hint-text"
