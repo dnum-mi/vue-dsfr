@@ -64,7 +64,7 @@ export default defineComponent({
   />
 </template>
 
-<style src="./input.main.css" />
+<style src="@gouvfr/dsfr/dist/component/input/input.main.css" />
 
 <style scoped>
 .invisible {

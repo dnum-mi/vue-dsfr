@@ -1,5 +1,7 @@
 import { render } from '@testing-library/vue'
 
+import '@gouvfr/dsfr/dist/core/core.module.js'
+
 import DsfrToggleSwitch from './DsfrToggleSwitch.vue'
 
 const VIcon = { props: ['name'], template: '<i :class="name"></i>' }

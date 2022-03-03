@@ -94,6 +94,12 @@ export default {
     linkComponent () {
       return '$nuxt' in this ? 'nuxt-link' : 'router-link'
     },
+    isWithSlotLinkLists () {
+      return this.$slots['footer-link-lists']?.().length
+    },
+    isWithSlotOperator () {
+      return this.$slots.operato?.().length
+    },
   },
 }
 </script>
@@ -104,7 +110,10 @@ export default {
     class="fr-footer"
     role="contentinfo"
   >
-    <div class="fr-footer__top">
+    <div
+      v-if="isWithSlotLinkLists"
+      class="fr-footer__top"
+    >
       <div class="fr-container">
         <div class="fr-grid-row fr-grid-row--start fr-grid-row--gutters">
           <slot name="footer-link-lists" />
@@ -188,7 +197,7 @@ export default {
   </footer>
 </template>
 
-<style src="./footer.main.css" />
+<style src="@gouvfr/dsfr/dist/component/footer/footer.main.css" />
 
 <style scoped>
 .fr-footer {

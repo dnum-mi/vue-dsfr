@@ -33,7 +33,6 @@ export const EnTetesDeTableau = (args) => ({
   },
 
   template: `
-    <div :data-fr-theme="dark ? 'dark' : ''" style="background-color: var(--grey-1000-50); padding: 1rem;">
       <DsfrTable
         :title="title"
       >
@@ -42,9 +41,10 @@ export const EnTetesDeTableau = (args) => ({
         </template>
         &lt;Corps du tableau>
       </DsfrTable>
-    </div>
   `,
-
+  mounted () {
+    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
+  },
 })
 EnTetesDeTableau.args = {
   dark: false,

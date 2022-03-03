@@ -16,13 +16,13 @@ export default defineComponent({
     inline: Boolean,
     size: {
       type: String,
-      validator: (val) => ['sm', 'small', 'lg', 'large', 'md', 'medium', undefined].includes(val),
+      validator: (val) => ['sm', 'small', 'lg', 'large', 'md', 'medium', '', undefined].includes(val),
       default: undefined,
     },
     reverse: Boolean,
     align: {
       type: String,
-      validator: (val) => ['right', 'center', undefined].includes(val),
+      validator: (val) => ['right', 'center', '', undefined].includes(val),
       default: undefined,
     },
   },
@@ -73,4 +73,4 @@ export default defineComponent({
   </ul>
 </template>
 
-<style src="./buttons.css" />
+<style src="@gouvfr/dsfr/dist/component/button/button.main.css"  />

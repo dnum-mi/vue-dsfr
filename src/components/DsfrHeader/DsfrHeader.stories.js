@@ -40,7 +40,7 @@ export default {
       description: 'Lien cible au clic sur le logo ou le titre',
     },
     quickLinks: {
-      control: 'array',
+      control: 'object',
       description: `Tableau des liens d’accès rapide, chaque objet contiendra les props suivantes :
 
 - \`label\`: Texte du lien (\`'Notifications'\`, par ex.)
@@ -86,19 +86,17 @@ export const EnTete = (args, { argTypes }) => ({
     }
   },
   template: `
-    <div :data-fr-theme="dark ? 'dark' : ''" style="background-color: var(--grey-1000-50);">
-      <DsfrHeader
-        :service-title="serviceTitle"
-        :service-description="serviceDescription"
-        :home-to="homeTo"
-        :quick-links="quickLinks"
-        :show-search="showSearch"
-        :logo-text="logoText"
-        @click="onClickOnLogo"
-        :model-value="modelValue"
-        @update:model-value="$emit('update:modelValue', $event)"
-      />
-    </div>
+    <DsfrHeader
+      :service-title="serviceTitle"
+      :service-description="serviceDescription"
+      :home-to="homeTo"
+      :quick-links="quickLinks"
+      :show-search="showSearch"
+      :logo-text="logoText"
+      @click="onClickOnLogo"
+      :model-value="modelValue"
+      @update:model-value="$emit('update:modelValue', $event)"
+    />
   `,
   methods: {
     onClickOnLogo ($event) {
@@ -106,6 +104,10 @@ export const EnTete = (args, { argTypes }) => ({
       $event.stopPropagation()
       this.actionOnLogo($event)
     },
+  },
+
+  mounted () {
+    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
   },
 })
 EnTete.args = {
@@ -117,7 +119,7 @@ EnTete.args = {
   modelValue: '',
   homeTo: '#',
   quickLinks: [
-    { label: 'Lien2', path: '', icon: 'ri-notification-3-line', iconOnly: true, button: true },
+    { label: 'Lien2', path: '/', icon: 'ri-notification-3-line', iconOnly: true },
     { label: 'Lien1', path: '/path1', icon: '' },
     { label: 'Lien3', path: '/path3', icon: 'ri-phone-line', iconRight: true },
   ],

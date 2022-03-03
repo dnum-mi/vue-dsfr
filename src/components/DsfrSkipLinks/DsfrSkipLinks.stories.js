@@ -34,6 +34,10 @@ export const SkipLinksExample = (args) => ({
     </div>
   `,
 
+  mounted () {
+    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
+  },
+
 })
 
 SkipLinksExample.args = {

@@ -41,7 +41,6 @@ export const Interrupteur = (args) => ({
     return args
   },
   template: `
-  <div :data-fr-theme="dark ? 'dark' : ''" style="background-color: var(--grey-1000-50); padding: 1rem;">
     <DsfrToggleSwitch
       v-model="modelValue"
       :label="label"
@@ -49,12 +48,14 @@ export const Interrupteur = (args) => ({
       :disabled="disabled"
       :input-d="inputId"
     />
-  </div>
   `,
   watch: {
     modelValue (newVal) {
       this.onChange(newVal)
     },
+  },
+  mounted () {
+    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
   },
 })
 Interrupteur.args = {

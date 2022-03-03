@@ -35,7 +35,6 @@ export const Televersement = (args, { argTypes }) => ({
     return args
   },
   template: `
-  <div :data-fr-theme="dark ? 'dark' : ''" style="background-color: var(--grey-1000-50);">
     <DsfrFileUpload
       :dark="dark"
       :id="id"
@@ -43,8 +42,11 @@ export const Televersement = (args, { argTypes }) => ({
       :hint="hint"
       :error="error"
     />
-  </div>
   `,
+
+  mounted () {
+    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
+  },
 })
 Televersement.args = {
   dark: false,
@@ -72,6 +74,10 @@ export const TeleversementAvecErreur = (args, { argTypes }) => ({
     />
   </div>
   `,
+
+  mounted () {
+    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
+  },
 })
 TeleversementAvecErreur.args = {
   dark: false,

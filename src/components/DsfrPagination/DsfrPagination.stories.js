@@ -9,7 +9,7 @@ export default {
       description: 'Permet de voir le composant dans les deux **thèmes** : **clair** (`false`, défaut) et **sombre* (`true`).\n\n*N.B. : Ne fait pas partie du composant.*',
     },
     pages: {
-      control: 'array',
+      control: 'object',
       description: 'Permet de lister les pages d’un site en associant un label et une url dans une liste',
     },
     currentPage: {
@@ -29,13 +29,15 @@ export const Pagination = (args) => ({
   },
 
   template: `
-    <div :data-fr-theme="dark ? 'dark' : ''" style="background-color: var(--w);">
       <DsfrPagination
         :pages="pages"
         v-model:currentPage="currentPage"
       />
-    </div>
   `,
+
+  mounted () {
+    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
+  },
 })
 
 Pagination.args = {
@@ -59,13 +61,15 @@ export const PaginationTruncated = (args) => ({
   },
 
   template: `
-    <div :data-fr-theme="dark ? 'dark' : ''" style="background-color: var(--w);">
       <DsfrPagination
         :pages="pages"
         v-model:currentPage="currentPage"
       />
-    </div>
   `,
+
+  mounted () {
+    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
+  },
 })
 
 PaginationTruncated.args = {

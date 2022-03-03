@@ -1,6 +1,8 @@
 <script>
 import { FocusTrap } from 'focus-trap-vue'
 
+import '@gouvfr/dsfr/dist/component/modal/modal.module.js'
+
 import DsfrButtonGroup from '../DsfrButton/DsfrButtonGroup.vue'
 
 export default {
@@ -117,11 +119,6 @@ export default {
                   tabindex="0"
                   @click="close()"
                 >
-                  <VIcon
-                    scale="0.85"
-                    :style="{ top: '0.05em', position: 'relative' }"
-                    name="ri-close-line"
-                  />
                   <span>
                     Fermer
                   </span>
@@ -132,11 +129,6 @@ export default {
                   id="fr-modal-title-modal-1"
                   class="fr-modal__title"
                 >
-                  <VIcon
-                    scale="1.5"
-                    name="ri-arrow-right-line"
-                    style="vertical-align: -0.125em"
-                  />
                   {{ title }}
                 </h1>
                 <!-- @slot Slot par défaut pour le contenu de la liste. Sera dans `<ul class="fr-modal__title">` -->
@@ -161,7 +153,7 @@ export default {
   </focus-trap>
 </template>
 
-<style src="./modal.main.css" />
+<style src="@gouvfr/dsfr/dist/component/modal/modal.main.css" />
 
 <style scoped>
 .fr-modal {

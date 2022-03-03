@@ -31,16 +31,17 @@ export const Accordeon = (args) => ({
   },
 
   template: `
-  <div :data-fr-theme="dark ? 'dark' : ''" style="background-color: var(--grey-1000-50); padding: 1rem;">
     <DsfrAccordion
       :title="title"
       :expanded="expanded"
     >
       Contenu de l’accordéon
     </DsfrAccordion>
-  </div>
   `,
 
+  mounted () {
+    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
+  },
 })
 Accordeon.args = {
   dark: false,
@@ -61,7 +62,6 @@ export const AccordeonDansUnAccordeon = (args) => ({
   },
 
   template: `
-  <div :data-fr-theme="dark ? 'dark' : ''" style="background-color: var(--grey-1000-50); padding: 1rem;">
     <DsfrAccordion
       :title="title"
       :expanded="expanded"
@@ -73,11 +73,13 @@ export const AccordeonDansUnAccordeon = (args) => ({
         Contenu de l’accordéon
       </DsfrAccordion>
     </DsfrAccordion>
-  </div>
   `,
 
-})
+  mounted () {
+    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
+  },
 
+})
 AccordeonDansUnAccordeon.args = {
   dark: false,
   title: 'Un titre d’accordéon',

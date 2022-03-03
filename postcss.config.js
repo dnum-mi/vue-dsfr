@@ -1,5 +1,6 @@
 module.exports = {
   plugins: [
+    require('postcss-import')(),
     require('postcss-nested'),
     require('postcss-preset-env')({
       autoprefixer: {
@@ -8,7 +9,9 @@ module.exports = {
       stage: 1,
       features: {
         'custom-properties': false,
+        'focus-visible-pseudo-class': false,
       },
     }),
+    require('postcss-csso'),
   ],
 }

@@ -41,9 +41,6 @@ const translateValueTo = computed(() => values[!props.asc])
 </template>
 
 <style scoped>
-.fr-tabs__panel {
-  color: var(--text-default-grey);
-}
 .slide-fade-enter-active {
   transition: all 0.3s ease-out;
 }

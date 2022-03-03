@@ -1,3 +1,5 @@
+import DsfrNavigation from './DsfrNavigation.vue'
+import DsfrNavigationItem from './DsfrNavigationItem.vue'
 import DsfrNavigationMenu from './DsfrNavigationMenu.vue'
 
 export default {
@@ -13,7 +15,7 @@ export default {
       description: 'Valeur de l’attribut `id` de ce sous-menu. *N.B. : Il est recommandé de ne pas le donner, la bibliothèque lui en donnera un aléatoire*.',
     },
     links: {
-      control: 'array',
+      control: 'object',
       description: 'Tableau contenant les liens du menu de navigation. Chaque objet de ce tableau contiendra les props d’un lien direct <a href="/?path=/story/composants-navigation-principale-2-lien-de-menu-sous-menu-ou-mega-menu-dsfrnavigationmenulink--navigation-lien-menu">DsfrNavigationMenuLink</a> de navigation (`to` et `text`)',
     },
     title: {
@@ -29,6 +31,8 @@ export default {
 
 export const NavigationSousMenu = (args) => ({
   components: {
+    DsfrNavigation,
+    DsfrNavigationItem,
     DsfrNavigationMenu,
   },
 
@@ -50,19 +54,21 @@ export const NavigationSousMenu = (args) => ({
   },
 
   template: `
-    <div :data-fr-theme="dark ? 'dark' : ''" style="background-color: var(--grey-1000-50); padding: 1rem; position: relative;">
-      <DsfrNavigation>
-        <DsfrNavigationItem>
-          <DsfrNavigationMenu
-            :title="title"
-            :links="links"
-            :expanded-id="expandedMenuId"
-            @click="toggle($event)"
-          />
-        </DsfrNavigationItem>
-      </DsfrNavigation>
-    </div>
+    <DsfrNavigation>
+      <DsfrNavigationItem>
+        <DsfrNavigationMenu
+          :title="title"
+          :links="links"
+          :expanded-id="expandedMenuId"
+          @click="toggle($event)"
+        />
+      </DsfrNavigationItem>
+    </DsfrNavigation>
   `,
+
+  mounted () {
+    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
+  },
 })
 NavigationSousMenu.args = {
   dark: false,

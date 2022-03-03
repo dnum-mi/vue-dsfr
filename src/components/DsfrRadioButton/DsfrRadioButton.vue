@@ -28,7 +28,6 @@ export default defineComponent({
       type: String,
       default: '',
     },
-    disabled: Boolean,
     hint: {
       type: String,
       default: '',
@@ -40,6 +39,12 @@ export default defineComponent({
   },
 
   emits: ['update:modelValue'],
+
+  computed: {
+    rich () {
+      return !!this.img
+    },
+  },
 })
 </script>
 
@@ -55,15 +60,15 @@ export default defineComponent({
       :name="name"
       :value="value"
       :checked="modelValue === value"
+      v-bind="$attrs"
       :aria-checked="modelValue === value"
-      :disabled="disabled"
       @click="$emit('update:modelValue', value)"
     >
     <label
       :for="id"
       class="fr-label"
     >
-      {{ label }}
+      {{ label }} {{ $attrs.required ? '*' : '' }}
       <span
         v-if="hint"
         class="fr-hint-text"
@@ -83,4 +88,4 @@ export default defineComponent({
   </div>
 </template>
 
-<style src="./radio.main.css" />
+<style src="@gouvfr/dsfr/dist/component/radio/radio.main.css" />

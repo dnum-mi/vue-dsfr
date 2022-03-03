@@ -34,14 +34,7 @@ export default {
   <div class="fr-callout">
     <div
       class="fr-mt-n2w  fr-mb-2w  fr-ml-n4w"
-    >
-      <VIcon
-        v-if="icon"
-        :name="icon"
-        scale="1.25"
-        color="var(--g800)"
-      />
-    </div>
+    />
 
     <p class="fr-callout__title">
       {{ title }}
@@ -62,7 +55,7 @@ export default {
   </div>
 </template>
 
-<style src="./callout.main.css"></style>
+<style src="@gouvfr/dsfr/dist/component/callout/callout.main.css"></style>
 
 <style scoped>
 .fr-callout__text {

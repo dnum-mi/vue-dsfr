@@ -71,6 +71,9 @@ export const ChampEnErreur = (args) => ({
       />
     </div>
   `,
+  mounted () {
+    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
+  },
 })
 ChampEnErreur.args = {
   dark: false,
@@ -104,6 +107,9 @@ export const ChampValide = (args) => ({
       />
     </div>
   `,
+  mounted () {
+    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
+  },
 })
 ChampValide.args = {
   dark: false,

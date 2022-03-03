@@ -71,10 +71,4 @@ export default defineComponent({
   </div>
 </template>
 
-<style src="./table.main.css" />
-
-<style scoped>
-.fr-table :deep(td) {
-  color: var(--text-default-grey);
-}
-</style>
+<style src="@gouvfr/dsfr/dist/component/table/table.main.css" />

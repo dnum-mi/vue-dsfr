@@ -1,4 +1,6 @@
 <script>
+import '@gouvfr/dsfr/dist/component/button/button.module.js'
+
 export default {
   name: 'DsfrButton',
   props: {
@@ -34,19 +36,15 @@ export default {
       'reverse': iconRight,
       'justify-center': iconOnly,
     }"
+    :title="iconOnly ? label : undefined"
     :disabled="disabled"
     :aria-disabled="disabled"
   >
     <VIcon
       v-if="icon"
       :name="icon"
-      :class="{
-        'icon-right': iconRight,
-        'icon-left': !iconRight && !iconOnly,
-      }"
     />
-
-    <span>
+    <span v-if="!iconOnly">
       {{ label }}
       <!-- @slot Slot par défaut pour le contenu du bouton. Sera dans `<button class="fr-btn"><span">` -->
       <slot />
@@ -54,19 +52,13 @@ export default {
   </button>
 </template>
 
-<style src="./button.main.css" />
+<style src="@gouvfr/dsfr/dist/component/button/button.main.css" />
 
 <style scoped>
-.icon-left {
-  margin-right: 0.5rem
-}
-.icon-right {
-  margin-left: 0.5rem
-}
-
 .inline-flex {
   display: inline-flex;
   align-items: center;
+  gap: 0.5rem;
 }
 
 .reverse {

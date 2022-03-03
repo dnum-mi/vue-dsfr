@@ -5,7 +5,6 @@ export default {
   title: 'Composants/Lettres d’information et réseaux/Réseaux sociaux - DsfrSocialNetworks',
   name: '',
   component: DsfrSocialNetworks,
-
   argTypes: {
     dark: {
       control: 'boolean',
@@ -26,16 +25,18 @@ export const ReseauxSociaux = (args) => ({
     }
   },
   template: `
-    <div :data-fr-theme="dark ? 'dark' : ''" style="background-color: var(--grey-1000-50); padding: 1rem;">
-      <DsfrFollow>
-        <div class="fr-col-12">
-          <DsfrSocialNetworks
-            :networks="networks"
-          />
-        </div>
-      </DsfrFollow>
-    </div>
+    <DsfrFollow>
+      <div class="fr-col-12">
+        <DsfrSocialNetworks
+          :networks="networks"
+        />
+      </div>
+    </DsfrFollow>
   `,
+
+  mounted () {
+    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
+  },
 })
 ReseauxSociaux.args = {
   dark: false,

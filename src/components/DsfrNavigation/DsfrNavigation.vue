@@ -1,4 +1,6 @@
 <script>
+import '@gouvfr/dsfr/dist/component/navigation/navigation.module.js'
+
 import { getRandomId } from '../../utils/random-utils.js'
 
 import DsfrNavigationItem from './DsfrNavigationItem.vue'
@@ -87,7 +89,7 @@ export default {
   </nav>
 </template>
 
-<style src="./navigation.main.css" />
+<style src="@gouvfr/dsfr/dist/component/navigation/navigation.main.css" />
 
 <style scoped>
 .fr-nav__list {

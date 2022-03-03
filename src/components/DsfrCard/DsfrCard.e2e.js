@@ -60,8 +60,6 @@ describe('DsfrCard', () => {
       .get('.fr-card__detail')
       .should('be.visible')
       .should('contain', detail)
-      .get('.fr-card__arrow')
-      .should('be.visible')
       .get('.fr-card__img')
       .should('be.visible')
       .get('img')

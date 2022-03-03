@@ -33,24 +33,4 @@ export default {
   </div>
 </template>
 
-<style src="./skiplink.main.css" />
-
-<style scoped>
-.fr-skiplinks {
-  top: 0;
-}
-
-@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
-  /**
-  * Correctif
-  */
-  .fr-skiplinks.focus-within {
-    position: relative;
-    transform: translateY(0);
-  }
-
-  .fr-skiplinks {
-    background-color: #eee;
-  }
-}
-</style>
+<style src="@gouvfr/dsfr/dist/component/skiplink/skiplink.main.css" />

@@ -19,11 +19,11 @@ export default {
       description: 'Description au méga menu',
     },
     link: {
-      control: 'array',
+      control: 'object',
       description: 'Permet de définir un lien vers une page associée. C’est un objet qui contiendra les props attendues par <a href="/?path=/story/composants-navigation-principale-2-lien-de-menu-sous-menu-ou-mega-menu-dsfrnavigationmenulink--navigation-lien-menu">DsfrNavigationMenuLink</a>',
     },
     menus: {
-      control: 'array',
+      control: 'object',
       description: 'Liste des catégories au sein du méga menu via un tableau. Chaque objet de ce tableau contiendra les props attendues par <a href="/?path=/docs/composants-navigation-principale-5-catégorie-de-mega-menu-dsfrnavigationmegamenucategory--navigation-mega-menu-categorie">DsfrNavigationMegaMenuCategory</a>',
     },
     expandedId: {
@@ -56,8 +56,11 @@ export const NavigationMegaMenu = (args) => ({
     },
   },
 
+  mounted () {
+    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
+  },
+
   template: `
-  <div :data-fr-theme="dark ? 'dark' : ''" style="background-color: var(--grey-1000-50); padding: 1rem; position: relative;">
     <DsfrNavigation>
       <DsfrNavigationItem>
         <DsfrNavigationMegaMenu
@@ -71,7 +74,6 @@ export const NavigationMegaMenu = (args) => ({
         />
       </DsfrNavigationItem>
     </DsfrNavigation>
-  </div>
   `,
 })
 

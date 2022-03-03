@@ -105,4 +105,4 @@ export default {
   </div>
 </template>
 
-<style src="./select.main.css" />
+<style src="@gouvfr/dsfr/dist/component/select/select.main.css" />

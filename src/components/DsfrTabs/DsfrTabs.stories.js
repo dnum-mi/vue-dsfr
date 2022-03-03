@@ -55,14 +55,15 @@ export const OngletsSimples = (args) => ({
     return args
   },
   template: `
-  <div :data-fr-theme="dark ? 'dark' : ''" style="background-color: var(--grey-1000-50); padding: 1rem;">
     <DsfrTabs
       :tab-list-name="tabListName"
       :tab-titles="tabTitles"
       :tab-contents="tabContents"
     />
-  </div>
   `,
+  mounted () {
+    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
+  },
 })
 OngletsSimples.args = {
   dark: false,
@@ -88,7 +89,6 @@ export const OngletsComplexes = (args) => ({
   },
 
   template: `
-  <div :data-fr-theme="dark ? 'dark' : ''" style="background-color: var(--grey-1000-50); padding: 1rem;">
     <DsfrTabs
       :tab-list-name="tabListName"
       :tab-titles="tabTitles"
@@ -130,7 +130,6 @@ export const OngletsComplexes = (args) => ({
         <div>Contenu 2 avec d'autres composants</div>
       </DsfrTabContent>
     </DsfrTabs>
-  </div>
   `,
 
   methods: {
@@ -139,6 +138,10 @@ export const OngletsComplexes = (args) => ({
       this.asc = this.selectedTabIndex < idx
       this.selectedTabIndex = idx
     },
+  },
+
+  mounted () {
+    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
   },
 })
 OngletsComplexes.args = {

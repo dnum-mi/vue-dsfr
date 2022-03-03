@@ -100,19 +100,18 @@ export default {
         class="fr-message-text  flex  items-center"
         :class="additionalMessageClass"
       >
-        <v-icon
-          :name="messageIcon"
-          class="message-icon"
-        />
         <span class="line-1">{{ message }}</span>
       </p>
     </fieldset>
   </div>
 </template>
-<style src="./radio.main.css" />
 
-<style scoped>
-.message-icon {
-  margin-right: 0.25rem;
+<style>
+.fr-fieldset--error .fr-radio-group .fr-label::before {
+  box-shadow: inset 0 0 0 1px var(--border-plain-error), inset 0 0 0 12px var(--background-default-grey), inset 0 0 0 12px var(--border-plain-success)
+}
+
+.fr-fieldset--valid .fr-radio-group .fr-label::before {
+  box-shadow: inset 0 0 0 1px var(--border-plain-success), inset 0 0 0 12px var(--background-default-grey), inset 0 0 0 12px var(--border-plain-success)
 }
 </style>

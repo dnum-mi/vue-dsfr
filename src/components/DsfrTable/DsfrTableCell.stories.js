@@ -57,20 +57,21 @@ export const CelluleDeTableauSimple = (args) => ({
   },
 
   template: `
-    <div :data-fr-theme="dark ? 'dark' : ''" style="background-color: var(--grey-1000-50); padding: 1rem;">
-      <DsfrTable
-        :title="title"
-      >
-        <template #header>
-          <DsfrTableHeaders :headers="headers" />
-        </template>
-        <tr>
-          <DsfrTableCell :field="field" />
-        </tr>
-      </DsfrTable>
-    </div>
+    <DsfrTable
+      :title="title"
+    >
+      <template #header>
+        <DsfrTableHeaders :headers="headers" />
+      </template>
+      <tr>
+        <DsfrTableCell :field="field" />
+      </tr>
+    </DsfrTable>
   `,
 
+  mounted () {
+    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
+  },
 })
 CelluleDeTableauSimple.args = {
   dark: false,
@@ -93,7 +94,6 @@ export const CelluleDeTableauAvecElementHtml = (args) => ({
   },
 
   template: `
-    <div :data-fr-theme="dark ? 'dark' : ''" style="background-color: var(--grey-1000-50); padding: 1rem;">
       <DsfrTable
         :title="title"
       >
@@ -104,9 +104,10 @@ export const CelluleDeTableauAvecElementHtml = (args) => ({
           <DsfrTableCell :field="field" />
         </tr>
       </DsfrTable>
-    </div>
   `,
-
+  mounted () {
+    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
+  },
 })
 CelluleDeTableauAvecElementHtml.args = {
   dark: false,
@@ -129,7 +130,6 @@ export const CelluleDeTableauAvecComposant = (args) => ({
   },
 
   template: `
-    <div :data-fr-theme="dark ? 'dark' : ''" style="background-color: var(--grey-1000-50); padding: 1rem;">
       <DsfrTable
         :title="title"
       >
@@ -140,9 +140,10 @@ export const CelluleDeTableauAvecComposant = (args) => ({
           <DsfrTableCell :field="field" />
         </tr>
       </DsfrTable>
-    </div>
   `,
-
+  mounted () {
+    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
+  },
 })
 CelluleDeTableauAvecComposant.args = {
   dark: false,
@@ -166,7 +167,6 @@ export const CelluleDeTableauComplexe = (args) => ({
   },
 
   template: `
-    <div :data-fr-theme="dark ? 'dark' : ''" style="background-color: var(--grey-1000-50); padding: 1rem;">
       <DsfrTable
         :title="title"
       >
@@ -177,9 +177,10 @@ export const CelluleDeTableauComplexe = (args) => ({
           <DsfrTableCell :field="field" :cell-attrs="cellAttrs" />
         </tr>
       </DsfrTable>
-    </div>
   `,
-
+  mounted () {
+    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
+  },
 })
 CelluleDeTableauComplexe.args = {
   dark: false,

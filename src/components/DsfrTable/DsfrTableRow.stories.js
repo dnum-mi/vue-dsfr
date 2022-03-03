@@ -88,7 +88,6 @@ export const LigneDeTableauSimple = (args) => ({
   },
 
   template: `
-    <div :data-fr-theme="dark ? 'dark' : ''" style="background-color: var(--grey-1000-50); padding: 1rem;">
       <DsfrTable
         :title="title"
       >
@@ -97,9 +96,10 @@ export const LigneDeTableauSimple = (args) => ({
         </template>
         <DsfrTableRow :row-data="rowData" />
       </DsfrTable>
-    </div>
   `,
-
+  mounted () {
+    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
+  },
 })
 LigneDeTableauSimple.args = {
   dark: false,
@@ -122,7 +122,6 @@ export const LigneDeTableauAvecComposant = (args) => ({
   },
 
   template: `
-    <div :data-fr-theme="dark ? 'dark' : ''" style="background-color: var(--grey-1000-50); padding: 1rem;">
       <DsfrTable
         :title="title"
       >
@@ -131,9 +130,10 @@ export const LigneDeTableauAvecComposant = (args) => ({
         </template>
         <DsfrTableRow :row-data="rowData" />
       </DsfrTable>
-    </div>
   `,
-
+  mounted () {
+    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
+  },
 })
 LigneDeTableauAvecComposant.args = {
   dark: false,
@@ -160,7 +160,6 @@ export const LigneDeTableauComplexe = (args) => ({
   },
 
   template: `
-    <div :data-fr-theme="dark ? 'dark' : ''" style="background-color: var(--grey-1000-50); padding: 1rem;">
       <DsfrTable
         :title="title"
       >
@@ -169,9 +168,10 @@ export const LigneDeTableauComplexe = (args) => ({
         </template>
         <DsfrTableRow :row-data="rowData" :row-attrs="rowAttrs" />
       </DsfrTable>
-    </div>
   `,
-
+  mounted () {
+    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
+  },
 })
 LigneDeTableauComplexe.args = {
   dark: false,

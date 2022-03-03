@@ -1,5 +1,7 @@
 import { fireEvent, render } from '@testing-library/vue'
 
+import '@gouvfr/dsfr/dist/core/core.module.js'
+
 import DsfrCallout from './DsfrCallout.vue'
 
 const VIcon = { props: ['name'], template: '<i :class="name"></i>' }

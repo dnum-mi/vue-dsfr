@@ -109,16 +109,16 @@ export const TableauEntier = (args) => ({
   },
 
   template: `
-    <div :data-fr-theme="dark ? 'dark' : ''" style="background-color: var(--grey-1000-50); padding: 1rem;">
       <DsfrTable
         :title="title"
         :headers="headers"
         :rows="rows"
         :no-caption="noCaption"
       />
-    </div>
   `,
-
+  mounted () {
+    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
+  },
 })
 TableauEntier.args = {
   dark: false,

@@ -31,13 +31,14 @@ export const JeuDeTuiles = (args) => ({
   },
 
   template: `
-    <div :data-fr-theme="dark ? 'dark' : ''" style="background-color: var(--grey-1000-50); padding: 1rem;">
       <DsfrTiles
         :tiles="tiles"
         :horizontal="horizontal"
       />
-    </div>
   `,
+  mounted () {
+    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
+  },
 
 })
 JeuDeTuiles.args = {

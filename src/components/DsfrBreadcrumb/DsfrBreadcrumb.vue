@@ -1,4 +1,7 @@
 <script>
+// TODO: Pourquoi pas d’animation ?
+import '@gouvfr/dsfr/dist/component/breadcrumb/breadcrumb.module.js'
+
 import { getRandomId } from '../../utils/random-utils.js'
 
 export default {
@@ -55,7 +58,7 @@ export default {
         <li
           v-for="(link, index) in links"
           :key="index"
-          class="fr-breadcrumb__item  relative  align-center"
+          class="fr-breadcrumb__item"
           :data-testid="`lis`"
         >
           <component
@@ -72,49 +75,10 @@ export default {
             class="fr-breadcrumb__link"
             :aria-current="index === links.length - 1 ? 'page' : undefined"
           >{{ link.text }}</a>
-          <v-icon
-            v-if="index !== links.length - 1"
-            class="icon"
-            name="ri-arrow-right-s-line"
-          />
         </li>
       </ol>
     </div>
   </nav>
 </template>
 
-<style src="./breadcrumb.main.css" />
-
-<style scoped>
-.fr-collapse--expanded {
-  overflow: initial;
-}
-
-.fr-breadcrumb__link:not([aria-current])::after {
-  content: normal;
-  display: none;
-}
-
-.fr-breadcrumb__link:not([aria-current]) {
-  margin-right: 0;
-}
-
-.fr-breadcrumb__link, .fr-breadcrumb__item {
-  max-width: 10rem;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-}
-
-.icon {
-  position: relative;
-  top: -0.25rem;
-  font-size: 1rem;
-  pointer-events: none;
-}
-
-.align-center {
-  display: flex;
-  align-items: center;
-}
-</style>
+<style src="@gouvfr/dsfr/dist/component/breadcrumb/breadcrumb.main.css" />

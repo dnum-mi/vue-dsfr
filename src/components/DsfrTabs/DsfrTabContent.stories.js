@@ -37,7 +37,6 @@ export const ContenuDOnglet = (args) => ({
   },
 
   template: `
-  <div :data-fr-theme="dark ? 'dark' : ''" style="background-color: var(--grey-1000-50); padding: 1rem;">
     <div class="fr-tabs" style="overflow: visible">
       <DsfrTabContent
         panel-id="tab-content-3"
@@ -48,8 +47,10 @@ export const ContenuDOnglet = (args) => ({
         <div>Contenu personnalisé</div>
       </DsfrTabContent>
     </div>
-  </div>
   `,
+  mounted () {
+    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
+  },
 })
 ContenuDOnglet.args = {
   dark: false,
