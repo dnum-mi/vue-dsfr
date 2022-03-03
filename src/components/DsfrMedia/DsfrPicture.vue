@@ -6,10 +6,6 @@ export default {
       type: String,
       default: '',
     },
-    src: {
-      type: String,
-      required: true,
-    },
     legend: {
       type: String,
       default: '',
@@ -18,6 +14,14 @@ export default {
       type: String,
       default: undefined,
       validator: (val) => ['small', 'medium', 'large', undefined].includes(val),
+    },
+    src: {
+      type: String,
+      required: true,
+    },
+    title: {
+      type: String,
+      default: '',
     },
   },
 }
@@ -34,11 +38,15 @@ export default {
     :aria-label="legend"
   >
     <div class="fr-content-media__img">
-      <img
-        :src="src"
-        class="fr-responsive-img"
-        :alt="alt"
-      >
+      <!-- @slot Slot par défaut pour insérer une image personnalisée (SVG ou autre). Par défaut, insère l’image donnée par la props src -->
+      <slot>
+        <img
+          :src="src"
+          class="fr-responsive-img"
+          :alt="alt"
+          :title="title"
+        >
+      </slot>
     </div>
     <figcaption class="fr-content-media__caption">
       {{ legend }}
