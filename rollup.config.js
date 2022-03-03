@@ -7,7 +7,6 @@ import atImport from 'postcss-import'
 import postcssNested from 'postcss-nested'
 import postcssFlexbugsFixes from 'postcss-flexbugs-fixes'
 import postcssPresetEnv from 'postcss-preset-env'
-import autoprefixer from 'autoprefixer'
 import csso from 'postcss-csso'
 
 const postcssPlugins = [
@@ -15,10 +14,14 @@ const postcssPlugins = [
   postcssNested,
   postcssFlexbugsFixes,
   postcssPresetEnv({
+    autoprefixer: {
+      flexbox: 'no-2009',
+    },
     stage: 1,
-  }),
-  autoprefixer({
-    flexbox: 'no-2009',
+    features: {
+      'custom-properties': false,
+      'focus-visible-pseudo-class': false,
+    },
   }),
   csso,
 ]

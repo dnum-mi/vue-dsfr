@@ -1,5 +1,7 @@
 <script>
-import '@gouvfr/dsfr/dist/component/header/header.module.js'
+// TODO: Demander au DSFR pourquoi cette erreur au clic sur le menu burger : TypeError: can't access property "insertBefore", parent is null
+// TODO: Demander au DSFR pourquoi cette erreur au clic sur la recherche : TypeError: can't access property "nextSibling", node is null
+// import '@gouvfr/dsfr/dist/component/header/header.module.js'
 
 import DsfrLogo from '../DsfrLogo/DsfrLogo.vue'
 import DsfrSearchBar from '../DsfrSearchBar/DsfrSearchBar.vue'
@@ -30,6 +32,10 @@ export default {
       type: String,
       default: '',
     },
+    placeholder: {
+      type: String,
+      default: 'Rechercher',
+    },
     quickLinks: {
       type: Array,
       default: () => undefined,
@@ -55,6 +61,9 @@ export default {
     linkComponent () {
       return '$nuxt' in this ? 'nuxt-link' : 'router-link'
     },
+    isWithSlotOperator () {
+      return this.$slots.operator?.().length
+    },
   },
 
   methods: {
@@ -63,15 +72,14 @@ export default {
       this.menuOpened = false
       this.searchModalOpened = false
     },
-    showModal () {
-      this.modalOpened = true
-    },
     showMenu () {
-      this.showModal()
+      this.modalOpened = true
       this.menuOpened = true
+      this.searchModalOpened = false
     },
     showSearchModal () {
-      this.showModal()
+      this.modalOpened = true
+      this.menuOpened = false
       this.searchModalOpened = true
     },
   },
@@ -95,15 +103,22 @@ export default {
                 />
               </div>
               <div
+                v-if="isWithSlotOperator"
+                class="fr-header__operator"
+              >
+                <!-- @slot Slot nommé operator pour le logo opérateur. Sera dans `<div class="fr-header__operator">` -->
+                <slot name="operator" />
+              </div>
+              <div
                 v-if="showSearch || (quickLinks && quickLinks.length)"
                 class="fr-header__navbar"
               >
                 <button
-                  class="fr-btn--menu  fr-btn"
+                  class="fr-btn"
                   aria-controls="header-search"
                   aria-label="Recherche"
                   title="Recherche"
-                  :data-fr-opened="`${modalOpened}`"
+                  :data-fr-opened="showSearchModal"
                   @click="showSearchModal"
                 >
                   <VIcon
@@ -113,18 +128,14 @@ export default {
                 <button
                   id="button-menu"
                   class="fr-btn--menu  fr-btn"
-                  :data-fr-opened="`${modalOpened}`"
+                  :data-fr-opened="showMenu"
                   aria-controls="header-navigation"
                   aria-haspopup="menu"
                   aria-label="Menu"
                   title="Menu"
                   data-testid="open-menu-btn"
-                  @click="showMenu"
-                >
-                  <VIcon
-                    name="ri-menu-fill"
-                  />
-                </button>
+                  @click="showMenu()"
+                />
               </div>
             </div>
             <div
@@ -165,6 +176,7 @@ export default {
             >
               <DsfrSearchBar
                 :model-value="modelValue"
+                :placeholder="placeholder"
                 style="justify-content: flex-end"
                 @update:model-value="$emit('update:modelValue', $event)"
                 @search="$emit('search', $event)"
@@ -186,9 +198,6 @@ export default {
               data-testid="close-modal-btn"
               @click="hideModal"
             >
-              <VIcon
-                name="ri-close-line"
-              />
               Fermer
             </button>
             <div class="fr-header__menu-links">
@@ -203,8 +212,8 @@ export default {
             >
               <DsfrSearchBar
                 :model-value="modelValue"
-                style="justify-content: flex-end"
-                @update:modelValue="$emit('update:modelValue', $event)"
+                :placeholder="placeholder"
+                @update:model-value="$emit('update:modelValue', $event)"
                 @search="$emit('search', $event)"
               />
             </div>

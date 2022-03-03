@@ -9,7 +9,9 @@ module.exports = {
       stage: 1,
       features: {
         'custom-properties': false,
+        'focus-visible-pseudo-class': false,
       },
     }),
+    require('postcss-csso'),
   ],
 }

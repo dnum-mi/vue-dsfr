@@ -19,6 +19,7 @@ const postcssPlugins = [
     stage: 1,
     features: {
       'custom-properties': false,
+      'focus-visible-pseudo-class': false,
     },
   }),
   csso,
@@ -26,7 +27,7 @@ const postcssPlugins = [
 
 mkdirp.sync('dist')
 
-fs.readFile('./src/variables-fdr.css', 'utf8', (err, css) => {
+fs.readFile('./src/assets/variables-fdr.css', 'utf8', (err, css) => {
   if (err) {
     console.error(err)
     throw err

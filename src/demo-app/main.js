@@ -21,3 +21,8 @@ createApp(App)
   .use(router)
   .use(VueDsfr)
   .mount('#app')
+
+window.dsfr = {
+  verbose: true,
+  mode: 'manual',
+}

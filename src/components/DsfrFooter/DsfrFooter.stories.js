@@ -54,6 +54,77 @@ export default {
   },
 }
 
+export const PiedDePageSimple = (args) => ({
+  components: { DsfrFooter, DsfrFooterLinkList, VIcon },
+  data () {
+    return args
+  },
+  template: `
+  <DsfrFooter
+    :a11y-compliance="a11yCompliance"
+    :before-mandatory-links="beforeMandatoryLinks"
+    :after-mandatory-links="afterMandatoryLinks"
+    :logo-text="logoText"
+    :legal-link="legalLink"
+    :personal-data-link="personalDataLink"
+    :cookies-link="cookiesLink"
+    :a11y-compliance-link="a11yComplianceLink"
+    :desc-text="descText"
+    :home-link="homeLink"
+    :partners="partners"
+  >
+    <template v-slot:description>
+      <p>
+        Un moteur de recherche qui respecte votre vie privée
+        <a href="http://www.duckduckgo.com" class="fr-external-link">
+          ici
+          <VIcon name="ri-external-link-line" />
+        </a>
+      </p>
+    </template>
+  </DsfrFooter>
+  `,
+
+  mounted () {
+    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
+  },
+})
+PiedDePageSimple.args = {
+  dark: false,
+  beforeMandatoryLinks: [{ label: 'Before', to: '/before' }],
+  afterMandatoryLinks: [{ label: 'After', to: '/after' }],
+  a11yCompliance: 'partiellement conforme',
+  logoText: ['République', 'des châtons'],
+  legalLink: '/mentions-legales',
+  personalDataLink: '/donnees-personnelles',
+  cookiesLink: '/cookies',
+  a11yComplianceLink: '/a11y-conformite',
+  descText: 'Description',
+  homeLink: '/',
+  partners: {
+    mainPartner: {
+      name: 'Partenaire principal',
+      href: 'https://www.youtube.com',
+      logo: 'https://placekitten.com/150/150',
+      alt: 'Partenaire principal',
+    },
+    subPartners: [
+      {
+        name: 'Partenaire secondaire 1',
+        href: 'https://www.youtube.com',
+        logo: 'https://placekitten.com/145/151',
+        alt: 'Partenaire secondaire 1',
+      },
+      {
+        name: 'Partenaire secondaire 2',
+        href: 'https://www.youtube.com',
+        logo: 'https://placekitten.com/150/152',
+        alt: 'Partenaire secondaire 2',
+      },
+    ],
+  },
+}
+
 export const PiedDePage = (args) => ({
   components: { DsfrFooter, DsfrFooterLinkList, VIcon },
   data () {
