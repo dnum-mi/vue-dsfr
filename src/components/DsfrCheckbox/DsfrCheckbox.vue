@@ -15,7 +15,6 @@ export default defineComponent({
       type: String,
       required: true,
     },
-    disabled: Boolean,
     modelValue: Boolean,
     label: {
       type: String,
@@ -63,17 +62,16 @@ export default defineComponent({
       role="checkbox"
       :checked="modelValue"
       :aria-checked="modelValue"
-      :disabled="disabled"
+      v-bind="$attrs"
       :data-testid="`input-checkbox-${id}`"
       :data-test="`input-checkbox-${id}`"
       @change="$emit('update:modelValue', $event.target.checked)"
     >
-
     <label
       :for="id"
       class="fr-label"
     >
-      {{ label }}
+      {{ label }} {{ $attrs.required ? '*' : '' }}
       <span
         v-if="hint"
         class="fr-hint-text"

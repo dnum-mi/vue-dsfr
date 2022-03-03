@@ -24,6 +24,10 @@ export default {
       control: 'boolean',
       description: 'Indique si la case à cocher est désactivée',
     },
+    required: {
+      control: 'boolean',
+      description: 'Indique si le champ est obligatoire',
+    },
     checked: {
       control: 'boolean',
       description: 'Indique si la case à cocher est cochée',
@@ -50,6 +54,7 @@ export const Checkbox = (args) => ({
       <DsfrCheckbox
         :label="label"
         :disabled="disabled"
+        :required="required"
         :modelValue="checked"
         :hint="hint"
         :name="name || 'name1'"
@@ -68,6 +73,7 @@ Checkbox.args = {
   disabled: false,
   dark: false,
   checked: false,
+  required: false,
   label: 'Checkbox 1',
   name: 'name1',
   value: false,
