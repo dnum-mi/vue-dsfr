@@ -1,7 +1,9 @@
 <script>
+import { defineComponent } from 'vue'
+
 import DsfrHeaderMenuLink from './DsfrHeaderMenuLink.vue'
 
-export default {
+export default defineComponent({
   name: 'DsfrHeaderMenuLinks',
   components: {
     DsfrHeaderMenuLink,
@@ -13,7 +15,7 @@ export default {
       default: () => undefined,
     },
   },
-}
+})
 </script>
 
 <template>

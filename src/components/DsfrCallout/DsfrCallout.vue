@@ -1,7 +1,9 @@
 <script>
+import { defineComponent } from 'vue'
+
 import DsfrButton from '../DsfrButton/DsfrButton.vue'
 
-export default {
+export default defineComponent({
   name: 'DsfrCallout',
 
   components: {
@@ -27,7 +29,7 @@ export default {
       required: false,
     },
   },
-}
+})
 </script>
 
 <template>

@@ -3,8 +3,9 @@ import DsfrSocialNetworks from './DsfrSocialNetworks.vue'
 import DsfrNewsLetter from './DsfrNewsLetter.vue'
 
 import { allowedNetworks } from './follow-utils.js'
+import { defineComponent } from 'vue'
 
-export default {
+export default defineComponent({
   name: 'DsfrFollow',
 
   components: { DsfrSocialNetworks, DsfrNewsLetter },
@@ -33,7 +34,7 @@ export default {
     },
   },
 
-}
+})
 </script>
 
 <template>

@@ -1,5 +1,7 @@
 <script>
-export default {
+import { defineComponent } from 'vue'
+
+export default defineComponent({
   name: 'DsfrHighlight',
 
   props: {
@@ -10,7 +12,7 @@ export default {
     small: Boolean,
     large: Boolean,
   },
-}
+})
 </script>
 
 <template>

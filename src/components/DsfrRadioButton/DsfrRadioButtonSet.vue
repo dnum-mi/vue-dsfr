@@ -1,8 +1,10 @@
 
 <script>
+import { defineComponent } from 'vue'
+
 import DsfrRadioButton from './DsfrRadioButton.vue'
 
-export default {
+export default defineComponent({
   name: 'DsfrRadioButtonSet',
 
   components: {
@@ -60,7 +62,7 @@ export default {
       this.$emit('update:modelValue', $event)
     },
   },
-}
+})
 </script>
 
 <template>

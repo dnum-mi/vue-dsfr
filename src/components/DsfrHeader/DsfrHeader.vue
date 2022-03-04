@@ -1,4 +1,6 @@
 <script>
+import { defineComponent } from 'vue'
+
 // TODO: Demander au DSFR pourquoi cette erreur au clic sur le menu burger : TypeError: can't access property "insertBefore", parent is null
 // TODO: Demander au DSFR pourquoi cette erreur au clic sur la recherche : TypeError: can't access property "nextSibling", node is null
 // import '@gouvfr/dsfr/dist/component/header/header.module.js'
@@ -6,7 +8,8 @@
 import DsfrLogo from '../DsfrLogo/DsfrLogo.vue'
 import DsfrSearchBar from '../DsfrSearchBar/DsfrSearchBar.vue'
 import DsfrHeaderMenuLinks from './DsfrHeaderMenuLinks.vue'
-export default {
+
+export default defineComponent({
   name: 'DsfrHeader',
 
   components: {
@@ -83,7 +86,7 @@ export default {
       this.searchModalOpened = true
     },
   },
-}
+})
 </script>
 
 <template>

@@ -1,11 +1,13 @@
 <script>
+import { defineComponent } from 'vue'
+
 import { FocusTrap } from 'focus-trap-vue'
 
 import '@gouvfr/dsfr/dist/component/modal/modal.module.js'
 
 import DsfrButtonGroup from '../DsfrButton/DsfrButtonGroup.vue'
 
-export default {
+export default defineComponent({
   name: 'DsfrModal',
 
   components: {
@@ -91,7 +93,7 @@ export default {
       this.$emit('close')
     },
   },
-}
+})
 </script>
 
 <template>

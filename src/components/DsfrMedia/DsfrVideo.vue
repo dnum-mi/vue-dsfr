@@ -1,5 +1,7 @@
 <script>
-export default {
+import { defineComponent } from 'vue'
+
+export default defineComponent({
   name: 'DsfrVideo',
 
   props: {
@@ -25,7 +27,7 @@ export default {
     },
     format4x3: Boolean,
   },
-}
+})
 </script>
 
 <template>

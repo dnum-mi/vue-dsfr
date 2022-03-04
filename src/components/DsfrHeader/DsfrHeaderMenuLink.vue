@@ -1,5 +1,7 @@
 <script>
-export default {
+import { defineComponent } from 'vue'
+
+export default defineComponent({
   name: 'DsfrHeaderMenuLink',
 
   props: {
@@ -62,7 +64,7 @@ export default {
       return this.actualTo ? { to: this.actualTo } : { href: this.actualHref }
     },
   },
-}
+})
 </script>
 
 <template>

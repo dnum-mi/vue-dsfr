@@ -1,10 +1,12 @@
 <script>
+import { defineComponent } from 'vue'
+
 // TODO: Pourquoi pas d’animation ?
 import '@gouvfr/dsfr/dist/component/breadcrumb/breadcrumb.module.js'
 
 import { getRandomId } from '../../utils/random-utils.js'
 
-export default {
+export default defineComponent({
   name: 'DsfrBreadcrumb',
 
   props: {
@@ -31,7 +33,7 @@ export default {
       return '$nuxt' in this ? 'nuxt-link' : 'router-link'
     },
   },
-}
+})
 </script>
 
 <template>

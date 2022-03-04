@@ -1,5 +1,7 @@
 <script>
-export default {
+import { defineComponent } from 'vue'
+
+export default defineComponent({
   name: 'DsfrContent',
 
   props: {
@@ -25,7 +27,7 @@ export default {
       return { [this.isExternalLink ? 'href' : 'to']: this.url }
     },
   },
-}
+})
 </script>
 
 <template>
