@@ -20,6 +20,7 @@ export default defineComponent({
       type: String,
       default: '',
     },
+    labelVisible: Boolean,
     large: Boolean,
     buttonText: {
       type: String,
