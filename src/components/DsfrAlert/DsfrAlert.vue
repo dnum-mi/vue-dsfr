@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 import { defineComponent } from 'vue'
 
 import { getRandomId } from '../../utils/random-utils.js'
@@ -24,18 +24,9 @@ export default defineComponent({
       type: String,
       default: '',
     },
-    small: {
-      type: Boolean,
-      default: false,
-    },
-    closed: {
-      type: Boolean,
-      default: false,
-    },
-    closeable: {
-      type: Boolean,
-      default: false,
-    },
+    small: Boolean,
+    closed: Boolean,
+    closeable: Boolean,
   },
 
   emits: ['close'],

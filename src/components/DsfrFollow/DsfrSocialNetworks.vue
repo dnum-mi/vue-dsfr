@@ -1,7 +1,9 @@
 <script>
+import { defineComponent } from 'vue'
+
 import { allowedNetworks } from './follow-utils.js'
 
-export default {
+export default defineComponent({
   name: 'DsfrSocialNetworks',
 
   props: {
@@ -14,7 +16,7 @@ export default {
         ),
     },
   },
-}
+})
 </script>
 
 <template>

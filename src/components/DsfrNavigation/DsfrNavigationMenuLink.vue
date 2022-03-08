@@ -1,7 +1,8 @@
 <script>
+import { defineComponent } from 'vue'
 import { getRandomId } from '../../utils/random-utils.js'
 
-export default {
+export default defineComponent({
   name: 'DsfrNavigationMenuLink',
 
   props: {
@@ -29,7 +30,7 @@ export default {
       return '$nuxt' in this ? 'nuxt-link' : 'router-link'
     },
   },
-}
+})
 </script>
 
 <template>

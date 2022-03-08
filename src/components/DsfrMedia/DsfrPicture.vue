@@ -1,5 +1,7 @@
 <script>
-export default {
+import { defineComponent } from 'vue'
+
+export default defineComponent({
   name: 'DsfrPicture',
   props: {
     alt: {
@@ -24,7 +26,7 @@ export default {
       default: '',
     },
   },
-}
+})
 </script>
 
 <template>

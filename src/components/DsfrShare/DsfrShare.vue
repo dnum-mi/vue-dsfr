@@ -1,5 +1,7 @@
 <script>
-export default {
+import { defineComponent } from 'vue'
+
+export default defineComponent({
   name: 'DsfrShare',
 
   props: {
@@ -20,7 +22,7 @@ export default {
       default: () => [],
     },
   },
-}
+})
 </script>
 
 <template>

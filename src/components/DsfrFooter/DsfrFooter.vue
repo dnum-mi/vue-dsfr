@@ -1,10 +1,12 @@
 <script>
+import { defineComponent } from 'vue'
+
 import DsfrLogo from '../DsfrLogo/DsfrLogo.vue'
 import DsfrFooterPartners from '../DsfrFooter/DsfrFooterPartners.vue'
 
 import { ecosystemLinks } from '../../constants.js'
 
-export default {
+export default defineComponent({
   name: 'DsfrFooter',
 
   components: {
@@ -101,7 +103,7 @@ export default {
       return this.$slots.operato?.().length
     },
   },
-}
+})
 </script>
 
 <template>

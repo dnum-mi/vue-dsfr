@@ -1,7 +1,9 @@
 <script>
+import { defineComponent } from 'vue'
+
 import { getRandomId } from '../../utils/random-utils.js'
 
-export default {
+export default defineComponent({
   name: 'DsfrSelect',
 
   props: {
@@ -49,7 +51,7 @@ export default {
       return this.errorMessage ? 'error' : 'valid'
     },
   },
-}
+})
 </script>
 
 <template>

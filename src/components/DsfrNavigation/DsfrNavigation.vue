@@ -1,4 +1,6 @@
 <script>
+import { defineComponent } from 'vue'
+
 import '@gouvfr/dsfr/dist/component/navigation/navigation.module.js'
 
 import { getRandomId } from '../../utils/random-utils.js'
@@ -8,7 +10,7 @@ import DsfrNavigationMenuLink from './DsfrNavigationMenuLink.vue'
 import DsfrNavigationMenu from './DsfrNavigationMenu.vue'
 import DsfrNavigationMegaMenu from './DsfrNavigationMegaMenu.vue'
 
-export default {
+export default defineComponent({
   name: 'DsfrNavigation',
 
   components: {
@@ -49,7 +51,7 @@ export default {
     },
   },
 
-}
+})
 </script>
 
 <template>

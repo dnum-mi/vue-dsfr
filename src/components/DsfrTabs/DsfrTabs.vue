@@ -1,4 +1,6 @@
 <script>
+import { defineComponent } from 'vue'
+
 import '@gouvfr/dsfr/dist/component/tab/tab.module.js'
 
 import { getRandomId } from '../../utils/random-utils.js'
@@ -6,7 +8,7 @@ import { getRandomId } from '../../utils/random-utils.js'
 import DsfrTabItem from './DsfrTabItem.vue'
 import DsfrTabContent from './DsfrTabContent.vue'
 
-export default {
+export default defineComponent({
   name: 'DsfrTabs',
 
   components: {
@@ -72,7 +74,7 @@ export default {
       this.selectIndex(this.tabTitles.length - 1)
     },
   },
-}
+})
 </script>
 
 <template>

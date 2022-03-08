@@ -1,6 +1,8 @@
 
 <script>
-export default {
+import { defineComponent } from 'vue'
+
+export default defineComponent({
   name: 'DsfrLogo',
   props: {
     small: Boolean,
@@ -16,7 +18,7 @@ export default {
       return this.logoText instanceof Array ? this.logoText.join('<br>') : this.logoText
     },
   },
-}
+})
 </script>
 
 <template>

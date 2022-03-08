@@ -35,11 +35,11 @@ export default defineConfig({
       entry: path.resolve(projectDir, 'src', 'index.js'),
     },
     rollupOptions: {
-      external: ['vue'],
+      external: ['vue', 'vue-router'],
       output: {
-        dir: 'dist/plugin',
+        dir: 'dist',
         globals: {
-          vue: 'vue',
+          vue: 'Vue',
         },
       },
     },
