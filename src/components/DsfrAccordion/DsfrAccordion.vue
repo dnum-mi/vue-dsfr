@@ -1,5 +1,6 @@
 <script>
 // import '@gouvfr/dsfr/dist/component/accordion/accordion.module.js'
+
 import { defineComponent } from 'vue'
 
 import { getRandomId } from '../../utils/random-utils.js'
