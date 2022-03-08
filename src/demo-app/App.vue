@@ -3,6 +3,7 @@ import { ref } from 'vue'
 import DsfrNavigation from '../components/DsfrNavigation/DsfrNavigation.vue'
 import DsfrButton from '../components/DsfrButton/DsfrButton.vue'
 import DsfrAccordion from '../components/DsfrAccordion/DsfrAccordion.vue'
+import DsfrAccordionsGroup from '../components/DsfrAccordion/DsfrAccordionsGroup.vue'
 
 const isModalOpen = ref(false)
 const displayAlert = ref(false)
@@ -34,6 +35,9 @@ const actions = [
 ]
 
 const showNotifications = ref(false)
+
+const accordionTitle = 'Titre de l’accordéon'
+const expandedId = ref(undefined)
 
 const displayNotifications = () => {
   showNotifications.value = true
@@ -129,8 +133,17 @@ const navItems = [
       />
       équivaut à
       <span class="fr-fi-search-line" />
-
-      <DsfrAccordion />
+      <DsfrAccordionsGroup>
+        <li>
+          <DsfrAccordion
+            :title="accordionTitle"
+            :expanded-id="expandedId"
+            @expand="expandedId = $event === expandedId ? undefined : $event"
+          >
+            Contenu de l’accordéon dans l’accordéon
+          </DsfrAccordion>
+        </li>
+      </DsfrAccordionsGroup>
     </div>
 
     <DsfrModal
