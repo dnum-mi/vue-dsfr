@@ -1,7 +1,9 @@
 <script>
+import { defineComponent } from 'vue'
+
 import DsfrNavigationMenuLink from './DsfrNavigationMenuLink.vue'
 
-export default {
+export default defineComponent({
   name: 'DsfrNavigationMegaMenuCategory',
 
   components: {
@@ -18,7 +20,7 @@ export default {
       required: true,
     },
   },
-}
+})
 </script>
 
 <template>

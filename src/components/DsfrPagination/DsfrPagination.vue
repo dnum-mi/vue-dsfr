@@ -1,5 +1,7 @@
 <script>
-export default {
+import { defineComponent } from 'vue'
+
+export default defineComponent({
   name: 'DsfrPagination',
   props: {
     pages: {
@@ -71,7 +73,7 @@ export default {
       this.$emit('update:currentPage', index)
     },
   },
-}
+})
 </script>
 
 <template>

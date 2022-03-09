@@ -1,7 +1,8 @@
 <script>
+import { defineComponent } from 'vue'
 import { getRandomId } from '../../utils/random-utils.js'
 
-export default {
+export default defineComponent({
   name: 'DsfrNavigationMenuItem',
 
   props: {
@@ -11,7 +12,7 @@ export default {
     },
     active: Boolean,
   },
-}
+})
 </script>
 
 <template>

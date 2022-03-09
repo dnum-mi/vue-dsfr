@@ -11,7 +11,7 @@ export default {
       description: 'Permet de voir le composant dans les deux **thèmes** : **clair** (`false`, défaut) et **sombre** (`true`).\n\n*N.B. : Ne fait pas partie du composant.*',
     },
     id: {
-      control: 'string',
+      control: 'text',
       description: 'Valeur de l’attribut `id` de ce sous-menu. *N.B. : Il est recommandé de ne pas le donner, la bibliothèque lui en donnera un aléatoire*.',
     },
     active: {

@@ -1,5 +1,7 @@
 <script>
-export default {
+import { defineComponent } from 'vue'
+
+export default defineComponent({
   name: 'DsfrCard',
 
   props: {
@@ -42,7 +44,7 @@ export default {
       this.$refs.title.querySelector('.fr-card__link').click()
     },
   },
-}
+})
 </script>
 
 <template>

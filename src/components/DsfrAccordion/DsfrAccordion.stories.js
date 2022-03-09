@@ -1,4 +1,5 @@
 import DsfrAccordion from './DsfrAccordion.vue'
+import DsfrAccordionsGroup from './DsfrAccordionsGroup.vue'
 
 export default {
   component: DsfrAccordion,
@@ -12,31 +13,43 @@ export default {
       control: 'text',
       description: 'Intitulé de l’accordéon',
     },
-    expanded: {
-      control: 'boolean',
-      description: 'Spécifie si l’accordéon est déplié (`true`) ou non (`false`, défaut)',
-    },
   },
 }
 
 export const Accordeon = (args) => ({
   components: {
     DsfrAccordion,
+    DsfrAccordionsGroup,
   },
 
   data () {
     return {
       ...args,
+      expandedId: undefined,
     }
   },
 
   template: `
-    <DsfrAccordion
-      :title="title"
-      :expanded="expanded"
-    >
-      Contenu de l’accordéon
-    </DsfrAccordion>
+  <DsfrAccordionsGroup>
+    <li>
+      <DsfrAccordion
+        :title="title + ' 1'"
+        :expanded-id="expandedId"
+        @expand="expandedId = $event"
+      >
+        Contenu de l’accordéon 1
+      </DsfrAccordion>
+    </li>
+    <li>
+      <DsfrAccordion
+        :title="title + ' 2'"
+        :expanded-id="expandedId"
+        @expand="expandedId = $event"
+      >
+        Contenu de l’accordéon 2
+      </DsfrAccordion>
+    </li>
+  </DsfrAccordionGroup>
   `,
 
   mounted () {
@@ -46,33 +59,75 @@ export const Accordeon = (args) => ({
 Accordeon.args = {
   dark: false,
   title: 'Un titre d’accordéon',
-  expanded: false,
 }
 
 export const AccordeonDansUnAccordeon = (args) => ({
   components: {
     DsfrAccordion,
+    DsfrAccordionsGroup,
   },
 
   data () {
     return {
       ...args,
       titleSub: 'Intitulé du sous-accordéon',
+      expandedId: undefined,
+      subExpandedId1: undefined,
+      subExpandedId2: undefined,
     }
   },
 
   template: `
-    <DsfrAccordion
-      :title="title"
-      :expanded="expanded"
-    >
+    <DsfrAccordionsGroup>
       <DsfrAccordion
-        :title="titleSub"
-        :expanded="false"
+        :title="title + ' 1'"
+        :expanded-id="expandedId"
+        @expand="expandedId = $event"
       >
-        Contenu de l’accordéon
+        <li>
+          <DsfrAccordion
+            :title="titleSub + ' 1'"
+            :expanded-id="subExpandedId1"
+            @expand="subExpandedId1 = $event"
+          >
+            Contenu de l’accordéon dans l’accordéon
+          </DsfrAccordion>
+        </li>
+        <li>
+          <DsfrAccordion
+            :title="titleSub + ' 2'"
+            :expanded-id="subExpandedId1"
+            @expand="subExpandedId1 = $event"
+          >
+            Contenu de l’accordéon dans l’accordéon
+          </DsfrAccordion>
+        </li>
       </DsfrAccordion>
-    </DsfrAccordion>
+      <DsfrAccordion
+        :title="title + ' 2'"
+        :expanded-id="expandedId"
+        @expand="expandedId = $event"
+      >
+        <li>
+          <DsfrAccordion
+            :title="titleSub + ' 1'"
+            :expanded-id="subExpandedId2"
+            @expand="subExpandedId2 = $event"
+          >
+            Contenu de l’accordéon dans l’accordéon
+          </DsfrAccordion>
+        </li>
+        <li>
+          <DsfrAccordion
+            :title="titleSub + ' 2'"
+            :expanded-id="subExpandedId2"
+            @expand="subExpandedId2 = $event"
+          >
+            Contenu de l’accordéon dans l’accordéon
+          </DsfrAccordion>
+        </li>
+      </DsfrAccordion>
+    </DsfrAccordionsGroup>
   `,
 
   mounted () {
@@ -83,5 +138,5 @@ export const AccordeonDansUnAccordeon = (args) => ({
 AccordeonDansUnAccordeon.args = {
   dark: false,
   title: 'Un titre d’accordéon',
-  expanded: false,
+  titleSub: 'Accordéon dans l’accordéon',
 }

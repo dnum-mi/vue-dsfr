@@ -1,7 +1,9 @@
 <script>
+import { defineComponent } from 'vue'
+
 import DsfrTile from './DsfrTile.vue'
 
-export default {
+export default defineComponent({
   name: 'DsfrTiles',
   components: {
     DsfrTile,
@@ -13,7 +15,7 @@ export default {
     },
     horizontal: Boolean,
   },
-}
+})
 </script>
 
 <template>

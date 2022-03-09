@@ -1,5 +1,6 @@
 <script>
 import { defineComponent } from 'vue'
+
 import DsfrButton from './DsfrButton.vue'
 
 export default defineComponent({

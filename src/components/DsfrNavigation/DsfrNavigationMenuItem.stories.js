@@ -17,11 +17,11 @@ export default {
       description: 'Valeur de l’id du menu déroulé. *N.B. : Ne fait pas partie de ce composant.*',
     },
     menuId: {
-      control: 'string',
+      control: 'text',
       description: 'Valeur de l’attribut `id` de ce sous-menu. *N.B. : Il est recommandé de ne pas le donner, la bibliothèque lui en donnera un aléatoire*. *N.B. : Ne fait pas partie de ce composant.*',
     },
     id: {
-      control: 'string',
+      control: 'text',
       description: 'Valeur de l’attribut `id` de cet item de menu de navigation.',
     },
     active: {

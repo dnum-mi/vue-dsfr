@@ -1,5 +1,7 @@
 <script>
-export default {
+import { defineComponent } from 'vue'
+
+export default defineComponent({
   name: 'DsfrTabItem',
 
   props: {
@@ -27,7 +29,7 @@ export default {
       }
     },
   },
-}
+})
 </script>
 
 <template>

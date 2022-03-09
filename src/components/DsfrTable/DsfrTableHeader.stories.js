@@ -7,13 +7,12 @@ export default {
   component: DsfrTableHeader,
   title: 'Composants/Tableau/En-tête de tableau - DsfrTableHeader',
   argTypes: {
-    title: { control: 'text' },
     dark: {
       control: 'boolean',
       description: 'Permet de voir le composant dans les deux **thèmes** : **clair** (`false`, défaut) et **sombre** (`true`).\n\n*N.B. : Ne fait pas partie du composant.*',
     },
     header: {
-      control: 'string',
+      control: 'text',
       description: 'Texte de l’en-tête du tableau',
     },
     headerAttrs: {

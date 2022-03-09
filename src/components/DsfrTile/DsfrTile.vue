@@ -1,5 +1,7 @@
 <script>
-export default {
+import { defineComponent } from 'vue'
+
+export default defineComponent({
   name: 'DsfrTile',
 
   props:
@@ -31,7 +33,7 @@ export default {
       return '$nuxt' in this ? 'nuxt-link' : 'router-link'
     },
   },
-}
+})
 </script>
 
 <template>

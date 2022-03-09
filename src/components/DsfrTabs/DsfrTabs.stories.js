@@ -73,10 +73,10 @@ OngletsSimples.args = {
 }
 
 const customTabTitles = [
-  { title: title1, icon: 'ri-checkbox-circle-line', tabId: 'tab-0' },
-  { title: 'Titre 2', icon: 'ri-checkbox-circle-line', tabId: 'tab-1' },
-  { title: 'Titre 3', icon: 'ri-checkbox-circle-line', tabId: 'tab-2' },
-  { title: 'Titre 4', icon: 'ri-checkbox-circle-line', tabId: 'tab-3' },
+  { title: title1, icon: 'ri-checkbox-circle-line', tabId: 'tab-0', panelId: 'tab-content-0' },
+  { title: 'Titre 2', icon: 'ri-checkbox-circle-line', tabId: 'tab-1', panelId: 'tab-content-1' },
+  { title: 'Titre 3', icon: 'ri-checkbox-circle-line', tabId: 'tab-2', panelId: 'tab-content-2' },
+  { title: 'Titre 4', icon: 'ri-checkbox-circle-line', tabId: 'tab-3', panelId: 'tab-content-3' },
 ]
 
 export const OngletsComplexes = (args) => ({

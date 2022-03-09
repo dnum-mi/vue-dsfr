@@ -1,7 +1,9 @@
 <script>
+import { defineComponent } from 'vue'
+
 import '@gouvfr/dsfr/dist/component/button/button.module.js'
 
-export default {
+export default defineComponent({
   name: 'DsfrButton',
   props: {
     disabled: Boolean,
@@ -23,7 +25,7 @@ export default {
       this.$refs.btn.focus()
     },
   },
-}
+})
 </script>
 
 <template>

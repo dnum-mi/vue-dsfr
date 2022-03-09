@@ -1,8 +1,10 @@
 <script>
+import { defineComponent } from 'vue'
+
 import DsfrCheckbox from './DsfrCheckbox.vue'
 import { getRandomId } from '../../utils/random-utils.js'
 
-export default {
+export default defineComponent({
   name: 'DsfrCheckboxSet',
 
   components: {
@@ -59,7 +61,7 @@ export default {
       this.$emit('update:modelValue', selected)
     },
   },
-}
+})
 </script>
 
 <template>

@@ -1,7 +1,8 @@
 <script>
+import { defineComponent } from 'vue'
 import { getRandomId } from '../../utils/random-utils.js'
 
-export default {
+export default defineComponent({
   name: 'DsfrFileUpload',
 
   props: {
@@ -22,7 +23,7 @@ export default {
       default: undefined,
     },
   },
-}
+})
 </script>
 
 <template>

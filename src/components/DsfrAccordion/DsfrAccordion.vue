@@ -1,9 +1,11 @@
 <script>
 // import '@gouvfr/dsfr/dist/component/accordion/accordion.module.js'
 
+import { defineComponent } from 'vue'
+
 import { getRandomId } from '../../utils/random-utils.js'
 
-export default {
+export default defineComponent({
   name: 'DsfrAccordion',
   props: {
     id: {
@@ -36,7 +38,7 @@ export default {
     },
   },
 
-}
+})
 </script>
 
 <template>

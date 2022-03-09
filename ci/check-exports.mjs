@@ -35,7 +35,6 @@ if (currentFileContent !== correctString) {
     },
   ]
 
-  const missingComponent = ''
   const currentFileContentAsList = currentFileContent.split('\n').slice(0, -1).sort()
   const onlyInCorrectList = correctComponentList.filter(line => !currentFileContentAsList.includes(line))
   if (onlyInCorrectList.length) {
@@ -59,6 +58,7 @@ if (currentFileContent !== correctString) {
     await inquirer.prompt(questions).then(async answers => {
       if (answers.fix.toLocaleLowerCase() === 'y') {
         await writeFile(path.resolve(__dirname, '../src/components/index.js'), correctString)
+        await writeFile(path.resolve(__dirname, '../types/components/index.d.ts'), correctString)
         console.log(chalk.green.bold('Fichier corrigé !'))
         process.exit(0)
       }

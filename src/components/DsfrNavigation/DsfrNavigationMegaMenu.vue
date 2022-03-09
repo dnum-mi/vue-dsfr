@@ -1,9 +1,11 @@
 <script>
+import { defineComponent } from 'vue'
+
 import { getRandomId } from '../../utils/random-utils.js'
 
 import DsfrNavigationMegaMenuCategory from './DsfrNavigationMegaMenuCategory.vue'
 
-export default {
+export default defineComponent({
   name: 'DsfrNavigationMegaMenu',
 
   components: {
@@ -44,7 +46,7 @@ export default {
       return this.id === this.expandedId
     },
   },
-}
+})
 </script>
 
 <template>

@@ -1,5 +1,7 @@
 <script>
-export default {
+import { defineComponent } from 'vue'
+
+export default defineComponent({
   name: 'DsfrTableHeader',
 
   props: {
@@ -16,7 +18,7 @@ export default {
       default: undefined,
     },
   },
-}
+})
 </script>
 
 <template>
