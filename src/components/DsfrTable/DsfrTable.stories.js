@@ -11,7 +11,10 @@ export default {
   component: DsfrTable,
   title: 'Composants/Tableau/Tableau entier - DsfrTable',
   argTypes: {
-    title: { control: 'text' },
+    title: {
+      control: 'text',
+      description: 'Titre du tableau (sera dans la balise `caption`)',
+    },
     dark: {
       control: 'boolean',
       description: 'Permet de voir le composant dans les deux **thèmes** : **clair** (`false`, défaut) et **sombre** (`true`).\n\n*N.B. : Ne fait pas partie du composant.*',
