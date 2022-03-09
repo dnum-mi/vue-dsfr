@@ -7,6 +7,7 @@ declare const _default: import("vue").DefineComponent<{
         type: StringConstructor;
         default: string;
     };
+    labelVisible: BooleanConstructor;
     large: BooleanConstructor;
     buttonText: {
         type: StringConstructor;
@@ -38,6 +39,7 @@ declare const _default: import("vue").DefineComponent<{
         type: StringConstructor;
         default: string;
     };
+    labelVisible: BooleanConstructor;
     large: BooleanConstructor;
     buttonText: {
         type: StringConstructor;
@@ -61,5 +63,6 @@ declare const _default: import("vue").DefineComponent<{
     placeholder: string;
     modelValue: string;
     buttonText: string;
+    labelVisible: boolean;
 }>;
 export default _default;
