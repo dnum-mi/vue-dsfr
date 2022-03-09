@@ -26,7 +26,7 @@
     "check-exports-ci": "node ./ci/check-exports.mjs --ci",
     "dev": "npm run storybook",
     "clean-dist": "rimraf dist",
-    "prebuild": "run-s clean-dist gen-types",
+    "prebuild": "run-s clean-dist typegen",
     "build": "run-p build:css build:js",
     "postbuild": "copyfiles types/composable.d.ts dist/composable.d.ts",
     "build:css": "node build-css.mjs",
