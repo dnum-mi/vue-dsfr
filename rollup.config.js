@@ -32,12 +32,21 @@ const baseOutput = {
     'vue-router': 'vue-router',
     'oh-vue-icons/dist/v3/icon.es': 'VIcon',
     'oh-vue-icons/icons': 'icons',
+    'focus-trap': 'focus-trap',
+    'focus-trap-vue': 'focus-trap-vue',
   },
 }
 
 const baseConfig = {
   input: 'src/index.js',
-  external: ['vue', 'vue-router', 'oh-vue-icons/dist/v3/icon.es', 'oh-vue-icons/icons'],
+  external: [
+    'vue',
+    'vue-router',
+    'oh-vue-icons/dist/v3/icon.es',
+    'oh-vue-icons/icons',
+    'focus-trap',
+    'focus-trap-vue',
+  ],
   output: {
     globals: baseOutput.globals,
   },

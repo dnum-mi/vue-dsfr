@@ -1,5 +1,5 @@
-import './init-dsfr.js'
-import '@gouvfr/dsfr/dist/core/core.module.js'
+// import './init-dsfr.js'
+// import '@gouvfr/dsfr/dist/core/core.module.js'
 import * as components from './components/index.js'
 import VIcon from './icons.js'
 

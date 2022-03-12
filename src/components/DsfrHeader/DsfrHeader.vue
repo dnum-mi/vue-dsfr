@@ -2,7 +2,7 @@
 import { defineComponent } from 'vue'
 
 // Pose problème dans les tests, et risque fort de poser problème dans Nuxt
-import '@gouvfr/dsfr/dist/component/header/header.module.js'
+// import '@gouvfr/dsfr/dist/component/header/header.module.js'
 
 import DsfrLogo from '../DsfrLogo/DsfrLogo.vue'
 import DsfrSearchBar from '../DsfrSearchBar/DsfrSearchBar.vue'

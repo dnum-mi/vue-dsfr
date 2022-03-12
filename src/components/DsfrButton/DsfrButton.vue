@@ -1,7 +1,7 @@
 <script>
 import { defineComponent } from 'vue'
 
-import '@gouvfr/dsfr/dist/component/button/button.module.js'
+// import '@gouvfr/dsfr/dist/component/button/button.module.js'
 
 export default defineComponent({
   name: 'DsfrButton',

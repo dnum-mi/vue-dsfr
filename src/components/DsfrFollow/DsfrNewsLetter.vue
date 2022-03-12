@@ -21,10 +21,6 @@ export default defineComponent({
       type: String,
       default: '',
     },
-    options: {
-      type: String,
-      default: '',
-    },
     labelEmail: {
       type: String,
       default: 'Votre adresse électronique (ex. : nom@example.com)',
