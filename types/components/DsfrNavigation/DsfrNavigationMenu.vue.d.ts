@@ -1,5 +1,6 @@
-import '@gouvfr/dsfr/dist/component/navigation/navigation.module.js';
-declare const _default: import("vue").DefineComponent<{
+import { NavigationMenuLink } from './DsfrNavigation.vue'
+
+declare const _default: import('vue').DefineComponent<{
     id: {
         type: StringConstructor;
         default: () => any;
@@ -10,18 +11,18 @@ declare const _default: import("vue").DefineComponent<{
     };
     links: {
         type: ArrayConstructor;
-        default: () => any[];
+        default: () => NavigationMenuLink[];
     };
     expandedId: {
         type: StringConstructor;
-        default: any;
+        default: string;
     };
 }, unknown, unknown, {
     expanded(): boolean;
-}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, "toggle-id"[], "toggle-id", import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
+}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, 'toggle-id'[], 'toggle-id', import('vue').VNodeProps & import('vue').AllowedComponentProps & import('vue').ComponentCustomProps, Readonly<import('vue').ExtractPropTypes<{
     id: {
         type: StringConstructor;
-        default: () => any;
+        default: () => string;
     };
     title: {
         type: StringConstructor;
@@ -29,17 +30,17 @@ declare const _default: import("vue").DefineComponent<{
     };
     links: {
         type: ArrayConstructor;
-        default: () => any[];
+        default: () => NavigationMenuLink[];
     };
     expandedId: {
         type: StringConstructor;
-        default: any;
+        default: string;
     };
 }>> & {
-    "onToggle-id"?: (...args: any[]) => any;
+    'onToggle-id'?: (id: string) => void;
 }, {
     id: string;
-    links: unknown[];
     expandedId: string;
-}>;
-export default _default;
+    links: NavigationMenuLink[];
+}>
+export default _default

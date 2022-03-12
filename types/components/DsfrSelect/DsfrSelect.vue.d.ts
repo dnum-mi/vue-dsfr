@@ -1,4 +1,9 @@
-declare const _default: import("vue").DefineComponent<{
+interface SelectOption {
+  value: string | number;
+  text: string | number;
+}
+
+declare const _default: import('vue').DefineComponent<{
     required: BooleanConstructor;
     selectId: {
         type: StringConstructor;
@@ -14,7 +19,7 @@ declare const _default: import("vue").DefineComponent<{
     };
     options: {
         type: ArrayConstructor;
-        default: () => any[];
+        default: () => SelectOption[];
     };
     description: {
         type: StringConstructor;
@@ -31,16 +36,16 @@ declare const _default: import("vue").DefineComponent<{
     disabled: BooleanConstructor;
 }, unknown, unknown, {
     message(): any;
-    messageType(): "error" | "valid";
-}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, "update:modelValue"[], "update:modelValue", import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
+    messageType(): 'error' | 'valid';
+}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, 'update:modelValue'[], 'update:modelValue', import('vue').VNodeProps & import('vue').AllowedComponentProps & import('vue').ComponentCustomProps, Readonly<import('vue').ExtractPropTypes<{
     required: BooleanConstructor;
     selectId: {
         type: StringConstructor;
-        default(): any;
+        default(): string;
     };
     modelValue: {
         type: (StringConstructor | NumberConstructor)[];
-        default: any;
+        default: undefined | string;
     };
     label: {
         type: StringConstructor;
@@ -48,11 +53,11 @@ declare const _default: import("vue").DefineComponent<{
     };
     options: {
         type: ArrayConstructor;
-        default: () => any[];
+        default: () => SelectOption[];
     };
     description: {
         type: StringConstructor;
-        default: any;
+        default: string;
     };
     successMessage: {
         type: StringConstructor;
@@ -64,16 +69,16 @@ declare const _default: import("vue").DefineComponent<{
     };
     disabled: BooleanConstructor;
 }>> & {
-    "onUpdate:modelValue"?: (...args: any[]) => any;
+    'onUpdate:modelValue'?: (...args: any[]) => any;
 }, {
     description: string;
     required: boolean;
     label: string;
     disabled: boolean;
-    options: unknown[];
+    options: SelectOption[];
     modelValue: string | number;
     errorMessage: string;
     selectId: string;
     successMessage: string;
-}>;
-export default _default;
+}>
+export default _default

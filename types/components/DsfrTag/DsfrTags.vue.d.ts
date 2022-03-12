@@ -1,14 +1,16 @@
-declare const _default: import("vue").DefineComponent<{
+import { TagProps } from './DsfrTag.vue'
+
+declare const _default: import('vue').DefineComponent<{
     tags: {
         type: ArrayConstructor;
-        default: () => any[];
+        default: () => TagProps[];
     };
-}, unknown, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, Record<string, any>, string, import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
+}, unknown, unknown, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, Record<string, any>, string, import('vue').VNodeProps & import('vue').AllowedComponentProps & import('vue').ComponentCustomProps, Readonly<import('vue').ExtractPropTypes<{
     tags: {
         type: ArrayConstructor;
-        default: () => any[];
+        default: () => TagProps[];
     };
 }>>, {
-    tags: unknown[];
-}>;
-export default _default;
+    tags: TagProps[];
+}>
+export default _default

@@ -1,4 +1,4 @@
-declare const _default: import("vue").DefineComponent<{
+declare const _default: import('vue').DefineComponent<{
     title: {
         type: StringConstructor;
         default: string;
@@ -18,8 +18,8 @@ declare const _default: import("vue").DefineComponent<{
     };
 }, unknown, unknown, {
     isExternalLink(): any;
-    linkComponent(): "nuxt-link" | "router-link";
-}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, Record<string, any>, string, import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
+    linkComponent(): 'nuxt-link' | 'router-link';
+}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, Record<string, any>, string, import('vue').VNodeProps & import('vue').AllowedComponentProps & import('vue').ComponentCustomProps, Readonly<import('vue').ExtractPropTypes<{
     title: {
         type: StringConstructor;
         default: string;
@@ -41,7 +41,7 @@ declare const _default: import("vue").DefineComponent<{
     description: string;
     title: string;
     horizontal: boolean;
-    to: string | Record<string, any>;
+    to: import('vue-router').RouteLocationRaw;
     imgSrc: string;
-}>;
-export default _default;
+}>
+export default _default

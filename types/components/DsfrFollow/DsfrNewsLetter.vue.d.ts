@@ -1,4 +1,4 @@
-declare const _default: import("vue").DefineComponent<{
+declare const _default: import('vue').DefineComponent<{
     title: {
         type: StringConstructor;
         default: string;
@@ -43,7 +43,7 @@ declare const _default: import("vue").DefineComponent<{
         type: StringConstructor;
         default: string;
     };
-}, unknown, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, "update:email"[], "update:email", import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
+}, unknown, unknown, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, 'update:email'[], 'update:email', import('vue').VNodeProps & import('vue').AllowedComponentProps & import('vue').ComponentCustomProps, Readonly<import('vue').ExtractPropTypes<{
     title: {
         type: StringConstructor;
         default: string;
@@ -89,18 +89,18 @@ declare const _default: import("vue").DefineComponent<{
         default: string;
     };
 }>> & {
-    "onUpdate:email"?: (...args: any[]) => any;
+    'onUpdate:email'?: (...args: any[]) => any;
 }, {
-    description: string;
-    error: string;
-    title: string;
-    options: string;
-    placeholder: string;
-    email: string;
-    labelEmail: string;
-    inputTitle: string;
-    hintText: string;
     buttonText: string;
     buttonTitle: string;
-}>;
-export default _default;
+    description: string;
+    email: string;
+    error: string;
+    hintText: string;
+    inputTitle: string;
+    labelEmail: string;
+    options: string;
+    placeholder: string;
+    title: string;
+}>
+export default _default

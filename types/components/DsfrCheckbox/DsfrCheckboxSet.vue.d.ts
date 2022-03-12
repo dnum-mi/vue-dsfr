@@ -1,4 +1,13 @@
-declare const _default: import("vue").DefineComponent<{
+interface CheckboxOption {
+    id?: string;
+    name: string;
+    label: string;
+    disabled?: boolean;
+    value: string | number;
+    hint?: string;
+}
+
+declare const _default: import('vue').DefineComponent<{
     titleId: {
         type: StringConstructor;
         default(): any;
@@ -27,13 +36,13 @@ declare const _default: import("vue").DefineComponent<{
     };
 }, unknown, unknown, {
     message(): any;
-    additionalMessageClass(): "fr-error-text" | "fr-valid-text";
+    additionalMessageClass(): 'fr-error-text' | 'fr-valid-text';
 }, {
     onChange({ name, checked }: {
         name: any;
         checked: any;
     }): void;
-}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, "update:modelValue"[], "update:modelValue", import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
+}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, 'update:modelValue'[], 'update:modelValue', import('vue').VNodeProps & import('vue').AllowedComponentProps & import('vue').ComponentCustomProps, Readonly<import('vue').ExtractPropTypes<{
     titleId: {
         type: StringConstructor;
         default(): any;
@@ -61,15 +70,15 @@ declare const _default: import("vue").DefineComponent<{
         default: () => any[];
     };
 }>> & {
-    "onUpdate:modelValue"?: (...args: any[]) => any;
+    'onUpdate:modelValue'?: (...args: any[]) => any;
 }, {
     inline: boolean;
     legend: string;
     disabled: boolean;
-    options: unknown[];
-    modelValue: unknown[];
+    options: CheckboxOption[];
+    modelValue: (string | number)[];
     errorMessage: string;
     validMessage: string;
     titleId: string;
-}>;
-export default _default;
+}>
+export default _default

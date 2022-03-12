@@ -1,4 +1,4 @@
-declare const _default: import("vue").DefineComponent<{
+declare const _default: import('vue').DefineComponent<{
     pages: {
         type: ArrayConstructor;
         required: true;
@@ -37,10 +37,10 @@ declare const _default: import("vue").DefineComponent<{
     toPreviousPage(): void;
     toNextPage(): void;
     toLastPage(): void;
-    toPage(index: any): void;
-    isCurrentPage(page: any): boolean;
-    updatePage(index: any): void;
-}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, "update:currentPage"[], "update:currentPage", import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
+    toPage(index: number): void;
+    isCurrentPage(page: number): boolean;
+    updatePage(index: number): void;
+}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, 'update:currentPage'[], 'update:currentPage', import('vue').VNodeProps & import('vue').AllowedComponentProps & import('vue').ComponentCustomProps, Readonly<import('vue').ExtractPropTypes<{
     pages: {
         type: ArrayConstructor;
         required: true;
@@ -71,7 +71,7 @@ declare const _default: import("vue").DefineComponent<{
         default: number;
     };
 }>> & {
-    "onUpdate:currentPage"?: (...args: any[]) => any;
+    'onUpdate:currentPage'?: (page: string | number) => void;
 }, {
     currentPage: number;
     firstPageTitle: string;
@@ -79,5 +79,5 @@ declare const _default: import("vue").DefineComponent<{
     nextPageTitle: string;
     prevPageTitle: string;
     truncLimit: number;
-}>;
-export default _default;
+}>
+export default _default

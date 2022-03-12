@@ -1,4 +1,4 @@
-declare const _default: import("vue").DefineComponent<{
+declare const _default: import('vue').DefineComponent<{
     title: {
         type: StringConstructor;
         default: string;
@@ -16,7 +16,7 @@ declare const _default: import("vue").DefineComponent<{
         default: () => any;
         required: false;
     };
-}, unknown, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, Record<string, any>, string, import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
+}, unknown, unknown, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, Record<string, any>, string, import('vue').VNodeProps & import('vue').AllowedComponentProps & import('vue').ComponentCustomProps, Readonly<import('vue').ExtractPropTypes<{
     title: {
         type: StringConstructor;
         default: string;
@@ -39,5 +39,5 @@ declare const _default: import("vue").DefineComponent<{
     content: string;
     title: string;
     icon: string;
-}>;
-export default _default;
+}>
+export default _default

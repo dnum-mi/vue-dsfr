@@ -1,5 +1,4 @@
-import '@gouvfr/dsfr/dist/component/tab/tab.module.js';
-declare const _default: import("vue").DefineComponent<{
+declare const _default: import('vue').DefineComponent<{
     tabListName: {
         type: StringConstructor;
         required: true;
@@ -25,7 +24,7 @@ declare const _default: import("vue").DefineComponent<{
     selectNext(): Promise<void>;
     selectFirst(): Promise<void>;
     selectLast(): Promise<void>;
-}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, "select-tab"[], "select-tab", import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
+}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, 'select-tab'[], 'select-tab', import('vue').VNodeProps & import('vue').AllowedComponentProps & import('vue').ComponentCustomProps, Readonly<import('vue').ExtractPropTypes<{
     tabListName: {
         type: StringConstructor;
         required: true;
@@ -39,8 +38,10 @@ declare const _default: import("vue").DefineComponent<{
         default: () => any[];
     };
 }>> & {
-    "onSelect-tab"?: (...args: any[]) => any;
+    'onSelect-tab'?: (...args: any[]) => any;
 }, {
-    tabContents: unknown[];
-}>;
-export default _default;
+    tabListName: string;
+    tabContents?: string[];
+    tabTitles: string[];
+}>
+export default _default

@@ -1,5 +1,4 @@
-import '@gouvfr/dsfr/dist/component/toggle/toggle.module.js';
-declare const _default: import("vue").DefineComponent<{
+declare const _default: import('vue').DefineComponent<{
     modelValue: BooleanConstructor;
     inputId: {
         type: StringConstructor;
@@ -14,7 +13,7 @@ declare const _default: import("vue").DefineComponent<{
         default: string;
     };
     disabled: BooleanConstructor;
-}, unknown, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, "update:modelValue"[], "update:modelValue", import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
+}, unknown, unknown, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, 'update:modelValue'[], 'update:modelValue', import('vue').VNodeProps & import('vue').AllowedComponentProps & import('vue').ComponentCustomProps, Readonly<import('vue').ExtractPropTypes<{
     modelValue: BooleanConstructor;
     inputId: {
         type: StringConstructor;
@@ -30,12 +29,12 @@ declare const _default: import("vue").DefineComponent<{
     };
     disabled: BooleanConstructor;
 }>> & {
-    "onUpdate:modelValue"?: (...args: any[]) => any;
+    'onUpdate:modelValue'?: (...args: any[]) => any;
 }, {
     label: string;
     disabled: boolean;
     modelValue: boolean;
     hint: string;
     inputId: string;
-}>;
-export default _default;
+}>
+export default _default
