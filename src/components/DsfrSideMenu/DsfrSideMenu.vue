@@ -1,7 +1,7 @@
 <script setup>
 import { getRandomId } from '../../utils/random-utils.js'
 
-import '@gouvfr/dsfr/dist/component/sidemenu/sidemenu.module.js'
+// import '@gouvfr/dsfr/dist/component/sidemenu/sidemenu.module.js'
 
 import DsfrSideMenuList from './DsfrSideMenuList.vue'
 

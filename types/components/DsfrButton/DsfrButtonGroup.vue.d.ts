@@ -1,4 +1,4 @@
-declare const _default: import("vue").DefineComponent<{
+declare const _default: import('vue').DefineComponent<{
     buttons: {
         type: ArrayConstructor;
         default: () => any[];
@@ -21,7 +21,7 @@ declare const _default: import("vue").DefineComponent<{
     lg(): boolean;
     center(): boolean;
     right(): boolean;
-}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, Record<string, any>, string, import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
+}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, Record<string, any>, string, import('vue').VNodeProps & import('vue').AllowedComponentProps & import('vue').ComponentCustomProps, Readonly<import('vue').ExtractPropTypes<{
     buttons: {
         type: ArrayConstructor;
         default: () => any[];
@@ -44,5 +44,5 @@ declare const _default: import("vue").DefineComponent<{
     buttons: unknown[];
     size: string;
     align: string;
-}>;
-export default _default;
+}>
+export default _default

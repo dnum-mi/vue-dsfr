@@ -1,4 +1,15 @@
-declare const _default: import("vue").DefineComponent<{
+export interface TagProps {
+    label?: string;
+    link?: string;
+    tagName?: string;
+    icon?: string;
+    small?: boolean;
+    disabled?: boolean;
+    selected?: boolean;
+    iconOnly?: boolean;
+}
+
+declare const _default: import('vue').DefineComponent<{
     label: {
         type: StringConstructor;
         default: any;
@@ -22,10 +33,10 @@ declare const _default: import("vue").DefineComponent<{
 }, unknown, unknown, {
     is(): any;
     isExternalLink(): any;
-    linkComponent(): "nuxt-link" | "router-link";
+    linkComponent(): 'nuxt-link' | 'router-link';
     to(): any;
     href(): any;
-}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, Record<string, any>, string, import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
+}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, Record<string, any>, string, import('vue').VNodeProps & import('vue').AllowedComponentProps & import('vue').ComponentCustomProps, Readonly<import('vue').ExtractPropTypes<{
     label: {
         type: StringConstructor;
         default: any;
@@ -55,5 +66,5 @@ declare const _default: import("vue").DefineComponent<{
     icon: string;
     selected: boolean;
     iconOnly: boolean;
-}>;
-export default _default;
+}>
+export default _default

@@ -1,4 +1,10 @@
-declare const _default: import("vue").DefineComponent<{
+interface Network {
+  label: string;
+  name: 'facebook' | 'twitter' | 'linkedin';
+  url: string;
+}
+
+declare const _default: import('vue').DefineComponent<{
     title: {
         type: StringConstructor;
         default: string;
@@ -9,13 +15,13 @@ declare const _default: import("vue").DefineComponent<{
     };
     mail: {
         type: ObjectConstructor;
-        default: () => any;
+        default: () => undefined;
     };
     networks: {
         type: ArrayConstructor;
-        default: () => any[];
+        default: () => Network[];
     };
-}, unknown, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, Record<string, any>, string, import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
+}, unknown, unknown, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, Record<string, any>, string, import('vue').VNodeProps & import('vue').AllowedComponentProps & import('vue').ComponentCustomProps, Readonly<import('vue').ExtractPropTypes<{
     title: {
         type: StringConstructor;
         default: string;
@@ -26,16 +32,16 @@ declare const _default: import("vue").DefineComponent<{
     };
     mail: {
         type: ObjectConstructor;
-        default: () => any;
+        default: () => undefined;
     };
     networks: {
         type: ArrayConstructor;
-        default: () => any[];
+        default: () => Network[];
     };
 }>>, {
     title: string;
-    networks: unknown[];
+    networks: Network[];
     copyLabel: string;
-    mail: Record<string, any>;
-}>;
-export default _default;
+    mail: { to: string; label: string; };
+}>
+export default _default

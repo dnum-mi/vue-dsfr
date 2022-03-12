@@ -1,14 +1,14 @@
-declare const _default: import("vue").DefineComponent<{
+declare const _default: import('vue').DefineComponent<{
     text: {
         type: StringConstructor;
-        default: any;
+        default: string;
     };
     small: BooleanConstructor;
     large: BooleanConstructor;
-}, unknown, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, Record<string, any>, string, import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
+}, unknown, unknown, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, Record<string, any>, string, import('vue').VNodeProps & import('vue').AllowedComponentProps & import('vue').ComponentCustomProps, Readonly<import('vue').ExtractPropTypes<{
     text: {
         type: StringConstructor;
-        default: any;
+        default: string;
     };
     small: BooleanConstructor;
     large: BooleanConstructor;
@@ -16,5 +16,5 @@ declare const _default: import("vue").DefineComponent<{
     small: boolean;
     text: string;
     large: boolean;
-}>;
-export default _default;
+}>
+export default _default

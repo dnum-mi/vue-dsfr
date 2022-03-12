@@ -1,8 +1,28 @@
-import '@gouvfr/dsfr/dist/component/navigation/navigation.module.js';
-declare const _default: import("vue").DefineComponent<{
+export interface NavigationMenuLink {
+  id?: string;
+  to: import('vue-router').RouteLocationRaw;
+  text: string;
+}
+
+export interface NavigationMenu {
+  title: string;
+  links: NavigationMenuLink[];
+}
+
+export interface NavigationMegaMenu {
+  id?: string;
+  title: string;
+  description?: string;
+  link?: NavigationMenuLink;
+  menus: NavigationMenu[];
+}
+
+type NavigationItem = NavigationMenuLink | NavigationMenu | NavigationMegaMenu
+
+declare const _default: import('vue').DefineComponent<{
     id: {
         type: StringConstructor;
-        default: () => any;
+        default: () => string;
     };
     label: {
         type: StringConstructor;
@@ -10,16 +30,16 @@ declare const _default: import("vue").DefineComponent<{
     };
     navItems: {
         type: ArrayConstructor;
-        default: () => any[];
+        default: () => NavigationItem[];
     };
 }, unknown, {
-    expandedMenuId: any;
+    expandedMenuId: string;
 }, {}, {
-    toggle(id: any): void;
-}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, Record<string, any>, string, import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
+    toggle(id: string): void;
+}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, Record<string, any>, string, import('vue').VNodeProps & import('vue').AllowedComponentProps & import('vue').ComponentCustomProps, Readonly<import('vue').ExtractPropTypes<{
     id: {
         type: StringConstructor;
-        default: () => any;
+        default: () => string;
     };
     label: {
         type: StringConstructor;
@@ -27,11 +47,11 @@ declare const _default: import("vue").DefineComponent<{
     };
     navItems: {
         type: ArrayConstructor;
-        default: () => any[];
+        default: () => NavigationItem[];
     };
 }>>, {
     id: string;
     label: string;
-    navItems: unknown[];
-}>;
-export default _default;
+    navItems: NavigationItem[];
+}>
+export default _default

@@ -1,4 +1,4 @@
-declare const _default: import("vue").DefineComponent<{
+declare const _default: import('vue').DefineComponent<{
     alt: {
         type: StringConstructor;
         default: string;
@@ -9,8 +9,8 @@ declare const _default: import("vue").DefineComponent<{
     };
     size: {
         type: StringConstructor;
-        default: any;
-        validator: (val: unknown) => boolean;
+        default: string;
+        validator: (val: string) => boolean;
     };
     src: {
         type: StringConstructor;
@@ -20,7 +20,7 @@ declare const _default: import("vue").DefineComponent<{
         type: StringConstructor;
         default: string;
     };
-}, unknown, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, Record<string, any>, string, import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
+}, unknown, unknown, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, Record<string, any>, string, import('vue').VNodeProps & import('vue').AllowedComponentProps & import('vue').ComponentCustomProps, Readonly<import('vue').ExtractPropTypes<{
     alt: {
         type: StringConstructor;
         default: string;
@@ -32,7 +32,7 @@ declare const _default: import("vue").DefineComponent<{
     size: {
         type: StringConstructor;
         default: any;
-        validator: (val: unknown) => boolean;
+        validator: (val: string) => boolean;
     };
     src: {
         type: StringConstructor;
@@ -47,5 +47,5 @@ declare const _default: import("vue").DefineComponent<{
     title: string;
     size: string;
     alt: string;
-}>;
-export default _default;
+}>
+export default _default

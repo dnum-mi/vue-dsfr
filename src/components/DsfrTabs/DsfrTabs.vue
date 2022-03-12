@@ -1,7 +1,7 @@
 <script>
 import { defineComponent } from 'vue'
 
-import '@gouvfr/dsfr/dist/component/tab/tab.module.js'
+// import '@gouvfr/dsfr/dist/component/tab/tab.module.js'
 
 import { getRandomId } from '../../utils/random-utils.js'
 

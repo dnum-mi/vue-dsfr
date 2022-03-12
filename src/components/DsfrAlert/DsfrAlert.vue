@@ -5,6 +5,7 @@ import { getRandomId } from '../../utils/random-utils.js'
 
 export default defineComponent({
   name: 'DsfrAlert',
+
   props: {
     id: {
       type: String,
@@ -99,7 +100,6 @@ export default defineComponent({
 </template>
 
 <style src="@gouvfr/dsfr/dist/component/alert/alert.main.css" />
-<!-- <style src="../../../node_modules/@gouvfr/dsfr/dist/component/alert/alert.main.css" /> -->
 
 <style scoped>
 .fr-alert,

@@ -1,3 +1,5 @@
+import { SideMenuItem } from './DsfrSideMenu.vue'
+
 declare const _default: import('vue').DefineComponent<{
     id: {
         type: StringConstructor;
@@ -30,7 +32,7 @@ declare const _default: import('vue').DefineComponent<{
     'onToggle-expand'?: (...args: any[]) => any;
 }, {
     expanded: boolean;
-    menuItems: unknown[];
+    menuItems: SideMenuItem[];
     collapsable: boolean;
 }>
 export default _default

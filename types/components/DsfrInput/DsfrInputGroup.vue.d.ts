@@ -1,4 +1,4 @@
-declare const _default: import("vue").DefineComponent<{
+declare const _default: import('vue').DefineComponent<{
     id: {
         type: StringConstructor;
         default: any;
@@ -30,9 +30,9 @@ declare const _default: import("vue").DefineComponent<{
     };
 }, unknown, unknown, {
     message(): any;
-    messageClass(): "fr-error-text" | "fr-valid-text";
-    messageIcon(): "ri-alert-line" | "ri-checkbox-circle-line";
-}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, "update:modelValue"[], "update:modelValue", import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
+    messageClass(): 'fr-error-text' | 'fr-valid-text';
+    messageIcon(): 'ri-alert-line' | 'ri-checkbox-circle-line';
+}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, 'update:modelValue'[], 'update:modelValue', import('vue').VNodeProps & import('vue').AllowedComponentProps & import('vue').ComponentCustomProps, Readonly<import('vue').ExtractPropTypes<{
     id: {
         type: StringConstructor;
         default: any;
@@ -63,7 +63,7 @@ declare const _default: import("vue").DefineComponent<{
         default: any;
     };
 }>> & {
-    "onUpdate:modelValue"?: (...args: any[]) => any;
+    'onUpdate:modelValue'?: (...args: any[]) => any;
 }, {
     id: string;
     label: string;
@@ -73,5 +73,5 @@ declare const _default: import("vue").DefineComponent<{
     validMessage: string;
     descriptionId: string;
     labelVisible: boolean;
-}>;
-export default _default;
+}>
+export default _default

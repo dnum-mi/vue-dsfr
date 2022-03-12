@@ -1,4 +1,21 @@
-declare const _default: import("vue").DefineComponent<{
+interface FooterLink {
+    to: import('vue-router').RouteLocationRaw;
+    label: string;
+}
+
+interface FooterPartner {
+    href: string;
+    logo: string;
+    name: string;
+}
+
+interface FooterPartners {
+    mainPartner: FooterPartner;
+    subPartners: FooterPartner[];
+    title: string;
+}
+
+declare const _default: import('vue').DefineComponent<{
     a11yCompliance: {
         type: StringConstructor;
         default: string;
@@ -33,28 +50,25 @@ declare const _default: import("vue").DefineComponent<{
     };
     descText: {
         type: StringConstructor;
-        default: any;
+        default: string;
     };
     beforeMandatoryLinks: {
         type: ArrayConstructor;
-        default: () => any[];
+        default: () => FooterLink[];
     };
     afterMandatoryLinks: {
         type: ArrayConstructor;
-        default: () => any[];
+        default: () => FooterLink[];
     };
 }, unknown, {
     ecosystemLinks: any;
-    mandatoryLinks: {
-        label: string;
-        to: string | Record<string, any>;
-    }[];
+    mandatoryLinks: FooterLink[];
 }, {
     allLinks(): any[];
-    linkComponent(): "nuxt-link" | "router-link";
+    linkComponent(): 'nuxt-link' | 'router-link';
     isWithSlotLinkLists(): any;
     isWithSlotOperator(): any;
-}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, Record<string, any>, string, import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
+}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, Record<string, any>, string, import('vue').VNodeProps & import('vue').AllowedComponentProps & import('vue').ComponentCustomProps, Readonly<import('vue').ExtractPropTypes<{
     a11yCompliance: {
         type: StringConstructor;
         default: string;
@@ -93,23 +107,23 @@ declare const _default: import("vue").DefineComponent<{
     };
     beforeMandatoryLinks: {
         type: ArrayConstructor;
-        default: () => any[];
+        default: () => FooterLink[];
     };
     afterMandatoryLinks: {
         type: ArrayConstructor;
-        default: () => any[];
+        default: () => FooterLink[];
     };
 }>>, {
-    logoText: string | unknown[];
+    logoText: string | string[];
     a11yCompliance: string;
-    a11yComplianceLink: string | Record<string, any>;
+    a11yComplianceLink: import('vue-router').RouteLocationRaw;
     legalLink: string;
-    homeLink: string | Record<string, any>;
-    partners: Record<string, any>;
+    homeLink: import('vue-router').RouteLocationRaw;
+    partners: FooterPartners;
     personalDataLink: string;
     cookiesLink: string;
     descText: string;
-    beforeMandatoryLinks: unknown[];
-    afterMandatoryLinks: unknown[];
-}>;
-export default _default;
+    beforeMandatoryLinks: FooterLink[];
+    afterMandatoryLinks: FooterLink[];
+}>
+export default _default

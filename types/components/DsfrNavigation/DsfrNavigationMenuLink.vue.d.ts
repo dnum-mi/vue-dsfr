@@ -1,4 +1,4 @@
-declare const _default: import("vue").DefineComponent<{
+declare const _default: import('vue').DefineComponent<{
     id: {
         type: StringConstructor;
         default: () => any;
@@ -13,11 +13,11 @@ declare const _default: import("vue").DefineComponent<{
     };
 }, unknown, unknown, {
     isExternal(): any;
-    linkComponent(): "nuxt-link" | "router-link";
-}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, "toggle-id"[], "toggle-id", import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
+    linkComponent(): 'nuxt-link' | 'router-link';
+}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, 'toggle-id'[], 'toggle-id', import('vue').VNodeProps & import('vue').AllowedComponentProps & import('vue').ComponentCustomProps, Readonly<import('vue').ExtractPropTypes<{
     id: {
         type: StringConstructor;
-        default: () => any;
+        default: () => string;
     };
     to: {
         type: (ObjectConstructor | StringConstructor)[];
@@ -28,8 +28,10 @@ declare const _default: import("vue").DefineComponent<{
         required: true;
     };
 }>> & {
-    "onToggle-id"?: (...args: any[]) => any;
+    'onToggle-id'?: (id: string) => void;
 }, {
     id: string;
-}>;
-export default _default;
+    to: import('vue-router').RouteLocationRaw;
+    text: string;
+}>
+export default _default
