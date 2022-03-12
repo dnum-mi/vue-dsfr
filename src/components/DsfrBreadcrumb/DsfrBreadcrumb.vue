@@ -1,8 +1,8 @@
-<script>
+<script lang="ts">
 import { defineComponent } from 'vue'
 
-// TODO: Pourquoi pas d’animation ?
-import '@gouvfr/dsfr/dist/component/breadcrumb/breadcrumb.module.js'
+// Ne fonctionne pas dans Nuxt
+// import '@gouvfr/dsfr/dist/component/breadcrumb/breadcrumb.module.js'
 
 import { getRandomId } from '../../utils/random-utils.js'
 
