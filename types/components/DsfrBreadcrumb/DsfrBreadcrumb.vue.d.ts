@@ -1,13 +1,37 @@
-import '@gouvfr/dsfr/dist/component/breadcrumb/breadcrumb.module.js';
-declare const _default: import("vue").DefineComponent<Readonly<import("vue").ComponentPropsOptions<{
-    [x: string]: unknown;
-}>>, unknown, {
+interface BreadcrumbLink {
+    text: string;
+    to?: string | { name?: string, params?: any, path?: string, query?: any };
+}
+
+declare const _default: import('vue').DefineComponent<{
+    breadcrumbId: {
+        type: StringConstructor;
+        default(): any;
+    };
+    links: {
+        type: ArrayConstructor;
+        default: () => {
+            text: string;
+        }[];
+    };
+}, unknown, {
     hideButton: boolean;
 }, {
-    linkComponent(): "nuxt-link" | "router-link";
-}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, Record<string, any>, string, import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, readonly string[] | Readonly<import("vue").ExtractPropTypes<Readonly<import("vue").ComponentObjectPropsOptions<{
-    [x: string]: unknown;
-}>>>>, {
-    [x: number]: string;
-} | {}>;
-export default _default;
+    linkComponent(): string;
+}, {
+}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, 'close'[], 'close', import('vue').VNodeProps & import('vue').AllowedComponentProps & import('vue').ComponentCustomProps, Readonly<import('vue').ExtractPropTypes<{
+    breadcrumbId: {
+        type: StringConstructor;
+        default(): any;
+    };
+    links: {
+        type: ArrayConstructor;
+        default: () => {
+            text: string;
+        }[];
+    };
+}>>, {
+    breadcrumbId: string;
+    links: BreadcrumbLink[];
+}>
+export default _default

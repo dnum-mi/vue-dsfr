@@ -1,4 +1,4 @@
-declare const _default: import("vue").DefineComponent<{
+declare const _default: import('vue').DefineComponent<{
     id: {
         type: StringConstructor;
         default(): any;
@@ -20,8 +20,8 @@ declare const _default: import("vue").DefineComponent<{
     isValid: BooleanConstructor;
     isTextarea: BooleanConstructor;
 }, unknown, unknown, {
-    isComponent(): "input" | "textarea";
-}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, "update:modelValue"[], "update:modelValue", import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
+    isComponent(): 'input' | 'textarea';
+}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, 'update:modelValue'[], 'update:modelValue', import('vue').VNodeProps & import('vue').AllowedComponentProps & import('vue').ComponentCustomProps, Readonly<import('vue').ExtractPropTypes<{
     id: {
         type: StringConstructor;
         default(): any;
@@ -43,7 +43,7 @@ declare const _default: import("vue").DefineComponent<{
     isValid: BooleanConstructor;
     isTextarea: BooleanConstructor;
 }>> & {
-    "onUpdate:modelValue"?: (...args: any[]) => any;
+    'onUpdate:modelValue'?: (inputValue: string | number | Date) => void;
 }, {
     id: string;
     label: string;
@@ -53,5 +53,5 @@ declare const _default: import("vue").DefineComponent<{
     isInvalid: boolean;
     isValid: boolean;
     isTextarea: boolean;
-}>;
-export default _default;
+}>
+export default _default

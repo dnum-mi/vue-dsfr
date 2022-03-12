@@ -1,4 +1,4 @@
-declare const _default: import("vue").DefineComponent<{
+declare const _default: import('vue').DefineComponent<{
     id: {
         type: StringConstructor;
         default(): any;
@@ -15,9 +15,9 @@ declare const _default: import("vue").DefineComponent<{
         type: StringConstructor;
         default: string;
     };
-    small: BooleanConstructor;
     closed: BooleanConstructor;
     closeable: BooleanConstructor;
+    small: BooleanConstructor;
 }, unknown, unknown, {
     error(): boolean;
     success(): boolean;
@@ -32,7 +32,7 @@ declare const _default: import("vue").DefineComponent<{
     };
 }, {
     onClick(): void;
-}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, "close"[], "close", import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
+}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, 'close'[], 'close', import('vue').VNodeProps & import('vue').AllowedComponentProps & import('vue').ComponentCustomProps, Readonly<import('vue').ExtractPropTypes<{
     id: {
         type: StringConstructor;
         default(): any;
@@ -55,12 +55,12 @@ declare const _default: import("vue").DefineComponent<{
 }>> & {
     onClose?: (...args: any[]) => any;
 }, {
-    small: boolean;
-    description: string;
-    type: string;
     id: string;
-    closed: boolean;
     title: string;
+    type: string;
+    description: string;
+    closed: boolean;
     closeable: boolean;
-}>;
-export default _default;
+    small: boolean;
+}>
+export default _default

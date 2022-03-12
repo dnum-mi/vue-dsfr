@@ -1,4 +1,4 @@
-declare const _default: import("vue").DefineComponent<{
+declare const _default: import('vue').DefineComponent<{
     selected: BooleanConstructor;
     panelId: {
         type: StringConstructor;
@@ -12,7 +12,7 @@ declare const _default: import("vue").DefineComponent<{
         type: StringConstructor;
         required: true;
     };
-}, unknown, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("click" | "next" | "first" | "last" | "previous")[], "click" | "next" | "first" | "last" | "previous", import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
+}, unknown, unknown, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, ('click' | 'next' | 'first' | 'last' | 'previous')[], 'click' | 'next' | 'first' | 'last' | 'previous', import('vue').VNodeProps & import('vue').AllowedComponentProps & import('vue').ComponentCustomProps, Readonly<import('vue').ExtractPropTypes<{
     selected: BooleanConstructor;
     panelId: {
         type: StringConstructor;
@@ -27,13 +27,15 @@ declare const _default: import("vue").DefineComponent<{
         required: true;
     };
 }>> & {
-    onClick?: (...args: any[]) => any;
-    onNext?: (...args: any[]) => any;
-    onFirst?: (...args: any[]) => any;
-    onLast?: (...args: any[]) => any;
-    onPrevious?: (...args: any[]) => any;
+    onClick?: (event: MouseEvent) => any;
+    onNext?: () => void;
+    onFirst?: () => void;
+    onLast?: () => void;
+    onPrevious?: () => void;
 }, {
     icon: string;
     selected: boolean;
-}>;
-export default _default;
+    panelId: string;
+    tabId: string;
+}>
+export default _default

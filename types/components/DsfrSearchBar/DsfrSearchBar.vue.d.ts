@@ -1,7 +1,7 @@
-declare const _default: import("vue").DefineComponent<{
+declare const _default: import('vue').DefineComponent<{
     id: {
         type: StringConstructor;
-        default: any;
+        default: string;
     };
     label: {
         type: StringConstructor;
@@ -30,10 +30,10 @@ declare const _default: import("vue").DefineComponent<{
         type: StringConstructor;
         default: string;
     };
-}, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("search" | "update:modelValue")[], "search" | "update:modelValue", import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
+}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, ('search' | 'update:modelValue')[], 'search' | 'update:modelValue', import('vue').VNodeProps & import('vue').AllowedComponentProps & import('vue').ComponentCustomProps, Readonly<import('vue').ExtractPropTypes<{
     id: {
         type: StringConstructor;
-        default: any;
+        default: string;
     };
     label: {
         type: StringConstructor;
@@ -54,8 +54,8 @@ declare const _default: import("vue").DefineComponent<{
         default: string;
     };
 }>> & {
-    "onUpdate:modelValue"?: (...args: any[]) => any;
-    onSearch?: (...args: any[]) => any;
+    'onUpdate:modelValue'?: (search: string) => void;
+    onSearch?: (search: string) => void;
 }, {
     id: string;
     label: string;
@@ -64,5 +64,5 @@ declare const _default: import("vue").DefineComponent<{
     modelValue: string;
     buttonText: string;
     labelVisible: boolean;
-}>;
-export default _default;
+}>
+export default _default

@@ -1,23 +1,28 @@
-declare const _default: import("vue").DefineComponent<{
+type QuoteDetail = string | {
+    url: string;
+    label: string;
+}
+
+declare const _default: import('vue').DefineComponent<{
     quote: {
         type: StringConstructor;
-        default: any;
+        default: string;
     };
     icon: {
         type: StringConstructor;
-        default: any;
+        default: string;
     };
     author: {
         type: StringConstructor;
-        default: any;
+        default: string;
     };
     details: {
         type: ArrayConstructor;
-        default: () => any[];
+        default: () => QuoteDetail[];
     };
     illustration: {
         type: StringConstructor;
-        default: any;
+        default: string;
     };
     separator: {
         type: StringConstructor;
@@ -35,26 +40,26 @@ declare const _default: import("vue").DefineComponent<{
         type: StringConstructor;
         default: string;
     };
-}, unknown, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, Record<string, any>, string, import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
+}, unknown, unknown, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, Record<string, any>, string, import('vue').VNodeProps & import('vue').AllowedComponentProps & import('vue').ComponentCustomProps, Readonly<import('vue').ExtractPropTypes<{
     quote: {
         type: StringConstructor;
-        default: any;
+        default: string;
     };
     icon: {
         type: StringConstructor;
-        default: any;
+        default: string;
     };
     author: {
         type: StringConstructor;
-        default: any;
+        default: string;
     };
     details: {
         type: ArrayConstructor;
-        default: () => any[];
+        default: () => QuoteDetail[];
     };
     illustration: {
         type: StringConstructor;
-        default: any;
+        default: string;
     };
     separator: {
         type: StringConstructor;
@@ -74,7 +79,7 @@ declare const _default: import("vue").DefineComponent<{
     };
 }>>, {
     source: string;
-    details: unknown[];
+    details: QuoteDetail[];
     icon: string;
     separator: string;
     quote: string;
@@ -82,5 +87,5 @@ declare const _default: import("vue").DefineComponent<{
     illustration: string;
     sourceUrl: string;
     quoteImage: string;
-}>;
-export default _default;
+}>
+export default _default

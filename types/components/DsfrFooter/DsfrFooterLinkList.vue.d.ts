@@ -1,25 +1,30 @@
-declare const _default: import("vue").DefineComponent<{
+interface FooterLink {
+    to: import('vue-router').RouterMatcher;
+    label: string;
+}
+
+declare const _default: import('vue').DefineComponent<{
     categoryName: {
         type: StringConstructor;
         default: string;
     };
     links: {
         type: ArrayConstructor;
-        default: () => any[];
+        default: () => FooterLink[];
     };
 }, unknown, unknown, {
-    linkComponent(): "nuxt-link" | "router-link";
-}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, Record<string, any>, string, import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
+    linkComponent(): 'nuxt-link' | 'router-link';
+}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, Record<string, any>, string, import('vue').VNodeProps & import('vue').AllowedComponentProps & import('vue').ComponentCustomProps, Readonly<import('vue').ExtractPropTypes<{
     categoryName: {
         type: StringConstructor;
         default: string;
     };
     links: {
         type: ArrayConstructor;
-        default: () => any[];
+        default: () => FooterLink[];
     };
 }>>, {
-    links: unknown[];
+    links: FooterLink[];
     categoryName: string;
-}>;
-export default _default;
+}>
+export default _default

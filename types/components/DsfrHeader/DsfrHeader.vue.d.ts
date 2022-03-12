@@ -1,4 +1,15 @@
-declare const _default: import("vue").DefineComponent<{
+interface HeaderMenuLink {
+    button: boolean;
+    iconOnly: boolean;
+    iconRight: boolean;
+    icon: string;
+    label: string;
+    onClick: () => void;
+    to?: string | import('vue-router').RouteLocationRaw;
+    href: string;
+}
+
+declare const _default: import('vue').DefineComponent<{
     serviceTitle: {
         type: StringConstructor;
         default: any;
@@ -21,7 +32,7 @@ declare const _default: import("vue").DefineComponent<{
     };
     quickLinks: {
         type: ArrayConstructor;
-        default: () => any;
+        default: () => HeaderMenuLink[];
     };
     showSearch: BooleanConstructor;
     logoText: {
@@ -33,20 +44,20 @@ declare const _default: import("vue").DefineComponent<{
     searchModalOpened: boolean;
     modalOpened: boolean;
 }, {
-    linkComponent(): "nuxt-link" | "router-link";
-    isWithSlotOperator(): any;
+    linkComponent(): 'nuxt-link' | 'router-link';
+    isWithSlotOperator(): boolean;
 }, {
     hideModal(): void;
     showMenu(): void;
     showSearchModal(): void;
-}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("search" | "update:modelValue")[], "search" | "update:modelValue", import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
+}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, ('search' | 'update:modelValue')[], 'search' | 'update:modelValue', import('vue').VNodeProps & import('vue').AllowedComponentProps & import('vue').ComponentCustomProps, Readonly<import('vue').ExtractPropTypes<{
     serviceTitle: {
         type: StringConstructor;
-        default: any;
+        default: string;
     };
     serviceDescription: {
         type: StringConstructor;
-        default: any;
+        default: string;
     };
     homeTo: {
         type: StringConstructor;
@@ -62,7 +73,7 @@ declare const _default: import("vue").DefineComponent<{
     };
     quickLinks: {
         type: ArrayConstructor;
-        default: () => any;
+        default: () => HeaderMenuLink[];
     };
     showSearch: BooleanConstructor;
     logoText: {
@@ -70,16 +81,16 @@ declare const _default: import("vue").DefineComponent<{
         default: () => string;
     };
 }>> & {
-    "onUpdate:modelValue"?: (...args: any[]) => any;
-    onSearch?: (...args: any[]) => any;
+    'onUpdate:modelValue'?: (search: string) => void;
+    onSearch?: (search: string) => void;
 }, {
     placeholder: string;
-    quickLinks: unknown[];
+    quickLinks: HeaderMenuLink[];
     modelValue: string;
-    logoText: string | unknown[];
+    logoText: string | string[];
     serviceTitle: string;
     serviceDescription: string;
     homeTo: string;
     showSearch: boolean;
-}>;
-export default _default;
+}>
+export default _default

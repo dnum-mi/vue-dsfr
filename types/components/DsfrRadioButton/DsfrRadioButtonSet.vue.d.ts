@@ -1,4 +1,13 @@
-declare const _default: import("vue").DefineComponent<{
+interface RadioOption {
+  id?: string;
+  value: string | number;
+  name: string;
+  label: string;
+  hint: string;
+  img: string;
+}
+
+declare const _default: import('vue').DefineComponent<{
     disabled: BooleanConstructor;
     inline: BooleanConstructor;
     name: {
@@ -23,15 +32,15 @@ declare const _default: import("vue").DefineComponent<{
     };
     options: {
         type: ArrayConstructor;
-        default(): any[];
+        default(): RadioOption[];
     };
 }, unknown, unknown, {
-    message(): any;
-    additionalMessageClass(): "fr-error-text" | "fr-valid-text";
-    messageIcon(): "ri-alert-line" | "ri-checkbox-circle-line";
+    message(): string;
+    additionalMessageClass(): 'fr-error-text' | 'fr-valid-text';
+    messageIcon(): 'ri-alert-line' | 'ri-checkbox-circle-line';
 }, {
-    onChange($event: any): void;
-}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, "update:modelValue"[], "update:modelValue", import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
+    onChange($event: InputEvent): void;
+}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, 'update:modelValue'[], 'update:modelValue', import('vue').VNodeProps & import('vue').AllowedComponentProps & import('vue').ComponentCustomProps, Readonly<import('vue').ExtractPropTypes<{
     disabled: BooleanConstructor;
     inline: BooleanConstructor;
     name: {
@@ -56,17 +65,17 @@ declare const _default: import("vue").DefineComponent<{
     };
     options: {
         type: ArrayConstructor;
-        default(): any[];
+        default(): RadioOption[];
     };
 }>> & {
-    "onUpdate:modelValue"?: (...args: any[]) => any;
+    'onUpdate:modelValue'?: (inputValue: string | number) => any;
 }, {
     inline: boolean;
     name: string;
     legend: string;
     disabled: boolean;
-    options: unknown[];
+    options: RadioOption[];
     errorMessage: string;
     validMessage: string;
-}>;
-export default _default;
+}>
+export default _default
