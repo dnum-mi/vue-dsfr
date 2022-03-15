@@ -20,6 +20,10 @@ export default defineComponent({
       type: String,
       default: '',
     },
+    hint: {
+      type: String,
+      default: '',
+    },
     labelVisible: Boolean,
     modelValue: {
       type: String,
@@ -47,6 +51,10 @@ export default defineComponent({
     :for="id"
   >
     {{ label }} {{ $attrs.required ? '*' : '' }}
+    <span
+      v-if="hint"
+      class="fr-hint-text"
+    >{{ hint }}</span>
   </label>
   <component
     :is="isComponent"

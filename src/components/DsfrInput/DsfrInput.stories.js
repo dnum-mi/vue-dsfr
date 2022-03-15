@@ -13,6 +13,10 @@ export default {
       control: 'text',
       description: 'Label du champ de saisie',
     },
+    hint: {
+      control: 'text',
+      description: 'Indice associé au champ de saisie',
+    },
     labelVisible: {
       control: 'boolean',
       description: 'Indique si le label doit être visible (`true`) ou non (`false`, défaut)',
@@ -65,6 +69,7 @@ export const LabelNotVisible = (args) => ({
       <DsfrInput
         :model-value="modelValue"
         :label="label"
+        :hint="hint"
         :placeholder="placeholder"
         :label-visible="labelVisible"
         :disabled="disabled"
@@ -77,7 +82,6 @@ export const LabelNotVisible = (args) => ({
 })
 LabelNotVisible.args = {
   dark: false,
-  label: 'Label champ de saisie',
   labelVisible: false,
   placeholder: 'Placeholder',
   modelValue: '',
@@ -98,6 +102,7 @@ export const LabelVisible = (args) => ({
       <DsfrInput
         :model-value="modelValue"
         :label="label"
+        :hint="hint"
         :label-visible="labelVisible"
         :placeholder="placeholder"
         :disabled="disabled"
@@ -111,6 +116,7 @@ export const LabelVisible = (args) => ({
 LabelVisible.args = {
   dark: false,
   label: 'Label champ de saisie',
+  hint: 'Indice de champ de saisie',
   labelVisible: true,
   placeholder: 'Placeholder',
   modelValue: '',

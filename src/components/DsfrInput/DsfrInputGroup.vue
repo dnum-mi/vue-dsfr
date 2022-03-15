@@ -26,6 +26,10 @@ export default defineComponent({
       type: String,
       default: '',
     },
+    hint: {
+      type: String,
+      default: '',
+    },
     labelVisible: Boolean,
     modelValue: {
       type: String,
@@ -76,6 +80,7 @@ export default defineComponent({
       :is-valid="!!validMessage"
       :is-invalid="!!errorMessage"
       :label="label"
+      :hint="hint"
       :description-id="descriptionId"
       :label-visible="labelVisible"
       :model-value="modelValue"
