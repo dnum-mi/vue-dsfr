@@ -13,6 +13,10 @@ export default {
       control: 'text',
       description: 'Label du champ de saisie',
     },
+    type: {
+      control: 'text',
+      description: 'Type du champ de saisie cf. [MDN](https://developer.mozilla.org/fr/docs/Web/HTML/Element/Input)',
+    },
     hint: {
       control: 'text',
       description: 'Indice associé au champ de saisie',
@@ -65,16 +69,15 @@ export const LabelNotVisible = (args) => ({
     }
   },
   template: `
-    <div :data-fr-theme="dark ? 'dark' : ''" style="background-color: var(--grey-1000-50); padding: 1rem;">
-      <DsfrInput
-        :model-value="modelValue"
-        :label="label"
-        :hint="hint"
-        :placeholder="placeholder"
-        :label-visible="labelVisible"
-        :disabled="disabled"
-      />
-    </div>
+    <DsfrInput
+      :model-value="modelValue"
+      :label="label"
+      :hint="hint"
+      :type="type"
+      :placeholder="placeholder"
+      :label-visible="labelVisible"
+      :disabled="disabled"
+    />
   `,
   mounted () {
     document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
@@ -82,6 +85,7 @@ export const LabelNotVisible = (args) => ({
 })
 LabelNotVisible.args = {
   dark: false,
+  type: 'text',
   labelVisible: false,
   placeholder: 'Placeholder',
   modelValue: '',
@@ -98,16 +102,14 @@ export const LabelVisible = (args) => ({
     }
   },
   template: `
-    <div :data-fr-theme="dark ? 'dark' : ''" style="background-color: var(--grey-1000-50); padding: 1rem;">
-      <DsfrInput
-        :model-value="modelValue"
-        :label="label"
-        :hint="hint"
-        :label-visible="labelVisible"
-        :placeholder="placeholder"
-        :disabled="disabled"
-      />
-    </div>
+    <DsfrInput
+      :model-value="modelValue"
+      :label="label"
+      :hint="hint"
+      :label-visible="labelVisible"
+      :placeholder="placeholder"
+      :disabled="disabled"
+    />
   `,
   mounted () {
     document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
@@ -136,19 +138,17 @@ export const ChampEnErreur = (args) => ({
   },
 
   template: `
-    <div :data-fr-theme="dark ? 'dark' : ''" style="background-color: var(--grey-1000-50); padding: 1rem;">
-      <DsfrInputGroup
-        :error-message="errorMessage"
-      >
-        <DsfrInput
-          :model-value="modelValue"
-          :label="label"
-          :label-visible="labelVisible"
-          :placeholder="placeholder"
-          :is-invalid="isInvalid"
-        />
-      </DsfrInputGroup>
-    </div>
+    <DsfrInputGroup
+      :error-message="errorMessage"
+    >
+      <DsfrInput
+        :model-value="modelValue"
+        :label="label"
+        :label-visible="labelVisible"
+        :placeholder="placeholder"
+        :is-invalid="isInvalid"
+      />
+    </DsfrInputGroup>
   `,
   mounted () {
     document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
@@ -175,19 +175,17 @@ export const ChampValide = (args) => ({
     }
   },
   template: `
-    <div :data-fr-theme="dark ? 'dark' : ''" style="background-color: var(--grey-1000-50); padding: 1rem;">
-      <DsfrInputGroup
-        :valid-message="validMessage"
-      >
-        <DsfrInput
-          :model-value="modelValue"
-          :label="label"
-          :label-visible="labelVisible"
-          :placeholder="placeholder"
-          :is-valid="isValid"
-        />
-      </DsfrInputGroup>
-    </div>
+    <DsfrInputGroup
+      :valid-message="validMessage"
+    >
+      <DsfrInput
+        :model-value="modelValue"
+        :label="label"
+        :label-visible="labelVisible"
+        :placeholder="placeholder"
+        :is-valid="isValid"
+      />
+    </DsfrInputGroup>
   `,
   mounted () {
     document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
@@ -203,6 +201,38 @@ ChampValide.args = {
   isValid: true,
 }
 
+export const ChampDeSaisieDeDate = (args) => ({
+  components: {
+    DsfrInput,
+  },
+  data () {
+    return {
+      ...args,
+    }
+  },
+  template: `
+    <DsfrInput
+      :model-value="modelValue"
+      :label="label"
+      :hint="hint"
+      type="date"
+      :placeholder="placeholder"
+      :label-visible="labelVisible"
+      :disabled="disabled"
+    />
+  `,
+  mounted () {
+    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
+  },
+})
+ChampDeSaisieDeDate.args = {
+  dark: false,
+  labelVisible: false,
+  placeholder: 'Placeholder',
+  modelValue: '',
+  disabled: false,
+}
+
 export const ZoneDeTexte = (args) => ({
   components: {
     DsfrInput,
@@ -213,16 +243,14 @@ export const ZoneDeTexte = (args) => ({
     }
   },
   template: `
-    <div :data-fr-theme="dark ? 'dark' : ''" style="background-color: var(--grey-1000-50); padding: 1rem;">
-      <DsfrInput
-        :model-value="modelValue"
-        :label="label"
-        :label-visible="labelVisible"
-        :placeholder="placeholder"
-        :disabled="disabled"
-        :is-textarea="isTextarea"
-      />
-    </div>
+    <DsfrInput
+      :model-value="modelValue"
+      :label="label"
+      :label-visible="labelVisible"
+      :placeholder="placeholder"
+      :disabled="disabled"
+      :is-textarea="isTextarea"
+    />
   `,
   mounted () {
     document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')

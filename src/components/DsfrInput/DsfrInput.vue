@@ -5,6 +5,7 @@ import { getRandomId } from '../../utils/random-utils.js'
 
 export default defineComponent({
   name: 'DsfrInput',
+  inheritAttrs: false,
   props: {
     id: {
       type: String,
@@ -21,6 +22,10 @@ export default defineComponent({
       default: '',
     },
     hint: {
+      type: String,
+      default: '',
+    },
+    wrapperClass: {
       type: String,
       default: '',
     },
@@ -56,20 +61,25 @@ export default defineComponent({
       class="fr-hint-text"
     >{{ hint }}</span>
   </label>
-  <component
-    :is="isComponent"
-    :id="id"
-    class="fr-input"
-    :class="{
-      'fr-input--error': isInvalid,
-      'fr-input--valid': isValid,
-    }"
-    :value="modelValue"
-    v-bind="$attrs"
-    :aria-aria-describedby="descriptionId || undefined"
-    @input="$emit('update:modelValue', $event.target.value)"
-    @keydown.esc="$emit('update:modelValue', '')"
-  />
+  <div
+    class="fr-input-wrap"
+    :class="[wrapperClass, { 'fr-fi-calendar-line': $attrs.type === 'date' }]"
+  >
+    <component
+      :is="isComponent"
+      :id="id"
+      class="fr-input"
+      :class="{
+        'fr-input--error': isInvalid,
+        'fr-input--valid': isValid,
+      }"
+      :value="modelValue"
+      v-bind="$attrs"
+      :aria-aria-describedby="descriptionId || undefined"
+      @input="$emit('update:modelValue', $event.target.value)"
+      @keydown.esc="$emit('update:modelValue', '')"
+    />
+  </div>
 </template>
 
 <style src="@gouvfr/dsfr/dist/component/input/input.main.css" />
