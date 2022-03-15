@@ -13,6 +13,10 @@ export default {
       control: 'text',
       description: 'Label du champ de saisie. Sera passé à DsfrInput si modelValue n’est pas `undefined`',
     },
+    hint: {
+      control: 'text',
+      description: 'Indice associé au champ de saisie',
+    },
     labelVisible: {
       control: 'boolean',
       description: 'Indique si le label doit être visible (`true`) ou non (`false`, défaut). Sera passé à DsfrInput si modelValue n’est pas `undefined`',
@@ -65,6 +69,7 @@ export const ChampEnErreur = (args) => ({
         :error-message="errorMessage"
         :model-value="modelValue"
         :label="label"
+        :hint="hint"
         :label-visible="labelVisible"
         :placeholder="placeholder"
         :is-invalid="isInvalid"
