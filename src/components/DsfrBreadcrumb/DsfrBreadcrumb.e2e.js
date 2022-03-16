@@ -31,11 +31,13 @@ describe('DsfrBreadCrumb', () => {
         links,
       },
     })
+    // eslint-disable-next-line
     cy.viewport(500, 500)
       .get('.fr-breadcrumb')
       .should('be.visible')
       .get('.fr-breadcrumb__button')
       .click()
+      .wait(300)
 
     cy.get('.fr-breadcrumb__list')
       .should('be.visible')

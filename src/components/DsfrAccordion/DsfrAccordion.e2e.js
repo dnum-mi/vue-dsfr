@@ -90,7 +90,6 @@ describe('DsfrAccordion', () => {
 
     cy.tab()
       .get('.fr-accordion__btn')
-      .contains(title)
       .type('{enter}')
       .get('.fr-collapse')
       .should('not.be.visible')

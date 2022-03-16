@@ -26,6 +26,8 @@ export const Accordeon = (args) => ({
     return {
       ...args,
       expandedId: undefined,
+      title1: args.title + ' 1',
+      title2: args.title + ' 2',
     }
   },
 
@@ -33,7 +35,7 @@ export const Accordeon = (args) => ({
   <DsfrAccordionsGroup>
     <li>
       <DsfrAccordion
-        :title="title + ' 1'"
+        :title="title1"
         :expanded-id="expandedId"
         @expand="expandedId = $event"
       >
@@ -42,14 +44,14 @@ export const Accordeon = (args) => ({
     </li>
     <li>
       <DsfrAccordion
-        :title="title + ' 2'"
+        :title="title2"
         :expanded-id="expandedId"
         @expand="expandedId = $event"
       >
         Contenu de l’accordéon 2
       </DsfrAccordion>
     </li>
-  </DsfrAccordionGroup>
+  </DsfrAccordionsGroup>
   `,
 
   mounted () {
@@ -70,63 +72,43 @@ export const AccordeonDansUnAccordeon = (args) => ({
   data () {
     return {
       ...args,
-      titleSub: 'Intitulé du sous-accordéon',
+      title1: args.title + ' 1',
+      title2: args.title + ' 2',
+      titleSub1: args.titleSub + ' 1',
+      titleSub2: args.titleSub + ' 2',
       expandedId: undefined,
-      subExpandedId1: undefined,
-      subExpandedId2: undefined,
+      subExpandedId: undefined,
     }
   },
 
   template: `
     <DsfrAccordionsGroup>
-      <DsfrAccordion
-        :title="title + ' 1'"
-        :expanded-id="expandedId"
-        @expand="expandedId = $event"
-      >
-        <li>
-          <DsfrAccordion
-            :title="titleSub + ' 1'"
-            :expanded-id="subExpandedId1"
-            @expand="subExpandedId1 = $event"
-          >
-            Contenu de l’accordéon dans l’accordéon
-          </DsfrAccordion>
-        </li>
-        <li>
-          <DsfrAccordion
-            :title="titleSub + ' 2'"
-            :expanded-id="subExpandedId1"
-            @expand="subExpandedId1 = $event"
-          >
-            Contenu de l’accordéon dans l’accordéon
-          </DsfrAccordion>
-        </li>
-      </DsfrAccordion>
-      <DsfrAccordion
-        :title="title + ' 2'"
-        :expanded-id="expandedId"
-        @expand="expandedId = $event"
-      >
-        <li>
-          <DsfrAccordion
-            :title="titleSub + ' 1'"
-            :expanded-id="subExpandedId2"
-            @expand="subExpandedId2 = $event"
-          >
-            Contenu de l’accordéon dans l’accordéon
-          </DsfrAccordion>
-        </li>
-        <li>
-          <DsfrAccordion
-            :title="titleSub + ' 2'"
-            :expanded-id="subExpandedId2"
-            @expand="subExpandedId2 = $event"
-          >
-            Contenu de l’accordéon dans l’accordéon
-          </DsfrAccordion>
-        </li>
-      </DsfrAccordion>
+      <li>
+        <DsfrAccordion
+          :title="title1"
+          :expanded-id="expandedId"
+          @expand="expandedId = $event"
+        >
+          <li>
+            <DsfrAccordion
+              :title="titleSub1"
+              :expanded-id="subExpandedId"
+              @expand="subExpandedId = $event"
+            >
+              Contenu de l’accordéon dans l’accordéon
+            </DsfrAccordion>
+          </li>
+          <li>
+            <DsfrAccordion
+              :title="titleSub2"
+              :expanded-id="subExpandedId"
+              @expand="subExpandedId = $event"
+            >
+              Contenu de l’accordéon dans l’accordéon
+            </DsfrAccordion>
+          </li>
+        </DsfrAccordion>
+      </li>
     </DsfrAccordionsGroup>
   `,
 
