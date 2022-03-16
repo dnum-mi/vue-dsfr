@@ -92,7 +92,6 @@ export default defineComponent({
 </template>
 
 <style scoped>
-
 .icon-left {
   margin-right: 0.5rem
 }
@@ -105,7 +104,7 @@ export default defineComponent({
   align-items: center;
 }
 
-.reverse {
+.fr-header .fr-links-group .reverse {
   flex-direction: row-reverse;
 }
 </style>

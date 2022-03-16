@@ -24,6 +24,8 @@ export default defineComponent({
       }"
     >
       {{ text }}
+      <!-- @slot Slot par défaut pour le contenu de la mise en exergue -->
+      <slot />
     </p>
   </div>
 </template>

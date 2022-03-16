@@ -9,15 +9,14 @@ export default {
       control: 'boolean',
       description: 'Permet de voir le composant dans les deux **thèmes** : **clair** (`false`, défaut) et **sombre** (`true`).\n\n*N.B. : Ne fait pas partie du composant.*',
     },
-
-    expanded1: {
-      control: 'boolean',
-    },
-    expanded2: {
-      control: 'boolean',
-    },
-    expanded3: {
-      control: 'boolean',
+    expandedId: {
+      control: 'radio',
+      options: [
+        'none',
+        'accordion-1',
+        'accordion-2',
+        'accordion-3',
+      ],
     },
     title1: {
       control: 'text',
@@ -40,7 +39,6 @@ export const AccordeonGroupe = (args) => ({
   data () {
     return {
       ...args,
-      expandedId: undefined,
     }
   },
 
@@ -48,6 +46,7 @@ export const AccordeonGroupe = (args) => ({
   <DsfrAccordionsGroup>
     <li>
       <DsfrAccordion
+        id="accordion-1"
         :title="title1"
         :expanded-id="expandedId"
         @expand="expandedId = $event"
@@ -57,6 +56,7 @@ export const AccordeonGroupe = (args) => ({
     </li>
     <li>
       <DsfrAccordion
+        id="accordion-2"
         :title="title2"
         :expanded-id="expandedId"
         @expand="id => expandedId = id"
@@ -66,6 +66,7 @@ export const AccordeonGroupe = (args) => ({
     </li>
     <li>
       <DsfrAccordion
+        id="accordion-3"
         :title="title3"
         :expanded-id="expandedId"
         @expand="id => expandedId = id"
@@ -83,9 +84,7 @@ export const AccordeonGroupe = (args) => ({
 AccordeonGroupe.args = {
   dark: false,
   title1: 'Un titre d’accordéon',
-  expanded1: false,
   title2: 'Un titre d’accordéon',
-  expanded2: false,
   title3: 'Un titre d’accordéon',
-  expanded3: false,
+  expandedId: '',
 }

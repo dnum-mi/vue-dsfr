@@ -112,10 +112,11 @@ export default defineComponent({
                 <slot name="operator" />
               </div>
               <div
-                v-if="showSearch || (quickLinks && quickLinks.length)"
+                v-if="showSearch || quickLinks?.length"
                 class="fr-header__navbar"
               >
                 <button
+                  v-if="showSearch"
                   class="fr-btn"
                   aria-controls="header-search"
                   aria-label="Recherche"
@@ -128,6 +129,7 @@ export default defineComponent({
                   />
                 </button>
                 <button
+                  v-if="quickLinks?.length"
                   id="button-menu"
                   class="fr-btn--menu  fr-btn"
                   :data-fr-opened="showMenu"

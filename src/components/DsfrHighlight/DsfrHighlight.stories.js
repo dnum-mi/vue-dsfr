@@ -32,20 +32,51 @@ export const MiseEnExergue = (args) => ({
     return { ...args }
   },
 
+  mounted () {
+    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
+  },
+
   template: `
-    <div :data-fr-theme="dark ? 'dark' : ''" style="background-color: var(--grey-1000-50);">
-      <DsfrHighlight
-        :text="text"
-        :small="small"
-        :large="large"
-      />
-    </div>
+    <DsfrHighlight
+      :text="text"
+      :small="small"
+      :large="large"
+    />
   `,
 })
-
 MiseEnExergue.args = {
   dark: false,
   small: false,
   large: false,
   text: 'Texte original de la mise en exergue',
+}
+
+export const MiseEnExergueAvecSlot = (args) => ({
+  components: {
+    DsfrHighlight,
+  },
+
+  data () {
+    return { ...args }
+  },
+
+  mounted () {
+    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
+  },
+
+  template: `
+    <DsfrHighlight
+      :text="text"
+      :small="small"
+      :large="large"
+    >
+      <p v-if="!text">Le fameux slot mis en exergue</p>
+    </DsfrHighlight>
+  `,
+})
+MiseEnExergueAvecSlot.args = {
+  dark: false,
+  small: false,
+  large: false,
+  text: '',
 }

@@ -10,6 +10,7 @@ export default defineComponent({
   components: {
     DsfrInput,
   },
+  inheritAttrs: false,
 
   props: {
     id: {
@@ -23,6 +24,10 @@ export default defineComponent({
       },
     },
     label: {
+      type: String,
+      default: '',
+    },
+    hint: {
       type: String,
       default: '',
     },
@@ -73,14 +78,16 @@ export default defineComponent({
     <slot />
     <DsfrInput
       v-if="modelValue !== undefined"
+      v-bind="$attrs"
       :is-valid="!!validMessage"
       :is-invalid="!!errorMessage"
       :label="label"
+      :hint="hint"
       :description-id="descriptionId"
       :label-visible="labelVisible"
       :model-value="modelValue"
       :placeholder="placeholder"
-      @update:modelValue="$emit('update:modelValue', $event)"
+      @update:model-value="$emit('update:modelValue', $event)"
     />
     <p
       v-if="message"

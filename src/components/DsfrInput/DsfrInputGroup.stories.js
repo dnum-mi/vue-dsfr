@@ -13,6 +13,14 @@ export default {
       control: 'text',
       description: 'Label du champ de saisie. Sera passé à DsfrInput si modelValue n’est pas `undefined`',
     },
+    hint: {
+      control: 'text',
+      description: 'Indice associé au champ de saisie',
+    },
+    type: {
+      control: 'text',
+      description: 'Type du champ de saisie cf. [MDN](https://developer.mozilla.org/fr/docs/Web/HTML/Element/Input)',
+    },
     labelVisible: {
       control: 'boolean',
       description: 'Indique si le label doit être visible (`true`) ou non (`false`, défaut). Sera passé à DsfrInput si modelValue n’est pas `undefined`',
@@ -60,16 +68,16 @@ export const ChampEnErreur = (args) => ({
   },
 
   template: `
-    <div :data-fr-theme="dark ? 'dark' : ''" style="background-color: var(--grey-1000-50); padding: 1rem;">
-      <DsfrInputGroup
-        :error-message="errorMessage"
-        :model-value="modelValue"
-        :label="label"
-        :label-visible="labelVisible"
-        :placeholder="placeholder"
-        :is-invalid="isInvalid"
+    <DsfrInputGroup
+      :error-message="errorMessage"
+      :model-value="modelValue"
+      :type="type"
+      :label="label"
+      :hint="hint"
+      :label-visible="labelVisible"
+      :placeholder="placeholder"
+      :is-invalid="isInvalid"
       />
-    </div>
   `,
   mounted () {
     document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
@@ -83,6 +91,7 @@ ChampEnErreur.args = {
   modelValue: '',
   errorMessage: 'Message d’erreur',
   isInvalid: true,
+  type: 'text',
 }
 
 export const ChampValide = (args) => ({
@@ -96,16 +105,15 @@ export const ChampValide = (args) => ({
     }
   },
   template: `
-    <div :data-fr-theme="dark ? 'dark' : ''" style="background-color: var(--grey-1000-50); padding: 1rem;">
-      <DsfrInputGroup
-        :valid-message="validMessage"
-        :error-message="errorMessage"
-        :model-value="modelValue"
-        :label="label"
-        :label-visible="labelVisible"
-        :placeholder="placeholder"
-      />
-    </div>
+    <DsfrInputGroup
+      :valid-message="validMessage"
+      :error-message="errorMessage"
+      :model-value="modelValue"
+      :type="type"
+      :label="label"
+      :label-visible="labelVisible"
+      :placeholder="placeholder"
+    />
   `,
   mounted () {
     document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
@@ -113,6 +121,7 @@ export const ChampValide = (args) => ({
 })
 ChampValide.args = {
   dark: false,
+  type: 'text',
   label: 'Label champ de saisie',
   labelVisible: true,
   placeholder: 'Placeholder',

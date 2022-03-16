@@ -1,6 +1,4 @@
-import { DefineComponent, ComponentOptionsMixin, VNodeProps, AllowedComponentProps, ComponentCustomProps, ExtractPropTypes } from 'vue'
-
-declare const _default: DefineComponent<{
+declare const _default: import('vue').DefineComponent<{
     id: {
         type: StringConstructor;
         default(): any;
@@ -17,7 +15,7 @@ declare const _default: DefineComponent<{
     expanded(): boolean;
 }, {
     toggleExpanded(): void;
-}, ComponentOptionsMixin, ComponentOptionsMixin, 'expand'[], 'expand', VNodeProps & AllowedComponentProps & ComponentCustomProps, Readonly<ExtractPropTypes<{
+}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, 'expand'[], 'expand', import('vue').VNodeProps & import('vue').AllowedComponentProps & import('vue').ComponentCustomProps, Readonly<import('vue').ExtractPropTypes<{
     id: {
         type: StringConstructor;
         default(): any;

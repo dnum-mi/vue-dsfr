@@ -1,7 +1,8 @@
 <script>
-// import '@gouvfr/dsfr/dist/component/accordion/accordion.module.js'
-
 import { defineComponent } from 'vue'
+
+// Ne fonctionne pas dans Nuxt
+// import '@gouvfr/dsfr/dist/component/accordion/accordion.module.js'
 
 import { getRandomId } from '../../utils/random-utils.js'
 
@@ -50,14 +51,6 @@ export default defineComponent({
         :aria-controls="id"
         @click="toggleExpanded()"
       >
-        <VIcon
-          v-show="!expanded"
-          name="ri-add-line"
-        />
-        <VIcon
-          v-show="expanded"
-          name="ri-subtract-line"
-        />
         <span>{{ title }}</span>
       </button>
     </h3>
@@ -74,20 +67,6 @@ export default defineComponent({
 <style src="@gouvfr/dsfr/dist/component/accordion/accordion.main.css" />
 
 <style scoped>
-.fr-accordion__btn {
-  display: flex;
-  justify-content: space-between;
-
-  &::before {
-    display: none;
-    content: '';
-  }
-}
-
-.fr-collapse {
-  color: var(--g800);
-}
-
 .fr-collapse--expanded {
   max-height: none !important;
 }

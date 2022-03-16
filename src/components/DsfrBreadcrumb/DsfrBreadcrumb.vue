@@ -1,4 +1,4 @@
-<script lang="ts">
+<script>
 import { defineComponent } from 'vue'
 
 // Ne fonctionne pas dans Nuxt
