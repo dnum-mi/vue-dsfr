@@ -94,7 +94,7 @@ export default defineComponent({
           :name="option.name"
           :label="option.label"
           :disabled="option.disabled"
-          :model-value="modelValue.includes(option.value)"
+          :model-value="modelValue.includes(option.name)"
           :hint="option.hint"
           @update:model-value="onChange({ name: option.name, checked: $event })"
         />

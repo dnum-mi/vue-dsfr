@@ -73,7 +73,7 @@ CheckboxSet.args = {
   inline: false,
   errorMessage: '',
   validMessage: '',
-  modelValue: [],
+  modelValue: ['name1'],
   options: [
     {
       label: 'Valeur 1',
@@ -122,7 +122,7 @@ CheckboxSetAvecErreur.args = {
   disabled: false,
   inline: false,
   errorMessage: 'Message d\'erreur',
-  modelValue: [],
+  modelValue: ['name1'],
   options: [
     {
       label: 'Valeur 1',
@@ -172,7 +172,7 @@ export const CheckboxSetAvecSucces = (args) => ({
 CheckboxSetAvecSucces.args = {
   dark: false,
   legend: 'Légende des champs',
-  modelValue: [],
+  modelValue: ['name1'],
   inline: false,
   validMessage: 'Message de succès',
   options: [
@@ -224,7 +224,7 @@ export const CheckboxSetInline = (args) => ({
 CheckboxSetInline.args = {
   dark: false,
   legend: 'Légende des champs en ligne',
-  modelValue: [],
+  modelValue: ['name1'],
   inline: true,
   errorMessage: '',
   validMessage: '',
@@ -277,7 +277,7 @@ export const CheckboxSetInlineAvecErreur = (args) => ({
 CheckboxSetInlineAvecErreur.args = {
   dark: false,
   legend: 'Légende des champs en ligne',
-  modelValue: [],
+  modelValue: ['name1'],
   inline: true,
   errorMessage: 'Message d\'erreur',
   validMessage: '',
@@ -330,7 +330,7 @@ export const CheckboxSetInlineAvecSucces = (args) => ({
 CheckboxSetInlineAvecSucces.args = {
   dark: false,
   legend: 'Légende des champs en ligne',
-  modelValue: [],
+  modelValue: ['name1'],
   inline: true,
   errorMessage: '',
   validMessage: 'Message de succès',

@@ -29,6 +29,7 @@ export default defineComponent({
       type: String,
       default: '',
     },
+    isWithWrapper: Boolean,
     labelVisible: Boolean,
     modelValue: {
       type: String,
@@ -62,8 +63,13 @@ export default defineComponent({
     >{{ hint }}</span>
   </label>
   <div
-    class="fr-input-wrap"
-    :class="[wrapperClass, { 'fr-fi-calendar-line': $attrs.type === 'date' }]"
+    :class="[
+      {
+        'fr-input-wrap': isWithWrapper || $attrs.type === 'date',
+        'fr-fi-calendar-line': $attrs.type === 'date',
+      },
+      wrapperClass,
+    ]"
   >
     <component
       :is="isComponent"
