@@ -59,7 +59,7 @@ export default {
   },
 }
 
-export const LabelNotVisible = (args) => ({
+export const ChampSansLabel = (args) => ({
   components: {
     DsfrInput,
   },
@@ -83,10 +83,12 @@ export const LabelNotVisible = (args) => ({
     document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
   },
 })
-LabelNotVisible.args = {
+ChampSansLabel.args = {
   dark: false,
   type: 'text',
   labelVisible: false,
+  label: 'Label visible',
+  hint: 'Indice visible',
   placeholder: 'Placeholder',
   modelValue: '',
   disabled: false,
