@@ -119,7 +119,7 @@ export default defineComponent({
       return this.$slots['footer-link-lists']?.().length
     },
     isWithSlotOperator () {
-      return this.$slots.operato?.().length
+      return this.$slots.operator?.().length
     },
   },
 })
