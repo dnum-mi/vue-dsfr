@@ -4,8 +4,6 @@ import { defineComponent } from 'vue'
 import DsfrLogo from '../DsfrLogo/DsfrLogo.vue'
 import DsfrFooterPartners from '../DsfrFooter/DsfrFooterPartners.vue'
 
-import { ecosystemLinks } from '../../constants.js'
-
 export default defineComponent({
   name: 'DsfrFooter',
 
@@ -59,11 +57,32 @@ export default defineComponent({
       type: Array,
       default: () => [],
     },
+    ecosystemLinks: {
+      type: Array,
+      default: () => [
+        {
+          label: 'legifrance.gouv.fr',
+          href: 'https://legifrance.gouv.fr',
+        },
+        {
+          label: 'gouvernement.fr',
+          href: 'https://gouvernement.fr',
+        },
+        {
+          label: 'service-public.fr',
+          href: 'https://service-public.fr',
+        },
+        {
+          label: 'data.gouv.fr',
+          href: 'https://data.gouv.fr',
+        },
+      ],
+    },
+
   },
 
   data () {
     return {
-      ecosystemLinks,
       mandatoryLinks: [
         {
           label: `Accessibilité : ${this.a11yCompliance}`,

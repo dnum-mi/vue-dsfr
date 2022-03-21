@@ -3,7 +3,6 @@ import DsfrFooter from './DsfrFooter.vue'
 import DsfrFooterLinkList from './DsfrFooterLinkList.vue'
 import VIcon from '../../icons.js'
 import '../../main.css'
-import { ecosystemLinks } from '../../constants.js'
 
 const data = {
   dark: false,
@@ -52,6 +51,23 @@ const data = {
   },
 
 }
+const ecosystemLinks = [{
+  label: 'legifrance.gouv.fr',
+  href: 'https://legifrance.gouv.fr',
+},
+{
+  label: 'gouvernement.fr',
+  href: 'https://gouvernement.fr',
+},
+{
+  label: 'service-public.fr',
+  href: 'https://service-public.fr',
+},
+{
+  label: 'data.gouv.fr',
+  href: 'https://data.gouv.fr',
+},
+]
 const a11yCompliance = 'partiellement conforme'
 const allLinks = [
   ...data.beforeMandatoryLinks,
@@ -87,6 +103,7 @@ const DsfrFooterWrapper = {
       :a11y-compliance="a11yCompliance"
       :before-mandatory-links="beforeMandatoryLinks"
       :after-mandatory-links="afterMandatoryLinks"
+      :ecosystem-links="ecosystemLinks"
       :logo-text="logoText"
       :legal-link="legalLink"
       :personal-data-link="personalDataLink"
