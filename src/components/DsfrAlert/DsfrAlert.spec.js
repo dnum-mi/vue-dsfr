@@ -2,6 +2,8 @@ import { fireEvent, render } from '@testing-library/vue'
 
 import DsfrAlert from './DsfrAlert.vue'
 
+const VIcon = { props: ['name'], template: '<i :class="name"></i>' }
+
 describe('DsfrAlert', () => {
   it('should mount DsfrAlert with right content', () => {
     // Given
@@ -10,6 +12,11 @@ describe('DsfrAlert', () => {
 
     // When
     const { getByText } = render(DsfrAlert, {
+      global: {
+        components: {
+          VIcon,
+        },
+      },
       props: {
         title: alertTitle,
         description: alertDescription,
@@ -35,6 +42,11 @@ describe('DsfrAlert', () => {
 
     // When
     const { emitted, getByTitle } = render(DsfrAlert, {
+      global: {
+        components: {
+          VIcon,
+        },
+      },
       props: {
         title: alertTitle,
         description: alertDescription,

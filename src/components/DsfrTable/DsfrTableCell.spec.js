@@ -3,6 +3,8 @@ import { fireEvent, render } from '@testing-library/vue'
 import DsfrTableCell from './DsfrTableCell.vue'
 import DsfrTag from '../DsfrTag/DsfrTag.vue'
 
+import { spy } from '@/../tests/unit/test-utils.js'
+
 const VIcon = { props: ['name'], template: '<i :class="name"></i>' }
 
 describe('DsfrTableCell', () => {
@@ -86,7 +88,7 @@ describe('DsfrTableCell', () => {
   it('should render a cell with an onClick', async () => {
     // Given
     const field = 'Contenu'
-    const onClick = jest.fn()
+    const onClick = spy()
 
     // When
     const { container } = render(DsfrTableCell, {

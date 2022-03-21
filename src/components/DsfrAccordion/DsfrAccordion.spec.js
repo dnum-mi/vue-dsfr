@@ -1,6 +1,6 @@
 import { fireEvent, render } from '@testing-library/vue'
 
-import '@gouvfr/dsfr/dist/core/core.module.js'
+// import '@gouvfr/dsfr/dist/core/core.module.js'
 
 import DsfrAccordion from './DsfrAccordion.vue'
 
@@ -19,8 +19,8 @@ describe('DsfrAccordion', () => {
       },
       props: {
         title,
-        id: 1,
-        expandedId: 1,
+        id: '1',
+        expandedId: '1',
       },
       slots: {
         default: content,

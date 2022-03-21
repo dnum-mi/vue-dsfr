@@ -23,6 +23,10 @@ export default {
       control: 'object',
       description: 'Liste de liens succédant aux liens par défaut (liens obligatoires)',
     },
+    ecosystemLinks: {
+      control: 'object',
+      description: 'Liste de liens relatifs au gouvernement (par défaut si la props n\'est pas renseignée elle contient les quatre liens obligatoires pour un site public)',
+    },
     a11yCompliance: {
       control: 'radio',
       options: [
@@ -72,6 +76,7 @@ export const PiedDePageSimple = (args) => ({
     :desc-text="descText"
     :home-link="homeLink"
     :partners="partners"
+    :ecosystem-links="ecosystemLinks"
   >
     <template v-slot:description>
       <p>
@@ -101,6 +106,24 @@ PiedDePageSimple.args = {
   a11yComplianceLink: '/a11y-conformite',
   descText: 'Description',
   homeLink: '/',
+  ecosystemLinks: [
+    {
+      label: 'legifrance.gouv.fr',
+      href: 'https://legifrance.gouv.fr',
+    },
+    {
+      label: 'gouvernement.fr',
+      href: 'https://gouvernement.fr',
+    },
+    {
+      label: 'service-public.fr',
+      href: 'https://service-public.fr',
+    },
+    {
+      label: 'data.gouv.fr',
+      href: 'https://data.gouv.fr',
+    },
+  ],
   partners: {
     mainPartner: {
       name: 'Partenaire principal',
@@ -135,6 +158,7 @@ export const PiedDePage = (args) => ({
     :a11y-compliance="a11yCompliance"
     :before-mandatory-links="beforeMandatoryLinks"
     :after-mandatory-links="afterMandatoryLinks"
+    :ecosystem-links="ecosystemLinks"
     :logo-text="logoText"
     :legal-link="legalLink"
     :personal-data-link="personalDataLink"
@@ -193,6 +217,24 @@ PiedDePage.args = {
   linkList2: [
     { label: 'Lien 2.1', to: '/lien2/1' },
     { label: 'Lien 2.2', to: '/lien 2/2' },
+  ],
+  ecosystemLinks: [
+    {
+      label: 'legifrance.gouv.fr',
+      href: 'https://legifrance.gouv.fr',
+    },
+    {
+      label: 'gouvernement.fr',
+      href: 'https://gouvernement.fr',
+    },
+    {
+      label: 'service-public.fr',
+      href: 'https://service-public.fr',
+    },
+    {
+      label: 'data.gouv.fr',
+      href: 'https://data.gouv.fr',
+    },
   ],
   partners: {
     mainPartner: {

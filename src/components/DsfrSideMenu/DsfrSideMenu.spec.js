@@ -8,6 +8,7 @@ describe('DsfrSideMenu', () => {
 
     const { getByRole, getByText } = render(DsfrSideMenu, {
       props: {
+        id: 'id',
         headingTitle,
       },
     })

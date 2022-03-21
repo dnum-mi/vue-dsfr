@@ -1,5 +1,5 @@
 import { render } from '@testing-library/vue'
-import '@gouvfr/dsfr/dist/core/core.module.js'
+// import '@gouvfr/dsfr/dist/core/core.module.js'
 
 import DsfrButton from './DsfrButton.vue'
 

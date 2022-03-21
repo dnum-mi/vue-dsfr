@@ -52,6 +52,7 @@ defineEmits(['toggle-expand'])
         <!-- @slot Slot par défaut du contenu du menu latéral -->
         <slot>
           <DsfrSideMenuList
+            :id="getRandomId('sidemenu', 'list')"
             :menu-items="menuItems"
             @toggle-expand="$emit('toggle-expand', $event)"
           />

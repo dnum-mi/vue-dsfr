@@ -1,7 +1,7 @@
 import { render } from '@testing-library/vue'
 import { createRouter, createWebHistory } from 'vue-router'
 
-import '@gouvfr/dsfr/dist/core/core.module.js'
+// import '@gouvfr/dsfr/dist/core/core.module.js'
 
 import DsfrBreadcrumb from './DsfrBreadcrumb.vue'
 
