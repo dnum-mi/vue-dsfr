@@ -1,6 +1,8 @@
 import { fireEvent, render } from '@testing-library/vue'
 
-import '@gouvfr/dsfr/dist/core/core.module.js'
+import { spy } from '@/../tests/unit/test-utils.js'
+
+// import '@gouvfr/dsfr/dist/core/core.module.js'
 
 import DsfrCallout from './DsfrCallout.vue'
 
@@ -31,7 +33,7 @@ describe('DsfrCallout', () => {
   })
 
   it('should display a callout with button and icon', async () => {
-    const onClick = jest.fn()
+    const onClick = spy()
     const label = 'Label bouton'
     const title = 'Titre de la mise en avant'
     const icon = 'ri-information-line'

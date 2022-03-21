@@ -1,7 +1,9 @@
 import { fireEvent } from '@testing-library/dom'
 import { render } from '@testing-library/vue'
 import { createRouter, createWebHistory } from 'vue-router'
-import '@gouvfr/dsfr/dist/core/core.module.js'
+// import '@gouvfr/dsfr/dist/core/core.module.js'
+
+import { spy } from '@/../tests/unit/test-utils.js'
 
 import DsfrNavigation from './DsfrNavigation.vue'
 
@@ -161,7 +163,7 @@ describe('DsfrNavigation', () => {
     const label = 'Navigation ppale'
     const menuItemText = 'menu item text'
 
-    const mySpy = jest.fn()
+    const mySpy = spy()
     navItems[1].links[0].onClick = mySpy
     navItems[1].links[0].text = menuItemText
 

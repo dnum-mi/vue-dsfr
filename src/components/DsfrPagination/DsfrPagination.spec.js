@@ -31,9 +31,7 @@ describe('DsfrPagination', () => {
     })
 
     const thirdLink = getByTitle('Page 3')
-    console.log('Current page is #' + currentPage.value)
     await fireEvent.click(thirdLink)
-    console.log('Current page is #' + currentPage.value)
 
     // Then
     expect(emitted()['update:currentPage']).toBeTruthy()

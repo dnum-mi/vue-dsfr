@@ -2,6 +2,8 @@ import { fireEvent, render } from '@testing-library/vue'
 
 import DsfrTableHeader from './DsfrTableHeader.vue'
 
+import { spy } from '@/../tests/unit/test-utils.js'
+
 const VIcon = { props: ['name'], template: '<i :class="name"></i>' }
 
 describe('DsfrTableHeader', () => {
@@ -26,7 +28,7 @@ describe('DsfrTableHeader', () => {
 
   it('should render header cell with headerAttrs', async () => {
     const headerText = 'En-tête'
-    const onClick = jest.fn()
+    const onClick = spy()
 
     const { container } = render(DsfrTableHeader, {
       global: {
