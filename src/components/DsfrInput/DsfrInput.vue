@@ -58,7 +58,7 @@ export default defineComponent({
   >
     {{ label }} {{ $attrs.required ? '*' : '' }}
     <span
-      v-if="hint"
+      v-if="hint.length"
       class="fr-hint-text"
     >{{ hint }}</span>
   </label>
