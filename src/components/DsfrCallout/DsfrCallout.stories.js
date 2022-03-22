@@ -1,10 +1,10 @@
-import OhVueIcon from 'oh-vue-icons/dist/v3/icon.es'
+import { addIcons } from '../../icons.js'
 
 import { RiInformationLine } from 'oh-vue-icons/icons'
 
 import DsfrCallout from './DsfrCallout.vue'
 
-OhVueIcon.add(RiInformationLine)
+addIcons(RiInformationLine)
 
 export default {
   component: DsfrCallout,
