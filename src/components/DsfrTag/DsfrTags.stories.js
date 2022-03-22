@@ -1,13 +1,14 @@
 import DsfrTag from './DsfrTag.vue'
 import DsfrTags from './DsfrTags.vue'
 
-import VIcon from 'oh-vue-icons/dist/v3/icon.es'
+import { addIcons } from '../../icons.js'
+
 import {
   RiArrowLeftFill,
   RiArrowRightFill,
 } from 'oh-vue-icons/icons/ri/index.js'
 
-VIcon.add(
+addIcons(
   RiArrowLeftFill,
   RiArrowRightFill,
 )

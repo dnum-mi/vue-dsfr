@@ -1,10 +1,9 @@
 import { fireEvent, render } from '@testing-library/vue'
-
+import VIcon from '../../icons.js'
 // import '@gouvfr/dsfr/dist/core/core.module.js'
 
 import DsfrAccordion from './DsfrAccordion.vue'
 
-const VIcon = { props: ['name'], template: '<i :class="name"></i>' }
 
 describe('DsfrAccordion', () => {
   it('should render a simple accordion', async () => {

@@ -1,11 +1,11 @@
-import VIcon from 'oh-vue-icons/dist/v3/icon.es'
+import VIcon, { addIcons } from '../../icons.js'
 
 import { RiExternalLinkLine } from 'oh-vue-icons/icons'
 
 import DsfrFooter from './DsfrFooter.vue'
 import DsfrFooterLinkList from './DsfrFooterLinkList.vue'
 
-VIcon.add(RiExternalLinkLine)
+addIcons(RiExternalLinkLine)
 
 export default {
   component: DsfrFooter,
@@ -59,7 +59,11 @@ export default {
 }
 
 export const PiedDePageSimple = (args) => ({
-  components: { DsfrFooter, DsfrFooterLinkList, VIcon },
+  components: {
+    DsfrFooter,
+    DsfrFooterLinkList,
+    VIcon,
+  },
   data () {
     return args
   },

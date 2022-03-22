@@ -1,10 +1,10 @@
-import OhVueIcon from 'oh-vue-icons/dist/v3/icon.es'
+import { addIcons } from '../../icons.js'
 
 import { RiCheckboxCircleLine } from 'oh-vue-icons/icons'
 
 import DsfrButtonGroup from './DsfrButtonGroup.vue'
 
-OhVueIcon.add(RiCheckboxCircleLine)
+addIcons(RiCheckboxCircleLine)
 
 export default {
   component: DsfrButtonGroup,

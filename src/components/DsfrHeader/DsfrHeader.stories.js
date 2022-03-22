@@ -1,12 +1,13 @@
 import DsfrHeader from './DsfrHeader.vue'
 
-import VIcon from 'oh-vue-icons/dist/v3/icon.es'
+import { addIcons } from '../../icons.js'
+
 import {
   RiNotification3Line,
   RiPhoneLine,
 } from 'oh-vue-icons/icons/ri/index.js'
 
-VIcon.add(
+addIcons(
   RiNotification3Line,
   RiPhoneLine,
 )

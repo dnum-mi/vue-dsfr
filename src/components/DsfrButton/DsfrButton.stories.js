@@ -1,10 +1,10 @@
-import OhVueIcon from 'oh-vue-icons/dist/v3/icon.es'
+import VIcon, { addIcons } from '../../icons.js'
 
 import { RiCheckboxCircleLine } from 'oh-vue-icons/icons'
 
 import DsfrButton from './DsfrButton.vue'
 
-OhVueIcon.add(RiCheckboxCircleLine)
+addIcons(RiCheckboxCircleLine)
 
 export default {
   component: DsfrButton,
@@ -130,7 +130,7 @@ BoutonSecondaire.args = {
 export const SuiteDeBoutons = (args) => ({
   components: {
     DsfrButton,
-    VIcon: OhVueIcon,
+    VIcon,
   },
   data () {
     return {
