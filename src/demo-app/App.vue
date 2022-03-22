@@ -15,6 +15,8 @@ const close = () => {
   )
 }
 
+const inputValue = ref('')
+
 // eslint-disable-next-line no-unused-vars
 const actions = [
   {
@@ -90,7 +92,6 @@ const navItems = [
     text: 'À propos',
   },
 ]
-
 </script>
 
 <template>
@@ -144,6 +145,11 @@ const navItems = [
           </DsfrAccordion>
         </li>
       </DsfrAccordionsGroup>
+      <DsfrInput
+        v-model="inputValue"
+        label="Test"
+        label-visible
+      />
     </div>
 
     <DsfrModal

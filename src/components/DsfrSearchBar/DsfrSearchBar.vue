@@ -79,3 +79,9 @@ export default defineComponent({
 </template>
 
 <style src="@gouvfr/dsfr/dist/component/search/search.main.css" />
+
+<style>
+.fr-search-bar > .fr-label + .fr-input {
+  margin: 0;
+}
+</style>
