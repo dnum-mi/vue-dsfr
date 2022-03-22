@@ -1,9 +1,12 @@
 <script setup>
 import { ref } from 'vue'
-import DsfrNavigation from '../components/DsfrNavigation/DsfrNavigation.vue'
-import DsfrButton from '../components/DsfrButton/DsfrButton.vue'
 import DsfrAccordion from '../components/DsfrAccordion/DsfrAccordion.vue'
 import DsfrAccordionsGroup from '../components/DsfrAccordion/DsfrAccordionsGroup.vue'
+import DsfrButton from '../components/DsfrButton/DsfrButton.vue'
+import DsfrHeader from '../components/DsfrHeader/DsfrHeader.vue'
+import DsfrNavigation from '../components/DsfrNavigation/DsfrNavigation.vue'
+import DsfrSkipLinks from '../components/DsfrSkipLinks/DsfrSkipLinks.vue'
+import DsfrModal from '../components/DsfrModal/DsfrModal.vue'
 
 const isModalOpen = ref(false)
 const displayAlert = ref(false)

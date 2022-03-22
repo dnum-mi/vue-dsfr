@@ -1,5 +1,6 @@
 import { createApp } from 'vue'
-import OhVueIcon from 'oh-vue-icons/dist/v3/icon.es'
+import { addIcons } from '../index.js'
+
 import {
   RiCheckboxCircleLine,
   RiNotification3Line,
@@ -12,7 +13,7 @@ import router from './router.js'
 
 import App from './App.vue'
 
-OhVueIcon.add(
+addIcons(
   RiCheckboxCircleLine,
   RiNotification3Line,
 )
