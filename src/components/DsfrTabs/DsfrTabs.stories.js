@@ -2,11 +2,11 @@ import DsfrTabs from './DsfrTabs.vue'
 import DsfrTabContent from './DsfrTabContent.vue'
 import DsfrTabItem from './DsfrTabItem.vue'
 
-import OhVueIcon from 'oh-vue-icons/dist/v3/icon.es'
+import { addIcons } from '../../icons.js'
 
 import { RiCheckboxCircleLine } from 'oh-vue-icons/icons/ri/index.js'
 
-OhVueIcon.add(RiCheckboxCircleLine)
+addIcons(RiCheckboxCircleLine)
 
 export default {
   component: DsfrTabs,

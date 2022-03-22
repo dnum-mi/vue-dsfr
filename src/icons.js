@@ -1,4 +1,5 @@
-import VIcon from 'oh-vue-icons/dist/v3/icon.es'
+import { OhVueIcon as VIcon, addIcons } from 'oh-vue-icons'
+
 import {
   RiAlertFill,
   RiAlertLine,
@@ -79,7 +80,7 @@ import {
   RiChatQuoteLine,
 } from 'oh-vue-icons/icons/ri/index.js'
 
-VIcon.add(
+addIcons(
   RiAlertFill,
   RiAlertLine,
   RiArrowUpLine,
@@ -160,3 +161,5 @@ VIcon.add(
 )
 
 export default VIcon
+
+export { addIcons }
