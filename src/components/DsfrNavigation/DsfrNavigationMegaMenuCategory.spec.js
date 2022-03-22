@@ -1,3 +1,4 @@
+import { OhVueIcon as VIcon } from 'oh-vue-icons'
 import { render } from '@testing-library/vue'
 import { createRouter, createWebHistory } from 'vue-router'
 // import '@gouvfr/dsfr/dist/core/core.module.js'
@@ -12,8 +13,6 @@ const router = createRouter({
     component: { template: '<div />' },
   }],
 })
-
-const VIcon = { props: ['name'], template: '<i :class="name"></i>' }
 
 describe('DsfrNavigationMegaMenuCategory', () => {
   it('should render a navigation mega menu', async () => {

@@ -1,11 +1,10 @@
+import { OhVueIcon as VIcon } from 'oh-vue-icons'
 import { fireEvent, render } from '@testing-library/vue'
 
 import DsfrTableCell from './DsfrTableCell.vue'
 import DsfrTag from '../DsfrTag/DsfrTag.vue'
 
 import { spy } from '@/../tests/unit/test-utils.js'
-
-const VIcon = { props: ['name'], template: '<i :class="name"></i>' }
 
 describe('DsfrTableCell', () => {
   it('should render simple cell', () => {

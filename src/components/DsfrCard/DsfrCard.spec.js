@@ -1,3 +1,4 @@
+import { OhVueIcon as VIcon } from 'oh-vue-icons'
 import { fireEvent } from '@testing-library/dom'
 import { render } from '@testing-library/vue'
 
@@ -20,8 +21,6 @@ const router = createRouter({
     },
   ],
 })
-
-const VIcon = { props: ['name'], template: '<i :class="name"></i>' }
 
 describe('DsfrCard', () => {
   it('should render a nice card', async () => {

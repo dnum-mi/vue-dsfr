@@ -1,10 +1,9 @@
+import { OhVueIcon as VIcon } from 'oh-vue-icons'
 import { render } from '@testing-library/vue'
 
 // import '@gouvfr/dsfr/dist/core/core.module.js'
 
 import SearchBar from './DsfrSearchBar.vue'
-
-const VIcon = { props: ['name'], template: '<i :class="name"></i>' }
 
 describe('SearchBar', () => {
   it('should render searchbar with visible label', () => {

@@ -1,8 +1,7 @@
+import { OhVueIcon as VIcon } from 'oh-vue-icons'
 import { render } from '@testing-library/vue'
 
 import DsfrSocialNetworks from './DsfrSocialNetworks.vue'
-
-const VIcon = { name: 'v-icon', props: ['name'], template: '<div :class="name"></div>' }
 
 describe('DsfrSocialNetworks', () => {
   it('should mount DsfrSocialNetworks with right content', () => {

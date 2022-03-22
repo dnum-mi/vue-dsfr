@@ -1,8 +1,11 @@
+import { OhVueIcon as VIcon, addIcons } from 'oh-vue-icons'
 import { fireEvent, render } from '@testing-library/vue'
 
 import DsfrAlert from './DsfrAlert.vue'
 
-const VIcon = { props: ['name'], template: '<i :class="name"></i>' }
+import { RiCloseLine } from 'oh-vue-icons/icons/ri/index.js'
+
+addIcons(RiCloseLine)
 
 describe('DsfrAlert', () => {
   it('should mount DsfrAlert with right content', () => {

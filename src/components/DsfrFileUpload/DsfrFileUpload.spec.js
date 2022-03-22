@@ -1,7 +1,6 @@
+import { OhVueIcon as VIcon } from 'oh-vue-icons'
 import DsfrFileUpload from './DsfrFileUpload.vue'
 import { render } from '@testing-library/vue'
-
-const VIcon = { props: ['name'], template: '<i :class="name"></i>' }
 
 describe('DsfrFileUpload', () => {
   it('should render file input without hint nor error', () => {
