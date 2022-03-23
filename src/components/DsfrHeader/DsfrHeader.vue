@@ -104,9 +104,6 @@ export default defineComponent({
                   data-testid="header-logo"
                 />
               </div>
-              <div class="fr-header__operator">
-                <slot name="operator" />
-              </div>
               <div
                 v-if="isWithSlotOperator"
                 class="fr-header__operator"
