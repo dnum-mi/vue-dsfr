@@ -7,6 +7,7 @@ import DsfrHeader from '../components/DsfrHeader/DsfrHeader.vue'
 import DsfrNavigation from '../components/DsfrNavigation/DsfrNavigation.vue'
 import DsfrSkipLinks from '../components/DsfrSkipLinks/DsfrSkipLinks.vue'
 import DsfrModal from '../components/DsfrModal/DsfrModal.vue'
+import DsfrFileUpload from '../components/DsfrFileUpload/DsfrFileUpload.vue'
 
 const isModalOpen = ref(false)
 const displayAlert = ref(false)
@@ -19,6 +20,16 @@ const close = () => {
 }
 
 const inputValue = ref('')
+const filesToUpload = ref(undefined)
+
+const updateFiles = (files) => {
+  console.log(files)
+}
+
+const sendFile = () => {
+  console.log('inputValue:', inputValue.value)
+  console.log('filesToUpload:', filesToUpload.value)
+}
 
 // eslint-disable-next-line no-unused-vars
 const actions = [
@@ -148,11 +159,23 @@ const navItems = [
           </DsfrAccordion>
         </li>
       </DsfrAccordionsGroup>
-      <DsfrInput
-        v-model="inputValue"
-        label="Test"
-        label-visible
-      />
+      <form @submit.prevent="sendFile()">
+        <DsfrInput
+          v-model="inputValue"
+          label="Test"
+          label-visible
+        />
+        <DsfrFileUpload
+          v-model="filesToUpload"
+          label="Test"
+          label-visible
+          @change="updateFiles($event)"
+        />
+        <input
+          type="submit"
+          value="OK"
+        >
+      </form>
     </div>
 
     <DsfrModal
