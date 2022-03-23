@@ -1,8 +1,7 @@
+import { OhVueIcon as VIcon } from 'oh-vue-icons'
 import { render } from '@testing-library/vue'
 
 import CheckBox from './DsfrCheckbox.vue'
-
-const VIcon = { props: ['name'], template: '<i :class="name"></i>' }
 
 describe('DsfrCheckbox', () => {
   it('should render a checkbox with label in div', () => {

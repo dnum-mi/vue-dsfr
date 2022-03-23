@@ -1,8 +1,7 @@
+import { OhVueIcon as VIcon } from 'oh-vue-icons'
 import { render } from '@testing-library/vue'
 
 import DsfrQuote from './DsfrQuote.vue'
-
-const VIcon = { props: ['name'], template: '<i :class="name"></i>' }
 
 describe('DsfrQuote', () => {
   it('should render a complete DsfrQuote', () => {

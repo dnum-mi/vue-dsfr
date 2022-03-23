@@ -44,6 +44,9 @@ export default defineComponent({
     isComponent () {
       return this.isTextarea ? 'textarea' : 'input'
     },
+    wrapper () {
+      return this.isWithWrapper || this.$attrs.type === 'date' || this.wrapperClass
+    },
   },
 })
 </script>
@@ -62,7 +65,23 @@ export default defineComponent({
       class="fr-hint-text"
     >{{ hint }}</span>
   </label>
+  <component
+    :is="isComponent"
+    v-if="!wrapper"
+    :id="id"
+    class="fr-input"
+    :class="{
+      'fr-input--error': isInvalid,
+      'fr-input--valid': isValid,
+    }"
+    :value="modelValue"
+    v-bind="$attrs"
+    :aria-aria-describedby="descriptionId || undefined"
+    @input="$emit('update:modelValue', $event.target.value)"
+    @keydown.esc="$emit('update:modelValue', '')"
+  />
   <div
+    v-else
     :class="[
       {
         'fr-input-wrap': isWithWrapper || $attrs.type === 'date',

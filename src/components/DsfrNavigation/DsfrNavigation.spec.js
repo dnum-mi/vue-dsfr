@@ -1,3 +1,4 @@
+import { OhVueIcon as VIcon } from 'oh-vue-icons'
 import { fireEvent } from '@testing-library/dom'
 import { render } from '@testing-library/vue'
 import { createRouter, createWebHistory } from 'vue-router'
@@ -15,8 +16,6 @@ const router = createRouter({
     component: { template: '<div />' },
   }],
 })
-
-const VIcon = { props: ['name'], template: '<i :class="name"></i>' }
 
 const secondMenuTitle = 'Menu déroulant'
 const megaMenuTitle = 'Mega Menu déroulant'

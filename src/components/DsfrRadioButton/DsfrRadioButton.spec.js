@@ -1,8 +1,7 @@
+import { OhVueIcon as VIcon } from 'oh-vue-icons'
 import { render } from '@testing-library/vue'
 
 import RadioButton from './DsfrRadioButton.vue'
-
-const VIcon = { props: ['name'], template: '<i :class="name"></i>' }
 
 describe('DsfrRadioButton', () => {
   it('should render a radio button with label in div', () => {
