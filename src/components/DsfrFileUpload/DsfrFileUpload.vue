@@ -22,6 +22,19 @@ export default defineComponent({
       type: String,
       default: undefined,
     },
+    modelValue: {
+      type: String,
+      default: undefined,
+    },
+  },
+
+  emits: ['update:modelValue', 'change'],
+
+  methods: {
+    onChange ($event) {
+      this.$emit('update:modelValue', $event.target.value)
+      this.$emit('change', $event.target.files)
+    },
   },
 })
 </script>
@@ -48,6 +61,8 @@ export default defineComponent({
       type="file"
       :aria-describedby="`${id}-desc`"
       v-bind="$attrs"
+      :value="modelValue"
+      @change="onChange($event)"
     >
     <p
       v-if="error"
