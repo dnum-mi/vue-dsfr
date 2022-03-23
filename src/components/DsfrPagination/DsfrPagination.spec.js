@@ -1,9 +1,8 @@
+import { OhVueIcon as VIcon } from 'oh-vue-icons'
 import { render, fireEvent } from '@testing-library/vue'
 import { ref } from 'vue'
 
 import Pagination from './DsfrPagination.vue'
-
-const VIcon = { props: ['name'], template: '<i :class="name"></i>' }
 
 describe('DsfrPagination', () => {
   it('should render a list of links to give quick access to several pages', async () => {

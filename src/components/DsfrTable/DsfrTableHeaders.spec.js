@@ -1,10 +1,9 @@
+import { OhVueIcon as VIcon } from 'oh-vue-icons'
 import { fireEvent, render } from '@testing-library/vue'
 
 import DsfrTableHeaders from './DsfrTableHeaders.vue'
 
 import { spy } from '@/../tests/unit/test-utils.js'
-
-const VIcon = { props: ['name'], template: '<i :class="name"></i>' }
 
 describe('DsfrTableHeaders', () => {
   it('should render simple header row', async () => {

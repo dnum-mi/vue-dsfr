@@ -192,8 +192,8 @@ Pour ajouter des icônes qui ne sont pas importées dans la bibliothèque, voici
 ```javascript
 // /src/icons.js/
 
-// Importer le composant VIcon de la bibliothèque
-import { VIcon } from '@laruiss/vue-dsfr'
+// Importer le composant VIcon et la fonction addIcons de la bibliothèque
+import { VIcon, addIcons } from '@laruiss/vue-dsfr'
 
 // Importer les icônes souhaitées depuis `oh-vue-icons`
 import {
@@ -207,8 +207,8 @@ import {
   RiUserLine,
 } from 'oh-vue-icons/icons/ri/index.js'
 
-// Ajouter les icônes au composant VIcon
-VIcon.add(
+// Ajouter les icônes
+addIcons(
   RiAddLine,
   RiChatCheckLine,
   RiFileList2Line,

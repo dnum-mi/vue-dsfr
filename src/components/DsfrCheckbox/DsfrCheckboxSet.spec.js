@@ -1,8 +1,7 @@
+import { OhVueIcon as VIcon } from 'oh-vue-icons'
 import { fireEvent, render } from '@testing-library/vue'
 
 import DsfrCheckboxSet from './DsfrCheckboxSet.vue'
-
-const VIcon = { props: ['name'], template: '<i :class="String(name)"></i>' }
 
 describe('DsfrCheckboxSet', () => {
   it('should render a group of checkboxes in fieldset', () => {

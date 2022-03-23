@@ -1,9 +1,8 @@
+import { OhVueIcon as VIcon } from 'oh-vue-icons'
 import { render } from '@testing-library/vue'
 // import '@gouvfr/dsfr/dist/core/core.module.js'
 
 import DsfrButton from './DsfrButton.vue'
-
-const VIcon = { props: ['name'], template: '<i :class="name"></i>' }
 
 describe('DsfrButton', () => {
   it('should mount DsfrButton with right content', () => {

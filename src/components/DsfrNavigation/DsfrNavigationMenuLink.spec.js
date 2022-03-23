@@ -1,10 +1,9 @@
+import { OhVueIcon as VIcon } from 'oh-vue-icons'
 import { render } from '@testing-library/vue'
 import { createRouter, createWebHistory } from 'vue-router'
 // import '@gouvfr/dsfr/dist/core/core.module.js'
 
 import DsfrNavigationMenuLink from './DsfrNavigationMenuLink.vue'
-
-const VIcon = { props: ['name'], template: '<i :class="name"></i>' }
 
 const router = createRouter({
   history: createWebHistory('/'),

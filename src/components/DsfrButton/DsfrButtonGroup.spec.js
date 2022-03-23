@@ -1,3 +1,4 @@
+import { OhVueIcon as VIcon } from 'oh-vue-icons'
 import { fireEvent } from '@testing-library/dom'
 import { render } from '@testing-library/vue'
 
@@ -5,8 +6,6 @@ import { render } from '@testing-library/vue'
 import { spy } from '@/../tests/unit/test-utils.js'
 
 import DsfrButtonGroup from './DsfrButtonGroup.vue'
-
-const VIcon = { props: ['name'], template: '<i :class="name"></i>' }
 
 describe('DsfrButtonGroup', () => {
   it('should mount DsfrButtonGroup with content', async () => {

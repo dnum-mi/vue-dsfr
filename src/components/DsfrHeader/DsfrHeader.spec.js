@@ -1,3 +1,4 @@
+import { OhVueIcon as VIcon, addIcons } from 'oh-vue-icons'
 import { fireEvent } from '@testing-library/dom'
 import { render } from '@testing-library/vue'
 import { createRouter, createWebHistory } from 'vue-router'
@@ -5,6 +6,10 @@ import { createRouter, createWebHistory } from 'vue-router'
 // import '@gouvfr/dsfr/dist/core/core.module.js'
 
 import DsfrHeader from './DsfrHeader.vue'
+
+import { RiNotification3Line, RiPhoneLine, RiSearchLine } from 'oh-vue-icons/icons/ri/index.js'
+
+addIcons(RiNotification3Line, RiPhoneLine, RiSearchLine)
 
 const router = createRouter({
   history: createWebHistory('/'),
@@ -31,8 +36,6 @@ const router = createRouter({
     },
   ],
 })
-const VIcon = { props: ['name'], template: '<i :class="name"></i>' }
-
 describe('DsfrHeader', () => {
   it('should render DsfrHeader with a logo', async () => {
     // Given

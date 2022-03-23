@@ -1,3 +1,4 @@
+import { OhVueIcon as VIcon } from 'oh-vue-icons'
 import { render } from '@testing-library/vue'
 import { createRouter, createWebHistory } from 'vue-router'
 
@@ -25,8 +26,6 @@ const router = createRouter({
     },
   ],
 })
-
-const VIcon = { props: ['name'], template: '<i :class="name"></i>' }
 
 describe('DsfrBreadcrumb', () => {
   it('should render DsfrBreadcrumb with right content', async () => {

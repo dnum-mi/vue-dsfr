@@ -1,7 +1,13 @@
+import { OhVueIcon as VIcon, addIcons } from 'oh-vue-icons'
 import { render } from '@testing-library/vue'
 import { createRouter, createWebHistory } from 'vue-router'
 
+import { RiExternalLinkLine } from 'oh-vue-icons/icons/ri/index.js'
+
 import DsfrFooter from './DsfrFooter.vue'
+
+addIcons(RiExternalLinkLine)
+
 const router = createRouter({
   history: createWebHistory('/'),
   routes: [
@@ -42,8 +48,6 @@ const router = createRouter({
     },
   ],
 })
-
-const VIcon = { props: ['name'], template: '<i :class="name"></i>' }
 
 describe('DsfrFooter', () => {
   it('should mount DsfrFooter with right content', async () => {
