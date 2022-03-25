@@ -46,7 +46,6 @@ export const RadioButtonSet = (args) => ({
     return args
   },
   template: `
-  <div :data-fr-theme="dark ? 'dark' : ''" style="background-color: var(--grey-1000-50); padding: 1rem;">
     <DsfrRadioButtonSet
       :legend="legend"
       v-model="modelValue"
@@ -55,7 +54,7 @@ export const RadioButtonSet = (args) => ({
       :inline="inline"
       @update:model-value="onChange"
     />
-  </div>`,
+  `,
 })
 RadioButtonSet.args = {
   dark: false,
@@ -87,7 +86,6 @@ export const RadioButtonSetInError = (args) => ({
     return args
   },
   template: `
-  <div :data-fr-theme="dark ? 'dark' : ''" style="background-color: var(--grey-1000-50); padding: 1rem;">
     <DsfrRadioButtonSet
       :legend="legend"
       v-model="selectedValue"
@@ -98,7 +96,7 @@ export const RadioButtonSetInError = (args) => ({
       :inline="inline"
       @update:model-value="onChange"
     />
-  </div>`,
+  `,
 })
 RadioButtonSetInError.args = {
   dark: false,
@@ -133,7 +131,6 @@ export const RadioButtonSetInSuccess = (args) => ({
     return args
   },
   template: `
-  <div :data-fr-theme="dark ? 'dark' : ''" style="background-color: var(--grey-1000-50); padding: 1rem;">
     <DsfrRadioButtonSet
       :legend="legend"
       v-model="selectedValue"
@@ -144,7 +141,7 @@ export const RadioButtonSetInSuccess = (args) => ({
       :inline="inline"
       @update:model-value="onChange"
     />
-  </div>`,
+  `,
 })
 RadioButtonSetInSuccess.args = {
   dark: false,
@@ -179,7 +176,6 @@ export const RadioButtonSetDisabled = (args) => ({
     return args
   },
   template: `
-  <div :data-fr-theme="dark ? 'dark' : ''" style="background-color: var(--grey-1000-50); padding: 1rem;">
     <DsfrRadioButtonSet
       :legend="legend"
       v-model="selectedValue"
@@ -189,7 +185,7 @@ export const RadioButtonSetDisabled = (args) => ({
       :inline="inline"
       @update:model-value="onChange"
     />
-  </div>`,
+  `,
 })
 RadioButtonSetDisabled.args = {
   dark: false,
@@ -222,7 +218,6 @@ export const RadioButtonSetInline = (args) => ({
     return args
   },
   template: `
-  <div :data-fr-theme="dark ? 'dark' : ''" style="background-color: var(--grey-1000-50); padding: 1rem;">
     <DsfrRadioButtonSet
       :legend="legend"
       v-model="selectedValue"
@@ -232,7 +227,7 @@ export const RadioButtonSetInline = (args) => ({
       :inline="inline"
       @update:model-value="onChange"
     />
-  </div>`,
+  `,
 })
 RadioButtonSetInline.args = {
   dark: false,

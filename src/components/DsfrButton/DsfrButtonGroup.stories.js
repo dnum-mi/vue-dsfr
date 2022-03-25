@@ -1,4 +1,4 @@
-import { VIcon, addIcons } from '../../icons.js'
+import VIcon, { addIcons } from '../../icons.js'
 
 import { RiCheckboxCircleLine } from 'oh-vue-icons/icons'
 

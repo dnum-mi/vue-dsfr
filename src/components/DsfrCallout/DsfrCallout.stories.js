@@ -1,4 +1,4 @@
-import { VIcon, addIcons } from '../../icons.js'
+import VIcon, { addIcons } from '../../icons.js'
 
 import { RiInformationLine } from 'oh-vue-icons/icons'
 

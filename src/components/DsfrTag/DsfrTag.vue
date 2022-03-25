@@ -75,7 +75,6 @@ export default defineComponent({
 <style src="@gouvfr/dsfr/dist/component/tag/tag.main.css" />
 
 <style scoped>
-
 .ov-icon {
   margin-top: 0.1rem;
 }

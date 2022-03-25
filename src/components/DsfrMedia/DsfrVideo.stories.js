@@ -43,13 +43,13 @@ export const Video = (args) => ({
   },
   template: `
     <DsfrVideo
-    :src="src"
-    :legend="legend"
-    :size="size"
-    :transcription-url="transcriptionUrl"
-    :transcription-label="transcriptionLabel"
-    :format4x3="format4x3"
-  />
+      :src="src"
+      :legend="legend"
+      :size="size"
+      :transcription-url="transcriptionUrl"
+      :transcription-label="transcriptionLabel"
+      :format4x3="format4x3"
+    />
   `,
   mounted () {
     document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')

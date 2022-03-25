@@ -48,10 +48,10 @@ export const EnsembleDeChamps = (args) => ({
   template: `
     <DsfrFieldset
       :legend="legend"
+      :hint="hint"
       :legend-class="legendClass"
       :hint-class="hintClass"
       :legend-id="legendId"
-      :hint="hint"
     >
       Contenu du fieldset
     </DsfrFieldset>

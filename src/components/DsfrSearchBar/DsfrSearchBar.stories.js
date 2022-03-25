@@ -46,7 +46,6 @@ export const BarreDeRecherche = (args) => ({
   template: `
       <DsfrSearchBar
         :label="label"
-        :dark="dark"
         :placeholder="placeholder"
         :labelVisible="labelVisible"
         :button-text="buttonText"
@@ -81,7 +80,6 @@ export const BarreDeRechercheLarge = (args) => ({
   template: `
     <DsfrSearchBar
       :label="label"
-      :dark="dark"
       :placeholder="placeholder"
       :labelVisible="labelVisible"
       :hide-icon="hideIcon"
