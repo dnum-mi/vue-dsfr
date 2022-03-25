@@ -49,12 +49,12 @@ export const MiseEnAvantSimple = (args) => ({
   },
 
   template: `
-      <DsfrCallout
-        :title="title"
-        :content="content"
-        :button="button"
-        :icon="icon"
-      />
+    <DsfrCallout
+      :title="title"
+      :content="content"
+      :button="button"
+      :icon="icon"
+    />
   `,
 
   mounted () {
@@ -86,12 +86,12 @@ export const MiseEnAvant = (args) => ({
   },
 
   template: `
-      <DsfrCallout
-        :title="title"
-        :content="content"
-        :button="button"
-        :icon="icon"
-      />
+    <DsfrCallout
+      :title="title"
+      :content="content"
+      :button="button"
+      :icon="icon"
+    />
   `,
 
   mounted () {

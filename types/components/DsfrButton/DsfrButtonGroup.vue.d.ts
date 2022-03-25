@@ -1,4 +1,4 @@
-interface Button {
+export interface Button {
   disabled?: boolean,
   label: string,
   secondary?: boolean,
