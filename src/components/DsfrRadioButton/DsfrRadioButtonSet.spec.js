@@ -1,4 +1,4 @@
-import { OhVueIcon as VIcon } from 'oh-vue-icons'
+import { VIcon } from '../../index.js'
 import { fireEvent, render } from '@testing-library/vue'
 
 import RadioButtonSet from './DsfrRadioButtonSet.vue'

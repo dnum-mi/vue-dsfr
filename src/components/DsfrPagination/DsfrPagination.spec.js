@@ -1,4 +1,4 @@
-import { OhVueIcon as VIcon } from 'oh-vue-icons'
+import { VIcon } from '../../index.js'
 import { render, fireEvent } from '@testing-library/vue'
 import { ref } from 'vue'
 

@@ -1,4 +1,4 @@
-import { OhVueIcon as VIcon } from 'oh-vue-icons'
+import { VIcon } from '../../index.js'
 import DsfrFileUpload from './DsfrFileUpload.vue'
 import { render } from '@testing-library/vue'
 

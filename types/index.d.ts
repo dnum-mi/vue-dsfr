@@ -1,4 +1,4 @@
-import { OhVueIcon as VIcon, addIcons } from 'oh-vue-icons'
+import { VIcon, addIcons } from '../../index.js'
 
 export * from './composables'
 export * from './components/index'
