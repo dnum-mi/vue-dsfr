@@ -42,6 +42,7 @@ const baseConfig = {
   external: [
     'vue',
     'vue-router',
+    'oh-vue-icons',
     'oh-vue-icons/dist/v3/icon.es',
     'oh-vue-icons/icons',
     'focus-trap',
@@ -68,7 +69,7 @@ export default [
     ...baseConfig,
     output: {
       format: 'esm',
-      file: 'dist/vue-dsfr.esm.js',
+      file: 'dist/vue-dsfr.mjs',
       globals: baseOutput.globals,
       name: 'VueDsfr',
     },
