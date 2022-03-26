@@ -83,4 +83,4 @@ export default defineComponent({
   </nav>
 </template>
 
-<style src="@gouvfr/dsfr/dist/component/breadcrumb/breadcrumb.main.css" />
+<style src="@gouvfr/dsfr/dist/component/breadcrumb/breadcrumb.main.min.css" />

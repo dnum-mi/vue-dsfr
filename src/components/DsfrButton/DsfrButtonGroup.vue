@@ -74,4 +74,4 @@ export default defineComponent({
   </ul>
 </template>
 
-<style src="@gouvfr/dsfr/dist/component/button/button.main.css"  />
+<style src="@gouvfr/dsfr/dist/component/button/button.main.min.css"  />

@@ -1,4 +1,4 @@
-import { VIcon } from '../../index.js'
+import { OhVueIcon as VIcon } from 'oh-vue-icons'
 import { render } from '@testing-library/vue'
 
 // import '@gouvfr/dsfr/dist/core/core.module.js'

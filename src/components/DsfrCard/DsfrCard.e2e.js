@@ -1,6 +1,6 @@
 // import { mount, app } from '@cypress/vue'
 import { mount } from '@cypress/vue'
-import VIcon from '../../icons.js'
+import { OhVueIcon as VIcon } from 'oh-vue-icons'
 // import { createRouter, createWebHistory } from 'vue-router'
 import DsfrCard from './DsfrCard.vue'
 import '../../main.css'

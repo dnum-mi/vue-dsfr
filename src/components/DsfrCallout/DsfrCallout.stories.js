@@ -1,6 +1,6 @@
-import VIcon, { addIcons } from '../../icons.js'
+import { OhVueIcon as VIcon, addIcons } from 'oh-vue-icons'
 
-import { RiInformationLine } from 'oh-vue-icons/icons'
+import { RiInformationLine } from 'oh-vue-icons/icons/ri/index.js'
 
 import DsfrCallout from './DsfrCallout.vue'
 

@@ -1,7 +1,7 @@
 import { mount } from '@cypress/vue'
 import DsfrFooter from './DsfrFooter.vue'
 import DsfrFooterLinkList from './DsfrFooterLinkList.vue'
-import VIcon from '../../icons.js'
+import { OhVueIcon as VIcon } from 'oh-vue-icons'
 import '../../main.css'
 
 const data = {

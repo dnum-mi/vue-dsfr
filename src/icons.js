@@ -1,4 +1,4 @@
-import { OhVueIcon as VIcon, addIcons } from 'oh-vue-icons'
+import { addIcons } from 'oh-vue-icons'
 
 import {
   RiAlertFill,
@@ -159,7 +159,3 @@ addIcons(
   RiYoutubeFill,
   RiChatQuoteLine,
 )
-
-export default VIcon
-
-export { addIcons }

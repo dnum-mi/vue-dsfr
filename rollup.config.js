@@ -1,3 +1,4 @@
+import { defineConfig } from 'rollup'
 import vue from 'rollup-plugin-vue'
 
 import { nodeResolve } from '@rollup/plugin-node-resolve'
@@ -23,15 +24,16 @@ const postcssPlugins = [
       'focus-visible-pseudo-class': false,
     },
   }),
-  csso,
+  csso(),
 ]
 
 const baseOutput = {
   globals: {
     vue: 'vue',
+    'oh-vue-icons': 'OhVueIcon',
+    'oh-vue-icons/icons': 'oh-vue-icons/icons',
+    'oh-vue-icons/icons/ri/index.js': 'oh-vue-icons/icons/ri/index.js',
     'vue-router': 'vue-router',
-    'oh-vue-icons/dist/v3/icon.es': 'VIcon',
-    'oh-vue-icons/icons': 'icons',
     'focus-trap': 'focus-trap',
     'focus-trap-vue': 'focus-trap-vue',
   },
@@ -43,8 +45,8 @@ const baseConfig = {
     'vue',
     'vue-router',
     'oh-vue-icons',
-    'oh-vue-icons/dist/v3/icon.es',
     'oh-vue-icons/icons',
+    'oh-vue-icons/icons/ri/index.js',
     'focus-trap',
     'focus-trap-vue',
   ],
@@ -63,7 +65,7 @@ const baseConfig = {
   ],
 }
 
-export default [
+export default defineConfig([
   // ESM build to be used with webpack/rollup.
   {
     ...baseConfig,
@@ -114,4 +116,4 @@ export default [
       name: 'VueDsfr',
     },
   },
-]
+])

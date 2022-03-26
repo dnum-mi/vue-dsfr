@@ -91,4 +91,4 @@ export default defineComponent({
   </figure>
 </template>
 
-<style src="@gouvfr/dsfr/dist/component/quote/quote.main.css" />
+<style src="@gouvfr/dsfr/dist/component/quote/quote.main.min.css" />

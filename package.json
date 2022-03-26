@@ -19,6 +19,18 @@
     ".": {
       "require": "./dist/vue-dsfr.umd.js",
       "import": "./dist/vue-dsfr.mjs"
+    },
+    "./dist/vue-dsfr.css": {
+      "require": "./dist/vue-dsfr.css",
+      "import": "./dist/vue-dsfr.css"
+    },
+    "./dist/vue-dsfr-fonts.css": {
+      "require": "./dist/vue-dsfr-fonts.css",
+      "import": "./dist/vue-dsfr-fonts.css"
+    },
+    "./dist/vue-dsfr-fonts-essentials.css": {
+      "require": "./dist/vue-dsfr-fonts-essentials.css",
+      "import": "./dist/vue-dsfr-fonts-essentials.css"
     }
   },
   "publishConfig": {
@@ -36,7 +48,7 @@
     "build": "run-p build:css build:js",
     "postbuild": "copyfiles types/composable.d.ts dist/composable.d.ts",
     "build:css": "node build-css.mjs",
-    "build:js": "cross-env NODE_ENV=production rollup --config rollup.config.js",
+    "build:js": "cross-env NODE_ENV=production rollup -c",
     "demo-app": "vite",
     "vitest": "vitest",
     "coverage": "vitest run --coverage",

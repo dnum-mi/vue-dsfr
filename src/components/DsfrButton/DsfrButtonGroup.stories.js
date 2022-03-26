@@ -1,6 +1,6 @@
-import VIcon, { addIcons } from '../../icons.js'
+import { OhVueIcon as VIcon, addIcons } from 'oh-vue-icons'
 
-import { RiCheckboxCircleLine } from 'oh-vue-icons/icons'
+import { RiCheckboxCircleLine } from 'oh-vue-icons/icons/ri/index.js'
 
 import DsfrButtonGroup from './DsfrButtonGroup.vue'
 

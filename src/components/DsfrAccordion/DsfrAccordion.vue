@@ -64,7 +64,7 @@ export default defineComponent({
   </section>
 </template>
 
-<style src="@gouvfr/dsfr/dist/component/accordion/accordion.main.css" />
+<style src="@gouvfr/dsfr/dist/component/accordion/accordion.main.min.css" />
 
 <style scoped>
 .fr-collapse--expanded {

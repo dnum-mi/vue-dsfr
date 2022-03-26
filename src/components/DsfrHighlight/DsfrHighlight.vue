@@ -30,4 +30,4 @@ export default defineComponent({
   </div>
 </template>
 
-<style src="@gouvfr/dsfr/dist/component/highlight/highlight.main.css" />
+<style src="@gouvfr/dsfr/dist/component/highlight/highlight.main.min.css" />

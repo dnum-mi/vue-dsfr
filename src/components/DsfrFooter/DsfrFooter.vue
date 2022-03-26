@@ -218,7 +218,7 @@ export default defineComponent({
   </footer>
 </template>
 
-<style src="@gouvfr/dsfr/dist/component/footer/footer.main.css" />
+<style src="@gouvfr/dsfr/dist/component/footer/footer.main.min.css" />
 
 <style scoped>
 .fr-footer {

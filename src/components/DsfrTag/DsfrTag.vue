@@ -72,7 +72,7 @@ export default defineComponent({
   </component>
 </template>
 
-<style src="@gouvfr/dsfr/dist/component/tag/tag.main.css" />
+<style src="@gouvfr/dsfr/dist/component/tag/tag.main.min.css" />
 
 <style scoped>
 .ov-icon {
