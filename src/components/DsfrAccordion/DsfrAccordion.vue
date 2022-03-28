@@ -51,7 +51,10 @@ export default defineComponent({
         :aria-controls="id"
         @click="toggleExpanded()"
       >
-        <span>{{ title }}</span>
+      <!-- @slot Slot pour le contenu personnalisé du titre de l’accordéon. Une props du même nom est utilisable pour du texte simple sans mise en forme. -->
+        <slot name="title">
+          <span>{{ title }}</span>
+        </slot>
       </button>
     </h3>
     <div
