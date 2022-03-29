@@ -57,6 +57,27 @@ export default defineComponent({
       type: Array,
       default: () => [],
     },
+    mandatoryLinks: {
+      type: Array,
+      default: (props) => [
+        {
+          label: `Accessibilité : ${props.a11yCompliance}`,
+          to: props.a11yComplianceLink,
+        },
+        {
+          label: 'Mentions légales',
+          to: props.legalLink,
+        },
+        {
+          label: 'Données personnelles',
+          to: props.personalDataLink,
+        },
+        {
+          label: 'Gestion des cookies',
+          to: props.cookiesLink,
+        },
+      ],
+    },
     ecosystemLinks: {
       type: Array,
       default: () => [
@@ -79,29 +100,6 @@ export default defineComponent({
       ],
     },
 
-  },
-
-  data () {
-    return {
-      mandatoryLinks: [
-        {
-          label: `Accessibilité : ${this.a11yCompliance}`,
-          to: this.a11yComplianceLink,
-        },
-        {
-          label: 'Mentions légales',
-          to: this.legalLink,
-        },
-        {
-          label: 'Données personnelles',
-          to: this.personalDataLink,
-        },
-        {
-          label: 'Gestion des cookies',
-          to: this.cookiesLink,
-        },
-      ],
-    }
   },
 
   computed: {
