@@ -16,15 +16,15 @@ export default defineComponent({
     },
     hint: {
       type: String,
-      default: undefined,
+      default: '',
     },
     error: {
       type: String,
-      default: undefined,
+      default: '',
     },
     modelValue: {
       type: String,
-      default: undefined,
+      default: '',
     },
   },
 

@@ -117,4 +117,4 @@ export default defineComponent({
   </div>
 </template>
 
-<style src="@gouvfr/dsfr/dist/component/tab/tab.main.css" />
+<style src="@gouvfr/dsfr/dist/component/tab/tab.main.min.css" />

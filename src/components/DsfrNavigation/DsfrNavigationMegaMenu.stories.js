@@ -64,7 +64,6 @@ export const NavigationMegaMenu = (args) => ({
     <DsfrNavigation>
       <DsfrNavigationItem>
         <DsfrNavigationMegaMenu
-          :dark="dark"
           :title="title"
           :description="description"
           :link="link"

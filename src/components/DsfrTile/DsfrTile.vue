@@ -78,4 +78,4 @@ export default defineComponent({
   </div>
 </template>
 
-<style src="@gouvfr/dsfr/dist/component/tile/tile.main.css" />
+<style src="@gouvfr/dsfr/dist/component/tile/tile.main.min.css" />

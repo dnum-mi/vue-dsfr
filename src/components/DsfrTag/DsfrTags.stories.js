@@ -1,7 +1,7 @@
 import DsfrTag from './DsfrTag.vue'
 import DsfrTags from './DsfrTags.vue'
 
-import { addIcons } from '../../icons.js'
+import { addIcons } from 'oh-vue-icons'
 
 import {
   RiArrowLeftFill,

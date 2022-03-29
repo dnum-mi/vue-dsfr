@@ -35,14 +35,12 @@ export const RadioButton = (args, { argTypes }) => ({
     return args
   },
   template: `
-    <div :data-fr-theme="dark ? 'dark' : ''" style="background-color: var(--grey-1000-50); padding: 1rem;">
-      <DsfrRadioButton
-        v-for="option of options"
-        :modelValue="modelValue"
-        v-bind="option"
-        @update:modelValue="updateCheckedValue($event)"
-      />
-    </div>
+    <DsfrRadioButton
+      v-for="option of options"
+      :modelValue="modelValue"
+      v-bind="option"
+      @update:modelValue="updateCheckedValue($event)"
+    />
   `,
   methods: {
     updateCheckedValue (val) {
@@ -85,14 +83,12 @@ export const RichRadioButton = (args, { argTypes }) => ({
     return args
   },
   template: `
-    <div :data-fr-theme="dark ? 'dark' : ''" style="background-color: var(--grey-1000-50); padding: 1rem;">
-      <DsfrRadioButton
-        v-for="option of options"
-        :modelValue="modelValue"
-        v-bind="option"
-        @update:modelValue="updateCheckedValue($event)"
-      />
-    </div>
+    <DsfrRadioButton
+      v-for="option of options"
+      :modelValue="modelValue"
+      v-bind="option"
+      @update:modelValue="updateCheckedValue($event)"
+    />
   `,
   methods: {
     updateCheckedValue (val) {

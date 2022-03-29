@@ -51,15 +51,15 @@ export const Citation = (args) => ({
     }
   },
   template: `
-      <DsfrQuote
-        :quote="quote"
-        :author="author"
-        :details="details"
-        :illustration="illustration"
-        :source="source"
-        :sourceUrl="sourceUrl"
-        :quoteImage="quoteImage"
-      />
+    <DsfrQuote
+      :quote="quote"
+      :author="author"
+      :details="details"
+      :illustration="illustration"
+      :source="source"
+      :sourceUrl="sourceUrl"
+      :quoteImage="quoteImage"
+    />
   `,
 
   mounted () {

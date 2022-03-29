@@ -91,7 +91,7 @@ export default defineComponent({
   </nav>
 </template>
 
-<style src="@gouvfr/dsfr/dist/component/navigation/navigation.main.css" />
+<style src="@gouvfr/dsfr/dist/component/navigation/navigation.main.min.css" />
 
 <style scoped>
 .fr-nav__list {

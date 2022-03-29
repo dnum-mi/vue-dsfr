@@ -1,6 +1,6 @@
 import DsfrHeader from './DsfrHeader.vue'
 
-import { addIcons } from '../../icons.js'
+import { addIcons } from 'oh-vue-icons'
 
 import {
   RiNotification3Line,

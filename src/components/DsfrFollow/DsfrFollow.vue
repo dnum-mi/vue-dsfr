@@ -60,4 +60,4 @@ export default defineComponent({
   </div>
 </template>
 
-<style src="@gouvfr/dsfr/dist/component/follow/follow.main.css" />
+<style src="@gouvfr/dsfr/dist/component/follow/follow.main.min.css" />

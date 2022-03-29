@@ -1,3 +1,12 @@
+export interface Button {
+  disabled?: boolean,
+  label: string,
+  secondary?: boolean,
+  icon?: string,
+  iconRight?: boolean,
+  iconOnly?: boolean,
+}
+
 declare const _default: import('vue').DefineComponent<{
     buttons: {
         type: ArrayConstructor;
@@ -6,13 +15,13 @@ declare const _default: import('vue').DefineComponent<{
     inline: BooleanConstructor;
     size: {
         type: StringConstructor;
-        validator: (val: unknown) => boolean;
+        validator: (val: string) => boolean;
         default: any;
     };
     reverse: BooleanConstructor;
     align: {
         type: StringConstructor;
-        validator: (val: unknown) => boolean;
+        validator: (val: string) => boolean;
         default: any;
     };
 }, unknown, unknown, {
@@ -29,19 +38,19 @@ declare const _default: import('vue').DefineComponent<{
     inline: BooleanConstructor;
     size: {
         type: StringConstructor;
-        validator: (val: unknown) => boolean;
+        validator: (val: string) => boolean;
         default: any;
     };
     reverse: BooleanConstructor;
     align: {
         type: StringConstructor;
-        validator: (val: unknown) => boolean;
+        validator: (val: string) => boolean;
         default: any;
     };
 }>>, {
     reverse: boolean;
     inline: boolean;
-    buttons: unknown[];
+    buttons: Button[];
     size: string;
     align: string;
 }>

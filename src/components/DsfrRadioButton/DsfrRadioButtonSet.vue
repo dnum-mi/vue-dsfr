@@ -94,7 +94,7 @@ export default defineComponent({
           :name="name"
           v-bind="option"
           :model-value="modelValue"
-          @update:modelValue="onChange"
+          @update:model-value="onChange"
         />
       </div>
       <p

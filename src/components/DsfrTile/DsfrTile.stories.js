@@ -43,14 +43,14 @@ export const TuileSimple = (args) => ({
   },
 
   template: `
-      <DsfrTile
-        :title="title"
-        :imgSrc="imgSrc"
-        :rows="rows"
-        :description="description"
-        :horizontal="horizontal"
-        :to="to"
-      />
+    <DsfrTile
+      :title="title"
+      :imgSrc="imgSrc"
+      :rows="rows"
+      :description="description"
+      :horizontal="horizontal"
+      :to="to"
+    />
   `,
   mounted () {
     document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')

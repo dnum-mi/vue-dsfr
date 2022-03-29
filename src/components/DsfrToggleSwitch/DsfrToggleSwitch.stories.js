@@ -46,7 +46,7 @@ export const Interrupteur = (args) => ({
       :label="label"
       :hint="hint"
       :disabled="disabled"
-      :input-d="inputId"
+      :input-id="inputId"
     />
   `,
   watch: {

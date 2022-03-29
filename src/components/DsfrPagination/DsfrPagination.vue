@@ -142,7 +142,7 @@ export default defineComponent({
   </nav>
 </template>
 
-<style src="@gouvfr/dsfr/dist/component/pagination/pagination.main.css" />
+<style src="@gouvfr/dsfr/dist/component/pagination/pagination.main.min.css" />
 
 <style scoped>
 .fr-pagination__link:hover {

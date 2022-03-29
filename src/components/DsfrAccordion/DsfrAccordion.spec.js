@@ -1,9 +1,8 @@
 import { fireEvent, render } from '@testing-library/vue'
-import VIcon from '../../icons.js'
+import { OhVueIcon as VIcon } from 'oh-vue-icons'
 // import '@gouvfr/dsfr/dist/core/core.module.js'
 
 import DsfrAccordion from './DsfrAccordion.vue'
-
 
 describe('DsfrAccordion', () => {
   it('should render a simple accordion', async () => {

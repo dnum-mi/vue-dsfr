@@ -1,12 +1,12 @@
 interface HeaderMenuLink {
-    button: boolean;
-    iconOnly: boolean;
-    iconRight: boolean;
-    icon: string;
+    button?: boolean;
+    iconOnly?: boolean;
+    iconRight?: boolean;
+    icon?: string;
     label: string;
-    onClick: () => void;
+    onClick?: () => void;
     to?: string | import('vue-router').RouteLocationRaw;
-    href: string;
+    href?: string;
 }
 
 declare const _default: import('vue').DefineComponent<{
@@ -84,13 +84,13 @@ declare const _default: import('vue').DefineComponent<{
     'onUpdate:modelValue'?: (search: string) => void;
     onSearch?: (search: string) => void;
 }, {
-    placeholder: string;
-    quickLinks: HeaderMenuLink[];
-    modelValue: string;
-    logoText: string | string[];
+    placeholder?: string;
+    quickLinks?: HeaderMenuLink[];
+    modelValue?: string;
+    logoText?: string | string[];
     serviceTitle: string;
-    serviceDescription: string;
-    homeTo: string;
-    showSearch: boolean;
+    serviceDescription?: string;
+    homeTo?: string;
+    showSearch?: boolean;
 }>
 export default _default

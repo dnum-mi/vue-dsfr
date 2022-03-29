@@ -35,4 +35,4 @@ export default defineComponent({
   </div>
 </template>
 
-<style src="@gouvfr/dsfr/dist/component/skiplink/skiplink.main.css" />
+<style src="@gouvfr/dsfr/dist/component/skiplink/skiplink.main.min.css" />

@@ -36,7 +36,6 @@ export const Televersement = (args, { argTypes }) => ({
   },
   template: `
     <DsfrFileUpload
-      :dark="dark"
       :id="id"
       :label="label"
       :hint="hint"
@@ -66,7 +65,6 @@ export const TeleversementAvecErreur = (args, { argTypes }) => ({
   template: `
   <div :data-fr-theme="dark ? 'dark' : ''" style="background-color: var(--grey-1000-50);">
     <DsfrFileUpload
-      :dark="dark"
       :id="id"
       :label="label"
       :hint="hint"

@@ -62,4 +62,4 @@ defineEmits(['toggle-expand'])
   </nav>
 </template>
 
-<style src="@gouvfr/dsfr/dist/component/sidemenu/sidemenu.main.css" />
+<style src="@gouvfr/dsfr/dist/component/sidemenu/sidemenu.main.min.css" />
