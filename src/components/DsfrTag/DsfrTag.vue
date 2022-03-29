@@ -43,11 +43,8 @@ export default defineComponent({
     linkComponent () {
       return '$nuxt' in this ? 'nuxt-link' : 'router-link'
     },
-    to () {
-      return this.isExternalLink ? undefined : this.link
-    },
-    href () {
-      return this.isExternalLink ? this.link : undefined
+    linkProps () {
+      return { [this.isExternalLink ? 'href' : 'to']: this.link }
     },
   },
 })
@@ -57,13 +54,12 @@ export default defineComponent({
   <component
     :is="is"
     class="fr-tag"
-    :to="to"
     :disabled="disabled"
-    :href="href"
     :class="{
       'fr-tag--sm': small,
     }"
     :aria-pressed="selected"
+    v-bind="linkProps"
   >
     <VIcon
       v-if="icon"

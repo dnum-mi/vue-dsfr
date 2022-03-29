@@ -176,6 +176,8 @@ const navItems = [
           value="OK"
         >
       </form>
+
+      <DsfrTag v-bind="{ component: 'DsfrTag', label: 'Label de l’étiquette', tagName: 'TagCand', small: 'small', link: '/profil/creation' }" />
     </div>
 
     <DsfrModal
