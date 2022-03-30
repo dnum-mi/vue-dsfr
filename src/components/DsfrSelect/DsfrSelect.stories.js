@@ -18,7 +18,7 @@ export default {
     },
     options: {
       control: 'object',
-      description: 'Liste des options proposées par le `select` à lui passer sous forme de tableau',
+      description: 'Liste des options proposées par le `<select>` à lui passer sous forme de tableau de string ou de tableau d’objets avec une propriété `"text"` et une propriété `"value"`',
     },
     description: {
       control: 'text',
