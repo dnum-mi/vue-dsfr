@@ -31,6 +31,18 @@
     "./dist/vue-dsfr-fonts-essentials.css": {
       "require": "./dist/vue-dsfr-fonts-essentials.css",
       "import": "./dist/vue-dsfr-fonts-essentials.css"
+    },
+    "./styles": {
+      "require": "./dist/vue-dsfr.css",
+      "import": "./dist/vue-dsfr.css"
+    },
+    "./fonts": {
+      "require": "./dist/vue-dsfr-fonts.css",
+      "import": "./dist/vue-dsfr-fonts.css"
+    },
+    "./fonts-essentials": {
+      "require": "./dist/vue-dsfr-fonts-essentials.css",
+      "import": "./dist/vue-dsfr-fonts-essentials.css"
     }
   },
   "publishConfig": {
