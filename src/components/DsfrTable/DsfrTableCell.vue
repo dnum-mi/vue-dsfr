@@ -17,10 +17,10 @@ export default defineComponent({
 
   computed: {
     isObject () {
-      return typeof this.field === 'object'
+      return typeof this.field === 'object' && this.field !== null
     },
     isComponent () {
-      return this.isObject ? this.field.component : false
+      return (this.isObject && this.field.component) ? this.field.component : false
     },
     isString () {
       return typeof this.field === 'string'

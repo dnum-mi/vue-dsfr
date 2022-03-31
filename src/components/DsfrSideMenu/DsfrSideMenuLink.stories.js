@@ -5,7 +5,7 @@ import DsfrSideMenuLink from './DsfrSideMenuLink.vue'
 
 export default {
   component: DsfrSideMenuLink,
-  title: 'Composants/Menu latéral/4 - Bouton de menu dépliable - DsfrSideMenuLink',
+  title: 'Composants/Menu latéral/4 - Lien de menu dépliable - DsfrSideMenuLink',
   argTypes: {
     dark: {
       control: 'boolean',

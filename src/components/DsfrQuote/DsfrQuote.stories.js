@@ -20,14 +20,6 @@ export default {
       control: 'object',
       description: '**Détails** de la citation',
     },
-    illustration: {
-      control: 'text',
-      description: '**Illustration** de la citation',
-    },
-    separator: {
-      control: 'text',
-      description: '**Séparateur** horizontal ou vertical',
-    },
     source: {
       control: 'text',
       description: '**ouvrage** d\'où est tirée la citation',
@@ -55,7 +47,6 @@ export const Citation = (args) => ({
       :quote="quote"
       :author="author"
       :details="details"
-      :illustration="illustration"
       :source="source"
       :sourceUrl="sourceUrl"
       :quoteImage="quoteImage"
@@ -70,7 +61,6 @@ Citation.args = {
   dark: false,
   quote: 'LA citation',
   author: 'Pierre-Louis EGAUD',
-  separator: '',
   details: [
     'Détail 1',
     'Détail 2',
@@ -80,7 +70,6 @@ Citation.args = {
       label: 'wikipedia',
     },
   ],
-  illustration: 'illustration',
   source: 'Duckduckgo',
   sourceUrl: 'https://www.duckduckgo.com',
   quoteImage: 'https://placekitten.com/g/150/150',

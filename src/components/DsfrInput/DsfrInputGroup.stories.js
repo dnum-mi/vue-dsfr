@@ -9,6 +9,14 @@ export default {
       control: 'boolean',
       description: 'Permet de voir le composant dans les deux **thèmes** : **clair** (`false`, défaut) et **sombre** (`true`).*N.B. : Ne fait pas partie du composant.*',
     },
+    id: {
+      control: 'text',
+      description: '(optionnel) Valeur de l’attribut `id` du champ de saisie. Par défaut, un id pseudo-aléatoire sera donné.',
+    },
+    descriptionId: {
+      control: 'text',
+      description: '(optionnel) Valeur de l’attribut `id` du paragraphe de description. Par défaut, un id pseudo-aléatoire sera donné.',
+    },
     label: {
       control: 'text',
       description: 'Label du champ de saisie. Sera passé à DsfrInput si modelValue n’est pas `undefined`',
@@ -31,6 +39,7 @@ export default {
     },
     modelValue: {
       control: 'text',
+      description: 'Valeur du champ de saisie',
     },
     disabled: {
       control: 'boolean',

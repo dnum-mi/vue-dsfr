@@ -9,6 +9,10 @@ export default {
       control: 'boolean',
       description: 'Permet de voir le composant dans les deux **thèmes** : **clair** (`false`, défaut) et **sombre** (`true`).\n\n*N.B. : Ne fait pas partie du composant.*',
     },
+    id: {
+      control: 'text',
+      description: '(optionnel) Valeur de l’attribut `id` du radio bouton. Par défaut, un id pseudo-aléatoire sera donné.',
+    },
     options: {
       control: 'object',
       description: 'Tableau d’objets : chaque objet contient les props à passer à `DsfrRadioButton` - *N.B. : Ne fait pas partie du composant',
@@ -25,6 +29,9 @@ export default {
     img: {
       control: 'text',
       description: 'Permet d\'ajouter une image au composant',
+    },
+    'update:modelValue': {
+      description: 'Événement émis à chaque changement de valeur du groupe de même bouton radio',
     },
   },
 }

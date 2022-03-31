@@ -14,7 +14,7 @@ export default defineComponent({
     class="fr-sidemenu__item"
     :class="{ 'fr-sidemenu__item--active': active }"
   >
-    <!-- @slot Slot par défaut pour le contenu de cet item de menu latéral -->
+    <!-- @slot Slot par défaut pour le contenu d’une liste du menu latéral -->
     <slot />
   </li>
 </template>

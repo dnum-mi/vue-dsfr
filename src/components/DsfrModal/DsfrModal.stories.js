@@ -13,6 +13,25 @@ export default {
       control: 'object',
       description: 'Tableau d’objets : chaque objet contiendra les props à donner à `DsfrButton`',
     },
+    isAlert: {
+      control: 'boolean',
+      description: 'Booléen permettant de mettre un `role="alert"` (si `true`) sur la modal ou non (`false`, défaut)',
+    },
+    origin: {
+      control: 'text',
+      description: 'Valeur de l’attribut `id` du bouton qui déclenche l’ouverture de la modale',
+    },
+    opened: {
+      control: 'boolean',
+      description: 'Booléen permettant d\'ouvrir (`true`) ou fermer la modale (`false`, défaut)',
+    },
+    title: {
+      control: 'text',
+      description: 'Titre de la modale',
+    },
+    close: {
+      description: 'Événement déclenché à la fermeture de la modale',
+    },
     onClick: {
       action: 'close',
     },
@@ -42,6 +61,7 @@ export const Modal = (args) => ({
       ref="modal"
       :opened="opened"
       :actions="actions"
+      :is-alert="isAlert"
       :title="title"
       :origin="$refs.modalOrigin"
       @close="onClose()"

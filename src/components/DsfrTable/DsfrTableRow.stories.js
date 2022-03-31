@@ -25,8 +25,13 @@ Si c’est un objet, il doit avoir une propriété \`row\` dont la valeur sera u
 Toutes les autres propriétés seront mises sur l’élément \`<tr>\` de cette ligne.
         `,
     },
+    rowAttrs: {
+      control: 'object',
+      description: 'Objet contenant les props à passer à la balise `<tr>`',
+    },
     onClickRow: {
       action: 'Clicked on row',
+      description: 'Fonction pour montrer le clic sur une ligne',
     },
   },
 }
@@ -122,14 +127,12 @@ export const LigneDeTableauAvecComposant = (args) => ({
   },
 
   template: `
-      <DsfrTable
-        :title="title"
-      >
-        <template v-slot:header>
-          <DsfrTableHeaders :headers="headers" />
-        </template>
-        <DsfrTableRow :row-data="rowData" />
-      </DsfrTable>
+    <DsfrTable
+      :title="title"
+      :headers="headers"
+    >
+      <DsfrTableRow :row-data="rowData" />
+    </DsfrTable>
   `,
   mounted () {
     document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
@@ -162,10 +165,8 @@ export const LigneDeTableauComplexe = (args) => ({
   template: `
       <DsfrTable
         :title="title"
+        :headers="headers"
       >
-        <template v-slot:header>
-          <DsfrTableHeaders :headers="headers" />
-        </template>
         <DsfrTableRow :row-data="rowData" :row-attrs="rowAttrs" />
       </DsfrTable>
   `,

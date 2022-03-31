@@ -24,7 +24,6 @@ export default defineComponent({
       default: 'Sans intitulé',
     },
   },
-
   emits: ['expand'],
 
   computed: {
@@ -62,6 +61,7 @@ export default defineComponent({
       class="fr-collapse"
       :class="{ 'fr-collapse--expanded': expanded }"
     >
+      <!-- @slot Slot par défaut pour le contenu de l’accordéon: sera dans `<div class="fr-collapse">` -->
       <slot />
     </div>
   </section>

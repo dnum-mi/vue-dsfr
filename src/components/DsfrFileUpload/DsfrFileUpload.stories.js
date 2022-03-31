@@ -12,6 +12,10 @@ export default {
       control: 'text',
       description: 'Valeur de l’attribut `id` de l’input (sera aussi utilisé pour l’attribut `for` du `<label>`), chaîne aléatoire par défaut (conseillé)',
     },
+    modelValue: {
+      control: 'text',
+      description: 'Valeur du fichier sélectionné',
+    },
     label: {
       control: 'text',
       description: 'Court texte mettant en avant l’input associé',
@@ -23,6 +27,12 @@ export default {
     error: {
       control: 'text',
       description: 'Texte de l’erreur à afficher à l’utilisateur',
+    },
+    'update:modelValue': {
+      description: 'Événement émis lors du changement de valeur de `modelValue` : le paramètre passé est la valeur de la propriété `value` de l’`input`',
+    },
+    change: {
+      description: 'Événement émis lors du changement de valeur de `modelValue` : le paramètre passé est la valeur de la propriété `files` de l’input',
     },
   },
 }

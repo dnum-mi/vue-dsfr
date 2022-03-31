@@ -15,8 +15,13 @@ export default {
       control: 'object',
       description: 'Liste des en-têtes du tableau (tableau de string). *N.B. : Ne fait pas partie du composant.*',
     },
+    field: {
+      control: 'string',
+      description: 'Contenu du champ. Peut être une string ou bien un objet',
+    },
     onClickCell: {
       action: 'Clicked on cell',
+      description: 'Fonction pour montrer le clic sur une cellule (Ici seulement pour "Cellule de tableau complexe")',
     },
   },
 }

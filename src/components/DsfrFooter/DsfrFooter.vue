@@ -135,6 +135,7 @@ export default defineComponent({
     >
       <div class="fr-container">
         <div class="fr-grid-row fr-grid-row--start fr-grid-row--gutters">
+          <!-- @slot Slot #footer-link-lists pour pouvoir changer les liens dans la rubrique en haut du pied de page  -->
           <slot name="footer-link-lists" />
         </div>
       </div>

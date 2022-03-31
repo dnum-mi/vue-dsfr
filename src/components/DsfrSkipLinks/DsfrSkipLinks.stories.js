@@ -3,7 +3,7 @@ import DsfrSkipLinks from './DsfrSkipLinks.vue'
 export default {
   component: DsfrSkipLinks,
   title: 'Composants/Liens d’évitement - Skip links',
-  argType: {
+  argTypes: {
     dark: {
       control: 'boolean',
       description: 'Permet de voir le composant dans les deux **thèmes** : **clair** (`false`, défaut) et **sombre** (`true`).\n\n*N.B. : Ne fait pas partie du composant.*',
@@ -15,7 +15,7 @@ export default {
   },
 }
 
-export const SkipLinksExample = (args) => ({
+export const LiensDEvitement = (args) => ({
   components: {
     DsfrSkipLinks,
   },
@@ -27,11 +27,9 @@ export const SkipLinksExample = (args) => ({
   },
 
   template: `
-    <div :data-fr-theme="dark ? 'dark' : ''" style="background-color: var(--grey-1000-50); padding: 1rem;">
-      <DsfrSkipLinks
-        :links="links"
-      />
-    </div>
+    <DsfrSkipLinks
+      :links="links"
+    />
   `,
 
   mounted () {
@@ -40,18 +38,20 @@ export const SkipLinksExample = (args) => ({
 
 })
 
-SkipLinksExample.args = {
+LiensDEvitement.args = {
   dark: false,
-  links: [{
-    id: '#header',
-    text: 'Allons au header',
-  },
-  {
-    id: '#content',
-    text: 'Allons au content',
-  },
-  {
-    id: '#footer',
-    text: 'Allons au footer',
-  }],
+  links: [
+    {
+      id: '#header',
+      text: 'Allons au header',
+    },
+    {
+      id: '#content',
+      text: 'Allons au content',
+    },
+    {
+      id: '#footer',
+      text: 'Allons au footer',
+    },
+  ],
 }

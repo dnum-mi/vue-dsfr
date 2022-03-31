@@ -1,6 +1,5 @@
 import DsfrTabs from './DsfrTabs.vue'
 import DsfrTabContent from './DsfrTabContent.vue'
-import DsfrTabItem from './DsfrTabItem.vue'
 
 import { addIcons } from 'oh-vue-icons'
 
@@ -28,6 +27,9 @@ export default {
       control: 'object',
       description: 'Tableau de contenu de chaque `DsfrTabContent` - **Obligatoire si `DsfrTabs` n’a pas de contenu**',
     },
+    'select-tab': {
+      description: 'Événement émis lorsque l’onglet actif change, avec en argument l’index de l’onglet sélectionné',
+    },
     onSelectTab: {
       action: 'onSelectTab',
     },
@@ -43,14 +45,14 @@ const tabTitles = [
   { title: 'Titre 4', icon: 'ri-checkbox-circle-line' },
 ]
 const tabContents = [
-  'Contenu 1 avec seulement des string',
-  'Contenu2 avec seulement des string',
-  'Contenu3 avec seulement des string',
-  'Contenu4 avec seulement des string',
+  'Contenu 1 avec seulement des strings',
+  'Contenu 2 avec seulement des strings',
+  'Contenu 3 avec seulement des strings',
+  'Contenu 4 avec seulement des strings',
 ]
 
 export const OngletsSimples = (args) => ({
-  components: { DsfrTabs, DsfrTabItem },
+  components: { DsfrTabs },
   data () {
     return args
   },
@@ -118,7 +120,7 @@ export const OngletsComplexes = (args) => ({
         :selected="selectedTabIndex === 2"
         :asc="asc"
       >
-        <div>Contenu 2 avec d'autres composants</div>
+        <div>Contenu 3 avec d'autres composants</div>
       </DsfrTabContent>
 
       <DsfrTabContent
@@ -127,7 +129,7 @@ export const OngletsComplexes = (args) => ({
         :selected="selectedTabIndex === 3"
         :asc="asc"
       >
-        <div>Contenu 2 avec d'autres composants</div>
+        <div>Contenu 4 avec d'autres composants</div>
       </DsfrTabContent>
     </DsfrTabs>
   `,

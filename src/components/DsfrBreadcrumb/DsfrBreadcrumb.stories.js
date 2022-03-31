@@ -8,10 +8,13 @@ export default {
       control: 'boolean',
       description: 'Permet de voir le composant dans les deux **thèmes** : **clair** (`false`, défaut) et **sombre** (`true`).\n\n*N.B. : Ne fait pas partie du composant.*',
     },
-
     links: {
       control: 'object',
       description: 'Tableau d’objets, chaque objet contiendra 2 propriétés : `to` avec le lien et `text` avec le texte à afficher',
+    },
+    breadcrumbId: {
+      control: 'text',
+      description: 'Id de la balise `div` à l’intérieur de la balise `nav` du fil d’Ariane',
     },
   },
 }

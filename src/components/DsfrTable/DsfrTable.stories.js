@@ -33,9 +33,11 @@ export default {
     },
     onClickCell: {
       action: 'clicked on cell',
+      description: 'Fonction pour montrer le clic sur une cellule (Ici seulement la colonne "Téléphone" de la 3è ligne)',
     },
     onClickRow: {
       action: 'clicked on row',
+      description: 'Fonction pour montrer le clic sur une ligne (Ici seulement la 2e ligne)',
     },
   },
 }
