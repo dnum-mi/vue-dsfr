@@ -122,3 +122,50 @@ AccordeonDansUnAccordeon.args = {
   title: 'Un titre d’accordéon',
   titleSub: 'Accordéon dans l’accordéon',
 }
+
+export const AccordeonTitreCustom = (args) => ({
+  components: {
+    DsfrAccordion,
+    DsfrAccordionsGroup
+  },
+
+  data () {
+    return {
+      ...args,
+      title1: args.title1,
+      title2: args.title2,
+      expandedId: undefined,
+    }
+  },
+
+  template: `
+    <DsfrAccordionsGroup>
+      <li>
+        <DsfrAccordion
+          :expanded-id="expandedId"
+          @expand="expandedId = $event"
+        >
+        <template #title><h1>{{title1}}</h1></template>
+        </DsfrAccordion>
+      </li>
+      <li>
+        <DsfrAccordion
+          :title="title2"
+          :expanded-id="expandedId"
+          @expand="expandedId = $event"
+        >
+        </DsfrAccordion>
+      </li>
+    </DsfrAccordionsGroup>
+  `,
+
+  mounted () {
+    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
+  },
+
+})
+AccordeonTitreCustom.args = {
+  dark: false,
+  title1: 'Un titre d’accordéon customisé',
+  title2: 'Un autre titre d’accordéon'
+}
