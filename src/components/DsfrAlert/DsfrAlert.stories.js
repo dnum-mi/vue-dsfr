@@ -1,5 +1,11 @@
 import DsfrAlert from './DsfrAlert.vue'
 
+import { addIcons } from 'oh-vue-icons'
+
+import { RiCloseLine } from 'oh-vue-icons/icons/ri/index.js'
+
+addIcons(RiCloseLine)
+
 export default {
   component: DsfrAlert,
   title: 'Composants/Alertes - DsfrAlert',
@@ -7,6 +13,10 @@ export default {
     dark: {
       control: 'boolean',
       description: 'Permet de voir le composant dans les deux **thèmes** : **clair** (`false`, défaut) et **sombre** (`true`).\n\n*N.B. : Ne fait pas partie du composant.*',
+    },
+    id: {
+      control: 'text',
+      description: '(optionnel) Valeur de l’attribut `id` de l’alerte. Par défaut, un id pseudo-aléatoire sera donné.',
     },
     title: {
       control: 'text',

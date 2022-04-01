@@ -16,6 +16,10 @@ export default {
       control: 'boolean',
       description: 'Indique si les boutons doivent être affichés en ligne (`true`) ou chacun sur une ligne (`false`, défaut)',
     },
+    name: {
+      control: 'text',
+      description: 'Valeur de l’attribut `name` de chaque bouton radio du groupe',
+    },
     legend: {
       control: 'text',
       description: 'Titre du groupe de bouton',
@@ -35,6 +39,9 @@ export default {
     validMessage: {
       control: 'text',
       description: 'Texte du message à afficher en cas de succès',
+    },
+    'update:modelValue': {
+      description: 'Événement émis à chaque changement de valeur du groupe de même bouton radio',
     },
     onChange: { action: 'changed' },
   },

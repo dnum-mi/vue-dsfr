@@ -17,6 +17,14 @@ export default {
   - soit les props d’un mega-menu <a href="/?path=/story/composants-navigation-principale-4-mega-menu-dsfrnavigationmegamenu--navigation-mega-menu">DsfrNavigationMegaMenu</a> de navigation (\`title\`, \`link\` et \`menus\`)
       `,
     },
+    label: {
+      control: 'text',
+      description: 'Contenu de l’attribut `aria-label` de la balise `<nav>`',
+    },
+    id: {
+      control: 'text',
+      description: '(Optionnel) Valeur de l’attribut `id` de la balise `<nav>`. Aura une valeur pseudo-aléatoire par défaut',
+    },
   },
 }
 

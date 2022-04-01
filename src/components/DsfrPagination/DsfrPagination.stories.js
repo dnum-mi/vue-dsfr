@@ -16,6 +16,29 @@ export default {
       control: 'number',
       description: 'Indique la page sur laquelle se trouve l’utilisateur afin de pouvoir utiliser les raccourcis page précédente et page suivante',
     },
+    firstPageTitle: {
+      control: 'text',
+      description: 'Indique le titre de la première page',
+    },
+    lastPageTitle: {
+      control: 'text',
+      description: 'Indique le titre de la dernière page',
+    },
+    nextPageTitle: {
+      control: 'text',
+      description: 'Indique le titre de la page suivante',
+    },
+    prevPageTitle: {
+      control: 'text',
+      description: 'Indique le titre de la page suivante',
+    },
+    truncLimit: {
+      control: 'number',
+      description: 'Permet de limiter le nombre de pages affichées dans la pagination (avec un maximum de 5 pages)',
+    },
+    'update:currentPage': {
+      description: 'Événement émis lors du changement de page courante, avec en argument le numéro de page sélectionné',
+    },
   },
 }
 
@@ -31,7 +54,7 @@ export const Pagination = (args) => ({
   template: `
       <DsfrPagination
         :pages="pages"
-        v-model:currentPage="currentPage"
+        v-model:current-page="currentPage"
       />
   `,
 

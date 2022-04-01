@@ -18,11 +18,30 @@ export default {
     },
     tabId: {
       control: 'text',
-      description: 'Props de `DsfrTabItem`  et `DsfrTabContent`: Identifiant du titre de l’onglet ̛ ; doit être identique à la props `panel-id` du `DsfrTabContent` correspondant - **Obligatoire**',
+      description: 'Props de `DsfrTabItem` et `DsfrTabContent` : Identifiant du titre de l’onglet ̛ ; doit être identique à la props `panel-id` du `DsfrTabContent` correspondant - **Obligatoire**',
     },
     icon: {
       control: 'text',
       description: 'Props de `DsfrTabItem` : Nom de l’icône à afficher',
+    },
+    selected: {
+      control: 'boolean',
+      description: 'Indique si le titre de cet onglet est celui qui est actif',
+    },
+    click: {
+      description: 'Événement déclenché au clic sur le titre de l’onglet. Passe en argument l’événement natif \'click\' (dans lequel on peut récuperer l’élément dans la propriété `target` et l’id dans `target.id`)',
+    },
+    next: {
+      description: 'Événement déclenché à la pression sur la touche Flèche droite ou Flèche bas si le focus est sur le bouton de ce titre d’onglet',
+    },
+    previous: {
+      description: 'Événement déclenché à la pression sur la touche Flèche gauche ou Flèche haut si le focus est sur le bouton de ce titre d’onglet',
+    },
+    first: {
+      description: 'Événement déclenché à la pression sur la touche `Début` (`Home`) si le focus est sur le bouton de ce titre d’onglet',
+    },
+    last: {
+      description: 'Événement déclenché à la pression sur la touche `End` (`Fin`) si le focus est sur le bouton de ce titre d’onglet',
     },
   },
 }

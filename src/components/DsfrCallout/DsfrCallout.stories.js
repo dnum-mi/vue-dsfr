@@ -26,6 +26,10 @@ export default {
       control: 'text',
       description: 'Permet de passer l’icône désirée en chaîne de caractères (cf. remix-icon)',
     },
+    button: {
+      control: 'object',
+      description: '(optionnel) Objet contenant les props à passer à DsfrButton (pour afficher un bouton sous la mise en avant)',
+    },
     onClick: {
       action: 'Clicked',
     },

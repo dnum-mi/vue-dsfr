@@ -33,6 +33,7 @@ export default defineComponent({
     class="fr-sidemenu__link"
     v-bind="linkProps"
   >
+    <!-- @slot Slot par défaut pour le contenu d’une liste du menu latéral -->
     <slot />
   </component>
 </template>

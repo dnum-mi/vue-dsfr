@@ -56,6 +56,16 @@ export default {
       control: 'text',
       description: 'Contenu du champs de saisie de la barre de recherche',
     },
+    placeholder: {
+      control: 'text',
+      description: '**placeholder** du champ de saisie de la barre de recherche',
+    },
+    'update:modelValue': {
+      description: 'Événement émis lors du changement de la valeur du champ de saisie de la barre de recherche',
+    },
+    search: {
+      description: 'Événement émis lors de la validation de la recherche de la barre de recherche',
+    },
     actionOnLogo: { action: 'clicked on logo' },
     actionOnLink: { action: 'clicked on quickLink' },
     onChangeSearchInput: { action: 'search changed' },
@@ -86,6 +96,7 @@ export const EnTete = (args, { argTypes }) => ({
       }),
     }
   },
+
   template: `
     <DsfrHeader
       :service-title="serviceTitle"
@@ -94,11 +105,11 @@ export const EnTete = (args, { argTypes }) => ({
       :quick-links="quickLinks"
       :show-search="showSearch"
       :logo-text="logoText"
+      v-model="modelValue"
       @click="onClickOnLogo"
-      :model-value="modelValue"
-      @update:model-value="$emit('update:modelValue', $event)"
     />
   `,
+
   methods: {
     onClickOnLogo ($event) {
       $event.preventDefault()
@@ -118,6 +129,7 @@ EnTete.args = {
   serviceTitle: 'Nom du Site/Service',
   serviceDescription: 'baseline - précisions sur l‘organisation',
   modelValue: '',
+  placeholder: '',
   homeTo: '#',
   quickLinks: [
     { label: 'Lien2', path: '/', icon: 'ri-notification-3-line', iconOnly: true },

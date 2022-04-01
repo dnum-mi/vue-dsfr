@@ -16,6 +16,13 @@ export default {
       control: 'text',
       description: 'Texte de l’item du menu',
     },
+    id: {
+      control: 'text',
+      description: '(Optionnel) Valeur de l’attribut `id` de la balise `<a>` du lien de navigation. Aura une valeur pseudo-aléatoire par défaut',
+    },
+    'toggle-id': {
+      description: 'Événement émis lors du click sur le lien, avec en argument l’id de l’élément cliqué',
+    },
   },
 }
 

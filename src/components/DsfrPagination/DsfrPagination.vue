@@ -39,6 +39,7 @@ export default defineComponent({
   },
 
   emits: ['update:currentPage'],
+
   computed: {
     startIndex () {
       return Math.min(this.pages.length - 1 - this.truncLimit, Math.max(this.currentPage - (this.truncLimit - this.truncLimit % 2) / 2, 0))

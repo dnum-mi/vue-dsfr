@@ -8,6 +8,10 @@ export default {
       control: 'boolean',
       description: 'Permet de voir le composant dans les deux **thèmes** : **clair** (`false`, défaut) et **sombre** (`true`).\n\n*N.B. : Ne fait pas partie du composant.*',
     },
+    selectId: {
+      control: 'text',
+      description: 'Valeur de l’attribut `id` de la balise `<select>`',
+    },
     required: {
       control: 'boolean',
       description: 'Option permettant de rendre ce champ de formulaire obligatoire et d’assigner au label un astérisque afin de rendre ce changement visible',
@@ -18,7 +22,7 @@ export default {
     },
     options: {
       control: 'object',
-      description: 'Liste des options proposées par le `select` à lui passer sous forme de tableau',
+      description: 'Liste des options proposées par le `<select>` à lui passer sous forme de tableau de string ou de tableau d’objets avec une propriété `"text"` et une propriété `"value"`',
     },
     description: {
       control: 'text',
@@ -39,6 +43,10 @@ export default {
     disabled: {
       control: 'boolean',
       description: 'Option empêchant toute interaction avec le `select`',
+    },
+    'update:modelValue': {
+      control: 'text',
+      description: 'Événement émis lors du changement de l’option sélectionnée',
     },
     onChange: {
       action: 'change',

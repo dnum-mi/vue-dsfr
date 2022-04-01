@@ -4,7 +4,7 @@ import DsfrSideMenuListItem from './DsfrSideMenuListItem.vue'
 import DsfrSideMenuLink from './DsfrSideMenuLink.vue'
 
 export default {
-  component: DsfrSideMenuLink,
+  component: DsfrSideMenuListItem,
   title: 'Composants/Menu latéral/3 - Item de menu - DsfrSideMenuListItem',
   argTypes: {
     dark: {

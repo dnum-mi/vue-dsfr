@@ -19,8 +19,13 @@ export default {
       control: 'object',
       description: 'Objet contenant les props ou événements à passer à la balise `th`',
     },
+    icon: {
+      control: 'object',
+      description: 'Objet contenant les props à passer à VIcon (OhVueIcon) pour afficher une icône dans l’en-tête',
+    },
     onClickHeader: {
       action: 'Clic sur en-tête',
+      description: 'Fonction pour montrer le clic sur un en-tête',
     },
   },
 }
