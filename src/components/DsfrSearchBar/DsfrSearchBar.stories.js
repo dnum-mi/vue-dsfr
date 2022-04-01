@@ -4,10 +4,17 @@ export default {
   component: DsfrSearchBar,
   title: 'Composants/Barre de recherche - DsfrSearchBar',
   argTypes: {
-    label: { control: 'text' },
+    label: {
+      control: 'text',
+      description: 'Texte du `label` de la barre de recherche',
+    },
     dark: {
       control: 'boolean',
       description: 'Permet de voir le composant dans les deux **thèmes** : **clair** (`false`, défaut) et **sombre** (`true`).\n\n*N.B. : Ne fait pas partie du composant.*',
+    },
+    id: {
+      control: 'text',
+      description: '(optionnel) Valeur de l’attribut `id` de l’input au sein d. Par défaut, un id pseudo-aléatoire sera donné.',
     },
     hideIcon: {
       control: 'boolean',
@@ -33,6 +40,12 @@ export default {
       control: 'boolean',
       description: 'Indique si la barre de recherche doit prendre plus de hauteur (`true`) ou non (`false`, défaut)',
     },
+    'update:modelValue': {
+      description: 'Événement émis à chaque changement de la valeur du champ de saisie de la recherche',
+    },
+    search: {
+      description: 'Événement émis lors de la validation de la recherche',
+    },
   },
 }
 
@@ -46,7 +59,6 @@ export const BarreDeRecherche = (args) => ({
   template: `
       <DsfrSearchBar
         :label="label"
-        :dark="dark"
         :placeholder="placeholder"
         :labelVisible="labelVisible"
         :button-text="buttonText"
@@ -81,7 +93,6 @@ export const BarreDeRechercheLarge = (args) => ({
   template: `
     <DsfrSearchBar
       :label="label"
-      :dark="dark"
       :placeholder="placeholder"
       :labelVisible="labelVisible"
       :hide-icon="hideIcon"

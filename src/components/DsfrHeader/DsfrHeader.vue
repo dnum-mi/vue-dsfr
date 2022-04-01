@@ -228,4 +228,4 @@ export default defineComponent({
   </header>
 </template>
 
-<style src="@gouvfr/dsfr/dist/component/header/header.main.css" />
+<style src="@gouvfr/dsfr/dist/component/header/header.main.min.css" />

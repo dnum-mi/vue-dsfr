@@ -9,6 +9,14 @@ export default {
       control: 'boolean',
       description: 'Permet de voir le composant dans les deux **thèmes** : **clair** (`false`, défaut) et **sombre** (`true`). *N.B. : Ne fait pas partie du composant.*',
     },
+    id: {
+      control: 'text',
+      description: '(optionnel) Valeur de l’attribut `id` du champ de saisie. Par défaut, un id pseudo-aléatoire sera donné.',
+    },
+    descriptionId: {
+      control: 'text',
+      description: '(optionnel) Valeur de l’attribut `id` du paragraphe de description. Par défaut, un id pseudo-aléatoire sera donné.',
+    },
     label: {
       control: 'text',
       description: 'Label du champ de saisie',
@@ -31,6 +39,7 @@ export default {
     },
     modelValue: {
       control: 'text',
+      description: 'Valeur du champ de saisie',
     },
     disabled: {
       control: 'boolean',
@@ -55,6 +64,18 @@ export default {
     validMessage: {
       control: 'text',
       description: 'Message de validation à associer au champ. **Ne fait pas partie du composant. Il appartient à <a href="/?path=/story/composants-champ-de-saisie-champ-avec-message-associ%C3%A9-dsfrinputgroup--champ-valide">DsfrInputGroup</a>**',
+    },
+    isWithWrapper: {
+      control: 'boolean',
+      description: 'Définit la présence d’une div englobant le champ de saisie et lui met automatiquement la classe `fr-input-wrap`',
+    },
+    wrapperClass: {
+      control: 'text',
+      description: 'Classe css du div englobant le champ de saisie si l’utilisateur y a recourt.',
+    },
+    'update:modelValue': {
+      control: 'text',
+      description: 'Événement émis lors du changement de la valeur du champ de saisie',
     },
   },
 }

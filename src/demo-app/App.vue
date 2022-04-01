@@ -8,6 +8,7 @@ import DsfrNavigation from '../components/DsfrNavigation/DsfrNavigation.vue'
 import DsfrSkipLinks from '../components/DsfrSkipLinks/DsfrSkipLinks.vue'
 import DsfrModal from '../components/DsfrModal/DsfrModal.vue'
 import DsfrFileUpload from '../components/DsfrFileUpload/DsfrFileUpload.vue'
+import DsfrBreadcrumb from '../components/DsfrBreadcrumb/DsfrBreadcrumb.vue'
 
 const isModalOpen = ref(false)
 const displayAlert = ref(false)
@@ -124,6 +125,10 @@ const navItems = [
       />
       <h1>Demo VueDsfr</h1>
 
+      <DsfrBreadcrumb
+        :links="[{text: 'Accueil', to: '/'}, {text: 'Test fil d’Ariane'}]"
+      />
+
       <router-view />
 
       <div>
@@ -176,6 +181,8 @@ const navItems = [
           value="OK"
         >
       </form>
+
+      <DsfrTag v-bind="{ component: 'DsfrTag', label: 'Label de l’étiquette', tagName: 'TagCand', small: 'small', link: '/profil/creation' }" />
     </div>
 
     <DsfrModal

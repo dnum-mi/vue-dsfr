@@ -41,7 +41,7 @@ describe('DsfrTile', () => {
     expect(descriptionEl).toHaveClass('fr-tile__desc')
   })
 
-  it.skip('should display a horizontal tile', async () => {
+  it('should display a horizontal tile', async () => {
     const title = 'Titre de la tuile'
     const imgSrc = 'https://placekitten.com/80/80'
     const description = 'Lorem ipsum dolor sit amet, consectetur adipiscing, incididunt, ut labore et dol'

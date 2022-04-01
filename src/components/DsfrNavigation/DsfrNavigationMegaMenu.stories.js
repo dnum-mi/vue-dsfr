@@ -30,6 +30,13 @@ export default {
       control: 'text',
       description: 'Indique l’id de l’élément "ouvert" ou "déplié" dans le menu. Permet au composant de savoir s’il doit être déplié (si `expandedId` est identique à son `id`) ou non (si `expandedId` est différent de son `id`)',
     },
+    id: {
+      control: 'text',
+      description: '(Optionnel) Valeur de l’attribut `id` de ce sous-menu. *N.B. : Il est recommandé de ne pas le donner, la bibliothèque lui en donnera un pseudo-aléatoire*.',
+    },
+    'toggle-id': {
+      description: 'Événement émis lors du click sur le lien, avec en argument l’id de l’élément cliqué',
+    },
   },
 }
 
@@ -64,7 +71,6 @@ export const NavigationMegaMenu = (args) => ({
     <DsfrNavigation>
       <DsfrNavigationItem>
         <DsfrNavigationMegaMenu
-          :dark="dark"
           :title="title"
           :description="description"
           :link="link"

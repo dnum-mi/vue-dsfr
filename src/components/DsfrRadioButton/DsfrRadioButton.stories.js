@@ -9,6 +9,10 @@ export default {
       control: 'boolean',
       description: 'Permet de voir le composant dans les deux **thèmes** : **clair** (`false`, défaut) et **sombre** (`true`).\n\n*N.B. : Ne fait pas partie du composant.*',
     },
+    id: {
+      control: 'text',
+      description: '(optionnel) Valeur de l’attribut `id` du radio bouton. Par défaut, un id pseudo-aléatoire sera donné.',
+    },
     options: {
       control: 'object',
       description: 'Tableau d’objets : chaque objet contient les props à passer à `DsfrRadioButton` - *N.B. : Ne fait pas partie du composant',
@@ -26,6 +30,9 @@ export default {
       control: 'text',
       description: 'Permet d\'ajouter une image au composant',
     },
+    'update:modelValue': {
+      description: 'Événement émis à chaque changement de valeur du groupe de même bouton radio',
+    },
   },
 }
 
@@ -35,14 +42,12 @@ export const RadioButton = (args, { argTypes }) => ({
     return args
   },
   template: `
-    <div :data-fr-theme="dark ? 'dark' : ''" style="background-color: var(--grey-1000-50); padding: 1rem;">
-      <DsfrRadioButton
-        v-for="option of options"
-        :modelValue="modelValue"
-        v-bind="option"
-        @update:modelValue="updateCheckedValue($event)"
-      />
-    </div>
+    <DsfrRadioButton
+      v-for="option of options"
+      :modelValue="modelValue"
+      v-bind="option"
+      @update:modelValue="updateCheckedValue($event)"
+    />
   `,
   methods: {
     updateCheckedValue (val) {
@@ -85,14 +90,12 @@ export const RichRadioButton = (args, { argTypes }) => ({
     return args
   },
   template: `
-    <div :data-fr-theme="dark ? 'dark' : ''" style="background-color: var(--grey-1000-50); padding: 1rem;">
-      <DsfrRadioButton
-        v-for="option of options"
-        :modelValue="modelValue"
-        v-bind="option"
-        @update:modelValue="updateCheckedValue($event)"
-      />
-    </div>
+    <DsfrRadioButton
+      v-for="option of options"
+      :modelValue="modelValue"
+      v-bind="option"
+      @update:modelValue="updateCheckedValue($event)"
+    />
   `,
   methods: {
     updateCheckedValue (val) {

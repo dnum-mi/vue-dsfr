@@ -10,7 +10,7 @@ declare const _default: import('vue').DefineComponent<{
         default(): any;
     };
     modelValue: {
-        type: (StringConstructor | NumberConstructor)[];
+        type: (StringConstructor | NumberConstructor) | (StringConstructor | NumberConstructor)[];
         default: any;
     };
     label: {
@@ -19,7 +19,7 @@ declare const _default: import('vue').DefineComponent<{
     };
     options: {
         type: ArrayConstructor;
-        default: () => SelectOption[];
+        default: () => (string | SelectOption)[];
     };
     description: {
         type: StringConstructor;
@@ -53,7 +53,7 @@ declare const _default: import('vue').DefineComponent<{
     };
     options: {
         type: ArrayConstructor;
-        default: () => SelectOption[];
+        default: () => (string | SelectOption)[];
     };
     description: {
         type: StringConstructor;
@@ -75,7 +75,7 @@ declare const _default: import('vue').DefineComponent<{
     required: boolean;
     label: string;
     disabled: boolean;
-    options: SelectOption[];
+    options: (string | SelectOption)[];
     modelValue: string | number;
     errorMessage: string;
     selectId: string;

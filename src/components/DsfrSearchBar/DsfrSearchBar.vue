@@ -78,7 +78,7 @@ export default defineComponent({
   </div>
 </template>
 
-<style src="@gouvfr/dsfr/dist/component/search/search.main.css" />
+<style src="@gouvfr/dsfr/dist/component/search/search.main.min.css" />
 
 <style>
 .fr-search-bar > .fr-label + .fr-input {

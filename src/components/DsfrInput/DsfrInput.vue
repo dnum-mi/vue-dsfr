@@ -107,7 +107,7 @@ export default defineComponent({
   </div>
 </template>
 
-<style src="@gouvfr/dsfr/dist/component/input/input.main.css" />
+<style src="@gouvfr/dsfr/dist/component/input/input.main.min.css" />
 
 <style scoped>
 .invisible {

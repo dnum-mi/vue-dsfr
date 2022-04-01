@@ -107,4 +107,4 @@ export default defineComponent({
   </div>
 </template>
 
-<style src="@gouvfr/dsfr/dist/component/select/select.main.css" />
+<style src="@gouvfr/dsfr/dist/component/select/select.main.min.css" />

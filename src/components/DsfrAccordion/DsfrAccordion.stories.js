@@ -9,9 +9,20 @@ export default {
       control: 'boolean',
       description: 'Permet de voir le composant dans les deux **thèmes** : **clair** (`false`, défaut) et **sombre** (`true`).\n\n*N.B. : Ne fait pas partie du composant.*',
     },
+    id: {
+      control: 'text',
+      description: '(optionnel) Valeur de l’attribut `id` de l’accordéon. Par défaut, un id pseudo-aléatoire sera donné.',
+    },
     title: {
       control: 'text',
       description: 'Intitulé de l’accordéon',
+    },
+    expand: {
+      description: 'Événement déclenché au clic sur le titre de l’accordéon et qui renvoie l’`id` de l’accordéon correspondant.',
+    },
+    expandedId: {
+      control: 'text',
+      description: 'Id de l’accordéon déplié',
     },
   },
 }
@@ -121,4 +132,51 @@ AccordeonDansUnAccordeon.args = {
   dark: false,
   title: 'Un titre d’accordéon',
   titleSub: 'Accordéon dans l’accordéon',
+}
+
+export const AccordeonTitreCustom = (args) => ({
+  components: {
+    DsfrAccordion,
+    DsfrAccordionsGroup
+  },
+
+  data () {
+    return {
+      ...args,
+      title1: args.title1,
+      title2: args.title2,
+      expandedId: undefined,
+    }
+  },
+
+  template: `
+    <DsfrAccordionsGroup>
+      <li>
+        <DsfrAccordion
+          :expanded-id="expandedId"
+          @expand="expandedId = $event"
+        >
+        <template #title><h1>{{title1}}</h1></template>
+        </DsfrAccordion>
+      </li>
+      <li>
+        <DsfrAccordion
+          :title="title2"
+          :expanded-id="expandedId"
+          @expand="expandedId = $event"
+        >
+        </DsfrAccordion>
+      </li>
+    </DsfrAccordionsGroup>
+  `,
+
+  mounted () {
+    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
+  },
+
+})
+AccordeonTitreCustom.args = {
+  dark: false,
+  title1: 'Un titre d’accordéon customisé',
+  title2: 'Un autre titre d’accordéon'
 }

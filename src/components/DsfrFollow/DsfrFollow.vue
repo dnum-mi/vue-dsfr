@@ -42,22 +42,24 @@ export default defineComponent({
     <div class="fr-container">
       <div class="fr-grid-row">
         <!-- @slot Slot par défaut pour le contenu. Sera dans `<div class="fr-grid-row">` -->
-        <slot />
-        <div
-          v-if="newsletterData"
-          :class="{ 'fr-col-12' : true, 'fr-col-md-8': hasNetworks }"
-        >
-          <DsfrNewsLetter v-bind="newsletterData" />
-        </div>
-        <div
-          v-if="hasNetworks"
-          :class="{ 'fr-col-12' : true, 'fr-col-md-4': hasNewsletter }"
-        >
-          <DsfrSocialNetworks :networks="networks" />
-        </div>
+        <slot>
+          <div
+            v-if="newsletterData"
+            :class="{ 'fr-col-12' : true, 'fr-col-md-8': hasNetworks }"
+          >
+            <DsfrNewsLetter v-bind="newsletterData" />
+          </div>
+          <div
+            v-if="hasNetworks"
+            :class="{ 'fr-col-12' : true, 'fr-col-md-4': hasNewsletter }"
+          >
+            <DsfrSocialNetworks :networks="networks" />
+          </div>
+          <slot />
+        </slot>
       </div>
     </div>
   </div>
 </template>
 
-<style src="@gouvfr/dsfr/dist/component/follow/follow.main.css" />
+<style src="@gouvfr/dsfr/dist/component/follow/follow.main.min.css" />

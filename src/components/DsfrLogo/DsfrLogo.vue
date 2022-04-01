@@ -32,4 +32,4 @@ export default defineComponent({
   />
 </template>
 
-<style src="@gouvfr/dsfr/dist/component/logo/logo.main.css" />
+<style src="@gouvfr/dsfr/dist/component/logo/logo.main.min.css" />

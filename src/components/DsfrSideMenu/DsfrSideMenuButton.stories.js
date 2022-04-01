@@ -57,7 +57,7 @@ export const BoutonDeMenuDepliable = (args, { argTypes }) => ({
         <DsfrSideMenuButton
           :active="active"
           :expanded="isExpanded"
-          :controlId="controlId"
+          :control-id="controlId"
           @toggle-expand="isExpanded = !isExpanded"
         >
           Item de menu actifavec sous-menu

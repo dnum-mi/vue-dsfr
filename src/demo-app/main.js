@@ -1,10 +1,10 @@
 import { createApp } from 'vue'
-import { addIcons } from '../index.js'
+import { addIcons } from 'oh-vue-icons'
 
 import {
   RiCheckboxCircleLine,
   RiNotification3Line,
-} from 'oh-vue-icons/icons'
+} from 'oh-vue-icons/icons/ri/index.js'
 
 import '@/main.css'
 import '@/assets/fonts-dsfr.css'

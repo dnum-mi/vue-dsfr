@@ -1,7 +1,7 @@
 import { mount } from '@cypress/vue'
 import DsfrButton from '../DsfrButton/DsfrButton.vue'
 import DsfrModal from './DsfrModal.vue'
-import VIcon from '../../icons.js'
+import { OhVueIcon as VIcon } from 'oh-vue-icons'
 import '../../main.css'
 
 const ModalWrapper = {

@@ -31,7 +31,7 @@ declare const _default: import('vue').DefineComponent<{
 }>> & {
     onExpand?: (...args: any[]) => any;
 }, {
-    id: string;
+    id?: string;
     title: string;
     expandedId: string;
 }>

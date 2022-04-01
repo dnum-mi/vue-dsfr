@@ -35,7 +35,7 @@ export default defineConfig({
       entry: path.resolve(projectDir, 'src', 'index.js'),
     },
     rollupOptions: {
-      external: ['vue', 'vue-router'],
+      external: ['vue', 'oh-vue-icons', 'vue-router'],
       output: {
         dir: 'dist',
         globals: {

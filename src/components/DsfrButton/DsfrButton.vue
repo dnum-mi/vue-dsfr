@@ -1,10 +1,15 @@
 <script>
 import { defineComponent } from 'vue'
+import { OhVueIcon as VIcon } from 'oh-vue-icons'
 
 // import '@gouvfr/dsfr/dist/component/button/button.module.js'
 
 export default defineComponent({
   name: 'DsfrButton',
+
+  components: {
+    VIcon,
+  },
   props: {
     disabled: Boolean,
     label: {
@@ -54,7 +59,7 @@ export default defineComponent({
   </button>
 </template>
 
-<style src="@gouvfr/dsfr/dist/component/button/button.main.css" />
+<style src="@gouvfr/dsfr/dist/component/button/button.main.min.css" />
 
 <style scoped>
 .inline-flex {

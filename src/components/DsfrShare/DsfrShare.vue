@@ -69,4 +69,4 @@ export default defineComponent({
   </div>
 </template>
 
-<style src="@gouvfr/dsfr/dist/component/share/share.main.css" />
+<style src="@gouvfr/dsfr/dist/component/share/share.main.min.css" />

@@ -1,6 +1,6 @@
 import { mount } from '@cypress/vue'
 import DsfrBreadcrumb from './DsfrBreadcrumb.vue'
-import VIcon from '../../icons.js'
+import { OhVueIcon as VIcon } from 'oh-vue-icons'
 
 import '../../main.css'
 

@@ -8,10 +8,6 @@ export default defineComponent({
       type: String,
       default: undefined,
     },
-    icon: {
-      type: String,
-      default: undefined,
-    },
     author: {
       type: String,
       default: undefined,
@@ -19,14 +15,6 @@ export default defineComponent({
     details: {
       type: Array,
       default: () => [],
-    },
-    illustration: {
-      type: String,
-      default: undefined,
-    },
-    separator: {
-      type: String,
-      default: 'horizontal',
     },
     source: {
       type: String,
@@ -91,4 +79,4 @@ export default defineComponent({
   </figure>
 </template>
 
-<style src="@gouvfr/dsfr/dist/component/quote/quote.main.css" />
+<style src="@gouvfr/dsfr/dist/component/quote/quote.main.min.css" />

@@ -1,3 +1,5 @@
+import type { Button } from '../DsfrButton/DsfrButtonGroup.vue'
+
 declare const _default: import('vue').DefineComponent<{
     title: {
         type: StringConstructor;
@@ -9,11 +11,11 @@ declare const _default: import('vue').DefineComponent<{
     };
     icon: {
         type: StringConstructor;
-        default: any;
+        default: string | undefined;
     };
     button: {
         type: ObjectConstructor;
-        default: () => any;
+        default: () => Button | undefined;
         required: false;
     };
 }, unknown, unknown, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, Record<string, any>, string, import('vue').VNodeProps & import('vue').AllowedComponentProps & import('vue').ComponentCustomProps, Readonly<import('vue').ExtractPropTypes<{
@@ -35,7 +37,7 @@ declare const _default: import('vue').DefineComponent<{
         required: false;
     };
 }>>, {
-    button: Record<string, any>;
+    button: Button | undefined;
     content: string;
     title: string;
     icon: string;

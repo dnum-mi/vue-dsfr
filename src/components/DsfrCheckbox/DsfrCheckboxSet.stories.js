@@ -49,7 +49,6 @@ export const CheckboxSet = (args) => ({
     return args
   },
   template: `
-  <div :data-fr-theme="dark ? 'dark' : ''" style="background-color: var(--grey-1000-50); padding: 1rem;">
     <DsfrCheckboxSet
       :legend="legend"
       v-model="modelValue"
@@ -59,11 +58,14 @@ export const CheckboxSet = (args) => ({
       :errorMessage="errorMessage"
       :validMessage="validMessage"
     />
-  </div>`,
+  `,
   watch: {
     modelValue (val) {
       this.onChange(val)
     },
+  },
+  mounted () {
+    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
   },
 })
 CheckboxSet.args = {
@@ -101,7 +103,6 @@ export const CheckboxSetAvecErreur = (args) => ({
     return args
   },
   template: `
-  <div :data-fr-theme="dark ? 'dark' : ''" style="background-color: var(--grey-1000-50); padding: 1rem;">
     <DsfrCheckboxSet
       :legend="legend"
       v-model="modelValue"
@@ -109,11 +110,14 @@ export const CheckboxSetAvecErreur = (args) => ({
       :options="options"
       :inline="inline"
     />
-  </div>`,
+  `,
   watch: {
     modelValue (val) {
       this.onChange(val)
     },
+  },
+  mounted () {
+    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
   },
 })
 CheckboxSetAvecErreur.args = {
@@ -153,7 +157,6 @@ export const CheckboxSetAvecSucces = (args) => ({
     return args
   },
   template: `
-  <div :data-fr-theme="dark ? 'dark' : ''" style="background-color: var(--grey-1000-50); padding: 1rem;">
     <DsfrCheckboxSet
       :legend="legend"
       v-model="modelValue"
@@ -161,11 +164,14 @@ export const CheckboxSetAvecSucces = (args) => ({
       :options="options"
       :inline="inline"
     />
-  </div>`,
+  `,
   watch: {
     modelValue (val) {
       this.onChange(val)
     },
+  },
+  mounted () {
+    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
   },
 })
 
@@ -205,7 +211,6 @@ export const CheckboxSetInline = (args) => ({
     return args
   },
   template: `
-  <div :data-fr-theme="dark ? 'dark' : ''" style="background-color: var(--grey-1000-50); padding: 1rem;">
     <DsfrCheckboxSet
       :legend="legend"
       v-model="modelValue"
@@ -214,11 +219,14 @@ export const CheckboxSetInline = (args) => ({
       :options="options"
       :inline="inline"
     />
-  </div>`,
+  `,
   watch: {
     modelValue (val) {
       this.onChange(val)
     },
+  },
+  mounted () {
+    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
   },
 })
 CheckboxSetInline.args = {
@@ -258,7 +266,6 @@ export const CheckboxSetInlineAvecErreur = (args) => ({
     return args
   },
   template: `
-  <div :data-fr-theme="dark ? 'dark' : ''" style="background-color: var(--grey-1000-50); padding: 1rem;">
     <DsfrCheckboxSet
       :legend="legend"
       v-model="modelValue"
@@ -267,11 +274,14 @@ export const CheckboxSetInlineAvecErreur = (args) => ({
       :options="options"
       :inline="inline"
     />
-  </div>`,
+  `,
   watch: {
     modelValue (val) {
       this.onChange(val)
     },
+  },
+  mounted () {
+    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
   },
 })
 CheckboxSetInlineAvecErreur.args = {
@@ -311,7 +321,6 @@ export const CheckboxSetInlineAvecSucces = (args) => ({
     return args
   },
   template: `
-  <div :data-fr-theme="dark ? 'dark' : ''" style="background-color: var(--grey-1000-50); padding: 1rem;">
     <DsfrCheckboxSet
       :legend="legend"
       v-model="modelValue"
@@ -320,11 +329,14 @@ export const CheckboxSetInlineAvecSucces = (args) => ({
       :options="options"
       :inline="inline"
     />
-  </div>`,
+  `,
   watch: {
     modelValue (val) {
       this.onChange(val)
     },
+  },
+  mounted () {
+    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
   },
 })
 CheckboxSetInlineAvecSucces.args = {

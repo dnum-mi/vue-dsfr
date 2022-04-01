@@ -99,7 +99,7 @@ export default defineComponent({
   </transition>
 </template>
 
-<style src="@gouvfr/dsfr/dist/component/alert/alert.main.css" />
+<style src="@gouvfr/dsfr/dist/component/alert/alert.main.min.css" />
 
 <style scoped>
 .fr-alert,

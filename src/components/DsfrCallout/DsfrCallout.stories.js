@@ -1,6 +1,6 @@
-import { addIcons } from '../../icons.js'
+import { OhVueIcon as VIcon, addIcons } from 'oh-vue-icons'
 
-import { RiInformationLine } from 'oh-vue-icons/icons'
+import { RiInformationLine } from 'oh-vue-icons/icons/ri/index.js'
 
 import DsfrCallout from './DsfrCallout.vue'
 
@@ -26,6 +26,10 @@ export default {
       control: 'text',
       description: 'Permet de passer l’icône désirée en chaîne de caractères (cf. remix-icon)',
     },
+    button: {
+      control: 'object',
+      description: '(optionnel) Objet contenant les props à passer à DsfrButton (pour afficher un bouton sous la mise en avant)',
+    },
     onClick: {
       action: 'Clicked',
     },
@@ -35,7 +39,7 @@ export default {
 export const MiseEnAvantSimple = (args) => ({
   components: {
     DsfrCallout,
-    VIcon: OhVueIcon,
+    VIcon,
   },
 
   data () {
@@ -49,12 +53,12 @@ export const MiseEnAvantSimple = (args) => ({
   },
 
   template: `
-      <DsfrCallout
-        :title="title"
-        :content="content"
-        :button="button"
-        :icon="icon"
-      />
+    <DsfrCallout
+      :title="title"
+      :content="content"
+      :button="button"
+      :icon="icon"
+    />
   `,
 
   mounted () {
@@ -72,7 +76,7 @@ MiseEnAvantSimple.args = {
 export const MiseEnAvant = (args) => ({
   components: {
     DsfrCallout,
-    VIcon: OhVueIcon,
+    VIcon,
   },
 
   data () {
@@ -86,12 +90,12 @@ export const MiseEnAvant = (args) => ({
   },
 
   template: `
-      <DsfrCallout
-        :title="title"
-        :content="content"
-        :button="button"
-        :icon="icon"
-      />
+    <DsfrCallout
+      :title="title"
+      :content="content"
+      :button="button"
+      :icon="icon"
+    />
   `,
 
   mounted () {

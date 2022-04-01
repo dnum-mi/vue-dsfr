@@ -8,7 +8,7 @@ import '../src/main.css'
 
 import './theme.css'
 
-import VIcon from '../src/icons.js'
+import {OhVueIcon as VIcon} from 'oh-vue-icons'
 
 export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },

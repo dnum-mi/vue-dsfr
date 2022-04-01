@@ -57,7 +57,7 @@ export default defineComponent({
   </div>
 </template>
 
-<style src="@gouvfr/dsfr/dist/component/callout/callout.main.css"></style>
+<style src="@gouvfr/dsfr/dist/component/callout/callout.main.min.css"></style>
 
 <style scoped>
 .fr-callout__text {

@@ -16,6 +16,10 @@ export default {
       control: 'boolean',
       description: 'Indique si les boutons doivent être affichés en ligne (`true`) ou chacun sur une ligne (`false`, défaut)',
     },
+    name: {
+      control: 'text',
+      description: 'Valeur de l’attribut `name` de chaque bouton radio du groupe',
+    },
     legend: {
       control: 'text',
       description: 'Titre du groupe de bouton',
@@ -36,6 +40,9 @@ export default {
       control: 'text',
       description: 'Texte du message à afficher en cas de succès',
     },
+    'update:modelValue': {
+      description: 'Événement émis à chaque changement de valeur du groupe de même bouton radio',
+    },
     onChange: { action: 'changed' },
   },
 }
@@ -46,7 +53,6 @@ export const RadioButtonSet = (args) => ({
     return args
   },
   template: `
-  <div :data-fr-theme="dark ? 'dark' : ''" style="background-color: var(--grey-1000-50); padding: 1rem;">
     <DsfrRadioButtonSet
       :legend="legend"
       v-model="modelValue"
@@ -55,7 +61,7 @@ export const RadioButtonSet = (args) => ({
       :inline="inline"
       @update:model-value="onChange"
     />
-  </div>`,
+  `,
 })
 RadioButtonSet.args = {
   dark: false,
@@ -87,7 +93,6 @@ export const RadioButtonSetInError = (args) => ({
     return args
   },
   template: `
-  <div :data-fr-theme="dark ? 'dark' : ''" style="background-color: var(--grey-1000-50); padding: 1rem;">
     <DsfrRadioButtonSet
       :legend="legend"
       v-model="selectedValue"
@@ -98,7 +103,7 @@ export const RadioButtonSetInError = (args) => ({
       :inline="inline"
       @update:model-value="onChange"
     />
-  </div>`,
+  `,
 })
 RadioButtonSetInError.args = {
   dark: false,
@@ -133,7 +138,6 @@ export const RadioButtonSetInSuccess = (args) => ({
     return args
   },
   template: `
-  <div :data-fr-theme="dark ? 'dark' : ''" style="background-color: var(--grey-1000-50); padding: 1rem;">
     <DsfrRadioButtonSet
       :legend="legend"
       v-model="selectedValue"
@@ -144,7 +148,7 @@ export const RadioButtonSetInSuccess = (args) => ({
       :inline="inline"
       @update:model-value="onChange"
     />
-  </div>`,
+  `,
 })
 RadioButtonSetInSuccess.args = {
   dark: false,
@@ -179,7 +183,6 @@ export const RadioButtonSetDisabled = (args) => ({
     return args
   },
   template: `
-  <div :data-fr-theme="dark ? 'dark' : ''" style="background-color: var(--grey-1000-50); padding: 1rem;">
     <DsfrRadioButtonSet
       :legend="legend"
       v-model="selectedValue"
@@ -189,7 +192,7 @@ export const RadioButtonSetDisabled = (args) => ({
       :inline="inline"
       @update:model-value="onChange"
     />
-  </div>`,
+  `,
 })
 RadioButtonSetDisabled.args = {
   dark: false,
@@ -222,7 +225,6 @@ export const RadioButtonSetInline = (args) => ({
     return args
   },
   template: `
-  <div :data-fr-theme="dark ? 'dark' : ''" style="background-color: var(--grey-1000-50); padding: 1rem;">
     <DsfrRadioButtonSet
       :legend="legend"
       v-model="selectedValue"
@@ -232,7 +234,7 @@ export const RadioButtonSetInline = (args) => ({
       :inline="inline"
       @update:model-value="onChange"
     />
-  </div>`,
+  `,
 })
 RadioButtonSetInline.args = {
   dark: false,

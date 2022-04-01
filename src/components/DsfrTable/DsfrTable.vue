@@ -49,11 +49,12 @@ export default defineComponent({
       </caption>
       <thead>
         <!-- @slot Slot "header" pour les en-têtes du tableau. Sera dans `<thead>` -->
-        <slot name="header" />
-        <DsfrTableHeaders
-          v-if="headers && headers.length"
-          :headers="headers"
-        />
+        <slot name="header">
+          <DsfrTableHeaders
+            v-if="headers && headers.length"
+            :headers="headers"
+          />
+        </slot>
       </thead>
       <tbody>
         <!-- @slot Slot par défaut pour le corps du tableau. Sera dans `<tbody>` -->
@@ -71,4 +72,4 @@ export default defineComponent({
   </div>
 </template>
 
-<style src="@gouvfr/dsfr/dist/component/table/table.main.css" />
+<style src="@gouvfr/dsfr/dist/component/table/table.main.min.css" />

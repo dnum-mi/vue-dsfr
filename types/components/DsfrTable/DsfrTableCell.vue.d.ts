@@ -1,4 +1,5 @@
 interface CustomField {
+  component?: string;
   text: string;
   [x: string]: any;
 }

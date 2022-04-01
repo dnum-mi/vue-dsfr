@@ -1,6 +1,6 @@
-import VIcon, { addIcons } from '../../icons.js'
+import { OhVueIcon as VIcon, addIcons } from 'oh-vue-icons'
 
-import { RiExternalLinkLine } from 'oh-vue-icons/icons'
+import { RiExternalLinkLine } from 'oh-vue-icons/icons/ri/index.js'
 
 import DsfrFooter from './DsfrFooter.vue'
 import DsfrFooterLinkList from './DsfrFooterLinkList.vue'
@@ -34,15 +34,19 @@ export default {
         'partiellement conforme',
         'totalement conforme',
       ],
-    },
-    logoText: {
-      control: 'object',
+      description: 'Niveau de conformité de l’a11y : `"non conforme"`, `"partiellement conforme"`, ou `"totalement conforme"`',
     },
     a11yComplianceLink: {
       control: 'text',
+      description: 'URL pour un lien externe ou route ou objet pour un lien externe à associer au lien `"Accessibilité : <niveau de conformité>"`',
+    },
+    logoText: {
+      control: 'object',
+      description: 'Texte du logo. Si c’est une `String`, tout sera sur une ligne. Si c’est un tableau, chaque élément du tableau sera sur une ligne',
     },
     legalLink: {
       control: 'text',
+      description: 'URL pour un lien externe ou route ou objet pour un lien externe à associer au lien `"Mentions légales"`',
     },
     partners: {
       control: 'object',
@@ -53,7 +57,23 @@ export default {
     },
     personalDataLink: {
       control: 'text',
-      description: '',
+      description: 'URL pour un lien externe ou route ou objet pour un lien externe à associer au lien `"Données personnelles"`',
+    },
+    mandatoryLinks: {
+      control: 'object',
+      description: 'Tableau d’objets, avec chaque objet qui contiendra 2 propriétés : `label` et `to`. Mieux vaut garder le défaut',
+    },
+    cookiesLink: {
+      control: 'text',
+      description: 'URL pour un lien externe ou route ou objet pour un lien externe à associer au lien `"Données personnelles"`',
+    },
+    homeLink: {
+      control: 'text',
+      description: 'URL pour un lien externe ou route ou objet pour un lien externe à associer au logo avec la Marianne',
+    },
+    descText: {
+      control: 'text',
+      description: 'Texte de la description du footer (sera dans `<p class="fr-footer__content-desc">`)',
     },
   },
 }

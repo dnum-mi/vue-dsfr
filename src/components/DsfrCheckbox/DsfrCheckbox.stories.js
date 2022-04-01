@@ -8,6 +8,10 @@ export default {
       control: 'boolean',
       description: 'Permet de voir le composant dans les deux **thèmes** : **clair** (`false`, défaut) et **sombre** (`true`).\n\n*N.B. : Ne fait pas partie du composant.*',
     },
+    id: {
+      control: 'text',
+      description: '(optionnel) Valeur de l’attribut `id` de la checkbox. Par défaut, un id pseudo-aléatoire sera donné.',
+    },
     label: {
       control: 'text',
       description: 'Label de la case à cocher',
@@ -28,10 +32,6 @@ export default {
       control: 'boolean',
       description: 'Indique si le champ est obligatoire',
     },
-    checked: {
-      control: 'boolean',
-      description: 'Indique si la case à cocher est cochée',
-    },
     errorMessage: {
       control: 'text',
       description: 'Texte du message à afficher en cas d’erreur',
@@ -39,6 +39,13 @@ export default {
     validMessage: {
       control: 'text',
       description: 'Texte du message à afficher en cas de succès',
+    },
+    modelValue: {
+      control: 'boolean',
+      description: 'Valeur de la case à cocher : `true` si cochée, `false` sinon',
+    },
+    'update:modelValue': {
+      description: 'Événement émis lors du changement de l’état coché (`true`) ou non (`false`)',
     },
     onChange: { action: 'changed' },
   },
@@ -50,33 +57,28 @@ export const Checkbox = (args) => ({
     return { ...args }
   },
   template: `
-    <div :data-fr-theme="dark ? 'dark' : ''" style="background-color: var(--grey-1000-50); padding: 1rem;">
       <DsfrCheckbox
         :label="label"
         :disabled="disabled"
         :required="required"
-        :modelValue="checked"
         :hint="hint"
         :name="name || 'name1'"
-        @update:modelValue="updateChecked($event)"
+        v-model="modelValue"
       />
-    </div>
   `,
-  methods: {
-    updateChecked (val) {
-      this.onChange(val)
-      this.checked = val
+  watch: {
+    modelValue (newValue, oldValue) {
+      this.onChange(newValue)
     },
   },
 })
 Checkbox.args = {
   disabled: false,
   dark: false,
-  checked: false,
+  modelValue: false,
   required: false,
   label: 'Checkbox 1',
   name: 'name1',
-  value: false,
   hint: 'Description 1',
 }
 
@@ -86,30 +88,25 @@ export const CheckboxAvecErreur = (args) => ({
     return args
   },
   template: `
-    <div :data-fr-theme="dark ? 'dark' : ''" style="background-color: var(--grey-1000-50); padding: 1rem;">
       <DsfrCheckbox
         :label="label"
         :disabled="disabled"
-        :modelValue="checked"
         :hint="hint"
-        @update:modelValue="updateChecked($event)"
         :error-message="errorMessage"
+        v-model="modelValue"
       />
-    </div>
   `,
-  methods: {
-    updateChecked (val) {
-      this.onChange(val)
-      this.checked = val
+  watch: {
+    modelValue (newValue, oldValue) {
+      this.onChange(newValue)
     },
   },
 })
 CheckboxAvecErreur.args = {
   disabled: false,
   dark: false,
-  checked: false,
+  modelValue: false,
   label: 'Checkbox 1',
-  value: false,
   hint: 'Description 1',
   errorMessage: 'Erreur formulaire',
 }
@@ -120,21 +117,17 @@ export const CheckboxAvecSucces = (args) => ({
     return args
   },
   template: `
-    <div :data-fr-theme="dark ? 'dark' : ''" style="background-color: var(--grey-1000-50); padding: 1rem;">
       <DsfrCheckbox
         :label="label"
         :disabled="disabled"
-        :modelValue="checked"
         :hint="hint"
-        @update:modelValue="updateChecked($event)"
         :valid-message="validMessage"
+        v-model="modelValue"
       />
-    </div>
   `,
-  methods: {
-    updateChecked (val) {
-      this.onChange(val)
-      this.checked = val
+  watch: {
+    modelValue (newValue, oldValue) {
+      this.onChange(newValue)
     },
   },
 })
@@ -142,9 +135,8 @@ export const CheckboxAvecSucces = (args) => ({
 CheckboxAvecSucces.args = {
   disabled: false,
   dark: false,
-  checked: false,
+  modelValue: false,
   label: 'Checkbox 1',
-  value: false,
   hint: 'Description 1',
   validMessage: 'Formulaire valide',
 }

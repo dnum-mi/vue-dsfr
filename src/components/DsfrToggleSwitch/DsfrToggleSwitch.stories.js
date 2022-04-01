@@ -32,6 +32,9 @@ export default {
       action: 'change',
       description: 'Appelé à chaque changement de la valeur `checked`.\n\n*N.B. : Ne fait pas partie du composant.*',
     },
+    'update:modelValue': {
+      description: 'Evènement de mise à jour de la valeur contenue dans modelValue',
+    },
   },
 }
 
@@ -46,7 +49,7 @@ export const Interrupteur = (args) => ({
       :label="label"
       :hint="hint"
       :disabled="disabled"
-      :input-d="inputId"
+      :input-id="inputId"
     />
   `,
   watch: {

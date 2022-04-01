@@ -84,22 +84,26 @@ export default defineComponent({
       role="tablist"
       :aria-label="tabListName"
     >
-      <DsfrTabItem
-        v-for="(tabTitle, index) in tabTitles"
-        :key="index"
-        :icon="tabTitle.icon"
-        :panel-id="tabTitle.panelId || `${getIdFromIndex(index)}-panel`"
-        :tab-id="tabTitle.tabId || getIdFromIndex(index)"
-        :selected="isSelected(index)"
-        @click="selectIndex(index)"
-        @next="selectNext()"
-        @previous="selectPrevious()"
-        @first="selectFirst()"
-        @last="selectLast()"
-      >
-        {{ tabTitle.title }}
-      </DsfrTabItem>
+      <!-- @slot Slot nommé `tab-items` pour y mettre des Titres d’onglets personnalisés. S’il est rempli, la props `tabTitles° n’aura aucun effet -->
+      <slot name="tab-items">
+        <DsfrTabItem
+          v-for="(tabTitle, index) in tabTitles"
+          :key="index"
+          :icon="tabTitle.icon"
+          :panel-id="tabTitle.panelId || `${getIdFromIndex(index)}-panel`"
+          :tab-id="tabTitle.tabId || getIdFromIndex(index)"
+          :selected="isSelected(index)"
+          @click="selectIndex(index)"
+          @next="selectNext()"
+          @previous="selectPrevious()"
+          @first="selectFirst()"
+          @last="selectLast()"
+        >
+          {{ tabTitle.title }}
+        </DsfrTabItem>
+      </slot>
     </ul>
+
     <DsfrTabContent
       v-for="(tabContent, index) in tabContents"
       :key="index"
@@ -108,13 +112,14 @@ export default defineComponent({
       :selected="isSelected(index)"
       :asc="asc"
     >
-      <!-- données de test -->
       <p>
         {{ tabContent }}
       </p>
     </DsfrTabContent>
+
+    <!-- @slot Slot par défaut pour le contenu des onglets -->
     <slot />
   </div>
 </template>
 
-<style src="@gouvfr/dsfr/dist/component/tab/tab.main.css" />
+<style src="@gouvfr/dsfr/dist/component/tab/tab.main.min.css" />
