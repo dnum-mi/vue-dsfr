@@ -58,7 +58,7 @@ export default defineComponent({
       class="fr-content-media__transcription"
     >
       <a
-        class="fr-link"
+        class="fr-btn"
         :href="transcriptionUrl"
       >{{ transcriptionLabel }}</a>
     </div>

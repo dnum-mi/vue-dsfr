@@ -137,7 +137,7 @@ AccordeonDansUnAccordeon.args = {
 export const AccordeonTitreCustom = (args) => ({
   components: {
     DsfrAccordion,
-    DsfrAccordionsGroup
+    DsfrAccordionsGroup,
   },
 
   data () {
@@ -178,5 +178,5 @@ export const AccordeonTitreCustom = (args) => ({
 AccordeonTitreCustom.args = {
   dark: false,
   title1: 'Un titre d’accordéon customisé',
-  title2: 'Un autre titre d’accordéon'
+  title2: 'Un autre titre d’accordéon',
 }

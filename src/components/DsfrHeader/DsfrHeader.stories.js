@@ -1,17 +1,5 @@
 import DsfrHeader from './DsfrHeader.vue'
 
-import { addIcons } from 'oh-vue-icons'
-
-import {
-  RiNotification3Line,
-  RiPhoneLine,
-} from 'oh-vue-icons/icons/ri/index.js'
-
-addIcons(
-  RiNotification3Line,
-  RiPhoneLine,
-)
-
 export default {
   component: DsfrHeader,
   title: 'Composants/En-tête - DsfrHeader',
@@ -45,11 +33,9 @@ export default {
       description: `Tableau des liens d’accès rapide, chaque objet contiendra les props suivantes :
 
 - \`label\`: Texte du lien (\`'Notifications'\`, par ex.)
-- \`path\`: ***Déprécié : utiliser \`to\` ou \`href\`***. URL à passer à \`href\` de la balise \`<a>\` ou chemin ou objet à passer à \`to\` de \`router-link\` ou \`nuxt-link\` (\`'/notification'\` par ex.)
 - \`to\`: Chemin ou objet à passer à \`to\` de \`router-link\` ou \`nuxt-link\` (\`'/notification'\` ou \`{ name: 'Notifications' }\` par ex.)
 - \`href\`: URL à passer à \`href\` de la balise \`<a>\` (\`'https://systeme-de-design.gouv.fr\` par ex.) **pour un lien externe uniquement**.
-- \`icon\` pour le nom de l’icône à afficher (\`'ri-phone-line'\` par ex.)
-- \`iconRight\` \`true\` pour afficher l’icône à droite, \`false\` par défaut
+- \`icon\` pour le nom de l’icône à afficher (\`'phone-line'\` par ex.)
 - \`button\`: \`true\` pour avoir une balise \`button\`, \`false\` pour laisser en balise \`a\``,
     },
     modelValue: {
@@ -132,8 +118,8 @@ EnTete.args = {
   placeholder: '',
   homeTo: '#',
   quickLinks: [
-    { label: 'Lien2', path: '/', icon: 'ri-notification-3-line', iconOnly: true },
-    { label: 'Lien1', path: '/path1', icon: '' },
-    { label: 'Lien3', path: '/path3', icon: 'ri-phone-line', iconRight: true },
+    { label: 'Créer un espace', to: '/path1', icon: 'add-circle-line' },
+    { label: 'Se connecter', to: '/path2', icon: 'lock-line' },
+    { label: 'S’enregistrer', to: '/path3', icon: 'account-line' },
   ],
 }

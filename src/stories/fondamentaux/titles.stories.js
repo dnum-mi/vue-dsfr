@@ -33,11 +33,11 @@ export const TitresAlternatifs = (args) => ({
   },
   template: `
     <div :data-fr-theme="dark ? 'dark' : ''" style="background-color: var(--grey-1000-50); color: var(--g800); padding: 1rem;">
-      <div class="fr-display-xl">Titre xl</div>
-      <div class="fr-display-lg">Titre lg</div>
-      <div class="fr-display-md">Titre md</div>
-      <div class="fr-display-sm">Titre sm</div>
-      <div class="fr-display-xs">Titre xs</div>
+      <div class="fr-display--xl">Titre xl</div>
+      <div class="fr-display--lg">Titre lg</div>
+      <div class="fr-display--md">Titre md</div>
+      <div class="fr-display--sm">Titre sm</div>
+      <div class="fr-display--xs">Titre xs</div>
     </div>
   `,
 })

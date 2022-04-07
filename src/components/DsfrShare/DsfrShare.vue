@@ -30,13 +30,13 @@ export default defineComponent({
     <p class="fr-share__title">
       {{ title }}
     </p>
-    <ul class="fr-share__group">
+    <ul class="fr-btns-group">
       <li
         v-for="(network, i) of networks"
         :key="i"
       >
         <a
-          :class="`fr-share__link fr-share__link--${network.name}`"
+          :class="`fr-btn fr-btn--${network.name}`"
           :title="`${network.label} - nouvelle fenêtre`"
           :href="network.url"
           target="_blank"
@@ -48,7 +48,7 @@ export default defineComponent({
       </li>
       <li v-if="mail">
         <a
-          class="fr-share__link fr-share__link--mail"
+          class="fr-btn fr-btn--mail"
           :href="mail.to"
           :title="mail.label"
           target="_blank"
@@ -58,7 +58,7 @@ export default defineComponent({
       </li>
       <li>
         <button
-          class="fr-share__link fr-share__link--copy"
+          class="fr-btn fr-btn--copy"
           :title="copyLabel"
           @click="navigator.clipboard.writeText(window.location)"
         >

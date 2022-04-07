@@ -32,7 +32,7 @@ describe('DsfrVideo', () => {
     expect(wrapperEl).toHaveClass('fr-content-media--sm')
     expect(wrapperEl).not.toHaveClass('fr-content-media--lg')
     expect(captionEl).toHaveClass('fr-content-media__caption')
-    expect(link).toHaveClass('fr-link')
+    expect(link).toHaveClass('fr-btn')
     expect(link).toHaveAttribute('href', transcriptionUrl)
   })
 
