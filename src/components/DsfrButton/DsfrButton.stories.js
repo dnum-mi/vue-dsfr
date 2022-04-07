@@ -1,10 +1,10 @@
 import { OhVueIcon as VIcon, addIcons } from 'oh-vue-icons'
 
-import { RiCheckboxCircleLine } from 'oh-vue-icons/icons/ri/index.js'
+import { RiCheckboxCircleLine, RiSearchLine } from 'oh-vue-icons/icons/ri/index.js'
 
 import DsfrButton from './DsfrButton.vue'
 
-addIcons(RiCheckboxCircleLine)
+addIcons(RiCheckboxCircleLine, RiSearchLine)
 
 export default {
   component: DsfrButton,
@@ -14,13 +14,17 @@ export default {
       control: 'boolean',
       description: 'Permet de voir le composant dans les deux **thèmes** : **clair** (`false`, défaut) et **sombre** (`true`).\n\n*N.B. : Ne fait pas partie du composant.*',
     },
-    secondary: {
-      control: 'boolean',
-      description: 'Indique si le bouton est un bouton **secondaire**',
-    },
     label: {
       control: 'text',
       description: '**Texte** du bouton',
+    },
+    secondary: {
+      control: 'boolean',
+      description: 'Permet de basculer sur la variante de style "secondary"',
+    },
+    tertiary: {
+      control: 'boolean',
+      description: 'Permet de basculer sur la variante de style "tertiary"',
     },
     disabled: {
       control: 'boolean',
@@ -48,8 +52,9 @@ export const BoutonPrimaire = (args) => ({
   template: `
     <DsfrButton
       :label="label"
-      :disabled="disabled"
       :secondary="secondary"
+      :tertiary="tertiary"
+      :disabled="disabled"
       :icon="icon"
       :icon-only="iconOnly"
       :icon-right="iconRight"
@@ -64,8 +69,9 @@ export const BoutonPrimaire = (args) => ({
 BoutonPrimaire.args = {
   dark: false,
   label: 'Label bouton',
-  disabled: false,
   secondary: false,
+  tertiary: false,
+  disabled: false,
   icon: '',
   iconOnly: false,
   iconRight: false,
@@ -125,6 +131,33 @@ BoutonSecondaire.args = {
   disabled: false,
   dark: false,
   secondary: true,
+}
+
+export const BoutonTertiaire = (args) => ({
+  components: { DsfrButton },
+  data () {
+    return {
+      ...args,
+    }
+  },
+  template: `
+    <DsfrButton
+      :label="label"
+      :disabled="disabled"
+      :tertiary="tertiary"
+      @click="onClick"
+    />
+  `,
+
+  mounted () {
+    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
+  },
+})
+BoutonTertiaire.args = {
+  label: 'Label bouton secondaire',
+  disabled: false,
+  dark: false,
+  tertiary: true,
 }
 
 export const SuiteDeBoutons = (args) => ({

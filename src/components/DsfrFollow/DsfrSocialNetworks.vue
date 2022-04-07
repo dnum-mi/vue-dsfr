@@ -27,15 +27,15 @@ export default defineComponent({
     </p>
     <ul
       v-if="networks.length"
-      class="fr-links-group fr-links-group--lg"
+      class="fr-btns-group fr-btns-group--lg"
     >
       <li
         v-for="(network, idx) in networks"
         :key="idx"
       >
         <a
-          class="fr-link"
-          :class="`fr-link--${network.name}`"
+          class="fr-btn"
+          :class="`fr-btn--${network.name}`"
           :title="network.name"
           :href="network.href"
           target="_blank"

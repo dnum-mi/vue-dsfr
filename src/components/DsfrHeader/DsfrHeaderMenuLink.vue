@@ -11,8 +11,6 @@ export default defineComponent({
       default: undefined,
     },
     button: Boolean,
-    iconOnly: Boolean,
-    iconRight: Boolean,
     icon: {
       type: String,
       default: undefined,
@@ -70,41 +68,11 @@ export default defineComponent({
 <template>
   <component
     :is="is"
-    class="fr-link"
+    class="fr-btn"
+    :class="`fr-fi-${icon}`"
     v-bind="linkData"
-    :class="{
-      'flex': true,
-      'reverse': iconRight,
-    }"
     @click.stop="onClick"
   >
-    <VIcon
-      v-if="icon"
-      :name="icon"
-      :label="iconOnly ? label : undefined"
-      :class="{
-        'icon-right': iconRight,
-        'icon-left': !iconOnly && !iconRight,
-      }"
-    />
-    <span v-if="!iconOnly">{{ label }}</span>
+    {{ label }}
   </component>
 </template>
-
-<style scoped>
-.icon-left {
-  margin-right: 0.5rem
-}
-.icon-right {
-  margin-left: 0.5rem
-}
-
-.flex {
-  display: flex;
-  align-items: center;
-}
-
-.fr-header .fr-links-group .reverse {
-  flex-direction: row-reverse;
-}
-</style>

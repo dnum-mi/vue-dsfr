@@ -115,7 +115,7 @@ export default defineComponent({
               <div class="fr-modal__header">
                 <button
                   ref="closeBtn"
-                  class="fr-link--close fr-link"
+                  class="fr-btn fr-btn--close"
                   title="Fermer la fenêtre modale"
                   aria-controls="fr-modal-1"
                   tabindex="0"
