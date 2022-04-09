@@ -67,18 +67,18 @@ describe('DsfrModal', () => {
       .contains('Ouvre la modale')
       .type('{enter}')
 
-    cy.get('.fr-link--close')
+    cy.get('.fr-btn--close')
       .should('have.focus')
 
-    cy.get('.fr-link--close')
+    cy.get('.fr-btn--close')
       .tab()
 
-    cy.get('.fr-link--close')
+    cy.get('.fr-btn--close')
       .should('not.have.focus')
 
     cy.tab().tab()
 
-    cy.get('.fr-link--close')
+    cy.get('.fr-btn--close')
       .should('have.focus')
 
     cy.tab().type('{esc}')

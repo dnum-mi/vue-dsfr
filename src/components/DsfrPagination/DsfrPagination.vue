@@ -108,7 +108,7 @@ export default defineComponent({
       >
         <a
           :href="page.href"
-          class="fr-pagination__link fr-displayed-lg"
+          class="fr-pagination__link fr-unhidden-lg"
           :title="page.title"
           :aria-current="
             isCurrentPage(page) ? 'page' : undefined

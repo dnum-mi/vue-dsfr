@@ -1,0 +1,35 @@
+<script>
+import { defineComponent } from 'vue'
+
+export default defineComponent({
+  name: 'DsfrFranceConnect',
+
+  props: {
+    secure: Boolean,
+  },
+
+})
+</script>
+
+<template>
+  <div class="fr-connect-group">
+    <button
+      :class="secure ? 'fr-connect fr-connect--plus' : 'fr-connect'"
+    >
+      <span class="fr-connect__login">S’identifier avec</span>
+      <span
+        class="fr-connect__brand"
+      >FranceConnect{{ secure ? '+' : '' }}</span>
+    </button>
+    <p>
+      <a
+        :href="secure ? 'https://franceconnect.gouv.fr/france-connect-plus' : 'https://franceconnect.gouv.fr/'"
+        target="_blank"
+        rel="noopener"
+        :title="secure ? 'Qu’est ce que FranceConnect+ ? - nouvelle fenêtre' : 'Qu’est ce que FranceConnect ? - nouvelle fenêtre'"
+      >Qu’est ce que FranceConnect{{ secure ? '+' : '' }} ?</a>
+    </p>
+  </div>
+</template>
+
+<style src="@gouvfr/dsfr/dist/component/connect/connect.main.min.css" />

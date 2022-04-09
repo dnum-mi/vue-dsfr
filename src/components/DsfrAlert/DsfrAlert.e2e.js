@@ -33,7 +33,7 @@ describe('DsfrAlert', () => {
       .should('be.visible')
       .contains(description)
 
-    cy.get('.close-icon')
+    cy.get('.fr-btn--close')
       .should('be.visible')
   })
 

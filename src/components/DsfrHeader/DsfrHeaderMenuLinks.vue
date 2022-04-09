@@ -20,7 +20,7 @@ export default defineComponent({
 
 <template>
   <ul
-    class="fr-links-group"
+    class="fr-btns-group"
   >
     <li
       v-for="(quickLink, index) in links"
@@ -32,17 +32,3 @@ export default defineComponent({
     </li>
   </ul>
 </template>
-
-<style scoped>
-.fr-link {
-  font-size: 0.875rem;
-  line-height: 1.5rem;
-  min-height: 2rem;
-  padding: 0.25rem 0.75rem;
-  border-radius: 1rem;
-  flex-direction: row;
-  overflow: initial;
-  max-width: none;
-  max-height: none;
-}
-</style>

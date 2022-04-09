@@ -26,7 +26,7 @@ describe('DsfrModal', () => {
       },
     })
 
-    const closeBtn = wrapper.find('button.fr-link--close')
+    const closeBtn = wrapper.find('button.fr-btn--close')
 
     expect(wrapper.emitted().close).not.toBeTruthy()
 

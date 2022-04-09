@@ -63,7 +63,7 @@ describe('DsfrAlert', () => {
     await fireEvent.click(closeBtn)
 
     // Then
-    expect(closeBtn).toHaveClass('close-icon')
+    expect(closeBtn).toHaveClass('fr-btn--close')
     expect(emitted()).toHaveProperty('close')
     expect(emitted().close).toHaveLength(1)
   })

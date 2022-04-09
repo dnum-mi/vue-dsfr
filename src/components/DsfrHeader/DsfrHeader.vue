@@ -197,7 +197,7 @@ export default defineComponent({
         >
           <div class="fr-container">
             <button
-              class="fr-link--close  fr-link"
+              class="fr-btn fr-btn--close"
               aria-controls="header-navigation"
               data-testid="close-modal-btn"
               @click="hideModal"

@@ -1,15 +1,11 @@
 <script>
 import { defineComponent } from 'vue'
-import { OhVueIcon as VIcon } from 'oh-vue-icons'
 
 // import '@gouvfr/dsfr/dist/component/button/button.module.js'
 
 export default defineComponent({
   name: 'DsfrButton',
 
-  components: {
-    VIcon,
-  },
   props: {
     disabled: Boolean,
     label: {
@@ -17,6 +13,7 @@ export default defineComponent({
       default: undefined,
     },
     secondary: Boolean,
+    tertiary: Boolean,
     icon: {
       type: String,
       default: undefined,
@@ -38,7 +35,8 @@ export default defineComponent({
     ref="btn"
     :class="{
       'fr-btn': true,
-      'fr-btn--secondary': secondary,
+      'fr-btn--secondary': secondary && !tertiary,
+      'fr-btn--tertiary': tertiary && !secondary,
       'inline-flex': true,
       'reverse': iconRight,
       'justify-center': iconOnly,

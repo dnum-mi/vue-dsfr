@@ -59,7 +59,7 @@ describe('DsfrVideo', () => {
       .should('contain', legend)
     cy.get('.fr-content-media__transcription')
       .should('be.visible')
-      .find('.fr-link')
+      .find('.fr-btn')
       .should('contain', transcriptionLabel)
   })
 })

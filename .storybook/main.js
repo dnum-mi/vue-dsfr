@@ -19,6 +19,6 @@ module.exports = {
   //   builder: 'webpack5'
   // }
   core: {
-    builder: 'storybook-builder-vite',
-  },
-}
+    builder: "@storybook/builder-vite"
+  }
+};

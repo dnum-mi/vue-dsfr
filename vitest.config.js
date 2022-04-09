@@ -10,7 +10,7 @@ export default defineConfig({
     Vue(),
   ],
   test: {
-    global: true,
+    globals: true,
     // environment: 'happy-dom',
     environment: 'jsdom',
     testTimeout: 2000,

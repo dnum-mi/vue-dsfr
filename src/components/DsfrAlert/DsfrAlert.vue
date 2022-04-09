@@ -85,16 +85,11 @@ export default defineComponent({
       </div>
       <button
         v-if="closeable"
-        class="close-icon"
+        class="fr-btn fr-btn--close"
         title="Fermer"
         aria-label="Fermer"
         @click="onClick"
-      >
-        <VIcon
-          scale="1"
-          name="ri-close-line"
-        />
-      </button>
+      />
     </div>
   </transition>
 </template>
@@ -102,54 +97,5 @@ export default defineComponent({
 <style src="@gouvfr/dsfr/dist/component/alert/alert.main.min.css" />
 
 <style scoped>
-.fr-alert,
-.close-icon {
-  color: var(--text-default-grey);
-}
 
-.fr-alert--info::before,
-.fr-alert--warning::before,
-.fr-alert--success::before,
-.fr-alert--error::before
-{
-  height: 40px;
-}
-.fr-alert--sm {
-  padding: .575rem 2.25rem .75rem 3.5rem;
-  height: 40px;
-  & .fr-alert__description {
-    margin: 0;
-  }
-}
-
-.alert-content {
-  display: flex;
-  flex-direction: column;
-}
-.close-icon {
-  position: absolute;
-  top: 0.25rem;
-  right: 0.25rem;
-  width: 2rem;
-  height: 2rem;
-
-  &:hover {
-    border-radius: 1rem;
-  }
-}
-
-/* Enter and leave animations can use different */
-/* durations and timing functions.              */
-/* .slide-fade-enter-active {
-  transition: all 0.5s ease-out;
-}
-.slide-fade-leave-active {
-  transition: all 0.5s cubic-bezier(1, 0.5, 0.8, 1);
-}
-.slide-fade-enter-from,
-.slide-fade-leave-to {
-  transform: translateY(-100%);
-  opacity: 0;
-}
-*/
 </style>

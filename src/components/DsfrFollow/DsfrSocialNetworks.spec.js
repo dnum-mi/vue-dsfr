@@ -28,9 +28,9 @@ describe('DsfrSocialNetworks', () => {
         networks,
       },
     })
-    const liElts = container.querySelectorAll('.fr-link')
-    const facebookIcon = container.querySelector('.fr-link--facebook')
-    const twitterIcon = container.querySelector('.fr-link--twitter')
+    const liElts = container.querySelectorAll('.fr-btn')
+    const facebookIcon = container.querySelector('.fr-btn--facebook')
+    const twitterIcon = container.querySelector('.fr-btn--twitter')
 
     // Then
     expect(liElts).toHaveLength(2)
