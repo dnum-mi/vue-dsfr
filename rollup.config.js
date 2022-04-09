@@ -30,7 +30,7 @@ const postcssPlugins = [
 const baseOutput = {
   globals: {
     vue: 'vue',
-    'oh-vue-icons': 'OhVueIcon',
+    'oh-vue-icons': 'VIcon',
     'oh-vue-icons/icons': 'oh-vue-icons/icons',
     'oh-vue-icons/icons/ri/index.js': 'oh-vue-icons/icons/ri/index.js',
     'vue-router': 'vue-router',
@@ -45,8 +45,6 @@ const baseConfig = {
     'vue',
     'vue-router',
     'oh-vue-icons',
-    'oh-vue-icons/icons',
-    'oh-vue-icons/icons/ri/index.js',
     'focus-trap',
     'focus-trap-vue',
   ],
