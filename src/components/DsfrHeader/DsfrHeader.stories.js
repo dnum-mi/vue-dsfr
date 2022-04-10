@@ -1,5 +1,19 @@
 import DsfrHeader from './DsfrHeader.vue'
 
+import { addIcons } from 'oh-vue-icons'
+
+import {
+  RiAddCircleLine,
+  RiLockLine,
+  RiAccountCircleLine,
+} from 'oh-vue-icons/icons/ri/index.js'
+
+addIcons(
+  RiAddCircleLine,
+  RiLockLine,
+  RiAccountCircleLine,
+)
+
 export default {
   component: DsfrHeader,
   title: 'Composants/En-tête - DsfrHeader',
@@ -31,12 +45,15 @@ export default {
     quickLinks: {
       control: 'object',
       description: `Tableau des liens d’accès rapide, chaque objet contiendra les props suivantes :
-
 - \`label\`: Texte du lien (\`'Notifications'\`, par ex.)
 - \`to\`: Chemin ou objet à passer à \`to\` de \`router-link\` ou \`nuxt-link\` (\`'/notification'\` ou \`{ name: 'Notifications' }\` par ex.)
 - \`href\`: URL à passer à \`href\` de la balise \`<a>\` (\`'https://systeme-de-design.gouv.fr\` par ex.) **pour un lien externe uniquement**.
-- \`icon\` pour le nom de l’icône à afficher (\`'phone-line'\` par ex.)
-- \`button\`: \`true\` pour avoir une balise \`button\`, \`false\` pour laisser en balise \`a\``,
+- \`icon\` Nom de l’icône [Remix Icon](https://remixicon.com/) (ou toute autre icône de [oh-vue-icons](https://oh-vue-icons.netlify.app/)) à afficher (\`'ri-phone-line'\` par ex.)
+- \`iconRight\` Permet de mettre l’icône à droite (si la valeur est \`true\` ou <em>truthy</em> et que \`icon\` est renseigné )
+- \`iconAttrs\` Ensemble des props/attributs à donner à \`<VIcon>\` (Cf. [Doc](https://oh-vue-icons.netlify.app/docs#props)). Ex. : \`{ scale: 0.9, animation: }\`
+- \`button\`: \`true\` pour avoir une balise \`button\`, \`false\` pour laisser en balise \`a\`
+- accepte aussi tout ce qui peut être mis sur un composant, par exemple \`class\`
+`,
     },
     modelValue: {
       control: 'text',
@@ -118,8 +135,8 @@ EnTete.args = {
   placeholder: '',
   homeTo: '#',
   quickLinks: [
-    { label: 'Créer un espace', to: '/path1', icon: 'add-circle-line' },
-    { label: 'Se connecter', to: '/path2', icon: 'lock-line' },
-    { label: 'S’enregistrer', to: '/path3', icon: 'account-line' },
+    { label: 'Créer un espace', to: '/space/create', icon: 'ri-add-circle-line', iconAttrs: { scale: 0.9 } },
+    { label: 'Se connecter', to: '/login', class: 'fr-fi-lock-line' },
+    { label: 'S’enregistrer', to: '/signin', icon: 'ri-account-circle-line', iconRight: true, iconAttrs: { animation: 'spin', speed: 'slow' } },
   ],
 }
