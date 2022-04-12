@@ -1,0 +1,122 @@
+<Meta title="Fondamentaux/4.1 Icônes personnalisées" />
+
+## Icônes Remix icons
+
+Il est possible d’utiliser facilement toutes les icônes [Remix Icon](https://remixicon.com/) grâce à
+[OhVueIcons](https://oh-vue-icons.js.org/) : le composant `VIcon` est enregistré globalement si la
+bibliothèque **VueDsfr** est utilisée en tant que plugin.
+
+### Utiliser la bibliothèque en tant que plugin (rappel) :
+
+```javascript
+// src/main.js
+import '@laruiss/vue-dsfr/fonts' // Import des polices (Marianne et Spectral)
+import '@laruiss/vue-dsfr/styles' // Import des styles globaux
+
+import { createApp } from 'vue'
+
+import VueDsfr from '@laruiss/vue-dsfr' // Import du plugin
+
+import App from './App.vue'
+
+import './main.css'
+
+createApp(App)
+  .use(VueDsfr) // Enregistrement du Plugin
+  .mount('#app')
+```
+
+### Ajouter des icônes personnalisées
+
+Pour ajouter des icônes personnalisées, ajouter d’abord l’import du fichier `icons.js`
+
+```javascript
+ // src/main.js
+import '@laruiss/vue-dsfr/fonts'
+import '@laruiss/vue-dsfr/styles'
+
+import { createApp } from 'vue'
+
+import VueDsfr from '@laruiss/vue-dsfr'
+
+import App from './App.vue'
+import './icons.js' // Import des icônes de Remix Icon (cf. plus loin)
+
+import './main.css'
+
+createApp(App)
+  .use(VueDsfr)
+  .mount('#app')
+```
+
+Et écrire le fichier `icons.js` avec un contenu comme celui-ci :
+
+```javascript
+// src/icons.js
+import { addIcons } from 'oh-vue-icons'
+
+import {
+  RiCloseLine,
+  RiFlagLine,
+  RiHome2Line,
+  RiRefreshLine,
+} from 'oh-vue-icons/icons/ri/index.js'  // Import des icônes de Remix Icon (ri)
+
+// Ajout des icônes Remix Icon
+addIcons(
+  RiCloseLine,
+  RiFlagLine,
+  RiHome2Line,
+  RiRefreshLine,
+)
+```
+
+## Autres icônes
+
+Il est très facile d’ajouter d’autres icônes depuis toutes les
+[20 collections](https://oh-vue-icons.netlify.app/docs#supported-icon-packs)
+mises à disposition par [OhVueIcons](https://oh-vue-icons.netlify.app) en les ajoutant à ce fichier `icons.js`.
+
+Ci-dessous des exemples pour
+[Remix Icon](https://remixicon.com/),
+[Font Awesome 5](https://fontawesome.com/icons)
+et [Bootstrap Icons](https://icons.getbootstrap.com/) :
+
+```javascript
+// src/icons.js
+import { addIcons } from 'oh-vue-icons'
+
+import {
+  RiCloseLine,
+  RiFlagLine,
+  RiHome2Line,
+  RiRefreshLine,
+} from 'oh-vue-icons/icons/ri/index.js'  // Import des icônes de Remix Icon (ri)
+
+import {
+  FaFlag,
+  FaAddressBook,
+} from 'oh-vue-icons/icons/fa/index.js'  // Import des icônes de Font Awesome 5 Free (fa)
+
+import {
+  BiBadge3D,
+  BiClouds,
+} from 'oh-vue-icons/icons/bi/index.js'  // Import des icônes de Bootstrap Icons (bi)
+
+// Ajout de toutes les icônes
+addIcons(
+  // Bootstrap Icons
+  BiBadge3D,
+  BiClouds,
+
+  // Font Awesome 5 Free Icons
+  FaFlag,
+  FaAddressBook,
+
+  // Remix Icons
+  RiCloseLine,
+  RiFlagLine,
+  RiHome2Line,
+  RiRefreshLine,
+)
+```

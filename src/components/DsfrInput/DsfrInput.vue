@@ -5,7 +5,9 @@ import { getRandomId } from '../../utils/random-utils.js'
 
 export default defineComponent({
   name: 'DsfrInput',
+
   inheritAttrs: false,
+
   props: {
     id: {
       type: String,
@@ -39,7 +41,9 @@ export default defineComponent({
     isValid: Boolean,
     isTextarea: Boolean,
   },
+
   emits: ['update:modelValue'],
+
   computed: {
     isComponent () {
       return this.isTextarea ? 'textarea' : 'input'
@@ -59,12 +63,22 @@ export default defineComponent({
     }"
     :for="id"
   >
-    {{ label }} {{ $attrs.required ? '*' : '' }}
+    {{ label }}
+
+    <!-- @slot Slot pour indiquer que le champ est obligatoire. Par défaut, met une astérisque (dans un `<span class="required">`) -->
+    <slot name="required-tip">
+      <span
+        v-if="$attrs.required"
+        class="required"
+      >&nbsp;*</span>
+    </slot>
+
     <span
       v-if="hint"
       class="fr-hint-text"
     >{{ hint }}</span>
   </label>
+
   <component
     :is="isComponent"
     v-if="!wrapper"
@@ -80,6 +94,7 @@ export default defineComponent({
     @input="$emit('update:modelValue', $event.target.value)"
     @keydown.esc="$emit('update:modelValue', '')"
   />
+
   <div
     v-else
     :class="[
