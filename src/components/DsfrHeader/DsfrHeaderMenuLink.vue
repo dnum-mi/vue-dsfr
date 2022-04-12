@@ -15,6 +15,11 @@ export default defineComponent({
       type: String,
       default: undefined,
     },
+    iconAttrs: {
+      type: String,
+      default: undefined,
+    },
+    iconRight: Boolean,
     label: {
       type: String,
       default: '',
@@ -69,10 +74,23 @@ export default defineComponent({
   <component
     :is="is"
     class="fr-btn"
-    :class="`fr-fi-${icon}`"
     v-bind="linkData"
     @click.stop="onClick"
   >
+    <VIcon
+      v-if="(icon || iconAttrs) && !iconRight"
+      :name="icon"
+      class="fr-mr-1w"
+      v-bind="iconAttrs"
+    />
+
     {{ label }}
+
+    <VIcon
+      v-if="(icon || iconAttrs) && iconRight"
+      :name="icon"
+      class="fr-ml-1w"
+      v-bind="iconAttrs"
+    />
   </component>
 </template>
