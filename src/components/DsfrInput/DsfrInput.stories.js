@@ -148,6 +148,39 @@ LabelVisible.args = {
   disabled: false,
 }
 
+export const ChampObligatoire = (args) => ({
+  components: {
+    DsfrInput,
+  },
+  data () {
+    return {
+      ...args,
+    }
+  },
+  template: `
+    <DsfrInput
+      :model-value="modelValue"
+      :label="label"
+      :label-visible="labelVisible"
+      :placeholder="placeholder"
+      :disabled="disabled"
+      :required="true"
+    />
+  `,
+  mounted () {
+    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
+  },
+})
+ChampObligatoire.args = {
+  dark: false,
+  label: 'Label champ de saisie',
+  labelVisible: true,
+  placeholder: 'Placeholder',
+  modelValue: '',
+  disabled: false,
+  isTextarea: true,
+}
+
 export const ChampEnErreur = (args) => ({
   components: {
     DsfrInput,
