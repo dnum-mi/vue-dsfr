@@ -37,6 +37,10 @@ export default {
       control: 'object',
       description: 'Tableau des valeurs sélectionnées (cochées) du groupe de checkboxes',
     },
+    required: {
+      control: 'boolean',
+      description: 'Permet de spécifier que cet ensemble de champs doit être renseigné',
+    },
     onChange: {
       action: 'changed',
     },
@@ -55,6 +59,7 @@ export const CheckboxSet = (args) => ({
       :options="options"
       :inline="inline"
       :disabled="disabled"
+      :required="required"
       :errorMessage="errorMessage"
       :validMessage="validMessage"
     />
@@ -73,6 +78,123 @@ CheckboxSet.args = {
   legend: 'Légende des champs',
   disabled: false,
   inline: false,
+  required: false,
+  errorMessage: '',
+  validMessage: '',
+  modelValue: ['name1'],
+  options: [
+    {
+      label: 'Valeur 1',
+      id: 'name1',
+      name: 'name1',
+      hint: 'Description 1',
+    },
+    {
+      label: 'Valeur 2',
+      id: 'name2',
+      name: 'name2',
+      hint: 'Description 2',
+    },
+    {
+      label: 'Valeur 3',
+      id: 'name3',
+      name: 'name3',
+    },
+  ],
+}
+
+export const CheckboxSetRequis = (args) => ({
+  components: { DsfrCheckboxSet },
+  data () {
+    return args
+  },
+  template: `
+    <DsfrCheckboxSet
+      :legend="legend"
+      v-model="modelValue"
+      :options="options"
+      :inline="inline"
+      :disabled="disabled"
+      :required="required"
+      :errorMessage="errorMessage"
+      :validMessage="validMessage"
+    />
+  `,
+  watch: {
+    modelValue (val) {
+      this.onChange(val)
+    },
+  },
+  mounted () {
+    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
+  },
+})
+CheckboxSetRequis.args = {
+  dark: false,
+  legend: 'Veuillez choisir au moins une des propositions suivantes',
+  disabled: false,
+  inline: false,
+  required: true,
+  errorMessage: '',
+  validMessage: '',
+  modelValue: ['name1'],
+  options: [
+    {
+      label: 'Valeur 1',
+      id: 'name1',
+      name: 'name1',
+      hint: 'Description 1',
+    },
+    {
+      label: 'Valeur 2',
+      id: 'name2',
+      name: 'name2',
+      hint: 'Description 2',
+    },
+    {
+      label: 'Valeur 3',
+      id: 'name3',
+      name: 'name3',
+    },
+  ],
+}
+
+export const CheckboxSetRequisPersonnalise = (args) => ({
+  components: { DsfrCheckboxSet },
+  data () {
+    return args
+  },
+  template: `
+    <DsfrCheckboxSet
+      :legend="legend"
+      v-model="modelValue"
+      :options="options"
+      :inline="inline"
+      :disabled="disabled"
+      :required="required"
+      :errorMessage="errorMessage"
+      :validMessage="validMessage"
+    >
+      <template #required-tip>
+        <em> (en choisir au moins un)</em>
+      </template>
+    </DsfrCheckboxSet>
+  `,
+  watch: {
+    modelValue (val) {
+      this.onChange(val)
+    },
+  },
+  mounted () {
+    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
+  },
+})
+CheckboxSetRequisPersonnalise.args = {
+  dark: false,
+  legend: 'Label de l’ensemble des champs',
+  disabled: false,
+  inline: false,
+  required: true,
   errorMessage: '',
   validMessage: '',
   modelValue: ['name1'],
@@ -104,8 +226,9 @@ export const CheckboxSetAvecErreur = (args) => ({
   },
   template: `
     <DsfrCheckboxSet
-      :legend="legend"
       v-model="modelValue"
+      :legend="legend"
+      :required="required"
       :error-message="errorMessage"
       :options="options"
       :inline="inline"
@@ -125,6 +248,7 @@ CheckboxSetAvecErreur.args = {
   legend: 'Légende des champs',
   disabled: false,
   inline: false,
+  required: false,
   errorMessage: 'Message d\'erreur',
   modelValue: ['name1'],
   options: [

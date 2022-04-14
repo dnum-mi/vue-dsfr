@@ -20,6 +20,7 @@ export default defineComponent({
     },
     disabled: Boolean,
     inline: Boolean,
+    required: Boolean,
     errorMessage: {
       type: String,
       default: '',
@@ -80,6 +81,13 @@ export default defineComponent({
         class="fr-fieldset__legend fr-text--regular"
       >
         {{ legend }}
+        <!-- @slot Slot pour indiquer que le champ doit être renseigné. Par défaut, contient une astérisque si la props `required` est passée. -->
+        <slot name="required-tip">
+          <span
+            v-if="required"
+            class="required"
+          >&nbsp;*</span>
+        </slot>
       </legend>
       <div
         class="fr-fieldset__content"

@@ -81,6 +81,81 @@ Checkbox.args = {
   name: 'name1',
   hint: 'Description 1',
 }
+export const CheckboxRequis = (args) => ({
+  components: { DsfrCheckbox },
+  data () {
+    return { ...args }
+  },
+  template: `
+    <component :is="'style'">
+      .required {
+        color: #f60700;
+      }
+    </component>
+    <DsfrCheckbox
+      :label="label"
+      :disabled="disabled"
+      :required="required"
+      :hint="hint"
+      :name="name || 'name1'"
+      v-model="modelValue"
+    />
+  `,
+  watch: {
+    modelValue (newValue, oldValue) {
+      this.onChange(newValue)
+    },
+  },
+})
+CheckboxRequis.args = {
+  disabled: false,
+  dark: false,
+  modelValue: false,
+  required: true,
+  label: 'En cochant vous acceptez...',
+  name: 'name1',
+  hint: 'Description 1',
+}
+
+export const CheckboxRequisPersonnalise = (args) => ({
+  components: { DsfrCheckbox },
+  data () {
+    return { ...args }
+  },
+  template: `
+    <component :is="'style'">
+      .required {
+        color: #f60700;
+      }
+    </component>
+    <DsfrCheckbox
+      :label="label"
+      :disabled="disabled"
+      :required="required"
+      :hint="hint"
+      :name="name || 'name1'"
+      v-model="modelValue"
+    >
+      <template #required-tip>
+        <em>&nbsp;(obligatoire)</em>
+      </template>
+    </DsfrCheckbox>
+  `,
+  watch: {
+    modelValue (newValue, oldValue) {
+      this.onChange(newValue)
+    },
+  },
+})
+CheckboxRequisPersonnalise.args = {
+  disabled: false,
+  dark: false,
+  modelValue: false,
+  required: true,
+  label: 'En cochant vous acceptez...',
+  name: 'name1',
+  hint: 'Description 1',
+}
 
 export const CheckboxAvecErreur = (args) => ({
   components: { DsfrCheckbox },
@@ -91,6 +166,7 @@ export const CheckboxAvecErreur = (args) => ({
       <DsfrCheckbox
         :label="label"
         :disabled="disabled"
+        :required="required"
         :hint="hint"
         :error-message="errorMessage"
         v-model="modelValue"
@@ -106,6 +182,7 @@ CheckboxAvecErreur.args = {
   disabled: false,
   dark: false,
   modelValue: false,
+  required: false,
   label: 'Checkbox 1',
   hint: 'Description 1',
   errorMessage: 'Erreur formulaire',
