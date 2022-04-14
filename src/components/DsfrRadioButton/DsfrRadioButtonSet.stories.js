@@ -47,7 +47,7 @@ export default {
   },
 }
 
-export const RadioButtonSet = (args) => ({
+export const GroupeDeBoutonsRadio = (args) => ({
   components: { DsfrRadioButtonSet },
   data () {
     return args
@@ -63,7 +63,7 @@ export const RadioButtonSet = (args) => ({
     />
   `,
 })
-RadioButtonSet.args = {
+GroupeDeBoutonsRadio.args = {
   dark: false,
   legend: 'Légende des champs',
   inline: false,
@@ -87,7 +87,95 @@ RadioButtonSet.args = {
   ],
 }
 
-export const RadioButtonSetInError = (args) => ({
+export const GroupeDeBoutonsRadioRequis = (args) => ({
+  components: { DsfrRadioButtonSet },
+  data () {
+    return args
+  },
+  template: `
+    <DsfrRadioButtonSet
+      v-model="modelValue"
+      :legend="legend"
+      :required="required"
+      name="radio-set"
+      :options="options"
+      :inline="inline"
+      @update:model-value="onChange"
+    />
+  `,
+})
+GroupeDeBoutonsRadioRequis.args = {
+  dark: false,
+  legend: 'Légende des champs',
+  inline: false,
+  required: true,
+  modelValue: '3',
+  options: [
+    {
+      label: 'Valeur 1',
+      value: '1',
+      hint: 'Description 1',
+    },
+    {
+      label: 'Valeur 2',
+      value: '2',
+      disabled: true,
+      hint: 'Description 2',
+    },
+    {
+      label: 'Valeur 3',
+      value: '3',
+    },
+  ],
+}
+
+export const GroupeDeBoutonsRadioRequisPersonnalise = (args) => ({
+  components: { DsfrRadioButtonSet },
+  data () {
+    return args
+  },
+  template: `
+    <DsfrRadioButtonSet
+      v-model="modelValue"
+      :legend="legend"
+      :required="required"
+      name="radio-set"
+      :options="options"
+      :inline="inline"
+      @update:model-value="onChange"
+    >
+      <template #required-tip>
+        <em> (obligatoire)</em>
+      </template>
+    </DsfrRadioButtonSet>
+  `,
+})
+GroupeDeBoutonsRadioRequisPersonnalise.args = {
+  dark: false,
+  legend: 'Légende des champs',
+  inline: false,
+  required: true,
+  modelValue: '3',
+  options: [
+    {
+      label: 'Valeur 1',
+      value: '1',
+      hint: 'Description 1',
+    },
+    {
+      label: 'Valeur 2',
+      value: '2',
+      disabled: true,
+      hint: 'Description 2',
+    },
+    {
+      label: 'Valeur 3',
+      value: '3',
+    },
+  ],
+}
+
+export const GroupeDeBoutonsRadioEnErreur = (args) => ({
   components: { DsfrRadioButtonSet },
   data () {
     return args
@@ -105,7 +193,7 @@ export const RadioButtonSetInError = (args) => ({
     />
   `,
 })
-RadioButtonSetInError.args = {
+GroupeDeBoutonsRadioEnErreur.args = {
   dark: false,
   error: "Texte de l'erreur",
   legend: 'Légende des champs',
@@ -132,7 +220,7 @@ RadioButtonSetInError.args = {
   ],
 }
 
-export const RadioButtonSetInSuccess = (args) => ({
+export const GroupeDeBoutonsRadioEnSuccess = (args) => ({
   components: { DsfrRadioButtonSet },
   data () {
     return args
@@ -150,7 +238,7 @@ export const RadioButtonSetInSuccess = (args) => ({
     />
   `,
 })
-RadioButtonSetInSuccess.args = {
+GroupeDeBoutonsRadioEnSuccess.args = {
   dark: false,
   validMessage: 'Succès au chocolat',
   legend: 'Légende des champs',
@@ -177,7 +265,7 @@ RadioButtonSetInSuccess.args = {
   ],
 }
 
-export const RadioButtonSetDisabled = (args) => ({
+export const GroupeDeBoutonsRadioDisabled = (args) => ({
   components: { DsfrRadioButtonSet },
   data () {
     return args
@@ -194,7 +282,7 @@ export const RadioButtonSetDisabled = (args) => ({
     />
   `,
 })
-RadioButtonSetDisabled.args = {
+GroupeDeBoutonsRadioDisabled.args = {
   dark: false,
   legend: 'Légende des champs',
   inline: false,
@@ -219,7 +307,7 @@ RadioButtonSetDisabled.args = {
   ],
 }
 
-export const RadioButtonSetInline = (args) => ({
+export const GroupeDeBoutonsRadioInline = (args) => ({
   components: { DsfrRadioButtonSet },
   data () {
     return args
@@ -236,7 +324,7 @@ export const RadioButtonSetInline = (args) => ({
     />
   `,
 })
-RadioButtonSetInline.args = {
+GroupeDeBoutonsRadioInline.args = {
   dark: false,
   legend: 'Légende des champs en ligne',
   selectedValue: 1,

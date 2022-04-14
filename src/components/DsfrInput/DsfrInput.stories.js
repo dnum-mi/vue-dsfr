@@ -148,7 +148,51 @@ LabelVisible.args = {
   disabled: false,
 }
 
-export const ChampObligatoire = (args) => ({
+export const ChampRequis = (args) => ({
+  components: {
+    DsfrInput,
+  },
+  data () {
+    return {
+      ...args,
+    }
+  },
+  template: `
+    <component :is="'style'">
+      .required {
+        color: red;
+      }
+    </component>
+    <DsfrInput
+      :model-value="modelValue"
+      :label="label"
+      :label-visible="labelVisible"
+      :placeholder="placeholder"
+      :disabled="disabled"
+      :required="true"
+    >
+    <template v-slot:required-tip>
+      <span class="required"
+        >&nbsp;*
+      </span>
+    </template>
+    </DsfrInput>
+  `,
+  mounted () {
+    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
+  },
+})
+ChampRequis.args = {
+  dark: false,
+  label: 'Label champ de saisie',
+  labelVisible: true,
+  placeholder: 'Placeholder',
+  modelValue: '',
+  disabled: false,
+  isTextarea: true,
+}
+
+export const ChampRequisPersonnalise = (args) => ({
   components: {
     DsfrInput,
   },
@@ -165,13 +209,17 @@ export const ChampObligatoire = (args) => ({
       :placeholder="placeholder"
       :disabled="disabled"
       :required="true"
-    />
+    >
+      <template #required-tip>
+        <em> (obligatoire)</em>
+      </template>
+    </DsfrInput>
   `,
   mounted () {
     document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
   },
 })
-ChampObligatoire.args = {
+ChampRequisPersonnalise.args = {
   dark: false,
   label: 'Label champ de saisie',
   labelVisible: true,

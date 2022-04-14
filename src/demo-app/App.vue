@@ -9,6 +9,7 @@ import DsfrSkipLinks from '../components/DsfrSkipLinks/DsfrSkipLinks.vue'
 import DsfrModal from '../components/DsfrModal/DsfrModal.vue'
 import DsfrFileUpload from '../components/DsfrFileUpload/DsfrFileUpload.vue'
 import DsfrBreadcrumb from '../components/DsfrBreadcrumb/DsfrBreadcrumb.vue'
+import DsfrRadioButtonSet from '../components/DsfrRadioButton/DsfrRadioButtonSet.vue'
 
 const isModalOpen = ref(false)
 const displayAlert = ref(false)
@@ -107,10 +108,12 @@ const navItems = [
     text: 'À propos',
   },
 ]
+
+const radioTest = ref('')
 </script>
 
 <template>
-  <div style="position: relative;">
+  <div style="position: relative; padding-bottom: 4rem;">
     <DsfrSkipLinks
       :links="links"
     />
@@ -176,13 +179,25 @@ const navItems = [
           label-visible
           @change="updateFiles($event)"
         />
-        <input
+        <DsfrRadioButtonSet
+          v-model="radioTest"
+          :options="[
+            {
+              label: 'label 1',
+              value: 1,
+              required: true,
+            },
+            {
+              label: 'label 2',
+              value: 2,
+            }
+          ]"
+        />
+        <DsfrButton
           type="submit"
-          value="OK"
-        >
+          label="Bouton de soumission du formulaire"
+        />
       </form>
-
-      <DsfrTag v-bind="{ component: 'DsfrTag', label: 'Label de l’étiquette', tagName: 'TagCand', small: 'small', link: '/profil/creation' }" />
     </div>
 
     <DsfrModal

@@ -72,7 +72,14 @@ export default defineComponent({
       :for="id"
       class="fr-label"
     >
-      {{ label }} {{ $attrs.required ? '*' : '' }}
+      {{ label }}
+      <!-- @slot Slot pour indiquer que le champ est obligatoire. Par défaut, met une astérisque si `required` est à true (dans un `<span class="required">`) -->
+      <slot name="required-tip">
+        <span
+          v-if="$attrs.required"
+          class="required"
+        >&nbsp;*</span>
+      </slot>
       <span
         v-if="hint"
         class="fr-hint-text"
