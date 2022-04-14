@@ -158,6 +158,11 @@ export const ChampObligatoire = (args) => ({
     }
   },
   template: `
+    <component :is="'style'">
+      .required {
+        color: red;
+      }
+    </component>
     <DsfrInput
       :model-value="modelValue"
       :label="label"
@@ -165,7 +170,13 @@ export const ChampObligatoire = (args) => ({
       :placeholder="placeholder"
       :disabled="disabled"
       :required="true"
-    />
+    >
+    <template v-slot:required-tip>
+      <span class="required"
+        >&nbsp;*
+      </span>
+    </template>
+    </DsfrInput>
   `,
   mounted () {
     document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
