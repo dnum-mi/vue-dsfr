@@ -63,7 +63,15 @@ export default defineComponent({
       class="fr-label"
       :for="selectId"
     >
-      {{ label }} {{ required ? '*' : '' }}
+      {{ label }}
+      <!-- @slot Slot pour indiquer que le champ doit être renseigné. Par défaut, contient une astérisque si la props `required` est passée. -->
+      <slot name="required-tip">
+        <span
+          v-if="required"
+          class="required"
+        >&nbsp;*</span>
+      </slot>
+
       <span
         v-if="description"
         class="fr-hint-text"
