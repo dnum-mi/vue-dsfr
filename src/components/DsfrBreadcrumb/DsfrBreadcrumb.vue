@@ -27,12 +27,6 @@ export default defineComponent({
       hideButton: false,
     }
   },
-
-  computed: {
-    linkComponent () {
-      return '$nuxt' in this ? 'nuxt-link' : 'router-link'
-    },
-  },
 })
 </script>
 
@@ -64,7 +58,7 @@ export default defineComponent({
           :data-testid="`lis`"
         >
           <component
-            :is="linkComponent"
+            :is="'router-link'"
             v-if="link.to"
             class="fr-breadcrumb__link"
             :to="link.to"

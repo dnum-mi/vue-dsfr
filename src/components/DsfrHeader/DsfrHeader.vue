@@ -60,9 +60,6 @@ export default defineComponent({
   },
 
   computed: {
-    linkComponent () {
-      return '$nuxt' in this ? 'nuxt-link' : 'router-link'
-    },
     isWithSlotOperator () {
       return this.$slots.operator?.().length
     },
@@ -146,8 +143,7 @@ export default defineComponent({
               v-if="serviceTitle"
               class="fr-header__service"
             >
-              <component
-                :is="linkComponent"
+              <router-link
                 :to="homeTo"
                 :title="`Accueil - ${serviceTitle}`"
                 v-bind="$attrs"
@@ -155,7 +151,7 @@ export default defineComponent({
                 <p class="fr-header__service-title">
                   {{ serviceTitle }}
                 </p>
-              </component>
+              </router-link>
               <p
                 v-if="serviceDescription"
                 class="fr-header__service-tagline"

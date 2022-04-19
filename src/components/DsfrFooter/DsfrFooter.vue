@@ -110,9 +110,6 @@ export default defineComponent({
         ...this.afterMandatoryLinks,
       ]
     },
-    linkComponent () {
-      return '$nuxt' in this ? 'nuxt-link' : 'router-link'
-    },
     isWithSlotLinkLists () {
       return this.$slots['footer-link-lists']?.().length
     },
@@ -143,15 +140,14 @@ export default defineComponent({
     <div class="fr-container">
       <div class="fr-footer__body">
         <div class="fr-footer__brand fr-enlarge-link">
-          <component
-            :is="linkComponent"
+          <router-link
             :to="homeLink"
             title="Retour à l’accueil"
           >
             <DsfrLogo
               :logo-text="logoText"
             />
-          </component>
+          </router-link>
         </div>
         <div class="fr-footer__content">
           <p
@@ -189,14 +185,13 @@ export default defineComponent({
             :key="index"
             class="fr-footer__bottom-item"
           >
-            <component
-              :is="linkComponent"
+            <router-link
               class="fr-footer__bottom-link"
               :to="link.to"
               :data-testid="link.to"
             >
               {{ link.label }}
-            </component>
+            </router-link>
           </li>
         </ul>
         <div class="fr-footer__bottom-copy">
