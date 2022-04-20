@@ -3,8 +3,8 @@
 ## Icônes Remix icons
 
 Il est possible d’utiliser facilement toutes les icônes [Remix Icon](https://remixicon.com/) grâce à
-[OhVueIcons](https://oh-vue-icons.js.org/) : le composant `VIcon` est enregistré globalement si la
-bibliothèque **VueDsfr** est utilisée en tant que plugin.
+[OhVueIcons](https://oh-vue-icons.js.org/) : le composant `VIcon` est enregistré globalement si la bibliothèque est
+utilisée en tant que plugin.
 
 ### Utiliser la bibliothèque en tant que plugin (rappel) :
 
@@ -40,12 +40,10 @@ import { createApp } from 'vue'
 import VueDsfr from '@laruiss/vue-dsfr'
 
 import App from './App.vue'
-import './icons.js' // Import des icônes de Remix Icon (cf. plus loin)
-
-import './main.css'
+import * as icons from './icons.js' // Import des icônes de Remix Icon (cf. plus loin)
 
 createApp(App)
-  .use(VueDsfr)
+  .use(VueDsfr, { icons: Object.values(icons) })
   .mount('#app')
 ```
 
@@ -53,22 +51,12 @@ Et écrire le fichier `icons.js` avec un contenu comme celui-ci :
 
 ```javascript
 // src/icons.js
-import { addIcons } from 'oh-vue-icons'
-
-import {
+export {
   RiCloseLine,
   RiFlagLine,
   RiHome2Line,
   RiRefreshLine,
-} from 'oh-vue-icons/icons/ri/index.js'  // Import des icônes de Remix Icon (ri)
-
-// Ajout des icônes Remix Icon
-addIcons(
-  RiCloseLine,
-  RiFlagLine,
-  RiHome2Line,
-  RiRefreshLine,
-)
+} from 'oh-vue-icons/icons/ri/index.js'  // Import de quelques icônes de Remix Icon (ri)
 ```
 
 ## Autres icônes
@@ -84,39 +72,47 @@ et [Bootstrap Icons](https://icons.getbootstrap.com/) :
 
 ```javascript
 // src/icons.js
-import { addIcons } from 'oh-vue-icons'
-
-import {
+export {
   RiCloseLine,
   RiFlagLine,
   RiHome2Line,
   RiRefreshLine,
-} from 'oh-vue-icons/icons/ri/index.js'  // Import des icônes de Remix Icon (ri)
+} from 'oh-vue-icons/icons/ri/index.js'  // Export de quelques icônes de Remix Icon (ri)
 
-import {
+export {
   FaFlag,
   FaAddressBook,
-} from 'oh-vue-icons/icons/fa/index.js'  // Import des icônes de Font Awesome 5 Free (fa)
+} from 'oh-vue-icons/icons/fa/index.js'  // Export de quelques icônes de Font Awesome 5 Free (fa)
 
-import {
+export {
   BiBadge3D,
   BiClouds,
-} from 'oh-vue-icons/icons/bi/index.js'  // Import des icônes de Bootstrap Icons (bi)
-
-// Ajout de toutes les icônes
-addIcons(
-  // Bootstrap Icons
-  BiBadge3D,
-  BiClouds,
-
-  // Font Awesome 5 Free Icons
-  FaFlag,
-  FaAddressBook,
-
-  // Remix Icons
-  RiCloseLine,
-  RiFlagLine,
-  RiHome2Line,
-  RiRefreshLine,
-)
+} from 'oh-vue-icons/icons/bi/index.js'  // Export de quelques icônes de Bootstrap Icons (bi)
 ```
+
+## Pour Nuxt 3
+
+Créer/modifier un fichier `vue-dsfr.js` dans le dossier `plugins` avec un contenu comme celui-ci :
+
+```javascript
+import {
+  RiCloseLine,
+  RiFlagLine,
+  RiHome2Line,
+  RiRefreshLine,
+} from 'oh-vue-icons/icons/ri/index.js'  // Import de quelques icônes de Remix Icon (ri)
+
+const icons = [
+  RiCloseLine,
+  RiFlagLine,
+  RiHome2Line,
+  RiRefreshLine,
+]
+
+export default defineNuxtPlugin((nuxtApp) => {
+  // Enregistrement du plugin avec ajout de toutes les icônes du tableau `icons`
+  nuxtApp.vueApp.use(VueDsfr, { icons }); // le deuxième paramètre est un objet contenant une propriété `icons`
+});
+```
+Le composant `VIcon` et tous les composants de VueDsfr sont désormais utilisables dans toute l’application Nuxt3
+avec toutes les icônes contenues dans le tableau `icons`.

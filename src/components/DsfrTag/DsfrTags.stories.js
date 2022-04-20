@@ -6,11 +6,15 @@ import { addIcons } from 'oh-vue-icons'
 import {
   RiArrowLeftFill,
   RiArrowRightFill,
+  RiArrowLeftLine,
+  RiArrowRightLine,
 } from 'oh-vue-icons/icons/ri/index.js'
 
 addIcons(
   RiArrowLeftFill,
   RiArrowRightFill,
+  RiArrowLeftLine,
+  RiArrowRightLine,
 )
 
 export default {

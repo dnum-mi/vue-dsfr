@@ -58,7 +58,7 @@ export default defineComponent({
         v-if="icon"
         style="margin-left: -0.25rem; margin-right: 0.5rem; font-size: 0.95rem;"
       >
-        <v-icon
+        <VIcon
           :name="icon"
         />
       </span>

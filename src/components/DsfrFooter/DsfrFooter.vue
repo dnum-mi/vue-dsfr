@@ -1,5 +1,6 @@
 <script>
 import { defineComponent } from 'vue'
+import { OhVueIcon as VIcon } from 'oh-vue-icons'
 
 import DsfrLogo from '../DsfrLogo/DsfrLogo.vue'
 import DsfrFooterPartners from '../DsfrFooter/DsfrFooterPartners.vue'
@@ -10,6 +11,7 @@ export default defineComponent({
   components: {
     DsfrFooterPartners,
     DsfrLogo,
+    VIcon,
   },
 
   props: {

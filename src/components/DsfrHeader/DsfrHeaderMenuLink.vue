@@ -1,8 +1,13 @@
 <script>
 import { defineComponent } from 'vue'
+import { OhVueIcon as VIcon } from 'oh-vue-icons'
 
 export default defineComponent({
   name: 'DsfrHeaderMenuLink',
+
+  components: {
+    VIcon,
+  },
 
   props: {
     /* @deprecated Utiliser `to` ou `href` à la place */
