@@ -26,9 +26,6 @@ export default defineComponent({
     isExternal () {
       return typeof this.to === 'string' && this.to.startsWith('http')
     },
-    linkComponent () {
-      return '$nuxt' in this ? 'nuxt-link' : 'router-link'
-    },
   },
 })
 </script>
@@ -43,8 +40,7 @@ export default defineComponent({
   >
     {{ text }}
   </a>
-  <component
-    :is="linkComponent"
+  <router-link
     v-else
     class="fr-nav__link"
     data-testid="nav-router-link"
@@ -52,5 +48,5 @@ export default defineComponent({
     @click="$emit('toggle-id', id)"
   >
     {{ text }}
-  </component>
+  </router-link>
 </template>

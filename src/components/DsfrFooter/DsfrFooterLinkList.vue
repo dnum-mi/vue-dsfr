@@ -14,12 +14,6 @@ export default defineComponent({
       default: () => [],
     },
   },
-
-  computed: {
-    linkComponent () {
-      return '$nuxt' in this ? 'nuxt-link' : 'router-link'
-    },
-  },
 })
 </script>
 
@@ -38,14 +32,13 @@ export default defineComponent({
           class="fr-footer__top-link"
           :to="link.to"
         >{{ link.label }}</a>
-        <component
-          :is="linkComponent"
+        <router-link
           v-else
           class="fr-footer__top-link"
           :to="link.to"
         >
           {{ link.label }}
-        </component>
+        </router-link>
       </li>
     </ul>
   </div>

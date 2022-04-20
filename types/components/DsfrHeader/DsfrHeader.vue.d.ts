@@ -44,7 +44,6 @@ declare const _default: import('vue').DefineComponent<{
     searchModalOpened: boolean;
     modalOpened: boolean;
 }, {
-    linkComponent(): 'nuxt-link' | 'router-link';
     isWithSlotOperator(): boolean;
 }, {
     hideModal(): void;

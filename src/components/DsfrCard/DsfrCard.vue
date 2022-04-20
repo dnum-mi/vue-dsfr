@@ -33,12 +33,6 @@ export default defineComponent({
     horizontal: Boolean,
   },
 
-  computed: {
-    linkComponent () {
-      return '$nuxt' in this ? 'nuxt-link' : 'router-link'
-    },
-  },
-
   methods: {
     goToTargetLink () {
       this.$refs.title.querySelector('.fr-card__link').click()
@@ -59,15 +53,14 @@ export default defineComponent({
         ref="title"
         class="fr-card__title"
       >
-        <component
-          :is="linkComponent"
+        <router-link
           :to="link"
           class="fr-card__link"
           data-testid="card-link"
           @click="$event.stopPropagation()"
         >
           {{ title }}
-        </component>
+        </router-link>
       </h4>
       <p class="fr-card__desc">
         {{ description }}

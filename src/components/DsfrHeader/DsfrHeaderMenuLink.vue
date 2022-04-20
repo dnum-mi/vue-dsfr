@@ -43,7 +43,7 @@ export default defineComponent({
       if (this.button) {
         return 'button'
       }
-      return this.isExternalLink ? 'a' : ('$nuxt' in this ? 'nuxt-link' : 'router-link')
+      return this.isExternalLink ? 'a' : 'router-link'
     },
     isPathString () {
       return typeof this.path === 'string'

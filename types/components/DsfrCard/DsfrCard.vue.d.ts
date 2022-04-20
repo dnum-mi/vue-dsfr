@@ -25,9 +25,7 @@ declare const _default: import('vue').DefineComponent<{
     };
     noArrow: BooleanConstructor;
     horizontal: BooleanConstructor;
-}, unknown, unknown, {
-    linkComponent(): 'nuxt-link' | 'router-link';
-}, {
+}, unknown, unknown, {}, {
     goToTargetLink(): void;
 }, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, Record<string, any>, string, import('vue').VNodeProps & import('vue').AllowedComponentProps & import('vue').ComponentCustomProps, Readonly<import('vue').ExtractPropTypes<{
     imgSrc: {

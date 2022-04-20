@@ -1,4 +1,4 @@
-declare const _default: import("vue").DefineComponent<{
+declare const _default: import('vue').DefineComponent<{
     path: {
         type: (ObjectConstructor | StringConstructor)[];
         default: any;
@@ -27,7 +27,7 @@ declare const _default: import("vue").DefineComponent<{
         default: any;
     };
 }, unknown, unknown, {
-    is(): "a" | "button" | "nuxt-link" | "router-link";
+    is(): 'a' | 'button' | 'router-link';
     isPathString(): boolean;
     isExternalLink(): any;
     actualHref(): any;
@@ -39,7 +39,7 @@ declare const _default: import("vue").DefineComponent<{
         href: any;
         to?: undefined;
     };
-}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, Record<string, any>, string, import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
+}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, Record<string, any>, string, import('vue').VNodeProps & import('vue').AllowedComponentProps & import('vue').ComponentCustomProps, Readonly<import('vue').ExtractPropTypes<{
     path: {
         type: (ObjectConstructor | StringConstructor)[];
         default: any;
@@ -77,5 +77,5 @@ declare const _default: import("vue").DefineComponent<{
     to: string | Record<string, any>;
     iconRight: boolean;
     iconOnly: boolean;
-}>;
-export default _default;
+}>
+export default _default
