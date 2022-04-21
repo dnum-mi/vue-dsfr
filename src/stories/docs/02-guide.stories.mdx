@@ -73,65 +73,20 @@ ajouter les lignes commentées :
 
 ```js
 import { createApp } from 'vue'
-import App from './App.vue'
-import VueDsfr from '@laruiss/vue-dsfr' // Import (par défaut) de la bibliothèque
-
-const app = createApp(App)
-  .use(VueDsfr)                         // Ajout en tant que plugin
-  .mount('#app')
-```
-
-Pour ajouter les styles globaux :
-
-```js
-import { createApp } from 'vue'
-import App from './App.vue'
+import '@laruiss/vue-dsfr/dist/vue-dsfr.css' // Import des styles globaux
 import VueDsfr from '@laruiss/vue-dsfr'      // Import (par défaut) de la bibliothèque
 
-import '@laruiss/vue-dsfr/dist/vue-dsfr.css' // Import des styles globaux
-
-const app = createApp(App)
-  .use(VueDsfr)                              // Ajout en tant que plugin
-  .mount('#app')
-```
-
-Pour ajouter Les styles globaux et les polices (recommandé) :
-
-```js
-import { createApp } from 'vue'
 import App from './App.vue'
-import VueDsfr from '@laruiss/vue-dsfr'            // Import (par défaut) de la bibliothèque
 
-import '@laruiss/vue-dsfr/dist/vue-dsfr-fonts.css' // Import des polices
-import '@laruiss/vue-dsfr/dist/vue-dsfr.css'       // Import des styles globaux
 
 const app = createApp(App)
-  .use(VueDsfr)                                    // Ajout en tant que plugin
+  .use(VueDsfr)                              // Enregistrement de la bibliothèque en tant que plugin
   .mount('#app')
 ```
 
 #### Dans nuxt 3
 
 La bibliothèque VueDsfr fournit bien plusieurs build (esm et umd entre autres) et Nuxt3 sait lequel choisir.
-
-Cependant nous utilisons la bibliothèque `oh-vue-icons` avec leur build ESM pour être sûr de n'embarquer que les icônes
-utilisées. Il faut donc transpiler `oh-vue-icons`.
-
-Pour ce faire, ajouter ceci dans `nuxt.config.js` :
-
-```javascript
-import { defineNuxtConfig } from 'nuxt3';
-
-// https://v3.nuxtjs.org/docs/directory-structure/nuxt.config
-export default defineNuxtConfig({
-  build: {
-    transpile: [
-      'oh-vue-icons/dist/v3/icon.es.js',
-      'oh-vue-icons/icons/ri/index.js',
-    ],
-  },
-})
-```
 
 Ensuite, il faut ajouter le plugin en créant le dossier `/plugins` s’il n’existe pas et en créant dedans un fichier `vue-dsfr.js`
 avec le contenu suivant :
@@ -147,11 +102,17 @@ export default defineNuxtPlugin((nuxtApp) => {
 })
 ```
 
-Enfin, il faudra ajouter les feuilles CSS :
+Enfin, il faudra ajouter les feuilles CSS, pour ce faire, ajouter ceci dans `nuxt.config.js` :
 
 ```javascript
-import '@laruiss/vue-dsfr/dist/vue-dsfr-fonts.css'
-import '@laruiss/vue-dsfr/dist/vue-dsfr.css'
+import { defineNuxtConfig } from 'nuxt3';
+
+// https://v3.nuxtjs.org/docs/directory-structure/nuxt.config
+export default defineNuxtConfig({
+  css: [
+    '@laruiss/vue-dsfr/styles',
+  ],
+})
 ```
 
 Vous pouvez voir une implémentation **[sur Stackblitz ici](https://stackblitz.com/edit/nuxt-starter-suunj6?file=app.vue)**.
@@ -171,8 +132,7 @@ import {
   DsfrCard,
 } from '@laruiss/vue-dsfr'                                   // Imports nommés de la bibliothèque
 
-import '@laruiss/vue-dsfr/dist/vue-dsfr-fonts-essential.css' // Import des polices (sans les variants bold/italic)
-import '@laruiss/vue-dsfr/dist/vue-dsfr.css'                 // Import des styles globaux
+import '@laruiss/vue-dsfr/styles'                            // Import des styles globaux
 
 const app = createApp(App)
   .component('DsfrHeader', DsfrHeader)                       // Enregistrement global du composant DsfrHeader
@@ -184,47 +144,6 @@ const app = createApp(App)
 
 ## Ajouter des icônes
 
-Pour ajouter des icônes qui ne sont pas importées dans la bibliothèque, voici comment procéder :
-
-1. Créer un fichier `icons.js` avec un contenu comme dans l’exemple ci-dessous :
-2. Importer `icons.js` depuis `main.js` :
-
-```javascript
-// /src/icons.js/
-
-// Importer la fonction addIcons de la bibliothèque
-import { addIcons } from 'oh-vue-icons'
-
-// Importer les icônes souhaitées depuis `oh-vue-icons`
-import {
-  RiAddLine,
-  RiChatCheckLine,
-  RiFileList2Line,
-  RiLogoutBoxLine,
-  RiMenuLine,
-  RiNotification3Line,
-  RiQuestionLine,
-  RiUserLine,
-} from 'oh-vue-icons/icons/ri/index.js'
-
-// Ajouter les icônes
-addIcons(
-  RiAddLine,
-  RiChatCheckLine,
-  RiFileList2Line,
-  RiLogoutBoxLine,
-  RiMenuLine,
-  RiNotification3Line,
-  RiQuestionLine,
-  RiUserLine,
-)
-```
-
-```javascript
-// main.js
-(...)
-
-import './icons.js'
-
-(...)
+Pour ajouter des icônes qui ne sont pas importées dans la bibliothèque, veuillez consulter
+[la page dédiée](/?path=/story/fondamentaux-4-1-icônes-personnalisées--page).
 ```

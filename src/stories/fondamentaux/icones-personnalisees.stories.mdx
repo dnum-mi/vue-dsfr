@@ -6,26 +6,6 @@ Il est possible d’utiliser facilement toutes les icônes [Remix Icon](https://
 [OhVueIcons](https://oh-vue-icons.js.org/) : le composant `VIcon` est enregistré globalement si la bibliothèque est
 utilisée en tant que plugin.
 
-### Utiliser la bibliothèque en tant que plugin (rappel) :
-
-```javascript
-// src/main.js
-import '@laruiss/vue-dsfr/fonts' // Import des polices (Marianne et Spectral)
-import '@laruiss/vue-dsfr/styles' // Import des styles globaux
-
-import { createApp } from 'vue'
-
-import VueDsfr from '@laruiss/vue-dsfr' // Import du plugin
-
-import App from './App.vue'
-
-import './main.css'
-
-createApp(App)
-  .use(VueDsfr) // Enregistrement du Plugin
-  .mount('#app')
-```
-
 ### Ajouter des icônes personnalisées
 
 Pour ajouter des icônes personnalisées, ajouter d’abord l’import du fichier `icons.js`
@@ -43,7 +23,8 @@ import App from './App.vue'
 import * as icons from './icons.js' // Import des icônes de Remix Icon (cf. plus loin)
 
 createApp(App)
-  .use(VueDsfr, { icons: Object.values(icons) })
+  .use(VueDsfr, { icons: Object.values(icons) }) // Ajout des icônes pour tous les composants
+                                                 // de la bibliothèqe ET tout le projet
   .mount('#app')
 ```
 
@@ -92,7 +73,7 @@ export {
 
 ## Pour Nuxt 3
 
-Créer/modifier un fichier `vue-dsfr.js` dans le dossier `plugins` avec un contenu comme celui-ci :
+Créer/modifier le fichier `vue-dsfr.js` dans le dossier `plugins` avec un contenu comme celui-ci :
 
 ```javascript
 import {
@@ -112,6 +93,7 @@ const icons = [
 export default defineNuxtPlugin((nuxtApp) => {
   // Enregistrement du plugin avec ajout de toutes les icônes du tableau `icons`
   nuxtApp.vueApp.use(VueDsfr, { icons }); // le deuxième paramètre est un objet contenant une propriété `icons`
+                                          // qui est un tableau qui contient toutes les icônes que vous souhaitez utiliser
 });
 ```
 Le composant `VIcon` et tous les composants de VueDsfr sont désormais utilisables dans toute l’application Nuxt3
