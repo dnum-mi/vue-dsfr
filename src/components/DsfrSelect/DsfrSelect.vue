@@ -41,7 +41,7 @@ export default defineComponent({
     disabled: Boolean,
   },
 
-  emits: ['update:modelValue'],
+  emits: ['update:modelValue', 'blur', 'focus', 'keydown'],
 
   computed: {
     message () {
@@ -85,6 +85,9 @@ export default defineComponent({
       name="select"
       :disabled="disabled"
       @change="$emit('update:modelValue', $event.target.value)"
+      @blur="$emit('blur', $event)"
+      @focus="$emit('focus', $event)"
+      @keydown="$emit('keydown', $event)"
     >
       <option
         value=""

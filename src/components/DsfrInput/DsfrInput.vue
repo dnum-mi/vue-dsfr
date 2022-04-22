@@ -42,7 +42,7 @@ export default defineComponent({
     isTextarea: Boolean,
   },
 
-  emits: ['update:modelValue'],
+  emits: ['update:modelValue', 'blur', 'focus', 'keydown'],
 
   computed: {
     isComponent () {
@@ -92,7 +92,9 @@ export default defineComponent({
     v-bind="$attrs"
     :aria-aria-describedby="descriptionId || undefined"
     @input="$emit('update:modelValue', $event.target.value)"
-    @keydown.esc="$emit('update:modelValue', '')"
+    @blur="$emit('blur', $event)"
+    @focus="$emit('focus', $event)"
+    @keydown="$emit('keydown', $event)"
   />
 
   <div
@@ -117,7 +119,9 @@ export default defineComponent({
       v-bind="$attrs"
       :aria-aria-describedby="descriptionId || undefined"
       @input="$emit('update:modelValue', $event.target.value)"
-      @keydown.esc="$emit('update:modelValue', '')"
+      @blur="$emit('blur', $event)"
+      @focus="$emit('focus', $event)"
+      @keydown="$emit('keydown', $event)"
     />
   </div>
 </template>

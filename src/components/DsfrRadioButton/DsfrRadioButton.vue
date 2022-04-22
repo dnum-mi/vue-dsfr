@@ -38,7 +38,7 @@ export default defineComponent({
     },
   },
 
-  emits: ['update:modelValue'],
+  emits: ['update:modelValue', 'blur', 'focus', 'keydown'],
 
   computed: {
     rich () {
@@ -63,6 +63,9 @@ export default defineComponent({
       v-bind="$attrs"
       :aria-checked="modelValue === value"
       @click="$emit('update:modelValue', value)"
+      @blur="$emit('blur', $event)"
+      @focus="$emit('focus', $event)"
+      @keydown="$emit('keydown', $event)"
     >
     <label
       :for="id"

@@ -35,7 +35,7 @@ export default defineComponent({
     },
   },
 
-  emits: ['update:modelValue'],
+  emits: ['update:modelValue', 'blur', 'focus', 'keydown'],
 
   computed: {
     message () {
@@ -67,6 +67,9 @@ export default defineComponent({
       :data-testid="`input-checkbox-${id}`"
       :data-test="`input-checkbox-${id}`"
       @change="$emit('update:modelValue', $event.target.checked)"
+      @blur="$emit('blur', $event)"
+      @focus="$emit('focus', $event)"
+      @keydown="$emit('keydown', $event)"
     >
     <label
       :for="id"
