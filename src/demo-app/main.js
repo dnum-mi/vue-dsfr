@@ -1,5 +1,4 @@
 import { createApp } from 'vue'
-import { addIcons } from 'oh-vue-icons'
 
 import {
   RiCheckboxCircleLine,
@@ -13,14 +12,9 @@ import router from './router.js'
 
 import App from './App.vue'
 
-addIcons(
-  RiCheckboxCircleLine,
-  RiNotification3Line,
-)
-
 createApp(App)
   .use(router)
-  .use(VueDsfr)
+  .use(VueDsfr, { icons: [RiCheckboxCircleLine, RiNotification3Line] })
   .mount('#app')
 
 window.dsfr = {

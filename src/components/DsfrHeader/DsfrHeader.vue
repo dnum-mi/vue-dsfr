@@ -1,5 +1,6 @@
 <script>
 import { defineComponent } from 'vue'
+import { OhVueIcon as VIcon } from 'oh-vue-icons'
 
 // Pose problème dans les tests, et risque fort de poser problème dans Nuxt
 // import '@gouvfr/dsfr/dist/component/header/header.module.js'
@@ -15,6 +16,7 @@ export default defineComponent({
     DsfrLogo,
     DsfrHeaderMenuLinks,
     DsfrSearchBar,
+    VIcon,
   },
 
   props: {
@@ -25,6 +27,10 @@ export default defineComponent({
     serviceDescription: {
       type: String,
       default: undefined,
+    },
+    searchLabel: {
+      type: String,
+      default: 'Recherche',
     },
     homeTo: {
       type: String,
@@ -175,6 +181,7 @@ export default defineComponent({
               class="fr-header__search  fr-modal"
             >
               <DsfrSearchBar
+                :label="searchLabel"
                 :model-value="modelValue"
                 :placeholder="placeholder"
                 style="justify-content: flex-end"

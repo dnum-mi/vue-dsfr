@@ -1,8 +1,13 @@
 <script>
 import { defineComponent } from 'vue'
+import { OhVueIcon as VIcon } from 'oh-vue-icons'
 
 export default defineComponent({
   name: 'DsfrTableHeader',
+
+  components: {
+    VIcon,
+  },
 
   props: {
     header: {

@@ -1,5 +1,6 @@
 <script>
 import { defineComponent } from 'vue'
+import { OhVueIcon as VIcon } from 'oh-vue-icons'
 
 // TODO: Pourquoi icône 'check' quand on utilise ce js et qu’on clique sur le premier ?
 // D’autre part, pour les étiquettes sélectionnables posent problème : le JS n’est pas
@@ -7,6 +8,10 @@ import { defineComponent } from 'vue'
 
 export default defineComponent({
   name: 'DsfrTag',
+
+  components: {
+    VIcon,
+  },
 
   props: {
     label: {

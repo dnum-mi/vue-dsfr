@@ -21,7 +21,7 @@ export default {
     },
     icon: {
       control: 'object',
-      description: 'Objet contenant les props à passer à VIcon (OhVueIcon) pour afficher une icône dans l’en-tête',
+      description: 'Objet contenant les props à passer à OhVueIcon pour afficher une icône dans l’en-tête',
     },
     onClickHeader: {
       action: 'Clic sur en-tête',
