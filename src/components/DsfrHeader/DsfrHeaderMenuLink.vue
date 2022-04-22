@@ -1,8 +1,13 @@
 <script>
 import { defineComponent } from 'vue'
+import { OhVueIcon as VIcon } from 'oh-vue-icons'
 
 export default defineComponent({
   name: 'DsfrHeaderMenuLink',
+
+  components: {
+    VIcon,
+  },
 
   props: {
     /* @deprecated Utiliser `to` ou `href` à la place */
@@ -43,7 +48,7 @@ export default defineComponent({
       if (this.button) {
         return 'button'
       }
-      return this.isExternalLink ? 'a' : ('$nuxt' in this ? 'nuxt-link' : 'router-link')
+      return this.isExternalLink ? 'a' : 'router-link'
     },
     isPathString () {
       return typeof this.path === 'string'

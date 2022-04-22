@@ -17,11 +17,8 @@ export default defineComponent({
     isExternalLink () {
       return typeof this.url === 'string' && this.url.startsWith('http')
     },
-    linkComponent () {
-      return '$nuxt' in this ? 'nuxt-link' : 'router-link'
-    },
     is () {
-      return this.url ? (this.isExternalLink ? 'a' : this.linkComponent) : 'a'
+      return this.url ? (this.isExternalLink ? 'a' : 'router-link') : 'a'
     },
     linkProps () {
       return { [this.isExternalLink ? 'href' : 'to']: this.url }

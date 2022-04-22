@@ -1,4 +1,4 @@
-@import url(@gouvfr/dsfr/dist/core/core.main.css);
-@import url(@gouvfr/dsfr/dist/scheme/scheme.css);
-@import url(@gouvfr/dsfr/dist/component/link/link.main.css);
-@import url(@gouvfr/dsfr/dist/component/form/form.main.css);
+@import url(@gouvfr/dsfr/dist/core/core.main.min.css);
+@import url(@gouvfr/dsfr/dist/scheme/scheme.min.css);
+@import url(@gouvfr/dsfr/dist/component/link/link.main.min.css);
+@import url(@gouvfr/dsfr/dist/component/form/form.main.min.css);

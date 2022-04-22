@@ -7,7 +7,6 @@ declare const _default: import('vue').DefineComponent<{
     };
 }, unknown, unknown, {
     isExternalLink(): any;
-    linkComponent(): 'nuxt-link' | 'router-link';
     is(): any;
     linkProps(): LinkProps;
 }, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, ('accept-all' | 'refuse-all' | 'customize')[], 'accept-all' | 'refuse-all' | 'customize', import('vue').VNodeProps & import('vue').AllowedComponentProps & import('vue').ComponentCustomProps, Readonly<import('vue').ExtractPropTypes<{

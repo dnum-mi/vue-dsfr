@@ -13,7 +13,7 @@ export default {
     },
     to: {
       control: 'text',
-      description: 'URL complète pour un lien externe, ou chaîne de caractère ou objet à donner à `to` de `router-link` (ou `nuxt-link`) pour un lien interne',
+      description: 'URL complète pour un lien externe, ou chaîne de caractère ou objet à donner à `to` de `router-link` pour un lien interne',
     },
     active: {
       control: 'boolean',

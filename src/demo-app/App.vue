@@ -10,6 +10,7 @@ import DsfrModal from '../components/DsfrModal/DsfrModal.vue'
 import DsfrFileUpload from '../components/DsfrFileUpload/DsfrFileUpload.vue'
 import DsfrBreadcrumb from '../components/DsfrBreadcrumb/DsfrBreadcrumb.vue'
 import DsfrRadioButtonSet from '../components/DsfrRadioButton/DsfrRadioButtonSet.vue'
+import DsfrAlert from '../components/DsfrAlert/DsfrAlert.vue'
 
 const isModalOpen = ref(false)
 const displayAlert = ref(false)
@@ -215,6 +216,20 @@ const radioTest = ref('')
       />
       Ceci est une modale. Elle peut se fermer sans aucun changement au clic sur le bouton "Fermer" ou bien simplement avec la touche <kbd>Échappe</kbd>
     </DsfrModal>
+
+    <DsfrInput
+      v-model="whatever"
+      label="Label input"
+    >
+      <template #tip>
+        <DsfrAlert v-if="showAlert" />
+        <VIcon
+          name="ri-question-line"
+          @mouseover="showAlert = true"
+          @mouseout="showAlert = false"
+        />
+      </template>
+    </DsfrInput>
   </div>
 </template>
 

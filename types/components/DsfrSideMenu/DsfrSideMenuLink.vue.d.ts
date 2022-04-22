@@ -6,7 +6,7 @@ declare const _default: import('vue').DefineComponent<{
     };
 }, unknown, unknown, {
     isExternalLink(): boolean;
-    is(): 'a' | 'nuxt-link' | 'router-link';
+    is(): 'a' | 'router-link';
     linkProps(): { href: string; } | { to: import('vue-router').RouteLocationRaw };
 }, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, 'toggle-expand'[], 'toggle-expand', import('vue').VNodeProps & import('vue').AllowedComponentProps & import('vue').ComponentCustomProps, Readonly<import('vue').ExtractPropTypes<{
     active: BooleanConstructor;

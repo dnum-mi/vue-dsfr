@@ -48,6 +48,7 @@ export default defineComponent({
         class="fr-accordion__btn"
         :aria-expanded="expanded"
         :aria-controls="id"
+        type="button"
         @click="toggleExpanded()"
       >
         <!-- @slot Slot pour le contenu personnalisé du titre de l’accordéon. Une props du même nom est utilisable pour du texte simple sans mise en forme. -->

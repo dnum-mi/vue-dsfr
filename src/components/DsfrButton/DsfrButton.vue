@@ -1,10 +1,15 @@
 <script>
 import { defineComponent } from 'vue'
+import { OhVueIcon as VIcon } from 'oh-vue-icons'
 
 // import '@gouvfr/dsfr/dist/component/button/button.module.js'
 
 export default defineComponent({
   name: 'DsfrButton',
+
+  components: {
+    VIcon,
+  },
 
   props: {
     disabled: Boolean,

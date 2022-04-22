@@ -29,9 +29,6 @@ export default defineComponent({
     isExternalLink () {
       return typeof this.to === 'string' && this.to.startsWith('http')
     },
-    linkComponent () {
-      return '$nuxt' in this ? 'nuxt-link' : 'router-link'
-    },
   },
 })
 </script>
@@ -48,14 +45,13 @@ export default defineComponent({
           class="fr-tile__link"
           :href="to"
         >{{ title }}</a>
-        <component
-          :is="linkComponent"
+        <router-link
           v-if="!isExternalLink"
           class="fr-tile__link so-test"
           :to="to"
         >
           {{ title }}
-        </component>
+        </router-link>
       </h4>
       <p
         v-if="description"
