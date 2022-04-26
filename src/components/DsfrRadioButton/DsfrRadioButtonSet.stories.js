@@ -20,10 +20,10 @@ export default {
       control: 'text',
       description: 'Valeur de l’attribut `name` de chaque bouton radio du groupe',
     },
-    legend: {
-      control: 'text',
-      description: 'Titre du groupe de bouton',
-    },
+    // legend: {
+    //   control: 'text',
+    //   description: 'Titre du groupe de bouton',
+    // },
     options: {
       control: 'object',
       description: 'Tableau d’objets : chaque objet contient les props à passer à `DsfrRadioButton`',

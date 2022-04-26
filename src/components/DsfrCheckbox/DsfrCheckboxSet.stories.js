@@ -25,10 +25,10 @@ export default {
       control: 'boolean',
       description: 'Indique si les checkboxes doivent apparaître sur une seule ligne (`true`) ou non (`false`, défaut)',
     },
-    legend: {
-      control: 'text',
-      description: 'Titre de l’ensemble (Set) des checkboxes',
-    },
+    // legend: {
+    //   control: 'text',
+    //   description: 'Titre de l’ensemble (Set) des checkboxes',
+    // },
     options: {
       control: 'object',
       description: 'Tableau de `string` (la valeur `value` de la checkbox sera identique au `label`) ou d’objets contenant les props à passer à chaque composant DsfrCheckbox, sauf `modelValue` qui sera calculée à partir de `modelValue` du DsfrCheckboxSet.',

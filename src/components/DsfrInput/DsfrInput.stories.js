@@ -1,5 +1,12 @@
+import DsfrAlert from '../DsfrAlert/DsfrAlert.vue'
 import DsfrInput from './DsfrInput.vue'
 import DsfrInputGroup from './DsfrInputGroup.vue'
+
+import { OhVueIcon as VIcon, addIcons } from 'oh-vue-icons'
+
+import { RiQuestionFill } from 'oh-vue-icons/icons/ri/index.js'
+
+addIcons(RiQuestionFill)
 
 export default {
   component: DsfrInput,
@@ -171,11 +178,6 @@ export const ChampRequis = (args) => ({
       :disabled="disabled"
       :required="true"
     >
-    <template v-slot:required-tip>
-      <span class="required"
-        >&nbsp;*
-      </span>
-    </template>
     </DsfrInput>
   `,
   mounted () {
@@ -185,6 +187,89 @@ export const ChampRequis = (args) => ({
 ChampRequis.args = {
   dark: false,
   label: 'Label champ de saisie',
+  labelVisible: true,
+  placeholder: 'Placeholder',
+  modelValue: '',
+  disabled: false,
+  isTextarea: true,
+}
+
+export const ChampAvecLabelPersonnalise = (args) => ({
+  components: {
+    DsfrAlert,
+    DsfrInput,
+    VIcon,
+  },
+  data () {
+    return {
+      ...args,
+      show: false,
+    }
+  },
+  template: `
+    <component :is="'style'">
+      .required {
+        color: red;
+      }
+      .container {
+        display: grid;
+        grid-template-columns: 1fr auto;
+      }
+      .hint-on-demand {
+        background-color: var(--grey-1000-50);
+        position: absolute;
+        right: 1rem;
+        transform: translateY(1.5rem);
+        opacity: 0;
+        transition: opacity 0.3s ease-in-out;
+      }
+      .hint-on-demand.show {
+        opacity: 1;
+        transition: opacity 0.3s ease-in-out;
+      }
+    </component>
+    <DsfrInput
+      :model-value="modelValue"
+      :label="label"
+      label-class="container"
+      :label-visible="labelVisible"
+      :placeholder="placeholder"
+      :disabled="disabled"
+      hint="Et ici l’indice permanent"
+      :required="true"
+    >
+      <template v-slot:label>
+        <div>
+          Le label du champ
+          <span class="required">&nbsp;*</span>
+        </div>
+        <button
+          @mouseover="show = true"
+          @mouseout="show = false"
+          @click="show = !show"
+          @blur="show = false"
+        >
+          <VIcon
+            name="ri-question-fill"
+            color="var(--blue-france-sun-113-625)"
+            style="pointer-events: none;"
+          />
+        </button>
+        <DsfrAlert
+          type="info"
+          class="hint-on-demand"
+          :class="{show: show}"
+          description="Indice au survol"
+        />
+      </template>
+    </DsfrInput>
+  `,
+  mounted () {
+    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
+  },
+})
+ChampAvecLabelPersonnalise.args = {
+  dark: false,
   labelVisible: true,
   placeholder: 'Placeholder',
   modelValue: '',
