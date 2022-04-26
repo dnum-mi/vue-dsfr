@@ -1,3 +1,22 @@
 {
-  "jest.jestCommandLine": "./node_modules/.bin/jest"
+  "conventionalCommits.scopes": [
+    "releases",
+    "dx"
+  ],
+  "editor.bracketPairColorization.enabled": true,
+  "emmet.includeLanguages": {
+    "vue-html": "html",
+    "postcss": "css"
+  },
+  "emmet.syntaxProfiles": {
+    "postcss": "css"
+  },
+  "eslint.workingDirectories": [{ "mode": "auto"}],
+  "editor.codeActionsOnSave": {
+    "source.fixAll": true,
+  },
+  "files.associations": {
+    "*.css": "postcss"
+  },
+  "jest.jestCommandLine": "./node_modules/.bin/jest",
 }

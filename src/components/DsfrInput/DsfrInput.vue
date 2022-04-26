@@ -1,24 +1,3 @@
-<template>
-  <label
-    :class="{
-      'fr-label': true,
-      'invisible': !labelVisible,
-    }"
-    :for="id"
-  >
-    {{ label }}
-  </label>
-  <input
-    :id="id"
-    type="search"
-    class="fr-input"
-    :placeholder="placeholder"
-    :value="modelValue"
-    @input="$emit('update:modelValue', $event.target.value)"
-    @keydown.esc="$emit('update:modelValue', '')"
-  >
-</template>
-
 <script>
 import { defineComponent } from 'vue'
 
@@ -26,12 +5,33 @@ import { getRandomId } from '../../utils/random-utils.js'
 
 export default defineComponent({
   name: 'DsfrInput',
+
+  inheritAttrs: false,
+
   props: {
     id: {
       type: String,
-      default: getRandomId('search', 'input'),
+      default () {
+        return getRandomId('basic', 'input')
+      },
     },
+    descriptionId: {
+      type: String,
+      default: undefined,
+    },
+    hint: {
+      type: String,
+      default: '',
+    },
+    isInvalid: Boolean,
+    isValid: Boolean,
+    isTextarea: Boolean,
+    isWithWrapper: Boolean,
     label: {
+      type: String,
+      default: '',
+    },
+    labelClass: {
       type: String,
       default: '',
     },
@@ -40,49 +40,108 @@ export default defineComponent({
       type: String,
       default: '',
     },
-    placeholder: {
+    wrapperClass: {
       type: String,
       default: '',
     },
   },
-  emits: ['update:modelValue'],
+
+  emits: ['update:modelValue', 'blur', 'focus', 'keydown'],
+
+  computed: {
+    isComponent () {
+      return this.isTextarea ? 'textarea' : 'input'
+    },
+    wrapper () {
+      return this.isWithWrapper || this.$attrs.type === 'date' || !!this.wrapperClass
+    },
+    finalLabelClass () {
+      return [
+        'fr-label',
+        { invisible: !this.labelVisible },
+        this.labelClass,
+      ]
+    },
+  },
 })
 </script>
 
-<style lang="postcss" scoped>
-.fr-label {
-  font-size: 0.8rem;
-  display: block;
-  color: var(--g800);
+<template>
+  <label
+    :class="finalLabelClass"
+    :for="id"
+  >
+    <!-- @slot Slot pour personnaliser tout le contenu de la balise <label> -->
+    <slot name="label">
+      {{ label }}
+      <!-- @slot Slot pour indiquer que le champ est obligatoire. Par défaut, met une astérisque si `required` est à true (dans un `<span class="required">`) -->
+      <slot name="required-tip">
+        <span
+          v-if="$attrs.required"
+          class="required"
+        >&nbsp;*</span>
+      </slot>
+    </slot>
 
-  &.invisible {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    white-space: nowrap;
-    border: 0;
-  }
-}
+    <span
+      v-if="hint"
+      class="fr-hint-text"
+    >{{ hint }}</span>
+  </label>
 
-.fr-input {
-  margin: 0;
+  <component
+    :is="isComponent"
+    v-if="!wrapper"
+    :id="id"
+    class="fr-input"
+    :class="{
+      'fr-input--error': isInvalid,
+      'fr-input--valid': isValid,
+    }"
+    :value="modelValue"
+    v-bind="$attrs"
+    :aria-aria-describedby="descriptionId || undefined"
+    @input="$emit('update:modelValue', $event.target.value)"
+  />
+
+  <div
+    v-else
+    :class="[
+      {
+        'fr-input-wrap': isWithWrapper || $attrs.type === 'date',
+        'fr-fi-calendar-line': $attrs.type === 'date',
+      },
+      wrapperClass,
+    ]"
+  >
+    <component
+      :is="isComponent"
+      :id="id"
+      class="fr-input"
+      :class="{
+        'fr-input--error': isInvalid,
+        'fr-input--valid': isValid,
+      }"
+      :value="modelValue"
+      v-bind="$attrs"
+      :aria-aria-describedby="descriptionId || undefined"
+      @input="$emit('update:modelValue', $event.target.value)"
+    />
+  </div>
+</template>
+
+<style src="@gouvfr/dsfr/dist/component/input/input.main.min.css" />
+
+<style scoped>
+.invisible {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
   border: 0;
-  border-radius: 0.25rem 0.25rem 0 0;
-  padding: 0.5rem;
-  max-height: none;
-  font-size: 1rem;
-  box-shadow: inset 0 -2px 0 0 var(--g600);
-  color: var(--g800);
-  background-color: var(--g200);
-
-  &::placeholder {
-    font-style: italic;
-    color: var(--g600-g400);
-    opacity: 1;
-  }
 }
 </style>

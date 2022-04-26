@@ -1,0 +1,149 @@
+import { Meta } from '@storybook/addon-docs';
+
+<Meta title="Docs/2. Guide d’utilisation" />
+
+# Comment débuter
+
+Ceci est le guide d̛’utilisation de la bibliothèque. Si vous cherchez à contribuer, se référer au
+[Guide du développeur](?path=/story/docs-guide-du-développeur--page).
+
+## Utiliser create-vue-dsfr (recommandé)
+
+La façon la plus simple de commencer un projet est d’utiliser le package `create-vue-dsfr`, qui permet de créer un projet
+NPM avec tout le nécessaire pour développer un projet utilisant VueDsfr, que ce soit pour Vite (Vue3) ou pour Nuxt 3 (Nuxt3),
+avec ou sans TypeScript.
+
+Avec npm :
+
+```shell
+npm init vue-dsfr
+```
+
+Avec pnpm :
+
+```shell
+pnpm create vue-dsfr
+```
+
+Avec yarn :
+
+```shell
+yarn create vue-dsfr
+```
+
+Et suivez le guide !
+
+## Ajouter la bibliothèque
+
+### Utiliser la bibliothèque en tant que plugin
+
+| Notes :              |
+|:---------------------------|
+| Pour utiliser cette bibliothèque, il vous faudra **[Vue 3](https://v3.vuejs.org/)** (et **[Vue-Router 4](https://next.router.vuejs.org/)**). Par conséquent, si vous utilisez Nuxt, il vous faut **[Nuxt 3](https://v3.nuxtjs.org/)** (plus de détails plus loin). |
+| Il est fortement conseillé d’utiliser **[Vite](https://vitejs.dev)** plutôt que Vue-CLI. |
+
+### Installer la bibliothèque en tant que dépendance du projet
+
+Afin d'installer la bibliothèque, taper cette commande dans votre console au sein du répertoire du projet :
+
+```shell
+npm install @laruiss/vue-dsfr@beta
+```
+
+| Note :              |
+|:---------------------------|
+| Bien indiquer le **`@beta`** pour avoir la dernière version. |
+
+
+### Ajouter le plugin
+
+#### Dans une application Vite (recommandé) ou Vue-CLI
+
+À partir d'un fichier `main.js` simple comme celui-ci :
+
+```js
+import { createApp } from 'vue'
+import App from './App.vue'
+
+const app = createApp(App)
+  .mount('#app')
+```
+
+ajouter les lignes commentées :
+
+```js
+import { createApp } from 'vue'
+import '@laruiss/vue-dsfr/dist/vue-dsfr.css' // Import des styles globaux
+import VueDsfr from '@laruiss/vue-dsfr'      // Import (par défaut) de la bibliothèque
+
+import App from './App.vue'
+
+
+const app = createApp(App)
+  .use(VueDsfr)                              // Enregistrement de la bibliothèque en tant que plugin
+  .mount('#app')
+```
+
+#### Dans nuxt 3
+
+La bibliothèque VueDsfr fournit bien plusieurs build (esm et umd entre autres) et Nuxt3 sait lequel choisir.
+
+Ensuite, il faut ajouter le plugin en créant le dossier `/plugins` s’il n’existe pas et en créant dedans un fichier `vue-dsfr.js`
+avec le contenu suivant :
+
+```javascript
+// /plugins/vue-dsfr.js
+
+import { defineNuxtPlugin } from '#app'
+import VueDsfr from '@laruiss/vue-dsfr'
+
+export default defineNuxtPlugin((nuxtApp) => {
+  nuxtApp.vueApp.use(VueDsfr)
+})
+```
+
+Enfin, il faudra ajouter les feuilles CSS, pour ce faire, ajouter ceci dans `nuxt.config.js` :
+
+```javascript
+import { defineNuxtConfig } from 'nuxt3';
+
+// https://v3.nuxtjs.org/docs/directory-structure/nuxt.config
+export default defineNuxtConfig({
+  css: [
+    '@laruiss/vue-dsfr/styles',
+  ],
+})
+```
+
+Vous pouvez voir une implémentation **[sur Stackblitz ici](https://stackblitz.com/edit/nuxt-starter-suunj6?file=app.vue)**.
+
+## Utiliser la bibliothèque de composants sans plugin
+
+Pour les petits projets, il est possible de ne pas importer tous les composants, et de sélectionner
+les composants utilisés :
+
+```js
+import { createApp } from 'vue'
+import App from './App.vue'
+import {
+  DsfrHeader,
+  DsfrButton,
+  DsfrBreadcrumb,
+  DsfrCard,
+} from '@laruiss/vue-dsfr'                                   // Imports nommés de la bibliothèque
+
+import '@laruiss/vue-dsfr/styles'                            // Import des styles globaux
+
+const app = createApp(App)
+  .component('DsfrHeader', DsfrHeader)                       // Enregistrement global du composant DsfrHeader
+  .component('DsfrButton', DsfrButton)                       // Enregistrement global du composant DsfrButton
+  .component('DsfrBreadcrumb', DsfrBreadcrumb)               // Enregistrement global du composant DsfrBreadcrumb
+  .component('DsfrCard', DsfrCard)                           // Enregistrement global du composant DsfrCard
+  .mount('#app')
+```
+
+## Ajouter des icônes
+
+Pour ajouter des icônes qui ne sont pas importées dans la bibliothèque, veuillez consulter
+[la page dédiée](/story/fondamentaux-4-1-icônes-personnalisées--page).
+```

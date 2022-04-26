@@ -13,8 +13,12 @@
 // https://on.cypress.io/configuration
 // ***********************************************************
 
+// Import dsfr js globally
+import '@gouvfr/dsfr/dist/core/core.module.js'
+
 // Import commands.js using ES2015 syntax:
-import './commands'
+import './commands.js'
 
 // Alternatively you can use CommonJS syntax:
 // require('./commands')
+import 'cypress-plugin-tab'

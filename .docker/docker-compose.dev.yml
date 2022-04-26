@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  front:
+    env_file:
+      - ./.env
+    image: vue-dsfr
+    build:
+      context: ../
+      args:
+        - HTTP=${HTTP}
+      dockerfile: .docker/Dockerfile
+    volumes:
+      - ../:/app # dossier_hote:dossier_conteneur
+    ports:
+      - 8080:80 # port_hote:port_conteneur

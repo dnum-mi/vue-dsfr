@@ -1,19 +1,55 @@
 import DsfrSearchBar from './DsfrSearchBar.vue'
 
 export default {
-  components: DsfrSearchBar,
-  title: 'Basic/DsfrSearchBar',
+  component: DsfrSearchBar,
+  title: 'Composants/Barre de recherche - DsfrSearchBar',
   argTypes: {
-    label: { control: 'text' },
-    dark: { control: 'boolean' },
-    hideIcon: { control: 'boolean' },
-    labelVisible: { control: 'boolean' },
-    placeholder: { control: 'text' },
-    buttonText: { control: 'text' },
+    label: {
+      control: 'text',
+      description: 'Texte du `label` de la barre de recherche',
+    },
+    dark: {
+      control: 'boolean',
+      description: 'Permet de voir le composant dans les deux **thèmes** : **clair** (`false`, défaut) et **sombre** (`true`).\n\n*N.B. : Ne fait pas partie du composant.*',
+    },
+    id: {
+      control: 'text',
+      description: '(optionnel) Valeur de l’attribut `id` de l’input au sein d. Par défaut, un id pseudo-aléatoire sera donné.',
+    },
+    hideIcon: {
+      control: 'boolean',
+      description: 'Indique si l’icône doit être masqué (`true`) ou non (`false`, défaut)',
+    },
+    labelVisible: {
+      control: 'boolean',
+      description: 'Indique si le label doit être visible (`true`) ou non (`false`, défaut)',
+    },
+    placeholder: {
+      control: 'text',
+      description: 'Texte à afficher si le champ de recherhe n’est pas rempli',
+    },
+    buttonText: {
+      control: 'text',
+      description: 'Texte du bouton de la barre de recherche',
+    },
+    modelValue: {
+      control: 'text',
+      description: 'Contenu du champ de recherche',
+    },
+    large: {
+      control: 'boolean',
+      description: 'Indique si la barre de recherche doit prendre plus de hauteur (`true`) ou non (`false`, défaut)',
+    },
+    'update:modelValue': {
+      description: 'Événement émis à chaque changement de la valeur du champ de saisie de la recherche',
+    },
+    search: {
+      description: 'Événement émis lors de la validation de la recherche',
+    },
   },
 }
 
-export const IconOnly = (args) => ({
+export const BarreDeRecherche = (args) => ({
   components: {
     DsfrSearchBar,
   },
@@ -21,28 +57,33 @@ export const IconOnly = (args) => ({
     return args
   },
   template: `
-    <div :data-rf-theme="dark ? 'dark' : ''" style="background-color: var(--w); padding: 1rem;">
       <DsfrSearchBar
         :label="label"
-        :dark="dark"
         :placeholder="placeholder"
         :labelVisible="labelVisible"
         :button-text="buttonText"
         :hide-icon="hideIcon"
+        v-model="modelValue"
+        :large="large"
       />
-    </div>
   `,
+
+  mounted () {
+    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
+  },
 })
-IconOnly.args = {
+BarreDeRecherche.args = {
   label: 'Label de search bar',
   dark: false,
   hideIcon: false,
   placeholder: 'Rechercher',
   buttonText: '',
   labelVisible: false,
+  modelValue: '',
+  large: false,
 }
 
-export const TextNoIcon = (args) => ({
+export const BarreDeRechercheLarge = (args) => ({
   components: {
     DsfrSearchBar,
   },
@@ -50,23 +91,27 @@ export const TextNoIcon = (args) => ({
     return args
   },
   template: `
-    <div :data-rf-theme="dark ? 'dark' : ''" style="background-color: var(--w); padding: 1rem;">
-      <DsfrSearchBar
-        :label="label"
-        :dark="dark"
-        :placeholder="placeholder"
-        :labelVisible="labelVisible"
-        :hide-icon="hideIcon"
-        :button-text="buttonText"
-      />
-    </div>
+    <DsfrSearchBar
+      :label="label"
+      :placeholder="placeholder"
+      :labelVisible="labelVisible"
+      :hide-icon="hideIcon"
+      :button-text="buttonText"
+      :large="large"
+    />
   `,
+
+  mounted () {
+    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
+  },
 })
-TextNoIcon.args = {
+BarreDeRechercheLarge.args = {
   label: 'Label de search bar',
   dark: false,
   hideIcon: true,
   placeholder: 'Rechercher',
   buttonText: 'Rechercher',
   labelVisible: false,
+  modelValue: '',
+  large: true,
 }

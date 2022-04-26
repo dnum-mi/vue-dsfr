@@ -13,15 +13,6 @@
 const { startDevServer } = require('@cypress/vite-dev-server')
 
 module.exports = (on, config) => {
-  on('dev-server:start', options =>
-    startDevServer({
-      options,
-    }),
-  )
-
-  return config
-}
-module.exports = (on, config) => {
   // on('file:preprocessor', webpack({
   //  webpackOptions: require('@vue/cli-service/webpack.config'),
   //  watchOptions: {}

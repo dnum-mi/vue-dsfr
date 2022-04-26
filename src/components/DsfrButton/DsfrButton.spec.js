@@ -1,4 +1,6 @@
+import { OhVueIcon as VIcon } from 'oh-vue-icons'
 import { render } from '@testing-library/vue'
+// import '@gouvfr/dsfr/dist/core/core.module.js'
 
 import DsfrButton from './DsfrButton.vue'
 
@@ -9,6 +11,11 @@ describe('DsfrButton', () => {
 
     // When
     const { getByText } = render(DsfrButton, {
+      global: {
+        components: {
+          VIcon,
+        },
+      },
       slots: {
         default: label,
       },
@@ -24,6 +31,11 @@ describe('DsfrButton', () => {
 
     // When
     const { getByText } = render(DsfrButton, {
+      global: {
+        components: {
+          VIcon,
+        },
+      },
       props: {
         secondary: true,
       },
@@ -33,6 +45,6 @@ describe('DsfrButton', () => {
     })
 
     // Then
-    expect(getByText(label)).toHaveClass('fr-btn--secondary')
+    expect(getByText(label).parentNode).toHaveClass('fr-btn--secondary')
   })
 })

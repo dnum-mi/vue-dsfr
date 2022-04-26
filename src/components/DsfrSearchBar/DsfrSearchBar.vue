@@ -1,41 +1,15 @@
-<template>
-  <div class="fr-search-bar">
-    <DsfrInput
-      :id="id"
-      type="search"
-      :placeholder="placeholder"
-      :model-value="modelValue"
-      :label-visible="labelVisible"
-      :label="label"
-      @input="$emit('update:modelValue', $event.target.value)"
-      @keydown.esc="$emit('update:modelValue', '')"
-    />
-    <DsfrButton
-      title="Rechercher"
-      @click="$emit('search')"
-    >
-      {{ buttonText }}
-      <v-icon name="ri-search-2-line" v-if="!hideIcon" />
-    </DsfrButton>
-  </div>
-</template>
-
 <script>
-import VIcon from 'oh-vue-icons/dist/v3/icon.es'
-import { RiSearch2Line } from 'oh-vue-icons/icons'
+import { defineComponent } from 'vue'
 
 import { getRandomId } from '../../utils/random-utils.js'
 import DsfrInput from '../DsfrInput/DsfrInput.vue'
 import DsfrButton from '../DsfrButton/DsfrButton.vue'
 
-VIcon.add(RiSearch2Line)
-
-export default {
-  name: 'SearchBar',
+export default defineComponent({
+  name: 'DsfrSearchBar',
   components: {
     DsfrInput,
     DsfrButton,
-    VIcon,
   },
   props: {
     id: {
@@ -46,13 +20,12 @@ export default {
       type: String,
       default: '',
     },
+    labelVisible: Boolean,
+    large: Boolean,
     buttonText: {
       type: String,
       default: '',
     },
-    dark: Boolean,
-    hideIcon: Boolean,
-    labelVisible: Boolean,
     modelValue: {
       type: String,
       default: '',
@@ -77,12 +50,38 @@ export default {
       },
     }
   },
-}
+})
 </script>
 
-<style scoped>
-::v-deep .fr-input {
-  box-shadow: inset 0 -2px 0 0 var(--bf500);
-  border-radius: 0.25rem 0 0 0;
+<template>
+  <div
+    class="fr-search-bar"
+    :class="{ 'fr-search-bar--lg': large }"
+    role="search"
+  >
+    <DsfrInput
+      :id="id"
+      type="search"
+      :placeholder="placeholder"
+      :model-value="modelValue"
+      :label-visible="false"
+      :label="label"
+      @update:modelValue="$emit('update:modelValue', $event)"
+      @keydown.enter="$emit('search')"
+    />
+    <DsfrButton
+      title="Rechercher"
+      @click="$emit('search')"
+    >
+      {{ buttonText }}
+    </DsfrButton>
+  </div>
+</template>
+
+<style src="@gouvfr/dsfr/dist/component/search/search.main.min.css" />
+
+<style>
+.fr-search-bar > .fr-label + .fr-input {
+  margin: 0;
 }
 </style>

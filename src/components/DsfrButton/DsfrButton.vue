@@ -1,52 +1,77 @@
-<template>
-  <button
-    :class="{
-      'fr-btn': true,
-      'fr-btn--secondary': secondary
-    }"
-  >
-    {{ label }}
-    <slot />
-  </button>
-</template>
-
 <script>
-export default {
+import { defineComponent } from 'vue'
+import { OhVueIcon as VIcon } from 'oh-vue-icons'
+
+// import '@gouvfr/dsfr/dist/component/button/button.module.js'
+
+export default defineComponent({
   name: 'DsfrButton',
+
+  components: {
+    VIcon,
+  },
+
   props: {
+    disabled: Boolean,
     label: {
       type: String,
       default: undefined,
     },
     secondary: Boolean,
+    tertiary: Boolean,
+    icon: {
+      type: String,
+      default: undefined,
+    },
+    iconRight: Boolean,
+    iconOnly: Boolean,
   },
-}
+
+  methods: {
+    focus () {
+      this.$refs.btn.focus()
+    },
+  },
+})
 </script>
 
+<template>
+  <button
+    ref="btn"
+    :class="{
+      'fr-btn': true,
+      'fr-btn--secondary': secondary && !tertiary,
+      'fr-btn--tertiary': tertiary && !secondary,
+      'inline-flex': true,
+      'reverse': iconRight,
+      'justify-center': iconOnly,
+    }"
+    :title="iconOnly ? label : undefined"
+    :disabled="disabled"
+    :aria-disabled="disabled"
+  >
+    <VIcon
+      v-if="icon"
+      :name="icon"
+    />
+    <span v-if="!iconOnly">
+      {{ label }}
+      <!-- @slot Slot par défaut pour le contenu du bouton. Sera dans `<button class="fr-btn"><span">` -->
+      <slot />
+    </span>
+  </button>
+</template>
+
+<style src="@gouvfr/dsfr/dist/component/button/button.main.min.css" />
+
 <style scoped>
-.fr-btn {
-  border: 0;
-  padding: 0.5rem 1.5rem;
-  font-size: 1rem;
-  background-color: var(--bf500);
-  color: var(--w-bf500);
-
-  &[disabled] {
-    color: var(--g600-g400);
-    background-color: var(--g200);
-  }
+.inline-flex {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
 }
-.fr-btn--secondary {
-  --color-hover: var(--block-color-hover);
-  --color-active: var(--block-color-active);
 
-  background-color: var(--t-plain);
-  color: var(--bf500);
-  box-shadow: inset 0 0 0 1px var(--bf500);
-
-  &[disabled] {
-    color: var(--g600-g400);
-    box-shadow: inset 0 0 0 1px var(--g400);
-  }
+.reverse {
+  flex-direction: row-reverse;
 }
 </style>

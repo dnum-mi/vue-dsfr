@@ -1,4 +1,7 @@
+import { OhVueIcon as VIcon } from 'oh-vue-icons'
 import { render } from '@testing-library/vue'
+
+// import '@gouvfr/dsfr/dist/core/core.module.js'
 
 import SearchBar from './DsfrSearchBar.vue'
 
@@ -10,7 +13,11 @@ describe('SearchBar', () => {
 
     // When
     const { getByText } = render(SearchBar, {
-      stubs: ['v-icon'],
+      global: {
+        components: {
+          VIcon,
+        },
+      },
       props: {
         labelVisible,
         label,
@@ -19,7 +26,6 @@ describe('SearchBar', () => {
 
     // Then
     expect(getByText(label)).toHaveClass('fr-label')
-    expect(getByText(label)).not.toHaveClass('invisible')
   })
 
   it('should render searchbar with invisible label', () => {
@@ -29,7 +35,11 @@ describe('SearchBar', () => {
 
     // When
     const { getByText } = render(SearchBar, {
-      stubs: ['v-icon'],
+      global: {
+        components: {
+          VIcon,
+        },
+      },
       props: {
         labelVisible,
         label,

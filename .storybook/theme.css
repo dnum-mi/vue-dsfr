@@ -1,0 +1,15 @@
+a.sbdocs {
+  color: #000091 !important;
+  outline-color: #000091 !important;
+  --link-underline: 0;
+  --link-blank-content: "";
+}
+
+a.sbdocs:hover {
+  text-decoration: underline;
+}
+
+.sbdocs a[href] {
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}

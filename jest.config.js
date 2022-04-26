@@ -14,10 +14,10 @@ module.exports = {
   // cacheDirectory: "/tmp/jest_rs",
 
   // Automatically clear mock calls and instances between every test
-  // clearMocks: false,
+  clearMocks: true,
 
   // Indicates whether the coverage information should be collected while executing the test
-  // collectCoverage: false,
+  collectCoverage: true,
 
   // An array of glob patterns indicating a set of files for which coverage information should be collected
   // collectCoverageFrom: undefined,
@@ -31,7 +31,7 @@ module.exports = {
   // ],
 
   // Indicates which provider should be used to instrument code for coverage
-  // coverageProvider: "babel",
+  coverageProvider: 'babel',
 
   // A list of reporter names that Jest uses when writing coverage reports
   // coverageReporters: [
@@ -40,6 +40,9 @@ module.exports = {
   //   "lcov",
   //   "clover"
   // ],
+  coverageReporters: [
+    'lcov',
+  ],
 
   // An object that configures minimum threshold enforcement for coverage results
   // coverageThreshold: undefined,
@@ -79,6 +82,14 @@ module.exports = {
   //   "tsx",
   //   "node"
   // ],
+  moduleFileExtensions: [
+    'js',
+    'json',
+    'jsx',
+    'ts',
+    'tsx',
+    'vue',
+  ],
 
   // A map from regular expressions to module names or to arrays of module names that allow to stub out resources with a single module
   // moduleNameMapper: {},
@@ -94,7 +105,6 @@ module.exports = {
 
   // A preset that is used as a base for Jest's configuration
   // preset: undefined,
-  preset: '@vue/cli-plugin-unit-jest',
 
   // Run tests from one or more projects
   // projects: undefined,
@@ -139,7 +149,7 @@ module.exports = {
   // snapshotSerializers: [],
 
   // The test environment that will be used for testing
-  // testEnvironment: "jest-environment-jsdom",
+  testEnvironment: 'jest-environment-jsdom',
 
   // Options that will be passed to the testEnvironment
   // testEnvironmentOptions: {},
@@ -178,12 +188,21 @@ module.exports = {
 
   // A map from regular expressions to paths to transformers
   // transform: undefined,
+  transform: {
+    // '^.+\\.svg$': 'jest-svg-transformer',
+    // '.+\\.(css|styl|less|sass|scss|png|jpg|ttf|woff|woff2)$': 'jest-transform-stub',
+    '^.+\\.js$': 'babel-jest',
+    '^.+\\.vue$': '@vue/vue3-jest',
+  },
 
   // An array of regexp pattern strings that are matched against all source file paths, matched files will skip transformation
   // transformIgnorePatterns: [
   //   "/node_modules/",
   //   "\\.pnp\\.[^\\/]+$"
   // ],
+  transformIgnorePatterns: [
+    // '/node_modules(?![\\\\/]oh-vue-icons[\\\\/])/',
+  ],
 
   // An array of regexp pattern strings that are matched against all modules before the module loader will automatically return a mock for them
   // unmockedModulePathPatterns: undefined,
