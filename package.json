@@ -179,5 +179,19 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/laruiss/vue-dsfr.git"
+  },
+  "release": {
+    "branches": [
+      "main",
+      {
+        "name": "beta",
+        "prerelease": true,
+        "branch": "develop"
+      }
+    ],
+    "assets": [
+      "dist/*.js",
+      "dist/*.css"
+    ]
   }
 }
