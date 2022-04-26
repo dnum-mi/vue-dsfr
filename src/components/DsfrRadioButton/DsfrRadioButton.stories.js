@@ -17,10 +17,10 @@ export default {
       control: 'object',
       description: 'Tableau d’objets : chaque objet contient les props à passer à `DsfrRadioButton` - *N.B. : Ne fait pas partie du composant',
     },
-    label: {
-      control: 'text',
-      description: 'Label du bouton radio',
-    },
+    // label: {
+    //   control: 'text',
+    //   description: 'Label du bouton radio',
+    // },
     modelValue: {
       control: 'text',
       description: 'Valeur de la case cochée',

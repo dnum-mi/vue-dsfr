@@ -46,7 +46,7 @@ export default defineComponent({
       class="fr-hint-text"
     >
       {{ hint }}
-      <!-- @slot Slot pour le contenu de l’indice (sera dans `<span class="fr-hint-text">` qui sera dans `</legend>`). Une props du même nom est utilisable pour du texte simple sans mise en forme. -->
+      <!-- @slot Slot pour le contenu de l’indice (sera dans `<span class="fr-hint-text">` qui sera dans `</legend>`). Une **props du même nom est utilisable pour du texte simple** sans mise en forme. -->
       <slot name="hint" />
     </span>
 

@@ -16,8 +16,8 @@ declare const _default: import('vue').DefineComponent<{
     isTextarea: BooleanConstructor;
     isWithWrapper: BooleanConstructor;
     labelClass: {
-      type: StringConstructor | ObjectConstructor | ArrayConstructor;
-      default: string;
+        type: [StringConstructor, ObjectConstructor, ArrayConstructor];
+        default: string;
     };
     label: {
         type: StringConstructor;
@@ -29,9 +29,9 @@ declare const _default: import('vue').DefineComponent<{
         default: string;
     };
     wrapperClass: {
-      type: StringConstructor | ObjectConstructor | ArrayConstructor;
-      default: string;
-  };
+        type: [StringConstructor, ObjectConstructor, ArrayConstructor];
+        default: string;
+    };
 }, unknown, unknown, {
     isComponent(): 'input' | 'textarea';
     wrapper(): boolean;
@@ -54,7 +54,7 @@ declare const _default: import('vue').DefineComponent<{
     isTextarea: BooleanConstructor;
     isWithWrapper: BooleanConstructor;
     labelClass: {
-        type: StringConstructor | ObjectConstructor | ArrayConstructor;
+        type: [StringConstructor, ObjectConstructor, ArrayConstructor];
         default: string;
     };
     label: {
@@ -67,9 +67,9 @@ declare const _default: import('vue').DefineComponent<{
         default: string;
     };
     wrapperClass: {
-      type: StringConstructor | ObjectConstructor | ArrayConstructor;
-      default: string;
-  };
+        type: [StringConstructor, ObjectConstructor, ArrayConstructor];
+        default: string;
+    };
 }>> & {
     'onUpdate:modelValue'?: (inputValue: string | number | Date) => void;
 }, {
