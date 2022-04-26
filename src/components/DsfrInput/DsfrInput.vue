@@ -19,11 +19,24 @@ export default defineComponent({
       type: String,
       default: undefined,
     },
+    hint: {
+      type: String,
+      default: '',
+    },
+    isInvalid: Boolean,
+    isValid: Boolean,
+    isTextarea: Boolean,
+    isWithWrapper: Boolean,
     label: {
       type: String,
       default: '',
     },
-    hint: {
+    labelClass: {
+      type: String,
+      default: '',
+    },
+    labelVisible: Boolean,
+    modelValue: {
       type: String,
       default: '',
     },
@@ -31,25 +44,23 @@ export default defineComponent({
       type: String,
       default: '',
     },
-    isWithWrapper: Boolean,
-    labelVisible: Boolean,
-    modelValue: {
-      type: String,
-      default: '',
-    },
-    isInvalid: Boolean,
-    isValid: Boolean,
-    isTextarea: Boolean,
   },
 
-  emits: ['update:modelValue'],
+  emits: ['update:modelValue', 'blur', 'focus', 'keydown'],
 
   computed: {
     isComponent () {
       return this.isTextarea ? 'textarea' : 'input'
     },
     wrapper () {
-      return this.isWithWrapper || this.$attrs.type === 'date' || this.wrapperClass
+      return this.isWithWrapper || this.$attrs.type === 'date' || !!this.wrapperClass
+    },
+    finalLabelClass () {
+      return [
+        'fr-label',
+        { invisible: !this.labelVisible },
+        this.labelClass,
+      ]
     },
   },
 })
@@ -57,20 +68,19 @@ export default defineComponent({
 
 <template>
   <label
-    :class="{
-      'fr-label': true,
-      'invisible': !labelVisible,
-    }"
+    :class="finalLabelClass"
     :for="id"
   >
-    {{ label }}
-
-    <!-- @slot Slot pour indiquer que le champ est obligatoire. Par défaut, met une astérisque si `required` est à true (dans un `<span class="required">`) -->
-    <slot name="required-tip">
-      <span
-        v-if="$attrs.required"
-        class="required"
-      >&nbsp;*</span>
+    <!-- @slot Slot pour personnaliser tout le contenu de la balise <label> -->
+    <slot name="label">
+      {{ label }}
+      <!-- @slot Slot pour indiquer que le champ est obligatoire. Par défaut, met une astérisque si `required` est à true (dans un `<span class="required">`) -->
+      <slot name="required-tip">
+        <span
+          v-if="$attrs.required"
+          class="required"
+        >&nbsp;*</span>
+      </slot>
     </slot>
 
     <span
@@ -92,7 +102,6 @@ export default defineComponent({
     v-bind="$attrs"
     :aria-aria-describedby="descriptionId || undefined"
     @input="$emit('update:modelValue', $event.target.value)"
-    @keydown.esc="$emit('update:modelValue', '')"
   />
 
   <div
@@ -117,7 +126,6 @@ export default defineComponent({
       v-bind="$attrs"
       :aria-aria-describedby="descriptionId || undefined"
       @input="$emit('update:modelValue', $event.target.value)"
-      @keydown.esc="$emit('update:modelValue', '')"
     />
   </div>
 </template>

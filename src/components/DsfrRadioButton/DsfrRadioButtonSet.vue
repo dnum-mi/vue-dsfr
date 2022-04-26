@@ -82,13 +82,16 @@ export default defineComponent({
         id="radio-legend"
         class="fr-fieldset__legend"
       >
-        {{ legend }}
-        <!-- @slot Slot pour indiquer que le champ doit être renseigné. Par défaut, contient une astérisque si la props `required` est passée. -->
-        <slot name="required-tip">
-          <span
-            v-if="required"
-            class="required"
-          >&nbsp;*</span>
+        <!-- @slot Slot pour personnaliser tout le contenu de la balise <legend> cf. [DsfrInput](/?path=/story/composants-champ-de-saisie-champ-simple-dsfrinput--champ-avec-label-personnalise). Une **props porte le même nom pour une légende simple** (texte sans mise en forme) -->
+        <slot name="legend">
+          {{ legend }}
+          <!-- @slot Slot pour indiquer que le champ est obligatoire. Par défaut, met une astérisque si `required` est à true (dans un `<span class="required">`) -->
+          <slot name="required-tip">
+            <span
+              v-if="$attrs.required"
+              class="required"
+            >&nbsp;*</span>
+          </slot>
         </slot>
       </legend>
 

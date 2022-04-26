@@ -12,10 +12,10 @@ export default {
       control: 'text',
       description: '(optionnel) Valeur de l’attribut `id` de la checkbox. Par défaut, un id pseudo-aléatoire sera donné.',
     },
-    label: {
-      control: 'text',
-      description: 'Label de la case à cocher',
-    },
+    // label: {
+    //   control: 'text',
+    //   description: 'Label de la case à cocher',
+    // },
     name: {
       control: 'text',
       description: 'Valeur de l’attribut `name` de la case à cocher',

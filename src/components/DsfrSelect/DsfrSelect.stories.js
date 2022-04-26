@@ -16,10 +16,10 @@ export default {
       control: 'boolean',
       description: 'Option permettant de rendre ce champ de formulaire obligatoire et d’assigner au label un astérisque afin de rendre ce changement visible',
     },
-    label: {
-      control: 'text',
-      description: 'Label associé au `select`, donne le focus sur ce dernier au clic',
-    },
+    // label: {
+    //   control: 'text',
+    //   description: 'Label associé au `select`, donne le focus sur ce dernier au clic',
+    // },
     options: {
       control: 'object',
       description: 'Liste des options proposées par le `<select>` à lui passer sous forme de tableau de string ou de tableau d’objets avec une propriété `"text"` et une propriété `"value"`',
