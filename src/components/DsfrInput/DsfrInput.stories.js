@@ -215,20 +215,17 @@ export const ChampAvecLabelPersonnalise = (args) => ({
         display: grid;
         grid-template-columns: 1fr auto;
       }
-      .mouseover {
-        background-color: transparent;
-      }
       .hint-on-demand {
         background-color: var(--grey-1000-50);
         position: absolute;
-        right: -100rem;
+        right: 1rem;
         transform: translateY(1.5rem);
-        opacity: 0.1;
+        opacity: 0;
         transition: opacity 0.3s ease-in-out;
       }
       .hint-on-demand.show {
-        right: 1rem;
         opacity: 1;
+        transition: opacity 0.3s ease-in-out;
       }
     </component>
     <DsfrInput
