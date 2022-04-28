@@ -46,7 +46,7 @@ export default defineComponent({
     },
   },
 
-  emits: ['update:modelValue', 'blur', 'focus', 'keydown'],
+  emits: ['update:modelValue'],
 
   computed: {
     isComponent () {
