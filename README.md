@@ -49,17 +49,8 @@ Cf [le site officiel](https://vue-dsfr.netlify.app/?path=/story/docs-3-guide-du-
 ### Installer la bibliothèque
 
 ```shell
-npm install @laruiss/vue-dsfr@beta
+npm install @laruiss/vue-dsfr
 ```
-
----
-
-**Note :**
-
-Le **`@beta`** est très important pour avoir la dernière version.
-
----
-
 ### Utiliser la bibliothèque en tant que plugin Vue 3
 
 ```js
