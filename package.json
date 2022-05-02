@@ -69,7 +69,7 @@
     "@gouvfr/dsfr": "~1.4.1",
     "focus-trap": "^6.7.3",
     "focus-trap-vue": "^3.2.1",
-    "oh-vue-icons": "^1.0.0-rc2",
+    "oh-vue-icons": "1.0.0-rc3",
     "vue": "^3.2.31"
   },
   "devDependencies": {
@@ -164,7 +164,7 @@
     "yorkie": "^2.0.0"
   },
   "peerDependencies": {
-    "oh-vue-icons": "^1.0.0-rc2",
+    "oh-vue-icons": "1.0.0-rc3",
     "vue-router": "^4.0.14"
   },
   "optionalDependencies": {
