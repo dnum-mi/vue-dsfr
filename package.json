@@ -169,7 +169,7 @@
     "vue-router": "^4.0.14"
   },
   "optionalDependencies": {
-    "esbuild-linux-64": "^0.14.34"
+    "esbuild-linux-64": "^0.14.38"
   },
   "gitHooks": {
     "pre-commit": "lint-staged",
