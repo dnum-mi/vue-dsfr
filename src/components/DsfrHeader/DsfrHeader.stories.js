@@ -69,13 +69,21 @@ export default {
     search: {
       description: 'Événement émis lors de la validation de la recherche de la barre de recherche',
     },
+    operatorImgSrc: {
+      control: 'text',
+      description: 'URL vers l’image de l’opérateur',
+    },
+    operatorImgAlt: {
+      control: 'text',
+      description: 'Texte alternatif pour l’image de l’opérateur',
+    },
     actionOnLogo: { action: 'clicked on logo' },
     actionOnLink: { action: 'clicked on quickLink' },
     onChangeSearchInput: { action: 'search changed' },
   },
 }
 
-export const EnTete = (args, { argTypes }) => ({
+export const EnTeteSimple = (args, { argTypes }) => ({
   components: {
     DsfrHeader,
   },
@@ -125,7 +133,7 @@ export const EnTete = (args, { argTypes }) => ({
     document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
   },
 })
-EnTete.args = {
+EnTeteSimple.args = {
   dark: false,
   showSearch: true,
   logoText: ['Ministère', 'de l’intérieur'],
@@ -139,4 +147,75 @@ EnTete.args = {
     { label: 'Se connecter', to: '/login', class: 'fr-fi-lock-line' },
     { label: 'S’enregistrer', to: '/signin', icon: 'ri-account-circle-line', iconRight: true, iconAttrs: { animation: 'spin', speed: 'slow' } },
   ],
+}
+
+export const EnTeteAvecLogoOperateur = (args, { argTypes }) => ({
+  components: {
+    DsfrHeader,
+  },
+  props: {
+    modelValue: {
+      type: String,
+      default: '',
+    },
+  },
+  data () {
+    return {
+      ...args,
+      quickLincks: args.quickLinks.map((link, idx) => {
+        if (idx === 0) {
+          link.onClick = ($event) => {
+            $event.preventDefault()
+            this.actionOnLink()
+          }
+        }
+        return link
+      }),
+    }
+  },
+
+  template: `
+    <DsfrHeader
+      :service-title="serviceTitle"
+      :service-description="serviceDescription"
+      :home-to="homeTo"
+      :quick-links="quickLinks"
+      :show-search="showSearch"
+      :logo-text="logoText"
+      :operatorImgSrc="operatorImgSrc"
+      :operatorImgAlt="operatorImgAlt"
+      :operatorImgStyle="operatorImgStyle"
+      v-model="modelValue"
+      @click="onClickOnLogo"
+    />
+  `,
+
+  methods: {
+    onClickOnLogo ($event) {
+      $event.preventDefault()
+      $event.stopPropagation()
+      this.actionOnLogo($event)
+    },
+  },
+
+  mounted () {
+    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
+  },
+})
+EnTeteAvecLogoOperateur.args = {
+  dark: false,
+  showSearch: true,
+  logoText: ['Ministère', 'de l’intérieur'],
+  serviceTitle: 'Nom du Site/Service',
+  serviceDescription: 'baseline - précisions sur l‘organisation',
+  modelValue: '',
+  placeholder: '',
+  homeTo: '#',
+  quickLinks: [
+    { label: 'Créer un espace', to: '/space/create', icon: 'ri-add-circle-line', iconAttrs: { scale: 0.9 } },
+    { label: 'Se connecter', to: '/login', class: 'fr-fi-lock-line' },
+    { label: 'S’enregistrer', to: '/signin', icon: 'ri-account-circle-line', iconRight: true, iconAttrs: { animation: 'spin', speed: 'slow' } },
+  ],
+  operatorImgSrc: '/cat.svg',
+  operatorImgAlt: 'Logo opérateur',
 }
