@@ -101,7 +101,26 @@ export default defineComponent({
         },
       ],
     },
-
+    operatorLinkText: {
+      type: String,
+      default: 'Revenir à l’accueil',
+    },
+    operatorTo: {
+      type: [String, Object],
+      default: '/',
+    },
+    operatorImgStyle: {
+      type: String,
+      default: undefined,
+    },
+    operatorImgSrc: {
+      type: String,
+      default: undefined,
+    },
+    operatorImgAlt: {
+      type: String,
+      default: '',
+    },
   },
 
   computed: {
@@ -114,9 +133,6 @@ export default defineComponent({
     },
     isWithSlotLinkLists () {
       return this.$slots['footer-link-lists']?.().length
-    },
-    isWithSlotOperator () {
-      return this.$slots.operator?.().length
     },
   },
 })
@@ -149,6 +165,19 @@ export default defineComponent({
             <DsfrLogo
               :logo-text="logoText"
             />
+          </router-link>
+          <router-link
+            class="fr-footer__brand-link"
+            :to="operatorTo"
+            :title="operatorLinkText"
+          >
+            <img
+              v-if="operatorImgSrc"
+              class="fr-footer__logo  fr-responsive-img"
+              :style="{ 'margin-left': '0.5px', 'padding': '1rem', ...operatorImgStyle, 'max-width': '12.5rem' }"
+              :src="operatorImgSrc"
+              :alt="operatorImgAlt"
+            >
           </router-link>
         </div>
         <div class="fr-footer__content">
