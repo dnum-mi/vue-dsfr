@@ -110,7 +110,7 @@ export default defineComponent({
       default: '/',
     },
     operatorImgStyle: {
-      type: String,
+      type: Object,
       default: undefined,
     },
     operatorImgSrc: {

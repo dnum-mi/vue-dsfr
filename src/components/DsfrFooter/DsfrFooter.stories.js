@@ -84,7 +84,7 @@ export default {
       description: 'URL pour un lien externe ou route ou objet pour un lien externe à associer au lien de l’image de l’opérateur',
     },
     operatorImgStyle: {
-      control: 'text',
+      control: 'object',
       description: 'Style supplémentaire pour l’image de l’opérateur',
     },
     operatorImgSrc: {
