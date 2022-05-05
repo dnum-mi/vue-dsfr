@@ -75,6 +75,26 @@ export default {
       control: 'text',
       description: 'Texte de la description du footer (sera dans `<p class="fr-footer__content-desc">`)',
     },
+    operatorLinkText: {
+      control: 'text',
+      description: 'Texte de l\'info bulle associée au lien externe du logo de l\'opérateur',
+    },
+    operatorTo: {
+      control: 'text',
+      description: 'URL pour un lien externe ou route ou objet pour un lien externe à associer au lien de l’image de l’opérateur',
+    },
+    operatorImgStyle: {
+      control: 'object',
+      description: 'Style supplémentaire pour l’image de l’opérateur',
+    },
+    operatorImgSrc: {
+      control: 'text',
+      description: 'URL vers l’image de l’opérateur',
+    },
+    operatorImgAlt: {
+      control: 'text',
+      description: 'Texte alternatif pour l’image de l’opérateur',
+    },
   },
 }
 
@@ -172,8 +192,12 @@ PiedDePageSimple.args = {
   },
 }
 
-export const PiedDePage = (args) => ({
-  components: { DsfrFooter, DsfrFooterLinkList, VIcon },
+export const PiedDePageAvecLogoOperateur = (args) => ({
+  components: {
+    DsfrFooter,
+    DsfrFooterLinkList,
+    VIcon,
+  },
   data () {
     return args
   },
@@ -191,8 +215,13 @@ export const PiedDePage = (args) => ({
     :desc-text="descText"
     :home-link="homeLink"
     :partners="partners"
+    :operator-link-text="operatorLinkText"
+    :operator-to="operatorTo"
+    :operator-img-style="operatorImgStyle"
+    :operator-img-src="operatorImgSrc"
+    :operator-img-alt="operatorImgAlt"
   >
-    <template v-slot:footer-link-lists>
+    <template #footer-link-lists>
       <DsfrFooterLinkList
         class="fr-col-6"
         :category-name="categoryName1"
@@ -204,7 +233,7 @@ export const PiedDePage = (args) => ({
         :links="linkList2"
       />
     </template>
-    <template v-slot:description>
+    <template #description>
       <p>
         Un moteur de recherche qui respecte votre vie privée
         <a href="http://www.duckduckgo.com" class="fr-external-link">
@@ -220,7 +249,7 @@ export const PiedDePage = (args) => ({
     document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
   },
 })
-PiedDePage.args = {
+PiedDePageAvecLogoOperateur.args = {
   dark: false,
   beforeMandatoryLinks: [{ label: 'Before', to: '/before' }],
   afterMandatoryLinks: [{ label: 'After', to: '/after' }],
@@ -282,4 +311,9 @@ PiedDePage.args = {
       },
     ],
   },
+  operatorLinkText: 'Logo opérateur',
+  operatorTo: 'https://placekitten.com',
+  operatorImgStyle: { 'max-height': '10rem' },
+  operatorImgSrc: '/cat.svg',
+  operatorImgAlt: 'Logo opérateur',
 }

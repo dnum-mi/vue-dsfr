@@ -53,6 +53,18 @@ export default defineComponent({
       type: [String, Array],
       default: () => 'Gouvernement',
     },
+    operatorImgSrc: {
+      type: String,
+      default: undefined,
+    },
+    operatorImgAlt: {
+      type: String,
+      default: '',
+    },
+    operatorImgStyle: {
+      type: Object,
+      default: null,
+    },
   },
 
   emits: ['update:modelValue', 'search'],
@@ -67,7 +79,7 @@ export default defineComponent({
 
   computed: {
     isWithSlotOperator () {
-      return this.$slots.operator?.().length
+      return this.$slots.operator?.().length || this.operatorImgSrc
     },
   },
 
@@ -112,7 +124,15 @@ export default defineComponent({
                 class="fr-header__operator"
               >
                 <!-- @slot Slot nommé operator pour le logo opérateur. Sera dans `<div class="fr-header__operator">` -->
-                <slot name="operator" />
+                <slot name="operator">
+                  <img
+                    v-if="operatorImgSrc"
+                    class="fr-responsive-img"
+                    :src="operatorImgSrc"
+                    :alt="operatorImgAlt"
+                    :style="operatorImgStyle"
+                  >
+                </slot>
               </div>
               <div
                 v-if="showSearch || quickLinks?.length"
