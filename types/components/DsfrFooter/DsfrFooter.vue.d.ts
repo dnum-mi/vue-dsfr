@@ -2,6 +2,10 @@ interface FooterLink {
     to: import('vue-router').RouteLocationRaw;
     label: string;
 }
+interface EcosystemLink {
+    href: string;
+    label: string;
+}
 
 interface FooterPartner {
     href: string;
@@ -16,50 +20,78 @@ interface FooterPartners {
 }
 
 declare const _default: import('vue').DefineComponent<{
-    a11yCompliance: {
-        type: StringConstructor;
-        default: string;
-    };
-    a11yComplianceLink: {
-        type: (ObjectConstructor | StringConstructor)[];
-        default: string;
-    };
-    legalLink: {
-        type: StringConstructor;
-        default: string;
-    };
-    homeLink: {
-        type: (ObjectConstructor | StringConstructor)[];
-        default: string;
-    };
-    partners: {
-        type: ObjectConstructor;
-        default: () => any;
-    };
-    personalDataLink: {
-        type: StringConstructor;
-        default: string;
-    };
-    cookiesLink: {
-        type: StringConstructor;
-        default: string;
-    };
-    logoText: {
-        type: (StringConstructor | ArrayConstructor)[];
-        default: () => string[];
-    };
-    descText: {
-        type: StringConstructor;
-        default: string;
-    };
-    beforeMandatoryLinks: {
-        type: ArrayConstructor;
-        default: () => FooterLink[];
-    };
-    afterMandatoryLinks: {
-        type: ArrayConstructor;
-        default: () => FooterLink[];
-    };
+  a11yCompliance: {
+      type: StringConstructor;
+      default: string;
+  };
+  a11yComplianceLink: {
+      type: (ObjectConstructor | StringConstructor)[];
+      default: string;
+  };
+  cookiesLink: {
+      type: StringConstructor;
+      default: string;
+  };
+  descText: {
+      type: StringConstructor;
+      default: string;
+  };
+  homeLink: {
+      type: (ObjectConstructor | StringConstructor)[];
+      default: string;
+  };
+  legalLink: {
+      type: StringConstructor;
+      default: string;
+  };
+  logoText: {
+      type: (StringConstructor | ArrayConstructor)[];
+      default: () => string[];
+  };
+  operatorLinkText: {
+      type: StringConstructor;
+      default: string | undefined;
+  };
+  operatorTo: {
+      type: StringConstructor | import('vue-router').RouteLocationRaw;
+      default: () => string | import('vue-router').RouteLocationRaw;
+  };
+  operatorImgStyle: {
+      type: ObjectConstructor,
+      default: () => Record<string, string> | undefined,
+  },
+  operatorImgSrc: {
+      type: StringConstructor;
+      default: string | undefined;
+  };
+  operatorImgAlt: {
+      type: StringConstructor;
+      default: string;
+  };
+  partners: {
+      type: ObjectConstructor;
+      default: () => any;
+  };
+  personalDataLink: {
+      type: StringConstructor;
+      default: string;
+  };
+  beforeMandatoryLinks: {
+      type: ArrayConstructor;
+      default: () => FooterLink[];
+  };
+  mandatoryLinks: {
+      type: ArrayConstructor;
+      default: () => FooterLink[];
+  };
+  afterMandatoryLinks: {
+      type: ArrayConstructor;
+      default: () => FooterLink[];
+  };
+  ecosystemLinks: {
+      type: ArrayConstructor;
+      default: () => EcosystemLink[];
+  };
 }, unknown, {
     ecosystemLinks: any;
     mandatoryLinks: FooterLink[];
@@ -76,12 +108,44 @@ declare const _default: import('vue').DefineComponent<{
         type: (ObjectConstructor | StringConstructor)[];
         default: string;
     };
-    legalLink: {
+    cookiesLink: {
+        type: StringConstructor;
+        default: string;
+    };
+    descText: {
         type: StringConstructor;
         default: string;
     };
     homeLink: {
         type: (ObjectConstructor | StringConstructor)[];
+        default: string;
+    };
+    legalLink: {
+        type: StringConstructor;
+        default: string;
+    };
+    logoText: {
+        type: (StringConstructor | ArrayConstructor)[];
+        default: () => string[];
+    };
+    operatorLinkText: {
+        type: StringConstructor;
+        default: string | undefined;
+    };
+    operatorTo: {
+        type: StringConstructor | import('vue-router').RouteLocationRaw;
+        default: () => string | import('vue-router').RouteLocationRaw;
+    };
+    operatorImgStyle: {
+        type: ObjectConstructor,
+        default: () => Record<string, string> | undefined,
+    },
+    operatorImgSrc: {
+        type: StringConstructor;
+        default: string | undefined;
+    };
+    operatorImgAlt: {
+        type: StringConstructor;
         default: string;
     };
     partners: {
@@ -92,25 +156,21 @@ declare const _default: import('vue').DefineComponent<{
         type: StringConstructor;
         default: string;
     };
-    cookiesLink: {
-        type: StringConstructor;
-        default: string;
-    };
-    logoText: {
-        type: (StringConstructor | ArrayConstructor)[];
-        default: () => string[];
-    };
-    descText: {
-        type: StringConstructor;
-        default: any;
-    };
     beforeMandatoryLinks: {
+        type: ArrayConstructor;
+        default: () => FooterLink[];
+    };
+    mandatoryLinks: {
         type: ArrayConstructor;
         default: () => FooterLink[];
     };
     afterMandatoryLinks: {
         type: ArrayConstructor;
         default: () => FooterLink[];
+    };
+    ecosystemLinks: {
+        type: ArrayConstructor;
+        default: () => EcosystemLink[];
     };
 }>>, {
     logoText: string | string[];
@@ -124,5 +184,12 @@ declare const _default: import('vue').DefineComponent<{
     descText: string;
     beforeMandatoryLinks: FooterLink[];
     afterMandatoryLinks: FooterLink[];
+    mandatoryLinks: FooterLink[];
+    ecosystemLinks: EcosystemLink[];
+    operatorLinkText: string;
+    operatorTo: string;
+    operatorImgStyle: string;
+    operatorImgSrc: Record<string, string>;
+    operatorImgAlt: string;
 }>
 export default _default
