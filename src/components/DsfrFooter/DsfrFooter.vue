@@ -121,6 +121,22 @@ export default defineComponent({
       type: String,
       default: '',
     },
+    licenceText: {
+      type: String,
+      default: 'Sauf mention contraire, tous les textes de ce site sont sous',
+    },
+    licenceTo: {
+      type: String,
+      default: 'https://github.com/etalab/licence-ouverte/blob/master/LO.md',
+    },
+    licenceLinkProps: {
+      type: Object,
+      default: () => ({}),
+    },
+    licenceName: {
+      type: String,
+      default: 'licence etalab-2.0',
+    },
   },
 
   computed: {
@@ -133,6 +149,16 @@ export default defineComponent({
     },
     isWithSlotLinkLists () {
       return this.$slots['footer-link-lists']?.().length
+    },
+    isExternalLink () {
+      const to = this.licenceTo || this.licenceLinkProps.to
+      return to && typeof to === 'string' && to.startsWith('http')
+    },
+    routerLinkLicenceTo () {
+      return this.isExternalLink ? '' : this.licenceTo
+    },
+    aLicenceHref () {
+      return this.isExternalLink ? this.licenceTo : ''
     },
   },
 })
@@ -227,16 +253,22 @@ export default defineComponent({
         </ul>
         <div class="fr-footer__bottom-copy">
           <p>
-            Sauf mention contraire, tous les textes de ce site sont sous
-            <a
+            {{ licenceText }}
+            <component
+              :is="isExternalLink ? 'a' : 'router-link'"
               class="fr-link-licence  no-content-after"
-              href="https://github.com/etalab/licence-ouverte/blob/master/LO.md"
+              :to="routerLinkLicenceTo"
+              :href="aLicenceHref"
               target="_blank"
               rel="noopener noreferrer"
+              v-bind="licenceLinkProps"
             >
-              licence etalab-2.0
-              <VIcon name="ri-external-link-line" />
-            </a>
+              {{ licenceName }}
+              <VIcon
+                v-if="isExternalLink"
+                name="ri-external-link-line"
+              />
+            </component>
           </p>
         </div>
       </div>
