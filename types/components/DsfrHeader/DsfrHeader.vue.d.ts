@@ -12,20 +12,36 @@ interface HeaderMenuLink {
 declare const _default: import('vue').DefineComponent<{
     serviceTitle: {
         type: StringConstructor;
-        default: any;
+        default: string | undefined;
     };
     serviceDescription: {
         type: StringConstructor;
-        default: any;
+        default: string | undefined;
     };
     homeTo: {
         type: StringConstructor;
         default: string;
     };
+    logoText: {
+      type: (StringConstructor | ArrayConstructor)[];
+      default: () => string;
+    };
     modelValue: {
         type: StringConstructor;
         default: string;
     };
+    operatorImgAlt: {
+      type: StringConstructor,
+      default: string,
+    },
+    operatorImgSrc: {
+      type: StringConstructor,
+      default: string | undefined,
+    },
+    operatorImgStyle: {
+      type: Object,
+      default: () => Record<string, string> | undefined,
+    },
     placeholder: {
         type: StringConstructor;
         default: string;
@@ -34,11 +50,11 @@ declare const _default: import('vue').DefineComponent<{
         type: ArrayConstructor;
         default: () => HeaderMenuLink[];
     };
-    showSearch: BooleanConstructor;
-    logoText: {
-        type: (StringConstructor | ArrayConstructor)[];
-        default: () => string;
+    searchLabel: {
+      type: StringConstructor;
+      default: string;
     };
+    showSearch: BooleanConstructor;
 }, unknown, {
     menuOpened: boolean;
     searchModalOpened: boolean;
@@ -52,20 +68,36 @@ declare const _default: import('vue').DefineComponent<{
 }, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, ('search' | 'update:modelValue')[], 'search' | 'update:modelValue', import('vue').VNodeProps & import('vue').AllowedComponentProps & import('vue').ComponentCustomProps, Readonly<import('vue').ExtractPropTypes<{
     serviceTitle: {
         type: StringConstructor;
-        default: string;
+        default: string | undefined;
     };
     serviceDescription: {
         type: StringConstructor;
-        default: string;
+        default: string | undefined;
     };
     homeTo: {
         type: StringConstructor;
         default: string;
     };
+    logoText: {
+        type: (StringConstructor | ArrayConstructor)[];
+        default: () => string;
+    };
     modelValue: {
         type: StringConstructor;
         default: string;
     };
+    operatorImgAlt: {
+        type: StringConstructor,
+        default: string,
+    },
+    operatorImgSrc: {
+        type: StringConstructor,
+        default: string | undefined,
+    },
+    operatorImgStyle: {
+        type: ObjectConstructor,
+        default: () => Record<string, string> | undefined,
+    },
     placeholder: {
         type: StringConstructor;
         default: string;
@@ -74,22 +106,25 @@ declare const _default: import('vue').DefineComponent<{
         type: ArrayConstructor;
         default: () => HeaderMenuLink[];
     };
-    showSearch: BooleanConstructor;
-    logoText: {
-        type: (StringConstructor | ArrayConstructor)[];
-        default: () => string;
+    searchLabel: {
+        type: StringConstructor;
+        default: string;
     };
+    showSearch: BooleanConstructor;
 }>> & {
     'onUpdate:modelValue'?: (search: string) => void;
     onSearch?: (search: string) => void;
 }, {
-    placeholder?: string;
-    quickLinks?: HeaderMenuLink[];
-    modelValue?: string;
-    logoText?: string | string[];
     serviceTitle: string;
-    serviceDescription?: string;
-    homeTo?: string;
-    showSearch?: boolean;
+    serviceDescription: string;
+    homeTo: string;
+    logoText: string | string[];
+    modelValue: string;
+    placeholder: string;
+    quickLinks: HeaderMenuLink[];
+    showSearch: boolean;
+    operatorImgAlt: string;
+    operatorImgSrc: string;
+    operatorImgStyle: Record;
 }>
 export default _default

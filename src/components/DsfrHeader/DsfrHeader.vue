@@ -28,17 +28,29 @@ export default defineComponent({
       type: String,
       default: undefined,
     },
-    searchLabel: {
-      type: String,
-      default: 'Recherche',
-    },
     homeTo: {
       type: String,
       default: '/',
     },
+    logoText: {
+      type: [String, Array],
+      default: () => 'Gouvernement',
+    },
     modelValue: {
       type: String,
       default: '',
+    },
+    operatorImgAlt: {
+      type: String,
+      default: '',
+    },
+    operatorImgSrc: {
+      type: String,
+      default: undefined,
+    },
+    operatorImgStyle: {
+      type: Object,
+      default: () => undefined,
     },
     placeholder: {
       type: String,
@@ -48,23 +60,11 @@ export default defineComponent({
       type: Array,
       default: () => undefined,
     },
+    searchLabel: {
+      type: String,
+      default: 'Recherche',
+    },
     showSearch: Boolean,
-    logoText: {
-      type: [String, Array],
-      default: () => 'Gouvernement',
-    },
-    operatorImgSrc: {
-      type: String,
-      default: undefined,
-    },
-    operatorImgAlt: {
-      type: String,
-      default: '',
-    },
-    operatorImgStyle: {
-      type: Object,
-      default: null,
-    },
   },
 
   emits: ['update:modelValue', 'search'],
@@ -79,7 +79,7 @@ export default defineComponent({
 
   computed: {
     isWithSlotOperator () {
-      return this.$slots.operator?.().length || this.operatorImgSrc
+      return this.$slots.operator?.().length || !!this.operatorImgSrc
     },
   },
 
