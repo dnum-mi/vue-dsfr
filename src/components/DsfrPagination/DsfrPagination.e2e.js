@@ -1,4 +1,4 @@
-import { mount } from '@cypress/vue'
+import { mount } from '@cypress/vue'
 import DsfrPagination from './DsfrPagination.vue'
 import { OhVueIcon as VIcon } from 'oh-vue-icons'
 

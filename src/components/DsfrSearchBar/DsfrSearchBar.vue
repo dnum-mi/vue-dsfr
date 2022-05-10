@@ -66,7 +66,7 @@ export default defineComponent({
       :model-value="modelValue"
       :label-visible="false"
       :label="label"
-      @update:modelValue="$emit('update:modelValue', $event)"
+      @update:model-value="$emit('update:modelValue', $event)"
       @keydown.enter="$emit('search')"
     />
     <DsfrButton
