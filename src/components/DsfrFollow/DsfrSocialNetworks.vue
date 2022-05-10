@@ -39,6 +39,7 @@ export default defineComponent({
           :title="network.name"
           :href="network.href"
           target="_blank"
+          rel="noopener noreferrer"
         >
           {{ network.name }}
         </a>

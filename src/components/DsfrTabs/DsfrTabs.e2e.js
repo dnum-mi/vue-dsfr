@@ -1,4 +1,4 @@
-import { mount } from '@cypress/vue'
+import { mount } from '@cypress/vue'
 import DsfrTabs from './DsfrTabs.vue'
 import { OhVueIcon as VIcon } from 'oh-vue-icons'
 

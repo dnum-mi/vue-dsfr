@@ -40,7 +40,7 @@ export default defineComponent({
           :title="`${network.label} - nouvelle fenêtre`"
           :href="network.url"
           target="_blank"
-          rel="noopener"
+          rel="noopener noreferrer"
           @click.prevent="window.open(network.url, network.label, 'toolbar=no,location=yes,status=no,menubar=no,scrollbars=yes,resizable=yes,width=600,height=450')"
         >
           {{ network.label }}
@@ -52,6 +52,7 @@ export default defineComponent({
           :href="mail.to"
           :title="mail.label"
           target="_blank"
+          rel="noopener noreferrer"
         >
           {{ mail.label }}
         </a>

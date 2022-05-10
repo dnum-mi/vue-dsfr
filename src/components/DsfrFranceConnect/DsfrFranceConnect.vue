@@ -25,7 +25,7 @@ export default defineComponent({
       <a
         :href="secure ? 'https://franceconnect.gouv.fr/france-connect-plus' : 'https://franceconnect.gouv.fr/'"
         target="_blank"
-        rel="noopener"
+        rel="noopener noreferrer"
         :title="secure ? 'Qu’est ce que FranceConnect+ ? - nouvelle fenêtre' : 'Qu’est ce que FranceConnect ? - nouvelle fenêtre'"
       >Qu’est ce que FranceConnect{{ secure ? '+' : '' }} ?</a>
     </p>

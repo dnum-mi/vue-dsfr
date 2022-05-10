@@ -232,6 +232,7 @@ export default defineComponent({
               class="fr-link-licence  no-content-after"
               href="https://github.com/etalab/licence-ouverte/blob/master/LO.md"
               target="_blank"
+              rel="noopener noreferrer"
             >
               licence etalab-2.0
               <VIcon name="ri-external-link-line" />
