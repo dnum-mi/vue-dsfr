@@ -79,7 +79,7 @@
     "@babel/plugin-syntax-jsx": "^7.16.7",
     "@babel/preset-env": "^7.17.10",
     "@cypress/vite-dev-server": "2.2.2",
-    "@cypress/vue": "3.1.1",
+    "@cypress/vue": "^3.1.2",
     "@rollup/plugin-alias": "^3.1.9",
     "@rollup/plugin-babel": "^5.3.1",
     "@rollup/plugin-commonjs": "^22.0.0",
