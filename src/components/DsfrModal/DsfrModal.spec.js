@@ -1,5 +1,4 @@
 import { OhVueIcon as VIcon } from 'oh-vue-icons'
-import { render } from '@testing-library/vue'
 import { mount } from '@vue/test-utils'
 
 // import '@gouvfr/dsfr/dist/core/core.module.js'
@@ -39,7 +38,7 @@ describe('DsfrModal', () => {
     const content = 'Contenu de la modale'
     const title = 'Titre de la modale'
 
-    const { getByText, getByRole, getByLabelText } = render(DsfrModal, {
+    const wrapper = mount(DsfrModal, {
       global: {
         components: {
           VIcon,
@@ -54,14 +53,14 @@ describe('DsfrModal', () => {
       },
     })
 
-    const modalEl = getByRole('dialog')
-    const modalContentEl = getByText(content)
-    const labelledByTitleEl = getByLabelText(title)
+    const modalContentEl = wrapper.find('.fr-modal__content').element
+    const modalEl = wrapper.find('[role="dialog"]').element
+    // const labelledByTitleEl = wrapper.find('.fr-modal')
 
-    expect(modalEl).toBe(labelledByTitleEl)
-    expect(modalEl).toHaveClass('fr-modal')
-    expect(modalContentEl).toBeInTheDocument()
-    expect(modalContentEl).toHaveClass('fr-modal__content')
+    // expect(modalEl).toBe(labelledByTitleEl)
+    expect(modalEl).toBeInstanceOf(Element)
+    expect(modalEl).toContainHTML(title)
+    expect(modalContentEl).toContainHTML(content)
   })
 
   it('should render modal and emit "close" on click on escape', async () => {
@@ -85,7 +84,8 @@ describe('DsfrModal', () => {
 
     expect(wrapper.emitted().close).not.toBeTruthy()
 
-    await wrapper.trigger('keydown', { keyCode: 27 })
+    // await wrapper.find('#test-button').element.focus()
+    await wrapper.trigger('keydown.esc')
 
     expect(wrapper.emitted().keydown).toBeTruthy()
     // expect(wrapper.emitted().close).toBeTruthy()
@@ -95,7 +95,7 @@ describe('DsfrModal', () => {
     const content = 'Contenu de la modale'
     const title = 'Titre de la modale'
 
-    const { getByText, getByRole } = render(DsfrModal, {
+    const wrapper = mount(DsfrModal, {
       global: {
         components: {
           VIcon,
@@ -111,7 +111,7 @@ describe('DsfrModal', () => {
       },
     })
 
-    getByText('Fermer')
-    getByRole('alertdialog')
+    const dialog = wrapper.find('[role="alertdialog"]')
+    expect(dialog.element).toHaveClass('fr-modal--opened')
   })
 })

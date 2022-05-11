@@ -39,11 +39,10 @@ export default defineComponent({
   data () {
     return {
       closeIfEscape: ($event) => {
-        if ($event.key === 'Escape') {
+        if ($event.key === 'Escape' || $event.keyCode === 27) {
           this.close()
         }
       },
-      isTrapActive: this.opened,
     }
   },
 
@@ -57,14 +56,8 @@ export default defineComponent({
     opened (newValue, oldValue) {
       if (newValue) {
         setTimeout(() => {
-          this.isTrapActive = newValue
           this.$refs.closeBtn.focus()
         }, 100)
-        return
-      }
-
-      if (this.isTrapActive) {
-        this.close()
       }
     },
   },
@@ -87,7 +80,6 @@ export default defineComponent({
     },
 
     async close () {
-      this.isTrapActive = false
       await this.$nextTick()
       this.origin.focus()
       this.$emit('close')
@@ -99,7 +91,6 @@ export default defineComponent({
 <template>
   <focus-trap
     v-if="opened"
-    v-model:active="isTrapActive"
   >
     <div
       id="fr-modal-1"
@@ -118,8 +109,8 @@ export default defineComponent({
                   class="fr-btn fr-btn--close"
                   title="Fermer la fenêtre modale"
                   aria-controls="fr-modal-1"
-                  tabindex="0"
                   type="button"
+                  role="button"
                   @click="close()"
                 >
                   <span>
