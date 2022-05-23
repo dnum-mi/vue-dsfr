@@ -44,6 +44,7 @@ export default defineComponent({
     <span
       v-if="hint || $slots.hint?.().length"
       class="fr-hint-text"
+      :class="hintClass"
     >
       {{ hint }}
       <!-- @slot Slot pour le contenu de l’indice (sera dans `<span class="fr-hint-text">` qui sera dans `</legend>`). Une **props du même nom est utilisable pour du texte simple** sans mise en forme. -->

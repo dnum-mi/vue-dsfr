@@ -7,11 +7,15 @@ describe('DsfrFieldset', () => {
     const legend = 'Texte de la légende'
     const slotContent = 'Contenu du slot par défaut'
     const hint = 'Texte d̛’indice'
+    const legendClass = 'test-legend-class'
+    const hintClass = 'test-hint-class'
     const { container, getByText } = render(DsfrFieldset, {
       props: {
         legend,
+        legendClass,
         legendId: 'legend-id',
         hint,
+        hintClass,
       },
       slots: {
         default: slotContent,
@@ -32,8 +36,10 @@ describe('DsfrFieldset', () => {
     expect(fieldsetByText).toBe(fieldsetEl)
     expect(hintByText).toBe(hintEl)
     expect(legendEl).toHaveClass('fr-fieldset__legend')
+    expect(legendEl).toHaveClass('test-legend-class')
     expect(legendEl).toHaveAttribute('id', 'legend-id')
     expect(hintEl).toHaveClass('fr-hint-text')
+    expect(hintEl).toHaveClass('test-hint-class')
   })
 
   it('should render a complex DsfrFieldset component', () => {

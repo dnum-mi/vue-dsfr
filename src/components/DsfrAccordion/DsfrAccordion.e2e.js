@@ -1,4 +1,4 @@
-import { mount } from '@cypress/vue'
+import { mount } from '@cypress/vue'
 import DsfrAccordion from './DsfrAccordion.vue'
 import DsfrAccordionsGroup from './DsfrAccordionsGroup.vue'
 import { OhVueIcon as VIcon } from 'oh-vue-icons'

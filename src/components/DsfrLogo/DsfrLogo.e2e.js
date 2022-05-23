@@ -1,4 +1,4 @@
-import { mount } from '@cypress/vue'
+import { mount } from '@cypress/vue'
 import DsfrLogo from './DsfrLogo.vue'
 import '../../main.css'
 

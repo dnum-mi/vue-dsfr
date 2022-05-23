@@ -84,7 +84,7 @@ export default {
       description: 'URL pour un lien externe ou route ou objet pour un lien externe à associer au lien de l’image de l’opérateur',
     },
     operatorImgStyle: {
-      control: 'text',
+      control: 'object',
       description: 'Style supplémentaire pour l’image de l’opérateur',
     },
     operatorImgSrc: {
@@ -94,6 +94,22 @@ export default {
     operatorImgAlt: {
       control: 'text',
       description: 'Texte alternatif pour l’image de l’opérateur',
+    },
+    licenceText: {
+      control: 'text',
+      description: 'Texte introduisant l\'URL de la page de la licence',
+    },
+    licenceTo: {
+      control: 'text',
+      description: 'URL vers la page de la licence',
+    },
+    licenceLinkProps: {
+      control: 'object',
+      description: 'Props qualifiant le lien de la licence',
+    },
+    licenceName: {
+      control: 'text',
+      description: 'Nom de la licence',
     },
   },
 }

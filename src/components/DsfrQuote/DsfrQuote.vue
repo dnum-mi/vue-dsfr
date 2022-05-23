@@ -59,6 +59,7 @@ export default defineComponent({
           <a
             v-if="typeof detail === 'object'"
             target="_blank"
+            rel="noopener noreferrer"
             :href="detail.url"
           >
             {{ detail.label }}
