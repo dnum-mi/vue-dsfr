@@ -95,6 +95,22 @@ export default {
       control: 'text',
       description: 'Texte alternatif pour l’image de l’opérateur',
     },
+    licenceText: {
+      control: 'text',
+      description: 'Texte introduisant l\'URL de la page de la licence',
+    },
+    licenceTo: {
+      control: 'text',
+      description: 'URL vers la page de la licence',
+    },
+    licenceLinkProps: {
+      control: 'object',
+      description: 'Props qualifiant le lien de la licence',
+    },
+    licenceName: {
+      control: 'text',
+      description: 'Nom de la licence',
+    },
   },
 }
 
