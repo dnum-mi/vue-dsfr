@@ -64,7 +64,7 @@ declare const _default: import('vue').DefineComponent<{
     id: string;
     img: string;
     label: string;
-    modelValue: string | number;
+    modelValue: string | number | undefined;
     hint: string;
 }>
 export default _default
