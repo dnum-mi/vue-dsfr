@@ -4,7 +4,8 @@
   "recommendations": [
     // Language support for Vue 3
     // https://github.com/johnsoncodehk/volar
-    "johnsoncodehk.volar",
+    "vue.volar",
+    "vue.vscode-typescript-vue-plugin",
 
     // Language support for PostCSS
     // https://github.com/csstools/postcss-language
