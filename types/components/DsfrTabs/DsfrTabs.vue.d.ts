@@ -11,6 +11,10 @@ declare const _default: import('vue').DefineComponent<{
         type: ArrayConstructor;
         default: () => any[];
     };
+    initialSelectedIndex: {
+        type: NumberConstructor;
+        required: false;
+    };
 }, unknown, {
     getRandomId: any;
     selectedIndex: number;
@@ -37,11 +41,16 @@ declare const _default: import('vue').DefineComponent<{
         type: ArrayConstructor;
         default: () => any[];
     };
+    initialSelectedIndex: {
+        type: NumberConstructor;
+        required: false;
+    };
 }>> & {
     'onSelect-tab'?: (...args: any[]) => any;
 }, {
     tabListName: string;
     tabContents?: string[];
     tabTitles: string[];
+    initialSelectedIndex: number;
 }>
 export default _default

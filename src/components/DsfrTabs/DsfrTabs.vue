@@ -29,6 +29,10 @@ export default defineComponent({
       type: Array,
       default: () => [],
     },
+    initialSelectedIndex: {
+      type: Number,
+      required: false,
+    },
   },
 
   emits: ['select-tab'],
@@ -36,7 +40,7 @@ export default defineComponent({
   data () {
     return {
       getRandomId,
-      selectedIndex: 0,
+      selectedIndex: this.initialSelectedIndex || 0,
       generatedIds: {},
       asc: true,
     }
