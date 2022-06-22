@@ -27,6 +27,10 @@ export default {
       control: 'object',
       description: 'Tableau de contenu de chaque `DsfrTabContent` - **Obligatoire si `DsfrTabs` n’a pas de contenu**',
     },
+    initialSelectedIndex: {
+      control: 'number',
+      description: 'Index de l’onglet selectionné par défaut à l’affichage du composant.',
+    },
     'select-tab': {
       description: 'Événement émis lorsque l’onglet actif change, avec en argument l’index de l’onglet sélectionné',
     },
