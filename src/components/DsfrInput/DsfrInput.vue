@@ -107,10 +107,7 @@ export default defineComponent({
   <div
     v-else
     :class="[
-      {
-        'fr-input-wrap': isWithWrapper || $attrs.type === 'date',
-        'fr-fi-calendar-line': $attrs.type === 'date',
-      },
+      { 'fr-input-wrap': isWithWrapper || $attrs.type === 'date' },
       wrapperClass,
     ]"
   >

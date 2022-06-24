@@ -67,7 +67,7 @@
     "vue-tsc": "vue-tsc --declaration --emitDeclarationOnly"
   },
   "dependencies": {
-    "@gouvfr/dsfr": "~1.4.1",
+    "@gouvfr/dsfr": "~1.5.2",
     "focus-trap": "^6.9.4",
     "focus-trap-vue": "^3.2.1",
     "oh-vue-icons": "1.0.0-rc3",
