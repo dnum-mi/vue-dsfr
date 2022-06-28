@@ -275,3 +275,73 @@ ListeDeroulanteInactive.args = {
   modelValue: 'Option 2',
   required: false,
 }
+
+export const ListeDeroulanteAvecOptionsInactives = (args) => ({
+  components: {
+    DsfrSelect,
+  },
+
+  data () {
+    return {
+      ...args,
+    }
+  },
+
+  template: `
+    <div :data-fr-theme="dark ? 'dark' : ''" style="background-color: var(--grey-1000-50); padding: 1rem;">
+      <DsfrSelect
+        :required="required"
+        :label="label"
+        :options="options"
+        :description="description"
+        :success-message="successMessage"
+        :error-message="errorMessage"
+        :disabled="disabled"
+        v-model="modelValue"
+      />
+    </div>
+    `,
+
+  watch: {
+    modelValue (newVal) {
+      this.onChange(newVal)
+    },
+  },
+
+  mounted () {
+    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
+  },
+})
+
+ListeDeroulanteAvecOptionsInactives.args = {
+  dark: false,
+  options: [{
+    text: 'Option 1',
+    value: 0,
+  }, {
+    text: 'Option 2',
+    value: 0,
+    disabled: true,
+  }, {
+    text: 'Option 3',
+    value: 0,
+    disabled: false,
+  }, {
+    text: 'Option 4',
+    value: 0,
+  }, {
+    text: 'Option 5',
+    value: 0,
+    disabled: true,
+  }, {
+    text: 'Option 6',
+    value: 0,
+  }],
+  label: 'Selection d’options',
+  description: 'Je suis une description, je décris, c’est ma raison d’être',
+  successMessage: '',
+  errorMessage: '',
+  disabled: false,
+  modelValue: 'Option 2',
+  required: false,
+}

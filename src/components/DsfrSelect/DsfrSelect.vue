@@ -104,6 +104,7 @@ export default defineComponent({
         :key="index"
         :selected="modelValue === option || (typeof option === 'object' && option.value === modelValue)"
         :value="typeof option === 'object' ? option.value : option"
+        :disabled="!!option.disabled"
       >
         {{ typeof option === 'object' ? option.text : option }}
       </option>
