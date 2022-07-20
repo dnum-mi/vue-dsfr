@@ -30,7 +30,7 @@
     }
   },
   "publishConfig": {
-    "@laruiss:registry": "https://registry.npmjs.com",
+    "@gouvminint:registry": "https://registry.npmjs.com",
     "access": "public"
   },
   "scripts": {
@@ -67,7 +67,7 @@
     "vue-tsc": "vue-tsc --declaration --emitDeclarationOnly"
   },
   "dependencies": {
-    "@gouvfr/dsfr": "~1.4.1",
+    "@gouvfr/dsfr": "~1.5.2",
     "focus-trap": "^6.9.4",
     "focus-trap-vue": "^3.2.1",
     "oh-vue-icons": "1.0.0-rc3",
@@ -143,6 +143,8 @@
     "postcss-nested": "^5.0.6",
     "postcss-preset-env": "^7.5.0",
     "postcss-url": "^10.1.3",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
     "rimraf": "^3.0.2",
     "rollup-plugin-css-only": "^3.1.0",
     "rollup-plugin-postcss": "^4.0.2",
@@ -180,7 +182,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/laruiss/vue-dsfr.git"
+    "url": "https://github.com/dnum-mi/vue-dsfr.git"
   },
   "release": {
     "branches": [

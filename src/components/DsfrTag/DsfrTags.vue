@@ -20,13 +20,12 @@ export default defineComponent({
 <template>
   <ul class="fr-tags-group">
     <li
-      v-for="({icon, iconRight, label, ...tagProps}, i) in tags"
+      v-for="({icon, label, ...tagProps}, i) in tags"
       :key="i"
     >
       <DsfrTag
         v-bind="tagProps"
         :icon="icon"
-        :icon-right="iconRight"
         :label="label"
       />
     </li>

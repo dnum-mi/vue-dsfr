@@ -32,6 +32,7 @@ export default defineComponent({
     initialSelectedIndex: {
       type: Number,
       required: false,
+      default: 0,
     },
   },
 
