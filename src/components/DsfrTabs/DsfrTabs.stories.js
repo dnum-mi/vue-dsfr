@@ -65,6 +65,7 @@ export const OngletsSimples = (args) => ({
       :tab-list-name="tabListName"
       :tab-titles="tabTitles"
       :tab-contents="tabContents"
+      :initial-selected-index="initialSelectedIndex"
     />
   `,
   mounted () {
@@ -76,6 +77,7 @@ OngletsSimples.args = {
   tabListName,
   tabTitles,
   tabContents,
+  initialSelectedIndex: 0,
 }
 
 const customTabTitles = [
