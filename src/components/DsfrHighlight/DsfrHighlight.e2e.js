@@ -1,4 +1,3 @@
-import { mount } from '@cypress/vue'
 import DsfrHighlight from './DsfrHighlight.vue'
 import '../../main.css'
 
@@ -6,7 +5,7 @@ const text = 'Texte original de la mise en exergue'
 
 describe('DsfrHighlight', () => {
   it('should mount DsfrHighlight', () => {
-    mount(DsfrHighlight, {
+    cy.mount(DsfrHighlight, {
       props: {
         small: false,
         large: true,

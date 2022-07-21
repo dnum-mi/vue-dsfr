@@ -63,7 +63,7 @@ export default defineComponent({
       type: Array,
       default: (props) => [
         {
-          label: `Accessibilité : ${props.a11yCompliance}`,
+          label: `Accessibilité : ${props.a11yCompliance}`,
           to: props.a11yComplianceLink,
         },
         {

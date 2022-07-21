@@ -1,4 +1,3 @@
-import { mount } from '@cypress/vue'
 import DsfrHeader from './DsfrHeader.vue'
 import '../../main.css'
 
@@ -19,7 +18,7 @@ const data = {
 
 describe('DsfrHeader', () => {
   it('should mount DsfrHeader', () => {
-    mount(DsfrHeader, {
+    cy.mount(DsfrHeader, {
       components: {
         DsfrHeader,
       },

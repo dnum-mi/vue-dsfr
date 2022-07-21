@@ -1,4 +1,3 @@
-import { mount } from '@cypress/vue'
 import DsfrAlert from './DsfrAlert.vue'
 import { OhVueIcon as VIcon } from 'oh-vue-icons'
 
@@ -11,7 +10,7 @@ describe('DsfrAlert', () => {
     const small = true
     const closeable = true
 
-    mount(DsfrAlert, {
+    cy.mount(DsfrAlert, {
       global: {
         components: {
           VIcon,
@@ -42,7 +41,7 @@ describe('DsfrAlert', () => {
     const description = 'description de l\'alert medium'
     const type = 'error'
 
-    mount(DsfrAlert, {
+    cy.mount(DsfrAlert, {
       props: {
         title,
         description,
