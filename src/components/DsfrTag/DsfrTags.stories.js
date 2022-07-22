@@ -59,15 +59,15 @@ export default {
     },
     tagName: {
       control: 'text',
-      description: `Balise ou composant à utiliser (e.g. : \`"p"\`, \`"button"\`, \`"strong"\`, \`"em"\`).
+      description: `Balise ou composant à utiliser (e.g. : \`"p"\`, \`"button"\`, \`"strong"\`, \`"em"\`).
 - \`"p"\` par défaut
-- si \`link\` est indiqué, le défaut est \`"a"\` si le lien est externe et \`"router-link"\`  si le lien est interne
+- si \`link\` est indiqué, le défaut est \`"a"\` si le lien est externe et \`"router-link"\`  si le lien est interne
 - si \`disabled\` est à \`true\` et qu’il n’y a pas de lien, le défaut est \`"button".\`
       `,
     },
     tags: {
       control: 'object',
-      description: 'Tableau d’objets à passer à `DsfrTags` (avec un « s »), chaque objet pourra contenir toutes les props à passer à `DsfrTag` (sans « s »)',
+      description: 'Tableau d’objets à passer à `DsfrTags` (avec un « s »), chaque objet pourra contenir toutes les props à passer à `DsfrTag` (sans « s »)',
     },
   },
 }

@@ -1,4 +1,3 @@
-import { mount } from '@cypress/vue'
 import DsfrInput from './DsfrInput.vue'
 import '../../main.css'
 
@@ -10,7 +9,7 @@ const isValid = true
 
 describe('DsfrInput', () => {
   it('should mount DsfrInput', () => {
-    mount(DsfrInput, {
+    cy.mount(DsfrInput, {
       props: {
         label,
         labelVisible,

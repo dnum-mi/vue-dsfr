@@ -1,4 +1,3 @@
-import { mount } from '@cypress/vue'
 import DsfrCallout from './DsfrCallout.vue'
 
 import '../../main.css'
@@ -8,7 +7,7 @@ describe('DsfrCallout', () => {
     const title = 'Titre de la mise en avant'
     const content = 'Description de la mise en avant'
 
-    mount(DsfrCallout, {
+    cy.mount(DsfrCallout, {
       props: {
         title,
         content,

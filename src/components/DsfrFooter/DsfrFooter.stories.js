@@ -50,9 +50,9 @@ export default {
     },
     partners: {
       control: 'object',
-      description: `Objet contenant deux propriétés :
+      description: `Objet contenant deux propriétés :
         \`mainPartner\` avec le partenaire principal et \`subPartners\` avec la liste des autres partenaires.
-        \`mainPartner\` ainsi que chacun des objets de la liste \`subPartners\` sera un objet avec 3 propriétés :
+        \`mainPartner\` ainsi que chacun des objets de la liste \`subPartners\` sera un objet avec 3 propriétés :
         \`name\`, \`href\`, \`logo\`, et \`alt\``,
     },
     personalDataLink: {
