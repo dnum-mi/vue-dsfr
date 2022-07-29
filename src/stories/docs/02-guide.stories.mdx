@@ -47,13 +47,8 @@ Et suivez le guide !
 Afin d'installer la bibliothèque, taper cette commande dans votre console au sein du répertoire du projet :
 
 ```shell
-npm install @laruiss/vue-dsfr@beta
+npm install @gouvminint/vue-dsfr
 ```
-
-| Note :              |
-|:---------------------------|
-| Bien indiquer le **`@beta`** pour avoir la dernière version. |
-
 
 ### Ajouter le plugin
 
@@ -73,8 +68,8 @@ ajouter les lignes commentées :
 
 ```js
 import { createApp } from 'vue'
-import '@laruiss/vue-dsfr/dist/vue-dsfr.css' // Import des styles globaux
-import VueDsfr from '@laruiss/vue-dsfr'      // Import (par défaut) de la bibliothèque
+import '@gouvminint/vue-dsfr/dist/vue-dsfr.css' // Import des styles globaux
+import VueDsfr from '@gouvminint/vue-dsfr'      // Import (par défaut) de la bibliothèque
 
 import App from './App.vue'
 
@@ -95,7 +90,7 @@ avec le contenu suivant :
 // /plugins/vue-dsfr.js
 
 import { defineNuxtPlugin } from '#app'
-import VueDsfr from '@laruiss/vue-dsfr'
+import VueDsfr from '@gouvminint/vue-dsfr'
 
 export default defineNuxtPlugin((nuxtApp) => {
   nuxtApp.vueApp.use(VueDsfr)
@@ -110,7 +105,7 @@ import { defineNuxtConfig } from 'nuxt3';
 // https://v3.nuxtjs.org/docs/directory-structure/nuxt.config
 export default defineNuxtConfig({
   css: [
-    '@laruiss/vue-dsfr/styles',
+    '@gouvminint/vue-dsfr/styles',
   ],
 })
 ```
@@ -130,9 +125,9 @@ import {
   DsfrButton,
   DsfrBreadcrumb,
   DsfrCard,
-} from '@laruiss/vue-dsfr'                                   // Imports nommés de la bibliothèque
+} from '@gouvminint/vue-dsfr'                                   // Imports nommés de la bibliothèque
 
-import '@laruiss/vue-dsfr/styles'                            // Import des styles globaux
+import '@gouvminint/vue-dsfr/styles'                            // Import des styles globaux
 
 const app = createApp(App)
   .component('DsfrHeader', DsfrHeader)                       // Enregistrement global du composant DsfrHeader

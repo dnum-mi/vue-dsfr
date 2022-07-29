@@ -77,3 +77,38 @@ Card.args = {
   noArrow: false,
   horizontal: false,
 }
+
+export const CardSansFleche = (args) => ({
+  components: { DsfrCard },
+  data () {
+    return args
+  },
+  template: `
+    <DsfrCard
+      :style="\`max-width: \${horizontal ? 600 : 400}px\`"
+      :alt-img="altImg"
+      :detail="detail"
+      :description="description"
+      :img-src="imgSrc"
+      :link="link"
+      :title="title"
+      :horizontal="horizontal"
+      :no-arrow="noArrow"
+    />
+  `,
+
+  mounted () {
+    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
+  },
+})
+CardSansFleche.args = {
+  dark: false,
+  altImg: '',
+  detail: 'Détails sur la carte en question',
+  description: 'Description sommaire de la carte',
+  imgSrc: 'https://placekitten.com/300/200',
+  link: 'https://www.systeme-de-design.gouv.fr/',
+  title: 'Qu’est-ce que le Pass Culture et comment l’obtenir ?',
+  noArrow: true,
+  horizontal: false,
+}

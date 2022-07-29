@@ -49,26 +49,16 @@ Cf [le site officiel](https://vue-dsfr.netlify.app/?path=/story/docs-3-guide-du-
 ### Installer la bibliothèque
 
 ```shell
-npm install @laruiss/vue-dsfr@beta
+npm install @gouvminint/vue-dsfr
 ```
-
----
-
-**Note :**
-
-Le **`@beta`** est très important pour avoir la dernière version.
-
----
-
 ### Utiliser la bibliothèque en tant que plugin Vue 3
 
 ```js
 import { createApp } from 'vue'
 import App from './App.vue'
-import VueDsfr from '@laruiss/vue-dsfr'            // Import (par défaut) de la bibliothèque
+import '@gouvminint/vue-dsfr/styles'                  // Import des styles globaux
+import VueDsfr from '@gouvminint/vue-dsfr'            // Import (par défaut) de la bibliothèque
 
-import '@laruiss/vue-dsfr/dist/vue-dsfr-fonts.css' // Import de toutes les polices
-import '@laruiss/vue-dsfr/dist/vue-dsfr.css'       // Import des styles globaux
 
 const app = createApp(App)
   .use(VueDsfr)                                    // Ajout en tant que plugin

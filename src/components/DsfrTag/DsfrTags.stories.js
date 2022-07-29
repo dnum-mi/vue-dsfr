@@ -43,11 +43,7 @@ export default {
     },
     icon: {
       control: 'text',
-      description: '**Nom de l’icône** (tel que sur le site [RemixIcon](https://remixicon.com), exemple: `"ri-checkbox-circle-line"`) à afficher à côté du texte du bouton.\n\n Par défaut, l’icône est à gauche',
-    },
-    iconRight: {
-      control: 'boolean',
-      description: 'Indique si l’icône doit **s’afficher à droite** (`true`)',
+      description: '**Nom de l’icône** (tel que sur le site [RemixIcon](https://remixicon.com), exemple: `"ri-checkbox-circle-line"`) à afficher à côté du texte du bouton.\n\n Par défaut, l’icône est',
     },
     iconOnly: {
       control: 'boolean',
@@ -77,34 +73,29 @@ export default {
 }
 
 const tagGroup = [
-  { label: 'Tag avec icône à gauche', icon: 'ri-arrow-left-line' },
-  { label: 'Tag avec icône à droite', icon: 'ri-arrow-right-line', iconRight: true },
+  { label: 'Tag sans icône' },
+  { label: 'Tag avec icône', icon: 'ri-arrow-right-line' },
 ]
 
 const tags = [
   [
     { label: 'Tag sans icône' },
-    { label: 'Tag avec icône à gauche', icon: 'ri-arrow-left-line' },
-    { label: 'Tag avec icône à droite', icon: 'ri-arrow-right-line', iconRight: true },
+    { label: 'Tag avec icône', icon: 'ri-arrow-right-line' },
   ],
   [
     { label: 'Petit tag sans icône', small: true },
-    { label: 'Petit tag avec icône à gauche', icon: 'ri-arrow-left-line', small: true },
-    { label: 'Petit tag avec icône à droite', icon: 'ri-arrow-right-line', iconRight: true, small: true },
+    { label: 'Petit tag avec icône', icon: 'ri-arrow-right-line', small: true },
   ],
   [
     { label: 'Tag cliquable sans icône', link: 'https://vue-dsfr.netlify.app' },
-    { label: 'Tag cliquable avec icône à gauche', icon: 'ri-arrow-left-line', link: 'https://vue-dsfr.netlify.app' },
-    { label: 'Tag cliquable avec icône à droite', icon: 'ri-arrow-right-line', iconRight: true, link: 'https://vue-dsfr.netlify.app' },
+    { label: 'Tag cliquable avec icône', icon: 'ri-arrow-right-line', link: 'https://vue-dsfr.netlify.app' },
   ],
   [
     { label: 'Petit tag cliquable sans icône', small: true, link: 'https://vue-dsfr.netlify.app' },
-    { label: 'Petit tag cliquable avec icône à gauche', icon: 'ri-arrow-left-line', small: true, link: 'https://vue-dsfr.netlify.app' },
-    { label: 'Petit tag cliquable avec icône à droite', icon: 'ri-arrow-right-line', iconRight: true, small: true, link: 'https://vue-dsfr.netlify.app' },
+    { label: 'Petit tag cliquable avec icône', icon: 'ri-arrow-right-line', small: true, link: 'https://vue-dsfr.netlify.app' },
   ],
   [
     { label: 'Tag sélectionné sans icône', tagName: 'button', selected: true },
-    { label: 'Tag sélectionné avec icône', icon: 'ri-arrow-left-line', tagName: 'button', selected: true },
     { label: 'Tag sélectionné avec icône', icon: 'ri-arrow-right-line', tagName: 'button', selected: true },
   ],
   [
@@ -130,7 +121,6 @@ export const Etiquette = (args) => ({
       :label="label"
       :icon="icon"
       :tagName="tagName"
-      :iconRight="iconRight"
       :iconOnly="iconOnly"
       :disabled="disabled"
       :selected="selected"
@@ -146,7 +136,6 @@ Etiquette.args = {
   label: 'Étiquette',
   class: '',
   icon: '',
-  iconRight: false,
   iconOnly: false,
   disabled: false,
   small: false,
@@ -178,8 +167,8 @@ export const EtiquettesSimples = (args) => ({
   data () {
     // {
     //   tags: [
-    //     { label: 'Tag avec icône à gauche', icon: 'ri-arrow-left-line' },
-    //     { label: 'Tag avec icône à droite', icon: 'ri-arrow-right-line', iconRight: true },
+    //     { label: 'Tag sans icône' },
+    //     { label: 'Tag avec icône', icon: 'ri-arrow-right-line' },
     //   ]
     // }
     return args
@@ -204,8 +193,7 @@ export const EtiquettesSimplesPetites = (args) => ({
     // {
     //   tags: [
     //     { label: 'Petit tag sans icône', small: true },
-    //     { label: 'Petit tag avec icône à gauche', icon: 'ri-arrow-left-line', small: true },
-    //     { label: 'Petit tag avec icône à droite', icon: 'ri-arrow-right-line', iconRight: true, small: true },
+    //     { label: 'Petit tag avec icône', icon: 'ri-arrow-right-line', small: true },
     //   ],
     // }
     return args
@@ -230,8 +218,7 @@ export const EtiquettesCliquables = (args) => ({
     // {
     //   tags: [
     //     { label: 'Tag cliquable sans icône', link: 'https://vue-dsfr.netlify.app' },
-    //     { label: 'Tag cliquable avec icône à gauche', icon: 'ri-arrow-left-line', link: 'https://vue-dsfr.netlify.app' },
-    //     { label: 'Tag cliquable avec icône à droite', icon: 'ri-arrow-right-line', iconRight: true, link: 'https://vue-dsfr.netlify.app' },
+    //     { label: 'Tag cliquable avec icône', icon: 'ri-arrow-right-line', link: 'https://vue-dsfr.netlify.app' },
     //   ]
     // }
     return args
@@ -256,8 +243,7 @@ export const EtiquettesCliquablesPetites = (args) => ({
     // {
     //   tags: [
     //     { label: 'Tag cliquable sans icône', small: true, link: 'https://vue-dsfr.netlify.app' },
-    //     { label: 'Tag cliquable avec icône à gauche', icon: 'ri-arrow-left-line', small: true, link: 'https://vue-dsfr.netlify.app' },
-    //     { label: 'Tag cliquable avec icône à droite', icon: 'ri-arrow-right-line', iconRight: true, small: true, link: 'https://vue-dsfr.netlify.app' },
+    //     { label: 'Tag cliquable avec icône', icon: 'ri-arrow-right-line', small: true, link: 'https://vue-dsfr.netlify.app' },
     //   ]
     // }
     return args
@@ -282,7 +268,6 @@ export const EtiquettesSelectionnables = (args) => ({
     // {
     //   tags: [
     //     { label: 'Tag sélectionné sans icône', tagName: 'button', selected: true },
-    //     { label: 'Tag sélectionné avec icône', icon: 'ri-arrow-left-line', tagName: 'button', selected: true },
     //     { label: 'Tag sélectionné avec icône', icon: 'ri-arrow-right-line', tagName: 'button', selected: true },
     //   ],
     // }

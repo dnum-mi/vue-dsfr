@@ -42,7 +42,7 @@ describe('DsfrShare', () => {
     for (const network of networks) {
       const link = getByText(network.label)
       expect(link).toHaveAttribute('target', '_blank')
-      expect(link).toHaveAttribute('rel', 'noopener')
+      expect(link).toHaveAttribute('rel', 'noopener noreferrer')
       expect(link).toHaveAttribute('title', `${network.label} - nouvelle fenêtre`)
     }
 

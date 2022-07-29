@@ -95,7 +95,7 @@ export default defineComponent({
       </li>
       <li>
         <a
-          :href="pages[Math.max(currentPage - 1, 0)].href"
+          :href="pages[Math.max(currentPage - 1, 0)]?.href"
           class="fr-pagination__link fr-pagination__link--prev fr-pagination__link--lg-label"
           :title="prevPageTitle"
           :disabled="currentPage === 0 ? true : null"
@@ -107,13 +107,11 @@ export default defineComponent({
         :key="idx"
       >
         <a
-          :href="page.href"
+          :href="page?.href"
           class="fr-pagination__link fr-unhidden-lg"
           :title="page.title"
-          :aria-current="
-            isCurrentPage(page) ? 'page' : undefined
-          "
           :disabled="isCurrentPage(page) ? true : null"
+          :aria-current="isCurrentPage(page) ? 'page' : undefined"
           @click.prevent="toPage(pages.indexOf(page))"
         >
           <span v-if="displayedPages.indexOf(page) === 0 && startIndex > 0 ">...</span>
@@ -123,7 +121,7 @@ export default defineComponent({
       </li>
       <li>
         <a
-          :href="pages[Math.min(currentPage + 1, pages.length - 1)].href"
+          :href="pages[Math.min(currentPage + 1, pages.length - 1)]?.href"
           class="fr-pagination__link fr-pagination__link--next fr-pagination__link--lg-label"
           :title="nextPageTitle"
           :disabled="currentPage === pages.length - 1 ? true : null"
@@ -133,7 +131,7 @@ export default defineComponent({
       <li>
         <a
           class="fr-pagination__link fr-pagination__link--last"
-          :href="pages[pages.length - 1].href"
+          :href="pages[pages.length - 1]?.href"
           :title="lastPageTitle"
           :disabled="currentPage === pages.length - 1 ? true : null"
           @click.prevent="toLastPage()"

@@ -27,6 +27,10 @@ export default {
       control: 'object',
       description: 'Tableau de contenu de chaque `DsfrTabContent` - **Obligatoire si `DsfrTabs` n’a pas de contenu**',
     },
+    initialSelectedIndex: {
+      control: 'number',
+      description: 'Index de l’onglet selectionné par défaut à l’affichage du composant.',
+    },
     'select-tab': {
       description: 'Événement émis lorsque l’onglet actif change, avec en argument l’index de l’onglet sélectionné',
     },
@@ -61,6 +65,7 @@ export const OngletsSimples = (args) => ({
       :tab-list-name="tabListName"
       :tab-titles="tabTitles"
       :tab-contents="tabContents"
+      :initial-selected-index="initialSelectedIndex"
     />
   `,
   mounted () {
@@ -72,6 +77,7 @@ OngletsSimples.args = {
   tabListName,
   tabTitles,
   tabContents,
+  initialSelectedIndex: 0,
 }
 
 const customTabTitles = [
@@ -94,6 +100,7 @@ export const OngletsComplexes = (args) => ({
     <DsfrTabs
       :tab-list-name="tabListName"
       :tab-titles="tabTitles"
+      :initial-selected-index="initialSelectedIndex"
       @select-tab="selectTab"
     >
       <DsfrTabContent
@@ -150,5 +157,6 @@ OngletsComplexes.args = {
   dark: false,
   tabListName,
   tabTitles: customTabTitles,
-  selectedTabIndex: 0,
+  selectedTabIndex: 1,
+  initialSelectedIndex: 1,
 }

@@ -81,4 +81,44 @@ describe('DsfrSelect', () => {
     expect(firstOption.selected).toBe(true)
     expect(secondOption.selected).toBe(false)
   })
+
+  it('Should disable Options 2 and 5', async () => {
+    const options = [{
+      text: 'Option 1',
+      value: 1,
+    }, {
+      text: 'Option 2',
+      value: 2,
+      disabled: true,
+    }, {
+      text: 'Option 3',
+      value: 3,
+      disabled: false,
+    }, {
+      text: 'Option 4',
+      value: 4,
+    }, {
+      text: 'Option 5',
+      value: 5,
+      disabled: true,
+    }, {
+      text: 'Option 6',
+      value: 6,
+    }]
+    const selectId = 'select-id'
+
+    const { getByText } = render(DsfrSelect, {
+      props: {
+        options,
+        modelValue: undefined,
+        selectId,
+      },
+    })
+
+    options.forEach((option) => {
+      const element = getByText(option.text)
+      const activeState = option.disabled !== undefined ? option.disabled : false
+      expect(element.disabled).toBe(activeState)
+    })
+  })
 })

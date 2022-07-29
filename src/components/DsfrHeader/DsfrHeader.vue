@@ -28,17 +28,29 @@ export default defineComponent({
       type: String,
       default: undefined,
     },
-    searchLabel: {
-      type: String,
-      default: 'Recherche',
-    },
     homeTo: {
       type: String,
       default: '/',
     },
+    logoText: {
+      type: [String, Array],
+      default: () => 'Gouvernement',
+    },
     modelValue: {
       type: String,
       default: '',
+    },
+    operatorImgAlt: {
+      type: String,
+      default: '',
+    },
+    operatorImgSrc: {
+      type: String,
+      default: undefined,
+    },
+    operatorImgStyle: {
+      type: Object,
+      default: () => undefined,
     },
     placeholder: {
       type: String,
@@ -48,11 +60,11 @@ export default defineComponent({
       type: Array,
       default: () => undefined,
     },
-    showSearch: Boolean,
-    logoText: {
-      type: [String, Array],
-      default: () => 'Gouvernement',
+    searchLabel: {
+      type: String,
+      default: 'Recherche',
     },
+    showSearch: Boolean,
   },
 
   emits: ['update:modelValue', 'search'],
@@ -67,7 +79,7 @@ export default defineComponent({
 
   computed: {
     isWithSlotOperator () {
-      return this.$slots.operator?.().length
+      return this.$slots.operator?.().length || !!this.operatorImgSrc
     },
   },
 
@@ -112,7 +124,15 @@ export default defineComponent({
                 class="fr-header__operator"
               >
                 <!-- @slot Slot nommé operator pour le logo opérateur. Sera dans `<div class="fr-header__operator">` -->
-                <slot name="operator" />
+                <slot name="operator">
+                  <img
+                    v-if="operatorImgSrc"
+                    class="fr-responsive-img"
+                    :src="operatorImgSrc"
+                    :alt="operatorImgAlt"
+                    :style="operatorImgStyle"
+                  >
+                </slot>
               </div>
               <div
                 v-if="showSearch || quickLinks?.length"

@@ -86,7 +86,7 @@ export default defineComponent({
           <!-- @slot Slot pour indiquer que le champ est obligatoire. Par défaut, met une astérisque si `required` est à true (dans un `<span class="required">`) -->
           <slot name="required-tip">
             <span
-              v-if="$attrs.required"
+              v-if="required"
               class="required"
             >&nbsp;*</span>
           </slot>
