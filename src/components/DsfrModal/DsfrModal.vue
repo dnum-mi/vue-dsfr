@@ -55,9 +55,12 @@ export default defineComponent({
   watch: {
     opened (newValue, oldValue) {
       if (newValue) {
+        document.body.classList.add('modal-open')
         setTimeout(() => {
           this.$refs.closeBtn.focus()
         }, 100)
+      } else {
+        document.body.classList.remove('modal-open')
       }
     },
   },
@@ -152,5 +155,10 @@ export default defineComponent({
 <style scoped>
 .fr-modal {
   color: var(--text-default-grey);
+}
+</style>
+<style>
+body.modal-open {
+  overflow: hidden;
 }
 </style>
