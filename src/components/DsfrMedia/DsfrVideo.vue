@@ -25,7 +25,10 @@ export default defineComponent({
       type: String,
       default: undefined,
     },
-    format4x3: Boolean,
+    ratio: {
+      type: String,
+      default: '16x9',
+    },
   },
 })
 </script>
@@ -40,7 +43,7 @@ export default defineComponent({
   >
     <div
       class="fr-responsive-vid"
-      :class="{ 'fr-responsive-vid--4x3': format4x3 }"
+      :class="`fr-ratio-${ratio}`"
     >
       <iframe
         :src="src"

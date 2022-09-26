@@ -38,14 +38,12 @@ describe('DsfrVideo', () => {
 
   it('should render a div with a video without transcription', () => {
     // Given
-    const format4x3 = true
     const src = 'https://www.youtube.com/embed/HyirpmPL43I'
     const legend = 'Vidéo de ouf'
 
     // When
     const { container, getByText } = render(DsfrVideo, {
       props: {
-        format4x3,
         src,
         legend,
       },
@@ -59,7 +57,7 @@ describe('DsfrVideo', () => {
 
     // Then
     expect(contentMediaEl).toBeNull()
-    expect(responsiveEl).toHaveClass('fr-responsive-vid--4x3')
+    expect(responsiveEl).toHaveClass('fr-ratio-16x9')
     expect(wrapperEl).not.toHaveClass('fr-content-media--sm')
     expect(wrapperEl).not.toHaveClass('fr-content-media--lg')
     expect(captionEl).toHaveClass('fr-content-media__caption')

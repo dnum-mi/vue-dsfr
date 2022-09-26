@@ -34,7 +34,6 @@ size = 'small'
 src = 'https://www.youtube.com/embed/HyirpmPL43I'
 const transcriptionUrl = 'https://www.youtube.com/embed/HyirpmPL43I'
 const transcriptionLabel = 'Label de la transcription'
-const format4x3 = true
 
 describe('DsfrVideo', () => {
   it('should mount DsfrVideo', () => {
@@ -45,7 +44,6 @@ describe('DsfrVideo', () => {
         legend,
         transcriptionUrl,
         transcriptionLabel,
-        format4x3,
       },
 
     })
@@ -53,7 +51,7 @@ describe('DsfrVideo', () => {
       .should('be.visible')
       .should('have.class', 'fr-content-media--sm')
       .find('.fr-responsive-vid')
-      .should('have.class', 'fr-responsive-vid--4x3')
+      .should('have.class', 'fr-ratio-16x9')
     cy.get('.fr-content-media__caption')
       .should('contain', legend)
     cy.get('.fr-content-media__transcription')

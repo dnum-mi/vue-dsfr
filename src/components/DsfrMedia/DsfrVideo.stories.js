@@ -29,9 +29,9 @@ export default {
       control: 'text',
       description: 'Texte accompagnant le contenu d\'une description brève.',
     },
-    format4x3: {
-      control: 'boolean',
-      description: 'Permet d\'abandonner le format 16x9 par défaut de la video afin de basculer sur un format 4x3',
+    ratio: {
+      control: 'text',
+      description: 'Permet d’alterner entre les différents ratio possibles pour le contenu ("32x9", "16x9", "3x2", "4x3", "1x1", "3x4", "2x3") la chaine de caractères changera la classe associée, "16x9" par défaut',
     },
   },
 }
@@ -48,7 +48,7 @@ export const Video = (args) => ({
       :size="size"
       :transcription-url="transcriptionUrl"
       :transcription-label="transcriptionLabel"
-      :format4x3="format4x3"
+      :ratio="ratio"
     />
   `,
   mounted () {
@@ -63,5 +63,5 @@ Video.args = {
   legend: 'Vidéo traitant du Service National Universel',
   transcriptionUrl: '',
   transcriptionLabel: 'Label de la transcription',
-  format4x3: false,
+  ratio: '16x9',
 }
