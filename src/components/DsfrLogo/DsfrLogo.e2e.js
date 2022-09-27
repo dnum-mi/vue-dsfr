@@ -1,4 +1,3 @@
-import { mount } from '@cypress/vue'
 import DsfrLogo from './DsfrLogo.vue'
 import '../../main.css'
 
@@ -8,7 +7,7 @@ describe('DsfrLogo', () => {
     const small = true
     const large = false
 
-    mount(DsfrLogo, {
+    cy.mount(DsfrLogo, {
       props: {
         logoText,
         small,

@@ -1,4 +1,3 @@
-import { mount } from '@cypress/vue'
 import DsfrButton from './DsfrButton.vue'
 import { OhVueIcon as VIcon } from 'oh-vue-icons'
 import '../../main.css'
@@ -6,7 +5,7 @@ import '../../main.css'
 describe('DsfrButton', () => {
   it('Simple Button', () => {
     const buttonText = 'Test button'
-    mount(DsfrButton, {
+    cy.mount(DsfrButton, {
       global: {
         components: {
           VIcon,

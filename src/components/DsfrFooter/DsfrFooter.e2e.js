@@ -1,4 +1,3 @@
-import { mount } from '@cypress/vue'
 import DsfrFooter from './DsfrFooter.vue'
 import DsfrFooterLinkList from './DsfrFooterLinkList.vue'
 import { OhVueIcon as VIcon } from 'oh-vue-icons'
@@ -72,7 +71,7 @@ const a11yCompliance = 'partiellement conforme'
 const allLinks = [
   ...data.beforeMandatoryLinks,
   {
-    label: `Accessibilité : ${a11yCompliance}`,
+    label: `Accessibilité : ${a11yCompliance}`,
     to: '/a11y-conformite',
   },
   {
@@ -140,7 +139,7 @@ const DsfrFooterWrapper = {
 
 describe('DsfrFooter', () => {
   it('should mount DsfrFooter', () => {
-    mount(DsfrFooterWrapper, {
+    cy.mount(DsfrFooterWrapper, {
       global: {
         components: {
           VIcon,

@@ -39,7 +39,7 @@ export default defineComponent({
       v-if="source"
       :cite="sourceUrl"
     >
-      <p>« {{ quote }} »</p>
+      <p>« {{ quote }} »</p>
     </blockquote>
 
     <figcaption>

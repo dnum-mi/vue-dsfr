@@ -21,7 +21,7 @@ describe('DsfrPicture', () => {
     })
     const figureEl = container.querySelector('.fr-content-media')
     const figcaptionEl = getByText(legend)
-    const imgEl = container.querySelector('.fr-responsive-img')
+    const imgEl = container.querySelector('.fr-ratio-16x9')
 
     // Then
     expect(figureEl).toHaveAttribute('aria-label', legend)

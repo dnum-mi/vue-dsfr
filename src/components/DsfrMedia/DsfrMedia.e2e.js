@@ -1,4 +1,3 @@
-import { mount } from '@cypress/vue'
 import DsfrPicture from './DsfrPicture.vue'
 import DsfrVideo from './DsfrVideo.vue'
 import '../../main.css'
@@ -10,7 +9,7 @@ let legend = 'Photographie d’un chaton'
 
 describe('DsfrPicture', () => {
   it('should mount DsfrPicture', () => {
-    mount(DsfrPicture, {
+    cy.mount(DsfrPicture, {
       props: {
         size,
         src,
@@ -35,18 +34,16 @@ size = 'small'
 src = 'https://www.youtube.com/embed/HyirpmPL43I'
 const transcriptionUrl = 'https://www.youtube.com/embed/HyirpmPL43I'
 const transcriptionLabel = 'Label de la transcription'
-const format4x3 = true
 
 describe('DsfrVideo', () => {
   it('should mount DsfrVideo', () => {
-    mount(DsfrVideo, {
+    cy.mount(DsfrVideo, {
       props: {
         size,
         src,
         legend,
         transcriptionUrl,
         transcriptionLabel,
-        format4x3,
       },
 
     })
@@ -54,7 +51,7 @@ describe('DsfrVideo', () => {
       .should('be.visible')
       .should('have.class', 'fr-content-media--sm')
       .find('.fr-responsive-vid')
-      .should('have.class', 'fr-responsive-vid--4x3')
+      .should('have.class', 'fr-ratio-16x9')
     cy.get('.fr-content-media__caption')
       .should('contain', legend)
     cy.get('.fr-content-media__transcription')
