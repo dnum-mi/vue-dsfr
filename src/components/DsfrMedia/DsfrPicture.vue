@@ -25,6 +25,10 @@ export default defineComponent({
       type: String,
       default: '',
     },
+    ratio: {
+      type: String,
+      default: '16x9',
+    },
   },
 })
 </script>
@@ -45,8 +49,10 @@ export default defineComponent({
         <img
           :src="src"
           class="fr-responsive-img"
+          :class="`fr-ratio-${ratio}`"
           :alt="alt"
           :title="title"
+          :ratio="ratio"
         >
       </slot>
     </div>
