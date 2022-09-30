@@ -14,7 +14,7 @@ defineEmits(['toggle-expand'])
 <template>
   <button
     class="fr-sidemenu__btn"
-    :aria-current="!!active"
+    :aria-current="active ? 'page' : undefined"
     :aria-expanded="!!expanded"
     :aria-controls="controlId"
     @click="$emit('toggle-expand', controlId)"
