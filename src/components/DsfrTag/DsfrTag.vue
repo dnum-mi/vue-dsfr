@@ -34,6 +34,10 @@ export default defineComponent({
     disabled: Boolean,
     iconOnly: Boolean,
     small: Boolean,
+    onClick: {
+      type: Object,
+      default: () => {},
+    }
   },
 
   computed: {
@@ -62,6 +66,7 @@ export default defineComponent({
     }"
     :aria-pressed="selected"
     v-bind="linkProps"
+    @click="onClick()"
   >
     <VIcon
       v-if="icon"
