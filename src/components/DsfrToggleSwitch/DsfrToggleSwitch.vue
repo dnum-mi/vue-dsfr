@@ -44,6 +44,7 @@ export default defineComponent({
       @input="$emit('update:modelValue', $event.target.checked)"
     >
     <label
+      :id="`${inputId}-hint-text`"
       class="fr-toggle__label"
       :for="inputId"
       data-fr-checked-label="Activé"
