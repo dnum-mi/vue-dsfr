@@ -32,7 +32,7 @@ defineEmits(['toggle-expand'])
 <template>
   <nav
     class="fr-sidemenu"
-    aria-label="Menu latéral"
+    :aria-labelledby="id"
   >
     <div class="fr-sidemenu__inner">
       <button

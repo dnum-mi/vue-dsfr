@@ -30,7 +30,7 @@ declare const _default: import('vue').DefineComponent<{
     };
 }, unknown, unknown, {
     message(): any;
-    messageClass(): 'fr-error-text' | 'fr-valid-text';
+    messageClass(): 'fr-message--error' | 'fr-message--valid';
     messageIcon(): 'ri-alert-line' | 'ri-checkbox-circle-line';
 }, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, 'update:modelValue'[], 'update:modelValue', import('vue').VNodeProps & import('vue').AllowedComponentProps & import('vue').ComponentCustomProps, Readonly<import('vue').ExtractPropTypes<{
     id: {

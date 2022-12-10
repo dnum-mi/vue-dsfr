@@ -36,7 +36,7 @@ declare const _default: import('vue').DefineComponent<{
     };
 }, unknown, unknown, {
     message(): any;
-    additionalMessageClass(): 'fr-error-text' | 'fr-valid-text';
+    additionalMessageClass(): 'fr-message--error' | 'fr-message--valid';
 }, {
     onChange({ name, checked }: {
         name: any;

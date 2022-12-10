@@ -29,6 +29,10 @@ export default defineComponent({
       type: String,
       default: '',
     },
+    titleTag: {
+      type: String,
+      default: 'h3',
+    },
     noArrow: Boolean,
     horizontal: Boolean,
   },
@@ -52,7 +56,8 @@ export default defineComponent({
     @click="goToTargetLink"
   >
     <div class="fr-card__body">
-      <h4
+      <component
+        :is="titleTag"
         ref="title"
         class="fr-card__title"
       >
@@ -64,7 +69,7 @@ export default defineComponent({
         >
           {{ title }}
         </router-link>
-      </h4>
+      </component>
       <p class="fr-card__desc">
         {{ description }}
       </p>

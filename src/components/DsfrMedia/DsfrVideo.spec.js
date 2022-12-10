@@ -9,8 +9,6 @@ describe('DsfrVideo', () => {
     const format4x3 = false
     const src = 'https://www.youtube.com/embed/HyirpmPL43I'
     const legend = 'Vidéo de ouf'
-    const transcriptionUrl = 'http://example.com/transcription'
-    const transcriptionLabel = 'Label de la transcription'
 
     // When
     const { container, getByText } = render(DsfrVideo, {
@@ -19,21 +17,16 @@ describe('DsfrVideo', () => {
         format4x3,
         src,
         legend,
-        transcriptionUrl,
-        transcriptionLabel,
       },
     })
 
     const wrapperEl = container.querySelector('.fr-content-media')
     const captionEl = getByText(legend)
-    const link = getByText(transcriptionLabel)
 
     // Then
     expect(wrapperEl).toHaveClass('fr-content-media--sm')
     expect(wrapperEl).not.toHaveClass('fr-content-media--lg')
     expect(captionEl).toHaveClass('fr-content-media__caption')
-    expect(link).toHaveClass('fr-btn')
-    expect(link).toHaveAttribute('href', transcriptionUrl)
   })
 
   it('should render a div with a video without transcription', () => {

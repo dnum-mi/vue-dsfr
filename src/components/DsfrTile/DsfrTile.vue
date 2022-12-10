@@ -23,6 +23,10 @@ export default defineComponent({
       type: [String, Object],
       default: '#',
     },
+    titleTag: {
+      type: String,
+      default: 'h3',
+    },
   },
 
   computed: {
@@ -39,7 +43,10 @@ export default defineComponent({
     :class="{ 'fr-tile--horizontal': horizontal }"
   >
     <div class="fr-tile__body">
-      <h4 class="fr-tile__title">
+      <component
+        :is="titleTag"
+        class="fr-tile__title"
+      >
         <a
           v-if="isExternalLink"
           class="fr-tile__link"
@@ -52,7 +59,7 @@ export default defineComponent({
         >
           {{ title }}
         </router-link>
-      </h4>
+      </component>
       <p
         v-if="description"
         class="fr-tile__desc"

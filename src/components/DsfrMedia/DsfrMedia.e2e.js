@@ -32,8 +32,6 @@ describe('DsfrPicture', () => {
 legend = 'Vidéo traitant du Service National Universel'
 size = 'small'
 src = 'https://www.youtube.com/embed/HyirpmPL43I'
-const transcriptionUrl = 'https://www.youtube.com/embed/HyirpmPL43I'
-const transcriptionLabel = 'Label de la transcription'
 
 describe('DsfrVideo', () => {
   it('should mount DsfrVideo', () => {
@@ -42,8 +40,6 @@ describe('DsfrVideo', () => {
         size,
         src,
         legend,
-        transcriptionUrl,
-        transcriptionLabel,
       },
 
     })
@@ -54,9 +50,5 @@ describe('DsfrVideo', () => {
       .should('have.class', 'fr-ratio-16x9')
     cy.get('.fr-content-media__caption')
       .should('contain', legend)
-    cy.get('.fr-content-media__transcription')
-      .should('be.visible')
-      .find('.fr-btn')
-      .should('contain', transcriptionLabel)
   })
 })

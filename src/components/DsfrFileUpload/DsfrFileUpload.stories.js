@@ -28,6 +28,14 @@ export default {
       control: 'text',
       description: 'Texte de l’erreur à afficher à l’utilisateur',
     },
+    validMessage: {
+      control: 'text',
+      description: 'Texte du succès à afficher à l’utilisateur',
+    },
+    disabled: {
+      control: 'boolean',
+      description: 'Permet de désactiver visuellement l\'upload de fichier',
+    },
     'update:modelValue': {
       description: 'Événement émis lors du changement de valeur de `modelValue` : le paramètre passé est la valeur de la propriété `value` de l’`input`',
     },
@@ -50,6 +58,8 @@ export const Televersement = (args, { argTypes }) => ({
       :label="label"
       :hint="hint"
       :error="error"
+      :validMessage="validMessage"
+      :disabled="disabled"
     />
   `,
 
@@ -63,6 +73,8 @@ Televersement.args = {
   label: 'Ajouter un fichier',
   hint: 'Pas trop volumineux svp',
   error: undefined,
+  validMessage: undefined,
+  disabled: false,
 }
 
 export const TeleversementAvecErreur = (args, { argTypes }) => ({
@@ -93,4 +105,72 @@ TeleversementAvecErreur.args = {
   label: 'Ajouter un fichier',
   hint: 'Pas trop volumineux svp',
   error: 'Message d’erreur',
+}
+
+export const TeleversementAvecSucces = (args, { argTypes }) => ({
+  components: {
+    DsfrFileUpload,
+  },
+  data () {
+    return args
+  },
+  template: `
+  <div :data-fr-theme="dark ? 'dark' : ''" style="background-color: var(--grey-1000-50);">
+    <DsfrFileUpload
+      :id="id"
+      :label="label"
+      :hint="hint"
+      :error="error"
+      :validMessage="validMessage"
+      :disabled="disabled"
+    />
+  </div>
+  `,
+
+  mounted () {
+    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
+  },
+})
+TeleversementAvecSucces.args = {
+  dark: false,
+  id: undefined,
+  label: 'Ajouter un fichier',
+  hint: 'Pas trop volumineux svp',
+  error: undefined,
+  validMessage: 'Téléversement effectué !',
+  disabled: false,
+}
+
+export const TeleversementDesactive = (args, { argTypes }) => ({
+  components: {
+    DsfrFileUpload,
+  },
+  data () {
+    return args
+  },
+  template: `
+  <div :data-fr-theme="dark ? 'dark' : ''" style="background-color: var(--grey-1000-50);">
+    <DsfrFileUpload
+      :id="id"
+      :label="label"
+      :hint="hint"
+      :error="error"
+      :validMessage="validMessage"
+      :disabled="disabled"
+    />
+  </div>
+  `,
+
+  mounted () {
+    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
+  },
+})
+TeleversementDesactive.args = {
+  dark: false,
+  id: undefined,
+  label: 'Ajouter un fichier',
+  hint: 'Pas trop volumineux svp',
+  error: undefined,
+  validMessage: undefined,
+  disabled: true,
 }

@@ -39,7 +39,7 @@ describe('DsfrNewsLetter', () => {
     const buttonTextEl = getByText(buttonText)
 
     // Then
-    expect(titleEl.tagName).toBe('H5')
+    expect(titleEl.tagName).toBe('H3')
     expect(titleEl).toHaveClass('fr-follow__title')
     expect(descriptionEl.tagName).toBe('P')
     expect(descriptionEl).toHaveClass('fr-follow__desc')
