@@ -50,7 +50,7 @@ export default defineComponent({
       return this.errorMessage || this.validMessage
     },
     additionalMessageClass () {
-      return this.errorMessage ? 'fr-error-text' : 'fr-valid-text'
+      return this.errorMessage ? 'fr-message--error' : 'fr-message--valid'
     },
   },
 
@@ -93,7 +93,7 @@ export default defineComponent({
         </slot>
       </legend>
       <div
-        class="fr-fieldset__content"
+        class="fr-fieldset__element"
         role="group"
         :aria-labelledby="titleId"
       >
@@ -110,13 +110,17 @@ export default defineComponent({
           @update:model-value="onChange({ name: option.name, checked: $event })"
         />
       </div>
-      <p
+      <div
         v-if="message"
-        class="fr-message-text  flex  items-center"
-        :class="additionalMessageClass"
+        class="fr-messages-group"
       >
-        <span>{{ message }}</span>
-      </p>
+        <p
+          class="fr-message--info  flex  items-center"
+          :class="additionalMessageClass"
+        >
+          <span>{{ message }}</span>
+        </p>
+      </div>
     </fieldset>
   </div>
 </template>

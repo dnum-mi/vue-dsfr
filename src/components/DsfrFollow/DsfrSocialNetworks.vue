@@ -15,16 +15,23 @@ export default defineComponent({
           (network) => network?.name && network.href && allowedNetworks.includes(network.name),
         ),
     },
+    titleTag: {
+      type: String,
+      default: 'h3',
+    },
   },
 })
 </script>
 
 <template>
   <div class="fr-follow__social">
-    <p class="fr-h5 fr-mb-3v fr-mb-3v">
+    <component
+      :is="titleTag"
+      class="fr-h5 fr-mb-3v fr-mb-3v"
+    >
       Suivez-nous
       <br> sur les réseaux sociaux
-    </p>
+    </component>
     <ul
       v-if="networks.length"
       class="fr-btns-group fr-btns-group--lg"

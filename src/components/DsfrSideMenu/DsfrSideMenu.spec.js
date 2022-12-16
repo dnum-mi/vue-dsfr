@@ -16,7 +16,7 @@ describe('DsfrSideMenu', () => {
     // dont l’attribut 'aria-label' est "Menu latéral"
     const navEl = getByRole('navigation')
     expect(navEl.tagName).toBe('NAV')
-    expect(navEl).toHaveAttribute('aria-label', 'Menu latéral')
+    expect(navEl).toHaveAttribute('aria-labelledby')
     // e premier enfant de navEl est un div avec la classe 'fr-sidemenu__inner'
     expect(navEl.firstElementChild).toHaveClass('fr-sidemenu__inner')
     // l’enfant suivant doit être un bouton qui doit avoir la classe 'fr-sidemenu__btn'

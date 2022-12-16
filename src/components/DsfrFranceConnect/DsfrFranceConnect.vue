@@ -27,7 +27,7 @@ export default defineComponent({
         target="_blank"
         rel="noopener noreferrer"
         :title="secure ? 'Qu’est ce que FranceConnect+ ? - nouvelle fenêtre' : 'Qu’est ce que FranceConnect ? - nouvelle fenêtre'"
-      >Qu’est ce que FranceConnect{{ secure ? '+' : '' }} ?</a>
+      >Qu’est-ce que France Connect{{ secure ? '+' : '' }} ?</a>
     </p>
   </div>
 </template>

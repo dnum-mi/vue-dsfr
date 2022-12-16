@@ -46,6 +46,10 @@ export default {
       control: 'boolean',
       description: 'Ajoute la possibilité de fermer l\'alerte via un bouton en forme de croix',
     },
+    titleTag: {
+      control: 'text',
+      description: 'Permet de choisir la balise contenant le titre de l\'alerte (h3 par défaut)',
+    },
   },
 }
 
@@ -63,6 +67,7 @@ export const Alerte = (args) => ({
       :small="small"
       :closeable="closeable"
       :closed="closed"
+      :is="titleTag"
       @close="close"
     />
   `,

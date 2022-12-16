@@ -40,6 +40,10 @@ export default {
       control: 'boolean',
       description: 'Indique si le contenu de la carte doit être horizontal (passe de toute façon en vertical sur mobile)',
     },
+    titleTag: {
+      control: 'text',
+      description: 'Permet de choisir la balise contenant le titre de la carte (h3 par défaut',
+    },
   },
 }
 
@@ -59,6 +63,7 @@ export const Card = (args) => ({
       :title="title"
       :horizontal="horizontal"
       :no-arrow="noArrow"
+      :is="titleTag"
     />
   `,
 

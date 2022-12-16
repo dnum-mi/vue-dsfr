@@ -28,6 +28,10 @@ export default defineComponent({
       default: () => undefined,
       required: false,
     },
+    titleTag: {
+      type: String,
+      default: 'h3',
+    },
   },
 })
 </script>
@@ -38,9 +42,12 @@ export default defineComponent({
       class="fr-mt-n2w  fr-mb-2w  fr-ml-n4w"
     />
 
-    <p class="fr-callout__title">
+    <component
+      :is="titleTag"
+      class="fr-callout__title"
+    >
       {{ title }}
-    </p>
+    </component>
 
     <p class="fr-callout__text">
       {{ content }}

@@ -33,6 +33,10 @@ export default {
     onClick: {
       action: 'Clicked',
     },
+    titleTag: {
+      control: 'text',
+      description: 'Permet de choisir la balise contenant le titre de la mise en avant (h3 par défaut)',
+    },
   },
 }
 
@@ -58,6 +62,7 @@ export const MiseEnAvantSimple = (args) => ({
       :content="content"
       :button="button"
       :icon="icon"
+      :is="titleTag"
     />
   `,
 

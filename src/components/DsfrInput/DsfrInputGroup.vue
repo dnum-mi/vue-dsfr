@@ -57,7 +57,7 @@ export default defineComponent({
       return this.errorMessage || this.validMessage
     },
     messageClass () {
-      return this.errorMessage ? 'fr-error-text' : 'fr-valid-text'
+      return this.errorMessage ? 'fr-message--error' : 'fr-message--valid'
     },
     messageIcon () {
       return this.errorMessage ? 'ri-alert-line' : 'ri-checkbox-circle-line'
@@ -89,13 +89,17 @@ export default defineComponent({
       :placeholder="placeholder"
       @update:model-value="$emit('update:modelValue', $event)"
     />
-    <p
+    <div
       v-if="message"
-      :id="descriptionId"
-      :class="messageClass"
+      class="fr-messages-group"
     >
-      <span>{{ message }}</span>
-    </p>
+      <p
+        :id="descriptionId"
+        :class="messageClass"
+      >
+        <span>{{ message }}</span>
+      </p>
+    </div>
   </div>
 </template>
 

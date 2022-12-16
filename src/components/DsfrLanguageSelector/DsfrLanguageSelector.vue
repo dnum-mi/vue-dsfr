@@ -58,4 +58,4 @@ export default defineComponent({
   </nav>
 </template>
 
-<style src="@gouvfr/dsfr/dist/component/translate/translate.css" />
+<style src="@gouvfr/dsfr/dist/component/translate/translate.main.min.css" />

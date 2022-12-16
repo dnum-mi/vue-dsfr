@@ -48,7 +48,7 @@ export default defineComponent({
       return this.errorMessage || this.validMessage
     },
     additionalMessageClass () {
-      return this.errorMessage ? 'fr-error-text' : 'fr-valid-text'
+      return this.errorMessage ? 'fr-message--error' : 'fr-message--valid'
     },
     messageIcon () {
       return this.errorMessage ? 'ri-alert-line' : 'ri-checkbox-circle-line'
@@ -96,7 +96,7 @@ export default defineComponent({
       </legend>
 
       <div
-        class="fr-fieldset__content"
+        class="fr-fieldset__element"
         role="radiogroup"
       >
         <DsfrRadioButton
@@ -108,13 +108,17 @@ export default defineComponent({
           @update:model-value="onChange"
         />
       </div>
-      <p
+      <div
         v-if="message"
-        class="fr-message-text  flex  items-center"
-        :class="additionalMessageClass"
+        class="fr-messages-group"
       >
-        <span class="line-1">{{ message }}</span>
-      </p>
+        <p
+          class="fr-message--info  flex  items-center"
+          :class="additionalMessageClass"
+        >
+          <span class="line-1">{{ message }}</span>
+        </p>
+      </div>
     </fieldset>
   </div>
 </template>

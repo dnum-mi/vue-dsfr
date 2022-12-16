@@ -35,7 +35,6 @@ export default defineComponent({
 <template>
   <li
     role="presentation"
-    class="fr-tabs__item"
   >
     <button
       :id="tabId"
