@@ -19,7 +19,7 @@ describe('DsfrFileUpload', () => {
 
     getByText(label)
     getByLabelText(label)
-    const errorEl = container.querySelector('.fr-error-text')
+    const errorEl = container.querySelector('.fr-message--error')
 
     expect(errorEl).toBeNull()
   })
@@ -43,7 +43,7 @@ describe('DsfrFileUpload', () => {
     getByText(label)
     getByText(hint)
 
-    const errorEl = container.querySelector('.fr-error-text')
+    const errorEl = container.querySelector('.fr-message--error')
 
     expect(errorEl).toBeNull()
   })
@@ -69,7 +69,7 @@ describe('DsfrFileUpload', () => {
     getByText(label)
     getByText(error)
 
-    const errorEl = container.querySelector('.fr-error-text')
+    const errorEl = container.querySelector('.fr-message--error')
 
     expect(errorEl).toBeDefined()
   })

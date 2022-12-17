@@ -62,4 +62,4 @@ export default defineComponent({
   </figure>
 </template>
 
-<style src="@gouvfr/dsfr/dist/component/content/content.css" />
+<style src="@gouvfr/dsfr/dist/component/content/content.main.min.css" />

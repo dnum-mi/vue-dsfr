@@ -28,6 +28,10 @@ export default {
       control: 'text',
       description: 'Lien vers lequel la tuile pointe. Peut être une string ou objet à donner à `router-link` ou un lien externe (`string` commençant par `"http"`)',
     },
+    titleTag: {
+      control: 'text',
+      description: 'Permet de choisir la balise contenant le titre de la tuile (h3 par défaut)',
+    },
   },
 }
 
@@ -50,6 +54,7 @@ export const TuileSimple = (args) => ({
       :description="description"
       :horizontal="horizontal"
       :to="to"
+      :is="titleTag"
     />
   `,
   mounted () {
