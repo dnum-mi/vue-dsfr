@@ -98,11 +98,11 @@ export default defineNuxtPlugin((nuxtApp) => {
 })
 ```
 
-Ensuite, il faut ajouter un deuxième plugin dans un fichier `vue-dsfr.client.js`, pour charger les scripts
-officiels du design system de l’État seulement côté client (ils dépendents de `document` et `window`) :
+Ensuite, il faut ajouter un deuxième plugin dans un fichier `dsfr.client.js`, pour charger les scripts
+officiels du design system de l’État seulement côté client (ils dépendent de `document` et `window`) :
 
 ```javascript
-// /plugins/vue-dsfr.client.js
+// /plugins/dsfr.client.js
 
 import '@gouvfr/dsfr/dist/core/core.module.js'  // Import des scripts globaux côté client
 
