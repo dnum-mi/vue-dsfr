@@ -23,15 +23,14 @@ export default defineComponent({
     },
   },
   methods: {
-    copyToPasteboard: () => {
+    copyLocationToClipboard () {
       const url = window.location.href
       navigator.clipboard.writeText(url)
     },
-    openNetwork: (network, event) => {
-      event.preventDefault()
+    openWindow ({ url, label }) {
       window.open(
-        network.url,
-        network.label,
+        url,
+        label,
         'toolbar=no,location=yes,status=no,menubar=no,scrollbars=yes,resizable=yes,width=600,height=450',
       )
     },
@@ -55,7 +54,7 @@ export default defineComponent({
           :href="network.url"
           target="_blank"
           rel="noopener noreferrer"
-          @click="openNetwork(network, $event)"
+          @click.prevent="openWindow(network)"
         >
           {{ network.label }}
         </a>
@@ -75,7 +74,7 @@ export default defineComponent({
         <button
           class="fr-btn fr-btn--copy"
           :title="copyLabel"
-          @click="copyToPasteboard"
+          @click="copyLocationToClipboard()"
         >
           {{ copyLabel }}
         </button>
