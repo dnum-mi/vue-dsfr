@@ -47,10 +47,10 @@ export default defineComponent({
 
 <template>
   <div
-    class="fr-card fr-enlarge-link"
+    class="fr-card"
     :class="{
       'fr-card--horizontal': horizontal,
-      'fr-card--no-arrow': noArrow,
+      'fr-enlarge-link': !noArrow,
     }"
     data-testid="fr-card"
     @click="goToTargetLink"
