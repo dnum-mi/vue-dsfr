@@ -70,6 +70,7 @@ ajouter les lignes commentées :
 import { createApp } from 'vue'
 import '@gouvminint/vue-dsfr/dist/vue-dsfr.css' // Import des styles globaux
 import VueDsfr from '@gouvminint/vue-dsfr'      // Import (par défaut) de la bibliothèque
+import '@gouvfr/dsfr/dist/core/core.module.js'  // Import des scripts globaux
 
 import App from './App.vue'
 
@@ -90,7 +91,8 @@ avec le contenu suivant :
 // /plugins/vue-dsfr.js
 
 import { defineNuxtPlugin } from '#app'
-import VueDsfr from '@gouvminint/vue-dsfr'
+import VueDsfr from '@gouvminint/vue-dsfr'      // Import (par défaut) de la bibliothèque
+import '@gouvfr/dsfr/dist/core/core.module.js'  // Import des scripts globaux
 
 export default defineNuxtPlugin((nuxtApp) => {
   nuxtApp.vueApp.use(VueDsfr)
