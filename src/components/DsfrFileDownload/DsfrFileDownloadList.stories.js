@@ -12,6 +12,10 @@ export default {
       control: 'object',
       description: 'Tableau d\'objets contenant les propriétés "title", "format", "size" et "href" propres au composant DsfrFileDownload',
     },
+    title: {
+      control: 'string',
+      description: 'Chaîne de caractères optionnelle permettant d\'ajouter un titre à la liste des liens de téléchargement',
+    },
   },
 }
 
@@ -27,6 +31,7 @@ export const ListeDeTelechargements = (args, { argTypes }) => ({
   template: `
     <DsfrFileDownloadList
       :files="files"
+      :title="title"
     />
   `,
 
@@ -56,4 +61,5 @@ ListeDeTelechargements.args = {
       href: '#',
     },
   ],
+  title: 'Titre facultatif',
 }
