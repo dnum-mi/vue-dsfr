@@ -1,4 +1,5 @@
 import DsfrAlert from '../DsfrAlert/DsfrAlert.vue'
+import DsfrButton from '../DsfrButton/DsfrButton.vue'
 import DsfrInput from './DsfrInput.vue'
 import DsfrInputGroup from './DsfrInputGroup.vue'
 
@@ -415,6 +416,66 @@ export const ChampDeSaisieDeDate = (args) => ({
   },
 })
 ChampDeSaisieDeDate.args = {
+  dark: false,
+  labelVisible: false,
+  placeholder: 'Placeholder',
+  modelValue: '',
+  disabled: false,
+}
+
+export const FocusSurChamp = (args) => ({
+  components: {
+    DsfrButton,
+    DsfrInput,
+  },
+  data () {
+    return {
+      ...args,
+    }
+  },
+  methods: {
+    focusInput () {
+      this.$refs.input.focus()
+    },
+    focusTextarea () {
+      this.$refs.textarea.focus()
+    },
+  },
+  template: `
+    <DsfrButton @click="focusInput()">
+      Focus sur l’input
+    </DsfrButton>
+
+    <DsfrInput
+      ref="input"
+      v-model="modelValue"
+      :label="label"
+      :hint="hint"
+      :placeholder="placeholder"
+      :label-visible="labelVisible"
+      :disabled="disabled"
+    />
+
+    <DsfrButton @click="focusTextarea()">
+      Focus sur le textarea
+    </DsfrButton>
+
+    <DsfrInput
+      ref="textarea"
+      v-model="modelValue"
+      :is-textarea="isTextarea"
+      :label="label"
+      :hint="hint"
+      :placeholder="placeholder"
+      :label-visible="labelVisible"
+      :disabled="disabled"
+    />
+  `,
+  mounted () {
+    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
+  },
+})
+FocusSurChamp.args = {
   dark: false,
   labelVisible: false,
   placeholder: 'Placeholder',
