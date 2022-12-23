@@ -84,18 +84,30 @@ const app = createApp(App)
 
 La bibliothèque VueDsfr fournit bien plusieurs build (esm et umd entre autres) et Nuxt3 sait lequel choisir.
 
-Ensuite, il faut ajouter le plugin en créant le dossier `/plugins` s’il n’existe pas et en créant dedans un fichier `vue-dsfr.js`
-avec le contenu suivant :
+Il faut ajouter le plugin en créant le dossier `/plugins` s’il n’existe pas et en créant dedans un fichier `vue-dsfr.js`
+avec le contenu suivant (attention ce plugin sera exécuté côté serveur et côté client) :
 
 ```javascript
 // /plugins/vue-dsfr.js
 
 import { defineNuxtPlugin } from '#app'
 import VueDsfr from '@gouvminint/vue-dsfr'      // Import (par défaut) de la bibliothèque
-import '@gouvfr/dsfr/dist/core/core.module.js'  // Import des scripts globaux
 
 export default defineNuxtPlugin((nuxtApp) => {
   nuxtApp.vueApp.use(VueDsfr)
+})
+```
+
+Ensuite, il faut ajouter un deuxième plugin dans un fichier `vue-dsfr.client.js`, pour charger les scripts
+officiels du design system de l’État seulement côté client (ils dépendents de `document` et `window`) :
+
+```javascript
+// /plugins/vue-dsfr.client.js
+
+import '@gouvfr/dsfr/dist/core/core.module.js'  // Import des scripts globaux côté client
+
+export default defineNuxtPlugin(() => {
+  // Ce plugin ne fait rien à part s’assurer qu’il est chargé côté client
 })
 ```
 
