@@ -13,14 +13,21 @@ export default defineComponent({
       type: Array,
       default: () => [],
     },
+    title: {
+      type: String,
+      default: '',
+    },
   },
 })
 </script>
 
 <template>
   <div class="fr-downloads-group fr-downloads-group--bordered">
-    <h4 class="fr-downloads-group__title">
-      Titre facultatif
+    <h4
+      v-if="title"
+      class="fr-downloads-group__title"
+    >
+      {{ title }}
     </h4>
     <ul>
       <li
