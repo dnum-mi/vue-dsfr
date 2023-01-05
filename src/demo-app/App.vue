@@ -58,6 +58,7 @@ const actions = [
 
 const cityList = ref([])
 const cityQuery = ref('')
+const whatever = ref('')
 
 watch(
   cityQuery,
@@ -258,7 +259,23 @@ const selectAddress = (address) => {
           type="submit"
           label="Bouton de soumission du formulaire"
         />
+        <DsfrInput
+          v-model="whatever"
+          label="Label input"
+        >
+          <template #tip>
+            <DsfrAlert v-if="showAlert" />
+            <VIcon
+              name="ri-question-line"
+              @mouseover="showAlert = true"
+              @mouseout="showAlert = false"
+            />
+          </template>
+        </DsfrInput>
       </form>
+      <DsfrTranscription title="Le titre de la transcription">
+        La transcription blablabla
+      </DsfrTranscription>
     </div>
 
     <DsfrModal
@@ -276,20 +293,6 @@ const selectAddress = (address) => {
       />
       Ceci est une modale. Elle peut se fermer sans aucun changement au clic sur le bouton "Fermer" ou bien simplement avec la touche <kbd>Échappe</kbd>
     </DsfrModal>
-
-    <DsfrInput
-      v-model="whatever"
-      label="Label input"
-    >
-      <template #tip>
-        <DsfrAlert v-if="showAlert" />
-        <VIcon
-          name="ri-question-line"
-          @mouseover="showAlert = true"
-          @mouseout="showAlert = false"
-        />
-      </template>
-    </DsfrInput>
   </div>
 </template>
 

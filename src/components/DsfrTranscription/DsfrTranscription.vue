@@ -3,20 +3,39 @@ import { defineComponent } from 'vue'
 
 export default defineComponent({
   name: 'DsfrTranscription',
-
   props: {
     title: {
       type: String,
-      required: true,
       default: 'Titre de la vidéo',
     },
     content: {
       type: String,
-      required: true,
       default: 'Transcription du contenu de la vidéo',
     },
+    collapseValue: {
+      type: String,
+      default: '-114px',
+    },
   },
-  emits: ['expandTranscription'],
+
+  data () {
+    return {
+      opened: false,
+      expanded: false,
+    }
+  },
+
+  computed: {
+    collapseStyle () {
+      const baseStyle = {
+        '--collapse': this.collapseValue,
+      }
+      if (this.expanded) {
+        baseStyle['--collapse-max-height'] = 'none'
+      }
+      return baseStyle
+    },
+  },
 })
 </script>
 
@@ -24,14 +43,17 @@ export default defineComponent({
   <div class="fr-transcription">
     <button
       class="fr-transcription__btn"
-      aria-expanded="false"
+      :aria-expanded="String(expanded)"
       aria-controls="fr-transcription__collapse-transcription-1354"
+      @click="expanded = !expanded"
     >
       Transcription
     </button>
     <div
       id="fr-transcription__collapse-transcription-1354"
       class="fr-collapse"
+      :class="{ 'fr-collapse--expanded': expanded }"
+      :style="collapseStyle"
     >
       <dialog
         id="fr-transcription__modal-transcription-1354"
@@ -68,7 +90,7 @@ export default defineComponent({
                       aria-controls="fr-transcription__modal-transcription-1354"
                       data-fr-opened="false"
                       title=""
-                      @click="expandTranscription"
+                      @click="opened = true"
                     >
                       Agrandir
                     </button>
@@ -80,6 +102,17 @@ export default defineComponent({
         </div>
       </dialog>
     </div>
+    <Teleport to="body">
+      <DsfrModal
+        :title="title"
+        :opened="opened"
+        @close="opened = false"
+      >
+        <slot>
+          {{ content }}
+        </slot>
+      </DsfrModal>
+    </Teleport>
   </div>
 </template>
 

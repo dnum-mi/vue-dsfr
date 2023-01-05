@@ -84,7 +84,7 @@ declare const _default: import('vue').DefineComponent<DsfrInputProps, unknown, u
     isWithWrapper: boolean;
     labelClass: string;
     labelVisible: boolean;
-    modelValue: string;
+    modelValue: string | undefined;
     descriptionId: string;
     wrapperClass: string | Object | Array ;
 }>

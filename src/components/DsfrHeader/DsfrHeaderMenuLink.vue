@@ -10,7 +10,7 @@ export default defineComponent({
   },
 
   props: {
-    /* @deprecated Utiliser `to` ou `href` à la place */
+    /** @deprecated Utiliser `to` ou `href` à la place */
     path: {
       type: [String, Object],
       default: undefined,
@@ -21,8 +21,8 @@ export default defineComponent({
       default: undefined,
     },
     iconAttrs: {
-      type: String,
-      default: undefined,
+      type: Object,
+      default: () => {},
     },
     iconRight: Boolean,
     label: {

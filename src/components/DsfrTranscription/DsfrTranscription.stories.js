@@ -16,9 +16,9 @@ export default {
       control: 'text',
       description: 'Transcription du contenu de la vidéo',
     },
-    expandTranscription: {
-      control: 'event',
-      description: 'Evènement d\'ouverture de la transcription dans une modale',
+    collapseValue: {
+      control: 'text',
+      description: 'Valeur en pixels de la hauteur de dépliement de la transcription',
     },
   },
 }
@@ -32,6 +32,7 @@ export const Transcription = (args) => ({
     <DsfrTranscription
       :title="title"
       :content="content"
+      :collapseValue="collapseValue"
     />
   `,
   mounted () {
@@ -42,4 +43,5 @@ Transcription.args = {
   dark: false,
   title: 'Chats hiver',
   content: 'Des chatons jouant dans la neige',
+  collapseValue: '-114',
 }
