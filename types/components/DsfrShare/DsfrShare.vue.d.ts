@@ -1,7 +1,7 @@
 interface Network {
-  label: string;
-  name: 'facebook' | 'twitter' | 'linkedin';
-  url: string;
+    label: string;
+    name: 'facebook' | 'twitter' | 'linkedin';
+    url: string;
 }
 
 declare const _default: import('vue').DefineComponent<{
@@ -21,7 +21,13 @@ declare const _default: import('vue').DefineComponent<{
         type: ArrayConstructor;
         default: () => Network[];
     };
-}, unknown, unknown, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, Record<string, any>, string, import('vue').VNodeProps & import('vue').AllowedComponentProps & import('vue').ComponentCustomProps, Readonly<import('vue').ExtractPropTypes<{
+}, unknown, unknown, {}, {
+    copyLocationToClipboard(): void;
+    openWindow({ url, label }: {
+        url: any;
+        label: any;
+    }): void;
+}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {}, string, import('vue').VNodeProps & import('vue').AllowedComponentProps & import('vue').ComponentCustomProps, Readonly<import('vue').ExtractPropTypes<{
     title: {
         type: StringConstructor;
         default: string;

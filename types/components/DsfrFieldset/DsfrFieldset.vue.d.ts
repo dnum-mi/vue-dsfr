@@ -9,13 +9,17 @@ declare const _default: import('vue').DefineComponent<{
     };
     legendId: {
         type: StringConstructor;
-        default: string;
+        default: any;
     };
     hint: {
         type: StringConstructor;
         default: string;
     };
-}, unknown, unknown, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, Record<string, any>, string, import('vue').VNodeProps & import('vue').AllowedComponentProps & import('vue').ComponentCustomProps, Readonly<import('vue').ExtractPropTypes<{
+    hintClass: {
+        type: (ObjectConstructor | StringConstructor)[];
+        default: string;
+    };
+}, unknown, unknown, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {}, string, import('vue').VNodeProps & import('vue').AllowedComponentProps & import('vue').ComponentCustomProps, Readonly<import('vue').ExtractPropTypes<{
     legend: {
         type: StringConstructor;
         default: string;
@@ -32,10 +36,15 @@ declare const _default: import('vue').DefineComponent<{
         type: StringConstructor;
         default: string;
     };
+    hintClass: {
+        type: (ObjectConstructor | StringConstructor)[];
+        default: string;
+    };
 }>>, {
     legend: string;
     hint: string;
     legendClass: string | Record<string, any>;
     legendId: string;
+    hintClass: string | Record<string, any>;
 }>
 export default _default

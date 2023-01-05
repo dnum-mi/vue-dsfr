@@ -11,6 +11,10 @@ declare const _default: import('vue').DefineComponent<{
         type: StringConstructor;
         default: string;
     };
+    hint: {
+        type: StringConstructor;
+        default: string;
+    };
     labelVisible: BooleanConstructor;
     modelValue: {
         type: StringConstructor;
@@ -45,6 +49,10 @@ declare const _default: import('vue').DefineComponent<{
         type: StringConstructor;
         default: string;
     };
+    hint: {
+        type: StringConstructor;
+        default: string;
+    };
     labelVisible: BooleanConstructor;
     modelValue: {
         type: StringConstructor;
@@ -68,9 +76,10 @@ declare const _default: import('vue').DefineComponent<{
     id: string;
     label: string;
     placeholder: string;
-    modelValue: string;
+    modelValue: string | undefined;
     errorMessage: string;
     validMessage: string;
+    hint: string;
     descriptionId: string;
     labelVisible: boolean;
 }>

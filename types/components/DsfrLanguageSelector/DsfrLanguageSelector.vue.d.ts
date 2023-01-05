@@ -1,8 +1,14 @@
 declare const _default: import('vue').DefineComponent<{
-    secure: BooleanConstructor;
+    languages: {
+        type: ArrayConstructor;
+        default: () => void;
+    };
 }, unknown, unknown, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {}, string, import('vue').VNodeProps & import('vue').AllowedComponentProps & import('vue').ComponentCustomProps, Readonly<import('vue').ExtractPropTypes<{
-    secure: BooleanConstructor;
+    languages: {
+        type: ArrayConstructor;
+        default: () => void;
+    };
 }>>, {
-    secure: boolean;
+    languages: unknown[];
 }>
 export default _default

@@ -1,8 +1,3 @@
-interface BreadcrumbLink {
-    text: string;
-    to?: string | { name?: string, params?: any, path?: string, query?: any };
-}
-
 declare const _default: import('vue').DefineComponent<{
     breadcrumbId: {
         type: StringConstructor;
@@ -16,10 +11,7 @@ declare const _default: import('vue').DefineComponent<{
     };
 }, unknown, {
     hideButton: boolean;
-}, {
-    linkComponent(): string;
-}, {
-}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, 'close'[], 'close', import('vue').VNodeProps & import('vue').AllowedComponentProps & import('vue').ComponentCustomProps, Readonly<import('vue').ExtractPropTypes<{
+}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {}, string, import('vue').VNodeProps & import('vue').AllowedComponentProps & import('vue').ComponentCustomProps, Readonly<import('vue').ExtractPropTypes<{
     breadcrumbId: {
         type: StringConstructor;
         default(): any;
@@ -31,7 +23,10 @@ declare const _default: import('vue').DefineComponent<{
         }[];
     };
 }>>, {
-    breadcrumbId: string;
-    links: BreadcrumbLink[];
+    links: {
+        text: string;
+        to: import('vue-router').RouteLocationRaw;
+    },
+    breadcrumbId?: string;
 }>
 export default _default

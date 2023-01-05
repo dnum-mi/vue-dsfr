@@ -119,7 +119,17 @@ declare const _default: import('vue').DefineComponent<{
     serviceDescription: string;
     homeTo: string;
     logoText: string | string[];
-    modelValue: string;
+    modelValue: string | undefined;
+    placeholder: string;
+    quickLinks: HeaderMenuLink[];
+    showSearch: boolean;
+    operatorImgAlt: string;
+    operatorImgSrc: string;
+    operatorImgStyle: Record;
+    serviceDescription: string;
+    homeTo: string;
+    logoText: string | string[];
+    modelValue: string | undefined;
     placeholder: string;
     quickLinks: HeaderMenuLink[];
     showSearch: boolean;

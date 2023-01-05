@@ -15,9 +15,13 @@ declare const _default: import('vue').DefineComponent<{
         type: StringConstructor;
         default: string;
     };
+    titleTag: {
+        type: StringConstructor;
+        default: string;
+    };
+    small: BooleanConstructor;
     closed: BooleanConstructor;
     closeable: BooleanConstructor;
-    small: BooleanConstructor;
 }, unknown, unknown, {
     error(): boolean;
     success(): boolean;
@@ -49,18 +53,23 @@ declare const _default: import('vue').DefineComponent<{
         type: StringConstructor;
         default: string;
     };
+    titleTag: {
+        type: StringConstructor;
+        default: string;
+    };
     small: BooleanConstructor;
     closed: BooleanConstructor;
     closeable: BooleanConstructor;
 }>> & {
     onClose?: (...args: any[]) => any;
 }, {
-    id: string;
-    title: string;
-    type: string;
-    description: string;
-    closed: boolean;
-    closeable: boolean;
     small: boolean;
+    type: string;
+    id: string;
+    closed: boolean;
+    title: string;
+    description: string;
+    titleTag: string;
+    closeable: boolean;
 }>
 export default _default
