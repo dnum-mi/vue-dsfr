@@ -1,7 +1,7 @@
 declare const _default: import('vue').DefineComponent<{
     id: {
         type: StringConstructor;
-        default: () => string;
+        default: () => any;
     };
     label: {
         type: StringConstructor;
@@ -15,16 +15,23 @@ declare const _default: import('vue').DefineComponent<{
         type: StringConstructor;
         default: string;
     };
+    validMessage: {
+        type: StringConstructor;
+        default: string;
+    };
+    disabled: {
+        type: BooleanConstructor;
+    };
     modelValue: {
-      type: StringConstructor;
-      default: string;
-    }
+        type: StringConstructor;
+        default: string;
+    };
 }, unknown, unknown, {}, {
-  onChange: (event: InputEvent) => void
-}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, Record<string, any>, string, import('vue').VNodeProps & import('vue').AllowedComponentProps & import('vue').ComponentCustomProps, Readonly<import('vue').ExtractPropTypes<{
+    onChange($event: any): void;
+}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, ('change' | 'update:modelValue')[], 'change' | 'update:modelValue', import('vue').VNodeProps & import('vue').AllowedComponentProps & import('vue').ComponentCustomProps, Readonly<import('vue').ExtractPropTypes<{
     id: {
         type: StringConstructor;
-        default: () => string;
+        default: () => any;
     };
     label: {
         type: StringConstructor;
@@ -38,18 +45,27 @@ declare const _default: import('vue').DefineComponent<{
         type: StringConstructor;
         default: string;
     };
+    validMessage: {
+        type: StringConstructor;
+        default: string;
+    };
+    disabled: {
+        type: BooleanConstructor;
+    };
     modelValue: {
-      type: StringConstructor;
-      default: string;
-    }
+        type: StringConstructor;
+        default: string;
+    };
 }>> & {
-  onChange: (event: InputEvent) => void;
-  'onUpdate:modelValue'?: (inputValue: string | string[]) => void;
+    onChange?: (...args: any[]) => any;
+    'onUpdate:modelValue'?: (...args: any[]) => any;
 }, {
     error: string;
     id: string;
     label: string;
-    hint: string;
+    disabled: boolean;
     modelValue: string;
+    validMessage: string;
+    hint: string;
 }>
 export default _default

@@ -1,5 +1,3 @@
-type LinkProps = import('vue-router').RouterLinkProps | { href: string; }
-
 declare const _default: import('vue').DefineComponent<{
     url: {
         type: StringConstructor;
@@ -7,8 +5,10 @@ declare const _default: import('vue').DefineComponent<{
     };
 }, unknown, unknown, {
     isExternalLink(): any;
-    is(): any;
-    linkProps(): LinkProps;
+    is(): 'a' | 'router-link';
+    linkProps(): {
+        [x: string]: any;
+    };
 }, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, ('accept-all' | 'refuse-all' | 'customize')[], 'accept-all' | 'refuse-all' | 'customize', import('vue').VNodeProps & import('vue').AllowedComponentProps & import('vue').ComponentCustomProps, Readonly<import('vue').ExtractPropTypes<{
     url: {
         type: StringConstructor;

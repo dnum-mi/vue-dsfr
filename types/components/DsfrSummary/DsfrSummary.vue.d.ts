@@ -1,20 +1,23 @@
 declare const _default: import('vue').DefineComponent<{
-    text: {
+    title: {
         type: StringConstructor;
-        default: any;
+        default: string;
     };
-    small: BooleanConstructor;
-    large: BooleanConstructor;
+    anchors: {
+        type: ArrayConstructor;
+        default: () => any[];
+    };
 }, unknown, unknown, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {}, string, import('vue').VNodeProps & import('vue').AllowedComponentProps & import('vue').ComponentCustomProps, Readonly<import('vue').ExtractPropTypes<{
-    text: {
+    title: {
         type: StringConstructor;
-        default: any;
+        default: string;
     };
-    small: BooleanConstructor;
-    large: BooleanConstructor;
+    anchors: {
+        type: ArrayConstructor;
+        default: () => any[];
+    };
 }>>, {
-    small: boolean;
-    text: string;
-    large: boolean;
+    title: string;
+    anchors: unknown[];
 }>
 export default _default

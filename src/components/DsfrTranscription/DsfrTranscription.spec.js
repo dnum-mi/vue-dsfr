@@ -9,18 +9,18 @@ describe('DsfrTranscription', () => {
     const content = 'Contenu de la transcription'
 
     // When
-    const { getByText } = render(DsfrTranscription, {
+    const { getAllByText } = render(DsfrTranscription, {
       props: {
         title,
         content,
       },
     })
 
-    const titleEl = getByText(title)
-    const contentEl = getByText(content)
+    const titleEl = getAllByText(title)
+    const contentEl = getAllByText(content)
 
     // Then
-    expect(titleEl).toBeInTheDocument()
-    expect(contentEl).toBeInTheDocument()
+    expect(titleEl[0]).toBeInTheDocument()
+    expect(contentEl[0]).toBeInTheDocument()
   })
 })

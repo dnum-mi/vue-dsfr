@@ -99,7 +99,7 @@ export default defineComponent({
   <focus-trap
     v-if="opened"
   >
-    <div
+    <dialog
       id="fr-modal-1"
       aria-labelledby="fr-modal-title-modal-1"
       :role="role"
@@ -158,7 +158,7 @@ export default defineComponent({
           </div>
         </div>
       </div>
-    </div>
+    </dialog>
   </focus-trap>
 </template>
 
