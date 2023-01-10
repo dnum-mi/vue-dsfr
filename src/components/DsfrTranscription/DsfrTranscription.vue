@@ -22,6 +22,7 @@ export default defineComponent({
     return {
       opened: false,
       expanded: false,
+      collapsing: false,
     }
   },
 
@@ -30,10 +31,18 @@ export default defineComponent({
       const baseStyle = {
         '--collapse': this.collapseValue,
       }
-      if (this.expanded) {
+      if (this.expanded || this.collapsing) {
         baseStyle['--collapse-max-height'] = 'none'
       }
       return baseStyle
+    },
+  },
+  watch: {
+    expanded (isExpanded) {
+      if (!isExpanded) {
+        this.collapsing = true
+        setTimeout(() => { this.collapsing = false }, 300)
+      }
     },
   },
 })
@@ -52,7 +61,7 @@ export default defineComponent({
     <div
       id="fr-transcription__collapse-transcription-1354"
       class="fr-collapse"
-      :class="{ 'fr-collapse--expanded': expanded }"
+      :class="{ 'fr-collapse--expanded': expanded, 'fr-collapsing': collapsing }"
       :style="collapseStyle"
     >
       <dialog

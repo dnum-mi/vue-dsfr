@@ -93,34 +93,34 @@ MenuLateral.args = {
   headingTitle: 'Titre de la rubrique',
   menuItems: [
     {
-      id: 11,
+      id: '11',
       to: '/rubrique-1',
       text: 'Premier titre de niveau 1',
     },
     {
-      id: 12,
+      id: '12',
       to: '/rubrique-2',
       text: 'Deuxième titre de niveau 1',
       active: true,
       menuItems: [
         {
-          id: 21,
+          id: '21',
           to: '/rubrique-2/sous-rubrique-1',
           text: 'Premier titre de niveau 2',
         },
         {
-          id: 22,
+          id: '22',
           to: '/rubrique-2/sous-rubrique-2',
           text: 'Deuxième titre de niveau 2',
           active: true,
           menuItems: [
             {
-              id: 31,
+              id: '31',
               to: '/rubrique-2/sous-rubrique-2/sous-sous-rubrique-1',
               text: 'Premier titre de niveau 3',
             },
             {
-              id: 32,
+              id: '32',
               to: '/rubrique-2/sous-rubrique-2/sous-sous-rubrique-2',
               text: 'Deuxième titre de niveau 3',
               active: true,
