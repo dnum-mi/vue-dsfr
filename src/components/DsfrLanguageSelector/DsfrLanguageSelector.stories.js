@@ -8,6 +8,10 @@ export default {
       control: 'boolean',
       description: 'Permet de voir le composant dans les deux **thèmes** : **clair** (`false`, défaut) et **sombre** (`true`).\n\n*N.B. : Ne fait pas partie du composant.',
     },
+    id: {
+      control: 'text',
+      description: '(Facultatif) `id` à donner pour la liste des langues (sera mis sur la balise `div` parente de la balise `ul`)',
+    },
     languages: {
       control: 'object',
       description: 'Tableau d’objets des langues proposées par le sélecteur : chaque élément doit être un objet avec un code ISO `codeIso` et un `label`',
@@ -32,7 +36,9 @@ export const SelecteurDeLangue = (args) => ({
   },
   template: `
     <DsfrLanguageSelector
+      :id="id"
       :languages="languages"
+      @select="onSelect($event)"
     />
   `,
   mounted () {
@@ -40,5 +46,10 @@ export const SelecteurDeLangue = (args) => ({
   },
 })
 SelecteurDeLangue.args = {
-  languages: [{ label: 'English', codeIso: 'en' }, { label: 'Deutsch', codeIso: 'de' }, { label: 'Nederlands', codeIso: 'nl' }],
+  id: 'translate-1',
+  languages: [
+    { label: 'English', codeIso: 'en' },
+    { label: 'Deutsch', codeIso: 'de' },
+    { label: 'Dutch', codeIso: 'nl' },
+  ],
 }
