@@ -10,7 +10,17 @@ export default {
     },
     languages: {
       control: 'object',
-      description: 'Tableau d’objets des langues proposées par le sélecteur nécessite un code ISO et un label par objet',
+      description: 'Tableau d’objets des langues proposées par le sélecteur : chaque élément doit être un objet avec un code ISO `codeIso` et un `label`',
+    },
+    currentLanguage: {
+      control: 'text',
+      description: 'Code ISO du language courant (doit correspondre au `codeIso` d’un des objets de la props `languages`',
+    },
+    select: {
+      description: 'Événement émis lors du clic sur l’une des langues proposées après dépliage de la liste',
+    },
+    onSelect: {
+      action: 'Clic sur une langue',
     },
   },
 }
