@@ -43,5 +43,5 @@ Transcription.args = {
   dark: false,
   title: 'Chats hiver',
   content: 'Des chatons jouant dans la neige',
-  collapseValue: '-114',
+  collapseValue: '-114px',
 }

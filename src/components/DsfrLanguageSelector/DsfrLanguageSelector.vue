@@ -25,6 +25,7 @@ export default defineComponent({
   data () {
     return {
       expanded: false,
+      collapsing: false,
     }
   },
   computed: {
@@ -32,10 +33,18 @@ export default defineComponent({
       const baseStyle = {
         '--collapse': `-${this.languages.length * 114}px`,
       }
-      if (this.expanded) {
+      if (this.expanded || this.collapsing) {
         baseStyle['--collapse-max-height'] = 'none'
       }
       return baseStyle
+    },
+  },
+  watch: {
+    expanded (isExpanded) {
+      if (!isExpanded) {
+        this.collapsing = true
+        setTimeout(() => { this.collapsing = false }, 300)
+      }
     },
   },
   methods: {
@@ -67,7 +76,7 @@ export default defineComponent({
       <div
         :id="id"
         class="fr-collapse  fr-translate__menu  fr-menu"
-        :class="{'fr-collapse--expanded': expanded}"
+        :class="{ 'fr-collapse--expanded': expanded, 'fr-collapsing': collapsing }"
         :style="collapseStyle"
       >
         <ul class="fr-menu__list">
@@ -91,10 +100,3 @@ export default defineComponent({
 </template>
 
 <style src="@gouvfr/dsfr/dist/component/translate/translate.main.min.css" />
-
-<style scoped>
-.fr-menu {
-  position: relative;
-  top: -1rem;
-}
-</style>
