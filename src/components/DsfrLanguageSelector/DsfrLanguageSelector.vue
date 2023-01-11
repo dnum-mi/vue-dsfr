@@ -38,6 +38,9 @@ export default defineComponent({
       }
       return baseStyle
     },
+    currentLanguageObject () {
+      return this.languages.find(({ codeIso }) => codeIso === this.currentLanguage)
+    },
   },
   watch: {
     expanded (isExpanded) {
@@ -71,7 +74,7 @@ export default defineComponent({
         type="button"
         @click.prevent.stop="expanded = !expanded"
       >
-        {{ languages[0].codeIso.toUpperCase() }}<span class="fr-hidden-lg">&nbsp;- {{ languages[0].label }}</span>
+        {{ currentLanguageObject.codeIso.toUpperCase() }}<span class="fr-hidden-lg">&nbsp;- {{ currentLanguageObject.label }}</span>
       </button>
       <div
         :id="id"
