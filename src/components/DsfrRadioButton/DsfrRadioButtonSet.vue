@@ -96,7 +96,7 @@ export default defineComponent({
       </legend>
 
       <div
-        class="fr-fieldset__element"
+        class="fr-fieldset__content"
         role="radiogroup"
       >
         <DsfrRadioButton
