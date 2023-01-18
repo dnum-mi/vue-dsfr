@@ -41,9 +41,11 @@ export default defineComponent({
       <!-- @slot Slot pour le contenu du titre du `fieldset` (sera dans `<legend class="fr-fieldset__legend">`). Une props du même nom est utilisable pour du texte simple sans mise en forme. -->
       <slot name="legend" />
     </legend>
-    <div class="fr-fieldset__element">
+    <div
+      v-if="hint || $slots.hint?.().length"
+      class="fr-fieldset__element"
+    >
       <span
-        v-if="hint || $slots.hint?.().length"
         class="fr-hint-text"
         :class="hintClass"
       >
