@@ -26,6 +26,15 @@ export default {
       control: 'boolean',
       description: 'Permet de basculer sur la variante de style "tertiary"',
     },
+    noOutline: {
+      control: 'boolean',
+      description: 'Permet de basculer sur la variante de style "tertiary-nooutline"',
+    },
+    size: {
+      control: 'radio',
+      options: ['small', 'medium', 'large'],
+      description: 'Indique la taille du groupe de bouton',
+    },
     disabled: {
       control: 'boolean',
       description: 'Indique si le bouton est **inactivé**',
@@ -56,6 +65,8 @@ export const BoutonPrimaire = (args) => ({
       :tertiary="tertiary"
       :disabled="disabled"
       :icon="icon"
+      :size="size"
+      :no-outline="noOutline"
       :icon-only="iconOnly"
       :icon-right="iconRight"
       @click="onClick"
@@ -89,6 +100,8 @@ export const BoutonPrimaireAvecIcone = (args) => ({
       :label="label"
       :disabled="disabled"
       :icon="icon"
+      :size="size"
+      :no-outline="noOutline"
       :icon-right="iconRight"
       @click="onClick"
     />
@@ -118,6 +131,8 @@ export const BoutonSecondaire = (args) => ({
       :label="label"
       :disabled="disabled"
       :secondary="secondary"
+      :no-outline="noOutline"
+      :size="size"
       @click="onClick"
     />
   `,
@@ -145,6 +160,8 @@ export const BoutonTertiaire = (args) => ({
       :label="label"
       :disabled="disabled"
       :tertiary="tertiary"
+      :no-outline="noOutline"
+      :size="size"
       @click="onClick"
     />
   `,
@@ -158,6 +175,36 @@ BoutonTertiaire.args = {
   disabled: false,
   dark: false,
   tertiary: true,
+}
+
+export const BoutonTertiaireSansBordure = (args) => ({
+  components: { DsfrButton },
+  data () {
+    return {
+      ...args,
+    }
+  },
+  template: `
+    <DsfrButton
+      :label="label"
+      :disabled="disabled"
+      :tertiary="tertiary"
+      :no-outline="noOutline"
+      :size="size"
+      @click="onClick"
+    />
+  `,
+
+  mounted () {
+    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
+  },
+})
+BoutonTertiaireSansBordure.args = {
+  label: 'Label bouton secondaire',
+  disabled: false,
+  dark: false,
+  tertiary: true,
+  noOutline: true,
 }
 
 export const SuiteDeBoutons = (args) => ({
@@ -177,6 +224,8 @@ export const SuiteDeBoutons = (args) => ({
         :secondary="btn.secondary"
         :label="btn.label"
         :icon="btn.icon"
+        :no-outline="btn.noOutline"
+        :size="btn.size"
         :iconRight="btn.iconRight"
         @click="onClick"
       />
