@@ -50,7 +50,7 @@ export default defineComponent({
       return this.errorMessage || this.validMessage
     },
     additionalMessageClass () {
-      return this.errorMessage ? 'fr-message--error' : 'fr-message--valid'
+      return this.errorMessage ? 'fr-error-text' : 'fr-valid-text'
     },
   },
 

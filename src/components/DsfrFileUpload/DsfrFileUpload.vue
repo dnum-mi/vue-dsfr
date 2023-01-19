@@ -82,7 +82,7 @@ export default defineComponent({
       <p
         v-if="error"
         :id="`${id}-desc`"
-        class="fr-message--error  fr-mt-3v"
+        class="fr-error-text  fr-mt-3v"
       >
         {{ error }}
       </p>
@@ -90,7 +90,7 @@ export default defineComponent({
     <p
       v-if="validMessage"
       :id="`${id}-desc`"
-      class="fr-message--valid  fr-mt-3v"
+      class="fr-valid-text  fr-mt-3v"
     >
       {{ validMessage }}
     </p>

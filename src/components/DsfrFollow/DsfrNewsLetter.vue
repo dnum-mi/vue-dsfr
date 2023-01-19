@@ -98,7 +98,7 @@ export default defineComponent({
         >
           <p
             id="newsletter-email-desc-error"
-            class="fr-message--error"
+            class="fr-error-text"
           >
             {{ error }}
           </p>
