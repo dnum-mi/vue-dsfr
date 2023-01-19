@@ -128,7 +128,7 @@ describe('DsfrCheckboxSet', () => {
       props: {
       },
     })
-    const checkboxes = container.querySelector('.fr-fieldset__element')
+    const checkboxes = container.querySelector('.fr-fieldset__content')
 
     // Then
     expect(checkboxes.firstElementChild).toBe(null)

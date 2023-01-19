@@ -93,7 +93,7 @@ export default defineComponent({
         </slot>
       </legend>
       <div
-        class="fr-fieldset__element"
+        class="fr-fieldset__content"
         role="group"
         :aria-labelledby="titleId"
       >
