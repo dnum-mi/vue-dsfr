@@ -19,12 +19,39 @@ export default defineComponent({
     },
     secondary: Boolean,
     tertiary: Boolean,
+    noOutline: {
+      type: Boolean,
+      default: false,
+    },
     icon: {
       type: String,
       default: undefined,
     },
+    size: {
+      type: String,
+      validator: (val) => ['sm', 'small', 'lg', 'large', 'md', 'medium', '', undefined].includes(val),
+      default: undefined,
+    },
     iconRight: Boolean,
     iconOnly: Boolean,
+  },
+
+  computed: {
+    sm () {
+      return ['sm', 'small'].includes(this.size)
+    },
+    md () {
+      return ['md', 'medium'].includes(this.size)
+    },
+    lg () {
+      return ['lg', 'large'].includes(this.size)
+    },
+    center () {
+      return this.align === 'center'
+    },
+    right () {
+      return this.align === 'right'
+    },
   },
 
   methods: {
@@ -41,7 +68,11 @@ export default defineComponent({
     :class="{
       'fr-btn': true,
       'fr-btn--secondary': secondary && !tertiary,
-      'fr-btn--tertiary': tertiary && !secondary,
+      'fr-btn--tertiary': tertiary && !secondary && !noOutline,
+      'fr-btn--tertiary-no-outline': tertiary && !secondary && noOutline,
+      'fr-btn--sm': sm,
+      'fr-btn--md': md,
+      'fr-btn--lg': lg,
       'inline-flex': true,
       'reverse': iconRight,
       'justify-center': iconOnly,
