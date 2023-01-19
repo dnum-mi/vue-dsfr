@@ -259,15 +259,11 @@ export default defineComponent({
               class="fr-link-licence  no-content-after"
               :to="routerLinkLicenceTo"
               :href="aLicenceHref"
-              target="_blank"
+              :target="isExternalLink ? '_blank' : undefined"
               rel="noopener noreferrer"
               v-bind="licenceLinkProps"
             >
               {{ licenceName }}
-              <VIcon
-                v-if="isExternalLink"
-                name="ri-external-link-line"
-              />
             </component>
           </p>
         </div>
