@@ -51,7 +51,7 @@ describe('DsfrButtonGroup', () => {
     expect(secondButtonSpan.parentNode).toHaveClass('fr-btn--secondary')
     expect(wrapper).toHaveClass('extra-class')
     expect(wrapper).not.toHaveClass('fr-btns-group--right')
-    expect(wrapper).not.toHaveClass('fr-btns-group--inline-sm')
+    expect(wrapper).not.toHaveClass('fr-btns-group--sm')
     expect(onClickFirst.callCount).toBe(1)
     expect(onClickSecond.callCount).toBe(1)
   })
@@ -80,6 +80,6 @@ describe('DsfrButtonGroup', () => {
     // Then
     expect(wrapper).toHaveClass('extra-class')
     expect(wrapper).toHaveClass('fr-btns-group--right')
-    expect(wrapper).toHaveClass('fr-btns-group--inline-sm')
+    expect(wrapper).toHaveClass('fr-btns-group--sm')
   })
 })

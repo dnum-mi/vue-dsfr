@@ -55,6 +55,7 @@ export default defineComponent({
       :for="inputId"
       data-fr-checked-label="Activé"
       data-fr-unchecked-label="Désactivé"
+      style="--toggle-status-width: 3.55208125rem;"
     >
       {{ label }}
     </label>

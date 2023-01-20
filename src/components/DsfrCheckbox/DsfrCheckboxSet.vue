@@ -50,7 +50,7 @@ export default defineComponent({
       return this.errorMessage || this.validMessage
     },
     additionalMessageClass () {
-      return this.errorMessage ? 'fr-message--error' : 'fr-message--valid'
+      return this.errorMessage ? 'fr-error-text' : 'fr-valid-text'
     },
   },
 
@@ -93,7 +93,7 @@ export default defineComponent({
         </slot>
       </legend>
       <div
-        class="fr-fieldset__element"
+        class="fr-fieldset__content"
         role="group"
         :aria-labelledby="titleId"
       >

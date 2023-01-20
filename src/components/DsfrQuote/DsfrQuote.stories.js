@@ -74,3 +74,41 @@ Citation.args = {
   sourceUrl: 'https://www.duckduckgo.com',
   quoteImage: 'https://placekitten.com/g/150/150',
 }
+
+export const CitationSansImage = (args) => ({
+  components: { DsfrQuote },
+  data () {
+    return {
+      ...args,
+    }
+  },
+  template: `
+    <DsfrQuote
+      :quote="quote"
+      :author="author"
+      :details="details"
+      :source="source"
+      :sourceUrl="sourceUrl"
+    />
+  `,
+
+  mounted () {
+    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
+  },
+})
+CitationSansImage.args = {
+  dark: false,
+  quote: 'LA citation',
+  author: 'Pierre-Louis EGAUD',
+  details: [
+    'Détail 1',
+    'Détail 2',
+    'Détail 3',
+    {
+      url: 'https://www.wikipedia.fr',
+      label: 'wikipedia',
+    },
+  ],
+  source: 'Duckduckgo',
+  sourceUrl: 'https://www.duckduckgo.com',
+}
