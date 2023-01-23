@@ -40,7 +40,7 @@ export default defineComponent({
   >
     {{ text }}
   </a>
-  <router-link
+  <RouterLink
     v-else
     class="fr-nav__link"
     data-testid="nav-router-link"
@@ -48,5 +48,5 @@ export default defineComponent({
     @click="$emit('toggle-id', id)"
   >
     {{ text }}
-  </router-link>
+  </RouterLink>
 </template>

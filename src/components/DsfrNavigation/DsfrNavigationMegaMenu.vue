@@ -83,13 +83,13 @@ export default defineComponent({
             <!-- @slot Slot par défaut pour le contenu de la description du mega-menu. Sera dans `<p class="fr-text--sm">` -->
             <slot name="description" />
           </p>
-          <router-link
+          <RouterLink
             vi
             class="fr-btn  fr-fi-arrow-right-line  fr-btn--icon-right"
             :to="link.to"
           >
             {{ link.text }}
-          </router-link>
+          </RouterLink>
         </div>
         <!-- @slot Slot par défaut pour le contenu du mega-menu. Sera dans `<div class="fr-grid-row fr-grid-row--gutters">` -->
         <slot />

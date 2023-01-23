@@ -53,13 +53,13 @@ export default defineComponent({
           target="_blank"
           :href="to"
         >{{ title }}</a>
-        <router-link
+        <RouterLink
           v-if="!isExternalLink"
           class="fr-tile__link so-test"
           :to="to"
         >
           {{ title }}
-        </router-link>
+        </RouterLink>
       </component>
       <p
         v-if="description"

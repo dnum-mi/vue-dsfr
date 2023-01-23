@@ -13,7 +13,7 @@ declare const _default: import('vue').DefineComponent<{
     };
 }, unknown, unknown, {}, {
     isExternalLink(to: any): boolean;
-    is(to: any): 'a' | 'router-link';
+    is(to: any): 'a' | 'RouterLink';
     linkProps(to: any): {
         [x: string]: any;
     };

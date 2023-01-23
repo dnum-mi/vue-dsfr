@@ -32,7 +32,7 @@ export default defineComponent({
       return typeof to === 'string' && to.startsWith('http')
     },
     is (to) {
-      return this.isExternalLink(to) ? 'a' : 'router-link'
+      return this.isExternalLink(to) ? 'a' : 'RouterLink'
     },
     linkProps (to) {
       return { [this.isExternalLink(to) ? 'href' : 'to']: to }

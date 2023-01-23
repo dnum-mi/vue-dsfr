@@ -9,6 +9,7 @@ export default defineComponent({
   },
 
   props: {
+    expandTranscription: Boolean,
     src: {
       type: String,
       required: true,

@@ -91,6 +91,7 @@ Alerte.args = {
   small: false,
   closed: false,
   closeable: true,
+  titleTag: undefined,
 }
 
 export const Alertes = (args) => ({

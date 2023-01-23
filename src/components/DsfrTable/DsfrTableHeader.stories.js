@@ -1,7 +1,12 @@
 import DsfrTable from './DsfrTable.vue'
 import DsfrTableHeader from './DsfrTableHeader.vue'
 
+import { OhVueIcon as VIcon, addIcons } from 'oh-vue-icons'
+import { RiSortAsc, RiSortDesc } from 'oh-vue-icons/icons/ri/index.js'
+
 import './table.stories.css'
+
+addIcons(RiSortAsc, RiSortDesc)
 
 export default {
   component: DsfrTableHeader,
@@ -37,6 +42,7 @@ export const EnTeteDeTableau = (args) => ({
   components: {
     DsfrTable,
     DsfrTableHeader,
+    VIcon,
   },
 
   data () {
@@ -53,7 +59,7 @@ export const EnTeteDeTableau = (args) => ({
 
   template: `
       <DsfrTable
-        :title="title"
+        title="Titre du tableau"
       >
         <template v-slot:header>
           <tr>
@@ -81,6 +87,7 @@ export const EnTeteDeTableauAvecIcone = (args) => ({
   components: {
     DsfrTable,
     DsfrTableHeader,
+    VIcon,
   },
 
   data () {
@@ -103,7 +110,7 @@ export const EnTeteDeTableauAvecIcone = (args) => ({
 
   template: `
       <DsfrTable
-        :title="title"
+        title="Titre du tableau"
       >
         <template v-slot:header>
           <tr>

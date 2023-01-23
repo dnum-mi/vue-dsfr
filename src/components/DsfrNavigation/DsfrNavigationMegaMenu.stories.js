@@ -76,7 +76,7 @@ export const NavigationMegaMenu = (args) => ({
           :link="link"
           :menus="menus"
           :expandedId="expandedId"
-          @click="toggle($event)"
+          @toggle-id="toggle($event)"
         />
       </DsfrNavigationItem>
     </DsfrNavigation>

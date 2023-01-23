@@ -45,6 +45,7 @@ export const ReseauxSociaux = (args) => ({
 })
 ReseauxSociaux.args = {
   dark: false,
+  titleTag: undefined,
   networks: [
     {
       name: 'facebook',

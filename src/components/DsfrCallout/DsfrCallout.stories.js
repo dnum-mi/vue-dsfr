@@ -58,11 +58,11 @@ export const MiseEnAvantSimple = (args) => ({
 
   template: `
     <DsfrCallout
-      :title="title"
+      :title="\`\${title} (\${titleTag || 'h3'})\`"
       :content="content"
       :button="button"
       :icon="icon"
-      :is="titleTag"
+      :title-tag="titleTag"
     />
   `,
 
@@ -76,6 +76,7 @@ MiseEnAvantSimple.args = {
   button: undefined,
   icon: '',
   content: 'Lorem ipsum dolor sit amet, consectetur adipiscing, incididunt, ut labore et dol',
+  titleTag: undefined,
 }
 
 export const MiseEnAvant = (args) => ({
@@ -96,10 +97,11 @@ export const MiseEnAvant = (args) => ({
 
   template: `
     <DsfrCallout
-      :title="title"
+      :title="\`\${title} (\${titleTag || 'h3'})\`"
       :content="content"
       :button="button"
       :icon="icon"
+      :title-tag="titleTag"
     />
   `,
 
@@ -115,4 +117,5 @@ MiseEnAvant.args = {
   },
   icon: 'ri-information-line',
   content: 'Lorem ipsum dolor sit amet, consectetur adipiscing, incididunt, ut labore et dol',
+  titleTag: 'h2',
 }
