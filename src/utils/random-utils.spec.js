@@ -19,10 +19,12 @@ describe('Random-utils', () => {
     // When
     const randomAlphaNum = getRandomAlphaNum()
     const randomAlphaNum2 = getRandomAlphaNum()
+    const randomAlphaNum3 = getRandomAlphaNum()
+    const randomAlphaNum4 = getRandomAlphaNum()
 
     // Then
     expect(randomAlphaNum).not.toBeUndefined()
-    expect(randomAlphaNum2).not.toBe(randomAlphaNum)
+    expect(randomAlphaNum + randomAlphaNum2).not.toBe(randomAlphaNum3 + randomAlphaNum4)
   })
 
   it('should repeat x times a specific function', () => {

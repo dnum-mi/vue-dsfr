@@ -14,7 +14,7 @@ describe('DsfrPagination', () => {
       { label: '4', href: '/#', title: 'Page 4' },
       { label: '5', href: '/#', title: 'Page 5' },
     ]
-    const currentPage = ref(1)
+    const currentPage = 1
 
     // When
     const { getByTitle, emitted } = render(Pagination, {
