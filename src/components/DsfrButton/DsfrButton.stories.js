@@ -86,6 +86,8 @@ BoutonPrimaire.args = {
   icon: '',
   iconOnly: false,
   iconRight: false,
+  noOutline: false,
+  size: undefined,
 }
 
 export const BoutonPrimaireAvecIcone = (args) => ({
@@ -117,6 +119,8 @@ BoutonPrimaireAvecIcone.args = {
   disabled: false,
   icon: 'ri-search-line',
   iconRight: false,
+  noOutline: false,
+  size: undefined,
 }
 
 export const BoutonSecondaire = (args) => ({
@@ -146,6 +150,8 @@ BoutonSecondaire.args = {
   disabled: false,
   dark: false,
   secondary: true,
+  noOutline: false,
+  size: undefined,
 }
 
 export const BoutonTertiaire = (args) => ({
@@ -175,6 +181,8 @@ BoutonTertiaire.args = {
   disabled: false,
   dark: false,
   tertiary: true,
+  noOutline: false,
+  size: undefined,
 }
 
 export const BoutonTertiaireSansBordure = (args) => ({
@@ -205,6 +213,7 @@ BoutonTertiaireSansBordure.args = {
   dark: false,
   tertiary: true,
   noOutline: true,
+  size: undefined,
 }
 
 export const SuiteDeBoutons = (args) => ({

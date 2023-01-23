@@ -18,7 +18,7 @@ export default defineComponent({
       return typeof this.url === 'string' && this.url.startsWith('http')
     },
     is () {
-      return this.url ? (this.isExternalLink ? 'a' : 'router-link') : 'a'
+      return this.url ? (this.isExternalLink ? 'a' : 'RouterLink') : 'a'
     },
     linkProps () {
       return { [this.isExternalLink ? 'href' : 'to']: this.url }
