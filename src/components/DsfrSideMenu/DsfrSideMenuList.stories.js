@@ -45,7 +45,7 @@ export default {
       control: 'object',
       description: `Tableau d'objets, chacun contenant 4 propriétés:
   - \`id\`: identifiant unique d'item de menu
-  - \`to\`: URL complète pour un lien externe, ou chaîne de caractère ou objet à donner à \`to\` de \`router-link\` pour un lien interne
+  - \`to\`: URL complète pour un lien externe, ou chaîne de caractère ou objet à donner à \`to\` de \`RouterLink\` pour un lien interne
   - \`text\`: texte du menu
   - \`active\`: indique que l’item de menu correspond à la page courante
       `,
@@ -79,8 +79,9 @@ export const MenuLateral = (args, { argTypes }) => ({
     <DsfrSideMenu
       :heading-title="headingTitle"
       :buttonLabel="buttonLabel"
-    >
+      >
       <DsfrSideMenuList
+        :id="id"
         :menu-items="menuItems"
         @toggle-expand="toggleExpand"
       />
@@ -91,6 +92,7 @@ MenuLateral.args = {
   dark: false,
   buttonLabel: 'Dans cette rubrique',
   headingTitle: 'Titre de la rubrique',
+  id: 'list',
   menuItems: [
     {
       id: '11',

@@ -46,7 +46,7 @@ export default {
       control: 'object',
       description: `Tableau des liens d’accès rapide, chaque objet contiendra les props suivantes :
 - \`label\`: Texte du lien (\`'Notifications'\`, par ex.)
-- \`to\`: Chemin ou objet à passer à \`to\` de \`router-link\` (\`'/notification'\` ou \`{ name: 'Notifications' }\` par ex.)
+- \`to\`: Chemin ou objet à passer à \`to\` de \`RouterLink\` (\`'/notification'\` ou \`{ name: 'Notifications' }\` par ex.)
 - \`href\`: URL à passer à \`href\` de la balise \`<a>\` (\`'https://systeme-de-design.gouv.fr\` par ex.) **pour un lien externe uniquement**.
 - \`icon\` Nom de l’icône [Remix Icon](https://remixicon.com/) (ou toute autre icône de [oh-vue-icons](https://oh-vue-icons.netlify.app/)) à afficher (\`'ri-phone-line'\` par ex.)
 - \`iconRight\` Permet de mettre l’icône à droite (si la valeur est \`true\` ou <em>truthy</em> et que \`icon\` est renseigné )
@@ -84,18 +84,13 @@ export default {
     actionOnLogo: { action: 'clicked on logo' },
     actionOnLink: { action: 'clicked on quickLink' },
     onChangeSearchInput: { action: 'search changed' },
+    onSearch: { action: 'Searching' },
   },
 }
 
 export const EnTeteSimple = (args, { argTypes }) => ({
   components: {
     DsfrHeader,
-  },
-  props: {
-    modelValue: {
-      type: String,
-      default: '',
-    },
   },
   data () {
     return {
@@ -122,6 +117,7 @@ export const EnTeteSimple = (args, { argTypes }) => ({
       :logo-text="logoText"
       v-model="modelValue"
       @click="onClickOnLogo"
+      @search="onSearch($event)"
     />
   `,
 
@@ -156,12 +152,6 @@ EnTeteSimple.args = {
 export const EnTeteAvecLogoOperateur = (args, { argTypes }) => ({
   components: {
     DsfrHeader,
-  },
-  props: {
-    modelValue: {
-      type: String,
-      default: '',
-    },
   },
   data () {
     return {
@@ -222,4 +212,5 @@ EnTeteAvecLogoOperateur.args = {
   ],
   operatorImgSrc: '/cat.svg',
   operatorImgAlt: 'Logo opérateur',
+  operatorImgStyle: { height: '40px' },
 }

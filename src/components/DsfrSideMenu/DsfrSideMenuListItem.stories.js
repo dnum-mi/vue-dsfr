@@ -42,7 +42,7 @@ export const ElementDeListeDeMenuLateral = (args, { argTypes }) => ({
     heading-title="Menu latéral exemplaire"
     buttonLabel="Bouton exemplaire"
   >
-    <DsfrSideMenuList>
+    <DsfrSideMenuList :id="id">
       <DsfrSideMenuListItem :active="active">
         <DsfrSideMenuLink
           :active="active"
@@ -58,4 +58,5 @@ export const ElementDeListeDeMenuLateral = (args, { argTypes }) => ({
 ElementDeListeDeMenuLateral.args = {
   dark: false,
   active: false,
+  id: 'list-id',
 }
