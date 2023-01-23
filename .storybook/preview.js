@@ -1,9 +1,10 @@
 import { defineComponent } from 'vue'
-import { app } from '@storybook/vue3'
+import { setup } from '@storybook/vue3'
 import { FocusTrap } from 'focus-trap-vue'
 
 // import '@gouvfr/dsfr/dist/core/core.module.js'
 
+import '../src/assets/variables-fdr.css'
 import '../src/main.css'
 
 import './theme.css'
@@ -33,7 +34,7 @@ export const parameters = {
 
 
 const RouterLink = defineComponent({
-  name: 'router-link',
+  name: 'RouterLink',
   props: {
     to: String,
   },
@@ -42,6 +43,8 @@ const RouterLink = defineComponent({
   `,
 })
 
-app.component('router-link', RouterLink);
-app.component('VIcon', VIcon)
-app.component('FocusTrap', FocusTrap)
+setup(app => {
+  app.component('RouterLink', RouterLink);
+  app.component('VIcon', VIcon)
+  app.component('FocusTrap', FocusTrap)
+})
