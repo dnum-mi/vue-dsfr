@@ -77,7 +77,7 @@ export default defineComponent({
     adjust () {
       this.$refs.collapse.style.setProperty('--collapser', 'none')
       const height = this.$refs.collapse.offsetHeight
-      this.$refs.collapse.style.setProperty('--collaspe', -height + 'px')
+      this.$refs.collapse.style.setProperty('--collapse', -height + 'px')
       this.$refs.collapse.style.setProperty('--collapser', '')
     },
   },
