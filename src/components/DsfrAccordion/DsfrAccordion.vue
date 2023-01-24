@@ -24,11 +24,39 @@ export default defineComponent({
       default: 'Sans intitulé',
     },
   },
+
   emits: ['expand'],
+
+  data () {
+    return {
+      collapsing: false,
+    }
+  },
 
   computed: {
     expanded () {
       return this.expandedId === this.id
+    },
+  },
+
+  watch: {
+    /*
+     * @see https://github.com/GouvernementFR/dsfr/blob/main/src/core/script/collapse/collapse.js
+     */
+    expanded (newValue, oldValue) {
+      if (newValue !== oldValue) {
+        if (newValue === true) {
+          this.$refs.collapse.style.setProperty('--collapse-max-height', 'none')
+        }
+        this.collapsing = true
+        this.adjust()
+        setTimeout(() => {
+          this.collapsing = false
+          if (newValue === false) {
+            this.$refs.collapse.style.removeProperty('--collapse-max-height')
+          }
+        }, 300)
+      }
     },
   },
 
@@ -42,6 +70,15 @@ export default defineComponent({
       } else {
         this.$emit('expand', this.id)
       }
+    },
+    /*
+     * @see https://github.com/GouvernementFR/dsfr/blob/main/src/core/script/collapse/collapse.js#L61
+     */
+    adjust () {
+      this.$refs.collapse.style.setProperty('--collapser', 'none')
+      const height = this.$refs.collapse.offsetHeight
+      this.$refs.collapse.style.setProperty('--collaspe', -height + 'px')
+      this.$refs.collapse.style.setProperty('--collapser', '')
     },
   },
 
@@ -66,8 +103,12 @@ export default defineComponent({
     </h3>
     <div
       :id="id"
+      ref="collapse"
       class="fr-collapse"
-      :class="{ 'fr-collapse--expanded': expanded }"
+      :class="{
+        'fr-collapse--expanded': expanded,
+        'fr-collapsing': collapsing,
+      }"
     >
       <!-- @slot Slot par défaut pour le contenu de l’accordéon: sera dans `<div class="fr-collapse">` -->
       <slot />
@@ -76,9 +117,3 @@ export default defineComponent({
 </template>
 
 <style src="@gouvfr/dsfr/dist/component/accordion/accordion.main.min.css" />
-
-<style scoped>
-.fr-collapse--expanded {
-  max-height: none !important;
-}
-</style>
