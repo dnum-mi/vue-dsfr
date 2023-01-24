@@ -34,7 +34,14 @@ export default defineComponent({
 
   methods: {
     toggleExpanded () {
-      this.$emit('expand', this.id)
+      /*
+       * Close current accordion if expanded
+       */
+      if (this.expanded) {
+        this.$emit('expand', undefined)
+      } else {
+        this.$emit('expand', this.id)
+      }
     },
   },
 
