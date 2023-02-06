@@ -2,7 +2,7 @@ import DsfrAccordion from './DsfrAccordion.vue'
 import DsfrAccordionsGroup from './DsfrAccordionsGroup.vue'
 import { OhVueIcon as VIcon } from 'oh-vue-icons'
 
-import '../../main.css'
+import '@gouvfr/dsfr/dist/dsfr.min.css'
 
 const title1 = 'Intitulé de l’accordéon 1'
 const content1 = 'Contenu de l’accordéon 1'
