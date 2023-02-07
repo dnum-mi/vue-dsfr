@@ -44,11 +44,34 @@ export default defineComponent({
       selectedIndex: this.initialSelectedIndex || 0,
       generatedIds: {},
       asc: true,
+      resizeObserver: null,
     }
   },
 
   mounted () {
-    this.renderTabs()
+    /*
+     * Need to use a resize-observer as tab-content height can
+     * change according to its inner components.
+     */
+    if (window.ResizeObserver) {
+      this.resizeObserver = new window.ResizeObserver(() => {
+        this.renderTabs()
+      })
+    }
+
+    this.$el.querySelectorAll('.fr-tabs__panel').forEach((element) => {
+      if (element) {
+        this.resizeObserver?.observe(element)
+      }
+    })
+  },
+
+  unmounted () {
+    this.$el.querySelectorAll('.fr-tabs__panel').forEach((element) => {
+      if (element) {
+        this.resizeObserver?.unobserve(element)
+      }
+    })
   },
 
   methods: {
@@ -67,8 +90,6 @@ export default defineComponent({
       this.asc = idx > this.selectedIndex
       this.selectedIndex = idx
       this.$emit('select-tab', idx)
-      await this.$nextTick()
-      this.renderTabs()
     },
     async selectPrevious () {
       const newIndex = this.selectedIndex === 0 ? this.tabTitles.length - 1 : this.selectedIndex - 1

@@ -253,5 +253,6 @@ OngletsAvecAccordeon.args = {
   initialSelectedIndex: 0,
   title1: 'Un titre d’accordéon 1',
   title2: 'Un titre d’accordéon 2',
+  title3: 'Un titre d’accordéon 3',
   expandedId: '',
 }
