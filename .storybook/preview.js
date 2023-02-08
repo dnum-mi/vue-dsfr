@@ -5,7 +5,8 @@ import { FocusTrap } from 'focus-trap-vue'
 // import '@gouvfr/dsfr/dist/core/core.module.js'
 
 import '../src/assets/variables-fdr.css'
-import '../src/main.css'
+import '@gouvfr/dsfr/dist/dsfr.min.css'
+// import '../src/main.css'
 
 import './theme.css'
 

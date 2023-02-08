@@ -35,8 +35,8 @@ CYPRESS_INSTALL_BINARY=/chemin/vers/cypress/cypress.zip npm install
 
 ## Pré-requis
 
-- npm : version 7 minimum
-- Node.js : version 16 minimum
+- npm : version 8 minimum
+- Node.js : version 18 minimum
 
 ### Installation des pré-requis (testé sous Ubuntu 20.04)
 
@@ -45,7 +45,7 @@ Suivez la procédure suivante en lançant les commandes détaillées ci-dessous 
 1. Mise à jour des dépôts :
 
 ```shell
-wget -qO- https://deb.nodesource.com/setup_16.x | sudo -E bash -
+wget -qO- https://deb.nodesource.com/setup_18.x | sudo -E bash -
 ```
 
 2. Installer `Node.js` :
@@ -54,18 +54,12 @@ wget -qO- https://deb.nodesource.com/setup_16.x | sudo -E bash -
 sudo apt install -y nodejs
 ```
 
-3. (Optionnel) Installer `nvm` (Node Version Manager) :
+3. (Optionnel) Installer `volta` (Node Version Manager) :
 
 Avec la commande curl :
 
 ```shell
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
-```
-
-Ou avec la commande wget :
-
-```shell
-wget -q0- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
+curl https://get.volta.sh | bash
 ```
 
 5. Fermer et rouvrir un terminal, ou bien taper la commande suivante dans tous les terminaux déjà ouverts :
@@ -77,40 +71,18 @@ source ~/.bashrc
 6. Vérifier la version de NVM installée :
 
 ```shell
-nvm --version
+volta --version
 ```
 
-7. Vérifier qu'on pourra bien installer la version de nodejs avec la commande suivante, qui donne la liste des versions nodejs installables :
+7. La version de node sera utilisée automatiquement
+
+Dans le dossier `vue-dsfr`, si vous lancer la commande suivante :
 
 ```shell
-nvm ls-remote
+node --version
 ```
 
-8. Installer la version de node voulue :
-
-```shell
-nvm install <version>
-```
-
-exemple :
-
-```shell
-nvm install 16
-```
-
-9. Pour faire de cette version la version par défaut :
-
-```shell
-nvm alias default 16
-```
-
-10. Vérifier la version de `npm` (7 ou supérieure) :
-
-```shell
-npm --version
-```
-
-Remarque : certaines commandes peuvent demander un temps d'exécution assez conséquent (plusieurs minutes).
+Vous devriez voir 18.x.x
 
 ## Comment contribuer au projet
 

@@ -1,10 +1,10 @@
 <script setup>
 import { ref } from 'vue'
 
-import DsfrRadioButtonSet from '../components/DsfrRadioButton/DsfrRadioButtonSet.vue'
-import DsfrAlert from '../components/DsfrAlert/DsfrAlert.vue'
-import DsfrButton from '../components/DsfrButton/DsfrButton.vue'
-import DsfrFileUpload from '../components/DsfrFileUpload/DsfrFileUpload.vue'
+import DsfrRadioButtonSet from '@/components/DsfrRadioButton/DsfrRadioButtonSet.vue'
+import DsfrAlert from '@/components/DsfrAlert/DsfrAlert.vue'
+import DsfrButton from '@/components/DsfrButton/DsfrButton.vue'
+import DsfrFileUpload from '@/components/DsfrFileUpload/DsfrFileUpload.vue'
 
 const inputValue = ref('')
 const filesToUpload = ref(undefined)
