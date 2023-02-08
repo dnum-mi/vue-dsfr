@@ -94,6 +94,7 @@ const navItems = [
       <DsfrNavigation
         :nav-items="navItems"
       />
+
       <h1>Demo VueDsfr</h1>
 
       <DsfrBreadcrumb
