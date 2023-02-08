@@ -1,6 +1,9 @@
 import { render } from '@testing-library/vue'
 
+import { OhVueIcon as VIcon } from 'oh-vue-icons'
+
 import DsfrTranscription from './DsfrTranscription.vue'
+import DsfrModal from '../DsfrModal/DsfrModal.vue'
 
 describe('DsfrTranscription', () => {
   it('should render a transcription', () => {
@@ -10,6 +13,12 @@ describe('DsfrTranscription', () => {
 
     // When
     const { getAllByText } = render(DsfrTranscription, {
+      global: {
+        components: {
+          VIcon,
+          DsfrModal,
+        },
+      },
       props: {
         title,
         content,

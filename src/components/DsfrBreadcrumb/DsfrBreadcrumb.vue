@@ -58,7 +58,7 @@ export default defineComponent({
           :data-testid="`lis`"
         >
           <component
-            :is="'router-link'"
+            :is="'RouterLink'"
             v-if="link.to"
             class="fr-breadcrumb__link"
             :to="link.to"

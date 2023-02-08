@@ -1,0 +1,25 @@
+name: Release
+on:
+  push:
+    branches:
+      - next
+
+jobs:
+  release:
+    name: Release
+    runs-on: ubuntu-18.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          always-auth: true
+          node-version: 16
+      - name: Install dependencies
+        run: npm ci
+      - name: Release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: npm run semantic-release

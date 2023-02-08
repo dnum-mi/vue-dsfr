@@ -1,0 +1,196 @@
+import { Meta } from '@storybook/addon-docs'
+
+<Meta title="Docs/4. Migrations" />
+
+# Migrations
+
+## Migration vers 3.x
+
+La migration de la version 1.x ou 2.x vers la version 3.x nécessite un certain nombre de changements
+dont voici la liste que nous espérons exhaustive.
+
+### Commun à Vue.js et Nuxt
+
+Que vous utilisiez simplement Vue.js ou que vous l’utilisiez avec Nuxt, il faudra ajouter dans
+vos dépendances la bibliothèque officielle du DSFR pour ajouter le CSS de cette bibliothèque.
+
+```
+pnpm i @gouvfr/dsfr
+```
+
+Ou
+
+```
+npm i @gouvfr/dsfr
+```
+
+Ou
+
+```
+yarn add @gouvfr/dsfr
+```
+
+
+### Vue.js (sans Nuxt)
+
+Il faut ajouter le CSS du DSFR dans le fichier qui est le point d’entrée de votre application (en général `main.css`)
+
+Il faut soit utiliser tout le CSS de la bibliothèque
+```javascript
+import '@gouvfr/dsfr/dist/dsfr.min.css'
+```
+et cela devrait suffire ;
+
+soit utiliser :
+- le core
+- le CSS de VueDsfr
+- éventuellement d’autres parties du CSS (notamment pour les icônes, cf. [la documentation officielle du DSFR](https://www.systeme-de-design.gouv.fr/elements-d-interface/fondamentaux-techniques/icones))
+
+```javascript
+import '@gouvfr/dsfr/dist/core/core.main.min.css'
+import '@gouvminint/vue-dsfr/styles'
+```
+
+Si le poids du bundle final est vraiment trop important, au lieu d’importer `'@gouvminint/vue-dsfr/styles'`, il est possible
+de n’importer que le CSS des composants utilisés (cf. [la documentation officielle du DSFR](https://www.systeme-de-design.gouv.fr/comment-utiliser-le-dsfr/developpeurs/prise-en-main-du-dsfr))
+
+```javascript
+import { createApp } from 'vue'
+
+import {
+  RiCheckboxCircleLine,
+  RiNotification3Line,
+} from 'oh-vue-icons/icons/ri/index.js'
+
+import '@gouvminint/vue-dsfr/styles'
+
+import VueDsfr from '@/index.js'
+import router from './router.js'
+
+import App from './App.vue'
+
+createApp(App)
+  .use(router)
+  .use(VueDsfr, { icons: [RiCheckboxCircleLine, RiNotification3Line] })
+  .mount('#app')
+
+window.dsfr = {
+  verbose: true,
+  mode: 'manual',
+}
+```
+
+Après :
+
+```javascript
+import { createApp } from 'vue'
+
+import {
+  RiCheckboxCircleLine,
+  RiNotification3Line,
+} from 'oh-vue-icons/icons/ri/index.js'
+
+import '@gouvfr/dsfr/dist/dsfr.min.css'                    // Le CSS du DSFR
+import '@gouvfr/dsfr/dist/utility/icons/icons.min.css'     // Facultatif : Si des icônes sont utilisées avec <span class="fr-icon-..." />
+
+import VueDsfr from '@/index.js'
+import router from './router.js'
+
+import App from './App.vue'
+
+createApp(App)
+  .use(router)
+  .use(VueDsfr, { icons: [RiCheckboxCircleLine, RiNotification3Line] })
+  .mount('#app')
+
+window.dsfr = {
+  verbose: true,
+  mode: 'manual',
+}
+```
+
+Ou
+
+```javascript
+import { createApp } from 'vue'
+
+import {
+  RiCheckboxCircleLine,
+  RiNotification3Line,
+} from 'oh-vue-icons/icons/ri/index.js'
+
+import '@gouvfr/dsfr/dist/core/core.main.min.css'       // Le minimum de CSS pour le DSFR
+import '@gouvminint/vue-dsfr/styles'                    // Les styles propres à chaque composant
+
+import '@gouvfr/dsfr/dist/utility/icons/icons.min.css'  // Facultatif : Si des icônes sont utilisées avec <span class="fr-icon-..." />
+
+import VueDsfr from '@/index.js'
+import router from './router.js'
+
+import App from './App.vue'
+
+createApp(App)
+  .use(router)
+  .use(VueDsfr, { icons: [RiCheckboxCircleLine, RiNotification3Line] })
+  .mount('#app')
+
+window.dsfr = {
+  verbose: true,
+  mode: 'manual',
+}
+```
+
+### Nuxt 3
+
+Pour l’utilisation de VueDSFR 3 avec Nuxt 3, il faut changer le `nuxt.config.ts` :
+
+Avant :
+
+```javascript
+export default defineNuxtConfig({
+  css: [
+    '@gouvminint/vue-dsfr/styles',
+  ],
+  ignore: [
+    '**/*.test.*',
+    '**/*.spec.*',
+    '**/*.cy.*',
+  ],
+  srcDir: 'client/',
+})
+```
+
+Après :
+
+```javascript
+export default defineNuxtConfig({
+  css: [
+    '@gouvfr/dsfr/dist/dsfr.min.css',                  // Le CSS du DSFR
+    '@gouvfr/dsfr/dist/utility/icons/icons.min.css',   // Facultatif : Si des icônes sont utilisées avec <span class="fr-icon-..." />
+  ],
+  ignore: [
+    '**/*.test.*',
+    '**/*.spec.*',
+    '**/*.cy.*',
+  ],
+  srcDir: 'client/',
+})
+```
+
+Ou
+
+```javascript
+export default defineNuxtConfig({
+  css: [
+    '@gouvfr/dsfr/dist/core/core.main.min.css',        // Le CSS du DSFR
+    '@gouvminint/vue-dsfr/styles',                     // Le CSS de VueDSFR
+    '@gouvfr/dsfr/dist/utility/icons/icons.min.css',   // Facultatif : Si des icônes sont utilisées avec <span class="fr-icon-..." />
+  ],
+  ignore: [
+    '**/*.test.*',
+    '**/*.spec.*',
+    '**/*.cy.*',
+  ],
+  srcDir: 'client/',
+})
+```

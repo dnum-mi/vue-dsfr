@@ -52,7 +52,7 @@ export const BoutonDeMenuDepliable = (args, { argTypes }) => ({
     heading-title="Menu latéral exemplaire"
     buttonLabel="Bouton exemplaire"
   >
-    <DsfrSideMenuList>
+    <DsfrSideMenuList :id="id">
       <DsfrSideMenuListItem>
         <DsfrSideMenuButton
           :active="active"
@@ -92,4 +92,5 @@ BoutonDeMenuDepliable.args = {
   active: false,
   expanded: false,
   controlId: 'sidemenu-1',
+  id: 'list-id',
 }

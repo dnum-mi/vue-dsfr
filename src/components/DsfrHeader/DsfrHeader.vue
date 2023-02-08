@@ -146,11 +146,7 @@ export default defineComponent({
                   title="Recherche"
                   :data-fr-opened="showSearchModal"
                   @click="showSearchModal"
-                >
-                  <VIcon
-                    name="ri-search-line"
-                  />
-                </button>
+                />
                 <button
                   v-if="quickLinks?.length"
                   id="button-menu"
@@ -169,7 +165,7 @@ export default defineComponent({
               v-if="serviceTitle"
               class="fr-header__service"
             >
-              <router-link
+              <RouterLink
                 :to="homeTo"
                 :title="`Accueil - ${serviceTitle}`"
                 v-bind="$attrs"
@@ -177,7 +173,7 @@ export default defineComponent({
                 <p class="fr-header__service-title">
                   {{ serviceTitle }}
                 </p>
-              </router-link>
+              </RouterLink>
               <p
                 v-if="serviceDescription"
                 class="fr-header__service-tagline"
