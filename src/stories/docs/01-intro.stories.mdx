@@ -1,4 +1,4 @@
-import { Meta } from '@storybook/addon-docs';
+import { Meta } from '@storybook/addon-docs'
 
 import GithubIcon from './github-fill.svg'
 import MailIcon from './mail-fill.svg'
@@ -16,11 +16,13 @@ Le code est [ouvert et disponible sur <img src={GithubIcon} style={{height: '1.2
 
 Pour commencer à l’utiliser, [c’est par ici !](/story/docs-2-guide-d-utilisation--page)
 
+Pour **migrer vers la version 3.x, [c’est par ici !](/docs/docs-4-migrations--docs)**
+
 # Les acteurs du projet
 
 - **Clément Debroize** [<img src={MailIcon} style={{height: '1.25rem', 'position': 'relative', top: '0.25rem' }} />](mailto:clement.debroize@interieur.gouv.fr) [<img src={GithubIcon} style={{height: '1.25rem', 'position': 'relative', top: '0.25rem' }} />](https://github.com/DaBadBunny)
 - **Pierre-Louis Egaud** [<img src={MailIcon} style={{height: '1.25rem', 'position': 'relative', top: '0.25rem' }} />](mailto:pierre-louis.egaud@interieur.gouv.fr) [<img src={GithubIcon} style={{height: '1.25rem', 'position': 'relative', top: '0.25rem' }} />](https://github.com/plegaud)
-- **Stanislas Ormières** [<img src={MailIcon} style={{height: '1.25rem', 'position': 'relative', top: '0.25rem' }} />](mailto:stan@stormier.ninja) [<img src={GithubIcon} style={{height: '1.25rem', 'position': 'relative', top: '0.25rem' }} />](https://github.com/laruiss) *(Lead dev, architecte, devops)*
+- **Stanislas Ormières** [<img src={MailIcon} style={{height: '1.25rem', 'position': 'relative', top: '0.25rem' }} />](mailto:stan@stormier.ninja) [<img src={GithubIcon} style={{height: '1.25rem', 'position': 'relative', top: '0.25rem' }} />](https://github.com/laruiss) *(Lead dev, architecte, devops, mainteneur principal)*
 
 Le projet a pu bénéficier des retours et de contributions de
 
@@ -49,16 +51,14 @@ Ce projet de bibliothèque de composants
 - met à disposition deux parties dans la documentation :
   - une pour [aider au développement](/?path=/story/docs-3-guide-du-développeur--page)
   - une autre pour l'[utilisation](/?path=/story/docs-2-guide-d-utilisation--page)
-- publie un [site complet](vue-dsfr.netlify.app/) avec les composants et leurs variants testables dans celui-ci dans un storybook
-- déploie un site avec ce storybook disponible pour tous
+- publie un [site complet](vue-dsfr.netlify.app/) disponible pour tous avec les composants et leurs variants testables dans celui-ci dans un storybook
 - a une couverture de test optimale
-- contient le CSS global du DSFR et (rarement) du CSS scopé inclus dans les composants
 - met à disposition les composants individuellement sans avoir à importer toute la bibliothèque
   (pour les petits projets)
 
 # Les choix techniques retenus
 
-La bibliothèque est faite avec [Vue 3](https://v3.vuejs.org/) et [Vue-router 4](https://next.router.vuejs.org/).
+La bibliothèque est faite avec [Vue 3](https://vuejs.org/) et [Vue-router 4](https://router.vuejs.org/).
 
 Le JavaScript est linté avec [ESLint](https://eslint.org/) et formatté selon [StandardJS](https://standardjs.org)
 avec une seule modification : les virgules
@@ -77,7 +77,7 @@ Les tests sont faits avec [Vitest](https://vitest.dev) et [Vue Testing Library](
 et des tests d’accessibilité sont faits avec [Cypress](https://www.cypress.io/) grâce aux
 [tests de composants](https://docs.cypress.io/guides/component-testing/introduction).
 
-Les icônes sont toujours celles de [RemixIcon](https://remixicon.com/), grâce à [Oh, Vue Icons!](https://github.com/Renovamen/oh-vue-icons/)
+Les icônes sont toujours celles de [RemixIcon](https://remixicon.com/), grâce au DSFR et parfois grâce à [Oh, Vue Icons!](https://github.com/Renovamen/oh-vue-icons/)
 (qui permet d’ajouter d’[autres icônes](/?path=/story/fondamentaux-4-1-icônes-personnalisées--page))
 
-La bibliothèque est compilée avec [Rollup](https://rollupjs.org/).
+La bibliothèque est mise en paquet grâce à [Vite](https://vitejs.dev/) en [mode bibliothèque](https://vitejs.dev/guide/build.html#library-mode).
