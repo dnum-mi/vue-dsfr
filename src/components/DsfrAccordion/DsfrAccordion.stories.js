@@ -100,24 +100,26 @@ export const AccordeonDansUnAccordeon = (args) => ({
           :expanded-id="expandedId"
           @expand="expandedId = $event"
         >
-          <li>
-            <DsfrAccordion
-              :title="titleSub1"
-              :expanded-id="subExpandedId"
-              @expand="subExpandedId = $event"
-            >
-              Contenu de l’accordéon dans l’accordéon
-            </DsfrAccordion>
-          </li>
-          <li>
-            <DsfrAccordion
-              :title="titleSub2"
-              :expanded-id="subExpandedId"
-              @expand="subExpandedId = $event"
-            >
-              Contenu de l’accordéon dans l’accordéon
-            </DsfrAccordion>
-          </li>
+          <DsfrAccordionsGroup>
+            <li>
+              <DsfrAccordion
+                :title="titleSub1"
+                :expanded-id="subExpandedId"
+                @expand="subExpandedId = $event"
+              >
+                Contenu de l’accordéon dans l’accordéon
+              </DsfrAccordion>
+            </li>
+            <li>
+              <DsfrAccordion
+                :title="titleSub2"
+                :expanded-id="subExpandedId"
+                @expand="subExpandedId = $event"
+              >
+                Contenu de l’accordéon dans l’accordéon
+              </DsfrAccordion>
+            </li>
+          </DsfrAccordionsGroup>
         </DsfrAccordion>
       </li>
     </DsfrAccordionsGroup>
