@@ -63,10 +63,20 @@ const selectAddress = (address) => {
     placeholder="Commencez à taper une adresse..."
     @update:model-value="selectAddress($event)"
   />
+  <p>
+    <a
+      href="https://www.systeme-de-design.gouv.fr/comment-utiliser-le-dsfr/developpeurs/prise-en-main-du-dsfr"
+      target="_blank"
+    >
+      Prise en main du DSFR
+    </a>
+  </p>
+
   <VIcon
     name="ri-search-line"
     scale="1.25"
   />
+
   équivaut à
   <span class="fr-fi-search-line" />
 </template>
