@@ -50,6 +50,7 @@ export default defineComponent({
         <a
           v-if="isExternalLink"
           class="fr-tile__link"
+          target="_blank"
           :href="to"
         >{{ title }}</a>
         <router-link

@@ -224,6 +224,7 @@ export default defineComponent({
               <a
                 class="fr-footer__content-link"
                 :href="link.href"
+                target="_blank"
               >
                 {{ link.label }}
               </a>
