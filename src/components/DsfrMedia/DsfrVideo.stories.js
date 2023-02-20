@@ -1,4 +1,14 @@
+import { setup } from '@storybook/vue3'
+
 import DsfrVideo from './DsfrVideo.vue'
+
+import DsfrModal from '../DsfrModal/DsfrModal.vue'
+import { OhVueIcon as VIcon } from 'oh-vue-icons'
+
+setup(app => {
+  app.component('DsfrModal', DsfrModal)
+  app.component('VIcon', VIcon)
+})
 
 export default {
   component: DsfrVideo,

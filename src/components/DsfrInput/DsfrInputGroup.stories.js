@@ -86,7 +86,7 @@ export const ChampEnErreur = (args) => ({
       :label-visible="labelVisible"
       :placeholder="placeholder"
       :is-invalid="isInvalid"
-      />
+    />
   `,
   mounted () {
     document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
@@ -101,6 +101,7 @@ ChampEnErreur.args = {
   errorMessage: 'Message d’erreur',
   isInvalid: true,
   type: 'text',
+  hint: 'Texte d’indice du champ',
 }
 
 export const ChampValide = (args) => ({
@@ -119,6 +120,7 @@ export const ChampValide = (args) => ({
       :error-message="errorMessage"
       :model-value="modelValue"
       :type="type"
+      :hint="hint"
       :label="label"
       :label-visible="labelVisible"
       :placeholder="placeholder"
@@ -138,4 +140,5 @@ ChampValide.args = {
   validMessage: 'Message de validation',
   errorMessage: '',
   isValid: true,
+  hint: 'Texte d’indice du champ',
 }

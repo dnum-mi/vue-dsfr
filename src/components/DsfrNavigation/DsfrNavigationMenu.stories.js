@@ -63,7 +63,7 @@ export const NavigationSousMenu = (args) => ({
           :title="title"
           :links="links"
           :expanded-id="expandedMenuId"
-          @click="toggle($event)"
+          @toggle-id="toggle($event)"
         />
       </DsfrNavigationItem>
     </DsfrNavigation>

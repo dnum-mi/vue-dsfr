@@ -61,14 +61,14 @@ export default defineComponent({
         ref="title"
         class="fr-card__title"
       >
-        <router-link
+        <RouterLink
           :to="link"
           class="fr-card__link"
           data-testid="card-link"
           @click="$event.stopPropagation()"
         >
           {{ title }}
-        </router-link>
+        </RouterLink>
       </component>
       <p class="fr-card__desc">
         {{ description }}

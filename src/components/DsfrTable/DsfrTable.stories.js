@@ -1,11 +1,13 @@
 import DsfrTable from './DsfrTable.vue'
 import DsfrTag from '../DsfrTag/DsfrTag.vue'
 
-import { app } from '@storybook/vue3'
+import { setup } from '@storybook/vue3'
 
 import './table.stories.css'
 
-app.component('DsfrTag', DsfrTag)
+setup(app => {
+  app.component('DsfrTag', DsfrTag)
+})
 
 export default {
   component: DsfrTable,

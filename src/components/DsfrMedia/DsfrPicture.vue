@@ -19,7 +19,7 @@ export default defineComponent({
     },
     src: {
       type: String,
-      required: true,
+      default: undefined,
     },
     title: {
       type: String,
@@ -47,6 +47,7 @@ export default defineComponent({
       <!-- @slot Slot par défaut pour insérer une image personnalisée (SVG ou autre). Par défaut, insère l’image donnée par la props src -->
       <slot>
         <img
+          v-if="src"
           :src="src"
           class="fr-responsive-img"
           :class="`fr-ratio-${ratio}`"
