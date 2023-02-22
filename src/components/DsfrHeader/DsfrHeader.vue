@@ -232,6 +232,8 @@ export default defineComponent({
           class="fr-header__menu  fr-modal"
           :class="{ 'fr-modal--opened': modalOpened }"
           aria-labelledby="button-menu"
+          role="dialog"
+          aria-modal="true"
         >
           <div class="fr-container">
             <button
