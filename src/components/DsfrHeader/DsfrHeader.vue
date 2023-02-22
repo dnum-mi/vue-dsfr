@@ -98,6 +98,7 @@ export default defineComponent({
       this.modalOpened = false
       this.menuOpened = false
       this.searchModalOpened = false
+      document.getElementById('button-menu')?.focus()
     },
     showMenu () {
       this.modalOpened = true
