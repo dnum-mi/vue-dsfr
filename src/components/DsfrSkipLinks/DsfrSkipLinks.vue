@@ -10,6 +10,13 @@ export default defineComponent({
       required: true,
     },
   },
+  methods: {
+    scrollMeTo (elementId) {
+      const element = document.getElementById(elementId)
+      const top = element?.offsetTop
+      window.scrollTo(0, top)
+    },
+  },
 })
 </script>
 
@@ -28,6 +35,7 @@ export default defineComponent({
           <a
             class="fr-link"
             :href="`#${link.id}`"
+            @click.prevent="scrollMeTo(link.id)"
           >{{ link.text }}</a>
         </li>
       </ul>
