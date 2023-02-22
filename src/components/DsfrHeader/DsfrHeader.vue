@@ -104,6 +104,7 @@ export default defineComponent({
       this.modalOpened = true
       this.menuOpened = true
       this.searchModalOpened = false
+      document.getElementById('close-button')?.focus()
     },
     showSearchModal () {
       this.modalOpened = true
@@ -232,12 +233,13 @@ export default defineComponent({
           id="header-navigation"
           class="fr-header__menu  fr-modal"
           :class="{ 'fr-modal--opened': modalOpened }"
-          aria-labelledby="button-menu"
+          aria-label="Menu modal"
           role="dialog"
           aria-modal="true"
         >
           <div class="fr-container">
             <button
+              id="close-button"
               class="fr-btn fr-btn--close"
               aria-controls="header-navigation"
               data-testid="close-modal-btn"
