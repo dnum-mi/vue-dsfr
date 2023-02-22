@@ -64,6 +64,10 @@ export default defineComponent({
       type: String,
       default: 'Recherche',
     },
+    quickLinksAriaLabel: {
+      type: String,
+      default: 'Menu secondaire',
+    },
     showSearch: Boolean,
   },
 
@@ -204,6 +208,7 @@ export default defineComponent({
               <DsfrHeaderMenuLinks
                 v-if="!menuOpened"
                 :links="quickLinks"
+                :nav-aria-label="quickLinksAriaLabel"
               />
             </div>
             <div
@@ -241,6 +246,7 @@ export default defineComponent({
               <DsfrHeaderMenuLinks
                 v-if="menuOpened"
                 :links="quickLinks"
+                :nav-aria-label="quickLinksAriaLabel"
                 @link-click="onQuickLinkClick"
               />
             </div>
