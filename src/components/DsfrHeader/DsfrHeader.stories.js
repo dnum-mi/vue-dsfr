@@ -49,6 +49,7 @@ export default {
 - \`to\`: Chemin ou objet à passer à \`to\` de \`RouterLink\` (\`'/notification'\` ou \`{ name: 'Notifications' }\` par ex.)
 - \`href\`: URL à passer à \`href\` de la balise \`<a>\` (\`'https://systeme-de-design.gouv.fr\` par ex.) **pour un lien externe uniquement**.
 - \`icon\` Nom de l’icône [Remix Icon](https://remixicon.com/) (ou toute autre icône de [oh-vue-icons](https://oh-vue-icons.netlify.app/)) à afficher (\`'ri-phone-line'\` par ex.)
+- \`target\` La target du lien (\`'_self'\`, \`'_blank'\` par ex.)
 - \`iconRight\` Permet de mettre l’icône à droite (si la valeur est \`true\` ou <em>truthy</em> et que \`icon\` est renseigné )
 - \`iconAttrs\` Ensemble des props/attributs à donner à \`<OhVueIcon>\` (Cf. [Doc](https://oh-vue-icons.netlify.app/docs#props)). Ex. : \`{ scale: 0.9, animation: }\`
 - \`button\`: \`true\` pour avoir une balise \`button\`, \`false\` pour laisser en balise \`a\`
@@ -144,7 +145,7 @@ EnTeteSimple.args = {
   homeTo: '#',
   quickLinks: [
     { label: 'Créer un espace', to: '/space/create', icon: 'ri-add-circle-line', iconAttrs: { scale: 0.9 } },
-    { label: 'Se connecter', to: '/login', class: 'fr-fi-lock-line' },
+    { label: 'Se connecter', to: '/login', class: 'fr-fi-lock-line', target: '_blank' },
     { label: 'S’enregistrer', to: '/signin', icon: 'ri-account-circle-line', iconRight: true, iconAttrs: { animation: 'spin', speed: 'slow' } },
   ],
 }

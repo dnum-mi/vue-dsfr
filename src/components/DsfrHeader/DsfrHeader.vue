@@ -64,6 +64,10 @@ export default defineComponent({
       type: String,
       default: 'Recherche',
     },
+    quickLinksAriaLabel: {
+      type: String,
+      default: 'Menu secondaire',
+    },
     showSearch: Boolean,
   },
 
@@ -83,21 +87,37 @@ export default defineComponent({
     },
   },
 
+  mounted () {
+    document.addEventListener('keydown', this.onKeyDown)
+  },
+  unmounted () {
+    document.removeEventListener('keydown', this.onKeyDown)
+  },
   methods: {
     hideModal () {
       this.modalOpened = false
       this.menuOpened = false
       this.searchModalOpened = false
+      document.getElementById('button-menu')?.focus()
     },
     showMenu () {
       this.modalOpened = true
       this.menuOpened = true
       this.searchModalOpened = false
+      document.getElementById('close-button')?.focus()
     },
     showSearchModal () {
       this.modalOpened = true
       this.menuOpened = false
       this.searchModalOpened = true
+    },
+    onKeyDown (e) {
+      if (e.key === 'Escape') {
+        this.hideModal()
+      }
+    },
+    onQuickLinkClick () {
+      this.hideModal()
     },
   },
 })
@@ -190,6 +210,7 @@ export default defineComponent({
               <DsfrHeaderMenuLinks
                 v-if="!menuOpened"
                 :links="quickLinks"
+                :nav-aria-label="quickLinksAriaLabel"
               />
             </div>
             <div
@@ -212,10 +233,13 @@ export default defineComponent({
           id="header-navigation"
           class="fr-header__menu  fr-modal"
           :class="{ 'fr-modal--opened': modalOpened }"
-          aria-labelledby="button-menu"
+          aria-label="Menu modal"
+          role="dialog"
+          aria-modal="true"
         >
           <div class="fr-container">
             <button
+              id="close-button"
               class="fr-btn fr-btn--close"
               aria-controls="header-navigation"
               data-testid="close-modal-btn"
@@ -227,6 +251,8 @@ export default defineComponent({
               <DsfrHeaderMenuLinks
                 v-if="menuOpened"
                 :links="quickLinks"
+                :nav-aria-label="quickLinksAriaLabel"
+                @link-click="onQuickLinkClick"
               />
             </div>
             <div
