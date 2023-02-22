@@ -15,6 +15,7 @@ export default defineComponent({
       default: () => undefined,
     },
   },
+  emits: ['linkClick'],
 })
 </script>
 
@@ -28,6 +29,7 @@ export default defineComponent({
     >
       <DsfrHeaderMenuLink
         v-bind="quickLink"
+        :on-click="()=>$emit('linkClick')"
       />
     </li>
   </ul>

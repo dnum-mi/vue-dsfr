@@ -83,6 +83,12 @@ export default defineComponent({
     },
   },
 
+  mounted () {
+    document.addEventListener('keydown', this.onKeyDown)
+  },
+  unmounted () {
+    document.removeEventListener('keydown', this.onKeyDown)
+  },
   methods: {
     hideModal () {
       this.modalOpened = false
@@ -98,6 +104,14 @@ export default defineComponent({
       this.modalOpened = true
       this.menuOpened = false
       this.searchModalOpened = true
+    },
+    onKeyDown (e) {
+      if (e.key === 'Escape') {
+        this.hideModal()
+      }
+    },
+    onQuickLinkClick () {
+      this.hideModal()
     },
   },
 })
@@ -227,6 +241,7 @@ export default defineComponent({
               <DsfrHeaderMenuLinks
                 v-if="menuOpened"
                 :links="quickLinks"
+                @link-click="onQuickLinkClick"
               />
             </div>
             <div
