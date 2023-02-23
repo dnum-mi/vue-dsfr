@@ -117,10 +117,14 @@ export default defineComponent({
   </nav>
 </template>
 
-<style src="@gouvfr/dsfr/dist/component/navigation/navigation.main.min.css" />
-
-<style scoped>
+<style>
 .fr-nav__list {
   position: relative;
 }
+
+.fr-menu.fr-collapse--expanded {
+  max-height: none;
+}
 </style>
+
+<style src="@gouvfr/dsfr/dist/component/navigation/navigation.main.min.css" />
