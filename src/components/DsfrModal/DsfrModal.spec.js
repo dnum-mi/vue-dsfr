@@ -1,4 +1,3 @@
-import { vi } from 'vitest'
 import { mount } from '@vue/test-utils'
 
 import { OhVueIcon as VIcon } from 'oh-vue-icons'
