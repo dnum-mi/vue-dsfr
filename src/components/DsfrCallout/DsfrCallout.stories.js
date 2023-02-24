@@ -6,6 +6,9 @@ import DsfrCallout from './DsfrCallout.vue'
 
 addIcons(RiInformationLine)
 
+/**
+ * [Voir quand l’utiliser sur la documentation du DSFR](https://www.systeme-de-design.gouv.fr/elements-d-interface/composants/mise-en-avant)
+ */
 export default {
   component: DsfrCallout,
   title: 'Composants/Mise en Avant - Callout',

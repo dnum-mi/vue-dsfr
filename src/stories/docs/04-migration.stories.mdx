@@ -4,12 +4,14 @@ import { Meta } from '@storybook/addon-docs'
 
 # Migrations
 
-## Migration vers 3.x
+## Migration vers 3.x (depuis 1.x ou 2.x)
 
 La migration de la version 1.x ou 2.x vers la version 3.x nécessite un certain nombre de changements
 dont voici la liste que nous espérons exhaustive.
 
 ### Commun à Vue.js et Nuxt
+
+#### Ajout de la dépendance `@gouvfr/dsfr`
 
 Que vous utilisiez simplement Vue.js ou que vous l’utilisiez avec Nuxt, il faudra ajouter dans
 vos dépendances la bibliothèque officielle du DSFR pour ajouter le CSS de cette bibliothèque.
@@ -30,119 +32,50 @@ Ou
 yarn add @gouvfr/dsfr
 ```
 
+#### Le dossier `/public/icons` est désormais inutile
+
+Depuis la version 1.5, il fallait copier et coller les icones du DSFR dans le dossier `/public/icons`.
+Ce n’est plus nécessaire, vous pouvez donc le supprimer.
 
 ### Vue.js (sans Nuxt)
 
-Il faut ajouter le CSS du DSFR dans le fichier qui est le point d’entrée de votre application (en général `main.css`)
+#### Ajout du CSS du DSFR
 
-Il faut soit utiliser tout le CSS de la bibliothèque
+Il faut ajouter le CSS du DSFR dans le fichier qui est le point d’entrée de votre application (en général `src/main.js`)
+
+##### Méthode simple
+
+Utiliser tout le CSS des deux bibliothèques :
+
 ```javascript
 import '@gouvfr/dsfr/dist/dsfr.min.css'
+import '@gouvminint/vue-dsfr/styles'
 ```
-et cela devrait suffire ;
 
-soit utiliser :
-- le core
-- le CSS de VueDsfr
+##### Méthode pour un bundle optimisé
+
+Utiliser le minimum de CSS du DSFR :
+
+- le **core**
+- les **styles des liens** du DSFR
+- les **classes utilitaires** du DSFR
+- le **CSS de VueDsfr**
 - éventuellement d’autres parties du CSS (notamment pour les icônes, cf. [la documentation officielle du DSFR](https://www.systeme-de-design.gouv.fr/elements-d-interface/fondamentaux-techniques/icones))
 
 ```javascript
-import '@gouvfr/dsfr/dist/core/core.main.min.css'
-import '@gouvminint/vue-dsfr/styles'
-```
+import '@gouvfr/dsfr/dist/core/core.main.min.css'            // Le CSS minimal du DSFR
+import '@gouvfr/dsfr/dist/component/link/link.main.min.css'  // Styles des liens
+import '@gouvfr/dsfr/dist/utility/utility.main.min.css'      // Classes utilitaires : les composants de VueDsfr en ont besoin
+import '@gouvminint/vue-dsfr/styles'                         // Les styles propres aux composants de VueDsfr
 
-Si le poids du bundle final est vraiment trop important, au lieu d’importer `'@gouvminint/vue-dsfr/styles'`, il est possible
-de n’importer que le CSS des composants utilisés (cf. [la documentation officielle du DSFR](https://www.systeme-de-design.gouv.fr/comment-utiliser-le-dsfr/developpeurs/prise-en-main-du-dsfr))
-
-```javascript
-import { createApp } from 'vue'
-
-import {
-  RiCheckboxCircleLine,
-  RiNotification3Line,
-} from 'oh-vue-icons/icons/ri/index.js'
-
-import '@gouvminint/vue-dsfr/styles'
-
-import VueDsfr from '@/index.js'
-import router from './router.js'
-
-import App from './App.vue'
-
-createApp(App)
-  .use(router)
-  .use(VueDsfr, { icons: [RiCheckboxCircleLine, RiNotification3Line] })
-  .mount('#app')
-
-window.dsfr = {
-  verbose: true,
-  mode: 'manual',
-}
-```
-
-Après :
-
-```javascript
-import { createApp } from 'vue'
-
-import {
-  RiCheckboxCircleLine,
-  RiNotification3Line,
-} from 'oh-vue-icons/icons/ri/index.js'
-
-import '@gouvfr/dsfr/dist/dsfr.min.css'                    // Le CSS du DSFR
-import '@gouvfr/dsfr/dist/utility/icons/icons.min.css'     // Facultatif : Si des icônes sont utilisées avec <span class="fr-icon-..." />
-
-import VueDsfr from '@/index.js'
-import router from './router.js'
-
-import App from './App.vue'
-
-createApp(App)
-  .use(router)
-  .use(VueDsfr, { icons: [RiCheckboxCircleLine, RiNotification3Line] })
-  .mount('#app')
-
-window.dsfr = {
-  verbose: true,
-  mode: 'manual',
-}
-```
-
-Ou
-
-```javascript
-import { createApp } from 'vue'
-
-import {
-  RiCheckboxCircleLine,
-  RiNotification3Line,
-} from 'oh-vue-icons/icons/ri/index.js'
-
-import '@gouvfr/dsfr/dist/core/core.main.min.css'       // Le minimum de CSS pour le DSFR
-import '@gouvminint/vue-dsfr/styles'                    // Les styles propres à chaque composant
-
-import '@gouvfr/dsfr/dist/utility/icons/icons.min.css'  // Facultatif : Si des icônes sont utilisées avec <span class="fr-icon-..." />
-
-import VueDsfr from '@/index.js'
-import router from './router.js'
-
-import App from './App.vue'
-
-createApp(App)
-  .use(router)
-  .use(VueDsfr, { icons: [RiCheckboxCircleLine, RiNotification3Line] })
-  .mount('#app')
-
-window.dsfr = {
-  verbose: true,
-  mode: 'manual',
-}
+import '@gouvfr/dsfr/dist/component/form/form.min.css'       // Facultatif : Si l’application utilise des éléments de formulaire
+import '@gouvfr/dsfr/dist/scheme/scheme.min.css'             // Facultatif : Si les thèmes sont utilisés (thème sombre, thème en bernes)
+import '@gouvfr/dsfr/dist/utility/icons/icons.min.css'       // Facultatif : Si des icônes sont utilisées avec les classes "fr-icon-..."
 ```
 
 ### Nuxt 3
 
-Pour l’utilisation de VueDSFR 3 avec Nuxt 3, il faut changer le `nuxt.config.ts` :
+Pour l’utilisation de VueDsfr 3 avec Nuxt 3, il faut changer le `nuxt.config.ts` :
 
 Avant :
 
@@ -156,7 +89,6 @@ export default defineNuxtConfig({
     '**/*.spec.*',
     '**/*.cy.*',
   ],
-  srcDir: 'client/',
 })
 ```
 
@@ -165,15 +97,16 @@ Après :
 ```javascript
 export default defineNuxtConfig({
   css: [
-    '@gouvfr/dsfr/dist/dsfr.min.css',                  // Le CSS du DSFR
-    '@gouvfr/dsfr/dist/utility/icons/icons.min.css',   // Facultatif : Si des icônes sont utilisées avec <span class="fr-icon-..." />
+    '@gouvfr/dsfr/dist/dsfr.min.css',                     // Le CSS du DSFR
+    '@gouvminint/vue-dsfr/styles',                        // Les styles propres aux composants de VueDsfr
+
+    '@gouvfr/dsfr/dist/utility/icons/icons.min.css'       // Facultatif : Si des icônes sont utilisées avec les classes "fr-icon-..."
   ],
   ignore: [
     '**/*.test.*',
     '**/*.spec.*',
     '**/*.cy.*',
   ],
-  srcDir: 'client/',
 })
 ```
 
@@ -182,15 +115,19 @@ Ou
 ```javascript
 export default defineNuxtConfig({
   css: [
-    '@gouvfr/dsfr/dist/core/core.main.min.css',        // Le CSS du DSFR
-    '@gouvminint/vue-dsfr/styles',                     // Le CSS de VueDSFR
-    '@gouvfr/dsfr/dist/utility/icons/icons.min.css',   // Facultatif : Si des icônes sont utilisées avec <span class="fr-icon-..." />
+    '@gouvfr/dsfr/dist/core/core.main.min.css',           // Le CSS du DSFR
+    '@gouvfr/dsfr/dist/utility/utility.main.min.css'      // Classes utilitaires : les composants de VueDsfr en ont besoin
+    '@gouvminint/vue-dsfr/styles',                        // Les styles propres aux composants de VueDsfr
+
+    '@gouvfr/dsfr/dist/component/link/link.main.min.css'  // Styles des liens
+    '@gouvfr/dsfr/dist/component/form/form.min.css'       // Facultatif : Si l’application utilise des éléments de formulaire
+    '@gouvfr/dsfr/dist/scheme/scheme.min.css'             // Facultatif : Si les thèmes sont utilisés (thème sombre, thème en bernes)
+    '@gouvfr/dsfr/dist/utility/icons/icons.min.css',      // Facultatif : Si des icônes sont utilisées avec les classes "fr-icon-..."
   ],
   ignore: [
     '**/*.test.*',
     '**/*.spec.*',
     '**/*.cy.*',
   ],
-  srcDir: 'client/',
 })
 ```

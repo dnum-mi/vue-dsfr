@@ -1,5 +1,8 @@
 import DsfrFileDownloadList from './DsfrFileDownloadList.vue'
 
+/**
+ * [Voir quand l’utiliser sur la documentation du DSFR](https://www.systeme-de-design.gouv.fr/elements-d-interface/composants/telechargement-de-fichier)
+ */
 export default {
   component: DsfrFileDownloadList,
   title: 'Composants/Téléchargement de Fichier - DsfrFileDownloadList',

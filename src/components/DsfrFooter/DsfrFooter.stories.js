@@ -7,6 +7,9 @@ import DsfrFooterLinkList from './DsfrFooterLinkList.vue'
 
 addIcons(RiExternalLinkLine)
 
+/**
+ * [Voir quand l’utiliser sur la documentation du DSFR](https://www.systeme-de-design.gouv.fr/elements-d-interface/composants/pied-de-page)
+ */
 export default {
   component: DsfrFooter,
   title: 'Composants/Pied de page - DsfrFooter',

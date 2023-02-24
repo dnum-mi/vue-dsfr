@@ -1,6 +1,9 @@
 import DsfrAccordion from './DsfrAccordion.vue'
 import DsfrAccordionsGroup from './DsfrAccordionsGroup.vue'
 
+/**
+ * [Voir quand l’utiliser sur la documentation du DSFR](https://www.systeme-de-design.gouv.fr/elements-d-interface/composants/accordeon/)
+ */
 export default {
   component: DsfrAccordion,
   title: 'Composants/Accordéon - DsfrAccordion',

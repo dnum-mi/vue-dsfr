@@ -9,6 +9,9 @@ import { RiQuestionFill } from 'oh-vue-icons/icons/ri/index.js'
 
 addIcons(RiQuestionFill)
 
+/**
+ * [Voir quand l’utiliser sur la documentation du DSFR](https://www.systeme-de-design.gouv.fr/elements-d-interface/composants/champ-de-saisie)
+ */
 export default {
   component: DsfrInput,
   title: 'Composants/Champ de saisie/Champ simple - DsfrInput',

@@ -100,7 +100,3 @@ export default defineComponent({
 </template>
 
 <style src="@gouvfr/dsfr/dist/component/alert/alert.main.min.css" />
-
-<style scoped>
-
-</style>

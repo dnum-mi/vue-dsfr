@@ -1,7 +1,7 @@
 import { mergeConfig } from 'vite'
 
 module.exports = {
-  "stories": ["../src/**/*.stories.@(mdx|js|jsx|ts|tsx)"],
+  "stories": ["../src/**/*.@(mdx|stories.@(js|jsx|ts|tsx))"],
   "addons": ["@storybook/addon-links", "@storybook/addon-essentials", {
     name: '@storybook/addon-postcss',
     options: {
@@ -18,9 +18,13 @@ module.exports = {
   docs: {
     autodocs: true
   },
-  async viteFinal(config, { configType }) {
+  async viteFinal(config, {
+    configType
+  }) {
     return mergeConfig(config, {
-      define: { 'process.env': {} },
+      define: {
+        'process.env': {}
+      }
     });
-  },
+  }
 };

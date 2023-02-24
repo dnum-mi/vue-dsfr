@@ -1,6 +1,9 @@
 import DsfrInput from './DsfrInput.vue'
 import DsfrInputGroup from './DsfrInputGroup.vue'
 
+/**
+ * [Voir quand l’utiliser sur la documentation du DSFR](https://www.systeme-de-design.gouv.fr/elements-d-interface/composants/champ-de-saisie)
+ */
 export default {
   component: DsfrInput,
   title: 'Composants/Champ de saisie/Champ avec message associé - DsfrInputGroup',
