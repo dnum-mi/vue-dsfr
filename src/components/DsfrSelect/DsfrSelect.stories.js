@@ -1,5 +1,8 @@
 import DsfrSelect from './DsfrSelect.vue'
 
+/**
+ * [Voir quand l’utiliser sur la documentation du DSFR](https://www.systeme-de-design.gouv.fr/elements-d-interface/composants/liste-deroulante)
+ */
 export default {
   component: DsfrSelect,
   title: 'Composants/Liste déroulante - DsfrSelect',

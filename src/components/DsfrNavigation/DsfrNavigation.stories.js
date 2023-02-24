@@ -16,6 +16,9 @@ setup(app => {
   app.component('RouterLink', RouterLink)
 })
 
+/**
+ * [Voir quand l’utiliser sur la documentation du DSFR](https://www.systeme-de-design.gouv.fr/elements-d-interface/composants/navigation-principale)
+ */
 export default {
   component: DsfrNavigation,
   title: 'Composants/Navigation Principale/1. Navigation Principale - DsfrNavigation',

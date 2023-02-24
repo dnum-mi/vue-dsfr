@@ -1,5 +1,8 @@
 import DsfrCheckbox from './DsfrCheckbox.vue'
 
+/**
+ * [Voir quand l’utiliser sur la documentation du DSFR](https://www.systeme-de-design.gouv.fr/elements-d-interface/composants/case-a-cocher)
+ */
 export default {
   component: DsfrCheckbox,
   title: 'Composants/Case à cocher/Case à cocher - DsfrCheckbox',

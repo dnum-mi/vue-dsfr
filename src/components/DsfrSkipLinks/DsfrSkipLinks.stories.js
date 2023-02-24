@@ -1,5 +1,8 @@
 import DsfrSkipLinks from './DsfrSkipLinks.vue'
 
+/**
+ * [Voir quand l’utiliser sur la documentation du DSFR](https://www.systeme-de-design.gouv.fr/elements-d-interface/composants/lien-d-evitement)
+ */
 export default {
   component: DsfrSkipLinks,
   title: 'Composants/Liens d’évitement - Skip links',
