@@ -45,7 +45,7 @@ Ce projet de bibliothèque de composants
 
 - reproduit le plus fidèlement possible les composants du [DSFR](https://www.systeme-de-design.gouv.fr/)
 - est fait avec [Vue 3](https://vuejs.org)
-- est utilisable facilement en tant que plugin Vue 3
+- est utilisable facilement en tant que plugin Vue 3 ou Nuxt 3
 - exporte les types (TypeScript) du plugin, des composants et des composables
 - est utilisable facilement dans un projet [npm](https://www.npmjs.com/package/@gouvminint/vue-dsfr)
 - met à disposition deux parties dans la documentation :
@@ -61,15 +61,14 @@ Ce projet de bibliothèque de composants
 La bibliothèque est faite avec [Vue 3](https://vuejs.org/) et [Vue-router 4](https://router.vuejs.org/).
 
 Le JavaScript est linté avec [ESLint](https://eslint.org/) et formatté selon [StandardJS](https://standardjs.org)
-avec une seule modification : les virgules
-doivent être ajoutées pour tout ce qui est en multiligne (`"comma-dangle": ["error", "always-multiline"]`
-cf. [Documentation ESLint]((https://eslint.org/docs/rules/comma-dangle#options))).
+avec une seule modification : les virgules doivent être ajoutées pour tout ce qui est en multiligne
+(`"comma-dangle": ["error", "always-multiline"]` cf. [Documentation ESLint]((https://eslint.org/docs/rules/comma-dangle#options))).
 
 Le serveur de développement est celui de [Storybook](https://storybook.js.org/), toute la documentation est faite avec
 Storybook, et le site pour tester les composants est le storybook lui-même.
 
 Le CSS est écrit avec [PostCSS](https://postcss.org/) et notamment
-le plugin [postcss-preset-env](https://preset-env.cssdb.org/) (mais très peu de CSS est propre à la bibliothèque).
+le plugin [postcss-preset-env](https://preset-env.cssdb.org/) (mais très peu de CSS est propre à la bibliothèque).
 
 Storybook est configuré pour utiliser PostCSS.
 
@@ -77,7 +76,8 @@ Les tests sont faits avec [Vitest](https://vitest.dev) et [Vue Testing Library](
 et des tests d’accessibilité sont faits avec [Cypress](https://www.cypress.io/) grâce aux
 [tests de composants](https://docs.cypress.io/guides/component-testing/introduction).
 
-Les icônes sont toujours celles de [RemixIcon](https://remixicon.com/), grâce au DSFR et parfois grâce à [Oh, Vue Icons!](https://github.com/Renovamen/oh-vue-icons/)
+Les icônes sont toujours celles de [RemixIcon](https://remixicon.com/), grâce au DSFR et parfois grâce à
+[Oh, Vue Icons!](https://github.com/Renovamen/oh-vue-icons/)
 (qui permet d’ajouter d’[autres icônes](/?path=/story/fondamentaux-4-1-icônes-personnalisées--page))
 
 La bibliothèque est mise en paquet grâce à [Vite](https://vitejs.dev/) en [mode bibliothèque](https://vitejs.dev/guide/build.html#library-mode).
