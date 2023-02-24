@@ -1,5 +1,17 @@
-import DsfrTranscription from './DsfrTranscription.vue'
+import { setup } from '@storybook/vue3'
 
+import DsfrTranscription from './DsfrTranscription.vue'
+import DsfrModal from '../DsfrModal/DsfrModal.vue'
+import { OhVueIcon as VIcon } from 'oh-vue-icons'
+
+setup(app => {
+  app.component('DsfrModal', DsfrModal)
+  app.component('VIcon', VIcon)
+})
+
+/**
+ * [Voir quand l’utiliser sur la documentation du DSFR](https://www.systeme-de-design.gouv.fr/elements-d-interface/composants/transcription)
+ */
 export default {
   component: DsfrTranscription,
   title: 'Composants/Transcription - DsfrTranscription',
@@ -24,7 +36,7 @@ export default {
 }
 
 export const Transcription = (args) => ({
-  components: { DsfrTranscription },
+  components: { DsfrTranscription, DsfrModal },
   data () {
     return args
   },

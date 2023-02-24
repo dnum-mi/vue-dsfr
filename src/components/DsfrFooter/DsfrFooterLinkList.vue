@@ -33,13 +33,13 @@ export default defineComponent({
           target="_blank"
           :to="link.to"
         >{{ link.label }}</a>
-        <router-link
+        <RouterLink
           v-else
           class="fr-footer__top-link"
           :to="link.to"
         >
           {{ link.label }}
-        </router-link>
+        </RouterLink>
       </li>
     </ul>
   </div>

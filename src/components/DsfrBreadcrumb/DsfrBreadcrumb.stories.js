@@ -1,5 +1,8 @@
 import DsfrBreadcrumb from './DsfrBreadcrumb.vue'
 
+/**
+ * [Voir quand l’utiliser sur la documentation du DSFR](https://www.systeme-de-design.gouv.fr/elements-d-interface/composants/fil-d-ariane)
+ */
 export default {
   component: DsfrBreadcrumb,
   title: 'Composants/Fil d’Ariane - DsfrBreadcrumb',

@@ -14,21 +14,32 @@ export default defineComponent({
       type: Array,
       default: () => undefined,
     },
+    navAriaLabel: {
+      type: String,
+      default: 'Menu secondaire',
+    },
   },
+  emits: ['linkClick'],
 })
 </script>
 
 <template>
-  <ul
-    class="fr-btns-group"
+  <nav
+    role="navigation"
+    :aria-label="navAriaLabel"
   >
-    <li
-      v-for="(quickLink, index) in links"
-      :key="index"
+    <ul
+      class="fr-btns-group"
     >
-      <DsfrHeaderMenuLink
-        v-bind="quickLink"
-      />
-    </li>
-  </ul>
+      <li
+        v-for="(quickLink, index) in links"
+        :key="index"
+      >
+        <DsfrHeaderMenuLink
+          v-bind="quickLink"
+          :on-click="()=>$emit('linkClick')"
+        />
+      </li>
+    </ul>
+  </nav>
 </template>

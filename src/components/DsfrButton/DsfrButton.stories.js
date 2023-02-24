@@ -6,6 +6,9 @@ import DsfrButton from './DsfrButton.vue'
 
 addIcons(RiCheckboxCircleLine, RiSearchLine)
 
+/**
+ * [Voir quand l’utiliser sur la documentation du DSFR](https://www.systeme-de-design.gouv.fr/elements-d-interface/composants/bouton)
+ */
 export default {
   component: DsfrButton,
   title: 'Composants/Boutons/Boutons - DsfrButton',
@@ -86,6 +89,8 @@ BoutonPrimaire.args = {
   icon: '',
   iconOnly: false,
   iconRight: false,
+  noOutline: false,
+  size: undefined,
 }
 
 export const BoutonPrimaireAvecIcone = (args) => ({
@@ -117,6 +122,8 @@ BoutonPrimaireAvecIcone.args = {
   disabled: false,
   icon: 'ri-search-line',
   iconRight: false,
+  noOutline: false,
+  size: undefined,
 }
 
 export const BoutonSecondaire = (args) => ({
@@ -146,6 +153,8 @@ BoutonSecondaire.args = {
   disabled: false,
   dark: false,
   secondary: true,
+  noOutline: false,
+  size: undefined,
 }
 
 export const BoutonTertiaire = (args) => ({
@@ -175,6 +184,8 @@ BoutonTertiaire.args = {
   disabled: false,
   dark: false,
   tertiary: true,
+  noOutline: false,
+  size: undefined,
 }
 
 export const BoutonTertiaireSansBordure = (args) => ({
@@ -205,6 +216,7 @@ BoutonTertiaireSansBordure.args = {
   dark: false,
   tertiary: true,
   noOutline: true,
+  size: undefined,
 }
 
 export const SuiteDeBoutons = (args) => ({

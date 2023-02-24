@@ -1,5 +1,8 @@
 import DsfrCard from './DsfrCard.vue'
 
+/**
+ * [Voir quand l’utiliser sur la documentation du DSFR](https://www.systeme-de-design.gouv.fr/elements-d-interface/composants/carte)
+ */
 export default {
   component: DsfrCard,
   title: 'Composants/Carte - DsfrCard',
@@ -63,7 +66,7 @@ export const Card = (args) => ({
       :title="title"
       :horizontal="horizontal"
       :no-arrow="noArrow"
-      :is="titleTag"
+      :title-tag="titleTag"
     />
   `,
 
@@ -79,6 +82,7 @@ Card.args = {
   imgSrc: 'https://placekitten.com/300/200',
   link: 'https://www.systeme-de-design.gouv.fr/',
   title: 'Qu’est-ce que le Pass Culture et comment l’obtenir ?',
+  titleTag: undefined,
   noArrow: false,
   horizontal: false,
 }

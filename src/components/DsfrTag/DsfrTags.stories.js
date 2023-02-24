@@ -17,6 +17,9 @@ addIcons(
   RiArrowRightLine,
 )
 
+/**
+ * [Voir quand l’utiliser sur la documentation du DSFR](https://www.systeme-de-design.gouv.fr/elements-d-interface/composants/tag)
+ */
 export default {
   component: DsfrTags,
   title: 'Composants/Étiquettes - DsfrTags',
@@ -51,7 +54,7 @@ export default {
     },
     link: {
       control: 'text',
-      description: 'URL complète pour un lien externe, ou chaîne de caractère ou objet à donner à `to` de `router-link` pour un lien interne',
+      description: 'URL complète pour un lien externe, ou chaîne de caractère ou objet à donner à `to` de `RouterLink` pour un lien interne',
     },
     small: {
       control: 'boolean',
@@ -61,7 +64,7 @@ export default {
       control: 'text',
       description: `Balise ou composant à utiliser (e.g. : \`"p"\`, \`"button"\`, \`"strong"\`, \`"em"\`).
 - \`"p"\` par défaut
-- si \`link\` est indiqué, le défaut est \`"a"\` si le lien est externe et \`"router-link"\`  si le lien est interne
+- si \`link\` est indiqué, le défaut est \`"a"\` si le lien est externe et \`"RouterLink"\`  si le lien est interne
 - si \`disabled\` est à \`true\` et qu’il n’y a pas de lien, le défaut est \`"button".\`
       `,
     },

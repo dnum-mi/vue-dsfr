@@ -1,5 +1,8 @@
 import DsfrCheckbox from './DsfrCheckbox.vue'
 
+/**
+ * [Voir quand l’utiliser sur la documentation du DSFR](https://www.systeme-de-design.gouv.fr/elements-d-interface/composants/case-a-cocher)
+ */
 export default {
   component: DsfrCheckbox,
   title: 'Composants/Case à cocher/Case à cocher - DsfrCheckbox',
@@ -169,6 +172,7 @@ export const CheckboxAvecErreur = (args) => ({
         :required="required"
         :hint="hint"
         :error-message="errorMessage"
+        :name="name || 'name-error'"
         v-model="modelValue"
       />
   `,
@@ -186,6 +190,7 @@ CheckboxAvecErreur.args = {
   label: 'Checkbox 1',
   hint: 'Description 1',
   errorMessage: 'Erreur formulaire',
+  name: 'cb-error',
 }
 
 export const CheckboxAvecSucces = (args) => ({
@@ -199,6 +204,7 @@ export const CheckboxAvecSucces = (args) => ({
         :disabled="disabled"
         :hint="hint"
         :valid-message="validMessage"
+        :name="name || 'name-success'"
         v-model="modelValue"
       />
   `,
@@ -216,4 +222,5 @@ CheckboxAvecSucces.args = {
   label: 'Checkbox 1',
   hint: 'Description 1',
   validMessage: 'Formulaire valide',
+  name: 'cb-success',
 }

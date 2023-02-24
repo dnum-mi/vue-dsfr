@@ -6,6 +6,9 @@ import DsfrCallout from './DsfrCallout.vue'
 
 addIcons(RiInformationLine)
 
+/**
+ * [Voir quand l’utiliser sur la documentation du DSFR](https://www.systeme-de-design.gouv.fr/elements-d-interface/composants/mise-en-avant)
+ */
 export default {
   component: DsfrCallout,
   title: 'Composants/Mise en Avant - Callout',
@@ -58,11 +61,11 @@ export const MiseEnAvantSimple = (args) => ({
 
   template: `
     <DsfrCallout
-      :title="title"
+      :title="\`\${title} (\${titleTag || 'h3'})\`"
       :content="content"
       :button="button"
       :icon="icon"
-      :is="titleTag"
+      :title-tag="titleTag"
     />
   `,
 
@@ -76,6 +79,7 @@ MiseEnAvantSimple.args = {
   button: undefined,
   icon: '',
   content: 'Lorem ipsum dolor sit amet, consectetur adipiscing, incididunt, ut labore et dol',
+  titleTag: undefined,
 }
 
 export const MiseEnAvant = (args) => ({
@@ -96,10 +100,11 @@ export const MiseEnAvant = (args) => ({
 
   template: `
     <DsfrCallout
-      :title="title"
+      :title="\`\${title} (\${titleTag || 'h3'})\`"
       :content="content"
       :button="button"
       :icon="icon"
+      :title-tag="titleTag"
     />
   `,
 
@@ -115,4 +120,5 @@ MiseEnAvant.args = {
   },
   icon: 'ri-information-line',
   content: 'Lorem ipsum dolor sit amet, consectetur adipiscing, incididunt, ut labore et dol',
+  titleTag: 'h2',
 }

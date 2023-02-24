@@ -49,10 +49,10 @@ export default defineComponent({
         class="fr-hint-text"
         :class="hintClass"
       >
-      {{ hint }}
+        {{ hint }}
         <!-- @slot Slot pour le contenu de l’indice (sera dans `<span class="fr-hint-text">` qui sera dans `</legend>`). Une **props du même nom est utilisable pour du texte simple** sans mise en forme. -->
-      <slot name="hint" />
-    </span>
+        <slot name="hint" />
+      </span>
     </div>
     <!-- @slot Slot par défaut pour le contenu du fieldset (sera dans `<fieldset>`, après `</legend>`) -->
     <div class="fr-fieldset__element">

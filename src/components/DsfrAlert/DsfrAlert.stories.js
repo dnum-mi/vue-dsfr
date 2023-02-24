@@ -6,6 +6,9 @@ import { RiCloseLine } from 'oh-vue-icons/icons/ri/index.js'
 
 addIcons(RiCloseLine)
 
+/**
+ * [Voir quand l’utiliser sur la documentation du DSFR](https://www.systeme-de-design.gouv.fr/elements-d-interface/composants/alerte)
+ */
 export default {
   component: DsfrAlert,
   title: 'Composants/Alertes - DsfrAlert',
@@ -91,6 +94,7 @@ Alerte.args = {
   small: false,
   closed: false,
   closeable: true,
+  titleTag: undefined,
 }
 
 export const Alertes = (args) => ({

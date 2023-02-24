@@ -1,5 +1,8 @@
 import DsfrTile from './DsfrTile.vue'
 
+/**
+ * [Voir quand l’utiliser sur la documentation du DSFR](https://www.systeme-de-design.gouv.fr/elements-d-interface/composants/tuile)
+ */
 export default {
   component: DsfrTile,
   title: 'Composants/Tuile - DsfrTile',
@@ -26,7 +29,7 @@ export default {
     },
     to: {
       control: 'text',
-      description: 'Lien vers lequel la tuile pointe. Peut être une string ou objet à donner à `router-link` ou un lien externe (`string` commençant par `"http"`)',
+      description: 'Lien vers lequel la tuile pointe. Peut être une string ou objet à donner à `RouterLink` ou un lien externe (`string` commençant par `"http"`)',
     },
     titleTag: {
       control: 'text',
@@ -50,11 +53,10 @@ export const TuileSimple = (args) => ({
     <DsfrTile
       :title="title"
       :imgSrc="imgSrc"
-      :rows="rows"
       :description="description"
       :horizontal="horizontal"
       :to="to"
-      :is="titleTag"
+      :title-tag="titleTag"
     />
   `,
   mounted () {
@@ -68,5 +70,6 @@ TuileSimple.args = {
   imgSrc: 'http://placekitten.com/g/200/200',
   description: 'Une tuile absolument formidable',
   horizontal: false,
-  to: '',
+  to: '#',
+  titleTag: 'h2',
 }

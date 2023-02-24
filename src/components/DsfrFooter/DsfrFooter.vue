@@ -184,15 +184,15 @@ export default defineComponent({
     <div class="fr-container">
       <div class="fr-footer__body">
         <div class="fr-footer__brand fr-enlarge-link">
-          <router-link
+          <RouterLink
             :to="homeLink"
             title="Retour à l’accueil"
           >
             <DsfrLogo
               :logo-text="logoText"
             />
-          </router-link>
-          <router-link
+          </RouterLink>
+          <RouterLink
             class="fr-footer__brand-link"
             :to="operatorTo"
             :title="operatorLinkText"
@@ -204,7 +204,7 @@ export default defineComponent({
               :src="operatorImgSrc"
               :alt="operatorImgAlt"
             >
-          </router-link>
+          </RouterLink>
         </div>
         <div class="fr-footer__content">
           <p
@@ -243,20 +243,20 @@ export default defineComponent({
             :key="index"
             class="fr-footer__bottom-item"
           >
-            <router-link
+            <RouterLink
               class="fr-footer__bottom-link"
               :to="link.to"
               :data-testid="link.to"
             >
               {{ link.label }}
-            </router-link>
+            </RouterLink>
           </li>
         </ul>
         <div class="fr-footer__bottom-copy">
           <p>
             {{ licenceText }}
             <component
-              :is="isExternalLink ? 'a' : 'router-link'"
+              :is="isExternalLink ? 'a' : 'RouterLink'"
               class="fr-link-licence  no-content-after"
               :to="routerLinkLicenceTo"
               :href="aLicenceHref"

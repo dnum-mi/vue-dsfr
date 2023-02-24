@@ -1,6 +1,8 @@
 import { render } from '@testing-library/vue'
+import { OhVueIcon as VIcon } from 'oh-vue-icons'
 
 import DsfrVideo from './DsfrVideo.vue'
+import DsfrModal from '../DsfrModal/DsfrModal.vue'
 
 describe('DsfrVideo', () => {
   it('should render a div with a small video with transcription', () => {
@@ -12,6 +14,12 @@ describe('DsfrVideo', () => {
 
     // When
     const { container, getByText } = render(DsfrVideo, {
+      global: {
+        components: {
+          VIcon,
+          DsfrModal,
+        },
+      },
       props: {
         size,
         format4x3,
@@ -36,6 +44,12 @@ describe('DsfrVideo', () => {
 
     // When
     const { container, getByText } = render(DsfrVideo, {
+      global: {
+        components: {
+          VIcon,
+          DsfrModal,
+        },
+      },
       props: {
         src,
         legend,

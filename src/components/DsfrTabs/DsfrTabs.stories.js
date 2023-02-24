@@ -9,6 +9,9 @@ import DsfrAccordion from '../DsfrAccordion/DsfrAccordion.vue'
 
 addIcons(RiCheckboxCircleLine)
 
+/**
+ * [Voir quand l’utiliser sur la documentation du DSFR](https://www.systeme-de-design.gouv.fr/elements-d-interface/composants/onglet)
+ */
 export default {
   component: DsfrTabs,
   title: 'Composants/Onglets - DsfrTabs',

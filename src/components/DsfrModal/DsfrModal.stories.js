@@ -1,6 +1,20 @@
 import DsfrModal from './DsfrModal.vue'
 import DsfrButton from '../DsfrButton/DsfrButton.vue'
 
+import { OhVueIcon as VIcon, addIcons } from 'oh-vue-icons'
+
+import { RiCheckboxCircleLine } from 'oh-vue-icons/icons/ri/index.js'
+import { setup } from '@storybook/vue3'
+
+addIcons(RiCheckboxCircleLine)
+
+setup(app => {
+  app.component('VIcon', VIcon)
+})
+
+/**
+ * [Voir quand l’utiliser sur la documentation du DSFR](https://www.systeme-de-design.gouv.fr/elements-d-interface/composants/modale)
+ */
 export default {
   component: DsfrModal,
   title: 'Composants/Modale - DsfrModal',
@@ -46,6 +60,7 @@ export const Modal = (args) => ({
   components: {
     DsfrModal,
     DsfrButton,
+    VIcon,
   },
 
   data () {
@@ -92,6 +107,8 @@ Modal.args = {
   dark: false,
   opened: false,
   title: 'Titre de la modale',
+  isAlert: false,
+  icon: 'ri-checkbox-circle-line',
   actions: [
     {
       label: 'Valider',

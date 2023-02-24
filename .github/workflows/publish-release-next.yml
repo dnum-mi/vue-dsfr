@@ -2,12 +2,12 @@ name: Release
 on:
   push:
     branches:
-      - beta
+      - next
 
 jobs:
   release:
     name: Release
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-20.04
     steps:
       - name: Checkout
         uses: actions/checkout@v2

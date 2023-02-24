@@ -31,7 +31,7 @@ declare const _default: import('vue').DefineComponent<{
         default: undefined;
     };
 }, unknown, unknown, {
-    is(): 'a' | 'button' | 'router-link';
+    is(): 'a' | 'button' | 'RouterLink';
     isPathString(): boolean;
     isExternalLink(): any;
     actualHref(): any;

@@ -1,5 +1,8 @@
 import DsfrLanguageSelector from './DsfrLanguageSelector.vue'
 
+/**
+ * [Voir quand l’utiliser sur la documentation du DSFR](https://www.systeme-de-design.gouv.fr/elements-d-interface/composants/selecteur-de-langue)
+ */
 export default {
   component: DsfrLanguageSelector,
   title: 'Composants/Sélecteur de langues - DsfrLanguageSelector',
@@ -38,7 +41,8 @@ export const SelecteurDeLangue = (args) => ({
     <DsfrLanguageSelector
       :id="id"
       :languages="languages"
-      @select="onSelect($event)"
+      :currentLanguage="currentLanguage"
+      @select="currentLanguage = $event.codeIso"
     />
   `,
   mounted () {
@@ -47,7 +51,9 @@ export const SelecteurDeLangue = (args) => ({
 })
 SelecteurDeLangue.args = {
   id: 'translate-1',
+  currentLanguage: 'fr',
   languages: [
+    { label: 'Français', codeIso: 'fr' },
     { label: 'English', codeIso: 'en' },
     { label: 'Deutsch', codeIso: 'de' },
     { label: 'Dutch', codeIso: 'nl' },
