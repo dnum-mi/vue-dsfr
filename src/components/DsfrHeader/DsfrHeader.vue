@@ -160,7 +160,7 @@ export default defineComponent({
               >
                 <button
                   v-if="showSearch"
-                  class="fr-btn"
+                  class="fr-btn  fr-btn--search"
                   aria-controls="header-search"
                   aria-label="Recherche"
                   title="Recherche"
@@ -207,11 +207,13 @@ export default defineComponent({
               v-if="quickLinks && quickLinks.length"
               class="fr-header__tools-links"
             >
-              <DsfrHeaderMenuLinks
-                v-if="!menuOpened"
-                :links="quickLinks"
-                :nav-aria-label="quickLinksAriaLabel"
-              />
+              <nav role="navigation">
+                <DsfrHeaderMenuLinks
+                  v-if="!menuOpened"
+                  :links="quickLinks"
+                  :nav-aria-label="quickLinksAriaLabel"
+                />
+              </nav>
             </div>
             <div
               v-if="showSearch"
@@ -248,12 +250,15 @@ export default defineComponent({
               Fermer
             </button>
             <div class="fr-header__menu-links">
-              <DsfrHeaderMenuLinks
-                v-if="menuOpened"
-                :links="quickLinks"
-                :nav-aria-label="quickLinksAriaLabel"
-                @link-click="onQuickLinkClick"
-              />
+              <nav role="navigation">
+                <DsfrHeaderMenuLinks
+                  v-if="menuOpened"
+                  role="navigation"
+                  :links="quickLinks"
+                  :nav-aria-label="quickLinksAriaLabel"
+                  @link-click="onQuickLinkClick"
+                />
+              </nav>
             </div>
             <div
               v-if="searchModalOpened"
