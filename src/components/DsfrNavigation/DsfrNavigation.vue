@@ -123,7 +123,7 @@ export default defineComponent({
 }
 
 .fr-menu.fr-collapse--expanded {
-  max-height: none;
+  --collapse-max-height: none;
 }
 </style>
 
