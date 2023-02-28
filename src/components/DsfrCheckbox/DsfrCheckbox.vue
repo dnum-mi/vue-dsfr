@@ -91,13 +91,17 @@ export default defineComponent({
         {{ hint }}
       </span>
     </label>
-    <p
+    <div
       v-if="message"
-      class="fr-message-text  flex  items-center"
-      :class="additionalMessageClass"
+      class="fr-messages-group"
     >
-      {{ message }}
-    </p>
+      <p
+        class="fr-message--info  flex  items-center"
+        :class="additionalMessageClass"
+      >
+        {{ message }}
+      </p>
+    </div>
   </div>
 </template>
 

@@ -1,4 +1,14 @@
+import { setup } from '@storybook/vue3'
+
 import DsfrVideo from './DsfrVideo.vue'
+
+import DsfrModal from '../DsfrModal/DsfrModal.vue'
+import { OhVueIcon as VIcon } from 'oh-vue-icons'
+
+setup(app => {
+  app.component('DsfrModal', DsfrModal)
+  app.component('VIcon', VIcon)
+})
 
 export default {
   component: DsfrVideo,
@@ -21,17 +31,21 @@ export default {
       options: ['large', 'medium', 'small'],
       description: 'Permet de moduler les dimensions du contenu entre trois tailles prédéfinies. Une chaîne de caractères différente de \'large\' ou \'small\' affichera le contenu en format medium par défaut.',
     },
-    transcriptionUrl: {
+    transcriptionTitle: {
       control: 'text',
-      description: 'Chemin menant à une transcription littérale du contenu proposé',
+      description: 'Titre de la vidéo faisant l\'objet de la transcription',
     },
-    transcriptionLabel: {
+    transcriptionContent: {
       control: 'text',
-      description: 'Texte accompagnant le contenu d\'une description brève.',
+      description: 'Contenu de la vidéo faisant l\'objet de la transcription',
     },
     ratio: {
       control: 'text',
       description: 'Permet d’alterner entre les différents ratio possibles pour le contenu ("32x9", "16x9", "3x2", "4x3", "1x1", "3x4", "2x3") la chaine de caractères changera la classe associée, "16x9" par défaut',
+    },
+    expandTranscription: {
+      control: 'event',
+      description: 'Event d\'ouverture de la modale contenant la transcription',
     },
   },
 }
@@ -46,8 +60,8 @@ export const Video = (args) => ({
       :src="src"
       :legend="legend"
       :size="size"
-      :transcription-url="transcriptionUrl"
-      :transcription-label="transcriptionLabel"
+      :transcriptionTitle="transcriptionTitle"
+      :transcriptionContent="transcriptionContent"
       :ratio="ratio"
     />
   `,
@@ -61,7 +75,7 @@ Video.args = {
   size: 'medium',
   src: 'https://www.youtube.com/embed/HyirpmPL43I',
   legend: 'Vidéo traitant du Service National Universel',
-  transcriptionUrl: '',
-  transcriptionLabel: 'Label de la transcription',
+  transcriptionTitle: 'Titre de la transcription',
+  transcriptionContent: 'Contenu de la transcription',
   ratio: '16x9',
 }

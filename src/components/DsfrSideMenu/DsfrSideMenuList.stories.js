@@ -45,7 +45,7 @@ export default {
       control: 'object',
       description: `Tableau d'objets, chacun contenant 4 propriétés:
   - \`id\`: identifiant unique d'item de menu
-  - \`to\`: URL complète pour un lien externe, ou chaîne de caractère ou objet à donner à \`to\` de \`router-link\` pour un lien interne
+  - \`to\`: URL complète pour un lien externe, ou chaîne de caractère ou objet à donner à \`to\` de \`RouterLink\` pour un lien interne
   - \`text\`: texte du menu
   - \`active\`: indique que l’item de menu correspond à la page courante
       `,
@@ -79,8 +79,9 @@ export const MenuLateral = (args, { argTypes }) => ({
     <DsfrSideMenu
       :heading-title="headingTitle"
       :buttonLabel="buttonLabel"
-    >
+      >
       <DsfrSideMenuList
+        :id="id"
         :menu-items="menuItems"
         @toggle-expand="toggleExpand"
       />
@@ -91,36 +92,37 @@ MenuLateral.args = {
   dark: false,
   buttonLabel: 'Dans cette rubrique',
   headingTitle: 'Titre de la rubrique',
+  id: 'list',
   menuItems: [
     {
-      id: 11,
+      id: '11',
       to: '/rubrique-1',
       text: 'Premier titre de niveau 1',
     },
     {
-      id: 12,
+      id: '12',
       to: '/rubrique-2',
       text: 'Deuxième titre de niveau 1',
       active: true,
       menuItems: [
         {
-          id: 21,
+          id: '21',
           to: '/rubrique-2/sous-rubrique-1',
           text: 'Premier titre de niveau 2',
         },
         {
-          id: 22,
+          id: '22',
           to: '/rubrique-2/sous-rubrique-2',
           text: 'Deuxième titre de niveau 2',
           active: true,
           menuItems: [
             {
-              id: 31,
+              id: '31',
               to: '/rubrique-2/sous-rubrique-2/sous-sous-rubrique-1',
               text: 'Premier titre de niveau 3',
             },
             {
-              id: 32,
+              id: '32',
               to: '/rubrique-2/sous-rubrique-2/sous-sous-rubrique-2',
               text: 'Deuxième titre de niveau 3',
               active: true,

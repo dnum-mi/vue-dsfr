@@ -1,14 +1,18 @@
 declare const _default: import('vue').DefineComponent<{
     path: {
         type: (ObjectConstructor | StringConstructor)[];
-        default: any;
+        default: undefined;
     };
     button: BooleanConstructor;
     iconOnly: BooleanConstructor;
     iconRight: BooleanConstructor;
     icon: {
         type: StringConstructor;
-        default: any;
+        default: undefined;
+    };
+    iconAttrs: {
+        type: ObjectConstructor;
+        default: Function;
     };
     label: {
         type: StringConstructor;
@@ -20,14 +24,14 @@ declare const _default: import('vue').DefineComponent<{
     };
     to: {
         type: (ObjectConstructor | StringConstructor)[];
-        default: any;
+        default: undefined;
     };
     href: {
         type: StringConstructor;
-        default: any;
+        default: undefined;
     };
 }, unknown, unknown, {
-    is(): 'a' | 'button' | 'router-link';
+    is(): 'a' | 'button' | 'RouterLink';
     isPathString(): boolean;
     isExternalLink(): any;
     actualHref(): any;
@@ -49,7 +53,11 @@ declare const _default: import('vue').DefineComponent<{
     iconRight: BooleanConstructor;
     icon: {
         type: StringConstructor;
-        default: any;
+        default: undefined;
+    };
+    iconAttrs: {
+        type: ObjectConstructor;
+        default: Function;
     };
     label: {
         type: StringConstructor;
@@ -61,21 +69,22 @@ declare const _default: import('vue').DefineComponent<{
     };
     to: {
         type: (ObjectConstructor | StringConstructor)[];
-        default: any;
+        default: undefined;
     };
     href: {
         type: StringConstructor;
-        default: any;
+        default: undefined;
     };
 }>>, {
     button: boolean;
     label: string;
-    path: string | Record<string, any>;
-    icon: string;
+    icon?: string;
     onClick: Function;
-    href: string;
-    to: string | Record<string, any>;
-    iconRight: boolean;
-    iconOnly: boolean;
-}>
+    iconRight?: boolean;
+    iconOnly?: boolean;
+    iconAttrs?: Record<string, any>;
+} & ({
+    /** @deprecated Should use to or href instead */
+    path: string | Record<string, any>;
+} | { href: string; } | { to: string | Record<string, any>; })>
 export default _default

@@ -9,8 +9,8 @@ declare const _default: import('vue').DefineComponent<{
     };
     size: {
         type: StringConstructor;
-        default: string;
-        validator: (val: string) => boolean;
+        default: undefined;
+        validator: (val: string | undefined) => boolean;
     };
     src: {
         type: StringConstructor;
@@ -20,7 +20,11 @@ declare const _default: import('vue').DefineComponent<{
         type: StringConstructor;
         default: string;
     };
-}, unknown, unknown, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, Record<string, any>, string, import('vue').VNodeProps & import('vue').AllowedComponentProps & import('vue').ComponentCustomProps, Readonly<import('vue').ExtractPropTypes<{
+    ratio: {
+        type: StringConstructor;
+        default: string;
+    };
+}, unknown, unknown, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {}, string, import('vue').VNodeProps & import('vue').AllowedComponentProps & import('vue').ComponentCustomProps, Readonly<import('vue').ExtractPropTypes<{
     alt: {
         type: StringConstructor;
         default: string;
@@ -31,8 +35,8 @@ declare const _default: import('vue').DefineComponent<{
     };
     size: {
         type: StringConstructor;
-        default: any;
-        validator: (val: string) => boolean;
+        default: undefined;
+        validator: (val: string | undefined) => boolean;
     };
     src: {
         type: StringConstructor;
@@ -42,7 +46,12 @@ declare const _default: import('vue').DefineComponent<{
         type: StringConstructor;
         default: string;
     };
+    ratio: {
+        type: StringConstructor;
+        default: string;
+    };
 }>>, {
+    ratio: string;
     legend: string;
     title: string;
     size: string;

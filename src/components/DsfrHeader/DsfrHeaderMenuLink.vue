@@ -10,7 +10,7 @@ export default defineComponent({
   },
 
   props: {
-    /* @deprecated Utiliser `to` ou `href` à la place */
+    /** @deprecated Utiliser `to` ou `href` à la place */
     path: {
       type: [String, Object],
       default: undefined,
@@ -21,8 +21,8 @@ export default defineComponent({
       default: undefined,
     },
     iconAttrs: {
-      type: String,
-      default: undefined,
+      type: Object,
+      default: () => {},
     },
     iconRight: Boolean,
     label: {
@@ -41,6 +41,10 @@ export default defineComponent({
       type: String,
       default: undefined,
     },
+    target: {
+      type: String,
+      default: '_self',
+    },
   },
 
   computed: {
@@ -48,7 +52,7 @@ export default defineComponent({
       if (this.button) {
         return 'button'
       }
-      return this.isExternalLink ? 'a' : 'router-link'
+      return this.isExternalLink ? 'a' : 'RouterLink'
     },
     isPathString () {
       return typeof this.path === 'string'
@@ -80,6 +84,7 @@ export default defineComponent({
     :is="is"
     class="fr-btn"
     v-bind="linkData"
+    :target="target"
     @click.stop="onClick"
   >
     <VIcon

@@ -63,6 +63,12 @@ export default defineComponent({
       ]
     },
   },
+
+  methods: {
+    focus () {
+      this.$refs.__input.focus()
+    },
+  },
 })
 </script>
 
@@ -93,13 +99,14 @@ export default defineComponent({
     :is="isComponent"
     v-if="!wrapper"
     :id="id"
+    v-bind="$attrs"
+    ref="__input"
     class="fr-input"
     :class="{
       'fr-input--error': isInvalid,
       'fr-input--valid': isValid,
     }"
     :value="modelValue"
-    v-bind="$attrs"
     :aria-aria-describedby="descriptionId || undefined"
     @input="$emit('update:modelValue', $event.target.value)"
   />
@@ -114,13 +121,14 @@ export default defineComponent({
     <component
       :is="isComponent"
       :id="id"
+      v-bind="$attrs"
+      ref="__input"
       class="fr-input"
       :class="{
         'fr-input--error': isInvalid,
         'fr-input--valid': isValid,
       }"
       :value="modelValue"
-      v-bind="$attrs"
       :aria-aria-describedby="descriptionId || undefined"
       @input="$emit('update:modelValue', $event.target.value)"
     />

@@ -30,15 +30,16 @@ export default defineComponent({
         <a
           v-if="typeof link.to === 'string' && link.to.startsWith('http')"
           class="fr-footer__top-link"
+          target="_blank"
           :to="link.to"
         >{{ link.label }}</a>
-        <router-link
+        <RouterLink
           v-else
           class="fr-footer__top-link"
           :to="link.to"
         >
           {{ link.label }}
-        </router-link>
+        </RouterLink>
       </li>
     </ul>
   </div>

@@ -1,5 +1,8 @@
 import DsfrFranceConnect from './DsfrFranceConnect.vue'
 
+/**
+ * [Voir quand l’utiliser sur la documentation du DSFR](https://www.systeme-de-design.gouv.fr/elements-d-interface/composants/bouton-franceconnect)
+ */
 export default {
   component: DsfrFranceConnect,
   title: 'Composants/Connexion - FranceConnect',

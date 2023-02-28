@@ -7,6 +7,9 @@ import DsfrFooterLinkList from './DsfrFooterLinkList.vue'
 
 addIcons(RiExternalLinkLine)
 
+/**
+ * [Voir quand l’utiliser sur la documentation du DSFR](https://www.systeme-de-design.gouv.fr/elements-d-interface/composants/pied-de-page)
+ */
 export default {
   component: DsfrFooter,
   title: 'Composants/Pied de page - DsfrFooter',
@@ -137,6 +140,10 @@ export const PiedDePageSimple = (args) => ({
     :home-link="homeLink"
     :partners="partners"
     :ecosystem-links="ecosystemLinks"
+    :licence-text="licenceText"
+    :licence-to="licenceTo"
+    :licence-name="licenceName"
+    :licence-link-props="licenceLinkProps"
   >
     <template v-slot:description>
       <p>
@@ -166,6 +173,10 @@ PiedDePageSimple.args = {
   a11yComplianceLink: '/a11y-conformite',
   descText: 'Description',
   homeLink: '/',
+  licenceText: undefined,
+  licenceTo: undefined,
+  licenceName: undefined,
+  licenceLinkProps: undefined,
   ecosystemLinks: [
     {
       label: 'legifrance.gouv.fr',
@@ -236,6 +247,10 @@ export const PiedDePageAvecLogoOperateur = (args) => ({
     :operator-img-style="operatorImgStyle"
     :operator-img-src="operatorImgSrc"
     :operator-img-alt="operatorImgAlt"
+    :licence-text="licenceText"
+    :licence-to="licenceTo"
+    :licence-name="licenceName"
+    :licence-link-props="licenceLinkProps"
   >
     <template #footer-link-lists>
       <DsfrFooterLinkList
@@ -277,6 +292,10 @@ PiedDePageAvecLogoOperateur.args = {
   a11yComplianceLink: '/a11y-conformite',
   descText: 'Description',
   homeLink: '/',
+  licenceText: undefined,
+  licenceTo: undefined,
+  licenceName: undefined,
+  licenceLinkProps: undefined,
   categoryName1: 'Nom de la categorie 1',
   linkList1: [
     { label: 'Lien 1.1', to: '/lien1/1' },

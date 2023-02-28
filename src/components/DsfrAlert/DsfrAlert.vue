@@ -25,6 +25,10 @@ export default defineComponent({
       type: String,
       default: '',
     },
+    titleTag: {
+      type: String,
+      default: 'h3',
+    },
     small: Boolean,
     closed: Boolean,
     closeable: Boolean,
@@ -73,12 +77,13 @@ export default defineComponent({
       :class="classes"
     >
       <div class="alert-content">
-        <p
+        <component
+          :is="titleTag"
           v-if="!small"
           class="fr-alert__title"
         >
           {{ title }}
-        </p>
+        </component>
         <p class="fr-alert__description">
           {{ description }}
         </p>
@@ -95,7 +100,3 @@ export default defineComponent({
 </template>
 
 <style src="@gouvfr/dsfr/dist/component/alert/alert.main.min.css" />
-
-<style scoped>
-
-</style>

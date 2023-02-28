@@ -1,5 +1,8 @@
 import DsfrStepper from './DsfrStepper.vue'
 
+/**
+ * [Voir quand l’utiliser sur la documentation du DSFR](https://www.systeme-de-design.gouv.fr/elements-d-interface/composants/indicateur-d-etape)
+ */
 export default {
   component: DsfrStepper,
   title: 'Composants/Indicateur d’étapes - DsfrStepper',

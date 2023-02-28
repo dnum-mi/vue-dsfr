@@ -22,6 +22,13 @@ export default defineComponent({
       type: String,
       default: '',
     },
+    validMessage: {
+      type: String,
+      default: '',
+    },
+    disabled: {
+      type: Boolean,
+    },
     modelValue: {
       type: String,
       default: '',
@@ -42,11 +49,14 @@ export default defineComponent({
 <template>
   <div
     class="fr-upload-group"
-    :class="{ 'fr-input-group--error': error }"
+    :class="{
+      'fr-upload-group--error': error,
+      'fr-upload-group--valid': validMessage,
+      'fr-upload-group--disabled': disabled,
+    }"
   >
     <label
-      class="
-    fr-label"
+      class="fr-label"
       :for="id"
     >
       {{ label }}
@@ -62,14 +72,27 @@ export default defineComponent({
       :aria-describedby="`${id}-desc`"
       v-bind="$attrs"
       :value="modelValue"
+      :disabled="disabled"
       @change="onChange($event)"
     >
-    <p
-      v-if="error"
-      :id="`${id}-desc`"
-      class="fr-error-text"
+    <div
+      v-if="error || validMessage"
+      class="fr-messages-group"
     >
-      {{ error }}
+      <p
+        v-if="error"
+        :id="`${id}-desc`"
+        class="fr-error-text  fr-mt-3v"
+      >
+        {{ error }}
+      </p>
+    </div>
+    <p
+      v-if="validMessage"
+      :id="`${id}-desc`"
+      class="fr-valid-text  fr-mt-3v"
+    >
+      {{ validMessage }}
     </p>
   </div>
 </template>

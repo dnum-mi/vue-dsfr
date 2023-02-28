@@ -68,8 +68,9 @@ ajouter les lignes commentées :
 
 ```js
 import { createApp } from 'vue'
-import '@gouvminint/vue-dsfr/dist/vue-dsfr.css' // Import des styles globaux
-import VueDsfr from '@gouvminint/vue-dsfr'      // Import (par défaut) de la bibliothèque
+import '@gouvfr/dsfr/dist/dsfr.min.css'      // Import des styles du DSFR
+import '@gouvminint/vue-dsfr/styles'         // Import des styles globaux propre à VueDSFR
+import VueDsfr from '@gouvminint/vue-dsfr'   // Import (par défaut) de la bibliothèque
 
 import App from './App.vue'
 
@@ -105,12 +106,13 @@ import { defineNuxtConfig } from 'nuxt3';
 // https://v3.nuxtjs.org/docs/directory-structure/nuxt.config
 export default defineNuxtConfig({
   css: [
+    '@gouvfr/dsfr/dist/dsfr.min.css',
     '@gouvminint/vue-dsfr/styles',
   ],
 })
 ```
 
-Vous pouvez voir une implémentation **[sur Stackblitz ici](https://stackblitz.com/edit/nuxt-starter-suunj6?file=app.vue)**.
+Vous pouvez voir une implémentation **[sur Codesandbox ici](https://codesandbox.io/p/github/laruiss/nuxt-dsfr/nuxt-dsfr)**.
 
 ## Utiliser la bibliothèque de composants sans plugin
 
@@ -125,9 +127,10 @@ import {
   DsfrButton,
   DsfrBreadcrumb,
   DsfrCard,
-} from '@gouvminint/vue-dsfr'                                   // Imports nommés de la bibliothèque
+} from '@gouvminint/vue-dsfr'                                // Imports nommés de la bibliothèque
 
-import '@gouvminint/vue-dsfr/styles'                            // Import des styles globaux
+import '@gouvfr/dsfr/dist/dsfr.min.css'                      // Import des styles du DSFR
+import '@gouvminint/vue-dsfr/styles'                         // Import des styles propre à la bibliothèque VueDSFR
 
 const app = createApp(App)
   .component('DsfrHeader', DsfrHeader)                       // Enregistrement global du composant DsfrHeader
@@ -136,6 +139,11 @@ const app = createApp(App)
   .component('DsfrCard', DsfrCard)                           // Enregistrement global du composant DsfrCard
   .mount('#app')
 ```
+
+## Utiliser les icônes officielles
+
+Pour utiliser les icônes officielles, désormais, il n’y a plus d’actions en plus à faire,
+puisque c’est le CSS officiel du DSFR qui est utilisé.
 
 ## Ajouter des icônes
 

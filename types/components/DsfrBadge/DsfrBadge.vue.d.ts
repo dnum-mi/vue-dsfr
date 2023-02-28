@@ -1,53 +1,32 @@
 declare const _default: import('vue').DefineComponent<{
   label: {
-    type: StringConstructor;
-    default(): string;
+      type: StringConstructor;
+      default: string;
   };
   type: {
-    type: StringConstructor;
-    default(): undefined;
-    validator: () => boolean
+      type: StringConstructor;
+      default: undefined;
   };
-  noIcon: {
-    type: BooleanConstructor,
-    default: false
-  };
-  small: {
-    type: BooleanConstructor,
-    default: false
-  };
-  ellipsis: {
-    type: BooleanConstructor,
-    default: false
-  };
-}, unknown, {}, {}, {
-}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, 'close'[], 'close', import('vue').VNodeProps & import('vue').AllowedComponentProps & import('vue').ComponentCustomProps, Readonly<import('vue').ExtractPropTypes<{
+  noIcon: BooleanConstructor;
+  small: BooleanConstructor;
+  ellipsis: BooleanConstructor;
+}, unknown, unknown, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {}, string, import('vue').VNodeProps & import('vue').AllowedComponentProps & import('vue').ComponentCustomProps, Readonly<import('vue').ExtractPropTypes<{
   label: {
     type: StringConstructor;
-    default(): string;
+    default: string;
   };
   type: {
-    type: StringConstructor;
-    default(): undefined;
-    validator: () => boolean
+      type: StringConstructor;
+      default: undefined;
   };
-  noIcon: {
-    type: BooleanConstructor,
-    default: false
-  };
-  small: {
-    type: BooleanConstructor,
-    default: false
-  };
-  ellipsis: {
-    type: BooleanConstructor,
-    default: false
-  };
+  noIcon: BooleanConstructor;
+  small: BooleanConstructor;
+  ellipsis: BooleanConstructor;
 }>>, {
   label: string;
-  type: 'success' | 'error' | 'warning' | 'info' | 'new';
-  noIcon: boolean;
-  small: boolean;
-  ellipsis: boolean;
+  type?: string;
+  noIcon?: boolean;
+  small?: boolean;
+  ellipsis?: boolean;
 }>
 export default _default

@@ -1,6 +1,9 @@
 import DsfrAccordion from './DsfrAccordion.vue'
 import DsfrAccordionsGroup from './DsfrAccordionsGroup.vue'
 
+/**
+ * [Voir quand l’utiliser sur la documentation du DSFR](https://www.systeme-de-design.gouv.fr/elements-d-interface/composants/accordeon/)
+ */
 export default {
   component: DsfrAccordion,
   title: 'Composants/Accordéon - DsfrAccordion',
@@ -85,8 +88,8 @@ export const AccordeonDansUnAccordeon = (args) => ({
       ...args,
       title1: args.title + ' 1',
       title2: args.title + ' 2',
-      titleSub1: args.titleSub + ' 1',
-      titleSub2: args.titleSub + ' 2',
+      titleSub1: args.titleSub + ' 1.1',
+      titleSub2: args.titleSub + ' 1.2',
       expandedId: undefined,
       subExpandedId: undefined,
     }
@@ -100,24 +103,26 @@ export const AccordeonDansUnAccordeon = (args) => ({
           :expanded-id="expandedId"
           @expand="expandedId = $event"
         >
-          <li>
-            <DsfrAccordion
-              :title="titleSub1"
-              :expanded-id="subExpandedId"
-              @expand="subExpandedId = $event"
-            >
-              Contenu de l’accordéon dans l’accordéon
-            </DsfrAccordion>
-          </li>
-          <li>
-            <DsfrAccordion
-              :title="titleSub2"
-              :expanded-id="subExpandedId"
-              @expand="subExpandedId = $event"
-            >
-              Contenu de l’accordéon dans l’accordéon
-            </DsfrAccordion>
-          </li>
+          <DsfrAccordionsGroup>
+            <li>
+              <DsfrAccordion
+                :title="titleSub1"
+                :expanded-id="subExpandedId"
+                @expand="subExpandedId = $event"
+              >
+                Contenu de l’accordéon dans l’accordéon
+              </DsfrAccordion>
+            </li>
+            <li>
+              <DsfrAccordion
+                :title="titleSub2"
+                :expanded-id="subExpandedId"
+                @expand="subExpandedId = $event"
+              >
+                Contenu de l’accordéon dans l’accordéon
+              </DsfrAccordion>
+            </li>
+          </DsfrAccordionsGroup>
         </DsfrAccordion>
       </li>
     </DsfrAccordionsGroup>
@@ -156,7 +161,7 @@ export const AccordeonTitreCustom = (args) => ({
           :expanded-id="expandedId"
           @expand="expandedId = $event"
         >
-        <template #title><h1>{{title1}}</h1></template>
+          <template #title><h1>{{title1}}</h1></template>
         </DsfrAccordion>
       </li>
       <li>
@@ -165,6 +170,7 @@ export const AccordeonTitreCustom = (args) => ({
           :expanded-id="expandedId"
           @expand="expandedId = $event"
         >
+          Test DsfrAccordion
         </DsfrAccordion>
       </li>
     </DsfrAccordionsGroup>

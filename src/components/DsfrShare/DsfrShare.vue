@@ -22,6 +22,19 @@ export default defineComponent({
       default: () => [],
     },
   },
+  methods: {
+    copyLocationToClipboard () {
+      const url = window.location.href
+      navigator.clipboard.writeText(url)
+    },
+    openWindow ({ url, label }) {
+      window.open(
+        url,
+        label,
+        'toolbar=no,location=yes,status=no,menubar=no,scrollbars=yes,resizable=yes,width=600,height=450',
+      )
+    },
+  },
 })
 </script>
 
@@ -41,7 +54,7 @@ export default defineComponent({
           :href="network.url"
           target="_blank"
           rel="noopener noreferrer"
-          @click.prevent="window.open(network.url, network.label, 'toolbar=no,location=yes,status=no,menubar=no,scrollbars=yes,resizable=yes,width=600,height=450')"
+          @click.prevent="openWindow(network)"
         >
           {{ network.label }}
         </a>
@@ -61,7 +74,7 @@ export default defineComponent({
         <button
           class="fr-btn fr-btn--copy"
           :title="copyLabel"
-          @click="navigator.clipboard.writeText(window.location)"
+          @click="copyLocationToClipboard()"
         >
           {{ copyLabel }}
         </button>

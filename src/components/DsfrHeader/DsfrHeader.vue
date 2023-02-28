@@ -1,6 +1,5 @@
 <script>
 import { defineComponent } from 'vue'
-import { OhVueIcon as VIcon } from 'oh-vue-icons'
 
 // Pose problème dans les tests, et risque fort de poser problème dans Nuxt
 // import '@gouvfr/dsfr/dist/component/header/header.module.js'
@@ -16,7 +15,6 @@ export default defineComponent({
     DsfrLogo,
     DsfrHeaderMenuLinks,
     DsfrSearchBar,
-    VIcon,
   },
 
   props: {
@@ -64,6 +62,10 @@ export default defineComponent({
       type: String,
       default: 'Recherche',
     },
+    quickLinksAriaLabel: {
+      type: String,
+      default: 'Menu secondaire',
+    },
     showSearch: Boolean,
   },
 
@@ -83,21 +85,37 @@ export default defineComponent({
     },
   },
 
+  mounted () {
+    document.addEventListener('keydown', this.onKeyDown)
+  },
+  unmounted () {
+    document.removeEventListener('keydown', this.onKeyDown)
+  },
   methods: {
     hideModal () {
       this.modalOpened = false
       this.menuOpened = false
       this.searchModalOpened = false
+      document.getElementById('button-menu')?.focus()
     },
     showMenu () {
       this.modalOpened = true
       this.menuOpened = true
       this.searchModalOpened = false
+      document.getElementById('close-button')?.focus()
     },
     showSearchModal () {
       this.modalOpened = true
       this.menuOpened = false
       this.searchModalOpened = true
+    },
+    onKeyDown (e) {
+      if (e.key === 'Escape') {
+        this.hideModal()
+      }
+    },
+    onQuickLinkClick () {
+      this.hideModal()
     },
   },
 })
@@ -140,17 +158,13 @@ export default defineComponent({
               >
                 <button
                   v-if="showSearch"
-                  class="fr-btn"
+                  class="fr-btn  fr-btn--search"
                   aria-controls="header-search"
                   aria-label="Recherche"
                   title="Recherche"
                   :data-fr-opened="showSearchModal"
                   @click="showSearchModal"
-                >
-                  <VIcon
-                    name="ri-search-line"
-                  />
-                </button>
+                />
                 <button
                   v-if="quickLinks?.length"
                   id="button-menu"
@@ -169,7 +183,7 @@ export default defineComponent({
               v-if="serviceTitle"
               class="fr-header__service"
             >
-              <router-link
+              <RouterLink
                 :to="homeTo"
                 :title="`Accueil - ${serviceTitle}`"
                 v-bind="$attrs"
@@ -177,7 +191,7 @@ export default defineComponent({
                 <p class="fr-header__service-title">
                   {{ serviceTitle }}
                 </p>
-              </router-link>
+              </RouterLink>
               <p
                 v-if="serviceDescription"
                 class="fr-header__service-tagline"
@@ -191,10 +205,13 @@ export default defineComponent({
               v-if="quickLinks && quickLinks.length"
               class="fr-header__tools-links"
             >
-              <DsfrHeaderMenuLinks
-                v-if="!menuOpened"
-                :links="quickLinks"
-              />
+              <nav role="navigation">
+                <DsfrHeaderMenuLinks
+                  v-if="!menuOpened"
+                  :links="quickLinks"
+                  :nav-aria-label="quickLinksAriaLabel"
+                />
+              </nav>
             </div>
             <div
               v-if="showSearch"
@@ -216,10 +233,13 @@ export default defineComponent({
           id="header-navigation"
           class="fr-header__menu  fr-modal"
           :class="{ 'fr-modal--opened': modalOpened }"
-          aria-labelledby="button-menu"
+          aria-label="Menu modal"
+          role="dialog"
+          aria-modal="true"
         >
           <div class="fr-container">
             <button
+              id="close-button"
               class="fr-btn fr-btn--close"
               aria-controls="header-navigation"
               data-testid="close-modal-btn"
@@ -228,10 +248,15 @@ export default defineComponent({
               Fermer
             </button>
             <div class="fr-header__menu-links">
-              <DsfrHeaderMenuLinks
-                v-if="menuOpened"
-                :links="quickLinks"
-              />
+              <nav role="navigation">
+                <DsfrHeaderMenuLinks
+                  v-if="menuOpened"
+                  role="navigation"
+                  :links="quickLinks"
+                  :nav-aria-label="quickLinksAriaLabel"
+                  @link-click="onQuickLinkClick"
+                />
+              </nav>
             </div>
             <div
               v-if="searchModalOpened"

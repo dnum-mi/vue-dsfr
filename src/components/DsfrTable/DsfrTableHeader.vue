@@ -29,6 +29,7 @@ export default defineComponent({
 <template>
   <th
     v-bind="headerAttrs"
+    scope="col"
   >
     {{ header }}
     <VIcon

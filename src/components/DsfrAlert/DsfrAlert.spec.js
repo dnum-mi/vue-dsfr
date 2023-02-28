@@ -31,7 +31,7 @@ describe('DsfrAlert', () => {
     const descritptionEl = getByText(alertDescription)
 
     // Then
-    expect(titleEl.tagName).toBe('P')
+    expect(titleEl.tagName).toBe('H3')
     expect(titleEl).toHaveClass('fr-alert__title')
     expect(descritptionEl.tagName).toBe('P')
     expect(descritptionEl).toHaveClass('fr-alert__description')

@@ -5,7 +5,7 @@ import DsfrLanguageSelector from './DsfrLanguageSelector.vue'
 describe('DsfrLanguageSelector', () => {
   it('should render a language selector', () => {
     // Given
-    const languages = [{ label: 'English', codeIso: 'en' }, { label: 'Deutsch', codeIso: 'de' }, { label: 'Nederlands', codeIso: 'nl' }]
+    const languages = [{ label: 'Français', codeIso: 'fr' }, { label: 'English', codeIso: 'en' }, { label: 'Deutsch', codeIso: 'de' }, { label: 'Nederlands', codeIso: 'nl' }]
 
     // When
     const { getByText } = render(DsfrLanguageSelector, {

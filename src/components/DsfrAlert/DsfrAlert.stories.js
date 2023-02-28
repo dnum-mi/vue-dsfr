@@ -6,6 +6,9 @@ import { RiCloseLine } from 'oh-vue-icons/icons/ri/index.js'
 
 addIcons(RiCloseLine)
 
+/**
+ * [Voir quand l’utiliser sur la documentation du DSFR](https://www.systeme-de-design.gouv.fr/elements-d-interface/composants/alerte)
+ */
 export default {
   component: DsfrAlert,
   title: 'Composants/Alertes - DsfrAlert',
@@ -46,6 +49,10 @@ export default {
       control: 'boolean',
       description: 'Ajoute la possibilité de fermer l\'alerte via un bouton en forme de croix',
     },
+    titleTag: {
+      control: 'text',
+      description: 'Permet de choisir la balise contenant le titre de l\'alerte (h3 par défaut)',
+    },
   },
 }
 
@@ -63,6 +70,7 @@ export const Alerte = (args) => ({
       :small="small"
       :closeable="closeable"
       :closed="closed"
+      :is="titleTag"
       @close="close"
     />
   `,
@@ -86,6 +94,7 @@ Alerte.args = {
   small: false,
   closed: false,
   closeable: true,
+  titleTag: undefined,
 }
 
 export const Alertes = (args) => ({

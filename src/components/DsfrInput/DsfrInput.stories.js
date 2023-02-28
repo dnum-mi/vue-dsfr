@@ -1,4 +1,5 @@
 import DsfrAlert from '../DsfrAlert/DsfrAlert.vue'
+import DsfrButton from '../DsfrButton/DsfrButton.vue'
 import DsfrInput from './DsfrInput.vue'
 import DsfrInputGroup from './DsfrInputGroup.vue'
 
@@ -8,6 +9,9 @@ import { RiQuestionFill } from 'oh-vue-icons/icons/ri/index.js'
 
 addIcons(RiQuestionFill)
 
+/**
+ * [Voir quand l’utiliser sur la documentation du DSFR](https://www.systeme-de-design.gouv.fr/elements-d-interface/composants/champ-de-saisie)
+ */
 export default {
   component: DsfrInput,
   title: 'Composants/Champ de saisie/Champ simple - DsfrInput',
@@ -240,8 +244,7 @@ export const ChampAvecLabelPersonnalise = (args) => ({
     >
       <template v-slot:label>
         <div>
-          Le label du champ
-          <span class="required">&nbsp;*</span>
+          {{ label }}<span class="required">&nbsp;*</span>
         </div>
         <button
           @mouseover="show = true"
@@ -270,6 +273,7 @@ export const ChampAvecLabelPersonnalise = (args) => ({
 })
 ChampAvecLabelPersonnalise.args = {
   dark: false,
+  label: 'Le label du champ',
   labelVisible: true,
   placeholder: 'Placeholder',
   modelValue: '',
@@ -408,6 +412,7 @@ export const ChampDeSaisieDeDate = (args) => ({
       :placeholder="placeholder"
       :label-visible="labelVisible"
       :disabled="disabled"
+      :is-with-wrapper="true"
     />
   `,
   mounted () {
@@ -416,10 +421,75 @@ export const ChampDeSaisieDeDate = (args) => ({
 })
 ChampDeSaisieDeDate.args = {
   dark: false,
-  labelVisible: false,
+  labelVisible: true,
   placeholder: 'Placeholder',
   modelValue: '',
   disabled: false,
+  label: 'Date de naissance',
+  hint: 'JJ/MM/AAAA',
+}
+
+export const FocusSurChamp = (args) => ({
+  components: {
+    DsfrButton,
+    DsfrInput,
+  },
+  data () {
+    return {
+      ...args,
+    }
+  },
+  methods: {
+    focusInput () {
+      this.$refs.input.focus()
+    },
+    focusTextarea () {
+      this.$refs.textarea.focus()
+    },
+  },
+  template: `
+    <DsfrButton @click="focusInput()">
+      Focus sur l’input
+    </DsfrButton>
+
+    <DsfrInput
+      ref="input"
+      v-model="modelValue"
+      :label="label"
+      :hint="hint"
+      :placeholder="placeholder"
+      :label-visible="labelVisible"
+      :disabled="disabled"
+    />
+
+    <DsfrButton @click="focusTextarea()">
+      Focus sur le textarea
+    </DsfrButton>
+
+    <DsfrInput
+      ref="textarea"
+      v-model="modelValue"
+      :is-textarea="isTextarea"
+      :label="label"
+      :hint="hint"
+      :placeholder="placeholder"
+      :label-visible="labelVisible"
+      :disabled="disabled"
+    />
+  `,
+  mounted () {
+    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
+  },
+})
+FocusSurChamp.args = {
+  dark: false,
+  labelVisible: true,
+  placeholder: 'Placeholder',
+  modelValue: '',
+  disabled: false,
+  isTextarea: true,
+  label: 'Label du champ',
+  hint: '',
 }
 
 export const ZoneDeTexte = (args) => ({

@@ -1,4 +1,4 @@
-import path from 'path'
+import { dirname, resolve } from 'path'
 
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
@@ -6,7 +6,7 @@ import vueJsx from '@vitejs/plugin-vue-jsx'
 
 import visualizer from 'rollup-plugin-visualizer'
 
-const projectDir = path.dirname(new URL(import.meta.url).pathname)
+const projectDir = dirname(new URL(import.meta.url).pathname)
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -21,7 +21,7 @@ export default defineConfig({
     alias: [
       {
         find: '@',
-        replacement: path.resolve(projectDir, 'src'),
+        replacement: resolve(projectDir, 'src'),
       },
       {
         find: 'vue',
@@ -32,7 +32,7 @@ export default defineConfig({
   build: {
     lib: {
       name: 'vue-dsfr',
-      entry: path.resolve(projectDir, 'src', 'index.js'),
+      entry: resolve(projectDir, 'src', 'index.js'),
     },
     rollupOptions: {
       external: ['vue', 'oh-vue-icons', 'vue-router'],
@@ -40,7 +40,9 @@ export default defineConfig({
         dir: 'dist',
         globals: {
           vue: 'Vue',
+          'oh-vue-icons': 'OhVueIcon',
         },
+        assetFileNames: (v) => 'vue-dsfr' + v.name?.replace(/[^.]+\./, '.'),
       },
     },
   },

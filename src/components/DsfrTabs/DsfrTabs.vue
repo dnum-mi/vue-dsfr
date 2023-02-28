@@ -44,7 +44,34 @@ export default defineComponent({
       selectedIndex: this.initialSelectedIndex || 0,
       generatedIds: {},
       asc: true,
+      resizeObserver: null,
     }
+  },
+
+  mounted () {
+    /*
+     * Need to use a resize-observer as tab-content height can
+     * change according to its inner components.
+     */
+    if (window.ResizeObserver) {
+      this.resizeObserver = new window.ResizeObserver(() => {
+        this.renderTabs()
+      })
+    }
+
+    this.$el.querySelectorAll('.fr-tabs__panel').forEach((element) => {
+      if (element) {
+        this.resizeObserver?.observe(element)
+      }
+    })
+  },
+
+  unmounted () {
+    this.$el.querySelectorAll('.fr-tabs__panel').forEach((element) => {
+      if (element) {
+        this.resizeObserver?.unobserve(element)
+      }
+    })
   },
 
   methods: {
@@ -66,17 +93,39 @@ export default defineComponent({
     },
     async selectPrevious () {
       const newIndex = this.selectedIndex === 0 ? this.tabTitles.length - 1 : this.selectedIndex - 1
-      this.selectIndex(newIndex)
+      await this.selectIndex(newIndex)
     },
     async selectNext () {
       const newIndex = this.selectedIndex === this.tabTitles.length - 1 ? 0 : this.selectedIndex + 1
-      this.selectIndex(newIndex)
+      await this.selectIndex(newIndex)
     },
     async selectFirst () {
-      this.selectIndex(0)
+      await this.selectIndex(0)
     },
     async selectLast () {
-      this.selectIndex(this.tabTitles.length - 1)
+      await this.selectIndex(this.tabTitles.length - 1)
+    },
+    /*
+     * Need to reimplement tab-height calc
+     * @see https://github.com/GouvernementFR/dsfr/blob/main/src/component/tab/script/tab/tabs-group.js#L117
+     */
+    renderTabs () {
+      if (this.selectedIndex < 0) {
+        return
+      }
+      const tablist = this.$refs.tablist
+      if (!tablist || !tablist.offsetHeight) {
+        return
+      }
+      const tablistHeight = tablist.offsetHeight
+      // Need to manually select tabs-content in case of manual slot filling
+      const selectedTab = this.$el.querySelectorAll('.fr-tabs__panel')[this.selectedIndex]
+      if (!selectedTab || !selectedTab.offsetHeight) {
+        return
+      }
+      const selectedTabHeight = selectedTab.offsetHeight
+
+      this.$el.style.setProperty('--tabs-height', (tablistHeight + selectedTabHeight) + 'px')
     },
   },
 })
@@ -85,6 +134,7 @@ export default defineComponent({
 <template>
   <div class="fr-tabs">
     <ul
+      ref="tablist"
       class="fr-tabs__list"
       role="tablist"
       :aria-label="tabListName"

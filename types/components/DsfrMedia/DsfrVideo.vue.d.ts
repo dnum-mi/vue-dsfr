@@ -11,16 +11,19 @@ declare const _default: import('vue').DefineComponent<{
         type: StringConstructor;
         default: string;
     };
-    transcriptionUrl: {
+    transcriptionTitle: {
         type: StringConstructor;
-        default: any;
+        default: string;
     };
-    transcriptionLabel: {
+    transcriptionContent: {
         type: StringConstructor;
-        default: any;
+        default: string;
     };
-    format4x3: BooleanConstructor;
-}, unknown, unknown, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, Record<string, any>, string, import('vue').VNodeProps & import('vue').AllowedComponentProps & import('vue').ComponentCustomProps, Readonly<import('vue').ExtractPropTypes<{
+    ratio: {
+        type: StringConstructor;
+        default: string;
+    };
+}, unknown, unknown, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {}, string, import('vue').VNodeProps & import('vue').AllowedComponentProps & import('vue').ComponentCustomProps, Readonly<import('vue').ExtractPropTypes<{
     src: {
         type: StringConstructor;
         required: true;
@@ -33,20 +36,23 @@ declare const _default: import('vue').DefineComponent<{
         type: StringConstructor;
         default: string;
     };
-    transcriptionUrl: {
+    transcriptionTitle: {
         type: StringConstructor;
-        default: any;
+        default: string;
     };
-    transcriptionLabel: {
+    transcriptionContent: {
         type: StringConstructor;
-        default: any;
+        default: string;
     };
-    format4x3: BooleanConstructor;
-}>>, {
+    ratio: {
+        type: StringConstructor;
+        default: string;
+    };
+}>> & {}, {
+    ratio: string;
     legend: string;
     size: string;
-    transcriptionUrl: string;
-    transcriptionLabel: string;
-    format4x3: boolean;
+    transcriptionTitle: string;
+    transcriptionContent: string;
 }>
 export default _default

@@ -1,5 +1,8 @@
 import DsfrFileDownload from './DsfrFileDownload.vue'
 
+/**
+ * [Voir quand l’utiliser sur la documentation du DSFR](https://www.systeme-de-design.gouv.fr/elements-d-interface/composants/telechargement-de-fichier)
+ */
 export default {
   component: DsfrFileDownload,
   title: 'Composants/Téléchargement de Fichier - DsfrFileDownload',
@@ -35,7 +38,7 @@ export default {
   },
 }
 
-export const TelechargementDeFichier = (args, { argTypes }) => ({
+export const TelechargementDeFichier = (args) => ({
   components: {
     DsfrFileDownload,
   },
@@ -51,6 +54,7 @@ export const TelechargementDeFichier = (args, { argTypes }) => ({
       :href="href"
       :block="block"
       :description="description"
+      :title="title"
     />
   `,
 
@@ -64,9 +68,11 @@ TelechargementDeFichier.args = {
   size: '250 Go',
   href: 'src/assets/icone-marianne-seule.png',
   block: false,
+  description: 'Description du téléchargement',
+  title: 'Titre du téléchargement',
 }
 
-export const BlocDeTelechargement = (args, { argTypes }) => ({
+export const BlocDeTelechargement = (args) => ({
   components: {
     DsfrFileDownload,
   },
@@ -82,6 +88,7 @@ export const BlocDeTelechargement = (args, { argTypes }) => ({
       :href="href"
       :block="block"
       :description="description"
+      :title="title"
     />
   `,
 
@@ -94,6 +101,7 @@ BlocDeTelechargement.args = {
   format: 'JPEG',
   size: '1.2 To',
   href: 'src/assets/icone-marianne-seule.png',
-  description: 'Une formidable description',
+  description: 'Description du téléchargement',
+  title: 'Titre du téléchargement',
   block: true,
 }
