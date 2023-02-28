@@ -34,7 +34,7 @@ export default defineComponent({
     labelVisible: Boolean,
     modelValue: {
       type: String,
-      default: undefined,
+      default: '',
     },
     placeholder: {
       type: String,
@@ -92,6 +92,7 @@ export default defineComponent({
     <p
       v-if="message"
       :id="descriptionId"
+      :data-testid="descriptionId"
       :class="messageClass"
     >
       <span>{{ message }}</span>
