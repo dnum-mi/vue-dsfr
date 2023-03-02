@@ -14,6 +14,10 @@ export default defineComponent({
       type: String,
       default: 'Ajouter un fichier',
     },
+    accept: {
+      type: Array,
+      default: () => [],
+    },
     hint: {
       type: String,
       default: '',
@@ -69,10 +73,11 @@ export default defineComponent({
       :id="id"
       class="fr-upload"
       type="file"
-      :aria-describedby="`${id}-desc`"
+      :aria-describedby="error || validMessage ? `${id}-desc` : null"
       v-bind="$attrs"
       :value="modelValue"
       :disabled="disabled"
+      :accept="accept.join(',')"
       @change="onChange($event)"
     >
     <div
@@ -84,16 +89,9 @@ export default defineComponent({
         :id="`${id}-desc`"
         class="fr-error-text  fr-mt-3v"
       >
-        {{ error }}
+        {{ error ?? validMessage }}
       </p>
     </div>
-    <p
-      v-if="validMessage"
-      :id="`${id}-desc`"
-      class="fr-valid-text  fr-mt-3v"
-    >
-      {{ validMessage }}
-    </p>
   </div>
 </template>
 

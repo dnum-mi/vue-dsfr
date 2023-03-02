@@ -258,7 +258,7 @@ export default defineComponent({
             <component
               :is="isExternalLink ? 'a' : 'RouterLink'"
               class="fr-link-licence  no-content-after"
-              :to="routerLinkLicenceTo"
+              :to="isExternalLink ? routerLinkLicenceTo : null"
               :href="aLicenceHref"
               :target="isExternalLink ? '_blank' : undefined"
               rel="noopener noreferrer"

@@ -1,7 +1,7 @@
 {
   "conventionalCommits.scopes": [
     "releases",
-    "dx"
+    "dx",
   ],
   "editor.bracketPairColorization.enabled": true,
   "emmet.includeLanguages": {
