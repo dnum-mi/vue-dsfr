@@ -5,6 +5,7 @@ import { getRandomId } from '../../utils/random-utils.js'
 
 export default defineComponent({
   name: 'DsfrSelect',
+  inheritAttrs: false,
 
   props: {
     required: Boolean,
