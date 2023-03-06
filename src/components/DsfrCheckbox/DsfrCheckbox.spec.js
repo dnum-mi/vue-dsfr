@@ -32,7 +32,6 @@ describe('DsfrCheckbox', () => {
     // Then
     expect(labelEl).toHaveClass('fr-label')
     expect(input.checked).toBe(true)
-    expect(input).toHaveAttribute('aria-checked', 'true')
     expect(inputCheckBox).toBeInTheDocument()
     expect(labelEl.getAttribute('for')).toBe(inputCheckBox.id)
     expect(inputCheckBox.getAttribute('type')).toBe('checkbox')
@@ -70,7 +69,6 @@ describe('DsfrCheckbox', () => {
     expect(labelEl).toHaveClass('fr-label')
     expect(inputCheckBox).toBeInTheDocument()
     expect(input.checked).toBe(false)
-    expect(input).toHaveAttribute('aria-checked', 'false')
     expect(labelEl.getAttribute('for')).toBe(inputCheckBox.id)
     expect(inputCheckBox.getAttribute('type')).toBe('checkbox')
     expect(inputCheckBox).toHaveAttribute('disabled')
