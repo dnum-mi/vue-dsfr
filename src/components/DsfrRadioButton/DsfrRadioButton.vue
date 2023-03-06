@@ -56,12 +56,10 @@ export default defineComponent({
     <input
       :id="id"
       type="radio"
-      role="radio"
       :name="name"
       :value="value"
       :checked="modelValue === value"
       v-bind="$attrs"
-      :aria-checked="modelValue === value"
       @click="$emit('update:modelValue', value)"
     >
     <label
