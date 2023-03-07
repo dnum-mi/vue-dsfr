@@ -18,6 +18,7 @@ export default defineComponent({
       type: String,
       default: undefined,
     },
+    disabled: Boolean,
     horizontal: Boolean,
     to: {
       type: [String, Object],
@@ -40,7 +41,10 @@ export default defineComponent({
 <template>
   <div
     class="fr-tile fr-enlarge-link"
-    :class="{ 'fr-tile--horizontal': horizontal }"
+    :class="{
+      'fr-tile--horizontal': horizontal,
+      'fr-tile--disabled': disabled,
+    }"
   >
     <div class="fr-tile__body">
       <component
@@ -51,12 +55,12 @@ export default defineComponent({
           v-if="isExternalLink"
           class="fr-tile__link"
           target="_blank"
-          :href="to"
+          :href="disabled ? '' : to"
         >{{ title }}</a>
         <RouterLink
           v-if="!isExternalLink"
           class="fr-tile__link so-test"
-          :to="to"
+          :to="disabled ? '' : to"
         >
           {{ title }}
         </RouterLink>
@@ -83,3 +87,12 @@ export default defineComponent({
 </template>
 
 <style src="@gouvfr/dsfr/dist/component/tile/tile.main.min.css" />
+<style scoped>
+.fr-tile.fr-tile--disabled {
+  background-color: var(--background-disabled-grey);
+  box-shadow: inset 0 0 0 1px var(--border-default-grey), inset 0 -0.25rem 0 0 var(--border-disabled-grey);
+}
+.fr-tile.fr-tile--disabled a {
+  cursor: not-allowed;
+}
+</style>
