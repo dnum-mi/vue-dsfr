@@ -5,6 +5,7 @@ import { getRandomId } from '../../utils/random-utils.js'
 
 export default defineComponent({
   name: 'DsfrSelect',
+  inheritAttrs: false,
 
   props: {
     required: Boolean,
@@ -85,7 +86,7 @@ export default defineComponent({
       :id="selectId"
       :class="{ [`fr-select--${messageType}`]: message }"
       class="fr-select"
-      name="select"
+      :name="selectId"
       :disabled="disabled"
       :required="required"
       @change="$emit('update:modelValue', $event.target.value)"

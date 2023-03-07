@@ -1,6 +1,9 @@
 
 import DsfrRadioButton from './DsfrRadioButton.vue'
 
+/**
+ * [Voir quand l’utiliser sur la documentation du DSFR](https://www.systeme-de-design.gouv.fr/elements-d-interface/composants/boutons-radio)
+ */
 export default {
   component: DsfrRadioButton,
   title: 'Composants/Boutons radio/Boutons radio - DsfrRadioButtons',

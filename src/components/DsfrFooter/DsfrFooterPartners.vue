@@ -34,6 +34,7 @@ export default defineComponent({
         <a
           class="fr-footer__partners-link"
           :href="mainPartner.href"
+          target="_blank"
         >
           <img
             class="fr-footer__logo"
@@ -51,6 +52,7 @@ export default defineComponent({
             <a
               class="fr-footer__partners-link"
               :href="partner.href"
+              target="_blank"
             >
               <img
                 class="fr-footer__logo"

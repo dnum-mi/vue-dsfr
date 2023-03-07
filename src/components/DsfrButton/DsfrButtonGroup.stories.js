@@ -6,6 +6,9 @@ import DsfrButtonGroup from './DsfrButtonGroup.vue'
 
 addIcons(RiCheckboxCircleLine)
 
+/**
+ * [Voir quand l’utiliser sur la documentation du DSFR](https://www.systeme-de-design.gouv.fr/elements-d-interface/composants/groupe-de-boutons)
+ */
 export default {
   component: DsfrButtonGroup,
   title: 'Composants/Boutons/Groupe de Boutons - DsfrButtonGroup',
@@ -20,15 +23,25 @@ export default {
     },
     inline: {
       control: 'boolean',
-      description: 'Indique si le groupe de boutons doit apparaître en empilement horizontal',
+      deprecated: true,
+      description: '**Déprécié:** Indique si le groupe de boutons doit toujours apparaître en empilement horizontal. *Utiliser `inlineLayoutWhen` à la place.*',
+    },
+    inlineLayoutWhen: {
+      control: 'radio',
+      options: ['never', 'always', 'small', 'medium', 'large'],
+      description: 'Indique si le groupe de boutons doit apparaître en empilement horizontal (toujours, ou seulement sur les tailles de vue spécifiées)',
     },
     reverse: {
       control: 'boolean',
       description: 'Indique si l’ordre des boutons doit être inversé par rapport au DOM.\n\n *N.B. : Ne fonctionne que si `align` est à `right`*',
     },
+    iconRight: {
+      control: 'boolean',
+      description: 'Inverse la position des icônes par rapport au texte.\n\n *N.B. : Ne fonctionne que si la prop n\'est pas définie sur chaque bouton*',
+    },
     size: {
       control: 'radio',
-      options: ['default', 'small', 'medium', 'large'],
+      options: ['small', 'medium', 'large'],
       description: 'Indique la taille du groupe de bouton',
     },
     align: {
@@ -57,21 +70,24 @@ export const GroupeDeBoutons = (args) => ({
       :size="size"
       :align="align"
       :inline="inline"
+      :inline-layout-when="inlineLayoutWhen"
+      :icon-right="iconRight"
       :reverse="reverse"
     />
   `,
 
   mounted () {
-    console.log(this.reverse)
     document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
   },
 })
 GroupeDeBoutons.args = {
   dark: false,
   align: 'center',
-  inline: false,
+  inlineLayoutWhen: 'never',
   reverse: false,
-  size: undefined,
+  iconRight: false,
+  size: 'medium',
+  inline: undefined,
   buttons: [
     {
       label: 'Label 1',
@@ -85,13 +101,11 @@ GroupeDeBoutons.args = {
     {
       label: 'Label 3',
       icon: 'ri-checkbox-circle-line',
-      iconRight: true,
     },
     {
       label: 'Label 4',
       secondary: true,
       icon: 'ri-checkbox-circle-line',
-      iconRight: true,
     },
   ],
 }

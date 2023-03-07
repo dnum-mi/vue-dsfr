@@ -13,7 +13,7 @@ export default {
     },
     to: {
       control: 'text',
-      description: 'URL complète pour un lien externe, ou chaîne de caractère ou objet à donner à `to` de `router-link` pour un lien interne',
+      description: 'URL complète pour un lien externe, ou chaîne de caractère ou objet à donner à `to` de `RouterLink` pour un lien interne',
     },
     active: {
       control: 'boolean',
@@ -45,7 +45,7 @@ export const LienDansUnElementDeListeDeMenuLateral = (args, { argTypes }) => ({
     heading-title="Menu latéral exemplaire"
     buttonLabel="Bouton exemplaire"
   >
-    <DsfrSideMenuList>
+    <DsfrSideMenuList :id="id">
       <DsfrSideMenuListItem :active="active">
         <DsfrSideMenuLink
           :active="active"
@@ -62,4 +62,5 @@ LienDansUnElementDeListeDeMenuLateral.args = {
   dark: false,
   active: false,
   to: '/',
+  id: 'list-id',
 }

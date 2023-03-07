@@ -1,10 +1,15 @@
 <script>
 import { defineComponent } from 'vue'
+import DsfrTranscription from '../DsfrTranscription/DsfrTranscription.vue'
 
 export default defineComponent({
   name: 'DsfrVideo',
+  components: {
+    DsfrTranscription,
+  },
 
   props: {
+    expandTranscription: Boolean,
     src: {
       type: String,
       required: true,
@@ -17,24 +22,25 @@ export default defineComponent({
       type: String,
       default: 'medium',
     },
-    transcriptionUrl: {
+    transcriptionTitle: {
       type: String,
-      default: undefined,
+      default: 'Titre de la vidéo',
     },
-    transcriptionLabel: {
+    transcriptionContent: {
       type: String,
-      default: undefined,
+      default: 'Transcription du contenu de la vidéo',
     },
     ratio: {
       type: String,
       default: '16x9',
     },
   },
+  emits: ['expandTranscription'],
 })
 </script>
 
 <template>
-  <div
+  <figure
     class="fr-content-media"
     :class="{
       'fr-content-media--sm': size == 'small',
@@ -56,16 +62,12 @@ export default defineComponent({
     <div class="fr-content-media__caption">
       {{ legend }}
     </div>
-    <div
-      v-if="transcriptionUrl"
-      class="fr-content-media__transcription"
-    >
-      <a
-        class="fr-btn"
-        :href="transcriptionUrl"
-      >{{ transcriptionLabel }}</a>
-    </div>
-  </div>
+    <DsfrTranscription
+      :title="transcriptionTitle"
+      :content="transcriptionContent"
+      @expand-transcription="expandTranscription"
+    />
+  </figure>
 </template>
 
-<style src="@gouvfr/dsfr/dist/component/content/content.css" />
+<style src="@gouvfr/dsfr/dist/component/content/content.main.min.css" />

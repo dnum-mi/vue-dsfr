@@ -1,24 +1,30 @@
+import { mergeConfig } from 'vite'
+
 module.exports = {
-  "stories": [
-    "../src/**/*.stories.@(mdx|js|jsx|ts|tsx)"
-  ],
-  "addons": [
-    "@storybook/addon-links",
-    "@storybook/addon-essentials",
-    {
-      name: '@storybook/addon-postcss',
-      options: {
-        postcssLoaderOptions: {
-          implementation: require('postcss'),
-        }
+  "stories": ["../src/**/*.@(mdx|stories.@(js|jsx|ts|tsx))"],
+  "addons": ["@storybook/addon-links", "@storybook/addon-essentials", {
+    name: '@storybook/addon-postcss',
+    options: {
+      postcssLoaderOptions: {
+        implementation: require('postcss')
       }
-    },
-  ],
+    }
+  }],
   staticDirs: ['../public'],
-  // core: {
-  //   builder: 'webpack5'
-  // }
-  core: {
-    builder: "@storybook/builder-vite"
+  framework: {
+    name: "@storybook/vue3-vite",
+    options: {}
+  },
+  docs: {
+    autodocs: true
+  },
+  async viteFinal(config, {
+    configType
+  }) {
+    return mergeConfig(config, {
+      define: {
+        'process.env': {}
+      }
+    });
   }
 };

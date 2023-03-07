@@ -1,6 +1,6 @@
-@import url(@gouvfr/dsfr/dist/core/core.main.min.css);
+/* @import url(@gouvfr/dsfr/dist/core/core.main.min.css);
 @import url(@gouvfr/dsfr/dist/scheme/scheme.min.css);
 @import url(@gouvfr/dsfr/dist/component/link/link.main.min.css);
-@import url(@gouvfr/dsfr/dist/component/form/form.main.min.css);
-@import url(@gouvfr/dsfr/dist/utility/utility.css);
-@import url(@gouvfr/dsfr/dist/utility/icons/icons.css);
+@import url(@gouvfr/dsfr/dist/component/form/form.main.min.css); */
+@import url(@gouvfr/dsfr/dist/utility/utility.main.min.css);
+@import url(@gouvfr/dsfr/dist/utility/icons/icons.main.min.css);

@@ -5,6 +5,7 @@ declare const _default: import('vue').DefineComponent<{
         default: any;
     };
     secondary: BooleanConstructor;
+    tertiary: BooleanConstructor;
     icon: {
         type: StringConstructor;
         default: any;
@@ -13,13 +14,14 @@ declare const _default: import('vue').DefineComponent<{
     iconOnly: BooleanConstructor;
 }, unknown, unknown, {}, {
     focus(): void;
-}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, Record<string, any>, string, import('vue').VNodeProps & import('vue').AllowedComponentProps & import('vue').ComponentCustomProps, Readonly<import('vue').ExtractPropTypes<{
+}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {}, string, import('vue').VNodeProps & import('vue').AllowedComponentProps & import('vue').ComponentCustomProps, Readonly<import('vue').ExtractPropTypes<{
     disabled: BooleanConstructor;
     label: {
         type: StringConstructor;
         default: any;
     };
     secondary: BooleanConstructor;
+    tertiary: BooleanConstructor;
     icon: {
         type: StringConstructor;
         default: any;
@@ -31,6 +33,7 @@ declare const _default: import('vue').DefineComponent<{
     disabled: boolean;
     icon: string;
     secondary: boolean;
+    tertiary: boolean;
     iconRight: boolean;
     iconOnly: boolean;
 }>

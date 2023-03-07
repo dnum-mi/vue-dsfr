@@ -1,6 +1,9 @@
 import DsfrSocialNetworks from './DsfrSocialNetworks.vue'
 import DsfrFollow from './DsfrFollow.vue'
 
+/**
+ * [Voir quand l’utiliser sur la documentation du DSFR](https://www.systeme-de-design.gouv.fr/elements-d-interface/composants/lettre-d-information-et-reseaux-sociaux)
+ */
 export default {
   title: 'Composants/Lettres d’information et réseaux/Réseaux sociaux - DsfrSocialNetworks',
   name: '',
@@ -13,6 +16,10 @@ export default {
     networks: {
       control: 'object',
       description: 'Liste des différents réseaux sociaux ; doit avoir 2 props : `name` (forcément parmi les valeurs suivantes : `\'facebook\'`, `\'twitter\'`, `\'youtube\'`, `\'linkedin\'`, `\'instagram\'`)  et `url`',
+    },
+    titleTag: {
+      control: 'text',
+      description: 'Permet de choisir la balise contenant le titre du composant (h3 par défaut)',
     },
   },
 }
@@ -29,6 +36,7 @@ export const ReseauxSociaux = (args) => ({
       <div class="fr-col-12">
         <DsfrSocialNetworks
           :networks="networks"
+          :is="titleTag"
         />
       </div>
     </DsfrFollow>
@@ -40,6 +48,7 @@ export const ReseauxSociaux = (args) => ({
 })
 ReseauxSociaux.args = {
   dark: false,
+  titleTag: undefined,
   networks: [
     {
       name: 'facebook',

@@ -110,7 +110,6 @@ export default defineComponent({
           :href="page?.href"
           class="fr-pagination__link fr-unhidden-lg"
           :title="page.title"
-          :disabled="isCurrentPage(page) ? true : null"
           :aria-current="isCurrentPage(page) ? 'page' : undefined"
           @click.prevent="toPage(pages.indexOf(page))"
         >

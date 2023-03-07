@@ -1,12 +1,3 @@
-interface CheckboxOption {
-    id?: string;
-    name: string;
-    label: string;
-    disabled?: boolean;
-    value: string | number;
-    hint?: string;
-}
-
 declare const _default: import('vue').DefineComponent<{
     titleId: {
         type: StringConstructor;
@@ -14,6 +5,7 @@ declare const _default: import('vue').DefineComponent<{
     };
     disabled: BooleanConstructor;
     inline: BooleanConstructor;
+    required: BooleanConstructor;
     errorMessage: {
         type: StringConstructor;
         default: string;
@@ -36,7 +28,7 @@ declare const _default: import('vue').DefineComponent<{
     };
 }, unknown, unknown, {
     message(): any;
-    additionalMessageClass(): 'fr-error-text' | 'fr-valid-text';
+    additionalMessageClass(): 'fr-message--error' | 'fr-message--valid';
 }, {
     onChange({ name, checked }: {
         name: any;
@@ -49,6 +41,7 @@ declare const _default: import('vue').DefineComponent<{
     };
     disabled: BooleanConstructor;
     inline: BooleanConstructor;
+    required: BooleanConstructor;
     errorMessage: {
         type: StringConstructor;
         default: string;
@@ -72,11 +65,12 @@ declare const _default: import('vue').DefineComponent<{
 }>> & {
     'onUpdate:modelValue'?: (...args: any[]) => any;
 }, {
+    required: boolean;
     inline: boolean;
     legend: string;
     disabled: boolean;
-    options: CheckboxOption[];
-    modelValue: (string | number)[];
+    options: unknown[];
+    modelValue: unknown[];
     errorMessage: string;
     validMessage: string;
     titleId: string;

@@ -4,6 +4,22 @@ import DsfrNavigationMenu from './DsfrNavigationMenu.vue'
 import DsfrNavigationMenuItem from './DsfrNavigationMenuItem.vue'
 import DsfrNavigationMenuLink from './DsfrNavigationMenuLink.vue'
 
+import { setup } from '@storybook/vue3'
+
+const RouterLink = {
+  name: 'RouterLink',
+  props: {
+    to: String,
+  },
+  template: `
+    <a :href="to" v-bind="$attrs"><slot /></a>
+  `,
+}
+
+setup(app => {
+  app.component('RouterLink', RouterLink)
+})
+
 export default {
   component: DsfrNavigationMenuItem,
   title: 'Composants/Navigation Principale/7. Item de menu de navigation - DsfrNavigationMenuItem',

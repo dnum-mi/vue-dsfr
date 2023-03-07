@@ -168,7 +168,7 @@ describe('DsfrFooter', () => {
       .should('be.visible')
       .find('.fr-footer__brand')
       .should('be.visible')
-      .find('router-link')
+      .find('RouterLink')
       .should('have.attr', 'to', data.homeLink)
       .find('.fr-logo')
       .should('be.visible')

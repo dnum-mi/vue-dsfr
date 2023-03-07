@@ -14,13 +14,26 @@ export default defineComponent({
       type: Array,
       default: () => [],
     },
-    inline: Boolean,
+    /**
+     * @deprecated Use inlineLayoutWhen instead
+     */
+    inline: {
+      type: Boolean,
+      default: false,
+      deprecated: 'Use "inlineLayoutWhen" prop instead',
+    },
+    inlineLayoutWhen: {
+      type: String,
+      validator: (val) => ['always', 'never', 'sm', 'small', 'lg', 'large', 'md', 'medium', '', undefined, true, false].includes(val),
+      default: 'never',
+    },
     size: {
       type: String,
       validator: (val) => ['sm', 'small', 'lg', 'large', 'md', 'medium', '', undefined].includes(val),
       default: undefined,
     },
     reverse: Boolean,
+    iconRight: Boolean,
     align: {
       type: String,
       validator: (val) => ['right', 'center', '', undefined].includes(val),
@@ -38,6 +51,18 @@ export default defineComponent({
     lg () {
       return ['lg', 'large'].includes(this.size)
     },
+    inlineAlways () {
+      return this.inline || ['always', true].includes(this.inlineLayoutWhen)
+    },
+    inlineSm () {
+      return ['sm', 'small'].includes(this.inlineLayoutWhen)
+    },
+    inlineMd () {
+      return ['md', 'medium'].includes(this.inlineLayoutWhen)
+    },
+    inlineLg () {
+      return ['lg', 'large'].includes(this.inlineLayoutWhen)
+    },
     center () {
       return this.align === 'center'
     },
@@ -52,12 +77,16 @@ export default defineComponent({
   <ul
     class="fr-btns-group"
     :class="{
-      'fr-btns-group--inline': inline,
-      'fr-btns-group--inline-sm': sm,
-      'fr-btns-group--inline-md': md,
-      'fr-btns-group--inline-lg': lg,
+      'fr-btns-group--inline': inlineAlways,
+      'fr-btns-group--sm': sm,
+      'fr-btns-group--md': md,
+      'fr-btns-group--lg': lg,
+      'fr-btns-group--inline-sm': inlineSm,
+      'fr-btns-group--inline-md': inlineMd,
+      'fr-btns-group--inline-lg': inlineLg,
       'fr-btns-group--center': center,
       'fr-btns-group--right': right,
+      'fr-btns-group--icon-right': iconRight,
       'fr-btns-group--inline-reverse': reverse,
     }"
     data-testid="fr-btns"

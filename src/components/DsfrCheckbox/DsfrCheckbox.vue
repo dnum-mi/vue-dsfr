@@ -16,6 +16,7 @@ export default defineComponent({
       type: String,
       required: true,
     },
+    required: Boolean,
     modelValue: Boolean,
     label: {
       type: String,
@@ -60,9 +61,7 @@ export default defineComponent({
       :id="id"
       :name="name"
       type="checkbox"
-      role="checkbox"
       :checked="modelValue"
-      :aria-checked="modelValue"
       v-bind="$attrs"
       :data-testid="`input-checkbox-${id}`"
       :data-test="`input-checkbox-${id}`"
@@ -78,7 +77,7 @@ export default defineComponent({
         <!-- @slot Slot pour indiquer que le champ est obligatoire. Par défaut, met une astérisque si `required` est à true (dans un `<span class="required">`) -->
         <slot name="required-tip">
           <span
-            v-if="$attrs.required"
+            v-if="required"
             class="required"
           >&nbsp;*</span>
         </slot>
@@ -91,13 +90,17 @@ export default defineComponent({
         {{ hint }}
       </span>
     </label>
-    <p
+    <div
       v-if="message"
-      class="fr-message-text  flex  items-center"
-      :class="additionalMessageClass"
+      class="fr-messages-group"
     >
-      {{ message }}
-    </p>
+      <p
+        class="fr-message--info  flex  items-center"
+        :class="additionalMessageClass"
+      >
+        {{ message }}
+      </p>
+    </div>
   </div>
 </template>
 

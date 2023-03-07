@@ -26,7 +26,7 @@ declare const _default: import('vue').DefineComponent<{
     };
 }, unknown, unknown, {
     message(): any;
-    additionalMessageClass(): 'fr-error-text' | 'fr-valid-text';
+    additionalMessageClass(): 'fr-message--error' | 'fr-message--valid';
 }, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, 'update:modelValue'[], 'update:modelValue', import('vue').VNodeProps & import('vue').AllowedComponentProps & import('vue').ComponentCustomProps, Readonly<import('vue').ExtractPropTypes<{
     id: {
         type: StringConstructor;

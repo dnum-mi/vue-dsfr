@@ -43,7 +43,7 @@ export default defineComponent({
   computed: {
     is () {
       return this.link
-        ? (this.isExternalLink ? 'a' : 'router-link')
+        ? (this.isExternalLink ? 'a' : 'RouterLink')
         : ((this.disabled && this.tagName === 'p') ? 'button' : this.tagName)
     },
     isExternalLink () {

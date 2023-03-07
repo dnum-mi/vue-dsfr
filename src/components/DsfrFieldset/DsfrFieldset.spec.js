@@ -29,17 +29,21 @@ describe('DsfrFieldset', () => {
     const hintByText = getByText(hint)
 
     const hintEl = legendEl.nextElementSibling
+    const hintInnerEl = hintEl.firstElementChild
+
+    const contentEl = hintEl.nextElementSibling
 
     expect(fieldsetEl).not.toBeNull()
     expect(fieldsetEl).toHaveClass('fr-fieldset')
     expect(legendEl).toBe(legendByText)
-    expect(fieldsetByText).toBe(fieldsetEl)
-    expect(hintByText).toBe(hintEl)
+    expect(fieldsetByText).toBe(contentEl)
+    expect(hintByText).toBe(hintInnerEl)
     expect(legendEl).toHaveClass('fr-fieldset__legend')
     expect(legendEl).toHaveClass('test-legend-class')
     expect(legendEl).toHaveAttribute('id', 'legend-id')
-    expect(hintEl).toHaveClass('fr-hint-text')
-    expect(hintEl).toHaveClass('test-hint-class')
+    expect(hintEl).toHaveClass('fr-fieldset__element')
+    expect(hintInnerEl).toHaveClass('fr-hint-text')
+    expect(hintInnerEl).toHaveClass('test-hint-class')
   })
 
   it('should render a complex DsfrFieldset component', () => {
@@ -64,14 +68,18 @@ describe('DsfrFieldset', () => {
     const hintByText = getByText(hint)
 
     const hintEl = legendEl.nextElementSibling
+    const hintInnerEl = hintEl.firstElementChild
+
+    const contentEl = hintEl.nextElementSibling
 
     expect(fieldsetEl).not.toBeNull()
     expect(fieldsetEl).toHaveClass('fr-fieldset')
     expect(legendEl).toBe(legendByText)
-    expect(fieldsetByText).toBe(fieldsetEl)
-    expect(hintByText).toBe(hintEl)
+    expect(fieldsetByText).toBe(contentEl)
+    expect(hintByText).toBe(hintInnerEl)
     expect(legendEl).toHaveClass('fr-fieldset__legend')
     expect(legendEl).toHaveAttribute('id', 'legend-id')
-    expect(hintEl).toHaveClass('fr-hint-text')
+    expect(hintEl).toHaveClass('fr-fieldset__element')
+    expect(hintInnerEl).toHaveClass('fr-hint-text')
   })
 })

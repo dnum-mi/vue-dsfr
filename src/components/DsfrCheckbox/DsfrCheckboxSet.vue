@@ -101,7 +101,6 @@ export default defineComponent({
           v-for="option in options"
           :id="option.id"
           :key="option.id || option.name"
-          data-testid="t-checkbox"
           :name="option.name"
           :label="option.label"
           :disabled="option.disabled"
@@ -110,13 +109,17 @@ export default defineComponent({
           @update:model-value="onChange({ name: option.name, checked: $event })"
         />
       </div>
-      <p
+      <div
         v-if="message"
-        class="fr-message-text  flex  items-center"
-        :class="additionalMessageClass"
+        class="fr-messages-group"
       >
-        <span>{{ message }}</span>
-      </p>
+        <p
+          class="fr-message--info  flex  items-center"
+          :class="additionalMessageClass"
+        >
+          <span>{{ message }}</span>
+        </p>
+      </div>
     </fieldset>
   </div>
 </template>

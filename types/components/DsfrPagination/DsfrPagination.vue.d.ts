@@ -2,7 +2,7 @@ declare const _default: import('vue').DefineComponent<{
     pages: {
         type: ArrayConstructor;
         required: true;
-        validator(value: unknown): boolean;
+        validator(value: string[]): boolean;
     };
     currentPage: {
         type: NumberConstructor;
@@ -31,7 +31,7 @@ declare const _default: import('vue').DefineComponent<{
 }, unknown, unknown, {
     startIndex(): number;
     endIndex(): number;
-    displayedPages(): any;
+    displayedPages(): number;
 }, {
     tofirstPage(): void;
     toPreviousPage(): void;
@@ -44,7 +44,7 @@ declare const _default: import('vue').DefineComponent<{
     pages: {
         type: ArrayConstructor;
         required: true;
-        validator(value: unknown): boolean;
+        validator(value: string[]): boolean;
     };
     currentPage: {
         type: NumberConstructor;

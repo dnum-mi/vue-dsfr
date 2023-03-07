@@ -14,6 +14,10 @@ export default defineComponent({
       type: String,
       default: 'Ajouter un fichier',
     },
+    accept: {
+      type: Array,
+      default: () => [],
+    },
     hint: {
       type: String,
       default: '',
@@ -21,6 +25,13 @@ export default defineComponent({
     error: {
       type: String,
       default: '',
+    },
+    validMessage: {
+      type: String,
+      default: '',
+    },
+    disabled: {
+      type: Boolean,
     },
     modelValue: {
       type: String,
@@ -42,11 +53,14 @@ export default defineComponent({
 <template>
   <div
     class="fr-upload-group"
-    :class="{ 'fr-input-group--error': error }"
+    :class="{
+      'fr-upload-group--error': error,
+      'fr-upload-group--valid': validMessage,
+      'fr-upload-group--disabled': disabled,
+    }"
   >
     <label
-      class="
-    fr-label"
+      class="fr-label"
       :for="id"
     >
       {{ label }}
@@ -59,18 +73,25 @@ export default defineComponent({
       :id="id"
       class="fr-upload"
       type="file"
-      :aria-describedby="`${id}-desc`"
+      :aria-describedby="error || validMessage ? `${id}-desc` : null"
       v-bind="$attrs"
       :value="modelValue"
+      :disabled="disabled"
+      :accept="accept.join(',')"
       @change="onChange($event)"
     >
-    <p
-      v-if="error"
-      :id="`${id}-desc`"
-      class="fr-error-text"
+    <div
+      v-if="error || validMessage"
+      class="fr-messages-group"
     >
-      {{ error }}
-    </p>
+      <p
+        v-if="error"
+        :id="`${id}-desc`"
+        class="fr-error-text  fr-mt-3v"
+      >
+        {{ error ?? validMessage }}
+      </p>
+    </div>
   </div>
 </template>
 

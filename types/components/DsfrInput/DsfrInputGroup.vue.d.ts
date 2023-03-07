@@ -11,6 +11,10 @@ declare const _default: import('vue').DefineComponent<{
         type: StringConstructor;
         default: string;
     };
+    hint: {
+        type: StringConstructor;
+        default: string;
+    };
     labelVisible: BooleanConstructor;
     modelValue: {
         type: StringConstructor;
@@ -30,7 +34,7 @@ declare const _default: import('vue').DefineComponent<{
     };
 }, unknown, unknown, {
     message(): any;
-    messageClass(): 'fr-error-text' | 'fr-valid-text';
+    messageClass(): 'fr-message--error' | 'fr-message--valid';
     messageIcon(): 'ri-alert-line' | 'ri-checkbox-circle-line';
 }, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, 'update:modelValue'[], 'update:modelValue', import('vue').VNodeProps & import('vue').AllowedComponentProps & import('vue').ComponentCustomProps, Readonly<import('vue').ExtractPropTypes<{
     id: {
@@ -42,6 +46,10 @@ declare const _default: import('vue').DefineComponent<{
         default(): any;
     };
     label: {
+        type: StringConstructor;
+        default: string;
+    };
+    hint: {
         type: StringConstructor;
         default: string;
     };
@@ -68,9 +76,10 @@ declare const _default: import('vue').DefineComponent<{
     id: string;
     label: string;
     placeholder: string;
-    modelValue: string;
+    modelValue: string | undefined;
     errorMessage: string;
     validMessage: string;
+    hint: string;
     descriptionId: string;
     labelVisible: boolean;
 }>

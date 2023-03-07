@@ -6,6 +6,9 @@ import DsfrButton from './DsfrButton.vue'
 
 addIcons(RiCheckboxCircleLine, RiSearchLine)
 
+/**
+ * [Voir quand l’utiliser sur la documentation du DSFR](https://www.systeme-de-design.gouv.fr/elements-d-interface/composants/bouton)
+ */
 export default {
   component: DsfrButton,
   title: 'Composants/Boutons/Boutons - DsfrButton',
@@ -25,6 +28,15 @@ export default {
     tertiary: {
       control: 'boolean',
       description: 'Permet de basculer sur la variante de style "tertiary"',
+    },
+    noOutline: {
+      control: 'boolean',
+      description: 'Permet de basculer sur la variante de style "tertiary-nooutline"',
+    },
+    size: {
+      control: 'radio',
+      options: ['small', 'medium', 'large'],
+      description: 'Indique la taille du groupe de bouton',
     },
     disabled: {
       control: 'boolean',
@@ -56,6 +68,8 @@ export const BoutonPrimaire = (args) => ({
       :tertiary="tertiary"
       :disabled="disabled"
       :icon="icon"
+      :size="size"
+      :no-outline="noOutline"
       :icon-only="iconOnly"
       :icon-right="iconRight"
       @click="onClick"
@@ -75,6 +89,8 @@ BoutonPrimaire.args = {
   icon: '',
   iconOnly: false,
   iconRight: false,
+  noOutline: false,
+  size: undefined,
 }
 
 export const BoutonPrimaireAvecIcone = (args) => ({
@@ -89,6 +105,8 @@ export const BoutonPrimaireAvecIcone = (args) => ({
       :label="label"
       :disabled="disabled"
       :icon="icon"
+      :size="size"
+      :no-outline="noOutline"
       :icon-right="iconRight"
       @click="onClick"
     />
@@ -104,6 +122,8 @@ BoutonPrimaireAvecIcone.args = {
   disabled: false,
   icon: 'ri-search-line',
   iconRight: false,
+  noOutline: false,
+  size: undefined,
 }
 
 export const BoutonSecondaire = (args) => ({
@@ -118,6 +138,8 @@ export const BoutonSecondaire = (args) => ({
       :label="label"
       :disabled="disabled"
       :secondary="secondary"
+      :no-outline="noOutline"
+      :size="size"
       @click="onClick"
     />
   `,
@@ -131,6 +153,8 @@ BoutonSecondaire.args = {
   disabled: false,
   dark: false,
   secondary: true,
+  noOutline: false,
+  size: undefined,
 }
 
 export const BoutonTertiaire = (args) => ({
@@ -145,6 +169,8 @@ export const BoutonTertiaire = (args) => ({
       :label="label"
       :disabled="disabled"
       :tertiary="tertiary"
+      :no-outline="noOutline"
+      :size="size"
       @click="onClick"
     />
   `,
@@ -158,6 +184,39 @@ BoutonTertiaire.args = {
   disabled: false,
   dark: false,
   tertiary: true,
+  noOutline: false,
+  size: undefined,
+}
+
+export const BoutonTertiaireSansBordure = (args) => ({
+  components: { DsfrButton },
+  data () {
+    return {
+      ...args,
+    }
+  },
+  template: `
+    <DsfrButton
+      :label="label"
+      :disabled="disabled"
+      :tertiary="tertiary"
+      :no-outline="noOutline"
+      :size="size"
+      @click="onClick"
+    />
+  `,
+
+  mounted () {
+    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
+  },
+})
+BoutonTertiaireSansBordure.args = {
+  label: 'Label bouton secondaire',
+  disabled: false,
+  dark: false,
+  tertiary: true,
+  noOutline: true,
+  size: undefined,
 }
 
 export const SuiteDeBoutons = (args) => ({
@@ -177,6 +236,8 @@ export const SuiteDeBoutons = (args) => ({
         :secondary="btn.secondary"
         :label="btn.label"
         :icon="btn.icon"
+        :no-outline="btn.noOutline"
+        :size="btn.size"
         :iconRight="btn.iconRight"
         @click="onClick"
       />

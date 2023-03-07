@@ -29,6 +29,10 @@ export default defineComponent({
       type: String,
       default: '',
     },
+    titleTag: {
+      type: String,
+      default: 'h3',
+    },
     noArrow: Boolean,
     horizontal: Boolean,
   },
@@ -43,28 +47,29 @@ export default defineComponent({
 
 <template>
   <div
-    class="fr-card fr-enlarge-link"
+    class="fr-card"
     :class="{
       'fr-card--horizontal': horizontal,
-      'fr-card--no-arrow': noArrow,
+      'fr-enlarge-link': !noArrow,
     }"
     data-testid="fr-card"
     @click="goToTargetLink"
   >
     <div class="fr-card__body">
-      <h4
+      <component
+        :is="titleTag"
         ref="title"
         class="fr-card__title"
       >
-        <router-link
+        <RouterLink
           :to="link"
           class="fr-card__link"
           data-testid="card-link"
           @click="$event.stopPropagation()"
         >
           {{ title }}
-        </router-link>
-      </h4>
+        </RouterLink>
+      </component>
       <p class="fr-card__desc">
         {{ description }}
       </p>

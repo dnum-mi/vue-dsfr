@@ -91,7 +91,7 @@ export const EnsemblePersonnaliseDeChamps = (args) => ({
       :hint-class="hintClass"
     >
       <template #legend>
-        {{ legend }} avec <em>de l’italique</em>
+        <h6>{{ legend }} avec <em>de l’italique</em> dans un titre</h6>
       </template>
       <template #hint>
         {{ hint }} avec <strong>du gras</strong>

@@ -3,6 +3,7 @@
 import { defineComponent } from 'vue'
 
 import DsfrRadioButton from './DsfrRadioButton.vue'
+import { getRandomId } from '../../utils/random-utils.js'
 
 export default defineComponent({
   name: 'DsfrRadioButtonSet',
@@ -12,6 +13,12 @@ export default defineComponent({
   },
 
   props: {
+    titleId: {
+      type: String,
+      default () {
+        return getRandomId('radio-button', 'group')
+      },
+    },
     disabled: Boolean,
     inline: Boolean,
     required: Boolean,
@@ -79,8 +86,8 @@ export default defineComponent({
     >
       <legend
         v-if="legend"
-        id="radio-legend"
-        class="fr-fieldset__legend"
+        :id="titleId"
+        class="fr-fieldset__legend fr-text--regular"
       >
         <!-- @slot Slot pour personnaliser tout le contenu de la balise <legend> cf. [DsfrInput](/?path=/story/composants-champ-de-saisie-champ-simple-dsfrinput--champ-avec-label-personnalise). Une **props porte le même nom pour une légende simple** (texte sans mise en forme) -->
         <slot name="legend">
@@ -108,13 +115,17 @@ export default defineComponent({
           @update:model-value="onChange"
         />
       </div>
-      <p
+      <div
         v-if="message"
-        class="fr-message-text  flex  items-center"
-        :class="additionalMessageClass"
+        class="fr-messages-group"
       >
-        <span class="line-1">{{ message }}</span>
-      </p>
+        <p
+          class="fr-message--info  flex  items-center"
+          :class="additionalMessageClass"
+        >
+          <span class="line-1">{{ message }}</span>
+        </p>
+      </div>
     </fieldset>
   </div>
 </template>

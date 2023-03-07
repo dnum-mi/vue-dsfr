@@ -55,9 +55,9 @@ export default defineComponent({
 <template>
   <div class="fr-follow__newsletter">
     <div>
-      <h5 class="fr-h5 fr-follow__title">
+      <h3 class="fr-h5 fr-follow__title">
         {{ title }}
-      </h5>
+      </h3>
       <p class="fr-text--sm fr-follow__desc">
         {{ description }}
       </p>
@@ -92,13 +92,17 @@ export default defineComponent({
             {{ buttonText }}
           </button>
         </div>
-        <p
+        <div
           v-if="error"
-          id="newsletter-email-desc-error"
-          class="fr-error-text"
+          class="fr-messages-group"
         >
-          {{ error }}
-        </p>
+          <p
+            id="newsletter-email-desc-error"
+            class="fr-error-text"
+          >
+            {{ error }}
+          </p>
+        </div>
         <p
           id="fr-newsletter-hint-text"
           class="fr-hint-text"

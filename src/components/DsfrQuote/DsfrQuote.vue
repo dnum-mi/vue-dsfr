@@ -68,7 +68,7 @@ export default defineComponent({
         </li>
       </ul>
 
-      <div class="fr-quote__image">
+      <div class="fr-quote__image" v-if="quoteImage">
         <img
           :src="quoteImage"
           class="fr-responsive-img"

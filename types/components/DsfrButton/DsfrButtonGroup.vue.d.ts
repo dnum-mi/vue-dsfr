@@ -1,28 +1,29 @@
-export interface Button {
-  disabled?: boolean,
-  label: string,
-  secondary?: boolean,
-  icon?: string,
-  iconRight?: boolean,
-  iconOnly?: boolean,
+type ButtonProps = {
+    disabled: boolean;
+    label: string;
+    secondary: boolean;
+    tertiary: boolean;
+    icon: string;
+    iconRight: boolean;
+    iconOnly: boolean;
 }
 
 declare const _default: import('vue').DefineComponent<{
     buttons: {
         type: ArrayConstructor;
-        default: () => any[];
+        default: () => ButtonProps[];
     };
     inline: BooleanConstructor;
     size: {
         type: StringConstructor;
         validator: (val: string) => boolean;
-        default: any;
+        default: undefined;
     };
     reverse: BooleanConstructor;
     align: {
         type: StringConstructor;
         validator: (val: string) => boolean;
-        default: any;
+        default: undefined;
     };
 }, unknown, unknown, {
     sm(): boolean;
@@ -30,10 +31,10 @@ declare const _default: import('vue').DefineComponent<{
     lg(): boolean;
     center(): boolean;
     right(): boolean;
-}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, Record<string, any>, string, import('vue').VNodeProps & import('vue').AllowedComponentProps & import('vue').ComponentCustomProps, Readonly<import('vue').ExtractPropTypes<{
+}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {}, string, import('vue').VNodeProps & import('vue').AllowedComponentProps & import('vue').ComponentCustomProps, Readonly<import('vue').ExtractPropTypes<{
     buttons: {
         type: ArrayConstructor;
-        default: () => any[];
+        default: () => ButtonProps[];
     };
     inline: BooleanConstructor;
     size: {
@@ -50,7 +51,7 @@ declare const _default: import('vue').DefineComponent<{
 }>>, {
     reverse: boolean;
     inline: boolean;
-    buttons: Button[];
+    buttons: Array<ButtonProps>;
     size: string;
     align: string;
 }>

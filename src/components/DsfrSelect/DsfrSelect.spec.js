@@ -51,37 +51,6 @@ describe('DsfrSelect', () => {
     expect(secondOption.selected).toBe(true)
   })
 
-  it('should render a select with option 1 preselected', async () => {
-    const defaultOptionLabel = 'Sélectionnez une option'
-    const firstOptionLabel = 'Option 1'
-    const secondOptionLabel = 'Option 2'
-    const selectId = 'select-id'
-    const options = [
-      firstOptionLabel,
-      secondOptionLabel,
-      'Option 3',
-      'Option 4',
-      'Option 5',
-      'Option 6',
-    ]
-
-    const { getByText } = render(DsfrSelect, {
-      props: {
-        options,
-        modelValue: firstOptionLabel,
-        selectId,
-      },
-    })
-
-    const defaultOption = getByText(defaultOptionLabel)
-    const firstOption = getByText(firstOptionLabel)
-    const secondOption = getByText(secondOptionLabel)
-
-    expect(defaultOption.selected).toBe(false)
-    expect(firstOption.selected).toBe(true)
-    expect(secondOption.selected).toBe(false)
-  })
-
   it('Should disable Options 2 and 5', async () => {
     const options = [{
       text: 'Option 1',

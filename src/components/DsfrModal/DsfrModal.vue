@@ -30,6 +30,10 @@ export default defineComponent({
       type: String,
       required: true,
     },
+    icon: {
+      type: String,
+      default: undefined,
+    },
   },
 
   emits: [
@@ -95,7 +99,7 @@ export default defineComponent({
   <focus-trap
     v-if="opened"
   >
-    <div
+    <dialog
       id="fr-modal-1"
       aria-labelledby="fr-modal-title-modal-1"
       :role="role"
@@ -126,6 +130,14 @@ export default defineComponent({
                   id="fr-modal-title-modal-1"
                   class="fr-modal__title"
                 >
+                  <span
+                    v-if="icon"
+                  >
+                    <VIcon
+                      :name="icon"
+                      scale="2"
+                    />
+                  </span>
                   {{ title }}
                 </h1>
                 <!-- @slot Slot par défaut pour le contenu de la liste. Sera dans `<ul class="fr-modal__title">` -->
@@ -146,7 +158,7 @@ export default defineComponent({
           </div>
         </div>
       </div>
-    </div>
+    </dialog>
   </focus-trap>
 </template>
 

@@ -34,7 +34,7 @@ export default defineComponent({
     labelVisible: Boolean,
     modelValue: {
       type: String,
-      default: undefined,
+      default: '',
     },
     placeholder: {
       type: String,
@@ -89,13 +89,18 @@ export default defineComponent({
       :placeholder="placeholder"
       @update:model-value="$emit('update:modelValue', $event)"
     />
-    <p
+    <div
       v-if="message"
-      :id="descriptionId"
-      :class="messageClass"
+      class="fr-messages-group"
     >
-      <span>{{ message }}</span>
-    </p>
+      <p
+        :id="descriptionId"
+        :data-testid="descriptionId"
+        :class="messageClass"
+      >
+        <span>{{ message }}</span>
+      </p>
+    </div>
   </div>
 </template>
 
