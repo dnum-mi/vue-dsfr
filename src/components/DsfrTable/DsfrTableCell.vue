@@ -35,7 +35,6 @@ export default defineComponent({
       :is="isComponent"
       v-if="isComponent"
       v-bind="field"
-      :on-click="field.onClick() || false"
     >
       {{ field.text }}
     </component>
