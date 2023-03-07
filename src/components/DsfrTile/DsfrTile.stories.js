@@ -27,6 +27,10 @@ export default {
       control: 'boolean',
       description: 'Permet le basculement de la tuile en mode horizontal',
     },
+    disabled: {
+      control: 'boolean',
+      description: 'Permet de rendre la tuile désactivée et non-cliquable',
+    },
     to: {
       control: 'text',
       description: 'Lien vers lequel la tuile pointe. Peut être une string ou objet à donner à `RouterLink` ou un lien externe (`string` commençant par `"http"`)',
@@ -55,6 +59,7 @@ export const TuileSimple = (args) => ({
       :imgSrc="imgSrc"
       :description="description"
       :horizontal="horizontal"
+      :disabled="false"
       :to="to"
       :title-tag="titleTag"
     />
@@ -70,6 +75,7 @@ TuileSimple.args = {
   imgSrc: 'http://placekitten.com/g/200/200',
   description: 'Une tuile absolument formidable',
   horizontal: false,
+  disabled: false,
   to: '#',
   titleTag: 'h2',
 }
