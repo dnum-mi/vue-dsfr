@@ -1,3 +1,5 @@
+import '@gouvfr/dsfr/dist/dsfr.min.css'
+
 // ***********************************************************
 // This example support/component.ts is processed and
 // loaded automatically before your test files.
