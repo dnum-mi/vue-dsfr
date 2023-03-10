@@ -1,3 +1,6 @@
+import { expect } from '@storybook/jest'
+import { within, userEvent } from '@storybook/testing-library'
+
 import DsfrModal from './DsfrModal.vue'
 import DsfrButton from '../DsfrButton/DsfrButton.vue'
 
@@ -7,6 +10,8 @@ import { RiCheckboxCircleLine } from 'oh-vue-icons/icons/ri/index.js'
 import { setup } from '@storybook/vue3'
 
 addIcons(RiCheckboxCircleLine)
+
+const delay = (timeout = 100) => new Promise(resolve => setTimeout(resolve, timeout))
 
 setup(app => {
   app.component('VIcon', VIcon)
@@ -118,4 +123,30 @@ Modal.args = {
       secondary: true,
     },
   ],
+}
+
+Modal.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement)
+  const openModalButton = canvas.getByRole('button')
+  await userEvent.type(openModalButton, '{enter}')
+  let closeModalButton = canvas.getByTitle('Fermer la fenêtre modale')
+  await delay()
+  expect(closeModalButton).toHaveFocus()
+  await userEvent.type(closeModalButton, '{enter}')
+  await delay()
+
+  await userEvent.type(openModalButton, '{space}')
+  await delay()
+  await userEvent.tab()
+  await delay()
+  const validateButton = canvas.getByText('Valider').parentElement
+  expect(validateButton).toHaveFocus()
+  await userEvent.tab()
+  await userEvent.tab()
+  await delay()
+  closeModalButton = canvas.getByTitle('Fermer la fenêtre modale')
+  expect(closeModalButton).toHaveFocus()
+  await userEvent.type(closeModalButton, '{space}')
+  await delay()
+  expect(openModalButton).toHaveFocus()
 }

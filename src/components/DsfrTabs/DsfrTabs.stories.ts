@@ -1,3 +1,5 @@
+import { expect } from '@storybook/jest'
+import { within, userEvent } from '@storybook/testing-library'
 import DsfrTabs from './DsfrTabs.vue'
 import DsfrTabContent from './DsfrTabContent.vue'
 
@@ -9,12 +11,33 @@ import DsfrAccordion from '../DsfrAccordion/DsfrAccordion.vue'
 
 addIcons(RiCheckboxCircleLine)
 
+const tabListName = 'Liste d’onglet'
+const title1 = 'Titre 1'
+const tabTitles = [
+  { title: title1, icon: 'ri-checkbox-circle-line' },
+  { title: 'Titre 2', icon: 'ri-checkbox-circle-line' },
+  { title: 'Titre 3', icon: 'ri-checkbox-circle-line' },
+  { title: 'Titre 4', icon: 'ri-checkbox-circle-line' },
+]
+const tabContents = [
+  'Contenu 1 avec seulement des strings',
+  'Contenu 2 avec seulement des strings',
+  'Contenu 3 avec seulement des strings',
+  'Contenu 4 avec seulement des strings',
+]
+
 /**
  * [Voir quand l’utiliser sur la documentation du DSFR](https://www.systeme-de-design.gouv.fr/elements-d-interface/composants/onglet)
  */
-export default {
+const meta = {
   component: DsfrTabs,
   title: 'Composants/Onglets - DsfrTabs',
+  args: {
+    tabListName,
+    title1,
+    tabTitles,
+    tabContents,
+  },
   argTypes: {
     dark: {
       control: 'boolean',
@@ -44,21 +67,7 @@ export default {
     },
   },
 }
-
-const tabListName = 'Liste d’onglet'
-const title1 = 'Titre 1'
-const tabTitles = [
-  { title: title1, icon: 'ri-checkbox-circle-line' },
-  { title: 'Titre 2', icon: 'ri-checkbox-circle-line' },
-  { title: 'Titre 3', icon: 'ri-checkbox-circle-line' },
-  { title: 'Titre 4', icon: 'ri-checkbox-circle-line' },
-]
-const tabContents = [
-  'Contenu 1 avec seulement des strings',
-  'Contenu 2 avec seulement des strings',
-  'Contenu 3 avec seulement des strings',
-  'Contenu 4 avec seulement des strings',
-]
+export default meta
 
 export const OngletsSimples = (args) => ({
   components: { DsfrTabs },
@@ -77,6 +86,41 @@ export const OngletsSimples = (args) => ({
     document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
   },
 })
+
+OngletsSimples.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement)
+  // const firstTab = await canvas.getByLabelText(tabTitles[0].title)
+  // await userEvent.click(firstTab)
+  const firstTab = canvas.getAllByRole('tab')[0]
+  const secondTab = canvas.getAllByRole('tab')[1]
+  const thirdTab = canvas.getAllByRole('tab')[2]
+  const fourthTab = canvas.getAllByRole('tab')[3]
+  const firstTabPanel = canvas.getByLabelText(tabTitles[0].title)
+  const secondTabPanel = canvas.getByLabelText(tabTitles[1].title)
+  const thirdTabPanel = canvas.getByLabelText(tabTitles[2].title)
+  const fourthTabPanel = canvas.getByLabelText(tabTitles[3].title)
+  await userEvent.click(secondTab)
+  await userEvent.type(secondTab, '{arrowright}')
+  expect(firstTabPanel).not.toHaveClass('fr-tabs__panel--selected')
+  expect(secondTabPanel).not.toHaveClass('fr-tabs__panel--selected')
+  expect(thirdTabPanel).toHaveClass('fr-tabs__panel--selected')
+  expect(thirdTab).toHaveAttribute('aria-selected', 'true')
+  await userEvent.type(thirdTab, '{arrowright}')
+  await userEvent.type(fourthTab, '{arrowright}')
+  expect(thirdTabPanel).not.toHaveClass('fr-tabs__panel--selected')
+  expect(thirdTab).not.toHaveAttribute('aria-selected', 'true')
+  expect(firstTabPanel).toHaveClass('fr-tabs__panel--selected')
+  expect(firstTab).toHaveAttribute('aria-selected', 'true')
+  await userEvent.type(firstTab, '{arrowup}')
+  expect(firstTabPanel).not.toHaveClass('fr-tabs__panel--selected')
+  expect(firstTab).not.toHaveAttribute('aria-selected', 'true')
+  expect(fourthTabPanel).toHaveClass('fr-tabs__panel--selected')
+  expect(fourthTab).toHaveAttribute('aria-selected', 'true')
+  await userEvent.type(fourthTab, '{arrowdown}')
+  await userEvent.tab()
+  expect(firstTabPanel).toHaveFocus()
+  await userEvent.tab()
+}
 OngletsSimples.args = {
   dark: false,
   tabListName,
