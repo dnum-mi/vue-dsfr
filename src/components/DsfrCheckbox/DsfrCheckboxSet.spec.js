@@ -38,7 +38,7 @@ describe('DsfrCheckboxSet', () => {
     const legendText = "Légende de l'ensemble des champs"
 
     // When
-    const { getByText, getAllByTestId } = render(DsfrCheckboxSet, {
+    const { getByText, container } = render(DsfrCheckboxSet, {
       global: {
         components: {
           VIcon,
@@ -53,7 +53,7 @@ describe('DsfrCheckboxSet', () => {
 
     // Then
     expect(getByText(firstLabelText)).toBeInTheDocument()
-    expect(getAllByTestId('t-checkbox')).toHaveLength(3)
+    expect(container.querySelectorAll('.fr-checkbox-group')).toHaveLength(3)
   })
 
   it('should render a group of checkboxes in fieldset', async () => {

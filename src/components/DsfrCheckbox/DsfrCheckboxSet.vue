@@ -101,7 +101,6 @@ export default defineComponent({
           v-for="option in options"
           :id="option.id"
           :key="option.id || option.name"
-          data-testid="t-checkbox"
           :name="option.name"
           :label="option.label"
           :disabled="option.disabled"
