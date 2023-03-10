@@ -117,7 +117,6 @@ export default defineComponent({
                   title="Fermer la fenêtre modale"
                   aria-controls="fr-modal-1"
                   type="button"
-                  role="button"
                   @click="close()"
                 >
                   <span>
