@@ -65,31 +65,33 @@ export default defineComponent({
     tabindex="-1"
     :class="{ 'fr-collapse--expanded': expanded }"
   >
-    <div class="fr-container">
+    <div class="fr-container  fr-container--fluid  fr-container-lg">
       <button
-        class="fr-btn--close fr-btn"
+        class="fr-link--close fr-link"
         aria-controls="mega-menu-695"
         @click="$emit('toggle-id', id)"
       >
         Fermer
       </button>
-      <div class="fr-grid-row fr-grid-row--gutters">
-        <div class="fr-col-12 fr-mb-4v">
-          <h4 class="fr-h4 fr-mb-2v">
-            {{ title }}
-          </h4>
-          <p class="fr-text--sm">
-            {{ description }}
-            <!-- @slot Slot par défaut pour le contenu de la description du mega-menu. Sera dans `<p class="fr-text--sm">` -->
-            <slot name="description" />
-          </p>
-          <RouterLink
-            vi
-            class="fr-btn  fr-fi-arrow-right-line  fr-btn--icon-right"
-            :to="link.to"
-          >
-            {{ link.text }}
-          </RouterLink>
+      <div class="fr-grid-row fr-grid-row-lg--gutters">
+        <div class="fr-col-12 fr-col-lg-8 fr-col-offset-lg-4--right fr-mb-4v">
+          <div class="fr-mega-menu__leader">
+            <h4 class="fr-h4 fr-mb-2v">
+              {{ title }}
+            </h4>
+            <p class="fr-hidden fr-displayed-lg">
+              {{ description }}
+              <!-- @slot Slot par défaut pour le contenu de la description du mega-menu. Sera dans `<p class="fr-text--sm">` -->
+              <slot name="description" />
+            </p>
+            <RouterLink
+              vi
+              class="fr-link fr-icon-arrow-right-line fr-link--icon-right fr-link--align-on-content"
+              :to="link.to"
+            >
+              {{ link.text }}
+            </RouterLink>
+          </div>
         </div>
         <!-- @slot Slot par défaut pour le contenu du mega-menu. Sera dans `<div class="fr-grid-row fr-grid-row--gutters">` -->
         <slot />
