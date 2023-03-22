@@ -1,4 +1,5 @@
 import DsfrHeader from './DsfrHeader.vue'
+import DsfrNavigation from '../DsfrNavigation/DsfrNavigation.vue'
 
 import { addIcons } from 'oh-vue-icons'
 
@@ -217,4 +218,185 @@ EnTeteAvecLogoOperateur.args = {
   operatorImgSrc: '/cat.svg',
   operatorImgAlt: 'Logo opérateur',
   operatorImgStyle: { height: '40px' },
+}
+
+export const EnTeteAvecNavigation = (args, { argTypes }) => ({
+  components: {
+    DsfrHeader,
+    DsfrNavigation,
+  },
+  data () {
+    return {
+      ...args,
+      quickLincks: args.quickLinks.map((link, idx) => {
+        if (idx === 0) {
+          link.onClick = ($event) => {
+            $event.preventDefault()
+            this.actionOnLink()
+          }
+        }
+        return link
+      }),
+    }
+  },
+
+  template: `
+    <DsfrHeader
+      :service-title="serviceTitle"
+      :service-description="serviceDescription"
+      :home-to="homeTo"
+      :quick-links="quickLinks"
+      :show-search="showSearch"
+      :logo-text="logoText"
+      v-model="modelValue"
+      @click="onClickOnLogo"
+      @search="onSearch($event)"
+    >
+      <DsfrNavigation
+        :nav-items="navItems"
+      />
+    </DsfrHeader>
+  `,
+
+  methods: {
+    onClickOnLogo ($event) {
+      $event.preventDefault()
+      $event.stopPropagation()
+      this.actionOnLogo($event)
+    },
+  },
+
+  mounted () {
+    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
+  },
+})
+EnTeteAvecNavigation.args = {
+  dark: false,
+  showSearch: true,
+  logoText: ['Ministère', 'de l’intérieur'],
+  serviceTitle: 'Nom du Site/Service',
+  serviceDescription: 'baseline - précisions sur l‘organisation',
+  modelValue: '',
+  placeholder: '',
+  homeTo: '#',
+  quickLinks: [
+    { label: 'Créer un espace', to: '/space/create', icon: 'ri-add-circle-line', iconAttrs: { scale: 0.9 } },
+    { label: 'Se connecter', to: '/login', class: 'fr-fi-lock-line', target: '_blank' },
+    { label: 'S’enregistrer', to: '/signin', icon: 'ri-account-circle-line', iconRight: true, iconAttrs: { animation: 'spin', speed: 'slow' } },
+  ],
+  navItems: [
+    {
+      to: '#essai',
+      text: 'Accès direct',
+    },
+    {
+      title: 'Menu déroulant',
+      links: [
+        {
+          text: 'Lien 1',
+          to: '#',
+        },
+        {
+          text: 'Lien 2',
+          to: '#',
+        },
+        {
+          text: 'Lien 3',
+          to: '#',
+        },
+        {
+          text: 'Lien 4',
+          to: '#',
+        },
+        {
+          text: 'Lien 5',
+          to: '#',
+        },
+      ],
+    },
+    {
+      title: 'Mega menu',
+      link: {
+        to: '#',
+        text: 'Voir toute la rubrique',
+      },
+      menus: [
+        {
+          title: 'Nom de catégorie',
+          links: [
+            {
+              text: 'Lien 1',
+              to: '#',
+            },
+            {
+              text: 'Lien 2',
+              to: '#',
+            },
+            {
+              text: 'Lien 3',
+              to: '#',
+            },
+            {
+              text: 'Lien 4',
+              to: '#',
+            },
+            {
+              text: 'Lien 5',
+              to: '#',
+            },
+          ],
+        },
+        {
+          title: 'Nom de catégorie',
+          links: [
+            {
+              text: 'Lien 1',
+              to: '#',
+            },
+            {
+              text: 'Lien 2',
+              to: '#',
+            },
+            {
+              text: 'Lien 3',
+              to: '#',
+            },
+            {
+              text: 'Lien 4',
+              to: '#',
+            },
+            {
+              text: 'Lien 5',
+              to: '#',
+            },
+          ],
+        },
+        {
+          title: 'Nom de catégorie',
+          links: [
+            {
+              text: 'Lien 1',
+              to: '#',
+            },
+            {
+              text: 'Lien 2',
+              to: '#',
+            },
+            {
+              text: 'Lien 3',
+              to: '#',
+            },
+            {
+              text: 'Lien 4',
+              to: '#',
+            },
+            {
+              text: 'Lien 5',
+              to: '#',
+            },
+          ],
+        },
+      ],
+    },
+  ],
 }

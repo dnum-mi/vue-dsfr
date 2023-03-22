@@ -271,6 +271,7 @@ export default defineComponent({
             </div>
           </div>
         </div>
+        <slot />
       </div>
     </div>
   </header>
