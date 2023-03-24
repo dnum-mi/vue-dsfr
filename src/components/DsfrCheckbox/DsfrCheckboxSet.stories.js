@@ -7,10 +7,6 @@ export default {
   component: DsfrCheckboxSet,
   title: 'Composants/Case à cocher/Groupe de cases à cocher - DsfrCheckboxSet',
   argTypes: {
-    dark: {
-      control: 'boolean',
-      description: 'Permet de voir le composant dans les deux **thèmes** : **clair** (`false`, défaut) et **sombre** (`true`).\n\n*N.B. : Ne fait pas partie du composant.*',
-    },
 
     disabled: {
       control: 'boolean',
@@ -72,12 +68,9 @@ export const CheckboxSet = (args) => ({
       this.onChange(val)
     },
   },
-  mounted () {
-    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
-  },
+
 })
 CheckboxSet.args = {
-  dark: false,
   legend: 'Légende des champs',
   disabled: false,
   inline: false,
@@ -128,12 +121,9 @@ export const CheckboxSetRequis = (args) => ({
       this.onChange(val)
     },
   },
-  mounted () {
-    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
-  },
+
 })
 CheckboxSetRequis.args = {
-  dark: false,
   legend: 'Veuillez choisir au moins une des propositions suivantes',
   disabled: false,
   inline: false,
@@ -188,12 +178,9 @@ export const CheckboxSetRequisPersonnalise = (args) => ({
       this.onChange(val)
     },
   },
-  mounted () {
-    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
-  },
+
 })
 CheckboxSetRequisPersonnalise.args = {
-  dark: false,
   legend: 'Label de l’ensemble des champs',
   disabled: false,
   inline: false,
@@ -242,12 +229,9 @@ export const CheckboxSetAvecErreur = (args) => ({
       this.onChange(val)
     },
   },
-  mounted () {
-    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
-  },
+
 })
 CheckboxSetAvecErreur.args = {
-  dark: false,
   legend: 'Légende des champs',
   disabled: false,
   inline: false,
@@ -297,13 +281,10 @@ export const CheckboxSetAvecSucces = (args) => ({
       this.onChange(val)
     },
   },
-  mounted () {
-    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
-  },
+
 })
 
 CheckboxSetAvecSucces.args = {
-  dark: false,
   legend: 'Légende des champs',
   modelValue: ['name1'],
   inline: false,
@@ -352,12 +333,9 @@ export const CheckboxSetInline = (args) => ({
       this.onChange(val)
     },
   },
-  mounted () {
-    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
-  },
+
 })
 CheckboxSetInline.args = {
-  dark: false,
   legend: 'Légende des champs en ligne',
   modelValue: ['name1'],
   inline: true,
@@ -407,12 +385,9 @@ export const CheckboxSetInlineAvecErreur = (args) => ({
       this.onChange(val)
     },
   },
-  mounted () {
-    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
-  },
+
 })
 CheckboxSetInlineAvecErreur.args = {
-  dark: false,
   legend: 'Légende des champs en ligne',
   modelValue: ['name1'],
   inline: true,
@@ -462,12 +437,9 @@ export const CheckboxSetInlineAvecSucces = (args) => ({
       this.onChange(val)
     },
   },
-  mounted () {
-    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
-  },
+
 })
 CheckboxSetInlineAvecSucces.args = {
-  dark: false,
   legend: 'Légende des champs en ligne',
   modelValue: ['name1'],
   inline: true,

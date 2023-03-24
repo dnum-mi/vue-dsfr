@@ -4,10 +4,7 @@ export default {
   component: DsfrPicture,
   title: 'Composants/Image - DsfrPicture',
   argTypes: {
-    dark: {
-      control: 'boolean',
-      description: 'Permet de voir le composant dans les deux **thèmes** : **clair** (`false`, défaut) et **sombre** (`true`).\n\n*N.B. : Ne fait pas partie du composant.',
-    },
+
     alt: {
       control: 'text',
       description: 'Présente une alternative textuelle au contenu et optimise le référencement. Si l’image est illustrative, n’apportant  pas d’éléments de compréhension supplémentaires par rapport au texte dans lequel elle se trouve, l’attribut alt doit être vide',
@@ -52,12 +49,9 @@ export const ImageSrc = (args) => ({
       style="max-width: 500px"
     />
   `,
-  mounted () {
-    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
-  },
+
 })
 ImageSrc.args = {
-  dark: false,
   size: 'medium',
   src: 'https://placekitten.com/300/200',
   alt: '',
@@ -86,12 +80,9 @@ export const ImageSvg = (args) => ({
       </svg>
     </DsfrPicture>
   `,
-  mounted () {
-    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
-  },
+
 })
 ImageSvg.args = {
-  dark: false,
   size: 'medium',
   legend: 'Vue in Gotham',
   ratio: '16x9',

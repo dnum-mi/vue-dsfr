@@ -6,10 +6,6 @@ export default {
   title: 'Composants/Tableau/En-têtes de tableau - DsfrTableHeaders',
   argTypes: {
     title: { control: 'text' },
-    dark: {
-      control: 'boolean',
-      description: 'Permet de voir le composant dans les deux **thèmes** : **clair** (`false`, défaut) et **sombre** (`true`).\n\n*N.B. : Ne fait pas partie du composant.*',
-    },
     headers: {
       control: 'object',
       description: 'Liste des en-têtes du tableau (tableau de string).',
@@ -42,12 +38,9 @@ export const EnTetesDeTableau = (args) => ({
         &lt;Corps du tableau>
       </DsfrTable>
   `,
-  mounted () {
-    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
-  },
+
 })
 EnTetesDeTableau.args = {
-  dark: false,
   title,
   headers,
 }

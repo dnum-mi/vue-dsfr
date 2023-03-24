@@ -24,10 +24,6 @@ export default {
   component: DsfrModal,
   title: 'Composants/Modale - DsfrModal',
   argTypes: {
-    dark: {
-      control: 'boolean',
-      description: 'Permet de voir le composant dans les deux **thèmes** : **clair** (`false`, défaut) et **sombre** (`true`).\n\n*N.B. : Ne fait pas partie du composant.*',
-    },
     actions: {
       control: 'object',
       description: 'Tableau d’objets : chaque objet contiendra les props à donner à `DsfrButton`',
@@ -95,9 +91,7 @@ export const Modal = (args) => ({
     </DsfrModal>
   `,
 
-  mounted () {
-    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
-  },
+
 
   methods: {
     onClose () {
@@ -109,7 +103,6 @@ export const Modal = (args) => ({
   },
 })
 Modal.args = {
-  dark: false,
   opened: false,
   title: 'Titre de la modale',
   isAlert: false,

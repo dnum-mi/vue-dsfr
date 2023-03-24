@@ -13,10 +13,6 @@ export default {
   component: DsfrCallout,
   title: 'Composants/Mise en Avant - Callout',
   argTypes: {
-    dark: {
-      control: 'boolean',
-      description: 'Permet de voir le composant dans les deux **thèmes** : **clair** (`false`, défaut) et **sombre** (`true`).\n\n*N.B. : Ne fait pas partie du composant.*',
-    },
     title: {
       control: 'text',
       description: 'Permet de passer le titre désiré en chaîne de caractères',
@@ -69,12 +65,9 @@ export const MiseEnAvantSimple = (args) => ({
     />
   `,
 
-  mounted () {
-    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
-  },
+
 })
 MiseEnAvantSimple.args = {
-  dark: false,
   title: 'Titre de la mise en avant',
   button: undefined,
   icon: '',
@@ -108,12 +101,9 @@ export const MiseEnAvant = (args) => ({
     />
   `,
 
-  mounted () {
-    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
-  },
+
 })
 MiseEnAvant.args = {
-  dark: false,
   title: 'Titre de la mise en avant',
   button: {
     label: 'Label bouton',

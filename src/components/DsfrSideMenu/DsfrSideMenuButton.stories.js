@@ -8,10 +8,6 @@ export default {
   component: DsfrSideMenuButton,
   title: 'Composants/Menu latéral/5 - Bouton de menu dépliable - DsfrSideMenuButton',
   argTypes: {
-    dark: {
-      control: 'boolean',
-      description: 'Permet de voir le composant dans les deux **thèmes** : **clair** (`false`, défaut) et **sombre** (`true`).\n\n*N.B. : Ne fait pas partie du composant.*',
-    },
     active: {
       control: 'boolean',
       description: 'indique que l’item de menu correspond à la page courante',
@@ -43,9 +39,7 @@ export const BoutonDeMenuDepliable = (args, { argTypes }) => ({
     }
   },
 
-  mounted () {
-    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
-  },
+
 
   template: `
   <DsfrSideMenu
@@ -88,7 +82,6 @@ export const BoutonDeMenuDepliable = (args, { argTypes }) => ({
   `,
 })
 BoutonDeMenuDepliable.args = {
-  dark: false,
   active: false,
   expanded: false,
   controlId: 'sidemenu-1',

@@ -23,10 +23,6 @@ export default {
   component: DsfrNavigation,
   title: 'Composants/Navigation Principale/1. Navigation Principale - DsfrNavigation',
   argTypes: {
-    dark: {
-      control: 'boolean',
-      description: 'Permet de voir le composant dans les deux **thèmes** : **clair** (`false`, défaut) et **sombre** (`true`).\n\n*N.B. : Ne fait pas partie du composant.*',
-    },
     navItems: {
       control: 'object',
       description: `Tableau d'objets. Chacun de ces objets contiendra :
@@ -57,9 +53,7 @@ export const NavigationPrincipale = (args) => ({
       ...args,
     }
   },
-  mounted () {
-    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
-  },
+
 
   template: `
   <DsfrNavigation
@@ -69,7 +63,6 @@ export const NavigationPrincipale = (args) => ({
 })
 
 NavigationPrincipale.args = {
-  dark: false,
   navItems: [
     {
       to: '#essai',

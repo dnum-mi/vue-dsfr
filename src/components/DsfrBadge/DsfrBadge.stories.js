@@ -7,10 +7,6 @@ export default {
   component: DsfrBadge,
   title: 'Composants/Badge - DsfrBadge',
   argTypes: {
-    dark: {
-      control: 'boolean',
-      description: 'Permet de voir le composant dans les deux **thèmes** : **clair** (`false`, défaut) et **sombre** (`true`).\n\n*N.B. : Ne fait pas partie du composant.*',
-    },
     label: {
       control: 'text',
       description: 'Label (texte) du badge',
@@ -41,12 +37,9 @@ export const Badge = (args) => ({
   template: `
     <DsfrBadge :label="label" :small="small" :type="type" :no-icon="noIcon" />
   `,
-  mounted () {
-    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
-  },
+
 })
 Badge.args = {
-  dark: false,
   small: false,
   type: 'success',
   label: 'Succès au chocolat vert',
@@ -83,10 +76,7 @@ export const TousLesBadges = (args) => ({
       <DsfrBadge label="Nouveauté" type="new" />
     </p>
   `,
-  mounted () {
-    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
-  },
+
 })
 TousLesBadges.args = {
-  dark: false,
 }

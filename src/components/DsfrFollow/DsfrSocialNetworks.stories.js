@@ -9,10 +9,6 @@ export default {
   name: '',
   component: DsfrSocialNetworks,
   argTypes: {
-    dark: {
-      control: 'boolean',
-      description: 'Permet de voir le composant dans les deux **thèmes** : **clair** (`false`, défaut) et **sombre** (`true`).\n\n*N.B. : Ne fait pas partie du composant.*',
-    },
     networks: {
       control: 'object',
       description: 'Liste des différents réseaux sociaux ; doit avoir 2 props : `name` (forcément parmi les valeurs suivantes : `\'facebook\'`, `\'twitter\'`, `\'youtube\'`, `\'linkedin\'`, `\'instagram\'`)  et `url`',
@@ -42,12 +38,9 @@ export const ReseauxSociaux = (args) => ({
     </DsfrFollow>
   `,
 
-  mounted () {
-    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
-  },
+
 })
 ReseauxSociaux.args = {
-  dark: false,
   titleTag: undefined,
   networks: [
     {

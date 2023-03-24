@@ -11,10 +11,6 @@ export default {
   component: DsfrTabItem,
   title: 'Composants/Onglets - DsfrTabs',
   argTypes: {
-    dark: {
-      control: 'boolean',
-      description: 'Permet de voir le composant dans les deux **thèmes** : **clair** (`false`, défaut) et **sombre** (`true`).\n\n*N.B. : Ne fait pas partie du composant.*',
-    },
     tabTitle: {
       control: 'object',
       description: 'Props de `DsfrTabItem` : Titre de l’onglet `DsfrTabItem` - **Obligatoire**',
@@ -79,12 +75,9 @@ export const TitreDOnglet = (args) => ({
       </ul>
     </div>
   `,
-  mounted () {
-    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
-  },
+
 })
 TitreDOnglet.args = {
-  dark: false,
   panelId: 'tab-content-0',
   tabId: 'tab-0',
   icon: 'ri-checkbox-circle-line',

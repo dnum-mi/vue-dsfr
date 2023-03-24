@@ -24,10 +24,6 @@ export default {
   component: DsfrTags,
   title: 'Composants/Étiquettes - DsfrTags',
   argTypes: {
-    dark: {
-      control: 'boolean',
-      description: 'Permet de voir le composant dans les deux **thèmes** : **clair** (`false`, défaut) et **sombre** (`true`).\n\n*N.B. : Ne fait pas partie du composant.*',
-    },
     class: {
       control: 'text',
       description: 'Classe CSS (facultative) pour utiliser les icônes du DSFR',
@@ -130,12 +126,9 @@ export const Etiquette = (args) => ({
       :small="small"
     />
   `,
-  mounted () {
-    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
-  },
+
 })
 Etiquette.args = {
-  dark: false,
   label: 'Étiquette',
   class: '',
   icon: '',
@@ -156,12 +149,9 @@ export const GroupeDEtiquettes = (args) => ({
       :tags="tags"
     />
   `,
-  mounted () {
-    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
-  },
+
 })
 GroupeDEtiquettes.args = {
-  dark: false,
   tags: tagGroup,
 }
 
@@ -181,12 +171,9 @@ export const EtiquettesSimples = (args) => ({
       :tags="tags"
     />
   `,
-  mounted () {
-    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
-  },
+
 })
 EtiquettesSimples.args = {
-  dark: false,
   tags: tags[0],
 }
 
@@ -206,12 +193,9 @@ export const EtiquettesSimplesPetites = (args) => ({
       :tags="tags"
     />
   `,
-  mounted () {
-    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
-  },
+
 })
 EtiquettesSimplesPetites.args = {
-  dark: false,
   tags: tags[1],
 }
 
@@ -231,12 +215,9 @@ export const EtiquettesCliquables = (args) => ({
       :tags="tags"
     />
   `,
-  mounted () {
-    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
-  },
+
 })
 EtiquettesCliquables.args = {
-  dark: false,
   tags: tags[2],
 }
 
@@ -256,12 +237,9 @@ export const EtiquettesCliquablesPetites = (args) => ({
       :tags="tags"
     />
   `,
-  mounted () {
-    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
-  },
+
 })
 EtiquettesCliquablesPetites.args = {
-  dark: false,
   tags: tags[3],
 }
 
@@ -290,12 +268,9 @@ export const EtiquettesSelectionnables = (args) => ({
       :tags="tags"
     />
   `,
-  mounted () {
-    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
-  },
+
 })
 EtiquettesSelectionnables.args = {
-  dark: false,
   tags: tags[4],
 }
 
@@ -350,11 +325,8 @@ export const EtiquettesFermables = (args) => ({
       :tags="tags"
     />
   `,
-  mounted () {
-    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
-  },
+
 })
 EtiquettesFermables.args = {
-  dark: false,
   tags: tags[5],
 }

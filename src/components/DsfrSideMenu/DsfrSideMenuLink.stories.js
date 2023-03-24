@@ -7,10 +7,6 @@ export default {
   component: DsfrSideMenuLink,
   title: 'Composants/Menu latéral/4 - Lien de menu dépliable - DsfrSideMenuLink',
   argTypes: {
-    dark: {
-      control: 'boolean',
-      description: 'Permet de voir le composant dans les deux **thèmes** : **clair** (`false`, défaut) et **sombre** (`true`).\n\n*N.B. : Ne fait pas partie du composant.*',
-    },
     to: {
       control: 'text',
       description: 'URL complète pour un lien externe, ou chaîne de caractère ou objet à donner à `to` de `RouterLink` pour un lien interne',
@@ -36,9 +32,7 @@ export const LienDansUnElementDeListeDeMenuLateral = (args, { argTypes }) => ({
     }
   },
 
-  mounted () {
-    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
-  },
+
 
   template: `
   <DsfrSideMenu
@@ -59,7 +53,6 @@ export const LienDansUnElementDeListeDeMenuLateral = (args, { argTypes }) => ({
   `,
 })
 LienDansUnElementDeListeDeMenuLateral.args = {
-  dark: false,
   active: false,
   to: '/',
   id: 'list-id',

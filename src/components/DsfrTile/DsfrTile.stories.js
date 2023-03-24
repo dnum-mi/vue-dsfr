@@ -7,10 +7,6 @@ export default {
   component: DsfrTile,
   title: 'Composants/Tuile - DsfrTile',
   argTypes: {
-    dark: {
-      control: 'boolean',
-      description: 'Permet de voir le composant dans les deux **thèmes** : **clair** (`false`, défaut) et **sombre** (`true`).\n\n*N.B. : Ne fait pas partie du composant.*',
-    },
     title: {
       control: 'text',
       description: 'Donne un titre à votre tuile',
@@ -64,13 +60,10 @@ export const TuileSimple = (args) => ({
       :title-tag="titleTag"
     />
   `,
-  mounted () {
-    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
-  },
+
 
 })
 TuileSimple.args = {
-  dark: false,
   title: 'Ma formidable tuile',
   imgSrc: 'http://placekitten.com/g/200/200',
   description: 'Une tuile absolument formidable',

@@ -16,10 +16,6 @@ export default {
   component: DsfrInput,
   title: 'Composants/Champ de saisie/Champ simple - DsfrInput',
   argTypes: {
-    dark: {
-      control: 'boolean',
-      description: 'Permet de voir le composant dans les deux **thèmes** : **clair** (`false`, défaut) et **sombre** (`true`). *N.B. : Ne fait pas partie du composant.*',
-    },
     id: {
       control: 'text',
       description: '(optionnel) Valeur de l’attribut `id` du champ de saisie. Par défaut, un id pseudo-aléatoire sera donné.',
@@ -111,12 +107,9 @@ export const ChampSansLabel = (args) => ({
       :disabled="disabled"
     />
   `,
-  mounted () {
-    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
-  },
+
 })
 ChampSansLabel.args = {
-  dark: false,
   type: 'text',
   labelVisible: false,
   label: 'Label visible',
@@ -145,12 +138,9 @@ export const LabelVisible = (args) => ({
       :disabled="disabled"
     />
   `,
-  mounted () {
-    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
-  },
+
 })
 LabelVisible.args = {
-  dark: false,
   label: 'Label champ de saisie',
   hint: 'Indice de champ de saisie',
   labelVisible: true,
@@ -184,12 +174,9 @@ export const ChampRequis = (args) => ({
     >
     </DsfrInput>
   `,
-  mounted () {
-    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
-  },
+
 })
 ChampRequis.args = {
-  dark: false,
   label: 'Label champ de saisie',
   labelVisible: true,
   placeholder: 'Placeholder',
@@ -267,12 +254,9 @@ export const ChampAvecLabelPersonnalise = (args) => ({
       </template>
     </DsfrInput>
   `,
-  mounted () {
-    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
-  },
+
 })
 ChampAvecLabelPersonnalise.args = {
-  dark: false,
   label: 'Le label du champ',
   labelVisible: true,
   placeholder: 'Placeholder',
@@ -304,12 +288,9 @@ export const ChampRequisPersonnalise = (args) => ({
       </template>
     </DsfrInput>
   `,
-  mounted () {
-    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
-  },
+
 })
 ChampRequisPersonnalise.args = {
-  dark: false,
   label: 'Label champ de saisie',
   labelVisible: true,
   placeholder: 'Placeholder',
@@ -343,12 +324,9 @@ export const ChampEnErreur = (args) => ({
       />
     </DsfrInputGroup>
   `,
-  mounted () {
-    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
-  },
+
 })
 ChampEnErreur.args = {
-  dark: false,
   label: 'Label champ de saisie',
   labelVisible: true,
   placeholder: 'Placeholder',
@@ -380,12 +358,9 @@ export const ChampValide = (args) => ({
       />
     </DsfrInputGroup>
   `,
-  mounted () {
-    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
-  },
+
 })
 ChampValide.args = {
-  dark: false,
   label: 'Label champ de saisie',
   labelVisible: true,
   placeholder: 'Placeholder',
@@ -415,12 +390,9 @@ export const ChampDeSaisieDeDate = (args) => ({
       :is-with-wrapper="true"
     />
   `,
-  mounted () {
-    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
-  },
+
 })
 ChampDeSaisieDeDate.args = {
-  dark: false,
   labelVisible: true,
   placeholder: 'Placeholder',
   modelValue: '',
@@ -477,12 +449,9 @@ export const FocusSurChamp = (args) => ({
       :disabled="disabled"
     />
   `,
-  mounted () {
-    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
-  },
+
 })
 FocusSurChamp.args = {
-  dark: false,
   labelVisible: true,
   placeholder: 'Placeholder',
   modelValue: '',
@@ -511,12 +480,9 @@ export const ZoneDeTexte = (args) => ({
       :is-textarea="isTextarea"
     />
   `,
-  mounted () {
-    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
-  },
+
 })
 ZoneDeTexte.args = {
-  dark: false,
   label: 'Label champ de saisie',
   labelVisible: true,
   placeholder: 'Placeholder',

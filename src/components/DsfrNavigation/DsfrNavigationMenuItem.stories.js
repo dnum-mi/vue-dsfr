@@ -24,10 +24,6 @@ export default {
   component: DsfrNavigationMenuItem,
   title: 'Composants/Navigation Principale/7. Item de menu de navigation - DsfrNavigationMenuItem',
   argTypes: {
-    dark: {
-      control: 'boolean',
-      description: 'Permet de voir le composant dans les deux **thèmes** : **clair** (`false`, défaut) et **sombre** (`true`).\n\n*N.B. : Ne fait pas partie du composant.*',
-    },
     expandedId: {
       control: 'text',
       description: 'Valeur de l’id du menu déroulé. *N.B. : Ne fait pas partie de ce composant.*',
@@ -90,12 +86,9 @@ export const ItemDeMenuDeNavigation = args => ({
   </DsfrNavigation>
   `,
 
-  mounted () {
-    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
-  },
+
 })
 ItemDeMenuDeNavigation.args = {
-  dark: false,
   active: false,
   expandedId: '',
   id: undefined,

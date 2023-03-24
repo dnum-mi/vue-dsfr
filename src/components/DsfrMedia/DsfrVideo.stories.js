@@ -14,10 +14,7 @@ export default {
   component: DsfrVideo,
   title: 'Composants/Vidéo - DsfrVideo',
   argTypes: {
-    dark: {
-      control: 'boolean',
-      description: 'Permet de voir le composant dans les deux **thèmes** : **clair** (`false`, défaut) et **sombre** (`true`).\n\n*N.B. : Ne fait pas partie du composant.',
-    },
+
     src: {
       control: 'text',
       description: 'Spécifie le chemin menant à l\'image dans le but de l\'afficher.',
@@ -65,13 +62,10 @@ export const Video = (args) => ({
       :ratio="ratio"
     />
   `,
-  mounted () {
-    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
-  },
+
 })
 
 Video.args = {
-  dark: false,
   size: 'medium',
   src: 'https://www.youtube.com/embed/HyirpmPL43I',
   legend: 'Vidéo traitant du Service National Universel',

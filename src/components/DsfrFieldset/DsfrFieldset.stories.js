@@ -4,10 +4,6 @@ export default {
   component: DsfrFieldset,
   title: 'Composants/Ensemble de champs - DsfrFieldset',
   argTypes: {
-    dark: {
-      control: 'boolean',
-      description: 'Permet de voir le composant dans les deux **thèmes** : **clair** (`false`, défaut) et **sombre** (`true`).\n\n*N.B. : Ne fait pas partie du composant.*',
-    },
     legend: {
       control: 'text',
       description: 'Slot pour le contenu du titre du `fieldset` (sera dans `<legend class="fr-fieldset__legend">`). Une props du même nom est utilisable pour du texte simple sans mise en forme.',
@@ -57,12 +53,9 @@ export const EnsembleDeChamps = (args) => ({
     </DsfrFieldset>
   `,
 
-  mounted () {
-    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
-  },
+
 })
 EnsembleDeChamps.args = {
-  dark: false,
   legend: 'Titre de l’ensemble des champs',
   legendId: 'legend-id',
   legendClass: '',
@@ -100,12 +93,9 @@ export const EnsemblePersonnaliseDeChamps = (args) => ({
     </DsfrFieldset>
   `,
 
-  mounted () {
-    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
-  },
+
 })
 EnsemblePersonnaliseDeChamps.args = {
-  dark: false,
   legend: 'Contenu personnalisé du titre de l’ensemble des champs',
   legendId: 'legend-id',
   legendClass: '',

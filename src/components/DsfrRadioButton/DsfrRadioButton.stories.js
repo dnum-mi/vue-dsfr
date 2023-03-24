@@ -8,10 +8,6 @@ export default {
   component: DsfrRadioButton,
   title: 'Composants/Boutons radio/Boutons radio - DsfrRadioButtons',
   argTypes: {
-    dark: {
-      control: 'boolean',
-      description: 'Permet de voir le composant dans les deux **thèmes** : **clair** (`false`, défaut) et **sombre** (`true`).\n\n*N.B. : Ne fait pas partie du composant.*',
-    },
     id: {
       control: 'text',
       description: '(optionnel) Valeur de l’attribut `id` du radio bouton. Par défaut, un id pseudo-aléatoire sera donné.',
@@ -63,7 +59,6 @@ export const RadioButton = (args, { argTypes }) => ({
   },
 })
 RadioButton.args = {
-  dark: false,
   modelValue: '3',
   options: [
     {
@@ -111,7 +106,6 @@ export const RichRadioButton = (args, { argTypes }) => ({
   },
 })
 RichRadioButton.args = {
-  dark: false,
   modelValue: '3',
   options: [
     {

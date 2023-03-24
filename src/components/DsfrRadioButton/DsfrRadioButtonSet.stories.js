@@ -7,10 +7,6 @@ export default {
   component: DsfrRadioButtonSet,
   title: 'Composants/Boutons radio/Groupe de boutons radio - DsfrRadioButtonSet',
   argTypes: {
-    dark: {
-      control: 'boolean',
-      description: 'Permet de voir le composant dans les deux **thèmes** : **clair** (`false`, défaut) et **sombre** (`true`).\n\n*N.B. : Ne fait pas partie du composant.*',
-    },
     disabled: {
       control: 'boolean',
       description: 'Indique si le bouton radio doit être désactivé (`true`) ou non (`false`, défaut)',
@@ -67,7 +63,6 @@ export const GroupeDeBoutonsRadio = (args) => ({
   `,
 })
 GroupeDeBoutonsRadio.args = {
-  dark: false,
   legend: 'Légende des champs',
   inline: false,
   modelValue: '3',
@@ -108,7 +103,6 @@ export const GroupeDeBoutonsRadioRequis = (args) => ({
   `,
 })
 GroupeDeBoutonsRadioRequis.args = {
-  dark: false,
   legend: 'Légende des champs',
   inline: false,
   required: true,
@@ -154,7 +148,6 @@ export const GroupeDeBoutonsRadioRequisPersonnalise = (args) => ({
   `,
 })
 GroupeDeBoutonsRadioRequisPersonnalise.args = {
-  dark: false,
   legend: 'Légende des champs',
   inline: false,
   required: true,
@@ -197,7 +190,6 @@ export const GroupeDeBoutonsRadioEnErreur = (args) => ({
   `,
 })
 GroupeDeBoutonsRadioEnErreur.args = {
-  dark: false,
   error: "Texte de l'erreur",
   legend: 'Légende des champs',
   inline: false,
@@ -242,7 +234,6 @@ export const GroupeDeBoutonsRadioEnSuccess = (args) => ({
   `,
 })
 GroupeDeBoutonsRadioEnSuccess.args = {
-  dark: false,
   validMessage: 'Succès au chocolat',
   legend: 'Légende des champs',
   inline: false,
@@ -286,7 +277,6 @@ export const GroupeDeBoutonsRadioDisabled = (args) => ({
   `,
 })
 GroupeDeBoutonsRadioDisabled.args = {
-  dark: false,
   legend: 'Légende des champs',
   inline: false,
   selectedValue: 1,
@@ -328,7 +318,6 @@ export const GroupeDeBoutonsRadioInline = (args) => ({
   `,
 })
 GroupeDeBoutonsRadioInline.args = {
-  dark: false,
   legend: 'Légende des champs en ligne',
   selectedValue: 1,
   disabled: true,

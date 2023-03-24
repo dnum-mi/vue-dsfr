@@ -7,10 +7,6 @@ export default {
   component: DsfrQuote,
   title: 'Composants/Citations - DsfrQuote',
   argTypes: {
-    dark: {
-      control: 'boolean',
-      description: 'Permet de voir le composant dans les deux **thèmes** : **clair** (`false`, défaut) et **sombre* (`true`).\n\n*N.B. : Ne fait pas partie du composant.*',
-    },
     quote: {
       control: 'text',
       description: '**Texte** de la citation',
@@ -56,12 +52,8 @@ export const Citation = (args) => ({
     />
   `,
 
-  mounted () {
-    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
-  },
 })
 Citation.args = {
-  dark: false,
   quote: 'LA citation',
   author: 'Pierre-Louis EGAUD',
   details: [
@@ -95,12 +87,8 @@ export const CitationSansImage = (args) => ({
     />
   `,
 
-  mounted () {
-    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
-  },
 })
 CitationSansImage.args = {
-  dark: false,
   quote: 'LA citation',
   author: 'Pierre-Louis EGAUD',
   details: [
