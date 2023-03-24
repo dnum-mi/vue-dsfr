@@ -15,3 +15,7 @@
   -webkit-box-shadow: none;
   box-shadow: none;
 }
+
+[data-fr-theme="dark"] .docs-story {
+  background-color: var(--background-default-grey);
+}
