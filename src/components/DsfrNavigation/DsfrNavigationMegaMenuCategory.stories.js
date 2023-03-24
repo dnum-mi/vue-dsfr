@@ -78,12 +78,9 @@ export const NavigationMegaMenuCategorie = args => ({
     </DsfrNavigation>
   `,
 
-  mounted () {
-    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
-  },
+
 })
 NavigationMegaMenuCategorie.args = {
-  dark: false,
   description: 'Description du mega-menu',
   link: undefined,
   megaMenutitle: 'Titre du mega-menu',

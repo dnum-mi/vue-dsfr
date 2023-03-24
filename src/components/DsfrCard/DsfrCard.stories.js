@@ -7,10 +7,6 @@ export default {
   component: DsfrCard,
   title: 'Composants/Carte - DsfrCard',
   argTypes: {
-    dark: {
-      control: 'boolean',
-      description: 'Permet de voir le composant dans les deux **thèmes** : **clair** (`false`, défaut) et **sombre** (`true`).\n\n*N.B. : Ne fait pas partie du composant.*',
-    },
     noArrow: {
       control: 'boolean',
       description: 'Indique si la carte doit afficher une flèche vers la droite (`false`, défaut) ou non (`true`)',
@@ -70,12 +66,9 @@ export const Card = (args) => ({
     />
   `,
 
-  mounted () {
-    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
-  },
+
 })
 Card.args = {
-  dark: false,
   altImg: '',
   detail: 'Détails sur la carte en question',
   description: 'Description sommaire de la carte',
@@ -106,12 +99,9 @@ export const CardSansFleche = (args) => ({
     />
   `,
 
-  mounted () {
-    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
-  },
+
 })
 CardSansFleche.args = {
-  dark: false,
   altImg: '',
   detail: 'Détails sur la carte en question',
   description: 'Description sommaire de la carte',

@@ -4,10 +4,6 @@ export default {
   component: DsfrTabContent,
   title: 'Composants/Onglets - DsfrTabs',
   argTypes: {
-    dark: {
-      control: 'boolean',
-      description: 'Permet de voir le composant dans les deux **thèmes** : **clair** (`false`, défaut) et **sombre** (`true`).\n\n*N.B. : Ne fait pas partie du composant.*',
-    },
     panelId: {
       control: 'text',
       description: 'Props de `DsfrTabContent` : Identifiant de l’élément correspondant au contenu de l’onglet à afficher ; doit être identique à la props `tab-id` du `DsfrTabItem` correspondant - **Obligatoire**',
@@ -48,12 +44,9 @@ export const ContenuDOnglet = (args) => ({
       </DsfrTabContent>
     </div>
   `,
-  mounted () {
-    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
-  },
+
 })
 ContenuDOnglet.args = {
-  dark: false,
   panelId: 'tab-content-0',
   tabId: 'tab-0',
   selected: true,

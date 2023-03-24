@@ -7,10 +7,6 @@ export default {
   component: DsfrCheckbox,
   title: 'Composants/Case à cocher/Case à cocher - DsfrCheckbox',
   argTypes: {
-    dark: {
-      control: 'boolean',
-      description: 'Permet de voir le composant dans les deux **thèmes** : **clair** (`false`, défaut) et **sombre** (`true`).\n\n*N.B. : Ne fait pas partie du composant.*',
-    },
     id: {
       control: 'text',
       description: '(optionnel) Valeur de l’attribut `id` de la checkbox. Par défaut, un id pseudo-aléatoire sera donné.',
@@ -77,7 +73,6 @@ export const Checkbox = (args) => ({
 })
 Checkbox.args = {
   disabled: false,
-  dark: false,
   modelValue: false,
   required: false,
   label: 'Checkbox 1',
@@ -112,7 +107,6 @@ export const CheckboxRequis = (args) => ({
 })
 CheckboxRequis.args = {
   disabled: false,
-  dark: false,
   modelValue: false,
   required: true,
   label: 'En cochant vous acceptez...',
@@ -152,7 +146,6 @@ export const CheckboxRequisPersonnalise = (args) => ({
 })
 CheckboxRequisPersonnalise.args = {
   disabled: false,
-  dark: false,
   modelValue: false,
   required: true,
   label: 'En cochant vous acceptez...',
@@ -184,7 +177,6 @@ export const CheckboxAvecErreur = (args) => ({
 })
 CheckboxAvecErreur.args = {
   disabled: false,
-  dark: false,
   modelValue: false,
   required: false,
   label: 'Checkbox 1',
@@ -217,7 +209,6 @@ export const CheckboxAvecSucces = (args) => ({
 
 CheckboxAvecSucces.args = {
   disabled: false,
-  dark: false,
   modelValue: false,
   label: 'Checkbox 1',
   hint: 'Description 1',

@@ -39,10 +39,6 @@ const meta = {
     tabContents,
   },
   argTypes: {
-    dark: {
-      control: 'boolean',
-      description: 'Permet de voir le composant dans les deux **thèmes** : **clair** (`false`, défaut) et **sombre** (`true`).\n\n*N.B. : Ne fait pas partie du composant.*',
-    },
     tabListName: {
       control: 'text',
       description: 'Nom de la liste d’onglet : servira pour le label (l’attribut `aria-label`) de la liste des titres d’onglets - **Obligatoire**',
@@ -82,9 +78,7 @@ export const OngletsSimples = (args) => ({
       :initial-selected-index="initialSelectedIndex"
     />
   `,
-  mounted () {
-    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
-  },
+
 })
 
 OngletsSimples.play = async ({ canvasElement }) => {
@@ -122,7 +116,6 @@ OngletsSimples.play = async ({ canvasElement }) => {
   await userEvent.tab()
 }
 OngletsSimples.args = {
-  dark: false,
   tabListName,
   tabTitles,
   tabContents,
@@ -198,12 +191,9 @@ export const OngletsComplexes = (args) => ({
     },
   },
 
-  mounted () {
-    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
-  },
+
 })
 OngletsComplexes.args = {
-  dark: false,
   tabListName,
   tabTitles: customTabTitles,
   selectedTabIndex: 1,
@@ -285,12 +275,9 @@ export const OngletsAvecAccordeon = (args) => ({
     },
   },
 
-  mounted () {
-    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
-  },
+
 })
 OngletsAvecAccordeon.args = {
-  dark: false,
   tabListName,
   tabTitles: [
     { title: 'Onglet avec accordéon', icon: 'ri-checkbox-circle-line', tabId: 'tab-0', panelId: 'tab-content-0' },

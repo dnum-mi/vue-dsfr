@@ -16,10 +16,6 @@ export default {
   component: DsfrTranscription,
   title: 'Composants/Transcription - DsfrTranscription',
   argTypes: {
-    dark: {
-      control: 'boolean',
-      description: 'Permet de voir le composant dans les deux **thèmes** : **clair** (`false`, défaut) et **sombre** (`true`).\n\n*N.B. : Ne fait pas partie du composant.*',
-    },
     title: {
       control: 'text',
       description: 'Titre du contenu sur lequel porte la transcription à destination des technologies d\'assistance',
@@ -47,12 +43,9 @@ export const Transcription = (args) => ({
       :collapseValue="collapseValue"
     />
   `,
-  mounted () {
-    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
-  },
+
 })
 Transcription.args = {
-  dark: false,
   title: 'Chats hiver',
   content: 'Des chatons jouant dans la neige',
   collapseValue: '-114px',

@@ -13,10 +13,6 @@ export default {
   component: DsfrButton,
   title: 'Composants/Boutons/Boutons - DsfrButton',
   argTypes: {
-    dark: {
-      control: 'boolean',
-      description: 'Permet de voir le composant dans les deux **thèmes** : **clair** (`false`, défaut) et **sombre** (`true`).\n\n*N.B. : Ne fait pas partie du composant.*',
-    },
     label: {
       control: 'text',
       description: '**Texte** du bouton',
@@ -76,12 +72,9 @@ export const BoutonPrimaire = (args) => ({
     />
   `,
 
-  mounted () {
-    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
-  },
+
 })
 BoutonPrimaire.args = {
-  dark: false,
   label: 'Label bouton',
   secondary: false,
   tertiary: false,
@@ -112,12 +105,9 @@ export const BoutonPrimaireAvecIcone = (args) => ({
     />
   `,
 
-  mounted () {
-    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
-  },
+
 })
 BoutonPrimaireAvecIcone.args = {
-  dark: false,
   label: 'Label bouton',
   disabled: false,
   icon: 'ri-search-line',
@@ -144,14 +134,11 @@ export const BoutonSecondaire = (args) => ({
     />
   `,
 
-  mounted () {
-    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
-  },
+
 })
 BoutonSecondaire.args = {
   label: 'Label bouton secondaire',
   disabled: false,
-  dark: false,
   secondary: true,
   noOutline: false,
   size: undefined,
@@ -175,14 +162,11 @@ export const BoutonTertiaire = (args) => ({
     />
   `,
 
-  mounted () {
-    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
-  },
+
 })
 BoutonTertiaire.args = {
   label: 'Label bouton secondaire',
   disabled: false,
-  dark: false,
   tertiary: true,
   noOutline: false,
   size: undefined,
@@ -206,14 +190,11 @@ export const BoutonTertiaireSansBordure = (args) => ({
     />
   `,
 
-  mounted () {
-    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
-  },
+
 })
 BoutonTertiaireSansBordure.args = {
   label: 'Label bouton secondaire',
   disabled: false,
-  dark: false,
   tertiary: true,
   noOutline: true,
   size: undefined,
@@ -244,13 +225,10 @@ export const SuiteDeBoutons = (args) => ({
     </div>
   `,
 
-  mounted () {
-    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
-  },
+
 })
 
 SuiteDeBoutons.args = {
-  dark: false,
   label: 'Texte du bouton',
   disabled: false,
   btns: [

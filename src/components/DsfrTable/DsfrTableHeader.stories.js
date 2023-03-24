@@ -12,10 +12,6 @@ export default {
   component: DsfrTableHeader,
   title: 'Composants/Tableau/En-tête de tableau - DsfrTableHeader',
   argTypes: {
-    dark: {
-      control: 'boolean',
-      description: 'Permet de voir le composant dans les deux **thèmes** : **clair** (`false`, défaut) et **sombre** (`true`).\n\n*N.B. : Ne fait pas partie du composant.*',
-    },
     header: {
       control: 'text',
       description: 'Texte de l’en-tête du tableau',
@@ -69,12 +65,9 @@ export const EnTeteDeTableau = (args) => ({
         &lt;Corps du tableau>
       </DsfrTable>
   `,
-  mounted () {
-    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
-  },
+
 })
 EnTeteDeTableau.args = {
-  dark: false,
   header,
   headerAttrs,
 }
@@ -120,12 +113,9 @@ export const EnTeteDeTableauAvecIcone = (args) => ({
         &lt;Corps du tableau>
       </DsfrTable>
   `,
-  mounted () {
-    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
-  },
+
 })
 EnTeteDeTableauAvecIcone.args = {
-  dark: false,
   header,
   headerAttrs: {
     ...headerAttrs,

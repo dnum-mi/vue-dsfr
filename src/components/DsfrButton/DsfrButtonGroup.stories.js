@@ -13,10 +13,6 @@ export default {
   component: DsfrButtonGroup,
   title: 'Composants/Boutons/Groupe de Boutons - DsfrButtonGroup',
   argTypes: {
-    dark: {
-      control: 'boolean',
-      description: 'Permet de voir le composant dans les deux **thèmes** : **clair** (`false`, défaut) et **sombre** (`true`).\n\n*N.B. : Ne fait pas partie du composant.*',
-    },
     buttons: {
       control: 'object',
       description: 'Tableau d’objets, chaque objet contiendra les props à passer à DsfrButton',
@@ -76,12 +72,9 @@ export const GroupeDeBoutons = (args) => ({
     />
   `,
 
-  mounted () {
-    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
-  },
+
 })
 GroupeDeBoutons.args = {
-  dark: false,
   align: 'center',
   inlineLayoutWhen: 'never',
   reverse: false,

@@ -1,10 +1,6 @@
 export default {
   title: 'Fondamentaux/1. Titres',
   argTypes: {
-    dark: {
-      control: 'boolean',
-      description: 'Permet de voir le composant dans les deux **thèmes** : **clair** (`false`, défaut) et **sombre** (`true`).\n\n*N.B. : Ne fait pas partie du composant.*',
-    },
   },
 }
 
@@ -24,7 +20,6 @@ export const TitresHn = (args) => ({
   `,
 })
 TitresHn.args = {
-  dark: false,
 }
 
 export const TitresAlternatifs = (args) => ({
@@ -42,5 +37,4 @@ export const TitresAlternatifs = (args) => ({
   `,
 })
 TitresAlternatifs.args = {
-  dark: false,
 }

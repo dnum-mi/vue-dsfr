@@ -8,10 +8,6 @@ export default {
   component: DsfrAccordion,
   title: 'Composants/Accordéon - DsfrAccordion',
   argTypes: {
-    dark: {
-      control: 'boolean',
-      description: 'Permet de voir le composant dans les deux **thèmes** : **clair** (`false`, défaut) et **sombre** (`true`).\n\n*N.B. : Ne fait pas partie du composant.*',
-    },
     id: {
       control: 'text',
       description: '(optionnel) Valeur de l’attribut `id` de l’accordéon. Par défaut, un id pseudo-aléatoire sera donné.',
@@ -67,13 +63,8 @@ export const Accordeon = (args) => ({
     </li>
   </DsfrAccordionsGroup>
   `,
-
-  mounted () {
-    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
-  },
 })
 Accordeon.args = {
-  dark: false,
   title: 'Un titre d’accordéon',
 }
 
@@ -128,13 +119,8 @@ export const AccordeonDansUnAccordeon = (args) => ({
     </DsfrAccordionsGroup>
   `,
 
-  mounted () {
-    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
-  },
-
 })
 AccordeonDansUnAccordeon.args = {
-  dark: false,
   title: 'Un titre d’accordéon',
   titleSub: 'Accordéon dans l’accordéon',
 }
@@ -176,13 +162,8 @@ export const AccordeonTitreCustom = (args) => ({
     </DsfrAccordionsGroup>
   `,
 
-  mounted () {
-    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
-  },
-
 })
 AccordeonTitreCustom.args = {
-  dark: false,
   title1: 'Un titre d’accordéon customisé',
   title2: 'Un autre titre d’accordéon',
 }

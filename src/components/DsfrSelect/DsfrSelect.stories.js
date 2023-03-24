@@ -7,10 +7,6 @@ export default {
   component: DsfrSelect,
   title: 'Composants/Liste déroulante - DsfrSelect',
   argTypes: {
-    dark: {
-      control: 'boolean',
-      description: 'Permet de voir le composant dans les deux **thèmes** : **clair** (`false`, défaut) et **sombre** (`true`).\n\n*N.B. : Ne fait pas partie du composant.*',
-    },
     selectId: {
       control: 'text',
       description: 'Valeur de l’attribut `id` de la balise `<select>`',
@@ -87,13 +83,10 @@ export const ListeDeroulante = (args) => ({
     },
   },
 
-  mounted () {
-    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
-  },
+
 })
 
 ListeDeroulante.args = {
-  dark: false,
   options: [
     'Option 1',
     'Option 2',
@@ -141,13 +134,10 @@ export const ListeDeroulanteRequise = (args) => ({
     },
   },
 
-  mounted () {
-    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
-  },
+
 })
 
 ListeDeroulanteRequise.args = {
-  dark: false,
   options: [
     'Option 1',
     'Option 2',
@@ -199,13 +189,10 @@ export const ListeDeroulanteRequisePersonnalisee = (args) => ({
     },
   },
 
-  mounted () {
-    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
-  },
+
 })
 
 ListeDeroulanteRequisePersonnalisee.args = {
-  dark: false,
   options: [
     'Option 1',
     'Option 2',
@@ -255,13 +242,10 @@ export const ListeDeroulanteInactive = (args) => ({
     },
   },
 
-  mounted () {
-    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
-  },
+
 })
 
 ListeDeroulanteInactive.args = {
-  dark: false,
   options: [
     'Option 1',
     'Option 2',
@@ -311,13 +295,10 @@ export const ListeDeroulanteAvecOptionsInactives = (args) => ({
     },
   },
 
-  mounted () {
-    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
-  },
+
 })
 
 ListeDeroulanteAvecOptionsInactives.args = {
-  dark: false,
   options: [{
     text: 'Option 1',
     value: 0,

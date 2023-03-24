@@ -13,10 +13,6 @@ export default {
   component: DsfrAlert,
   title: 'Composants/Alertes - DsfrAlert',
   argTypes: {
-    dark: {
-      control: 'boolean',
-      description: 'Permet de voir le composant dans les deux **thèmes** : **clair** (`false`, défaut) et **sombre** (`true`).\n\n*N.B. : Ne fait pas partie du composant.*',
-    },
     id: {
       control: 'text',
       description: '(optionnel) Valeur de l’attribut `id` de l’alerte. Par défaut, un id pseudo-aléatoire sera donné.',
@@ -82,12 +78,9 @@ export const Alerte = (args) => ({
     },
   },
 
-  mounted () {
-    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
-  },
+
 })
 Alerte.args = {
-  dark: false,
   title: 'Titre alerte',
   description: 'Description du message',
   type: 'error',
@@ -135,12 +128,9 @@ export const Alertes = (args) => ({
     </div>
   `,
 
-  mounted () {
-    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
-  },
+
 })
 Alertes.args = {
-  dark: false,
 }
 
 export const PetitesAlertes = (args) => ({
@@ -181,12 +171,9 @@ export const PetitesAlertes = (args) => ({
     </div>
   `,
 
-  mounted () {
-    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
-  },
+
 })
 PetitesAlertes.args = {
-  dark: false,
 }
 
 export const AlertesFermables = (args) => ({
@@ -282,9 +269,7 @@ export const AlertesFermables = (args) => ({
     </div>
   `,
 
-  mounted () {
-    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
-  },
+
 
   methods: {
     close (idx) {
@@ -294,7 +279,6 @@ export const AlertesFermables = (args) => ({
   },
 })
 AlertesFermables.args = {
-  dark: false,
   title: 'Titre alerte',
   description: 'Description du message',
   type: 'error',

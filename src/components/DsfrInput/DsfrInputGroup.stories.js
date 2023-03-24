@@ -8,10 +8,6 @@ export default {
   component: DsfrInput,
   title: 'Composants/Champ de saisie/Champ avec message associé - DsfrInputGroup',
   argTypes: {
-    dark: {
-      control: 'boolean',
-      description: 'Permet de voir le composant dans les deux **thèmes** : **clair** (`false`, défaut) et **sombre** (`true`).*N.B. : Ne fait pas partie du composant.*',
-    },
     id: {
       control: 'text',
       description: '(optionnel) Valeur de l’attribut `id` du champ de saisie. Par défaut, un id pseudo-aléatoire sera donné.',
@@ -91,12 +87,9 @@ export const ChampEnErreur = (args) => ({
       :is-invalid="isInvalid"
     />
   `,
-  mounted () {
-    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
-  },
+
 })
 ChampEnErreur.args = {
-  dark: false,
   label: 'Label champ de saisie',
   labelVisible: true,
   placeholder: 'Placeholder',
@@ -129,12 +122,9 @@ export const ChampValide = (args) => ({
       :placeholder="placeholder"
     />
   `,
-  mounted () {
-    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
-  },
+
 })
 ChampValide.args = {
-  dark: false,
   type: 'text',
   label: 'Label champ de saisie',
   labelVisible: true,

@@ -22,10 +22,6 @@ export default {
   component: DsfrHeader,
   title: 'Composants/En-tête - DsfrHeader',
   argTypes: {
-    dark: {
-      control: 'boolean',
-      description: 'Permet de voir le composant dans les deux **thèmes** : **clair** (`false`, défaut) et **sombre** (`true`).\n\n*N.B. : Ne fait pas partie du composant.*',
-    },
     logoText: {
       control: 'object',
       description: 'Texte ou liste de texte (chaque élément du tableau sera sur une ligne) tu logo',
@@ -134,12 +130,9 @@ export const EnTeteSimple = (args, { argTypes }) => ({
     },
   },
 
-  mounted () {
-    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
-  },
+
 })
 EnTeteSimple.args = {
-  dark: false,
   showSearch: true,
   logoText: ['Ministère', 'de l’intérieur'],
   serviceTitle: 'Nom du Site/Service',
@@ -197,12 +190,9 @@ export const EnTeteAvecLogoOperateur = (args, { argTypes }) => ({
     },
   },
 
-  mounted () {
-    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
-  },
+
 })
 EnTeteAvecLogoOperateur.args = {
-  dark: false,
   showSearch: true,
   logoText: ['Ministère', 'de l’intérieur'],
   serviceTitle: 'Nom du Site/Service',
@@ -266,12 +256,9 @@ export const EnTeteAvecNavigation = (args, { argTypes }) => ({
     },
   },
 
-  mounted () {
-    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
-  },
+
 })
 EnTeteAvecNavigation.args = {
-  dark: false,
   showSearch: true,
   logoText: ['Ministère', 'de l’intérieur'],
   serviceTitle: 'Nom du Site/Service',

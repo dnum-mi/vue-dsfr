@@ -11,10 +11,6 @@ export default {
       control: 'text',
       description: 'Texte du `label` de la barre de recherche',
     },
-    dark: {
-      control: 'boolean',
-      description: 'Permet de voir le composant dans les deux **thèmes** : **clair** (`false`, défaut) et **sombre** (`true`).\n\n*N.B. : Ne fait pas partie du composant.*',
-    },
     id: {
       control: 'text',
       description: '(optionnel) Valeur de l’attribut `id` de l’input au sein d. Par défaut, un id pseudo-aléatoire sera donné.',
@@ -71,13 +67,10 @@ export const BarreDeRecherche = (args) => ({
       />
   `,
 
-  mounted () {
-    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
-  },
+
 })
 BarreDeRecherche.args = {
   label: 'Label de search bar',
-  dark: false,
   hideIcon: false,
   placeholder: 'Rechercher',
   buttonText: '',
@@ -104,13 +97,10 @@ export const BarreDeRechercheLarge = (args) => ({
     />
   `,
 
-  mounted () {
-    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
-  },
+
 })
 BarreDeRechercheLarge.args = {
   label: 'Label de search bar',
-  dark: false,
   hideIcon: true,
   placeholder: 'Rechercher',
   buttonText: 'Rechercher',

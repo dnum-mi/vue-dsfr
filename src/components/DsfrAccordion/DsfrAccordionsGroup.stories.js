@@ -8,10 +8,6 @@ export default {
   component: DsfrAccordionsGroup,
   title: 'Composants/Accordéon - DsfrAccordionsGroup',
   argTypes: {
-    dark: {
-      control: 'boolean',
-      description: 'Permet de voir le composant dans les deux **thèmes** : **clair** (`false`, défaut) et **sombre** (`true`).\n\n*N.B. : Ne fait pas partie du composant.*',
-    },
     id: {
       control: 'text',
       description: '(optionnel) Valeur de l’attribut `id` de l’accordéon. Par défaut, un id pseudo-aléatoire sera donné.',
@@ -88,12 +84,8 @@ export const AccordeonGroupe = (args) => ({
   </DsfrAccordionsGroup>
   `,
 
-  mounted () {
-    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
-  },
 })
 AccordeonGroupe.args = {
-  dark: false,
   title1: 'Un titre d’accordéon 1',
   title2: 'Un titre d’accordéon 2',
   title3: 'Un titre d’accordéon 3',

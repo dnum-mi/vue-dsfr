@@ -7,10 +7,6 @@ export default {
   component: DsfrHighlight,
   title: 'Composants/Mise en Exergue - DsfrHighlight',
   argTypes: {
-    dark: {
-      control: 'boolean',
-      description: 'Permet de voir le composant dans les deux **thèmes** : **clair** (`false`, défaut) et **sombre** (`true`).\n\n*N.B. : Ne fait pas partie du composant.*',
-    },
     text: {
       control: 'text',
       description: 'Texte de la mise en avant',
@@ -35,9 +31,7 @@ export const MiseEnExergue = (args) => ({
     return { ...args }
   },
 
-  mounted () {
-    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
-  },
+
 
   template: `
     <DsfrHighlight
@@ -48,7 +42,6 @@ export const MiseEnExergue = (args) => ({
   `,
 })
 MiseEnExergue.args = {
-  dark: false,
   small: false,
   large: false,
   text: 'Texte original de la mise en exergue',
@@ -63,9 +56,7 @@ export const MiseEnExergueAvecSlot = (args) => ({
     return { ...args }
   },
 
-  mounted () {
-    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
-  },
+
 
   template: `
     <DsfrHighlight
@@ -78,7 +69,6 @@ export const MiseEnExergueAvecSlot = (args) => ({
   `,
 })
 MiseEnExergueAvecSlot.args = {
-  dark: false,
   small: false,
   large: false,
   text: '',

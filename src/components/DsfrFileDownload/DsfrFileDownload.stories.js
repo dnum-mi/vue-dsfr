@@ -7,10 +7,6 @@ export default {
   component: DsfrFileDownload,
   title: 'Composants/Téléchargement de Fichier - DsfrFileDownload',
   argTypes: {
-    dark: {
-      control: 'boolean',
-      description: 'Permet de voir le composant dans les deux **thèmes** : **clair** (`false`, défaut) et **sombre** (`true`).\n\n*N.B. : Ne fait pas partie du composant.*',
-    },
     title: {
       control: 'text',
       description: 'Titre du lien de téléchargement',
@@ -58,12 +54,9 @@ export const TelechargementDeFichier = (args) => ({
     />
   `,
 
-  mounted () {
-    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
-  },
+
 })
 TelechargementDeFichier.args = {
-  dark: false,
   format: 'PDF',
   size: '250 Go',
   href: 'src/assets/icone-marianne-seule.png',
@@ -92,12 +85,9 @@ export const BlocDeTelechargement = (args) => ({
     />
   `,
 
-  mounted () {
-    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
-  },
+
 })
 BlocDeTelechargement.args = {
-  dark: false,
   format: 'JPEG',
   size: '1.2 To',
   href: 'src/assets/icone-marianne-seule.png',
