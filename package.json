@@ -160,7 +160,7 @@
     "storybook": "^7.0.0-rc.7",
     "tsd-jsdoc": "^2.5.0",
     "typescript": "^5.0.2",
-    "vite": "^4.2.1",
+    "vite": "~4.1.0",
     "vitest": "^0.29.7",
     "vue-loader": "^17.0.1",
     "vue-router": "^4.1.6",
