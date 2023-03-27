@@ -36,6 +36,7 @@ export { default as DsfrNavigationMenu } from './DsfrNavigation/DsfrNavigationMe
 export { default as DsfrNavigationMenuItem } from './DsfrNavigation/DsfrNavigationMenuItem.vue'
 export { default as DsfrNavigationMenuLink } from './DsfrNavigation/DsfrNavigationMenuLink.vue'
 export { default as DsfrNewsLetter } from './DsfrFollow/DsfrNewsLetter.vue'
+export { default as DsfrNotice } from './DsfrNotice/DsfrNotice.vue'
 export { default as DsfrPagination } from './DsfrPagination/DsfrPagination.vue'
 export { default as DsfrPicture } from './DsfrMedia/DsfrPicture.vue'
 export { default as DsfrQuote } from './DsfrQuote/DsfrQuote.vue'
