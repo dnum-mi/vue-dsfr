@@ -34,20 +34,24 @@ const radioTest = ref('')
       label-visible
       @change="updateFiles($event)"
     />
-    <DsfrRadioButtonSet
-      v-model="radioTest"
-      :options="[
-        {
-          label: 'label 1',
-          value: 1,
-          required: true,
-        },
-        {
-          label: 'label 2',
-          value: 2,
-        }
-      ]"
-    />
+    <div>
+      <DsfrRadioButtonSet
+        v-model="radioTest"
+        legend="Légende des boutons radio"
+        name="radio-123aui"
+        :options="[
+          {
+            label: 'label 1',
+            value: 1,
+            required: true,
+          },
+          {
+            label: 'label 2',
+            value: 2,
+          }
+        ]"
+      />
+    </div>
     <DsfrButton
       type="submit"
       label="Bouton de soumission du formulaire"

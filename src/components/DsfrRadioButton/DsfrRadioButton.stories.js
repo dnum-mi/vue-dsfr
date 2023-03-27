@@ -41,12 +41,23 @@ export const RadioButton = (args, { argTypes }) => ({
     return args
   },
   template: `
-    <DsfrRadioButton
-      v-for="option of options"
-      :modelValue="modelValue"
-      v-bind="option"
-      @update:modelValue="updateCheckedValue($event)"
-    />
+  <div class="fr-form-group">
+    <fieldset
+      class="fr-fieldset"
+    >
+      <div
+        class="fr-fieldset__content"
+        role="radiogroup"
+      >
+        <DsfrRadioButton
+          v-for="option of options"
+          :modelValue="modelValue"
+          v-bind="option"
+          @update:modelValue="updateCheckedValue($event)"
+        />
+      </div>
+    </fieldset>
+  </div>
   `,
   methods: {
     updateCheckedValue (val) {
