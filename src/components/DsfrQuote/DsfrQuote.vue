@@ -68,7 +68,10 @@ export default defineComponent({
         </li>
       </ul>
 
-      <div class="fr-quote__image" v-if="quoteImage">
+      <div
+        v-if="quoteImage"
+        class="fr-quote__image"
+      >
         <img
           :src="quoteImage"
           class="fr-responsive-img"
@@ -79,5 +82,3 @@ export default defineComponent({
     </figcaption>
   </figure>
 </template>
-
-<style src="@gouvfr/dsfr/dist/component/quote/quote.main.min.css" />

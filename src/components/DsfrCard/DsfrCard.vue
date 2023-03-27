@@ -90,5 +90,3 @@ export default defineComponent({
     </div>
   </div>
 </template>
-
-<style src="@gouvfr/dsfr/dist/component/card/card.main.min.css" />

@@ -68,5 +68,3 @@ export default defineComponent({
     </p>
   </div>
 </template>
-
-<style src="@gouvfr/dsfr/dist/component/toggle/toggle.main.min.css" />

@@ -124,5 +124,3 @@ export default defineComponent({
     </Teleport>
   </div>
 </template>
-
-<style src="@gouvfr/dsfr/dist/component/transcription/transcription.main.min.css" />

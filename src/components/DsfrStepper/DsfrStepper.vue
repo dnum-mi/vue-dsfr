@@ -35,5 +35,3 @@ export default defineComponent({
     </p>
   </div>
 </template>
-
-<style src="@gouvfr/dsfr/dist/component/stepper/stepper.css" />

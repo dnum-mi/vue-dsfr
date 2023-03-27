@@ -90,8 +90,6 @@ export default defineComponent({
   </ul>
 </template>
 
-<style src="@gouvfr/dsfr/dist/component/sidemenu/sidemenu.main.min.css" />
-
 <style>
 .fr-collapse--expanded {
   max-height: none;

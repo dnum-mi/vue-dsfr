@@ -161,8 +161,6 @@ export default defineComponent({
   </focus-trap>
 </template>
 
-<style src="@gouvfr/dsfr/dist/component/modal/modal.main.min.css" />
-
 <style scoped>
 .fr-modal {
   color: var(--text-default-grey);

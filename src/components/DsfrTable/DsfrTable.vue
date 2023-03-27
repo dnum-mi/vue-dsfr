@@ -71,5 +71,3 @@ export default defineComponent({
     </table>
   </div>
 </template>
-
-<style src="@gouvfr/dsfr/dist/component/table/table.main.min.css" />

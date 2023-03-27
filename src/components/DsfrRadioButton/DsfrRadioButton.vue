@@ -96,5 +96,3 @@ export default defineComponent({
     </div>
   </div>
 </template>
-
-<style src="@gouvfr/dsfr/dist/component/radio/radio.main.min.css" />

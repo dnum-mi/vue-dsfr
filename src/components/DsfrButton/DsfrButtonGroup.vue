@@ -102,5 +102,3 @@ export default defineComponent({
     </li>
   </ul>
 </template>
-
-<style src="@gouvfr/dsfr/dist/component/button/button.main.min.css"  />

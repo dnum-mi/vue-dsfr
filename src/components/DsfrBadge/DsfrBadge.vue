@@ -29,5 +29,3 @@ defineProps({
     </span>
   </p>
 </template>
-
-<style src="@gouvfr/dsfr/dist/component/badge/badge.main.min.css" />

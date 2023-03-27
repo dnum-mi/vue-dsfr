@@ -94,5 +94,3 @@ export default defineComponent({
     </div>
   </div>
 </template>
-
-<style src="@gouvfr/dsfr/dist/component/upload/upload.css" />
