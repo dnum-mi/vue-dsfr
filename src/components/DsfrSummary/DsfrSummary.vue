@@ -41,5 +41,3 @@ export default defineComponent({
     </ol>
   </nav>
 </template>
-
-<style src="@gouvfr/dsfr/dist/component/summary/summary.main.min.css" />

@@ -7,10 +7,7 @@ export default {
   component: DsfrLanguageSelector,
   title: 'Composants/Sélecteur de langues - DsfrLanguageSelector',
   argTypes: {
-    dark: {
-      control: 'boolean',
-      description: 'Permet de voir le composant dans les deux **thèmes** : **clair** (`false`, défaut) et **sombre** (`true`).\n\n*N.B. : Ne fait pas partie du composant.',
-    },
+
     id: {
       control: 'text',
       description: '(Facultatif) `id` à donner pour la liste des langues (sera mis sur la balise `div` parente de la balise `ul`)',
@@ -45,9 +42,7 @@ export const SelecteurDeLangue = (args) => ({
       @select="currentLanguage = $event.codeIso"
     />
   `,
-  mounted () {
-    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
-  },
+
 })
 SelecteurDeLangue.args = {
   id: 'translate-1',

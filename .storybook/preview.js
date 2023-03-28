@@ -1,8 +1,8 @@
 import * as jest from "@storybook/jest"
-import { defineComponent } from 'vue'
 import { setup } from '@storybook/vue3'
+import { withThemeByDataAttribute } from "@storybook/addon-styling"
 import { FocusTrap } from 'focus-trap-vue'
-// import '@gouvfr/dsfr/dist/core/core.module.js'
+import { defineComponent } from 'vue'
 
 import '../src/assets/variables-fdr.css'
 import '@gouvfr/dsfr/dist/dsfr.min.css'
@@ -22,14 +22,6 @@ export const parameters = {
       color: /(background|color)$/i,
       date: /Date$/,
     },
-  },
-  backgrounds: {
-    values: [
-      {name: 'black', value: '#000'},
-      {name: 'dark', value: '#222'},
-      {name: 'light', value: '#eee'},
-      {name: 'white', value: '#fff'},
-    ]
   },
   viewport: {
     viewports: {
@@ -82,6 +74,17 @@ export const parameters = {
     },
   }
 }
+
+export const decorators = [
+  withThemeByDataAttribute({
+    themes: {
+      Clair: 'light',
+      Sombre: 'dark',
+    },
+    defaultTheme: 'light',
+    attributeName: 'data-fr-theme',
+  })
+]
 
 
 const RouterLink = defineComponent({

@@ -276,5 +276,3 @@ export default defineComponent({
     </div>
   </header>
 </template>
-
-<style src="@gouvfr/dsfr/dist/component/header/header.main.min.css" />

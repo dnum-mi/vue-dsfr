@@ -35,7 +35,13 @@ declare global {
   }
 }
 
-Cypress.Commands.add('mount', mount)
+Cypress.Commands.add('mount', (component, options = {}) => {
+  options.global = options.global || {}
+  options.global.stubs = options.global.stubs || {}
+  options.global.stubs.transition = false
+
+  return mount(component, options)
+})
 
 // Example use:
 // cy.mount(MyComponent)

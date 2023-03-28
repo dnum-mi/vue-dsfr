@@ -6,10 +6,6 @@ export default {
   component: DsfrNavigationMegaMenu,
   title: 'Composants/Navigation Principale/4. Mega-menu DsfrNavigationMegaMenu',
   argTypes: {
-    dark: {
-      control: 'boolean',
-      description: 'Permet de voir le composant dans les deux **thèmes** : **clair** (`false`, défaut) et **sombre** (`true`).\n\n*N.B. : Ne fait pas partie du composant.*',
-    },
     title: {
       control: 'text',
       description: 'Intitulé du menu',
@@ -63,9 +59,7 @@ export const NavigationMegaMenu = (args) => ({
     },
   },
 
-  mounted () {
-    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
-  },
+
 
   template: `
     <DsfrNavigation>
@@ -84,7 +78,6 @@ export const NavigationMegaMenu = (args) => ({
 })
 
 NavigationMegaMenu.args = {
-  dark: false,
   title: 'Titre de MEGA MENU',
   expandedId: undefined,
   description: 'Un charmant MEGA MENU',

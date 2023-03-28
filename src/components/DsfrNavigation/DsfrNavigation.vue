@@ -126,5 +126,3 @@ export default defineComponent({
   --collapse-max-height: none;
 }
 </style>
-
-<style src="@gouvfr/dsfr/dist/component/navigation/navigation.main.min.css" />

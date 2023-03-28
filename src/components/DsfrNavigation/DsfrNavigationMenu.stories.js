@@ -6,10 +6,6 @@ export default {
   component: DsfrNavigationMenu,
   title: 'Composants/Navigation Principale/3. Sous-menu - DsfrNavigationMenu',
   argTypes: {
-    dark: {
-      control: 'boolean',
-      description: 'Permet de voir le composant dans les deux **thèmes** : **clair** (`false`, défaut) et **sombre** (`true`).\n\n*N.B. : Ne fait pas partie du composant.*',
-    },
     id: {
       control: 'text',
       description: '(Optionnel) Valeur de l’attribut `id` de ce sous-menu. *N.B. : Il est recommandé de ne pas le donner, la bibliothèque lui en donnera un pseudo-aléatoire*.',
@@ -69,12 +65,9 @@ export const NavigationSousMenu = (args) => ({
     </DsfrNavigation>
   `,
 
-  mounted () {
-    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
-  },
+
 })
 NavigationSousMenu.args = {
-  dark: false,
   title: 'Nom de menu original',
   links: [
     {

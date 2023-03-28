@@ -4,7 +4,6 @@ import { OhVueIcon as VIcon } from 'oh-vue-icons'
 import '../../main.css'
 
 const data = {
-  dark: false,
   beforeMandatoryLinks: [{ label: 'Before', to: '/before' }],
   afterMandatoryLinks: [{ label: 'After', to: '/after' }],
   a11yCompliance: 'partiellement conforme',

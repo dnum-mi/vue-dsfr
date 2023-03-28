@@ -14,10 +14,6 @@ export default {
   component: DsfrFooter,
   title: 'Composants/Pied de page - DsfrFooter',
   argTypes: {
-    dark: {
-      control: 'boolean',
-      description: 'Permet de voir le composant dans les deux **thèmes** : **clair** (`false`, défaut) et **sombre** (`true`).\n\n*N.B. : Ne fait pas partie du composant.*',
-    },
     beforeMandatoryLinks: {
       control: 'object',
       description: 'Liste de liens précédant les liens par défaut (liens obligatoires)',
@@ -157,12 +153,9 @@ export const PiedDePageSimple = (args) => ({
   </DsfrFooter>
   `,
 
-  mounted () {
-    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
-  },
+
 })
 PiedDePageSimple.args = {
-  dark: false,
   beforeMandatoryLinks: [{ label: 'Before', to: '/before' }],
   afterMandatoryLinks: [{ label: 'After', to: '/after' }],
   a11yCompliance: 'partiellement conforme',
@@ -276,12 +269,9 @@ export const PiedDePageAvecLogoOperateur = (args) => ({
   </DsfrFooter>
   `,
 
-  mounted () {
-    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
-  },
+
 })
 PiedDePageAvecLogoOperateur.args = {
-  dark: false,
   beforeMandatoryLinks: [{ label: 'Before', to: '/before' }],
   afterMandatoryLinks: [{ label: 'After', to: '/after' }],
   a11yCompliance: 'partiellement conforme',

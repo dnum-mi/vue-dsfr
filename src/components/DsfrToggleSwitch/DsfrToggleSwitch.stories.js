@@ -7,10 +7,6 @@ export default {
   component: DsfrToggleSwitch,
   title: 'Composants/Interrupteur - DsfrToggleSwitch',
   argTypes: {
-    dark: {
-      control: 'boolean',
-      description: 'Permet de voir le composant dans les deux **thèmes** : **clair** (`false`, défaut) et **sombre** (`true`).\n\n*N.B. : Ne fait pas partie du composant.*',
-    },
     label: {
       control: 'text',
       description: 'Label de l’interrupteur',
@@ -60,12 +56,9 @@ export const Interrupteur = (args) => ({
       this.onChange(newVal)
     },
   },
-  mounted () {
-    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
-  },
+
 })
 Interrupteur.args = {
-  dark: false,
   label: 'Interrupteur 1',
   hint: 'Indice',
   disabled: false,

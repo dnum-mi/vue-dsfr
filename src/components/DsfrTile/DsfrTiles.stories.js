@@ -7,10 +7,6 @@ export default {
   component: DsfrTiles,
   title: 'Composants/Jeu de Tuiles - DsfrTiles',
   argTypes: {
-    dark: {
-      control: 'boolean',
-      description: 'Permet de voir le composant dans les deux **thèmes** : **clair** (`false`, défaut) et **sombre** (`true`).\n\n*N.B. : Ne fait pas partie du composant.*',
-    },
     tiles: {
       control: 'object',
       description: 'Tableau avec pour chaque élément :\n\n  - les props attendues par DsfrTile\n  - la prop `containerClass` pour l’attribut `class` du div parent de chaque tile',
@@ -39,13 +35,10 @@ export const JeuDeTuiles = (args) => ({
       :horizontal="horizontal"
     />
   `,
-  mounted () {
-    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
-  },
+
 
 })
 JeuDeTuiles.args = {
-  dark: false,
   tiles: [
     {
       title: 'Ma formidable tuile 1',

@@ -8,10 +8,6 @@ export default {
   component: DsfrNewsLetter,
   title: 'Composants/Lettres d’information et réseaux/Lettre d’information - DsfrNewsletter',
   argTypes: {
-    dark: {
-      control: 'boolean',
-      description: 'Permet de voir le composant dans les deux **thèmes** : **clair** (`false`, défaut) et **sombre** (`true`).\n\n*N.B. : Ne fait pas partie du composant.*',
-    },
     title: {
       control: 'text',
       description: 'Titre de la newsletter',
@@ -77,12 +73,9 @@ export const NewsletterSimple = (args) => ({
   </DsfrFollow>
   `,
 
-  mounted () {
-    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
-  },
+
 })
 NewsletterSimple.args = {
-  dark: false,
   title: 'Titre de la lettre d’information',
   description: 'Description de la lettre d’information',
   email: 'email.super@chouette.fr',
@@ -135,13 +128,10 @@ export const NewsletterAvecErreur = (args) => ({
   </DsfrFollow>
   `,
 
-  mounted () {
-    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
-  },
+
 })
 
 NewsletterAvecErreur.args = {
-  dark: false,
   title: 'Titre de la lettre d’information',
   description: 'Description de la lettre d’information',
   email: 'email.superchouette.fr',

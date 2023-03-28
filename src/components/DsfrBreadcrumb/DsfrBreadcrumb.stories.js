@@ -7,10 +7,6 @@ export default {
   component: DsfrBreadcrumb,
   title: 'Composants/Fil d’Ariane - DsfrBreadcrumb',
   argTypes: {
-    dark: {
-      control: 'boolean',
-      description: 'Permet de voir le composant dans les deux **thèmes** : **clair** (`false`, défaut) et **sombre** (`true`).\n\n*N.B. : Ne fait pas partie du composant.*',
-    },
     links: {
       control: 'object',
       description: 'Tableau d’objets, chaque objet contiendra 2 propriétés : `to` avec le lien et `text` avec le texte à afficher',
@@ -50,12 +46,9 @@ export const FilDAriane = (args) => ({
     />
   `,
 
-  mounted () {
-    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
-  },
+
 })
 
 FilDAriane.args = {
-  dark: false,
   links,
 }

@@ -2,7 +2,6 @@ import DsfrHeader from './DsfrHeader.vue'
 import '../../main.css'
 
 const data = {
-  dark: false,
   showSearch: true,
   logoText: ['Ministère', 'de l’intérieur'],
   serviceTitle: 'Nom du Site/Service',

@@ -7,10 +7,6 @@ export default {
   component: DsfrSideMenuListItem,
   title: 'Composants/Menu latéral/3 - Item de menu - DsfrSideMenuListItem',
   argTypes: {
-    dark: {
-      control: 'boolean',
-      description: 'Permet de voir le composant dans les deux **thèmes** : **clair** (`false`, défaut) et **sombre** (`true`).\n\n*N.B. : Ne fait pas partie du composant.*',
-    },
     active: {
       control: 'boolean',
       description: 'Indique si l’item du menu correspond à la page courante (`true`) ou non (`false`)',
@@ -33,9 +29,7 @@ export const ElementDeListeDeMenuLateral = (args, { argTypes }) => ({
     }
   },
 
-  mounted () {
-    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
-  },
+
 
   template: `
   <DsfrSideMenu
@@ -56,7 +50,6 @@ export const ElementDeListeDeMenuLateral = (args, { argTypes }) => ({
   `,
 })
 ElementDeListeDeMenuLateral.args = {
-  dark: false,
   active: false,
   id: 'list-id',
 }

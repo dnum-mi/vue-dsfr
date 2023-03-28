@@ -7,10 +7,6 @@ export default {
   title: 'Composants/Tableau/Ligne de tableau - DsfrTableRow',
   argTypes: {
     title: { control: 'text' },
-    dark: {
-      control: 'boolean',
-      description: 'Permet de voir le composant dans les deux **thèmes** : **clair** (`false`, défaut) et **sombre** (`true`). *N.B. : Ne fait pas partie du composant.*',
-    },
     headers: {
       control: 'object',
       description: 'Liste des en-têtes du tableau (tableau de string). *N.B. : Ne fait pas partie du composant.*',
@@ -102,12 +98,9 @@ export const LigneDeTableauSimple = (args) => ({
         <DsfrTableRow :row-data="rowData" />
       </DsfrTable>
   `,
-  mounted () {
-    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
-  },
+
 })
 LigneDeTableauSimple.args = {
-  dark: false,
   title,
   headers,
   rowData,
@@ -134,12 +127,9 @@ export const LigneDeTableauAvecComposant = (args) => ({
       <DsfrTableRow :row-data="rowData" />
     </DsfrTable>
   `,
-  mounted () {
-    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
-  },
+
 })
 LigneDeTableauAvecComposant.args = {
-  dark: false,
   title,
   headers,
   rowData: rowDataWithComponent,
@@ -170,12 +160,9 @@ export const LigneDeTableauComplexe = (args) => ({
         <DsfrTableRow :row-data="rowData" :row-attrs="rowAttrs" />
       </DsfrTable>
   `,
-  mounted () {
-    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
-  },
+
 })
 LigneDeTableauComplexe.args = {
-  dark: false,
   title,
   headers,
   rowData: complexRowData.rowData,

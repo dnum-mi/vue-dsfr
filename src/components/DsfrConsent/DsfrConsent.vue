@@ -80,5 +80,3 @@ export default defineComponent({
     </li>
   </ul>
 </template>
-
-<style src="@gouvfr/dsfr/dist/component/consent/consent.main.min.css" />

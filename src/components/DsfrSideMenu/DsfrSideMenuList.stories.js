@@ -17,10 +17,6 @@ export default {
   component: DsfrSideMenuList,
   title: 'Composants/Menu latéral/2 - Liste de menu - DsfrSideMenuList',
   argTypes: {
-    dark: {
-      control: 'boolean',
-      description: 'Permet de voir le composant dans les deux **thèmes** : **clair** (`false`, défaut) et **sombre** (`true`).\n\n*N.B. : Ne fait pas partie du composant.*',
-    },
     headingTitle: {
       control: 'text',
       description: 'Titre de la rubrique (c’est le titre du menu latéral)',
@@ -65,9 +61,7 @@ export const MenuLateral = (args, { argTypes }) => ({
     }
   },
 
-  mounted () {
-    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
-  },
+
 
   methods: {
     toggleExpand (id) {
@@ -89,7 +83,6 @@ export const MenuLateral = (args, { argTypes }) => ({
   `,
 })
 MenuLateral.args = {
-  dark: false,
   buttonLabel: 'Dans cette rubrique',
   headingTitle: 'Titre de la rubrique',
   id: 'list',

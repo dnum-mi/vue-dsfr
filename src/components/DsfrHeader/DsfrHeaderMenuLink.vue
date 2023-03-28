@@ -52,22 +52,25 @@ export default defineComponent({
       if (this.button) {
         return 'button'
       }
-      return this.isExternalLink ? 'a' : 'RouterLink'
+      return this.isExternalLink || this.isMailto ? 'a' : 'RouterLink'
     },
     isPathString () {
       return typeof this.path === 'string'
     },
     isExternalLink () {
-      return this.href !== undefined || (this.isPathString && this.path.startsWith('http'))
+      return this.href?.startsWith('http') || (this.isPathString && this.path.startsWith('http'))
+    },
+    isMailto () {
+      return this.href?.startsWith('mailto') || (this.isPathString && this.path.startsWith('mailto'))
     },
     actualHref () {
-      if (!this.isExternalLink) {
+      if (!this.isExternalLink && !this.isMailto) {
         return undefined
       }
       return this.href !== undefined ? this.href : this.path
     },
     actualTo () {
-      if (this.isExternalLink) {
+      if (this.isExternalLink || this.isMailto) {
         return undefined
       }
       return this.to || this.path

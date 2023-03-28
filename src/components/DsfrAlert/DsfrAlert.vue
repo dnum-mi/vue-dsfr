@@ -98,5 +98,3 @@ export default defineComponent({
     </div>
   </transition>
 </template>
-
-<style src="@gouvfr/dsfr/dist/component/alert/alert.main.min.css" />

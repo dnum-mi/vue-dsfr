@@ -77,6 +77,10 @@ const navItems = [
     to: { name: 'Languages' },
     text: 'Languages',
   },
+  {
+    to: { name: 'Alertes' },
+    text: 'Alertes & Bandeau',
+  },
 ]
 </script>
 

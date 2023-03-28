@@ -7,10 +7,6 @@ export default {
   title: 'Composants/Tableau/Cellule de tableau - DsfrTableCell',
   argTypes: {
     title: { control: 'text' },
-    dark: {
-      control: 'boolean',
-      description: 'Permet de voir le composant dans les deux **thèmes** : **clair** (`false`, défaut) et **sombre** (`true`). *N.B. : Ne fait pas partie du composant.*',
-    },
     headers: {
       control: 'object',
       description: 'Liste des en-têtes du tableau (tableau de string). *N.B. : Ne fait pas partie du composant.*',
@@ -74,12 +70,9 @@ export const CelluleDeTableauSimple = (args) => ({
     </DsfrTable>
   `,
 
-  mounted () {
-    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
-  },
+
 })
 CelluleDeTableauSimple.args = {
-  dark: false,
   title,
   headers,
   field: simpleField,
@@ -110,12 +103,9 @@ export const CelluleDeTableauAvecElementHtml = (args) => ({
         </tr>
       </DsfrTable>
   `,
-  mounted () {
-    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
-  },
+
 })
 CelluleDeTableauAvecElementHtml.args = {
-  dark: false,
   title,
   headers,
   field: fieldWithComponentSimple,
@@ -146,12 +136,9 @@ export const CelluleDeTableauAvecComposant = (args) => ({
         </tr>
       </DsfrTable>
   `,
-  mounted () {
-    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
-  },
+
 })
 CelluleDeTableauAvecComposant.args = {
-  dark: false,
   title,
   headers,
   field: fieldWithComponent,
@@ -183,12 +170,9 @@ export const CelluleDeTableauComplexe = (args) => ({
         </tr>
       </DsfrTable>
   `,
-  mounted () {
-    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
-  },
+
 })
 CelluleDeTableauComplexe.args = {
-  dark: false,
   title,
   headers,
   field: fieldWithComponent,

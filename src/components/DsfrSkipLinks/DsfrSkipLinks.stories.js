@@ -7,10 +7,6 @@ export default {
   component: DsfrSkipLinks,
   title: 'Composants/Liens d’évitement - Skip links',
   argTypes: {
-    dark: {
-      control: 'boolean',
-      description: 'Permet de voir le composant dans les deux **thèmes** : **clair** (`false`, défaut) et **sombre** (`true`).\n\n*N.B. : Ne fait pas partie du composant.*',
-    },
     links: {
       control: 'object',
       description: 'Permet de passer le label du lien et l’id de l’élément html ciblée sous forme de tableau d’objets. Chaque objet aura 2 propriétés : `id` et `text`.',
@@ -41,13 +37,10 @@ export const LiensDEvitement = (args) => ({
   </div>
   `,
 
-  mounted () {
-    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
-  },
+
 })
 
 LiensDEvitement.args = {
-  dark: false,
   links: [
     {
       id: 'what',

@@ -8,10 +8,6 @@ export default {
   component: DsfrRadioButton,
   title: 'Composants/Boutons radio/Boutons radio - DsfrRadioButtons',
   argTypes: {
-    dark: {
-      control: 'boolean',
-      description: 'Permet de voir le composant dans les deux **thèmes** : **clair** (`false`, défaut) et **sombre** (`true`).\n\n*N.B. : Ne fait pas partie du composant.*',
-    },
     id: {
       control: 'text',
       description: '(optionnel) Valeur de l’attribut `id` du radio bouton. Par défaut, un id pseudo-aléatoire sera donné.',
@@ -45,12 +41,23 @@ export const RadioButton = (args, { argTypes }) => ({
     return args
   },
   template: `
-    <DsfrRadioButton
-      v-for="option of options"
-      :modelValue="modelValue"
-      v-bind="option"
-      @update:modelValue="updateCheckedValue($event)"
-    />
+  <div class="fr-form-group">
+    <fieldset
+      class="fr-fieldset"
+    >
+      <div
+        class="fr-fieldset__content"
+        role="radiogroup"
+      >
+        <DsfrRadioButton
+          v-for="option of options"
+          :modelValue="modelValue"
+          v-bind="option"
+          @update:modelValue="updateCheckedValue($event)"
+        />
+      </div>
+    </fieldset>
+  </div>
   `,
   methods: {
     updateCheckedValue (val) {
@@ -63,7 +70,6 @@ export const RadioButton = (args, { argTypes }) => ({
   },
 })
 RadioButton.args = {
-  dark: false,
   modelValue: '3',
   options: [
     {
@@ -111,7 +117,6 @@ export const RichRadioButton = (args, { argTypes }) => ({
   },
 })
 RichRadioButton.args = {
-  dark: false,
   modelValue: '3',
   options: [
     {

@@ -7,10 +7,6 @@ export default {
   component: DsfrPagination,
   title: 'Composants/Pagination - Pagination',
   argTypes: {
-    dark: {
-      control: 'boolean',
-      description: 'Permet de voir le composant dans les deux **thèmes** : **clair** (`false`, défaut) et **sombre* (`true`).\n\n*N.B. : Ne fait pas partie du composant.*',
-    },
     pages: {
       control: 'object',
       description: 'Permet de lister les pages d’un site en associant un label et une url dans une liste',
@@ -61,9 +57,6 @@ export const Pagination = (args) => ({
       />
   `,
 
-  mounted () {
-    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
-  },
 })
 
 Pagination.args = {
@@ -93,9 +86,6 @@ export const PaginationTruncated = (args) => ({
       />
   `,
 
-  mounted () {
-    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
-  },
 })
 
 PaginationTruncated.args = {

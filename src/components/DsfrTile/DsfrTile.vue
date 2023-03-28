@@ -86,7 +86,6 @@ export default defineComponent({
   </div>
 </template>
 
-<style src="@gouvfr/dsfr/dist/component/tile/tile.main.min.css" />
 <style scoped>
 .fr-tile.fr-tile--disabled {
   background-color: var(--background-disabled-grey);

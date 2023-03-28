@@ -1,5 +1,3 @@
-// import './init-dsfr.js'
-// import '@gouvfr/dsfr/dist/core/core.module.js'
 import { addIcons, OhVueIcon } from 'oh-vue-icons'
 import * as components from './components/index.js'
 import * as defaultIcons from './icons.js'

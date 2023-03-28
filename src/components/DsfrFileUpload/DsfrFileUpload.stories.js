@@ -7,10 +7,6 @@ export default {
   component: DsfrFileUpload,
   title: 'Composants/Ajout de Fichier - DsfrFileUpload',
   argTypes: {
-    dark: {
-      control: 'boolean',
-      description: 'Permet de voir le composant dans les deux **thèmes** : **clair** (`false`, défaut) et **sombre** (`true`).\n\n*N.B. : Ne fait pas partie du composant.*',
-    },
     id: {
       control: 'text',
       description: 'Valeur de l’attribut `id` de l’input (sera aussi utilisé pour l’attribut `for` du `<label>`), chaîne aléatoire par défaut (conseillé)',
@@ -66,12 +62,9 @@ export const Televersement = (args, { argTypes }) => ({
     />
   `,
 
-  mounted () {
-    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
-  },
+
 })
 Televersement.args = {
-  dark: false,
   id: undefined,
   label: 'Ajouter un fichier',
   hint: 'Pas trop volumineux svp',
@@ -98,12 +91,9 @@ export const TeleversementAvecErreur = (args, { argTypes }) => ({
   </div>
   `,
 
-  mounted () {
-    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
-  },
+
 })
 TeleversementAvecErreur.args = {
-  dark: false,
   id: undefined,
   label: 'Ajouter un fichier',
   hint: 'Pas trop volumineux svp',
@@ -130,12 +120,9 @@ export const TeleversementAvecSucces = (args, { argTypes }) => ({
   </div>
   `,
 
-  mounted () {
-    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
-  },
+
 })
 TeleversementAvecSucces.args = {
-  dark: false,
   id: undefined,
   label: 'Ajouter un fichier',
   hint: 'Pas trop volumineux svp',
@@ -164,12 +151,9 @@ export const TeleversementDesactive = (args, { argTypes }) => ({
   </div>
   `,
 
-  mounted () {
-    document.body.parentElement.setAttribute('data-fr-theme', this.dark ? 'dark' : 'light')
-  },
+
 })
 TeleversementDesactive.args = {
-  dark: false,
   id: undefined,
   label: 'Ajouter un fichier',
   hint: 'Pas trop volumineux svp',
