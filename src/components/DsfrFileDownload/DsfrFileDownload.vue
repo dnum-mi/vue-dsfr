@@ -54,5 +54,3 @@ export default defineComponent({
     </p>
   </div>
 </template>
-
-<style src="@gouvfr/dsfr/dist/component/download/download.min.css" />

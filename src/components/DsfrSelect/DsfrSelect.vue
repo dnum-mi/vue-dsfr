@@ -120,5 +120,3 @@ export default defineComponent({
     </p>
   </div>
 </template>
-
-<style src="@gouvfr/dsfr/dist/component/select/select.main.min.css" />

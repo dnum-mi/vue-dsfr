@@ -93,8 +93,6 @@ export default defineComponent({
   </button>
 </template>
 
-<style src="@gouvfr/dsfr/dist/component/button/button.main.min.css" />
-
 <style scoped>
 .inline-flex {
   display: inline-flex;

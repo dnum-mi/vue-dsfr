@@ -176,5 +176,3 @@ export default defineComponent({
     <slot />
   </div>
 </template>
-
-<style src="@gouvfr/dsfr/dist/component/tab/tab.main.min.css" />

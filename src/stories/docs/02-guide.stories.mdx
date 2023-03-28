@@ -149,4 +149,45 @@ puisque c’est le CSS officiel du DSFR qui est utilisé.
 
 Pour ajouter des icônes qui ne sont pas importées dans la bibliothèque, veuillez consulter
 [la page dédiée](/story/fondamentaux-4-1-icônes-personnalisées--page).
+
+## Avoir un bundle minimal
+
+Il est possible d’intégrer moins de CSS pour les petits projets.
+
+### Vue3
+
+Dans le point d’entrée de votre application Vue (souvent `main.js` ou `main.ts`) :
+
+```javascript
+import '@gouvfr/dsfr/dist/core/core.main.min.css'            // Le CSS minimal du DSFR
+import '@gouvfr/dsfr/dist/component/component.main.min.css'  // Styles de tous les composants
+import '@gouvfr/dsfr/dist/utility/utility.main.min.css'      // Classes utilitaires : les composants de VueDsfr en ont besoin
+import '@gouvminint/vue-dsfr/styles'                         // Les styles propres aux composants de VueDsfr
+
+import '@gouvfr/dsfr/dist/scheme/scheme.min.css'             // Facultatif : Si les thèmes sont utilisés (thème sombre, thème clair)
+import '@gouvfr/dsfr/dist/utility/icons/icons.min.css'       // Facultatif : Si des icônes sont utilisées avec les classes "fr-icon-..."
+```
+
+### Nuxt3
+
+Dans `nuxt.config.js` :
+
+```javascript
+export default defineNuxtConfig({
+  css: [
+    '@gouvfr/dsfr/dist/core/core.main.min.css',           // Le CSS du DSFR
+    '@gouvfr/dsfr/dist/utility/utility.main.min.css'      // Classes utilitaires : les composants de VueDsfr en ont besoin
+    '@gouvminint/vue-dsfr/styles',                        // Les styles propres aux composants de VueDsfr
+
+    '@gouvfr/dsfr/dist/component/componant.main.min.css'  // Styles des liens
+    '@gouvfr/dsfr/dist/component/form/form.min.css'       // Facultatif : Si l’application utilise des éléments de formulaire
+    '@gouvfr/dsfr/dist/scheme/scheme.min.css'             // Facultatif : Si les thèmes sont utilisés (thème sombre, thème en bernes)
+    '@gouvfr/dsfr/dist/utility/icons/icons.min.css',      // Facultatif : Si des icônes sont utilisées avec les classes "fr-icon-..."
+  ],
+  ignore: [
+    '**/*.test.*',
+    '**/*.spec.*',
+    '**/*.cy.*',
+  ],
+})
 ```

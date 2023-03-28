@@ -31,5 +31,3 @@ export default defineComponent({
     </p>
   </div>
 </template>
-
-<style src="@gouvfr/dsfr/dist/component/connect/connect.main.min.css" />

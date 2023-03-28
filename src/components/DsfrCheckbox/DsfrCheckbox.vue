@@ -103,5 +103,3 @@ export default defineComponent({
     </div>
   </div>
 </template>
-
-<style src="@gouvfr/dsfr/dist/component/checkbox/checkbox.main.min.css" />

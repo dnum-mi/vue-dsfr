@@ -42,5 +42,3 @@ export default defineComponent({
     </nav>
   </div>
 </template>
-
-<style src="@gouvfr/dsfr/dist/component/skiplink/skiplink.main.min.css" />

@@ -101,5 +101,3 @@ export default defineComponent({
     </div>
   </nav>
 </template>
-
-<style src="@gouvfr/dsfr/dist/component/translate/translate.main.min.css" />

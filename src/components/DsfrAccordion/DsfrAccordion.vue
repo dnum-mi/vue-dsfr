@@ -115,5 +115,3 @@ export default defineComponent({
     </div>
   </section>
 </template>
-
-<style src="@gouvfr/dsfr/dist/component/accordion/accordion.main.min.css" />

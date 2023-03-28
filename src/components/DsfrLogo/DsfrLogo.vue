@@ -31,5 +31,3 @@ export default defineComponent({
     v-html="text"
   />
 </template>
-
-<style src="@gouvfr/dsfr/dist/component/logo/logo.main.min.css" />
