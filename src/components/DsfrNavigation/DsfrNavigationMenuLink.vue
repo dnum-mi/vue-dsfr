@@ -1,9 +1,14 @@
 <script>
 import { defineComponent } from 'vue'
+import { OhVueIcon as VIcon } from 'oh-vue-icons'
 import { getRandomId } from '../../utils/random-utils.js'
 
 export default defineComponent({
   name: 'DsfrNavigationMenuLink',
+
+  components: {
+    VIcon,
+  },
 
   props: {
     id: {
@@ -17,6 +22,11 @@ export default defineComponent({
     text: {
       type: String,
       required: true,
+    },
+    icon: {
+      type: String,
+      required: false,
+      default: undefined,
     },
   },
 
@@ -47,6 +57,10 @@ export default defineComponent({
     :to="to"
     @click="$emit('toggle-id', id)"
   >
+    <VIcon
+      v-if="icon"
+      :name="icon"
+    />
     {{ text }}
   </RouterLink>
 </template>
