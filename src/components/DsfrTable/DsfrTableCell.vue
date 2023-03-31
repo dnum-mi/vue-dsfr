@@ -19,7 +19,7 @@ export default defineComponent({
     isObject () {
       return typeof this.field === 'object' && this.field !== null
     },
-    isComponent () {
+    component () {
       return (this.isObject && this.field.component) ? this.field.component : false
     },
     isString () {
@@ -32,8 +32,8 @@ export default defineComponent({
 <template>
   <td v-bind="cellAttrs">
     <component
-      :is="isComponent"
-      v-if="isComponent"
+      :is="component"
+      v-if="component"
       v-bind="field"
     >
       {{ field.text }}
