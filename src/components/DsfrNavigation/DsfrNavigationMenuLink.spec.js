@@ -15,7 +15,32 @@ const router = createRouter({
 })
 
 describe('DsfrNavigationMenuLink', () => {
-  it('should render a navigation menu link (internal)', async () => {
+  it('should render a navigation menu link (internal) with icon', async () => {
+    const to = '/'
+    const text = 'Texte du lien'
+    const icon = 'ri-home-2-line'
+
+    const { getByTestId } = render(DsfrNavigationMenuLink, {
+      global: {
+        plugins: [router],
+        components: {
+          VIcon,
+        },
+      },
+      props: {
+        to,
+        text,
+        icon,
+      },
+    })
+
+    await router.isReady()
+
+    const link = getByTestId('nav-router-link')
+    expect(link.innerHTML).toBe('<svg class="ov-icon" style="font-size: 1.2em;" aria-hidden="true" width="0" height="0" viewBox="0 0 0 0" fill="currentColor"></svg> ' + text)
+    expect(link).toHaveAttribute('href', to)
+  })
+  it('should render a navigation menu link (internal) without icon', async () => {
     const to = '/'
     const text = 'Texte du lien'
 
@@ -35,7 +60,7 @@ describe('DsfrNavigationMenuLink', () => {
     await router.isReady()
 
     const link = getByTestId('nav-router-link')
-    expect(link.innerHTML).toBe(text)
+    expect(link.innerHTML).toBe('<!--v-if--> ' + text)
     expect(link).toHaveAttribute('href', to)
   })
 })
