@@ -1,6 +1,12 @@
+import { setup } from '@storybook/vue3'
+import DsfrTag from '../DsfrTag/DsfrTag.vue'
 import DsfrTable from './DsfrTable.vue'
 import DsfrTableHeaders from './DsfrTableHeaders.vue'
 import DsfrTableCell from './DsfrTableCell.vue'
+
+setup(app => {
+  app.component('DsfrTag', DsfrTag) // Composant utilisé dans les stories CelluleDeTableauAvecComposant et CelluleDeTableauComplexe
+})
 
 export default {
   component: DsfrTableCell,
@@ -16,7 +22,7 @@ export default {
       description: 'Contenu du champ. Peut être une string ou bien un objet',
     },
     onClickCell: {
-      action: 'Clicked on cell',
+      action: 'Clic sur l’étiquette !',
       description: 'Fonction pour montrer le clic sur une cellule (Ici seulement pour "Cellule de tableau complexe")',
     },
   },
@@ -69,7 +75,6 @@ export const CelluleDeTableauSimple = (args) => ({
       </tr>
     </DsfrTable>
   `,
-
 
 })
 CelluleDeTableauSimple.args = {
