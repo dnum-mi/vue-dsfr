@@ -1,3 +1,4 @@
+import { fileURLToPath, URL } from 'url'
 import { dirname, resolve } from 'path'
 
 import { defineConfig } from 'vite'
@@ -8,6 +9,8 @@ import visualizer from 'rollup-plugin-visualizer'
 
 const projectDir = dirname(new URL(import.meta.url).pathname)
 
+const getNormalizedDir = (relativeDir: string) => fileURLToPath(new URL(relativeDir, import.meta.url))
+
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
@@ -17,11 +20,24 @@ export default defineConfig({
     }),
     visualizer(),
   ],
+  test: {
+    globals: true,
+    // environment: 'happy-dom',
+    environment: 'jsdom',
+    testTimeout: 2000,
+    setupFiles: [
+      './tests/unit/vitest-setup.js',
+    ],
+  },
   resolve: {
     alias: [
       {
         find: '@',
-        replacement: resolve(projectDir, 'src'),
+        replacement: getNormalizedDir('./src'),
+      },
+      {
+        find: '@tests',
+        replacement: getNormalizedDir('./tests'),
       },
       {
         find: 'vue',
