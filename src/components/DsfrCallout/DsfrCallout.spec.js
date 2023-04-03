@@ -1,7 +1,7 @@
 import { OhVueIcon as VIcon } from 'oh-vue-icons'
 import { fireEvent, render } from '@testing-library/vue'
 
-import { spy } from '@/../tests/unit/test-utils.js'
+import { spy } from '@tests/unit/test-utils.js'
 
 // import '@gouvfr/dsfr/dist/core/core.module.js'
 
