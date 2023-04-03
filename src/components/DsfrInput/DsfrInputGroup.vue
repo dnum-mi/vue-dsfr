@@ -34,7 +34,7 @@ export default defineComponent({
     labelVisible: Boolean,
     modelValue: {
       type: String,
-      default: '',
+      default: undefined,
     },
     placeholder: {
       type: String,
@@ -63,6 +63,11 @@ export default defineComponent({
       return this.errorMessage ? 'ri-alert-line' : 'ri-checkbox-circle-line'
     },
   },
+  watch: {
+    modelValue (nv, ov) {
+      console.log({ nv, ov })
+    },
+  },
 
 })
 </script>
@@ -75,9 +80,10 @@ export default defineComponent({
       'fr-input-group--valid': validMessage,
     }"
   >
+    <slot name="before-input" />
     <slot />
     <DsfrInput
-      v-if="modelValue !== undefined"
+      v-if="!$slots.default"
       v-bind="$attrs"
       :is-valid="!!validMessage"
       :is-invalid="!!errorMessage"

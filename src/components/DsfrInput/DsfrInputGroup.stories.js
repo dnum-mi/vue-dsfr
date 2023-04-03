@@ -5,7 +5,7 @@ import DsfrInputGroup from './DsfrInputGroup.vue'
  * [Voir quand l’utiliser sur la documentation du DSFR](https://www.systeme-de-design.gouv.fr/elements-d-interface/composants/champ-de-saisie)
  */
 export default {
-  component: DsfrInput,
+  component: DsfrInputGroup,
   title: 'Composants/Champ de saisie/Champ avec message associé - DsfrInputGroup',
   argTypes: {
     id: {
@@ -42,7 +42,7 @@ export default {
     },
     disabled: {
       control: 'boolean',
-      description: 'Permet de désactiver le champ, la saisie sera impossible. Sera passé à DsfrInput si modelValue n’est pas `undefined`',
+      description: 'Permet de désactiver le champ, la saisie sera impossible. Sera passé à DsfrInput s’il n’y a pas d’utilisation du slot par défaut',
     },
     errorMessage: {
       control: 'text',
@@ -52,15 +52,48 @@ export default {
       control: 'text',
       description: 'Message de validation',
     },
-    isValid: {
-      control: 'boolean',
-      description: 'Signale si le champ est en état validé (`true`) ou non (`false`, par défaut)',
-    },
-    isInvalid: {
-      control: 'boolean',
-      description: 'Signale si le champ est en état d’erreur (`true`) ou non (`false`, par défaut)',
-    },
   },
+}
+
+export const GroupeDeChampAvecPersonnalisation = (args) => ({
+  components: {
+    DsfrInput,
+    DsfrInputGroup,
+  },
+  data () {
+    return {
+      ...args,
+    }
+  },
+  template: `
+    <DsfrInputGroup
+      :error-message="errorMessage"
+      :valid-message="validMessage"
+    >
+      <DsfrInput
+        :id="id"
+        :placeholder="placeholder"
+        :readonly="readonly !== ''"
+        :model-value="modelValue"
+        :label="label"
+        :type="type"
+        :hint="hint"
+        :label-visible="labelVisible"
+      />
+    </DsfrInputGroup>
+  `,
+})
+GroupeDeChampAvecPersonnalisation.args = {
+  type: 'text',
+  label: 'Label champ de saisie',
+  labelVisible: true,
+  placeholder: 'Yo',
+  modelValue: '',
+  validMessage: 'Message de validation',
+  errorMessage: '',
+  hint: 'Texte d’indice du champ',
+  id: '',
+  readonly: '',
 }
 
 export const ChampEnErreur = (args) => ({
@@ -87,7 +120,6 @@ export const ChampEnErreur = (args) => ({
       :is-invalid="isInvalid"
     />
   `,
-
 })
 ChampEnErreur.args = {
   label: 'Label champ de saisie',
