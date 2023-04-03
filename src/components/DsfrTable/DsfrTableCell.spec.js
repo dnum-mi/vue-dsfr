@@ -4,7 +4,7 @@ import { fireEvent, render } from '@testing-library/vue'
 import DsfrTableCell from './DsfrTableCell.vue'
 import DsfrTag from '../DsfrTag/DsfrTag.vue'
 
-import { spy } from '@/../tests/unit/test-utils.js'
+import { spy } from '@tests/unit/test-utils.js'
 
 describe('DsfrTableCell', () => {
   it('should render simple cell', () => {

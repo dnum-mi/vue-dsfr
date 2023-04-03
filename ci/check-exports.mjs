@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+import { fileURLToPath, URL } from 'url'
 import { readFile, writeFile } from 'fs/promises'
 import inquirer from 'inquirer'
 import chalk from 'chalk'
@@ -7,22 +8,25 @@ import path from 'path'
 
 const isCI = process.argv.includes('--ci')
 
-const __dirname = path.dirname(new URL(import.meta.url).pathname)
+const getNormalizedDir = (relativeDir) => fileURLToPath(new URL(relativeDir, import.meta.url))
 
-const sfcs = await globby([path.resolve(__dirname, '../src/components/**/*.vue')])
-const componentsDir = path.resolve(__dirname, '../src/components')
+// const sfcs = await globby(fileURLToPath(new URL('../src/components/**/*.vue', import.meta.url)))
+const sfcs = await globby('src/components/**/*.vue')
 
-const projectFn = component => 'export { default as ' + path.basename(component, '.vue') + ' } from \'' + component.replace(componentsDir, '.') + '\''
+const projectFn = component => 'export { default as ' + path.basename(component, '.vue') + ' } from \'' + component.replace('src/components', '.') + '\''
 
 const correctComponentList = sfcs.map(projectFn).sort()
 const correctString = correctComponentList.join('\n') + '\n'
 
-const index = await readFile(path.resolve(__dirname, '../src/components/index.js'))
+const srcIndexFullpath = getNormalizedDir('../src/components') + path.sep + 'index.js'
+const typesIndexFullpath = getNormalizedDir('../types/components') + path.sep + 'index.d.ts'
+
+const index = await readFile(getNormalizedDir('../src/components') + '/index.js')
 const currentFileContent = index.toString()
 
 if (currentFileContent !== correctString) {
   if (process.argv.includes('--fix')) {
-    await writeFile(path.resolve(__dirname, '../src/components/index.js'), correctString)
+    await writeFile(srcIndexFullpath, correctString)
     console.log('Fixed')
     process.exit(0)
   }
@@ -51,14 +55,14 @@ if (currentFileContent !== correctString) {
   }
 
   if (onlyInCorrectList.length || onlyInCurrentFileList.length) {
-    console.log('dans ' + chalk.yellow.bold(path.resolve(__dirname, '../src/components/index.js')))
+    console.log('dans ' + chalk.yellow.bold(srcIndexFullpath))
   }
 
   if (!isCI) {
     await inquirer.prompt(questions).then(async answers => {
       if (answers.fix.toLocaleLowerCase() === 'y') {
-        await writeFile(path.resolve(__dirname, '../src/components/index.js'), correctString)
-        await writeFile(path.resolve(__dirname, '../types/components/index.d.ts'), correctString)
+        await writeFile(srcIndexFullpath, correctString)
+        await writeFile(typesIndexFullpath, correctString)
         console.log(chalk.green.bold('Fichier corrigé !'))
         process.exit(0)
       }
