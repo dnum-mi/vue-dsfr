@@ -122,7 +122,6 @@ declare const _default: import('vue').DefineComponent<{
     modelValue: string | undefined;
     placeholder: string;
     quickLinks: HeaderMenuLink[];
-    showSearch: boolean;
     operatorImgAlt: string;
     operatorImgSrc: string;
     operatorImgStyle: Record;
@@ -133,6 +132,7 @@ declare const _default: import('vue').DefineComponent<{
     placeholder: string;
     quickLinks: HeaderMenuLink[];
     showSearch: boolean;
+    searchLabel: string;
     operatorImgAlt: string;
     operatorImgSrc: string;
     operatorImgStyle: Record;

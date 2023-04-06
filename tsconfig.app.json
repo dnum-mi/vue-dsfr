@@ -1,6 +1,6 @@
 {
   "extends": "@vue/tsconfig/tsconfig.web.json",
-  "include": ["env.d.ts", "src/**/*.{js,ts}", "src/**/*.vue"],
+  "include": ["env.d.ts", "types/index.d.ts", "src/**/*.{js,ts}", "src/**/*.vue"],
   "exclude": ["src/**/__tests__/*", "src/demo-app/**"],
   "compilerOptions": {
     "allowJs": true,
