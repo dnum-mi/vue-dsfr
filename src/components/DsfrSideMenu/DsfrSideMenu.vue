@@ -46,7 +46,6 @@ const collapseStyle = computed(() => {
   return baseStyle
 })
 watch(expanded, (isExpanded) => {
-  console.log(isExpanded)
   if (!isExpanded) {
     collapsing.value = true
     setTimeout(() => { collapsing.value = false }, 300)
