@@ -63,12 +63,6 @@ export default defineComponent({
       return this.errorMessage ? 'ri-alert-line' : 'ri-checkbox-circle-line'
     },
   },
-  watch: {
-    modelValue (nv, ov) {
-      console.log({ nv, ov })
-    },
-  },
-
 })
 </script>
 
