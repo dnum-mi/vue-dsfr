@@ -39,8 +39,6 @@ export const BoutonDeMenuDepliable = (args, { argTypes }) => ({
     }
   },
 
-
-
   template: `
   <DsfrSideMenu
     heading-title="Menu latéral exemplaire"

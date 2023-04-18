@@ -37,7 +37,6 @@ export const LiensDEvitement = (args) => ({
   </div>
   `,
 
-
 })
 
 LiensDEvitement.args = {

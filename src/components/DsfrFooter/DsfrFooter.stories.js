@@ -153,7 +153,6 @@ export const PiedDePageSimple = (args) => ({
   </DsfrFooter>
   `,
 
-
 })
 PiedDePageSimple.args = {
   beforeMandatoryLinks: [{ label: 'Before', to: '/before' }],
@@ -268,7 +267,6 @@ export const PiedDePageAvecLogoOperateur = (args) => ({
     </template>
   </DsfrFooter>
   `,
-
 
 })
 PiedDePageAvecLogoOperateur.args = {

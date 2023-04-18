@@ -54,7 +54,6 @@ export const TelechargementDeFichier = (args) => ({
     />
   `,
 
-
 })
 TelechargementDeFichier.args = {
   format: 'PDF',
@@ -84,7 +83,6 @@ export const BlocDeTelechargement = (args) => ({
       :title="title"
     />
   `,
-
 
 })
 BlocDeTelechargement.args = {

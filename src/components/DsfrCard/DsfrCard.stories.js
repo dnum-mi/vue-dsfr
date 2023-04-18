@@ -66,7 +66,6 @@ export const Card = (args) => ({
     />
   `,
 
-
 })
 Card.args = {
   altImg: '',
@@ -98,7 +97,6 @@ export const CardSansFleche = (args) => ({
       :no-arrow="noArrow"
     />
   `,
-
 
 })
 CardSansFleche.args = {

@@ -86,7 +86,6 @@ export const ItemDeMenuDeNavigation = args => ({
   </DsfrNavigation>
   `,
 
-
 })
 ItemDeMenuDeNavigation.args = {
   active: false,

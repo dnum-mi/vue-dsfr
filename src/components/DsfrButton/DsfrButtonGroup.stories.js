@@ -72,7 +72,6 @@ export const GroupeDeBoutons = (args) => ({
     />
   `,
 
-
 })
 GroupeDeBoutons.args = {
   align: 'center',

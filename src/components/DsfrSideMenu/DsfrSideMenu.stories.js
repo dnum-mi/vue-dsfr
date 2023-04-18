@@ -52,8 +52,6 @@ export const MenuLateral = (args, { argTypes }) => ({
     }
   },
 
-
-
   methods: {
     toggleExpand (id) {
       toggleExpandedForMenuWithId(this.menuItems, id)
