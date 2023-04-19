@@ -46,7 +46,6 @@ export const FilDAriane = (args) => ({
     />
   `,
 
-
 })
 
 FilDAriane.args = {

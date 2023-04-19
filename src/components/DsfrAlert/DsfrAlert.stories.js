@@ -78,7 +78,6 @@ export const Alerte = (args) => ({
     },
   },
 
-
 })
 Alerte.args = {
   title: 'Titre alerte',
@@ -128,7 +127,6 @@ export const Alertes = (args) => ({
     </div>
   `,
 
-
 })
 Alertes.args = {
 }
@@ -170,7 +168,6 @@ export const PetitesAlertes = (args) => ({
       />
     </div>
   `,
-
 
 })
 PetitesAlertes.args = {
@@ -268,8 +265,6 @@ export const AlertesFermables = (args) => ({
       />
     </div>
   `,
-
-
 
   methods: {
     close (idx) {

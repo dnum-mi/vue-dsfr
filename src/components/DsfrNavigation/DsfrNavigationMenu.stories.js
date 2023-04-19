@@ -65,7 +65,6 @@ export const NavigationSousMenu = (args) => ({
     </DsfrNavigation>
   `,
 
-
 })
 NavigationSousMenu.args = {
   title: 'Nom de menu original',

@@ -34,7 +34,6 @@ export const ListeDeTelechargements = (args, { argTypes }) => ({
     />
   `,
 
-
 })
 ListeDeTelechargements.args = {
   files: [

@@ -61,7 +61,6 @@ export const TuileSimple = (args) => ({
     />
   `,
 
-
 })
 TuileSimple.args = {
   title: 'Ma formidable tuile',

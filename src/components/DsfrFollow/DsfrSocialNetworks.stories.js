@@ -38,7 +38,6 @@ export const ReseauxSociaux = (args) => ({
     </DsfrFollow>
   `,
 
-
 })
 ReseauxSociaux.args = {
   titleTag: undefined,

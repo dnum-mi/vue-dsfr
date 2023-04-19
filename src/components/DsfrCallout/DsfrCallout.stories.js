@@ -65,7 +65,6 @@ export const MiseEnAvantSimple = (args) => ({
     />
   `,
 
-
 })
 MiseEnAvantSimple.args = {
   title: 'Titre de la mise en avant',
@@ -100,7 +99,6 @@ export const MiseEnAvant = (args) => ({
       :title-tag="titleTag"
     />
   `,
-
 
 })
 MiseEnAvant.args = {

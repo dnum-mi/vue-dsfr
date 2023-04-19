@@ -130,7 +130,6 @@ export const EnTeteSimple = (args, { argTypes }) => ({
     },
   },
 
-
 })
 EnTeteSimple.args = {
   showSearch: true,
@@ -189,7 +188,6 @@ export const EnTeteAvecLogoOperateur = (args, { argTypes }) => ({
       this.actionOnLogo($event)
     },
   },
-
 
 })
 EnTeteAvecLogoOperateur.args = {
@@ -255,7 +253,6 @@ export const EnTeteAvecNavigation = (args, { argTypes }) => ({
       this.actionOnLogo($event)
     },
   },
-
 
 })
 EnTeteAvecNavigation.args = {

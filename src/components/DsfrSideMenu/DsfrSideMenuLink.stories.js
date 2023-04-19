@@ -32,8 +32,6 @@ export const LienDansUnElementDeListeDeMenuLateral = (args, { argTypes }) => ({
     }
   },
 
-
-
   template: `
   <DsfrSideMenu
     heading-title="Menu latéral exemplaire"

@@ -34,7 +34,6 @@ export const Suivre = (args) => ({
     />
   `,
 
-
 })
 Suivre.args = {
   networks: [
