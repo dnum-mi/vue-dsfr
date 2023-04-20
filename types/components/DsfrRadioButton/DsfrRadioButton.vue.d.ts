@@ -27,6 +27,10 @@ declare const _default: import('vue').DefineComponent<{
         type: StringConstructor;
         default: string;
     };
+    small: {
+      type: BooleanConstructor;
+      default: false;
+    };
 }, unknown, unknown, {
     rich(): boolean;
 }, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, 'update:modelValue'[], 'update:modelValue', import('vue').VNodeProps & import('vue').AllowedComponentProps & import('vue').ComponentCustomProps, Readonly<import('vue').ExtractPropTypes<{
@@ -58,6 +62,10 @@ declare const _default: import('vue').DefineComponent<{
         type: StringConstructor;
         default: string;
     };
+    small: {
+      type: BooleanConstructor;
+      default: false;
+    };
 }>> & {
     'onUpdate:modelValue'?: (inputValue: string | number) => any;
 }, {
@@ -66,5 +74,6 @@ declare const _default: import('vue').DefineComponent<{
     label: string;
     modelValue: string | number | undefined;
     hint: string;
+    small: boolean;
 }>
 export default _default
