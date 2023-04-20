@@ -161,23 +161,23 @@ MenuLateralAvecAccordeonEtCheckbox.args = {
   accordions: {
     'Accordéon 1': {
       options: [
-        { label: 'Option 1', value: 'option1' },
-        { label: 'Option 2', value: 'option2' },
-        { label: 'Option 3', value: 'option3' },
+        { label: 'Option 1', value: 'option1', name: 'option1' },
+        { label: 'Option 2', value: 'option2', name: 'option2' },
+        { label: 'Option 3', value: 'option3', name: 'option3' },
       ],
     },
     'Accordéon 2': {
       options: [
-        { label: 'Option 1', value: 'option1' },
-        { label: 'Option 2', value: 'option2' },
-        { label: 'Option 3', value: 'option3' },
+        { label: 'Option 1', value: 'option1', name: 'option1' },
+        { label: 'Option 2', value: 'option2', name: 'option2' },
+        { label: 'Option 3', value: 'option3', name: 'option3' },
       ],
     },
     'Accordéon 3': {
       options: [
-        { label: 'Option 1', value: 'option1' },
-        { label: 'Option 2', value: 'option2' },
-        { label: 'Option 3', value: 'option3' },
+        { label: 'Option 1', value: 'option1', name: 'option1' },
+        { label: 'Option 2', value: 'option2', name: 'option2' },
+        { label: 'Option 3', value: 'option3', name: 'option3' },
       ],
     },
   },

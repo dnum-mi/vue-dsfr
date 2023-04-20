@@ -120,3 +120,13 @@ export default defineComponent({
     </div>
   </section>
 </template>
+<style>
+/*
+ * Temporary style override to fix Collapsable animations
+ * TODO: remove when fixed
+ */
+.fr-accordion .fr-collapse--expanded {
+  padding-bottom: 0;
+  padding-top: 0;
+}
+</style>

@@ -84,6 +84,7 @@ export default defineComponent({
 
 <template>
   <div
+    :id="id"
     ref="collapse"
     :class="{
       'fr-collapse': collapsable,
@@ -93,7 +94,6 @@ export default defineComponent({
     @transitionend="onTransitionEnd"
   >
     <ul
-      :id="id"
       class="fr-sidemenu__list"
     >
       <!-- @slot Slot par défaut pour le contenu d’une liste du menu latéral -->
@@ -136,3 +136,14 @@ export default defineComponent({
     </ul>
   </div>
 </template>
+
+<style lang="css">
+/* Missing in DSFR */
+.fr-sidemenu .fr-accordion .fr-collapse {
+  padding: 0 1rem 0 1rem;
+}
+.fr-sidemenu .fr-accordion .fr-collapse--expanded {
+  padding-bottom: 0;
+  padding-top: 0;
+}
+</style>
