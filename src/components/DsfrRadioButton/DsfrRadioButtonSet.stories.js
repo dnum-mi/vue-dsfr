@@ -19,6 +19,10 @@ export default {
       control: 'text',
       description: 'Valeur de l’attribut `name` de chaque bouton radio du groupe',
     },
+    small: {
+      control: 'boolean',
+      description: 'Utilise la version réduite des boutons radio',
+    },
     // legend: {
     //   control: 'text',
     //   description: 'Titre du groupe de bouton',
@@ -66,6 +70,7 @@ GroupeDeBoutonsRadio.args = {
   legend: 'Légende des champs',
   inline: false,
   modelValue: '3',
+  small: false,
   options: [
     {
       label: 'Valeur 1',
@@ -107,6 +112,7 @@ GroupeDeBoutonsRadioRequis.args = {
   inline: false,
   required: true,
   modelValue: '3',
+  small: false,
   options: [
     {
       label: 'Valeur 1',
@@ -152,6 +158,7 @@ GroupeDeBoutonsRadioRequisPersonnalise.args = {
   inline: false,
   required: true,
   modelValue: '3',
+  small: false,
   options: [
     {
       label: 'Valeur 1',
