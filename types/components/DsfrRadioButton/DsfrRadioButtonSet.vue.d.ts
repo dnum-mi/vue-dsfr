@@ -34,6 +34,10 @@ declare const _default: import('vue').DefineComponent<{
         type: ArrayConstructor;
         default(): RadioOption[];
     };
+    small: {
+      type: BooleanConstructor;
+      default: false;
+    };
 }, unknown, unknown, {
     message(): string;
     additionalMessageClass(): 'fr-message--error' | 'fr-message--valid';
@@ -67,6 +71,10 @@ declare const _default: import('vue').DefineComponent<{
         type: ArrayConstructor;
         default(): RadioOption[];
     };
+    small: {
+      type: BooleanConstructor;
+      default: false;
+    };
 }>> & {
     'onUpdate:modelValue'?: (inputValue: string | number) => any;
 }, {
@@ -77,5 +85,6 @@ declare const _default: import('vue').DefineComponent<{
     options: RadioOption[];
     errorMessage: string;
     validMessage: string;
+    small: boolean;
 }>
 export default _default
