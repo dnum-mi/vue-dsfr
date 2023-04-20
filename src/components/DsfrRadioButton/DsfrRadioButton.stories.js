@@ -16,6 +16,10 @@ export default {
       control: 'object',
       description: 'Tableau d’objets : chaque objet contient les props à passer à `DsfrRadioButton` - *N.B. : Ne fait pas partie du composant',
     },
+    small: {
+      control: 'boolean',
+      description: 'Utilise la version réduite du bouton radio',
+    },
     // label: {
     //   control: 'text',
     //   description: 'Label du bouton radio',
@@ -53,6 +57,7 @@ export const RadioButton = (args, { argTypes }) => ({
           v-for="option of options"
           :modelValue="modelValue"
           v-bind="option"
+          :small="small"
           @update:modelValue="updateCheckedValue($event)"
         />
       </div>
@@ -71,6 +76,7 @@ export const RadioButton = (args, { argTypes }) => ({
 })
 RadioButton.args = {
   modelValue: '3',
+  small: false,
   options: [
     {
       label: 'Valeur 1',
@@ -103,6 +109,7 @@ export const RichRadioButton = (args, { argTypes }) => ({
       v-for="option of options"
       :modelValue="modelValue"
       v-bind="option"
+      :small="small"
       @update:modelValue="updateCheckedValue($event)"
     />
   `,
@@ -118,6 +125,7 @@ export const RichRadioButton = (args, { argTypes }) => ({
 })
 RichRadioButton.args = {
   modelValue: '3',
+  small: false,
   options: [
     {
       label: 'Valeur 1',

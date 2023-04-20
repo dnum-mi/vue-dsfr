@@ -22,6 +22,7 @@ export default defineComponent({
     disabled: Boolean,
     inline: Boolean,
     required: Boolean,
+    small: Boolean,
     name: {
       type: String,
       default: 'no-name',
@@ -111,6 +112,7 @@ export default defineComponent({
           :key="option.value || i"
           :name="name"
           v-bind="option"
+          :small="small"
           :model-value="modelValue"
           @update:model-value="onChange"
         />
