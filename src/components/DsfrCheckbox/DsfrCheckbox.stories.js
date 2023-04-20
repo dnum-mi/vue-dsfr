@@ -31,6 +31,10 @@ export default {
       control: 'boolean',
       description: 'Indique si le champ est obligatoire',
     },
+    small: {
+      control: 'boolean',
+      description: 'Utilise la version réduite de la case à cocher',
+    },
     errorMessage: {
       control: 'text',
       description: 'Texte du message à afficher en cas d’erreur',
@@ -60,6 +64,7 @@ export const Checkbox = (args) => ({
         :label="label"
         :disabled="disabled"
         :required="required"
+        :small="small"
         :hint="hint"
         :name="name || 'name1'"
         v-model="modelValue"
@@ -75,6 +80,7 @@ Checkbox.args = {
   disabled: false,
   modelValue: false,
   required: false,
+  small: false,
   label: 'Checkbox 1',
   name: 'name1',
   hint: 'Description 1',

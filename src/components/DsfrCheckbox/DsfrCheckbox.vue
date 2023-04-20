@@ -18,6 +18,7 @@ export default defineComponent({
     },
     required: Boolean,
     modelValue: Boolean,
+    small: Boolean,
     label: {
       type: String,
       default: '',
@@ -55,6 +56,7 @@ export default defineComponent({
     :class="{
       'fr-checkbox-group--error': errorMessage,
       'fr-checkbox-group--valid': validMessage,
+      'fr-checkbox-group--sm': small,
     }"
   >
     <input

@@ -53,7 +53,6 @@ export const EnsembleDeChamps = (args) => ({
     </DsfrFieldset>
   `,
 
-
 })
 EnsembleDeChamps.args = {
   legend: 'Titre de l’ensemble des champs',
@@ -92,7 +91,6 @@ export const EnsemblePersonnaliseDeChamps = (args) => ({
       Contenu du fieldset
     </DsfrFieldset>
   `,
-
 
 })
 EnsemblePersonnaliseDeChamps.args = {

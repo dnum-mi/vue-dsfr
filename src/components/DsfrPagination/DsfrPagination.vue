@@ -100,7 +100,7 @@ export default defineComponent({
           :title="prevPageTitle"
           :disabled="currentPage === 0 ? true : null"
           @click.prevent="toPreviousPage()"
-        />
+        >{{ prevPageTitle }}</a>
       </li>
       <li
         v-for="(page, idx) in displayedPages"
@@ -125,7 +125,7 @@ export default defineComponent({
           :title="nextPageTitle"
           :disabled="currentPage === pages.length - 1 ? true : null"
           @click.prevent="toNextPage()"
-        />
+        >{{ nextPageTitle }}</a>
       </li>
       <li>
         <a

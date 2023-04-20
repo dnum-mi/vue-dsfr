@@ -73,7 +73,6 @@ export const NewsletterSimple = (args) => ({
   </DsfrFollow>
   `,
 
-
 })
 NewsletterSimple.args = {
   title: 'Titre de la lettre d’information',
@@ -127,7 +126,6 @@ export const NewsletterAvecErreur = (args) => ({
     </div>
   </DsfrFollow>
   `,
-
 
 })
 

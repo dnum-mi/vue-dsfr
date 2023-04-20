@@ -78,7 +78,6 @@ export const NavigationMegaMenuCategorie = args => ({
     </DsfrNavigation>
   `,
 
-
 })
 NavigationMegaMenuCategorie.args = {
   description: 'Description du mega-menu',
