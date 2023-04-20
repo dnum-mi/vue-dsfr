@@ -46,16 +46,12 @@ export default defineComponent({
     expanded (newValue, oldValue) {
       if (newValue !== oldValue) {
         if (newValue === true) {
+          // unbound
+          // @see https://github.com/GouvernementFR/dsfr/blob/main/src/core/script/collapse/collapse.js#L33
           this.$refs.collapse.style.setProperty('--collapse-max-height', 'none')
         }
         this.collapsing = true
         this.adjust()
-        setTimeout(() => {
-          this.collapsing = false
-          if (newValue === false) {
-            this.$refs.collapse.style.removeProperty('--collapse-max-height')
-          }
-        }, 300)
       }
     },
   },
@@ -80,8 +76,16 @@ export default defineComponent({
       this.$refs.collapse.style.setProperty('--collapse', -height + 'px')
       this.$refs.collapse.style.setProperty('--collapser', '')
     },
+    /*
+     * @see https://github.com/GouvernementFR/dsfr/blob/main/src/core/script/collapse/collapse.js#L25
+     */
+    onTransitionEnd () {
+      this.collapsing = false
+      if (this.expanded === false) {
+        this.$refs.collapse.style.removeProperty('--collapse-max-height')
+      }
+    },
   },
-
 })
 </script>
 
@@ -109,6 +113,7 @@ export default defineComponent({
         'fr-collapse--expanded': expanded,
         'fr-collapsing': collapsing,
       }"
+      @transitionend="onTransitionEnd"
     >
       <!-- @slot Slot par défaut pour le contenu de l’accordéon: sera dans `<div class="fr-collapse">` -->
       <slot />

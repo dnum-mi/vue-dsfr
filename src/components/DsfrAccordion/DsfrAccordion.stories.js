@@ -1,5 +1,6 @@
 import DsfrAccordion from './DsfrAccordion.vue'
 import DsfrAccordionsGroup from './DsfrAccordionsGroup.vue'
+import DsfrCheckboxSet from '../DsfrCheckbox/DsfrCheckboxSet.vue'
 
 /**
  * [Voir quand l’utiliser sur la documentation du DSFR](https://www.systeme-de-design.gouv.fr/elements-d-interface/composants/accordeon/)
@@ -166,4 +167,67 @@ export const AccordeonTitreCustom = (args) => ({
 AccordeonTitreCustom.args = {
   title1: 'Un titre d’accordéon customisé',
   title2: 'Un autre titre d’accordéon',
+}
+
+export const AccordeonAvecCheckbox = (args) => ({
+  components: {
+    DsfrAccordion,
+    DsfrAccordionsGroup,
+    DsfrCheckboxSet,
+  },
+
+  data () {
+    return {
+      ...args,
+      expandedId: undefined,
+      accordions: args.accordions,
+    }
+  },
+
+  template: `
+    <dsfr-accordions-group>
+      <li
+        v-for="(accordion, name) in accordions"
+        :id="\`accordion_${name}\`"
+        :key="name"
+      >
+        <dsfr-accordion
+          :id="name"
+          :title="name"
+          :expanded-id="expandedId"
+          @expand="id => expandedId = id"
+        >
+          <dsfr-checkbox-set
+            :options="accordion.options"
+            small
+          />
+        </dsfr-accordion>
+      </li>
+    </dsfr-accordions-group>
+  `,
+})
+AccordeonAvecCheckbox.args = {
+  accordions: {
+    'Accordéon 1': {
+      options: [
+        { label: 'Option 1', value: 'option1' },
+        { label: 'Option 2', value: 'option2' },
+        { label: 'Option 3', value: 'option3' },
+      ],
+    },
+    'Accordéon 2': {
+      options: [
+        { label: 'Option 1', value: 'option1' },
+        { label: 'Option 2', value: 'option2' },
+        { label: 'Option 3', value: 'option3' },
+      ],
+    },
+    'Accordéon 3': {
+      options: [
+        { label: 'Option 1', value: 'option1' },
+        { label: 'Option 2', value: 'option2' },
+        { label: 'Option 3', value: 'option3' },
+      ],
+    },
+  },
 }

@@ -1,4 +1,7 @@
 import DsfrSideMenu from './DsfrSideMenu.vue'
+import DsfrAccordion from '../DsfrAccordion/DsfrAccordion.vue'
+import DsfrAccordionsGroup from '../DsfrAccordion/DsfrAccordionsGroup.vue'
+import DsfrCheckboxSet from '../DsfrCheckbox/DsfrCheckboxSet.vue'
 
 function toggleExpandedForMenuWithId (menuItems, id) {
   menuItems.forEach(menuItem => {
@@ -109,4 +112,73 @@ MenuLateral.args = {
       ],
     },
   ],
+}
+
+export const MenuLateralAvecAccordeonEtCheckbox = (args) => ({
+  components: {
+    DsfrSideMenu,
+    DsfrAccordion,
+    DsfrAccordionsGroup,
+    DsfrCheckboxSet,
+  },
+
+  data () {
+    return {
+      ...args,
+      expandedId: undefined,
+      accordions: args.accordions,
+    }
+  },
+
+  template: `
+    <dsfr-side-menu
+      heading-title="Filtres"
+      button-label="Afficher les filtres"
+    >
+      <dsfr-accordions-group>
+        <li
+          v-for="(accordion, name) in accordions"
+          :id="\`accordion_${name}\`"
+          :key="name"
+        >
+          <dsfr-accordion
+            :id="name"
+            :title="name"
+            :expanded-id="expandedId"
+            @expand="id => expandedId = id"
+          >
+            <dsfr-checkbox-set
+              :options="accordion.options"
+              small
+            />
+          </dsfr-accordion>
+        </li>
+      </dsfr-accordions-group>
+    </dsfr-side-menu>
+  `,
+})
+MenuLateralAvecAccordeonEtCheckbox.args = {
+  accordions: {
+    'Accordéon 1': {
+      options: [
+        { label: 'Option 1', value: 'option1' },
+        { label: 'Option 2', value: 'option2' },
+        { label: 'Option 3', value: 'option3' },
+      ],
+    },
+    'Accordéon 2': {
+      options: [
+        { label: 'Option 1', value: 'option1' },
+        { label: 'Option 2', value: 'option2' },
+        { label: 'Option 3', value: 'option3' },
+      ],
+    },
+    'Accordéon 3': {
+      options: [
+        { label: 'Option 1', value: 'option1' },
+        { label: 'Option 2', value: 'option2' },
+        { label: 'Option 3', value: 'option3' },
+      ],
+    },
+  },
 }
