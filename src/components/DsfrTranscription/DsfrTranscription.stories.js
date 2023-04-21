@@ -43,5 +43,4 @@ export const Transcription = (args) => ({
 Transcription.args = {
   title: 'Chats hiver',
   content: 'Des chatons jouant dans la neige',
-  collapseValue: '-114px',
 }
