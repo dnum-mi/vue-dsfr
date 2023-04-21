@@ -30,6 +30,8 @@ export default defineComponent({
   data () {
     return {
       collapsing: false,
+      // Need to handle a separate data to add/remove the class after a RAF
+      cssExpanded: false,
     }
   },
 
@@ -50,8 +52,16 @@ export default defineComponent({
           // @see https://github.com/GouvernementFR/dsfr/blob/main/src/core/script/collapse/collapse.js#L33
           this.$refs.collapse.style.setProperty('--collapse-max-height', 'none')
         }
-        this.collapsing = true
-        this.adjust()
+        // We need to wait for the next RAF to be sure the CSS variable will be set
+        // DSFR use RAF too https://github.com/GouvernementFR/dsfr/blob/main/src/core/script/api/modules/render/renderer.js#L22
+        window.requestAnimationFrame(() => {
+          this.collapsing = true
+          this.adjust()
+          // We need to wait for the next RAF to be sure the animation will be triggered
+          window.requestAnimationFrame(() => {
+            this.cssExpanded = newValue
+          })
+        })
       }
     },
   },
@@ -110,7 +120,7 @@ export default defineComponent({
       ref="collapse"
       class="fr-collapse"
       :class="{
-        'fr-collapse--expanded': expanded,
+        'fr-collapse--expanded': cssExpanded, // Need to use a separate data to add/remove the class after a RAF
         'fr-collapsing': collapsing,
       }"
       @transitionend="onTransitionEnd"
@@ -120,13 +130,3 @@ export default defineComponent({
     </div>
   </section>
 </template>
-<style>
-/*
- * Temporary style override to fix Collapsable animations
- * TODO: remove when fixed
- */
-.fr-accordion .fr-collapse--expanded {
-  padding-bottom: 0;
-  padding-top: 0;
-}
-</style>
