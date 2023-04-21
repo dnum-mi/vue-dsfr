@@ -179,7 +179,7 @@ describe('DsfrNavigation', () => {
       },
     })
 
-    router.isReady()
+    await router.isReady()
 
     const menuContainer = getByTestId('navigation-menu')
     const menu = getByText(secondMenuTitle)

@@ -69,6 +69,33 @@ Accordeon.args = {
   title: 'Un titre d’accordéon',
 }
 
+export const AccordeonSimple = (args) => ({
+  components: {
+    DsfrAccordion,
+  },
+
+  data () {
+    return {
+      ...args,
+      expandedId: undefined,
+      title1: args.title + ' 1',
+    }
+  },
+
+  template: `
+    <DsfrAccordion
+      :title="title1"
+      :expanded-id="expandedId"
+      @expand="expandedId = $event"
+    >
+    Contenu de l’accordéon 1
+    </DsfrAccordion>
+  `,
+})
+AccordeonSimple.args = {
+  title: 'Un titre d’accordéon',
+}
+
 export const AccordeonDejaOuvert = (args) => ({
   components: {
     DsfrAccordion,

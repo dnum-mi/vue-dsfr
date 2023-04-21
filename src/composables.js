@@ -38,6 +38,9 @@ export const useCollapsable = () => {
    * @return void
    */
   const adjust = () => {
+    if (!collapse.value) {
+      return
+    }
     collapse.value.style.setProperty('--collapser', 'none')
     const height = collapse.value.offsetHeight
     collapse.value.style.setProperty('--collapse', -height + 'px')
@@ -49,6 +52,9 @@ export const useCollapsable = () => {
    * @return void
    */
   const doExpand = (newValue) => {
+    if (!collapse.value) {
+      return
+    }
     if (newValue === true) {
       // unbound
       // @see https://github.com/GouvernementFR/dsfr/blob/main/src/core/script/collapse/collapse.js#L33
