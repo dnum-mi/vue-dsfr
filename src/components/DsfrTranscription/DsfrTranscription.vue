@@ -98,6 +98,7 @@ export default defineComponent({
       ref="collapse"
       class="fr-collapse"
       :class="{ 'fr-collapse--expanded': cssExpanded, 'fr-collapsing': collapsing }"
+      @transitionend="onTransitionEnd"
     >
       <dialog
         :id="modalId"

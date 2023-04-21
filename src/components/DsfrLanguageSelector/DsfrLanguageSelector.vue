@@ -94,7 +94,7 @@ export default defineComponent({
   >
     <div class="fr-nav__item">
       <button
-        class="fr-translate__btn  fr-btn  fr-btn--tertiary"
+        class="fr-translate__btn fr-btn fr-btn--tertiary"
         :aria-controls="id"
         :aria-expanded="expanded"
         title="Sélectionner une langue"
@@ -108,6 +108,7 @@ export default defineComponent({
         ref="collapse"
         class="fr-collapse fr-translate__menu fr-menu"
         :class="{ 'fr-collapse--expanded': cssExpanded, 'fr-collapsing': collapsing }"
+        @transitionend="onTransitionEnd"
       >
         <ul class="fr-menu__list">
           <li
