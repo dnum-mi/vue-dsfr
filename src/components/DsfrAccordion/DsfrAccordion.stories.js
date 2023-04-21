@@ -69,6 +69,50 @@ Accordeon.args = {
   title: 'Un titre d’accordéon',
 }
 
+export const AccordeonDejaOuvert = (args) => ({
+  components: {
+    DsfrAccordion,
+    DsfrAccordionsGroup,
+  },
+
+  data () {
+    return {
+      ...args,
+      expandedId: 'accordeon-1',
+      title1: args.title + ' 1',
+      title2: args.title + ' 2',
+    }
+  },
+
+  template: `
+  <DsfrAccordionsGroup>
+    <li>
+      <DsfrAccordion
+        :title="title1"
+        id="accordeon-1"
+        :expanded-id="expandedId"
+        @expand="expandedId = $event"
+      >
+        Contenu de l’accordéon 1
+      </DsfrAccordion>
+    </li>
+    <li>
+      <DsfrAccordion
+        :title="title2"
+        id="accordeon-2"
+        :expanded-id="expandedId"
+        @expand="expandedId = $event"
+      >
+        Contenu de l’accordéon 2
+      </DsfrAccordion>
+    </li>
+  </DsfrAccordionsGroup>
+  `,
+})
+AccordeonDejaOuvert.args = {
+  title: 'Un titre d’accordéon',
+}
+
 export const AccordeonDansUnAccordeon = (args) => ({
   components: {
     DsfrAccordion,

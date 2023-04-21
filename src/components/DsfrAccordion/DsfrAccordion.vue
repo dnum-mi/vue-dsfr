@@ -5,6 +5,7 @@ import { defineComponent } from 'vue'
 // import '@gouvfr/dsfr/dist/component/accordion/accordion.module.js'
 
 import { getRandomId } from '../../utils/random-utils.js'
+import { useCollapsable } from '@/composables'
 
 export default defineComponent({
   name: 'DsfrAccordion',
@@ -27,11 +28,23 @@ export default defineComponent({
 
   emits: ['expand'],
 
-  data () {
+  setup () {
+    const {
+      collapse,
+      collapsing,
+      cssExpanded,
+      doExpand,
+      adjust,
+      onTransitionEnd,
+    } = useCollapsable()
+
     return {
-      collapsing: false,
-      // Need to handle a separate data to add/remove the class after a RAF
-      cssExpanded: false,
+      collapse,
+      collapsing,
+      cssExpanded,
+      doExpand,
+      adjust,
+      onTransitionEnd,
     }
   },
 
@@ -47,23 +60,17 @@ export default defineComponent({
      */
     expanded (newValue, oldValue) {
       if (newValue !== oldValue) {
-        if (newValue === true) {
-          // unbound
-          // @see https://github.com/GouvernementFR/dsfr/blob/main/src/core/script/collapse/collapse.js#L33
-          this.$refs.collapse.style.setProperty('--collapse-max-height', 'none')
-        }
-        // We need to wait for the next RAF to be sure the CSS variable will be set
-        // DSFR use RAF too https://github.com/GouvernementFR/dsfr/blob/main/src/core/script/api/modules/render/renderer.js#L22
-        window.requestAnimationFrame(() => {
-          this.collapsing = true
-          this.adjust()
-          // We need to wait for the next RAF to be sure the animation will be triggered
-          window.requestAnimationFrame(() => {
-            this.cssExpanded = newValue
-          })
-        })
+        this.doExpand(newValue)
       }
     },
+  },
+
+  mounted () {
+    // Accordion can be expanded by default
+    // We need to trigger the expand animation at mounted
+    if (this.expanded) {
+      this.doExpand(true)
+    }
   },
 
   methods: {
@@ -75,24 +82,6 @@ export default defineComponent({
         this.$emit('expand', undefined)
       } else {
         this.$emit('expand', this.id)
-      }
-    },
-    /*
-     * @see https://github.com/GouvernementFR/dsfr/blob/main/src/core/script/collapse/collapse.js#L61
-     */
-    adjust () {
-      this.$refs.collapse.style.setProperty('--collapser', 'none')
-      const height = this.$refs.collapse.offsetHeight
-      this.$refs.collapse.style.setProperty('--collapse', -height + 'px')
-      this.$refs.collapse.style.setProperty('--collapser', '')
-    },
-    /*
-     * @see https://github.com/GouvernementFR/dsfr/blob/main/src/core/script/collapse/collapse.js#L25
-     */
-    onTransitionEnd () {
-      this.collapsing = false
-      if (this.expanded === false) {
-        this.$refs.collapse.style.removeProperty('--collapse-max-height')
       }
     },
   },
@@ -123,7 +112,7 @@ export default defineComponent({
         'fr-collapse--expanded': cssExpanded, // Need to use a separate data to add/remove the class after a RAF
         'fr-collapsing': collapsing,
       }"
-      @transitionend="onTransitionEnd"
+      @transitionend="onTransitionEnd(expanded)"
     >
       <!-- @slot Slot par défaut pour le contenu de l’accordéon: sera dans `<div class="fr-collapse">` -->
       <slot />

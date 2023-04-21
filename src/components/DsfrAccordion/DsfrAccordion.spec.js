@@ -18,7 +18,7 @@ describe('DsfrAccordion', () => {
       props: {
         title,
         id: '1',
-        expandedId: '1',
+        expandedId: undefined,
       },
       slots: {
         default: content,
@@ -28,12 +28,15 @@ describe('DsfrAccordion', () => {
     const titleEl = getByText(title)
     const contentEl = getByText(content)
 
-    await fireEvent.click(titleEl)
-
+    expect(contentEl).toHaveClass('fr-collapse')
     expect(titleEl.parentNode).toHaveClass('fr-accordion__btn')
     expect(titleEl.parentNode.parentNode).toHaveClass('fr-accordion__title')
     expect(titleEl.parentNode.parentNode.parentNode).toHaveClass('fr-accordion')
+
+    await fireEvent.click(titleEl)
+    // need to wait RAF
+    await (new Promise(resolve => setTimeout(resolve, 100)))
+
     expect(contentEl).toHaveClass('fr-collapse--expanded')
-    expect(contentEl).toHaveClass('fr-collapse')
   })
 })
