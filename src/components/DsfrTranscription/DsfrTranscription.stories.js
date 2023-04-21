@@ -24,10 +24,6 @@ export default {
       control: 'text',
       description: 'Transcription du contenu de la vidéo',
     },
-    collapseValue: {
-      control: 'text',
-      description: 'Valeur en pixels de la hauteur de dépliement de la transcription',
-    },
   },
 }
 
@@ -40,7 +36,6 @@ export const Transcription = (args) => ({
     <DsfrTranscription
       :title="title"
       :content="content"
-      :collapseValue="collapseValue"
     />
   `,
 
