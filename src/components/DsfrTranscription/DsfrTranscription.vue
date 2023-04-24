@@ -1,6 +1,9 @@
 <script>
 import { defineComponent } from 'vue'
 
+import { getRandomId } from '../../utils/random-utils.js'
+import { useCollapsable } from '@/composables'
+
 export default defineComponent({
   name: 'DsfrTranscription',
   props: {
@@ -12,36 +15,52 @@ export default defineComponent({
       type: String,
       default: 'Transcription du contenu de la vidéo',
     },
-    collapseValue: {
-      type: String,
-      default: '-114px',
-    },
+  },
+
+  setup () {
+    const {
+      collapse,
+      collapsing,
+      cssExpanded,
+      doExpand,
+      adjust,
+      onTransitionEnd,
+    } = useCollapsable()
+
+    return {
+      collapse,
+      collapsing,
+      cssExpanded,
+      doExpand,
+      adjust,
+      onTransitionEnd,
+    }
   },
 
   data () {
     return {
       opened: false,
       expanded: false,
-      collapsing: false,
+      id: getRandomId('transcription'),
     }
   },
 
   computed: {
-    collapseStyle () {
-      const baseStyle = {
-        '--collapse': this.collapseValue,
-      }
-      if (this.expanded || this.collapsing) {
-        baseStyle['--collapse-max-height'] = 'none'
-      }
-      return baseStyle
+    modalId () {
+      return `fr-transcription__modal-${this.id}`
+    },
+    collapseId () {
+      return `fr-transcription__collapse-${this.id}`
     },
   },
+
   watch: {
-    expanded (isExpanded) {
-      if (!isExpanded) {
-        this.collapsing = true
-        setTimeout(() => { this.collapsing = false }, 300)
+    /*
+     * @see https://github.com/GouvernementFR/dsfr/blob/main/src/core/script/collapse/collapse.js
+     */
+    expanded (newValue, oldValue) {
+      if (newValue !== oldValue) {
+        this.doExpand(newValue)
       }
     },
   },
@@ -53,22 +72,23 @@ export default defineComponent({
     <button
       class="fr-transcription__btn"
       :aria-expanded="String(expanded)"
-      aria-controls="fr-transcription__collapse-transcription-1354"
+      :aria-controls="collapseId"
       @click="expanded = !expanded"
     >
       Transcription
     </button>
     <div
-      id="fr-transcription__collapse-transcription-1354"
+      :id="collapseId"
+      ref="collapse"
       class="fr-collapse"
-      :class="{ 'fr-collapse--expanded': expanded, 'fr-collapsing': collapsing }"
-      :style="collapseStyle"
+      :class="{ 'fr-collapse--expanded': cssExpanded, 'fr-collapsing': collapsing }"
+      @transitionend="onTransitionEnd(expanded)"
     >
       <dialog
-        id="fr-transcription__modal-transcription-1354"
+        :id="modalId"
         class="fr-modal"
         role="dialog"
-        aria-labelledby="fr-transcription__modal-transcription-1354-title"
+        :aria-labelledby="`${modalId}-title`"
       >
         <div class="fr-container fr-container--fluid fr-container-md">
           <div class="fr-grid-row fr-grid-row--center">
@@ -77,7 +97,7 @@ export default defineComponent({
                 <div class="fr-modal__header">
                   <button
                     class="fr-btn--close fr-btn"
-                    aria-controls="fr-transcription__modal-transcription-1354"
+                    :aria-controls="modalId"
                     title="Fermer"
                   >
                     Fermer
@@ -85,7 +105,7 @@ export default defineComponent({
                 </div>
                 <div class="fr-modal__content">
                   <h1
-                    id="fr-transcription__modal-transcription-1354-title"
+                    :id="`${modalId}-title`"
                     class="fr-modal__title"
                   >
                     {{ title }}
@@ -96,7 +116,7 @@ export default defineComponent({
                   <div class="fr-transcription__actions-group">
                     <button
                       class="fr-btn fr-btn--fullscreen"
-                      aria-controls="fr-transcription__modal-transcription-1354"
+                      :aria-controls="modalId"
                       data-fr-opened="false"
                       title=""
                       @click="opened = true"

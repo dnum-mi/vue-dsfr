@@ -191,9 +191,9 @@ export const OngletsComplexes = (args) => ({
     },
   },
 
-
 })
 OngletsComplexes.args = {
+  tabContents: [],
   tabListName,
   tabTitles: customTabTitles,
   selectedTabIndex: 1,
@@ -274,10 +274,9 @@ export const OngletsAvecAccordeon = (args) => ({
       this.selectedTabIndex = idx
     },
   },
-
-
 })
 OngletsAvecAccordeon.args = {
+  tabContents: [],
   tabListName,
   tabTitles: [
     { title: 'Onglet avec accordéon', icon: 'ri-checkbox-circle-line', tabId: 'tab-0', panelId: 'tab-content-0' },
@@ -288,5 +287,5 @@ OngletsAvecAccordeon.args = {
   title1: 'Un titre d’accordéon 1',
   title2: 'Un titre d’accordéon 2',
   title3: 'Un titre d’accordéon 3',
-  expandedId: '',
+  expandedId: undefined,
 }

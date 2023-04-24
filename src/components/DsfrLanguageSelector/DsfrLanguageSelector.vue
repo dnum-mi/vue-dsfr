@@ -2,6 +2,7 @@
 import { defineComponent } from 'vue'
 
 import { getRandomId } from '../../utils/random-utils.js'
+import { useCollapsable } from '@/composables'
 
 export default defineComponent({
   name: 'DsfrLanguageSelector',
@@ -22,31 +23,42 @@ export default defineComponent({
     },
   },
   emits: ['select'],
+  setup () {
+    const {
+      collapse,
+      collapsing,
+      cssExpanded,
+      doExpand,
+      adjust,
+      onTransitionEnd,
+    } = useCollapsable()
+
+    return {
+      collapse,
+      collapsing,
+      cssExpanded,
+      doExpand,
+      adjust,
+      onTransitionEnd,
+    }
+  },
   data () {
     return {
       expanded: false,
-      collapsing: false,
     }
   },
   computed: {
-    collapseStyle () {
-      const baseStyle = {
-        '--collapse': `-${this.languages.length * 114}px`,
-      }
-      if (this.expanded || this.collapsing) {
-        baseStyle['--collapse-max-height'] = 'none'
-      }
-      return baseStyle
-    },
     currentLanguageObject () {
       return this.languages.find(({ codeIso }) => codeIso === this.currentLanguage)
     },
   },
   watch: {
-    expanded (isExpanded) {
-      if (!isExpanded) {
-        this.collapsing = true
-        setTimeout(() => { this.collapsing = false }, 300)
+    /*
+     * @see https://github.com/GouvernementFR/dsfr/blob/main/src/core/script/collapse/collapse.js
+     */
+    expanded (newValue, oldValue) {
+      if (newValue !== oldValue) {
+        this.doExpand(newValue)
       }
     },
   },
@@ -67,7 +79,7 @@ export default defineComponent({
   >
     <div class="fr-nav__item">
       <button
-        class="fr-translate__btn  fr-btn  fr-btn--tertiary"
+        class="fr-translate__btn fr-btn fr-btn--tertiary"
         :aria-controls="id"
         :aria-expanded="expanded"
         title="Sélectionner une langue"
@@ -78,9 +90,10 @@ export default defineComponent({
       </button>
       <div
         :id="id"
-        class="fr-collapse  fr-translate__menu  fr-menu"
-        :class="{ 'fr-collapse--expanded': expanded, 'fr-collapsing': collapsing }"
-        :style="collapseStyle"
+        ref="collapse"
+        class="fr-collapse fr-translate__menu fr-menu"
+        :class="{ 'fr-collapse--expanded': cssExpanded, 'fr-collapsing': collapsing }"
+        @transitionend="onTransitionEnd(expanded)"
       >
         <ul class="fr-menu__list">
           <li
