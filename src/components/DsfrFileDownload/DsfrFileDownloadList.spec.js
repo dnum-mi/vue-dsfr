@@ -11,18 +11,21 @@ describe('DsfrFileDownloadList', () => {
         format: 'PNG',
         size: '250 Mo',
         href: '#',
+        download: 'document1.md',
       },
       {
         title: 'Télécharger document 2',
         format: 'GIF',
         size: '107 Ko',
         href: '#',
+        download: 'document2.md',
       },
       {
         title: 'Télécharger document 3',
         format: 'ZIP',
         size: '1,5 Go',
         href: '#',
+        download: 'document3.md',
       },
     ]
 

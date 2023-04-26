@@ -39,6 +39,7 @@ export default defineComponent({
           :format="element.format"
           :size="element.size"
           :href="element.href"
+          :download="element.download"
         />
       </li>
     </ul>
