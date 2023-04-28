@@ -162,8 +162,8 @@ export default defineComponent({
     <DsfrTabContent
       v-for="(tabContent, index) in tabContents"
       :key="index"
-      :panel-id="tabTitles[index].panelId || `${getIdFromIndex(index)}-panel`"
-      :tab-id="tabTitles[index].tabId || getIdFromIndex(index)"
+      :panel-id="tabTitles?.[index]?.panelId || `${getIdFromIndex(index)}-panel`"
+      :tab-id="tabTitles?.[index]?.tabId || getIdFromIndex(index)"
       :selected="isSelected(index)"
       :asc="asc"
     >

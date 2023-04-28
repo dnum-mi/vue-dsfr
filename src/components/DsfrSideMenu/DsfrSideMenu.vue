@@ -1,13 +1,12 @@
 <script setup>
-import { computed, ref, watch } from 'vue'
+import { ref, watch } from 'vue'
 
 import { getRandomId } from '../../utils/random-utils.js'
 
-// import '@gouvfr/dsfr/dist/component/sidemenu/sidemenu.module.js'
-
 import DsfrSideMenuList from './DsfrSideMenuList.vue'
+import { useCollapsable } from '@/composables'
 
-const props = defineProps({
+defineProps({
   buttonLabel: {
     type: String,
     default: 'Dans cette rubrique',
@@ -32,23 +31,24 @@ const props = defineProps({
   },
 })
 
+const {
+  collapse,
+  collapsing,
+  cssExpanded,
+  doExpand,
+  onTransitionEnd,
+} = useCollapsable()
+
 defineEmits(['toggle-expand'])
 
 const expanded = ref(false)
-const collapsing = ref(false)
-const collapseStyle = computed(() => {
-  const baseStyle = {
-    '--collapse': props.collapseValue,
-  }
-  if (expanded.value || collapsing.value) {
-    baseStyle['--collapse-max-height'] = 'none'
-  }
-  return baseStyle
-})
-watch(expanded, (isExpanded) => {
-  if (!isExpanded) {
-    collapsing.value = true
-    setTimeout(() => { collapsing.value = false }, 300)
+
+/*
+ * @see https://github.com/GouvernementFR/dsfr/blob/main/src/core/script/collapse/collapse.js
+ */
+watch(expanded, (newValue, oldValue) => {
+  if (newValue !== oldValue) {
+    doExpand(newValue)
   }
 })
 </script>
@@ -69,9 +69,13 @@ watch(expanded, (isExpanded) => {
       </button>
       <div
         :id="id"
+        ref="collapse"
         class="fr-collapse"
-        :class="{'fr-collapse--expanded': expanded, 'fr-collapsing': collapsing}"
-        :style="collapseStyle"
+        :class="{
+          'fr-collapse--expanded': cssExpanded, // Need to use a separate data to add/remove the class after a RAF
+          'fr-collapsing': collapsing,
+        }"
+        @transitionend="onTransitionEnd(expanded)"
       >
         <div class="fr-sidemenu__title">
           {{ headingTitle }}

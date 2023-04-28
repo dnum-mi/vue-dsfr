@@ -8,6 +8,7 @@ describe('DsfrFileDownload', () => {
     const format = 'JPEG'
     const size = '205 Ko'
     const href = '#'
+    const download = 'document.txt'
     const block = true
     const description = 'Une chouette description'
 
@@ -17,6 +18,7 @@ describe('DsfrFileDownload', () => {
         format,
         size,
         href,
+        download,
         block,
         description,
       },

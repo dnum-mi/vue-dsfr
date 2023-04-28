@@ -9,7 +9,7 @@ describe('DsfrAccordion', () => {
     const title = 'Intitulé de l’accordéon'
     const content = 'Contenu de l’accordéon'
 
-    const { getByText } = render(DsfrAccordion, {
+    const { getByText, emitted } = render(DsfrAccordion, {
       global: {
         components: {
           VIcon,
@@ -17,8 +17,8 @@ describe('DsfrAccordion', () => {
       },
       props: {
         title,
-        id: '1',
-        expandedId: '1',
+        id: 'accordion-1',
+        expandedId: undefined,
       },
       slots: {
         default: content,
@@ -28,12 +28,17 @@ describe('DsfrAccordion', () => {
     const titleEl = getByText(title)
     const contentEl = getByText(content)
 
-    await fireEvent.click(titleEl)
-
+    expect(contentEl).toHaveClass('fr-collapse')
+    expect(contentEl).toHaveAttribute('id', 'accordion-1')
     expect(titleEl.parentNode).toHaveClass('fr-accordion__btn')
     expect(titleEl.parentNode.parentNode).toHaveClass('fr-accordion__title')
     expect(titleEl.parentNode.parentNode.parentNode).toHaveClass('fr-accordion')
-    expect(contentEl).toHaveClass('fr-collapse--expanded')
-    expect(contentEl).toHaveClass('fr-collapse')
+
+    await fireEvent.click(titleEl.parentNode)
+
+    expect(emitted()).toHaveProperty('expand')
+    expect(emitted().expand).toStrictEqual([['accordion-1']])
+
+    // Cannot test expandedId because Component is not wrapped in a listening Vue instance
   })
 })

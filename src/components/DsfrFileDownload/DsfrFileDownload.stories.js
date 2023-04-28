@@ -23,6 +23,10 @@ export default {
       control: 'text',
       description: 'Chemin vers la ressource à télécharger',
     },
+    download: {
+      control: 'text',
+      description: 'Nom de la ressource à télécharger',
+    },
     block: {
       control: 'boolean',
       description: 'Permet de basculer le lien de téléchargement en mode block',
@@ -48,6 +52,7 @@ export const TelechargementDeFichier = (args) => ({
       :format="format"
       :size="size"
       :href="href"
+      :download="download"
       :block="block"
       :description="description"
       :title="title"
@@ -59,6 +64,7 @@ TelechargementDeFichier.args = {
   format: 'PDF',
   size: '250 Go',
   href: 'src/assets/icone-marianne-seule.png',
+  download: 'marianne.png',
   block: false,
   description: 'Description du téléchargement',
   title: 'Titre du téléchargement',
@@ -78,6 +84,7 @@ export const BlocDeTelechargement = (args) => ({
       :format="format"
       :size="size"
       :href="href"
+      :download="download"
       :block="block"
       :description="description"
       :title="title"
@@ -89,6 +96,7 @@ BlocDeTelechargement.args = {
   format: 'JPEG',
   size: '1.2 To',
   href: 'src/assets/icone-marianne-seule.png',
+  download: 'marianne.png',
   description: 'Description du téléchargement',
   title: 'Titre du téléchargement',
   block: true,

@@ -121,8 +121,4 @@ export default defineComponent({
 .fr-nav__list {
   position: relative;
 }
-
-.fr-menu.fr-collapse--expanded {
-  --collapse-max-height: none;
-}
 </style>

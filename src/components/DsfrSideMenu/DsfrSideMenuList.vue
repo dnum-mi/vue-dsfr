@@ -3,6 +3,7 @@ import { defineComponent } from 'vue'
 
 import DsfrSideMenuListItem from './DsfrSideMenuListItem.vue'
 import DsfrSideMenuButton from './DsfrSideMenuButton.vue'
+import { useCollapsable } from '@/composables'
 
 export default defineComponent({
   name: 'DsfrSideMenuList',
@@ -27,6 +28,45 @@ export default defineComponent({
 
   emits: ['toggle-expand'],
 
+  setup () {
+    const {
+      collapse,
+      collapsing,
+      cssExpanded,
+      doExpand,
+      adjust,
+      onTransitionEnd,
+    } = useCollapsable()
+
+    return {
+      collapse,
+      collapsing,
+      cssExpanded,
+      doExpand,
+      adjust,
+      onTransitionEnd,
+    }
+  },
+
+  watch: {
+    /*
+     * @see https://github.com/GouvernementFR/dsfr/blob/main/src/core/script/collapse/collapse.js
+     */
+    expanded (newValue, oldValue) {
+      if (newValue !== oldValue) {
+        this.doExpand(newValue)
+      }
+    },
+  },
+
+  mounted () {
+    // Accordion can be expanded by default
+    // We need to trigger the expand animation at mounted
+    if (this.expanded) {
+      this.doExpand(true)
+    }
+  },
+
   methods: {
     isExternalLink (to) {
       return typeof to === 'string' && to.startsWith('http')
@@ -42,56 +82,67 @@ export default defineComponent({
 </script>
 
 <template>
-  <ul
+  <div
     :id="id"
-    class="fr-sidemenu__list"
+    ref="collapse"
     :class="{
       'fr-collapse': collapsable,
-      'fr-collapse--expanded': expanded
+      'fr-collapsing': collapsing,
+      'fr-collapse--expanded': cssExpanded
     }"
+    @transitionend="onTransitionEnd(expanded)"
   >
-    <!-- @slot Slot par défaut pour le contenu d’une liste du menu latéral -->
-    <slot />
-
-    <DsfrSideMenuListItem
-      v-for="(menuItem, i) of menuItems"
-      :key="i"
-      :active="menuItem.active"
+    <ul
+      class="fr-sidemenu__list"
     >
-      <component
-        :is="is(menuItem.to)"
-        v-if="!menuItem.menuItems"
-        class="fr-sidemenu__link"
-        :aria-current="menuItem.active ? 'page' : undefined"
-        v-bind="linkProps(menuItem.to)"
-      >
-        {{ menuItem.text }}
-      </component>
+      <!-- @slot Slot par défaut pour le contenu d’une liste du menu latéral -->
+      <slot />
 
-      <template v-if="menuItem.menuItems">
-        <DsfrSideMenuButton
-          :active="!!menuItem.active"
-          :expanded="!!menuItem.expanded"
-          :control-id="menuItem.id"
-          @toggle-expand="$emit('toggle-expand', $event)"
+      <DsfrSideMenuListItem
+        v-for="(menuItem, i) of menuItems"
+        :key="i"
+        :active="menuItem.active"
+      >
+        <component
+          :is="is(menuItem.to)"
+          v-if="!menuItem.menuItems"
+          class="fr-sidemenu__link"
+          :aria-current="menuItem.active ? 'page' : undefined"
+          v-bind="linkProps(menuItem.to)"
         >
           {{ menuItem.text }}
-        </DsfrSideMenuButton>
-        <DsfrSideMenuList
-          v-if="menuItem.menuItems"
-          :id="menuItem.id"
-          :collapsable="true"
-          :expanded="menuItem.expanded"
-          :menu-items="menuItem.menuItems"
-          @toggle-expand="$emit('toggle-expand', $event)"
-        />
-      </template>
-    </DsfrSideMenuListItem>
-  </ul>
+        </component>
+
+        <template v-if="menuItem.menuItems">
+          <DsfrSideMenuButton
+            :active="!!menuItem.active"
+            :expanded="!!menuItem.expanded"
+            :control-id="menuItem.id"
+            @toggle-expand="$emit('toggle-expand', $event)"
+          >
+            {{ menuItem.text }}
+          </DsfrSideMenuButton>
+          <DsfrSideMenuList
+            v-if="menuItem.menuItems"
+            :id="menuItem.id"
+            collapsable
+            :expanded="menuItem.expanded"
+            :menu-items="menuItem.menuItems"
+            @toggle-expand="$emit('toggle-expand', $event)"
+          />
+        </template>
+      </DsfrSideMenuListItem>
+    </ul>
+  </div>
 </template>
 
-<style>
-.fr-collapse--expanded {
-  max-height: none;
+<style lang="css">
+/* Missing in DSFR */
+.fr-sidemenu .fr-accordion .fr-collapse {
+  padding: 0 1rem 0 1rem;
+}
+.fr-sidemenu .fr-accordion .fr-collapse--expanded {
+  padding-bottom: 0;
+  padding-top: 0;
 }
 </style>

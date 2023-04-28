@@ -5,6 +5,7 @@ import { defineComponent } from 'vue'
 // import '@gouvfr/dsfr/dist/component/accordion/accordion.module.js'
 
 import { getRandomId } from '../../utils/random-utils.js'
+import { useCollapsable } from '@/composables'
 
 export default defineComponent({
   name: 'DsfrAccordion',
@@ -27,9 +28,23 @@ export default defineComponent({
 
   emits: ['expand'],
 
-  data () {
+  setup () {
+    const {
+      collapse,
+      collapsing,
+      cssExpanded,
+      doExpand,
+      adjust,
+      onTransitionEnd,
+    } = useCollapsable()
+
     return {
-      collapsing: false,
+      collapse,
+      collapsing,
+      cssExpanded,
+      doExpand,
+      adjust,
+      onTransitionEnd,
     }
   },
 
@@ -45,19 +60,17 @@ export default defineComponent({
      */
     expanded (newValue, oldValue) {
       if (newValue !== oldValue) {
-        if (newValue === true) {
-          this.$refs.collapse.style.setProperty('--collapse-max-height', 'none')
-        }
-        this.collapsing = true
-        this.adjust()
-        setTimeout(() => {
-          this.collapsing = false
-          if (newValue === false) {
-            this.$refs.collapse.style.removeProperty('--collapse-max-height')
-          }
-        }, 300)
+        this.doExpand(newValue)
       }
     },
+  },
+
+  mounted () {
+    // Accordion can be expanded by default
+    // We need to trigger the expand animation at mounted
+    if (this.expanded) {
+      this.doExpand(true)
+    }
   },
 
   methods: {
@@ -71,17 +84,7 @@ export default defineComponent({
         this.$emit('expand', this.id)
       }
     },
-    /*
-     * @see https://github.com/GouvernementFR/dsfr/blob/main/src/core/script/collapse/collapse.js#L61
-     */
-    adjust () {
-      this.$refs.collapse.style.setProperty('--collapser', 'none')
-      const height = this.$refs.collapse.offsetHeight
-      this.$refs.collapse.style.setProperty('--collapse', -height + 'px')
-      this.$refs.collapse.style.setProperty('--collapser', '')
-    },
   },
-
 })
 </script>
 
@@ -106,9 +109,10 @@ export default defineComponent({
       ref="collapse"
       class="fr-collapse"
       :class="{
-        'fr-collapse--expanded': expanded,
+        'fr-collapse--expanded': cssExpanded, // Need to use a separate data to add/remove the class after a RAF
         'fr-collapsing': collapsing,
       }"
+      @transitionend="onTransitionEnd(expanded)"
     >
       <!-- @slot Slot par défaut pour le contenu de l’accordéon: sera dans `<div class="fr-collapse">` -->
       <slot />
