@@ -21,6 +21,10 @@ export default defineComponent({
       type: String,
       default: '#',
     },
+    download: {
+      type: String,
+      default: '',
+    },
     description: {
       type: String,
       default: '',
@@ -38,7 +42,7 @@ export default defineComponent({
     <p>
       <a
         :href="href"
-        download
+        :download="download"
         class="fr-download__link"
       > {{ title }}
         <span class="fr-download__detail">
