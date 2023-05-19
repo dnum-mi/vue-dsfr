@@ -1,4 +1,4 @@
-import { ref, watchEffect, computed } from 'vue'
+import { ref, watchEffect, computed, type Ref, type ComputedRef } from 'vue'
 
 const PREFERS_DARK_MEDIA_QUERY = '(prefers-color-scheme: dark)'
 const COLOR_SCHEME_LS_KEY = 'vue-dsfr-scheme'
@@ -7,14 +7,34 @@ const DARK_SCHEME = 'dark'
 const SYSTEM_SCHEME = 'system'
 const DEFAULT_DATA_THEME_ATTRIBUTE = 'data-fr-theme'
 
-const getProperSchemeValue = (desiredScheme) => {
+/**
+ * @property {(scheme: string) => void} setScheme - Fonction pour mettre à jour le scheme
+ * @property {string} scheme - Scheme courant
+ * @property {string} theme - Thème courant en fonction du scheme
+ */
+export declare type UseSchemeResult = {
+  setScheme: (scheme: string) => void
+  scheme: ComputedRef<string>
+  theme: ComputedRef<string>
+}
+
+/**
+* @property {string=} scheme? - Scheme souhaité (`'system'` par défaut)
+* @property {string=} dataThemeAttribute? - Nom complet de l’attribut qui contiendra la valeur du thème (`'data-fr-theme'` par défaut)
+*/
+export declare type UseThemeOptions = {
+  scheme?: string
+  dataThemeAttribute?: string
+}
+
+const getProperSchemeValue = (desiredScheme: string): string => {
   const scheme = desiredScheme ?? (localStorage.getItem(COLOR_SCHEME_LS_KEY) || SYSTEM_SCHEME)
   return [LIGHT_SCHEME, DARK_SCHEME, SYSTEM_SCHEME].includes(scheme)
     ? scheme
     : SYSTEM_SCHEME
 }
 
-const getThemeMatchingScheme = (scheme, mediaQuery) => {
+const getThemeMatchingScheme = (scheme: string, mediaQuery: MediaQueryList): string => {
   scheme = getProperSchemeValue(scheme)
   if (scheme === SYSTEM_SCHEME) {
     return mediaQuery?.matches ? DARK_SCHEME : LIGHT_SCHEME
@@ -26,18 +46,15 @@ const getThemeMatchingScheme = (scheme, mediaQuery) => {
  * Reproduce the DSFR fr-collapse behavior
  */
 export const useCollapsable = () => {
-  /** @type {Ref<HTMLElement>} */
-  const collapse = ref()
-  /** @type {Ref<boolean>} */
-  const collapsing = ref(false)
-  /** @type {Ref<boolean>} */
-  const cssExpanded = ref(false)
+  const collapse: Ref<HTMLElement | undefined> = ref()
+  const collapsing: Ref<boolean> = ref(false)
+  const cssExpanded: Ref<boolean> = ref(false)
 
   /**
    * @see https://github.com/GouvernementFR/dsfr/blob/main/src/core/script/collapse/collapse.js#L61
    * @return void
    */
-  const adjust = () => {
+  const adjust = (): void => {
     if (!collapse.value) {
       return
     }
@@ -51,7 +68,7 @@ export const useCollapsable = () => {
    * @param {boolean} newValue
    * @return void
    */
-  const doExpand = (newValue) => {
+  const doExpand = (newValue: boolean): void => {
     if (!collapse.value) {
       return
     }
@@ -77,7 +94,7 @@ export const useCollapsable = () => {
    * @param {boolean} expanded
    * @return void
    */
-  const onTransitionEnd = (expanded) => {
+  const onTransitionEnd = (expanded: boolean): void => {
     collapsing.value = false
     if (collapse.value && expanded === false) {
       collapse.value.style.removeProperty('--collapse-max-height')
@@ -95,12 +112,18 @@ export const useCollapsable = () => {
 }
 
 /**
- *
- * @param {import('../types/composables.js').UseThemeOptions=} options
- *
- * @returns {import('../types/composables.js').UseSchemeResult}
- */
-export const useScheme = (options) => {
+* Permet de gérer le thème selon le scheme donné.
+* Si dans les options, `scheme` vaut 'system', le thème sera celui du système,
+* si `scheme` vaut `'light'`, le theme sera clair,
+* et s’il vaut `'dark'`, le thème sera sombre.
+*
+* @param {UseThemeOptions=} options - Peut contenir les clés `scheme` pour le scheme voulu et `dataThemeAttribute` pour l’attribut
+*                   qui contiendra la valeur de scheme.
+*
+* @returns {UseSchemeResult} Objet contenant la fonction `setScheme` pour changer le scheme, et les
+*          propriétés calculés (réactives et en lecture seule) `theme` et `scheme`.
+*/
+export const useScheme = (options?: UseThemeOptions): UseSchemeResult | undefined => {
   if (typeof window === 'undefined') {
     return
   }
@@ -122,7 +145,7 @@ export const useScheme = (options) => {
   const force = ref(scheme.value !== SYSTEM_SCHEME)
 
   watchEffect(() => {
-    document.body.parentElement.setAttribute(
+    document.body.parentElement?.setAttribute(
       opts.dataThemeAttribute || DEFAULT_DATA_THEME_ATTRIBUTE,
       theme.value,
     )
@@ -143,7 +166,7 @@ export const useScheme = (options) => {
     theme.value = DARK_SCHEME
   }
 
-  const setScheme = (newScheme) => {
+  const setScheme = (newScheme: string): void => {
     scheme.value = getProperSchemeValue(newScheme)
     localStorage.setItem(COLOR_SCHEME_LS_KEY, scheme.value)
     if ([LIGHT_SCHEME, DARK_SCHEME].includes(scheme.value)) {

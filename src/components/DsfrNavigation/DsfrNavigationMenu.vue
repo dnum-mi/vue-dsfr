@@ -3,7 +3,7 @@ import { defineComponent } from 'vue'
 
 // import '@gouvfr/dsfr/dist/component/navigation/navigation.module.js'
 
-import { getRandomId } from '../../utils/random-utils.js'
+import { getRandomId } from '../../utils/random-utils'
 import DsfrNavigationMenuItem from './DsfrNavigationMenuItem.vue'
 import DsfrNavigationMenuLink from './DsfrNavigationMenuLink.vue'
 import { useCollapsable } from '@/composables'

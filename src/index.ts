@@ -1,9 +1,9 @@
-import { addIcons, OhVueIcon } from 'oh-vue-icons'
+import { addIcons, OhVueIcon, type CustomizeIconType } from 'oh-vue-icons'
 import * as components from './components/index.js'
 import * as defaultIcons from './icons.js'
 
 export default {
-  install: (app, { icons } = {}) => {
+  install: (app, { icons }: { icons?: CustomizeIconType[] } = {}) => {
     Object.entries(components).forEach(([componentName, component]) => {
       app.component(componentName, component)
     })
@@ -16,6 +16,6 @@ export default {
 }
 
 export * from './components/index.js'
-export * from './utils/random-utils.js'
+export * from './utils/random-utils'
 export * from './composables.js'
 export * as icons from './icons.js'

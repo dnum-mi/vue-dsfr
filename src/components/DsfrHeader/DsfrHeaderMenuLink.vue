@@ -22,6 +22,7 @@ export default defineComponent({
     },
     iconAttrs: {
       type: Object,
+      // eslint-disable-next-line @typescript-eslint/no-empty-function
       default: () => {},
     },
     iconRight: Boolean,
@@ -31,6 +32,7 @@ export default defineComponent({
     },
     onClick: {
       type: Function,
+      // eslint-disable-next-line @typescript-eslint/no-empty-function
       default: () => {},
     },
     to: {

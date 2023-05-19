@@ -1,7 +1,7 @@
 <script>
 import { defineComponent } from 'vue'
 
-import { getRandomId } from '../../utils/random-utils.js'
+import { getRandomId } from '../../utils/random-utils'
 import { useCollapsable } from '@/composables'
 
 export default defineComponent({

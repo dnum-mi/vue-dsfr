@@ -3,7 +3,7 @@ import { defineComponent } from 'vue'
 
 import DsfrInput from './DsfrInput.vue'
 
-import { getRandomId } from '../../utils/random-utils.js'
+import { getRandomId } from '../../utils/random-utils'
 
 export default defineComponent({
   name: 'DsfrInputGroup',

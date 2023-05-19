@@ -1,7 +1,7 @@
 <script>
 import { defineComponent } from 'vue'
 
-import { getRandomId } from '../../utils/random-utils.js'
+import { getRandomId } from '../../utils/random-utils'
 import { useCollapsable } from '@/composables'
 
 export default defineComponent({
@@ -15,6 +15,7 @@ export default defineComponent({
     },
     languages: {
       type: Array,
+      // eslint-disable-next-line @typescript-eslint/no-empty-function
       default: () => {},
     },
     currentLanguage: {

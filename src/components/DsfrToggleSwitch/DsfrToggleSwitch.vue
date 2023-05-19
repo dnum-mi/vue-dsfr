@@ -3,7 +3,7 @@ import { defineComponent } from 'vue'
 
 // import '@gouvfr/dsfr/dist/component/toggle/toggle.module.js'
 
-import { getRandomId } from '../../utils/random-utils.js'
+import { getRandomId } from '../../utils/random-utils'
 
 export default defineComponent({
   name: 'DsfrToggleSwitch',

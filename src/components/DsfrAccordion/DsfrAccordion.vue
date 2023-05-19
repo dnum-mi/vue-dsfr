@@ -4,7 +4,7 @@ import { defineComponent } from 'vue'
 // Ne fonctionne pas dans Nuxt
 // import '@gouvfr/dsfr/dist/component/accordion/accordion.module.js'
 
-import { getRandomId } from '../../utils/random-utils.js'
+import { getRandomId } from '../../utils/random-utils'
 import { useCollapsable } from '@/composables'
 
 export default defineComponent({

@@ -3,7 +3,7 @@ import { defineComponent } from 'vue'
 
 // import '@gouvfr/dsfr/dist/component/tab/tab.module.js'
 
-import { getRandomId } from '../../utils/random-utils.js'
+import { getRandomId } from '../../utils/random-utils'
 
 import DsfrTabItem from './DsfrTabItem.vue'
 import DsfrTabContent from './DsfrTabContent.vue'

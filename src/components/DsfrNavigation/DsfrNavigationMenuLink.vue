@@ -1,7 +1,7 @@
 <script>
 import { defineComponent } from 'vue'
 import { OhVueIcon as VIcon } from 'oh-vue-icons'
-import { getRandomId } from '../../utils/random-utils.js'
+import { getRandomId } from '../../utils/random-utils'
 
 export default defineComponent({
   name: 'DsfrNavigationMenuLink',

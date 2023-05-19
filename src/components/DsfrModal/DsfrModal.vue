@@ -24,6 +24,7 @@ export default defineComponent({
     isAlert: Boolean,
     origin: {
       type: Object,
+      // eslint-disable-next-line @typescript-eslint/no-empty-function
       default: () => ({ focus () {} }),
     },
     title: {

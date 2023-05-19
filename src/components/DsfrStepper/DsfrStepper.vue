@@ -6,6 +6,7 @@ export default defineComponent({
   props: {
     steps: {
       type: Array,
+      // eslint-disable-next-line @typescript-eslint/no-empty-function
       default: () => {},
     },
     currentStep: {
