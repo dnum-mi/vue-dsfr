@@ -44,6 +44,7 @@ export default defineConfig({
     rollupOptions: {
       external: ['vue', 'oh-vue-icons', 'vue-router'],
       output: {
+        exports: 'named',
         dir: 'dist',
         globals: {
           vue: 'Vue',
