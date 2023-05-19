@@ -18,7 +18,7 @@ describe('DsfrNavigationMenuLink', () => {
   it('should render a navigation menu link (internal) with icon', async () => {
     const to = '/'
     const text = 'Texte du lien'
-    const icon = 'ri-home-2-line'
+    const icon = 'ri-check-lineline'
 
     const { getByTestId } = render(DsfrNavigationMenuLink, {
       global: {
