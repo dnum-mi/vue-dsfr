@@ -1,6 +1,6 @@
 <script setup>
 import { ref } from 'vue'
-import DsfrModal from '../../components/DsfrModal/DsfrModal.vue'
+import DsfrModal from '@/components/DsfrModal/DsfrModal.vue'
 
 const isModalOpen = ref(false)
 const displayAlert = ref(false)

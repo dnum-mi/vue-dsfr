@@ -12,7 +12,7 @@ import '@gouvfr/dsfr/dist/component/component.main.min.css'
 import '@gouvfr/dsfr/dist/utility/utility.main.min.css'
 import '@gouvfr/dsfr/dist/utility/icons/icons.main.min.css'
 
-import VueDsfr from '@/index.js'
+import VueDsfr from '@/index'
 import router from './router.js'
 
 import App from './App.vue'

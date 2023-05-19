@@ -1,8 +1,8 @@
 <script setup>
 import { ref } from 'vue'
 
-import DsfrAccordion from '../components/DsfrAccordion/DsfrAccordion.vue'
-import DsfrAccordionsGroup from '../components/DsfrAccordion/DsfrAccordionsGroup.vue'
+import DsfrAccordion from '@/components/DsfrAccordion/DsfrAccordion.vue'
+import DsfrAccordionsGroup from '@/components/DsfrAccordion/DsfrAccordionsGroup.vue'
 
 const accordionTitle = 'Titre de l’accordéon'
 const expandedId = ref(undefined)

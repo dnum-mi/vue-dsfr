@@ -1,10 +1,10 @@
 <script setup>
 import { onMounted, reactive, watchEffect } from 'vue'
 
-import DsfrRadioButtonSet from '../../components/DsfrRadioButton/DsfrRadioButtonSet.vue'
-import DsfrButton from '../../components/DsfrButton/DsfrButton.vue'
+import DsfrRadioButtonSet from '@/components/DsfrRadioButton/DsfrRadioButtonSet.vue'
+import DsfrButton from '@/components/DsfrButton/DsfrButton.vue'
 
-import { useScheme } from '../../composables.js'
+import { useScheme } from '@/composables'
 
 const options = [
   {

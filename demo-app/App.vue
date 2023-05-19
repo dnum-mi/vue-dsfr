@@ -2,10 +2,10 @@
 import { ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
 
-import DsfrHeader from '../components/DsfrHeader/DsfrHeader.vue'
-import DsfrNavigation from '../components/DsfrNavigation/DsfrNavigation.vue'
-import DsfrSkipLinks from '../components/DsfrSkipLinks/DsfrSkipLinks.vue'
-import DsfrBreadcrumb from '../components/DsfrBreadcrumb/DsfrBreadcrumb.vue'
+import DsfrHeader from '@/components/DsfrHeader/DsfrHeader.vue'
+import DsfrNavigation from '@/components/DsfrNavigation/DsfrNavigation.vue'
+import DsfrSkipLinks from '@/components/DsfrSkipLinks/DsfrSkipLinks.vue'
+import DsfrBreadcrumb from '@/components/DsfrBreadcrumb/DsfrBreadcrumb.vue'
 
 const route = useRoute()
 const currentPage = ref('Home')
