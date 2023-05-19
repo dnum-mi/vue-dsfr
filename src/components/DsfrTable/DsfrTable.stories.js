@@ -60,7 +60,7 @@ const rows = [
   ],
   {
     rowAttrs: {
-      onClick: () => {},
+      onClick: () => {}, // eslint-disable-line @typescript-eslint/no-empty-function
       class: 'pointer',
     },
     rowData: [
@@ -84,7 +84,7 @@ const rows = [
       text: '01 02 03 04 05',
       cellAttrs: {
         class: 'pointer',
-        onClick: () => {},
+        onClick: () => {}, // eslint-disable-line @typescript-eslint/no-empty-function
       },
     },
     '06 01 02 03 04',

@@ -18,10 +18,10 @@ const projectFn = component => 'export { default as ' + path.basename(component,
 const correctComponentList = sfcs.map(projectFn).sort()
 const correctString = correctComponentList.join('\n') + '\n'
 
-const srcIndexFullpath = getNormalizedDir('../src/components') + path.sep + 'index.js'
+const srcIndexFullpath = getNormalizedDir('../src/components') + path.sep + 'index.ts'
 const typesIndexFullpath = getNormalizedDir('../types/components') + path.sep + 'index.d.ts'
 
-const index = await readFile(getNormalizedDir('../src/components') + '/index.js')
+const index = await readFile(getNormalizedDir('../src/components') + '/index.ts')
 const currentFileContent = index.toString()
 
 if (currentFileContent !== correctString) {

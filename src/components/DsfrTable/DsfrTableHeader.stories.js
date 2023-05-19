@@ -32,7 +32,10 @@ export default {
 }
 
 const header = 'En-tête'
-const headerAttrs = { class: 'ns-resize', onClick: () => {} }
+const headerAttrs = {
+  class: 'ns-resize',
+  onClick: () => {}, // eslint-disable-line @typescript-eslint/no-empty-function
+}
 
 export const EnTeteDeTableau = (args) => ({
   components: {
@@ -65,8 +68,8 @@ export const EnTeteDeTableau = (args) => ({
         &lt;Corps du tableau>
       </DsfrTable>
   `,
-
 })
+
 EnTeteDeTableau.args = {
   header,
   headerAttrs,

@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 import { defineComponent } from 'vue'
 
 // Pose problème dans les tests, et risque fort de poser problème dans Nuxt
@@ -109,7 +109,7 @@ export default defineComponent({
       this.menuOpened = false
       this.searchModalOpened = true
     },
-    onKeyDown (e) {
+    onKeyDown (e: KeyboardEvent) {
       if (e.key === 'Escape') {
         this.hideModal()
       }

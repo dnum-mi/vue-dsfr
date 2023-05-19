@@ -2,6 +2,8 @@ import DsfrAccordion from './DsfrAccordion.vue'
 import DsfrAccordionsGroup from './DsfrAccordionsGroup.vue'
 import { OhVueIcon as VIcon } from 'oh-vue-icons'
 
+import { mount } from 'cypress/vue'
+
 import '@gouvfr/dsfr/dist/dsfr.min.css'
 
 const title1 = 'Intitulé de l’accordéon 1'
@@ -65,7 +67,7 @@ describe('DsfrAccordion', () => {
     const content = 'Contenu de l’accordéon'
     const idAccordeon = 'idAccordeon'
 
-    cy.mount(DsfrAccordion, {
+    mount(DsfrAccordion, {
       global: {
         components: {
           VIcon,
@@ -96,7 +98,7 @@ describe('DsfrAccordion', () => {
   })
 
   it('should mount AccordionsGroup', () => {
-    cy.mount(AccordionWrapper)
+    mount(AccordionWrapper)
       .get('.fr-collapse')
       .should('not.be.visible')
 

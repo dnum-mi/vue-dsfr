@@ -1,91 +1,52 @@
-<script>
-import { defineComponent } from 'vue'
-
-// Ne fonctionne pas dans Nuxt
-// import '@gouvfr/dsfr/dist/component/accordion/accordion.module.js'
+<script lang="ts" setup>
+import { computed, onMounted, watch } from 'vue'
 
 import { getRandomId } from '../../utils/random-utils'
-import { useCollapsable } from '@/composables'
+import { useCollapsable } from '../../composables.js'
 
-export default defineComponent({
-  name: 'DsfrAccordion',
-  props: {
-    id: {
-      type: String,
-      default () {
-        return getRandomId('accordion')
-      },
-    },
-    expandedId: {
-      type: String,
-      default: undefined,
-    },
-    title: {
-      type: String,
-      default: 'Sans intitulé',
-    },
-  },
+export interface DsfrAccordionProps {
+  id?: string
+  expandedId?: string | undefined
+  title?: string
+}
 
-  emits: ['expand'],
+const props = withDefaults(defineProps<DsfrAccordionProps>(), { id: () => getRandomId('accordion'), expandedId: undefined, title: 'Sans intitulé' })
 
-  setup () {
-    const {
-      collapse,
-      collapsing,
-      cssExpanded,
-      doExpand,
-      adjust,
-      onTransitionEnd,
-    } = useCollapsable()
+const emit = defineEmits<{(event: 'expand', id: string): void}>()
 
-    return {
-      collapse,
-      collapsing,
-      cssExpanded,
-      doExpand,
-      adjust,
-      onTransitionEnd,
-    }
-  },
+const {
+  collapse,
+  collapsing,
+  cssExpanded,
+  doExpand,
+  onTransitionEnd,
+} = useCollapsable()
 
-  computed: {
-    expanded () {
-      return this.expandedId === this.id
-    },
-  },
+const expanded = computed(() => props.expandedId === props.id)
 
-  watch: {
-    /*
-     * @see https://github.com/GouvernementFR/dsfr/blob/main/src/core/script/collapse/collapse.js
-     */
-    expanded (newValue, oldValue) {
-      if (newValue !== oldValue) {
-        this.doExpand(newValue)
-      }
-    },
-  },
-
-  mounted () {
-    // Accordion can be expanded by default
-    // We need to trigger the expand animation at mounted
-    if (this.expanded) {
-      this.doExpand(true)
-    }
-  },
-
-  methods: {
-    toggleExpanded () {
-      /*
-       * Close current accordion if expanded
-       */
-      if (this.expanded) {
-        this.$emit('expand', undefined)
-      } else {
-        this.$emit('expand', this.id)
-      }
-    },
-  },
+onMounted(() => {
+  // Accordion can be expanded by default
+  // We need to trigger the expand animation on mounted
+  if (expanded.value) {
+    doExpand(true)
+  }
 })
+
+watch(expanded, (newValue, oldValue) => {
+  /*
+  * @see https://github.com/GouvernementFR/dsfr/blob/main/src/core/script/collapse/collapse.js
+  */
+  if (newValue !== oldValue) {
+    doExpand(newValue)
+  }
+})
+
+const toggleExpanded = () => {
+  /*
+   * Close current accordion if expanded
+   */
+  emit('expand', expanded.value ? undefined : props.id)
+}
 </script>
 
 <template>
