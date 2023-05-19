@@ -12,11 +12,14 @@ export const getRandomId = (prefix = '', suffix = '') => {
   return (prefix ? prefix + '-' : '') + getRandomString(5) + (suffix ? '-' + suffix : '')
 }
 
-export const getRandomString = length => {
+export const getRandomString = (length: number) => {
   return Array.from({ length })
     .map(getRandomAlphaNum).join('')
 }
 
-export const repeatFn = (length, func) => {
-  return Array.from({ length }).map(func)
+export const repeatFn = <T, U>(
+  length: number,
+  func: (el?: T, i?: number, arr?: T[]) => U,
+): U[] => {
+  return Array.from({ length }).map((_, i) => func(undefined, i, undefined))
 }

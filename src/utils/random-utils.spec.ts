@@ -37,6 +37,7 @@ describe('Random-utils', () => {
 
     // Then
     expect(results).toBeInstanceOf(Array)
+    expect(results).toEqual([42, 42, 42, 42, 42])
   })
 
   it('should return a random alphanumeric character', () => {
