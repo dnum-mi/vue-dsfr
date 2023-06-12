@@ -24,6 +24,10 @@ export default {
       control: 'boolean',
       description: 'Indique si les checkboxes doivent apparaître sur une seule ligne (`true`) ou non (`false`, défaut)',
     },
+    small: {
+      control: 'boolean',
+      description: 'Utilise la version réduite des checkboxes',
+    },
     // legend: {
     //   control: 'text',
     //   description: 'Titre de l’ensemble (Set) des checkboxes',
@@ -58,6 +62,7 @@ export const CheckboxSet = (args) => ({
       :options="options"
       :inline="inline"
       :disabled="disabled"
+      :small="small"
       :required="required"
       :errorMessage="errorMessage"
       :validMessage="validMessage"
@@ -75,6 +80,7 @@ CheckboxSet.args = {
   disabled: false,
   inline: false,
   required: false,
+  small: false,
   errorMessage: '',
   validMessage: '',
   modelValue: ['name1'],

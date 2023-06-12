@@ -179,7 +179,7 @@ describe('DsfrNavigation', () => {
       },
     })
 
-    router.isReady()
+    await router.isReady()
 
     const menuContainer = getByTestId('navigation-menu')
     const menu = getByText(secondMenuTitle)
@@ -194,10 +194,17 @@ describe('DsfrNavigation', () => {
 
     expect(navEl).toHaveClass('fr-nav')
     expect(navEl).toHaveAttribute('aria-label', label)
+
+    // need to wait RAF
+    await (new Promise(resolve => setTimeout(resolve, 100)))
+
     expect(menuContainer).toHaveClass('fr-collapse')
     expect(menuContainer).toHaveClass('fr-collapse--expanded')
 
     await fireEvent.click(megaMenu)
+
+    // need to wait RAF
+    await (new Promise(resolve => setTimeout(resolve, 100)))
 
     expect(menuContainer).toHaveClass('fr-collapse')
     expect(menuContainer).not.toHaveClass('fr-collapse--expanded')
@@ -205,6 +212,9 @@ describe('DsfrNavigation', () => {
 
     await fireEvent.click(menu)
     await fireEvent.click(menuItemEl)
+
+    // need to wait RAF
+    await (new Promise(resolve => setTimeout(resolve, 100)))
 
     expect(megaMenu.parentElement.querySelector('.fr-mega-menu')).not.toHaveClass('fr-collapse--expanded')
     expect(menuContainer).not.toHaveClass('fr-collapse--expanded')

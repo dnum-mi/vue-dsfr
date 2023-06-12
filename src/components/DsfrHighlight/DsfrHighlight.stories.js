@@ -31,8 +31,6 @@ export const MiseEnExergue = (args) => ({
     return { ...args }
   },
 
-
-
   template: `
     <DsfrHighlight
       :text="text"
@@ -55,8 +53,6 @@ export const MiseEnExergueAvecSlot = (args) => ({
   data () {
     return { ...args }
   },
-
-
 
   template: `
     <DsfrHighlight

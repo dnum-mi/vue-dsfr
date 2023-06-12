@@ -21,6 +21,7 @@ export default defineComponent({
     disabled: Boolean,
     inline: Boolean,
     required: Boolean,
+    small: Boolean,
     errorMessage: {
       type: String,
       default: '',
@@ -104,6 +105,7 @@ export default defineComponent({
           :name="option.name"
           :label="option.label"
           :disabled="option.disabled"
+          :small="small"
           :model-value="modelValue.includes(option.name)"
           :hint="option.hint"
           @update:model-value="onChange({ name: option.name, checked: $event })"

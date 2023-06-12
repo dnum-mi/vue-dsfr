@@ -7,7 +7,11 @@ const DsfrNoticeWrapper = defineComponent({
   },
   props: {
     title: String,
-    closeable: true,
+    closeable: {
+      type: Boolean,
+      required: false,
+      default: true,
+    },
   },
   data () {
     return {

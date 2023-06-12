@@ -6,6 +6,7 @@ import { defineComponent } from 'vue'
 import { getRandomId } from '../../utils/random-utils.js'
 import DsfrNavigationMenuItem from './DsfrNavigationMenuItem.vue'
 import DsfrNavigationMenuLink from './DsfrNavigationMenuLink.vue'
+import { useCollapsable } from '@/composables'
 
 export default defineComponent({
   name: 'DsfrNavigationMenu',
@@ -36,10 +37,49 @@ export default defineComponent({
 
   emits: ['toggle-id'],
 
+  setup () {
+    const {
+      collapse,
+      collapsing,
+      cssExpanded,
+      doExpand,
+      adjust,
+      onTransitionEnd,
+    } = useCollapsable()
+
+    return {
+      collapse,
+      collapsing,
+      cssExpanded,
+      doExpand,
+      adjust,
+      onTransitionEnd,
+    }
+  },
+
   computed: {
     expanded () {
       return this.id === this.expandedId
     },
+  },
+
+  watch: {
+    /*
+     * @see https://github.com/GouvernementFR/dsfr/blob/main/src/core/script/collapse/collapse.js
+     */
+    expanded (newValue, oldValue) {
+      if (newValue !== oldValue) {
+        this.doExpand(newValue)
+      }
+    },
+  },
+
+  mounted () {
+    // NavigationMenu can be expanded by default
+    // We need to trigger the expand animation at mounted
+    if (this.expanded) {
+      this.doExpand(true)
+    }
   },
 })
 </script>
@@ -55,9 +95,11 @@ export default defineComponent({
   </button>
   <div
     :id="id"
+    ref="collapse"
     class="fr-collapse fr-menu"
     data-testid="navigation-menu"
-    :class="{ 'fr-collapse--expanded': expanded }"
+    :class="{ 'fr-collapse--expanded': cssExpanded, 'fr-collapsing': collapsing }"
+    @transitionend="onTransitionEnd(expanded)"
   >
     <ul class="fr-menu__list">
       <!-- @slot Slot par défaut pour le contenu de l’item de liste. Sera dans `<ul class="fr-menu__list">` -->

@@ -39,7 +39,6 @@ export const ItemDeNavigation = args => ({
   </DsfrNavigation>
   `,
 
-
 })
 ItemDeNavigation.args = {
   active: false,

@@ -91,8 +91,6 @@ export const Modal = (args) => ({
     </DsfrModal>
   `,
 
-
-
   methods: {
     onClose () {
       this.opened = false

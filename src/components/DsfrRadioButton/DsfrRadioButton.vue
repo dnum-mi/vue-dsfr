@@ -20,6 +20,7 @@ export default defineComponent({
       type: [String, Number],
       default: '',
     },
+    small: Boolean,
     value: {
       type: [String, Number],
       required: true,
@@ -51,7 +52,10 @@ export default defineComponent({
 <template>
   <div
     class="fr-radio-group"
-    :class="rich ? 'fr-radio-rich' : ''"
+    :class="{
+      'fr-radio-rich': rich,
+      'fr-radio-group--sm': small,
+    }"
   >
     <input
       :id="id"

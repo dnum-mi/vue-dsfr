@@ -72,7 +72,6 @@ export const BoutonPrimaire = (args) => ({
     />
   `,
 
-
 })
 BoutonPrimaire.args = {
   label: 'Label bouton',
@@ -105,7 +104,6 @@ export const BoutonPrimaireAvecIcone = (args) => ({
     />
   `,
 
-
 })
 BoutonPrimaireAvecIcone.args = {
   label: 'Label bouton',
@@ -134,7 +132,6 @@ export const BoutonSecondaire = (args) => ({
     />
   `,
 
-
 })
 BoutonSecondaire.args = {
   label: 'Label bouton secondaire',
@@ -162,7 +159,6 @@ export const BoutonTertiaire = (args) => ({
     />
   `,
 
-
 })
 BoutonTertiaire.args = {
   label: 'Label bouton secondaire',
@@ -189,7 +185,6 @@ export const BoutonTertiaireSansBordure = (args) => ({
       @click="onClick"
     />
   `,
-
 
 })
 BoutonTertiaireSansBordure.args = {
@@ -224,7 +219,6 @@ export const SuiteDeBoutons = (args) => ({
       />
     </div>
   `,
-
 
 })
 

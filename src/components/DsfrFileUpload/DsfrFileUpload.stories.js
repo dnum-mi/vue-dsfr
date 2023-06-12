@@ -62,7 +62,6 @@ export const Televersement = (args, { argTypes }) => ({
     />
   `,
 
-
 })
 Televersement.args = {
   id: undefined,
@@ -91,7 +90,6 @@ export const TeleversementAvecErreur = (args, { argTypes }) => ({
   </div>
   `,
 
-
 })
 TeleversementAvecErreur.args = {
   id: undefined,
@@ -119,7 +117,6 @@ export const TeleversementAvecSucces = (args, { argTypes }) => ({
     />
   </div>
   `,
-
 
 })
 TeleversementAvecSucces.args = {
@@ -150,7 +147,6 @@ export const TeleversementDesactive = (args, { argTypes }) => ({
     />
   </div>
   `,
-
 
 })
 TeleversementDesactive.args = {

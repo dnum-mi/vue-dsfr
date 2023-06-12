@@ -83,7 +83,6 @@ export const ListeDeroulante = (args) => ({
     },
   },
 
-
 })
 
 ListeDeroulante.args = {
@@ -133,7 +132,6 @@ export const ListeDeroulanteRequise = (args) => ({
       this.onChange(newVal)
     },
   },
-
 
 })
 
@@ -189,7 +187,6 @@ export const ListeDeroulanteRequisePersonnalisee = (args) => ({
     },
   },
 
-
 })
 
 ListeDeroulanteRequisePersonnalisee.args = {
@@ -242,7 +239,6 @@ export const ListeDeroulanteInactive = (args) => ({
     },
   },
 
-
 })
 
 ListeDeroulanteInactive.args = {
@@ -294,7 +290,6 @@ export const ListeDeroulanteAvecOptionsInactives = (args) => ({
       this.onChange(newVal)
     },
   },
-
 
 })
 

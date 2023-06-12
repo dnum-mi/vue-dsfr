@@ -36,7 +36,6 @@ export const JeuDeTuiles = (args) => ({
     />
   `,
 
-
 })
 JeuDeTuiles.args = {
   tiles: [

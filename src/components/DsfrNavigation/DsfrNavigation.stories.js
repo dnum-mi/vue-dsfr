@@ -54,7 +54,6 @@ export const NavigationPrincipale = (args) => ({
     }
   },
 
-
   template: `
   <DsfrNavigation
     :nav-items="navItems"

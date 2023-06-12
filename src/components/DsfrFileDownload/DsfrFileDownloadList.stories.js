@@ -9,7 +9,7 @@ export default {
   argTypes: {
     files: {
       control: 'object',
-      description: 'Tableau d\'objets contenant les propriétés "title", "format", "size" et "href" propres au composant DsfrFileDownload',
+      description: 'Tableau d\'objets contenant les propriétés "title", "format", "size", "href" et "download" propres au composant DsfrFileDownload',
     },
     title: {
       control: 'string',
@@ -34,7 +34,6 @@ export const ListeDeTelechargements = (args, { argTypes }) => ({
     />
   `,
 
-
 })
 ListeDeTelechargements.args = {
   files: [
@@ -43,18 +42,21 @@ ListeDeTelechargements.args = {
       format: 'PNG',
       size: '250 Mo',
       href: '#',
+      download: 'document1.md',
     },
     {
       title: 'Télécharger document 2',
       format: 'GIF',
       size: '107 Ko',
       href: '#',
+      download: 'document2.md',
     },
     {
       title: 'Télécharger document 3',
       format: 'ZIP',
       size: '1,5 Go',
       href: '#',
+      download: 'document3.md',
     },
   ],
   title: 'Titre facultatif',

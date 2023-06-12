@@ -59,8 +59,6 @@ export const NavigationMegaMenu = (args) => ({
     },
   },
 
-
-
   template: `
     <DsfrNavigation>
       <DsfrNavigationItem>

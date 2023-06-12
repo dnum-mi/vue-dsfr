@@ -19,6 +19,10 @@ declare const _default: import('vue').DefineComponent<{
         type: StringConstructor;
         default: string;
     };
+    download: {
+        type: StringConstructor;
+        default: string;
+    };
     block: BooleanConstructor;
 }, unknown, unknown, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {}, string, import('vue').VNodeProps & import('vue').AllowedComponentProps & import('vue').ComponentCustomProps, Readonly<import('vue').ExtractPropTypes<{
     title: {
@@ -41,6 +45,10 @@ declare const _default: import('vue').DefineComponent<{
         type: StringConstructor;
         default: string;
     };
+    download: {
+        type: StringConstructor;
+        default: string;
+    };
     block: BooleanConstructor;
 }>>, {
     block: boolean;
@@ -48,6 +56,7 @@ declare const _default: import('vue').DefineComponent<{
     size: string;
     description: string;
     href: string;
+    download: string;
     format: string;
 }>
 export default _default

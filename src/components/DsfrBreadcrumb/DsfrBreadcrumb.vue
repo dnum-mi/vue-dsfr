@@ -1,10 +1,7 @@
 <script>
 import { defineComponent } from 'vue'
-
-// Ne fonctionne pas dans Nuxt
-// import '@gouvfr/dsfr/dist/component/breadcrumb/breadcrumb.module.js'
-
 import { getRandomId } from '../../utils/random-utils.js'
+import { useCollapsable } from '@/composables'
 
 export default defineComponent({
   name: 'DsfrBreadcrumb',
@@ -22,10 +19,41 @@ export default defineComponent({
     },
   },
 
+  setup () {
+    const {
+      collapse,
+      collapsing,
+      cssExpanded,
+      doExpand,
+      adjust,
+      onTransitionEnd,
+    } = useCollapsable()
+
+    return {
+      collapse,
+      collapsing,
+      cssExpanded,
+      doExpand,
+      adjust,
+      onTransitionEnd,
+    }
+  },
+
   data () {
     return {
-      hideButton: false,
+      expanded: false,
     }
+  },
+
+  watch: {
+    /*
+     * @see https://github.com/GouvernementFR/dsfr/blob/main/src/core/script/collapse/collapse.js
+     */
+    expanded (newValue, oldValue) {
+      if (newValue !== oldValue) {
+        this.doExpand(newValue)
+      }
+    },
   },
 })
 </script>
@@ -37,18 +65,23 @@ export default defineComponent({
     aria-label="vous êtes ici :"
   >
     <button
-      v-show="!hideButton"
+      v-show="!expanded"
       class="fr-breadcrumb__button"
-      :aria-expanded="hideButton"
+      :aria-expanded="expanded"
       :aria-controls="breadcrumbId"
-      @click="hideButton = !hideButton"
+      @click="expanded = !expanded"
     >
       Voir le fil d’Ariane
     </button>
     <div
       :id="breadcrumbId"
+      ref="collapse"
       class="fr-collapse"
-      :class="{ 'fr-collapse--expanded': hideButton }"
+      :class="{
+        'fr-collapse--expanded': cssExpanded, // Need to use a separate data to add/remove the class after a RAF
+        'fr-collapsing': collapsing,
+      }"
+      @transitionend="onTransitionEnd(expanded)"
     >
       <ol class="fr-breadcrumb__list">
         <li

@@ -67,7 +67,6 @@ export const BarreDeRecherche = (args) => ({
       />
   `,
 
-
 })
 BarreDeRecherche.args = {
   label: 'Label de search bar',
@@ -96,7 +95,6 @@ export const BarreDeRechercheLarge = (args) => ({
       :large="large"
     />
   `,
-
 
 })
 BarreDeRechercheLarge.args = {
