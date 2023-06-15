@@ -1,17 +1,12 @@
-<script setup>
-defineProps({
-  label: {
-    type: String,
-    required: true,
-  },
-  type: {
-    type: String,
-    default: undefined,
-    validator: value => ['success', 'error', 'new', 'info', 'warning', undefined].includes(value),
-  },
-  noIcon: Boolean,
-  small: Boolean,
-  ellipsis: Boolean,
+<script setup lang="ts">
+withDefaults(defineProps<{
+  label: string
+  type?: 'success' | 'error' | 'new' | 'info' | 'warning' | undefined,
+  noIcon?: boolean,
+  small?: boolean,
+  ellipsis?: boolean,
+}>(), {
+  type: 'info',
 })
 </script>
 
