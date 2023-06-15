@@ -2,7 +2,7 @@ import DsfrFieldset from './DsfrFieldset.vue'
 
 export default {
   component: DsfrFieldset,
-  title: 'Composants/Ensemble de champs - DsfrFieldset',
+  title: 'Composants/DsfrFieldset',
   argTypes: {
     legend: {
       control: 'text',

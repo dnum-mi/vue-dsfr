@@ -20,7 +20,7 @@ function toggleExpandedForMenuWithId (menuItems, id) {
  */
 export default {
   component: DsfrSideMenu,
-  title: 'Composants/Menu latéral/1 - Menu entier - DsfrSideMenu',
+  title: 'Composants/DsfrSideMenu',
   argTypes: {
     id: {
       control: 'text',

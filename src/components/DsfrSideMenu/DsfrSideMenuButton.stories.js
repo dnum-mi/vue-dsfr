@@ -6,7 +6,7 @@ import DsfrSideMenuButton from './DsfrSideMenuButton.vue'
 
 export default {
   component: DsfrSideMenuButton,
-  title: 'Composants/Menu latéral/5 - Bouton de menu dépliable - DsfrSideMenuButton',
+  title: 'Composants/DsfrSideMenuButton',
   argTypes: {
     active: {
       control: 'boolean',

@@ -4,7 +4,7 @@ import DsfrNavigationMenuLink from './DsfrNavigationMenuLink.vue'
 
 export default {
   component: DsfrNavigationItem,
-  title: 'Composants/Navigation Principale/6. Item de navigation - DsfrNavigationItem',
+  title: 'Composants/DsfrNavigationItem',
   argTypes: {
     id: {
       control: 'text',

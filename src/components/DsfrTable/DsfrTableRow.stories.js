@@ -4,7 +4,7 @@ import DsfrTableRow from './DsfrTableRow.vue'
 
 export default {
   component: DsfrTableRow,
-  title: 'Composants/Tableau/Ligne de tableau - DsfrTableRow',
+  title: 'Composants/DsfrTableRow',
   argTypes: {
     title: { control: 'text' },
     headers: {

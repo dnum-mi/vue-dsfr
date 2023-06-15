@@ -11,7 +11,7 @@ addIcons(RiCheckboxCircleLine)
  */
 export default {
   component: DsfrButtonGroup,
-  title: 'Composants/Boutons/Groupe de Boutons - DsfrButtonGroup',
+  title: 'Composants/DsfrButtonGroup',
   argTypes: {
     buttons: {
       control: 'object',

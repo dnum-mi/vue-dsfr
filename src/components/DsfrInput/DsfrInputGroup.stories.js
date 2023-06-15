@@ -6,7 +6,7 @@ import DsfrInputGroup from './DsfrInputGroup.vue'
  */
 export default {
   component: DsfrInputGroup,
-  title: 'Composants/Champ de saisie/Champ avec message associé - DsfrInputGroup',
+  title: 'Composants/DsfrInputGroup',
   argTypes: {
     id: {
       control: 'text',

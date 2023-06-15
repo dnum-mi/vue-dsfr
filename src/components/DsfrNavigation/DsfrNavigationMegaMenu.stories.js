@@ -4,7 +4,7 @@ import DsfrNavigation from './DsfrNavigation.vue'
 
 export default {
   component: DsfrNavigationMegaMenu,
-  title: 'Composants/Navigation Principale/4. Mega-menu DsfrNavigationMegaMenu',
+  title: 'Composants/DsfrNavigationMegaMenu',
   argTypes: {
     title: {
       control: 'text',

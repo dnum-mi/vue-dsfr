@@ -5,7 +5,7 @@ import DsfrSummary from './DsfrSummary.vue'
  */
 export default {
   component: DsfrSummary,
-  title: 'Composants/Sommaire - DsfrSummary',
+  title: 'Composants/DsfrSummary',
   argTypes: {
 
     title: {

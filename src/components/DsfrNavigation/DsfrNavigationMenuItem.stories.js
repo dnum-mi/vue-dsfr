@@ -22,7 +22,7 @@ setup(app => {
 
 export default {
   component: DsfrNavigationMenuItem,
-  title: 'Composants/Navigation Principale/7. Item de menu de navigation - DsfrNavigationMenuItem',
+  title: 'Composants/DsfrNavigationMenuItem',
   argTypes: {
     expandedId: {
       control: 'text',

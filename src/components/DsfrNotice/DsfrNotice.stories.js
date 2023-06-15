@@ -5,7 +5,7 @@ import DsfrNotice from './DsfrNotice.vue'
  */
 export default {
   component: DsfrNotice,
-  title: 'Composants/Bandeau d’information importante - DsfrNotice',
+  title: 'Composants/DsfrNotice',
   argTypes: {
     title: {
       control: 'text',

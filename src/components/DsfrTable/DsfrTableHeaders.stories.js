@@ -3,7 +3,7 @@ import DsfrTableHeaders from './DsfrTableHeaders.vue'
 
 export default {
   component: DsfrTableHeaders,
-  title: 'Composants/Tableau/En-têtes de tableau - DsfrTableHeaders',
+  title: 'Composants/DsfrTableHeaders',
   argTypes: {
     title: { control: 'text' },
     headers: {

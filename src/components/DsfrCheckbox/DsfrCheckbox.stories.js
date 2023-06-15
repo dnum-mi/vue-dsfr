@@ -5,7 +5,7 @@ import DsfrCheckbox from './DsfrCheckbox.vue'
  */
 export default {
   component: DsfrCheckbox,
-  title: 'Composants/Case à cocher/Case à cocher - DsfrCheckbox',
+  title: 'Composants/DsfrCheckbox',
   argTypes: {
     id: {
       control: 'text',

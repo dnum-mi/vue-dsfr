@@ -5,7 +5,7 @@ import DsfrFileDownload from './DsfrFileDownload.vue'
  */
 export default {
   component: DsfrFileDownload,
-  title: 'Composants/Téléchargement de Fichier - DsfrFileDownload',
+  title: 'Composants/DsfrFileDownload',
   argTypes: {
     title: {
       control: 'text',

@@ -11,7 +11,7 @@ addIcons(RiInformationLine)
  */
 export default {
   component: DsfrCallout,
-  title: 'Composants/Mise en Avant - Callout',
+  title: 'Composants/DsfrCallout',
   argTypes: {
     title: {
       control: 'text',

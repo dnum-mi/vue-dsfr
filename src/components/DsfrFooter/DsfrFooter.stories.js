@@ -12,7 +12,7 @@ addIcons(RiExternalLinkLine)
  */
 export default {
   component: DsfrFooter,
-  title: 'Composants/Pied de page - DsfrFooter',
+  title: 'Composants/DsfrFooter',
   argTypes: {
     beforeMandatoryLinks: {
       control: 'object',

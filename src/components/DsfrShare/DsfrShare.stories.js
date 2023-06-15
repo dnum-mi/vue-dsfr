@@ -5,7 +5,7 @@ import DsfrShare from './DsfrShare.vue'
  */
 export default {
   component: DsfrShare,
-  title: 'Composants/Partage - DsfrShare',
+  title: 'Composants/DsfrShare',
   argTypes: {
     title: {
       control: 'text',

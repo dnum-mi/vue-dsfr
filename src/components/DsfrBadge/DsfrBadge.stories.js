@@ -5,7 +5,7 @@ import DsfrBadge from './DsfrBadge.vue'
  */
 export default {
   component: DsfrBadge,
-  title: 'Composants/Badge - DsfrBadge',
+  title: 'Composants/DsfrBadge',
   argTypes: {
     label: {
       control: 'text',

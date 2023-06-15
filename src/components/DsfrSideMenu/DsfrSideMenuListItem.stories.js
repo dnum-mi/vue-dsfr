@@ -5,7 +5,7 @@ import DsfrSideMenuLink from './DsfrSideMenuLink.vue'
 
 export default {
   component: DsfrSideMenuListItem,
-  title: 'Composants/Menu latéral/3 - Item de menu - DsfrSideMenuListItem',
+  title: 'Composants/DsfrSideMenuListItem',
   argTypes: {
     active: {
       control: 'boolean',

@@ -15,7 +15,7 @@ function toggleExpandedForMenuWithId (menuItems, id) {
 
 export default {
   component: DsfrSideMenuList,
-  title: 'Composants/Menu latéral/2 - Liste de menu - DsfrSideMenuList',
+  title: 'Composants/DsfrSideMenuList',
   argTypes: {
     headingTitle: {
       control: 'text',

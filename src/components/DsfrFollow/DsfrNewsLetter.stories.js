@@ -6,7 +6,7 @@ import DsfrFollow from './DsfrFollow.vue'
  */
 export default {
   component: DsfrNewsLetter,
-  title: 'Composants/Lettres d’information et réseaux/Lettre d’information - DsfrNewsletter',
+  title: 'Composants/DsfrNewsletter',
   argTypes: {
     title: {
       control: 'text',

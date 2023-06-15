@@ -11,7 +11,7 @@ addIcons(RiCheckboxCircleLine, RiSearchLine)
  */
 export default {
   component: DsfrButton,
-  title: 'Composants/Boutons/Boutons - DsfrButton',
+  title: 'Composants/DsfrButton',
   argTypes: {
     label: {
       control: 'text',

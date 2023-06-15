@@ -5,7 +5,7 @@ import DsfrBreadcrumb from './DsfrBreadcrumb.vue'
  */
 export default {
   component: DsfrBreadcrumb,
-  title: 'Composants/Fil d’Ariane - DsfrBreadcrumb',
+  title: 'Composants/DsfrBreadcrumb',
   argTypes: {
     links: {
       control: 'object',

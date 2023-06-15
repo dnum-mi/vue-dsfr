@@ -5,7 +5,7 @@ import DsfrSelect from './DsfrSelect.vue'
  */
 export default {
   component: DsfrSelect,
-  title: 'Composants/Liste déroulante - DsfrSelect',
+  title: 'Composants/DsfrSelect',
   argTypes: {
     selectId: {
       control: 'text',

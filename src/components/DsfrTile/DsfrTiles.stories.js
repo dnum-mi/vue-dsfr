@@ -5,7 +5,7 @@ import DsfrTiles from './DsfrTiles.vue'
  */
 export default {
   component: DsfrTiles,
-  title: 'Composants/Jeu de Tuiles - DsfrTiles',
+  title: 'Composants/DsfrTiles',
   argTypes: {
     tiles: {
       control: 'object',

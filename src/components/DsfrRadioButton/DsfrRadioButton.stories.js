@@ -6,7 +6,7 @@ import DsfrRadioButton from './DsfrRadioButton.vue'
  */
 export default {
   component: DsfrRadioButton,
-  title: 'Composants/Boutons radio/Boutons radio - DsfrRadioButtons',
+  title: 'Composants/DsfrRadioButton',
   argTypes: {
     id: {
       control: 'text',

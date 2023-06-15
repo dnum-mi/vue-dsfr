@@ -4,7 +4,7 @@ import DsfrNavigationMenu from './DsfrNavigationMenu.vue'
 
 export default {
   component: DsfrNavigationMenu,
-  title: 'Composants/Navigation Principale/3. Sous-menu - DsfrNavigationMenu',
+  title: 'Composants/DsfrNavigationMenu',
   argTypes: {
     id: {
       control: 'text',

@@ -5,7 +5,7 @@ import DsfrPagination from './DsfrPagination.vue'
  */
 export default {
   component: DsfrPagination,
-  title: 'Composants/Pagination - Pagination',
+  title: 'Composants/DsfrPagination',
   argTypes: {
     pages: {
       control: 'object',

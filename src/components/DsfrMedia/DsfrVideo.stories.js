@@ -12,7 +12,7 @@ setup(app => {
 
 export default {
   component: DsfrVideo,
-  title: 'Composants/Vidéo - DsfrVideo',
+  title: 'Composants/DsfrVideo',
   argTypes: {
 
     src: {

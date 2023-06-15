@@ -21,7 +21,7 @@ setup(app => {
 
 export default {
   component: DsfrNavigationMegaMenuCategory,
-  title: 'Composants/Navigation Principale/5. Catégorie de mega-menu - DsfrNavigationMegaMenuCategory',
+  title: 'Composants/DsfrNavigationMegaMenuCategory',
   argTypes: {
     title: {
       control: 'text',

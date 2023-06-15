@@ -9,7 +9,7 @@ setup(app => {
 
 export default {
   component: DsfrTabItem,
-  title: 'Composants/Onglets - DsfrTabs',
+  title: 'Composants/DsfrTabs',
   argTypes: {
     tabTitle: {
       control: 'object',

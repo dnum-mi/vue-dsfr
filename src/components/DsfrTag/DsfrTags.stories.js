@@ -22,7 +22,7 @@ addIcons(
  */
 export default {
   component: DsfrTags,
-  title: 'Composants/Étiquettes - DsfrTags',
+  title: 'Composants/DsfrTags',
   argTypes: {
     class: {
       control: 'text',

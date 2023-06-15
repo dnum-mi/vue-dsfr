@@ -10,7 +10,7 @@ addIcons(RiSortAsc, RiSortDesc)
 
 export default {
   component: DsfrTableHeader,
-  title: 'Composants/Tableau/En-tête de tableau - DsfrTableHeader',
+  title: 'Composants/DsfrTableHeader',
   argTypes: {
     header: {
       control: 'text',

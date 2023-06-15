@@ -11,7 +11,7 @@ addIcons(RiCloseLine)
  */
 export default {
   component: DsfrAlert,
-  title: 'Composants/Alertes - DsfrAlert',
+  title: 'Composants/DsfrAlert',
   argTypes: {
     id: {
       control: 'text',

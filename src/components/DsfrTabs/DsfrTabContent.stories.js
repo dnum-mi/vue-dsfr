@@ -2,7 +2,7 @@ import DsfrTabContent from './DsfrTabContent.vue'
 
 export default {
   component: DsfrTabContent,
-  title: 'Composants/Onglets - DsfrTabs',
+  title: 'Composants/DsfrTabs',
   argTypes: {
     panelId: {
       control: 'text',

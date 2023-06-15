@@ -2,7 +2,7 @@ import DsfrPicture from './DsfrPicture.vue'
 
 export default {
   component: DsfrPicture,
-  title: 'Composants/Image - DsfrPicture',
+  title: 'Composants/DsfrPicture',
   argTypes: {
 
     alt: {
