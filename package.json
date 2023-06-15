@@ -52,6 +52,7 @@
     "test:ct-ci": "cypress run --component",
     "format": "run-s lint -- --fix",
     "lint": "eslint ./src/**/*.{vue,js,ts}",
+    "lint:staged": "eslint",
     "storybook": "cross-env NODE_OPTIONS=--openssl-legacy-provider storybook dev -p 6006",
     "build-storybook": "NODE_OPTIONS=--openssl-legacy-provider storybook build",
     "preview": "run-s build-storybook",
