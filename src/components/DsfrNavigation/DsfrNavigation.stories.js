@@ -21,7 +21,7 @@ setup(app => {
  */
 export default {
   component: DsfrNavigation,
-  title: 'Composants/Navigation Principale/1. Navigation Principale - DsfrNavigation',
+  title: 'Composants/DsfrNavigation',
   argTypes: {
     navItems: {
       control: 'object',

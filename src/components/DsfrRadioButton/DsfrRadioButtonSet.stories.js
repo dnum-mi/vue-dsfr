@@ -5,7 +5,7 @@ import DsfrRadioButtonSet from './DsfrRadioButtonSet.vue'
  */
 export default {
   component: DsfrRadioButtonSet,
-  title: 'Composants/Boutons radio/Groupe de boutons radio - DsfrRadioButtonSet',
+  title: 'Composants/DsfrRadioButtonSet',
   argTypes: {
     disabled: {
       control: 'boolean',

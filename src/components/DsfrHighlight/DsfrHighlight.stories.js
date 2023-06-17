@@ -5,7 +5,7 @@ import DsfrHighlight from './DsfrHighlight.vue'
  */
 export default {
   component: DsfrHighlight,
-  title: 'Composants/Mise en Exergue - DsfrHighlight',
+  title: 'Composants/DsfrHighlight',
   argTypes: {
     text: {
       control: 'text',

@@ -5,7 +5,7 @@ import DsfrFileDownloadList from './DsfrFileDownloadList.vue'
  */
 export default {
   component: DsfrFileDownloadList,
-  title: 'Composants/Téléchargement de Fichier - DsfrFileDownloadList',
+  title: 'Composants/DsfrFileDownloadList',
   argTypes: {
     files: {
       control: 'object',

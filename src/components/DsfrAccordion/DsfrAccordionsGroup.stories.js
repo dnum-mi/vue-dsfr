@@ -6,7 +6,7 @@ import DsfrAccordion from './DsfrAccordion.vue'
  */
 export default {
   component: DsfrAccordionsGroup,
-  title: 'Composants/Accordéon - DsfrAccordionsGroup',
+  title: 'Composants/DsfrAccordionsGroup',
   argTypes: {
     id: {
       control: 'text',

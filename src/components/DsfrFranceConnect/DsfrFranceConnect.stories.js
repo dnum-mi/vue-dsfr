@@ -5,7 +5,7 @@ import DsfrFranceConnect from './DsfrFranceConnect.vue'
  */
 export default {
   component: DsfrFranceConnect,
-  title: 'Composants/Connexion - FranceConnect',
+  title: 'Composants/DsfrFranceConnect',
   argTypes: {
     secure: {
       control: 'boolean',

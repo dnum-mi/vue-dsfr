@@ -5,7 +5,7 @@ import DsfrCheckboxSet from './DsfrCheckboxSet.vue'
  */
 export default {
   component: DsfrCheckboxSet,
-  title: 'Composants/Case à cocher/Groupe de cases à cocher - DsfrCheckboxSet',
+  title: 'Composants/DsfrCheckboxSet',
   argTypes: {
 
     disabled: {

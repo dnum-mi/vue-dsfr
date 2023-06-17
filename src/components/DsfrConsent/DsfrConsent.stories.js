@@ -5,7 +5,7 @@ import DsfrConsent from './DsfrConsent.vue'
  */
 export default {
   component: DsfrConsent,
-  title: 'Composants/Gestionnaire de consentement - DsfrConsent',
+  title: 'Composants/DsfrConsent',
   argTypes: {
     onAcceptAll: {
       action: 'onClickAcceptAll',

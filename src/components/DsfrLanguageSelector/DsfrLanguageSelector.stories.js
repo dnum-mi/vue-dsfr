@@ -5,7 +5,7 @@ import DsfrLanguageSelector from './DsfrLanguageSelector.vue'
  */
 export default {
   component: DsfrLanguageSelector,
-  title: 'Composants/Sélecteur de langues - DsfrLanguageSelector',
+  title: 'Composants/DsfrLanguageSelector',
   argTypes: {
 
     id: {

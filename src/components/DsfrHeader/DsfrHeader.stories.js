@@ -20,7 +20,7 @@ addIcons(
  */
 export default {
   component: DsfrHeader,
-  title: 'Composants/En-tête - DsfrHeader',
+  title: 'Composants/DsfrHeader',
   argTypes: {
     logoText: {
       control: 'object',

@@ -5,7 +5,7 @@ import DsfrSkipLinks from './DsfrSkipLinks.vue'
  */
 export default {
   component: DsfrSkipLinks,
-  title: 'Composants/Liens d’évitement - Skip links',
+  title: 'Composants/DsfrSkipLinks',
   argTypes: {
     links: {
       control: 'object',

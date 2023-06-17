@@ -5,7 +5,7 @@ import DsfrQuote from './DsfrQuote.vue'
  */
 export default {
   component: DsfrQuote,
-  title: 'Composants/Citations - DsfrQuote',
+  title: 'Composants/DsfrQuote',
   argTypes: {
     quote: {
       control: 'text',

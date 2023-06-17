@@ -22,7 +22,7 @@ setup(app => {
  */
 export default {
   component: DsfrModal,
-  title: 'Composants/Modale - DsfrModal',
+  title: 'Composants/DsfrModal',
   argTypes: {
     actions: {
       control: 'object',

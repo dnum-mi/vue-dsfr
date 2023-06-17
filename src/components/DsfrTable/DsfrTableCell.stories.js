@@ -10,7 +10,7 @@ setup(app => {
 
 export default {
   component: DsfrTableCell,
-  title: 'Composants/Tableau/Cellule de tableau - DsfrTableCell',
+  title: 'Composants/DsfrTableCell',
   argTypes: {
     title: { control: 'text' },
     headers: {

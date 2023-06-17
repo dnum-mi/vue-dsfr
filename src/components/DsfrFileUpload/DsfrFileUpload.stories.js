@@ -5,7 +5,7 @@ import DsfrFileUpload from './DsfrFileUpload.vue'
  */
 export default {
   component: DsfrFileUpload,
-  title: 'Composants/Ajout de Fichier - DsfrFileUpload',
+  title: 'Composants/DsfrFileUpload',
   argTypes: {
     id: {
       control: 'text',

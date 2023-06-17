@@ -14,7 +14,7 @@ setup(app => {
  */
 export default {
   component: DsfrTranscription,
-  title: 'Composants/Transcription - DsfrTranscription',
+  title: 'Composants/DsfrTranscription',
   argTypes: {
     title: {
       control: 'text',

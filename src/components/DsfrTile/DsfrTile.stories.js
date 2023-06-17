@@ -5,7 +5,7 @@ import DsfrTile from './DsfrTile.vue'
  */
 export default {
   component: DsfrTile,
-  title: 'Composants/Tuile - DsfrTile',
+  title: 'Composants/DsfrTile',
   argTypes: {
     title: {
       control: 'text',

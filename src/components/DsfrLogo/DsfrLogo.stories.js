@@ -2,7 +2,7 @@ import DsfrLogo from './DsfrLogo.vue'
 
 export default {
   component: DsfrLogo,
-  title: 'Composants/Logo Officiel - DsfrLogo',
+  title: 'Composants/DsfrLogo',
   argTypes: {
     logoText: {
       control: 'object',

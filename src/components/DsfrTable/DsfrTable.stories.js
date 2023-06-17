@@ -14,7 +14,7 @@ setup(app => {
  */
 export default {
   component: DsfrTable,
-  title: 'Composants/Tableau/Tableau entier - DsfrTable',
+  title: 'Composants/DsfrTable',
   argTypes: {
     title: {
       control: 'text',

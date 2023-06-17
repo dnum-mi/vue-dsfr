@@ -5,7 +5,7 @@ import DsfrStepper from './DsfrStepper.vue'
  */
 export default {
   component: DsfrStepper,
-  title: 'Composants/Indicateur d’étapes - DsfrStepper',
+  title: 'Composants/DsfrStepper',
   argTypes: {
 
     steps: {

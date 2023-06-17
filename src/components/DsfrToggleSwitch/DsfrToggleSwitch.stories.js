@@ -5,7 +5,7 @@ import DsfrToggleSwitch from './DsfrToggleSwitch.vue'
  */
 export default {
   component: DsfrToggleSwitch,
-  title: 'Composants/Interrupteur - DsfrToggleSwitch',
+  title: 'Composants/DsfrToggleSwitch',
   argTypes: {
     label: {
       control: 'text',

@@ -7,7 +7,7 @@ import DsfrCheckboxSet from '../DsfrCheckbox/DsfrCheckboxSet.vue'
  */
 export default {
   component: DsfrAccordion,
-  title: 'Composants/Accordéon - DsfrAccordion',
+  title: 'Composants/DsfrAccordion',
   argTypes: {
     id: {
       control: 'text',

@@ -14,7 +14,7 @@ addIcons(RiQuestionFill)
  */
 export default {
   component: DsfrInput,
-  title: 'Composants/Champ de saisie/Champ simple - DsfrInput',
+  title: 'Composants/DsfrInput',
   argTypes: {
     id: {
       control: 'text',

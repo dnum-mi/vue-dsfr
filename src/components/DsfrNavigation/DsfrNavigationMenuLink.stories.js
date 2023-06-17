@@ -24,7 +24,7 @@ setup(app => {
 
 export default {
   component: DsfrNavigationMenuLink,
-  title: 'Composants/Navigation Principale/2. Lien de menu, sous-menu ou mega-menu - DsfrNavigationMenuLink',
+  title: 'Composants/DsfrNavigationMenuLink',
   argTypes: {
     to: {
       control: 'text',
