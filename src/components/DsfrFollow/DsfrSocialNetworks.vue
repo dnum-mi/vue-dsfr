@@ -1,25 +1,17 @@
-<script>
-import { defineComponent } from 'vue'
+<script lang="ts" setup>
+export type DsfrSocialNetworkName = 'facebook' | 'twitter' | 'instagram' | 'linkedin' | 'youtube'
+export type DsfrSocialNetwork = {
+  name: DsfrSocialNetworkName,
+  href: string
+}
 
-import { allowedNetworks } from './follow-utils.js'
+export type DsfrSocialNetworksProps = {
+  networks: DsfrSocialNetwork[]
+  titleTag?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'
+}
 
-export default defineComponent({
-  name: 'DsfrSocialNetworks',
-
-  props: {
-    networks: {
-      type: Array,
-      required: true,
-      validator: (networks) =>
-        networks.every(
-          (network) => network?.name && network.href && allowedNetworks.includes(network.name),
-        ),
-    },
-    titleTag: {
-      type: String,
-      default: 'h3',
-    },
-  },
+withDefaults(defineProps<DsfrSocialNetworksProps>(), {
+  titleTag: 'h3',
 })
 </script>
 

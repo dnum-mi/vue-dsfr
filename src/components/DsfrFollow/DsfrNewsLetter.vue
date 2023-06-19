@@ -1,55 +1,34 @@
-<script>
-import { defineComponent } from 'vue'
+<script lang="ts" setup>
+export type DsfrNewsLetterProps = {
+  title?: string
+  description?: string
+  email?: string
+  error?: string
+  labelEmail?: string
+  placeholder?: string
+  hintText?: string
+  inputTitle?: string
+  buttonText?: string
+  buttonTitle?: string
+}
 
-export default defineComponent({
-  name: 'DsfrNewsLetter',
-
-  props: {
-    title: {
-      type: String,
-      default: 'Abonnez-vous à notre lettre d’information',
-    },
-    description: {
-      type: String,
-      default: '',
-    },
-    email: {
-      type: String,
-      default: '',
-    },
-    error: {
-      type: String,
-      default: '',
-    },
-    labelEmail: {
-      type: String,
-      default: 'Votre adresse électronique (ex. : nom@example.com)',
-    },
-    placeholder: {
-      type: String,
-      default: 'nom@example.com',
-    },
-    inputTitle: {
-      type: String,
-      default: 'Adresse électronique',
-    },
-    hintText: {
-      type: String,
-      default: '',
-    },
-    buttonText: {
-      type: String,
-      default: 'S’abonner',
-    },
-    buttonTitle: {
-      type: String,
-      default: 'S‘abonner à notre lettre d’information',
-    },
-
-  },
-
-  emits: ['update:email'],
+withDefaults(defineProps<DsfrNewsLetterProps>(), {
+  title: 'Abonnez-vous à notre lettre d’information',
+  description: '',
+  email: '',
+  error: '',
+  labelEmail: 'Votre adresse électronique (ex. : prenom.nom@example.com)',
+  placeholder: 'prenom.nom@example.com',
+  inputTitle: 'Adresse courriel',
+  hintText: '',
+  buttonText: 'S’abonner',
+  buttonTitle: 'S‘abonner à notre lettre d’information',
 })
+
+const emit = defineEmits<{(e: 'update:email', payload: string): void}>()
+
+// @ts-ignore this event comes from the input[type=email] so `value` is there
+const updateEmail = ($event: InputEvent) => emit('update:email', $event.target.value as string)
 </script>
 
 <template>
@@ -81,7 +60,7 @@ export default defineComponent({
             name="newsletter-email"
             :value="email"
             autocomplete="email"
-            @input="$emit('update:email', $event.target.value)"
+            @input="updateEmail($event)"
           >
           <button
             id="newsletter-button"
