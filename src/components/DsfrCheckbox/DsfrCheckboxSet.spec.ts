@@ -35,7 +35,7 @@ describe('DsfrCheckboxSet', () => {
         name: '3',
       },
     ]
-    const legendText = "Légende de l'ensemble des champs"
+    const legendText = 'Légende de l’ensemble des champs'
 
     // When
     const { getByText, container } = render(DsfrCheckboxSet, {
@@ -84,7 +84,7 @@ describe('DsfrCheckboxSet', () => {
         hint: thirdHintText,
       },
     ]
-    const legendText = "Légende de l'ensemble des champs"
+    const legendText = 'Légende de l’ensemble des champs'
 
     // When
     const { getByText, getByTestId } = render(DsfrCheckboxSet, {
@@ -112,7 +112,9 @@ describe('DsfrCheckboxSet', () => {
     // Then
     expect(firstInput).toBeInTheDocument()
     expect(firstInput).toHaveAttribute('name', 'name1')
-    expect(firstInput.checked).toBe(true)
+    // @ts-ignore This is a checkbox input event, so `checked` property is present
+    expect((firstInput).checked).toBe(true)
+    // @ts-ignore This is a checkbox input event, so `checked` property is present
     expect(secondInput.checked).toBe(false)
   })
 

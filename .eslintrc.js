@@ -30,6 +30,10 @@ module.exports = {
     'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
     'comma-dangle': [2, 'always-multiline'],
     'no-irregular-whitespace': 1,
+    '@typescript-eslint/ban-ts-comment': [
+      'error',
+      { 'ts-ignore': 'allow-with-description' },
+    ],
   },
   overrides: [
     {
@@ -52,7 +56,7 @@ module.exports = {
         'cypress/support/*.{js,ts,jsx,tsx}',
         'cypress/integration/*.{spec,e2e}.{js,ts,jsx,tsx}',
         'src/**/*.ct.{js,ts,jsx,tsx}',
-        '**/src/**/*.e2e.{j,t}s?(x)'
+        '**/src/**/*.e2e.{j,t}s?(x)',
       ],
       env: {
         'cypress/globals': true,
