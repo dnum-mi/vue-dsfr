@@ -1,26 +1,15 @@
-<script>
-import { defineComponent } from 'vue'
+<script lang="ts" setup>
+import DsfrHeaderMenuLink, { type DsfrHeaderMenuLinkProps } from './DsfrHeaderMenuLink.vue'
 
-import DsfrHeaderMenuLink from './DsfrHeaderMenuLink.vue'
-
-export default defineComponent({
-  name: 'DsfrHeaderMenuLinks',
-  components: {
-    DsfrHeaderMenuLink,
-  },
-
-  props: {
-    links: {
-      type: Array,
-      default: () => undefined,
-    },
-    navAriaLabel: {
-      type: String,
-      default: 'Menu secondaire',
-    },
-  },
-  emits: ['linkClick'],
+withDefaults(defineProps<{
+  links?: DsfrHeaderMenuLinkProps[]
+  navAriaLabel?: string
+}>(), {
+  links: () => [],
+  navAriaLabel: 'Menu secondaire',
 })
+
+defineEmits<{(e: 'linkClick'): void}>()
 </script>
 
 <template>
@@ -37,7 +26,7 @@ export default defineComponent({
       >
         <DsfrHeaderMenuLink
           v-bind="quickLink"
-          :on-click="()=>$emit('linkClick')"
+          :on-click="() => $emit('linkClick')"
         />
       </li>
     </ul>

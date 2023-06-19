@@ -72,9 +72,9 @@ describe('DsfrHeader', () => {
     const serviceDescription = 'Description du service'
     const showSearch = true
     const quickLinks = [
-      { label: 'Lien1', path: '/path1', icon: '' },
-      { label: 'Lien2', path: '/path2', icon: 'ri-notification-3-line' },
-      { label: 'Lien3', path: '/path3', icon: 'ri-phone-line', iconRight: true },
+      { label: 'Lien1', to: '/path1', icon: '' },
+      { label: 'Lien2', to: '/path2', icon: 'ri-notification-3-line' },
+      { label: 'Lien3', to: '/path3', icon: 'ri-phone-line', iconRight: true },
     ]
 
     // When
