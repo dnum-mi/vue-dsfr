@@ -1,76 +1,32 @@
-<script>
-import { defineComponent } from 'vue'
+<script lang="ts" setup>
+import { computed, ButtonHTMLAttributes } from 'vue'
 
-import DsfrButton from './DsfrButton.vue'
+import DsfrButton, { type DsfrButtonProps } from './DsfrButton.vue'
 
-export default defineComponent({
-  name: 'DsfrButtonGroup',
-  components: {
-    DsfrButton,
-  },
-
-  props: {
-    buttons: {
-      type: Array,
-      default: () => [],
-    },
-    /**
-     * @deprecated Use inlineLayoutWhen instead
-     */
-    inline: {
-      type: Boolean,
-      default: false,
-      deprecated: 'Use "inlineLayoutWhen" prop instead',
-    },
-    inlineLayoutWhen: {
-      type: String,
-      validator: (val) => ['always', 'never', 'sm', 'small', 'lg', 'large', 'md', 'medium', '', undefined, true, false].includes(val),
-      default: 'never',
-    },
-    size: {
-      type: String,
-      validator: (val) => ['sm', 'small', 'lg', 'large', 'md', 'medium', '', undefined].includes(val),
-      default: undefined,
-    },
-    reverse: Boolean,
-    iconRight: Boolean,
-    align: {
-      type: String,
-      validator: (val) => ['right', 'center', '', undefined].includes(val),
-      default: undefined,
-    },
-  },
-
-  computed: {
-    sm () {
-      return ['sm', 'small'].includes(this.size)
-    },
-    md () {
-      return ['md', 'medium'].includes(this.size)
-    },
-    lg () {
-      return ['lg', 'large'].includes(this.size)
-    },
-    inlineAlways () {
-      return this.inline || ['always', true].includes(this.inlineLayoutWhen)
-    },
-    inlineSm () {
-      return ['sm', 'small'].includes(this.inlineLayoutWhen)
-    },
-    inlineMd () {
-      return ['md', 'medium'].includes(this.inlineLayoutWhen)
-    },
-    inlineLg () {
-      return ['lg', 'large'].includes(this.inlineLayoutWhen)
-    },
-    center () {
-      return this.align === 'center'
-    },
-    right () {
-      return this.align === 'right'
-    },
-  },
+const props = withDefaults(defineProps<{
+  buttons?:(DsfrButtonProps & ButtonHTMLAttributes)[]
+  reverse?: boolean
+  iconRight?: boolean
+  align?: 'right' | 'center' | '' | undefined
+  inlineLayoutWhen?: 'always' | 'never' | 'sm' | 'small' | 'lg' | 'large' | 'md' | 'medium' | '' | undefined | boolean
+  size?: 'sm' | 'small' | 'lg' | 'large' | 'md' | 'medium' | '' | undefined
+}>(), {
+  buttons: () => [],
+  inlineLayoutWhen: 'never',
+  size: '',
+  align: undefined,
 })
+
+const sm = computed(() => ['sm', 'small'].includes(props.size))
+const md = computed(() => ['md', 'medium'].includes(props.size))
+const lg = computed(() => ['lg', 'large'].includes(props.size))
+
+const inlineAlways = computed(() => props.inline || ['always', true].includes(props.inlineLayoutWhen))
+const inlineSm = computed(() => ['sm', 'small'].includes(props.inlineLayoutWhen as string))
+const inlineMd = computed(() => ['md', 'medium'].includes(props.inlineLayoutWhen as string))
+const inlineLg = computed(() => ['lg', 'large'].includes(props.inlineLayoutWhen as string))
+const center = computed(() => props.align === 'center')
+const right = computed(() => props.align === 'right')
 </script>
 
 <template>

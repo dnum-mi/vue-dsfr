@@ -3,7 +3,7 @@ import { fireEvent } from '@testing-library/dom'
 import { render } from '@testing-library/vue'
 
 // import '@gouvfr/dsfr/dist/core/core.module.js'
-import { spy } from '@tests/unit/test-utils.js'
+import { spy } from '../../../tests/unit/test-utils.js'
 
 import DsfrButtonGroup from './DsfrButtonGroup.vue'
 
@@ -52,8 +52,8 @@ describe('DsfrButtonGroup', () => {
     expect(wrapper).toHaveClass('extra-class')
     expect(wrapper).not.toHaveClass('fr-btns-group--right')
     expect(wrapper).not.toHaveClass('fr-btns-group--sm')
-    expect(onClickFirst.callCount).toBe(1)
-    expect(onClickSecond.callCount).toBe(1)
+    expect(onClickFirst.mock.calls.length).toBe(1)
+    expect(onClickSecond.mock.calls.length).toBe(1)
   })
 
   it('should mount small DsfrButtonGroup right-aligned content', async () => {
