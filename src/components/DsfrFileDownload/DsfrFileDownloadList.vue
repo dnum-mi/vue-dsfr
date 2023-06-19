@@ -1,23 +1,12 @@
-<script>
-import { defineComponent } from 'vue'
-import DsfrFileDownload from './DsfrFileDownload.vue'
+<script lang="ts" setup>
+import DsfrFileDownload, { type DsfrFileDownloadProps } from './DsfrFileDownload.vue'
 
-export default defineComponent({
-  name: 'DsfrFileDownloadList',
-
-  components: {
-    DsfrFileDownload,
-  },
-  props: {
-    files: {
-      type: Array,
-      default: () => [],
-    },
-    title: {
-      type: String,
-      default: '',
-    },
-  },
+withDefaults(defineProps<{
+  files: DsfrFileDownloadProps[]
+  title: string
+}>(), {
+  files: () => [],
+  title: '',
 })
 </script>
 
