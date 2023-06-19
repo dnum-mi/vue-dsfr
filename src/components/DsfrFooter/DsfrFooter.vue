@@ -1,166 +1,113 @@
-<script>
-import { defineComponent } from 'vue'
-import { OhVueIcon as VIcon } from 'oh-vue-icons'
+<script setup lang="ts">
+import { StyleValue, computed, useSlots } from 'vue'
+import { type RouteLocationRaw } from 'vue-router'
 
 import DsfrLogo from '../DsfrLogo/DsfrLogo.vue'
-import DsfrFooterPartners from '../DsfrFooter/DsfrFooterPartners.vue'
+import DsfrFooterPartners, { type DsfrFooterPartnersProps } from '../DsfrFooter/DsfrFooterPartners.vue'
 
-export default defineComponent({
-  name: 'DsfrFooter',
+const props = withDefaults(defineProps<{
+  a11yCompliance?: string
+  a11yComplianceLink?: RouteLocationRaw
+  legalLink?: string
+  homeLink?: RouteLocationRaw
+  partners?: DsfrFooterPartnersProps
+  personalDataLink?: string
+  cookiesLink?: string
+  logoText?: string | string[]
+  descText?: string
+  beforeMandatoryLinks?: {label: string, to: RouteLocationRaw}[]
+  afterMandatoryLinks?: {label: string, to: RouteLocationRaw}[]
+  mandatoryLinks?: {label: string, to: RouteLocationRaw}[]
+  ecosystemLinks?: {label: string, href: string}[]
+  operatorLinkText?: string
+  operatorTo?: RouteLocationRaw
+  operatorImgStyle?: StyleValue
+  operatorImgSrc?: string
+  operatorImgAlt?: string
+  licenceTo?: string
+  licenceLinkProps?: { href: string } | { to: RouteLocationRaw }
+  licenceText?: string
+  licenceName?: string
+}>(), {
+  a11yCompliance: 'non conforme',
+  a11yComplianceLink: '/a11y',
+  legalLink: '/mentions-legales',
+  homeLink: '/',
+  partners: () => null,
+  personalDataLink: '/donnees-personnelles',
+  cookiesLink: '/cookies',
+  logoText: () => ['République', 'Française'],
+  descText: undefined,
+  beforeMandatoryLinks: () => [],
+  afterMandatoryLinks: () => [],
+  mandatoryLinks: (props) => [
+    {
+      label: `Accessibilité : ${props.a11yCompliance}`,
+      to: props.a11yComplianceLink,
+    },
+    {
+      label: 'Mentions légales',
+      to: props.legalLink,
+    },
+    {
+      label: 'Données personnelles',
+      to: props.personalDataLink,
+    },
+    {
+      label: 'Gestion des cookies',
+      to: props.cookiesLink,
+    },
+  ],
+  ecosystemLinks: () => [
+    {
+      label: 'legifrance.gouv.fr',
+      href: 'https://legifrance.gouv.fr',
+    },
+    {
+      label: 'gouvernement.fr',
+      href: 'https://gouvernement.fr',
+    },
+    {
+      label: 'service-public.fr',
+      href: 'https://service-public.fr',
+    },
+    {
+      label: 'data.gouv.fr',
+      href: 'https://data.gouv.fr',
+    },
+  ],
+  operatorLinkText: 'Revenir à l’accueil',
+  operatorTo: '/',
+  operatorImgStyle: undefined,
+  operatorImgSrc: undefined,
+  operatorImgAlt: '',
+  licenceText: 'Sauf mention contraire, tous les textes de ce site sont sous',
+  licenceTo: 'https://github.com/etalab/licence-ouverte/blob/master/LO.md',
+  licenceLinkProps: () => undefined,
+  licenceName: 'licence etalab-2.0',
+})
 
-  components: {
-    DsfrFooterPartners,
-    DsfrLogo,
-    VIcon,
-  },
+const allLinks = computed(() => {
+  return [
+    ...props.beforeMandatoryLinks,
+    ...props.mandatoryLinks,
+    ...props.afterMandatoryLinks,
+  ]
+})
 
-  props: {
-    a11yCompliance: {
-      type: String,
-      default: 'non conforme',
-    },
-    a11yComplianceLink: {
-      type: [String, Object],
-      default: '/a11y',
-    },
-    legalLink: {
-      type: String,
-      default: '/mentions-legales',
-    },
-    homeLink: {
-      type: [String, Object],
-      default: '/',
-    },
-    partners: {
-      type: Object,
-      default: () => null,
-    },
-    personalDataLink: {
-      type: String,
-      default: '/donnees-personnelles',
-    },
-    cookiesLink: {
-      type: String,
-      default: '/cookies',
-    },
-    logoText: {
-      type: [String, Array],
-      default: () => ['République', 'Française'],
-    },
-    descText: {
-      type: String,
-      default: undefined,
-    },
-    beforeMandatoryLinks: {
-      type: Array,
-      default: () => [],
-    },
-    afterMandatoryLinks: {
-      type: Array,
-      default: () => [],
-    },
-    mandatoryLinks: {
-      type: Array,
-      default: (props) => [
-        {
-          label: `Accessibilité : ${props.a11yCompliance}`,
-          to: props.a11yComplianceLink,
-        },
-        {
-          label: 'Mentions légales',
-          to: props.legalLink,
-        },
-        {
-          label: 'Données personnelles',
-          to: props.personalDataLink,
-        },
-        {
-          label: 'Gestion des cookies',
-          to: props.cookiesLink,
-        },
-      ],
-    },
-    ecosystemLinks: {
-      type: Array,
-      default: () => [
-        {
-          label: 'legifrance.gouv.fr',
-          href: 'https://legifrance.gouv.fr',
-        },
-        {
-          label: 'gouvernement.fr',
-          href: 'https://gouvernement.fr',
-        },
-        {
-          label: 'service-public.fr',
-          href: 'https://service-public.fr',
-        },
-        {
-          label: 'data.gouv.fr',
-          href: 'https://data.gouv.fr',
-        },
-      ],
-    },
-    operatorLinkText: {
-      type: String,
-      default: 'Revenir à l’accueil',
-    },
-    operatorTo: {
-      type: [String, Object],
-      default: '/',
-    },
-    operatorImgStyle: {
-      type: Object,
-      default: undefined,
-    },
-    operatorImgSrc: {
-      type: String,
-      default: undefined,
-    },
-    operatorImgAlt: {
-      type: String,
-      default: '',
-    },
-    licenceText: {
-      type: String,
-      default: 'Sauf mention contraire, tous les textes de ce site sont sous',
-    },
-    licenceTo: {
-      type: String,
-      default: 'https://github.com/etalab/licence-ouverte/blob/master/LO.md',
-    },
-    licenceLinkProps: {
-      type: Object,
-      default: () => ({}),
-    },
-    licenceName: {
-      type: String,
-      default: 'licence etalab-2.0',
-    },
-  },
-
-  computed: {
-    allLinks () {
-      return [
-        ...this.beforeMandatoryLinks,
-        ...this.mandatoryLinks,
-        ...this.afterMandatoryLinks,
-      ]
-    },
-    isWithSlotLinkLists () {
-      return this.$slots['footer-link-lists']?.().length
-    },
-    isExternalLink () {
-      const to = this.licenceTo || this.licenceLinkProps.to
-      return to && typeof to === 'string' && to.startsWith('http')
-    },
-    routerLinkLicenceTo () {
-      return this.isExternalLink ? '' : this.licenceTo
-    },
-    aLicenceHref () {
-      return this.isExternalLink ? this.licenceTo : ''
-    },
-  },
+const slots = useSlots()
+const isWithSlotLinkLists = computed(() => {
+  return slots['footer-link-lists']?.().length
+})
+const isExternalLink = computed(() => {
+  const to = props.licenceTo || props.licenceLinkProps.to
+  return to && typeof to === 'string' && to.startsWith('http')
+})
+const routerLinkLicenceTo = computed(() => {
+  return isExternalLink.value ? '' : props.licenceTo
+})
+const aLicenceHref = computed(() => {
+  return isExternalLink.value ? props.licenceTo : ''
 })
 </script>
 
@@ -200,7 +147,15 @@ export default defineComponent({
             <img
               v-if="operatorImgSrc"
               class="fr-footer__logo  fr-responsive-img"
-              :style="{ 'margin-left': '0.5px', 'padding': '1rem', ...operatorImgStyle, 'max-width': '12.5rem' }"
+              :style="[
+                typeof operatorImgStyle === 'string' ? operatorImgStyle : '',
+                {
+                  'margin-left': '0.5px',
+                  'padding': '1rem',
+                  ...(typeof operatorImgStyle === 'object' ? operatorImgStyle : {}),
+                  'max-width': '12.5rem'
+                }
+              ]"
               :src="operatorImgSrc"
               :alt="operatorImgAlt"
             >
