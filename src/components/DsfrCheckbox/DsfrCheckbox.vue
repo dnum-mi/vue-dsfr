@@ -43,7 +43,6 @@ const emitNewValue = ($event: InputEvent) => {
       'fr-checkbox-group--sm': small,
     }"
   >
-    <!-- // @ts-ignore -->
     <input
       :id="id"
       :name="name"
