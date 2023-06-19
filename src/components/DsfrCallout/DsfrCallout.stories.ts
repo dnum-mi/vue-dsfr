@@ -1,4 +1,7 @@
+import { type Meta } from '@storybook/vue3'
+import { expect, jest } from '@storybook/jest'
 import { OhVueIcon as VIcon, addIcons } from 'oh-vue-icons'
+import { within, userEvent } from '@storybook/testing-library'
 
 import { RiInformationLine } from 'oh-vue-icons/icons/ri/index.js'
 
@@ -6,10 +9,12 @@ import DsfrCallout from './DsfrCallout.vue'
 
 addIcons(RiInformationLine)
 
+const delay = (timeout = 100) => new Promise(resolve => setTimeout(resolve, timeout))
+
 /**
  * [Voir quand l’utiliser sur la documentation du DSFR](https://www.systeme-de-design.gouv.fr/elements-d-interface/composants/mise-en-avant)
  */
-export default {
+const meta: Meta<typeof DsfrCallout> = {
   component: DsfrCallout,
   title: 'Composants/DsfrCallout',
   argTypes: {
@@ -38,6 +43,8 @@ export default {
     },
   },
 }
+
+export default meta
 
 export const MiseEnAvantSimple = (args) => ({
   components: {
@@ -83,10 +90,7 @@ export const MiseEnAvant = (args) => ({
   data () {
     return {
       ...args,
-      button: args.button && {
-        ...args.button,
-        onClick: args.onClick,
-      },
+      button: args.button,
     }
   },
 
@@ -101,12 +105,26 @@ export const MiseEnAvant = (args) => ({
   `,
 
 })
+const buttonOnclick = jest.fn()
 MiseEnAvant.args = {
   title: 'Titre de la mise en avant',
   button: {
     label: 'Label bouton',
+    onClick: buttonOnclick,
   },
   icon: 'ri-information-line',
   content: 'Lorem ipsum dolor sit amet, consectetur adipiscing, incididunt, ut labore et dol',
   titleTag: 'h2',
+}
+
+MiseEnAvant.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement)
+  const closeButton = canvas.getByRole('button')
+  await userEvent.tab()
+  expect(buttonOnclick).not.toHaveBeenCalled()
+  await userEvent.click(closeButton)
+
+  expect(closeButton).toHaveFocus()
+  await delay()
+  expect(buttonOnclick).toHaveBeenCalled()
 }

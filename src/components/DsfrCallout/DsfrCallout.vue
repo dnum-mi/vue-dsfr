@@ -1,38 +1,16 @@
-<script>
-import { defineComponent } from 'vue'
+<script lang="ts" setup>
+import DsfrButton, { type DsfrButtonProps } from '../DsfrButton/DsfrButton.vue'
 
-import DsfrButton from '../DsfrButton/DsfrButton.vue'
-
-export default defineComponent({
-  name: 'DsfrCallout',
-
-  components: {
-    DsfrButton,
-  },
-
-  props: {
-    title: {
-      type: String,
-      default: 'Titre somptueusement mis en avant',
-    },
-    content: {
-      type: String,
-      default: 'Contenu admirablement mis en avant',
-    },
-    icon: {
-      type: String,
-      default: undefined,
-    },
-    button: {
-      type: Object,
-      default: () => undefined,
-      required: false,
-    },
-    titleTag: {
-      type: String,
-      default: 'h3',
-    },
-  },
+withDefaults(defineProps<{
+  title: string
+  content: string
+  titleTag?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'
+  button?: DsfrButtonProps
+  icon?: string
+}>(), {
+  button: () => undefined,
+  titleTag: 'h3',
+  icon: undefined,
 })
 </script>
 
@@ -56,7 +34,6 @@ export default defineComponent({
     <DsfrButton
       v-if="button"
       v-bind="button"
-      @click="button.onClick"
     />
 
     <!-- @slot Slot par défaut pour le contenu de la mise en avant. Sera dans `<div class="fr-callout">` -->

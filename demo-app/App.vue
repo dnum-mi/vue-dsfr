@@ -81,11 +81,11 @@ const navItems = [
     to: { name: 'Alertes' },
     text: 'Alertes & Bandeau',
   },
+  {
+    to: { name: 'MiseEnAvant' },
+    text: 'Mise en Avant',
+  },
 ]
-
-const onExpand = ($event: number) => {
-  console.log($event)
-}
 </script>
 
 <template>
