@@ -1,24 +1,16 @@
 
-<script>
-import { defineComponent } from 'vue'
+<script lang="ts" setup>
+import { computed } from 'vue'
 
-export default defineComponent({
-  name: 'DsfrLogo',
-  props: {
-    small: Boolean,
-    large: Boolean,
-    logoText: {
-      type: [String, Array],
-      default: () => 'Gouvernement',
-    },
-  },
-
-  computed: {
-    text () {
-      return this.logoText instanceof Array ? this.logoText.join('<br>') : this.logoText
-    },
-  },
+const props = withDefaults(defineProps<{
+  small?: boolean
+  large?: boolean
+  logoText?: string | string[]
+}>(), {
+  logoText: () => 'Gouvernement',
 })
+
+const text = computed(() => props.logoText instanceof Array ? props.logoText.join('<br>') : props.logoText)
 </script>
 
 <template>
