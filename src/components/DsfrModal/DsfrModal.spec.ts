@@ -4,8 +4,6 @@ import { OhVueIcon as VIcon } from 'oh-vue-icons'
 
 import DsfrModal from './DsfrModal.vue'
 
-// import '@gouvfr/dsfr/dist/core/core.module.js'
-
 describe.skip('DsfrModal', () => { // Skipped because of this issue: https://github.com/focus-trap/focus-trap-react/issues/785
   it('should render modal and emit "close" on click on close button', async () => {
     const content = 'Contenu de la modale'
@@ -31,6 +29,8 @@ describe.skip('DsfrModal', () => { // Skipped because of this issue: https://git
     expect(wrapper.emitted().close).not.toBeTruthy()
 
     await closeBtn.trigger('click')
+
+    await new Promise((resolve) => setTimeout(resolve, 300))
 
     expect(wrapper.emitted().close).toBeTruthy()
   })
