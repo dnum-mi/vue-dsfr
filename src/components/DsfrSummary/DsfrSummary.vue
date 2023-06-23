@@ -1,18 +1,10 @@
-<script>
-import { defineComponent } from 'vue'
-
-export default defineComponent({
-  name: 'DsfrSummary',
-  props: {
-    title: {
-      type: String,
-      default: 'Sommaire',
-    },
-    anchors: {
-      type: Array,
-      default: () => [],
-    },
-  },
+<script lang="ts" setup>
+withDefaults(defineProps<{
+  title: string
+  anchors: { link: string, name: string }[]
+}>(), {
+  title: 'Sommaire',
+  anchors: () => [],
 })
 </script>
 
