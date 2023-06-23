@@ -1,39 +1,24 @@
-<script>
-import { defineComponent } from 'vue'
-
-// import '@gouvfr/dsfr/dist/component/toggle/toggle.module.js'
+<script lang="ts" setup>
+import { computed } from 'vue'
 
 import { getRandomId } from '../../utils/random-utils'
 
-export default defineComponent({
-  name: 'DsfrToggleSwitch',
+const props = withDefaults(defineProps<{
+  modelValue?: boolean
+  inputId?: string
+  hint?: string
+  label?: string
+  disabled?: boolean
+}>(), {
+  inputId: () => getRandomId('toggle'),
+  hint: '',
+  label: '',
+})
 
-  props: {
-    modelValue: Boolean,
-    inputId: {
-      type: String,
-      default () {
-        return getRandomId('toggle')
-      },
-    },
-    hint: {
-      type: String,
-      default: '',
-    },
-    label: {
-      type: String,
-      default: '',
-    },
-    disabled: Boolean,
-  },
+defineEmits<{(e: 'update:modelValue', payload: boolean): void}>()
 
-  emits: ['update:modelValue'],
-
-  computed: {
-    labelId () {
-      return `${this.inputId}-hint-text`
-    },
-  },
+const labelId = computed(() => {
+  return `${props.inputId}-hint-text`
 })
 </script>
 
