@@ -1,19 +1,8 @@
-<script>
-import { defineComponent } from 'vue'
+<script lang="ts" setup>
+import DsfrTag, { type DsfrTagProps } from './DsfrTag.vue'
 
-import DsfrTag from './DsfrTag.vue'
-
-export default defineComponent({
-  name: 'DsfrTags',
-  components: {
-    DsfrTag,
-  },
-  props: {
-    tags: {
-      type: Array,
-      default: () => [],
-    },
-  },
+withDefaults(defineProps<{tags: DsfrTagProps[]}>(), {
+  tags: () => [],
 })
 </script>
 
