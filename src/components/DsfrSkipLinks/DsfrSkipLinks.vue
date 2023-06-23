@@ -1,23 +1,13 @@
-<script>
-import { defineComponent } from 'vue'
+<script lang="ts" setup>
+defineProps<{
+  links: { id: string, text: string }[]
+}>()
 
-export default defineComponent({
-  name: 'DsfrSkipLinks',
-
-  props: {
-    links: {
-      type: Array,
-      required: true,
-    },
-  },
-  methods: {
-    scrollMeTo (elementId) {
-      const element = document.getElementById(elementId)
-      const top = element?.offsetTop
-      window.scrollTo(0, top)
-    },
-  },
-})
+const scrollMeTo = (elementId) => {
+  const element = document.getElementById(elementId)
+  const top = element?.offsetTop
+  window.scrollTo(0, top)
+}
 </script>
 
 <template>
