@@ -1,41 +1,27 @@
-<script>
-import { defineComponent } from 'vue'
-
-export default defineComponent({
-  name: 'DsfrShare',
-
-  props: {
-    title: {
-      type: String,
-      default: 'Partager la page',
-    },
-    copyLabel: {
-      type: String,
-      default: 'Copier dans le presse-papier',
-    },
-    mail: {
-      type: Object,
-      default: () => undefined,
-    },
-    networks: {
-      type: Array,
-      default: () => [],
-    },
-  },
-  methods: {
-    copyLocationToClipboard () {
-      const url = window.location.href
-      navigator.clipboard.writeText(url)
-    },
-    openWindow ({ url, label }) {
-      window.open(
-        url,
-        label,
-        'toolbar=no,location=yes,status=no,menubar=no,scrollbars=yes,resizable=yes,width=600,height=450',
-      )
-    },
-  },
+<script lang="ts" setup>
+withDefaults(defineProps<{
+  title?: string
+  copyLabel: string
+  mail: { label: string, to: string }
+  networks: { name: string, label: string, url: string }[]
+}>(), {
+  title: 'Partager la page',
+  copyLabel: 'Copier dans le presse-papier',
+  mail: () => undefined,
+  networks: () => [],
 })
+
+const copyLocationToClipboard = () => {
+  const url = window.location.href
+  navigator.clipboard.writeText(url)
+}
+const openWindow = ({ url, label }) => {
+  window.open(
+    url,
+    label,
+    'toolbar=no,location=yes,status=no,menubar=no,scrollbars=yes,resizable=yes,width=600,height=450',
+  )
+}
 </script>
 
 <template>
