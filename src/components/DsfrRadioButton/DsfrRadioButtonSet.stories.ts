@@ -197,7 +197,7 @@ export const GroupeDeBoutonsRadioEnErreur = (args) => ({
   `,
 })
 GroupeDeBoutonsRadioEnErreur.args = {
-  error: "Texte de l'erreur",
+  error: 'Texte de l’erreur',
   legend: 'Légende des champs',
   inline: false,
   selectedValue: 1,
