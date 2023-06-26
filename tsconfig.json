@@ -6,7 +6,7 @@
     "declarationDir": "./types",
     "outDir": "lib",
     "baseUrl": "./src",
-    "rootDir": "./",
+    "rootDir": "./src",
     "target": "esnext",
     "useDefineForClassFields": true,
     "module": "esnext",
@@ -23,7 +23,7 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["env.d.ts", "./**/*.{vue,ts}"],
+  "include": ["./src/**/*.ts", "./src/**/*.vue"],
   "exclude": [
     "node_modules",
     "src/**/__tests__/*",

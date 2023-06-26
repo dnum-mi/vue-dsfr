@@ -3,8 +3,18 @@
     "@tsconfig/node18/tsconfig.json",
     "@vue/tsconfig/tsconfig.json"
   ],
-  "include": ["env.d.ts", "./src/index.ts"],
-  "exclude": ["src/**/__tests__/*", "./demo-app/**"],
+  "include": ["./src/**/*.ts", "./src/**/*.vue"],
+  "exclude": [
+    "node_modules",
+    "src/**/__tests__/*",
+    "./demo-app/**",
+    "src/**/*.e2e.js",
+    "src/**/*.e2e.ts",
+    "src/**/*.spec.js",
+    "src/**/*.spec.ts",
+    "src/**/*.stories.js",
+    "src/**/*.stories.ts"
+  ],
   "compilerOptions": {
     "allowJs": true,
     "composite": true,

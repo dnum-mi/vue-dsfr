@@ -40,7 +40,7 @@
     "dev": "run-s storybook",
     "clean-dist": "rimraf dist lib",
     "prebuild": "run-s clean-dist",
-    "build": "run-s build:vite vue-tsc",
+    "build": "run-s build:vite typegen",
     "build:vite": "vite build",
     "demo": "vite",
     "vitest": "vitest",
@@ -61,8 +61,7 @@
     "semantic-release": "semantic-release",
     "typecheck": "vue-tsc --noEmit -p tsconfig.vitest.json --composite false",
     "vite:build": "vite build && npm run typegen",
-    "typegen": "tsc src/index.ts --declaration --emitDeclarationOnly --outDir types",
-    "vue-tsc": "vue-tsc --declaration --emitDeclarationOnly"
+    "typegen": "vue-tsc --declaration --emitDeclarationOnly"
   },
   "dependencies": {
     "@gouvfr/dsfr": "~1.9.3",
