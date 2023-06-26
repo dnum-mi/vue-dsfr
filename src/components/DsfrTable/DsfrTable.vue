@@ -1,38 +1,16 @@
-<script>
-import { defineComponent } from 'vue'
-
-import DsfrTableRow from './DsfrTableRow.vue'
+<script lang="ts" setup>
+import DsfrTableRow, { type DsfrTableRowProps } from './DsfrTableRow.vue'
 import DsfrTableHeaders from './DsfrTableHeaders.vue'
+import { type DsfrTableHeaderProps } from './DsfrTableHeader.vue'
 
-export default defineComponent({
-  name: 'DsfrTable',
-
-  components: {
-    DsfrTableRow,
-    DsfrTableHeaders,
-  },
-
-  props: {
-    title: {
-      type: String,
-      default: undefined,
-    },
-    headers: {
-      type: Array,
-      default: () => [],
-    },
-    rows: {
-      type: [Array, Object],
-      default: () => [],
-    },
-    noCaption: Boolean,
-  },
-
-  computed: {
-    isWithContent () {
-      return this.headers?.length || this.rows?.length
-    },
-  },
+withDefaults(defineProps<{
+  title?: string
+  headers?:(DsfrTableHeaderProps | string)[]
+  rows?: DsfrTableRowProps[]
+  noCaption?: boolean
+}>(), {
+  title: undefined,
+  headers: () => [],
 })
 </script>
 

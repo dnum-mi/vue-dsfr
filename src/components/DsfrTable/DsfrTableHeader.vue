@@ -1,28 +1,17 @@
-<script>
-import { defineComponent } from 'vue'
-import { OhVueIcon as VIcon } from 'oh-vue-icons'
+<script lang="ts" setup>
+import { type ThHTMLAttributes } from 'vue'
+import { type CustomizeIconType, OhVueIcon as VIcon } from 'oh-vue-icons'
 
-export default defineComponent({
-  name: 'DsfrTableHeader',
+export type DsfrTableHeaderProps = {
+  header?: string
+  headerAttrs?: ThHTMLAttributes
+  icon?: CustomizeIconType
+}
 
-  components: {
-    VIcon,
-  },
-
-  props: {
-    header: {
-      type: String,
-      default: '',
-    },
-    headerAttrs: {
-      type: Object,
-      default: () => ({}),
-    },
-    icon: {
-      type: Object,
-      default: undefined,
-    },
-  },
+withDefaults(defineProps<DsfrTableHeaderProps>(), {
+  header: '',
+  headerAttrs: () => ({}),
+  icon: undefined,
 })
 </script>
 

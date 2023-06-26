@@ -1,31 +1,21 @@
-<script>
-import { defineComponent } from 'vue'
+<script lang="ts" setup>
+import { TdHTMLAttributes, computed } from 'vue'
 
-export default defineComponent({
-  name: 'DsfrTableCell',
+export type DsfrTableCellProps = {
+  field?: string | Record<string, any>
+  cellAttrs?: TdHTMLAttributes
+}
 
-  props: {
-    field: {
-      type: [String, Object],
-      default: undefined,
-    },
-    cellAttrs: {
-      type: Object,
-      default: () => ({}),
-    },
-  },
+const props = withDefaults(defineProps<DsfrTableCellProps>(), {
+  field: undefined,
+  cellAttrs: () => ({}),
+})
 
-  computed: {
-    isObject () {
-      return typeof this.field === 'object' && this.field !== null
-    },
-    component () {
-      return (this.isObject && this.field.component) ? this.field.component : false
-    },
-    isString () {
-      return typeof this.field === 'string'
-    },
-  },
+const component = computed(() => {
+  return (typeof props.field === 'object' && props.field !== null && props.field.component) ? props.field.component : false
+})
+const isString = computed(() => {
+  return typeof props.field === 'string'
 })
 </script>
 

@@ -42,7 +42,7 @@ const fieldWithComponentSimple = {
   component: 'a',
   text: 'Vers la page d\'accueil',
   href: '/',
-  'aria-label': "Vers la page d'accueil",
+  'aria-label': 'Vers la page d’accueil',
 }
 
 const cellAttrs = {

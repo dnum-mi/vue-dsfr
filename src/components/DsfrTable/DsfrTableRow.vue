@@ -1,15 +1,15 @@
-<script setup>
+<script lang="ts" setup>
+import { type HTMLAttributes } from 'vue'
 import DsfrTableCell from './DsfrTableCell.vue'
 
-defineProps({
-  rowData: {
-    type: Array,
-    default: () => [],
-  },
-  rowAttrs: {
-    type: Object,
-    default: () => ({}),
-  },
+export type DsfrTableRowProps = {
+  rowData?: string[]
+  rowAttrs?: HTMLAttributes
+}
+
+withDefaults(defineProps<DsfrTableRowProps>(), {
+  rowData: () => [],
+  rowAttrs: () => ({}),
 })
 </script>
 
