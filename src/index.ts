@@ -1,16 +1,23 @@
 import { addIcons, OhVueIcon, type CustomizeIconType } from 'oh-vue-icons'
-import * as components from './components/index.js'
+import * as vueDsfrComponents from './components/index.js'
 import * as defaultIcons from './icons.js'
-import type { App } from 'vue'
+import type { App, Component } from 'vue'
+
+export type VueDsfrPluginOptions = {
+  icons?: CustomizeIconType[]
+  components?: 'all' | Component[]
+}
 
 export default {
-  install: (app: App, { icons }: { icons?: CustomizeIconType[] } = {}) => {
-    Object.entries(components).forEach(([componentName, component]) => {
-      app.component(componentName, component)
+  install: (app: App, { icons: ovicons, components }: VueDsfrPluginOptions = {}) => {
+    Object.entries(vueDsfrComponents).forEach(([componentName, component]) => {
+      if (components === undefined || components === 'all' || components.map(({ name }) => name).includes(componentName)) {
+        app.component(componentName, component)
+      }
     })
     addIcons(...Object.values(defaultIcons))
-    if (icons) {
-      addIcons(...icons)
+    if (ovicons) {
+      addIcons(...ovicons)
     }
     app.component('VIcon', OhVueIcon)
   },
