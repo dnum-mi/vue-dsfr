@@ -1,21 +1,16 @@
-<script setup>
+<script setup lang="ts">
 import { computed } from 'vue'
 
-const props = defineProps({
-  asc: Boolean,
-  selected: Boolean,
-  panelId: {
-    type: String,
-    required: true,
-  },
-  tabId: {
-    type: String,
-    required: true,
-  },
-})
+const props = defineProps<{
+  asc?: boolean,
+  selected?: boolean,
+  panelId: string,
+  tabId: string,
+}>()
+
 const values = { true: '100%', false: '-100%' }
-const translateValueFrom = computed(() => values[props.asc])
-const translateValueTo = computed(() => values[!props.asc])
+const translateValueFrom = computed(() => values[String(props.asc)])
+const translateValueTo = computed(() => values[String(!props.asc)])
 </script>
 
 <template>
