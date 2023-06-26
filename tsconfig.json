@@ -1,6 +1,9 @@
 {
   "compilerOptions": {
     "allowJs": true,
+    "declaration": true,
+    "declarationMap": true,
+    "declarationDir": "./types",
     "outDir": "lib",
     "baseUrl": "./src",
     "rootDir": "./",

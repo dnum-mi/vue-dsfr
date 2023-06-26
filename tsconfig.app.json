@@ -1,5 +1,8 @@
 {
-  "extends": "@vue/tsconfig/tsconfig.json",
+  "extends": [
+    "@tsconfig/node18/tsconfig.json",
+    "@vue/tsconfig/tsconfig.json"
+  ],
   "include": ["env.d.ts", "./src/index.ts"],
   "exclude": ["src/**/__tests__/*", "./demo-app/**"],
   "compilerOptions": {
@@ -10,12 +13,14 @@
     "outDir": "./lib",
     "declaration": true,
     "declarationMap": true,
+    "declarationDir": "./types",
+    "esModuleInterop": false,
     "checkJs": true,
     "target": "ESNext",
     "paths": {
       "@/*": ["./src/*"]
     },
-    "lib": ["ES5", "DOM"],
+    "lib": ["ES2020", "DOM"],
     "types": ["cypress", "node"]
   }
 }
