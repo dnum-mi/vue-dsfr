@@ -320,3 +320,4 @@ $RECYCLE.BIN/
 
 # End of https://www.toptal.com/developers/gitignore/api/node,visualstudiocode,intellij,windows,macos,linux
 stats.html
+types/
