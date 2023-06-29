@@ -1,12 +1,13 @@
 <script lang="ts" setup>
 withDefaults(defineProps<{
   title?: string
-  copyLabel: string
-  mail: { label: string, to: string }
-  networks: { name: string, label: string, url: string }[]
+  copyLabel?: string
+  mail?: { label: string, to: string }
+  networks?: { name: string, label: string, url: string }[]
 }>(), {
   title: 'Partager la page',
   copyLabel: 'Copier dans le presse-papier',
+  // @ts-ignore this is really undefined
   mail: () => undefined,
   networks: () => [],
 })
@@ -15,7 +16,7 @@ const copyLocationToClipboard = () => {
   const url = window.location.href
   navigator.clipboard.writeText(url)
 }
-const openWindow = ({ url, label }) => {
+const openWindow = ({ url, label }: { url: string, label: string }) => {
   window.open(
     url,
     label,
@@ -45,7 +46,7 @@ const openWindow = ({ url, label }) => {
           {{ network.label }}
         </a>
       </li>
-      <li v-if="mail">
+      <li v-if="mail?.to">
         <a
           class="fr-btn fr-btn--mail"
           :href="mail.to"

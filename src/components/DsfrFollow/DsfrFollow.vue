@@ -10,6 +10,7 @@ export type DsfrFollowProps = {
 }
 
 const props = withDefaults(defineProps<DsfrFollowProps>(), {
+  // @ts-ignore this is really undefined
   newsletterData: () => undefined,
   networks: () => [],
 })

@@ -36,10 +36,10 @@ const isPathString = computed(() => {
   return typeof props.path === 'string'
 })
 const isExternalLink = computed(() => {
-  return props.href?.startsWith('http') || (isPathString.value && props.path.startsWith('http'))
+  return props.href?.startsWith('http') || (isPathString.value && (props.path as string).startsWith('http'))
 })
 const isMailto = computed(() => {
-  return props.href?.startsWith('mailto') || (isPathString.value && props.path.startsWith('mailto'))
+  return props.href?.startsWith('mailto') || (isPathString.value && (props.path as string).startsWith('mailto'))
 })
 const actualHref = computed(() => {
   if (!isExternalLink.value && !isMailto.value) {

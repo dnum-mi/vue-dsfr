@@ -26,10 +26,10 @@ const isString = computed(() => {
       v-if="component"
       v-bind="field"
     >
-      {{ field.text }}
+      {{ (field as Record<string, any>).text }}
     </component>
     <template v-else>
-      {{ isString ? field : field.text }}
+      {{ isString ? field : (field as Record<string, any>).text }}
     </template>
   </td>
 </template>

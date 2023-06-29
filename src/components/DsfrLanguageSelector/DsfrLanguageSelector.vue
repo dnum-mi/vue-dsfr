@@ -23,8 +23,9 @@ const props = withDefaults(defineProps<{
 
 const expanded = ref(false)
 
-const emit = defineEmits<{(e: 'select', payload: string): void}>()
-function selectLanguage (language) {
+type Language = { codeIso: string, label: string }
+const emit = defineEmits<{(e: 'select', payload: Language): void}>()
+function selectLanguage (language: Language) {
   expanded.value = false
   emit('select', language)
 }
@@ -55,7 +56,7 @@ watch(expanded, (newValue, oldValue) => {
         type="button"
         @click.prevent.stop="expanded = !expanded"
       >
-        {{ currentLanguageObject.codeIso.toUpperCase() }}<span class="fr-hidden-lg">&nbsp;- {{ currentLanguageObject.label }}</span>
+        {{ currentLanguageObject?.codeIso.toUpperCase() }}<span class="fr-hidden-lg">&nbsp;- {{ currentLanguageObject?.label }}</span>
       </button>
       <div
         :id="id"

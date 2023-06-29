@@ -29,9 +29,9 @@ const props = withDefaults(defineProps<DsfrHeaderProps>(), {
   modelValue: '',
   operatorImgAlt: '',
   operatorImgSrc: '',
-  operatorImgStyle: () => undefined,
+  operatorImgStyle: () => ({}),
   placeholder: 'Rechercher...',
-  quickLinks: () => undefined,
+  quickLinks: () => [],
   searchLabel: 'Recherche',
   quickLinksAriaLabel: 'Menu secondaire',
 })
@@ -162,7 +162,7 @@ defineEmits<{
           </div>
           <div class="fr-header__tools">
             <div
-              v-if="quickLinks && quickLinks.length"
+              v-if="quickLinks?.length"
               class="fr-header__tools-links"
             >
               <nav role="navigation">

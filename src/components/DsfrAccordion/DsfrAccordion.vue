@@ -12,7 +12,7 @@ export interface DsfrAccordionProps {
 
 const props = withDefaults(defineProps<DsfrAccordionProps>(), { id: () => getRandomId('accordion'), expandedId: undefined, title: 'Sans intitulé' })
 
-const emit = defineEmits<{(event: 'expand', id: string): void}>()
+const emit = defineEmits<{(event: 'expand', id: string | undefined): void}>()
 
 const {
   collapse,

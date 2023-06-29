@@ -51,7 +51,7 @@ const emitNewValue = ($event: InputEvent) => {
       v-bind="$attrs"
       :data-testid="`input-checkbox-${id}`"
       :data-test="`input-checkbox-${id}`"
-      @change="emitNewValue($event)"
+      @change="emitNewValue($event as InputEvent)"
     >
     <label
       :for="id"

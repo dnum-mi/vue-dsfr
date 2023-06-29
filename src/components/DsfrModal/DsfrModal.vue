@@ -4,7 +4,7 @@ import { FocusTrap } from 'focus-trap-vue'
 // import '@gouvfr/dsfr/dist/component/modal/modal.module.js'
 
 import DsfrButtonGroup from '../DsfrButton/DsfrButtonGroup.vue'
-import { onMounted, onBeforeUnmount, computed, ref, nextTick, watch } from 'vue'
+import { onMounted, onBeforeUnmount, computed, ref, nextTick, watch, Ref } from 'vue'
 
 const props = withDefaults(defineProps<{
   opened?: boolean
@@ -21,8 +21,8 @@ const props = withDefaults(defineProps<{
 
 const emit = defineEmits<{(e: 'close'): void}>()
 
-const closeIfEscape = ($event) => {
-  if ($event.key === 'Escape' || $event.keyCode === 27) {
+const closeIfEscape = ($event: KeyboardEvent) => {
+  if ($event.key === 'Escape') {
     close()
   }
 }
@@ -31,12 +31,12 @@ const role = computed(() => {
   return props.isAlert ? 'alertdialog' : 'dialog'
 })
 
-const closeBtn = ref(null)
+const closeBtn: Ref<HTMLButtonElement | null> = ref(null)
 watch(() => props.opened, (newValue) => {
   if (newValue) {
     document.body.classList.add('modal-open')
     setTimeout(() => {
-      closeBtn.value.focus()
+      closeBtn.value?.focus()
     }, 100)
   } else {
     document.body.classList.remove('modal-open')

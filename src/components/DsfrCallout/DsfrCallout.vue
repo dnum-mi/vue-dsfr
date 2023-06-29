@@ -8,6 +8,7 @@ withDefaults(defineProps<{
   button?: DsfrButtonProps
   icon?: string
 }>(), {
+  // @ts-ignore this is really undefined
   button: () => undefined,
   titleTag: 'h3',
   icon: undefined,

@@ -26,9 +26,9 @@ const emit = defineEmits<{
   (e: 'change', payload: FileList): void,
 }>()
 
-const onChange = ($event) => {
-  emit('update:modelValue', $event.target.value)
-  emit('change', $event.target.files)
+const onChange = ($event: InputEvent) => {
+  emit('update:modelValue', ($event.target as HTMLInputElement)?.value)
+  emit('change', ($event.target as (InputEvent['target'] & { files: FileList }))?.files)
 }
 </script>
 
@@ -55,12 +55,12 @@ const onChange = ($event) => {
       :id="id"
       class="fr-upload"
       type="file"
-      :aria-describedby="error || validMessage ? `${id}-desc` : null"
+      :aria-describedby="error || validMessage ? `${id}-desc` : undefined"
       v-bind="$attrs"
       :value="modelValue"
       :disabled="disabled"
       :accept="accept.join(',')"
-      @change="onChange($event)"
+      @change="onChange($event as InputEvent)"
     >
     <div
       v-if="error || validMessage"

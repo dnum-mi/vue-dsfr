@@ -15,17 +15,17 @@ const props = withDefaults(defineProps<{
   cookiesLink?: string
   logoText?: string | string[]
   descText?: string
-  beforeMandatoryLinks?: {label: string, to: RouteLocationRaw}[]
-  afterMandatoryLinks?: {label: string, to: RouteLocationRaw}[]
-  mandatoryLinks?: {label: string, to: RouteLocationRaw}[]
+  beforeMandatoryLinks?: {label: string, to: RouteLocationRaw | undefined}[]
+  afterMandatoryLinks?: {label: string, to: RouteLocationRaw | undefined}[]
+  mandatoryLinks?: {label: string, to: RouteLocationRaw | undefined}[]
   ecosystemLinks?: {label: string, href: string}[]
   operatorLinkText?: string
-  operatorTo?: RouteLocationRaw
+  operatorTo?: RouteLocationRaw | undefined
   operatorImgStyle?: StyleValue
   operatorImgSrc?: string
   operatorImgAlt?: string
   licenceTo?: string
-  licenceLinkProps?: { href: string } | { to: RouteLocationRaw }
+  licenceLinkProps?: { href: string } | { to: RouteLocationRaw | undefined }
   licenceText?: string
   licenceName?: string
 }>(), {
@@ -33,7 +33,8 @@ const props = withDefaults(defineProps<{
   a11yComplianceLink: '/a11y',
   legalLink: '/mentions-legales',
   homeLink: '/',
-  partners: () => null,
+  // @ts-ignore this is really undefined
+  partners: () => undefined,
   personalDataLink: '/donnees-personnelles',
   cookiesLink: '/cookies',
   logoText: () => ['République', 'Française'],
@@ -83,6 +84,7 @@ const props = withDefaults(defineProps<{
   operatorImgAlt: '',
   licenceText: 'Sauf mention contraire, tous les textes de ce site sont sous',
   licenceTo: 'https://github.com/etalab/licence-ouverte/blob/master/LO.md',
+  // @ts-ignore this is really undefined
   licenceLinkProps: () => undefined,
   licenceName: 'licence etalab-2.0',
 })
@@ -100,7 +102,7 @@ const isWithSlotLinkLists = computed(() => {
   return slots['footer-link-lists']?.().length
 })
 const isExternalLink = computed(() => {
-  const to = props.licenceTo || props.licenceLinkProps.to
+  const to = props.licenceTo || (props.licenceLinkProps as { to: RouteLocationRaw }).to
   return to && typeof to === 'string' && to.startsWith('http')
 })
 const routerLinkLicenceTo = computed(() => {
@@ -200,7 +202,7 @@ const aLicenceHref = computed(() => {
           >
             <RouterLink
               class="fr-footer__bottom-link"
-              :to="link.to"
+              :to="link.to ?? '#'"
               :data-testid="link.to"
             >
               {{ link.label }}

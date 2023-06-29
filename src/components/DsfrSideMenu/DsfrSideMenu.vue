@@ -19,6 +19,7 @@ withDefaults(defineProps<DsfrSideMenuProps>(), {
   buttonLabel: 'Dans cette rubrique',
   id: () => getRandomId('sidemenu'),
   collapseValue: '-492px',
+  // @ts-ignore this is really undefined
   menuItems: () => undefined,
   headingTitle: '',
 })

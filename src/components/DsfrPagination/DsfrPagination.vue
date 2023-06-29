@@ -1,8 +1,9 @@
 <script lang="ts" setup>
 import { computed } from 'vue'
 
+type Page = { href?: string, label: string, title: string }
 const props = withDefaults(defineProps<{
-  pages: { href?: string, label: string, title: string }[]
+  pages: Page[]
   currentPage?: number
   firstPageTitle?: string
   lastPageTitle?: string
@@ -14,13 +15,12 @@ const props = withDefaults(defineProps<{
   currentPage: 0,
   firstPageTitle: 'Première page',
   lastPageTitle: 'Dernière page',
-
   nextPageTitle: 'Page suivante',
   prevPageTitle: 'Page précédente',
 
 })
 
-const emit = defineEmits<{(e: 'update:currentPage', payload: string): void}>()
+const emit = defineEmits<{(e: 'update:currentPage', payload: number): void}>()
 
 const startIndex = computed(() => {
   return Math.min(props.pages.length - 1 - props.truncLimit, Math.max(props.currentPage - (props.truncLimit - props.truncLimit % 2) / 2, 0))
@@ -32,13 +32,13 @@ const displayedPages = computed(() => {
   return props.pages.length > props.truncLimit ? props.pages.slice(startIndex.value, endIndex.value + 1) : props.pages
 })
 
-const updatePage = (index) => emit('update:currentPage', index)
-const toPage = (index) => updatePage(index)
+const updatePage = (index: number) => emit('update:currentPage', index)
+const toPage = (index: number) => updatePage(index)
 const tofirstPage = () => toPage(0)
 const toPreviousPage = () => toPage(Math.max(0, props.currentPage - 1))
 const toNextPage = () => toPage(Math.min(props.pages.length - 1, props.currentPage + 1))
 const toLastPage = () => toPage(props.pages.length - 1)
-const isCurrentPage = (page) => props.pages.indexOf(page) === props.currentPage
+const isCurrentPage = (page: Page) => props.pages.indexOf(page) === props.currentPage
 </script>
 
 <template>
