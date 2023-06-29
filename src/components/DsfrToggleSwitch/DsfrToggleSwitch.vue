@@ -32,7 +32,7 @@ const labelId = computed(() => {
       :data-testid="inputId"
       class="fr-toggle__input"
       :aria-describedby="labelId"
-      @input="$emit('update:modelValue', $event.target.checked)"
+      @input="$emit('update:modelValue', ($event.target as HTMLInputElement).checked)"
     >
     <label
       :id="labelId"

@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { ref, onMounted, onUnmounted } from 'vue'
+import { ref, onMounted, onUnmounted, Ref } from 'vue'
 import { RouteLocationNormalized } from 'vue-router'
 
 import { getRandomId } from '../../utils/random-utils'
@@ -13,8 +13,9 @@ const props = withDefaults(defineProps<{
   id?: string
   label?: string
   navItems:(
-    { text: string ; to?: RouteLocationNormalized }
-    | { title: string ; links?: DsfrNavigationMenuLinkProps | DsfrNavigationMegaMenuProps | DsfrNavigationMenuProps }
+    { text?: string ; to?: RouteLocationNormalized }
+    & { title?: string ; links?: DsfrNavigationMenuLinkProps | DsfrNavigationMegaMenuProps | DsfrNavigationMenuProps }
+    & { menus: { title?: string ; links?: DsfrNavigationMenuLinkProps | DsfrNavigationMegaMenuProps | DsfrNavigationMenuProps }[]}
   )[]
 }>(), {
   id: () => getRandomId('menu'),
@@ -22,9 +23,9 @@ const props = withDefaults(defineProps<{
   navItems: () => [],
 })
 
-const expandedMenuId = ref(undefined)
+const expandedMenuId: Ref<string | undefined> = ref(undefined)
 
-const toggle = (id) => {
+const toggle = (id: string | undefined) => {
   if (id === expandedMenuId.value) {
     expandedMenuId.value = undefined
     return
@@ -32,17 +33,17 @@ const toggle = (id) => {
   expandedMenuId.value = id
 }
 
-const onDocumentClick = (e) => {
-  handleElementClick(e.target)
+const onDocumentClick = (e: MouseEvent) => {
+  handleElementClick(e.target as HTMLElement)
 }
 
-const onKeyDown = (e) => {
+const onKeyDown = (e: KeyboardEvent) => {
   if (e.key === 'Escape') {
     toggle(expandedMenuId.value)
   }
 }
 
-const handleElementClick = (el) => {
+const handleElementClick = (el: HTMLElement) => {
   if (el === document.getElementById(props.id)) {
     return
   }
@@ -52,7 +53,7 @@ const handleElementClick = (el) => {
     return
   }
 
-  handleElementClick(el.parentNode)
+  handleElementClick(el.parentNode as HTMLElement)
 }
 
 onMounted(() => {
@@ -79,18 +80,21 @@ onUnmounted(() => {
         v-for="(navItem, idx) of navItems"
         :key="idx"
       >
+        <!-- @vue-ignore -->
         <DsfrNavigationMenuLink
           v-if="navItem.to && navItem.text"
           v-bind="navItem"
           :expanded-id="expandedMenuId"
           @toggle-id="toggle($event)"
         />
+        <!-- @vue-ignore -->
         <DsfrNavigationMenu
           v-else-if="navItem.title && navItem.links"
           v-bind="navItem"
           :expanded-id="expandedMenuId"
           @toggle-id="toggle($event)"
         />
+        <!-- @vue-ignore -->
         <DsfrNavigationMegaMenu
           v-else-if="navItem.title && navItem.menus"
           v-bind="navItem"

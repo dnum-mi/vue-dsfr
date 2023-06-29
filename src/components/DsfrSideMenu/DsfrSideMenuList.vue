@@ -5,13 +5,19 @@ import { useCollapsable } from '../../composables'
 
 import DsfrSideMenuListItem, { DsfrSideMenuListItemProps } from './DsfrSideMenuListItem.vue'
 import DsfrSideMenuButton from './DsfrSideMenuButton.vue'
+import { RouteLocationRaw } from 'vue-router'
 
-const props = withDefaults(defineProps<{
+export type DsfrSideMenuListProps = {
   id: string
   collapsable?: boolean
   expanded?: boolean
-  menuItems?: DsfrSideMenuListItemProps[]
-}>(), {
+  menuItems?:(
+    DsfrSideMenuListItemProps & Partial<DsfrSideMenuListProps & {to?: RouteLocationRaw, text?: string}>
+      & { menuItems?: (DsfrSideMenuListItemProps & Partial<DsfrSideMenuListProps & {to?: RouteLocationRaw, text?: string}>)[] }
+  )[]
+}
+
+const props = withDefaults(defineProps<DsfrSideMenuListProps>(), {
   menuItems: () => [],
 })
 
@@ -37,13 +43,13 @@ onMounted(() => {
   }
 })
 
-const isExternalLink = (to) => {
+const isExternalLink = (to: string | RouteLocationRaw | undefined) => {
   return typeof to === 'string' && to.startsWith('http')
 }
-const is = (to) => {
+const is = (to: string | RouteLocationRaw | undefined) => {
   return isExternalLink(to) ? 'a' : 'RouterLink'
 }
-const linkProps = (to) => {
+const linkProps = (to: string | RouteLocationRaw | undefined) => {
   return { [isExternalLink(to) ? 'href' : 'to']: to }
 }
 </script>
@@ -57,7 +63,7 @@ const linkProps = (to) => {
       'fr-collapsing': collapsing,
       'fr-collapse--expanded': cssExpanded
     }"
-    @transitionend="onTransitionEnd(expanded)"
+    @transitionend="onTransitionEnd(!!expanded)"
   >
     <ul
       class="fr-sidemenu__list"
@@ -84,14 +90,14 @@ const linkProps = (to) => {
           <DsfrSideMenuButton
             :active="!!menuItem.active"
             :expanded="!!menuItem.expanded"
-            :control-id="menuItem.id"
+            :control-id="(menuItem.id as string)"
             @toggle-expand="$emit('toggle-expand', $event)"
           >
             {{ menuItem.text }}
           </DsfrSideMenuButton>
           <DsfrSideMenuList
             v-if="menuItem.menuItems"
-            :id="menuItem.id"
+            :id="(menuItem.id as string)"
             collapsable
             :expanded="menuItem.expanded"
             :menu-items="menuItem.menuItems"

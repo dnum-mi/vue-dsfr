@@ -28,7 +28,7 @@ const isExternal = computed(() => typeof props.to === 'string' && props.to.start
     v-if="isExternal"
     class="fr-nav__link"
     data-testid="nav-external-link"
-    :href="to"
+    :href="(to as string)"
     @click="$emit('toggle-id', id)"
   >
     {{ text }}

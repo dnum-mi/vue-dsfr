@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { computed, ref } from 'vue'
+import { type Ref, computed, ref } from 'vue'
 import { OhVueIcon as VIcon } from 'oh-vue-icons'
 
 // import '@gouvfr/dsfr/dist/component/button/button.module.js'
@@ -28,9 +28,9 @@ const sm = computed(() => ['sm', 'small'].includes(props.size))
 const md = computed(() => ['md', 'medium'].includes(props.size))
 const lg = computed(() => ['lg', 'large'].includes(props.size))
 
-const btn = ref('')
+const btn: Ref<{focus: () => void} | null> = ref(null)
 const focus = () => {
-  btn.value.focus()
+  btn.value?.focus()
 }
 defineExpose({ focus })
 </script>

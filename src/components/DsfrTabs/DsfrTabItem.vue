@@ -1,12 +1,14 @@
 <script lang="ts" setup>
-import { ref, watch } from 'vue'
+import { ref, watch, type Ref } from 'vue'
 
-const props = withDefaults(defineProps<{
+export type DsfrTabItemProps = {
   panelId: string
   tabId: string
   selected?: boolean
   icon?: string
-}>(), {
+}
+
+const props = withDefaults(defineProps<DsfrTabItemProps>(), {
   icon: undefined,
 })
 
@@ -19,11 +21,11 @@ defineEmits<{
   (e: 'last', payload: string): void,
 }>()
 
-const button = ref(null)
+const button: Ref<HTMLButtonElement | null> = ref(null)
 
 watch(() => props.selected, (newValue) => {
   if (newValue) {
-    button.value.focus()
+    button.value?.focus()
   }
 })
 </script>

@@ -3,7 +3,7 @@ withDefaults(defineProps<{
   steps: string[]
   currentStep: number
 }>(), {
-  steps: () => undefined,
+  steps: () => [],
   currentStep: 1,
 })
 </script>

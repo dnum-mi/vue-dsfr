@@ -21,7 +21,7 @@ const sm = computed(() => ['sm', 'small'].includes(props.size))
 const md = computed(() => ['md', 'medium'].includes(props.size))
 const lg = computed(() => ['lg', 'large'].includes(props.size))
 
-const inlineAlways = computed(() => props.inline || ['always', true].includes(props.inlineLayoutWhen))
+const inlineAlways = computed(() => ['always', true].includes(props.inlineLayoutWhen))
 const inlineSm = computed(() => ['sm', 'small'].includes(props.inlineLayoutWhen as string))
 const inlineMd = computed(() => ['md', 'medium'].includes(props.inlineLayoutWhen as string))
 const inlineLg = computed(() => ['lg', 'large'].includes(props.inlineLayoutWhen as string))

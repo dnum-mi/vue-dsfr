@@ -12,7 +12,7 @@ export type DsfrFooterPartnersProps = {
 }
 
 withDefaults(defineProps<DsfrFooterPartnersProps>(), {
-  mainPartner: null,
+  mainPartner: undefined,
   subPartners: () => [],
   title: '',
 })

@@ -60,7 +60,7 @@ const updateEmail = ($event: InputEvent) => emit('update:email', $event.target.v
             name="newsletter-email"
             :value="email"
             autocomplete="email"
-            @input="updateEmail($event)"
+            @input="updateEmail($event as InputEvent)"
           >
           <button
             id="newsletter-button"

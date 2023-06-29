@@ -42,7 +42,7 @@ const isExternalLink = computed(() => {
           v-if="isExternalLink"
           class="fr-tile__link"
           target="_blank"
-          :href="disabled ? '' : to"
+          :href="disabled ? '' : (to as string)"
         >{{ title }}</a>
         <RouterLink
           v-if="!isExternalLink"

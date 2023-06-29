@@ -4,7 +4,7 @@ import { type CustomizeIconType, OhVueIcon as VIcon } from 'oh-vue-icons'
 
 export type DsfrTableHeaderProps = {
   header?: string
-  headerAttrs?: ThHTMLAttributes
+  headerAttrs?: ThHTMLAttributes & { onClick?: (e: MouseEvent) => void }
   icon?: CustomizeIconType
 }
 

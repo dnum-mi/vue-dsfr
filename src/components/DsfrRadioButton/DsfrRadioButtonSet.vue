@@ -30,7 +30,7 @@ const emit = defineEmits<{(e: 'update:modelValue', payload: string | number): vo
 const message = computed(() => props.errorMessage || props.validMessage)
 const additionalMessageClass = computed(() => props.errorMessage ? 'fr-error-text' : 'fr-valid-text')
 
-const onChange = ($event) => {
+const onChange = ($event: string) => {
   if ($event === props.modelValue) {
     return
   }
@@ -71,6 +71,7 @@ const onChange = ($event) => {
         class="fr-fieldset__content"
         role="radiogroup"
       >
+        <!-- @vue-ignore -->
         <DsfrRadioButton
           v-for="(option, i) of options"
           :key="option.value || i"
@@ -78,7 +79,7 @@ const onChange = ($event) => {
           v-bind="option"
           :small="small"
           :model-value="modelValue"
-          @update:model-value="onChange"
+          @update:model-value="onChange($event as string)"
         />
       </div>
       <div

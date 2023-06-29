@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { ref, computed, useAttrs } from 'vue'
+import { ref, computed, useAttrs, Ref } from 'vue'
 import { getRandomId } from '../../utils/random-utils'
 
 defineOptions({
@@ -31,8 +31,8 @@ const props = withDefaults(defineProps<{
 
 const attrs = useAttrs()
 
-const __input = ref(null)
-const focus = () => __input.value.focus()
+const __input: Ref<HTMLElement | null> = ref(null)
+const focus = () => __input.value?.focus()
 
 const isComponent = computed(() => props.isTextarea ? 'textarea' : 'input')
 const wrapper = computed(() => props.isWithWrapper || attrs.type === 'date' || !!props.wrapperClass)

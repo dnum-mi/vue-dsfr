@@ -1,6 +1,6 @@
 
 <script lang="ts" setup>
-import { computed, ref } from 'vue'
+import { computed, ref, type Ref } from 'vue'
 import { RouteLocationNormalized } from 'vue-router'
 import DsfrButtonGroup from '../DsfrButton/DsfrButtonGroup.vue'
 import { type DsfrButtonProps } from '../DsfrButton/DsfrButton.vue'
@@ -15,7 +15,7 @@ const props = withDefaults(defineProps<{
   altImg?: string
   titleTag?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'
   buttons?: DsfrButtonProps[]
-  linksGroup?:(string | ({ label: string } & ({ to: RouteLocationNormalized } | { link: string } | { href: string })))[]
+  linksGroup?:({ label: string, to?: RouteLocationNormalized, link?: string, href?: string })[]
   noArrow?: boolean
   horizontal?: boolean
 }>(), {
@@ -39,9 +39,9 @@ const externalLink = computed(() => {
   return typeof props.link === 'string' && props.link.startsWith('http')
 })
 
-const titleElt = ref(null)
+const titleElt: Ref<HTMLElement | null> = ref(null)
 const goToTargetLink = () => {
-  titleElt.value.querySelector('.fr-card__link').click()
+  (titleElt.value?.querySelector('.fr-card__link') as HTMLDivElement).click()
 }
 defineExpose({ goToTargetLink })
 </script>
@@ -66,7 +66,7 @@ defineExpose({ goToTargetLink })
         >
           <a
             v-if="externalLink"
-            :href="link"
+            :href="(link as string)"
             data-testid="card-link"
             class="fr-card__link"
           >{{ title }}</a>
@@ -107,11 +107,18 @@ defineExpose({ goToTargetLink })
           class="fr-links-group"
         >
           <li
-            v-for="singleLink in linksGroup"
-            :key="singleLink.link || singleLink.href || singleLink.to"
+            v-for="(singleLink, i) in linksGroup"
+            :key="`card-link-${i}`"
           >
+            <RouterLink
+              v-if="singleLink.to"
+              :to="singleLink.to"
+            >
+              {{ singleLink.label }}
+            </RouterLink>
             <a
-              :href="singleLink.link || singleLink.href || singleLink.to"
+              v-else
+              :href="(singleLink.link || singleLink.href)"
               :class="{
                 'fr-link': true,
                 'fr-icon-arrow-right-line': true,

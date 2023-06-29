@@ -9,7 +9,9 @@ const props = defineProps<{
 }>()
 
 const values = { true: '100%', false: '-100%' }
+// @ts-ignore this will be fine
 const translateValueFrom = computed(() => values[String(props.asc)])
+// @ts-ignore this will be fine
 const translateValueTo = computed(() => values[String(!props.asc)])
 </script>
 

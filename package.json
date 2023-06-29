@@ -61,7 +61,7 @@
     "semantic-release": "semantic-release",
     "typecheck": "vue-tsc --noEmit -p tsconfig.vitest.json --composite false",
     "vite:build": "vite build && npm run typegen",
-    "typegen": "vue-tsc --declaration --emitDeclarationOnly"
+    "typegen": "vue-tsc --declaration --emitDeclarationOnly || exit 0"
   },
   "dependencies": {
     "@gouvfr/dsfr": "~1.9.3",

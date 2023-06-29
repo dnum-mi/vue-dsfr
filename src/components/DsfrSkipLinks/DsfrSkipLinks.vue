@@ -3,10 +3,10 @@ defineProps<{
   links: { id: string, text: string }[]
 }>()
 
-const scrollMeTo = (elementId) => {
+const scrollMeTo = (elementId: string) => {
   const element = document.getElementById(elementId)
   const top = element?.offsetTop
-  window.scrollTo(0, top)
+  window.scrollTo(0, top || 0)
 }
 </script>
 

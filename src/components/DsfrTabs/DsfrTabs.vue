@@ -1,14 +1,14 @@
 <script lang="ts" setup>
-import { ref, onMounted, onUnmounted, reactive } from 'vue'
+import { ref, onMounted, onUnmounted, reactive, type Ref } from 'vue'
 
 import { getRandomId } from '../../utils/random-utils'
 
-import DsfrTabItem from './DsfrTabItem.vue'
+import DsfrTabItem, { DsfrTabItemProps } from './DsfrTabItem.vue'
 import DsfrTabContent from './DsfrTabContent.vue'
 
 const props = withDefaults(defineProps<{
   tabListName: string
-  tabTitles: string[]
+  tabTitles:(DsfrTabItemProps & { title: string })[]
   tabContents?: string[]
   initialSelectedIndex?: number
 }>(), {
@@ -19,11 +19,11 @@ const props = withDefaults(defineProps<{
 const emit = defineEmits<{(e: 'select-tab', payload: number): void}>()
 
 const selectedIndex = ref(props.initialSelectedIndex || 0)
-const generatedIds = reactive({})
+const generatedIds: Record<string, string> = reactive({})
 const asc = ref(true)
-const resizeObserver = ref(null)
-const $el = ref(null)
-const tablist = ref(null)
+const resizeObserver: Ref<ResizeObserver | null> = ref(null)
+const $el: Ref<HTMLElement | null> = ref(null)
+const tablist: Ref<HTMLUListElement | null> = ref(null)
 
 onMounted(() => {
   /*
@@ -51,7 +51,7 @@ onUnmounted(() => {
   })
 })
 
-const isSelected = (idx) => {
+const isSelected = (idx: number) => {
   return selectedIndex.value === idx
 }
 
@@ -68,16 +68,16 @@ const renderTabs = () => {
   }
   const tablistHeight = tablist.value.offsetHeight
   // Need to manually select tabs-content in case of manual slot filling
-  const selectedTab = $el.value.querySelectorAll('.fr-tabs__panel')[selectedIndex.value]
-  if (!selectedTab || !selectedTab.offsetHeight) {
+  const selectedTab = $el.value?.querySelectorAll('.fr-tabs__panel')[selectedIndex.value]
+  if (!selectedTab || !(selectedTab as HTMLElement).offsetHeight) {
     return
   }
-  const selectedTabHeight = selectedTab.offsetHeight
+  const selectedTabHeight = (selectedTab as HTMLElement).offsetHeight
 
-  $el.value.style.setProperty('--tabs-height', (tablistHeight + selectedTabHeight) + 'px')
+  $el.value?.style.setProperty('--tabs-height', (tablistHeight + selectedTabHeight) + 'px')
 }
 
-const getIdFromIndex = (idx) => {
+const getIdFromIndex = (idx: number) => {
   if (generatedIds[idx]) {
     return generatedIds[idx]
   }

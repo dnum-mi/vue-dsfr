@@ -68,7 +68,7 @@ const messageType = computed(() => {
       :name="selectId"
       :disabled="disabled"
       :required="required"
-      @change="$emit('update:modelValue', $event.target.value)"
+      @change="$emit('update:modelValue',($event.target as HTMLInputElement)?.value)"
     >
       <option
         value=""
