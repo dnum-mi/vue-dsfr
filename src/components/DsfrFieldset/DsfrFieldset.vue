@@ -1,31 +1,16 @@
-<script>
-import { defineComponent } from 'vue'
-
-export default defineComponent({
-  name: 'DsfrFieldset',
-
-  props: {
-    legend: {
-      type: String,
-      default: '',
-    },
-    legendClass: {
-      type: [String, Object],
-      default: '',
-    },
-    legendId: {
-      type: String,
-      default: undefined,
-    },
-    hint: {
-      type: String,
-      default: '',
-    },
-    hintClass: {
-      type: [String, Object],
-      default: '',
-    },
-  },
+<script lang="ts" setup>
+withDefaults(defineProps<{
+  legend?: string
+  legendClass?: string
+  legendId?: string
+  hint?: string
+  hintClass?: string
+}>(), {
+  legend: '',
+  legendId: '',
+  legendClass: '',
+  hint: '',
+  hintClass: '',
 })
 </script>
 

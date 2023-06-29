@@ -1,53 +1,35 @@
-<script>
-import { defineComponent } from 'vue'
-import { getRandomId } from '../../utils/random-utils.js'
+<script lang="ts" setup>
+import { getRandomId } from '../../utils/random-utils'
 
-export default defineComponent({
-  name: 'DsfrFileUpload',
-
-  props: {
-    id: {
-      type: String,
-      default: () => getRandomId('file-upload'),
-    },
-    label: {
-      type: String,
-      default: 'Ajouter un fichier',
-    },
-    accept: {
-      type: Array,
-      default: () => [],
-    },
-    hint: {
-      type: String,
-      default: '',
-    },
-    error: {
-      type: String,
-      default: '',
-    },
-    validMessage: {
-      type: String,
-      default: '',
-    },
-    disabled: {
-      type: Boolean,
-    },
-    modelValue: {
-      type: String,
-      default: '',
-    },
-  },
-
-  emits: ['update:modelValue', 'change'],
-
-  methods: {
-    onChange ($event) {
-      this.$emit('update:modelValue', $event.target.value)
-      this.$emit('change', $event.target.files)
-    },
-  },
+withDefaults(defineProps<{
+  id?: string
+  label?: string
+  accept?: string[]
+  hint?: string
+  error?: string
+  validMessage?: string
+  disabled?: boolean
+  modelValue?: string
+}>(), {
+  id: () => getRandomId('file-upload'),
+  label: 'Ajouter un fichier',
+  accept: () => [],
+  hint: '',
+  validMessage: '',
+  error: '',
+  modelValue: '',
 })
+
+// eslint-disable-next-line func-call-spacing
+const emit = defineEmits<{
+  (e: 'update:modelValue', payload: string): void,
+  (e: 'change', payload: FileList): void,
+}>()
+
+const onChange = ($event) => {
+  emit('update:modelValue', $event.target.value)
+  emit('change', $event.target.files)
+}
 </script>
 
 <template>

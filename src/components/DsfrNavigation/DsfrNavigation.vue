@@ -1,82 +1,67 @@
-<script>
-import { defineComponent } from 'vue'
+<script lang="ts" setup>
+import { ref, onMounted, onUnmounted } from 'vue'
+import { RouteLocationNormalized } from 'vue-router'
 
-// import '@gouvfr/dsfr/dist/component/navigation/navigation.module.js'
-
-import { getRandomId } from '../../utils/random-utils.js'
+import { getRandomId } from '../../utils/random-utils'
 
 import DsfrNavigationItem from './DsfrNavigationItem.vue'
-import DsfrNavigationMenuLink from './DsfrNavigationMenuLink.vue'
-import DsfrNavigationMenu from './DsfrNavigationMenu.vue'
-import DsfrNavigationMegaMenu from './DsfrNavigationMegaMenu.vue'
+import DsfrNavigationMenuLink, { type DsfrNavigationMenuLinkProps } from './DsfrNavigationMenuLink.vue'
+import DsfrNavigationMenu, { type DsfrNavigationMenuProps } from './DsfrNavigationMenu.vue'
+import DsfrNavigationMegaMenu, { type DsfrNavigationMegaMenuProps } from './DsfrNavigationMegaMenu.vue'
 
-export default defineComponent({
-  name: 'DsfrNavigation',
+const props = withDefaults(defineProps<{
+  id?: string
+  label?: string
+  navItems:(
+    { text: string ; to?: RouteLocationNormalized }
+    | { title: string ; links?: DsfrNavigationMenuLinkProps | DsfrNavigationMegaMenuProps | DsfrNavigationMenuProps }
+  )[]
+}>(), {
+  id: () => getRandomId('menu'),
+  label: 'Menu principal',
+  navItems: () => [],
+})
 
-  components: {
-    DsfrNavigationItem,
-    DsfrNavigationMenuLink,
-    DsfrNavigationMenu,
-    DsfrNavigationMegaMenu,
-  },
+const expandedMenuId = ref(undefined)
 
-  props: {
-    id: {
-      type: String,
-      default: () => getRandomId('menu'),
-    },
-    label: {
-      type: String,
-      default: 'Menu principal',
-    },
-    navItems: {
-      type: Array,
-      default: () => [],
-    },
-  },
+const toggle = (id) => {
+  if (id === expandedMenuId.value) {
+    expandedMenuId.value = undefined
+    return
+  }
+  expandedMenuId.value = id
+}
 
-  data () {
-    return {
-      expandedMenuId: undefined,
-    }
-  },
-  mounted () {
-    document.addEventListener('click', this.onDocumentClick)
-    document.addEventListener('keydown', this.onKeyDown)
-  },
-  unmounted () {
-    document.removeEventListener('click', this.onDocumentClick)
-    document.removeEventListener('keydown', this.onKeyDown)
-  },
-  methods: {
-    toggle (id) {
-      if (id === this.expandedMenuId) {
-        this.expandedMenuId = undefined
-        return
-      }
-      this.expandedMenuId = id
-    },
-    onDocumentClick (e) {
-      this.handleElementClick(e.target)
-    },
-    onKeyDown (e) {
-      if (e.key === 'Escape') {
-        this.toggle(this.expandedMenuId)
-      }
-    },
-    handleElementClick (el) {
-      if (el === document.getElementById(this.id)) {
-        return
-      }
+const onDocumentClick = (e) => {
+  handleElementClick(e.target)
+}
 
-      if (!el?.parentNode) {
-        this.toggle(this.expandedMenuId)
-        return
-      }
+const onKeyDown = (e) => {
+  if (e.key === 'Escape') {
+    toggle(expandedMenuId.value)
+  }
+}
 
-      this.handleElementClick(el.parentNode)
-    },
-  },
+const handleElementClick = (el) => {
+  if (el === document.getElementById(props.id)) {
+    return
+  }
+
+  if (!el?.parentNode) {
+    toggle(expandedMenuId.value)
+    return
+  }
+
+  handleElementClick(el.parentNode)
+}
+
+onMounted(() => {
+  document.addEventListener('click', onDocumentClick)
+  document.addEventListener('keydown', onKeyDown)
+})
+onUnmounted(() => {
+  document.removeEventListener('click', onDocumentClick)
+  document.removeEventListener('keydown', onKeyDown)
 })
 </script>
 
@@ -98,7 +83,7 @@ export default defineComponent({
           v-if="navItem.to && navItem.text"
           v-bind="navItem"
           :expanded-id="expandedMenuId"
-          @click="toggle($event)"
+          @toggle-id="toggle($event)"
         />
         <DsfrNavigationMenu
           v-else-if="navItem.title && navItem.links"

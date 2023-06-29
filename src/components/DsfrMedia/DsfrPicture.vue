@@ -1,35 +1,18 @@
-<script>
-import { defineComponent } from 'vue'
+<script lang="ts" setup>
 
-export default defineComponent({
-  name: 'DsfrPicture',
-  props: {
-    alt: {
-      type: String,
-      default: '',
-    },
-    legend: {
-      type: String,
-      default: '',
-    },
-    size: {
-      type: String,
-      default: undefined,
-      validator: (val) => ['small', 'medium', 'large', undefined].includes(val),
-    },
-    src: {
-      type: String,
-      default: undefined,
-    },
-    title: {
-      type: String,
-      default: '',
-    },
-    ratio: {
-      type: String,
-      default: '16x9',
-    },
-  },
+withDefaults(defineProps<{
+  alt?: string
+  legend?: string
+  size?: 'small' | 'medium' | 'large' | undefined
+  src: string
+  title?: string
+  ratio?: string
+}>(), {
+  alt: '',
+  legend: '',
+  title: '',
+  size: 'medium',
+  ratio: '16x9',
 })
 </script>
 

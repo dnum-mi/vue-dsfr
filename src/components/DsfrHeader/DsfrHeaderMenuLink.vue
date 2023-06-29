@@ -1,84 +1,60 @@
-<script>
-import { defineComponent } from 'vue'
+<script lang="ts" setup>
+import { computed, type HTMLAttributes } from 'vue'
 import { OhVueIcon as VIcon } from 'oh-vue-icons'
+import { type RouteLocationRaw } from 'vue-router'
 
-export default defineComponent({
-  name: 'DsfrHeaderMenuLink',
+export type DsfrHeaderMenuLinkProps = {
+  button?: boolean
+  icon?: string
+  iconAttrs?: HTMLAttributes
+  iconRight?: boolean
+  label?: string
+  target?: string
+  onClick?: ($event: MouseEvent) => void
+  to?: RouteLocationRaw
+  href?: string
+}
 
-  components: {
-    VIcon,
-  },
+const props = withDefaults(defineProps<DsfrHeaderMenuLinkProps>(), {
+  icon: '',
+  iconAttrs: () => ({}),
+  onClick: () => undefined,
+  target: '_self',
+  label: '',
+  href: undefined,
+  to: undefined,
+  path: '',
+})
 
-  props: {
-    /** @deprecated Utiliser `to` ou `href` à la place */
-    path: {
-      type: [String, Object],
-      default: undefined,
-    },
-    button: Boolean,
-    icon: {
-      type: String,
-      default: undefined,
-    },
-    iconAttrs: {
-      type: Object,
-      default: () => {},
-    },
-    iconRight: Boolean,
-    label: {
-      type: String,
-      default: '',
-    },
-    onClick: {
-      type: Function,
-      default: () => {},
-    },
-    to: {
-      type: [String, Object],
-      default: undefined,
-    },
-    href: {
-      type: String,
-      default: undefined,
-    },
-    target: {
-      type: String,
-      default: '_self',
-    },
-  },
-
-  computed: {
-    is () {
-      if (this.button) {
-        return 'button'
-      }
-      return this.isExternalLink || this.isMailto ? 'a' : 'RouterLink'
-    },
-    isPathString () {
-      return typeof this.path === 'string'
-    },
-    isExternalLink () {
-      return this.href?.startsWith('http') || (this.isPathString && this.path.startsWith('http'))
-    },
-    isMailto () {
-      return this.href?.startsWith('mailto') || (this.isPathString && this.path.startsWith('mailto'))
-    },
-    actualHref () {
-      if (!this.isExternalLink && !this.isMailto) {
-        return undefined
-      }
-      return this.href !== undefined ? this.href : this.path
-    },
-    actualTo () {
-      if (this.isExternalLink || this.isMailto) {
-        return undefined
-      }
-      return this.to || this.path
-    },
-    linkData () {
-      return this.actualTo ? { to: this.actualTo } : { href: this.actualHref }
-    },
-  },
+const is = computed(() => {
+  if (props.button) {
+    return 'button'
+  }
+  return isExternalLink.value || isMailto.value ? 'a' : 'RouterLink'
+})
+const isPathString = computed(() => {
+  return typeof props.path === 'string'
+})
+const isExternalLink = computed(() => {
+  return props.href?.startsWith('http') || (isPathString.value && props.path.startsWith('http'))
+})
+const isMailto = computed(() => {
+  return props.href?.startsWith('mailto') || (isPathString.value && props.path.startsWith('mailto'))
+})
+const actualHref = computed(() => {
+  if (!isExternalLink.value && !isMailto.value) {
+    return undefined
+  }
+  return props.href !== undefined ? props.href : props.path
+})
+const actualTo = computed(() => {
+  if (isExternalLink.value || isMailto.value) {
+    return undefined
+  }
+  return props.to || props.path
+})
+const linkData = computed(() => {
+  return actualTo.value ? { to: actualTo.value } : { href: actualHref.value }
 })
 </script>
 

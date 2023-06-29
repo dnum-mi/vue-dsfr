@@ -1,52 +1,29 @@
-<script>
-import { defineComponent } from 'vue'
+<script lang="ts" setup>
+import { computed } from 'vue'
+import { getRandomId } from '../../utils/random-utils'
 
-import { getRandomId } from '../../utils/random-utils.js'
+export type DsfrRadioButtonProps = {
+  id?: string
+  name: string
+  modelValue?: string | number
+  small?: boolean
+  value: string | number
+  label?: string
+  hint?: string
+  img?: string
+}
 
-export default defineComponent({
-  name: 'DsfrRadioButton',
-  props: {
-    id: {
-      type: String,
-      default () {
-        return getRandomId('basic', 'checkbox')
-      },
-    },
-    name: {
-      type: String,
-      required: true,
-    },
-    modelValue: {
-      type: [String, Number],
-      default: '',
-    },
-    small: Boolean,
-    value: {
-      type: [String, Number],
-      required: true,
-    },
-    label: {
-      type: String,
-      default: '',
-    },
-    hint: {
-      type: String,
-      default: '',
-    },
-    img: {
-      type: String,
-      default: '',
-    },
-  },
-
-  emits: ['update:modelValue'],
-
-  computed: {
-    rich () {
-      return !!this.img
-    },
-  },
+const props = withDefaults(defineProps<DsfrRadioButtonProps>(), {
+  id: () => getRandomId('basic', 'checkbox'),
+  modelValue: '',
+  label: '',
+  hint: '',
+  img: '',
 })
+
+defineEmits<{(e: 'update:modelValue', payload: string | number): void}>()
+
+const rich = computed(() => !!props.img)
 </script>
 
 <template>

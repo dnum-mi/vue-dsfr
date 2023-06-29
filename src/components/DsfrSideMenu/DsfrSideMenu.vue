@@ -1,34 +1,26 @@
-<script setup>
+<script lang="ts" setup>
 import { ref, watch } from 'vue'
 
-import { getRandomId } from '../../utils/random-utils.js'
+import { getRandomId } from '../../utils/random-utils'
 
 import DsfrSideMenuList from './DsfrSideMenuList.vue'
-import { useCollapsable } from '@/composables'
+import { useCollapsable } from '../../composables'
+import { DsfrSideMenuListItemProps } from './DsfrSideMenuListItem.vue'
 
-defineProps({
-  buttonLabel: {
-    type: String,
-    default: 'Dans cette rubrique',
-  },
-  id: {
-    type: String,
-    default () {
-      return getRandomId('sidemenu')
-    },
-  },
-  collapseValue: {
-    type: String,
-    default: '-492px',
-  },
-  menuItems: {
-    type: Array,
-    default: () => undefined,
-  },
-  headingTitle: {
-    type: String,
-    default: 'Titre de la rubrique',
-  },
+type DsfrSideMenuProps = {
+  buttonLabel?: string
+  id?: string
+  collapseValue?: string
+  menuItems?: DsfrSideMenuListItemProps[]
+  headingTitle?: string
+}
+
+withDefaults(defineProps<DsfrSideMenuProps>(), {
+  buttonLabel: 'Dans cette rubrique',
+  id: () => getRandomId('sidemenu'),
+  collapseValue: '-492px',
+  menuItems: () => undefined,
+  headingTitle: '',
 })
 
 const {
@@ -39,7 +31,7 @@ const {
   onTransitionEnd,
 } = useCollapsable()
 
-defineEmits(['toggle-expand'])
+defineEmits<{(e: 'toggle-expand', payload: string): void}>()
 
 const expanded = ref(false)
 

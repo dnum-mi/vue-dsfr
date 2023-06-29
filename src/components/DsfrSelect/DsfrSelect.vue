@@ -1,57 +1,36 @@
-<script>
-import { defineComponent } from 'vue'
+<script lang="ts" setup>
+import { computed } from 'vue'
+import { getRandomId } from '../../utils/random-utils'
 
-import { getRandomId } from '../../utils/random-utils.js'
-
-export default defineComponent({
-  name: 'DsfrSelect',
+defineOptions({
   inheritAttrs: false,
+})
 
-  props: {
-    required: Boolean,
-    selectId: {
-      type: String,
-      default () {
-        return getRandomId('select')
-      },
-    },
-    modelValue: {
-      type: [String, Number],
-      default: undefined,
-    },
-    label: {
-      type: String,
-      default: 'label par défaut du champ select',
-    },
-    options: {
-      type: Array,
-      default: () => [],
-    },
-    description: {
-      type: String,
-      default: undefined,
-    },
-    successMessage: {
-      type: String,
-      default: '',
-    },
-    errorMessage: {
-      type: String,
-      default: '',
-    },
-    disabled: Boolean,
-  },
+const props = withDefaults(defineProps<{
+  required?: boolean
+  disabled?: boolean
+  selectId?: string
+  description?: string
+  modelValue?: string | number
+  label?: string
+  options?:(string | number | { value: string | number, text: string, disabled: boolean })[]
+}>(), {
+  selectId: () => getRandomId('select'),
+  modelValue: undefined,
+  options: () => [],
+  label: '',
+  description: undefined,
+  successMessage: '',
+  errorMessage: '',
+})
 
-  emits: ['update:modelValue'],
+defineEmits<{(e: 'update:modelValue', payload: string): void}>()
 
-  computed: {
-    message () {
-      return this.errorMessage || this.successMessage
-    },
-    messageType () {
-      return this.errorMessage ? 'error' : 'valid'
-    },
-  },
+const message = computed(() => {
+  return props.errorMessage || props.successMessage
+})
+const messageType = computed(() => {
+  return props.errorMessage ? 'error' : 'valid'
 })
 </script>
 
@@ -105,7 +84,7 @@ export default defineComponent({
         :key="index"
         :selected="modelValue === option || (typeof option === 'object' && option.value === modelValue)"
         :value="typeof option === 'object' ? option.value : option"
-        :disabled="!!option.disabled"
+        :disabled="!!(typeof option === 'object' && option.disabled)"
       >
         {{ typeof option === 'object' ? option.text : option }}
       </option>

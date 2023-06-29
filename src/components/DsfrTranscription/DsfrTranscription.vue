@@ -1,69 +1,41 @@
-<script>
-import { defineComponent } from 'vue'
+<script lang="ts" setup>
+import { ref, computed, watch } from 'vue'
 
-import { getRandomId } from '../../utils/random-utils.js'
-import { useCollapsable } from '@/composables'
+import { getRandomId } from '../../utils/random-utils'
+import { useCollapsable } from '../../composables'
 
-export default defineComponent({
-  name: 'DsfrTranscription',
-  props: {
-    title: {
-      type: String,
-      default: 'Titre de la vidéo',
-    },
-    content: {
-      type: String,
-      default: 'Transcription du contenu de la vidéo',
-    },
-  },
+const props = withDefaults(defineProps<{
+  id?: string
+  title?: string
+  content?: string
+}>(), {
+  id: () => getRandomId('transcription'),
+  title: 'Titre de la vidéo',
+  content: 'Transcription du contenu de la vidéo',
+})
 
-  setup () {
-    const {
-      collapse,
-      collapsing,
-      cssExpanded,
-      doExpand,
-      adjust,
-      onTransitionEnd,
-    } = useCollapsable()
+const {
+  collapse,
+  collapsing,
+  cssExpanded,
+  doExpand,
+  onTransitionEnd,
+} = useCollapsable()
 
-    return {
-      collapse,
-      collapsing,
-      cssExpanded,
-      doExpand,
-      adjust,
-      onTransitionEnd,
-    }
-  },
+const opened = ref(false)
+const expanded = ref(false)
 
-  data () {
-    return {
-      opened: false,
-      expanded: false,
-      id: getRandomId('transcription'),
-    }
-  },
+const modalId = computed(() => {
+  return `fr-transcription__modal-${props.id}`
+})
+const collapseId = computed(() => {
+  return `fr-transcription__collapse-${props.id}`
+})
 
-  computed: {
-    modalId () {
-      return `fr-transcription__modal-${this.id}`
-    },
-    collapseId () {
-      return `fr-transcription__collapse-${this.id}`
-    },
-  },
-
-  watch: {
-    /*
-     * @see https://github.com/GouvernementFR/dsfr/blob/main/src/core/script/collapse/collapse.js
-     */
-    expanded (newValue, oldValue) {
-      if (newValue !== oldValue) {
-        this.doExpand(newValue)
-      }
-    },
-  },
+watch(expanded, (newValue, oldValue) => {
+  if (newValue !== oldValue) {
+    doExpand(newValue)
+  }
 })
 </script>
 
@@ -71,7 +43,7 @@ export default defineComponent({
   <div class="fr-transcription">
     <button
       class="fr-transcription__btn"
-      :aria-expanded="String(expanded)"
+      :aria-expanded="expanded"
       :aria-controls="collapseId"
       @click="expanded = !expanded"
     >

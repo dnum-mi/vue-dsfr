@@ -1,14 +1,38 @@
 {
-  "files": [],
-  "references": [
-    {
-      "path": "./tsconfig.vite-config.json"
-    },
-    {
-      "path": "./tsconfig.app.json"
-    },
-    {
-      "path": "./tsconfig.vitest.json"
+  "compilerOptions": {
+    "allowJs": true,
+    "declaration": true,
+    "declarationMap": true,
+    "declarationDir": "./types",
+    "outDir": "lib",
+    "baseUrl": "./src",
+    "rootDir": "./src",
+    "target": "esnext",
+    "useDefineForClassFields": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "isolatedModules": true,
+    "strict": true,
+    "jsx": "preserve",
+    "sourceMap": true,
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "lib": ["esnext", "dom", "dom.iterable", "scripthost"],
+    "skipLibCheck": true,
+    "paths": {
+      "@/*": ["./*"]
     }
-  ],
+  },
+  "include": ["./src/**/*.ts", "./src/**/*.vue"],
+  "exclude": [
+    "node_modules",
+    "src/**/__tests__/*",
+    "./demo-app/**",
+    "src/**/*.e2e.js",
+    "src/**/*.e2e.ts",
+    "src/**/*.spec.js",
+    "src/**/*.spec.ts",
+    "src/**/*.stories.js",
+    "src/**/*.stories.ts"
+  ]
 }

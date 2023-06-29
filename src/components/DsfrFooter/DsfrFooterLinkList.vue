@@ -1,19 +1,19 @@
-<script>
-import { defineComponent } from 'vue'
+<script lang="ts" setup>
+import { RouteLocationRaw } from 'vue-router'
 
-export default defineComponent({
-  name: 'DsfrFooterLinkList',
+export type DsfrFooterLinkProps = {
+  label: string
+  to: string | RouteLocationRaw
+}
 
-  props: {
-    categoryName: {
-      type: String,
-      default: 'Nom de la catégorie',
-    },
-    links: {
-      type: Array,
-      default: () => [],
-    },
-  },
+export type DsfrFooterLinkListProps = {
+  categoryName: string
+  links: DsfrFooterLinkProps[]
+}
+
+withDefaults(defineProps<DsfrFooterLinkListProps>(), {
+  categoryName: 'Nom de la catégorie',
+  links: () => [],
 })
 </script>
 
@@ -31,7 +31,7 @@ export default defineComponent({
           v-if="typeof link.to === 'string' && link.to.startsWith('http')"
           class="fr-footer__top-link"
           target="_blank"
-          :to="link.to"
+          :href="link.to"
         >{{ link.label }}</a>
         <RouterLink
           v-else

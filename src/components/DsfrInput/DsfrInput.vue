@@ -1,74 +1,49 @@
-<script>
-import { defineComponent } from 'vue'
+<script lang="ts" setup>
+import { ref, computed, useAttrs } from 'vue'
+import { getRandomId } from '../../utils/random-utils'
 
-import { getRandomId } from '../../utils/random-utils.js'
-
-export default defineComponent({
-  name: 'DsfrInput',
-
+defineOptions({
   inheritAttrs: false,
+})
 
-  props: {
-    id: {
-      type: String,
-      default () {
-        return getRandomId('basic', 'input')
-      },
-    },
-    descriptionId: {
-      type: String,
-      default: undefined,
-    },
-    hint: {
-      type: String,
-      default: '',
-    },
-    isInvalid: Boolean,
-    isValid: Boolean,
-    isTextarea: Boolean,
-    isWithWrapper: Boolean,
-    label: {
-      type: String,
-      default: '',
-    },
-    labelClass: {
-      type: String,
-      default: '',
-    },
-    labelVisible: Boolean,
-    modelValue: {
-      type: String,
-      default: '',
-    },
-    wrapperClass: {
-      type: String,
-      default: '',
-    },
-  },
+const props = withDefaults(defineProps<{
+  id?: string
+  descriptionId?: string
+  hint?: string
+  isInvalid?: boolean
+  isValid?: boolean
+  isTextarea?: boolean
+  isWithWrapper?: boolean
+  labelVisible?: boolean
+  label?: string
+  labelClass?: string
+  modelValue?: string
+  wrapperClass?: string
+}>(), {
+  id: () => getRandomId('basic', 'input'),
+  descriptionId: undefined,
+  hint: '',
+  label: '',
+  labelClass: '',
+  modelValue: '',
+  wrapperClass: '',
+})
 
-  emits: ['update:modelValue'],
+const attrs = useAttrs()
 
-  computed: {
-    isComponent () {
-      return this.isTextarea ? 'textarea' : 'input'
-    },
-    wrapper () {
-      return this.isWithWrapper || this.$attrs.type === 'date' || !!this.wrapperClass
-    },
-    finalLabelClass () {
-      return [
-        'fr-label',
-        { invisible: !this.labelVisible },
-        this.labelClass,
-      ]
-    },
-  },
+const __input = ref(null)
+const focus = () => __input.value.focus()
 
-  methods: {
-    focus () {
-      this.$refs.__input.focus()
-    },
-  },
+const isComponent = computed(() => props.isTextarea ? 'textarea' : 'input')
+const wrapper = computed(() => props.isWithWrapper || attrs.type === 'date' || !!props.wrapperClass)
+const finalLabelClass = computed(() => [
+  'fr-label',
+  { invisible: !props.labelVisible },
+  props.labelClass,
+])
+
+defineExpose({
+  focus,
 })
 </script>
 

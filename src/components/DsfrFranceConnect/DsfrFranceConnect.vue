@@ -1,14 +1,5 @@
-<script>
-import { defineComponent } from 'vue'
-
-export default defineComponent({
-  name: 'DsfrFranceConnect',
-
-  props: {
-    secure: Boolean,
-  },
-
-})
+<script lang="ts" setup>
+defineProps<{secure: boolean}>()
 </script>
 
 <template>

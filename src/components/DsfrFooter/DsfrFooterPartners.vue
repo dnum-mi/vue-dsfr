@@ -1,29 +1,29 @@
-<script>
-import { defineComponent } from 'vue'
+<script lang="ts" setup>
+export type DsfrFooterPartner = {
+  href: string
+  logo: string
+  name: string
+}
 
-export default defineComponent({
-  name: 'DsfrFooterPartners',
+export type DsfrFooterPartnersProps = {
+  mainPartner?: DsfrFooterPartner
+  subPartners?: DsfrFooterPartner[],
+  title?: string,
+}
 
-  props: {
-    mainPartner: {
-      type: Object,
-      default: () => null,
-    },
-    subPartners: {
-      type: Array,
-      default: () => [],
-    },
-    title: {
-      type: String,
-      default: '',
-    },
-  },
+withDefaults(defineProps<DsfrFooterPartnersProps>(), {
+  mainPartner: null,
+  subPartners: () => [],
+  title: '',
 })
 </script>
 
 <template>
   <div class="fr-footer__partners">
-    <h4 class="fr-footer__partners-title">
+    <h4
+      v-if="title"
+      class="fr-footer__partners-title"
+    >
       {{ title }}
     </h4>
     <div class="fr-footer__partners-logos">

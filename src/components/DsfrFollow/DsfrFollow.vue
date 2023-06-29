@@ -1,39 +1,24 @@
-<script>
-import DsfrSocialNetworks from './DsfrSocialNetworks.vue'
-import DsfrNewsLetter from './DsfrNewsLetter.vue'
+<script lang="ts" setup>
+import { computed } from 'vue'
 
-import { allowedNetworks } from './follow-utils.js'
-import { defineComponent } from 'vue'
+import DsfrSocialNetworks, { type DsfrSocialNetwork } from './DsfrSocialNetworks.vue'
+import DsfrNewsLetter, { type DsfrNewsLetterProps } from './DsfrNewsLetter.vue'
 
-export default defineComponent({
-  name: 'DsfrFollow',
+export type DsfrFollowProps = {
+  newsletterData: DsfrNewsLetterProps
+  networks: DsfrSocialNetwork[]
+}
 
-  components: { DsfrSocialNetworks, DsfrNewsLetter },
+const props = withDefaults(defineProps<DsfrFollowProps>(), {
+  newsletterData: () => undefined,
+  networks: () => [],
+})
 
-  props: {
-    newsletterData: {
-      type: Object,
-      default: () => undefined,
-    },
-    networks: {
-      type: Array,
-      default: () => [],
-      validator: (networks) =>
-        networks.every(
-          (network) => network?.name && network.href && allowedNetworks.includes(network.name),
-        ),
-    },
-  },
-
-  computed: {
-    hasNetworks () {
-      return this.networks && this.networks.length
-    },
-    hasNewsletter () {
-      return typeof this.newsletterData === 'object'
-    },
-  },
-
+const hasNetworks = computed(() => {
+  return props.networks && props.networks.length
+})
+const hasNewsletter = computed(() => {
+  return typeof props.newsletterData === 'object'
 })
 </script>
 
@@ -55,7 +40,6 @@ export default defineComponent({
           >
             <DsfrSocialNetworks :networks="networks" />
           </div>
-          <slot />
         </slot>
       </div>
     </div>

@@ -1,14 +1,12 @@
-<script setup>
-defineProps({
-  active: Boolean,
-  expanded: Boolean,
-  controlId: {
-    type: String,
-    required: true,
-  },
-})
+<script lang="ts" setup>
+export type DsfrSideMenuButtonProps = {
+  active?: boolean
+  expanded?: boolean
+  controlId: string
+}
+defineProps<DsfrSideMenuButtonProps>()
 
-defineEmits(['toggle-expand'])
+defineEmits<{(e: 'toggle-expand', payload: string): void}>()
 </script>
 
 <template>

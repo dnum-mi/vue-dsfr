@@ -1,98 +1,69 @@
-<script>
-import { defineComponent } from 'vue'
-
+<script lang="ts" setup>
 import { FocusTrap } from 'focus-trap-vue'
 
 // import '@gouvfr/dsfr/dist/component/modal/modal.module.js'
 
 import DsfrButtonGroup from '../DsfrButton/DsfrButtonGroup.vue'
+import { onMounted, onBeforeUnmount, computed, ref, nextTick, watch } from 'vue'
 
-export default defineComponent({
-  name: 'DsfrModal',
-
-  components: {
-    DsfrButtonGroup,
-    FocusTrap,
-  },
-
-  props: {
-    opened: Boolean,
-    actions: {
-      type: Array,
-      default: () => [],
-    },
-    isAlert: Boolean,
-    origin: {
-      type: Object,
-      default: () => ({ focus () {} }),
-    },
-    title: {
-      type: String,
-      required: true,
-    },
-    icon: {
-      type: String,
-      default: undefined,
-    },
-  },
-
-  emits: [
-    'close',
-  ],
-
-  data () {
-    return {
-      closeIfEscape: ($event) => {
-        if ($event.key === 'Escape' || $event.keyCode === 27) {
-          this.close()
-        }
-      },
-    }
-  },
-
-  computed: {
-    role () {
-      return this.isAlert ? 'alertdialog' : 'dialog'
-    },
-  },
-
-  watch: {
-    opened (newValue, oldValue) {
-      if (newValue) {
-        document.body.classList.add('modal-open')
-        setTimeout(() => {
-          this.$refs.closeBtn.focus()
-        }, 100)
-      } else {
-        document.body.classList.remove('modal-open')
-      }
-    },
-  },
-
-  mounted () {
-    this.startListeningToEscape()
-  },
-
-  beforeUnmount () {
-    this.stopListeningToEscape()
-  },
-
-  methods: {
-    startListeningToEscape () {
-      document.addEventListener('keydown', this.closeIfEscape)
-    },
-
-    stopListeningToEscape () {
-      document.removeEventListener('keydown', this.closeIfEscape)
-    },
-
-    async close () {
-      await this.$nextTick()
-      this.origin.focus()
-      this.$emit('close')
-    },
-  },
+const props = withDefaults(defineProps<{
+  opened?: boolean
+  actions?: Record<string, any>[]
+  isAlert?: boolean
+  origin?: {focus:() => void}
+  title: string
+  icon?: string
+}>(), {
+  actions: () => [],
+  origin: () => ({ focus () {} }), // eslint-disable-line @typescript-eslint/no-empty-function
+  icon: undefined,
 })
+
+const emit = defineEmits<{(e: 'close'): void}>()
+
+const closeIfEscape = ($event) => {
+  if ($event.key === 'Escape' || $event.keyCode === 27) {
+    close()
+  }
+}
+
+const role = computed(() => {
+  return props.isAlert ? 'alertdialog' : 'dialog'
+})
+
+const closeBtn = ref(null)
+watch(() => props.opened, (newValue) => {
+  if (newValue) {
+    document.body.classList.add('modal-open')
+    setTimeout(() => {
+      closeBtn.value.focus()
+    }, 100)
+  } else {
+    document.body.classList.remove('modal-open')
+  }
+})
+
+onMounted(() => {
+  startListeningToEscape()
+})
+
+onBeforeUnmount(() => {
+  stopListeningToEscape()
+})
+
+function startListeningToEscape () {
+  document.addEventListener('keydown', closeIfEscape)
+}
+
+function stopListeningToEscape () {
+  document.removeEventListener('keydown', closeIfEscape)
+}
+
+async function close () {
+  await nextTick()
+  props.origin?.focus()
+  emit('close')
+}
 </script>
 
 <template>

@@ -1,71 +1,49 @@
-<script>
-import { defineComponent } from 'vue'
-import DsfrButtonGroup from '@/components/DsfrButton/DsfrButtonGroup.vue'
 
-export default defineComponent({
-  name: 'DsfrCard',
-  components: { DsfrButtonGroup },
+<script lang="ts" setup>
+import { computed, ref } from 'vue'
+import { RouteLocationNormalized } from 'vue-router'
+import DsfrButtonGroup from '../DsfrButton/DsfrButtonGroup.vue'
+import { type DsfrButtonProps } from '../DsfrButton/DsfrButton.vue'
 
-  props: {
-    imgSrc: {
-      type: String,
-      default: undefined,
-    },
-    link: {
-      type: [String, Object],
-      default: undefined,
-    },
-    title: {
-      type: String,
-      default: 'Simple title',
-    },
-    description: {
-      type: String,
-      default: 'Simple description',
-    },
-    size: {
-      type: String,
-      default: 'md',
-    },
-    detail: {
-      type: String,
-      default: 'details',
-    },
-    altImg: {
-      type: String,
-      default: '',
-    },
-    titleTag: {
-      type: String,
-      default: 'h3',
-    },
-    buttons: {
-      type: Array,
-      default: () => [],
-    },
-    linksGroup: {
-      type: Array,
-      default: () => [],
-    },
-    noArrow: Boolean,
-    horizontal: Boolean,
-  },
-
-  computed: {
-    sm () {
-      return ['sm', 'small'].includes(this.size)
-    },
-    md () {
-      return ['md', 'medium'].includes(this.size)
-    },
-    lg () {
-      return ['lg', 'large'].includes(this.size)
-    },
-    externalLink () {
-      return typeof this.link === 'string' && this.link.startsWith('http')
-    },
-  },
+const props = withDefaults(defineProps<{
+  imgSrc?: string
+  link?: string | RouteLocationNormalized
+  title: string
+  description: string
+  size?: 'md' | 'medium' | 'large' | 'lg' | 'sm' | 'small' | undefined
+  detail?: string
+  altImg?: string
+  titleTag?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'
+  buttons?: DsfrButtonProps[]
+  linksGroup?:(string | ({ label: string } & ({ to: RouteLocationNormalized } | { link: string } | { href: string })))[]
+  noArrow?: boolean
+  horizontal?: boolean
+}>(), {
+  imgSrc: undefined,
+  link: undefined,
+  detail: undefined,
+  altImg: '',
+  buttons: () => [],
+  linksGroup: () => [],
+  titleTag: 'h3',
+  size: 'md',
 })
+
+const sm = computed(() => {
+  return ['sm', 'small'].includes(props.size)
+})
+const lg = computed(() => {
+  return ['lg', 'large'].includes(props.size)
+})
+const externalLink = computed(() => {
+  return typeof props.link === 'string' && props.link.startsWith('http')
+})
+
+const titleElt = ref(null)
+const goToTargetLink = () => {
+  titleElt.value.querySelector('.fr-card__link').click()
+}
+defineExpose({ goToTargetLink })
 </script>
 
 <template>

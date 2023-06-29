@@ -1,124 +1,84 @@
-<script>
-import { defineComponent } from 'vue'
-
-// Pose problème dans les tests, et risque fort de poser problème dans Nuxt
-// import '@gouvfr/dsfr/dist/component/header/header.module.js'
-
+<script lang="ts" setup>
+import { computed, onMounted, onUnmounted, ref, useSlots, type StyleValue } from 'vue'
 import DsfrLogo from '../DsfrLogo/DsfrLogo.vue'
 import DsfrSearchBar from '../DsfrSearchBar/DsfrSearchBar.vue'
 import DsfrHeaderMenuLinks from './DsfrHeaderMenuLinks.vue'
+import { type DsfrHeaderMenuLinkProps } from './DsfrHeaderMenuLink.vue'
 
-export default defineComponent({
-  name: 'DsfrHeader',
+type DsfrHeaderProps = {
+  serviceTitle?: string
+  serviceDescription?: string
+  homeTo?: string
+  logoText?: string | string[]
+  modelValue?: string
+  operatorImgAlt?: string
+  operatorImgSrc?: string
+  operatorImgStyle?: StyleValue
+  placeholder?: string
+  quickLinks?: DsfrHeaderMenuLinkProps[]
+  searchLabel?: string
+  quickLinksAriaLabel?: string
+  showSearch?: boolean
+}
 
-  components: {
-    DsfrLogo,
-    DsfrHeaderMenuLinks,
-    DsfrSearchBar,
-  },
-
-  props: {
-    serviceTitle: {
-      type: String,
-      default: undefined,
-    },
-    serviceDescription: {
-      type: String,
-      default: undefined,
-    },
-    homeTo: {
-      type: String,
-      default: '/',
-    },
-    logoText: {
-      type: [String, Array],
-      default: () => 'Gouvernement',
-    },
-    modelValue: {
-      type: String,
-      default: '',
-    },
-    operatorImgAlt: {
-      type: String,
-      default: '',
-    },
-    operatorImgSrc: {
-      type: String,
-      default: undefined,
-    },
-    operatorImgStyle: {
-      type: Object,
-      default: () => undefined,
-    },
-    placeholder: {
-      type: String,
-      default: 'Rechercher',
-    },
-    quickLinks: {
-      type: Array,
-      default: () => undefined,
-    },
-    searchLabel: {
-      type: String,
-      default: 'Recherche',
-    },
-    quickLinksAriaLabel: {
-      type: String,
-      default: 'Menu secondaire',
-    },
-    showSearch: Boolean,
-  },
-
-  emits: ['update:modelValue', 'search'],
-
-  data () {
-    return {
-      menuOpened: false,
-      searchModalOpened: false,
-      modalOpened: false,
-    }
-  },
-
-  computed: {
-    isWithSlotOperator () {
-      return this.$slots.operator?.().length || !!this.operatorImgSrc
-    },
-  },
-
-  mounted () {
-    document.addEventListener('keydown', this.onKeyDown)
-  },
-  unmounted () {
-    document.removeEventListener('keydown', this.onKeyDown)
-  },
-  methods: {
-    hideModal () {
-      this.modalOpened = false
-      this.menuOpened = false
-      this.searchModalOpened = false
-      document.getElementById('button-menu')?.focus()
-    },
-    showMenu () {
-      this.modalOpened = true
-      this.menuOpened = true
-      this.searchModalOpened = false
-      document.getElementById('close-button')?.focus()
-    },
-    showSearchModal () {
-      this.modalOpened = true
-      this.menuOpened = false
-      this.searchModalOpened = true
-    },
-    onKeyDown (e) {
-      if (e.key === 'Escape') {
-        this.hideModal()
-      }
-    },
-    onQuickLinkClick () {
-      this.hideModal()
-    },
-  },
+const props = withDefaults(defineProps<DsfrHeaderProps>(), {
+  serviceTitle: undefined,
+  serviceDescription: undefined,
+  homeTo: '/',
+  logoText: () => 'Gouvernement',
+  modelValue: '',
+  operatorImgAlt: '',
+  operatorImgSrc: '',
+  operatorImgStyle: () => undefined,
+  placeholder: 'Rechercher...',
+  quickLinks: () => undefined,
+  searchLabel: 'Recherche',
+  quickLinksAriaLabel: 'Menu secondaire',
 })
+
+const onKeyDown = (e: KeyboardEvent) => {
+  if (e.key === 'Escape') {
+    hideModal()
+  }
+}
+onMounted(() => {
+  document.addEventListener('keydown', onKeyDown)
+})
+onUnmounted(() => {
+  document.removeEventListener('keydown', onKeyDown)
+})
+
+const menuOpened = ref(false)
+const searchModalOpened = ref(false)
+const modalOpened = ref(false)
+
+const hideModal = () => {
+  modalOpened.value = false
+  menuOpened.value = false
+  searchModalOpened.value = false
+  document.getElementById('button-menu')?.focus()
+}
+const showMenu = () => {
+  modalOpened.value = true
+  menuOpened.value = true
+  searchModalOpened.value = false
+  document.getElementById('close-button')?.focus()
+}
+const showSearchModal = () => {
+  modalOpened.value = true
+  menuOpened.value = false
+  searchModalOpened.value = true
+}
+const onQuickLinkClick = hideModal
+
+const slots = useSlots()
+const isWithSlotOperator = computed(() => slots.operator?.().length || !!props.operatorImgSrc)
+
+// eslint-disable-next-line func-call-spacing
+defineEmits<{
+  (e: 'update:modelValue', payload: string): void,
+  (e: 'search', payload: string): void,
+}>()
 </script>
 
 <template>

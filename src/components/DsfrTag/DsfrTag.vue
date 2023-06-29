@@ -1,54 +1,39 @@
-<script>
-import { defineComponent } from 'vue'
+<script lang="ts" setup>
+import { computed } from 'vue'
 import { OhVueIcon as VIcon } from 'oh-vue-icons'
 
 // TODO: Pourquoi icône 'check' quand on utilise ce js et qu’on clique sur le premier ?
 // D’autre part, pour les étiquettes sélectionnables posent problème : le JS n’est pas
 // import '@gouvfr/dsfr/dist/component/tag/tag.module.js'
 
-export default defineComponent({
-  name: 'DsfrTag',
+export type DsfrTagProps = {
+  label? : string
+  link? : string
+  tagName?: string
+  icon? : string
+  selected? : boolean
+  disabled? : boolean
+  small? : boolean
+  iconOnly? : boolean
+}
 
-  components: {
-    VIcon,
-  },
+const props = withDefaults(defineProps<DsfrTagProps>(), {
+  label: undefined,
+  link: undefined,
+  tagName: 'p',
+  icon: undefined,
+})
 
-  props: {
-    label: {
-      type: String,
-      default: undefined,
-    },
-    link: {
-      type: String,
-      default: undefined,
-    },
-    tagName: {
-      type: String,
-      default: 'p',
-    },
-    icon: {
-      type: String,
-      default: undefined,
-    },
-    selected: Boolean,
-    disabled: Boolean,
-    iconOnly: Boolean,
-    small: Boolean,
-  },
-
-  computed: {
-    is () {
-      return this.link
-        ? (this.isExternalLink ? 'a' : 'RouterLink')
-        : ((this.disabled && this.tagName === 'p') ? 'button' : this.tagName)
-    },
-    isExternalLink () {
-      return typeof this.link === 'string' && this.link.startsWith('http')
-    },
-    linkProps () {
-      return { [this.isExternalLink ? 'href' : 'to']: this.link }
-    },
-  },
+const isExternalLink = computed(() => {
+  return typeof props.link === 'string' && props.link.startsWith('http')
+})
+const is = computed(() => {
+  return props.link
+    ? (isExternalLink.value ? 'a' : 'RouterLink')
+    : ((props.disabled && props.tagName === 'p') ? 'button' : props.tagName)
+})
+const linkProps = computed(() => {
+  return { [isExternalLink.value ? 'href' : 'to']: props.link }
 })
 </script>
 

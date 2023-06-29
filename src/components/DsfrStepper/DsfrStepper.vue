@@ -1,18 +1,10 @@
-<script>
-import { defineComponent } from 'vue'
-
-export default defineComponent({
-  name: 'DsfrStepper',
-  props: {
-    steps: {
-      type: Array,
-      default: () => {},
-    },
-    currentStep: {
-      type: Number,
-      default: 1,
-    },
-  },
+<script lang="ts" setup>
+withDefaults(defineProps<{
+  steps: string[]
+  currentStep: number
+}>(), {
+  steps: () => undefined,
+  currentStep: 1,
 })
 </script>
 

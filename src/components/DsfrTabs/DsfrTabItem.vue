@@ -1,34 +1,30 @@
-<script>
-import { defineComponent } from 'vue'
+<script lang="ts" setup>
+import { ref, watch } from 'vue'
 
-export default defineComponent({
-  name: 'DsfrTabItem',
+const props = withDefaults(defineProps<{
+  panelId: string
+  tabId: string
+  selected?: boolean
+  icon?: string
+}>(), {
+  icon: undefined,
+})
 
-  props: {
-    selected: Boolean,
-    panelId: {
-      type: String,
-      required: true,
-    },
-    icon: {
-      type: String,
-      default: undefined,
-    },
-    tabId: {
-      type: String,
-      required: true,
-    },
-  },
+// eslint-disable-next-line func-call-spacing
+defineEmits<{
+  (e: 'click', payload: string): void,
+  (e: 'next', payload: string): void,
+  (e: 'previous', payload: string): void,
+  (e: 'first', payload: string): void,
+  (e: 'last', payload: string): void,
+}>()
 
-  emits: ['click', 'next', 'previous', 'first', 'last'],
+const button = ref(null)
 
-  watch: {
-    selected (newValue, oldValue) {
-      if (newValue) {
-        this.$refs.button.focus()
-      }
-    },
-  },
+watch(() => props.selected, (newValue) => {
+  if (newValue) {
+    button.value.focus()
+  }
 })
 </script>
 

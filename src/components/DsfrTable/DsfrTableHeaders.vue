@@ -1,12 +1,9 @@
-<script setup>
-import DsfrTableHeader from './DsfrTableHeader.vue'
+<script setup lang="ts">
+import DsfrTableHeader, { DsfrTableHeaderProps } from './DsfrTableHeader.vue'
 
-defineProps({
-  headers: {
-    type: Array,
-    required: true,
-  },
-})
+defineProps<{
+  headers:(DsfrTableHeaderProps | string)[]
+}>()
 </script>
 
 <template>

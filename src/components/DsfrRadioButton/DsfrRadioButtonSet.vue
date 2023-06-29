@@ -1,77 +1,41 @@
+<script lang="ts" setup>
+import { computed } from 'vue'
 
-<script>
-import { defineComponent } from 'vue'
+import DsfrRadioButton, { type DsfrRadioButtonProps } from './DsfrRadioButton.vue'
+import { getRandomId } from '../../utils/random-utils'
 
-import DsfrRadioButton from './DsfrRadioButton.vue'
-import { getRandomId } from '../../utils/random-utils.js'
-
-export default defineComponent({
-  name: 'DsfrRadioButtonSet',
-
-  components: {
-    DsfrRadioButton,
-  },
-
-  props: {
-    titleId: {
-      type: String,
-      default () {
-        return getRandomId('radio-button', 'group')
-      },
-    },
-    disabled: Boolean,
-    inline: Boolean,
-    required: Boolean,
-    small: Boolean,
-    name: {
-      type: String,
-      default: 'no-name',
-    },
-    errorMessage: {
-      type: String,
-      default: '',
-    },
-    validMessage: {
-      type: String,
-      default: '',
-    },
-    legend: {
-      type: String,
-      default: '',
-    },
-    modelValue: {
-      type: [String, Number],
-      required: true,
-    },
-    options: {
-      type: Array,
-      default () { return [] },
-    },
-  },
-
-  emits: ['update:modelValue'],
-
-  computed: {
-    message () {
-      return this.errorMessage || this.validMessage
-    },
-    additionalMessageClass () {
-      return this.errorMessage ? 'fr-error-text' : 'fr-valid-text'
-    },
-    messageIcon () {
-      return this.errorMessage ? 'ri-alert-line' : 'ri-checkbox-circle-line'
-    },
-  },
-
-  methods: {
-    onChange ($event) {
-      if ($event === this.modelValue) {
-        return
-      }
-      this.$emit('update:modelValue', $event)
-    },
-  },
+const props = withDefaults(defineProps<{
+    titleId?: string,
+    disabled?: boolean,
+    inline?: boolean,
+    required?: boolean,
+    small?: boolean,
+    name?: string,
+    errorMessage?: string,
+    validMessage?: string,
+    legend?: string,
+    modelValue: string | number,
+    options?: DsfrRadioButtonProps[],
+}>(), {
+  titleId: () => getRandomId('radio-button', 'group'),
+  errorMessage: '',
+  validMessage: '',
+  legend: '',
+  name: 'no-name',
+  options: () => [],
 })
+
+const emit = defineEmits<{(e: 'update:modelValue', payload: string | number): void}>()
+
+const message = computed(() => props.errorMessage || props.validMessage)
+const additionalMessageClass = computed(() => props.errorMessage ? 'fr-error-text' : 'fr-valid-text')
+
+const onChange = ($event) => {
+  if ($event === props.modelValue) {
+    return
+  }
+  emit('update:modelValue', $event)
+}
 </script>
 
 <template>

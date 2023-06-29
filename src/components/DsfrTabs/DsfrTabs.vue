@@ -1,138 +1,117 @@
-<script>
-import { defineComponent } from 'vue'
+<script lang="ts" setup>
+import { ref, onMounted, onUnmounted, reactive } from 'vue'
 
-// import '@gouvfr/dsfr/dist/component/tab/tab.module.js'
-
-import { getRandomId } from '../../utils/random-utils.js'
+import { getRandomId } from '../../utils/random-utils'
 
 import DsfrTabItem from './DsfrTabItem.vue'
 import DsfrTabContent from './DsfrTabContent.vue'
 
-export default defineComponent({
-  name: 'DsfrTabs',
-
-  components: {
-    DsfrTabContent,
-    DsfrTabItem,
-  },
-
-  props: {
-    tabListName: {
-      type: String,
-      required: true,
-    },
-    tabTitles: {
-      type: Array,
-      required: true,
-    },
-    tabContents: {
-      type: Array,
-      default: () => [],
-    },
-    initialSelectedIndex: {
-      type: Number,
-      required: false,
-      default: 0,
-    },
-  },
-
-  emits: ['select-tab'],
-
-  data () {
-    return {
-      getRandomId,
-      selectedIndex: this.initialSelectedIndex || 0,
-      generatedIds: {},
-      asc: true,
-      resizeObserver: null,
-    }
-  },
-
-  mounted () {
-    /*
-     * Need to use a resize-observer as tab-content height can
-     * change according to its inner components.
-     */
-    if (window.ResizeObserver) {
-      this.resizeObserver = new window.ResizeObserver(() => {
-        this.renderTabs()
-      })
-    }
-
-    this.$el.querySelectorAll('.fr-tabs__panel').forEach((element) => {
-      if (element) {
-        this.resizeObserver?.observe(element)
-      }
-    })
-  },
-
-  unmounted () {
-    this.$el.querySelectorAll('.fr-tabs__panel').forEach((element) => {
-      if (element) {
-        this.resizeObserver?.unobserve(element)
-      }
-    })
-  },
-
-  methods: {
-    isSelected (idx) {
-      return this.selectedIndex === idx
-    },
-    getIdFromIndex (idx) {
-      if (this.generatedIds[idx]) {
-        return this.generatedIds[idx]
-      }
-      const id = getRandomId('tab')
-      this.generatedIds[idx] = id
-      return id
-    },
-    async selectIndex (idx) {
-      this.asc = idx > this.selectedIndex
-      this.selectedIndex = idx
-      this.$emit('select-tab', idx)
-    },
-    async selectPrevious () {
-      const newIndex = this.selectedIndex === 0 ? this.tabTitles.length - 1 : this.selectedIndex - 1
-      await this.selectIndex(newIndex)
-    },
-    async selectNext () {
-      const newIndex = this.selectedIndex === this.tabTitles.length - 1 ? 0 : this.selectedIndex + 1
-      await this.selectIndex(newIndex)
-    },
-    async selectFirst () {
-      await this.selectIndex(0)
-    },
-    async selectLast () {
-      await this.selectIndex(this.tabTitles.length - 1)
-    },
-    /*
-     * Need to reimplement tab-height calc
-     * @see https://github.com/GouvernementFR/dsfr/blob/main/src/component/tab/script/tab/tabs-group.js#L117
-     */
-    renderTabs () {
-      if (this.selectedIndex < 0) {
-        return
-      }
-      const tablist = this.$refs.tablist
-      if (!tablist || !tablist.offsetHeight) {
-        return
-      }
-      const tablistHeight = tablist.offsetHeight
-      // Need to manually select tabs-content in case of manual slot filling
-      const selectedTab = this.$el.querySelectorAll('.fr-tabs__panel')[this.selectedIndex]
-      if (!selectedTab || !selectedTab.offsetHeight) {
-        return
-      }
-      const selectedTabHeight = selectedTab.offsetHeight
-
-      this.$el.style.setProperty('--tabs-height', (tablistHeight + selectedTabHeight) + 'px')
-    },
-  },
+const props = withDefaults(defineProps<{
+  tabListName: string
+  tabTitles: string[]
+  tabContents?: string[]
+  initialSelectedIndex?: number
+}>(), {
+  tabContents: () => [],
+  initialSelectedIndex: 0,
 })
+
+const emit = defineEmits<{(e: 'select-tab', payload: number): void}>()
+
+const selectedIndex = ref(props.initialSelectedIndex || 0)
+const generatedIds = reactive({})
+const asc = ref(true)
+const resizeObserver = ref(null)
+const $el = ref(null)
+const tablist = ref(null)
+
+onMounted(() => {
+  /*
+    * Need to use a resize-observer as tab-content height can
+    * change according to its inner components.
+    */
+  if (window.ResizeObserver) {
+    resizeObserver.value = new window.ResizeObserver(() => {
+      renderTabs()
+    })
+  }
+
+  $el.value?.querySelectorAll('.fr-tabs__panel').forEach((element) => {
+    if (element) {
+      resizeObserver.value?.observe(element)
+    }
+  })
+})
+
+onUnmounted(() => {
+  $el.value?.querySelectorAll('.fr-tabs__panel').forEach((element) => {
+    if (element) {
+      resizeObserver.value?.unobserve(element)
+    }
+  })
+})
+
+const isSelected = (idx) => {
+  return selectedIndex.value === idx
+}
+
+/*
+ * Need to reimplement tab-height calc
+ * @see https://github.com/GouvernementFR/dsfr/blob/main/src/component/tab/script/tab/tabs-group.js#L117
+ */
+const renderTabs = () => {
+  if (selectedIndex.value < 0) {
+    return
+  }
+  if (!tablist.value || !tablist.value.offsetHeight) {
+    return
+  }
+  const tablistHeight = tablist.value.offsetHeight
+  // Need to manually select tabs-content in case of manual slot filling
+  const selectedTab = $el.value.querySelectorAll('.fr-tabs__panel')[selectedIndex.value]
+  if (!selectedTab || !selectedTab.offsetHeight) {
+    return
+  }
+  const selectedTabHeight = selectedTab.offsetHeight
+
+  $el.value.style.setProperty('--tabs-height', (tablistHeight + selectedTabHeight) + 'px')
+}
+
+const getIdFromIndex = (idx) => {
+  if (generatedIds[idx]) {
+    return generatedIds[idx]
+  }
+  const id = getRandomId('tab')
+  generatedIds[idx] = id
+  return id
+}
+
+const selectIndex = async (idx: number) => {
+  asc.value = idx > selectedIndex.value
+  selectedIndex.value = idx
+  emit('select-tab', idx)
+}
+const selectPrevious = async () => {
+  const newIndex = selectedIndex.value === 0 ? props.tabTitles.length - 1 : selectedIndex.value - 1
+  await selectIndex(newIndex)
+}
+const selectNext = async () => {
+  const newIndex = selectedIndex.value === props.tabTitles.length - 1 ? 0 : selectedIndex.value + 1
+  await selectIndex(newIndex)
+}
+const selectFirst = async () => {
+  await selectIndex(0)
+}
+const selectLast = async () => {
+  await selectIndex(props.tabTitles.length - 1)
+}
 </script>
 
 <template>
-  <div class="fr-tabs">
+  <div
+    ref="$el"
+    class="fr-tabs"
+  >
     <ul
       ref="tablist"
       class="fr-tabs__list"

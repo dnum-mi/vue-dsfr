@@ -1,13 +1,36 @@
 {
-  "extends": "@vue/tsconfig/tsconfig.web.json",
-  "include": ["env.d.ts", "types/index.d.ts", "src/**/*.{js,ts}", "src/**/*.vue"],
-  "exclude": ["src/**/__tests__/*", "src/demo-app/**"],
+  "extends": [
+    "@tsconfig/node18/tsconfig.json",
+    "@vue/tsconfig/tsconfig.json"
+  ],
+  "include": ["./src/**/*.ts", "./src/**/*.vue"],
+  "exclude": [
+    "node_modules",
+    "src/**/__tests__/*",
+    "./demo-app/**",
+    "src/**/*.e2e.js",
+    "src/**/*.e2e.ts",
+    "src/**/*.spec.js",
+    "src/**/*.spec.ts",
+    "src/**/*.stories.js",
+    "src/**/*.stories.ts"
+  ],
   "compilerOptions": {
     "allowJs": true,
     "composite": true,
-    "baseUrl": ".",
+    "baseUrl": "./src",
+    "rootDir": "./src",
+    "outDir": "./lib",
+    "declaration": true,
+    "declarationMap": true,
+    "declarationDir": "./types",
+    "esModuleInterop": false,
+    "checkJs": true,
+    "target": "ESNext",
     "paths": {
       "@/*": ["./src/*"]
-    }
+    },
+    "lib": ["ES2020", "DOM"],
+    "types": ["cypress", "node"]
   }
 }

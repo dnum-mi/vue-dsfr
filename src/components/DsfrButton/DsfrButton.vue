@@ -1,65 +1,38 @@
-<script>
-import { defineComponent } from 'vue'
+<script lang="ts" setup>
+import { computed, ref } from 'vue'
 import { OhVueIcon as VIcon } from 'oh-vue-icons'
 
 // import '@gouvfr/dsfr/dist/component/button/button.module.js'
 
-export default defineComponent({
-  name: 'DsfrButton',
+export type DsfrButtonProps = {
+  disabled?: boolean
+  label?: string
+  secondary?: boolean
+  tertiary?: boolean
+  iconRight?: boolean
+  iconOnly?: boolean
+  noOutline?: boolean
+  size?: 'sm' | 'small' | 'lg' | 'large' | 'md' | 'medium' | '' | undefined
+  icon?: string
+  onClick?: ($event: MouseEvent) => void
+}
 
-  components: {
-    VIcon,
-  },
-
-  props: {
-    disabled: Boolean,
-    label: {
-      type: String,
-      default: undefined,
-    },
-    secondary: Boolean,
-    tertiary: Boolean,
-    noOutline: {
-      type: Boolean,
-      default: false,
-    },
-    icon: {
-      type: String,
-      default: undefined,
-    },
-    size: {
-      type: String,
-      validator: (val) => ['sm', 'small', 'lg', 'large', 'md', 'medium', '', undefined].includes(val),
-      default: undefined,
-    },
-    iconRight: Boolean,
-    iconOnly: Boolean,
-  },
-
-  computed: {
-    sm () {
-      return ['sm', 'small'].includes(this.size)
-    },
-    md () {
-      return ['md', 'medium'].includes(this.size)
-    },
-    lg () {
-      return ['lg', 'large'].includes(this.size)
-    },
-    center () {
-      return this.align === 'center'
-    },
-    right () {
-      return this.align === 'right'
-    },
-  },
-
-  methods: {
-    focus () {
-      this.$refs.btn.focus()
-    },
-  },
+const props = withDefaults(defineProps<DsfrButtonProps>(), {
+  size: 'md',
+  icon: undefined,
+  label: undefined,
+  onClick: () => undefined,
 })
+
+const sm = computed(() => ['sm', 'small'].includes(props.size))
+const md = computed(() => ['md', 'medium'].includes(props.size))
+const lg = computed(() => ['lg', 'large'].includes(props.size))
+
+const btn = ref('')
+const focus = () => {
+  btn.value.focus()
+}
+defineExpose({ focus })
 </script>
 
 <template>
@@ -80,6 +53,7 @@ export default defineComponent({
     :title="iconOnly ? label : undefined"
     :disabled="disabled"
     :aria-disabled="disabled"
+    @click="onClick ? onClick($event) : () => {}"
   >
     <VIcon
       v-if="icon"

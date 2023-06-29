@@ -1,14 +1,9 @@
-<script>
-import { defineComponent } from 'vue'
+<script lang="ts" setup>
+export type DsfrSideMenuListItemProps = { active?: boolean }
 
-export default defineComponent({
-  name: 'DsfrSideMenuListItem',
-
-  props: {
-    active: Boolean,
-  },
-})
+defineProps<DsfrSideMenuListItemProps>()
 </script>
+
 <template>
   <li
     class="fr-sidemenu__item"

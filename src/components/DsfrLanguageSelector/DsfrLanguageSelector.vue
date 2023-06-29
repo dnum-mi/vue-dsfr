@@ -1,73 +1,42 @@
-<script>
-import { defineComponent } from 'vue'
+<script lang="ts" setup>
+import { computed, ref, watch } from 'vue'
+import { getRandomId } from '../../utils/random-utils'
+import { useCollapsable } from '../../composables'
 
-import { getRandomId } from '../../utils/random-utils.js'
-import { useCollapsable } from '@/composables'
+const {
+  collapse,
+  collapsing,
+  cssExpanded,
+  doExpand,
+  onTransitionEnd,
+} = useCollapsable()
 
-export default defineComponent({
-  name: 'DsfrLanguageSelector',
-  props: {
-    id: {
-      type: String,
-      default () {
-        return getRandomId('translate')
-      },
-    },
-    languages: {
-      type: Array,
-      default: () => {},
-    },
-    currentLanguage: {
-      type: String,
-      default: 'fr',
-    },
-  },
-  emits: ['select'],
-  setup () {
-    const {
-      collapse,
-      collapsing,
-      cssExpanded,
-      doExpand,
-      adjust,
-      onTransitionEnd,
-    } = useCollapsable()
+const props = withDefaults(defineProps<{
+  id?: string,
+  languages?: { codeIso: string; label: string }[]
+  currentLanguage?: string
+}>(), {
+  id: () => getRandomId('translate'),
+  languages: () => [],
+  currentLanguage: 'fr',
+})
 
-    return {
-      collapse,
-      collapsing,
-      cssExpanded,
-      doExpand,
-      adjust,
-      onTransitionEnd,
-    }
-  },
-  data () {
-    return {
-      expanded: false,
-    }
-  },
-  computed: {
-    currentLanguageObject () {
-      return this.languages.find(({ codeIso }) => codeIso === this.currentLanguage)
-    },
-  },
-  watch: {
-    /*
-     * @see https://github.com/GouvernementFR/dsfr/blob/main/src/core/script/collapse/collapse.js
-     */
-    expanded (newValue, oldValue) {
-      if (newValue !== oldValue) {
-        this.doExpand(newValue)
-      }
-    },
-  },
-  methods: {
-    selectLanguage (language) {
-      this.expanded = false
-      this.$emit('select', language)
-    },
-  },
+const expanded = ref(false)
+
+const emit = defineEmits<{(e: 'select', payload: string): void}>()
+function selectLanguage (language) {
+  expanded.value = false
+  emit('select', language)
+}
+
+const currentLanguageObject = computed(
+  () => props.languages.find(({ codeIso }) => codeIso === props.currentLanguage),
+)
+
+watch(expanded, (newValue, oldValue) => {
+  if (newValue !== oldValue) {
+    doExpand(newValue)
+  }
 })
 
 </script>

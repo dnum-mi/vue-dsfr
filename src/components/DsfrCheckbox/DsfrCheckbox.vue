@@ -1,53 +1,37 @@
-<script>
-import { defineComponent } from 'vue'
+<script lang="ts" setup>
+import { computed } from 'vue'
+import { getRandomId } from '../../utils/random-utils'
 
-import { getRandomId } from '../../utils/random-utils.js'
+export type DsfrCheckboxProps = {
+  id?: string
+  name: string
+  required?: boolean
+  modelValue?: boolean
+  small?: boolean
+  label?: string
+  errorMessage?: string
+  validMessage?: string
+  hint?: string
+}
 
-export default defineComponent({
-  name: 'DsfrCheckBox',
-  props: {
-    id: {
-      type: String,
-      default () {
-        return getRandomId('basic', 'checkbox')
-      },
-    },
-    name: {
-      type: String,
-      required: true,
-    },
-    required: Boolean,
-    modelValue: Boolean,
-    small: Boolean,
-    label: {
-      type: String,
-      default: '',
-    },
-    errorMessage: {
-      type: String,
-      default: '',
-    },
-    validMessage: {
-      type: String,
-      default: '',
-    },
-    hint: {
-      type: String,
-      default: '',
-    },
-  },
-
-  emits: ['update:modelValue'],
-
-  computed: {
-    message () {
-      return this.errorMessage || this.validMessage
-    },
-    additionalMessageClass () {
-      return this.errorMessage ? 'fr-error-text' : 'fr-valid-text'
-    },
-  },
+const props = withDefaults(defineProps<DsfrCheckboxProps>(), {
+  id: () => getRandomId('basic', 'checkbox'),
+  hint: '',
+  errorMessage: '',
+  validMessage: '',
+  label: '',
 })
+
+const emit = defineEmits<{(event: 'update:modelValue', value: boolean): void}>()
+
+const message = computed(() => props.errorMessage || props.validMessage)
+
+const additionalMessageClass = computed(() => props.errorMessage ? 'fr-error-text' : 'fr-valid-text')
+
+const emitNewValue = ($event: InputEvent) => {
+  // @ts-ignore This is a checkbox input event, so `checked` property is present
+  emit('update:modelValue', $event.target.checked)
+}
 </script>
 
 <template>
@@ -67,7 +51,7 @@ export default defineComponent({
       v-bind="$attrs"
       :data-testid="`input-checkbox-${id}`"
       :data-test="`input-checkbox-${id}`"
-      @change="$emit('update:modelValue', $event.target.checked)"
+      @change="emitNewValue($event)"
     >
     <label
       :for="id"

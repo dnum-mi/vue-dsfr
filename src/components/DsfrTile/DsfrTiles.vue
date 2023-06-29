@@ -1,20 +1,11 @@
-<script>
-import { defineComponent } from 'vue'
+<script lang="ts" setup>
+import DsfrTile, { DsfrTileProps } from './DsfrTile.vue'
 
-import DsfrTile from './DsfrTile.vue'
-
-export default defineComponent({
-  name: 'DsfrTiles',
-  components: {
-    DsfrTile,
-  },
-  props: {
-    tiles: {
-      type: Array,
-      default: () => [],
-    },
-    horizontal: Boolean,
-  },
+withDefaults(defineProps<{
+  tiles?:(DsfrTileProps & { containerClass: string })[]
+  horizontal?: boolean
+}>(), {
+  tiles: () => [],
 })
 </script>
 

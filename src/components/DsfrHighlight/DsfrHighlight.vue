@@ -1,17 +1,10 @@
-<script>
-import { defineComponent } from 'vue'
-
-export default defineComponent({
-  name: 'DsfrHighlight',
-
-  props: {
-    text: {
-      type: String,
-      default: undefined,
-    },
-    small: Boolean,
-    large: Boolean,
-  },
+<script lang="ts" setup>
+withDefaults(defineProps<{
+  text?: string
+  small?: boolean
+  large?: boolean
+}>(), {
+  text: undefined,
 })
 </script>
 

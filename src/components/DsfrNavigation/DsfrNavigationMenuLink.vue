@@ -1,43 +1,26 @@
-<script>
-import { defineComponent } from 'vue'
+<script lang="ts" setup>
+import { computed } from 'vue'
 import { OhVueIcon as VIcon } from 'oh-vue-icons'
-import { getRandomId } from '../../utils/random-utils.js'
+import { getRandomId } from '../../utils/random-utils'
+import { RouteLocationNormalized } from 'vue-router'
 
-export default defineComponent({
-  name: 'DsfrNavigationMenuLink',
+export type DsfrNavigationMenuLinkProps = {
+  id?: string,
+  to: string | RouteLocationNormalized,
+  text: string,
+  icon?: string,
+  onClick?: ($event: MouseEvent) => void
+}
 
-  components: {
-    VIcon,
-  },
-
-  props: {
-    id: {
-      type: String,
-      default: () => getRandomId('menu-link'),
-    },
-    to: {
-      type: [String, Object],
-      required: true,
-    },
-    text: {
-      type: String,
-      required: true,
-    },
-    icon: {
-      type: String,
-      required: false,
-      default: undefined,
-    },
-  },
-
-  emits: ['toggle-id'],
-
-  computed: {
-    isExternal () {
-      return typeof this.to === 'string' && this.to.startsWith('http')
-    },
-  },
+const props = withDefaults(defineProps<DsfrNavigationMenuLinkProps>(), {
+  id: () => getRandomId('menu-link'),
+  icon: undefined,
+  onClick: () => undefined,
 })
+
+defineEmits<{(event: 'toggle-id', id: string): void}>()
+
+const isExternal = computed(() => typeof props.to === 'string' && props.to.startsWith('http'))
 </script>
 
 <template>

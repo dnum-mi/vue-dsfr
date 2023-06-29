@@ -1,92 +1,58 @@
-<script>
-import { defineComponent } from 'vue'
+<script lang="ts" setup>
+import { computed, onMounted, watch } from 'vue'
 
-import { getRandomId } from '../../utils/random-utils.js'
+import { getRandomId } from '../../utils/random-utils'
 
+import { useCollapsable } from '../../composables'
 import DsfrNavigationMegaMenuCategory from './DsfrNavigationMegaMenuCategory.vue'
-import { useCollapsable } from '@/composables'
 
-export default defineComponent({
-  name: 'DsfrNavigationMegaMenu',
+export type DsfrNavigationMegaMenuProps = {
+  id?: string
+  title: string
+  description?: string
+  link?: object
+  menus?: string[]
+  expandedId?: string
+}
 
-  components: {
-    DsfrNavigationMegaMenuCategory,
-  },
+const props = withDefaults(defineProps<DsfrNavigationMegaMenuProps>(), {
+  id: () => getRandomId('menu'),
+  description: '',
+  link: () => ({ to: '#', text: 'Voir toute la rubrique' }),
+  menus: () => [],
+  expandedId: '',
+})
 
-  props: {
-    id: {
-      type: String,
-      default: () => getRandomId('menu'),
-    },
-    title: {
-      type: String,
-      required: true,
-    },
-    description: {
-      type: String,
-      default: '',
-    },
-    link: {
-      type: Object,
-      default: () => ({ to: '#', text: 'Voir toute la rubrique' }),
-    },
-    menus: {
-      type: Array,
-      default: () => [],
-    },
-    expandedId: {
-      type: String,
-      default: undefined,
-    },
-  },
+const {
+  collapse,
+  collapsing,
+  cssExpanded,
+  doExpand,
+  onTransitionEnd,
+} = useCollapsable()
 
-  emits: ['toggle-id'],
+const expanded = computed(() => {
+  return props.id === props.expandedId
+})
 
-  setup () {
-    const {
-      collapse,
-      collapsing,
-      cssExpanded,
-      doExpand,
-      adjust,
-      onTransitionEnd,
-    } = useCollapsable()
-
-    return {
-      collapse,
-      collapsing,
-      cssExpanded,
-      doExpand,
-      adjust,
-      onTransitionEnd,
-    }
-  },
-
-  computed: {
-    expanded () {
-      return this.id === this.expandedId
-    },
-  },
-
-  watch: {
+watch(expanded, (newValue, oldValue) => {
+  if (newValue !== oldValue) {
     /*
      * @see https://github.com/GouvernementFR/dsfr/blob/main/src/core/script/collapse/collapse.js
      */
-    expanded (newValue, oldValue) {
-      if (newValue !== oldValue) {
-        this.doExpand(newValue)
-      }
-    },
-  },
-
-  mounted () {
-    // NavigationMegaMenu can be expanded by default
-    // We need to trigger the expand animation at mounted
-    if (this.expanded) {
-      this.doExpand(true)
-    }
-  },
+    doExpand(newValue)
+  }
 })
+
+onMounted(() => {
+  // NavigationMegaMenu can be expanded by default
+  // We need to trigger the expand animation at mounted
+  if (expanded.value) {
+    doExpand(true)
+  }
+})
+
+defineEmits<{(event: 'toggle-id', id: string): void}>()
 </script>
 
 <template>

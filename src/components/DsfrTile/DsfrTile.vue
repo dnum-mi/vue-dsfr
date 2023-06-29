@@ -1,40 +1,27 @@
-<script>
-import { defineComponent } from 'vue'
+<script lang="ts" setup>
+import { computed } from 'vue'
+import { RouteLocationRaw } from 'vue-router'
 
-export default defineComponent({
-  name: 'DsfrTile',
+export type DsfrTileProps = {
+  title?: string
+  imgSrc?: string
+  description?: string
+  disabled?: boolean
+  horizontal?: boolean
+  to?: RouteLocationRaw,
+  titleTag?: string
+}
 
-  props:
-  {
-    title: {
-      type: String,
-      default: 'Exemple Tuile',
-    },
-    imgSrc: {
-      type: String,
-      default: undefined,
-    },
-    description: {
-      type: String,
-      default: undefined,
-    },
-    disabled: Boolean,
-    horizontal: Boolean,
-    to: {
-      type: [String, Object],
-      default: '#',
-    },
-    titleTag: {
-      type: String,
-      default: 'h3',
-    },
-  },
+const props = withDefaults(defineProps<DsfrTileProps>(), {
+  title: 'Titre de la tuile',
+  imgSrc: undefined,
+  description: undefined,
+  to: '#',
+  titleTag: 'h3',
+})
 
-  computed: {
-    isExternalLink () {
-      return typeof this.to === 'string' && this.to.startsWith('http')
-    },
-  },
+const isExternalLink = computed(() => {
+  return typeof props.to === 'string' && props.to.startsWith('http')
 })
 </script>
 

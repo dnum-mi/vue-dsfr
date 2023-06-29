@@ -1,30 +1,20 @@
-<script>
-import { defineComponent } from 'vue'
+<script lang="ts" setup>
+import { computed } from 'vue'
 
-export default defineComponent({
-  name: 'DsfrContent',
-
-  props: {
-    url: {
-      type: String,
-      default: '',
-    },
-  },
-
-  emits: ['accept-all', 'refuse-all', 'customize'],
-
-  computed: {
-    isExternalLink () {
-      return typeof this.url === 'string' && this.url.startsWith('http')
-    },
-    is () {
-      return this.url ? (this.isExternalLink ? 'a' : 'RouterLink') : 'a'
-    },
-    linkProps () {
-      return { [this.isExternalLink ? 'href' : 'to']: this.url }
-    },
-  },
+const props = withDefaults(defineProps<{ url?: string }>(), {
+  url: '',
 })
+
+// eslint-disable-next-line func-call-spacing
+defineEmits<{
+  (e: 'accept-all'): void
+  (e: 'refuse-all'): void,
+  (e: 'customize'): void,
+}>()
+
+const isExternalLink = computed(() => typeof props.url === 'string' && props.url.startsWith('http'))
+const is = computed(() => props.url ? (isExternalLink.value ? 'a' : 'RouterLink') : 'a')
+const linkProps = computed(() => ({ [isExternalLink.value ? 'href' : 'to']: props.url }))
 </script>
 
 <template>
