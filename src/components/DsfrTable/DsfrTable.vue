@@ -38,11 +38,10 @@ withDefaults(defineProps<{
         <!-- @slot Slot par défaut pour le corps du tableau. Sera dans `<tbody>` -->
         <slot />
         <template v-if="rows && rows.length">
-          <!-- @vue-ignore -->
           <DsfrTableRow
             v-for="(row, i) of rows"
             :key="i"
-            :row-data="row.rowData || row"
+            :row-data="typeof row === 'string' ? row : row.rowData"
             :row-attrs="row.rowAttrs || {}"
           />
         </template>

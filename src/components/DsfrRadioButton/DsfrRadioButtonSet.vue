@@ -71,7 +71,6 @@ const onChange = ($event: string) => {
         class="fr-fieldset__content"
         role="radiogroup"
       >
-        <!-- @vue-ignore -->
         <DsfrRadioButton
           v-for="(option, i) of options"
           :key="option.value || i"

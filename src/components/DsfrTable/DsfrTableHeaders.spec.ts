@@ -40,7 +40,8 @@ describe('DsfrTableHeaders', () => {
     expect(thEls).toHaveLength(headers.length)
     let i = 0
     for (const header of thEls) {
-      expect(header).toContainHTML(headers[i].text || headers[i])
+      // @ts-ignore text will be present
+      expect(header).toContainHTML((headers[i]).text || headers[i])
       i++
     }
     expect(onClick).toHaveBeenCalledTimes(1)

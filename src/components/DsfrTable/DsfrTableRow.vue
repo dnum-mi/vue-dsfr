@@ -3,7 +3,7 @@ import { type HTMLAttributes } from 'vue'
 import DsfrTableCell from './DsfrTableCell.vue'
 
 export type DsfrTableRowProps = {
-  rowData?: Record<string, any>[]
+  rowData?: (string | Record<string, any>)[]
   rowAttrs?: HTMLAttributes
 }
 
