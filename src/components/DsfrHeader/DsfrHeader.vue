@@ -19,6 +19,7 @@ type DsfrHeaderProps = {
   searchLabel?: string
   quickLinksAriaLabel?: string
   showSearch?: boolean
+  showBeta?: boolean
 }
 
 const props = withDefaults(defineProps<DsfrHeaderProps>(), {
@@ -150,6 +151,12 @@ defineEmits<{
               >
                 <p class="fr-header__service-title">
                   {{ serviceTitle }}
+                  <span
+                    v-if="showBeta"
+                    class="fr-badge fr-badge--sm fr-badge--green-emeraude"
+                  >
+                    BETA
+                  </span>
                 </p>
               </RouterLink>
               <p
@@ -157,6 +164,14 @@ defineEmits<{
                 class="fr-header__service-tagline"
               >
                 {{ serviceDescription }}
+              </p>
+            </div>
+            <div
+              v-if="!serviceTitle && showBeta"
+              class="fr-header__service"
+            >
+              <p class="fr-header__service-title">
+                <span class="fr-badge fr-badge--sm fr-badge--green-emeraude">BETA</span>
               </p>
             </div>
           </div>
@@ -231,7 +246,7 @@ defineEmits<{
             </div>
           </div>
         </div>
-        <slot />
+        <slot/>
       </div>
     </div>
   </header>
