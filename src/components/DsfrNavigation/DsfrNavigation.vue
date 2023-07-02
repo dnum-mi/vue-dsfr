@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { ref, onMounted, onUnmounted, Ref } from 'vue'
-import { RouteLocationNormalized } from 'vue-router'
+import { RouteLocationRaw } from 'vue-router'
 
 import { getRandomId } from '../../utils/random-utils'
 
@@ -13,7 +13,7 @@ const props = withDefaults(defineProps<{
   id?: string
   label?: string
   navItems:(
-    { text?: string ; to?: RouteLocationNormalized }
+    { text?: string ; to?: RouteLocationRaw }
     & { title?: string ; links?: DsfrNavigationMenuLinkProps | DsfrNavigationMegaMenuProps | DsfrNavigationMenuProps }
     & { menus: { title?: string ; links?: DsfrNavigationMenuLinkProps | DsfrNavigationMegaMenuProps | DsfrNavigationMenuProps }[]}
   )[]

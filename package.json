@@ -20,11 +20,11 @@
     ".": {
       "require": {
         "default": "./dist/vue-dsfr.umd.js",
-        "types": "./types"
+        "types": "./types/index.d.ts"
       },
       "import": {
         "default": "./dist/vue-dsfr.mjs",
-        "types": "./types"
+        "types": "./types/index.d.ts"
       }
     },
     "./dist/vue-dsfr.css": {
