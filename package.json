@@ -12,14 +12,20 @@
     "node": ">=18.x.x",
     "npm": ">=8.x.x"
   },
-  "types": "./lib",
+  "types": "./types",
   "license": "MIT",
   "main": "./dist/vue-dsfr.umd.js",
   "module": "./dist/vue-dsfr.mjs",
   "exports": {
     ".": {
-      "require": "./dist/vue-dsfr.umd.js",
-      "import": "./dist/vue-dsfr.mjs"
+      "require": {
+        "default": "./dist/vue-dsfr.umd.js",
+        "types": "./types"
+      },
+      "import": {
+        "default": "./dist/vue-dsfr.mjs",
+        "types": "./types"
+      }
     },
     "./dist/vue-dsfr.css": {
       "require": "./dist/vue-dsfr.css",
