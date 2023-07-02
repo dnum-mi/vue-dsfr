@@ -6,12 +6,18 @@ import { type DsfrTableHeaderProps } from './DsfrTableHeader.vue'
 withDefaults(defineProps<{
   title?: string
   headers?:(DsfrTableHeaderProps | string)[]
-  rows?: DsfrTableRowProps[]
+  rows?: (DsfrTableRowProps | string)[]
   noCaption?: boolean
 }>(), {
   title: undefined,
   headers: () => [],
+  rows: () => [],
 })
+
+const getRowData = (row: (DsfrTableRowProps | string | ({component: string} & Record<string, any>))) => {
+  // @ts-ignore TODO: find a way to improve types here
+  return row.rowData || row
+}
 </script>
 
 <template>
@@ -41,8 +47,8 @@ withDefaults(defineProps<{
           <DsfrTableRow
             v-for="(row, i) of rows"
             :key="i"
-            :row-data="typeof row === 'string' ? row : row.rowData"
-            :row-attrs="row.rowAttrs || {}"
+            :row-data="getRowData(row)"
+            :row-attrs="typeof row === 'string' ? {} : row.rowAttrs"
           />
         </template>
       </tbody>
