@@ -2,11 +2,11 @@
 import { computed } from 'vue'
 import { OhVueIcon as VIcon } from 'oh-vue-icons'
 import { getRandomId } from '../../utils/random-utils'
-import { RouteLocationNormalized } from 'vue-router'
+import { RouteLocationRaw } from 'vue-router'
 
 export type DsfrNavigationMenuLinkProps = {
   id?: string,
-  to?: string | RouteLocationNormalized,
+  to?: string | RouteLocationRaw,
   text?: string,
   icon?: string,
   onClick?: ($event: MouseEvent) => void

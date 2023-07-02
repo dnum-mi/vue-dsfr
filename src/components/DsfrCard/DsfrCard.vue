@@ -1,13 +1,13 @@
 
 <script lang="ts" setup>
 import { computed, ref, type Ref } from 'vue'
-import { RouteLocationNormalized } from 'vue-router'
+import { RouteLocationRaw } from 'vue-router'
 import DsfrButtonGroup from '../DsfrButton/DsfrButtonGroup.vue'
 import { type DsfrButtonProps } from '../DsfrButton/DsfrButton.vue'
 
 const props = withDefaults(defineProps<{
   imgSrc?: string
-  link?: string | RouteLocationNormalized
+  link?: string | RouteLocationRaw
   title: string
   description: string
   size?: 'md' | 'medium' | 'large' | 'lg' | 'sm' | 'small' | undefined
@@ -15,7 +15,7 @@ const props = withDefaults(defineProps<{
   altImg?: string
   titleTag?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'
   buttons?: DsfrButtonProps[]
-  linksGroup?:({ label: string, to?: RouteLocationNormalized, link?: string, href?: string })[]
+  linksGroup?:({ label: string, to?: RouteLocationRaw, link?: string, href?: string })[]
   noArrow?: boolean
   horizontal?: boolean
 }>(), {
