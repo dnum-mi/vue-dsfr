@@ -4,10 +4,10 @@ export default defineConfig({
   video: false,
 
   component: {
-    setupNodeEvents (on, config) {},
+    // setupNodeEvents (on, config) {},
     viewportHeight: 500,
     viewportWidth: 1000,
-    specPattern: 'src/**/*.e2e.js*',
+    specPattern: 'src/**/*.e2e.{js,ts}*',
 
     devServer: {
       framework: 'vue',
@@ -16,7 +16,7 @@ export default defineConfig({
   },
 
   e2e: {
-    setupNodeEvents (on, config) {
+    setupNodeEvents (/* on, config */) {
       // implement node event listeners here
     },
   },

@@ -1,69 +1,46 @@
-<script>
-import { defineComponent } from 'vue'
+<script lang="ts" setup>
+import { InputHTMLAttributes, computed } from 'vue'
 
 import DsfrCheckbox from './DsfrCheckbox.vue'
-import { getRandomId } from '../../utils/random-utils.js'
+import { getRandomId } from '../../utils/random-utils'
 
-export default defineComponent({
-  name: 'DsfrCheckboxSet',
+import type { DsfrCheckboxProps } from './DsfrCheckbox.vue'
 
-  components: {
-    DsfrCheckbox,
-  },
-
-  props: {
-    titleId: {
-      type: String,
-      default () {
-        return getRandomId('checkbox', 'group')
-      },
-    },
-    disabled: Boolean,
-    inline: Boolean,
-    required: Boolean,
-    small: Boolean,
-    errorMessage: {
-      type: String,
-      default: '',
-    },
-    validMessage: {
-      type: String,
-      default: '',
-    },
-    legend: {
-      type: String,
-      default: '',
-    },
-    options: {
-      type: Array,
-      default: () => [],
-    },
-    modelValue: {
-      type: Array,
-      default: () => [],
-    },
-  },
-
-  emits: ['update:modelValue'],
-
-  computed: {
-    message () {
-      return this.errorMessage || this.validMessage
-    },
-    additionalMessageClass () {
-      return this.errorMessage ? 'fr-error-text' : 'fr-valid-text'
-    },
-  },
-
-  methods: {
-    onChange ({ name, checked }) {
-      const selected = checked
-        ? [...this.modelValue, name]
-        : this.modelValue.filter(val => val !== name)
-      this.$emit('update:modelValue', selected)
-    },
-  },
+const props = withDefaults(defineProps<{
+  titleId?: string
+  disabled?: boolean,
+  inline?: boolean,
+  required?: boolean,
+  small?: boolean,
+  errorMessage?: string
+  validMessage?: string
+  legend?: string
+  options?:(DsfrCheckboxProps & InputHTMLAttributes)[]
+  modelValue?: string[],
+}>(), {
+  titleId: () => getRandomId('checkbox', 'group'),
+  errorMessage: '',
+  validMessage: '',
+  legend: '',
+  options: () => [],
+  modelValue: () => [],
 })
+
+const emit = defineEmits<{(e: 'update:modelValue', payload: string[]): void}>()
+
+const message = computed(() => {
+  return props.errorMessage || props.validMessage
+})
+const additionalMessageClass = computed(() => {
+  return props.errorMessage ? 'fr-error-text' : 'fr-valid-text'
+})
+
+const onChange = ({ name, checked }: { name: string, checked: boolean }) => {
+  const selected = checked
+    ? [...props.modelValue, name]
+    : props.modelValue.filter(val => val !== name)
+  emit('update:modelValue', selected)
+}
 </script>
 
 <template>

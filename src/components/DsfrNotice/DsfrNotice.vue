@@ -1,12 +1,12 @@
-<script setup>
-defineProps({
-  title: {
-    type: String,
-    default: '',
-  },
-  closeable: Boolean,
+<script lang="ts" setup>
+withDefaults(defineProps<{
+  title?: string
+  closeable?: boolean
+}>(), {
+  title: '',
 })
-const emit = defineEmits(['close'])
+
+defineEmits<{(event: 'close'): void}>()
 </script>
 
 <template>
@@ -22,7 +22,7 @@ const emit = defineEmits(['close'])
           v-if="closeable"
           class="fr-btn--close  fr-btn"
           title="Masquer le message"
-          @click="emit('close')"
+          @click="$emit('close')"
         >
           Masquer le message
         </button>

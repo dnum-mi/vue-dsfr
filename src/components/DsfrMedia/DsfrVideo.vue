@@ -1,41 +1,19 @@
-<script>
-import { defineComponent } from 'vue'
+<script lang="ts" setup>
 import DsfrTranscription from '../DsfrTranscription/DsfrTranscription.vue'
 
-export default defineComponent({
-  name: 'DsfrVideo',
-  components: {
-    DsfrTranscription,
-  },
-
-  props: {
-    expandTranscription: Boolean,
-    src: {
-      type: String,
-      required: true,
-    },
-    legend: {
-      type: String,
-      default: 'Une vidéo formidable',
-    },
-    size: {
-      type: String,
-      default: 'medium',
-    },
-    transcriptionTitle: {
-      type: String,
-      default: 'Titre de la vidéo',
-    },
-    transcriptionContent: {
-      type: String,
-      default: 'Transcription du contenu de la vidéo',
-    },
-    ratio: {
-      type: String,
-      default: '16x9',
-    },
-  },
-  emits: ['expandTranscription'],
+withDefaults(defineProps<{
+  src: string
+  legend?: string
+  size?: 'small' | 'medium' | 'large'
+  transcriptionTitle?: string
+  transcriptionContent?: string
+  ratio?: string
+}>(), {
+  legend: '',
+  transcriptionTitle: '',
+  transcriptionContent: '',
+  ratio: '16x9',
+  size: 'medium',
 })
 </script>
 
@@ -65,7 +43,6 @@ export default defineComponent({
     <DsfrTranscription
       :title="transcriptionTitle"
       :content="transcriptionContent"
-      @expand-transcription="expandTranscription"
     />
   </figure>
 </template>

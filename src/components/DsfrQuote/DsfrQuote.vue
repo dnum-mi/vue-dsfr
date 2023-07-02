@@ -1,35 +1,19 @@
-<script>
-import { defineComponent } from 'vue'
+<script lang="ts" setup>
 
-export default defineComponent({
-  name: 'DsfrQuote',
-  props: {
-    quote: {
-      type: String,
-      default: undefined,
-    },
-    author: {
-      type: String,
-      default: undefined,
-    },
-    details: {
-      type: Array,
-      default: () => [],
-    },
-    source: {
-      type: String,
-      default: '',
-    },
-    sourceUrl: {
-      type: String,
-      default: '',
-    },
-    quoteImage: {
-      type: String,
-      default: '',
-    },
-  },
-
+withDefaults(defineProps<{
+  quote?: string
+  author?: string
+  details: { label: string, url: string }[]
+  source: string
+  sourceUrl: string
+  quoteImage: string
+}>(), {
+  quote: undefined,
+  author: undefined,
+  details: () => [],
+  source: '',
+  sourceUrl: '',
+  quoteImage: '',
 })
 </script>
 

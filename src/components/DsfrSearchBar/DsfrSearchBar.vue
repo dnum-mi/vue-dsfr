@@ -1,56 +1,30 @@
-<script>
-import { defineComponent } from 'vue'
+<script lang="ts" setup>
+import { getRandomId } from '../../utils/random-utils'
 
-import { getRandomId } from '../../utils/random-utils.js'
 import DsfrInput from '../DsfrInput/DsfrInput.vue'
 import DsfrButton from '../DsfrButton/DsfrButton.vue'
 
-export default defineComponent({
-  name: 'DsfrSearchBar',
-  components: {
-    DsfrInput,
-    DsfrButton,
-  },
-  props: {
-    id: {
-      type: String,
-      default: getRandomId('search', 'input'),
-    },
-    label: {
-      type: String,
-      default: '',
-    },
-    labelVisible: Boolean,
-    large: Boolean,
-    buttonText: {
-      type: String,
-      default: '',
-    },
-    modelValue: {
-      type: String,
-      default: '',
-    },
-    placeholder: {
-      type: String,
-      default: 'Rechercher',
-    },
-  },
-
-  emits: ['update:modelValue', 'search'],
-
-  data () {
-    return {
-      classesText: {
-        type: String,
-        default: '',
-      },
-      classesButton: {
-        type: String,
-        default: '',
-      },
-    }
-  },
+withDefaults(defineProps<{
+  id?: string
+  label?: string
+  labelVisible?: boolean
+  large?: boolean
+  buttonText?: string
+  modelValue?: string
+  placeholder?: string
+}>(), {
+  id: () => getRandomId('search', 'input'),
+  label: '',
+  buttonText: '',
+  modelValue: '',
+  placeholder: 'Rechercher',
 })
+
+// eslint-disable-next-line func-call-spacing
+defineEmits<{
+  (e: 'update:modelValue', payload: string): void,
+  (e: 'search', payload: string): void,
+}>()
 </script>
 
 <template>

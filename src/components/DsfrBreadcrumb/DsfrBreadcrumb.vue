@@ -1,60 +1,35 @@
-<script>
-import { defineComponent } from 'vue'
-import { getRandomId } from '../../utils/random-utils.js'
-import { useCollapsable } from '@/composables'
+<script setup lang="ts">
+import type { RouteLocationNormalized } from 'vue-router'
+import { ref, watch } from 'vue'
 
-export default defineComponent({
-  name: 'DsfrBreadcrumb',
+import { getRandomId } from '../../utils/random-utils'
+import { useCollapsable } from '../../composables.js'
 
-  props: {
-    breadcrumbId: {
-      type: String,
-      default () {
-        return getRandomId('breadcrumb')
-      },
-    },
-    links: {
-      type: Array,
-      default: () => [{ text: '' }],
-    },
-  },
+withDefaults(defineProps<{
+  breadcrumbId?: string
+  links?: { to?: RouteLocationNormalized, text: string }[]
+}>(), {
+  breadcrumbId: () => getRandomId('breadcrumb'),
+  links: () => [{ text: '' }],
+})
 
-  setup () {
-    const {
-      collapse,
-      collapsing,
-      cssExpanded,
-      doExpand,
-      adjust,
-      onTransitionEnd,
-    } = useCollapsable()
+const {
+  collapse,
+  collapsing,
+  cssExpanded,
+  doExpand,
+  onTransitionEnd,
+} = useCollapsable()
 
-    return {
-      collapse,
-      collapsing,
-      cssExpanded,
-      doExpand,
-      adjust,
-      onTransitionEnd,
-    }
-  },
+const expanded = ref(false)
 
-  data () {
-    return {
-      expanded: false,
-    }
-  },
-
-  watch: {
+watch(expanded, (newValue, oldValue) => {
+  if (newValue !== oldValue) {
     /*
      * @see https://github.com/GouvernementFR/dsfr/blob/main/src/core/script/collapse/collapse.js
      */
-    expanded (newValue, oldValue) {
-      if (newValue !== oldValue) {
-        this.doExpand(newValue)
-      }
-    },
-  },
+    doExpand(newValue)
+  }
 })
 </script>
 

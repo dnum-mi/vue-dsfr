@@ -1,28 +1,25 @@
-<script>
-import { defineComponent } from 'vue'
+<script lang="ts" setup>
+import { computed } from 'vue'
 
-export default defineComponent({
-  props: {
-    active: Boolean,
-    to: {
-      type: String,
-      default: '',
-    },
-  },
+export type DsfrSideMenuLinkProps = {
+  active?: boolean
+  to: string
+}
 
-  emits: ['toggle-expand'],
+const props = withDefaults(defineProps<DsfrSideMenuLinkProps>(), {
+  to: '',
+})
 
-  computed: {
-    isExternalLink () {
-      return typeof this.to === 'string' && this.to.startsWith('http')
-    },
-    is () {
-      return this.isExternalLink ? 'a' : 'RouterLink'
-    },
-    linkProps () {
-      return { [this.isExternalLink ? 'href' : 'to']: this.to }
-    },
-  },
+defineEmits<{(e: 'toggle-expand', payload: string): void}>()
+
+const isExternalLink = computed(() => {
+  return typeof props.to === 'string' && props.to.startsWith('http')
+})
+const is = computed(() => {
+  return isExternalLink.value ? 'a' : 'RouterLink'
+})
+const linkProps = computed(() => {
+  return { [isExternalLink.value ? 'href' : 'to']: props.to }
 })
 </script>
 

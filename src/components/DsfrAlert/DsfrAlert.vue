@@ -1,71 +1,36 @@
-<script>
-import { defineComponent } from 'vue'
+<script setup lang="ts">
+import { computed } from 'vue'
 
-import { getRandomId } from '../../utils/random-utils.js'
+import { getRandomId } from '../../utils/random-utils'
 
-export default defineComponent({
-  name: 'DsfrAlert',
-
-  props: {
-    id: {
-      type: String,
-      default () {
-        return getRandomId('basic', 'alert')
-      },
-    },
-    type: {
-      type: String,
-      default: '',
-    },
-    title: {
-      type: String,
-      default: '',
-    },
-    description: {
-      type: String,
-      default: '',
-    },
-    titleTag: {
-      type: String,
-      default: 'h3',
-    },
-    small: Boolean,
-    closed: Boolean,
-    closeable: Boolean,
-  },
-
-  emits: ['close'],
-
-  computed: {
-    error () {
-      return this.type === 'error'
-    },
-    success () {
-      return this.type === 'success'
-    },
-    warning () {
-      return this.type === 'warning'
-    },
-    info () {
-      return this.type === 'info'
-    },
-    classes () {
-      return {
-        'fr-alert--error': this.error,
-        'fr-alert--success': this.success,
-        'fr-alert--warning': this.warning,
-        'fr-alert--info': this.info,
-        'fr-alert--sm': this.small,
-      }
-    },
-  },
-
-  methods: {
-    onClick () {
-      this.$emit('close')
-    },
-  },
+const props = withDefaults(defineProps<{
+  id?: string,
+  type?: 'error' | 'success' | 'warning' | 'info',
+  title?: string,
+  description: string,
+  titleTag?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6',
+  small?: boolean,
+  closed?: boolean,
+  closeable?: boolean,
+}>(), {
+  id: () => getRandomId('basic', 'alert'),
+  type: 'info',
+  titleTag: 'h3',
+  title: '',
 })
+
+const emit = defineEmits<{(e: 'close'): void}>()
+const onClick = () => emit('close')
+
+const classes = computed(
+  () => ([
+    `fr-alert--${props.type}`,
+    {
+      'fr-alert--sm': props.small,
+    },
+  ]),
+)
+
 </script>
 
 <template>

@@ -1,87 +1,51 @@
-<script>
-import { defineComponent } from 'vue'
+<script lang="ts" setup>
+import { computed, watch, onMounted } from 'vue'
 
-// import '@gouvfr/dsfr/dist/component/navigation/navigation.module.js'
-
-import { getRandomId } from '../../utils/random-utils.js'
+import { getRandomId } from '../../utils/random-utils'
 import DsfrNavigationMenuItem from './DsfrNavigationMenuItem.vue'
-import DsfrNavigationMenuLink from './DsfrNavigationMenuLink.vue'
-import { useCollapsable } from '@/composables'
+import DsfrNavigationMenuLink, { DsfrNavigationMenuLinkProps } from './DsfrNavigationMenuLink.vue'
+import { useCollapsable } from '../../composables'
 
-export default defineComponent({
-  name: 'DsfrNavigationMenu',
+const {
+  collapse,
+  collapsing,
+  cssExpanded,
+  doExpand,
+  onTransitionEnd,
+} = useCollapsable()
 
-  components: {
-    DsfrNavigationMenuItem,
-    DsfrNavigationMenuLink,
-  },
+export type DsfrNavigationMenuProps = {
+  id?: string
+  title: string
+  links?: DsfrNavigationMenuLinkProps[]
+  expandedId?: string
+}
 
-  props: {
-    id: {
-      type: String,
-      default: () => getRandomId('menu'),
-    },
-    title: {
-      type: String,
-      required: true,
-    },
-    links: {
-      type: Array,
-      default: () => [],
-    },
-    expandedId: {
-      type: String,
-      default: undefined,
-    },
-  },
-
-  emits: ['toggle-id'],
-
-  setup () {
-    const {
-      collapse,
-      collapsing,
-      cssExpanded,
-      doExpand,
-      adjust,
-      onTransitionEnd,
-    } = useCollapsable()
-
-    return {
-      collapse,
-      collapsing,
-      cssExpanded,
-      doExpand,
-      adjust,
-      onTransitionEnd,
-    }
-  },
-
-  computed: {
-    expanded () {
-      return this.id === this.expandedId
-    },
-  },
-
-  watch: {
-    /*
-     * @see https://github.com/GouvernementFR/dsfr/blob/main/src/core/script/collapse/collapse.js
-     */
-    expanded (newValue, oldValue) {
-      if (newValue !== oldValue) {
-        this.doExpand(newValue)
-      }
-    },
-  },
-
-  mounted () {
-    // NavigationMenu can be expanded by default
-    // We need to trigger the expand animation at mounted
-    if (this.expanded) {
-      this.doExpand(true)
-    }
-  },
+const props = withDefaults(defineProps<DsfrNavigationMenuProps>(), {
+  id: () => getRandomId('menu'),
+  links: () => [],
+  expandedId: '',
 })
+
+const expanded = computed(() => props.id === props.expandedId)
+
+watch(expanded, (newValue, oldValue) => {
+  // @see https://github.com/GouvernementFR/dsfr/blob/main/src/core/script/collapse/collapse.js
+  if (newValue !== oldValue) {
+    doExpand(newValue)
+  }
+})
+
+defineEmits<{(event: 'toggle-id', id: string): void}>()
+
+onMounted(() => {
+  // NavigationMenu can be expanded by default
+  // We need to trigger the expand animation at mounted
+  if (expanded.value) {
+    doExpand(true)
+  }
+})
+
 </script>
 
 <template>
@@ -110,7 +74,6 @@ export default defineComponent({
       >
         <DsfrNavigationMenuLink
           v-bind="link"
-          @click="link.onClick"
           @toggle-id="$emit('toggle-id', expandedId)"
         />
       </DsfrNavigationMenuItem>

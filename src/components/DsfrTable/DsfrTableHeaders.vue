@@ -1,12 +1,11 @@
-<script setup>
-import DsfrTableHeader from './DsfrTableHeader.vue'
+<script setup lang="ts">
+import DsfrTableHeader, { DsfrTableHeaderProps } from './DsfrTableHeader.vue'
 
-defineProps({
-  headers: {
-    type: Array,
-    required: true,
-  },
-})
+type Header = DsfrTableHeaderProps & { text?: string }
+
+defineProps<{
+  headers:(DsfrTableHeaderProps | string)[]
+}>()
 </script>
 
 <template>
@@ -16,8 +15,8 @@ defineProps({
     <DsfrTableHeader
       v-for="(header, i) of headers"
       :key="i"
-      :header="header.text || header"
-      :header-attrs="header.headerAttrs"
+      :header="(header as Header).text || (header as string)"
+      :header-attrs="(header as DsfrTableHeaderProps).headerAttrs"
     />
   </tr>
 </template>

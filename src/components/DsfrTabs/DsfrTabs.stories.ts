@@ -31,7 +31,7 @@ const tabContents = [
  */
 const meta = {
   component: DsfrTabs,
-  title: 'Composants/Onglets - DsfrTabs',
+  title: 'Composants/DsfrTabs',
   args: {
     tabListName,
     title1,

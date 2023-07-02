@@ -1,36 +1,21 @@
-<script>
-import { defineComponent } from 'vue'
+<script lang="ts" setup>
+export type DsfrFileDownloadProps = {
+  title?: string
+  format?: string
+  size?: string
+  href?: string
+  download?: string
+  description?: string
+  block?: boolean
+}
 
-export default defineComponent({
-  name: 'DsfrFileDownload',
-
-  props: {
-    title: {
-      type: String,
-      default: 'Télécharger le document',
-    },
-    format: {
-      type: String,
-      default: 'JPEG',
-    },
-    size: {
-      type: String,
-      default: '250 Ko',
-    },
-    href: {
-      type: String,
-      default: '#',
-    },
-    download: {
-      type: String,
-      default: '',
-    },
-    description: {
-      type: String,
-      default: '',
-    },
-    block: Boolean,
-  },
+withDefaults(defineProps<DsfrFileDownloadProps>(), {
+  title: 'Télécharger le document',
+  format: 'JPEG',
+  size: '250 Ko',
+  href: '#',
+  download: '',
+  description: '',
 })
 </script>
 

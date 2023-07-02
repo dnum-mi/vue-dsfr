@@ -1,80 +1,44 @@
-<script>
-import { defineComponent } from 'vue'
+<script lang="ts" setup>
+import { computed } from 'vue'
 
-export default defineComponent({
-  name: 'DsfrPagination',
-  props: {
-    pages: {
-      type: Array,
-      required: true,
-      validator (value) {
-        // Doit contenir au moins une page
-        return value?.length > 0
-      },
-    },
-    currentPage: {
-      type: Number,
-      default: 0,
-    },
-    firstPageTitle: {
-      type: String,
-      default: 'Première page',
-    },
-    lastPageTitle: {
-      type: String,
-      default: 'Dernière page',
-    },
-    nextPageTitle: {
-      type: String,
-      default: 'Page suivante',
-    },
-    prevPageTitle: {
-      type: String,
-      default: 'Page précédente',
-    },
-    truncLimit: {
-      type: Number,
-      default: 5,
-    },
-  },
+type Page = { href?: string, label: string, title: string }
+const props = withDefaults(defineProps<{
+  pages: Page[]
+  currentPage?: number
+  firstPageTitle?: string
+  lastPageTitle?: string
+  nextPageTitle?: string
+  prevPageTitle?: string
+  truncLimit?: number,
+}>(), {
+  truncLimit: 5,
+  currentPage: 0,
+  firstPageTitle: 'Première page',
+  lastPageTitle: 'Dernière page',
+  nextPageTitle: 'Page suivante',
+  prevPageTitle: 'Page précédente',
 
-  emits: ['update:currentPage'],
-
-  computed: {
-    startIndex () {
-      return Math.min(this.pages.length - 1 - this.truncLimit, Math.max(this.currentPage - (this.truncLimit - this.truncLimit % 2) / 2, 0))
-    },
-    endIndex () {
-      return Math.min(this.pages.length - 1, this.startIndex + this.truncLimit)
-    },
-    displayedPages () {
-      return this.pages.length > this.truncLimit ? this.pages.slice(this.startIndex, this.endIndex + 1) : this.pages
-    },
-  },
-  methods: {
-    tofirstPage () {
-      this.toPage(0)
-    },
-    toPreviousPage () {
-      this.toPage(Math.max(0, this.currentPage - 1))
-    },
-    toNextPage () {
-      this.toPage(Math.min(this.pages.length - 1, this.currentPage + 1))
-    },
-    toLastPage () {
-      this.toPage(this.pages.length - 1)
-    },
-    toPage (index) {
-      this.updatePage(index)
-    },
-    isCurrentPage (page) {
-      return this.pages.indexOf(page) === this.currentPage
-    },
-    updatePage (index) {
-      this.$emit('update:currentPage', index)
-    },
-  },
 })
+
+const emit = defineEmits<{(e: 'update:currentPage', payload: number): void}>()
+
+const startIndex = computed(() => {
+  return Math.min(props.pages.length - 1 - props.truncLimit, Math.max(props.currentPage - (props.truncLimit - props.truncLimit % 2) / 2, 0))
+})
+const endIndex = computed(() => {
+  return Math.min(props.pages.length - 1, startIndex.value + props.truncLimit)
+})
+const displayedPages = computed(() => {
+  return props.pages.length > props.truncLimit ? props.pages.slice(startIndex.value, endIndex.value + 1) : props.pages
+})
+
+const updatePage = (index: number) => emit('update:currentPage', index)
+const toPage = (index: number) => updatePage(index)
+const tofirstPage = () => toPage(0)
+const toPreviousPage = () => toPage(Math.max(0, props.currentPage - 1))
+const toNextPage = () => toPage(Math.min(props.pages.length - 1, props.currentPage + 1))
+const toLastPage = () => toPage(props.pages.length - 1)
+const isCurrentPage = (page: Page) => props.pages.indexOf(page) === props.currentPage
 </script>
 
 <template>

@@ -1,69 +1,36 @@
-<script>
-import { defineComponent } from 'vue'
+<script lang="ts" setup>
+import { computed } from 'vue'
 
 import DsfrInput from './DsfrInput.vue'
 
-import { getRandomId } from '../../utils/random-utils.js'
+import { getRandomId } from '../../utils/random-utils'
 
-export default defineComponent({
-  name: 'DsfrInputGroup',
-  components: {
-    DsfrInput,
-  },
-  inheritAttrs: false,
-
-  props: {
-    id: {
-      type: String,
-      default: undefined,
-    },
-    descriptionId: {
-      type: String,
-      default () {
-        return getRandomId('input', 'message-desc')
-      },
-    },
-    label: {
-      type: String,
-      default: '',
-    },
-    hint: {
-      type: String,
-      default: '',
-    },
-    labelVisible: Boolean,
-    modelValue: {
-      type: String,
-      default: undefined,
-    },
-    placeholder: {
-      type: String,
-      default: 'Placeholder',
-    },
-    errorMessage: {
-      type: String,
-      default: undefined,
-    },
-    validMessage: {
-      type: String,
-      default: undefined,
-    },
-  },
-
-  emits: ['update:modelValue'],
-
-  computed: {
-    message () {
-      return this.errorMessage || this.validMessage
-    },
-    messageClass () {
-      return this.errorMessage ? 'fr-error-text' : 'fr-valid-text'
-    },
-    messageIcon () {
-      return this.errorMessage ? 'ri-alert-line' : 'ri-checkbox-circle-line'
-    },
-  },
+const props = withDefaults(defineProps<{
+  descriptionId?: string
+  hint?: string
+  labelVisible?: boolean
+  label?: string
+  labelClass?: string
+  modelValue?: string
+  placeholder?: string
+  errorMessage?: string
+  validMessage?: string
+  wrapperClass?: string
+}>(), {
+  descriptionId: () => getRandomId('basic', 'input'),
+  hint: '',
+  label: '',
+  labelClass: '',
+  modelValue: '',
+  wrapperClass: '',
+  errorMessage: undefined,
+  validMessage: undefined,
 })
+
+defineEmits<{(e: 'update:modelValue', payload: string): void}>()
+
+const message = computed(() => props.errorMessage || props.validMessage)
+const messageClass = computed(() => props.errorMessage ? 'fr-error-text' : 'fr-valid-text')
 </script>
 
 <template>

@@ -1,18 +1,11 @@
-<script>
-import { defineComponent } from 'vue'
+<script lang="ts" setup>
+import { getRandomId } from '../../utils/random-utils'
 
-import { getRandomId } from '../../utils/random-utils.js'
-
-export default defineComponent({
-  name: 'DsfrNavigationItem',
-
-  props: {
-    id: {
-      type: String,
-      default: () => getRandomId('nav', 'item'),
-    },
-    active: Boolean,
-  },
+withDefaults(defineProps<{
+  id?: string
+  active?: boolean
+}>(), {
+  id: () => getRandomId('nav', 'item'),
 })
 </script>
 

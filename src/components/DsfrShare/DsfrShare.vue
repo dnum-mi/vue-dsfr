@@ -1,41 +1,28 @@
-<script>
-import { defineComponent } from 'vue'
-
-export default defineComponent({
-  name: 'DsfrShare',
-
-  props: {
-    title: {
-      type: String,
-      default: 'Partager la page',
-    },
-    copyLabel: {
-      type: String,
-      default: 'Copier dans le presse-papier',
-    },
-    mail: {
-      type: Object,
-      default: () => undefined,
-    },
-    networks: {
-      type: Array,
-      default: () => [],
-    },
-  },
-  methods: {
-    copyLocationToClipboard () {
-      const url = window.location.href
-      navigator.clipboard.writeText(url)
-    },
-    openWindow ({ url, label }) {
-      window.open(
-        url,
-        label,
-        'toolbar=no,location=yes,status=no,menubar=no,scrollbars=yes,resizable=yes,width=600,height=450',
-      )
-    },
-  },
+<script lang="ts" setup>
+withDefaults(defineProps<{
+  title?: string
+  copyLabel?: string
+  mail?: { label: string, to: string }
+  networks?: { name: string, label: string, url: string }[]
+}>(), {
+  title: 'Partager la page',
+  copyLabel: 'Copier dans le presse-papier',
+  // @ts-ignore this is really undefined
+  mail: () => undefined,
+  networks: () => [],
 })
+
+const copyLocationToClipboard = () => {
+  const url = window.location.href
+  navigator.clipboard.writeText(url)
+}
+const openWindow = ({ url, label }: { url: string, label: string }) => {
+  window.open(
+    url,
+    label,
+    'toolbar=no,location=yes,status=no,menubar=no,scrollbars=yes,resizable=yes,width=600,height=450',
+  )
+}
 </script>
 
 <template>
@@ -59,7 +46,7 @@ export default defineComponent({
           {{ network.label }}
         </a>
       </li>
-      <li v-if="mail">
+      <li v-if="mail?.to">
         <a
           class="fr-btn fr-btn--mail"
           :href="mail.to"

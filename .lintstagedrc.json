@@ -1,0 +1,3 @@
+{
+  "*.{vue,ts}": "npm run lint:staged"
+}

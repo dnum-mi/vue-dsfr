@@ -20,15 +20,6 @@ export default defineConfig({
     }),
     visualizer(),
   ],
-  test: {
-    globals: true,
-    // environment: 'happy-dom',
-    environment: 'jsdom',
-    testTimeout: 2000,
-    setupFiles: [
-      './tests/unit/vitest-setup.js',
-    ],
-  },
   resolve: {
     alias: [
       {
@@ -48,11 +39,12 @@ export default defineConfig({
   build: {
     lib: {
       name: 'vue-dsfr',
-      entry: resolve(projectDir, 'src', 'index.js'),
+      entry: resolve(projectDir, 'src', 'index.ts'),
     },
     rollupOptions: {
       external: ['vue', 'oh-vue-icons', 'vue-router'],
       output: {
+        exports: 'named',
         dir: 'dist',
         globals: {
           vue: 'Vue',
