@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { RouteLocationNormalized } from 'vue-router'
+import type { RouteLocationRaw } from 'vue-router'
 import { ref, watch } from 'vue'
 
 import { getRandomId } from '../../utils/random-utils'
@@ -7,7 +7,7 @@ import { useCollapsable } from '../../composables.js'
 
 withDefaults(defineProps<{
   breadcrumbId?: string
-  links?: { to?: RouteLocationNormalized, text: string }[]
+  links?: { to?: RouteLocationRaw, text: string }[]
 }>(), {
   breadcrumbId: () => getRandomId('breadcrumb'),
   links: () => [{ text: '' }],
