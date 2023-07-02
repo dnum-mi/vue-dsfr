@@ -6,8 +6,8 @@ import { RouteLocationNormalized } from 'vue-router'
 
 export type DsfrNavigationMenuLinkProps = {
   id?: string,
-  to: string | RouteLocationNormalized,
-  text: string,
+  to?: string | RouteLocationNormalized,
+  text?: string,
   icon?: string,
   onClick?: ($event: MouseEvent) => void
 }
@@ -16,6 +16,8 @@ const props = withDefaults(defineProps<DsfrNavigationMenuLinkProps>(), {
   id: () => getRandomId('menu-link'),
   icon: undefined,
   onClick: () => undefined,
+  text: '',
+  to: '#',
 })
 
 defineEmits<{(event: 'toggle-id', id: string): void}>()

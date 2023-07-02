@@ -4,7 +4,7 @@ import { getRandomId } from '../../utils/random-utils'
 
 export type DsfrRadioButtonProps = {
   id?: string
-  name: string
+  name?: string
   modelValue?: string | number
   small?: boolean
   value: string | number

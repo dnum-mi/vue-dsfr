@@ -80,7 +80,6 @@ onUnmounted(() => {
         v-for="(navItem, idx) of navItems"
         :key="idx"
       >
-        <!-- @vue-ignore -->
         <DsfrNavigationMenuLink
           v-if="navItem.to && navItem.text"
           v-bind="navItem"
