@@ -106,4 +106,35 @@ describe('DsfrHeader', () => {
     // Then
     expect(logo).toHaveClass('fr-logo')
   })
+
+  it('should render DsfrHeader with a BETA badge', async () => {
+    // Given
+    const logoText = 'Gouvernement'
+    const serviceTitle = 'Nom du service'
+    const serviceDescription = 'Description du service'
+    const showBeta = true
+
+    // When
+    const { getByText } = render(DsfrHeader, {
+      global: {
+        plugins: [router],
+        components: {
+          VIcon,
+        },
+      },
+      props: {
+        logoText,
+        serviceTitle,
+        serviceDescription,
+        showBeta,
+      },
+    })
+
+    await router.isReady()
+
+    const betaBadge = getByText('BETA')
+
+    // Then
+    expect(betaBadge).toHaveClass('fr-badge')
+  })
 })
