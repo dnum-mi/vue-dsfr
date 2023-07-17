@@ -7,7 +7,6 @@ defineOptions({
 })
 
 const props = withDefaults(defineProps<{
-  selectId?: string
   required?: boolean
   disabled?: boolean
   selectId?: string
