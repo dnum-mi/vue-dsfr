@@ -38,6 +38,10 @@ export default {
       control: 'boolean',
       description: 'Indique si le champs de recherche doit être affiché (`true`) ou non (`false`, défaut)',
     },
+    showBeta: {
+      control: 'boolean',
+      description: 'Indique si le badge "BETA" doit être affiché (`true`) ou non (`false`, défaut)',
+    },
     homeTo: {
       control: 'text',
       description: 'Lien cible au clic sur le logo ou le titre',
@@ -383,4 +387,59 @@ EnTeteAvecNavigation.args = {
       ],
     },
   ],
+}
+
+export const EnTeteAvecBadgeBeta = (args, { argTypes }) => ({
+  components: {
+    DsfrHeader,
+  },
+  data () {
+    return {
+      ...args,
+      quickLincks: args.quickLinks.map((link, idx) => {
+        if (idx === 0) {
+          link.onClick = ($event) => {
+            $event.preventDefault()
+            this.actionOnLink()
+          }
+        }
+        return link
+      }),
+    }
+  },
+
+  template: `
+    <DsfrHeader
+      :service-title="serviceTitle"
+      :service-description="serviceDescription"
+      :home-to="homeTo"
+      :quick-links="quickLinks"
+      :show-search="showSearch"
+      :logo-text="logoText"
+      :show-beta="showBeta"
+      v-model="modelValue"
+      @click="onClickOnLogo"
+      @search="onSearch($event)"
+    />
+  `,
+
+  methods: {
+    onClickOnLogo ($event) {
+      $event.preventDefault()
+      $event.stopPropagation()
+      this.actionOnLogo($event)
+    },
+  },
+
+})
+EnTeteAvecBadgeBeta.args = {
+  showSearch: false,
+  showBeta: true,
+  logoText: ['Ministère', 'de l’intérieur'],
+  serviceTitle: 'Nom du Site/Service',
+  serviceDescription: 'baseline - précisions sur l‘organisation',
+  modelValue: '',
+  placeholder: '',
+  homeTo: '#',
+  quickLinks: [],
 }
