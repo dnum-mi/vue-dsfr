@@ -7,6 +7,7 @@ defineOptions({
 })
 
 const props = withDefaults(defineProps<{
+  selectId?: string
   required?: boolean
   disabled?: boolean
   selectId?: string
@@ -14,6 +15,8 @@ const props = withDefaults(defineProps<{
   modelValue?: string | number
   label?: string
   options?:(string | number | { value: string | number, text: string, disabled: boolean })[]
+  successMessage?: string
+  errorMessage?: string
 }>(), {
   selectId: () => getRandomId('select'),
   modelValue: undefined,
