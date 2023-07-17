@@ -2,12 +2,14 @@ import { Meta } from '@storybook/addon-docs';
 
 <Meta title="Docs/2. Guide d’utilisation" />
 
-# Comment débuter
+# Utiliser VueDsfr
+
+## Comment débuter
 
 Ceci est le guide d̛’utilisation de la bibliothèque. Si vous cherchez à contribuer, se référer au
 [Guide du développeur](?path=/story/docs-guide-du-développeur--page).
 
-## Utiliser create-vue-dsfr (recommandé)
+### Utiliser create-vue-dsfr (recommandé)
 
 La façon la plus simple de commencer un projet est d’utiliser le package `create-vue-dsfr`, qui permet de créer un projet
 NPM avec tout le nécessaire pour développer un projet utilisant VueDsfr, que ce soit pour Vite (Vue3) ou pour Nuxt 3 (Nuxt3),
@@ -33,16 +35,16 @@ yarn create vue-dsfr
 
 Et suivez le guide !
 
-## Ajouter la bibliothèque
+### Ajouter la bibliothèque
 
-### Utiliser la bibliothèque en tant que plugin
+#### Utiliser la bibliothèque en tant que plugin
 
 | Notes :              |
 |:---------------------------|
 | Pour utiliser cette bibliothèque, il vous faudra **[Vue 3](https://v3.vuejs.org/)** (et **[Vue-Router 4](https://next.router.vuejs.org/)**). Par conséquent, si vous utilisez Nuxt, il vous faut **[Nuxt 3](https://v3.nuxtjs.org/)** (plus de détails plus loin). |
 | Il est fortement conseillé d’utiliser **[Vite](https://vitejs.dev)** plutôt que Vue-CLI. |
 
-### Installer la bibliothèque en tant que dépendance du projet
+#### Installer la bibliothèque en tant que dépendance du projet
 
 Afin d'installer la bibliothèque, taper cette commande dans votre console au sein du répertoire du projet :
 
@@ -50,9 +52,9 @@ Afin d'installer la bibliothèque, taper cette commande dans votre console au se
 npm install @gouvminint/vue-dsfr
 ```
 
-### Ajouter le plugin
+#### Ajouter le plugin
 
-#### Dans une application Vite (recommandé) ou Vue-CLI
+##### Dans une application Vite (recommandé) ou Vue-CLI
 
 À partir d'un fichier `main.js` simple comme celui-ci :
 
@@ -80,7 +82,7 @@ const app = createApp(App)
   .mount('#app')
 ```
 
-#### Dans nuxt 3
+##### Dans nuxt 3
 
 La bibliothèque VueDsfr fournit bien plusieurs build (esm et umd entre autres) et Nuxt3 sait lequel choisir.
 
@@ -140,21 +142,21 @@ const app = createApp(App)
   .mount('#app')
 ```
 
-## Utiliser les icônes officielles
+### Utiliser les icônes officielles
 
 Pour utiliser les icônes officielles, désormais, il n’y a plus d’actions en plus à faire,
 puisque c’est le CSS officiel du DSFR qui est utilisé.
 
-## Ajouter des icônes
+### Ajouter des icônes
 
 Pour ajouter des icônes qui ne sont pas importées dans la bibliothèque, veuillez consulter
 [la page dédiée](/story/fondamentaux-4-1-icônes-personnalisées--page).
 
-## Avoir un bundle minimal
+### Avoir un bundle minimal
 
 Il est possible d’intégrer moins de CSS pour les petits projets.
 
-### Vue3
+#### Vue3
 
 Dans le point d’entrée de votre application Vue (souvent `main.js` ou `main.ts`) :
 
@@ -168,7 +170,7 @@ import '@gouvfr/dsfr/dist/scheme/scheme.min.css'             // Facultatif : S
 import '@gouvfr/dsfr/dist/utility/icons/icons.min.css'       // Facultatif : Si des icônes sont utilisées avec les classes "fr-icon-..."
 ```
 
-### Nuxt3
+#### Nuxt3
 
 Dans `nuxt.config.js` :
 
