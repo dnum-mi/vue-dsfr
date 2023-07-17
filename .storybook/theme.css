@@ -5,6 +5,7 @@
   --link-blank-content: "";
   text-decoration: none;
   background-image: none;
+  font-weight: bold;
 }
 
 .sbdocs-a:hover {
@@ -14,6 +15,16 @@
 .sbdocs-a[href] {
   -webkit-box-shadow: none;
   box-shadow: none;
+}
+
+a[href] {
+  background-image: none;
+}
+
+.fr-btn p {
+  color: #fff;
+  font-family: Marianne,arial,sans-serif;
+  font-size: 1em;
 }
 
 [data-fr-theme="dark"] .docs-story {
