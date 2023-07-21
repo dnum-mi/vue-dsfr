@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 import { type Ref, computed, ref } from 'vue'
 import { OhVueIcon as VIcon } from 'oh-vue-icons'
+import { type CustomizeIconType } from 'oh-vue-icons'
 
 // import '@gouvfr/dsfr/dist/component/button/button.module.js'
 
@@ -13,7 +14,7 @@ export type DsfrButtonProps = {
   iconOnly?: boolean
   noOutline?: boolean
   size?: 'sm' | 'small' | 'lg' | 'large' | 'md' | 'medium' | '' | undefined
-  icon?: string
+  icon?: string | CustomizeIconType
   onClick?: ($event: MouseEvent) => void
 }
 
@@ -33,6 +34,8 @@ const focus = () => {
   btn.value?.focus()
 }
 defineExpose({ focus })
+
+const iconProps = computed(() => typeof props.icon === 'string' ? { name: props.icon } : props.icon)
 </script>
 
 <template>
@@ -57,7 +60,7 @@ defineExpose({ focus })
   >
     <VIcon
       v-if="icon"
-      :name="icon"
+      v-bind="iconProps"
     />
     <span v-if="!iconOnly">
       {{ label }}
