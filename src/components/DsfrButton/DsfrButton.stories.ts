@@ -1,10 +1,10 @@
 import { OhVueIcon as VIcon, addIcons } from 'oh-vue-icons'
 
-import { RiCheckboxCircleLine, RiSearchLine } from 'oh-vue-icons/icons/ri/index.js'
+import { RiCheckboxCircleLine, RiLoader4Line, RiSearchLine } from 'oh-vue-icons/icons/ri/index.js'
 
 import DsfrButton from './DsfrButton.vue'
 
-addIcons(RiCheckboxCircleLine, RiSearchLine)
+addIcons(RiCheckboxCircleLine, RiSearchLine, RiLoader4Line)
 
 /**
  * [Voir quand l’utiliser sur la documentation du DSFR](https://www.systeme-de-design.gouv.fr/elements-d-interface/composants/bouton)
@@ -110,6 +110,35 @@ BoutonPrimaireAvecIcone.args = {
   disabled: false,
   icon: 'ri-search-line',
   iconRight: false,
+  noOutline: false,
+  size: undefined,
+}
+
+export const BoutonPrimaireAvecIconeAnimee = (args) => ({
+  components: { DsfrButton },
+  data () {
+    return {
+      ...args,
+    }
+  },
+  template: `
+    <DsfrButton
+      :label="label"
+      :disabled="disabled"
+      :icon="icon"
+      :size="size"
+      :no-outline="noOutline"
+      :icon-right="iconRight"
+      @click="onClick"
+    />
+  `,
+
+})
+BoutonPrimaireAvecIconeAnimee.args = {
+  label: 'Label bouton',
+  disabled: false,
+  icon: { name: 'ri-loader-4-line', animation: 'spin' },
+  iconRight: true,
   noOutline: false,
   size: undefined,
 }
