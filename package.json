@@ -19,12 +19,12 @@
   "exports": {
     ".": {
       "require": {
-        "default": "./dist/vue-dsfr.umd.js",
-        "types": "./types/index.d.ts"
+        "types": "./types/index.d.ts",
+        "default": "./dist/vue-dsfr.umd.js"
       },
       "import": {
-        "default": "./dist/vue-dsfr.mjs",
-        "types": "./types/index.d.ts"
+        "types": "./types/index.d.ts",
+        "default": "./dist/vue-dsfr.mjs"
       }
     },
     "./dist/vue-dsfr.css": {
