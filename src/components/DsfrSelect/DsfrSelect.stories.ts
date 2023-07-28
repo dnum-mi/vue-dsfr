@@ -240,7 +240,6 @@ export const ListeDeroulanteInactive = (args) => ({
   },
 
 })
-
 ListeDeroulanteInactive.args = {
   options: [
     'Option 1',
