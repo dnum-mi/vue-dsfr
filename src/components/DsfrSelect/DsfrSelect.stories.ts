@@ -31,6 +31,10 @@ export default {
       control: 'text',
       description: 'Message à afficher en situation de succès, sa présence change la couleur de la police d’écriture',
     },
+    defaultUnselectedText: {
+      control: 'text',
+      description: 'Texte de l’option sélectionnée par défaut si aucune option valide n’est sélectionnée',
+    },
     errorMessage: {
       control: 'text',
       description: 'Message à afficher en cas d’erreur, sa présence change la couleur de la police d’écriture',
@@ -100,6 +104,56 @@ ListeDeroulante.args = {
   errorMessage: '',
   disabled: false,
   modelValue: 'Option 2',
+  required: false,
+}
+
+export const ListeDeroulanteEnAnglais = (args) => ({
+  components: {
+    DsfrSelect,
+  },
+
+  data () {
+    return {
+      ...args,
+    }
+  },
+
+  template: `
+    <DsfrSelect
+      :required="required"
+      :label="label"
+      :options="options"
+      :description="description"
+      :success-message="successMessage"
+      :error-message="errorMessage"
+      :disabled="disabled"
+      :defaultUnselectedText="defaultUnselectedText"
+      v-model="modelValue"
+    />
+  `,
+
+  watch: {
+    modelValue (newVal) {
+      this.onChange(newVal)
+    },
+  },
+
+})
+ListeDeroulanteEnAnglais.args = {
+  options: [
+    'Option 1',
+    'Option 2',
+    'Option 3',
+    'Option 4',
+    'Option 5',
+    'Option 6',
+  ],
+  label: 'Those are the options:',
+  description: 'I am a description',
+  successMessage: '',
+  errorMessage: '',
+  defaultUnselectedText: 'Please select an option',
+  disabled: false,
   required: false,
 }
 
