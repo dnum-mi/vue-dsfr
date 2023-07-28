@@ -95,7 +95,7 @@ defineExpose({ goToTargetLink })
         v-if="buttons.length || linksGroup.length"
         class="fr-card__footer"
       >
-        <dsfr-button-group
+        <DsfrButtonGroup
           v-if="buttons.length"
           :buttons="buttons"
           inline-layout-when="lg"
