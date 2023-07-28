@@ -1,14 +1,17 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 
-import { getRandomId } from '../../utils/random-utils'
+import { getRandomId } from '@/utils/random-utils'
+import { type TitleTag } from '@/common-types'
+
+export type DsfrAlertType = 'error' | 'success' | 'warning' | 'info'
 
 const props = withDefaults(defineProps<{
   id?: string,
-  type?: 'error' | 'success' | 'warning' | 'info',
+  type?: DsfrAlertType,
   title?: string,
   description: string,
-  titleTag?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6',
+  titleTag?: TitleTag,
   small?: boolean,
   closed?: boolean,
   closeable?: boolean,

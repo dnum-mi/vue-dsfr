@@ -26,4 +26,5 @@ export default {
 export * from './components/index.js'
 export * from './utils/random-utils'
 export * from './composables.js'
+export * from './common-types.js'
 export * as icons from './icons.js'
