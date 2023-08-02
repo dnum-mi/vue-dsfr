@@ -1,13 +1,15 @@
 <script lang="ts" setup>
+import { ref, watch, computed, onMounted } from 'vue'
 import DsfrTableRow, { type DsfrTableRowProps } from './DsfrTableRow.vue'
 import DsfrTableHeaders from './DsfrTableHeaders.vue'
 import { type DsfrTableHeaderProps } from './DsfrTableHeader.vue'
 
-withDefaults(defineProps<{
+const props = withDefaults(defineProps<{
   title?: string
   headers?:(DsfrTableHeaderProps | string)[]
   rows?: (DsfrTableRowProps | string)[]
   noCaption?: boolean
+  pagination?: boolean
 }>(), {
   title: undefined,
   headers: () => [],
@@ -18,6 +20,29 @@ const getRowData = (row: (DsfrTableRowProps | string | ({component: string} & Re
   // @ts-ignore TODO: find a way to improve types here
   return row.rowData || row
 }
+
+const currentPage = ref(1)
+const optionSelected = ref(10)
+const pageCount = ref(props.rows.length > optionSelected.value ? Math.ceil(props.rows.length / optionSelected.value) : 1)
+const paginationOptions = [5, 10, 25, 50, 100]
+const returnLowestLimit = () => currentPage.value * optionSelected.value - optionSelected.value
+const returnHighestLimit = () => currentPage.value * optionSelected.value
+let truncatedResults = props.rows.slice(returnLowestLimit(), returnHighestLimit())
+
+watch(() => optionSelected.value, (newVal, OldVal) => {
+  props.rows.length > optionSelected.value ? pageCount.value = Math.ceil(props.rows.length / newVal) : pageCount.value = 1
+  truncatedResults = props.rows.slice(returnLowestLimit(), returnHighestLimit())
+})
+
+watch(() => currentPage.value, (newVal, OldVal) => {
+  truncatedResults = props.rows.slice(returnLowestLimit(), returnHighestLimit())
+})
+
+const goFirstPage = () => { currentPage.value = 1 }
+const goPreviousPage = () => { currentPage.value > 1 ? currentPage.value -= 1 : currentPage.value }
+const goNextPage = () => { currentPage.value < pageCount.value ? currentPage.value += 1 : currentPage.value }
+const goLastPage = () => { currentPage.value = pageCount.value  }
+
 </script>
 
 <template>
@@ -45,13 +70,69 @@ const getRowData = (row: (DsfrTableRowProps | string | ({component: string} & Re
         <slot />
         <template v-if="rows && rows.length">
           <DsfrTableRow
-            v-for="(row, i) of rows"
+            v-for="(row, i) of truncatedResults"
             :key="i"
             :row-data="getRowData(row)"
             :row-attrs="typeof row === 'string' ? {} : row.rowAttrs"
           />
         </template>
+        <tr v-if="pagination">
+          <td :colspan="headers.length">
+            <div class="flex justify-right">
+              <div class="self-center">
+                <span>Résultats par page : </span>
+                <select
+                  v-model="optionSelected"
+                >
+                  <option
+                    v-for="(option, idx) in paginationOptions"
+                    :key="idx"
+                    :value="option">
+                    {{ option }}
+                  </option>
+                </select>
+              </div>
+              <div class="flex  ml-1"><span class="self-center">Page {{ currentPage }} sur {{ pageCount }}</span></div>
+              <div class="flex   ml-1">
+                <button
+                  class="fr-icon-arrow-left-s-first-line"
+                  @click="goFirstPage()"
+                  />
+                <button
+                  class="fr-icon-arrow-left-s-line-double"
+                  @click="goPreviousPage()"
+                />
+                <button
+                  class="fr-icon-arrow-right-s-line-double"
+                  @click="goNextPage()"
+                />
+                <button
+                  class="fr-icon-arrow-right-s-last-line"
+                  @click="goLastPage()"
+                />
+              </div>
+            </div>
+          </td>
+        </tr>
       </tbody>
     </table>
   </div>
 </template>
+
+<style scoped>
+  .flex {
+    display: flex;
+  }
+
+  .justify-right {
+    justify-content: right;
+  }
+
+  .ml-1 {
+    margin-left: 1rem;
+  }
+
+  .self-center {
+    align-self: center;
+  }
+</style>
