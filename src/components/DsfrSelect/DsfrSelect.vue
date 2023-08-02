@@ -16,6 +16,7 @@ const props = withDefaults(defineProps<{
   options?:(string | number | { value: string | number, text: string, disabled: boolean })[]
   successMessage?: string
   errorMessage?: string
+  defaultUnselectedText?: string
 }>(), {
   selectId: () => getRandomId('select'),
   modelValue: undefined,
@@ -24,6 +25,7 @@ const props = withDefaults(defineProps<{
   description: undefined,
   successMessage: '',
   errorMessage: '',
+  defaultUnselectedText: 'Sélectionnez une option',
 })
 
 defineEmits<{(e: 'update:modelValue', payload: string): void}>()
@@ -78,7 +80,7 @@ const messageType = computed(() => {
         disabled
         hidden
       >
-        Sélectionnez une option
+        {{ defaultUnselectedText }}
       </option>
 
       <option
