@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { ref, watch, computed, onMounted } from 'vue'
+import { ref, watch } from 'vue'
 import DsfrTableRow, { type DsfrTableRowProps } from './DsfrTableRow.vue'
 import DsfrTableHeaders from './DsfrTableHeaders.vue'
 import { type DsfrTableHeaderProps } from './DsfrTableHeader.vue'
@@ -10,10 +10,14 @@ const props = withDefaults(defineProps<{
   rows?: (DsfrTableRowProps | string)[]
   noCaption?: boolean
   pagination?: boolean
+  defaultCurrentPage?: number
+  defaultOptionSelected?: number
 }>(), {
   title: undefined,
   headers: () => [],
   rows: () => [],
+  defaultCurrentPage: 1,
+  defaultOptionSelected: 10,
 })
 
 const getRowData = (row: (DsfrTableRowProps | string | ({component: string} & Record<string, any>))) => {
@@ -21,8 +25,8 @@ const getRowData = (row: (DsfrTableRowProps | string | ({component: string} & Re
   return row.rowData || row
 }
 
-const currentPage = ref(1)
-const optionSelected = ref(10)
+const currentPage = ref(props.defaultCurrentPage)
+const optionSelected = ref(props.defaultOptionSelected)
 const pageCount = ref(props.rows.length > optionSelected.value ? Math.ceil(props.rows.length / optionSelected.value) : 1)
 const paginationOptions = [5, 10, 25, 50, 100]
 const returnLowestLimit = () => currentPage.value * optionSelected.value - optionSelected.value
@@ -39,9 +43,17 @@ watch(() => currentPage.value, (newVal, OldVal) => {
 })
 
 const goFirstPage = () => { currentPage.value = 1 }
-const goPreviousPage = () => { currentPage.value > 1 ? currentPage.value -= 1 : currentPage.value }
-const goNextPage = () => { currentPage.value < pageCount.value ? currentPage.value += 1 : currentPage.value }
-const goLastPage = () => { currentPage.value = pageCount.value  }
+const goPreviousPage = () => {
+  if (currentPage.value > 1) {
+    currentPage.value -= 1
+  }
+}
+const goNextPage = () => {
+  if (currentPage.value < pageCount.value) {
+    currentPage.value += 1
+  }
+}
+const goLastPage = () => { currentPage.value = pageCount.value }
 
 </script>
 
@@ -87,17 +99,20 @@ const goLastPage = () => { currentPage.value = pageCount.value  }
                   <option
                     v-for="(option, idx) in paginationOptions"
                     :key="idx"
-                    :value="option">
+                    :value="option"
+                  >
                     {{ option }}
                   </option>
                 </select>
               </div>
-              <div class="flex  ml-1"><span class="self-center">Page {{ currentPage }} sur {{ pageCount }}</span></div>
+              <div class="flex  ml-1">
+                <span class="self-center">Page {{ currentPage }} sur {{ pageCount }}</span>
+              </div>
               <div class="flex   ml-1">
                 <button
                   class="fr-icon-arrow-left-s-first-line"
                   @click="goFirstPage()"
-                  />
+                />
                 <button
                   class="fr-icon-arrow-left-s-line-double"
                   @click="goPreviousPage()"

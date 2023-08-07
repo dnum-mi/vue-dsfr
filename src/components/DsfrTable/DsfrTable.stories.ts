@@ -44,6 +44,14 @@ export default {
       action: 'clicked on row',
       description: 'Fonction pour montrer le clic sur une ligne (Ici seulement la 2e ligne)',
     },
+    defaultCurrentPage: {
+      control: 'number',
+      description: 'Le numéro de la page dans la pagination',
+    },
+    defaultOptionSelected: {
+      control: 'number',
+      description: 'La sélection du nombre d\'enregistrements par page',
+    },
   },
 }
 
@@ -53,7 +61,7 @@ const rows = [
   [
     'EGAUD',
     'Pierre-Louis',
-    'pierre.egaud@gmail.com',
+    'pierre.egaud@castor.fr',
     '02 04 06 08 10',
     '06 05 04 03 02',
     {
@@ -70,7 +78,7 @@ const rows = [
     rowData: [
       'DEBROIZE',
       'Clément',
-      'clement.debroize@gmail.com',
+      'clement.debroize@exile.com',
       '02 44 66 55 99',
       '07 88 77 22 33',
       {
@@ -245,6 +253,8 @@ const rows = [
 ]
 const noCaption = false
 const pagination = true
+const defaultCurrentPage = 2
+const defaultOptionSelected = 5
 
 export const TableauEntier = (args) => ({
   components: {
@@ -270,6 +280,8 @@ export const TableauEntier = (args) => ({
         :rows="rows"
         :no-caption="noCaption"
         :pagination="pagination"
+        :defaultCurrentPage="defaultCurrentPage"
+        :defaultOptionSelected="defaultOptionSelected"
       />
   `,
 
@@ -280,4 +292,6 @@ TableauEntier.args = {
   rows,
   noCaption,
   pagination,
+  defaultCurrentPage,
+  defaultOptionSelected,
 }
