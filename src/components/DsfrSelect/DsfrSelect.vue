@@ -13,7 +13,7 @@ const props = withDefaults(defineProps<{
   description?: string
   modelValue?: string | number
   label?: string
-  options?:(string | number | { value: string | number, text: string, disabled: boolean })[]
+  options?:(string | number | { value: string | number, text: string, disabled?: boolean })[]
   successMessage?: string
   errorMessage?: string
   defaultUnselectedText?: string
