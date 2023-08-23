@@ -11,7 +11,8 @@ withDefaults(defineProps<{
   large?: boolean
   buttonText?: string
   modelValue?: string
-  placeholder?: string
+  placeholder?: string,
+  disabled?: boolean
 }>(), {
   id: () => getRandomId('search', 'input'),
   label: '',
@@ -40,11 +41,13 @@ defineEmits<{
       :model-value="modelValue"
       :label-visible="false"
       :label="label"
+      :disabled="disabled"
       @update:model-value="$emit('update:modelValue', $event)"
       @keydown.enter="$emit('search')"
     />
     <DsfrButton
       title="Rechercher"
+      :disabled="disabled"
       @click="$emit('search')"
     >
       {{ buttonText }}
@@ -55,5 +58,11 @@ defineEmits<{
 <style>
 .fr-search-bar > .fr-label + .fr-input {
   margin: 0;
+}
+
+/* Obligé de faire ça car ils ont hardcode la couleur dans le DSFR sans prendre en compte que ce champ pouvait être disabled */
+.fr-search-bar .fr-input:disabled {
+  box-shadow: inset 0 -2px 0 0 var(--border-disabled-grey);
+  color: var(--text-disabled-grey);
 }
 </style>
