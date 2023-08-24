@@ -27,6 +27,10 @@ export default {
       control: 'text',
       description: 'Texte à afficher si le champ de recherhe n’est pas rempli',
     },
+    disabled: {
+      control: 'boolean',
+      description: 'Permet de désactiver le champ et le bouton, la saisie du champ et le clic sur le bouton sera impossible.',
+    },
     buttonText: {
       control: 'text',
       description: 'Texte du bouton de la barre de recherche',
@@ -105,4 +109,36 @@ BarreDeRechercheLarge.args = {
   labelVisible: false,
   modelValue: '',
   large: true,
+}
+
+export const BarreDeRechercheDesactivee = (args) => ({
+  components: {
+    DsfrSearchBar,
+  },
+  data () {
+    return args
+  },
+  template: `
+      <DsfrSearchBar
+        :label="label"
+        :placeholder="placeholder"
+        :labelVisible="labelVisible"
+        :button-text="buttonText"
+        :hide-icon="hideIcon"
+        v-model="modelValue"
+        :large="large"
+        :disabled="disabled"
+      />
+  `,
+
+})
+BarreDeRechercheDesactivee.args = {
+  label: 'Label de search bar',
+  hideIcon: false,
+  placeholder: 'Rechercher',
+  buttonText: '',
+  labelVisible: false,
+  modelValue: '',
+  large: false,
+  disabled: true,
 }

@@ -123,8 +123,8 @@ defineEmits<{
                   aria-controls="header-search"
                   aria-label="Recherche"
                   title="Recherche"
-                  :data-fr-opened="showSearchModal"
-                  @click="showSearchModal"
+                  :data-fr-opened="searchModalOpened"
+                  @click.prevent.stop="showSearchModal()"
                 />
                 <button
                   v-if="quickLinks?.length"
@@ -136,7 +136,7 @@ defineEmits<{
                   aria-label="Menu"
                   title="Menu"
                   data-testid="open-menu-btn"
-                  @click="showMenu()"
+                  @click.prevent.stop="showMenu()"
                 />
               </div>
             </div>
@@ -218,7 +218,7 @@ defineEmits<{
               class="fr-btn fr-btn--close"
               aria-controls="header-navigation"
               data-testid="close-modal-btn"
-              @click="hideModal"
+              @click.prevent.stop="hideModal()"
             >
               Fermer
             </button>
@@ -246,7 +246,7 @@ defineEmits<{
             </div>
           </div>
         </div>
-        <slot/>
+        <slot />
       </div>
     </div>
   </header>
