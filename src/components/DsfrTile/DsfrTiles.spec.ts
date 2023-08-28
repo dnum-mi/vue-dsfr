@@ -64,7 +64,7 @@ describe('DsfrTiles', () => {
     const titleEl = getByText(title1)
     const descriptionEl = getByText(description1)
 
-    expect(titleEl.parentNode.parentNode.parentNode).not.toHaveClass('fr-tile--horizontal')
+    expect(titleEl.parentNode.parentNode.parentNode.parentNode).not.toHaveClass('fr-tile--horizontal')
     expect(descriptionEl).toHaveClass('fr-tile__desc')
   })
 
@@ -107,7 +107,7 @@ describe('DsfrTiles', () => {
     const titleEl = getByText(title1)
     const descriptionEl = getByText(description2)
 
-    expect(titleEl.parentNode.parentNode.parentNode).toHaveClass('fr-tile--horizontal')
+    expect(titleEl.parentNode.parentNode.parentNode.parentNode).toHaveClass('fr-tile--horizontal')
     expect(descriptionEl).toHaveClass('fr-tile__desc')
   })
   it('should display 1 disabled and 1 enabled tile', async () => {
@@ -147,7 +147,7 @@ describe('DsfrTiles', () => {
 
     const titleEl1 = getByText(title1)
     const titleEl2 = getByText(title2)
-    expect(titleEl1.parentNode.parentNode.parentNode).toHaveClass('fr-tile--disabled')
-    expect(titleEl2.parentNode.parentNode.parentNode).not.toHaveClass('fr-tile--disabled')
+    expect(titleEl1.parentNode.parentNode.parentNode.parentNode).toHaveClass('fr-tile--disabled')
+    expect(titleEl2.parentNode.parentNode.parentNode.parentNode).not.toHaveClass('fr-tile--disabled')
   })
 })
