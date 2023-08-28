@@ -57,7 +57,7 @@ describe('DsfrRadioButton', () => {
 
     const labelEl = getByText(label)
     const inputRadio = getByDisplayValue(value)
-    const imgEl = container.querySelector('.fr-radio-rich__img')
+    const imgEl = container.querySelector('.fr-radio-rich__pictogram')
 
     // Then
     expect(labelEl).toHaveClass('fr-label')

@@ -68,7 +68,7 @@ const rich = computed(() => !!props.img)
     </label>
     <div
       v-if="img"
-      class="fr-radio-rich__img"
+      class="fr-radio-rich__pictogram"
     >
       <img
         :src="img"

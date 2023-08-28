@@ -61,7 +61,7 @@ const isExternalLink = computed(() => {
     </div>
     <div
       v-if="imgSrc"
-      class="fr-tile__img"
+      class="fr-tile__pictogram"
     >
       <img
         :src="imgSrc"
