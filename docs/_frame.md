@@ -2,7 +2,7 @@
 layout: false
 ---
 
-<div ref="el" class="flex h-4 flex-col px-6 pb-5"></div>
+<div ref="el" class="flex h-full flex-col px-6 pb-5"></div>
 
 <script setup lang="ts">
 import { useStyleTag } from '@vueuse/core'

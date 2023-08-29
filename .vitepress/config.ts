@@ -118,8 +118,8 @@ export default defineConfig({
             link: '/composants/DsfrSegmented.md',
           },
           {
-            text: 'DsfrSegmentedSet',
-            link: '/composants/DsfrSegmentedSet.md',
+            text: 'DsfrTooltip',
+            link: '/composants/DsfrTooltip.md',
           },
         ]
       },

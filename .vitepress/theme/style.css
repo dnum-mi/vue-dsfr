@@ -7,7 +7,7 @@
  * Colors
  * -------------------------------------------------------------------------- */
 
-@font-face {
+ @font-face {
   font-family: Marianne;
   src: url("@gouvfr/dsfr/dist/fonts/Marianne-Light.woff2") format("woff2"), url("@gouvfr/dsfr/dist/fonts/Marianne-Light.woff") format("woff");
   font-weight: 300;
@@ -189,4 +189,16 @@
 
 .w-full {
   width: 100%;
+}
+
+.h-full {
+  width: 100%;
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-end {
+  justify-content: flex-end;
 }
