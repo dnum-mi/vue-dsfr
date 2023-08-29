@@ -56,6 +56,10 @@ export default {
       control: 'text',
       description: 'Permet de choisir la balise contenant le titre de la carte (h3 par défaut',
     },
+    download: {
+      control: 'boolean',
+      description: 'Variante de carte indiquant que l’évènement de clic lancera un téléchargement',
+    },
   },
 }
 
@@ -77,6 +81,7 @@ export const Card = (args) => ({
       :title="title"
       :horizontal="horizontal"
       :no-arrow="noArrow"
+      :download="download"
       :title-tag="titleTag"
     />
   `,
@@ -92,6 +97,7 @@ Card.args = {
   titleTag: undefined,
   noArrow: false,
   horizontal: false,
+  download: false,
   size: 'medium',
   buttons: [],
   linksGroup: [],
@@ -114,6 +120,7 @@ export const CardSansFleche = (args) => ({
       :size="size"
       :title="title"
       :horizontal="horizontal"
+      :download: false,
       :no-arrow="noArrow"
     />
   `,
@@ -128,6 +135,7 @@ CardSansFleche.args = {
   title: 'Qu’est-ce que le Pass Culture et comment l’obtenir ?',
   noArrow: true,
   horizontal: false,
+  download: false,
   size: 'medium',
   buttons: [],
   linksGroup: [],
@@ -150,6 +158,7 @@ export const CardAvecBoutons = (args) => ({
       :size="size"
       :title="title"
       :horizontal="horizontal"
+      :download: false,
       :no-arrow="noArrow"
     />
   `,
@@ -164,6 +173,7 @@ CardAvecBoutons.args = {
   title: 'Qu’est-ce que le Pass Culture et comment l’obtenir ?',
   noArrow: true,
   horizontal: false,
+  download: false,
   buttons: [
     {
       label: 'Télécharger',
@@ -194,6 +204,7 @@ export const CardAvecLiens = (args) => ({
       :size="size"
       :title="title"
       :horizontal="horizontal"
+      :download: false,
       :no-arrow="noArrow"
     />
   `,
@@ -208,6 +219,7 @@ CardAvecLiens.args = {
   title: 'Qu’est-ce que le Pass Culture et comment l’obtenir ?',
   noArrow: true,
   horizontal: false,
+  download: false,
   linksGroup: [
     {
       label: 'Télécharger',
@@ -237,6 +249,7 @@ export const CardHorizontaleAvecBoutons = (args) => ({
       :size="size"
       :title="title"
       :horizontal="horizontal"
+      :download: false,
       :no-arrow="noArrow"
     />
   `,
@@ -251,6 +264,7 @@ CardHorizontaleAvecBoutons.args = {
   title: 'Qu’est-ce que le Pass Culture et comment l’obtenir ?',
   noArrow: true,
   horizontal: true,
+  download: false,
   buttons: [
     {
       label: 'Télécharger',
@@ -281,6 +295,7 @@ export const CardHorizontaleEtSmallAvecLiens = (args) => ({
       :size="size"
       :title="title"
       :horizontal="horizontal"
+      :download: false,
       :no-arrow="noArrow"
     />
   `,
@@ -295,6 +310,7 @@ CardHorizontaleEtSmallAvecLiens.args = {
   title: 'Qu’est-ce que le Pass Culture et comment l’obtenir ?',
   noArrow: true,
   horizontal: true,
+  download: false,
   size: 'small',
   linksGroup: [
     {
