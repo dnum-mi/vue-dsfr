@@ -15,7 +15,7 @@ export default {
     },
     newsletterData: {
       control: 'object',
-      description: 'Objet contenant en propriété les props attendues par DsfrSocialNetworks',
+      description: 'Objet contenant en propriété les props attendues par DsfrNewsLetter',
     },
   },
 }
@@ -67,5 +67,59 @@ Suivre.args = {
     hintText: 'Mise en garde concernant l’abonnement à la lettre d’information',
     buttonText: 'S’abonner',
     buttonTitle: 'Titre du bouton (valeur de l’attribut `title` de la balise `button`)',
+    buttonAction: () => undefined,
+    onlyCallout: false,
+  },
+}
+
+export const SuivreMiseEnAvant = (args) => ({
+  components: { DsfrFollow },
+  data () {
+    return {
+      ...args,
+    }
+  },
+  template: `
+    <DsfrFollow
+      :networks="networks"
+      :newsletter-data="newsletterData"
+    />
+  `,
+
+})
+SuivreMiseEnAvant.args = {
+  networks: [
+    {
+      name: 'facebook',
+      href: 'https://www.facebook.com',
+    },
+    {
+      name: 'twitter',
+      href: 'https://www.twitter.com',
+    },
+    {
+      name: 'youtube',
+      href: 'https://www.youtube.com',
+    },
+    {
+      name: 'linkedin',
+      href: 'https://www.linkedin.com',
+    },
+    {
+      name: 'instagram',
+      href: 'https://www.instagram.com',
+    },
+  ],
+  newsletterData: {
+    title: 'Titre de la lettre d’informations',
+    description: 'Description de la lettre d’informations',
+    email: '',
+    labelEmail: '',
+    placeholder: '',
+    hintText: '',
+    buttonText: 'S’abonner',
+    buttonTitle: 'Titre du bouton (valeur de l’attribut `title` de la balise `button`)',
+    buttonAction: () => undefined,
+    onlyCallout: true,
   },
 }

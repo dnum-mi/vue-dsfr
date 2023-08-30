@@ -40,6 +40,11 @@ export default {
       control: 'text',
       description: 'Contenu de l’attribut `title` du bouton d’abonnement',
     },
+    buttonAction: { action: 'clicked' },
+    onlyCallout: {
+      control: 'boolean',
+      description: 'Newsletter simplifiée avec seulement un bouton, le formulaire sera masqué',
+    },
   },
 }
 
@@ -140,4 +145,51 @@ NewsletterAvecErreur.args = {
   hintText: 'En renseignant votre adresse électronique, vous acceptez de recevoir nos actualités par courriel. Vous pouvez vous désinscrire à tout moment à l’aide des liens de désinscription ou en nous contactant.',
   buttonText: 'S’abonner',
   buttonTitle: 'Titre du bouton (attribut `title`) de la balise `button`',
+}
+
+export const NewsletterMiseEnAvant = (args) => ({
+  components: {
+    DsfrNewsLetter,
+    DsfrFollow,
+  },
+
+  data () {
+    return {
+      ...args,
+    }
+  },
+
+  template: `
+  <DsfrFollow>
+    <div class="fr-col-12">
+      <DsfrNewsLetter
+        :title="title"
+        :description="description"
+        v-model:email="email"
+        :labelEmail="labelEmail"
+        :inputTitle="inputTitle"
+        :placeholder="placeholder"
+        :hintText="hintText"
+        :buttonText="buttonText"
+        :buttonTitle="buttonTitle"
+        :buttonAction="buttonAction"
+        :onlyCallout="onlyCallout"
+      />
+    </div>
+  </DsfrFollow>
+  `,
+
+})
+NewsletterMiseEnAvant.args = {
+  title: 'Titre de la lettre d’information',
+  description: 'Description de la lettre d’information',
+  email: '',
+  labelEmail: '',
+  inputTitle: '',
+  placeholder: '',
+  hintText: '',
+  buttonText: 'S’abonner',
+  buttonTitle: 'Titre du bouton (attribut `title`) de la balise `button`',
+  buttonAction: () => undefined,
+  onlyCallout: true,
 }
