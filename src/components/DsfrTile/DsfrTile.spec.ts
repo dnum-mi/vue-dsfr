@@ -37,7 +37,7 @@ describe('DsfrTile', () => {
     const titleEl = getByText(title)
     const descriptionEl = getByText(description)
 
-    expect(titleEl.parentElement.parentElement.parentElement).not.toHaveClass('fr-tile--horizontal')
+    expect(titleEl.parentElement.parentElement.parentElement.parentElement).not.toHaveClass('fr-tile--horizontal')
     expect(descriptionEl).toHaveClass('fr-tile__desc')
   })
 
@@ -65,7 +65,7 @@ describe('DsfrTile', () => {
     const titleEl = getByText(title)
     const descriptionEl = getByText(description)
 
-    expect(titleEl.parentNode.parentNode.parentNode).toHaveClass('fr-tile--horizontal')
+    expect(titleEl.parentNode.parentNode.parentNode.parentNode).toHaveClass('fr-tile--horizontal')
     expect(descriptionEl).toHaveClass('fr-tile__desc')
   })
 })
