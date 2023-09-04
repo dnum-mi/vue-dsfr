@@ -82,7 +82,7 @@ defineExpose({
       'fr-input--valid': isValid,
     }"
     :value="modelValue"
-    :aria-aria-describedby="descriptionId || undefined"
+    :aria-describedby="descriptionId || undefined"
     @input="$emit('update:modelValue', $event.target.value)"
   />
 
@@ -104,7 +104,7 @@ defineExpose({
         'fr-input--valid': isValid,
       }"
       :value="modelValue"
-      :aria-aria-describedby="descriptionId || undefined"
+      :aria-describedby="descriptionId || undefined"
       @input="$emit('update:modelValue', $event.target.value)"
     />
   </div>
