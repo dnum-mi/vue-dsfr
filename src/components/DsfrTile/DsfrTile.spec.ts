@@ -68,4 +68,28 @@ describe('DsfrTile', () => {
     expect(titleEl.parentNode.parentNode.parentNode.parentNode).toHaveClass('fr-tile--horizontal')
     expect(descriptionEl).toHaveClass('fr-tile__desc')
   })
+
+  it('should display a tile with a download link', async () => {
+    const title = 'Titre de la tuile'
+    const imgSrc = 'https://placekitten.com/80/80'
+    const description = 'Lorem ipsum dolor sit amet, consectetur adipiscing, incididunt, ut labore et dol'
+    const download = true
+    const { getByText } = render(DsfrTile, {
+      global: {
+        plugins: [router],
+      },
+      props: {
+        title,
+        imgSrc,
+        description,
+        download,
+        to: 'https://placekitten.com/80/80',
+      },
+    })
+
+    await router.isReady()
+
+    const titleEl = getByText(title)
+    expect(titleEl).toHaveAttribute('download', 'true')
+  })
 })
