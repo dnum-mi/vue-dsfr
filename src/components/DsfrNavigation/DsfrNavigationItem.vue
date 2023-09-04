@@ -1,10 +1,12 @@
 <script lang="ts" setup>
 import { getRandomId } from '../../utils/random-utils'
 
-withDefaults(defineProps<{
+export type DsfrNavigationItemProps = {
   id?: string
   active?: boolean
-}>(), {
+}
+
+withDefaults(defineProps<DsfrNavigationItemProps>(), {
   id: () => getRandomId('nav', 'item'),
 })
 </script>
