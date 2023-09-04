@@ -54,4 +54,58 @@ describe('DsfrNewsLetter', () => {
     expect(buttonTextEl).toHaveClass('fr-btn')
     expect(buttonTextEl).toHaveAttribute('title', buttonTitle)
   })
+
+  it('should mount DsfrNewsLetter only callout', () => {
+    // Given
+    const title = 'Abonnez-vous à notre lettre d’information'
+    const description = 'Lorem ipsum dolor sit amet'
+    const email = 'toto@gmail.com'
+    const labelEmail = 'Votre adresse électronique (ex. : nom@example.com)'
+    const placeholder = 'nom@example.com'
+    const hintText = 'En renseignant votre adresse électronique, vous acceptez de recevoir nos actualités par courriel...'
+    const buttonText = 'S’abonner'
+    const buttonTitle = 'S’abonner à notre lettre d’information'
+    const buttonAction = () => undefined
+    const onlyCallout = true
+
+    // When
+    const { getByText, queryByText, queryByDisplayValue, queryByPlaceholderText } = render(DsfrNewsLetter, {
+      global: {
+      },
+      props: {
+        title,
+        description,
+        email,
+        labelEmail,
+        placeholder,
+        hintText,
+        buttonText,
+        buttonTitle,
+        buttonAction,
+        onlyCallout,
+      },
+    })
+
+    const titleEl = getByText(title)
+    const descriptionEl = getByText(description)
+    const emailInputEl = queryByDisplayValue(email)
+    // eslint-disable-next-line no-undef
+    const labelEmailEl = queryByText(labelEmail)
+    const placeholderEl = queryByPlaceholderText(placeholder)
+    const hintTextEl = queryByText(hintText)
+    const buttonTextEl = getByText(buttonText)
+
+    // Then
+    expect(titleEl.tagName).toBe('H3')
+    expect(titleEl).toHaveClass('fr-follow__title')
+    expect(descriptionEl.tagName).toBe('P')
+    expect(descriptionEl).toHaveClass('fr-follow__desc')
+    expect(emailInputEl).toBeNull()
+    expect(labelEmailEl).toBeNull()
+    expect(placeholderEl).toBeNull()
+    expect(hintTextEl).toBeNull()
+    expect(buttonTextEl.tagName).toBe('BUTTON')
+    expect(buttonTextEl).toHaveClass('fr-btn')
+    expect(buttonTextEl).toHaveAttribute('title', buttonTitle)
+  })
 })

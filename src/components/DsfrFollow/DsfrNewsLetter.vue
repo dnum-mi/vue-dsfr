@@ -10,6 +10,8 @@ export type DsfrNewsLetterProps = {
   inputTitle?: string
   buttonText?: string
   buttonTitle?: string
+  buttonAction?: ($event: MouseEvent) => void
+  onlyCallout?: boolean
 }
 
 withDefaults(defineProps<DsfrNewsLetterProps>(), {
@@ -23,6 +25,8 @@ withDefaults(defineProps<DsfrNewsLetterProps>(), {
   hintText: '',
   buttonText: 'S’abonner',
   buttonTitle: 'S‘abonner à notre lettre d’information',
+  buttonAction: () => undefined,
+  onlyCallout: false,
 })
 
 const emit = defineEmits<{(e: 'update:email', payload: string): void}>()
@@ -41,7 +45,16 @@ const updateEmail = ($event: InputEvent) => emit('update:email', $event.target.v
         {{ description }}
       </p>
     </div>
-    <div>
+    <div v-if="onlyCallout">
+      <button
+        class="fr-btn"
+        :title="buttonTitle"
+        @click="buttonAction ? buttonAction($event) : () => {}"
+      >
+        {{ buttonText }}
+      </button>
+    </div>
+    <div v-else>
       <form action="">
         <label
           class="fr-label"
