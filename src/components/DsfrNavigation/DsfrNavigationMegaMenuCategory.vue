@@ -1,25 +1,11 @@
-<script>
-import { defineComponent } from 'vue'
+<script setup lang="ts">
+import DsfrNavigationMenuLink, { DsfrNavigationMenuLinkProps } from './DsfrNavigationMenuLink.vue'
 
-import DsfrNavigationMenuLink from './DsfrNavigationMenuLink.vue'
+withDefaults(defineProps<{
+  title: string
+  links: DsfrNavigationMenuLinkProps[]
+}>(), {
 
-export default defineComponent({
-  name: 'DsfrNavigationMegaMenuCategory',
-
-  components: {
-    DsfrNavigationMenuLink,
-  },
-
-  props: {
-    title: {
-      type: String,
-      required: true,
-    },
-    links: {
-      type: Array,
-      required: true,
-    },
-  },
 })
 </script>
 
