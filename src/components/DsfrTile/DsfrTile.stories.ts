@@ -23,6 +23,13 @@ export default {
       control: 'boolean',
       description: 'Permet le basculement de la tuile en mode horizontal',
     },
+    vertical: {
+      options: ['md', 'lg'],
+      control: {
+        type: 'select',
+      },
+      description: 'Permet le basculement de la tuile en mode vertical, selon la largeur de l\'écran',
+    },
     disabled: {
       control: 'boolean',
       description: 'Permet de rendre la tuile désactivée et non-cliquable',
@@ -35,6 +42,34 @@ export default {
       control: 'text',
       description: 'Permet de choisir la balise contenant le titre de la tuile (h3 par défaut)',
     },
+    download: {
+      control: 'boolean',
+      description: 'Permet de passer la tuile en mode téléchargement'
+    },
+    small: {
+      control: 'boolean',
+      description: 'Permet de basculer la tuile en petit format'
+    },
+    icon: {
+      control: 'boolean',
+      description: 'Permet de désactiver l\'icone associée au lien'
+    },
+    noBorder: {
+      control: 'boolean',
+      description: 'Permet de désactiver la bordure de la tuile'
+    },
+    shadow: {
+      control: 'boolean',
+      description: 'Permet d\'ajouter une ombre à la tuile'
+    },
+    noBackground: {
+      control: 'boolean',
+      description: 'Permet de désactiver la couleur de fond de la tuile'
+    },
+    grey: {
+      control: 'boolean',
+      description: 'Permet de passer le fond de la tuile en gris'
+    }
   },
 }
 
@@ -55,9 +90,17 @@ export const TuileSimple = (args) => ({
       :imgSrc="imgSrc"
       :description="description"
       :horizontal="horizontal"
+      :vertical="vertical"
       :disabled="false"
       :to="to"
       :title-tag="titleTag"
+      :download="download"
+      :small="small"
+      :icon="icon"
+      :no-border="noBorder"
+      :shadow="shadow"
+      :no-background="noBackground"
+      :grey="grey"
     />
   `,
 
@@ -70,4 +113,11 @@ TuileSimple.args = {
   disabled: false,
   to: '#',
   titleTag: 'h2',
+  download: false,
+  small: false,
+  icon: false,
+  noBorder: false,
+  shadow: false,
+  noBackground: false,
+  grey: false,
 }
