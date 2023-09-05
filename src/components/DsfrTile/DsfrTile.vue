@@ -26,6 +26,7 @@ const props = withDefaults(defineProps<DsfrTileProps>(), {
   imgSrc: undefined,
   description: undefined,
   details: undefined,
+  horizontal: false,
   vertical: undefined,
   to: '#',
   titleTag: 'h3',
