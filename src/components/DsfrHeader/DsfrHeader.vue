@@ -232,9 +232,9 @@ defineEmits<{
                   :nav-aria-label="quickLinksAriaLabel"
                   @link-click="onQuickLinkClick"
                 />
-                <slot name="main-nav" />
               </nav>
             </div>
+            <slot name="main-nav" />
             <div
               v-if="searchModalOpened"
               class="flex justify-center items-center"
