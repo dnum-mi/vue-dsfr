@@ -73,7 +73,8 @@ const showSearchModal = () => {
 const onQuickLinkClick = hideModal
 
 const slots = useSlots()
-const isWithSlotOperator = computed(() => slots.operator?.().length || !!props.operatorImgSrc)
+const isWithSlotOperator = computed(() => Boolean(slots.operator?.().length) || !!props.operatorImgSrc)
+const isWithSlotNav = computed(() => Boolean(slots.mainnav))
 
 // eslint-disable-next-line func-call-spacing
 defineEmits<{
@@ -114,7 +115,7 @@ defineEmits<{
                 </slot>
               </div>
               <div
-                v-if="showSearch || quickLinks?.length"
+                v-if="showSearch || isWithSlotNav || quickLinks?.length"
                 class="fr-header__navbar"
               >
                 <button
@@ -127,7 +128,7 @@ defineEmits<{
                   @click.prevent.stop="showSearchModal()"
                 />
                 <button
-                  v-if="quickLinks?.length"
+                  v-if="isWithSlotNav || quickLinks?.length"
                   id="button-menu"
                   class="fr-btn--menu  fr-btn"
                   :data-fr-opened="showMenu"
@@ -204,7 +205,7 @@ defineEmits<{
           </div>
         </div>
         <div
-          v-if="showSearch || (quickLinks && quickLinks.length)"
+          v-if="showSearch || isWithSlotNav || (quickLinks && quickLinks.length)"
           id="header-navigation"
           class="fr-header__menu  fr-modal"
           :class="{ 'fr-modal--opened': modalOpened }"
@@ -233,9 +234,15 @@ defineEmits<{
                 />
               </nav>
             </div>
+            <template v-if="modalOpened">
+              <slot
+                name="mainnav"
+                :hidemodal="hideModal"
+              />
+            </template>
             <div
               v-if="searchModalOpened"
-              class="flex  justify-center  items-center"
+              class="flex justify-center items-center"
             >
               <DsfrSearchBar
                 :model-value="modelValue"
@@ -245,6 +252,15 @@ defineEmits<{
               />
             </div>
           </div>
+        </div>
+        <div
+          v-if="isWithSlotNav"
+          class="fr-hidden fr-unhidden-lg"
+        >
+          <slot
+            name="mainnav"
+            :hidemodal="hideModal"
+          />
         </div>
         <slot />
       </div>
