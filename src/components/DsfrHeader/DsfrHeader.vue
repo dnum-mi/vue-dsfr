@@ -74,7 +74,7 @@ const onQuickLinkClick = hideModal
 
 const slots = useSlots()
 const isWithSlotOperator = computed(() => Boolean(slots.operator?.().length) || !!props.operatorImgSrc)
-const isWithSlotNav = computed(() => Boolean(slots['main-nav']?.().length))
+const isWithSlotNav = computed(() => Boolean(slots.mainnav))
 
 // eslint-disable-next-line func-call-spacing
 defineEmits<{
@@ -235,7 +235,10 @@ defineEmits<{
               </nav>
             </div>
             <template v-if="modalOpened">
-              <slot name="main-nav" />
+              <slot
+                name="mainnav"
+                :hidemodal="hideModal"
+              />
             </template>
             <div
               v-if="searchModalOpened"
@@ -254,7 +257,10 @@ defineEmits<{
           v-if="isWithSlotNav"
           class="fr-hidden fr-unhidden-lg"
         >
-          <slot name="main-nav" />
+          <slot
+            name="mainnav"
+            :hidemodal="hideModal"
+          />
         </div>
         <slot />
       </div>
