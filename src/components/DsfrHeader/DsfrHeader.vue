@@ -234,7 +234,9 @@ defineEmits<{
                 />
               </nav>
             </div>
-            <slot name="main-nav" />
+            <template v-if="modalOpened">
+              <slot name="main-nav" />
+            </template>
             <div
               v-if="searchModalOpened"
               class="flex justify-center items-center"
