@@ -16,7 +16,7 @@ export type DsfrHeaderMenuLinkProps = {
 }
 
 const props = withDefaults(defineProps<DsfrHeaderMenuLinkProps>(), {
-  icon: '',
+  icon: undefined,
   iconAttrs: () => ({}),
   onClick: () => undefined,
   target: '_self',
@@ -66,20 +66,26 @@ const linkData = computed(() => {
     :target="target"
     @click.stop="onClick"
   >
-    <VIcon
+    <template
       v-if="(icon || iconAttrs) && !iconRight"
-      :name="icon"
-      class="fr-mr-1w"
-      v-bind="iconAttrs"
-    />
+    >
+      <VIcon
+        :name="icon"
+        class="fr-mr-1w"
+        v-bind="iconAttrs"
+      />
+    </template>
 
     {{ label }}
 
-    <VIcon
+    <template
       v-if="(icon || iconAttrs) && iconRight"
-      :name="icon"
-      class="fr-ml-1w"
-      v-bind="iconAttrs"
-    />
+    >
+      <VIcon
+        :name="icon"
+        class="fr-ml-1w"
+        v-bind="iconAttrs"
+      />
+    </template>
   </component>
 </template>

@@ -39,7 +39,7 @@ defineEmits<{
       type="search"
       :placeholder="placeholder"
       :model-value="modelValue"
-      :label-visible="false"
+      :label-visible="labelVisible"
       :label="label"
       :disabled="disabled"
       @update:model-value="$emit('update:modelValue', $event)"
