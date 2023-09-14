@@ -18,6 +18,7 @@ const props = withDefaults(defineProps<{
   linksGroup?:({ label: string, to?: RouteLocationRaw, link?: string, href?: string })[]
   noArrow?: boolean
   horizontal?: boolean
+  download?: boolean
 }>(), {
   imgSrc: undefined,
   link: undefined,
@@ -54,6 +55,7 @@ defineExpose({ goToTargetLink })
       'fr-enlarge-link': !noArrow,
       'fr-card--sm': sm,
       'fr-card--lg': lg,
+      'fr-card--download': download,
     }"
     data-testid="fr-card"
   >
