@@ -244,9 +244,11 @@ export const EnTeteAvecNavigation = (args, { argTypes }) => ({
       @click="onClickOnLogo"
       @search="onSearch($event)"
     >
-      <DsfrNavigation
-        :nav-items="navItems"
-      />
+      <template #mainnav>
+        <DsfrNavigation
+          :nav-items="navItems"
+        />
+      </template>
     </DsfrHeader>
   `,
 
