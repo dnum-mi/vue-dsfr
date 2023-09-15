@@ -12,7 +12,6 @@ module.exports = {
   },
   extends: [
     'plugin:vue/vue3-recommended',
-    '@vue/eslint-config-typescript/recommended',
     '@vue/standard',
     'plugin:storybook/recommended',
   ],
