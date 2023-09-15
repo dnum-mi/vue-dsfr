@@ -27,41 +27,16 @@ export default {
       control: 'boolean',
       description: 'Permet le basculement de la tuile en mode horizontal',
     },
-    verticalAtMd: {
-      control: 'boolean',
-      description: 'Permet le basculement de la tuile en mode vertical au point de rupture "md"',
-    },
-    verticalAtLg: {
-      control: 'boolean',
-      description: 'Permet le basculement de la tuile en mode vertical au point de rupture "lg"',
-    },
-    small: {
-      control: 'boolean',
-      description: 'Permet d’afficher la tuile dans un plus petit format',
+    vertical: {
+      options: ['md', 'lg'],
+      control: {
+        type: 'select',
+      },
+      description: 'Permet le basculement de la tuile en mode vertical, selon le point de rupture "md" ou "lg" spécifié',
     },
     disabled: {
       control: 'boolean',
       description: 'Permet de rendre la tuile désactivée et non-cliquable',
-    },
-    download: {
-      control: 'boolean',
-      description: 'Variante de tuile indiquant que le lien permet de télécharger un fichier (la tuile de téléchargement est obligatoirement horizontale)',
-    },
-    noBorder: {
-      control: 'boolean',
-      description: 'Variante de tuile sans bordure',
-    },
-    noBackground: {
-      control: 'boolean',
-      description: 'Variante de tuile sans arrière-plan',
-    },
-    shadow: {
-      control: 'boolean',
-      description: 'Variante de tuile avec ombre portée',
-    },
-    grey: {
-      control: 'boolean',
-      description: 'Variante de tuile plus contrastée avec arrière-plan grisé',
     },
     to: {
       control: 'text',
@@ -70,6 +45,34 @@ export default {
     titleTag: {
       control: 'text',
       description: 'Permet de choisir la balise contenant le titre de la tuile (h3 par défaut)',
+    },
+    download: {
+      control: 'boolean',
+      description: 'Permet de passer la tuile en mode téléchargement',
+    },
+    small: {
+      control: 'boolean',
+      description: 'Permet de basculer la tuile en petit format',
+    },
+    icon: {
+      control: 'boolean',
+      description: 'Permet de désactiver l\'icone associée au lien',
+    },
+    noBorder: {
+      control: 'boolean',
+      description: 'Permet de désactiver la bordure de la tuile',
+    },
+    shadow: {
+      control: 'boolean',
+      description: 'Permet d\'ajouter une ombre portée à la tuile',
+    },
+    noBackground: {
+      control: 'boolean',
+      description: 'Permet de désactiver la couleur de fond de la tuile',
+    },
+    grey: {
+      control: 'boolean',
+      description: 'Permet de passer le fond de la tuile en gris',
     },
   },
 }
@@ -92,36 +95,34 @@ export const TuileSimple = (args) => ({
       :description="description"
       :details="details"
       :horizontal="horizontal"
-      :verticalAtMd="verticalAtMd"
-      :verticalAtLg="verticalAtLg"
-      :small="small"
+      :vertical="vertical"
       :disabled="false"
-      :download="download"
-      :noBorder="noBorder"
-      :noBackground="noBackground"
-      :shadow="shadow"
-      :grey="grey"
       :to="to"
       :title-tag="titleTag"
+      :download="download"
+      :small="small"
+      :icon="icon"
+      :no-border="noBorder"
+      :shadow="shadow"
+      :no-background="noBackground"
+      :grey="grey"
     />
   `,
 
 })
 TuileSimple.args = {
   title: 'Ma formidable tuile',
-  imgSrc: 'http://placekitten.com/g/80/80',
+  imgSrc: 'http://placekitten.com/g/200/200',
   description: 'Une tuile absolument formidable',
-  details: 'Quelques détails',
   horizontal: false,
-  verticalAtMd: false,
-  verticalAtLg: false,
-  small: false,
   disabled: false,
-  download: false,
-  noBorder: false,
-  noBackground: false,
-  shadow: false,
-  grey: false,
   to: '#',
   titleTag: 'h2',
+  download: false,
+  small: false,
+  icon: false,
+  noBorder: false,
+  shadow: false,
+  noBackground: false,
+  grey: false,
 }

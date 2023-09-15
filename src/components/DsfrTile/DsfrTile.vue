@@ -9,16 +9,16 @@ export type DsfrTileProps = {
   details?: string
   disabled?: boolean
   horizontal?: boolean
-  verticalAtMd?: boolean
-  verticalAtLg?: boolean
-  small?: boolean
-  download?: boolean
-  noBorder?: boolean
-  noBackground?: boolean
-  shadow?: boolean
-  grey?: boolean
-  to?: RouteLocationRaw
+  vertical?: 'md' | 'lg'
+  to?: RouteLocationRaw,
   titleTag?: string
+  download?: boolean
+  small?: boolean
+  icon?: boolean
+  noBorder?: boolean
+  shadow?: boolean
+  noBackground?: boolean
+  grey?: boolean
 }
 
 const props = withDefaults(defineProps<DsfrTileProps>(), {
@@ -26,8 +26,11 @@ const props = withDefaults(defineProps<DsfrTileProps>(), {
   imgSrc: undefined,
   description: undefined,
   details: undefined,
+  horizontal: false,
+  vertical: undefined,
   to: '#',
   titleTag: 'h3',
+  icon: true,
 })
 
 const isExternalLink = computed(() => {
@@ -38,19 +41,20 @@ const isExternalLink = computed(() => {
 <template>
   <div
     class="fr-tile fr-enlarge-link"
-    :class="{
-      'fr-tile--vertical@md': verticalAtMd,
-      'fr-tile--vertical@lg': verticalAtLg,
-      'fr-tile--horizontal': horizontal,
+    :class="[{
       'fr-tile--disabled': disabled,
-      'fr-tile--sm': small,
-      'fr-tile--no-icon': !imgSrc,
+      'fr-tile--sm': small === true,
+      'fr-tile--horizontal': horizontal === true,
+      'fr-tile--vertical': horizontal === false || vertical === 'md' || vertical === 'lg',
+      'fr-tile--vertical@md': vertical === 'md',
+      'fr-tile--vertical@lg': vertical === 'lg',
       'fr-tile--download': download,
+      'fr-tile--no-icon': icon === false,
       'fr-tile--no-border': noBorder,
       'fr-tile--no-background': noBackground,
       'fr-tile--shadow': shadow,
       'fr-tile--grey': grey,
-    }"
+    },]"
   >
     <div class="fr-tile__body">
       <div class="fr-tile__content">
@@ -60,13 +64,15 @@ const isExternalLink = computed(() => {
         >
           <a
             v-if="isExternalLink"
+            class="fr-tile__link"
             target="_blank"
+            :download="download"
             :href="disabled ? '' : (to as string)"
-          >
-            {{ title }}
-          </a>
+          >{{ title }}</a>
           <RouterLink
             v-if="!isExternalLink"
+            :download="download"
+            class="fr-tile__link so-test"
             :to="disabled ? '' : to"
           >
             {{ title }}
@@ -93,8 +99,8 @@ const isExternalLink = computed(() => {
       >
         <img
           :src="imgSrc"
-          alt=""
           class="fr-artwork"
+          alt=""
         >
       <!-- L'alternative de l'image (attribut alt) doit à priori rester vide car l'image est illustrative et ne doit pas être restituée aux technologies d’assistance. Vous pouvez toutefois remplir l'alternative si vous estimer qu'elle apporte une information essentielle à la compréhension du contenu non présente dans le texte -->
       </div>
