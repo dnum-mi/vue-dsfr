@@ -120,7 +120,7 @@ async function close () {
                 <DsfrButtonGroup
                   align="right"
                   :buttons="actions"
-                  inline
+                  inline-layout-when="large"
                   reverse
                 />
               </div>
