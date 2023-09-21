@@ -23,6 +23,7 @@ const props = withDefaults(defineProps<{
   labelClass: '',
   modelValue: '',
   wrapperClass: '',
+  placeholder: undefined,
   errorMessage: undefined,
   validMessage: undefined,
 })
@@ -50,7 +51,7 @@ const messageClass = computed(() => props.errorMessage ? 'fr-error-text' : 'fr-v
       :is-invalid="!!errorMessage"
       :label="label"
       :hint="hint"
-      :description-id="descriptionId"
+      :description-id="(message && descriptionId) || undefined"
       :label-visible="labelVisible"
       :model-value="modelValue"
       :placeholder="placeholder"
