@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { ref, watch } from 'vue'
+import { computed, ref, watch } from 'vue'
 import DsfrTableRow, { type DsfrTableRowProps } from './DsfrTableRow.vue'
 import DsfrTableHeaders from './DsfrTableHeaders.vue'
 import { type DsfrTableHeadersProps } from './DsfrTableHeaders.vue'
@@ -30,15 +30,17 @@ const pageCount = ref(props.rows.length > optionSelected.value ? Math.ceil(props
 const paginationOptions = [5, 10, 25, 50, 100]
 const returnLowestLimit = () => currentPage.value * optionSelected.value - optionSelected.value
 const returnHighestLimit = () => currentPage.value * optionSelected.value
-let truncatedResults = props.rows.slice(returnLowestLimit(), returnHighestLimit())
 
-watch(() => optionSelected.value, (newVal) => {
-  props.rows.length > optionSelected.value ? pageCount.value = Math.ceil(props.rows.length / newVal) : pageCount.value = 1
-  truncatedResults = props.rows.slice(returnLowestLimit(), returnHighestLimit())
+watch(() => optionSelected.value, (newVal, OldVal) => {
+  pageCount.value = props.rows.length > optionSelected.value ? Math.ceil(props.rows.length / newVal) : 1
 })
 
-watch(() => currentPage.value, () => {
-  truncatedResults = props.rows.slice(returnLowestLimit(), returnHighestLimit())
+const truncatedResults = computed(() => {
+    if(props.pagination) {
+      return props.rows.slice(returnLowestLimit(), returnHighestLimit())
+    }
+
+    return props.rows;
 })
 
 const goFirstPage = () => { currentPage.value = 1 }
