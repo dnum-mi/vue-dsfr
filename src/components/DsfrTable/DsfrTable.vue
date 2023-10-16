@@ -2,12 +2,12 @@
 import { ref, watch } from 'vue'
 import DsfrTableRow, { type DsfrTableRowProps } from './DsfrTableRow.vue'
 import DsfrTableHeaders from './DsfrTableHeaders.vue'
-import { type DsfrTableHeaderProps } from './DsfrTableHeader.vue'
+import { type DsfrTableHeadersProps } from './DsfrTableHeaders.vue'
 
 const props = withDefaults(defineProps<{
   title?: string
-  headers?:(DsfrTableHeaderProps | string)[]
-  rows?: (DsfrTableRowProps | string)[]
+  headers?: DsfrTableHeadersProps
+  rows?:(DsfrTableRowProps | string[])[]
   noCaption?: boolean
   pagination?: boolean
   defaultCurrentPage?: number
@@ -20,9 +20,8 @@ const props = withDefaults(defineProps<{
   defaultOptionSelected: 10,
 })
 
-const getRowData = (row: (DsfrTableRowProps | string | ({component: string} & Record<string, any>))) => {
-  // @ts-ignore TODO: find a way to improve types here
-  return row.rowData || row
+const getRowData = (row: (DsfrTableRowProps | string[])) => {
+  return Array.isArray(row) ? row : row.rowData
 }
 
 const currentPage = ref(props.defaultCurrentPage)
@@ -33,12 +32,12 @@ const returnLowestLimit = () => currentPage.value * optionSelected.value - optio
 const returnHighestLimit = () => currentPage.value * optionSelected.value
 let truncatedResults = props.rows.slice(returnLowestLimit(), returnHighestLimit())
 
-watch(() => optionSelected.value, (newVal, OldVal) => {
+watch(() => optionSelected.value, (newVal) => {
   props.rows.length > optionSelected.value ? pageCount.value = Math.ceil(props.rows.length / newVal) : pageCount.value = 1
   truncatedResults = props.rows.slice(returnLowestLimit(), returnHighestLimit())
 })
 
-watch(() => currentPage.value, (newVal, OldVal) => {
+watch(() => currentPage.value, () => {
   truncatedResults = props.rows.slice(returnLowestLimit(), returnHighestLimit())
 })
 
@@ -54,7 +53,6 @@ const goNextPage = () => {
   }
 }
 const goLastPage = () => { currentPage.value = pageCount.value }
-
 </script>
 
 <template>
@@ -85,7 +83,7 @@ const goLastPage = () => { currentPage.value = pageCount.value }
             v-for="(row, i) of truncatedResults"
             :key="i"
             :row-data="getRowData(row)"
-            :row-attrs="typeof row === 'string' ? {} : row.rowAttrs"
+            :row-attrs="'rowAttrs' in row ? row.rowAttrs : {}"
           />
         </template>
         <tr v-if="pagination">
