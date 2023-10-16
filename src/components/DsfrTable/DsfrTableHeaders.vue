@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import DsfrTableHeader, { DsfrTableHeaderProps } from './DsfrTableHeader.vue'
 
-type Header = DsfrTableHeaderProps & { text?: string }
+export type DsfrTableHeadersProps = (string | (DsfrTableHeaderProps & { text?: string }))[]
 
 defineProps<{
-  headers:(DsfrTableHeaderProps | string)[]
+  headers: DsfrTableHeadersProps
 }>()
 </script>
 
@@ -15,7 +15,7 @@ defineProps<{
     <DsfrTableHeader
       v-for="(header, i) of headers"
       :key="i"
-      :header="(header as Header).text || (header as string)"
+      :header="(typeof header === 'object' ? header : {}).text || (header as string)"
       :header-attrs="(header as DsfrTableHeaderProps).headerAttrs"
     />
   </tr>
