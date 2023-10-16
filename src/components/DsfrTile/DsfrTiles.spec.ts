@@ -150,4 +150,42 @@ describe('DsfrTiles', () => {
     expect(titleEl1.parentNode.parentNode.parentNode.parentNode).toHaveClass('fr-tile--disabled')
     expect(titleEl2.parentNode.parentNode.parentNode.parentNode).not.toHaveClass('fr-tile--disabled')
   })
+
+  it('should display a tile with a download link and one without', async () => {
+    const title1 = 'Titre de la tuile 1'
+    const title2 = 'Titre de la tuile 2'
+    const imgSrc = 'https://placekitten.com/80/80'
+
+    const tiles = [
+      {
+        title: title1,
+        imgSrc,
+        disabled: true,
+        to: '/one',
+        download: true,
+      },
+      {
+        title: title2,
+        imgSrc,
+        to: '/two',
+        download: false,
+      },
+    ]
+
+    const { getByText } = render(DsfrTiles, {
+      global: {
+        plugins: [router],
+      },
+      props: {
+        tiles,
+      },
+    })
+
+    await router.isReady()
+
+    const titleEl1 = getByText(title1)
+    const titleEl2 = getByText(title2)
+    expect(titleEl1).toHaveAttribute('download', 'true')
+    expect(titleEl2).toHaveAttribute('download', 'false')
+  })
 })
