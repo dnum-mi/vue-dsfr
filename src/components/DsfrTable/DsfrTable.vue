@@ -1,13 +1,13 @@
 <script lang="ts" setup>
-import { ref, watch } from 'vue'
+import { computed, ref, watch } from 'vue'
 import DsfrTableRow, { type DsfrTableRowProps } from './DsfrTableRow.vue'
 import DsfrTableHeaders from './DsfrTableHeaders.vue'
-import { type DsfrTableHeaderProps } from './DsfrTableHeader.vue'
+import { type DsfrTableHeadersProps } from './DsfrTableHeaders.vue'
 
 const props = withDefaults(defineProps<{
   title?: string
-  headers?:(DsfrTableHeaderProps | string)[]
-  rows?: (DsfrTableRowProps | string)[]
+  headers?: DsfrTableHeadersProps
+  rows?:(DsfrTableRowProps | string[])[]
   noCaption?: boolean
   pagination?: boolean
   defaultCurrentPage?: number
@@ -20,9 +20,8 @@ const props = withDefaults(defineProps<{
   defaultOptionSelected: 10,
 })
 
-const getRowData = (row: (DsfrTableRowProps | string | ({component: string} & Record<string, any>))) => {
-  // @ts-ignore TODO: find a way to improve types here
-  return row.rowData || row
+const getRowData = (row: (DsfrTableRowProps | string[])) => {
+  return Array.isArray(row) ? row : row.rowData
 }
 
 const currentPage = ref(props.defaultCurrentPage)
@@ -31,15 +30,17 @@ const pageCount = ref(props.rows.length > optionSelected.value ? Math.ceil(props
 const paginationOptions = [5, 10, 25, 50, 100]
 const returnLowestLimit = () => currentPage.value * optionSelected.value - optionSelected.value
 const returnHighestLimit = () => currentPage.value * optionSelected.value
-let truncatedResults = props.rows.slice(returnLowestLimit(), returnHighestLimit())
 
 watch(() => optionSelected.value, (newVal, OldVal) => {
-  props.rows.length > optionSelected.value ? pageCount.value = Math.ceil(props.rows.length / newVal) : pageCount.value = 1
-  truncatedResults = props.rows.slice(returnLowestLimit(), returnHighestLimit())
+  pageCount.value = props.rows.length > optionSelected.value ? Math.ceil(props.rows.length / newVal) : 1
 })
 
-watch(() => currentPage.value, (newVal, OldVal) => {
-  truncatedResults = props.rows.slice(returnLowestLimit(), returnHighestLimit())
+const truncatedResults = computed(() => {
+    if(props.pagination) {
+      return props.rows.slice(returnLowestLimit(), returnHighestLimit())
+    }
+
+    return props.rows;
 })
 
 const goFirstPage = () => { currentPage.value = 1 }
@@ -54,7 +55,6 @@ const goNextPage = () => {
   }
 }
 const goLastPage = () => { currentPage.value = pageCount.value }
-
 </script>
 
 <template>
@@ -85,7 +85,7 @@ const goLastPage = () => { currentPage.value = pageCount.value }
             v-for="(row, i) of truncatedResults"
             :key="i"
             :row-data="getRowData(row)"
-            :row-attrs="typeof row === 'string' ? {} : row.rowAttrs"
+            :row-attrs="'rowAttrs' in row ? row.rowAttrs : {}"
           />
         </template>
         <tr v-if="pagination">
