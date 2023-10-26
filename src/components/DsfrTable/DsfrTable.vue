@@ -5,7 +5,7 @@ import DsfrTableHeaders from './DsfrTableHeaders.vue'
 import { type DsfrTableHeadersProps } from './DsfrTableHeaders.vue'
 
 const props = withDefaults(defineProps<{
-  title?: string
+  title: string
   headers?: DsfrTableHeadersProps
   rows?:(DsfrTableRowProps | string[])[]
   noCaption?: boolean
@@ -13,7 +13,6 @@ const props = withDefaults(defineProps<{
   defaultCurrentPage?: number
   defaultOptionSelected?: number
 }>(), {
-  title: undefined,
   headers: () => [],
   rows: () => [],
   defaultCurrentPage: 1,
