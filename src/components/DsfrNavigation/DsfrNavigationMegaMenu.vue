@@ -1,11 +1,11 @@
 <script lang="ts" setup>
 import { computed, onMounted, watch } from 'vue'
+import { RouteLocationRaw } from 'vue-router'
 
 import { getRandomId } from '../../utils/random-utils'
 
 import { useCollapsable } from '../../composables'
 import DsfrNavigationMegaMenuCategory from './DsfrNavigationMegaMenuCategory.vue'
-import { RouteLocationRaw } from 'vue-router'
 
 export type DsfrNavigationMegaMenuProps = {
   id?: string
@@ -14,6 +14,7 @@ export type DsfrNavigationMegaMenuProps = {
   link?: { to: RouteLocationRaw, text: string }
   menus?: string[]
   expandedId?: string
+  active?: boolean
 }
 
 const props = withDefaults(defineProps<DsfrNavigationMegaMenuProps>(), {
@@ -60,6 +61,7 @@ defineEmits<{(event: 'toggle-id', id: string): void}>()
   <button
     class="fr-nav__btn"
     :aria-expanded="expanded"
+    :aria-current="active || undefined"
     :aria-controls="id"
     @click="$emit('toggle-id', id)"
   >
@@ -85,7 +87,10 @@ defineEmits<{(event: 'toggle-id', id: string): void}>()
       >
         Fermer
       </button>
-      <div class="fr-grid-row fr-grid-row-lg--gutters">
+      <div
+        ref="megaMenuList"
+        class="fr-grid-row fr-grid-row-lg--gutters"
+      >
         <div class="fr-col-12 fr-col-lg-8 fr-col-offset-lg-4--right fr-mb-4v">
           <div class="fr-mega-menu__leader">
             <h4 class="fr-h4 fr-mb-2v">
@@ -97,7 +102,6 @@ defineEmits<{(event: 'toggle-id', id: string): void}>()
               <slot name="description" />
             </p>
             <RouterLink
-              vi
               class="fr-link fr-icon-arrow-right-line fr-link--icon-right fr-link--align-on-content"
               :to="link.to"
             >

@@ -17,6 +17,7 @@ export const routes = [
   { path: '/languages', name: 'Languages', component: LanguageSelector },
   { path: '/settings', name: 'Settings', component: SchemeSettings },
   { path: '/alerts', name: 'Alertes', component: AppAlerts },
+  { path: '/bandeaux', name: 'Bandeaux', component: AppAlerts },
   { path: '/callout', name: 'MiseEnAvant', component: CalloutTest },
 ]
 

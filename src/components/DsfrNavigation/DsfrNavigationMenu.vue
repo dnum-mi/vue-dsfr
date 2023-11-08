@@ -19,6 +19,7 @@ export type DsfrNavigationMenuProps = {
   title: string
   links?: DsfrNavigationMenuLinkProps[]
   expandedId?: string
+  active?: boolean
 }
 
 const props = withDefaults(defineProps<DsfrNavigationMenuProps>(), {
@@ -45,13 +46,13 @@ onMounted(() => {
     doExpand(true)
   }
 })
-
 </script>
 
 <template>
   <button
     class="fr-nav__btn"
     :aria-expanded="expanded"
+    :aria-current="active || undefined"
     :aria-controls="id"
     @click="$emit('toggle-id', id)"
   >
@@ -65,7 +66,10 @@ onMounted(() => {
     :class="{ 'fr-collapse--expanded': cssExpanded, 'fr-collapsing': collapsing }"
     @transitionend="onTransitionEnd(expanded)"
   >
-    <ul class="fr-menu__list">
+    <ul
+      ref="menuList"
+      class="fr-menu__list"
+    >
       <!-- @slot Slot par défaut pour le contenu de l’item de liste. Sera dans `<ul class="fr-menu__list">` -->
       <slot />
       <DsfrNavigationMenuItem

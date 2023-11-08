@@ -24,12 +24,14 @@ const closeAlert = () => {
     <DsfrAlert
       title="Titre d’une info"
       type="info"
+      description="Description de l’info"
     />
   </p>
   <p>
     <DsfrAlert
       :closeable="true"
-      title="Titre d’une erreur"
+      title="Titre d’une erreur fermable"
+      description="Description de l’erreur fermable"
       type="error"
       :closed="alertClosed"
       @close="closeAlert()"
@@ -41,8 +43,8 @@ const closeAlert = () => {
   <p>
     <DsfrNotice
       v-if="!noticeClosed"
-      title="Titre d’un bandeau d’information importante"
-      :closeable="true"
+      title="Titre d’un bandeau d’information importante fermable"
+      closeable
       @close="closeNotice()"
     />
   </p>
