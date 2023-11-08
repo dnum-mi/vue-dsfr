@@ -105,6 +105,12 @@ const selectFirst = async () => {
 const selectLast = async () => {
   await selectIndex(props.tabTitles.length - 1)
 }
+
+defineExpose({
+  selectIndex,
+  selectFirst,
+  selectLast,
+})
 </script>
 
 <template>

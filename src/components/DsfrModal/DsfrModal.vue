@@ -5,8 +5,10 @@ import { FocusTrap } from 'focus-trap-vue'
 
 import DsfrButtonGroup from '../DsfrButton/DsfrButtonGroup.vue'
 import { onMounted, onBeforeUnmount, computed, ref, nextTick, watch, Ref } from 'vue'
+import { getRandomId } from '@/utils/random-utils'
 
 const props = withDefaults(defineProps<{
+  modalId?: string
   opened?: boolean
   actions?: Record<string, any>[]
   isAlert?: boolean
@@ -14,6 +16,7 @@ const props = withDefaults(defineProps<{
   title: string
   icon?: string
 }>(), {
+  modalId: () => getRandomId('modal', 'dialog'),
   actions: () => [],
   origin: () => ({ focus () {} }), // eslint-disable-line @typescript-eslint/no-empty-function
   icon: undefined,
@@ -35,13 +38,17 @@ const closeBtn: Ref<HTMLButtonElement | null> = ref(null)
 watch(() => props.opened, (newValue) => {
   if (newValue) {
     document.body.classList.add('modal-open')
+    modal.value?.showModal()
     setTimeout(() => {
       closeBtn.value?.focus()
     }, 100)
   } else {
     document.body.classList.remove('modal-open')
+    modal.value?.close()
   }
 })
+
+const modal = ref()
 
 onMounted(() => {
   startListeningToEscape()
@@ -72,10 +79,12 @@ async function close () {
   >
     <dialog
       id="fr-modal-1"
-      aria-labelledby="fr-modal-title-modal-1"
+      ref="modal"
+      :aria-labelledby="modalId"
       :role="role"
       class="fr-modal"
       :class="{'fr-modal--opened': opened}"
+      :open="opened"
     >
       <div class="fr-container fr-container--fluid fr-container-md">
         <div class="fr-grid-row fr-grid-row--center">
@@ -97,7 +106,7 @@ async function close () {
               </div>
               <div class="fr-modal__content">
                 <h1
-                  id="fr-modal-title-modal-1"
+                  :id="modalId"
                   class="fr-modal__title"
                 >
                   <span
