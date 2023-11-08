@@ -142,12 +142,12 @@ const aLicenceHref = computed(() => {
             />
           </RouterLink>
           <RouterLink
+            v-if="operatorImgSrc"
             class="fr-footer__brand-link"
             :to="operatorTo"
             :title="operatorLinkText"
           >
             <img
-              v-if="operatorImgSrc"
               class="fr-footer__logo  fr-responsive-img"
               :style="[
                 typeof operatorImgStyle === 'string' ? operatorImgStyle : '',

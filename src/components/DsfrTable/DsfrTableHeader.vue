@@ -1,11 +1,11 @@
 <script lang="ts" setup>
 import { type ThHTMLAttributes } from 'vue'
-import { type CustomizeIconType, OhVueIcon as VIcon } from 'oh-vue-icons'
+import { OhVueIcon as VIcon } from 'oh-vue-icons'
 
 export type DsfrTableHeaderProps = {
   header?: string
   headerAttrs?: ThHTMLAttributes & { onClick?: (e: MouseEvent) => void }
-  icon?: CustomizeIconType
+  icon?: InstanceType<typeof VIcon>['$props']
 }
 
 withDefaults(defineProps<DsfrTableHeaderProps>(), {

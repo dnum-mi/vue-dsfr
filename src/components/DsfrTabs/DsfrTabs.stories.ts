@@ -1,5 +1,6 @@
 import { expect } from '@storybook/jest'
 import { within, userEvent } from '@storybook/testing-library'
+import DsfrButton from '../DsfrButton/DsfrButton.vue'
 import DsfrTabs from './DsfrTabs.vue'
 import DsfrTabContent from './DsfrTabContent.vue'
 
@@ -130,7 +131,7 @@ const customTabTitles = [
 ]
 
 export const OngletsComplexes = (args) => ({
-  components: { DsfrTabs, DsfrTabContent },
+  components: { DsfrTabs, DsfrTabContent, DsfrButton },
   data () {
     return {
       ...args,
@@ -140,6 +141,7 @@ export const OngletsComplexes = (args) => ({
 
   template: `
     <DsfrTabs
+      ref="tabs"
       :tab-list-name="tabListName"
       :tab-titles="tabTitles"
       :initial-selected-index="initialSelectedIndex"
@@ -181,6 +183,24 @@ export const OngletsComplexes = (args) => ({
         <div>Contenu 4 avec d'autres composants</div>
       </DsfrTabContent>
     </DsfrTabs>
+    <div style="display: flex; gap: 1rem; margin-block: 1rem;">
+      <DsfrButton
+        label="Activer le 1er onglet"
+        @click="() => { $refs.tabs.selectFirst() }"
+      />
+      <DsfrButton
+        label="Activer le 2è onglet"
+        @click="() => { $refs.tabs.selectIndex(1) }"
+      />
+      <DsfrButton
+        label="Activer le 3è onglet"
+        @click="() => { $refs.tabs.selectIndex(2) }"
+      />
+      <DsfrButton
+        label="Activer le dernier onglet"
+        @click="() => { $refs.tabs.selectLast() }"
+      />
+    </div>
   `,
 
   methods: {
