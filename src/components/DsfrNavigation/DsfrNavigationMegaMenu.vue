@@ -5,14 +5,14 @@ import { RouteLocationRaw } from 'vue-router'
 import { getRandomId } from '../../utils/random-utils'
 
 import { useCollapsable } from '../../composables'
-import DsfrNavigationMegaMenuCategory from './DsfrNavigationMegaMenuCategory.vue'
+import DsfrNavigationMegaMenuCategory, { DsfrNavigationMegaMenuCategoryProps } from './DsfrNavigationMegaMenuCategory.vue'
 
 export type DsfrNavigationMegaMenuProps = {
   id?: string
   title: string
   description?: string
   link?: { to: RouteLocationRaw, text: string }
-  menus?: string[]
+  menus?: DsfrNavigationMegaMenuCategoryProps[]
   expandedId?: string
   active?: boolean
 }
