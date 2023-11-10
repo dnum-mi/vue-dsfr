@@ -29,7 +29,7 @@ export default {
     },
     links: {
       control: 'object',
-      description: 'Liste d’objets contenant les props de lien direct <a href="/?path=/story/composants-navigation-principale-2-lien-de-menu-sous-menu-ou-mega-menu-dsfrnavigationmenulink--navigation-lien-menu">DsfrNavigationMenuLink</a> de navigation (`to` et `text`)',
+      description: 'Liste d’objets contenant les props de lien direct <a href="/?path=/docs/composants-dsfrnavigationmenulink--docs">DsfrNavigationMenuLink</a> de navigation (`to` et `text`)',
     },
   },
 }

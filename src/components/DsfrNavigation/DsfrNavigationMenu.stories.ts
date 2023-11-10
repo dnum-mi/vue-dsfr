@@ -15,11 +15,15 @@ export default {
     },
     links: {
       control: 'object',
-      description: 'Tableau contenant les liens du menu de navigation. Chaque objet de ce tableau contiendra les props d’un lien direct <a href="/?path=/story/composants-navigation-principale-2-lien-de-menu-sous-menu-ou-mega-menu-dsfrnavigationmenulink--navigation-lien-menu">DsfrNavigationMenuLink</a> de navigation (`to` et `text`)',
+      description: 'Tableau contenant les liens du menu de navigation. Chaque objet de ce tableau contiendra les props d’un lien direct <a href="/?path=/docs/composants-dsfrnavigationmenulink--docs">DsfrNavigationMenuLink</a> de navigation (`to` et `text`)',
     },
     title: {
       control: 'text',
       description: 'Intitulé du menu',
+    },
+    active: {
+      control: 'boolean',
+      description: '(Optionnel) Est-ce que le menu doit être actif ou non (met l’attribut `aria-current` à la valeur `true`). Par défaut, il est inactif.',
     },
     expandedId: {
       control: 'text',
