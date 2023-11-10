@@ -54,6 +54,6 @@ const actions = [
       small
       description="Opération terminée avec succès"
     />
-    Ceci est une modale. Elle peut se fermer sans aucun changement au clic sur le bouton "Fermer" ou bien simplement avec la touche <kbd>Échappe</kbd>
+    Ceci est une modale. Elle peut se fermer sans aucun changement au clic sur le bouton "Fermer" ou bien simplement avec la touche <kbd>Échap</kbd>
   </DsfrModal>
 </template>

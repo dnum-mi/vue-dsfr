@@ -67,6 +67,10 @@ const navItems: InstanceType<typeof DsfrNavigation>['$props']['navItems'] = [
     text: 'Formulaires',
   },
   {
+    to: { name: 'SideMenu' },
+    text: 'Menu latéral',
+  },
+  {
     to: { name: 'Languages' },
     text: 'Languages',
   },
