@@ -14,11 +14,11 @@ const props = withDefaults(defineProps<DsfrTabItemProps>(), {
 
 // eslint-disable-next-line func-call-spacing
 defineEmits<{
-  (e: 'click', payload: string): void,
-  (e: 'next', payload: string): void,
-  (e: 'previous', payload: string): void,
-  (e: 'first', payload: string): void,
-  (e: 'last', payload: string): void,
+  (e: 'click', payload: MouseEvent): void,
+  (e: 'next'): void,
+  (e: 'previous'): void,
+  (e: 'first'): void,
+  (e: 'last'): void,
 }>()
 
 const button: Ref<HTMLButtonElement | null> = ref(null)

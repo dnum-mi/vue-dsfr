@@ -5,7 +5,8 @@ module.exports = {
     "@storybook/addon-essentials",
     "@storybook/addon-styling",
     "@storybook/addon-interactions",
-    '@storybook/addon-mdx-gfm'
+    '@storybook/addon-mdx-gfm',
+    '@storybook/addon-a11y',
   ],
   staticDirs: ['../public'],
   framework: {

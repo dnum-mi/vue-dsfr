@@ -27,9 +27,9 @@ export default {
       control: 'object',
       description: `Tableau d'objets. Chacun de ces objets contiendra :
 
-  - soit les props d’un lien direct <a href="/?path=/story/composants-navigation-principale-2-lien-de-menu-sous-menu-ou-mega-menu-dsfrnavigationmenulink--navigation-lien-menu">DsfrNavigationMenuLink</a> de navigation (\`to\` et \`text\`)
-  - soit les props d’un sous-menu <a href="/?path=/docs/composants-navigation-principale-3-sous-menu-dsfrnavigationmenu--navigation-sous-menu">DsfrNavigationMenu</a> de navigation (\`title\` et \`links\`)
-  - soit les props d’un mega-menu <a href="/?path=/story/composants-navigation-principale-4-mega-menu-dsfrnavigationmegamenu--navigation-mega-menu">DsfrNavigationMegaMenu</a> de navigation (\`title\`, \`link\` et \`menus\`)
+  - soit les props d’un lien direct <a href="/?path=/docs/composants-dsfrnavigationmenulink--docs">DsfrNavigationMenuLink</a> de navigation (\`to\` et \`text\`)
+  - soit les props d’un sous-menu <a href="/?path=/docs/composants-dsfrnavigationmenu--docs">DsfrNavigationMenu</a> de navigation (\`title\`, \`links\` et \`active\`)
+  - soit les props d’un mega-menu <a href="/?path=/docs/composants-dsfrnavigationmegamenu--docs">DsfrNavigationMegaMenu</a> de navigation (\`title\`, \`link\`, \`active\` et \`menus\`)
       `,
     },
     label: {
