@@ -120,7 +120,7 @@ export const CardSansFleche = (args) => ({
       :size="size"
       :title="title"
       :horizontal="horizontal"
-      :download="download",
+      :download="download"
       :no-arrow="noArrow"
     />
   `,
@@ -158,7 +158,7 @@ export const CardAvecBoutons = (args) => ({
       :size="size"
       :title="title"
       :horizontal="horizontal"
-      :download="download",
+      :download="download"
       :no-arrow="noArrow"
     />
   `,
@@ -204,7 +204,7 @@ export const CardAvecLiens = (args) => ({
       :size="size"
       :title="title"
       :horizontal="horizontal"
-      :download="download",
+      :download="download"
       :no-arrow="noArrow"
     />
   `,
@@ -249,7 +249,7 @@ export const CardHorizontaleAvecBoutons = (args) => ({
       :size="size"
       :title="title"
       :horizontal="horizontal"
-      :download="download",
+      :download="download"
       :no-arrow="noArrow"
     />
   `,
@@ -295,7 +295,7 @@ export const CardHorizontaleEtSmallAvecLiens = (args) => ({
       :size="size"
       :title="title"
       :horizontal="horizontal"
-      :download="download",
+      :download="download"
       :no-arrow="noArrow"
     />
   `,

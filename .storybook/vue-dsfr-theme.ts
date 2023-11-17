@@ -1,4 +1,4 @@
-import { create } from '@storybook/theming/create'
+import { create } from '@storybook/theming'
 import brandImage from '../src/assets/icone-marianne-seule.png'
 
 export default create({
@@ -14,11 +14,11 @@ export default create({
   appBorderRadius: 4,
 
   // Typography
-  fontBase: '"Open Sans", sans-serif',
+  fontBase: '"Marianne", "Open Sans", sans-serif',
   fontCode: 'monospace',
 
   // Text colors
-  textColor: 'black',
+  textColor: '#3a3a3a',
   textInverseColor: 'rgba(255,255,255,0.9)',
 
   // Toolbar default and active colors
@@ -29,7 +29,7 @@ export default create({
   // Form colors
   inputBg: 'white',
   inputBorder: 'silver',
-  inputTextColor: 'black',
+  inputTextColor: '#3a3a3a',
   inputBorderRadius: 4,
 
   brandTitle: 'Vue DSFR',

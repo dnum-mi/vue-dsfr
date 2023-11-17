@@ -1,5 +1,5 @@
 import { type Meta } from '@storybook/vue3'
-import { expect, jest } from '@storybook/jest'
+import { expect, fn } from '@storybook/test'
 import { OhVueIcon as VIcon, addIcons } from 'oh-vue-icons'
 import { within, userEvent } from '@storybook/testing-library'
 
@@ -105,7 +105,7 @@ export const MiseEnAvant = (args) => ({
   `,
 
 })
-const buttonOnclick = jest.fn()
+const buttonOnclick = fn()
 MiseEnAvant.args = {
   title: 'Titre de la mise en avant',
   button: {
