@@ -1,4 +1,4 @@
-import { Meta } from '@storybook/addon-docs';
+import { Meta } from '@storybook/addon-docs'
 
 <Meta title="Docs/2. Guide d’utilisation" />
 
@@ -39,22 +39,22 @@ Et suivez le guide !
 
 #### Utiliser la bibliothèque en tant que plugin
 
-| Notes :              |
-|:---------------------------|
-| Pour utiliser cette bibliothèque, il vous faudra **[Vue 3](https://v3.vuejs.org/)** (et **[Vue-Router 4](https://next.router.vuejs.org/)**). Par conséquent, si vous utilisez Nuxt, il vous faut **[Nuxt 3](https://v3.nuxtjs.org/)** (plus de détails plus loin). |
-| Il est fortement conseillé d’utiliser **[Vite](https://vitejs.dev)** plutôt que Vue-CLI. |
+<div class="fr-alert fr-alert--sm fr-alert--info"><p style={{margin: 0}}><strong>Note :</strong> Pour utiliser cette bibliothèque, il vous faudra **[Vue 3](https://v3.vuejs.org/)** (et **[Vue-Router 4](https://next.router.vuejs.org/)**). Par conséquent, si vous utilisez Nuxt, il vous faut **[Nuxt 3](https://v3.nuxtjs.org/)** (plus de détails plus loin).</p></div>
 
-#### Installer la bibliothèque en tant que dépendance du projet
+#### Installer les bibliothèques en tant que dépendances du projet
 
 Afin d'installer la bibliothèque, taper cette commande dans votre console au sein du répertoire du projet :
 
 ```shell
-npm install @gouvminint/vue-dsfr
+npm install @gouvfr/dsfr @gouvminint/vue-dsfr
 ```
 
-#### Ajouter le plugin
+<div class="fr-alert fr-alert--sm fr-alert--info"  style={{'margin-bottom': '1rem'}}><p style={{margin: 0}}><strong>Note :</strong> La bibliothèque VueDsfr utilise le CSS de `@gouvfr/dsfr`, c’est pourquoi il est nécessaire de l’installer.</p></div>
 
-##### Dans une application Vite (recommandé) ou Vue-CLI
+
+##### Ajouter le plugin
+
+###### Dans une application Vite
 
 À partir d'un fichier `main.js` simple comme celui-ci :
 
@@ -82,7 +82,7 @@ const app = createApp(App)
   .mount('#app')
 ```
 
-##### Dans nuxt 3
+###### Dans nuxt 3
 
 La bibliothèque VueDsfr fournit bien plusieurs build (esm et umd entre autres) et Nuxt3 sait lequel choisir.
 
@@ -131,6 +131,7 @@ import {
   DsfrCard,
 } from '@gouvminint/vue-dsfr'                                // Imports nommés de la bibliothèque
 
+import { OhVueIcon } from 'oh-vue-icons'                     // Import de OhVueIcon, dont dépendent certains composants de VueDsfr
 import '@gouvfr/dsfr/dist/dsfr.min.css'                      // Import des styles du DSFR
 import '@gouvminint/vue-dsfr/styles'                         // Import des styles propres à la bibliothèque VueDSFR
 
@@ -139,6 +140,7 @@ const app = createApp(App)
   .component('DsfrButton', DsfrButton)                       // Enregistrement global du composant DsfrButton
   .component('DsfrBreadcrumb', DsfrBreadcrumb)               // Enregistrement global du composant DsfrBreadcrumb
   .component('DsfrCard', DsfrCard)                           // Enregistrement global du composant DsfrCard
+  .component('VIcon', OhVueIcon)                             // Enregistrement global du composant VIcon, dont dépendent certains composants de VueDsfr
   .mount('#app')
 ```
 
