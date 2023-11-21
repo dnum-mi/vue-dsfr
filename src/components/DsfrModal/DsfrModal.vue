@@ -15,11 +15,13 @@ const props = withDefaults(defineProps<{
   origin?: {focus:() => void}
   title: string
   icon?: string
+  size?: 'sm' | 'md' | 'lg' | 'xl'
 }>(), {
   modalId: () => getRandomId('modal', 'dialog'),
   actions: () => [],
   origin: () => ({ focus () {} }), // eslint-disable-line @typescript-eslint/no-empty-function
   icon: undefined,
+  size: 'md',
 })
 
 const emit = defineEmits<{(e: 'close'): void}>()
@@ -88,7 +90,14 @@ async function close () {
     >
       <div class="fr-container fr-container--fluid fr-container-md">
         <div class="fr-grid-row fr-grid-row--center">
-          <div class="fr-col-12 fr-col-md-8 fr-col-lg-6">
+          <div
+            class="fr-col-12"
+            :class="{
+              'fr-col-md-8': size === 'lg',
+              'fr-col-md-6': size === 'md',
+              'fr-col-md-4': size === 'sm',
+            }"
+          >
             <div class="fr-modal__body">
               <div class="fr-modal__header">
                 <button
