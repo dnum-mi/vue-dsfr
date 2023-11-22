@@ -48,6 +48,11 @@ export default {
       control: 'text',
       description: 'Icone à afficher au début du titre de la modale',
     },
+    size: {
+      control: 'radio',
+      options: ['sm', 'md', 'lg', 'xl'],
+      description: 'Taille de la modale : `SM` (Small), `MD` (Medium), `LG` (Large), `XL`(Extra large). Attention la taille `XL` ne fait pas partie du Design System de l’État',
+    },
     close: {
       description: 'Événement déclenché à la fermeture de la modale',
     },
@@ -65,10 +70,13 @@ export const Modal = (args) => ({
   },
 
   data () {
-    return {
-      ...args,
-      actions: args.actions.map(action => ({ ...action, onClick: () => { args.onClick(); this.onClose() } })),
-    }
+    return args
+  },
+
+  computed: {
+    modifiedActions () {
+      return this.actions.map(action => ({ ...action, onClick: () => { action.onClick(); this.onClose() } }))
+    },
   },
 
   template: `
@@ -80,11 +88,12 @@ export const Modal = (args) => ({
     <DsfrModal
       ref="modal"
       :opened="opened"
-      :actions="actions"
+      :actions="modifyActions"
       :is-alert="isAlert"
       :icon="icon"
       :title="title"
       :origin="$refs.modalOrigin"
+      :size="size"
       @close="onClose()"
     >
     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas varius tortor nibh, sit amet tempor nibh finibus et. Aenean eu enim justo. Vestibulum aliquam hendrerit molestie. Mauris malesuada nisi sit amet augue accumsan tincidunt. Maecenas tincidunt, velit ac porttitor pulvinar, tortor eros facilisis libero, vitae commodo nunc quam et ligula. Ut nec ipsum sapien. Interdum et malesuada fames ac ante ipsum primis in faucibus. Integer id nisi nec nulla luctus lacinia non eu turpis. Etiam in ex imperdiet justo tincidunt egestas. Ut porttitor urna ac augue cursus tincidunt sit amet sed orci.</p>
@@ -105,6 +114,7 @@ Modal.args = {
   title: 'Titre de la modale',
   isAlert: false,
   icon: 'ri-checkbox-circle-line',
+  size: 'md',
   actions: [
     {
       label: 'Valider',
