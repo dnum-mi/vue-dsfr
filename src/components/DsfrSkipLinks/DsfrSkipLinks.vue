@@ -5,8 +5,7 @@ defineProps<{
 
 const scrollMeTo = (elementId: string) => {
   const element = document.getElementById(elementId)
-  const top = element?.offsetTop
-  window.scrollTo(0, top || 0)
+  element?.focus()
 }
 </script>
 
