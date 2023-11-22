@@ -2,7 +2,7 @@
 import { computed, ref, watch } from 'vue'
 import DsfrTableRow, { type DsfrTableRowProps } from './DsfrTableRow.vue'
 import DsfrTableHeaders from './DsfrTableHeaders.vue'
-import { type DsfrTableHeadersProps } from './DsfrTableHeaders.vue'
+import type { DsfrTableHeadersProps } from './DsfrTableHeaders.vue'
 
 const props = withDefaults(defineProps<{
   title: string
@@ -30,16 +30,16 @@ const paginationOptions = [5, 10, 25, 50, 100]
 const returnLowestLimit = () => currentPage.value * optionSelected.value - optionSelected.value
 const returnHighestLimit = () => currentPage.value * optionSelected.value
 
-watch(() => optionSelected.value, (newVal, OldVal) => {
+watch(() => optionSelected.value, (newVal) => {
   pageCount.value = props.rows.length > optionSelected.value ? Math.ceil(props.rows.length / newVal) : 1
 })
 
 const truncatedResults = computed(() => {
-    if(props.pagination) {
-      return props.rows.slice(returnLowestLimit(), returnHighestLimit())
-    }
+  if (props.pagination) {
+    return props.rows.slice(returnLowestLimit(), returnHighestLimit())
+  }
 
-    return props.rows;
+  return props.rows
 })
 
 const goFirstPage = () => { currentPage.value = 1 }

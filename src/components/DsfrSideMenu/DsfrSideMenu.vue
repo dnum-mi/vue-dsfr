@@ -3,9 +3,9 @@ import { ref, watch } from 'vue'
 
 import { getRandomId } from '../../utils/random-utils'
 
-import DsfrSideMenuList from './DsfrSideMenuList.vue'
 import { useCollapsable } from '../../composables'
-import { DsfrSideMenuListItemProps } from './DsfrSideMenuListItem.vue'
+import DsfrSideMenuList from './DsfrSideMenuList.vue'
+import type { DsfrSideMenuListItemProps } from './DsfrSideMenuListItem.vue'
 
 type DsfrSideMenuProps = {
   buttonLabel?: string

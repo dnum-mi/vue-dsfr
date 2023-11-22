@@ -14,7 +14,7 @@ export default {
   },
 }
 
-export const ElementDeListeDeMenuLateral = (args, { argTypes }) => ({
+export const ElementDeListeDeMenuLateral = (args) => ({
   components: {
     DsfrSideMenu,
     DsfrSideMenuList,

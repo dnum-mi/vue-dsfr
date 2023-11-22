@@ -43,12 +43,12 @@ defineEmits<{
       :label="label"
       :disabled="disabled"
       @update:model-value="$emit('update:modelValue', $event)"
-      @keydown.enter="$emit('search')"
+      @keydown.enter="$emit('search', '')"
     />
     <DsfrButton
       title="Rechercher"
       :disabled="disabled"
-      @click="$emit('search')"
+      @click="$emit('search', '')"
     >
       {{ buttonText }}
     </DsfrButton>

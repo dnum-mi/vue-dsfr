@@ -18,7 +18,7 @@ export default {
   },
 }
 
-export const ListeDeTelechargements = (args, { argTypes }) => ({
+export const ListeDeTelechargements = (args) => ({
   components: {
     DsfrFileDownloadList,
   },

@@ -1,7 +1,8 @@
 <script lang="ts" setup>
-import { computed, type HTMLAttributes } from 'vue'
+import { computed } from 'vue'
+import type { HTMLAttributes } from 'vue'
 import { OhVueIcon as VIcon } from 'oh-vue-icons'
-import { type RouteLocationRaw } from 'vue-router'
+import type { RouteLocationRaw } from 'vue-router'
 
 export type DsfrHeaderMenuLinkProps = {
   button?: boolean

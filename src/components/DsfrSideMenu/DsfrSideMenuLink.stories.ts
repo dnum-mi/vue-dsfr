@@ -18,7 +18,7 @@ export default {
   },
 }
 
-export const LienDansUnElementDeListeDeMenuLateral = (args, { argTypes }) => ({
+export const LienDansUnElementDeListeDeMenuLateral = (args) => ({
   components: {
     DsfrSideMenu,
     DsfrSideMenuList,

@@ -35,7 +35,11 @@ export const EnTetesDeTableau = (args) => ({
         <template v-slot:header>
           <DsfrTableHeaders :headers="headers" />
         </template>
-        &lt;Corps du tableau>
+        <tr>
+          <td colspan="6">
+            Corps du tableau
+          </td>
+        </tr>
       </DsfrTable>
   `,
 

@@ -256,25 +256,24 @@ export const AccordeonAvecCheckbox = (args) => ({
   },
 
   template: `
-    <dsfr-accordions-group>
+    <DsfrAccordionsGroup>
       <li
         v-for="(accordion, name) in accordions"
         :id="\`accordion_${name}\`"
         :key="name"
       >
-        <dsfr-accordion
+        <DsfrAccordion
           :id="name"
           :title="name"
           :expanded-id="expandedId"
           @expand="id => expandedId = id"
         >
-          <dsfr-checkbox-set
+          <DsfrCheckboxSet
             :options="accordion.options"
-            small
           />
-        </dsfr-accordion>
+        </DsfrAccordion>
       </li>
-    </dsfr-accordions-group>
+    </DsfrAccordionsGroup>
   `,
 })
 AccordeonAvecCheckbox.args = {

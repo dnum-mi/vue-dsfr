@@ -1,25 +1,26 @@
 <script lang="ts" setup>
 import { FocusTrap } from 'focus-trap-vue'
 
-// import '@gouvfr/dsfr/dist/component/modal/modal.module.js'
-
 import DsfrButtonGroup from '../DsfrButton/DsfrButtonGroup.vue'
-import { onMounted, onBeforeUnmount, computed, ref, nextTick, watch, Ref } from 'vue'
+import { onMounted, onBeforeUnmount, computed, ref, nextTick, watch } from 'vue'
 import { getRandomId } from '@/utils/random-utils'
+import type { DsfrButtonProps } from '../DsfrButton/DsfrButton.vue'
 
 const props = withDefaults(defineProps<{
   modalId?: string
   opened?: boolean
-  actions?: Record<string, any>[]
+  actions?: DsfrButtonProps[]
   isAlert?: boolean
   origin?: {focus:() => void}
   title: string
   icon?: string
+  size?: 'sm' | 'md' | 'lg' | 'xl'
 }>(), {
   modalId: () => getRandomId('modal', 'dialog'),
   actions: () => [],
   origin: () => ({ focus () {} }), // eslint-disable-line @typescript-eslint/no-empty-function
   icon: undefined,
+  size: 'md',
 })
 
 const emit = defineEmits<{(e: 'close'): void}>()
@@ -34,7 +35,7 @@ const role = computed(() => {
   return props.isAlert ? 'alertdialog' : 'dialog'
 })
 
-const closeBtn: Ref<HTMLButtonElement | null> = ref(null)
+const closeBtn = ref<HTMLButtonElement | null>(null)
 watch(() => props.opened, (newValue) => {
   if (newValue) {
     document.body.classList.add('modal-open')
@@ -88,7 +89,14 @@ async function close () {
     >
       <div class="fr-container fr-container--fluid fr-container-md">
         <div class="fr-grid-row fr-grid-row--center">
-          <div class="fr-col-12 fr-col-md-8 fr-col-lg-6">
+          <div
+            class="fr-col-12"
+            :class="{
+              'fr-col-md-8': size === 'lg',
+              'fr-col-md-6': size === 'md',
+              'fr-col-md-4': size === 'sm',
+            }"
+          >
             <div class="fr-modal__body">
               <div class="fr-modal__header">
                 <button

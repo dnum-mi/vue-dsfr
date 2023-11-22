@@ -2,7 +2,7 @@ import { fireEvent, render } from '@testing-library/vue'
 
 import DsfrTableRow from './DsfrTableRow.vue'
 
-import { spy } from '../../../tests/unit/test-utils.js'
+import { spy } from '@tests/unit/test-utils'
 
 describe('DsfrTableRow', () => {
   it('should render simple row', () => {

@@ -1,4 +1,5 @@
-import { ref, watchEffect, computed, type Ref, type ComputedRef } from 'vue'
+import { ref, watchEffect, computed } from 'vue'
+import type { ComputedRef } from 'vue'
 
 const PREFERS_DARK_MEDIA_QUERY = '(prefers-color-scheme: dark)'
 const COLOR_SCHEME_LS_KEY = 'vue-dsfr-scheme'
@@ -46,9 +47,9 @@ const getThemeMatchingScheme = (scheme: string, mediaQuery: MediaQueryList): str
  * Reproduce the DSFR fr-collapse behavior
  */
 export const useCollapsable = () => {
-  const collapse: Ref<HTMLElement | undefined> = ref()
-  const collapsing: Ref<boolean> = ref(false)
-  const cssExpanded: Ref<boolean> = ref(false)
+  const collapse = ref<HTMLElement | undefined>()
+  const collapsing = ref(false)
+  const cssExpanded = ref(false)
 
   /**
    * @see https://github.com/GouvernementFR/dsfr/blob/main/src/core/script/collapse/collapse.js#L61

@@ -44,7 +44,7 @@ export default {
   },
 }
 
-export const Televersement = (args, { argTypes }) => ({
+export const Televersement = (args) => ({
   components: {
     DsfrFileUpload,
   },
@@ -72,7 +72,7 @@ Televersement.args = {
   disabled: false,
 }
 
-export const TeleversementAvecErreur = (args, { argTypes }) => ({
+export const TeleversementAvecErreur = (args) => ({
   components: {
     DsfrFileUpload,
   },
@@ -98,7 +98,7 @@ TeleversementAvecErreur.args = {
   error: 'Message d’erreur',
 }
 
-export const TeleversementAvecSucces = (args, { argTypes }) => ({
+export const TeleversementAvecSucces = (args) => ({
   components: {
     DsfrFileUpload,
   },
@@ -128,7 +128,7 @@ TeleversementAvecSucces.args = {
   disabled: false,
 }
 
-export const TeleversementDesactive = (args, { argTypes }) => ({
+export const TeleversementDesactive = (args) => ({
   components: {
     DsfrFileUpload,
   },

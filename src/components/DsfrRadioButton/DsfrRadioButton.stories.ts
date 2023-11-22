@@ -1,4 +1,3 @@
-
 import DsfrRadioButton from './DsfrRadioButton.vue'
 
 /**
@@ -39,7 +38,7 @@ export default {
   },
 }
 
-export const RadioButton = (args, { argTypes }) => ({
+export const RadioButton = (args) => ({
   components: { DsfrRadioButton },
   data () {
     return args
@@ -99,7 +98,7 @@ RadioButton.args = {
   ],
 }
 
-export const RichRadioButton = (args, { argTypes }) => ({
+export const RichRadioButton = (args) => ({
   components: { DsfrRadioButton },
   data () {
     return args

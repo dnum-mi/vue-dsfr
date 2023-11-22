@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { RouteLocationRaw } from 'vue-router'
+import type { RouteLocationRaw } from 'vue-router'
 
 export type DsfrFooterLinkProps = {
   label: string

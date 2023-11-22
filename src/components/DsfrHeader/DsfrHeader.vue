@@ -3,7 +3,7 @@ import { computed, onMounted, onUnmounted, ref, useSlots, type StyleValue } from
 import DsfrLogo from '../DsfrLogo/DsfrLogo.vue'
 import DsfrSearchBar from '../DsfrSearchBar/DsfrSearchBar.vue'
 import DsfrHeaderMenuLinks from './DsfrHeaderMenuLinks.vue'
-import { type DsfrHeaderMenuLinkProps } from './DsfrHeaderMenuLink.vue'
+import type { DsfrHeaderMenuLinkProps } from './DsfrHeaderMenuLink.vue'
 
 type DsfrHeaderProps = {
   serviceTitle?: string

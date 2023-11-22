@@ -1,13 +1,12 @@
 <script lang="ts" setup>
-import { TdHTMLAttributes, computed } from 'vue'
+import { type TdHTMLAttributes, computed } from 'vue'
 
 export type DsfrTableCellProps = {
-  field?: string | Record<string, any>
+  field: string | Record<string, unknown>
   cellAttrs?: TdHTMLAttributes
 }
 
 const props = withDefaults(defineProps<DsfrTableCellProps>(), {
-  field: undefined,
   cellAttrs: () => ({}),
 })
 
@@ -24,7 +23,7 @@ const isString = computed(() => {
     <component
       :is="component"
       v-if="component"
-      v-bind="field"
+      v-bind="typeof field === 'object' ? field : {}"
     >
       {{ (field as Record<string, any>).text }}
     </component>

@@ -44,7 +44,7 @@ export default {
   },
 }
 
-export const MenuLateral = (args, { argTypes }) => ({
+export const MenuLateral = (args) => ({
   components: {
     DsfrSideMenu,
   },
