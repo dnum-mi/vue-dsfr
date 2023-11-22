@@ -65,7 +65,11 @@ export const EnTeteDeTableau = (args) => ({
             <DsfrTableHeader :header="header" :header-attrs="headerAttrs" />
           </tr>
         </template>
-        &lt;Corps du tableau>
+        <tr>
+          <td>
+            Corps du tableau
+          </td>
+        </tr>
       </DsfrTable>
   `,
 })
@@ -113,7 +117,11 @@ export const EnTeteDeTableauAvecIcone = (args) => ({
             <DsfrTableHeader :header="header" :header-attrs="headerAttrs" :icon="icon" />
           </tr>
         </template>
-        &lt;Corps du tableau>
+        <tr>
+          <td>
+            Corps du tableau
+          </td>
+        </tr>
       </DsfrTable>
   `,
 

@@ -3,7 +3,7 @@ import { fireEvent, render } from '@testing-library/vue'
 
 import DsfrTableHeader from './DsfrTableHeader.vue'
 
-import { spy } from '@tests/unit/test-utils.js'
+import { spy } from '@tests/unit/test-utils'
 
 describe('DsfrTableHeader', () => {
   it('should render simple header cell', async () => {

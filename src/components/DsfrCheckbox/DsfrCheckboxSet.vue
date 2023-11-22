@@ -1,5 +1,6 @@
 <script lang="ts" setup>
-import { InputHTMLAttributes, computed } from 'vue'
+import { computed } from 'vue'
+import type { InputHTMLAttributes } from 'vue'
 
 import DsfrCheckbox from './DsfrCheckbox.vue'
 import { getRandomId } from '../../utils/random-utils'

@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import { ref, onMounted, onUnmounted, Ref } from 'vue'
-import { RouteLocationRaw } from 'vue-router'
+import { ref, onMounted, onUnmounted } from 'vue'
+import type { RouteLocationRaw } from 'vue-router'
 
 import { getRandomId } from '../../utils/random-utils'
 
@@ -29,7 +29,7 @@ const props = withDefaults(defineProps<{
   navItems: () => [],
 })
 
-const expandedMenuId: Ref<string | undefined> = ref(undefined)
+const expandedMenuId = ref<string | undefined>(undefined)
 
 const toggle = (id: string | undefined) => {
   if (id === expandedMenuId.value) {

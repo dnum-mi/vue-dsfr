@@ -93,7 +93,7 @@ export default {
   },
 }
 
-export const EnTeteSimple = (args, { argTypes }) => ({
+export const EnTeteSimple = (args) => ({
   components: {
     DsfrHeader,
   },
@@ -150,7 +150,7 @@ EnTeteSimple.args = {
   ],
 }
 
-export const EnTeteAvecLogoOperateur = (args, { argTypes }) => ({
+export const EnTeteAvecLogoOperateur = (args) => ({
   components: {
     DsfrHeader,
   },
@@ -212,7 +212,7 @@ EnTeteAvecLogoOperateur.args = {
   operatorImgStyle: { height: '40px' },
 }
 
-export const EnTeteAvecNavigation = (args, { argTypes }) => ({
+export const EnTeteAvecNavigation = (args) => ({
   components: {
     DsfrHeader,
     DsfrNavigation,
@@ -391,7 +391,7 @@ EnTeteAvecNavigation.args = {
   ],
 }
 
-export const EnTeteAvecBadgeBeta = (args, { argTypes }) => ({
+export const EnTeteAvecBadgeBeta = (args) => ({
   components: {
     DsfrHeader,
   },

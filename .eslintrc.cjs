@@ -1,33 +1,16 @@
+/* eslint-env node */
 require('@rushstack/eslint-patch/modern-module-resolution')
 
 module.exports = {
   root: true,
-  globals: {
-    defineEmits: 'readonly',
-    defineProps: 'readonly',
-  },
-  env: {
-    'vue/setup-compiler-macros': true,
-    node: true,
-  },
   extends: [
     'plugin:vue/vue3-recommended',
     '@vue/eslint-config-typescript/recommended',
     '@vue/standard',
     'plugin:storybook/recommended',
-  ],
-  parser: 'vue-eslint-parser',
-  parserOptions: {
-    ecmaVersion: 2020,
-    parser: '@typescript-eslint/parser',
-  },
-  plugins: [
-    'vue',
-    'html',
+
   ],
   rules: {
-    'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
-    'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
     'comma-dangle': [2, 'always-multiline'],
     'no-irregular-whitespace': 1,
     '@typescript-eslint/ban-ts-comment': [
@@ -54,6 +37,7 @@ module.exports = {
       files: [
         'cypress/support/*.{js,ts,jsx,tsx}',
         'cypress/integration/*.{spec,e2e}.{js,ts,jsx,tsx}',
+        'cypress/e2e/**/*.{cy,spec,e2e}.{js,ts,jsx,tsx}',
         'src/**/*.ct.{js,ts,jsx,tsx}',
         '**/src/**/*.e2e.{j,t}s?(x)',
       ],
@@ -63,4 +47,7 @@ module.exports = {
       extends: ['plugin:cypress/recommended'],
     },
   ],
+  parserOptions: {
+    ecmaVersion: 'latest',
+  },
 }

@@ -14,7 +14,7 @@ export default {
   },
 }
 
-export const BoutonFranceConnect = (args, { argTypes }) => ({
+export const BoutonFranceConnect = (args) => ({
   components: {
     DsfrFranceConnect,
   },

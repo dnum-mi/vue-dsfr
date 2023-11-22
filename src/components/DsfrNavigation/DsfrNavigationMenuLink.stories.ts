@@ -73,5 +73,5 @@ export const NavigationLienMenu = (args) => ({
 NavigationLienMenu.args = {
   to: '#test-navigation-menu-link',
   text: 'Lien de menu',
-  icon: 'ri-check-lineline',
+  icon: 'ri-check-line',
 }

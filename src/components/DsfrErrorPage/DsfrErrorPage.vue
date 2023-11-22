@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { type DsfrButtonProps } from '../DsfrButton/DsfrButton.vue'
+import type { DsfrButtonProps } from '../DsfrButton/DsfrButton.vue'
 import DsfrButtonGroup from '../DsfrButton/DsfrButtonGroup.vue'
 
 withDefaults(defineProps<{
@@ -20,9 +20,13 @@ withDefaults(defineProps<{
 <template>
   <div class="fr-container  flex">
     <div class="half">
-      <h1 class="font-25">{{ title }}</h1>
+      <h1 class="font-25">
+        {{ title }}
+      </h1>
       <span class="block mt-15  mb-15">{{ subtitle }}</span>
-      <p class="font-125">{{ description }}</p>
+      <p class="font-125">
+        {{ description }}
+      </p>
       <p>{{ help }}</p>
       <DsfrButtonGroup
         v-if="buttons?.length"

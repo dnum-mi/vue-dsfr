@@ -1,13 +1,8 @@
 import type { Preview } from "@storybook/vue3"
 import { themes } from '@storybook/theming'
-import { withThemeByDataAttribute } from "@storybook/addon-themes"
-
-import { FocusTrap } from 'focus-trap-vue'
-import { defineComponent } from 'vue'
+import { withThemeByDataAttribute } from "@storybook/addon-styling"
 
 import VueDsfrTheme from './vue-dsfr-theme.js'
-import {OhVueIcon as VIcon} from 'oh-vue-icons'
-
 import '../src/assets/variables-fdr.css'
 import '@gouvfr/dsfr/dist/dsfr.min.css'
 import '@gouvfr/dsfr/dist/utility/utility.main.min.css'
@@ -16,6 +11,7 @@ import '@gouvfr/dsfr/dist/utility/icons/icons.main.min.css'
 import '../src/main.css'
 
 import './theme.css'
+// import '@gouvfr/dsfr/dist/core/core.min.css'
 
 export const decorators = [
   withThemeByDataAttribute({
@@ -89,7 +85,7 @@ const preview: Preview = {
           'Composants',
         ],
       },
-    }
+    },
   },
 }
 

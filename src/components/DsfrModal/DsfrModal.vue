@@ -1,16 +1,15 @@
 <script lang="ts" setup>
 import { FocusTrap } from 'focus-trap-vue'
 
-// import '@gouvfr/dsfr/dist/component/modal/modal.module.js'
-
 import DsfrButtonGroup from '../DsfrButton/DsfrButtonGroup.vue'
-import { onMounted, onBeforeUnmount, computed, ref, nextTick, watch, Ref } from 'vue'
+import { onMounted, onBeforeUnmount, computed, ref, nextTick, watch } from 'vue'
 import { getRandomId } from '@/utils/random-utils'
+import type { DsfrButtonProps } from '../DsfrButton/DsfrButton.vue'
 
 const props = withDefaults(defineProps<{
   modalId?: string
   opened?: boolean
-  actions?: Record<string, any>[]
+  actions?: DsfrButtonProps[]
   isAlert?: boolean
   origin?: {focus:() => void}
   title: string
@@ -34,7 +33,7 @@ const role = computed(() => {
   return props.isAlert ? 'alertdialog' : 'dialog'
 })
 
-const closeBtn: Ref<HTMLButtonElement | null> = ref(null)
+const closeBtn = ref<HTMLButtonElement | null>(null)
 watch(() => props.opened, (newValue) => {
   if (newValue) {
     document.body.classList.add('modal-open')
