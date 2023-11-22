@@ -1,9 +1,8 @@
-
 <script lang="ts" setup>
 import { computed, ref, type Ref } from 'vue'
-import { RouteLocationRaw } from 'vue-router'
+import type { RouteLocationRaw } from 'vue-router'
 import DsfrButtonGroup from '../DsfrButton/DsfrButtonGroup.vue'
-import { type DsfrButtonProps } from '../DsfrButton/DsfrButton.vue'
+import type { DsfrButtonProps } from '../DsfrButton/DsfrButton.vue'
 
 const props = withDefaults(defineProps<{
   imgSrc?: string

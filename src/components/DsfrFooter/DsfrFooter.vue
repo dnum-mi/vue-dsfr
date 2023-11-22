@@ -1,6 +1,7 @@
 <script setup lang="ts">
-import { StyleValue, computed, useSlots } from 'vue'
-import { type RouteLocationRaw } from 'vue-router'
+import { computed, useSlots } from 'vue'
+import type { StyleValue } from 'vue'
+import type { RouteLocationRaw } from 'vue-router'
 
 import DsfrLogo from '../DsfrLogo/DsfrLogo.vue'
 import DsfrFooterPartners, { type DsfrFooterPartnersProps } from '../DsfrFooter/DsfrFooterPartners.vue'

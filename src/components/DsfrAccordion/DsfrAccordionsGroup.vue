@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { ref, type Ref } from 'vue'
+import { ref } from 'vue'
 
-const expandedId: Ref<string | undefined> = ref(undefined)
+const expandedId = ref<string>()
 
 const expand = (id: string): void => { expandedId.value = id }
 </script>

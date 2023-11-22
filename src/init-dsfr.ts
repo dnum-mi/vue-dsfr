@@ -5,3 +5,4 @@ if (typeof window !== 'undefined') {
     mode: 'vue',
   }
 }
+export {}

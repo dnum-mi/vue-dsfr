@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import DsfrNavigationMenuLink, { DsfrNavigationMenuLinkProps } from './DsfrNavigationMenuLink.vue'
+import DsfrNavigationMenuLink, { type DsfrNavigationMenuLinkProps } from './DsfrNavigationMenuLink.vue'
 
 export type DsfrNavigationMegaMenuCategoryProps = {
   title: string

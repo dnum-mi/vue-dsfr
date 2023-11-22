@@ -6,6 +6,11 @@ import viteConfig from './vite.config'
 export default mergeConfig(
   viteConfig,
   defineConfig({
+    resolve: {
+      alias: {
+        '@tests': fileURLToPath(new URL('./tests', import.meta.url)),
+      },
+    },
     test: {
       globals: true,
       environment: 'jsdom',
@@ -13,7 +18,7 @@ export default mergeConfig(
       exclude: [...configDefaults.exclude, 'e2e/*'],
       root: fileURLToPath(new URL('./', import.meta.url)),
       setupFiles: [
-        './tests/unit/vitest-setup.js',
+        './tests/unit/vitest-setup.ts',
       ],
     },
   }),

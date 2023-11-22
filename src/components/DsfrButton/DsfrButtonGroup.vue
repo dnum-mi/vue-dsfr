@@ -1,16 +1,19 @@
 <script lang="ts" setup>
-import { computed, ButtonHTMLAttributes } from 'vue'
+import { computed } from 'vue'
+import type { ButtonHTMLAttributes } from 'vue'
 
 import DsfrButton, { type DsfrButtonProps } from './DsfrButton.vue'
 
-const props = withDefaults(defineProps<{
-  buttons?:(DsfrButtonProps & ButtonHTMLAttributes)[]
+export type DsfrButtonGroupProps = {
+  buttons?: (DsfrButtonProps & ButtonHTMLAttributes)[]
   reverse?: boolean
   iconRight?: boolean
   align?: 'right' | 'center' | '' | undefined
   inlineLayoutWhen?: 'always' | 'never' | 'sm' | 'small' | 'lg' | 'large' | 'md' | 'medium' | '' | undefined | boolean
   size?: 'sm' | 'small' | 'lg' | 'large' | 'md' | 'medium' | '' | undefined
-}>(), {
+}
+
+const props = withDefaults(defineProps<DsfrButtonGroupProps>(), {
   buttons: () => [],
   inlineLayoutWhen: 'never',
   size: '',

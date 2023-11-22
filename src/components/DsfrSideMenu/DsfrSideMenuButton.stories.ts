@@ -23,7 +23,7 @@ export default {
   },
 }
 
-export const BoutonDeMenuDepliable = (args, { argTypes }) => ({
+export const BoutonDeMenuDepliable = (args) => ({
   components: {
     DsfrSideMenu,
     DsfrSideMenuList,

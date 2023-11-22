@@ -2,7 +2,7 @@
 import { computed } from 'vue'
 
 import { getRandomId } from '@/utils/random-utils'
-import { type TitleTag } from '@/common-types'
+import type { TitleTag } from '@/common-types'
 
 export type DsfrAlertType = 'error' | 'success' | 'warning' | 'info'
 

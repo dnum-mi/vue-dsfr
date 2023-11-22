@@ -1,11 +1,11 @@
 <script lang="ts" setup>
 import { computed, onMounted, watch } from 'vue'
-import { RouteLocationRaw } from 'vue-router'
+import type { RouteLocationRaw } from 'vue-router'
 
 import { getRandomId } from '../../utils/random-utils'
 
 import { useCollapsable } from '../../composables'
-import DsfrNavigationMegaMenuCategory, { DsfrNavigationMegaMenuCategoryProps } from './DsfrNavigationMegaMenuCategory.vue'
+import DsfrNavigationMegaMenuCategory, { type DsfrNavigationMegaMenuCategoryProps } from './DsfrNavigationMegaMenuCategory.vue'
 
 export type DsfrNavigationMegaMenuProps = {
   id?: string

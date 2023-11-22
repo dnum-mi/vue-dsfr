@@ -1,4 +1,4 @@
-import { expect } from '@storybook/jest'
+import { expect } from '@storybook/test'
 import { within, userEvent } from '@storybook/testing-library'
 
 import DsfrModal from './DsfrModal.vue'

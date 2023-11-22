@@ -1,9 +1,9 @@
 <script lang="ts" setup>
-import { ref, onMounted, onUnmounted, reactive, type Ref } from 'vue'
+import { ref, onMounted, onUnmounted, reactive } from 'vue'
 
 import { getRandomId } from '../../utils/random-utils'
 
-import DsfrTabItem, { DsfrTabItemProps } from './DsfrTabItem.vue'
+import DsfrTabItem, { type DsfrTabItemProps } from './DsfrTabItem.vue'
 import DsfrTabContent from './DsfrTabContent.vue'
 
 const props = withDefaults(defineProps<{
@@ -21,9 +21,9 @@ const emit = defineEmits<{(e: 'select-tab', payload: number): void}>()
 const selectedIndex = ref(props.initialSelectedIndex || 0)
 const generatedIds: Record<string, string> = reactive({})
 const asc = ref(true)
-const resizeObserver: Ref<ResizeObserver | null> = ref(null)
-const $el: Ref<HTMLElement | null> = ref(null)
-const tablist: Ref<HTMLUListElement | null> = ref(null)
+const resizeObserver = ref<ResizeObserver | null>(null)
+const $el = ref<HTMLElement | null>(null)
+const tablist = ref<HTMLUListElement | null>(null)
 
 onMounted(() => {
   /*

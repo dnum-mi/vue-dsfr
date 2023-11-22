@@ -2,7 +2,7 @@
 import { computed } from 'vue'
 import { OhVueIcon as VIcon } from 'oh-vue-icons'
 import { getRandomId } from '../../utils/random-utils'
-import { RouteLocationRaw } from 'vue-router'
+import type { RouteLocationRaw } from 'vue-router'
 
 export type DsfrNavigationMenuLinkProps = {
   id?: string,

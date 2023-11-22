@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { type ThHTMLAttributes } from 'vue'
+import type { ThHTMLAttributes } from 'vue'
 import { OhVueIcon as VIcon } from 'oh-vue-icons'
 
 export type DsfrTableHeaderProps = {

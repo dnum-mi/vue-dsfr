@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { ref, watch, type Ref } from 'vue'
+import { ref, watch } from 'vue'
 
 export type DsfrTabItemProps = {
   panelId: string
@@ -21,7 +21,7 @@ defineEmits<{
   (e: 'last'): void,
 }>()
 
-const button: Ref<HTMLButtonElement | null> = ref(null)
+const button = ref<HTMLButtonElement | null>(null)
 
 watch(() => props.selected, (newValue) => {
   if (newValue) {

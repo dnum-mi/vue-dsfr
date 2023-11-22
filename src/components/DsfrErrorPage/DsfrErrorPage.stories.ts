@@ -24,7 +24,7 @@ export default {
       control: 'object',
       description: 'Tableau d\'objets contenant les props des boutons d\'actions sur la page.',
     },
-  }
+  },
 }
 
 export const PageErreur404 = (args) => ({
@@ -45,10 +45,10 @@ export const PageErreur404 = (args) => ({
 })
 
 PageErreur404.args = {
-  title: "Page non trouvée, ne paniquez pas",
-  subtitle: "Erreur 404 !",
-  description: "La page que vous recherchez n'existe pas ou l'url est erronée.",
-  help: "Bonne chance !",
+  title: 'Page non trouvée, ne paniquez pas',
+  subtitle: 'Erreur 404 !',
+  description: 'La page que vous recherchez n’existe pas ou l’url est erronée.',
+  help: 'Bonne chance !',
   buttons: [{
     label: 'Page d\'accueil',
     link: 'https://www.systeme-de-design.gouv.fr/',
@@ -57,5 +57,5 @@ PageErreur404.args = {
     label: 'Contactez-nous',
     secondary: true,
     link: 'https://www.systeme-de-design.gouv.fr/',
-  },],
+  }],
 }

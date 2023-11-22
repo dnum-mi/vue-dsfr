@@ -71,7 +71,7 @@ export const Checkbox = (args) => ({
       />
   `,
   watch: {
-    modelValue (newValue, oldValue) {
+    modelValue (newValue) {
       this.onChange(newValue)
     },
   },
@@ -106,7 +106,7 @@ export const CheckboxRequis = (args) => ({
     />
   `,
   watch: {
-    modelValue (newValue, oldValue) {
+    modelValue (newValue) {
       this.onChange(newValue)
     },
   },
@@ -145,7 +145,7 @@ export const CheckboxRequisPersonnalise = (args) => ({
     </DsfrCheckbox>
   `,
   watch: {
-    modelValue (newValue, oldValue) {
+    modelValue (newValue) {
       this.onChange(newValue)
     },
   },
@@ -176,7 +176,7 @@ export const CheckboxAvecErreur = (args) => ({
       />
   `,
   watch: {
-    modelValue (newValue, oldValue) {
+    modelValue (newValue) {
       this.onChange(newValue)
     },
   },
@@ -207,7 +207,7 @@ export const CheckboxAvecSucces = (args) => ({
       />
   `,
   watch: {
-    modelValue (newValue, oldValue) {
+    modelValue (newValue) {
       this.onChange(newValue)
     },
   },
