@@ -11,6 +11,7 @@ export type DsfrTagProps = {
   link? : string
   tagName?: string
   icon? : string
+  selected? : boolean
   disabled? : boolean
   small? : boolean
   iconOnly? : boolean
@@ -44,6 +45,7 @@ const linkProps = computed(() => {
     :class="{
       'fr-tag--sm': small,
     }"
+    :aria-pressed="selected"
     v-bind="linkProps"
   >
     <VIcon
