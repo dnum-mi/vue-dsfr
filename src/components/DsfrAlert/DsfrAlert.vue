@@ -6,20 +6,22 @@ import type { TitleTag } from '@/common-types'
 
 export type DsfrAlertType = 'error' | 'success' | 'warning' | 'info'
 
-const props = withDefaults(defineProps<{
-  id?: string,
-  type?: DsfrAlertType,
-  title?: string,
-  description: string,
-  titleTag?: TitleTag,
-  small?: boolean,
-  closed?: boolean,
-  closeable?: boolean,
-}>(), {
+export type DsfrAlertProps = {
+  closed?: boolean
+  closeable?: boolean
+  id?: string
+  title?: string
+  description: string
+  small?: boolean
+  titleTag?: TitleTag
+  type?: DsfrAlertType
+}
+
+const props = withDefaults(defineProps<DsfrAlertProps>(), {
   id: () => getRandomId('basic', 'alert'),
-  type: 'info',
-  titleTag: 'h3',
   title: '',
+  titleTag: 'h3',
+  type: 'info',
 })
 
 const emit = defineEmits<{(e: 'close'): void}>()

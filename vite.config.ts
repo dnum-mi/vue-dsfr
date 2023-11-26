@@ -1,14 +1,15 @@
 import { fileURLToPath, URL } from 'url'
 import { dirname, resolve } from 'path'
 
-import { defineConfig } from 'vite'
+import { defineConfig, type UserConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import vueJsx from '@vitejs/plugin-vue-jsx'
 
 const projectDir = dirname(new URL(import.meta.url).pathname)
 
-// https://vitejs.dev/config/
-export default defineConfig({
+const isVitepress = process.env.VITEPRESS === 'true'
+
+const config: UserConfig = {
   plugins: [vue(), vueJsx()],
   resolve: {
     alias: {
@@ -34,4 +35,7 @@ export default defineConfig({
       },
     },
   },
-})
+}
+
+// https://vitejs.dev/config/
+export default defineConfig(isVitepress ? {} : config)

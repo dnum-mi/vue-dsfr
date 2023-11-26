@@ -10,7 +10,6 @@ const config: StorybookConfig = {
     '@storybook/addon-a11y',
     '@storybook/addon-styling',
   ],
-  staticsDir: ['../public'],
   framework: {
     name: '@storybook/vue3-vite',
     options: {},
