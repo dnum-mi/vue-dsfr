@@ -11,6 +11,7 @@ const props = withDefaults(
     id: () => getRandomId('accordion'),
     expandedId: undefined,
     title: 'Sans intitulé',
+    titleTag: 'h3',
   })
 
 const emit = defineEmits<{(event: 'expand', id: string | undefined): void}>()
@@ -52,7 +53,10 @@ const toggleExpanded = () => {
 
 <template>
   <section class="fr-accordion">
-    <h3 class="fr-accordion__title">
+    <component
+      :is="titleTag"
+      class="fr-accordion__title"
+    >
       <button
         class="fr-accordion__btn"
         :aria-expanded="expanded"
@@ -65,7 +69,7 @@ const toggleExpanded = () => {
           <span>{{ title }}</span>
         </slot>
       </button>
-    </h3>
+    </component>
     <div
       :id="id"
       ref="collapse"
