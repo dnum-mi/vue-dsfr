@@ -16,7 +16,7 @@ const translateValueTo = computed(() => values[String(!props.asc)])
 </script>
 
 <template>
-  <transition
+  <Transition
     name="slide-fade"
     mode="in-out"
   >
@@ -34,7 +34,7 @@ const translateValueTo = computed(() => values[String(!props.asc)])
       <!-- @slot Slot par défaut pour le contenu de l’onglet. Sera dans `<div class="fr-tabs__panel">` -->
       <slot />
     </div>
-  </transition>
+  </Transition>
 </template>
 
 <style scoped>

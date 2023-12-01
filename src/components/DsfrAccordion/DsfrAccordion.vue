@@ -3,14 +3,15 @@ import { computed, onMounted, watch } from 'vue'
 
 import { getRandomId } from '../../utils/random-utils'
 import { useCollapsable } from '../../composables.js'
+import type { DsfrAccordionProps } from './DsfrAccordion.types'
 
-export interface DsfrAccordionProps {
-  id?: string
-  expandedId?: string | undefined
-  title?: string
-}
-
-const props = withDefaults(defineProps<DsfrAccordionProps>(), { id: () => getRandomId('accordion'), expandedId: undefined, title: 'Sans intitulé' })
+const props = withDefaults(
+  defineProps<DsfrAccordionProps>(),
+  {
+    id: () => getRandomId('accordion'),
+    expandedId: undefined,
+    title: 'Sans intitulé',
+  })
 
 const emit = defineEmits<{(event: 'expand', id: string | undefined): void}>()
 

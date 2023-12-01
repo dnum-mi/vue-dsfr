@@ -1,42 +1,44 @@
+---
+outline: [2,3]
+---
+
 # Tous les types de la bibliothèque VueDsfr
 
 ## Composables
 
 ## Types en commun
 
-<a id="title-tag"></a>`TitleTag`: `'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'`
+::: code-group
 
-## Props des composants
+<<< ../src/common-types.ts
+:::
 
-<details>
-<summary><code>DsfrAlertProps</code></summary>
+## Types des props des composants
 
-```typescript
-type DsfrAlertProps = {
-  closed?: boolean
-  closeable?: boolean
-  id?: string
-  title?: string
-  description: string
-  small?: boolean
-  titleTag?: TitleTag
-  type?: DsfrAlertType
-}
-```
+### `DsfrAccordion`
 
-</details>
+::: code-group
 
-<details>
-  <summary><code>DsfrBadgeProps</code></summary>
+<<< ../src/components/DsfrAccordion/DsfrAccordion.types.ts
+:::
 
-```typescript
-type DsfrBadgeProps = {
-  label: string
-  type?: 'success' | 'error' | 'new' | 'info' | 'warning' | undefined,
-  noIcon?: boolean,
-  small?: boolean,
-  ellipsis?: boolean,
-}
-```
+### `DsfrAlert`
 
-</details>
+::: code-group
+
+<<< ../src/components/DsfrAlert/DsfrAlert.types.ts
+:::
+
+### `DsfrBackToTop`
+
+::: code-group
+
+<<< ../src/components/DsfrBackToTop/DsfrBackToTop.types.ts
+:::
+
+### `DsfrBadge`
+
+::: code-group
+
+<<< ../src/components/DsfrBadge/DsfrBadge.types.ts
+:::

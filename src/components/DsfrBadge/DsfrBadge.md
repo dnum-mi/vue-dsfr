@@ -1,1 +1,1 @@
-# DsfrBadge
+# Badges - `DsfrBadge`

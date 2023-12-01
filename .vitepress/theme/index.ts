@@ -1,13 +1,20 @@
 import type { Theme } from 'vitepress'
 import DefaultTheme from 'vitepress/theme'
+import { OhVueIcon as VIcon, addIcons } from 'oh-vue-icons'
+
 import Story from './Story.vue'
-import Icon from './Icon.vue'
+import VIconLink from './VIconLink.vue'
+import * as vpIcons from './icons'
+
 import './style.css'
+
+addIcons(...Object.values(vpIcons))
 
 export default {
   extends: DefaultTheme,
   enhanceApp({ app }) {
-    app.component('Icon', Icon)
+    app.component('VIcon', VIcon)
+    app.component('VIconLink', VIconLink)
     app.component('Story', Story)
   }
 } satisfies Theme

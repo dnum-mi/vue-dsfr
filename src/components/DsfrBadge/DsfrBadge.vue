@@ -1,11 +1,5 @@
 <script setup lang="ts">
-export type DsfrBadgeProps = {
-  label: string
-  type?: 'success' | 'error' | 'new' | 'info' | 'warning' | undefined,
-  noIcon?: boolean,
-  small?: boolean,
-  ellipsis?: boolean,
-}
+import type { DsfrBadgeProps } from './DsfrBadge.types'
 
 withDefaults(defineProps<DsfrBadgeProps>(), {
   type: 'info',

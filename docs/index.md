@@ -23,7 +23,7 @@ features:
   - title: A11y
     details: Une bibliothèque prête pour viser une très bonne note RGAA
   - title: Personnalisable
-    details: Avec ses nombreuses utilisatioins de slot
+    details: Avec ses nombreuses utilisations de slot
   - title: Prête pour TypeScript
     details: Écrite en TS, tous les composants et leurs props sont typés
 ---

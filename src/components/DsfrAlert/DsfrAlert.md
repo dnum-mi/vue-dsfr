@@ -1,4 +1,4 @@
-# DsfrAlert
+# Alertes - `DsfrAlert`
 
 Les alertes permettent d’attirer l’attention de l’utilisateur sur une information sans interrompre sa tâche en cours.
 
@@ -50,7 +50,7 @@ Autres props :
 
 `DsfrAlert` déclenche l’événement `'close'` lors du clic sur le bouton pour fermer l’alerte, sans données (sans *payload*).
 
-|  nom                   |   données (*payload*) |
+|  nom                   |   donnée (*payload*) |
 | ---------------------- |  ---------            |
 | `'close'` |       *aucune*       |
 
@@ -58,7 +58,7 @@ Autres props :
 
 ::: code-group
 
-<Story data-title="Preview" min-h="1600px" dark>
+<Story data-title="Démo" min-h="1600px">
   <DsfrAlertDemo />
 </Story>
 
