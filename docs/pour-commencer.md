@@ -144,15 +144,9 @@ const app = createApp(App)
 N.B. : il faut bien en plus enregistrer globalement le composant **VIcon** car il est utilisé en interne dans VueDsfr.
 :::
 
-## Utiliser les icônes officielles
+## Utiliser les icônes
 
-Pour utiliser les icônes officielles avec les classes CSS du DSFR, il n’y a pas d’actions en plus à faire,
-puisque c’est le CSS officiel du DSFR qui est utilisé.
-
-## Ajouter des icônes
-
-Pour ajouter des icônes qui ne sont pas importées dans la bibliothèque, veuillez consulter
-[la page dédiée](/icones-personnalisees).
+Cf. [la page dédiée](./icones.md)
 
 ## Avoir un bundle minimal
 
