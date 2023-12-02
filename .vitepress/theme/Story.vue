@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, watchEffect, watch, onMounted } from 'vue'
+import { ref, watchEffect, onMounted } from 'vue'
 import { useData } from 'vitepress'
 
 const iframe = ref<HTMLIFrameElement>()
@@ -10,7 +10,7 @@ withDefaults(defineProps<{
   dark?: boolean
   storyTitle?: string
 }>(), {
-  minH: '240px',
+  minH: '100px',
   storyTitle: 'Story',
 })
 
@@ -41,7 +41,7 @@ onMounted(() => {
 <template>
   <div class="vp-block active" >
     <iframe data-why :title="storyTitle" ref="iframe">
-      <slot></slot>
+      <slot />
     </iframe>
   </div>
 </template>
@@ -49,9 +49,8 @@ onMounted(() => {
 <style scoped>
 iframe[data-why] {
   border: 0;
-  width: calc(100% + 48px);
+  width: 100%;
   min-height: v-bind(minH);
-  margin: -20px -24px;
   visibility: hidden;
 }
 </style>

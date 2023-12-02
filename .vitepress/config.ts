@@ -109,10 +109,17 @@ export default defineConfig({
     ],
 
     resolve: {
-      alias: { '@': fileURLToPath(new URL('../src', import.meta.url)) }
+      alias: {
+        '@': fileURLToPath(new URL('../src', import.meta.url)),
+      }
     },
 
     // not needed, just there to prevent reload on cold start
-    optimizeDeps: { include: ['@vueuse/core', 'lucide-vue-next'] }
+    optimizeDeps: {
+      include: [
+        '@vueuse/core',
+        // 'lucide-vue-next'
+      ]
+    }
   },
 })
