@@ -1,9 +1,9 @@
 export {
+  RiCloseLine,
   RiArrowDropDownLine,
   RiArrowDropUpLine,
   SiDiscord,
   SiGithub,
   SiNpm,
   SiVisualstudiocode,
-  CoNpm,
 } from 'oh-vue-icons/icons'

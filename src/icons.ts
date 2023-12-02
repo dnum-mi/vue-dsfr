@@ -76,4 +76,4 @@ export {
   RiLinkedinBoxFill,
   RiYoutubeFill,
   RiChatQuoteLine,
-} from 'oh-vue-icons/icons/ri/index.js'
+} from 'oh-vue-icons/icons'

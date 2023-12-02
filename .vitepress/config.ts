@@ -65,6 +65,10 @@ export default defineConfig({
             link: '/ecosysteme',
           },
           {
+            text: 'Les icônes',
+            link: '/icones',
+          },
+          {
             text: 'Guide du développeur',
             link: '/guide-developpeur',
           },
