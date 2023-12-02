@@ -1,9 +1,8 @@
 <script lang="ts" setup>
-export type DsfrSideMenuButtonProps = {
-  active?: boolean
-  expanded?: boolean
-  controlId: string
-}
+import type { DsfrSideMenuButtonProps } from './DsfrSideMenu.types'
+
+export type { DsfrSideMenuButtonProps }
+
 defineProps<DsfrSideMenuButtonProps>()
 
 defineEmits<{(e: 'toggle-expand', payload: string): void}>()

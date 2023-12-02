@@ -1,14 +1,13 @@
 <script setup lang="ts">
-import type { RouteLocationRaw } from 'vue-router'
 import { ref, watch } from 'vue'
 
+import type { DsfrBreadcrumbProps } from './DsfrBreadcrumb.types'
 import { getRandomId } from '../../utils/random-utils'
 import { useCollapsable } from '../../composables.js'
 
-withDefaults(defineProps<{
-  breadcrumbId?: string
-  links?: { to?: RouteLocationRaw, text: string }[]
-}>(), {
+export type { DsfrBreadcrumbProps }
+
+withDefaults(defineProps<DsfrBreadcrumbProps>(), {
   breadcrumbId: () => getRandomId('breadcrumb'),
   links: () => [{ text: '' }],
 })

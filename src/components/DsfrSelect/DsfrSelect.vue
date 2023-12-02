@@ -2,22 +2,15 @@
 import { computed } from 'vue'
 import { getRandomId } from '../../utils/random-utils'
 
+import type { DsfrSelectProps } from './DsfrSelect.types'
+
+export type { DsfrSelectProps }
+
 defineOptions({
   inheritAttrs: false,
 })
 
-const props = withDefaults(defineProps<{
-  required?: boolean
-  disabled?: boolean
-  selectId?: string
-  description?: string
-  modelValue?: string | number
-  label?: string
-  options?:(string | { value: string, text: string, disabled?: boolean })[]
-  successMessage?: string
-  errorMessage?: string
-  defaultUnselectedText?: string
-}>(), {
+const props = withDefaults(defineProps<DsfrSelectProps>(), {
   selectId: () => getRandomId('select'),
   modelValue: undefined,
   options: () => [],

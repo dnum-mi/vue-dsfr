@@ -1,5 +1,7 @@
 <script lang="ts" setup>
-export type DsfrSideMenuListItemProps = { active?: boolean }
+import type { DsfrSideMenuListItemProps } from './DsfrSideMenu.types'
+
+export type { DsfrSideMenuListItemProps }
 
 defineProps<DsfrSideMenuListItemProps>()
 </script>

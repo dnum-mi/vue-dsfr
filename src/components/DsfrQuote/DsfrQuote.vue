@@ -1,13 +1,9 @@
 <script lang="ts" setup>
+import type { DsfrQuoteProps } from './DsfrQuote.types'
 
-withDefaults(defineProps<{
-  quote?: string
-  author?: string
-  details: { label: string, url: string }[]
-  source: string
-  sourceUrl: string
-  quoteImage: string
-}>(), {
+export type { DsfrQuoteProps }
+
+withDefaults(defineProps<DsfrQuoteProps>(), {
   quote: undefined,
   author: undefined,
   details: () => [],

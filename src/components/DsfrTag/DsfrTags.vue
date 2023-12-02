@@ -1,7 +1,11 @@
 <script lang="ts" setup>
-import DsfrTag, { type DsfrTagProps } from './DsfrTag.vue'
+import DsfrTag from './DsfrTag.vue'
 
-withDefaults(defineProps<{tags: DsfrTagProps[]}>(), {
+import type { DsfrTagsProps } from './DsfrTags.types'
+
+export type { DsfrTagsProps }
+
+withDefaults(defineProps<DsfrTagsProps>(), {
   tags: () => [],
 })
 </script>

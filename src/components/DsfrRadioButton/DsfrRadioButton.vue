@@ -2,16 +2,9 @@
 import { computed } from 'vue'
 import { getRandomId } from '../../utils/random-utils'
 
-export type DsfrRadioButtonProps = {
-  id?: string
-  name?: string
-  modelValue?: string | number
-  small?: boolean
-  value: string | number
-  label?: string
-  hint?: string
-  img?: string
-}
+import type { DsfrRadioButtonProps } from './DsfrRadioButton.types'
+
+export type { DsfrRadioButtonProps }
 
 const props = withDefaults(defineProps<DsfrRadioButtonProps>(), {
   id: () => getRandomId('basic', 'checkbox'),

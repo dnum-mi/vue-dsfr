@@ -1,25 +1,9 @@
 <script lang="ts" setup>
 import { computed } from 'vue'
-import type { RouteLocationRaw } from 'vue-router'
 
-export type DsfrTileProps = {
-  title?: string
-  imgSrc?: string
-  description?: string
-  details?: string
-  disabled?: boolean
-  horizontal?: boolean
-  vertical?: 'md' | 'lg'
-  to?: RouteLocationRaw,
-  titleTag?: string
-  download?: boolean
-  small?: boolean
-  icon?: boolean
-  noBorder?: boolean
-  shadow?: boolean
-  noBackground?: boolean
-  grey?: boolean
-}
+import type { DsfrTileProps } from './DsfrTiles.types'
+
+export type { DsfrTileProps }
 
 const props = withDefaults(defineProps<DsfrTileProps>(), {
   title: 'Titre de la tuile',

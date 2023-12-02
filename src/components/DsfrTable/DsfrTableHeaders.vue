@@ -1,7 +1,9 @@
 <script setup lang="ts">
-import DsfrTableHeader, { type DsfrTableHeaderProps } from './DsfrTableHeader.vue'
+import DsfrTableHeader from './DsfrTableHeader.vue'
 
-export type DsfrTableHeadersProps = (string | (DsfrTableHeaderProps & { text?: string }))[]
+import type { DsfrTableHeadersProps, DsfrTableHeaderProps } from './DsfrTable.types'
+
+export type { DsfrTableHeadersProps }
 
 defineProps<{
   headers: DsfrTableHeadersProps

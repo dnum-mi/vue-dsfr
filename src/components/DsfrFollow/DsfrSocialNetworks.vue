@@ -1,14 +1,8 @@
 <script lang="ts" setup>
-export type DsfrSocialNetworkName = 'facebook' | 'twitter' | 'instagram' | 'linkedin' | 'youtube'
-export type DsfrSocialNetwork = {
-  name: DsfrSocialNetworkName,
-  href: string
-}
+import type { DsfrSocialNetworksProps } from './DsfrFollow.types'
 
-export type DsfrSocialNetworksProps = {
-  networks: DsfrSocialNetwork[]
-  titleTag?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'
-}
+export type { DsfrSocialNetworksProps }
+export type { DsfrSocialNetwork, DsfrSocialNetworkName } from './DsfrFollow.types'
 
 withDefaults(defineProps<DsfrSocialNetworksProps>(), {
   titleTag: 'h3',

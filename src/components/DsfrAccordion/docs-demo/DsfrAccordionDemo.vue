@@ -7,7 +7,7 @@ import DsfrAccordionsGroup from '../DsfrAccordionsGroup.vue'
 const title1 = ref('Un titre d’accordéon 1')
 const title2 = ref('Un titre d’accordéon 2')
 const title3 = ref('Un titre d’accordéon 3')
-const expandedId = ref('')
+const expandedId = ref<string>()
 </script>
 
 <template>

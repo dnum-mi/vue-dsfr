@@ -1,11 +1,9 @@
 <script lang="ts" setup>
-withDefaults(defineProps<{
-  legend?: string
-  legendClass?: string
-  legendId?: string
-  hint?: string
-  hintClass?: string
-}>(), {
+import type { DsfrFieldsetProps } from './DsfrFieldset.types'
+
+export type { DsfrFieldsetProps }
+
+withDefaults(defineProps<DsfrFieldsetProps>(), {
   legend: '',
   legendId: '',
   legendClass: '',

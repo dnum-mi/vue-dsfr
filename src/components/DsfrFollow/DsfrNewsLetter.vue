@@ -1,18 +1,7 @@
 <script lang="ts" setup>
-export type DsfrNewsLetterProps = {
-  title?: string
-  description?: string
-  email?: string
-  error?: string
-  labelEmail?: string
-  placeholder?: string
-  hintText?: string
-  inputTitle?: string
-  buttonText?: string
-  buttonTitle?: string
-  buttonAction?: ($event: MouseEvent) => void
-  onlyCallout?: boolean
-}
+import type { DsfrNewsLetterProps } from './DsfrFollow.types'
+
+export type { DsfrNewsLetterProps }
 
 withDefaults(defineProps<DsfrNewsLetterProps>(), {
   title: 'Abonnez-vous à notre lettre d’information',

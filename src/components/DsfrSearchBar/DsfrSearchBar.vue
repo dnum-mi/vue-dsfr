@@ -4,16 +4,11 @@ import { getRandomId } from '../../utils/random-utils'
 import DsfrInput from '../DsfrInput/DsfrInput.vue'
 import DsfrButton from '../DsfrButton/DsfrButton.vue'
 
-withDefaults(defineProps<{
-  id?: string
-  label?: string
-  labelVisible?: boolean
-  large?: boolean
-  buttonText?: string
-  modelValue?: string
-  placeholder?: string,
-  disabled?: boolean
-}>(), {
+import type { DsfrSearchBarProps } from './DsfrSearchBar.types'
+
+export type { DsfrSearchBarProps }
+
+withDefaults(defineProps<DsfrSearchBarProps>(), {
   id: () => getRandomId('search', 'input'),
   label: '',
   buttonText: '',

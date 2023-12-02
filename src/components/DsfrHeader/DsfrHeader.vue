@@ -1,26 +1,13 @@
 <script lang="ts" setup>
-import { computed, onMounted, onUnmounted, ref, useSlots, type StyleValue } from 'vue'
+import { computed, onMounted, onUnmounted, ref, useSlots } from 'vue'
+
 import DsfrLogo from '../DsfrLogo/DsfrLogo.vue'
 import DsfrSearchBar from '../DsfrSearchBar/DsfrSearchBar.vue'
 import DsfrHeaderMenuLinks from './DsfrHeaderMenuLinks.vue'
-import type { DsfrHeaderMenuLinkProps } from './DsfrHeaderMenuLink.vue'
 
-type DsfrHeaderProps = {
-  serviceTitle?: string
-  serviceDescription?: string
-  homeTo?: string
-  logoText?: string | string[]
-  modelValue?: string
-  operatorImgAlt?: string
-  operatorImgSrc?: string
-  operatorImgStyle?: StyleValue
-  placeholder?: string
-  quickLinks?: DsfrHeaderMenuLinkProps[]
-  searchLabel?: string
-  quickLinksAriaLabel?: string
-  showSearch?: boolean
-  showBeta?: boolean
-}
+import type { DsfrHeaderProps } from './DsfrHeader.types'
+
+export type { DsfrHeaderProps }
 
 const props = withDefaults(defineProps<DsfrHeaderProps>(), {
   serviceTitle: undefined,

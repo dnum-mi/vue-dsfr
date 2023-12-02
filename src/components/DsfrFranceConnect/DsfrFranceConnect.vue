@@ -1,5 +1,9 @@
 <script lang="ts" setup>
-defineProps<{secure: boolean}>()
+import type { DsfrFranceConnectProps } from './DsfrFranceConnect.types'
+
+export type { DsfrFranceConnectProps }
+
+defineProps<DsfrFranceConnectProps>()
 </script>
 
 <template>

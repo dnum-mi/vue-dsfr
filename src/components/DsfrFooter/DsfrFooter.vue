@@ -1,35 +1,21 @@
 <script setup lang="ts">
 import { computed, useSlots } from 'vue'
-import type { StyleValue } from 'vue'
 import type { RouteLocationRaw } from 'vue-router'
 
 import DsfrLogo from '../DsfrLogo/DsfrLogo.vue'
-import DsfrFooterPartners, { type DsfrFooterPartnersProps } from '../DsfrFooter/DsfrFooterPartners.vue'
+import DsfrFooterPartners from '../DsfrFooter/DsfrFooterPartners.vue'
 
-const props = withDefaults(defineProps<{
-  a11yCompliance?: string
-  a11yComplianceLink?: RouteLocationRaw
-  legalLink?: string
-  homeLink?: RouteLocationRaw
-  partners?: DsfrFooterPartnersProps
-  personalDataLink?: string
-  cookiesLink?: string
-  logoText?: string | string[]
-  descText?: string
-  beforeMandatoryLinks?: {label: string, to: RouteLocationRaw | undefined}[]
-  afterMandatoryLinks?: {label: string, to: RouteLocationRaw | undefined}[]
-  mandatoryLinks?: {label: string, to: RouteLocationRaw | undefined}[]
-  ecosystemLinks?: {label: string, href: string}[]
-  operatorLinkText?: string
-  operatorTo?: RouteLocationRaw | undefined
-  operatorImgStyle?: StyleValue
-  operatorImgSrc?: string
-  operatorImgAlt?: string
-  licenceTo?: string
-  licenceLinkProps?: { href: string } | { to: RouteLocationRaw | undefined }
-  licenceText?: string
-  licenceName?: string
-}>(), {
+import { type DsfrFooterProps } from './DsfrFooter.types'
+
+export type { DsfrFooterProps }
+export type {
+  DsfrFooterLinkProps,
+  DsfrFooterLinkListProps,
+  DsfrFooterPartnersProps,
+  DsfrFooterPartner,
+} from './DsfrFooter.types'
+
+const props = withDefaults(defineProps<DsfrFooterProps>(), {
   a11yCompliance: 'non conforme',
   a11yComplianceLink: '/a11y',
   legalLink: '/mentions-legales',

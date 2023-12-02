@@ -2,17 +2,9 @@
 import { computed } from 'vue'
 import { getRandomId } from '../../utils/random-utils'
 
-export type DsfrCheckboxProps = {
-  id?: string
-  name: string
-  required?: boolean
-  modelValue?: boolean
-  small?: boolean
-  label?: string
-  errorMessage?: string
-  validMessage?: string
-  hint?: string
-}
+import type { DsfrCheckboxProps } from './DsfrCheckbox.types'
+
+export type { DsfrCheckboxProps }
 
 const props = withDefaults(defineProps<DsfrCheckboxProps>(), {
   id: () => getRandomId('basic', 'checkbox'),

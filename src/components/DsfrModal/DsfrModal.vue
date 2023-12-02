@@ -4,18 +4,12 @@ import { FocusTrap } from 'focus-trap-vue'
 import DsfrButtonGroup from '../DsfrButton/DsfrButtonGroup.vue'
 import { onMounted, onBeforeUnmount, computed, ref, nextTick, watch } from 'vue'
 import { getRandomId } from '@/utils/random-utils'
-import type { DsfrButtonProps } from '../DsfrButton/DsfrButton.vue'
 
-const props = withDefaults(defineProps<{
-  modalId?: string
-  opened?: boolean
-  actions?: DsfrButtonProps[]
-  isAlert?: boolean
-  origin?: {focus:() => void}
-  title: string
-  icon?: string
-  size?: 'sm' | 'md' | 'lg' | 'xl'
-}>(), {
+import type { DsfrModalProps } from './DsfrModal.types'
+
+export type { DsfrModalProps }
+
+const props = withDefaults(defineProps<DsfrModalProps>(), {
   modalId: () => getRandomId('modal', 'dialog'),
   actions: () => [],
   origin: () => ({ focus () {} }), // eslint-disable-line @typescript-eslint/no-empty-function

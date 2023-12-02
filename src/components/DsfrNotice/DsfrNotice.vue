@@ -1,8 +1,9 @@
 <script lang="ts" setup>
-withDefaults(defineProps<{
-  title?: string
-  closeable?: boolean
-}>(), {
+import type { DsfrNoticeProps } from './DsfrNotice.types'
+
+export type { DsfrNoticeProps }
+
+withDefaults(defineProps<DsfrNoticeProps>(), {
   title: '',
 })
 

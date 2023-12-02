@@ -1,9 +1,9 @@
 <script lang="ts" setup>
-withDefaults(defineProps<{
-  text?: string
-  small?: boolean
-  large?: boolean
-}>(), {
+import type { DsfrHighlightProps } from './DsfrHighlight.types'
+
+export type { DsfrHighlightProps }
+
+withDefaults(defineProps<DsfrHighlightProps>(), {
   text: undefined,
 })
 </script>

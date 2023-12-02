@@ -4,18 +4,12 @@ import type { RouteLocationRaw } from 'vue-router'
 
 import { useCollapsable } from '../../composables'
 
-import DsfrSideMenuListItem, { type DsfrSideMenuListItemProps } from './DsfrSideMenuListItem.vue'
+import DsfrSideMenuListItem from './DsfrSideMenuListItem.vue'
 import DsfrSideMenuButton from './DsfrSideMenuButton.vue'
 
-export type DsfrSideMenuListProps = {
-  id: string
-  collapsable?: boolean
-  expanded?: boolean
-  menuItems?:(
-    DsfrSideMenuListItemProps & Partial<DsfrSideMenuListProps & {to?: RouteLocationRaw, text?: string}>
-      & { menuItems?: (DsfrSideMenuListItemProps & Partial<DsfrSideMenuListProps & {to?: RouteLocationRaw, text?: string}>)[] }
-  )[]
-}
+import type { DsfrSideMenuListProps } from './DsfrSideMenu.types'
+
+export type { DsfrSideMenuListProps }
 
 const props = withDefaults(defineProps<DsfrSideMenuListProps>(), {
   menuItems: () => [],

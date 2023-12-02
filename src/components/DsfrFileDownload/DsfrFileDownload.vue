@@ -1,11 +1,7 @@
 <script lang="ts" setup>
-export type DsfrFileDownloadProps = {
-  title?: string
-  format?: string
-  size?: string
-  href?: string
-  download?: string
-}
+import type { DsfrFileDownloadProps } from './DsfrFileDownload.types'
+
+export type { DsfrFileDownloadProps }
 
 withDefaults(defineProps<DsfrFileDownloadProps>(), {
   title: 'Télécharger le document',

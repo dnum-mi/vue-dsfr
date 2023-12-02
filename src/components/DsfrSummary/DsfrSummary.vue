@@ -1,8 +1,9 @@
 <script lang="ts" setup>
-withDefaults(defineProps<{
-  title: string
-  anchors: { link: string, name: string }[]
-}>(), {
+import type { DsfrSummaryProps } from './DsfrSummary.types'
+
+export type { DsfrSummaryProps }
+
+withDefaults(defineProps<DsfrSummaryProps>(), {
   title: 'Sommaire',
   anchors: () => [],
 })

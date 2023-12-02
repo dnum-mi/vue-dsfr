@@ -1,16 +1,11 @@
 <script lang="ts" setup>
 import { computed } from 'vue'
 
-type Page = { href?: string, label: string, title: string }
-const props = withDefaults(defineProps<{
-  pages: Page[]
-  currentPage?: number
-  firstPageTitle?: string
-  lastPageTitle?: string
-  nextPageTitle?: string
-  prevPageTitle?: string
-  truncLimit?: number,
-}>(), {
+import type { DsfrPaginationProps, Page } from './DsfrPagination.types'
+
+export type { DsfrPaginationProps, Page }
+
+const props = withDefaults(defineProps<DsfrPaginationProps>(), {
   truncLimit: 5,
   currentPage: 0,
   firstPageTitle: 'Première page',
