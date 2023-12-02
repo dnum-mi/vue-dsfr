@@ -1,21 +1,9 @@
 <script lang="ts" setup>
 import { computed, ref } from 'vue'
-import { OhVueIcon as VIcon } from 'oh-vue-icons'
 
-// import '@gouvfr/dsfr/dist/component/button/button.module.js'
+import type { DsfrButtonProps } from './DsfrButton.types'
 
-export type DsfrButtonProps = {
-  disabled?: boolean
-  label?: string
-  secondary?: boolean
-  tertiary?: boolean
-  iconRight?: boolean
-  iconOnly?: boolean
-  noOutline?: boolean
-  size?: 'sm' | 'small' | 'lg' | 'large' | 'md' | 'medium' | '' | undefined
-  icon?: string | InstanceType<typeof VIcon>['$props']
-  onClick?: ($event: MouseEvent) => void
-}
+export type { DsfrButtonProps }
 
 const props = withDefaults(defineProps<DsfrButtonProps>(), {
   size: 'md',

@@ -6,15 +6,9 @@ import { OhVueIcon as VIcon } from 'oh-vue-icons'
 // D’autre part, pour les étiquettes sélectionnables posent problème : le JS n’est pas
 // import '@gouvfr/dsfr/dist/component/tag/tag.module.js'
 
-export type DsfrTagProps = {
-  label? : string
-  link? : string
-  tagName?: string
-  icon? : string
-  disabled? : boolean
-  small? : boolean
-  iconOnly? : boolean
-}
+import type { DsfrTagProps } from './DsfrTags.types'
+
+export type { DsfrTagProps }
 
 const props = withDefaults(defineProps<DsfrTagProps>(), {
   label: undefined,

@@ -1,13 +1,11 @@
 <script lang="ts" setup>
-import DsfrButton, { type DsfrButtonProps } from '../DsfrButton/DsfrButton.vue'
+import DsfrButton from '../DsfrButton/DsfrButton.vue'
 
-withDefaults(defineProps<{
-  title: string
-  content: string
-  titleTag?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'
-  button?: DsfrButtonProps
-  icon?: string
-}>(), {
+import type { DsfrCalloutProps } from './DsfrCallout.types'
+
+export type { DsfrCalloutProps }
+
+withDefaults(defineProps<DsfrCalloutProps>(), {
   // @ts-ignore this is really undefined
   button: () => undefined,
   titleTag: 'h3',

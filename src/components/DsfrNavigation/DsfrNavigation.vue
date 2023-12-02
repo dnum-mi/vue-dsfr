@@ -1,29 +1,18 @@
 <script lang="ts" setup>
 import { ref, onMounted, onUnmounted } from 'vue'
-import type { RouteLocationRaw } from 'vue-router'
 
 import { getRandomId } from '../../utils/random-utils'
 
 import DsfrNavigationItem from './DsfrNavigationItem.vue'
-import DsfrNavigationMenuLink, { type DsfrNavigationMenuLinkProps } from './DsfrNavigationMenuLink.vue'
-import DsfrNavigationMenu, { type DsfrNavigationMenuProps } from './DsfrNavigationMenu.vue'
-import DsfrNavigationMegaMenu, { type DsfrNavigationMegaMenuProps } from './DsfrNavigationMegaMenu.vue'
+import DsfrNavigationMenuLink from './DsfrNavigationMenuLink.vue'
+import DsfrNavigationMenu from './DsfrNavigationMenu.vue'
+import DsfrNavigationMegaMenu from './DsfrNavigationMegaMenu.vue'
 
-export type DsfrNavigationMenuLinks = (DsfrNavigationMenuLinkProps | DsfrNavigationMegaMenuProps | DsfrNavigationMenuProps)[]
+import type { DsfrNavigationMenuLinks, DsfrNavigationProps } from './DsfrNavigation.types'
 
-type SimpleLink = { text?: string ; to?: RouteLocationRaw }
-type MenuItem = { title?: string; active?: boolean; links?: DsfrNavigationMenuLinks }
-type MegaMenuItem = { title?: string; description: string, link: SimpleLink, menus: { title?: string; active?: boolean; links?: DsfrNavigationMenuLinks }[]}
+export type { DsfrNavigationMenuLinks, DsfrNavigationProps }
 
-const props = withDefaults(defineProps<{
-  id?: string
-  label?: string
-  navItems:(
-    SimpleLink
-    | MenuItem
-    | MegaMenuItem
-  )[]
-}>(), {
+const props = withDefaults(defineProps<DsfrNavigationProps>(), {
   id: () => getRandomId('menu'),
   label: 'Menu principal',
   navItems: () => [],

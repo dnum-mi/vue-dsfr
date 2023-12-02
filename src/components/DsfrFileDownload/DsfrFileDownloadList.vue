@@ -1,10 +1,11 @@
 <script lang="ts" setup>
-import DsfrFileDownload, { type DsfrFileDownloadProps } from './DsfrFileDownload.vue'
+import DsfrFileDownload from './DsfrFileDownload.vue'
 
-withDefaults(defineProps<{
-  files: DsfrFileDownloadProps[]
-  title: string
-}>(), {
+import type { DsfrFileDownloadListProps } from './DsfrFileDownload.types'
+
+export type { DsfrFileDownloadListProps }
+
+withDefaults(defineProps<DsfrFileDownloadListProps>(), {
   files: () => [],
   title: '',
 })

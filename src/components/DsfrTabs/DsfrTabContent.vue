@@ -1,12 +1,11 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 
-const props = defineProps<{
-  asc?: boolean,
-  selected?: boolean,
-  panelId: string,
-  tabId: string,
-}>()
+import type { DsfrTabContentProps } from './DsfrTabs.types'
+
+export type { DsfrTabContentProps }
+
+const props = defineProps<DsfrTabContentProps>()
 
 const values = { true: '100%', false: '-100%' }
 // @ts-ignore this will be fine

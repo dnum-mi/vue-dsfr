@@ -5,6 +5,8 @@ import { getRandomId } from '../../utils/random-utils'
 import { useCollapsable } from '../../composables.js'
 import type { DsfrAccordionProps } from './DsfrAccordion.types'
 
+export type { DsfrAccordionProps }
+
 const props = withDefaults(
   defineProps<DsfrAccordionProps>(),
   {

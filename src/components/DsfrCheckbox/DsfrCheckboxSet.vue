@@ -1,24 +1,14 @@
 <script lang="ts" setup>
 import { computed } from 'vue'
-import type { InputHTMLAttributes } from 'vue'
 
 import DsfrCheckbox from './DsfrCheckbox.vue'
 import { getRandomId } from '../../utils/random-utils'
 
-import type { DsfrCheckboxProps } from './DsfrCheckbox.vue'
+import type { DsfrCheckboxSetProps } from './DsfrCheckbox.types'
 
-const props = withDefaults(defineProps<{
-  titleId?: string
-  disabled?: boolean,
-  inline?: boolean,
-  required?: boolean,
-  small?: boolean,
-  errorMessage?: string
-  validMessage?: string
-  legend?: string
-  options?:(DsfrCheckboxProps & InputHTMLAttributes)[]
-  modelValue?: string[],
-}>(), {
+export type { DsfrCheckboxSetProps }
+
+const props = withDefaults(defineProps<DsfrCheckboxSetProps>(), {
   titleId: () => getRandomId('checkbox', 'group'),
   errorMessage: '',
   validMessage: '',

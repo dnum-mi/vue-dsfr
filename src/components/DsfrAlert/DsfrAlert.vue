@@ -4,6 +4,8 @@ import { computed } from 'vue'
 import { getRandomId } from '@/utils/random-utils'
 import type { DsfrAlertProps } from './DsfrAlert.types'
 
+export type { DsfrAlertProps, DsfrAlertType } from './DsfrAlert.types'
+
 const props = withDefaults(defineProps<DsfrAlertProps>(), {
   id: () => getRandomId('basic', 'alert'),
   title: '',

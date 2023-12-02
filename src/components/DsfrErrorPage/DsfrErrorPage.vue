@@ -1,14 +1,11 @@
 <script lang="ts" setup>
-import type { DsfrButtonProps } from '../DsfrButton/DsfrButton.vue'
 import DsfrButtonGroup from '../DsfrButton/DsfrButtonGroup.vue'
 
-withDefaults(defineProps<{
-  title?: string
-  subtitle?: string
-  description?: string
-  help?: string
-  buttons: DsfrButtonProps[]
-}>(), {
+import type { DsfrErrorPageProps } from './DsfrErrorPage.types'
+
+export type { DsfrErrorPageProps }
+
+withDefaults(defineProps<DsfrErrorPageProps>(), {
   title: 'Page non trouvée',
   subtitle: 'Erreur 404',
   description: 'La page que vous cherchez est introuvable. Excusez-nous pour la gêne occasionnée.',

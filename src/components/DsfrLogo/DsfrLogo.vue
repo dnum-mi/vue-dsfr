@@ -1,11 +1,11 @@
 <script lang="ts" setup>
 import { computed } from 'vue'
 
-const props = withDefaults(defineProps<{
-  small?: boolean
-  large?: boolean
-  logoText?: string | string[]
-}>(), {
+import type { DsfrLogoProps } from './DsfrLogo.types'
+
+export type { DsfrLogoProps }
+
+const props = withDefaults(defineProps<DsfrLogoProps>(), {
   logoText: () => 'Gouvernement',
 })
 

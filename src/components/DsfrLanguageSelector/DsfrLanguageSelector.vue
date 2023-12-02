@@ -3,6 +3,10 @@ import { computed, ref, watch } from 'vue'
 import { getRandomId } from '../../utils/random-utils'
 import { useCollapsable } from '../../composables'
 
+import type { DsfrlanguageSelectorProps } from './DsfrLanguageSelector.types'
+
+export type { DsfrlanguageSelectorProps }
+
 const {
   collapse,
   collapsing,
@@ -11,11 +15,7 @@ const {
   onTransitionEnd,
 } = useCollapsable()
 
-const props = withDefaults(defineProps<{
-  id?: string,
-  languages?: { codeIso: string; label: string }[]
-  currentLanguage?: string
-}>(), {
+const props = withDefaults(defineProps<DsfrlanguageSelectorProps>(), {
   id: () => getRandomId('translate'),
   languages: () => [],
   currentLanguage: 'fr',

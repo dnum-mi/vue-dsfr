@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import type { DsfrBadgeProps } from './DsfrBadge.types'
 
+export type { DsfrBadgeProps }
+
 withDefaults(defineProps<DsfrBadgeProps>(), {
   type: 'info',
 })

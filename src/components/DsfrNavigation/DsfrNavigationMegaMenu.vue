@@ -1,21 +1,14 @@
 <script lang="ts" setup>
 import { computed, onMounted, watch } from 'vue'
-import type { RouteLocationRaw } from 'vue-router'
 
 import { getRandomId } from '../../utils/random-utils'
 
 import { useCollapsable } from '../../composables'
-import DsfrNavigationMegaMenuCategory, { type DsfrNavigationMegaMenuCategoryProps } from './DsfrNavigationMegaMenuCategory.vue'
+import DsfrNavigationMegaMenuCategory from './DsfrNavigationMegaMenuCategory.vue'
 
-export type DsfrNavigationMegaMenuProps = {
-  id?: string
-  title: string
-  description?: string
-  link?: { to: RouteLocationRaw, text: string }
-  menus?: DsfrNavigationMegaMenuCategoryProps[]
-  expandedId?: string
-  active?: boolean
-}
+import type { DsfrNavigationMegaMenuProps } from './DsfrNavigation.types'
+
+export type { DsfrNavigationMegaMenuProps }
 
 const props = withDefaults(defineProps<DsfrNavigationMegaMenuProps>(), {
   id: () => getRandomId('menu'),

@@ -2,15 +2,10 @@
 import { computed } from 'vue'
 import { OhVueIcon as VIcon } from 'oh-vue-icons'
 import { getRandomId } from '../../utils/random-utils'
-import type { RouteLocationRaw } from 'vue-router'
 
-export type DsfrNavigationMenuLinkProps = {
-  id?: string,
-  to?: string | RouteLocationRaw,
-  text?: string,
-  icon?: string,
-  onClick?: ($event: MouseEvent) => void
-}
+import type { DsfrNavigationMenuLinkProps } from './DsfrNavigation.types'
+
+export type { DsfrNavigationMenuLinkProps }
 
 const props = withDefaults(defineProps<DsfrNavigationMenuLinkProps>(), {
   id: () => getRandomId('menu-link'),

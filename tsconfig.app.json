@@ -10,7 +10,8 @@
     "src/**/__tests__/*",
     "src/**/*.spec.ts",
     "src/**/*.e2e.ts",
-    "src/**/*.stories.ts"
+    "src/**/*.stories.ts",
+    "src/**/docs-demo/**"
   ],
   "compilerOptions": {
     "composite": true,

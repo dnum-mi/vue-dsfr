@@ -2,17 +2,12 @@
 import { computed, ref, watch } from 'vue'
 import DsfrTableRow, { type DsfrTableRowProps } from './DsfrTableRow.vue'
 import DsfrTableHeaders from './DsfrTableHeaders.vue'
-import type { DsfrTableHeadersProps } from './DsfrTableHeaders.vue'
 
-const props = withDefaults(defineProps<{
-  title: string
-  headers?: DsfrTableHeadersProps
-  rows?:(DsfrTableRowProps | string[])[]
-  noCaption?: boolean
-  pagination?: boolean
-  defaultCurrentPage?: number
-  defaultOptionSelected?: number
-}>(), {
+import type { DsfrTableProps } from './DsfrTable.types'
+
+export type { DsfrTableProps }
+
+const props = withDefaults(defineProps<DsfrTableProps>(), {
   headers: () => [],
   rows: () => [],
   defaultCurrentPage: 1,

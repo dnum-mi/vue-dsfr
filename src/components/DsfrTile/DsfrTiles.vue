@@ -1,10 +1,11 @@
 <script lang="ts" setup>
-import DsfrTile, { type DsfrTileProps } from './DsfrTile.vue'
+import DsfrTile from './DsfrTile.vue'
 
-withDefaults(defineProps<{
-  tiles?:(DsfrTileProps & { containerClass: string })[]
-  horizontal?: boolean
-}>(), {
+import type { DsfrTilesProps } from './DsfrTiles.types'
+
+export type { DsfrTilesProps }
+
+withDefaults(defineProps<DsfrTilesProps>(), {
   tiles: () => [],
 })
 </script>

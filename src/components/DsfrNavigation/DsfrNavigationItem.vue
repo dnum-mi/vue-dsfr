@@ -1,10 +1,9 @@
 <script lang="ts" setup>
 import { getRandomId } from '../../utils/random-utils'
 
-export type DsfrNavigationItemProps = {
-  id?: string
-  active?: boolean
-}
+import type { DsfrNavigationItemProps } from './DsfrNavigation.types'
+
+export type { DsfrNavigationItemProps }
 
 withDefaults(defineProps<DsfrNavigationItemProps>(), {
   id: () => getRandomId('nav', 'item'),
