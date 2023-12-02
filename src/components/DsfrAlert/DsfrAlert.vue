@@ -2,24 +2,13 @@
 import { computed } from 'vue'
 
 import { getRandomId } from '@/utils/random-utils'
-import type { TitleTag } from '@/common-types'
+import type { DsfrAlertProps } from './DsfrAlert.types'
 
-export type DsfrAlertType = 'error' | 'success' | 'warning' | 'info'
-
-const props = withDefaults(defineProps<{
-  id?: string,
-  type?: DsfrAlertType,
-  title?: string,
-  description: string,
-  titleTag?: TitleTag,
-  small?: boolean,
-  closed?: boolean,
-  closeable?: boolean,
-}>(), {
+const props = withDefaults(defineProps<DsfrAlertProps>(), {
   id: () => getRandomId('basic', 'alert'),
-  type: 'info',
-  titleTag: 'h3',
   title: '',
+  titleTag: 'h3',
+  type: 'info',
 })
 
 const emit = defineEmits<{(e: 'close'): void}>()

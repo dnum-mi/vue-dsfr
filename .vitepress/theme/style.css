@@ -1,0 +1,162 @@
+/**
+ * Customize default theme styling by overriding CSS variables:
+ * https://github.com/vuejs/vitepress/blob/main/src/client/theme-default/styles/vars.css
+ */
+
+/**
+ * Colors
+ * -------------------------------------------------------------------------- */
+
+@font-face {
+  font-family: Marianne;
+  src: url("@gouvfr/dsfr/dist/fonts/Marianne-Light.woff2") format("woff2"), url("@gouvfr/dsfr/dist/fonts/Marianne-Light.woff") format("woff");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: Marianne;
+  src: url("@gouvfr/dsfr/dist/fonts/Marianne-Light_Italic.woff2") format("woff2"), url("@gouvfr/dsfr/dist/fonts/Marianne-Light_Italic.woff") format("woff");
+  font-weight: 300;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: Marianne;
+  src: url("@gouvfr/dsfr/dist/fonts/Marianne-Regular.woff2") format("woff2"), url("@gouvfr/dsfr/dist/fonts/Marianne-Regular.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: Marianne;
+  src: url("@gouvfr/dsfr/dist/fonts/Marianne-Regular_Italic.woff2") format("woff2"), url("@gouvfr/dsfr/dist/fonts/Marianne-Regular_Italic.woff") format("woff");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: Marianne;
+  src: url("@gouvfr/dsfr/dist/fonts/Marianne-Medium.woff2") format("woff2"), url("@gouvfr/dsfr/dist/fonts/Marianne-Medium.woff") format("woff");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: Marianne;
+  src: url("@gouvfr/dsfr/dist/fonts/Marianne-Medium_Italic.woff2") format("woff2"), url("@gouvfr/dsfr/dist/fonts/Marianne-Medium_Italic.woff") format("woff");
+  font-weight: 500;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: Marianne;
+  src: url("@gouvfr/dsfr/dist/fonts/Marianne-Bold.woff2") format("woff2"), url("@gouvfr/dsfr/dist/fonts/Marianne-Bold.woff") format("woff");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: Marianne;
+  src: url("@gouvfr/dsfr/dist/fonts/Marianne-Bold_Italic.woff2") format("woff2"), url("@gouvfr/dsfr/dist/fonts/Marianne-Bold_Italic.woff") format("woff");
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+
+:root {
+  --blue-france-sun-113: #000091;
+  --red-marianne-main-472: #e1000f;
+
+  --vp-c-brand: var(--blue-france-sun-113);
+  --vp-c-brand-light: #6a6af4;
+  --vp-c-brand-lighter: #8585f6;
+  --vp-c-brand-lightest: #cacafb;
+  --vp-c-brand-dark: #313178;
+  --vp-c-brand-darker: #272747;
+  --vp-c-brand-dimm: rgba(33, 33, 63, 0.08);
+
+  --vp-font-family-base: 'Marianne', sans-serif;
+}
+
+/**
+ * Component: Button
+ * -------------------------------------------------------------------------- */
+
+:root {
+  --vp-button-brand-border: var(--vp-c-brand-light);
+  --vp-button-brand-text: var(--vp-c-white);
+  --vp-button-brand-bg: var(--vp-c-brand);
+  --vp-button-brand-hover-border: var(--vp-c-brand-light);
+  --vp-button-brand-hover-text: var(--vp-c-white);
+  --vp-button-brand-hover-bg: var(--vp-c-brand-light);
+  --vp-button-brand-active-border: var(--vp-c-brand-light);
+  --vp-button-brand-active-text: var(--vp-c-white);
+  --vp-button-brand-active-bg: var(--vp-button-brand-bg);
+}
+
+/**
+ * Component: Home
+ * -------------------------------------------------------------------------- */
+
+:root {
+  --vp-home-hero-name-color: transparent;
+  --vp-home-hero-name-background: -webkit-linear-gradient(
+    120deg,
+    var(--vp-c-brand) 30%,
+    var(--red-marianne-main-472)
+  );
+
+  --vp-home-hero-image-background-image: linear-gradient(
+    -45deg,
+    var(--vp-c-brand) 50%,
+    var(--red-marianne-main-472)
+  );
+  --vp-home-hero-image-filter: blur(40px);
+}
+
+@media (min-width: 640px) {
+  :root {
+    --vp-home-hero-image-filter: blur(56px);
+  }
+}
+
+@media (min-width: 960px) {
+  :root {
+    --vp-home-hero-image-filter: blur(72px);
+  }
+}
+
+/**
+ * Component: Custom Block
+ * -------------------------------------------------------------------------- */
+
+:root {
+  --vp-custom-block-tip-border: var(--vp-c-brand);
+  --vp-custom-block-tip-text: var(--vp-c-brand-darker);
+  --vp-custom-block-tip-bg: var(--vp-c-brand-dimm);
+}
+
+.dark {
+  --vp-c-brand: #6a6af4;
+  --vp-custom-block-tip-border: var(--vp-c-brand);
+  --vp-custom-block-tip-text: var(--vp-c-brand-lightest);
+  --vp-custom-block-tip-bg: var(--vp-c-brand-dimm);
+  --vp-home-hero-name-background: -webkit-linear-gradient(
+    120deg,
+    var(--vp-c-brand-light) 30%,
+    var(--red-marianne-main-472)
+  );
+}
+
+/**
+ * Component: Algolia
+ * -------------------------------------------------------------------------- */
+
+.DocSearch {
+  --docsearch-primary-color: var(--vp-c-brand) !important;
+}
+
+.vp-doc summary {
+  cursor: pointer;
+}
