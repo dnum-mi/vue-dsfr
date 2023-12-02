@@ -42,7 +42,7 @@ export default defineConfig({
       }
     },
     outline:{
-      level: 2,
+      level: [2, 3],
       label: 'Sur cette page :',
     },
     logo: '/nouveau-logo-marianne-gouvernement.png',
