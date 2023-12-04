@@ -10,7 +10,10 @@ const projectDir = dirname(new URL(import.meta.url).pathname)
 const isVitepress = process.env.VITEPRESS === 'true'
 
 const config: UserConfig = {
-  plugins: [vue(), vueJsx()],
+  plugins: [
+    vue(),
+    vueJsx(),
+  ],
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url)),
