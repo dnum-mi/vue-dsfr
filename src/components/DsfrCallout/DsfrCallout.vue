@@ -15,10 +15,6 @@ withDefaults(defineProps<DsfrCalloutProps>(), {
 
 <template>
   <div class="fr-callout">
-    <div
-      class="fr-mt-n2w  fr-mb-2w  fr-ml-n4w"
-    />
-
     <component
       :is="titleTag"
       class="fr-callout__title"
