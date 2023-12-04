@@ -58,7 +58,7 @@ const linkData = computed(() => {
     @click.stop="onClick"
   >
     <template
-      v-if="icon && !iconRight"
+      v-if="(icon || iconAttrs?.name) && !iconRight"
     >
       <VIcon
         :name="icon"
@@ -70,7 +70,7 @@ const linkData = computed(() => {
     {{ label }}
 
     <template
-      v-if="icon && iconRight"
+      v-if="(icon || iconAttrs?.name) && iconRight"
     >
       <VIcon
         :name="icon"

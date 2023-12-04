@@ -11,7 +11,8 @@ const isVitepress = process.env.VITEPRESS === 'true'
 
 const config: UserConfig = {
   plugins: [
-    vue(), vueJsx(),
+    vue(),
+    vueJsx(),
   ],
   resolve: {
     alias: {

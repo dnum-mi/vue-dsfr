@@ -1,10 +1,11 @@
 import type { HTMLAttributes, StyleValue } from 'vue'
 import type { RouteLocationRaw } from 'vue-router'
+import { OhVueIcon } from 'oh-vue-icons'
 
 export type DsfrHeaderMenuLinkProps = {
   button?: boolean
   icon?: string
-  iconAttrs?: HTMLAttributes
+  iconAttrs?: InstanceType<typeof OhVueIcon>['$props'] & HTMLAttributes
   iconRight?: boolean
   label?: string
   target?: string
