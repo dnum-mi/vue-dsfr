@@ -1,6 +1,10 @@
 import type { Preview } from "@storybook/vue3"
+import { setup } from "@storybook/vue3"
 import { themes } from '@storybook/theming'
 import { withThemeByDataAttribute } from "@storybook/addon-styling"
+import { FocusTrap } from 'focus-trap-vue'
+import { defineComponent } from 'vue'
+import { OhVueIcon as VIcon} from 'oh-vue-icons'
 
 import VueDsfrTheme from './vue-dsfr-theme.js'
 import '../src/assets/variables-fdr.css'
@@ -88,5 +92,21 @@ const preview: Preview = {
     },
   },
 }
+
+const RouterLink = defineComponent({
+  name: 'RouterLink',
+  props: {
+    to: String,
+  },
+  template: `
+    <a :href="to" v-bind="$attrs"><slot /></a>
+  `,
+})
+
+setup(app => {
+  app.component('RouterLink', RouterLink);
+  app.component('VIcon', VIcon)
+  app.component('FocusTrap', FocusTrap)
+})
 
 export default preview;
