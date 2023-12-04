@@ -41,9 +41,10 @@ const onChange = ({ name, checked }: { name: string, checked: boolean }) => {
       :class="{
         'fr-fieldset--error': errorMessage,
         'fr-fieldset--valid': validMessage,
-        'fr-fieldset--inline': inline
       }"
       :disabled="disabled"
+      :aria-labelledby="`${titleId} messages-${titleId}`"
+      :role="(errorMessage || validMessage) ? 'group' : undefined"
     >
       <legend
         :id="titleId"
@@ -61,11 +62,8 @@ const onChange = ({ name, checked }: { name: string, checked: boolean }) => {
           </slot>
         </slot>
       </legend>
-      <div
-        class="fr-fieldset__content"
-        role="group"
-        :aria-labelledby="titleId"
-      >
+
+      <slot>
         <DsfrCheckbox
           v-for="option in options"
           :id="option.id"
@@ -74,13 +72,15 @@ const onChange = ({ name, checked }: { name: string, checked: boolean }) => {
           :label="option.label"
           :disabled="option.disabled"
           :small="small"
+          :inline="inline"
           :model-value="modelValue.includes(option.name)"
           :hint="option.hint"
           @update:model-value="onChange({ name: option.name, checked: $event })"
         />
-      </div>
+      </slot>
       <div
         v-if="message"
+        :id="`messages-${titleId}`"
         class="fr-messages-group"
       >
         <p

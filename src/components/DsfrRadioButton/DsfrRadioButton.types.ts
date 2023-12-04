@@ -3,6 +3,7 @@ export type DsfrRadioButtonProps = {
   name?: string
   modelValue?: string | number
   small?: boolean
+  inline?: boolean
   value: string | number
   label?: string
   hint?: string
@@ -12,9 +13,9 @@ export type DsfrRadioButtonProps = {
 export type DsfrRadioButtonSetProps = {
   titleId?: string,
   disabled?: boolean,
-  inline?: boolean,
   required?: boolean,
   small?: boolean,
+  inline?: boolean,
   name?: string,
   errorMessage?: string,
   validMessage?: string,

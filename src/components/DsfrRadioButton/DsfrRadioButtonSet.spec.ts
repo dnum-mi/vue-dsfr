@@ -22,7 +22,7 @@ describe('DsfrRadioButtonSet', () => {
       },
     })
 
-    getByRole('radiogroup')
+    getByRole('group')
     const legendEl = getByText(legend)
 
     // Then

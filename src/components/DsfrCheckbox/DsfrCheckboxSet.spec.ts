@@ -120,19 +120,21 @@ describe('DsfrCheckboxSet', () => {
 
   it('should render no checkboxes', async () => {
     // Given
+    const legend = 'Le titre des checkboxes'
     // When
-    const { container } = render(DsfrCheckboxSet, {
+    const { getByText } = render(DsfrCheckboxSet, {
       global: {
         components: {
           VIcon,
         },
       },
       props: {
+        legend,
       },
     })
-    const checkboxes = container.querySelector('.fr-fieldset__content')
+    const legendEl = getByText(legend)
 
     // Then
-    expect(checkboxes.firstElementChild).toBe(null)
+    expect(legendEl.nextElementSibling).toBe(null)
   })
 })
