@@ -1,8 +1,9 @@
 <script lang="ts" setup>
+import { onMounted, onBeforeUnmount, computed, ref, nextTick, watch } from 'vue'
 import { FocusTrap } from 'focus-trap-vue'
+import { OhVueIcon as VIcon } from 'oh-vue-icons'
 
 import DsfrButtonGroup from '../DsfrButton/DsfrButtonGroup.vue'
-import { onMounted, onBeforeUnmount, computed, ref, nextTick, watch } from 'vue'
 import { getRandomId } from '@/utils/random-utils'
 
 import type { DsfrModalProps } from './DsfrModal.types'

@@ -15,7 +15,7 @@ import dsfrIcons from '@gouvfr/dsfr/dist/utility/icons/icons.min.css?inline'
 
 import * as icons from '../src/icons'
 
-addIcons(Object.values(icons))
+addIcons(...Object.values(icons))
 
 useStyleTag(dsfrStyles, { id: 'dsfr' })
 useStyleTag(dsfrIcons, { id: 'dsfr-icons' })

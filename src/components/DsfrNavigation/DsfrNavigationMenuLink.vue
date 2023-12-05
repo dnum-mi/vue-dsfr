@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 import { computed } from 'vue'
 import { OhVueIcon as VIcon } from 'oh-vue-icons'
+
 import { getRandomId } from '../../utils/random-utils'
 
 import type { DsfrNavigationMenuLinkProps } from './DsfrNavigation.types'

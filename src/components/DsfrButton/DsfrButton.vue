@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import { computed, ref } from 'vue'
+import { OhVueIcon as VIcon } from 'oh-vue-icons'
 
 import type { DsfrButtonProps } from './DsfrButton.types'
 
