@@ -122,7 +122,6 @@ export default defineConfig({
     optimizeDeps: {
       include: [
         '@vueuse/core',
-        // 'lucide-vue-next'
       ]
     }
   },
