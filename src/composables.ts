@@ -1,5 +1,9 @@
 import { ref, watchEffect, computed } from 'vue'
-import type { ComputedRef } from 'vue'
+
+import type {
+  UseSchemeResult,
+  UseThemeOptions,
+} from './composables.types'
 
 const PREFERS_DARK_MEDIA_QUERY = '(prefers-color-scheme: dark)'
 const COLOR_SCHEME_LS_KEY = 'vue-dsfr-scheme'
@@ -7,26 +11,6 @@ const LIGHT_SCHEME = 'light'
 const DARK_SCHEME = 'dark'
 const SYSTEM_SCHEME = 'system'
 const DEFAULT_DATA_THEME_ATTRIBUTE = 'data-fr-theme'
-
-/**
- * @property {(scheme: string) => void} setScheme - Fonction pour mettre à jour le scheme
- * @property {string} scheme - Scheme courant
- * @property {string} theme - Thème courant en fonction du scheme
- */
-export declare type UseSchemeResult = {
-  setScheme: (scheme: string) => void
-  scheme: ComputedRef<string>
-  theme: ComputedRef<string>
-}
-
-/**
-* @property {string=} scheme? - Scheme souhaité (`'system'` par défaut)
-* @property {string=} dataThemeAttribute? - Nom complet de l’attribut qui contiendra la valeur du thème (`'data-fr-theme'` par défaut)
-*/
-export declare type UseThemeOptions = {
-  scheme?: string
-  dataThemeAttribute?: string
-}
 
 const getProperSchemeValue = (desiredScheme: string): string => {
   const scheme = desiredScheme ?? (localStorage.getItem(COLOR_SCHEME_LS_KEY) || SYSTEM_SCHEME)

@@ -1,8 +1,9 @@
 <script lang="ts" setup>
-withDefaults(defineProps<{
-  steps: string[]
-  currentStep: number
-}>(), {
+import type { DsfrStepperProps } from './DsfrStepper.types'
+
+export type { DsfrStepperProps }
+
+withDefaults(defineProps<DsfrStepperProps>(), {
   steps: () => [],
   currentStep: 1,
 })

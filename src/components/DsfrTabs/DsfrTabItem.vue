@@ -1,12 +1,10 @@
 <script lang="ts" setup>
 import { ref, watch } from 'vue'
+import { OhVueIcon as VIcon } from 'oh-vue-icons'
 
-export type DsfrTabItemProps = {
-  panelId: string
-  tabId: string
-  selected?: boolean
-  icon?: string
-}
+import type { DsfrTabItemProps } from './DsfrTabs.types'
+
+export type { DsfrTabItemProps }
 
 const props = withDefaults(defineProps<DsfrTabItemProps>(), {
   icon: undefined,

@@ -1,29 +1,24 @@
 <script lang="ts" setup>
 import { ref, onMounted, onUnmounted } from 'vue'
-import type { RouteLocationRaw } from 'vue-router'
 
 import { getRandomId } from '../../utils/random-utils'
 
 import DsfrNavigationItem from './DsfrNavigationItem.vue'
-import DsfrNavigationMenuLink, { type DsfrNavigationMenuLinkProps } from './DsfrNavigationMenuLink.vue'
-import DsfrNavigationMenu, { type DsfrNavigationMenuProps } from './DsfrNavigationMenu.vue'
-import DsfrNavigationMegaMenu, { type DsfrNavigationMegaMenuProps } from './DsfrNavigationMegaMenu.vue'
+import DsfrNavigationMenuLink from './DsfrNavigationMenuLink.vue'
+import DsfrNavigationMenu from './DsfrNavigationMenu.vue'
+import DsfrNavigationMegaMenu from './DsfrNavigationMegaMenu.vue'
 
-export type DsfrNavigationMenuLinks = (DsfrNavigationMenuLinkProps | DsfrNavigationMegaMenuProps | DsfrNavigationMenuProps)[]
+import type {
+  DsfrNavigationMenuLinks,
+  DsfrNavigationProps,
+  DsfrNavigationMenuProps,
+  DsfrNavigationMenuLinkProps,
+  DsfrNavigationMegaMenuProps,
+} from './DsfrNavigation.types'
 
-type SimpleLink = { text?: string ; to?: RouteLocationRaw }
-type MenuItem = { title?: string; active?: boolean; links?: DsfrNavigationMenuLinks }
-type MegaMenuItem = { title?: string; description: string, link: SimpleLink, menus: { title?: string; active?: boolean; links?: DsfrNavigationMenuLinks }[]}
+export type { DsfrNavigationMenuLinks, DsfrNavigationProps }
 
-const props = withDefaults(defineProps<{
-  id?: string
-  label?: string
-  navItems:(
-    SimpleLink
-    | MenuItem
-    | MegaMenuItem
-  )[]
-}>(), {
+const props = withDefaults(defineProps<DsfrNavigationProps>(), {
   id: () => getRandomId('menu'),
   label: 'Menu principal',
   navItems: () => [],
@@ -87,22 +82,22 @@ onUnmounted(() => {
         :key="idx"
       >
         <DsfrNavigationMenuLink
-          v-if="(navItem as SimpleLink).to && (navItem as SimpleLink).text"
+          v-if="(navItem as DsfrNavigationMenuLinkProps).to && (navItem as DsfrNavigationMenuLinkProps).text"
           v-bind="navItem"
           :expanded-id="expandedMenuId"
           @toggle-id="toggle($event)"
         />
         <!-- @vue-ignore -->
         <DsfrNavigationMenu
-          v-else-if="(navItem as MenuItem).title && (navItem as MenuItem).links"
-          v-bind="(navItem as MenuItem)"
+          v-else-if="(navItem as DsfrNavigationMenuProps).title && (navItem as DsfrNavigationMenuProps).links"
+          v-bind="(navItem as DsfrNavigationMenuProps)"
           :expanded-id="expandedMenuId"
           @toggle-id="toggle($event)"
         />
         <!-- @vue-ignore -->
         <DsfrNavigationMegaMenu
-          v-else-if="(navItem as MegaMenuItem).title && (navItem as MegaMenuItem).menus"
-          v-bind="(navItem as MegaMenuItem)"
+          v-else-if="(navItem as DsfrNavigationMegaMenuProps).title && (navItem as DsfrNavigationMegaMenuProps).menus"
+          v-bind="(navItem as DsfrNavigationMegaMenuProps)"
           :expanded-id="expandedMenuId"
           @toggle-id="toggle($event)"
         />

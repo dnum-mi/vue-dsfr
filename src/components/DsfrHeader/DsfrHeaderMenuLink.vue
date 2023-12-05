@@ -1,20 +1,10 @@
 <script lang="ts" setup>
 import { computed } from 'vue'
-import type { HTMLAttributes } from 'vue'
 import { OhVueIcon as VIcon } from 'oh-vue-icons'
-import type { RouteLocationRaw } from 'vue-router'
 
-export type DsfrHeaderMenuLinkProps = {
-  button?: boolean
-  icon?: string
-  iconAttrs?: HTMLAttributes
-  iconRight?: boolean
-  label?: string
-  target?: string
-  onClick?: ($event: MouseEvent) => void
-  to?: RouteLocationRaw
-  href?: string
-}
+import type { DsfrHeaderMenuLinkProps } from './DsfrHeader.types'
+
+export type { DsfrHeaderMenuLinkProps }
 
 const props = withDefaults(defineProps<DsfrHeaderMenuLinkProps>(), {
   icon: undefined,
@@ -68,7 +58,7 @@ const linkData = computed(() => {
     @click.stop="onClick"
   >
     <template
-      v-if="(icon || iconAttrs) && !iconRight"
+      v-if="(icon || iconAttrs?.name) && !iconRight"
     >
       <VIcon
         :name="icon"
@@ -80,7 +70,7 @@ const linkData = computed(() => {
     {{ label }}
 
     <template
-      v-if="(icon || iconAttrs) && iconRight"
+      v-if="(icon || iconAttrs?.name) && iconRight"
     >
       <VIcon
         :name="icon"

@@ -1,12 +1,11 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 
-const props = defineProps<{
-  asc?: boolean,
-  selected?: boolean,
-  panelId: string,
-  tabId: string,
-}>()
+import type { DsfrTabContentProps } from './DsfrTabs.types'
+
+export type { DsfrTabContentProps }
+
+const props = defineProps<DsfrTabContentProps>()
 
 const values = { true: '100%', false: '-100%' }
 // @ts-ignore this will be fine
@@ -16,7 +15,7 @@ const translateValueTo = computed(() => values[String(!props.asc)])
 </script>
 
 <template>
-  <transition
+  <Transition
     name="slide-fade"
     mode="in-out"
   >
@@ -34,7 +33,7 @@ const translateValueTo = computed(() => values[String(!props.asc)])
       <!-- @slot Slot par défaut pour le contenu de l’onglet. Sera dans `<div class="fr-tabs__panel">` -->
       <slot />
     </div>
-  </transition>
+  </Transition>
 </template>
 
 <style scoped>

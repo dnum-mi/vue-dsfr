@@ -3,13 +3,11 @@ import { computed } from 'vue'
 
 import { getRandomId } from '../../utils/random-utils'
 
-const props = withDefaults(defineProps<{
-  modelValue?: boolean
-  inputId?: string
-  hint?: string
-  label?: string
-  disabled?: boolean
-}>(), {
+import type { DsfrToggleSwitchProps } from './DsfrToggleSwitch.types'
+
+export type { DsfrToggleSwitchProps }
+
+const props = withDefaults(defineProps<DsfrToggleSwitchProps>(), {
   inputId: () => getRandomId('toggle'),
   hint: '',
   label: '',

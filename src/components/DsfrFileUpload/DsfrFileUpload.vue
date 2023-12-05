@@ -1,16 +1,11 @@
 <script lang="ts" setup>
 import { getRandomId } from '../../utils/random-utils'
 
-withDefaults(defineProps<{
-  id?: string
-  label?: string
-  accept?: string[]
-  hint?: string
-  error?: string
-  validMessage?: string
-  disabled?: boolean
-  modelValue?: string
-}>(), {
+import type { DsfrFileUploadProps } from './DsfrFileUpload.types'
+
+export type { DsfrFileUploadProps }
+
+withDefaults(defineProps<DsfrFileUploadProps>(), {
   id: () => getRandomId('file-upload'),
   label: 'Ajouter un fichier',
   accept: () => [],

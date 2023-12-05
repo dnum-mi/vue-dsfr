@@ -4,11 +4,11 @@ import { ref, computed, watch } from 'vue'
 import { getRandomId } from '../../utils/random-utils'
 import { useCollapsable } from '../../composables'
 
-const props = withDefaults(defineProps<{
-  id?: string
-  title?: string
-  content?: string
-}>(), {
+import type { DsfrTranscriptionProps } from './DsfrTranscription.types'
+
+export type { DsfrTranscriptionProps }
+
+const props = withDefaults(defineProps<DsfrTranscriptionProps>(), {
   id: () => getRandomId('transcription'),
   title: 'Titre de la vidéo',
   content: 'Transcription du contenu de la vidéo',

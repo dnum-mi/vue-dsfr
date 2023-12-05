@@ -1,14 +1,11 @@
 <script lang="ts" setup>
 import DsfrTranscription from '../DsfrTranscription/DsfrTranscription.vue'
 
-withDefaults(defineProps<{
-  src: string
-  legend?: string
-  size?: 'small' | 'medium' | 'large'
-  transcriptionTitle?: string
-  transcriptionContent?: string
-  ratio?: string
-}>(), {
+import type { DsfrVideoProps } from './DsfrMedia.types'
+
+export type { DsfrVideoProps }
+
+withDefaults(defineProps<DsfrVideoProps>(), {
   legend: '',
   transcriptionTitle: '',
   transcriptionContent: '',

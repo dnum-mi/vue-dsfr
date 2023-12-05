@@ -1,10 +1,9 @@
 <script lang="ts" setup>
-import { type TdHTMLAttributes, computed } from 'vue'
+import { computed } from 'vue'
 
-export type DsfrTableCellProps = {
-  field: string | Record<string, unknown>
-  cellAttrs?: TdHTMLAttributes
-}
+import type { DsfrTableCellProps } from './DsfrTable.types'
+
+export type { DsfrTableCellProps }
 
 const props = withDefaults(defineProps<DsfrTableCellProps>(), {
   cellAttrs: () => ({}),

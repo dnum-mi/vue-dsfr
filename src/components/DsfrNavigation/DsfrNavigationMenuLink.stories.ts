@@ -1,26 +1,10 @@
 import DsfrNavigationMenuLink from './DsfrNavigationMenuLink.vue'
 import DsfrNavigation from './DsfrNavigation.vue'
 
-import { setup } from '@storybook/vue3'
-
 import { addIcons } from 'oh-vue-icons'
 import { RiHome2Line } from 'oh-vue-icons/icons/ri/index.js'
 
 addIcons(RiHome2Line)
-
-const RouterLink = {
-  name: 'RouterLink',
-  props: {
-    to: String,
-  },
-  template: `
-    <a :href="to" v-bind="$attrs"><slot /></a>
-  `,
-}
-
-setup(app => {
-  app.component('RouterLink', RouterLink)
-})
 
 export default {
   component: DsfrNavigationMenuLink,

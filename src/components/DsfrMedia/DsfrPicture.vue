@@ -1,13 +1,9 @@
 <script lang="ts" setup>
+import type { DsfrPictureProps } from './DsfrMedia.types'
 
-withDefaults(defineProps<{
-  alt?: string
-  legend?: string
-  size?: 'small' | 'medium' | 'large' | undefined
-  src: string
-  title?: string
-  ratio?: string
-}>(), {
+export type { DsfrPictureProps }
+
+withDefaults(defineProps<DsfrPictureProps>(), {
   alt: '',
   legend: '',
   title: '',

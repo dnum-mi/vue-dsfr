@@ -1,8 +1,9 @@
 <script setup lang="ts">
-withDefaults(defineProps<{
-  label?: string
-  position?: 'right' | 'left'
-}>(), {
+import type { DsfrBackToTopProps } from './DsfrBackToTop.types'
+
+export type { DsfrBackToTopProps }
+
+withDefaults(defineProps<DsfrBackToTopProps>(), {
   position: 'right',
   label: 'Haut de page',
 })

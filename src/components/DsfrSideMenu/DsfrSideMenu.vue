@@ -5,15 +5,10 @@ import { getRandomId } from '../../utils/random-utils'
 
 import { useCollapsable } from '../../composables'
 import DsfrSideMenuList from './DsfrSideMenuList.vue'
-import type { DsfrSideMenuListItemProps } from './DsfrSideMenuListItem.vue'
 
-type DsfrSideMenuProps = {
-  buttonLabel?: string
-  id?: string
-  collapseValue?: string
-  menuItems?: DsfrSideMenuListItemProps[]
-  headingTitle?: string
-}
+import type { DsfrSideMenuProps } from './DsfrSideMenu.types'
+
+export type { DsfrSideMenuProps }
 
 withDefaults(defineProps<DsfrSideMenuProps>(), {
   buttonLabel: 'Dans cette rubrique',

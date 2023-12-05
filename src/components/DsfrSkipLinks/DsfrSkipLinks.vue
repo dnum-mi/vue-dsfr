@@ -1,7 +1,9 @@
 <script lang="ts" setup>
-defineProps<{
-  links: { id: string, text: string }[]
-}>()
+import type { DsfrSkipLinksProps } from './DsfrSkipLinks.types'
+
+export type { DsfrSkipLinksProps }
+
+defineProps<DsfrSkipLinksProps>()
 
 const scrollMeTo = (elementId: string) => {
   const element = document.getElementById(elementId)

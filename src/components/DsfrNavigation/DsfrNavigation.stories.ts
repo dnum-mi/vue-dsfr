@@ -1,20 +1,4 @@
-import { setup } from '@storybook/vue3'
-
 import DsfrNavigation from './DsfrNavigation.vue'
-
-const RouterLink = {
-  name: 'RouterLink',
-  props: {
-    to: String,
-  },
-  template: `
-    <a :href="to" v-bind="$attrs"><slot /></a>
-  `,
-}
-
-setup(app => {
-  app.component('RouterLink', RouterLink)
-})
 
 /**
  * [Voir quand l’utiliser sur la documentation du DSFR](https://www.systeme-de-design.gouv.fr/elements-d-interface/composants/navigation-principale)

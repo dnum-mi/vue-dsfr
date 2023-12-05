@@ -1,15 +1,7 @@
 <script lang="ts" setup>
-import type { RouteLocationRaw } from 'vue-router'
+import type { DsfrFooterLinkListProps } from './DsfrFooter.types'
 
-export type DsfrFooterLinkProps = {
-  label: string
-  to: string | RouteLocationRaw
-}
-
-export type DsfrFooterLinkListProps = {
-  categoryName: string
-  links: DsfrFooterLinkProps[]
-}
+export type { DsfrFooterLinkListProps }
 
 withDefaults(defineProps<DsfrFooterLinkListProps>(), {
   categoryName: 'Nom de la catégorie',

@@ -4,24 +4,15 @@ import type { Ref } from 'vue'
 
 import { getRandomId } from '../../utils/random-utils'
 
+import type { DsfrInputProps } from './DsfrInput.types'
+
+export type { DsfrInputProps }
+
 defineOptions({
   inheritAttrs: false,
 })
 
-const props = withDefaults(defineProps<{
-  id?: string
-  descriptionId?: string
-  hint?: string
-  isInvalid?: boolean
-  isValid?: boolean
-  isTextarea?: boolean
-  isWithWrapper?: boolean
-  labelVisible?: boolean
-  label?: string
-  labelClass?: string
-  modelValue?: string
-  wrapperClass?: string
-}>(), {
+const props = withDefaults(defineProps<DsfrInputProps>(), {
   id: () => getRandomId('basic', 'input'),
   descriptionId: undefined,
   hint: '',

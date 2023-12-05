@@ -1,8 +1,13 @@
-module.exports = {
+import postcssImport from 'postcss-import'
+import postcssNested from 'postcss-nested'
+import postcssPresetEnv from 'postcss-preset-env'
+import postcssCsso from 'postcss-csso'
+
+export default {
   plugins: [
-    require('postcss-import')(),
-    require('postcss-nested'),
-    require('postcss-preset-env')({
+    postcssImport(),
+    postcssNested,
+    postcssPresetEnv({
       autoprefixer: {
         flexbox: 'no-2009',
       },
@@ -12,6 +17,6 @@ module.exports = {
         'focus-visible-pseudo-class': false,
       },
     }),
-    require('postcss-csso'),
+    postcssCsso,
   ],
 }

@@ -1,13 +1,12 @@
 <script lang="ts" setup>
 import { computed } from 'vue'
 
-import DsfrSocialNetworks, { type DsfrSocialNetwork } from './DsfrSocialNetworks.vue'
-import DsfrNewsLetter, { type DsfrNewsLetterProps } from './DsfrNewsLetter.vue'
+import DsfrSocialNetworks from './DsfrSocialNetworks.vue'
+import DsfrNewsLetter from './DsfrNewsLetter.vue'
 
-export type DsfrFollowProps = {
-  newsletterData: DsfrNewsLetterProps
-  networks: DsfrSocialNetwork[]
-}
+import type { DsfrFollowProps } from './DsfrFollow.types'
+
+export type { DsfrFollowProps }
 
 const props = withDefaults(defineProps<DsfrFollowProps>(), {
   // @ts-ignore this is really undefined

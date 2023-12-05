@@ -3,15 +3,14 @@ import { ref, onMounted, onUnmounted, reactive } from 'vue'
 
 import { getRandomId } from '../../utils/random-utils'
 
-import DsfrTabItem, { type DsfrTabItemProps } from './DsfrTabItem.vue'
+import DsfrTabItem from './DsfrTabItem.vue'
 import DsfrTabContent from './DsfrTabContent.vue'
 
-const props = withDefaults(defineProps<{
-  tabListName: string
-  tabTitles:(DsfrTabItemProps & { title: string })[]
-  tabContents?: string[]
-  initialSelectedIndex?: number
-}>(), {
+import type { DsfrTabsProps } from './DsfrTabs.types'
+
+export type { DsfrTabsProps }
+
+const props = withDefaults(defineProps<DsfrTabsProps>(), {
   tabContents: () => [],
   initialSelectedIndex: 0,
 })

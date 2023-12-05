@@ -1,21 +1,16 @@
 <script lang="ts" setup>
+import { onMounted, onBeforeUnmount, computed, ref, nextTick, watch } from 'vue'
 import { FocusTrap } from 'focus-trap-vue'
+import { OhVueIcon as VIcon } from 'oh-vue-icons'
 
 import DsfrButtonGroup from '../DsfrButton/DsfrButtonGroup.vue'
-import { onMounted, onBeforeUnmount, computed, ref, nextTick, watch } from 'vue'
 import { getRandomId } from '@/utils/random-utils'
-import type { DsfrButtonProps } from '../DsfrButton/DsfrButton.vue'
 
-const props = withDefaults(defineProps<{
-  modalId?: string
-  opened?: boolean
-  actions?: DsfrButtonProps[]
-  isAlert?: boolean
-  origin?: {focus:() => void}
-  title: string
-  icon?: string
-  size?: 'sm' | 'md' | 'lg' | 'xl'
-}>(), {
+import type { DsfrModalProps } from './DsfrModal.types'
+
+export type { DsfrModalProps }
+
+const props = withDefaults(defineProps<DsfrModalProps>(), {
   modalId: () => getRandomId('modal', 'dialog'),
   actions: () => [],
   origin: () => ({ focus () {} }), // eslint-disable-line @typescript-eslint/no-empty-function
@@ -131,10 +126,13 @@ async function close () {
                 <slot />
               </div>
               <div
-                v-if="actions && actions.length"
+                v-if="actions?.length || $slots.footer"
                 class="fr-modal__footer"
               >
+                <!-- @slot Slot pour le pied-de-page de la modale `<ul class="fr-modal__footer">` -->
+                <slot name="footer" />
                 <DsfrButtonGroup
+                  v-if="actions?.length"
                   align="right"
                   :buttons="actions"
                   inline-layout-when="large"

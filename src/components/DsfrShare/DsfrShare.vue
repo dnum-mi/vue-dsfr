@@ -1,10 +1,9 @@
 <script lang="ts" setup>
-withDefaults(defineProps<{
-  title?: string
-  copyLabel?: string
-  mail?: { label: string, to: string }
-  networks?: { name: string, label: string, url: string }[]
-}>(), {
+import type { DsfrShareProps } from './DsfrShare.types'
+
+export type { DsfrShareProps }
+
+withDefaults(defineProps<DsfrShareProps>(), {
   title: 'Partager la page',
   copyLabel: 'Copier dans le presse-papier',
   // @ts-ignore this is really undefined

@@ -104,13 +104,15 @@ export const RichRadioButton = (args) => ({
     return args
   },
   template: `
-    <DsfrRadioButton
-      v-for="option of options"
-      :modelValue="modelValue"
-      v-bind="option"
-      :small="small"
-      @update:modelValue="updateCheckedValue($event)"
-    />
+    <DsfrRadioButtonSet>
+      <DsfrRadioButton
+        v-for="option of options"
+        :modelValue="modelValue"
+        v-bind="option"
+        :small="small"
+        @update:modelValue="updateCheckedValue($event)"
+      />
+    <DsfrRadioButtonSet>
   `,
   methods: {
     updateCheckedValue (val) {

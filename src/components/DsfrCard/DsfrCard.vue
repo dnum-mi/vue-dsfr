@@ -1,24 +1,12 @@
 <script lang="ts" setup>
 import { computed, ref, type Ref } from 'vue'
-import type { RouteLocationRaw } from 'vue-router'
 import DsfrButtonGroup from '../DsfrButton/DsfrButtonGroup.vue'
-import type { DsfrButtonProps } from '../DsfrButton/DsfrButton.vue'
 
-const props = withDefaults(defineProps<{
-  imgSrc?: string
-  link?: string | RouteLocationRaw
-  title: string
-  description: string
-  size?: 'md' | 'medium' | 'large' | 'lg' | 'sm' | 'small' | undefined
-  detail?: string
-  altImg?: string
-  titleTag?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'
-  buttons?: DsfrButtonProps[]
-  linksGroup?:({ label: string, to?: RouteLocationRaw, link?: string, href?: string })[]
-  noArrow?: boolean
-  horizontal?: boolean
-  download?: boolean
-}>(), {
+import type { DsfrCardProps } from './DsfrCard.types'
+
+export type { DsfrCardProps }
+
+const props = withDefaults(defineProps<DsfrCardProps>(), {
   imgSrc: undefined,
   link: undefined,
   detail: undefined,

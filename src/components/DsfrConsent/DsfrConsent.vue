@@ -1,7 +1,11 @@
 <script lang="ts" setup>
 import { computed } from 'vue'
 
-const props = withDefaults(defineProps<{ url?: string }>(), {
+import type { DsfrConsentProps } from './DsfrConsent.types'
+
+export type { DsfrConsentProps }
+
+const props = withDefaults(defineProps<DsfrConsentProps>(), {
   url: '',
 })
 

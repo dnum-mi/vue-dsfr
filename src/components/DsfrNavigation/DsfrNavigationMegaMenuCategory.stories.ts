@@ -3,22 +3,6 @@ import DsfrNavigationItem from './DsfrNavigationItem.vue'
 import DsfrNavigationMegaMenu from './DsfrNavigationMegaMenu.vue'
 import DsfrNavigationMegaMenuCategory from './DsfrNavigationMegaMenuCategory.vue'
 
-import { setup } from '@storybook/vue3'
-
-const RouterLink = {
-  name: 'RouterLink',
-  props: {
-    to: String,
-  },
-  template: `
-    <a :href="to" v-bind="$attrs"><slot /></a>
-  `,
-}
-
-setup(app => {
-  app.component('RouterLink', RouterLink)
-})
-
 export default {
   component: DsfrNavigationMegaMenuCategory,
   title: 'Composants/DsfrNavigationMegaMenuCategory',
