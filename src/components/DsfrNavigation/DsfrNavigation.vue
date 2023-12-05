@@ -8,7 +8,13 @@ import DsfrNavigationMenuLink from './DsfrNavigationMenuLink.vue'
 import DsfrNavigationMenu from './DsfrNavigationMenu.vue'
 import DsfrNavigationMegaMenu from './DsfrNavigationMegaMenu.vue'
 
-import type { DsfrNavigationMenuLinks, DsfrNavigationProps } from './DsfrNavigation.types'
+import type {
+  DsfrNavigationMenuLinks,
+  DsfrNavigationProps,
+  DsfrNavigationMenuProps,
+  DsfrNavigationMenuLinkProps,
+  DsfrNavigationMegaMenuProps,
+} from './DsfrNavigation.types'
 
 export type { DsfrNavigationMenuLinks, DsfrNavigationProps }
 
@@ -76,22 +82,22 @@ onUnmounted(() => {
         :key="idx"
       >
         <DsfrNavigationMenuLink
-          v-if="(navItem as SimpleLink).to && (navItem as SimpleLink).text"
+          v-if="(navItem as DsfrNavigationMenuLinkProps).to && (navItem as DsfrNavigationMenuLinkProps).text"
           v-bind="navItem"
           :expanded-id="expandedMenuId"
           @toggle-id="toggle($event)"
         />
         <!-- @vue-ignore -->
         <DsfrNavigationMenu
-          v-else-if="(navItem as MenuItem).title && (navItem as MenuItem).links"
-          v-bind="(navItem as MenuItem)"
+          v-else-if="(navItem as DsfrNavigationMenuProps).title && (navItem as DsfrNavigationMenuProps).links"
+          v-bind="(navItem as DsfrNavigationMenuProps)"
           :expanded-id="expandedMenuId"
           @toggle-id="toggle($event)"
         />
         <!-- @vue-ignore -->
         <DsfrNavigationMegaMenu
-          v-else-if="(navItem as MegaMenuItem).title && (navItem as MegaMenuItem).menus"
-          v-bind="(navItem as MegaMenuItem)"
+          v-else-if="(navItem as DsfrNavigationMegaMenuProps).title && (navItem as DsfrNavigationMegaMenuProps).menus"
+          v-bind="(navItem as DsfrNavigationMegaMenuProps)"
           :expanded-id="expandedMenuId"
           @toggle-id="toggle($event)"
         />

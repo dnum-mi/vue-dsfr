@@ -28,6 +28,7 @@ export type DsfrNavigationItemProps = {
 
 export type DsfrNavigationMegaMenuCategoryProps = {
   title: string
+  active?: boolean
   links: DsfrNavigationMenuLinkProps[]
 }
 
@@ -43,16 +44,12 @@ export type DsfrNavigationMegaMenuProps = {
 
 export type DsfrNavigationMenuLinks = (DsfrNavigationMenuLinkProps | DsfrNavigationMegaMenuProps | DsfrNavigationMenuProps)[]
 
-type SimpleLink = { text?: string ; to?: RouteLocationRaw }
-type MenuItem = { title?: string; active?: boolean; links?: DsfrNavigationMenuLinks }
-type MegaMenuItem = { title?: string; description: string, link: SimpleLink, menus: { title?: string; active?: boolean; links?: DsfrNavigationMenuLinks }[]}
-
 export type DsfrNavigationProps = {
   id?: string
   label?: string
   navItems:(
-    SimpleLink
-    | MenuItem
-    | MegaMenuItem
+    DsfrNavigationMenuLinkProps
+    | DsfrNavigationMenuProps
+    | DsfrNavigationMegaMenuProps
   )[]
 }
