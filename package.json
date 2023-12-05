@@ -16,7 +16,7 @@
   "types": "./types",
   "license": "MIT",
   "main": "./dist/vue-dsfr.umd.js",
-  "module": "./dist/vue-dsfr.mjs",
+  "module": "./dist/vue-dsfr.js",
   "exports": {
     ".": {
       "require": {
@@ -25,7 +25,7 @@
       },
       "import": {
         "types": "./types/index.d.ts",
-        "default": "./dist/vue-dsfr.mjs"
+        "default": "./dist/vue-dsfr.js"
       }
     },
     "./dist/vue-dsfr.css": {
