@@ -62,7 +62,7 @@ export default {
   },
 }
 
-export const Modal = (args) => ({
+export const ModalAvecActions = (args) => ({
   components: {
     DsfrModal,
     DsfrButton,
@@ -75,7 +75,10 @@ export const Modal = (args) => ({
 
   computed: {
     modifiedActions () {
-      return this.actions.map(action => ({ ...action, onClick: () => { action.onClick(); this.onClose() } }))
+      return this.actions.map(action => ({
+        ...action,
+        onClick: () => { this.onClick?.(action.actionArg); this.onClose() },
+      }))
     },
   },
 
@@ -88,7 +91,7 @@ export const Modal = (args) => ({
     <DsfrModal
       ref="modal"
       :opened="opened"
-      :actions="modifyActions"
+      :actions="modifiedActions"
       :is-alert="isAlert"
       :icon="icon"
       :title="title"
@@ -96,12 +99,13 @@ export const Modal = (args) => ({
       :size="size"
       @close="onClose()"
     >
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas varius tortor nibh, sit amet tempor nibh finibus et. Aenean eu enim justo. Vestibulum aliquam hendrerit molestie. Mauris malesuada nisi sit amet augue accumsan tincidunt. Maecenas tincidunt, velit ac porttitor pulvinar, tortor eros facilisis libero, vitae commodo nunc quam et ligula. Ut nec ipsum sapien. Interdum et malesuada fames ac ante ipsum primis in faucibus. Integer id nisi nec nulla luctus lacinia non eu turpis. Etiam in ex imperdiet justo tincidunt egestas. Ut porttitor urna ac augue cursus tincidunt sit amet sed orci.</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas varius tortor nibh, sit amet tempor nibh finibus et. Aenean eu enim justo. Vestibulum aliquam hendrerit molestie. Mauris malesuada nisi sit amet augue accumsan tincidunt. Maecenas tincidunt, velit ac porttitor pulvinar, tortor eros facilisis libero, vitae commodo nunc quam et ligula. Ut nec ipsum sapien. Interdum et malesuada fames ac ante ipsum primis in faucibus. Integer id nisi nec nulla luctus lacinia non eu turpis. Etiam in ex imperdiet justo tincidunt egestas. Ut porttitor urna ac augue cursus tincidunt sit amet sed orci.</p>
     </DsfrModal>
   `,
 
   methods: {
     onClose () {
+      args.onClick('Fermer')
       this.opened = false
     },
     open () {
@@ -109,7 +113,7 @@ export const Modal = (args) => ({
     },
   },
 })
-Modal.args = {
+ModalAvecActions.args = {
   opened: false,
   title: 'Titre de la modale',
   isAlert: false,
@@ -118,15 +122,130 @@ Modal.args = {
   actions: [
     {
       label: 'Valider',
+      actionArg: 'Valider',
     },
     {
       label: 'Annuler',
+      actionArg: 'Annuler',
       secondary: true,
     },
   ],
 }
 
-Modal.play = async ({ canvasElement }) => {
+export const ModalSansPiedDePage = (args) => ({
+  components: {
+    DsfrModal,
+    DsfrButton,
+    VIcon,
+  },
+
+  data () {
+    return args
+  },
+
+  template: `
+    <DsfrButton
+      label="Ouvre la modale"
+      @click="open()"
+      ref="modalOrigin"
+    />
+    <DsfrModal
+      ref="modal"
+      :opened="opened"
+      :is-alert="isAlert"
+      :icon="icon"
+      :title="title"
+      :origin="$refs.modalOrigin"
+      :size="size"
+      @close="onClose()"
+    >
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas varius tortor nibh, sit amet tempor nibh finibus et. Aenean eu enim justo. Vestibulum aliquam hendrerit molestie. Mauris malesuada nisi sit amet augue accumsan tincidunt. Maecenas tincidunt, velit ac porttitor pulvinar, tortor eros facilisis libero, vitae commodo nunc quam et ligula. Ut nec ipsum sapien. Interdum et malesuada fames ac ante ipsum primis in faucibus. Integer id nisi nec nulla luctus lacinia non eu turpis. Etiam in ex imperdiet justo tincidunt egestas. Ut porttitor urna ac augue cursus tincidunt sit amet sed orci.</p>
+    </DsfrModal>
+  `,
+
+  methods: {
+    onClose () {
+      args.onClick('Fermer')
+      this.opened = false
+    },
+    open () {
+      this.opened = true
+    },
+  },
+})
+ModalSansPiedDePage.args = {
+  opened: false,
+  title: 'Titre de la modale',
+  isAlert: false,
+  icon: 'ri-checkbox-circle-line',
+  size: 'md',
+  actions: [
+    {
+      label: 'Valider',
+      actionArg: 'Valider',
+    },
+    {
+      label: 'Annuler',
+      actionArg: 'Annuler',
+      secondary: true,
+    },
+  ],
+}
+
+export const ModalAvecFooterPersonnalise = (args) => ({
+  components: {
+    DsfrModal,
+    DsfrButton,
+    VIcon,
+  },
+
+  data () {
+    return args
+  },
+
+  template: `
+    <DsfrButton
+      label="Ouvre la modale"
+      @click="open()"
+      ref="modalOrigin"
+    />
+    <DsfrModal
+      ref="modal"
+      :opened="opened"
+      :actions="modifiedActions"
+      :is-alert="isAlert"
+      :icon="icon"
+      :title="title"
+      :origin="$refs.modalOrigin"
+      :size="size"
+      @close="onClose()"
+    >
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas varius tortor nibh, sit amet tempor nibh finibus et. Aenean eu enim justo. Vestibulum aliquam hendrerit molestie. Mauris malesuada nisi sit amet augue accumsan tincidunt. Maecenas tincidunt, velit ac porttitor pulvinar, tortor eros facilisis libero, vitae commodo nunc quam et ligula. Ut nec ipsum sapien. Interdum et malesuada fames ac ante ipsum primis in faucibus. Integer id nisi nec nulla luctus lacinia non eu turpis. Etiam in ex imperdiet justo tincidunt egestas. Ut porttitor urna ac augue cursus tincidunt sit amet sed orci.</p>
+      <template #footer>
+        Ici pied de page personnalisé
+      </template>
+    </DsfrModal>
+  `,
+
+  methods: {
+    onClose () {
+      args.onClick('Fermer')
+      this.opened = false
+    },
+    open () {
+      this.opened = true
+    },
+  },
+})
+ModalAvecFooterPersonnalise.args = {
+  opened: false,
+  title: 'Titre de la modale',
+  isAlert: false,
+  icon: 'ri-checkbox-circle-line',
+  size: 'md',
+}
+
+ModalAvecActions.play = async ({ canvasElement }) => {
   const canvas = within(canvasElement)
   const openModalButton = canvas.getByRole('button')
   await userEvent.type(openModalButton, '{enter}')

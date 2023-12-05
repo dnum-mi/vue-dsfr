@@ -125,10 +125,13 @@ async function close () {
                 <slot />
               </div>
               <div
-                v-if="actions && actions.length"
+                v-if="actions?.length || $slots.footer"
                 class="fr-modal__footer"
               >
+                <!-- @slot Slot pour le pied-de-page de la modale `<ul class="fr-modal__footer">` -->
+                <slot name="footer" />
                 <DsfrButtonGroup
+                  v-if="actions?.length"
                   align="right"
                   :buttons="actions"
                   inline-layout-when="large"
