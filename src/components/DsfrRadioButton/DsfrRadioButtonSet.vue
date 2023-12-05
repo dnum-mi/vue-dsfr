@@ -37,14 +37,15 @@ const onChange = ($event: string) => {
       :class="{
         'fr-fieldset--error': errorMessage,
         'fr-fieldset--valid': validMessage,
-        'fr-fieldset--inline': inline
       }"
       :disabled="disabled"
+      :aria-labelledby="`${titleId} messages-${titleId}`"
+      :role="(errorMessage || validMessage) ? 'group' : undefined"
     >
       <legend
         v-if="legend"
         :id="titleId"
-        class="fr-fieldset__legend fr-text--regular"
+        class="fr-fieldset__legend fr-fieldset__legend--regular"
       >
         <!-- @slot Slot pour personnaliser tout le contenu de la balise <legend> cf. [DsfrInput](/?path=/story/composants-champ-de-saisie-champ-simple-dsfrinput--champ-avec-label-personnalise). Une **props porte le même nom pour une légende simple** (texte sans mise en forme) -->
         <slot name="legend">
@@ -59,23 +60,24 @@ const onChange = ($event: string) => {
         </slot>
       </legend>
 
-      <div
-        class="fr-fieldset__content"
-        role="radiogroup"
-      >
+      <slot>
         <DsfrRadioButton
           v-for="(option, i) of options"
           :key="option.value || i"
           :name="name"
           v-bind="option"
           :small="small"
+          :inline="inline"
           :model-value="modelValue"
           @update:model-value="onChange($event as string)"
         />
-      </div>
+      </slot>
+
       <div
         v-if="message"
+        :id="`messages-${titleId}`"
         class="fr-messages-group"
+        aria-live="assertive"
       >
         <p
           class="fr-message--info  flex  items-center"

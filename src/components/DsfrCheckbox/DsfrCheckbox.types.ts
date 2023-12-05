@@ -6,6 +6,7 @@ export type DsfrCheckboxProps = {
   required?: boolean
   modelValue?: boolean
   small?: boolean
+  inline?: boolean
   label?: string
   errorMessage?: string
   validMessage?: string

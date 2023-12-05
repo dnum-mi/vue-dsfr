@@ -86,6 +86,7 @@ GroupeDeBoutonsRadio.args = {
     {
       label: 'Valeur 3',
       value: '3',
+      hint: 'Description 3',
     },
   ],
 }
@@ -128,6 +129,7 @@ GroupeDeBoutonsRadioRequis.args = {
     {
       label: 'Valeur 3',
       value: '3',
+      hint: 'Description 3',
     },
   ],
 }
@@ -174,6 +176,7 @@ GroupeDeBoutonsRadioRequisPersonnalise.args = {
     {
       label: 'Valeur 3',
       value: '3',
+      hint: 'Description 3',
     },
   ],
 }
@@ -222,7 +225,7 @@ GroupeDeBoutonsRadioEnErreur.args = {
   ],
 }
 
-export const GroupeDeBoutonsRadioEnSuccess = (args) => ({
+export const GroupeDeBoutonsRadioEnSucces = (args) => ({
   components: { DsfrRadioButtonSet },
   data () {
     return args
@@ -240,7 +243,7 @@ export const GroupeDeBoutonsRadioEnSuccess = (args) => ({
     />
   `,
 })
-GroupeDeBoutonsRadioEnSuccess.args = {
+GroupeDeBoutonsRadioEnSucces.args = {
   validMessage: 'Succès au chocolat',
   legend: 'Légende des champs',
   inline: false,
@@ -303,6 +306,7 @@ GroupeDeBoutonsRadioDisabled.args = {
     {
       label: 'Valeur 3',
       value: '3',
+      hint: 'Description 3',
     },
   ],
 }
@@ -344,6 +348,7 @@ GroupeDeBoutonsRadioInline.args = {
     {
       label: 'Valeur 3',
       value: '3',
+      hint: 'Description 3',
     },
   ],
 }
