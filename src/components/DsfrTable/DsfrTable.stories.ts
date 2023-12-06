@@ -44,13 +44,17 @@ export default {
       action: 'clicked on row',
       description: 'Fonction pour montrer le clic sur une ligne (Ici seulement la 2e ligne)',
     },
-    defaultCurrentPage: {
+    currentPage: {
       control: 'number',
       description: 'Le numéro de la page dans la pagination',
     },
-    defaultOptionSelected: {
+    resultsDisplayed: {
       control: 'number',
-      description: 'La sélection du nombre d\'enregistrements par page',
+      description: 'La sélection du nombre d\'enregistrements affichés par page',
+    },
+    'update:currentPage': {
+      control: 'event',
+      description: 'Event se déclenchant au changement de page, laissant la liberté à l\'utilisateur de charger son contenu au fur et à mesure',
     },
   },
 }
@@ -253,8 +257,8 @@ const rows = [
 ]
 const noCaption = false
 const pagination = true
-const defaultCurrentPage = 2
-const defaultOptionSelected = 5
+const currentPage = 2
+const resultsDisplayed = 5
 
 export const TableauEntier = (args) => ({
   components: {
@@ -280,8 +284,8 @@ export const TableauEntier = (args) => ({
         :rows="rows"
         :no-caption="noCaption"
         :pagination="pagination"
-        :defaultCurrentPage="defaultCurrentPage"
-        :defaultOptionSelected="defaultOptionSelected"
+        :currentPage="currentPage"
+        :resultsDisplayed="resultsDisplayed"
       />
   `,
 
@@ -292,6 +296,6 @@ TableauEntier.args = {
   rows,
   noCaption,
   pagination,
-  defaultCurrentPage,
-  defaultOptionSelected,
+  currentPage,
+  resultsDisplayed,
 }

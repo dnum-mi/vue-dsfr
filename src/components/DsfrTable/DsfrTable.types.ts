@@ -26,6 +26,6 @@ export type DsfrTableProps = {
   rows?:(DsfrTableRowProps | string[])[]
   noCaption?: boolean
   pagination?: boolean
-  defaultCurrentPage?: number
-  defaultOptionSelected?: number
+  currentPage?: number
+  resultsDisplayed?: number
 }
