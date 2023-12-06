@@ -5,6 +5,65 @@ import { whyframe } from '@whyframe/core'
 import { whyframeVue } from '@whyframe/vue'
 import { hmrFix } from './plugins/hmrFix.js'
 
+const composants = [
+  {
+    text: 'DsfrAccordion',
+    link: '/composants/DsfrAccordion.md',
+  },
+  {
+    text: 'DsfrAlert',
+    link: '/composants/DsfrAlert.md',
+  },
+  {
+    text: 'DsfrBackToTop',
+    link: '/composants/DsfrBackToTop.md',
+  },
+  {
+    text: 'DsfrBadge',
+    link: '/composants/DsfrBadge.md',
+  },
+  {
+    text: 'DsfrBreadcrumb',
+    link: '/composants/DsfrBreadcrumb.md',
+  },
+  {
+    text: 'DsfrButton',
+    link: '/composants/DsfrButton.md',
+  },
+  {
+    text: 'DsfrButtonGroup',
+    link: '/composants/DsfrButtonGroup.md',
+  },
+  {
+    text: 'DsfrCard',
+    link: '/composants/DsfrCard.md',
+  },
+  {
+    text: 'DsfrRange',
+    link: '/composants/DsfrRange.md',
+  },
+  {
+    text: 'DsfrNotice',
+    link: '/composants/DsfrNotice.md',
+  },
+  {
+    text: 'DsfrSegmented',
+    link: '/composants/DsfrSegmented.md',
+  },
+  {
+    text: 'DsfrSegmentedSet',
+    link: '/composants/DsfrSegmentedSet.md',
+  },
+  {
+    text: 'DsfrTag',
+    link: '/composants/DsfrTag.md',
+  },
+  {
+    text: 'DsfrTooltip',
+    link: '/composants/DsfrTooltip.md',
+  },
+]
+
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   title: "VueDsfr",
@@ -27,12 +86,12 @@ export default defineConfig({
     },
     logo: '/nouveau-logo-marianne-gouvernement.png',
     nav: [
-      { text: 'Home', link: '/' },
+      { text: 'Guide', link: '/pour-commencer' },
       {
         text: 'Références',
         items: [
-          { text: 'Composants', link: '/composants' },
-          { text: 'Nuxt 3', link: '/nuxt/' }
+          { text: 'Tous les composants', link: '/composants' },
+          { text: 'Tous les types', link: '/types' }
         ]
       },
       {
@@ -42,7 +101,12 @@ export default defineConfig({
             text: 'Système de Design Français',
             link: 'https://www.systeme-de-design.gouv.fr/',
             target: '_blank'
-          }
+          },
+          {
+            text: 'Storybook de VueDsfr',
+            link: 'https://vue-ds.fr/',
+            target: '_blank'
+          },
         ]
       }
     ],
@@ -72,102 +136,46 @@ export default defineConfig({
         },
       }
     },
-    sidebar: [
-      {
-        text: 'Pour commencer',
-        collapsed: false,
-        items: [
-          {
-            text: 'Commencer',
-            link: '/pour-commencer',
-          },
-          {
-            text: 'L’écosystème',
-            link: '/ecosysteme',
-          },
-          {
-            text: 'Les icônes',
-            link: '/icones',
-          },
-          {
-            text: 'Guide du développeur',
-            link: '/guide-developpeur',
-          },
-        ]
-      },
-      {
-        text: 'Tous les types',
-        link: '/types',
-        items: []
-      },
-      {
-        text: 'Tous les composants',
-        link: '/composants',
-        collapsed: false,
-        items: [
-          {
-            text: 'DsfrAccordion',
-            link: '/composants/DsfrAccordion.md',
-          },
-          {
-            text: 'DsfrAlert',
-            link: '/composants/DsfrAlert.md',
-          },
-          {
-            text: 'DsfrBackToTop',
-            link: '/composants/DsfrBackToTop.md',
-          },
-          {
-            text: 'DsfrBadge',
-            link: '/composants/DsfrBadge.md',
-          },
-          {
-            text: 'DsfrBreadcrumb',
-            link: '/composants/DsfrBreadcrumb.md',
-          },
-          {
-            text: 'DsfrButton',
-            link: '/composants/DsfrButton.md',
-          },
-          {
-            text: 'DsfrButtonGroup',
-            link: '/composants/DsfrButtonGroup.md',
-          },
-          {
-            text: 'DsfrCard',
-            link: '/composants/DsfrCard.md',
-          },
-          {
-            text: 'DsfrRange',
-            link: '/composants/DsfrRange.md',
-          },
-          {
-            text: 'DsfrNotice',
-            link: '/composants/DsfrNotice.md',
-          },
-          {
-            text: 'DsfrSegmented',
-            link: '/composants/DsfrSegmented.md',
-          },
-          {
-            text: 'DsfrSegmentedSet',
-            link: '/composants/DsfrSegmentedSet.md',
-          },
-          {
-            text: 'DsfrTag',
-            link: '/composants/DsfrTag.md',
-          },
-          {
-            text: 'DsfrTooltip',
-            link: '/composants/DsfrTooltip.md',
-          },
-        ]
-      },
-      {
-        text: 'Recettes nuxt',
-        link: '/nuxt/',
-      },
-    ],
+    sidebar: {
+      '/composants': composants,
+      '/': [
+        {
+          text: 'Introduction',
+          items: [
+            {
+              text: 'Commencer',
+              link: '/pour-commencer',
+            },
+            {
+              text: 'L’écosystème',
+              link: '/ecosysteme',
+            },
+            {
+              text: 'Les icônes',
+              link: '/icones',
+            },
+            {
+              text: 'Guide du développeur',
+              link: '/guide-developpeur',
+            },
+          ]
+        },
+        {
+          text: 'Tous les types',
+          link: '/types',
+          items: []
+        },
+        {
+          text: 'Tous les composants',
+          link: '/composants',
+          items: []
+        },
+        {
+          text: 'Recettes nuxt',
+          link: '/nuxt/',
+        },
+      ],
+    },
 
     socialLinks: [
       { icon: 'github', link: 'https://github.com/dnum-mi/vue-dsfr' },
