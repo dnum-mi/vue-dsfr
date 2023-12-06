@@ -21,6 +21,18 @@ export default defineConfig({
   },
 
   themeConfig: {
+    docFooter: {
+      next: 'Page suivante',
+      prev: 'Page précédente',
+    },
+    logo: '/nouveau-logo-marianne-gouvernement.png',
+    nav: [
+      { text: 'Home', link: '/' },
+    ],
+    outline:{
+      level: [2, 3],
+      label: 'Sur cette page :',
+    },
     search: {
       provider: 'local',
       options: {
@@ -43,16 +55,6 @@ export default defineConfig({
         },
       }
     },
-    outline:{
-      level: [2, 3],
-      label: 'Sur cette page :',
-    },
-    logo: '/nouveau-logo-marianne-gouvernement.png',
-    // https://vitepress.dev/reference/default-theme-config
-    nav: [
-      { text: 'Home', link: '/' },
-    ],
-
     sidebar: [
       {
         text: 'Pour commencer',
