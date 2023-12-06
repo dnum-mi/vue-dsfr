@@ -3,7 +3,7 @@ import { ref, watch } from 'vue'
 
 import type { DsfrBreadcrumbProps } from './DsfrBreadcrumb.types'
 import { getRandomId } from '../../utils/random-utils'
-import { useCollapsable } from '../../composables.js'
+import { useCollapsable } from '../../composables'
 
 export type { DsfrBreadcrumbProps }
 
