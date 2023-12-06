@@ -13,7 +13,7 @@ export default {
     },
     options: {
       control: 'object',
-      description: 'Tableau d’objets : chaque objet contient les props à passer à `DsfrRadioButton` - *N.B. : Ne fait pas partie du composant',
+      description: 'Tableau d’objets : chaque objet contient les props à passer à `DsfrRadioButton` - *N.B. : Ne fait pas partie du composant',
     },
     small: {
       control: 'boolean',

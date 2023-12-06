@@ -29,7 +29,7 @@ export default {
     // },
     options: {
       control: 'object',
-      description: 'Tableau d’objets : chaque objet contient les props à passer à `DsfrRadioButton`',
+      description: 'Tableau d’objets : chaque objet contient les props à passer à `DsfrRadioButton`',
     },
     modelValue: {
       control: 'text',

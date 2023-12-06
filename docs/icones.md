@@ -9,7 +9,7 @@ title: Utiliser des icônes
 Pour utiliser les icônes officielles avec les classes CSS du DSFR, il n’y a pas d’actions en plus à faire,
 puisque c’est le CSS officiel du DSFR qui est utilisé.
 
-Ci-dessous un exemple :
+Ci-dessous un exemple :
 
 ::: code-group
 
@@ -24,7 +24,7 @@ Ci-dessous un exemple :
 
 Plusieurs composants (`DsfrButton`, `DsfrBadge`, `DsfrCallout`...) ont la prop `icon` qui permet d’ajouter une icône.
 
-Attention, cette icône n’est pas forcément une icône officielle du DSFR. En effet, VueDsfr utilise la bibliothèque [`oh-vue-icons`](https://oh-vue-icons.netlify.app/). Cette prop `icon` est donc :
+Attention, cette icône n’est pas forcément une icône officielle du DSFR. En effet, VueDsfr utilise la bibliothèque [`oh-vue-icons`](https://oh-vue-icons.netlify.app/). Cette prop `icon` est donc :
 
 - soit une `string` qui doit être un nom d’icône valide pour OhVueIcon ;
 - soit la prop complète attendue par le composant `OhVueIcon` de la bibliothèque [`oh-vue-icons`](https://oh-vue-icons.netlify.app/).
@@ -44,7 +44,7 @@ Dans les deux cas il faut que cette icône ait été ajoutée (cf. plus loin)
 
 ## Les icônes déjà enregistrées dans VIcon (OhVueIcon) dans VueDsfr
 
-Voici la liste des icônes déjà enregistrées dans la bibliothèque VueDsfr :
+Voici la liste des icônes déjà enregistrées dans la bibliothèque VueDsfr :
 
 ::: code-group
 <<< ../src/icons.ts
@@ -57,11 +57,11 @@ Ces icônes ont été ajoutées parce qu’elles sont utilisées dans les compos
 ::: warning
 Il faudra utiliser le nom en **kebab-case** dans la prop `icon` des composants ou dans la prop `name` de `VIcon`
 
-exemple :
+exemple :
 
 ```vue
 <template>
-  Une icône ici : <VIcon name="ri-close-line" />
+  Une icône ici : <VIcon name="ri-close-line" />
 </template>
 ```
 
@@ -78,14 +78,14 @@ Il est fort probable que vous vouliez utiliser d’autres icônes que celle qui 
 ### Ajouter des icônes Remix icons
 
 Il est possible d’utiliser facilement toutes les icônes [Remix Icon](https://remixicon.com/) grâce à
-[OhVueIcons](https://oh-vue-icons.js.org/) : le composant `VIcon` est enregistré globalement si la bibliothèque est
+[OhVueIcons](https://oh-vue-icons.js.org/) : le composant `VIcon` est enregistré globalement si la bibliothèque est
 utilisée en tant que plugin.
 
 #### 1. Réexporter les icônes souhaitées depuis `oh-vue-icons`
 
 La première étape est de créer un fichier `src/icons.ts` qui ré-exporte les icônes que vous souhaitez utiliser (il est déjà créé si vous avez utilisé `create-vue-dsfr` pour créer votre projet).
 
-Ci-dessous un exemple :
+Ci-dessous un exemple :
 
 ```typescript
 // src/icons.ts
@@ -97,11 +97,11 @@ export {
 } from 'oh-vue-icons/icons/ri/index.js'  // Import de quelques icônes de Remix Icon (ri)
 ```
 
-Ensuite, deux possibilités : soit on les ajoute au plugin, soit directement à `OhVueIcon`. Cf. les prochaines sections selon votre projet.
+Ensuite, deux possibilités : soit on les ajoute au plugin, soit directement à `OhVueIcon`. Cf. les prochaines sections selon votre projet.
 
 #### 2.a. Si VueDsfr est utilisé en tant que plugin
 
-Si vous utilisez VueDsfr en tant que plugin, il faudra importer ce fichier `src/icons.ts` dans votre point d’entrée Vue (en général `src/main.ts`) et donner dans l’objet `options` du plugin VueDsfr la propriété `icons` avec un tableau des icônes à enregistrer, comme ci-dessous :
+Si vous utilisez VueDsfr en tant que plugin, il faudra importer ce fichier `src/icons.ts` dans votre point d’entrée Vue (en général `src/main.ts`) et donner dans l’objet `options` du plugin VueDsfr la propriété `icons` avec un tableau des icônes à enregistrer, comme ci-dessous :
 
 ```typescript{10,13}
  // src/main.ts
@@ -123,7 +123,7 @@ createApp(App)
 
 #### 2.b. Si VueDsfr n’est *pas* utilisé en tant que plugin
 
-Si vous n’utilisez VueDsfr en tant que plugin, il faudra importer le fichier `src/icons.ts`  dans votre point d’entrée Vue (en général `src/main.ts`), importer `addIcons` (import nommé) de `oh-vue-icons` et donner les icônes à enregistrer, c’est-à-dire celles qui sont exportées par `src/icons.ts`, comme ci-dessous :
+Si vous n’utilisez VueDsfr en tant que plugin, il faudra importer le fichier `src/icons.ts`  dans votre point d’entrée Vue (en général `src/main.ts`), importer `addIcons` (import nommé) de `oh-vue-icons` et donner les icônes à enregistrer, c’est-à-dire celles qui sont exportées par `src/icons.ts`, comme ci-dessous :
 
 ```typescript{5,14,17}
 // src/main.ts
@@ -156,7 +156,7 @@ mises à disposition par [OhVueIcons](https://oh-vue-icons.netlify.app) en les a
 Ci-dessous des exemples pour
 [Remix Icon](https://remixicon.com/),
 [Font Awesome 5](https://fontawesome.com/icons)
-et [Bootstrap Icons](https://icons.getbootstrap.com/) :
+et [Bootstrap Icons](https://icons.getbootstrap.com/) :
 
 ```typescript
 // src/icons.ts
@@ -180,7 +180,7 @@ export {
 
 ## Pour Nuxt 3
 
-Créer/modifier le fichier `vue-dsfr.ts` dans le dossier `plugins` avec un contenu comme celui-ci :
+Créer/modifier le fichier `vue-dsfr.ts` dans le dossier `plugins` avec un contenu comme celui-ci :
 
 ```typescript
 // plugins/vue-dsfr.ts

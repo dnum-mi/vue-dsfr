@@ -36,10 +36,10 @@ export default {
       description: 'Permet de désactiver visuellement l\'upload de fichier',
     },
     'update:modelValue': {
-      description: 'Événement émis lors du changement de valeur de `modelValue` : le paramètre passé est la valeur de la propriété `value` de l’`input`',
+      description: 'Événement émis lors du changement de valeur de `modelValue` : le paramètre passé est la valeur de la propriété `value` de l’`input`',
     },
     change: {
-      description: 'Événement émis lors du changement de valeur de `modelValue` : le paramètre passé est la valeur de la propriété `files` de l’input',
+      description: 'Événement émis lors du changement de valeur de `modelValue` : le paramètre passé est la valeur de la propriété `files` de l’input',
     },
   },
 }

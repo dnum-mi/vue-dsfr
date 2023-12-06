@@ -43,7 +43,7 @@ export default defineConfig({
     },
     outline:{
       level: [2, 3],
-      label: 'Sur cette page :',
+      label: 'Sur cette page :',
     },
     logo: '/nouveau-logo-marianne-gouvernement.png',
     // https://vitepress.dev/reference/default-theme-config
@@ -91,6 +91,10 @@ export default defineConfig({
           {
             text: 'DsfrBadge',
             link: '/composants/DsfrBadge.md',
+          },
+          {
+            text: 'DsfrNotice',
+            link: '/composants/DsfrNotice.md',
           },
         ]
       },

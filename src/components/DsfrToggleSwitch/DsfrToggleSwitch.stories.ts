@@ -29,7 +29,7 @@ export default {
     },
     onChange: {
       action: 'change',
-      description: 'Appelé à chaque changement de la valeur `checked`.\n\n*N.B. : Ne fait pas partie du composant.*',
+      description: 'Appelé à chaque changement de la valeur `checked`.\n\n*N.B. : Ne fait pas partie du composant.*',
     },
     'update:modelValue': {
       description: 'Evènement de mise à jour de la valeur contenue dans modelValue',

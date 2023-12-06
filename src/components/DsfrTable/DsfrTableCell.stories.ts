@@ -15,7 +15,7 @@ export default {
     title: { control: 'text' },
     headers: {
       control: 'object',
-      description: 'Liste des en-têtes du tableau (tableau de string). *N.B. : Ne fait pas partie du composant.*',
+      description: 'Liste des en-têtes du tableau (tableau de string). *N.B. : Ne fait pas partie du composant.*',
     },
     field: {
       control: 'string',

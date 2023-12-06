@@ -11,10 +11,10 @@ Un accordéon est constitué des éléments suivants :
 - un séparateur
 - une zone de contenu, masqué par défaut pouvant contenir tout type d'élément, le `slot` par défaut est fait pour ça
 
-Autres props :
+Autres props :
 
-- **`id`** : identifiant du contenu de l’accordéon, qui est utilisé aussi pour l’attribut `aria-controls` du bouton qui permet de plier et déplier l’accordéon
-- **`expandedId`** : identifiant de l’accordéon actuellement déplié (pour savoir si l’accordéon doit être déplié)
+- **`id`** : identifiant du contenu de l’accordéon, qui est utilisé aussi pour l’attribut `aria-controls` du bouton qui permet de plier et déplier l’accordéon
+- **`expandedId`** : identifiant de l’accordéon actuellement déplié (pour savoir si l’accordéon doit être déplié)
 
 ## Les props
 
@@ -41,7 +41,7 @@ Un accordéon prend plus de sens lorsqu’il fait partie d’un groupe (comme no
 
 Les accordéons sont tous fermés et comprennent l’en tête et l’icône  <VIcon name="ri-arrow-drop-down-line" scale="1.25" /> si la prop **`expandedId`** est `undefined`.
 
-La totalité de la barre de titre est cliquable. L’événement clic sur le titre de l’accordéon peut être intercepté en ajoutant un écouteur sur l’événement `expand` qui envoie l’id de l’accordéon :
+La totalité de la barre de titre est cliquable. L’événement clic sur le titre de l’accordéon peut être intercepté en ajoutant un écouteur sur l’événement `expand` qui envoie l’id de l’accordéon :
 
 ```vue{6,15,16,25,26}
 <script lang="ts" setup>
@@ -79,7 +79,7 @@ const expandedId = ref('')
 ```
 
 ::: tip
-Comme l’événement `expand` a comme donnée (payload) l’`id` de l’accordéon, les deux lignes suivantes sont équivalentes :
+Comme l’événement `expand` a comme donnée (payload) l’`id` de l’accordéon, les deux lignes suivantes sont équivalentes :
 
 ```vue
 @expand="id => expandedId = id"

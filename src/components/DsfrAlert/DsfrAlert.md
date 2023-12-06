@@ -15,23 +15,23 @@ La story sur l’alerte sur le storybook de [VueDsfr](https://vue-dsfr.netlify.a
 
 L’alerte est composée des éléments suivants :
 
-- un titre (prop `title`, de type `string`) :
+- un titre (prop `title`, de type `string`) :
   - obligatoire sur la version MD (si la prop `small` est absente ou à `false`),
   - optionnel sur la version SM (si la prop `small` est à `true`).
-- un pictogramme et une couleur déterminés par la prop `type` qui peut valoir une des chaînes suivantes :
+- un pictogramme et une couleur déterminés par la prop `type` qui peut valoir une des chaînes suivantes :
   - `'info'` (valeur par défaut si la prop `type` est absente)
   - `'success'`
   - `'warning'`
   - `'error'`
-- un texte de description (avec la prop `description`, de type `string`) :
+- un texte de description (avec la prop `description`, de type `string`) :
   - optionnel sur la version MD
   - obligatoire sur la version SM
 - une croix de fermeture si la prop `closeable` est à `true`
 
-Autres props :
+Autres props :
 
 - `closed` sert à indiquer si l’alerte doit être présente (`false`) ou non (`true`) dans le DOM.
-- `titleTag` permet d’indiquer la balise à utiliser pour le `title` : il s’agit de `h3` par défaut, cependant, pour passer les tests RGAA, il faut que les niveaux de titres se suivent et soient cohérents (par exemple, si sur la page il n’y a pas de `<h2>`, il faut passer `'h2'` comme valeur à la prop `titleTag` pour que le titre de la modal soit un `<h2>`).
+- `titleTag` permet d’indiquer la balise à utiliser pour le `title` : il s’agit de `h3` par défaut, cependant, pour passer les tests RGAA, il faut que les niveaux de titres se suivent et soient cohérents (par exemple, si sur la page il n’y a pas de `<h2>`, il faut passer `'h2'` comme valeur à la prop `titleTag` pour que le titre de la modal soit un `<h2>`).
 
 ## Les props
 
