@@ -8,7 +8,7 @@ export default {
   argTypes: {
     id: {
       control: 'text',
-      description: '(Optionnel) Valeur de l’attribut `id` de ce sous-menu. *N.B. : Il est recommandé de ne pas le donner, la bibliothèque lui en donnera un pseudo-aléatoire*.',
+      description: '(Optionnel) Valeur de l’attribut `id` de ce sous-menu. *N.B. : Il est recommandé de ne pas le donner, la bibliothèque lui en donnera un pseudo-aléatoire*.',
     },
     'toggle-id': {
       description: 'Événement émis lors du click sur le lien, avec en argument l’id de l’élément cliqué',

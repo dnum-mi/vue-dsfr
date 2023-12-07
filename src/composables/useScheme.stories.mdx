@@ -26,7 +26,7 @@ Ceci va récupérer la préférence au niveau de l’OS de l’utilisateur et ap
 
 ## Utilisation avancée (Composition API)
 
-Beaucoup plus simple avec la composition API :
+Beaucoup plus simple avec la composition API :
 
 ```html
 <script>
@@ -58,10 +58,10 @@ export default {
 
 <template>
   <p>
-    Thème courant : {{preferences.theme}} ('light' ou 'dark')
+    Thème courant : {{preferences.theme}} ('light' ou 'dark')
   </p>
   <p>
-    Scheme courant : {{preferences.scheme}} ('system', 'light', ou 'dark')
+    Scheme courant : {{preferences.scheme}} ('system', 'light', ou 'dark')
   </p>
   <p>
     <DsfrButton @click="preferences.scheme = 'system'">
@@ -79,7 +79,7 @@ export default {
 
 ## Utilisation avancée (Script setup)
 
-Beaucoup plus simple avec la composition API :
+Beaucoup plus simple avec la composition API :
 
 ```html
 <script setup>
@@ -102,10 +102,10 @@ onMounted(() => {
 
 <template>
   <p>
-    Thème courant : {{preferences.theme}} ('light' ou 'dark')
+    Thème courant : {{preferences.theme}} ('light' ou 'dark')
   </p>
   <p>
-    Scheme courant : {{preferences.scheme}} ('system', 'light', ou 'dark')
+    Scheme courant : {{preferences.scheme}} ('system', 'light', ou 'dark')
   </p>
   <p>
     <DsfrButton @click="preferences.scheme = 'system'">

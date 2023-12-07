@@ -45,7 +45,7 @@ Il faut ajouter le CSS du DSFR dans le fichier qui est le point d’entrée de v
 
 ##### Méthode simple
 
-Utiliser tout le CSS des deux bibliothèques :
+Utiliser tout le CSS des deux bibliothèques :
 
 ```javascript
 import '@gouvfr/dsfr/dist/dsfr.min.css'
@@ -54,7 +54,7 @@ import '@gouvminint/vue-dsfr/styles'
 
 ##### Méthode pour un bundle optimisé
 
-Utiliser le minimum de CSS du DSFR :
+Utiliser le minimum de CSS du DSFR :
 
 - le **core**
 - les **styles des liens** du DSFR
@@ -65,18 +65,18 @@ Utiliser le minimum de CSS du DSFR :
 ```javascript
 import '@gouvfr/dsfr/dist/core/core.main.min.css'            // Le CSS minimal du DSFR
 import '@gouvfr/dsfr/dist/component/component.main.min.css'  // Styles de tous les composants
-import '@gouvfr/dsfr/dist/utility/utility.main.min.css'      // Classes utilitaires : les composants de VueDsfr en ont besoin
+import '@gouvfr/dsfr/dist/utility/utility.main.min.css'      // Classes utilitaires : les composants de VueDsfr en ont besoin
 import '@gouvminint/vue-dsfr/styles'                         // Les styles propres aux composants de VueDsfr
 
-import '@gouvfr/dsfr/dist/scheme/scheme.min.css'             // Facultatif : Si les thèmes sont utilisés (thème sombre, thème clair)
-import '@gouvfr/dsfr/dist/utility/icons/icons.min.css'       // Facultatif : Si des icônes sont utilisées avec les classes "fr-icon-..."
+import '@gouvfr/dsfr/dist/scheme/scheme.min.css'             // Facultatif : Si les thèmes sont utilisés (thème sombre, thème clair)
+import '@gouvfr/dsfr/dist/utility/icons/icons.min.css'       // Facultatif : Si des icônes sont utilisées avec les classes "fr-icon-..."
 ```
 
 ### Nuxt 3
 
-Pour l’utilisation de VueDsfr 3 avec Nuxt 3, il faut changer le `nuxt.config.ts` :
+Pour l’utilisation de VueDsfr 3 avec Nuxt 3, il faut changer le `nuxt.config.ts` :
 
-Avant :
+Avant :
 
 ```javascript
 export default defineNuxtConfig({
@@ -91,7 +91,7 @@ export default defineNuxtConfig({
 })
 ```
 
-Après :
+Après :
 
 ```javascript
 export default defineNuxtConfig({
@@ -99,7 +99,7 @@ export default defineNuxtConfig({
     '@gouvfr/dsfr/dist/dsfr.min.css',                     // Le CSS du DSFR
     '@gouvminint/vue-dsfr/styles',                        // Les styles propres aux composants de VueDsfr
 
-    '@gouvfr/dsfr/dist/utility/icons/icons.min.css'       // Facultatif : Si des icônes sont utilisées avec les classes "fr-icon-..."
+    '@gouvfr/dsfr/dist/utility/icons/icons.min.css'       // Facultatif : Si des icônes sont utilisées avec les classes "fr-icon-..."
   ],
   ignore: [
     '**/*.test.*',
@@ -116,11 +116,11 @@ export default defineNuxtConfig({
   css: [
     '@gouvfr/dsfr/dist/core/core.main.min.css',           // Le CSS du DSFR
     '@gouvfr/dsfr/dist/component/component.main.min.css'  // Styles de tous les composants du DSFR
-    '@gouvfr/dsfr/dist/utility/utility.main.min.css'      // Classes utilitaires : les composants de VueDsfr en ont besoin
+    '@gouvfr/dsfr/dist/utility/utility.main.min.css'      // Classes utilitaires : les composants de VueDsfr en ont besoin
     '@gouvminint/vue-dsfr/styles',                        // Les styles propres aux composants de VueDsfr
 
-    '@gouvfr/dsfr/dist/scheme/scheme.min.css'             // Facultatif : Si les thèmes sont utilisés (thème sombre, thème en bernes)
-    '@gouvfr/dsfr/dist/utility/icons/icons.min.css',      // Facultatif : Si des icônes sont utilisées avec les classes "fr-icon-..."
+    '@gouvfr/dsfr/dist/scheme/scheme.min.css'             // Facultatif : Si les thèmes sont utilisés (thème sombre, thème en bernes)
+    '@gouvfr/dsfr/dist/utility/icons/icons.min.css',      // Facultatif : Si des icônes sont utilisées avec les classes "fr-icon-..."
   ],
   ignore: [
     '**/*.test.*',

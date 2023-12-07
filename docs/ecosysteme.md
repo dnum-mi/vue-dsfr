@@ -1,6 +1,6 @@
 # L’écosystème de VueDsfr
 
-L’écosystème de VueDsfr, c’est :
+L’écosystème de VueDsfr, c’est :
 
 - La bibliothèque <VIconLink href="https://www.npmjs.com/package/@gouvminint/vue-dsfr" icon="si-npm">`@dnum-mi/vue-dsfr`</VIconLink> ;
 - L’assistant <VIconLink href="https://www.npmjs.com/package/create-vue-dsfr" icon="si-npm">`create-vue-dsfr` </VIconLink> ;

@@ -42,7 +42,7 @@ const meta = {
   argTypes: {
     tabListName: {
       control: 'text',
-      description: 'Nom de la liste d’onglet : servira pour le label (l’attribut `aria-label`) de la liste des titres d’onglets - **Obligatoire**',
+      description: 'Nom de la liste d’onglet : servira pour le label (l’attribut `aria-label`) de la liste des titres d’onglets - **Obligatoire**',
     },
     tabTitles: {
       control: 'object',

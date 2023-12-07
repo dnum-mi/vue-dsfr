@@ -26,7 +26,7 @@ export default {
   argTypes: {
     actions: {
       control: 'object',
-      description: 'Tableau d’objets : chaque objet contiendra les props à donner à `DsfrButton`',
+      description: 'Tableau d’objets : chaque objet contiendra les props à donner à `DsfrButton`',
     },
     isAlert: {
       control: 'boolean',

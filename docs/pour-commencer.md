@@ -7,19 +7,19 @@ Ceci est le guide d̛’utilisation de la bibliothèque. Si vous cherchez à con
 
 La façon la plus simple de commencer un projet est d’utiliser le package `create-vue-dsfr`, qui permet de créer un projet NPM avec tout le nécessaire pour développer un projet utilisant VueDsfr, que ce soit pour Vite (Vue3) ou pour Nuxt (Nuxt3), avec ou sans TypeScript.
 
-Avec npm :
+Avec npm :
 
 ```shell
 npm init vue-dsfr
 ```
 
-Avec pnpm :
+Avec pnpm :
 
 ```shell
 pnpm create vue-dsfr
 ```
 
-Avec yarn :
+Avec yarn :
 
 ```shell
 yarn create vue-dsfr
@@ -31,13 +31,13 @@ Et suivez les indications de l’assistant.
 
 ### Utiliser la bibliothèque en tant que plugin
 
-| Notes :              |
+| Notes :              |
 |:---------------------------|
 | Pour utiliser cette bibliothèque, il vous faudra **[Vue 3](https://v3.vuejs.org/)** (et **[Vue-Router 4](https://next.router.vuejs.org/)**). Par conséquent, si vous utilisez Nuxt, il vous faut **[Nuxt 3](https://v3.nuxtjs.org/)** (plus de détails plus loin). |
 
 #### Installer la bibliothèque en tant que dépendance du projet
 
-Afin d'installer la bibliothèque, taper ces commandes dans votre console au sein du répertoire du projet :
+Afin d'installer la bibliothèque, taper ces commandes dans votre console au sein du répertoire du projet :
 
 ```shell
 npm install @gouvfr/dsfr @gouvminint/vue-dsfr
@@ -83,7 +83,7 @@ const app = createApp(App)
 La bibliothèque **`VueDsfr`** fournit bien plusieurs builds (`esm` et `umd`) et Nuxt3 sait lequel choisir.
 
 Ensuite, il faut ajouter le plugin en créant le dossier `/plugins` s’il n’existe pas et en créant dedans un fichier `vue-dsfr.js`
-avec le contenu suivant :
+avec le contenu suivant :
 
 ```typescript
 // /plugins/vue-dsfr.js
@@ -96,7 +96,7 @@ export default defineNuxtPlugin((nuxtApp) => {
 })
 ```
 
-Enfin, il faudra ajouter les feuilles CSS, pour ce faire, ajouter ceci dans `nuxt.config.js` :
+Enfin, il faudra ajouter les feuilles CSS, pour ce faire, ajouter ceci dans `nuxt.config.js` :
 
 ```typescript{4-7}
 import { defineNuxtConfig } from 'nuxt3';
@@ -141,7 +141,7 @@ const app = createApp(App)
 ```
 
 :::info
-N.B. : il faut bien en plus enregistrer globalement le composant **VIcon** car il est utilisé en interne dans VueDsfr.
+N.B. : il faut bien en plus enregistrer globalement le composant **VIcon** car il est utilisé en interne dans VueDsfr.
 :::
 
 ## Utiliser les icônes
@@ -154,32 +154,32 @@ Il est possible d’intégrer moins de CSS pour les petits projets.
 
 ### Vue3
 
-Dans le point d’entrée de votre application Vue (souvent `main.js` ou `main.ts`) :
+Dans le point d’entrée de votre application Vue (souvent `main.js` ou `main.ts`) :
 
 ```typescript
 import '@gouvfr/dsfr/dist/core/core.main.min.css'            // Le CSS minimal du DSFR
 import '@gouvfr/dsfr/dist/component/component.main.min.css'  // Styles de tous les composants du DSFR
-import '@gouvfr/dsfr/dist/utility/utility.main.min.css'      // Classes utilitaires : les composants de VueDsfr en ont besoin
+import '@gouvfr/dsfr/dist/utility/utility.main.min.css'      // Classes utilitaires : les composants de VueDsfr en ont besoin
 import '@gouvminint/vue-dsfr/styles'                         // Les styles propres aux composants de VueDsfr
 
-import '@gouvfr/dsfr/dist/scheme/scheme.min.css'             // Facultatif : Si les thèmes sont utilisés (thème sombre, thème clair)
-import '@gouvfr/dsfr/dist/utility/icons/icons.min.css'       // Facultatif : Si des icônes sont utilisées avec les classes "fr-icon-..."
+import '@gouvfr/dsfr/dist/scheme/scheme.min.css'             // Facultatif : Si les thèmes sont utilisés (thème sombre, thème clair)
+import '@gouvfr/dsfr/dist/utility/icons/icons.min.css'       // Facultatif : Si des icônes sont utilisées avec les classes "fr-icon-..."
 ```
 
 ### Nuxt3
 
-Dans `nuxt.config.js` :
+Dans `nuxt.config.js` :
 
 ```typescript
 export default defineNuxtConfig({
   css: [
     '@gouvfr/dsfr/dist/core/core.main.min.css',           // Le CSS du DSFR
     '@gouvfr/dsfr/dist/component/component.main.min.css'  // Styles de tous les composants du DSFR
-    '@gouvfr/dsfr/dist/utility/utility.main.min.css'      // Classes utilitaires : les composants de VueDsfr en ont besoin
+    '@gouvfr/dsfr/dist/utility/utility.main.min.css'      // Classes utilitaires : les composants de VueDsfr en ont besoin
     '@gouvminint/vue-dsfr/styles',                        // Les styles propres aux composants de VueDsfr
 
-    '@gouvfr/dsfr/dist/scheme/scheme.min.css'             // Facultatif : Si les thèmes sont utilisés (thème sombre, thème en bernes)
-    '@gouvfr/dsfr/dist/utility/icons/icons.min.css',      // Facultatif : Si des icônes sont utilisées avec les classes "fr-icon-..."
+    '@gouvfr/dsfr/dist/scheme/scheme.min.css'             // Facultatif : Si les thèmes sont utilisés (thème sombre, thème en bernes)
+    '@gouvfr/dsfr/dist/utility/icons/icons.min.css',      // Facultatif : Si des icônes sont utilisées avec les classes "fr-icon-..."
   ],
   ignore: [
     '**/*.test.*',
