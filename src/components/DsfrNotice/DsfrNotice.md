@@ -4,9 +4,9 @@ Le bandeau d’information importante permet aux utilisateurs de voir ou d’acc
 
 Il est affiché sur l’ensemble des pages en desktop et en mobile. Il affiche une information importante et urgente (un usage trop fréquent risque de faire “disparaitre” ce bandeau).
 
-La documentation sur l’alerte sur le [DSFR](https://www.systeme-de-design.gouv.fr/elements-d-interface/composants/bandeau-d-information-importante)
+La documentation sur le bandeau d’information importante sur le [DSFR](https://www.systeme-de-design.gouv.fr/elements-d-interface/composants/bandeau-d-information-importante)
 
-La story sur l’alerte sur le storybook de [VueDsfr](https://vue-dsfr.netlify.app/?path=/docs/composants-dsfrnotice--docs)
+La story sur le bandeau d’information importante sur le storybook de [VueDsfr](https://vue-dsfr.netlify.app/?path=/docs/composants-dsfrnotice--docs)
 
 ## Structure
 
