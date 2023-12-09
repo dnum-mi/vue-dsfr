@@ -33,11 +33,11 @@ export default {
         'partiellement conforme',
         'totalement conforme',
       ],
-      description: 'Niveau de conformité de l’a11y : `"non conforme"`, `"partiellement conforme"`, ou `"totalement conforme"`',
+      description: 'Niveau de conformité de l’a11y : `"non conforme"`, `"partiellement conforme"`, ou `"totalement conforme"`',
     },
     a11yComplianceLink: {
       control: 'text',
-      description: 'URL pour un lien externe ou route ou objet pour un lien externe à associer au lien `"Accessibilité : <niveau de conformité>"`',
+      description: 'URL pour un lien externe ou route ou objet pour un lien externe à associer au lien `"Accessibilité : <niveau de conformité>"`',
     },
     logoText: {
       control: 'object',

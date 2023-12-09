@@ -8,19 +8,19 @@ de composants. Il peut s'utiliser facilement en tant que plugin.
 
 ### TL;DR
 
-Avec npm :
+Avec npm :
 
 ```shell
 npm init vue-dsfr
 ```
 
-Avec pnpm :
+Avec pnpm :
 
 ```shell
 pnpm create vue-dsfr
 ```
 
-Avec yarn :
+Avec yarn :
 
 ```shell
 yarn create vue-dsfr
@@ -28,9 +28,9 @@ yarn create vue-dsfr
 
 Et suivez le guide !
 
-### Détails :
+### Détails :
 
-Cf. [le site officiel](https://vue-dsfr.netlify.app/?path=/story/docs-2-guide-d-utilisation--page)
+Cf. [le site officiel](https://vue-dsfr.netlify.app/?path=/docs/docs-2-guide-d-utilisation--docs)
 
 ## Comment contribuer
 
@@ -43,7 +43,7 @@ et **la fusion doit être demandée dans `develop`.**
 
 ### Détails
 
-Cf [le site officiel](https://vue-dsfr.netlify.app/?path=/story/docs-3-guide-du-d%C3%A9veloppeur--page)
+Cf [le site officiel](https://vue-dsfr.netlify.app/?path=/docs/docs-3-guide-du-d%C3%A9veloppeur--docs)
 
 ## Utiliser la bibliothèque dans un projet existant (ou un nouveau projet sans passer par [`create-vue-dsfr`](https://www.npmjs.com/package/create-vue-dsfr))
 ### Installer la bibliothèque
@@ -65,7 +65,7 @@ const app = createApp(App)
   .mount('#app')
 ```
 
-Et ensuite, les composants sont utilisables directement dans les composants de l'application :
+Et ensuite, les composants sont utilisables directement dans les composants de l'application :
 
 ```html
 <template>

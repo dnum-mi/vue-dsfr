@@ -29,11 +29,11 @@ export default {
     },
     reverse: {
       control: 'boolean',
-      description: 'Indique si l’ordre des boutons doit être inversé par rapport au DOM.\n\n *N.B. : Ne fonctionne que si `align` est à `right`*',
+      description: 'Indique si l’ordre des boutons doit être inversé par rapport au DOM.\n\n *N.B. : Ne fonctionne que si `align` est à `right`*',
     },
     iconRight: {
       control: 'boolean',
-      description: 'Inverse la position des icônes par rapport au texte.\n\n *N.B. : Ne fonctionne que si la prop n\'est pas définie sur chaque bouton*',
+      description: 'Inverse la position des icônes par rapport au texte.\n\n *N.B. : Ne fonctionne que si la prop n\'est pas définie sur chaque bouton*',
     },
     size: {
       control: 'radio',

@@ -4,12 +4,6 @@ outline: [2,3]
 
 # Tous les types de la bibliothèque VueDsfr
 
-## Composables
-
-::: code-group
-<<< ../src/composables.types.ts
-:::
-
 ## Types en commun
 
 ::: code-group

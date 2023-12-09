@@ -13,19 +13,19 @@ export default {
   argTypes: {
     tabTitle: {
       control: 'object',
-      description: 'Props de `DsfrTabItem` : Titre de l’onglet `DsfrTabItem` - **Obligatoire**',
+      description: 'Props de `DsfrTabItem` : Titre de l’onglet `DsfrTabItem` - **Obligatoire**',
     },
     panelId: {
       control: 'text',
-      description: 'Props de `DsfrTabItem` et `DsfrTabContent` : Identifiant de l’élément correspondant au contenu de l’onglet à afficher ; doit être identique à la props `tab-id` du `DsfrTabItem` correspondant - **Obligatoire**',
+      description: 'Props de `DsfrTabItem` et `DsfrTabContent` : Identifiant de l’élément correspondant au contenu de l’onglet à afficher ; doit être identique à la props `tab-id` du `DsfrTabItem` correspondant - **Obligatoire**',
     },
     tabId: {
       control: 'text',
-      description: 'Props de `DsfrTabItem` et `DsfrTabContent` : Identifiant du titre de l’onglet ̛ ; doit être identique à la props `panel-id` du `DsfrTabContent` correspondant - **Obligatoire**',
+      description: 'Props de `DsfrTabItem` et `DsfrTabContent` : Identifiant du titre de l’onglet ̛ ; doit être identique à la props `panel-id` du `DsfrTabContent` correspondant - **Obligatoire**',
     },
     icon: {
       control: 'text',
-      description: 'Props de `DsfrTabItem` : Nom de l’icône à afficher',
+      description: 'Props de `DsfrTabItem` : Nom de l’icône à afficher',
     },
     selected: {
       control: 'boolean',

@@ -14,7 +14,7 @@ export default {
     },
     languages: {
       control: 'object',
-      description: 'Tableau d’objets des langues proposées par le sélecteur : chaque élément doit être un objet avec un code ISO `codeIso` et un `label`',
+      description: 'Tableau d’objets des langues proposées par le sélecteur : chaque élément doit être un objet avec un code ISO `codeIso` et un `label`',
     },
     currentLanguage: {
       control: 'text',

@@ -8,7 +8,7 @@ withDefaults(defineProps<DsfrNewsLetterProps>(), {
   description: '',
   email: '',
   error: '',
-  labelEmail: 'Votre adresse électronique (ex. : prenom.nom@example.com)',
+  labelEmail: 'Votre adresse électronique (ex. : prenom.nom@example.com)',
   placeholder: 'prenom.nom@example.com',
   inputTitle: 'Adresse courriel',
   hintText: '',

@@ -11,7 +11,7 @@ Pour commencer à l’utiliser, [c’est par ici !](/pour-commencer)
 
 ## Rejoindre le serveur Discord
 
-Si vous souhaitez participer au projet, poser une question, émettre une critique (ou nous faire des éloges, elles seront bienvenues aussi), nous vous invitons à rejoindre le serveur Discord grâce à ce lien d’invitation :
+Si vous souhaitez participer au projet, poser une question, émettre une critique (ou nous faire des éloges, elles seront bienvenues aussi), nous vous invitons à rejoindre le serveur Discord grâce à ce lien d’invitation :
 
 <div style="text-align: center">
   <a href="https://discord.gg/jbBJ9769ZZ" className="fr-btn">

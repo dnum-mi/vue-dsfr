@@ -10,11 +10,11 @@ export default {
   argTypes: {
     expandedId: {
       control: 'text',
-      description: 'Valeur de l’id du menu déroulé. *N.B. : Ne fait pas partie de ce composant.*',
+      description: 'Valeur de l’id du menu déroulé. *N.B. : Ne fait pas partie de ce composant.*',
     },
     menuId: {
       control: 'text',
-      description: 'Valeur de l’attribut `id` de ce sous-menu. *N.B. : Il est recommandé de ne pas le donner, la bibliothèque lui en donnera un aléatoire*. *N.B. : Ne fait pas partie de ce composant.*',
+      description: 'Valeur de l’attribut `id` de ce sous-menu. *N.B. : Il est recommandé de ne pas le donner, la bibliothèque lui en donnera un aléatoire*. *N.B. : Ne fait pas partie de ce composant.*',
     },
     id: {
       control: 'text',

@@ -9,7 +9,7 @@ export default {
   argTypes: {
     tiles: {
       control: 'object',
-      description: 'Tableau avec pour chaque élément :\n\n  - les props attendues par DsfrTile\n  - la prop `containerClass` pour l’attribut `class` du div parent de chaque tile',
+      description: 'Tableau avec pour chaque élément :\n\n  - les props attendues par DsfrTile\n  - la prop `containerClass` pour l’attribut `class` du div parent de chaque tile',
     },
     horizontal: {
       control: 'boolean',
