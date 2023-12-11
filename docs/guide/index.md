@@ -55,7 +55,7 @@ Storybook est configuré pour utiliser PostCSS.
 
 ### Tests
 
-Les tests sont faits avec [Vitest][vitest] et [Vue Testing Library][vue-testing-library], et des tests d’accessibilité sont faits avec [Cypress][cypress] grâce aux [tests de composants][cypress-component-testing].
+Les tests sont faits avec [Vitest][vitest] et [Vue Testing Library][vue-testing-library], et des tests d’accessibilité sont faits avec [Cypress][cypress] grâce aux [tests de composants][cypress-component-testing], ainsi qu’avec Storybook pour certains composants (notamment pour tous les tests de la touche tabulation, comme la modale et les onglets).
 
 ### Ressources
 
@@ -71,14 +71,18 @@ Le projet a pu bénéficier des retours et de contributions de :
 
 - [Gildéric Deruette][github-user-gideruette] ;
 - [Sophie Aitis][github-user-sophieaitis] ;
-- et [Ambroise Maupate][github-user-ambroisemaupate].
+- [Ambroise Maupate][github-user-ambroisemaupate] ;
+- [Alexandre Cailliaud][github-user-cailliaud] ;
+- et [Adrien Martinez][github-user-adrylen].
 
 Merci à vous !
 
 
 <!-- Variables -->
 
+[github-user-adrylen]: https://github.com/adrylen
 [github-user-ambroisemaupate]: https://github.com/ambroisemaupate
+[github-user-cailliaud]: https://github.com/cailliaud
 [github-user-gideruette]: https://github.com/gideruette
 [github-user-sophieaitis]: https://github.com/sophieaitis
 [github-vue-dsfr]: https://github.com/dnum-mi/vue-dsfr/
