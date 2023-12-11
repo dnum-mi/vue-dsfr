@@ -14,22 +14,22 @@ Ce composable permet de gérer simplement les props de [DsfrTabs](/docs/composan
      ref="tabs"
      :tab-list-name="tabListName"
      :tab-titles="tabTitles"
-     :initial-selected-index="selectedTabIndex"
-     @select-tab="selectTab"
+     :initial-selected-index="selected"
+     @select-tab="select"
    >
      <DsfrTabContent
        panel-id="tab-content-0"
        tab-id="tab-0"
-       :selected="selectedTabIndex === 0"
-       :asc="asc"
+       :selected="selected === 0"
+       :asc="ascendant"
      >
        <div>Contenu 1 avec d'autres composants</div>
      </DsfrTabContent>
      <DsfrTabContent
        panel-id="tab-content-1"
        tab-id="tab-1"
-       :selected="selectedTabIndex === 1"
-       :asc="asc"
+       :selected="selected === 1"
+       :asc="ascendant"
      >
        <div>Contenu 2 avec d'autres composants</div>
      </DsfrTabContent>
@@ -39,7 +39,7 @@ Ce composable permet de gérer simplement les props de [DsfrTabs](/docs/composan
 <script setup lang="ts">
 import { useTabs, DsfrTabs } from '@gouvminint/vue-dsfr'
 
-const { asc, selectedTabIndex, selectTab } = useTabs(true,0)
+const { ascendant, selected, select } = useTabs(true,0)
 
 const tabListName = "Onglets"
 
