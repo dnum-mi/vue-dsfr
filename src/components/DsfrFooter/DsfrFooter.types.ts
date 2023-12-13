@@ -33,9 +33,9 @@ export type DsfrFooterProps = {
   cookiesLink?: string
   logoText?: string | string[]
   descText?: string
-  beforeMandatoryLinks?: {label: string, to: string | RouteLocationRaw | undefined}[]
-  afterMandatoryLinks?: {label: string, to: string | RouteLocationRaw | undefined}[]
-  mandatoryLinks?: {label: string, to: string | RouteLocationRaw | undefined}[]
+  beforeMandatoryLinks?: {label: string, to: RouteLocationRaw | undefined}[]
+  afterMandatoryLinks?: {label: string, to: RouteLocationRaw | undefined}[]
+  mandatoryLinks?: {label: string, to: RouteLocationRaw | undefined}[]
   ecosystemLinks?: {label: string, href: string}[]
   operatorLinkText?: string
   operatorTo?: RouteLocationRaw | undefined
