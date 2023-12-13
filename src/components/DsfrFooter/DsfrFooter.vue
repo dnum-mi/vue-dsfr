@@ -187,7 +187,14 @@ const aLicenceHref = computed(() => {
             :key="index"
             class="fr-footer__bottom-item"
           >
+            <a
+              v-if="typeof link.to === 'string' && link.to.startsWith('http')"
+              class="fr-footer__bottom-link"
+              :href="link.to"
+              :data-testid="link.to"
+            >{{ link.label }}</a>
             <RouterLink
+              v-else
               class="fr-footer__bottom-link"
               :to="link.to ?? '#'"
               :data-testid="link.to"
