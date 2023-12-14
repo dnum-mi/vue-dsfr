@@ -73,7 +73,7 @@
     "docs:preview": "cross-env VITEPRESS=true vitepress preview"
   },
   "dependencies": {
-    "@gouvfr/dsfr": "~1.10.2",
+    "@gouvfr/dsfr": "~1.11.0",
     "focus-trap": "^7.5.4",
     "focus-trap-vue": "^4.0.3",
     "oh-vue-icons": "1.0.0-rc3",
