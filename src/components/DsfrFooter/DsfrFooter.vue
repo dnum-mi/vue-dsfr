@@ -169,6 +169,7 @@ const aLicenceHref = computed(() => {
                 class="fr-footer__content-link"
                 :href="link.href"
                 target="_blank"
+                rel="noopener noreferrer"
               >
                 {{ link.label }}
               </a>

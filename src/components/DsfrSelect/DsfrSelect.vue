@@ -18,7 +18,7 @@ const props = withDefaults(defineProps<DsfrSelectProps>(), {
   description: undefined,
   successMessage: '',
   errorMessage: '',
-  defaultUnselectedText: 'Sélectionnez une option',
+  defaultUnselectedText: 'Sélectionner une option',
 })
 
 defineEmits<{(e: 'update:modelValue', payload: string): void}>()
