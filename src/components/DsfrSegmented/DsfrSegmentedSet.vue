@@ -58,8 +58,8 @@ const onChange = ($event: string) => {
           <DsfrSegmented
             v-for="(option, i) of options"
             :key="option.value || i"
-            :name="name"
-            v-bind="option"
+            :name="name || option.name"
+            v-bind="{ ...option, disabled: disabled || option.disabled }"
             :model-value="modelValue"
             @update:model-value="onChange($event as string)"
           />
