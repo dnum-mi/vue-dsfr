@@ -12,8 +12,8 @@ withDefaults(defineProps<DsfrStepperProps>(), {
 <template>
   <div class="fr-stepper">
     <h2 class="fr-stepper__title">
-      <span class="fr-stepper__state">Étape {{ currentStep }} sur {{ steps.length }}</span>
       {{ steps[currentStep - 1] }}
+      <span class="fr-stepper__state">Étape {{ currentStep }} sur {{ steps.length }}</span>
     </h2>
     <div
       class="fr-stepper__steps"

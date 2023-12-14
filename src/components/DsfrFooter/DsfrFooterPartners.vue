@@ -27,6 +27,7 @@ withDefaults(defineProps<DsfrFooterPartnersProps>(), {
           class="fr-footer__partners-link"
           :href="mainPartner.href"
           target="_blank"
+          rel="noopener noreferrer"
         >
           <img
             class="fr-footer__logo"
@@ -45,6 +46,7 @@ withDefaults(defineProps<DsfrFooterPartnersProps>(), {
               class="fr-footer__partners-link"
               :href="partner.href"
               target="_blank"
+              rel="noopener noreferrer"
             >
               <img
                 class="fr-footer__logo"

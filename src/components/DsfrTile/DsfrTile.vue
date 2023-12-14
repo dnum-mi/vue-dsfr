@@ -50,6 +50,7 @@ const isExternalLink = computed(() => {
             v-if="isExternalLink"
             class="fr-tile__link"
             target="_blank"
+            rel="noopener noreferrer"
             :download="download"
             :href="disabled ? '' : (to as string)"
           >{{ title }}</a>
