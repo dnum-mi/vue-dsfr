@@ -93,6 +93,10 @@ export default defineConfig({
             link: '/composants/DsfrBadge.md',
           },
           {
+            text: 'DsfrBackToTop',
+            link: '/composants/DsfrBackToTop.md',
+          },
+          {
             text: 'DsfrNotice',
             link: '/composants/DsfrNotice.md',
           },
