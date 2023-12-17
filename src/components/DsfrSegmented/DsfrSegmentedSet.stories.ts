@@ -13,7 +13,7 @@ export default {
     },
     inline: {
       control: 'boolean',
-      description: 'Indique si la légende doit être allignée avec les boutons (`true`) ou chacun sur une ligne (`false`, défaut)',
+      description: 'Indique si la légende doit être alignée avec les boutons (`true`) ou chacun sur une ligne (`false`, défaut)',
     },
     name: {
       control: 'text',

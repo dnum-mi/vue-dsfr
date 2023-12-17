@@ -1,4 +1,5 @@
 export {
+  GiChocolateBar,
   RiCloseLine,
   RiArrowDropDownLine,
   RiArrowDropUpLine,

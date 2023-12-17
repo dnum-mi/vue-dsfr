@@ -174,6 +174,12 @@ outline: [2,3]
 <<< ../src/components/DsfrSearchBar/DsfrSearchBar.types.ts
 :::
 
+### `DsfrSegmented` et `DsfrSegmentedSet`
+
+::: code-group
+<<< ../src/components/DsfrSegmented/DsfrSegmented.types.ts
+:::
+
 ### `DsfrSelect`
 
 ::: code-group

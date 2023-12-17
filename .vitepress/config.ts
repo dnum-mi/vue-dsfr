@@ -14,6 +14,7 @@ export default defineConfig({
   appearance: { listenToStorageChanges: false }, // handling this in Story.vue itself to avoid flickering
 
   rewrites: {
+    'src/components/DsfrSegmented/DsfrSegmentedSet.md': 'composants/DsfrSegmentedSet.md',
     'src/components/:comp/:comp.md': 'composants/:comp.md',
     'docs/:splat*': ':splat*',
   },
@@ -99,6 +100,14 @@ export default defineConfig({
           {
             text: 'DsfrNotice',
             link: '/composants/DsfrNotice.md',
+          },
+          {
+            text: 'DsfrSegmented',
+            link: '/composants/DsfrSegmented.md',
+          },
+          {
+            text: 'DsfrSegmentedSet',
+            link: '/composants/DsfrSegmentedSet.md',
           },
         ]
       },
