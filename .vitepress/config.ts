@@ -98,6 +98,10 @@ export default defineConfig({
             link: '/composants/DsfrBackToTop.md',
           },
           {
+            text: 'DsfrRange',
+            link: '/composants/DsfrRange.md',
+          },
+          {
             text: 'DsfrNotice',
             link: '/composants/DsfrNotice.md',
           },
