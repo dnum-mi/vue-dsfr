@@ -373,23 +373,82 @@ const searchQuery = ref('')
 
 ### Nuxt3
 
-Dans `nuxt.config.js` :
+1. Ajouter les dépendances `@gouvfr/dsfr` et `@gouvminint/vue-dsfr` ainsi que les dépendances de développement `vite` et `vue-dsfr-nuxt-module` au projet
 
-```typescript
+```bash
+# Avec pnpm
+pnpm add @gouvfr/dsfr @gouvminint/vue-dsfr
+pnpm add -D vue-dsfr-nuxt-module vite
+
+# Avec yarn
+yard add @gouvfr/dsfr @gouvminint/vue-dsfr
+yarn add --dev vue-dsfr-nuxt-module vite
+
+# Avec npm
+npm i @gouvfr/dsfr @gouvminint/vue-dsfr
+npm i -D vue-dsfr-nuxt-module vite
+```
+
+2. Ajouter `vue-dsfr-nuxt-module` dans la section `modules` de `nuxt.config.ts`
+
+```ts{3}
 export default defineNuxtConfig({
-  css: [
-    '@gouvfr/dsfr/dist/core/core.main.min.css',           // Le CSS du DSFR
-    '@gouvfr/dsfr/dist/component/component.main.min.css'  // Styles de tous les composants du DSFR
-    '@gouvfr/dsfr/dist/utility/utility.main.min.css'      // Classes utilitaires : les composants de VueDsfr en ont besoin
-    '@gouvminint/vue-dsfr/styles',                        // Les styles propres aux composants de VueDsfr
+  modules: [
+    'vue-dsfr-nuxt-module'
+  ]
+})
+```
 
-    '@gouvfr/dsfr/dist/scheme/scheme.min.css'             // Facultatif : Si les thèmes sont utilisés (thème sombre, thème en bernes)
-    '@gouvfr/dsfr/dist/utility/icons/icons.min.css',      // Facultatif : Si des icônes sont utilisées avec les classes "fr-icon-..."
+3. Ajouter le CSS de DSFR dans la section `css` de `nuxt.config.ts`
+
+```ts{5-11}
+export default defineNuxtConfig({
+  modules: [
+    'vue-dsfr-nuxt-module'
   ],
-  ignore: [
-    '**/*.test.*',
-    '**/*.spec.*',
-    '**/*.cy.*',
+  css: [
+    '@gouvfr/dsfr/dist/core/core.main.min.css',           // Le CSS minimal du DSFR
+    '@gouvfr/dsfr/dist/component/component.main.min.css', // Styles de tous les composants du DSFR
+    '@gouvfr/dsfr/dist/utility/utility.main.min.css',     // Classes utilitaires : les composants de VueDsfr en ont besoin, contient aussi les icônes
+
+    '@gouvfr/dsfr/dist/scheme/scheme.min.css',            // Facultatif : Si les thèmes sont utilisés (thème sombre, thème en bernes)
   ],
 })
 ```
+
+1. Facultatif : ajouter des icônes à utiliser avec OhVueIcon
+
+```ts{1,14-20}
+import * as icons from './icons'                          // Fichier à créer, voir plus loin
+
+export default defineNuxtConfig({
+  modules: [
+    'vue-dsfr-nuxt-module'
+  ],
+  css: [
+    '@gouvfr/dsfr/dist/core/core.main.min.css',           // Le CSS minimal du DSFR
+    '@gouvfr/dsfr/dist/component/component.main.min.css', // Styles de tous les composants du DSFR
+    '@gouvfr/dsfr/dist/utility/utility.main.min.css',     // Classes utilitaires : les composants de VueDsfr en ont besoin, contient aussi les icônes
+
+    '@gouvfr/dsfr/dist/scheme/scheme.min.css',            // Facultatif : Si les thèmes sont utilisés (thème sombre, thème en bernes)
+  ],
+  runtimeConfig: {
+    public: {
+      vueDsfr: {
+        icons: Object.values(icons),
+      },
+    },
+  },
+})
+```
+
+Et ajouter un fichier `icons.ts` à la racine dans lequel sont réexportées depuis `'oh-vue-icons/icons'` les icônes utilisées :
+
+```ts
+export {
+  RiFlagLine,
+  RiHome2Line,
+} from 'oh-vue-icons/icons'
+```
+
+Et voilà ! Vous êtes prêts à utiliser VueDsfr dans votre app Nuxt ✨
