@@ -94,12 +94,16 @@ export default defineConfig({
             link: '/composants/DsfrAlert.md',
           },
           {
+            text: 'DsfrBackToTop',
+            link: '/composants/DsfrBackToTop.md',
+          },
+          {
             text: 'DsfrBadge',
             link: '/composants/DsfrBadge.md',
           },
           {
-            text: 'DsfrBackToTop',
-            link: '/composants/DsfrBackToTop.md',
+            text: 'DsfrCard',
+            link: '/composants/DsfrCard.md',
           },
           {
             text: 'DsfrRange',
