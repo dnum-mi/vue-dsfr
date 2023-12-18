@@ -1,12 +1,12 @@
 # Carte - `DsfrCard`
 
-La carte est un aperçu d'une page et un lien vers cette dernière. Elle fait généralement partie d'une liste de contenus similaires.
+La carte c'est tout simplement l'indispensable pour agrémenter vos sites et applications d'amuse-bouches esthétiques vers des contenus proposés. Il s'agit d'un composant permettant un aperçu d'une page et un lien vers cette dernière. Elle fait généralement partie d'une liste menant vers des contenus similaires.
 
-La carte existe en trois tailles (LG, MD, SM) et deux formats (horizontal et vertical) déclinés sur deux supports (desktop et mobile). Les cartes horizontales sont réservées au desktop (en mobile, une carte horizontale devient verticale).
+La carte existe en trois tailles (LG, MD, SM) et deux formats (horizontal et vertical) déclinés sur deux supports (desktop et mobile), vous trouverez forcément votre bonheur ! Les cartes horizontales sont réservées au desktop (en mobile, une carte horizontale devient verticale).
 
 ## Structure
 
-Une carte se compose des éléments suivants :
+Une carte digne de ce nom se compose des éléments suivants :
 
 - un titre (prop **`title`**, de type `string`), reprenant celui de l’objet visé (page de destination, action, site).
 - un lien (prop **`link`**, de type `string`), sur le titre de la carte.
@@ -26,20 +26,20 @@ Autres props :
 
 ## Les props
 
-|  nom                   |   type      |  défaut         | obligatoire |
-| ---------------------- | ---------   | --------------- | ----------- |
-| `altImg`               | *`string`*  |                 | non         |
-| `buttons`              | *`object`*  |                 | non         |
-| `detail`               | *`string`*  |                 | non         |
-| `description`          | *`string`*  |                 | oui         |
-| `download`             | *`boolean`* |                 | non         |
-| `horizontal`           | *`boolean`* |                 | non         |
-| `imgSrc`               | *`string`*  |                 | non         |
-| `link`                 | *`string`*  |                 | non         |
-| `linksGroup`           | *`object`*  |                 | non         |
-| `size`                 | *`string`*  | `'md'`          | non         |
-| `title`                | *`string`*  |                 | oui         |
-| `titleTag`             | [*`TitleTag`*](/docs/types.md#title-tag "'h1' \| 'h2' \| 'h3' \| 'h4' \| 'h5' \| 'h6'") | `'h3'`          | non         |
+|  nom                   |   type      |  défaut         | obligatoire        |
+| ---------------------- | ---------   | --------------- | ------------------ |
+| `altImg`               | *`string`*  | `''`            |                    |
+| `buttons`              | *`object`*  | `[]`            |                    |
+| `detail`               | *`string`*  | `''`            |                    |
+| `description`          | *`string`*  | `''`            | :white_check_mark: |
+| `download`             | *`boolean`* | `false`         |                    |
+| `horizontal`           | *`boolean`* | `false`         |                    |
+| `imgSrc`               | *`string`*  | `''`            |                    |
+| `link`                 | *`string`*  | `''`            |                    |
+| `linksGroup`           | *`object`*  | `[]`            |                    |
+| `size`                 | *`string`*  | `'md'`          |                    |
+| `title`                | *`string`*  | `''`            | :white_check_mark: |
+| `titleTag`             | [*`TitleTag`*](/docs/types.md#title-tag "'h1' \| 'h2' \| 'h3' \| 'h4' \| 'h5' \| 'h6'") | `'h3'`          |          |
 
 ## Un exemple complet
 

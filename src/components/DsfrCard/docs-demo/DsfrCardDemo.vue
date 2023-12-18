@@ -3,19 +3,19 @@ import { ref } from 'vue'
 
 import DsfrCard from '../DsfrCard.vue'
 
-const link = ref('https://www.systeme-de-design.gouv.fr/')
-const description = ref('Description sommaire de la carte')
-const detail = ref('Détails sur la carte en question')
-const altImg = ref('Un adorable chaton')
+const link = ref('https://www.systeme-de-design.gouv.fr/elements-d-interface/composants/carte')
+const description = ref('Description exceptionellement précise')
+const detail = ref('Détails absolument essentiels')
+const altImg = ref('Un adorable quoique redoutable chaton')
 const imgSrc = ref('https://placekitten.com/300/200')
 </script>
 
 <template>
   <DsfrCard
-    :imgSrc="imgSrc"
+    :img-src="imgSrc"
     :link="link"
     :description="description"
     :detail="detail"
-    :altImg="altImg"
+    :alt-img="altImg"
   />
 </template>
