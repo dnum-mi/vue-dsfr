@@ -10,16 +10,19 @@ export type { DsfrTableProps }
 const props = withDefaults(defineProps<DsfrTableProps>(), {
   headers: () => [],
   rows: () => [],
-  defaultCurrentPage: 1,
-  defaultOptionSelected: 10,
+  currentPage: 1,
+  resultsDisplayed: 10,
 })
+
+// Permet aux utilisateurs d'utiliser une fonction afin de charger des résultats au changement de page
+const emit = defineEmits<{(event: 'update:currentPage'): void}>()
 
 const getRowData = (row: (DsfrTableRowProps | string[])) => {
   return Array.isArray(row) ? row : row.rowData
 }
 
-const currentPage = ref(props.defaultCurrentPage)
-const optionSelected = ref(props.defaultOptionSelected)
+const currentPage = ref(props.currentPage)
+const optionSelected = ref(props.resultsDisplayed)
 const pageCount = ref(props.rows.length > optionSelected.value ? Math.ceil(props.rows.length / optionSelected.value) : 1)
 const paginationOptions = [5, 10, 25, 50, 100]
 const returnLowestLimit = () => currentPage.value * optionSelected.value - optionSelected.value
@@ -37,18 +40,26 @@ const truncatedResults = computed(() => {
   return props.rows
 })
 
-const goFirstPage = () => { currentPage.value = 1 }
+const goFirstPage = () => {
+  currentPage.value = 1
+  emit('update:currentPage')
+}
 const goPreviousPage = () => {
   if (currentPage.value > 1) {
     currentPage.value -= 1
+    emit('update:currentPage')
   }
 }
 const goNextPage = () => {
   if (currentPage.value < pageCount.value) {
     currentPage.value += 1
+    emit('update:currentPage')
   }
 }
-const goLastPage = () => { currentPage.value = pageCount.value }
+const goLastPage = () => {
+  currentPage.value = pageCount.value
+  emit('update:currentPage')
+}
 </script>
 
 <template>
@@ -89,6 +100,7 @@ const goLastPage = () => { currentPage.value = pageCount.value }
                 <span>Résultats par page : </span>
                 <select
                   v-model="optionSelected"
+                  @change="emit('update:currentPage')"
                 >
                   <option
                     v-for="(option, idx) in paginationOptions"
@@ -108,11 +120,11 @@ const goLastPage = () => { currentPage.value = pageCount.value }
                   @click="goFirstPage()"
                 />
                 <button
-                  class="fr-icon-arrow-left-s-line-double"
+                  class="fr-icon-arrow-left-s-line"
                   @click="goPreviousPage()"
                 />
                 <button
-                  class="fr-icon-arrow-right-s-line-double"
+                  class="fr-icon-arrow-right-s-line"
                   @click="goNextPage()"
                 />
                 <button
