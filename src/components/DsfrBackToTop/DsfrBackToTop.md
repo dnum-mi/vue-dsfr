@@ -1,5 +1,7 @@
 # Retour en haut de page - `DsfrBackToTop`
 
+## 🌟 Introduction
+
 Bonjour et bienvenue à cette page de documentation incroyablement utile (et légèrement humoristique) pour notre composant `DsfrBackToTop`. Ce composant est votre meilleur ami pour permettre aux utilisateurs de remonter en haut de la page avec style et élégance. Et oui, même dans le monde du code, la classe, ça compte !
 
 Dans les pages de contenu longues, il est possible de proposer un bouton de retour en haut de page à la fin du contenu.
@@ -13,11 +15,15 @@ Le lien de retour en haut de page se place à la fin du contenu de la page, avan
 
 Si il y a des bloc de poursuite de lecture (liens vers d’autres articles), il est conseillé de placer le retour en haut de page avant ces blocs.
 
+🏅 La documentation sur le retour en haut de page sur le [DSFR](https://www.systeme-de-design.gouv.fr/elements-d-interface/composants/retour-en-haut-de-page/)
+
+<VIcon name="vi-file-type-storybook" /> La story sur le retour en haut de page sur le storybook de [VueDsfr](https://vue-dsfr.netlify.app/?path=/docs/composants-dsfrbacktotop--docs)
+
 ## Aperçu
 
 `DsfrBackToTop` est un composant simple mais chic, permettant d'ajouter un lien de retour en haut de la page dans vos applications Vue. Il intègre un style distinctif et des options de positionnement pour s'adapter parfaitement à votre mise en page.
 
-## Props
+## 🛠️ Les props
 
 Notre composant est assez flexible et comprend les props suivantes :
 

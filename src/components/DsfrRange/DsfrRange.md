@@ -1,12 +1,16 @@
 # Curseur - `DsfrRange`
 
-## Introduction
+## 🌟 Introduction
 
 Bienvenue dans la documentation du `DsfrRange`, un composant Vue qui va slider dans votre coeur comme un croissant bien chaud glisse dans votre petit déjeuner. Ce composant est un véritable couteau suisse pour les curseurs, capable de tout faire, de l'affichage simple à la gestion de valeurs doubles. Mettez vos ceintures, on décolle !
 
-Les curseurs sont des entrées numériques qui permettent de voir graphiquement une sélection par rapport a une valeur minimale et maximale. Ils servent à montrer en temps réelle les options choisies et éclairer la prise de décision ("Why so serious?" 🦇🃏).
+Les curseurs sont des entrées numériques qui permettent de voir graphiquement une sélection par rapport a une valeur minimale et maximale. Ils servent à montrer en temps réel les options choisies et éclairer la prise de décision. ("Why so serious?" 🦇🃏)
 
-## Structure du Composant
+🏅 La documentation sur le curseur importante sur le [DSFR](https://www.systeme-de-design.gouv.fr/elements-d-interface/composants/bandeau-d-information-importante)
+
+<VIcon name="vi-file-type-storybook" /> La story sur le curseur importante sur le storybook de [VueDsfr](https://vue-dsfr.netlify.app/?path=/docs/composants-dsfrnotice--docs)
+
+## 📐 Structure
 
 - Le composant est encapsulé dans une `div` avec la classe `fr-range-group`, qui peut afficher un message d'erreur via `message`.
 - Le `label` est affiché en haut, suivi par un texte d'indice (`hint`) si fourni.
@@ -15,7 +19,7 @@ Les curseurs sont des entrées numériques qui permettent de voir graphiquement 
 - Un second curseur est présent si la prop `double` est `true`.
 - Les messages d'erreur ou autres sont affichés dans une `div` spécifique.
 
-## Props
+## 🛠️ Les props
 
 | Nom | Type | Défaut | Description |
 | --- | --- | --- | --- |
@@ -34,15 +38,15 @@ Les curseurs sont des entrées numériques qui permettent de voir graphiquement 
 | `double` | `boolean` | `undefined` | Active un second curseur si `true`. |
 | `disabled` | `boolean` | `undefined` | Désactive le curseur si `true`. |
 
-## Événements
+## 📡 Les événements
 
 - **`update:modelValue`**: Émis lors de la modification de la valeur du curseur. Renvoie la nouvelle valeur.
 
-## Exemple Pratique
+## 📝 Un exemple
 
 ::: code-group
 
-<Story data-title="Démo" min-h="500px">
+<Story data-title="Démo" min-h="340px">
   <DsfrRangeDemo />
 </Story>
 

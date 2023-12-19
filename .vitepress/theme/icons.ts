@@ -7,4 +7,5 @@ export {
   SiGithub,
   SiNpm,
   SiVisualstudiocode,
+  ViFileTypeStorybook,
 } from 'oh-vue-icons/icons'

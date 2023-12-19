@@ -1,24 +1,26 @@
 # Documentation du Composant `DsfrSegmented`
 
+## 🌟 Introduction
+
 👋 Bonjour et bienvenue dans la documentation de `DsfrSegmented`, un composant radio boutonné avec une touche de « je ne sais quoi » à la française! C'est chic, c'est pratique, et en plus, ça supporte des icônes. Alors, allons-y !
 
 Le composant « contrôle segmenté » incite l'utilisateur à choisir entre plusieurs options d'affichage disponibles (vues), mutuellement exclusives avec une valeur sélectionnée par défaut (oui, ça c’est la version sérieuse de l’introduction à ce composant).
 
-La documentation sur les boutons segmentés sur le [DSFR sera ici](https://www.systeme-de-design.gouv.fr/elements-d-interface/composants/controle-segmente) (n’existe pas encore à l’heure où cette documentation est écrite, on est dans l’turfu, nous, qu’on vous dit !).
+🏅 La documentation sur les boutons segmentés sur le [DSFR sera ici](https://www.systeme-de-design.gouv.fr/elements-d-interface/composants/controle-segmente) (n’existe pas encore à l’heure où cette documentation est écrite, on est dans l’turfu, nous, qu’on vous dit !).
 
-La story sur l’alerte sur le storybook de [VueDsfr est ici](https://vue-ds.fr/?path=/docs/composants-dsfrsegmented--docs) (merci [Vincent Lainé](https://github.com/vincentlaine/) !).
+<VIcon name="vi-file-type-storybook" /> La story sur l’alerte sur le storybook de [VueDsfr est ici](https://vue-ds.fr/?path=/docs/composants-dsfrsegmented--docs) (merci [Vincent Lainé](https://github.com/vincentlaine/) !).
 
-## Props
+## 🛠️ Les props
 
-| Nom        | Type                                     | Défaut         | Description                                                       |
-|------------|------------------------------------------|----------------|-------------------------------------------------------------------|
-| `id`       | `string`                                 | ID aléatoire   | Identifiant unique pour le composant.                             |
-| `name`     | `string`                                 | `undefined`    | Nom du groupe de boutons radio.                                   |
-| `modelValue` | `string \| number`                      | `''`           | La valeur actuellement sélectionnée.                             |
-| `value`    | `string \| number`                        | (requis)       | Valeur du bouton radio.                                           |
-| `label`    | `string`                                 | `''`           | Texte du label associé au bouton.                                 |
-| `disabled` | `boolean`                                | `false`        | Si `true`, désactive le bouton radio.                             |
-| `icon`     | `string \| InstanceType<typeof VIcon>['$props']` | `undefined` | Icône à afficher à côté du label (facultatif). Si la valeur est une string commençant par `'fr-'`, cette classe sera ajoutée à la balise `<label>`, sinon c’est une icône OhVueIcon qui sera utilisée                   |
+| Nom        | Type                                     | Défaut              | obligatoire |  Description                                                       |
+|------------|------------------------------------------|----------------     | ----        | -------------------------------------------------------------------|
+| `id`       | `string`                                 | ID aléatoire        |             |  Identifiant unique pour le composant.                             |
+| `name`     | `string`                                 | `undefined`         |             |  Nom du groupe de boutons radio.                                   |
+| `modelValue` | `string \| number`                     | `''`                |             |  La valeur actuellement sélectionnée.                              |
+| `value`    | `string \| number`                       |                     | ✅          |  Valeur du bouton radio.                                           |
+| `label`    | `string`                                 | `''`                |             |  Texte du label associé au bouton.                                 |
+| `disabled` | `boolean`                                | `false`             |             |  Si `true`, désactive le bouton radio.                             |
+| `icon`     | `string \| InstanceType<typeof VIcon>['$props']` | `undefined` |             |  Icône à afficher à côté du label (facultatif). Si la valeur est une string commençant par `'fr-'`, cette classe sera ajoutée à la balise `<label>`, sinon c’est une icône OhVueIcon qui sera utilisée                        |
 
 ::: info Astuce 1
 
@@ -32,17 +34,17 @@ La story sur l’alerte sur le storybook de [VueDsfr est ici](https://vue-ds.fr/
 
 :::
 
-## Événements
+## 📡 Les événements
 
 | Nom                | Valeur               | Description                                  |
 |--------------------|----------------------|----------------------------------------------|
 | `update:modelValue` | `string \| number`   | Émis lorsqu'une nouvelle valeur est sélectionnée. |
 
-## Slots
+## 🧩 Les slots
 
 Pas de slots ici ! Ce composant est aussi direct qu'un express Paris-Marseille.
 
-## Exemple
+## 📝 Un exemple
 
 ```vue
 <DsfrSegmented

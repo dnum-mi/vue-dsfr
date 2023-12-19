@@ -86,6 +86,10 @@ export default defineConfig({
         collapsed: false,
         items: [
           {
+            text: 'DsfrAccordion',
+            link: '/composants/DsfrAccordion.md',
+          },
+          {
             text: 'DsfrAlert',
             link: '/composants/DsfrAlert.md',
           },

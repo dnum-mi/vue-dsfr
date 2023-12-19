@@ -16,6 +16,7 @@ withDefaults(defineProps<DsfrBadgeProps>(), {
       'fr-badge--no-icon': noIcon,
       'fr-badge--sm': small,
     }"
+    :title="ellipsis ? label : undefined"
   >
     <span :class="ellipsis ? 'fr-ellipsis' : ''">
       {{ label }}
