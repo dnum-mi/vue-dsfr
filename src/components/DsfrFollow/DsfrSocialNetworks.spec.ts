@@ -8,11 +8,13 @@ describe('DsfrSocialNetworks', () => {
     // Given
     const networks = [
       {
-        name: 'facebook',
+        name: 'Facebook',
+        type: 'facebook',
         href: 'https://www.facebook.com',
       },
       {
-        name: 'twitter',
+        name: 'X (anciennement Twitter)',
+        type: 'twitter-x',
         href: 'https://www.twitter.com',
       },
     ]
@@ -30,7 +32,7 @@ describe('DsfrSocialNetworks', () => {
     })
     const liElts = container.querySelectorAll('.fr-btn')
     const facebookIcon = container.querySelector('.fr-btn--facebook')
-    const twitterIcon = container.querySelector('.fr-btn--twitter')
+    const twitterIcon = container.querySelector('.fr-btn--twitter-x')
 
     // Then
     expect(liElts).toHaveLength(2)

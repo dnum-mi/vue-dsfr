@@ -59,8 +59,8 @@ Partage.args = {
       url: 'https://www.facebook.com/sharer.php?u=[À MODIFIER - url de la page]',
     },
     {
-      name: 'twitter',
-      label: 'Partager sur Twitter',
+      name: 'twitter-x',
+      label: 'Partager sur X (anciennement Twitter)',
       url: 'https://twitter.com/intent/tweet?url=[À MODIFIER - url de la page]&text=[À MODIFIER - titre ou texte descriptif de la page]&via=[À MODIFIER - via]&hashtags=[À MODIFIER - hashtags]',
     },
     {
