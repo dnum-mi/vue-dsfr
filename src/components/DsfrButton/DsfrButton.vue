@@ -23,7 +23,9 @@ const focus = () => {
 }
 defineExpose({ focus })
 
-const iconProps = computed(() => typeof props.icon === 'string' ? { name: props.icon } : props.icon)
+const dsfrIcon = computed(() => typeof props.icon === 'string' && props.icon.startsWith('fr-icon-'))
+const defaultScale = computed(() => props.iconOnly ? 1.25 : 0.8325)
+const iconProps = computed(() => typeof props.icon === 'string' ? { name: props.icon, scale: defaultScale.value } : { scale: defaultScale.value, ...props.icon })
 </script>
 
 <template>
@@ -37,17 +39,21 @@ const iconProps = computed(() => typeof props.icon === 'string' ? { name: props.
       'fr-btn--sm': sm,
       'fr-btn--md': md,
       'fr-btn--lg': lg,
-      'inline-flex': true,
-      'reverse': iconRight,
-      'justify-center': iconOnly,
+      'fr-btn--icon-right': !iconOnly && dsfrIcon && iconRight,
+      'fr-btn--icon-left': !iconOnly && dsfrIcon && !iconRight,
+      'inline-flex': !dsfrIcon,
+      'reverse': iconRight && !dsfrIcon,
+      'justify-center': !dsfrIcon && iconOnly,
+      [icon]: dsfrIcon,
     }"
     :title="iconOnly ? label : undefined"
     :disabled="disabled"
     :aria-disabled="disabled"
+    :style="(!dsfr && iconOnly) ? { 'padding-inline': '0.5rem' } : {}"
     @click="onClick ? onClick($event) : () => {}"
   >
     <VIcon
-      v-if="icon"
+      v-if="icon && !dsfrIcon"
       v-bind="iconProps"
     />
     <span v-if="!iconOnly">
