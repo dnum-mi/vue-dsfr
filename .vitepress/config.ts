@@ -14,6 +14,7 @@ export default defineConfig({
   appearance: { listenToStorageChanges: false }, // handling this in Story.vue itself to avoid flickering
 
   rewrites: {
+    'src/components/DsfrButton/DsfrButtonGroup.md': 'composants/DsfrButtonGroup.md',
     'src/components/DsfrSegmented/DsfrSegmentedSet.md': 'composants/DsfrSegmentedSet.md',
     'src/components/:comp/:comp.md': 'composants/:comp.md',
     'docs/:splat*': ':splat*',
@@ -102,6 +103,14 @@ export default defineConfig({
             link: '/composants/DsfrBadge.md',
           },
           {
+            text: 'DsfrButton',
+            link: '/composants/DsfrButton.md',
+          },
+          {
+            text: 'DsfrButtonGroup',
+            link: '/composants/DsfrButtonGroup.md',
+          },
+          {
             text: 'DsfrCard',
             link: '/composants/DsfrCard.md',
           },
@@ -120,6 +129,14 @@ export default defineConfig({
           {
             text: 'DsfrSegmentedSet',
             link: '/composants/DsfrSegmentedSet.md',
+          },
+          {
+            text: 'DsfrTag',
+            link: '/composants/DsfrTag.md',
+          },
+          {
+            text: 'DsfrTooltip',
+            link: '/composants/DsfrTooltip.md',
           },
         ]
       },
