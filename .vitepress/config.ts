@@ -14,6 +14,7 @@ export default defineConfig({
   appearance: { listenToStorageChanges: false }, // handling this in Story.vue itself to avoid flickering
 
   rewrites: {
+    'src/components/DsfrButton/DsfrButtonGroup.md': 'composants/DsfrButtonGroup.md',
     'src/components/DsfrSegmented/DsfrSegmentedSet.md': 'composants/DsfrSegmentedSet.md',
     'src/components/:comp/:comp.md': 'composants/:comp.md',
     'docs/:splat*': ':splat*',
