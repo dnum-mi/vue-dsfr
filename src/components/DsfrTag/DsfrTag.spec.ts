@@ -31,7 +31,7 @@ describe('DsfrTag', () => {
     const firstTagEl = getByText(label)
 
     // Then
-    expect(firstTagEl.parentNode).toHaveClass('fr-tag')
+    expect(firstTagEl).toHaveClass('fr-tag')
   })
 
   it('should render small simple tag', () => {
@@ -56,8 +56,8 @@ describe('DsfrTag', () => {
     const firstTagEl = getByText(label)
 
     // Then
-    expect(firstTagEl.parentNode).toHaveClass('fr-tag')
-    expect(firstTagEl.parentNode).toHaveClass('fr-tag--sm')
+    expect(firstTagEl).toHaveClass('fr-tag')
+    expect(firstTagEl).toHaveClass('fr-tag--sm')
   })
 })
 
@@ -92,7 +92,7 @@ describe('DsfrTags', () => {
     const secondTagEl = getByText(label2)
 
     // Then
-    expect(firstTagEl.parentNode).toHaveClass('fr-tag')
-    expect(secondTagEl.parentNode).toHaveClass('fr-tag')
+    expect(firstTagEl).toHaveClass('fr-tag')
+    expect(secondTagEl).toHaveClass('fr-tag')
   })
 })

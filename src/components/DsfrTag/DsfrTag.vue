@@ -2,10 +2,6 @@
 import { computed } from 'vue'
 import { OhVueIcon as VIcon } from 'oh-vue-icons'
 
-// TODO: Pourquoi icône 'check' quand on utilise ce js et qu’on clique sur le premier ?
-// D’autre part, pour les étiquettes sélectionnables posent problème : le JS n’est pas
-// import '@gouvfr/dsfr/dist/component/tag/tag.module.js'
-
 import type { DsfrTagProps } from './DsfrTags.types'
 
 export type { DsfrTagProps }
@@ -28,6 +24,10 @@ const is = computed(() => {
 const linkProps = computed(() => {
   return { [isExternalLink.value ? 'href' : 'to']: props.link }
 })
+
+const dsfrIcon = computed(() => typeof props.icon === 'string' && props.icon.startsWith('fr-icon-'))
+const defaultScale = 0.9
+const iconProps = computed(() => typeof props.icon === 'string' ? { name: props.icon, scale: defaultScale } : { scale: defaultScale, ...props.icon })
 </script>
 
 <template>
@@ -37,16 +37,18 @@ const linkProps = computed(() => {
     :disabled="disabled"
     :class="{
       'fr-tag--sm': small,
+      [icon]: dsfrIcon,
     }"
     v-bind="linkProps"
   >
     <VIcon
       v-if="icon"
-      :name="icon"
       :label="iconOnly ? label : undefined"
-      :scale="0.9"
+      v-bind="iconProps"
     />
-    <span v-if="!iconOnly">{{ label }}</span>
+    <template v-if="!iconOnly">
+      {{ label }}
+    </template>
     <slot />
   </component>
 </template>
