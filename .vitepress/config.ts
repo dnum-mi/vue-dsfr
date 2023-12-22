@@ -103,6 +103,10 @@ export default defineConfig({
             link: '/composants/DsfrBadge.md',
           },
           {
+            text: 'DsfrBreadcrumb',
+            link: '/composants/DsfrBreadcrumb.md',
+          },
+          {
             text: 'DsfrButton',
             link: '/composants/DsfrButton.md',
           },

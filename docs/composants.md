@@ -26,3 +26,7 @@
 ## Infobulle (Information contextuelle)
 
 - [DsfrTooltip](./composants/DsfrTooltip)
+
+## Fil d’ariane
+
+- [DsfrBreadcrumb](./composants/DsfrBreadcrumb)
