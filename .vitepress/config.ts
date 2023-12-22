@@ -103,6 +103,14 @@ export default defineConfig({
             link: '/composants/DsfrBadge.md',
           },
           {
+            text: 'DsfrButton',
+            link: '/composants/DsfrButton.md',
+          },
+          {
+            text: 'DsfrButtonGroup',
+            link: '/composants/DsfrButtonGroup.md',
+          },
+          {
             text: 'DsfrCard',
             link: '/composants/DsfrCard.md',
           },
@@ -117,6 +125,14 @@ export default defineConfig({
           {
             text: 'DsfrSegmented',
             link: '/composants/DsfrSegmented.md',
+          },
+          {
+            text: 'DsfrSegmentedSet',
+            link: '/composants/DsfrSegmentedSet.md',
+          },
+          {
+            text: 'DsfrTag',
+            link: '/composants/DsfrTag.md',
           },
           {
             text: 'DsfrTooltip',
