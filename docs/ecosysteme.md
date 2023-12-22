@@ -26,10 +26,10 @@ Cette documentation faite avec [Vitepress](https://vitepress.dev/) et disponible
 
 ## L’assistant create-vue-dsfr
 
-Cet assistant disponible aussi sur <VIconLink href="https://www.npmjs.com/package/create-vue-dsfr" icon="si-npm">NPM</VIconLink>
-et son le code source disponible sur <VIconLink href="https://github.com/laruiss/create-vue-dsfr" icon="si-github">GitHub</VIconLink>.
+Cet assistant est aussi disponible sur <VIconLink href="https://www.npmjs.com/package/create-vue-dsfr" icon="si-npm">NPM</VIconLink>
+et son code source disponible sur <VIconLink href="https://github.com/laruiss/create-vue-dsfr" icon="si-github">GitHub</VIconLink>.
 
-Il permet d’échaffauder très rapidement une application avec Vue3 et Vite ou Nuxt 3, VueDsfr, Cypress (pour Vite seulement), Vitest (pour Vite seulement), TypeScript et ESLint déjà paramétrés.
+Il permet d’échaffauder très rapidement une application avec Vue3 et Vite ou Nuxt 3, VueDsfr, TypeScript et ESLint déjà paramétrés, et optionnellement Cypress et Vitest.
 
 Voir la page ["Commencer"](./pour-commencer.md#utiliser-create-vue-dsfr-fortement-recommande) pour son utilisation.
 

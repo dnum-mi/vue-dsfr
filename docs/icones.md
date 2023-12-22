@@ -26,11 +26,12 @@ Plusieurs composants (`DsfrButton`, `DsfrBadge`, `DsfrCallout`...) ont la prop `
 
 Attention, cette icône n’est pas forcément une icône officielle du DSFR. En effet, VueDsfr utilise la bibliothèque [`oh-vue-icons`](https://oh-vue-icons.netlify.app/). Cette prop `icon` est donc :
 
+- soit une `string` qui doit être un nom de classe valide pour une icône du DSFR (qui commence par `'fr-icon-'`) ;
 - soit une `string` qui doit être un nom d’icône valide pour OhVueIcon ;
 - soit la prop complète attendue par le composant `OhVueIcon` de la bibliothèque [`oh-vue-icons`](https://oh-vue-icons.netlify.app/).
 
 ::: warning
-Dans les deux cas il faut que cette icône ait été ajoutée (cf. plus loin)
+Dans le cas où c’est une icône OhVueIcon qui est utilisée, il faut que cette icône ait été ajoutée (cf. plus loin)
 :::
 
 ::: code-group

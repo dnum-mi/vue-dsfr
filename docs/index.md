@@ -3,9 +3,9 @@
 layout: home
 
 hero:
-  name: "VueDsfr"
-  text: "Portage en Vue du DSFR"
-  tagline: Une documentation plus "user-friendly" que le storybook 😜
+  name: VueDsfr
+  text: Portage en Vue du DSFR
+  tagline: Une bibliothèque de composants du Système de design français en Vue 3.
   actions:
     - theme: brand
       text: Pour commencer
@@ -19,12 +19,12 @@ hero:
 
 features:
   - title: Facile d’utilisation
-    details: VueDsfr est distribuée sous forme de plugin Vue3
+    details: VueDsfr est distribuée sous forme de plugin Vue3.
   - title: A11y
-    details: Une bibliothèque prête pour viser une très bonne note RGAA
+    details: Une bibliothèque prête pour viser une très bonne note RGAA.
   - title: Personnalisable
-    details: Avec ses nombreuses utilisations de slot
+    details: Avec ses nombreuses utilisations de slot.
   - title: Prête pour TypeScript
-    details: Écrite en TS, tous les composants et leurs props sont typés
+    details: Écrite en TS, tous les composants et leurs propriétés sont typés.
 ---
 
