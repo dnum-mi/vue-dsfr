@@ -49,7 +49,7 @@ const iconProps = computed(() => typeof props.icon === 'string' ? { name: props.
     :title="iconOnly ? label : undefined"
     :disabled="disabled"
     :aria-disabled="disabled"
-    :style="(!dsfr && iconOnly) ? { 'padding-inline': '0.5rem' } : {}"
+    :style="(!dsfrIcon && iconOnly) ? { 'padding-inline': '0.5rem' } : {}"
     @click="onClick ? onClick($event) : () => {}"
   >
     <VIcon
