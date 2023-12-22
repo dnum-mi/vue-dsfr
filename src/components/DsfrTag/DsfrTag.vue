@@ -13,9 +13,7 @@ const props = withDefaults(defineProps<DsfrTagProps>(), {
   icon: undefined,
 })
 
-const isExternalLink = computed(() => {
-  return typeof props.link === 'string' && props.link.startsWith('http')
-})
+const isExternalLink = computed(() => typeof props.link === 'string' && props.link.startsWith('http'))
 const is = computed(() => {
   return props.link
     ? (isExternalLink.value ? 'a' : 'RouterLink')
@@ -27,7 +25,7 @@ const linkProps = computed(() => {
 
 const dsfrIcon = computed(() => typeof props.icon === 'string' && props.icon.startsWith('fr-icon-'))
 const defaultScale = 0.9
-const iconProps = computed(() => typeof props.icon === 'string' ? { name: props.icon, scale: defaultScale } : { scale: defaultScale, ...props.icon })
+const iconProps = computed(() => dsfrIcon.value ? undefined : typeof props.icon === 'string' ? { name: props.icon, scale: defaultScale } : { scale: defaultScale, ...(props.icon ?? {}) })
 </script>
 
 <template>
@@ -42,13 +40,14 @@ const iconProps = computed(() => typeof props.icon === 'string' ? { name: props.
     v-bind="linkProps"
   >
     <VIcon
-      v-if="icon"
+      v-if="iconProps"
       :label="iconOnly ? label : undefined"
       v-bind="iconProps"
     />
     <template v-if="!iconOnly">
       {{ label }}
     </template>
+    <!-- @slot Slot par défaut pour le contenu du tag -->
     <slot />
   </component>
 </template>

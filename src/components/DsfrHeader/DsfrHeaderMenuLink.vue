@@ -47,30 +47,40 @@ const actualTo = computed(() => {
 const linkData = computed(() => {
   return actualTo.value ? { to: actualTo.value } : { href: actualHref.value }
 })
+const dsfrIcon = computed(() => typeof props.icon === 'string' && props.icon.startsWith('fr-icon-'))
+const defaultScale = 1
+const iconProps = computed(() => typeof props.icon === 'string'
+  ? { name: props.icon, scale: defaultScale, ...(props.iconAttrs ?? {}) }
+  : { scale: defaultScale, ...(props.icon ?? {}), ...(props.iconAttrs ?? {}) },
+)
 </script>
 
 <template>
   <component
     :is="is"
     class="fr-btn"
+    :class="{
+      'fr-btn--icon-right': dsfrIcon && iconRight,
+      'fr-btn--icon-left': dsfrIcon && !iconRight,
+      [String(icon)]: dsfrIcon,
+    }"
     v-bind="linkData"
     :target="target"
     @click.stop="onClick"
   >
     <template
-      v-if="(icon || iconAttrs?.name) && !iconRight"
+      v-if="!dsfrIcon && (icon || iconAttrs?.name) && !iconRight"
     >
       <VIcon
-        :name="icon"
         class="fr-mr-1w"
-        v-bind="iconAttrs"
+        v-bind="iconProps"
       />
     </template>
 
     {{ label }}
 
     <template
-      v-if="(icon || iconAttrs?.name) && iconRight"
+      v-if="!dsfrIcon && (icon || iconAttrs?.name) && iconRight"
     >
       <VIcon
         :name="icon"

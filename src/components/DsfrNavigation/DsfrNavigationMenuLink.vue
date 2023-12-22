@@ -19,6 +19,14 @@ const props = withDefaults(defineProps<DsfrNavigationMenuLinkProps>(), {
 defineEmits<{(event: 'toggle-id', id: string): void}>()
 
 const isExternal = computed(() => typeof props.to === 'string' && props.to.startsWith('http'))
+const dsfrIcon = computed(() => props.icon && typeof props.icon === 'string' && props.icon.startsWith('fr-icon-'))
+const defaultScale = 2
+const iconProps = computed(() => (dsfrIcon.value || !props.icon)
+  ? undefined
+  : (typeof props.icon === 'string')
+      ? { scale: defaultScale, name: props.icon }
+      : { scale: defaultScale, ...(props.icon || {}) },
+)
 </script>
 
 <template>
@@ -36,11 +44,14 @@ const isExternal = computed(() => typeof props.to === 'string' && props.to.start
     class="fr-nav__link"
     data-testid="nav-router-link"
     :to="to"
+    :class="{
+      [String(icon)]: dsfrIcon,
+    }"
     @click="$emit('toggle-id', id)"
   >
     <VIcon
-      v-if="icon"
-      :name="icon"
+      v-if="iconProps"
+      v-bind="iconProps"
     />
     {{ text }}
   </RouterLink>

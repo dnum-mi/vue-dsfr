@@ -10,7 +10,7 @@ export type DsfrTableRowProps = {
 export type DsfrTableHeaderProps = {
   header?: string
   headerAttrs?: ThHTMLAttributes & { onClick?: (e: MouseEvent) => void }
-  icon?: InstanceType<typeof VIcon>['$props']
+  icon?: string | InstanceType<typeof VIcon>['$props']
 }
 
 export type DsfrTableHeadersProps = (string | (DsfrTableHeaderProps & { text?: string }))[]
