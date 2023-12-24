@@ -36,6 +36,7 @@ const messageClass = computed(() => props.errorMessage ? 'fr-error-text' : 'fr-v
     }"
   >
     <slot name="before-input" />
+    <!-- @slot Slot par défaut pour le contenu du groupe de champ -->
     <slot />
     <DsfrInput
       v-if="!$slots.default"

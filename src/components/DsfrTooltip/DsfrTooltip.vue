@@ -120,6 +120,7 @@ const onClick = () => {
     @mouseenter="onMouseEnter()"
     @mouseleave="onMouseLeave()"
   >
+    <!-- @slot Slot par défaut pour le contenu de l’infobulle -->
     <slot />
   </component>
   <span

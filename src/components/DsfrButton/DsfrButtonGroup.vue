@@ -83,6 +83,7 @@ onMounted(async () => {
         @click="onClick"
       />
     </li>
+    <!-- @slot Slot par défaut pour le contenu de la liste de boutons. Sera dans `<ul class="fr-btns-group">` -->
     <slot />
   </ul>
 </template>
