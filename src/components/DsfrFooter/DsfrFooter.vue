@@ -204,7 +204,10 @@ const aLicenceHref = computed(() => {
             </RouterLink>
           </li>
         </ul>
-        <div class="fr-footer__bottom-copy">
+        <div
+          v-if="licenceText"
+          class="fr-footer__bottom-copy"
+        >
           <p>
             {{ licenceText }}
             <component

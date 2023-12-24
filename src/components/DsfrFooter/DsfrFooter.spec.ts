@@ -118,6 +118,7 @@ describe('DsfrFooter', () => {
   it('should mount DsfrFooter with right content', async () => {
     // Given
     const testIdMentionsLegales = '/mentions-legales'
+    const licenceText = 'Licence ouverte'
 
     // When
     const { container, getByTestId } = render(DsfrFooter, {
@@ -129,15 +130,78 @@ describe('DsfrFooter', () => {
       },
       props: {
         a11yCompliance: 'totalement conforme',
+        licenceText,
       },
     })
 
     await router.isReady()
 
     const ecosystemLinksLis = container.querySelectorAll('.fr-footer__content-list .fr-footer__content-link')
+    const licenceEl = container.querySelector('.fr-footer__bottom-copy')
 
     // Then
     expect(ecosystemLinksLis).toHaveLength(4)
+    expect(licenceEl).not.toBeNull()
+    expect(getByTestId(testIdMentionsLegales)).toHaveClass('fr-footer__bottom-link')
+  })
+
+  it('should not display div.fr-footer__bottom-copy if licenceText is empty string', async () => {
+    // Given
+    const testIdMentionsLegales = '/mentions-legales'
+    const licenceText = ''
+
+    // When
+    const { container, getByTestId } = render(DsfrFooter, {
+      global: {
+        plugins: [router],
+        components: {
+          VIcon,
+        },
+      },
+      props: {
+        a11yCompliance: 'totalement conforme',
+        licenceText,
+      },
+    })
+
+    await router.isReady()
+
+    const ecosystemLinksLis = container.querySelectorAll('.fr-footer__content-list .fr-footer__content-link')
+    const licenceEl = container.querySelector('.fr-footer__bottom-copy')
+
+    // Then
+    expect(ecosystemLinksLis).toHaveLength(4)
+    expect(licenceEl).toBeNull()
+    expect(getByTestId(testIdMentionsLegales)).toHaveClass('fr-footer__bottom-link')
+  })
+
+  it('should not display div.fr-footer__bottom-copy if licenceText is null', async () => {
+    // Given
+    const testIdMentionsLegales = '/mentions-legales'
+    const licenceText = null
+
+    // When
+    const { container, getByTestId } = render(DsfrFooter, {
+      global: {
+        plugins: [router],
+        components: {
+          VIcon,
+        },
+      },
+      props: {
+        a11yCompliance: 'totalement conforme',
+        licenceText,
+      },
+    })
+
+    await router.isReady()
+
+    const ecosystemLinksLis = container.querySelectorAll('.fr-footer__content-list .fr-footer__content-link')
+    const licenceEl = container.querySelector('.fr-footer__bottom-copy')
+
+    // Then
+    expect(ecosystemLinksLis).toHaveLength(4)
+    expect(licenceEl).toBeNull()
     expect(getByTestId(testIdMentionsLegales)).toHaveClass('fr-footer__bottom-link')
   })
 })
