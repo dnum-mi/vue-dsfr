@@ -90,7 +90,10 @@ describe('DsfrFooter', () => {
       },
       props: {
         a11yCompliance: 'totalement conforme',
-        afterMandatoryLinks: [{ label: 'After', to: testIdAfterLink }],
+        afterMandatoryLinks: [
+          { label: 'After', to: testIdAfterLink },
+          { label: 'After ext', to: 'https://example.com' },
+        ],
         beforeMandatoryLinks: [{ label: 'Before', to: testIdBeforeLink }],
         partners,
       },
@@ -100,10 +103,13 @@ describe('DsfrFooter', () => {
 
     const ecosystemLinksLis = container.querySelectorAll('.fr-footer__content-list .fr-footer__content-link')
     const partnerLinks = container.querySelectorAll('.fr-footer__partners-link')
+    const bottomLinks = container.querySelectorAll('.fr-footer__bottom-link')
+    const extLinks = [...bottomLinks].filter((link) => link.getAttribute('href')?.startsWith('https'))
 
     // Then
     expect(ecosystemLinksLis).toHaveLength(4)
     expect(partnerLinks).toHaveLength(3)
+    expect(extLinks).toHaveLength(1)
     expect(getByTestId(testIdMentionsLegales)).toHaveClass('fr-footer__bottom-link')
     expect(getByTestId(testIdBeforeLink)).toHaveClass('fr-footer__bottom-link')
     expect(getByTestId(testIdAfterLink)).toHaveClass('fr-footer__bottom-link')
@@ -112,6 +118,7 @@ describe('DsfrFooter', () => {
   it('should mount DsfrFooter with right content', async () => {
     // Given
     const testIdMentionsLegales = '/mentions-legales'
+    const licenceText = 'Licence ouverte'
 
     // When
     const { container, getByTestId } = render(DsfrFooter, {
@@ -123,15 +130,78 @@ describe('DsfrFooter', () => {
       },
       props: {
         a11yCompliance: 'totalement conforme',
+        licenceText,
       },
     })
 
     await router.isReady()
 
     const ecosystemLinksLis = container.querySelectorAll('.fr-footer__content-list .fr-footer__content-link')
+    const licenceEl = container.querySelector('.fr-footer__bottom-copy')
 
     // Then
     expect(ecosystemLinksLis).toHaveLength(4)
+    expect(licenceEl).not.toBeNull()
+    expect(getByTestId(testIdMentionsLegales)).toHaveClass('fr-footer__bottom-link')
+  })
+
+  it('should not display div.fr-footer__bottom-copy if licenceText is empty string', async () => {
+    // Given
+    const testIdMentionsLegales = '/mentions-legales'
+    const licenceText = ''
+
+    // When
+    const { container, getByTestId } = render(DsfrFooter, {
+      global: {
+        plugins: [router],
+        components: {
+          VIcon,
+        },
+      },
+      props: {
+        a11yCompliance: 'totalement conforme',
+        licenceText,
+      },
+    })
+
+    await router.isReady()
+
+    const ecosystemLinksLis = container.querySelectorAll('.fr-footer__content-list .fr-footer__content-link')
+    const licenceEl = container.querySelector('.fr-footer__bottom-copy')
+
+    // Then
+    expect(ecosystemLinksLis).toHaveLength(4)
+    expect(licenceEl).toBeNull()
+    expect(getByTestId(testIdMentionsLegales)).toHaveClass('fr-footer__bottom-link')
+  })
+
+  it('should not display div.fr-footer__bottom-copy if licenceText is null', async () => {
+    // Given
+    const testIdMentionsLegales = '/mentions-legales'
+    const licenceText = null
+
+    // When
+    const { container, getByTestId } = render(DsfrFooter, {
+      global: {
+        plugins: [router],
+        components: {
+          VIcon,
+        },
+      },
+      props: {
+        a11yCompliance: 'totalement conforme',
+        licenceText,
+      },
+    })
+
+    await router.isReady()
+
+    const ecosystemLinksLis = container.querySelectorAll('.fr-footer__content-list .fr-footer__content-link')
+    const licenceEl = container.querySelector('.fr-footer__bottom-copy')
+
+    // Then
+    expect(ecosystemLinksLis).toHaveLength(4)
+    expect(licenceEl).toBeNull()
     expect(getByTestId(testIdMentionsLegales)).toHaveClass('fr-footer__bottom-link')
   })
 })

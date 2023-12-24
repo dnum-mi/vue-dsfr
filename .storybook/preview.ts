@@ -1,7 +1,7 @@
-import type { Preview } from "@storybook/vue3"
-import { setup } from "@storybook/vue3"
+import type { Preview } from '@storybook/vue3'
+import { setup } from '@storybook/vue3'
 import { themes } from '@storybook/theming'
-import { withThemeByDataAttribute } from "@storybook/addon-styling"
+import { withThemeByDataAttribute } from '@storybook/addon-styling'
 import { FocusTrap } from 'focus-trap-vue'
 import { defineComponent } from 'vue'
 import { OhVueIcon as VIcon} from 'oh-vue-icons'
@@ -33,7 +33,7 @@ const preview: Preview = {
     docs: {
       theme: { ...themes.normal, ...VueDsfrTheme },
     },
-    actions: { argTypesRegex: "^on[A-Z].*" },
+    actions: { argTypesRegex: '^on[A-Z].*' },
     controls: {
       matchers: {
         color: /(background|color)$/i,

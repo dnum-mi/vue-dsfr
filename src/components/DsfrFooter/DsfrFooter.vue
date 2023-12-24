@@ -169,6 +169,7 @@ const aLicenceHref = computed(() => {
                 class="fr-footer__content-link"
                 :href="link.href"
                 target="_blank"
+                rel="noopener noreferrer"
               >
                 {{ link.label }}
               </a>
@@ -187,7 +188,14 @@ const aLicenceHref = computed(() => {
             :key="index"
             class="fr-footer__bottom-item"
           >
+            <a
+              v-if="typeof link.to === 'string' && link.to.startsWith('http')"
+              class="fr-footer__bottom-link"
+              :href="link.to"
+              :data-testid="link.to"
+            >{{ link.label }}</a>
             <RouterLink
+              v-else
               class="fr-footer__bottom-link"
               :to="link.to ?? '#'"
               :data-testid="link.to"
@@ -196,7 +204,10 @@ const aLicenceHref = computed(() => {
             </RouterLink>
           </li>
         </ul>
-        <div class="fr-footer__bottom-copy">
+        <div
+          v-if="licenceText"
+          class="fr-footer__bottom-copy"
+        >
           <p>
             {{ licenceText }}
             <component

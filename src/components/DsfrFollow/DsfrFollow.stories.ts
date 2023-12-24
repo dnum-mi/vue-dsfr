@@ -11,7 +11,7 @@ export default {
   argTypes: {
     networks: {
       control: 'object',
-      description: 'Liste des différents réseaux sociaux ; doit avoir 2 props : `name` (forcément parmi les valeurs suivantes : `\'facebook\'`, `\'twitter\'`, `\'youtube\'`, `\'linkedin\'`, `\'instagram\'`)  et `url`',
+      description: 'Liste des différents réseaux sociaux ; doit avoir 3 props : `name`, `type` (forcément parmi les valeurs suivantes : `\'facebook\'`, `\'twitter-x\'`, `\'youtube\'`, `\'linkedin\'`, `\'instagram\'`)  et `href`',
     },
     newsletterData: {
       control: 'object',
@@ -38,23 +38,28 @@ export const Suivre = (args) => ({
 Suivre.args = {
   networks: [
     {
-      name: 'facebook',
+      name: 'Facebook',
+      type: 'facebook',
       href: 'https://www.facebook.com',
     },
     {
-      name: 'twitter',
-      href: 'https://www.twitter.com',
+      name: 'X (anciennement Twitter)',
+      type: 'twitter-x',
+      href: 'https://www.x.com',
     },
     {
-      name: 'youtube',
+      name: 'Youtube',
+      type: 'youtube',
       href: 'https://www.youtube.com',
     },
     {
-      name: 'linkedin',
+      name: 'Linkedin',
+      type: 'linkedin',
       href: 'https://www.linkedin.com',
     },
     {
-      name: 'instagram',
+      name: 'Instagram',
+      type: 'instagram',
       href: 'https://www.instagram.com',
     },
   ],
@@ -90,23 +95,28 @@ export const SuivreMiseEnAvant = (args) => ({
 SuivreMiseEnAvant.args = {
   networks: [
     {
-      name: 'facebook',
+      name: 'Facebook',
+      type: 'facebook',
       href: 'https://www.facebook.com',
     },
     {
-      name: 'twitter',
-      href: 'https://www.twitter.com',
+      name: 'X (anciennement Twitter)',
+      type: 'twitter-x',
+      href: 'https://www.x.com',
     },
     {
-      name: 'youtube',
+      name: 'Youtube',
+      type: 'youtube',
       href: 'https://www.youtube.com',
     },
     {
-      name: 'linkedin',
+      name: 'Linkedin',
+      type: 'linkedin',
       href: 'https://www.linkedin.com',
     },
     {
-      name: 'instagram',
+      name: 'Instagram',
+      type: 'instagram',
       href: 'https://www.instagram.com',
     },
   ],

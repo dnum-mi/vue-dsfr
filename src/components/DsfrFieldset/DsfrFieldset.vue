@@ -37,8 +37,8 @@ withDefaults(defineProps<DsfrFieldsetProps>(), {
         <slot name="hint" />
       </span>
     </div>
-    <!-- @slot Slot par défaut pour le contenu du fieldset (sera dans `<fieldset>`, après `</legend>`) -->
     <div class="fr-fieldset__element">
+      <!-- @slot Slot par défaut pour le contenu du fieldset (sera dans `<div class="fr-fieldset__element">`) -->
       <slot />
     </div>
   </fieldset>

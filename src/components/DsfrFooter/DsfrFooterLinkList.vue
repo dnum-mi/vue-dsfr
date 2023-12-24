@@ -23,6 +23,7 @@ withDefaults(defineProps<DsfrFooterLinkListProps>(), {
           v-if="typeof link.to === 'string' && link.to.startsWith('http')"
           class="fr-footer__top-link"
           target="_blank"
+          rel="noopener noreferrer"
           :href="link.to"
         >{{ link.label }}</a>
         <RouterLink

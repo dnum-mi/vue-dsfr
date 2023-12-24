@@ -67,6 +67,15 @@ async function close () {
   props.origin?.focus()
   emit('close')
 }
+
+const dsfrIcon = computed(() => typeof props.icon === 'string' && props.icon.startsWith('fr-icon-'))
+const defaultScale = 2
+const iconProps = computed(() => dsfrIcon.value
+  ? undefined
+  : typeof props.icon === 'string'
+    ? { name: props.icon, scale: defaultScale }
+    : { scale: defaultScale, ...(props.icon ?? {}) },
+)
 </script>
 
 <template>
@@ -113,11 +122,14 @@ async function close () {
                   class="fr-modal__title"
                 >
                   <span
-                    v-if="icon"
+                    v-if="dsfrIcon || iconProps"
+                    :class="{
+                      [String(icon)]: dsfrIcon,
+                    }"
                   >
                     <VIcon
-                      :name="icon"
-                      scale="2"
+                      v-if="iconProps"
+                      v-bind="iconProps"
                     />
                   </span>
                   {{ title }}

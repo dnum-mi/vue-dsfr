@@ -1,6 +1,7 @@
 import type { Theme } from 'vitepress'
 import DefaultTheme from 'vitepress/theme'
 import { OhVueIcon as VIcon, addIcons } from 'oh-vue-icons'
+import { RouterLink } from 'vue-router'
 
 import Story from './Story.vue'
 import VIconLink from './VIconLink.vue'
@@ -16,5 +17,6 @@ export default {
     app.component('VIcon', VIcon)
     app.component('VIconLink', VIconLink)
     app.component('Story', Story)
+    app.component('RouterLink', RouterLink)
   }
 } satisfies Theme

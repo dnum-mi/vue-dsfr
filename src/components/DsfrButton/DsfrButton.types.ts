@@ -17,8 +17,9 @@ export type DsfrButtonProps = {
 export type DsfrButtonGroupProps = {
   buttons?: (DsfrButtonProps & ButtonHTMLAttributes)[]
   reverse?: boolean
+  equisized?: boolean
   iconRight?: boolean
   align?: 'right' | 'center' | '' | undefined
-  inlineLayoutWhen?: 'always' | 'never' | 'sm' | 'small' | 'lg' | 'large' | 'md' | 'medium' | '' | undefined | boolean
-  size?: 'sm' | 'small' | 'lg' | 'large' | 'md' | 'medium' | '' | undefined
+  inlineLayoutWhen?: 'always' | 'never' | 'sm' | 'small' | 'lg' | 'large' | 'md' | 'medium' | '' | true | undefined
+  size?: 'sm' | 'small' | 'lg' | 'large' | 'md' | 'medium' | undefined
 }

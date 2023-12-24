@@ -3,11 +3,15 @@
  * https://github.com/vuejs/vitepress/blob/main/src/client/theme-default/styles/vars.css
  */
 
+ html {
+  scroll-behavior: smooth;
+}
+
 /**
  * Colors
  * -------------------------------------------------------------------------- */
 
-@font-face {
+ @font-face {
   font-family: Marianne;
   src: url("@gouvfr/dsfr/dist/fonts/Marianne-Light.woff2") format("woff2"), url("@gouvfr/dsfr/dist/fonts/Marianne-Light.woff") format("woff");
   font-weight: 300;
@@ -159,4 +163,50 @@
 
 .vp-doc summary {
   cursor: pointer;
+}
+
+.demo-container-col {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-col {
+  flex-direction: column;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.gap-4 {
+  gap: 1rem;
+}
+
+.w-full {
+  width: 100%;
+}
+
+.h-full {
+  width: 100%;
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-end {
+  justify-content: flex-end;
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
 }

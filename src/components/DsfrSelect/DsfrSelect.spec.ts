@@ -5,7 +5,7 @@ import DsfrSelect from './DsfrSelect.vue'
 
 describe('DsfrSelect', () => {
   it('should render an empty select', async () => {
-    const defaultOptionLabel = 'Sélectionnez une option'
+    const defaultOptionLabel = 'Sélectionner une option'
 
     const { container, getByText } = render(DsfrSelect, {
     })
@@ -18,7 +18,7 @@ describe('DsfrSelect', () => {
   })
 
   it('should render a select', async () => {
-    const defaultOptionLabel = 'Sélectionnez une option'
+    const defaultOptionLabel = 'Sélectionner une option'
     const firstOptionLabel = 'Option 1'
     const secondOptionLabel = 'Option 2'
     const selectId = 'select-id'

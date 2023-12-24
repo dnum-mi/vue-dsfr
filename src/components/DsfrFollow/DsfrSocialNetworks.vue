@@ -28,7 +28,7 @@ withDefaults(defineProps<DsfrSocialNetworksProps>(), {
       >
         <a
           class="fr-btn"
-          :class="`fr-btn--${network.name}`"
+          :class="`fr-btn--${network.type}`"
           :title="network.name"
           :href="network.href"
           target="_blank"

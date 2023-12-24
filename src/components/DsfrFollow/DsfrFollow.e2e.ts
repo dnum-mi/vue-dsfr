@@ -6,23 +6,28 @@ describe('DsfrFollow', () => {
   it('should mount DsfrFollow', () => {
     const networks = [
       {
-        name: 'facebook',
+        name: 'Facebook',
+        type: 'facebook',
         href: 'https://www.facebook.com',
       },
       {
-        name: 'twitter',
+        name: 'X (anciennement Twitter)',
+        type: 'twitter-x',
         href: 'https://www.twitter.com',
       },
       {
-        name: 'youtube',
+        name: 'Youtube',
+        type: 'youtube',
         href: 'https://www.youtube.com',
       },
       {
-        name: 'linkedin',
+        name: 'Linkedin',
+        type: 'linkedin',
         href: 'https://www.linkedin.com',
       },
       {
-        name: 'instagram',
+        name: 'Instagram',
+        type: 'instagram',
         href: 'https://www.instagram.com',
       },
     ]

@@ -250,6 +250,7 @@ defineEmits<{
             :hidemodal="hideModal"
           />
         </div>
+        <!-- @slot Slot par défaut pour le contenu du fieldset (sera dans `<div class="fr-header__body-row">`) -->
         <slot />
       </div>
     </div>

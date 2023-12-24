@@ -1,8 +1,14 @@
 # Accordéon - `DsfrAccordion`
 
+## 🌟 Introduction
+
 Les accordéons permettent aux utilisateurs d'afficher et de masquer des sections de contenu présentés dans une page.
 
-## Structure
+🏅 La documentation sur l’accordéon sur le [DSFR](https://www.systeme-de-design.gouv.fr/elements-d-interface/composants/accordeon)
+
+<VIcon name="vi-file-type-storybook" /> La story sur l’accordéon sur le storybook de [VueDsfr](https://vue-dsfr.netlify.app/?path=/docs/composants-dsfraccordion--docs)
+
+## 📐 Structure
 
 Un accordéon est constitué des éléments suivants :
 
@@ -16,16 +22,16 @@ Autres props :
 - **`id`** : identifiant du contenu de l’accordéon, qui est utilisé aussi pour l’attribut `aria-controls` du bouton qui permet de plier et déplier l’accordéon
 - **`expandedId`** : identifiant de l’accordéon actuellement déplié (pour savoir si l’accordéon doit être déplié)
 
-## Les props
+## 🛠️ Les props
 
-|  nom                   |   type      |  défaut         | obligatoire |
-| ----------------------- | ---------   | ---------------- | -------- |
-| `title`                    | *`string`*    | | oui |
+|  nom                    |   type        |  défaut          | obligatoire |
+| ----------------------- | ---------     | ---------------- | --------    |
+| `title`                 | *`string`*    | | ✅ |
 | `titleTag`              | [*`TitleTag`*](/docs/types.md#title-tag "'h1' \| 'h2' \| 'h3' \| 'h4' \| 'h5' \| 'h6'")  |    `'h3'`     | |
 | `id`                    | *`string`*    | *random string*  | |
-| `expandedId`                    | *`string`*    | *`undefined`*  | |
+| `expandedId`            | *`string`*    | *`undefined`*  | |
 
-## Les événements
+## 📡 Les événements
 
 `DsfrAccordion` déclenche l’événement `'expand'` au clic sur le titre de l’accordéon.
 
@@ -35,7 +41,11 @@ Autres props :
 
 Ceci permet de récupérer l’id et de passer la prop **`expandedId`** à tous les accordéons du groupe (voir le code de la démo ci-dessous).
 
-## Les groupes d’accordéons - `DsfrAccordionGroup`
+## 🧩 Les slots
+
+`DsfrAccordion` possède un slot par défaut pour le contenu de l’accordéon.
+
+## 🏗️ Les groupes d’accordéons - `DsfrAccordionGroup`
 
 Un accordéon prend plus de sens lorsqu’il fait partie d’un groupe (comme nous tous, non ?).
 
@@ -94,7 +104,7 @@ et
 Cf. la [documentation Vue](https://vuejs.org/guide/essentials/event-handling.html#accessing-event-argument-in-inline-handlers) pour plus de détails.
 :::
 
-## Un exemple complet
+## 📝 Un exemple complet
 
 ::: code-group
 

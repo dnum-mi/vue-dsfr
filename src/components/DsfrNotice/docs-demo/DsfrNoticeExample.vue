@@ -1,24 +1,32 @@
 <script lang="ts" setup>
 import DsfrNotice from '../DsfrNotice.vue'
-import DsfrButton from '../../DsfrButton/DsfrButton.vue';
 import { ref } from 'vue'
 
 const isClosed = ref(false)
+const close = () => {
+  isClosed.value = true; setTimeout(() => {
+    isClosed.value = false
+  }, 3000)
+}
 </script>
 
 <template>
-  <DsfrNotice
-    v-if="!isClosed"
-    :closeable="true"
-    @close="() => isClosed = true"
-  >
-    Titre du bandeau, <a href='/composants/DsfrNotice' rel='noopener' target='_blank'>lien au fil du texte</a>
-  </DsfrNotice>
-  <div v-if="isClosed">
-    <p>Le bandeau d’information a été fermé.</p>
-    <DsfrButton
-      label="Afficher le bandeau d'information"
-      @click="() => isClosed = false"
-    />
+  <div class="demo-container-col">
+    <DsfrNotice title="Notice simple" />
+
+    <DsfrNotice
+      v-if="!isClosed"
+      closeable
+      @close="close()"
+    >
+      Notice fermable, avec un
+      <a
+        href="/composants/DsfrNotice"
+        rel="noopener noreferrer"
+        target="_blank"
+      >
+        lien externe
+      </a>
+    </DsfrNotice>
   </div>
 </template>

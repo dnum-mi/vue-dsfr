@@ -27,6 +27,10 @@ export default {
       options: ['never', 'always', 'small', 'medium', 'large'],
       description: 'Indique si le groupe de boutons doit apparaître en empilement horizontal (toujours, ou seulement sur les tailles de vue spécifiées)',
     },
+    equisized: {
+      control: 'boolean',
+      description: 'Indique si la taille des boutons doit être la même pour tous les boutons (prend la taille du plus large) si est à `true`, ou si chaque bouton doit avoir sa propre taille si est à `false`',
+    },
     reverse: {
       control: 'boolean',
       description: 'Indique si l’ordre des boutons doit être inversé par rapport au DOM.\n\n *N.B. : Ne fonctionne que si `align` est à `right`*',
@@ -43,7 +47,7 @@ export default {
     align: {
       control: 'radio',
       options: ['default', 'center', 'right'],
-      description: 'Indique l\'alignement du groupe de boutons',
+      description: 'Indique l’alignement du groupe de boutons',
     },
     onClick: { action: 'clicked' },
   },

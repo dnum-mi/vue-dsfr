@@ -1,9 +1,15 @@
 export {
-  RiCloseLine,
+  GiChocolateBar,
+  RiArrowDownLine,
   RiArrowDropDownLine,
   RiArrowDropUpLine,
+  RiCloseLine,
+  RiMoonLine,
+  RiRefreshLine,
   SiDiscord,
   SiGithub,
   SiNpm,
+  SiNuxtdotjs,
   SiVisualstudiocode,
+  ViFileTypeStorybook,
 } from 'oh-vue-icons/icons'
