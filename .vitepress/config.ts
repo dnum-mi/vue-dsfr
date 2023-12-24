@@ -86,13 +86,20 @@ export default defineConfig({
     },
     logo: '/nouveau-logo-marianne-gouvernement.png',
     nav: [
-      { text: 'Guide', link: '/pour-commencer' },
+      {
+        text: 'Guide',
+        link: '/guide/pour-commencer',
+        items: [
+          { text: 'Tous les composants', link: '/composants' },
+          { text: 'Tous les types', link: '/types' }
+        ],
+      },
       {
         text: 'Références',
         items: [
           { text: 'Tous les composants', link: '/composants' },
           { text: 'Tous les types', link: '/types' }
-        ]
+        ],
       },
       {
         text: 'Liens',
@@ -107,8 +114,8 @@ export default defineConfig({
             link: 'https://vue-ds.fr/',
             target: '_blank'
           },
-        ]
-      }
+        ],
+      },
     ],
     outline:{
       level: [2, 3],
@@ -131,8 +138,8 @@ export default defineConfig({
               selectText: 'aller à ce texte',
               navigateText: 'naviguer dans les résultats',
               closeText: 'fermer'
-            }
-      }
+            },
+          },
         },
       }
     },
@@ -140,35 +147,39 @@ export default defineConfig({
       '/composants': composants,
       '/': [
         {
-          text: 'Introduction',
+          text: 'Guide',
           items: [
             {
+              text: 'Introduction',
+              link: '/guide/',
+            },
+            {
               text: 'Commencer',
-              link: '/pour-commencer',
+              link: '/guide/pour-commencer',
             },
             {
               text: 'L’écosystème',
-              link: '/ecosysteme',
+              link: '/guide/ecosysteme',
             },
             {
               text: 'Les icônes',
-              link: '/icones',
+              link: '/guide/icones',
             },
             {
               text: 'Guide du développeur',
-              link: '/guide-developpeur',
+              link: '/guide/guide-developpeur',
             },
           ]
         },
         {
           text: 'Tous les types',
           link: '/types',
-          items: []
+          items: [],
         },
         {
           text: 'Tous les composants',
           link: '/composants',
-          items: []
+          items: [],
         },
         {
           text: 'Recettes nuxt',
@@ -179,7 +190,7 @@ export default defineConfig({
 
     socialLinks: [
       { icon: 'github', link: 'https://github.com/dnum-mi/vue-dsfr' },
-      { icon: 'discord', link: 'https://discord.gg/jbBJ9769ZZ' }
+      { icon: 'discord', link: 'https://discord.gg/jbBJ9769ZZ' },
     ]
   },
 
@@ -187,20 +198,20 @@ export default defineConfig({
     plugins: [
       whyframe({ defaultSrc: '/_frame', components: [{ name: 'Story' }] }),
       whyframeVue({ include: /\.(vue|md)$/ }),
-      hmrFix()
+      hmrFix(),
     ],
 
     resolve: {
       alias: {
         '@': fileURLToPath(new URL('../src', import.meta.url)),
-      }
+      },
     },
 
     // not needed, just there to prevent reload on cold start
     optimizeDeps: {
       include: [
         '@vueuse/core',
-      ]
-    }
+      ],
+    },
   },
 })

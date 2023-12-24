@@ -16,16 +16,16 @@ Le BRR a donc besoin d'un portage en Vue 3 de ce DSFR pour ses futurs projets qu
 
 Ce projet de bibliothèque de composants :
 
-- reproduit le plus fidèlement possible les composants du [DSFR][dsfr] ;
-- est fait avec [Vue 3][vue3] ;
-- est utilisable facilement en tant que plugin Vue 3 ou Nuxt 3 ;
-- exporte les types (TypeScript) du plugin, des composants et des composables ;
-- est utilisable facilement dans un projet [npm][vue-dsfr-npm] ;
+- reproduit le plus fidèlement possible les composants du [DSFR][dsfr] ;
+- est fait avec [Vue 3][vue3] ;
+- est utilisable facilement en tant que plugin Vue 3 ou Nuxt 3 ;
+- exporte les types (TypeScript) du plugin, des composants et des composables ;
+- est utilisable facilement dans un projet [npm][vue-dsfr-npm] ;
 - met à disposition deux parties dans la documentation :
-  - une pour [aider au développement](/?path=/story/docs-3-guide-du-développeur--page) ;
-  - une autre pour l'[utilisation](/?path=/story/docs-2-guide-d-utilisation--page) ;
-- publie un [site complet][vue-dsfr] disponible pour tous avec les composants et leurs variants testables dans celui-ci dans un storybook ;
-- a une couverture de test optimale ;
+  - une pour [aider au développement](/?path=/story/docs-3-guide-du-développeur--page) ;
+  - une autre pour l'[utilisation](/?path=/story/docs-2-guide-d-utilisation--page) ;
+- publie un [site complet][vue-dsfr] disponible pour tous avec les composants et leurs variants testables dans celui-ci dans un storybook ;
+- a une couverture de test optimale ;
 - met à disposition les composants individuellement sans avoir à importer toute la bibliothèque (pour les petits projets).
 
 ## Les choix techniques retenus
@@ -63,20 +63,19 @@ Les icônes sont toujours celles de [RemixIcon][remixicon], grâce au DSFR et pa
 
 ## Les acteurs du projet
 
-- **Clément Debroize** ;
-- **Pierre-Louis Egaud** ;
+- **Clément Debroize** ;
+- **Pierre-Louis Egaud** ;
 - **Stanislas Ormières** *(Lead dev, architecte, devops, mainteneur principal)*.
 
 Le projet a pu bénéficier des retours et de contributions de :
 
-- [Gildéric Deruette][github-user-gideruette] ;
-- [Sophie Aitis][github-user-sophieaitis] ;
-- [Ambroise Maupate][github-user-ambroisemaupate] ;
-- [Alexandre Cailliaud][github-user-cailliaud] ;
+- [Gildéric Deruette][github-user-gideruette] ;
+- [Sophie Aitis][github-user-sophieaitis] ;
+- [Ambroise Maupate][github-user-ambroisemaupate] ;
+- [Alexandre Cailliaud][github-user-cailliaud] ;
 - et [Adrien Martinez][github-user-adrylen].
 
 Merci à vous !
-
 
 <!-- Variables -->
 

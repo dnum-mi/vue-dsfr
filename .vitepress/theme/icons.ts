@@ -1,5 +1,6 @@
 export {
   GiChocolateBar,
+  RiArrowDownLine,
   RiArrowDropDownLine,
   RiArrowDropUpLine,
   RiCloseLine,
@@ -8,6 +9,7 @@ export {
   SiDiscord,
   SiGithub,
   SiNpm,
+  SiNuxtdotjs,
   SiVisualstudiocode,
   ViFileTypeStorybook,
 } from 'oh-vue-icons/icons'

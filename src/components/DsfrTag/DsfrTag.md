@@ -22,4 +22,42 @@ Le tag peut être utilisé dans deux contextes :
 Il se compose des éléments suivants :
 
 - un libellé obligatoire : soit en utilisant la prop `label` soit en utilisant le slot par défaut ;
-- une icône optionnelle : avec la prop `icon` qui peut être soit le nom d’une classe correspondant à une icône du DSFR (elle commence par `'fr-icon-'`), soit le nom d’une icône de `oh-vue-icons` (il faut qu’elle soit enregistrée au préalable, cf. la [documentation sur les icônes](/icones)).
+- une icône optionnelle : avec la prop `icon` qui peut être soit le nom d’une classe correspondant à une icône du DSFR (elle commence par `'fr-icon-'`), soit le nom d’une icône de `oh-vue-icons` (il faut qu’elle soit enregistrée au préalable, cf. la [documentation sur les icônes](/guide/icones)).
+
+## 🛠️ Props
+
+| Nom       | Type      | Défaut    | Obligatoire | Description                                              |
+|-----------|-----------|-----------|-------------|----------------------------------------------------------|
+| label     | `String`  | `undefined` |             | Le texte affiché sur l'étiquette.                        |
+| link      | `String`  | `undefined` |             | URL pour un lien externe. Détermine aussi le type de balise (a ou RouterLink). |
+| tagName   | `String`  | `'p'`       |             | Nom de la balise utilisée pour l'étiquette.              |
+| icon      | `String`  | `undefined` |             | Nom de l'icône (depuis OhVueIcon) à afficher sur l'étiquette. |
+| disabled  | `Boolean` | `false`     |             | Désactive l'étiquette si elle est un bouton.             |
+| small     | `Boolean` | `false`     |             | Réduit la taille de l'étiquette.                         |
+| iconOnly  | `Boolean` | `false`     |             | Affiche uniquement l'icône, sans texte.                  |
+
+## 📡 Events
+
+Pas d'événements personnalisés pour ce composant. Il se repose sur les événements natifs de ses balises sous-jacentes.
+
+## 🧩 Slots
+
+| Nom       | Description                                              |
+|-----------|----------------------------------------------------------|
+| default   | Slot par défaut pour ajouter du contenu supplémentaire à côté du label ou de l'icône. |
+
+## 📝 Exemples
+
+1. **Étiquette Basique :**
+
+```html
+<DsfrTag label="Bonjour VueDsfr !" />
+```
+
+Affiche une simple étiquette avec le texte "Bonjour VueDsfr !".
+
+1. **Étiquette avec icône :**
+
+```html
+<DsfrTag label="Vue Power" icon="fr-icon-success-line" />
+```

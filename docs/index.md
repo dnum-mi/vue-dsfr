@@ -9,13 +9,10 @@ hero:
   actions:
     - theme: brand
       text: Pour commencer
-      link: /pour-commencer
+      link: /guide/pour-commencer
     - theme: alt
       text: Liste des composants
       link: /composants
-    - theme: alt
-      text: VueDsfr dans un projet Nuxt existant
-      link: /vue-dsfr-nuxt
 
 features:
   - title: Facile d’utilisation

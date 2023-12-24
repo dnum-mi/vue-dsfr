@@ -1,3 +1,0 @@
-# Guide du développeur
-
-TODO:
