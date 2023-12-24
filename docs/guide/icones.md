@@ -17,7 +17,7 @@ Ci-dessous un exemple :
   <IconesOfficielles />
 </Story>
 
-<<< docs-demo/IconesOfficielles.vue [Code de la démo]
+<<< ../docs-demo/IconesOfficielles.vue [Code de la démo]
 :::
 
 ##  Utiliser les icônes dans les composants de VueDsfr
@@ -40,7 +40,7 @@ Dans le cas où c’est une icône OhVueIcon qui est utilisée, il faut que cett
   <DemoIconesDansComposants />
 </Story>
 
-<<< docs-demo/DemoIconesDansComposants.vue [Code de la démo]
+<<< ../docs-demo/DemoIconesDansComposants.vue [Code de la démo]
 :::
 
 ## Les icônes déjà enregistrées dans VIcon (OhVueIcon) dans VueDsfr
@@ -48,7 +48,7 @@ Dans le cas où c’est une icône OhVueIcon qui est utilisée, il faut que cett
 Voici la liste des icônes déjà enregistrées dans la bibliothèque VueDsfr :
 
 ::: code-group
-<<< ../src/icons.ts
+<<< ../../src/icons.ts
 :::
 
 ::: info
@@ -210,6 +210,6 @@ Le composant `VIcon` et tous les composants de VueDsfr sont désormais utilisabl
 avec toutes les icônes contenues dans le tableau `icons`.
 
 <script lang="ts" setup>
-import IconesOfficielles from './docs-demo/IconesOfficielles.vue'
-import DemoIconesDansComposants from './docs-demo/DemoIconesDansComposants.vue'
+import IconesOfficielles from '../docs-demo/IconesOfficielles.vue'
+import DemoIconesDansComposants from '../docs-demo/DemoIconesDansComposants.vue'
 </script>

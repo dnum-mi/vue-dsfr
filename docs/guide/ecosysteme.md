@@ -2,10 +2,11 @@
 
 L’écosystème de VueDsfr, c’est :
 
-- La bibliothèque <VIconLink href="https://www.npmjs.com/package/@gouvminint/vue-dsfr" icon="si-npm">`@dnum-mi/vue-dsfr`</VIconLink> ;
-- L’assistant <VIconLink href="https://www.npmjs.com/package/create-vue-dsfr" icon="si-npm">`create-vue-dsfr` </VIconLink> ;
-- L’extension <VIconLink href="https://github.com/dnum-mi/vue-dsfr-snippets" icon="si-visualstudiocode">`vue-dsfr-snippets` pour VSCode </VIconLink> ;
-- Le <VIconLink href="https://discord.gg/jbBJ9769ZZ" icon="si-discord">serveur Discord</VIconLink>.
+- La bibliothèque <VIconLink internal href="#vuedsfr" icon="ri-arrow-down-line">`@dnum-mi/vue-dsfr`</VIconLink> ;
+- L’assistant <VIconLink internal href="#l-assistant-create-vue-dsfr" icon="ri-arrow-down-line">`create-vue-dsfr` </VIconLink> ;
+- Le module nuxt <VIcon name="si-nuxtdotjs" /> <VIconLink internal href="#le-module-nuxt-vue-dsfr-nuxt-module" icon="ri-arrow-down-line">`vue-dsfr-nuxt-module` </VIconLink> ;
+- L’extension <VIconLink internal href="#l-extension-vue-dsfr-snippets" icon="ri-arrow-down-line">`vue-dsfr-snippets` pour VSCode </VIconLink> ;
+- Le <VIconLink internal href="#le-serveur-discord" icon="ri-arrow-down-line">serveur Discord</VIconLink>.
 
 Vous trouverez plus de détails ci-dessous.
 
@@ -16,15 +17,11 @@ et son code source disponible sur <VIconLink href="https://github.com/dnum-mi/vu
 
 Elle permet de créer facilement des applications Vue qui respectent le DSFR.
 
-## Le storybook
-
 Le storybook avec tous les composants est disponible sur <https://vue-ds.fr>
 
-## Cette documentation
+Cette documentation faite avec [Vitepress](https://vitepress.dev/) et disponible sur <https://docs.vue-ds.fr> nous a paru plus lisible et accessible qu’un storybook pour un utilisateur de la bibliothèque. Elle est toute récente et encore très incomplète, et son organisation est fortement susceptible de changer (en fonction, notamment, des premiers retours utilisateurs).
 
-Cette documentation faite avec [Vitepress](https://vitepress.dev/) et disponible sur <https://docs.vue-ds.fr> nous a paru plus lisible et accessible qu’un storybook pour un utilisateur de la bibliothèque. Elle est toute récence et encore très incomplète, et son organisation est fortement susceptible de changer en fonction, notamment, des premiers retours utilisateurs.
-
-## L’assistant create-vue-dsfr
+## L’assistant `create-vue-dsfr`
 
 Cet assistant est aussi disponible sur <VIconLink href="https://www.npmjs.com/package/create-vue-dsfr" icon="si-npm">NPM</VIconLink>
 et son code source disponible sur <VIconLink href="https://github.com/laruiss/create-vue-dsfr" icon="si-github">GitHub</VIconLink>.
@@ -32,6 +29,15 @@ et son code source disponible sur <VIconLink href="https://github.com/laruiss/cr
 Il permet d’échaffauder très rapidement une application avec Vue3 et Vite ou Nuxt 3, VueDsfr, TypeScript et ESLint déjà paramétrés, et optionnellement Cypress et Vitest.
 
 Voir la page ["Commencer"](./pour-commencer.md#utiliser-create-vue-dsfr-fortement-recommande) pour son utilisation.
+
+## Le module nuxt `vue-dsfr-nuxt-module`
+
+Ce module est aussi disponible sur <VIconLink href="https://www.npmjs.com/package/vue-dsfr-nuxt-module" icon="si-npm">NPM</VIconLink>
+et son code source disponible sur <VIconLink href="https://github.com/laruiss/vue-dsfr-nuxt-module" icon="si-nuxtdotjs">GitHub</VIconLink>.
+
+Il permet d’utiliser facilement la bibliothèque VueDsfr dans <VIconLink href="https://nuxt.com" icon="si-nuxtdotjs">Nuxt 3</VIconLink>.
+
+Voir la page ["Commencer"](./pour-commencer.md#nuxt3) pour son utilisation.
 
 ## L’extension vue-dsfr-snippets
 

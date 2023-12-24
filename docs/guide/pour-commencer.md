@@ -1,9 +1,9 @@
 # Commencer avec VueDsfr
 
 Ceci est le guide d̛’utilisation de la bibliothèque. Si vous cherchez à contribuer, se référer au
-[Guide du développeur](/guide-developpeur).
+[Guide du développeur](./guide-developpeur).
 
-::: info Prérequis
+::: warning Prérequis
 
 Pour utiliser cette bibliothèque, il vous faudra **[Vue 3](https://v3.vuejs.org/)** (et **[Vue-Router 4](https://next.router.vuejs.org/)**). Par conséquent, si vous utilisez Nuxt, il vous faut **[Nuxt 3](https://v3.nuxtjs.org/)** (plus de détails plus loin).
 
@@ -164,7 +164,13 @@ Cf. [la page dédiée](./icones.md)
 
 ## Avoir un bundle optimisé (et une DX optimale)
 
-Il est possible d’intégrer moins de CSS, voici quelques notes à ce propos (voir les commentaires dans le code).
+Il est possible d’intégrer moins de CSS, et de n’importer que les composants réellement utilisés dans votre application, sans avoir à écrire les imports dans votre code, voici quelques notes à ce propos (voir les commentaires dans le code).
+
+::: warning Important
+
+Si vous avez utilisé la version 1.7.0+ de `create-vue-dsfr` pour créer votre projet, tout ce qui suit est déjà fait !
+
+:::
 
 ### Vue3
 
@@ -182,11 +188,11 @@ import '@gouvfr/dsfr/dist/utility/icons/icons.min.css'       // Facultatif : Si
 
 ### Les imports automatiques des composables et des composants
 
-La version [5.5.0 de VueDsfr](https://github.com/dnum-mi/vue-dsfr/releases/tag/v5.5.0) intègre 3 nouveaux exports pour pouvoir importer automatiquement les composables et autres fonctions et les composants (grâce au plugin vite [unplugin-auto-import](https://github.com/unplugin/unplugin-auto-import)).
+La version [5.5.0 de VueDsfr](https://github.com/dnum-mi/vue-dsfr/releases/tag/v5.5.0) intègre 3 nouveaux exports pour pouvoir importer automatiquement les composables et autres fonctions et les composants (grâce au plugin vite [`unplugin-auto-import`](https://github.com/unplugin/unplugin-auto-import)).
 
 #### Les imports automatiques des composables et fonctions
 
-Il y a deux presets livrés avec VueDsfr (**depuis la v5.5.0 seulement**) à utiliser avec le plugin unplugin-auto-import :
+Il y a deux presets livrés avec VueDsfr (**depuis la v5.5.0 seulement**) à utiliser avec le plugin [`unplugin-auto-import`](https://github.com/unplugin/unplugin-auto-import)) :
 
 Installer les dépendances de développement :
 
