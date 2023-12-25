@@ -47,7 +47,7 @@ const iconProps = computed(() => typeof props.icon === 'string'
       'inline-flex': !dsfrIcon,
       'reverse': iconRight && !dsfrIcon,
       'justify-center': !dsfrIcon && iconOnly,
-      [icon]: dsfrIcon,
+      [icon as string]: dsfrIcon,
     }"
     :title="iconOnly ? label : undefined"
     :disabled="disabled"

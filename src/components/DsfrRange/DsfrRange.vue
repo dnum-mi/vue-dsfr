@@ -135,7 +135,7 @@ onMounted(() => {
         :disabled="disabled"
         :aria-labelledby="`${id}-label`"
         :aria-describedby="`${id}-messages`"
-        @input="emit('update:lowerValue', +$event.target?.value)"
+        @input="emit('update:lowerValue', +($event.target as HTMLInputElement)?.value)"
       >
       <input
         :id="id"
@@ -148,7 +148,7 @@ onMounted(() => {
         :disabled="disabled"
         :aria-labelledby="`${id}-label`"
         :aria-describedby="`${id}-messages`"
-        @input="emit('update:modelValue', +$event.target?.value)"
+        @input="emit('update:modelValue', +($event.target as HTMLInputElement)?.value)"
       >
 
       <span
