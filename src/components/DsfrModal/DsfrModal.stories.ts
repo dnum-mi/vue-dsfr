@@ -6,7 +6,7 @@ import DsfrButton from '../DsfrButton/DsfrButton.vue'
 
 import { OhVueIcon as VIcon, addIcons } from 'oh-vue-icons'
 
-import { RiCheckboxCircleLine } from 'oh-vue-icons/icons/ri/index.js'
+import { RiCheckboxCircleLine } from 'oh-vue-icons/icons'
 import { setup } from '@storybook/vue3'
 
 addIcons(RiCheckboxCircleLine)

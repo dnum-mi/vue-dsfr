@@ -6,7 +6,7 @@ import DsfrTabContent from './DsfrTabContent.vue'
 
 import { addIcons } from 'oh-vue-icons'
 
-import { RiCheckboxCircleLine } from 'oh-vue-icons/icons/ri/index.js'
+import { RiCheckboxCircleLine } from 'oh-vue-icons/icons'
 import DsfrAccordionsGroup from '../DsfrAccordion/DsfrAccordionsGroup.vue'
 import DsfrAccordion from '../DsfrAccordion/DsfrAccordion.vue'
 

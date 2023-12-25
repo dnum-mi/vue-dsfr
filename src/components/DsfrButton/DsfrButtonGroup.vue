@@ -32,7 +32,8 @@ const groupStyle = computed(() => `--equisized-width: ${equisizedWidth.value};`)
 const computeEquisizedWidth = async () => {
   let maxWidth = 0
   await new Promise((resolve) => setTimeout(resolve, 100))
-  buttonsEl.value?.querySelectorAll('.fr-btn').forEach((button: Element) => {
+  buttonsEl.value?.querySelectorAll('.fr-btn').forEach((btn: Element) => {
+    const button = btn as HTMLButtonElement
     const width = button.offsetWidth
     const buttonStyle = window.getComputedStyle(button)
     const marginLeft = +buttonStyle.marginLeft.replace('px', '')
