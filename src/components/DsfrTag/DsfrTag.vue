@@ -35,7 +35,7 @@ const iconProps = computed(() => dsfrIcon.value ? undefined : typeof props.icon 
     :disabled="disabled"
     :class="{
       'fr-tag--sm': small,
-      [icon]: dsfrIcon,
+      [icon as string]: dsfrIcon,
     }"
     v-bind="linkProps"
   >
