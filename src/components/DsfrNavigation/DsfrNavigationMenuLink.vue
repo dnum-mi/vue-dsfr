@@ -25,7 +25,7 @@ const iconProps = computed(() => (dsfrIcon.value || !props.icon)
   ? undefined
   : (typeof props.icon === 'string')
       ? { scale: defaultScale, name: props.icon }
-      : { scale: defaultScale, ...(props.icon || {}) },
+      : { scale: defaultScale, ...((props.icon as Record<string, string>) || {}) },
 )
 </script>
 

@@ -2,8 +2,7 @@ import { OhVueIcon as VIcon, addIcons } from 'oh-vue-icons'
 import { render } from '@testing-library/vue'
 import { createRouter, createWebHistory } from 'vue-router'
 
-import { RiExternalLinkLine } from 'oh-vue-icons/icons/ri/index.js'
-
+import { RiExternalLinkLine } from 'oh-vue-icons/icons'
 import DsfrFooter from './DsfrFooter.vue'
 
 addIcons(RiExternalLinkLine)

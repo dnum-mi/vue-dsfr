@@ -3,7 +3,7 @@ import { fireEvent, render } from '@testing-library/vue'
 
 import DsfrAlert from './DsfrAlert.vue'
 
-import { RiCloseLine } from 'oh-vue-icons/icons/ri/index.js'
+import { RiCloseLine } from 'oh-vue-icons/icons'
 
 addIcons(RiCloseLine)
 

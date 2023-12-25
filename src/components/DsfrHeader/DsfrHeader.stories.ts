@@ -7,8 +7,7 @@ import {
   RiAddCircleLine,
   RiLockLine,
   RiAccountCircleLine,
-} from 'oh-vue-icons/icons/ri/index.js'
-
+} from 'oh-vue-icons/icons'
 addIcons(
   RiAddCircleLine,
   RiLockLine,

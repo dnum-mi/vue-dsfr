@@ -32,12 +32,12 @@ watch(show, async (value) => {
 
   opacity.value = 0
   await new Promise(resolve => setTimeout(resolve, 100))
-  const sourceTop = source.value?.offsetTop
-  const sourceHeight = source.value?.offsetHeight
-  const sourceWidth = source.value?.offsetWidth
-  const sourceLeft = source.value?.offsetLeft
-  const tooltipHeight = tooltip.value?.offsetHeight
-  const tooltipWidth = tooltip.value?.offsetWidth
+  const sourceTop = source.value?.offsetTop as number
+  const sourceHeight = source.value?.offsetHeight as number
+  const sourceWidth = source.value?.offsetWidth as number
+  const sourceLeft = source.value?.offsetLeft as number
+  const tooltipHeight = tooltip.value?.offsetHeight as number
+  const tooltipWidth = tooltip.value?.offsetWidth as number
   const isSourceAtTop = (sourceTop - tooltipHeight) < 0
   const isSourceAtBottom = !isSourceAtTop && (sourceTop + sourceHeight + tooltipHeight) >= document.documentElement.offsetHeight
   top.value = isSourceAtBottom

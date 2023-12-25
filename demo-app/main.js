@@ -4,7 +4,7 @@ import { createApp } from 'vue'
 import {
   RiCheckboxCircleLine,
   RiNotification3Line,
-} from 'oh-vue-icons/icons/ri/index.js'
+} from 'oh-vue-icons/icons'
 
 import '@gouvfr/dsfr/dist/core/core.main.min.css'
 import '@gouvfr/dsfr/dist/scheme/scheme.min.css'

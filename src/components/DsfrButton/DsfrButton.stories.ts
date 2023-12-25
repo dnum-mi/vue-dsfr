@@ -1,6 +1,6 @@
 import { OhVueIcon as VIcon, addIcons } from 'oh-vue-icons'
 
-import { RiCheckboxCircleLine, RiLoader4Line, RiSearchLine } from 'oh-vue-icons/icons/ri/index.js'
+import { RiCheckboxCircleLine, RiLoader4Line, RiSearchLine } from 'oh-vue-icons/icons'
 
 import DsfrButton from './DsfrButton.vue'
 

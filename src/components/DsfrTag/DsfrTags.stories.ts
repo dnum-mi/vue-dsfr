@@ -8,7 +8,7 @@ import {
   RiArrowRightFill,
   RiArrowLeftLine,
   RiArrowRightLine,
-} from 'oh-vue-icons/icons/ri/index.js'
+} from 'oh-vue-icons/icons'
 
 addIcons(
   RiArrowLeftFill,

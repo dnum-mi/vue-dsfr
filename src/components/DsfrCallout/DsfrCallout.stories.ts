@@ -3,7 +3,7 @@ import { expect, fn } from '@storybook/test'
 import { OhVueIcon as VIcon, addIcons } from 'oh-vue-icons'
 import { within, userEvent } from '@storybook/testing-library'
 
-import { RiInformationLine } from 'oh-vue-icons/icons/ri/index.js'
+import { RiInformationLine } from 'oh-vue-icons/icons'
 
 import DsfrCallout from './DsfrCallout.vue'
 
