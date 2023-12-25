@@ -5,7 +5,7 @@ import { render } from '@testing-library/vue'
 import DsfrTag from './DsfrTag.vue'
 import DsfrTags from './DsfrTags.vue'
 
-import { RiArrowLeftLine } from 'oh-vue-icons/icons/ri/index.js'
+import { RiArrowLeftLine } from 'oh-vue-icons/icons'
 
 addIcons(RiArrowLeftLine)
 

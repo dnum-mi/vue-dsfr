@@ -2,7 +2,7 @@ import DsfrTable from './DsfrTable.vue'
 import DsfrTableHeader from './DsfrTableHeader.vue'
 
 import { OhVueIcon as VIcon, addIcons } from 'oh-vue-icons'
-import { RiSortAsc, RiSortDesc } from 'oh-vue-icons/icons/ri/index.js'
+import { RiSortAsc, RiSortDesc } from 'oh-vue-icons/icons'
 
 import './table.stories.css'
 

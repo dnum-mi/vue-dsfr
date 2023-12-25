@@ -2,7 +2,7 @@ import DsfrNavigationMenuLink from './DsfrNavigationMenuLink.vue'
 import DsfrNavigation from './DsfrNavigation.vue'
 
 import { addIcons } from 'oh-vue-icons'
-import { RiHome2Line } from 'oh-vue-icons/icons/ri/index.js'
+import { RiHome2Line } from 'oh-vue-icons/icons'
 
 addIcons(RiHome2Line)
 

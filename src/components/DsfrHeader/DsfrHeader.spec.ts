@@ -7,7 +7,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 
 import DsfrHeader from './DsfrHeader.vue'
 
-import { RiNotification3Line, RiPhoneLine, RiSearchLine } from 'oh-vue-icons/icons/ri/index.js'
+import { RiNotification3Line, RiPhoneLine, RiSearchLine } from 'oh-vue-icons/icons'
 
 addIcons(RiNotification3Line, RiPhoneLine, RiSearchLine)
 
