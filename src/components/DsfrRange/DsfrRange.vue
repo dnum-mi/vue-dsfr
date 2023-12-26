@@ -3,22 +3,9 @@ import { computed, onMounted, ref, watch } from 'vue'
 
 import { getRandomId } from '../../utils/random-utils'
 
-const props = withDefaults(defineProps<{
-  id?: string
-  min?: number
-  max?: number
-  modelValue?: number
-  lowerValue?: number
-  label: string
-  hint?: string
-  message?: string
-  prefix?: string
-  suffix?: string
-  small?: boolean
-  hideIndicators?: boolean
-  step?: number
-  disabled?: boolean
-}>(), {
+import type { DsfrRangeProps } from './DsfrRange.types'
+
+const props = withDefaults(defineProps<DsfrRangeProps>(), {
   id: () => getRandomId('range'),
   min: 0,
   max: 100,

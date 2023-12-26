@@ -168,6 +168,12 @@ outline: [2,3]
 <<< ../src/components/DsfrRadioButton/DsfrRadioButton.types.ts
 :::
 
+### `DsfrRange`
+
+::: code-group
+<<< ../src/components/DsfrRange/DsfrRange.types.ts
+:::
+
 ### `DsfrSearchBar`
 
 ::: code-group
