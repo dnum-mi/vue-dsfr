@@ -73,6 +73,7 @@ export { default as DsfrRadioButton } from './DsfrRadioButton/DsfrRadioButton.vu
 export * from './DsfrRadioButton/DsfrRadioButton.types'
 export { default as DsfrRadioButtonSet } from './DsfrRadioButton/DsfrRadioButtonSet.vue'
 export { default as DsfrRange } from './DsfrRange/DsfrRange.vue'
+export * from './DsfrRange/DsfrRange.types'
 export { default as DsfrSearchBar } from './DsfrSearchBar/DsfrSearchBar.vue'
 export * from './DsfrSearchBar/DsfrSearchBar.types'
 export { default as DsfrSegmented } from './DsfrSegmented/DsfrSegmented.vue'
