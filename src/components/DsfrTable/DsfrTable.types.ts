@@ -24,6 +24,7 @@ export type DsfrTableProps = {
   title: string
   headers?: DsfrTableHeadersProps
   rows?:(DsfrTableRowProps | string[])[]
+  rowKey?: (row: any) => number | string
   noCaption?: boolean
   pagination?: boolean
   currentPage?: number
