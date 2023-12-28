@@ -88,7 +88,7 @@ const goLastPage = () => {
         <template v-if="rows && rows.length">
           <DsfrTableRow
             v-for="(row, i) of truncatedResults"
-            :key="i"
+            :key="rowKey ? rowKey(getRowData(row)) : i"
             :row-data="getRowData(row)"
             :row-attrs="'rowAttrs' in row ? row.rowAttrs : {}"
           />
