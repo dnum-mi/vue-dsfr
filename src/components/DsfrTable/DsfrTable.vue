@@ -10,6 +10,7 @@ export type { DsfrTableProps }
 const props = withDefaults(defineProps<DsfrTableProps>(), {
   headers: () => [],
   rows: () => [],
+  rowKey: undefined,
   currentPage: 1,
   resultsDisplayed: 10,
 })
