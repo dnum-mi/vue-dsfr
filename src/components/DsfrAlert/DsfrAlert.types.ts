@@ -7,7 +7,7 @@ export type DsfrAlertProps = {
   closeable?: boolean
   id?: string
   title?: string
-  description: string
+  description?: string
   small?: boolean
   titleTag?: TitleTag
   type?: DsfrAlertType

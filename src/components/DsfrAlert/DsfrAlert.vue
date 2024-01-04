@@ -44,7 +44,9 @@ const classes = computed(
           {{ title }}
         </component>
         <p class="fr-alert__description">
-          {{ description }}
+          <slot>
+            {{ description }}
+          </slot>
         </p>
       </div>
       <button

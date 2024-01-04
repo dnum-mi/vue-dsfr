@@ -37,6 +37,37 @@ describe('DsfrAlert', () => {
     expect(descritptionEl).toHaveClass('fr-alert__description')
   })
 
+  it('should mount DsfrAlert with right content with description in slot', () => {
+    // Given
+    const alertTitle = 'Titre de l’alerte'
+    const alertDescription = 'Description de l’alerte'
+
+    // When
+    const { getByText } = render(DsfrAlert, {
+      global: {
+        components: {
+          VIcon,
+        },
+      },
+      props: {
+        title: alertTitle,
+        type: 'info',
+      },
+      slots: {
+        default: alertDescription,
+      },
+    })
+
+    const titleEl = getByText(alertTitle)
+    const descritptionEl = getByText(alertDescription)
+
+    // Then
+    expect(titleEl.tagName).toBe('H3')
+    expect(titleEl).toHaveClass('fr-alert__title')
+    expect(descritptionEl.tagName).toBe('P')
+    expect(descritptionEl).toHaveClass('fr-alert__description')
+  })
+
   it('should mount DsfrAlert with a working close button', async () => {
     // Given
     const alertTitle = 'Titre de l’alerte'
