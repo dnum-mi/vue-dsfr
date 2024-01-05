@@ -39,6 +39,10 @@ const composants = [
     link: '/composants/DsfrCard.md',
   },
   {
+    text: 'DsfrConsent',
+    link: '/composants/DsfrConsent.md',
+  },
+  {
     text: 'DsfrRange',
     link: '/composants/DsfrRange.md',
   },
