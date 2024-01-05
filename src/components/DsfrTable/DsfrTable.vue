@@ -92,7 +92,7 @@ const goLastPage = () => {
         </slot>
       </thead>
       <tbody>
-        <!-- @slot Slot par défaut pour le corps du tableau. Sera dans `<tbody>` -->
+        <!-- @slot Slot par défaut pour le corps du tableau. Sera dans `<tbody>`  -->
         <slot />
         <template v-if="rows && rows.length">
           <DsfrTableRow
