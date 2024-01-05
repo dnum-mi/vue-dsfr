@@ -5,6 +5,55 @@ import { whyframe } from '@whyframe/core'
 import { whyframeVue } from '@whyframe/vue'
 import { hmrFix } from './plugins/hmrFix.js'
 
+const minimalToc = [
+  {
+    text: 'Guide',
+    items: []
+  },
+  {
+    text: 'Tous les types',
+    link: '/types',
+    items: [],
+  },
+  {
+    text: 'Tous les composants',
+    link: '/composants',
+    items: [],
+  },
+  {
+    text: 'Tous les composables',
+    link: '/composables',
+    items: [],
+  },
+  {
+    text: 'Recettes nuxt',
+    link: '/nuxt/',
+  },
+]
+
+const guideItems = [
+  {
+    text: 'Introduction',
+    link: '/guide/',
+  },
+  {
+    text: 'Commencer',
+    link: '/guide/pour-commencer',
+  },
+  {
+    text: 'L’écosystème',
+    link: '/guide/ecosysteme',
+  },
+  {
+    text: 'Les icônes',
+    link: '/guide/icones',
+  },
+  {
+    text: 'Guide du développeur',
+    link: '/guide/guide-developpeur',
+  },
+]
+
 const composables = [
   {
     text: 'useScheme',
@@ -163,54 +212,9 @@ export default defineConfig({
       }
     },
     sidebar: {
-      '/composants': composants,
-      '/composables': composables,
-      '/': [
-        {
-          text: 'Guide',
-          items: [
-            {
-              text: 'Introduction',
-              link: '/guide/',
-            },
-            {
-              text: 'Commencer',
-              link: '/guide/pour-commencer',
-            },
-            {
-              text: 'L’écosystème',
-              link: '/guide/ecosysteme',
-            },
-            {
-              text: 'Les icônes',
-              link: '/guide/icones',
-            },
-            {
-              text: 'Guide du développeur',
-              link: '/guide/guide-developpeur',
-            },
-          ]
-        },
-        {
-          text: 'Tous les types',
-          link: '/types',
-          items: [],
-        },
-        {
-          text: 'Tous les composants',
-          link: '/composants',
-          items: [],
-        },
-        {
-          text: 'Tous les composables',
-          link: '/composables',
-          items: [],
-        },
-        {
-          text: 'Recettes nuxt',
-          link: '/nuxt/',
-        },
-      ],
+      '/composants': minimalToc.map(item => item.text === 'Tous les composants' ? { ...item, items: composants } : item),
+      '/composables': minimalToc.map(item => item.text === 'Tous les composables' ? { ...item, items: composables } : item),
+      '/': minimalToc.map(item => item.text === 'Guide' ? { ...item, items: guideItems } : item),
     },
 
     socialLinks: [
