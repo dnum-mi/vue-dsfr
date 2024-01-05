@@ -74,7 +74,7 @@ export const useScheme = (options?: UseThemeOptions): UseSchemeResult | undefine
 
   localStorage.setItem(COLOR_SCHEME_LS_KEY, scheme.value)
 
-  const theme = ref(getThemeMatchingScheme(scheme.value, mediaQuery))
+  const theme = ref(getThemeMatchingScheme(scheme.value, mediaQuery, document.documentElement.getAttribute('data-fr-theme')))
   const force = ref(scheme.value !== SYSTEM_SCHEME)
 
   watchEffect(() => {
@@ -110,6 +110,29 @@ export const useScheme = (options?: UseThemeOptions): UseSchemeResult | undefine
     theme.value = getThemeMatchingScheme(scheme.value, mediaQuery)
     force.value = false
   }
+
+  const target = document.documentElement
+  const observerOptions = {
+    subtree: false,
+    childList: false,
+    attributes: true,
+  }
+
+  const observer = new MutationObserver((mutationList /*, observer */) => {
+    for (const mutation of mutationList) {
+      if (mutation.type === 'attributes' && mutation.attributeName === 'data-fr-theme') {
+        const newScheme = (mutation.target as HTMLElement).getAttribute(mutation.attributeName) as 'light' | 'dark'
+        if (newScheme !== scheme.value) {
+          console.log('mutation:', newScheme, '<-', scheme.value)
+          setScheme(newScheme)
+        }
+      }
+    }
+  })
+
+  observer.observe(target, observerOptions)
+
+  window.addEventListener('unload', () => observer.disconnect())
 
   setScheme(scheme.value)
 
