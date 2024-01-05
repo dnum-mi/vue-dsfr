@@ -14,7 +14,7 @@ export type DsfrTabContentProps = {
 
 export type DsfrTabsProps = {
   tabListName: string
-  tabTitles:(DsfrTabItemProps & { title: string })[]
+  tabTitles:(Partial<DsfrTabItemProps> & { title: string })[]
   tabContents?: string[]
   initialSelectedIndex?: number
 }

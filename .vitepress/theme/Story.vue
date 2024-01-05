@@ -30,7 +30,7 @@ watchEffect(() => {
 })
 
 let observer: MutationObserver | undefined
-let target = document.documentElement
+let target
 const options = {
     subtree: false,
     childList: false,
@@ -42,6 +42,8 @@ onMounted(() => {
 
     const { contentDocument: doc, contentWindow: win } = iframe.value || {}
     if (!doc || !win) return
+
+    target = doc.documentElement
 
     const { scheme, setScheme } = useScheme() as UseSchemeResult
     doc.documentElement.setAttribute('data-fr-theme', isDark.value ? 'dark' : 'light')

@@ -69,6 +69,10 @@ const composants = [
     link: '/composants/DsfrSegmentedSet.md',
   },
   {
+    text: 'DsfrTabs',
+    link: '/composants/DsfrTabs.md',
+  },
+  {
     text: 'DsfrTag',
     link: '/composants/DsfrTag.md',
   },

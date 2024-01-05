@@ -36,11 +36,11 @@ Il se compose des éléments suivants :
 | small     | `Boolean` | `false`     |             | Réduit la taille de l'étiquette.                         |
 | iconOnly  | `Boolean` | `false`     |             | Affiche uniquement l'icône, sans texte.                  |
 
-## 📡 Events
+## 📡 Les événements
 
 Pas d'événements personnalisés pour ce composant. Il se repose sur les événements natifs de ses balises sous-jacentes.
 
-## 🧩 Slots
+## 🧩 Les slots
 
 | Nom       | Description                                              |
 |-----------|----------------------------------------------------------|
