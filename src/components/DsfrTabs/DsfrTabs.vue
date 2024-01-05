@@ -12,6 +12,7 @@ export type { DsfrTabsProps }
 
 const props = withDefaults(defineProps<DsfrTabsProps>(), {
   tabContents: () => [],
+  tabTitles: () => [],
   initialSelectedIndex: 0,
 })
 

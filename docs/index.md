@@ -13,6 +13,9 @@ hero:
     - theme: alt
       text: Liste des composants
       link: /composants
+    - theme: alt
+      text: Liste des composables
+      link: /composables
 
 features:
   - title: Facile d’utilisation
