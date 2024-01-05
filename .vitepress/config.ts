@@ -5,6 +5,65 @@ import { whyframe } from '@whyframe/core'
 import { whyframeVue } from '@whyframe/vue'
 import { hmrFix } from './plugins/hmrFix.js'
 
+const minimalToc = [
+  {
+    text: 'Guide',
+    items: []
+  },
+  {
+    text: 'Tous les types',
+    link: '/types',
+    items: [],
+  },
+  {
+    text: 'Tous les composants',
+    link: '/composants',
+    items: [],
+  },
+  {
+    text: 'Tous les composables',
+    link: '/composables',
+    items: [],
+  },
+  {
+    text: 'Recettes nuxt',
+    link: '/nuxt/',
+  },
+]
+
+const guideItems = [
+  {
+    text: 'Introduction',
+    link: '/guide/',
+  },
+  {
+    text: 'Commencer',
+    link: '/guide/pour-commencer',
+  },
+  {
+    text: 'L’écosystème',
+    link: '/guide/ecosysteme',
+  },
+  {
+    text: 'Les icônes',
+    link: '/guide/icones',
+  },
+  {
+    text: 'Guide du développeur',
+    link: '/guide/guide-developpeur',
+  },
+]
+
+const composables = [
+  {
+    text: 'useScheme',
+    link: '/composables/useScheme.md',
+  },
+  {
+    text: 'useTabs',
+    link: '/composables/useTabs.md',
+  },
+]
 const composants = [
   {
     text: 'DsfrAccordion',
@@ -39,6 +98,10 @@ const composants = [
     link: '/composants/DsfrCard.md',
   },
   {
+    text: 'DsfrConsent',
+    link: '/composants/DsfrConsent.md',
+  },
+  {
     text: 'DsfrRange',
     link: '/composants/DsfrRange.md',
   },
@@ -53,6 +116,10 @@ const composants = [
   {
     text: 'DsfrSegmentedSet',
     link: '/composants/DsfrSegmentedSet.md',
+  },
+  {
+    text: 'DsfrTabs',
+    link: '/composants/DsfrTabs.md',
   },
   {
     text: 'DsfrTag',
@@ -73,6 +140,7 @@ export default defineConfig({
   appearance: { listenToStorageChanges: false }, // handling this in Story.vue itself to avoid flickering
 
   rewrites: {
+    'src/composables/:comp': 'composables/:comp',
     'src/components/DsfrButton/DsfrButtonGroup.md': 'composants/DsfrButtonGroup.md',
     'src/components/DsfrSegmented/DsfrSegmentedSet.md': 'composants/DsfrSegmentedSet.md',
     'src/components/:comp/:comp.md': 'composants/:comp.md',
@@ -84,20 +152,20 @@ export default defineConfig({
       next: 'Page suivante',
       prev: 'Page précédente',
     },
+    darkModeSwitchLabel: 'Apparence',
+    darkModeSwitchTitle: 'Passer en mode sombre',
+    lightModeSwitchTitle: 'Passer en mode clair',
     logo: '/nouveau-logo-marianne-gouvernement.png',
     nav: [
       {
         text: 'Guide',
         link: '/guide/pour-commencer',
-        items: [
-          { text: 'Tous les composants', link: '/composants' },
-          { text: 'Tous les types', link: '/types' }
-        ],
       },
       {
         text: 'Références',
         items: [
           { text: 'Tous les composants', link: '/composants' },
+          { text: 'Tous les composables', link: '/composables' },
           { text: 'Tous les types', link: '/types' }
         ],
       },
@@ -144,48 +212,9 @@ export default defineConfig({
       }
     },
     sidebar: {
-      '/composants': composants,
-      '/': [
-        {
-          text: 'Guide',
-          items: [
-            {
-              text: 'Introduction',
-              link: '/guide/',
-            },
-            {
-              text: 'Commencer',
-              link: '/guide/pour-commencer',
-            },
-            {
-              text: 'L’écosystème',
-              link: '/guide/ecosysteme',
-            },
-            {
-              text: 'Les icônes',
-              link: '/guide/icones',
-            },
-            {
-              text: 'Guide du développeur',
-              link: '/guide/guide-developpeur',
-            },
-          ]
-        },
-        {
-          text: 'Tous les types',
-          link: '/types',
-          items: [],
-        },
-        {
-          text: 'Tous les composants',
-          link: '/composants',
-          items: [],
-        },
-        {
-          text: 'Recettes nuxt',
-          link: '/nuxt/',
-        },
-      ],
+      '/composants': minimalToc.map(item => item.text === 'Tous les composants' ? { ...item, items: composants } : item),
+      '/composables': minimalToc.map(item => item.text === 'Tous les composables' ? { ...item, items: composables } : item),
+      '/': minimalToc.map(item => item.text === 'Guide' ? { ...item, items: guideItems } : item),
     },
 
     socialLinks: [

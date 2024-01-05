@@ -18,7 +18,7 @@ export default {
     },
     url: {
       control: 'text',
-      description: '',
+      description: 'Url de la page concernant les "Données personnelles et cookies" sur votre site ou application.',
     },
     'accept-all': {
       description: 'Évenement émis lors du clic sur le bouton \'Tout accepter\'',

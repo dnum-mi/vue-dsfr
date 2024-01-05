@@ -33,7 +33,7 @@ Voir la page ["Commencer"](./pour-commencer.md#utiliser-create-vue-dsfr-fortemen
 ## Le module nuxt `vue-dsfr-nuxt-module`
 
 Ce module est aussi disponible sur <VIconLink href="https://www.npmjs.com/package/vue-dsfr-nuxt-module" icon="si-npm">NPM</VIconLink>
-et son code source disponible sur <VIconLink href="https://github.com/laruiss/vue-dsfr-nuxt-module" icon="si-nuxtdotjs">GitHub</VIconLink>.
+et son code source disponible sur <VIconLink href="https://github.com/laruiss/vue-dsfr-nuxt-module" icon="si-github">GitHub</VIconLink>.
 
 Il permet d’utiliser facilement la bibliothèque VueDsfr dans <VIconLink href="https://nuxt.com" icon="si-nuxtdotjs">Nuxt 3</VIconLink>.
 

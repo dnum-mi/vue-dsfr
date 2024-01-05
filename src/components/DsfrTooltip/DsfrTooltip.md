@@ -12,7 +12,7 @@ Le `DsfrTooltip` est un composant Vue versatile, conçu pour fournir des infobul
 | `onHover`  | `boolean` | `false`              |             | Si `true`, l'infobulle s'affiche au survol.                 |
 | `id`       | `string`  | `getRandomId('tooltip')` |         | Identifiant unique pour l'infobulle. Utilisé pour l'accessibilité. |
 
-## 📡 Événements
+## 📡 Les événements
 
 - Aucun événement personnalisé n'est émis par ce composant.
 

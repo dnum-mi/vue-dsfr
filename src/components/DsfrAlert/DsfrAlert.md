@@ -28,6 +28,7 @@ L’alerte est composée des éléments suivants :
 - un texte de description (avec la prop `description`, de type `string`) :
   - optionnel sur la version MD
   - obligatoire sur la version SM
+  - le `slot` par défaut peut être utilisé
 - une croix de fermeture si la prop `closeable` est à `true`
 
 Autres props :
@@ -38,11 +39,11 @@ Autres props :
 ## 🛠️ Les props
 
 |  nom                   |   type      |  défaut         | obligatoire |
-| ----------------------- | ---------   | ---------------- | -------- |
+| ----------------------- | ---------   | ---------------- | ------ |
 | `id`                    | *`string`*    | *random string*  | |
 | `type`                  | *`'info' \| 'success' \| 'warning' \| 'error'`*  | `'info'`           |
 | `title`                 | *`string`*  |      `''`        |  |
-| `description`           | *`string`*  |                  | ✅   |
+| `description`           | *`string`*  |                  |  |
 | `titleTag`              | [*`TitleTag`*](/docs/types.md#title-tag "'h1' \| 'h2' \| 'h3' \| 'h4' \| 'h5' \| 'h6'")  |    `'h3'`     | |
 | `small`                 | *`boolean`* | `false`          | |
 | `closed`                | *`boolean`* | `false`          | |
@@ -55,6 +56,10 @@ Autres props :
 |  nom                   |   donnée (*payload*) |
 | ---------------------- |  ---------           |
 | `'close'`              |       *aucune*       |
+
+## 🧩 Les slots
+
+`DsfrAlert` possède un slot par défaut pour la description de l'alerte.
 
 ## 📝 Toutes les variantes 🌈 d’Alertes
 

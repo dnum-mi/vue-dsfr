@@ -62,4 +62,33 @@ describe('DsfrAlert', () => {
     cy.get('.fr-alert--error')
       .should('be.visible')
   })
+
+  it('should mount medium info Alert with description in slot', () => {
+    const title = 'Intitulé de l\'alert medium'
+    const description = 'description de l\'alert medium'
+    const type = 'error'
+
+    cy.mount(DsfrAlert, {
+      props: {
+        title,
+        type,
+      },
+      slots: {
+        default: description,
+      },
+    })
+      .get('.fr-alert')
+      .should('be.visible')
+      .get('.alert-content')
+      .should('be.visible')
+      .get('.fr-alert__title')
+      .should('be.visible')
+
+    cy.get('.fr-alert__description')
+      .should('be.visible')
+      .contains(description)
+
+    cy.get('.fr-alert--error')
+      .should('be.visible')
+  })
 })

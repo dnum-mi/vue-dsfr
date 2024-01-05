@@ -23,7 +23,7 @@ export default {
     },
     description: {
       control: 'text',
-      description: '**Description** de l\'alerte',
+      description: '**Description** de l\'alerte, peux être passé dans le slot par défaut',
     },
     type: {
       options: ['error', 'success', 'info', 'warning'],
@@ -279,4 +279,28 @@ AlertesFermables.args = {
   type: 'error',
   closeable: true,
   small: true,
+}
+
+export const AlertesSlot = (args) => ({
+  components: { DsfrAlert },
+  data () {
+    return {
+      ...args,
+    }
+  },
+  template: `
+    <div style="margin: 1rem 0;">
+      <DsfrAlert
+        type="info"
+        title="Titre de l'info"
+      >
+        Description de l'info
+        <br/>
+        Saut de ligne
+      </DsfrAlert>
+    </div>
+  `,
+
+})
+AlertesSlot.args = {
 }
