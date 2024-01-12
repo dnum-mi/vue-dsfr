@@ -15,6 +15,7 @@ const props = withDefaults(defineProps<DsfrCardProps>(), {
   linksGroup: () => [],
   titleTag: 'h3',
   size: 'md',
+  imgRatio: 'md',
 })
 
 const sm = computed(() => {
@@ -22,6 +23,13 @@ const sm = computed(() => {
 })
 const lg = computed(() => {
   return ['lg', 'large'].includes(props.size)
+})
+
+const smImg = computed(() => {
+  return ['sm', 'small'].includes(props.imgRatio)
+})
+const lgImg = computed(() => {
+  return ['lg', 'large'].includes(props.imgRatio)
 })
 const externalLink = computed(() => {
   return typeof props.link === 'string' && props.link.startsWith('http')
@@ -42,6 +50,8 @@ defineExpose({ goToTargetLink })
       'fr-enlarge-link': !noArrow,
       'fr-card--sm': sm,
       'fr-card--lg': lg,
+      'fr-card--horizontal-tier': smImg,
+      'fr-card--horizontal-half': lgImg,
       'fr-card--download': download,
     }"
     data-testid="fr-card"
@@ -75,9 +85,12 @@ defineExpose({ goToTargetLink })
         <p class="fr-card__desc">
           {{ description }}
         </p>
-        <p class="fr-card__detail">
-          {{ detail }}
-        </p>
+        <div class="fr-card__start">
+          <slot name="interactive-details" />
+          <p class="fr-card__detail">
+            {{ detail }}
+          </p>
+        </div>
       </div>
 
       <div

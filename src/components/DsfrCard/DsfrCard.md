@@ -26,6 +26,7 @@ Une carte digne de ce nom se compose des éléments suivants :
 Autres props :
 
 - la taille de la carte (prop **`size`**, de type `string`) qui peut prendre plusieurs valeurs: `md`, `medium`, `large`, `lg`, `sm`, `small`.
+- le ratio de l'image (33%, 40% ou 50%) (prop **`imgRatio`**, de type `string`) qui peut prendre plusieurs valeurs: `md`, `medium`, `large`, `lg`, `sm`, `small`.
 - la balise du titre (prop **`titleTag`**, de type `string`) afin de respecter la hiérarchie des titres. Valeurs possibles: `h1`, `h2`, `h3`, `h4`, `h5`, `h6`.
 - l'orientation de la carte (verticale par défaut) (prop **`horizontal`**, de type `boolean`) pour la basculer à l'horizontal.
 - une variante de carte indiquant que l’évènement de clic lancera un téléchargement (prop **`download`**, de type `boolean`).
@@ -44,8 +45,13 @@ Autres props :
 | `link`                 | *`string`*  | `''`            |                    |
 | `linksGroup`           | *`object`*  | `[]`            |                    |
 | `size`                 | *`string`*  | `'md'`          |                    |
+| `imgRatio`             | *`string`*  | `'md'`          |                    |
 | `title`                | *`string`*  |                 | ✅                 |
 | `titleTag`             | [*`TitleTag`*](/docs/types.md#title-tag "'h1' \| 'h2' \| 'h3' \| 'h4' \| 'h5' \| 'h6'") | `'h3'`          |          |
+
+## 🧩 Les slots
+
+`interactive-details` permet de placer des tags/badges cliquables au dessus du titre de la carte cf: [Composant - Carte](https://www.systeme-de-design.gouv.fr/elements-d-interface/composants/carte/).
 
 ## 📝 Un exemple complet
 

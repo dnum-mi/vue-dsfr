@@ -52,6 +52,11 @@ export default {
       options: ['small', 'medium', 'large'],
       description: 'Indique la taille de la carte',
     },
+    imgRatio: {
+      control: 'radio',
+      options: ['small', 'medium', 'large'],
+      description: 'Indique la largeur de l’image',
+    },
     titleTag: {
       control: 'text',
       description: 'Permet de choisir la balise contenant le titre de la carte (h3 par défaut',
@@ -78,6 +83,7 @@ export const Card = (args) => ({
       :img-src="imgSrc"
       :link="link"
       :size="size"
+      :ratio-img="ratioImg"
       :title="title"
       :horizontal="horizontal"
       :no-arrow="noArrow"
@@ -99,6 +105,7 @@ Card.args = {
   horizontal: false,
   download: false,
   size: 'medium',
+  ratioImg: 'medium',
   buttons: [],
   linksGroup: [],
 }
@@ -118,6 +125,7 @@ export const CardSansFleche = (args) => ({
       :img-src="imgSrc"
       :link="link"
       :size="size"
+      :ratio-img="ratioImg"
       :title="title"
       :horizontal="horizontal"
       :download="download"
@@ -137,6 +145,7 @@ CardSansFleche.args = {
   horizontal: false,
   download: false,
   size: 'medium',
+  ratioImg: 'medium',
   buttons: [],
   linksGroup: [],
 }
@@ -156,6 +165,7 @@ export const CardAvecBoutons = (args) => ({
       :img-src="imgSrc"
       :link="link"
       :size="size"
+      :ratio-img="ratioImg"
       :title="title"
       :horizontal="horizontal"
       :download="download"
@@ -174,6 +184,8 @@ CardAvecBoutons.args = {
   noArrow: true,
   horizontal: false,
   download: false,
+  size: 'medium',
+  ratioImg: 'medium',
   buttons: [
     {
       label: 'Télécharger',
@@ -202,6 +214,7 @@ export const CardAvecLiens = (args) => ({
       :img-src="imgSrc"
       :link="link"
       :size="size"
+      :ratio-img="ratioImg"
       :title="title"
       :horizontal="horizontal"
       :download="download"
@@ -220,6 +233,8 @@ CardAvecLiens.args = {
   noArrow: true,
   horizontal: false,
   download: false,
+  size: 'medium',
+  ratioImg: 'medium',
   linksGroup: [
     {
       label: 'Télécharger',
@@ -247,6 +262,7 @@ export const CardHorizontaleAvecBoutons = (args) => ({
       :img-src="imgSrc"
       :link="link"
       :size="size"
+      :ratio-img="ratioImg"
       :title="title"
       :horizontal="horizontal"
       :download="download"
@@ -265,6 +281,8 @@ CardHorizontaleAvecBoutons.args = {
   noArrow: true,
   horizontal: true,
   download: false,
+  size: 'medium',
+  ratioImg: 'medium',
   buttons: [
     {
       label: 'Télécharger',
@@ -293,6 +311,7 @@ export const CardHorizontaleEtSmallAvecLiens = (args) => ({
       :img-src="imgSrc"
       :link="link"
       :size="size"
+      :ratio-img="ratioImg"
       :title="title"
       :horizontal="horizontal"
       :download="download"
@@ -312,6 +331,7 @@ CardHorizontaleEtSmallAvecLiens.args = {
   horizontal: true,
   download: false,
   size: 'small',
+  ratioImg: 'small',
   linksGroup: [
     {
       label: 'Télécharger',

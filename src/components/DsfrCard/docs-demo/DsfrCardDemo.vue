@@ -17,5 +17,7 @@ const imgSrc = ref('https://placekitten.com/300/200')
     :description="description"
     :detail="detail"
     :alt-img="altImg"
+    size="large"
+    ratio-img="large"
   />
 </template>
