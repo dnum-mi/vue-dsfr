@@ -102,6 +102,10 @@ const composants = [
     link: '/composants/DsfrConsent.md',
   },
   {
+    text: 'DsfrFieldset',
+    link: '/composants/DsfrFieldset.md',
+  },
+  {
     text: 'DsfrRange',
     link: '/composants/DsfrRange.md',
   },
