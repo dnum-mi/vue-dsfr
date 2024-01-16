@@ -106,6 +106,10 @@ const composants = [
     link: '/composants/DsfrFieldset.md',
   },
   {
+    text: 'DsfrFileDownload',
+    link: '/composants/DsfrFileDownload.md',
+  },
+  {
     text: 'DsfrRange',
     link: '/composants/DsfrRange.md',
   },
