@@ -17,7 +17,7 @@ Une carte digne de ce nom se compose des éléments suivants :
 - un titre (prop **`title`**, de type `string`), reprenant celui de l’objet visé (page de destination, action, site).
 - un lien (prop **`link`**, de type `string`), sur le titre de la carte.
 - une image (prop **`imgSrc`**, de type `string`), issue ou en lien avec la page de destination à laquelle on peut ajouter une description textuelle de l'image (prop **`altImg`**, de type `string`), ce texte alternatif sera affiché sur la page si l'image ne peut pas être chargée et sera très utile pour l'accessibilité.
-- une zone destinée à d'éventuels détails (prop **`detail`**, de type `string`).
+- deux zones de détails destinées à une icône et un texte - optionnels (props **`detail`** et **`endDetail`**, de type `string`).
 - une description (prop **`description`**, de type `string`), de 5 lignes maximum (tronquée au-delà).
 - une icône illustrative (par défaut, une flèche) - optionnelle peut se désactiver (prop **`noArrow`**, de type `boolean`).
 - une zone d’action, composée de boutons (prop **`buttons`**, un tableau d'objets pouvant contenir les props à passer à chaque bouton (cf. le composant [`DsfrButton`](/composants/DsfrButton) afin de connaître les props à passer)).
@@ -38,6 +38,7 @@ Autres props :
 | `altImg`               | *`string`*  | `''`            |                    |
 | `buttons`              | *`object`*  | `[]`            |                    |
 | `detail`               | *`string`*  | `''`            |                    |
+| `endDetail`            | *`string`*  | `''`            |                    |
 | `description`          | *`string`*  |                 | ✅                 |
 | `download`             | *`boolean`* | `false`         |                    |
 | `horizontal`           | *`boolean`* | `false`         |                    |
@@ -51,15 +52,19 @@ Autres props :
 
 ## 🧩 Les slots
 
-`interactive-details` permet de placer des tags/badges cliquables au dessus du titre de la carte cf: [Composant - Carte](https://www.systeme-de-design.gouv.fr/elements-d-interface/composants/carte/).
+`start-details`  permet de placer une précision, sous forme de tags (cliquables ou non) cf: [Composant - Tag](https://www.systeme-de-design.gouv.fr/elements-d-interface/composants/tag) ou de badges (jusqu'à 4 éléments)cf: [Composant - Badge](https://www.systeme-de-design.gouv.fr/elements-d-interface/composants/badge) - optionnels cf: [Composant - Carte](https://www.systeme-de-design.gouv.fr/elements-d-interface/composants/carte/).
 
 ## 📝 Un exemple complet
 
-<Story data-title="Démo" min-h="530px">
+::: code-group
+
+<Story data-title="Démo" min-h="640px">
   <DsfrCardDemo />
 </Story>
 
 <<< docs-demo/DsfrCardDemo.vue [Code de la démo]
+
+:::
 
 <script setup lang="ts">
 import DsfrCardDemo from './docs-demo/DsfrCardDemo.vue'

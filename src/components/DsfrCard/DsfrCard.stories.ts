@@ -1,4 +1,6 @@
 import DsfrCard from './DsfrCard.vue'
+import DsfrTags from './../DsfrTag/DsfrTags.vue'
+import DsfrBadge from './../DsfrBadge/DsfrBadge.vue'
 
 /**
  * [Voir quand l’utiliser sur la documentation du DSFR](https://www.systeme-de-design.gouv.fr/elements-d-interface/composants/carte)
@@ -243,6 +245,129 @@ CardAvecLiens.args = {
     {
       label: 'En savoir plus',
       href: 'https://www.systeme-de-design.gouv.fr/',
+    },
+  ],
+}
+
+export const CardAvecTags = (args) => ({
+  components: { DsfrCard, DsfrTags },
+  data () {
+    return args
+  },
+  template: `
+    <DsfrCard
+      :style="\`max-width: \${horizontal ? 600 : 400}px\`"
+      :alt-img="altImg"
+      :detail="detail"
+      :links-group="linksGroup"
+      :description="description"
+      :img-src="imgSrc"
+      :link="link"
+      :size="size"
+      :ratio-img="ratioImg"
+      :title="title"
+      :horizontal="horizontal"
+      :download="download"
+      :no-arrow="noArrow"
+  >
+    <template #interactive-details>
+      <DsfrTags
+        :tags="exampleTags"
+      />
+    </template>
+  </DsfrCard>
+  `,
+
+})
+CardAvecTags.args = {
+  altImg: '',
+  detail: 'Détails sur la carte en question',
+  description: 'Description sommaire de la carte',
+  imgSrc: 'https://placekitten.com/300/200',
+  link: undefined,
+  title: 'Qu’est-ce que le Pass Culture et comment l’obtenir ?',
+  noArrow: true,
+  horizontal: false,
+  download: false,
+  size: 'medium',
+  ratioImg: 'medium',
+  exampleTags: [
+    {
+      label: 'Tag1',
+    },
+    {
+      label: 'Tag2',
+    },
+    {
+      label: 'Tag3',
+    },
+    {
+      label: 'Tag4',
+    },
+  ],
+}
+
+export const CardAvecBadges = (args) => ({
+  components: { DsfrCard, DsfrBadge },
+  data () {
+    return args
+  },
+  template: `
+    <DsfrCard
+      :style="\`max-width: \${horizontal ? 600 : 400}px\`"
+      :alt-img="altImg"
+      :detail="detail"
+      :links-group="linksGroup"
+      :description="description"
+      :img-src="imgSrc"
+      :link="link"
+      :size="size"
+      :ratio-img="ratioImg"
+      :title="title"
+      :horizontal="horizontal"
+      :download="download"
+      :no-arrow="noArrow"
+  >
+    <template #interactive-details>
+      <DsfrBadge
+        v-for="(badge, idx) in exampleBadges"
+        :key="idx"
+        :type="badge.type"
+        :label="badge.label"
+      />
+    </template>
+  </DsfrCard>
+  `,
+
+})
+CardAvecBadges.args = {
+  altImg: '',
+  detail: 'Détails sur la carte en question',
+  description: 'Description sommaire de la carte',
+  imgSrc: 'https://placekitten.com/300/200',
+  link: undefined,
+  title: 'Qu’est-ce que le Pass Culture et comment l’obtenir ?',
+  noArrow: true,
+  horizontal: false,
+  download: false,
+  size: 'medium',
+  ratioImg: 'medium',
+  exampleBadges: [
+    {
+      label: 'Badge1',
+      type: 'info',
+    },
+    {
+      label: 'Badge2',
+      type: 'success',
+    },
+    {
+      label: 'Badge3',
+      type: 'warning',
+    },
+    {
+      label: 'Badge4',
+      type: 'error',
     },
   ],
 }

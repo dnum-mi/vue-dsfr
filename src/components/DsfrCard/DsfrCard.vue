@@ -10,6 +10,7 @@ const props = withDefaults(defineProps<DsfrCardProps>(), {
   imgSrc: undefined,
   link: undefined,
   detail: undefined,
+  endDetail: undefined,
   altImg: '',
   buttons: () => [],
   linksGroup: () => [],
@@ -86,9 +87,21 @@ defineExpose({ goToTargetLink })
           {{ description }}
         </p>
         <div class="fr-card__start">
-          <slot name="interactive-details" />
-          <p class="fr-card__detail">
+          <slot name="start-details" />
+          <p
+            v-if="detail"
+            class="fr-card__detail fr-icon-warning-fill"
+          >
             {{ detail }}
+          </p>
+        </div>
+        <div class="fr-card__end">
+          <slot name="end-details" />
+          <p
+            v-if="endDetail"
+            class="fr-card__detail fr-icon-warning-fill"
+          >
+            {{ endDetail }}
           </p>
         </div>
       </div>

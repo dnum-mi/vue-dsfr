@@ -8,6 +8,7 @@ export type DsfrCardProps = {
   description: string
   size?: 'md' | 'medium' | 'large' | 'lg' | 'sm' | 'small' | undefined
   detail?: string
+  endDetail?: string
   altImg?: string
   titleTag?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'
   buttons?: DsfrButtonProps[]
