@@ -52,13 +52,19 @@ Autres props :
 
 ## 🧩 Les slots
 
-`start-details`  permet de placer une précision, sous forme de tags (cliquables ou non) cf: [Composant - Tag](https://www.systeme-de-design.gouv.fr/elements-d-interface/composants/tag) ou de badges (jusqu'à 4 éléments)cf: [Composant - Badge](https://www.systeme-de-design.gouv.fr/elements-d-interface/composants/badge) - optionnels cf: [Composant - Carte](https://www.systeme-de-design.gouv.fr/elements-d-interface/composants/carte/).
+`start-details`  permet de placer une précision, sous forme de tags (cliquables ou non)
 
-## 📝 Un exemple complet
+cf. DSFR : [Composant - Tag](https://www.systeme-de-design.gouv.fr/elements-d-interface/composants/tag) ou [Composant - Badge](https://www.systeme-de-design.gouv.fr/elements-d-interface/composants/badge) (jusqu'à 4 éléments)
+
+cf. DSFR : [Composant - Carte](https://www.systeme-de-design.gouv.fr/elements-d-interface/composants/carte/).
+
+## 📝 Exemples
+
+### 📝 Un exemple avec tags sans actions
 
 ::: code-group
 
-<Story data-title="Démo" min-h="640px">
+<Story data-title="Démo" min-h="680px">
   <DsfrCardDemo />
 </Story>
 
@@ -66,6 +72,19 @@ Autres props :
 
 :::
 
+### 📝 Un exemple avec actions sans tags
+
+::: code-group
+
+<Story data-title="Démo" min-h="720px">
+  <DsfrCardDemoActions />
+</Story>
+
+<<< docs-demo/DsfrCardDemoActions.vue [Code de la démo]
+
+:::
+
 <script setup lang="ts">
 import DsfrCardDemo from './docs-demo/DsfrCardDemo.vue'
+import DsfrCardDemoActions from './docs-demo/DsfrCardDemoActions.vue'
 </script>

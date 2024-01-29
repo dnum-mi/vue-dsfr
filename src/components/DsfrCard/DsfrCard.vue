@@ -1,8 +1,9 @@
 <script lang="ts" setup>
-import { computed, ref, type Ref } from 'vue'
+import { computed, ref } from 'vue'
 import DsfrButtonGroup from '../DsfrButton/DsfrButtonGroup.vue'
 
 import type { DsfrCardProps } from './DsfrCard.types'
+import DsfrCardDetail from './DsfrCardDetail.vue'
 
 export type { DsfrCardProps }
 
@@ -10,7 +11,9 @@ const props = withDefaults(defineProps<DsfrCardProps>(), {
   imgSrc: undefined,
   link: undefined,
   detail: undefined,
+  detailIcon: undefined,
   endDetail: undefined,
+  endDetailIcon: undefined,
   altImg: '',
   buttons: () => [],
   linksGroup: () => [],
@@ -36,7 +39,7 @@ const externalLink = computed(() => {
   return typeof props.link === 'string' && props.link.startsWith('http')
 })
 
-const titleElt: Ref<HTMLElement | null> = ref(null)
+const titleElt = ref<HTMLElement | null>(null)
 const goToTargetLink = () => {
   (titleElt.value?.querySelector('.fr-card__link') as HTMLDivElement).click()
 }
@@ -86,23 +89,29 @@ defineExpose({ goToTargetLink })
         <p class="fr-card__desc">
           {{ description }}
         </p>
-        <div class="fr-card__start">
+        <div
+          v-if="$slots['start-details'] || detail"
+          class="fr-card__start"
+        >
           <slot name="start-details" />
           <p
             v-if="detail"
-            class="fr-card__detail fr-icon-warning-fill"
+            class="fr-card__detail"
           >
             {{ detail }}
           </p>
         </div>
-        <div class="fr-card__end">
+        <div
+          v-if="$slots['end-details'] || endDetail"
+          class="fr-card__end"
+        >
           <slot name="end-details" />
-          <p
+          <DsfrCardDetail
             v-if="endDetail"
-            class="fr-card__detail fr-icon-warning-fill"
+            :icon="endDetailIcon"
           >
             {{ endDetail }}
-          </p>
+          </DsfrCardDetail>
         </div>
       </div>
 
@@ -113,7 +122,7 @@ defineExpose({ goToTargetLink })
         <DsfrButtonGroup
           v-if="buttons.length"
           :buttons="buttons"
-          inline-layout-when="lg"
+          inline-layout-when="always"
           :size="size"
           reverse
         />
