@@ -83,9 +83,8 @@ const iconProps = computed(() => typeof props.icon === 'string'
       v-if="!dsfrIcon && (icon || iconAttrs?.name) && iconRight"
     >
       <VIcon
-        :name="icon"
         class="fr-ml-1w"
-        v-bind="iconAttrs"
+        v-bind="iconProps"
       />
     </template>
   </component>

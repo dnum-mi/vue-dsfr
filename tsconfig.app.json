@@ -16,6 +16,7 @@
   "compilerOptions": {
     "composite": true,
     "baseUrl": ".",
+    "noEmit": false,
     "declaration": true,
     "declarationDir": "./types",
     "rootDir": "./src",
