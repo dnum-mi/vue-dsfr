@@ -1,10 +1,10 @@
 import type { RouteLocationRaw } from 'vue-router'
-import type { OhVueIcon as VIcon } from 'oh-vue-icons'
 
 import type { DsfrButtonProps } from '../DsfrButton/DsfrButton.types'
+import type { CustomizeIconType } from 'oh-vue-icons'
 
 export type DsfrCardDetailProps = {
-  icon: string | InstanceType<typeof VIcon>['$props']
+  icon?: string | CustomizeIconType
 }
 
 export type DsfrCardProps = {
