@@ -74,7 +74,7 @@ export const useScheme = (options?: UseThemeOptions): UseSchemeResult | undefine
 
   localStorage.setItem(COLOR_SCHEME_LS_KEY, scheme.value)
 
-  const theme = ref(getThemeMatchingScheme(scheme.value, mediaQuery, document.documentElement.getAttribute('data-fr-theme')))
+  const theme = ref(getThemeMatchingScheme(scheme.value, mediaQuery))
   const force = ref(scheme.value !== SYSTEM_SCHEME)
 
   watchEffect(() => {
