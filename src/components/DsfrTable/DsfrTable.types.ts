@@ -1,5 +1,4 @@
 import type { OhVueIcon as VIcon } from 'oh-vue-icons'
-
 import type { TdHTMLAttributes, ThHTMLAttributes, HTMLAttributes } from 'vue'
 
 export type DsfrTableRowProps = {

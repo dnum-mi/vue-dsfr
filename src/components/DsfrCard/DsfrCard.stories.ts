@@ -1,4 +1,6 @@
 import DsfrCard from './DsfrCard.vue'
+import DsfrTags from './../DsfrTag/DsfrTags.vue'
+import DsfrBadge from './../DsfrBadge/DsfrBadge.vue'
 
 /**
  * [Voir quand l’utiliser sur la documentation du DSFR](https://www.systeme-de-design.gouv.fr/elements-d-interface/composants/carte)
@@ -52,6 +54,11 @@ export default {
       options: ['small', 'medium', 'large'],
       description: 'Indique la taille de la carte',
     },
+    imgRatio: {
+      control: 'radio',
+      options: ['small', 'medium', 'large'],
+      description: 'Indique la largeur de l’image',
+    },
     titleTag: {
       control: 'text',
       description: 'Permet de choisir la balise contenant le titre de la carte (h3 par défaut',
@@ -78,6 +85,7 @@ export const Card = (args) => ({
       :img-src="imgSrc"
       :link="link"
       :size="size"
+      :ratio-img="ratioImg"
       :title="title"
       :horizontal="horizontal"
       :no-arrow="noArrow"
@@ -99,6 +107,7 @@ Card.args = {
   horizontal: false,
   download: false,
   size: 'medium',
+  ratioImg: 'medium',
   buttons: [],
   linksGroup: [],
 }
@@ -118,6 +127,7 @@ export const CardSansFleche = (args) => ({
       :img-src="imgSrc"
       :link="link"
       :size="size"
+      :ratio-img="ratioImg"
       :title="title"
       :horizontal="horizontal"
       :download="download"
@@ -137,6 +147,7 @@ CardSansFleche.args = {
   horizontal: false,
   download: false,
   size: 'medium',
+  ratioImg: 'medium',
   buttons: [],
   linksGroup: [],
 }
@@ -156,6 +167,7 @@ export const CardAvecBoutons = (args) => ({
       :img-src="imgSrc"
       :link="link"
       :size="size"
+      :ratio-img="ratioImg"
       :title="title"
       :horizontal="horizontal"
       :download="download"
@@ -174,6 +186,8 @@ CardAvecBoutons.args = {
   noArrow: true,
   horizontal: false,
   download: false,
+  size: 'medium',
+  ratioImg: 'medium',
   buttons: [
     {
       label: 'Télécharger',
@@ -202,6 +216,7 @@ export const CardAvecLiens = (args) => ({
       :img-src="imgSrc"
       :link="link"
       :size="size"
+      :ratio-img="ratioImg"
       :title="title"
       :horizontal="horizontal"
       :download="download"
@@ -220,6 +235,8 @@ CardAvecLiens.args = {
   noArrow: true,
   horizontal: false,
   download: false,
+  size: 'medium',
+  ratioImg: 'medium',
   linksGroup: [
     {
       label: 'Télécharger',
@@ -228,6 +245,129 @@ CardAvecLiens.args = {
     {
       label: 'En savoir plus',
       href: 'https://www.systeme-de-design.gouv.fr/',
+    },
+  ],
+}
+
+export const CardAvecTags = (args) => ({
+  components: { DsfrCard, DsfrTags },
+  data () {
+    return args
+  },
+  template: `
+    <DsfrCard
+      :style="\`max-width: \${horizontal ? 600 : 400}px\`"
+      :alt-img="altImg"
+      :detail="detail"
+      :links-group="linksGroup"
+      :description="description"
+      :img-src="imgSrc"
+      :link="link"
+      :size="size"
+      :ratio-img="ratioImg"
+      :title="title"
+      :horizontal="horizontal"
+      :download="download"
+      :no-arrow="noArrow"
+  >
+    <template #interactive-details>
+      <DsfrTags
+        :tags="exampleTags"
+      />
+    </template>
+  </DsfrCard>
+  `,
+
+})
+CardAvecTags.args = {
+  altImg: '',
+  detail: 'Détails sur la carte en question',
+  description: 'Description sommaire de la carte',
+  imgSrc: 'https://placekitten.com/300/200',
+  link: undefined,
+  title: 'Qu’est-ce que le Pass Culture et comment l’obtenir ?',
+  noArrow: true,
+  horizontal: false,
+  download: false,
+  size: 'medium',
+  ratioImg: 'medium',
+  exampleTags: [
+    {
+      label: 'Tag1',
+    },
+    {
+      label: 'Tag2',
+    },
+    {
+      label: 'Tag3',
+    },
+    {
+      label: 'Tag4',
+    },
+  ],
+}
+
+export const CardAvecBadges = (args) => ({
+  components: { DsfrCard, DsfrBadge },
+  data () {
+    return args
+  },
+  template: `
+    <DsfrCard
+      :style="\`max-width: \${horizontal ? 600 : 400}px\`"
+      :alt-img="altImg"
+      :detail="detail"
+      :links-group="linksGroup"
+      :description="description"
+      :img-src="imgSrc"
+      :link="link"
+      :size="size"
+      :ratio-img="ratioImg"
+      :title="title"
+      :horizontal="horizontal"
+      :download="download"
+      :no-arrow="noArrow"
+  >
+    <template #interactive-details>
+      <DsfrBadge
+        v-for="(badge, idx) in exampleBadges"
+        :key="idx"
+        :type="badge.type"
+        :label="badge.label"
+      />
+    </template>
+  </DsfrCard>
+  `,
+
+})
+CardAvecBadges.args = {
+  altImg: '',
+  detail: 'Détails sur la carte en question',
+  description: 'Description sommaire de la carte',
+  imgSrc: 'https://placekitten.com/300/200',
+  link: undefined,
+  title: 'Qu’est-ce que le Pass Culture et comment l’obtenir ?',
+  noArrow: true,
+  horizontal: false,
+  download: false,
+  size: 'medium',
+  ratioImg: 'medium',
+  exampleBadges: [
+    {
+      label: 'Badge1',
+      type: 'info',
+    },
+    {
+      label: 'Badge2',
+      type: 'success',
+    },
+    {
+      label: 'Badge3',
+      type: 'warning',
+    },
+    {
+      label: 'Badge4',
+      type: 'error',
     },
   ],
 }
@@ -247,6 +387,7 @@ export const CardHorizontaleAvecBoutons = (args) => ({
       :img-src="imgSrc"
       :link="link"
       :size="size"
+      :ratio-img="ratioImg"
       :title="title"
       :horizontal="horizontal"
       :download="download"
@@ -265,6 +406,8 @@ CardHorizontaleAvecBoutons.args = {
   noArrow: true,
   horizontal: true,
   download: false,
+  size: 'medium',
+  ratioImg: 'medium',
   buttons: [
     {
       label: 'Télécharger',
@@ -293,6 +436,7 @@ export const CardHorizontaleEtSmallAvecLiens = (args) => ({
       :img-src="imgSrc"
       :link="link"
       :size="size"
+      :ratio-img="ratioImg"
       :title="title"
       :horizontal="horizontal"
       :download="download"
@@ -312,6 +456,7 @@ CardHorizontaleEtSmallAvecLiens.args = {
   horizontal: true,
   download: false,
   size: 'small',
+  ratioImg: 'small',
   linksGroup: [
     {
       label: 'Télécharger',
