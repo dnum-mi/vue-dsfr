@@ -16,11 +16,13 @@ jobs:
         uses: actions/setup-node@v2
         with:
           always-auth: true
-          node-version: 18
+          node-version: 20.11
+      - name: Install pnpm
+        run: npm i -g pnpm
       - name: Install dependencies
-        run: npm ci
+        run: pnpm install --frozen-lockfile
       - name: Release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_MININT_TOKEN }}
-        run: npm run semantic-release
+        run: pnpm run semantic-release

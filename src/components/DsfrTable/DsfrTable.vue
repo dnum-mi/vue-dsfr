@@ -3,7 +3,7 @@ import { computed, ref, watch } from 'vue'
 import DsfrTableRow, { type DsfrTableRowProps } from './DsfrTableRow.vue'
 import DsfrTableHeaders from './DsfrTableHeaders.vue'
 
-import type { DsfrTableProps } from './DsfrTable.types'
+import type { DsfrTableCellProps, DsfrTableProps } from './DsfrTable.types'
 
 export type { DsfrTableProps }
 
@@ -18,7 +18,7 @@ const props = withDefaults(defineProps<DsfrTableProps>(), {
 // Permet aux utilisateurs d'utiliser une fonction afin de charger des résultats au changement de page
 const emit = defineEmits<{(event: 'update:currentPage'): void }>()
 
-const getRowData = (row: DsfrTableRowProps | string[]) => {
+const getRowData = (row: DsfrTableRowProps | string[] | DsfrTableCellProps[]) => {
   return Array.isArray(row) ? row : row.rowData
 }
 
