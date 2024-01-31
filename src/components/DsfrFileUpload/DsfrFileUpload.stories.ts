@@ -86,6 +86,7 @@ export const TeleversementAvecErreur = (args) => ({
       :label="label"
       :hint="hint"
       :error="error"
+      required
     />
   </div>
   `,
