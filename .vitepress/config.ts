@@ -64,6 +64,7 @@ const composables = [
     link: '/composables/useTabs.md',
   },
 ]
+
 const composants = [
   {
     text: 'DsfrAccordion',
@@ -112,6 +113,14 @@ const composants = [
   {
     text: 'DsfrErrorPage',
     link: '/composants/DsfrErrorPage.md',
+  },
+  {
+    text: 'DsfrInput',
+    link: '/composants/DsfrInput.md',
+  },
+  {
+    text: 'DsfrInputGroup',
+    link: '/composants/DsfrInputGroup.md',
   },
   {
     text: 'DsfrRange',
