@@ -1,4 +1,4 @@
-# DsfrTabs Component Documentation
+# Onglets - `DsfrTabs`
 
 ## 🌟 Introduction
 
@@ -24,6 +24,13 @@ Bonjour les artistes du code ! Voici `DsfrTabs`, le composant d'onglets Vue qui 
 |--------------|--------------------------------------------------------------------|
 | tab-items    | Slot nommé pour insérer des titres d’onglets personnalisés. Si rempli, la prop `tabTitles` n’a aucun effet. |
 | default      | Slot par défaut pour le contenu des onglets.                       |
+
+## Les méthodes exposées
+
+- `DsfrTabs#renderTabs()`: permet de forcer le recalcul de la hauteur de l’onglet
+- `DsfrTabs#selectIndex()`: permet d’indiquer quel onglet doit être sélectionné (commence à 0)
+- `DsfrTabs#selectFirst` : permet de sélectionner le premier onglet (raccourci de `selectIndex(0)`)
+- `DsfrTabs#selectLast` : permet de sélectionner le dernier onglet (raccourci de `selectIndex(tabs.length - 1)`)
 
 ## 📝 Exemples
 
