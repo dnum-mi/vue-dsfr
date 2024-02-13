@@ -5,5 +5,5 @@ export type DsfrErrorPageProps = {
   subtitle?: string
   description?: string
   help?: string
-  buttons: DsfrButtonProps[]
+  buttons?: DsfrButtonProps[]
 }
