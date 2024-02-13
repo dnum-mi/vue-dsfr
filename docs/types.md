@@ -246,6 +246,12 @@ outline: [2,3]
 <<< ../src/components/DsfrToggleSwitch/DsfrToggleSwitch.types.ts
 :::
 
+### `DsfrTooltip`
+
+::: code-group
+<<< ../src/components/DsfrTooltip/DsfrTooltip.types.ts
+:::
+
 ### `DsfrTranscription`
 
 ::: code-group
