@@ -107,6 +107,7 @@ const selectLast = async () => {
 }
 
 defineExpose({
+  renderTabs,
   selectIndex,
   selectFirst,
   selectLast,
