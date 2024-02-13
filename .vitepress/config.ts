@@ -114,8 +114,16 @@ const composants = [
     link: '/composants/DsfrRange.md',
   },
   {
+    text: 'DsfrFileUpload',
+    link: '/composants/DsfrFileUpload.md',
+  },
+  {
     text: 'DsfrNotice',
     link: '/composants/DsfrNotice.md',
+  },
+  {
+    text: 'DsfrRange',
+    link: '/composants/DsfrRange.md',
   },
   {
     text: 'DsfrSegmented',
