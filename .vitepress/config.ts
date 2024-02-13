@@ -110,6 +110,10 @@ const composants = [
     link: '/composants/DsfrFileDownload.md',
   },
   {
+    text: 'DsfrErrorPage',
+    link: '/composants/DsfrErrorPage.md',
+  },
+  {
     text: 'DsfrRange',
     link: '/composants/DsfrRange.md',
   },
