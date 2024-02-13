@@ -22,6 +22,8 @@ const props = withDefaults(defineProps<DsfrInputProps>(), {
   wrapperClass: '',
 })
 
+defineEmits<{(e: 'update:modelValue', payload: string): void}>()
+
 const attrs = useAttrs()
 
 const __input: Ref<HTMLElement | null> = ref(null)
@@ -51,9 +53,9 @@ defineExpose({
       <!-- @slot Slot pour indiquer que le champ est obligatoire. Par défaut, met une astérisque si `required` est à true (dans un `<span class="required">`) -->
       <slot name="required-tip">
         <span
-          v-if="$attrs.required"
+          v-if="'required' in $attrs && $attrs.required !== false"
           class="required"
-        >&nbsp;*</span>
+        >*</span>
       </slot>
     </slot>
 

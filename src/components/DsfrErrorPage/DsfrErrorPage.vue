@@ -10,7 +10,7 @@ withDefaults(defineProps<DsfrErrorPageProps>(), {
   subtitle: 'Erreur 404',
   description: 'La page que vous cherchez est introuvable. Excusez-nous pour la gêne occasionnée.',
   help: 'Si vous avez tapé l\'adresse web dans le navigateur, vérifiez qu\'elle est correcte. La page n\'est peut être plus disponible.',
-  buttons: () => [],
+  buttons: undefined,
 })
 </script>
 
@@ -30,6 +30,8 @@ withDefaults(defineProps<DsfrErrorPageProps>(), {
         :buttons="buttons"
         inline-layout-when="always"
       />
+      <!-- @slot Slot par défaut : sera après ou à la place des boutons -->
+      <slot />
     </div>
     <div class="half  self-center  text-center">
       <img

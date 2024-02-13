@@ -3,11 +3,11 @@ import { computed, defineProps, ref, watch, onUnmounted, onMounted } from 'vue'
 
 import { getRandomId } from '../../utils/random-utils'
 
-const props = withDefaults(defineProps<{
-    content: string
-    onHover?: boolean
-    id?: string,
-  }>(), {
+import type { DsfrTooltipProps } from './DsfrTooltip.types'
+
+export type { DsfrTooltipProps }
+
+const props = withDefaults(defineProps<DsfrTooltipProps>(), {
   id: () => getRandomId('tooltip'),
 })
 

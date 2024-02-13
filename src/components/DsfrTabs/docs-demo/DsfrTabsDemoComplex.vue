@@ -66,7 +66,14 @@ const selectTab = (idx: number) => {
         :selected="selectedTabIndex === 3"
         :asc="asc"
       >
-        <div>Contenu 4 avec <DsfrButton>d'autres composants</DsfrButton></div>
+        <div>
+          <p>Contenu 4 avec beaucoup de contenus</p>
+          <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vitae fugit sit et eos a officiis adipisci nulla repellat cupiditate? Assumenda, explicabo ullam laboriosam ex sit corporis enim illum a itaque.</p>
+          <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quasi animi quis quos consectetur alias delectus recusandae sunt quisquam incidunt provident quidem, at voluptatibus id, molestias et? Temporibus perspiciatis aut voluptates.</p>
+          <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quibusdam obcaecati at delectus iusto possimus! Molestiae, iusto veritatis. Nostrum magni officiis autem, in ullam aliquid, mollitia, commodi architecto vitae omnis vero.</p>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore explicabo voluptates, pariatur excepturi ad sint voluptatum vero molestias aut qui beatae. Porro laudantium, saepe consequuntur voluptatem magni earum labore veniam.</p>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo quo nisi explicabo corrupti assumenda! Eaque quod, perspiciatis facere molestias nihil eum beatae commodi laudantium possimus qui error veniam enim at!</p>
+        </div>
       </DsfrTabContent>
     </DsfrTabs>
     <div style="display: flex; gap: 1rem; margin-block: 1rem;">

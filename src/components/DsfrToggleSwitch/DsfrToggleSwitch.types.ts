@@ -4,4 +4,6 @@ export type DsfrToggleSwitchProps = {
   hint?: string
   label?: string
   disabled?: boolean
+  labelLeft?: boolean
+  borderBottom?: boolean
 }

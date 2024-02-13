@@ -64,6 +64,7 @@ const composables = [
     link: '/composables/useTabs.md',
   },
 ]
+
 const composants = [
   {
     text: 'DsfrAccordion',
@@ -102,12 +103,40 @@ const composants = [
     link: '/composants/DsfrConsent.md',
   },
   {
+    text: 'DsfrFieldset',
+    link: '/composants/DsfrFieldset.md',
+  },
+  {
+    text: 'DsfrFileDownload',
+    link: '/composants/DsfrFileDownload.md',
+  },
+  {
+    text: 'DsfrErrorPage',
+    link: '/composants/DsfrErrorPage.md',
+  },
+  {
+    text: 'DsfrInput',
+    link: '/composants/DsfrInput.md',
+  },
+  {
+    text: 'DsfrInputGroup',
+    link: '/composants/DsfrInputGroup.md',
+  },
+  {
     text: 'DsfrRange',
     link: '/composants/DsfrRange.md',
   },
   {
+    text: 'DsfrFileUpload',
+    link: '/composants/DsfrFileUpload.md',
+  },
+  {
     text: 'DsfrNotice',
     link: '/composants/DsfrNotice.md',
+  },
+  {
+    text: 'DsfrRange',
+    link: '/composants/DsfrRange.md',
   },
   {
     text: 'DsfrSegmented',
