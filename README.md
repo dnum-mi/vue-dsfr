@@ -6,7 +6,7 @@ de composants. Il peut s'utiliser facilement en tant que plugin.
 
 ## Comment l’utiliser
 
-### TL;DR
+La façon la plus simple de commencer un projet est d’utiliser le package `create-vue-dsfr`, qui permet de créer un projet NPM avec le nécessaire et suffisant (ou plus, selon votre choix) pour développer un projet utilisant VueDsfr, que ce soit pour Vite (Vue3) ou pour Nuxt (Nuxt3), avec TypeScript et ESLint.
 
 Avec npm :
 
@@ -26,11 +26,7 @@ Avec yarn :
 yarn create vue-dsfr
 ```
 
-Et suivez le guide !
-
-### Détails :
-
-Cf. [le site officiel](https://vue-dsfr.netlify.app/?path=/docs/docs-2-guide-d-utilisation--docs)
+Et suivez les indications de l’assistant.
 
 ## Comment contribuer
 
@@ -43,42 +39,8 @@ et **la fusion doit être demandée dans `develop`.**
 
 ### Détails
 
-Cf [le site officiel](https://vue-dsfr.netlify.app/?path=/docs/docs-3-guide-du-d%C3%A9veloppeur--docs)
+Cf [le site officiel](https://vue-ds.fr/guide/guide-developpeur)
 
-## Utiliser la bibliothèque dans un projet existant (ou un nouveau projet sans passer par [`create-vue-dsfr`](https://www.npmjs.com/package/create-vue-dsfr))
-### Installer la bibliothèque
+## Plus d'informations
 
-```shell
-npm install @gouvminint/vue-dsfr
-```
-### Utiliser la bibliothèque en tant que plugin Vue 3
-
-```js
-import { createApp } from 'vue'
-import App from './App.vue'
-import '@gouvminint/vue-dsfr/styles'                  // Import des styles globaux
-import VueDsfr from '@gouvminint/vue-dsfr'            // Import (par défaut) de la bibliothèque
-
-
-const app = createApp(App)
-  .use(VueDsfr)                                    // Ajout en tant que plugin
-  .mount('#app')
-```
-
-Et ensuite, les composants sont utilisables directement dans les composants de l'application :
-
-```html
-<template>
-  <DsfrHeader
-    logo-text="Gouvernement"
-    service-title="Bureau des légendes"
-  />
-  <div class="fr-container">
-    <router-view />
-  </div>
-</template>
-```
-
-# Plus d'informations
-
-Veuillez consulter [le site officiel](https://vue-dsfr.netlify.app/) pour plus d'informations.
+Veuillez consulter [le site officiel](https://vue-ds.fr/) pour plus d'informations.

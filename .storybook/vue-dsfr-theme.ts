@@ -33,6 +33,6 @@ export default create({
   inputBorderRadius: 4,
 
   brandTitle: 'Vue DSFR',
-  brandUrl: 'https://vue-dsfr.netlify.app',
+  brandUrl: 'https://vue-ds.fr',
   brandImage,
 });

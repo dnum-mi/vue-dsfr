@@ -8,7 +8,7 @@ Les curseurs sont des entrées numériques qui permettent de voir graphiquement 
 
 🏅 La documentation sur le curseur importante sur le [DSFR](https://www.systeme-de-design.gouv.fr/elements-d-interface/composants/bandeau-d-information-importante)
 
-<VIcon name="vi-file-type-storybook" /> La story sur le curseur importante sur le storybook de [VueDsfr](https://vue-dsfr.netlify.app/?path=/docs/composants-dsfrnotice--docs)
+<VIcon name="vi-file-type-storybook" /> La story sur le curseur importante sur le storybook de [VueDsfr](https://storybook.vue-ds.fr/?path=/docs/composants-dsfrnotice--docs)
 
 ## 📐 Structure
 

@@ -1,7 +1,19 @@
 # Commencer avec VueDsfr
 
+::: info NOTE
+
 Ceci est le guide d̛’utilisation de la bibliothèque. Si vous cherchez à contribuer, se référer au
 [Guide du développeur](./guide-developpeur).
+
+:::
+
+::: info Si vous recherchez :
+
+- le [storybook](https://storybook.vue-ds.fr), il est ici : [storybook.vue-ds.fr](https://storybook.vue-ds.fr) (ou [sb.vue-ds.fr](https://sb.vue-ds.fr) ou [stories.vue-ds.fr](https://stories.vue-ds.fr)).
+- l’[application de demo](https://demo.vue-ds.fr) avec plusieurs composants utilisés dans une vraie app Vue 3, c’est ici : [demo.vue-ds.fr](https://demo.vue-ds.fr)
+- d’autres éléments de l’[écosystème VueDsfr](./ecosysteme.md), c’est ici : [vue-ds.fr/guide/ecosysteme](https://vue-ds.fr/guide/ecosysteme).
+
+:::
 
 ::: warning Prérequis
 

@@ -1,5 +1,3 @@
-# Recettes (Vue3 et Nuxt)
-
 # Recettes
 
 - Avoir un [toaster (ou snackbar)](./toaster.md) dans une application
