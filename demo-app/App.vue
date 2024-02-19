@@ -2,12 +2,18 @@
 import { ref } from 'vue'
 import { useRoute } from 'vue-router'
 
-import DsfrHeader from '../src/components/DsfrHeader/DsfrHeader.vue'
-import DsfrNavigation from '../src/components/DsfrNavigation/DsfrNavigation.vue'
-import DsfrSkipLinks from '../src/components/DsfrSkipLinks/DsfrSkipLinks.vue'
+import AppToaster from './components/AppToaster.vue'
+import useToaster from './composables/use-toaster.js'
+
+import DsfrModal from '../src/components/DsfrModal/DsfrModal.vue'
+import DsfrHeader, { type DsfrHeaderProps } from '../src/components/DsfrHeader/DsfrHeader.vue'
+import DsfrNavigation, { DsfrNavigationProps } from '../src/components/DsfrNavigation/DsfrNavigation.vue'
+import DsfrSkipLinks, { type DsfrSkipLinksProps } from '../src/components/DsfrSkipLinks/DsfrSkipLinks.vue'
 import DsfrBreadcrumb from '../src/components/DsfrBreadcrumb/DsfrBreadcrumb.vue'
 
-const links: InstanceType<typeof DsfrSkipLinks>['$props']['links'] = [
+const toaster = useToaster()
+
+const links: DsfrSkipLinksProps['links'] = [
   {
     id: 'header',
     text: 'Allons au header',
@@ -24,10 +30,11 @@ const links: InstanceType<typeof DsfrSkipLinks>['$props']['links'] = [
 
 const showNotifications = ref(false)
 const displayNotifications = () => {
+  toaster.addMessage({ description: 'Notifications', type: 'success' })
   showNotifications.value = true
 }
 
-const quickLinks: InstanceType<typeof DsfrHeader>['$props']['quickLinks'] = [
+const quickLinks: DsfrHeaderProps['quickLinks'] = [
   {
     label: 'Notifications',
     to: '',
@@ -49,7 +56,7 @@ const quickLinks: InstanceType<typeof DsfrHeader>['$props']['quickLinks'] = [
 ]
 
 const route = useRoute()
-const navItems: InstanceType<typeof DsfrNavigation>['$props']['navItems'] = [
+const navItems: DsfrNavigationProps['navItems'] = [
   {
     to: { name: 'Home' },
     text: 'Accueil',
@@ -208,16 +215,20 @@ const navItems: InstanceType<typeof DsfrNavigation>['$props']['navItems'] = [
       />
 
       <router-view />
-
-      <DsfrModal
-        title="Notifications"
-        :opened="showNotifications"
-        @close="showNotifications = false"
-      >
-        Notifications
-      </DsfrModal>
     </div>
   </div>
+
+  <DsfrModal
+    title="Notifications"
+    :opened="showNotifications"
+    @close="showNotifications = false"
+  >
+    Notifications
+  </DsfrModal>
+  <AppToaster
+    :messages="toaster.messages"
+    @close-message="toaster.removeMessage($event)"
+  />
 </template>
 
 <style>

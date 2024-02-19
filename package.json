@@ -50,6 +50,7 @@
     "build": "run-s build:vite type-gen",
     "build:vite": "vite build",
     "demo": "vite",
+    "build:demo": "vite -c vite.config.demo.js build",
     "dev": "storybook dev -p 6006",
     "vitest": "vitest",
     "coverage": "vitest run --coverage",

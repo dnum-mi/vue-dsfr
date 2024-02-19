@@ -6,7 +6,7 @@ Le gestionnaire de consentement permet à l'utilisateur de définir ses préfér
 
 🏅 La documentation du gestionnaire de consentement sur le [DSFR](https://www.systeme-de-design.gouv.fr/elements-d-interface/composants/gestionnaire-de-consentement)
 
-<VIcon name="vi-file-type-storybook" /> La story du gestionnaire de consentement sur le storybook de [VueDsfr](https://vue-dsfr.netlify.app/?path=/docs/composants-dsfrconsent--docs)
+<VIcon name="vi-file-type-storybook" /> La story du gestionnaire de consentement sur le storybook de [VueDsfr](https://storybook.vue-ds.fr/?path=/docs/composants-dsfrconsent--docs)
 
 ## 📐 Structure
 

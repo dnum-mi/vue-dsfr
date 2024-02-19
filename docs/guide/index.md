@@ -24,9 +24,10 @@ Ce projet de bibliothèque de composants :
 - met à disposition deux parties dans la documentation :
   - une pour [aider au développement](/?path=/story/docs-3-guide-du-développeur--page) ;
   - une autre pour l'[utilisation](/?path=/story/docs-2-guide-d-utilisation--page) ;
-- publie un [site complet][vue-dsfr] disponible pour tous avec les composants et leurs variants testables dans celui-ci dans un storybook ;
+- publie une [documentation][vue-dsfr] disponible pour tous avec les composants et leurs variants et des exemples ;
+- publie un [storybook][storybook-vue-dsfr] disponible pour tous avec les composants et leurs variants testables dans celui-ci dans un storybook ;
 - a une couverture de test optimale ;
-- met à disposition les composants individuellement sans avoir à importer toute la bibliothèque (pour les petits projets).
+- met à disposition les composants individuellement sans avoir à importer toute la bibliothèque (recommandé).
 
 ## Les choix techniques retenus
 
@@ -36,7 +37,7 @@ La bibliothèque est faite avec [Vue 3][vue3] et [Vue-router 4][vue-router].
 
 La bibliothèque est mise en paquet grâce à [Vite][vite] en [mode bibliothèque][vite-library-mode].
 
-Le CSS est écrit avec [PostCSS]{postcss} et notamment le plugin [postcss-preset-env][postcss-preset-env] (mais très peu de CSS est propre à la bibliothèque).
+Le CSS est écrit avec [PostCSS]{postcss} et notamment le plugin [postcss-preset-env][postcss-preset-env] (mais très peu de CSS est propre à la bibliothèque). Bientôt c’est lightingCSS qui sera utilisé, sans aucun changement pour les utilisateurs.
 
 Le JavaScript est "linté" avec [ESLint][eslint] et configuré selon [StandardJS][standard-js].
 
@@ -49,9 +50,9 @@ Ci-dessous les modifications de la configuration de StandardJS :
 
 ### Environnements
 
-Le serveur de développement est celui de [Storybook][storybook] et le site pour tester les composants est le storybook lui-même.
+Le serveur de développement est historiquement celui de [Storybook][storybook] et le site pour tester les composants est le storybook lui-même (`npm run dev`).
 
-Storybook est configuré pour utiliser PostCSS.
+Cependant il est tout à fait possible d’utiliser le serveur qui génère cette documentation (`npm run docs:dev`).
 
 ### Tests
 
@@ -59,7 +60,7 @@ Les tests sont faits avec [Vitest][vitest] et [Vue Testing Library][vue-testing-
 
 ### Ressources
 
-Les icônes sont toujours celles de [RemixIcon][remixicon], grâce au DSFR et parfois grâce à [Oh, Vue Icons!][oh-vue-icons] (qui permet d’ajouter d’[autres icônes](/?path=/story/fondamentaux-4-1-icônes-personnalisées--page)).
+Les icônes sont toujours celles de [RemixIcon][remixicon], grâce au DSFR et parfois grâce à [Oh, Vue Icons!][oh-vue-icons] (qui permet d’ajouter d’[autres icônes](./icones.md)).
 
 ## Les acteurs du projet
 
@@ -69,25 +70,29 @@ Les icônes sont toujours celles de [RemixIcon][remixicon], grâce au DSFR et pa
 
 Le projet a pu bénéficier des retours et de contributions de :
 
-- [Gildéric Deruette][github-user-gideruette] ;
 - [Sophie Aitis][github-user-sophieaitis] ;
-- [Ambroise Maupate][github-user-ambroisemaupate] ;
 - [Alexandre Cailliaud][github-user-cailliaud] ;
-- et [Adrien Martinez][github-user-adrylen].
+- [Gildéric Deruette][github-user-gideruette] ;
+- [Vincent Lainé][github-user-vincentlaine]
+- [Ambroise Maupate][github-user-ambroisemaupate] ;
+- [Adrien Martinez][github-user-adrylen]
 
 Merci à vous !
 
 <!-- Variables -->
 
-[github-user-adrylen]: https://github.com/adrylen
-[github-user-ambroisemaupate]: https://github.com/ambroisemaupate
-[github-user-cailliaud]: https://github.com/cailliaud
-[github-user-gideruette]: https://github.com/gideruette
 [github-user-sophieaitis]: https://github.com/sophieaitis
+[github-user-cailliaud]: https://github.com/cailliaud
+[github-user-adrylen]: https://github.com/adrylen
+[github-user-gideruette]: https://github.com/gideruette
+[github-user-vincentlaine]: https://github.com/vincentlaine
+[github-user-ambroisemaupate]: https://github.com/ambroisemaupate
+
 [github-vue-dsfr]: https://github.com/dnum-mi/vue-dsfr/
 
 [dsfr]: https://www.systeme-de-design.gouv.fr/
-[vue-dsfr]: https://vue-dsfr.netlify.app/
+[vue-dsfr]: https://vue-ds.fr/
+[storybook-vue-dsfr]: https://storybook.vue-ds.fr/
 [vue-dsfr-npm]: https://www.npmjs.com/package/@gouvminint/vue-dsfr/
 
 [cypress]: https://www.cypress.io/

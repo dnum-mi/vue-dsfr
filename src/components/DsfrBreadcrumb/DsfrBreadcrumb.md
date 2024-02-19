@@ -8,7 +8,7 @@ Le fil d’Ariane est un système de navigation secondaire qui permet à l’uti
 
 🏅 La documentation sur le fil d’Ariane sur le [DSFR](https://www.systeme-de-design.gouv.fr/elements-d-interface/composants/fil-d-ariane)
 
-<VIcon name="vi-file-type-storybook" /> La story sur le fil d’Ariane sur le storybook de [VueDsfr](https://vue-dsfr.netlify.app/?path=/docs/composants-dsfrbreadcrumb--docs)
+<VIcon name="vi-file-type-storybook" /> La story sur le fil d’Ariane sur le storybook de [VueDsfr](https://storybook.vue-ds.fr/?path=/docs/composants-dsfrbreadcrumb--docs)
 
 ## 📐 Structure
 

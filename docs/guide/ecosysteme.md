@@ -2,11 +2,13 @@
 
 L’écosystème de VueDsfr, c’est :
 
-- La bibliothèque <VIconLink internal href="#vuedsfr" icon="ri-arrow-down-line">`@dnum-mi/vue-dsfr`</VIconLink> ;
-- L’assistant <VIconLink internal href="#l-assistant-create-vue-dsfr" icon="ri-arrow-down-line">`create-vue-dsfr` </VIconLink> ;
+- la [présente documentation](https://vue-ds.fr)
+- le [storybook](https://stories.vue-ds.fr)
+- La bibliothèque <VIconLink internal href="#vuedsfr" icon="ri-arrow-down-line">`@dnum-mi/vue-dsfr`</VIconLink> sur npm ;
+- L’assistant de création <VIconLink internal href="#l-assistant-create-vue-dsfr" icon="ri-arrow-down-line">`create-vue-dsfr` </VIconLink> ;
 - Le module nuxt <VIcon name="si-nuxtdotjs" /> <VIconLink internal href="#le-module-nuxt-vue-dsfr-nuxt-module" icon="ri-arrow-down-line">`vue-dsfr-nuxt-module` </VIconLink> ;
 - L’extension <VIconLink internal href="#l-extension-vue-dsfr-snippets" icon="ri-arrow-down-line">`vue-dsfr-snippets` pour VSCode </VIconLink> ;
-- Le <VIconLink internal href="#le-serveur-discord" icon="ri-arrow-down-line">serveur Discord</VIconLink>.
+- Le <VIconLink internal href="#le-serveur-discord" icon="ri-arrow-down-line">serveur Discord</VIconLink> pour discuter avec l’équipe et entre utilisateurs.
 
 Vous trouverez plus de détails ci-dessous.
 
@@ -19,7 +21,7 @@ Elle permet de créer facilement des applications Vue qui respectent le DSFR.
 
 Le storybook avec tous les composants est disponible sur <https://vue-ds.fr>
 
-Cette documentation faite avec [Vitepress](https://vitepress.dev/) et disponible sur <https://docs.vue-ds.fr> nous a paru plus lisible et accessible qu’un storybook pour un utilisateur de la bibliothèque. Elle est toute récente et encore très incomplète, et son organisation est fortement susceptible de changer (en fonction, notamment, des premiers retours utilisateurs).
+Cette documentation faite avec [Vitepress](https://vitepress.dev/) et disponible sur <https://docs.vue-ds.fr> nous a paru plus lisible et accessible qu’un storybook pour un utilisateur de la bibliothèque. Elle est toute récente et encore très incomplète, et son organisation est susceptible de changer (en fonction, notamment, des premiers retours utilisateurs).
 
 ## L’assistant `create-vue-dsfr`
 

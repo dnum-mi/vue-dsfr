@@ -26,6 +26,10 @@ const minimalToc = [
     items: [],
   },
   {
+    text: 'Recettes',
+    link: '/recettes/',
+  },
+  {
     text: 'Recettes nuxt',
     link: '/nuxt/',
   },
@@ -46,11 +50,11 @@ const guideItems = [
   },
   {
     text: 'Les icônes',
-    link: '/guide/icones',
+    link: '/guide/icones.md',
   },
   {
     text: 'Guide du développeur',
-    link: '/guide/guide-developpeur',
+    link: '/guide/guide-developpeur.md',
   },
 ]
 
@@ -62,6 +66,17 @@ const composables = [
   {
     text: 'useTabs',
     link: '/composables/useTabs.md',
+  },
+]
+
+const recipes = [
+  {
+    text: 'Toaster',
+    link: '/recettes/toaster.md',
+  },
+  {
+    text: 'Bouton dans header',
+    link: '/recettes/bouton-dans-header.md',
   },
 ]
 
@@ -187,8 +202,11 @@ export default defineConfig({
     logo: '/nouveau-logo-marianne-gouvernement.png',
     nav: [
       {
-        text: 'Guide',
-        link: '/guide/pour-commencer',
+        text: 'Guides',
+        items: [
+          { text: 'Guide de l’utilisateur', link: '/guide/pour-commencer' },
+          { text: 'Guide du développeur', link: '/guide/guide-developpeur' },
+        ],
       },
       {
         text: 'Références',
@@ -243,6 +261,7 @@ export default defineConfig({
     sidebar: {
       '/composants': minimalToc.map(item => item.text === 'Tous les composants' ? { ...item, items: composants } : item),
       '/composables': minimalToc.map(item => item.text === 'Tous les composables' ? { ...item, items: composables } : item),
+      '/recettes': minimalToc.map(item => item.text === 'Recettes' ? { ...item, items: recipes } : item),
       '/': minimalToc.map(item => item.text === 'Guide' ? { ...item, items: guideItems } : item),
     },
 

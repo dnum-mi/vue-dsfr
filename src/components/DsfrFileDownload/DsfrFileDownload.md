@@ -6,7 +6,7 @@ Le téléchargement de fichier permet à l'utilisateur de choisir un fichier à 
 
 🏅 La documentation du composant téléchargement de fichier sur le [DSFR](https://www.systeme-de-design.gouv.fr/elements-d-interface/composants/telechargement-de-fichier)
 
-<VIcon name="vi-file-type-storybook" /> La story du téléchargement de fichier sur le storybook de [VueDsfr](https://vue-dsfr.netlify.app/?path=/docs/composants-dsfrfiledownload--docs)
+<VIcon name="vi-file-type-storybook" /> La story du téléchargement de fichier sur le storybook de [VueDsfr](https://storybook.vue-ds.fr/?path=/docs/composants-dsfrfiledownload--docs)
 
 ## 📐 Structure
 

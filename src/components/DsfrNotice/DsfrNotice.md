@@ -8,7 +8,7 @@ Il est affiché sur l’ensemble des pages en desktop et en mobile. Il affiche u
 
 🏅 La documentation sur le bandeau d’information importante sur le [DSFR](https://www.systeme-de-design.gouv.fr/elements-d-interface/composants/bandeau-d-information-importante)
 
-<VIcon name="vi-file-type-storybook" /> La story sur le bandeau d’information importante sur le storybook de [VueDsfr](https://vue-dsfr.netlify.app/?path=/docs/composants-dsfrnotice--docs)
+<VIcon name="vi-file-type-storybook" /> La story sur le bandeau d’information importante sur le storybook de [VueDsfr](https://storybook.vue-ds.fr/?path=/docs/composants-dsfrnotice--docs)
 
 ## 📐 Structure
 

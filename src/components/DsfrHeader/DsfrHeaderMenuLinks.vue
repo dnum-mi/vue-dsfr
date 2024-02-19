@@ -9,7 +9,7 @@ withDefaults(defineProps<{
   navAriaLabel: 'Menu secondaire',
 })
 
-defineEmits<{(e: 'linkClick'): void}>()
+const emit = defineEmits<{'linkClick': [event: MouseEvent]}>()
 </script>
 
 <template>
@@ -26,7 +26,7 @@ defineEmits<{(e: 'linkClick'): void}>()
       >
         <DsfrHeaderMenuLink
           v-bind="quickLink"
-          :on-click="() => $emit('linkClick')"
+          :on-click="($event) => {emit('linkClick', $event); quickLink.onClick?.($event)}"
         />
       </li>
     </ul>
