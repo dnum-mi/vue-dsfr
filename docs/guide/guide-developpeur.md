@@ -2,9 +2,13 @@
 
 ## Comment contribuer
 
+::: info NOTE
+
 Ceci est le guide du développeur pour contribuer au projet de cette bibliothèque.
 Si vous cherchez à utiliser cette bibliothèque, veuillez vous référer au
-[Guide d’utilisation](?path=/story/docs-guide-d-utilisation--page).
+[Guide d’utilisation](./pour-commencer.md).
+
+:::
 
 ### TL;DR
 
