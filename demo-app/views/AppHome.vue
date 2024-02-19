@@ -3,8 +3,11 @@ import { ref, watch } from 'vue'
 import pDebounce from 'p-debounce'
 
 import FdrAutoComplete from '../components/FdrAutoComplete.vue'
+import useToaster from '../composables/use-toaster'
 
 defineProps({})
+
+const toaster = useToaster()
 
 const cityList = ref([])
 const cityQuery = ref('')
@@ -79,4 +82,10 @@ const selectAddress = (address) => {
 
   équivaut à
   <span class="fr-fi-search-line" />
+
+  <p class="fr-my-2w">
+    <DsfrButton @click="toaster.addMessage({ description: 'Message pour l’utilisateur', type: 'info'})">
+      Cliquer pour voir une alerte
+    </DsfrButton>
+  </p>
 </template>

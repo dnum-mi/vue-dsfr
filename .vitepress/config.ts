@@ -26,6 +26,10 @@ const minimalToc = [
     items: [],
   },
   {
+    text: 'Recettes',
+    link: '/recettes/',
+  },
+  {
     text: 'Recettes nuxt',
     link: '/nuxt/',
   },
@@ -62,6 +66,17 @@ const composables = [
   {
     text: 'useTabs',
     link: '/composables/useTabs.md',
+  },
+]
+
+const recipes = [
+  {
+    text: 'Toaster',
+    link: '/recettes/toaster.md',
+  },
+  {
+    text: 'Bouton dans header',
+    link: '/recettes/bouton-dans-header.md',
   },
 ]
 
@@ -243,6 +258,7 @@ export default defineConfig({
     sidebar: {
       '/composants': minimalToc.map(item => item.text === 'Tous les composants' ? { ...item, items: composants } : item),
       '/composables': minimalToc.map(item => item.text === 'Tous les composables' ? { ...item, items: composables } : item),
+      '/recettes': minimalToc.map(item => item.text === 'Recettes' ? { ...item, items: recipes } : item),
       '/': minimalToc.map(item => item.text === 'Guide' ? { ...item, items: guideItems } : item),
     },
 
