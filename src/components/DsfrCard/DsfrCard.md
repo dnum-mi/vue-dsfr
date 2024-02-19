@@ -8,7 +8,7 @@ La carte existe en trois tailles (LG, MD, SM) et deux formats (horizontal et ver
 
 🏅 La documentation sur la carte sur le [DSFR](https://www.systeme-de-design.gouv.fr/elements-d-interface/composants/carte)
 
-<VIcon name="vi-file-type-storybook" /> La story sur la carte sur le storybook de [VueDsfr](https://vue-dsfr.netlify.app/?path=/docs/composants-dsfrcard--docs)
+<VIcon name="vi-file-type-storybook" /> La story sur la carte sur le storybook de [VueDsfr](https://storybook.vue-ds.fr/?path=/docs/composants-dsfrcard--docs)
 
 ## 📐 Structure
 

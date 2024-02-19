@@ -6,7 +6,7 @@ Le `DsfrBadge` est le super-héros des petites étiquettes ! Ce composant Vue es
 
 🏅 La documentation sur le badge sur le [DSFR](https://www.systeme-de-design.gouv.fr/elements-d-interface/composants/badge)
 
-<VIcon name="vi-file-type-storybook" /> La story sur le badge sur le storybook de [VueDsfr](https://vue-dsfr.netlify.app/?path=/docs/composants-dsfrbadge--docs)
+<VIcon name="vi-file-type-storybook" /> La story sur le badge sur le storybook de [VueDsfr](https://storybook.vue-ds.fr/?path=/docs/composants-dsfrbadge--docs)
 
 ## 📐 Structure
 

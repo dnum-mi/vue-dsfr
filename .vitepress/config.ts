@@ -50,11 +50,11 @@ const guideItems = [
   },
   {
     text: 'Les icônes',
-    link: '/guide/icones',
+    link: '/guide/icones.md',
   },
   {
     text: 'Guide du développeur',
-    link: '/guide/guide-developpeur',
+    link: '/guide/guide-developpeur.md',
   },
 ]
 
@@ -202,8 +202,11 @@ export default defineConfig({
     logo: '/nouveau-logo-marianne-gouvernement.png',
     nav: [
       {
-        text: 'Guide',
-        link: '/guide/pour-commencer',
+        text: 'Guides',
+        items: [
+          { text: 'Guide de l’utilisateur', link: '/guide/pour-commencer' },
+          { text: 'Guide du développeur', link: '/guide/guide-developpeur' },
+        ],
       },
       {
         text: 'Références',

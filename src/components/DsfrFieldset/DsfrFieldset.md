@@ -4,7 +4,7 @@
 
 Le regroupement de champs permet à l'utilisateur de lier de façon logique et visuelle des éléments de formulaire appartenant à un même ensemble.
 
-<VIcon name="vi-file-type-storybook" /> La story du regroupement de champs sur le storybook de [VueDsfr](https://vue-dsfr.netlify.app/?path=/docs/composants-dsfrfieldset--docs)
+<VIcon name="vi-file-type-storybook" /> La story du regroupement de champs sur le storybook de [VueDsfr](https://storybook.vue-ds.fr/?path=/docs/composants-dsfrfieldset--docs)
 
 ## 📐 Structure
 

@@ -16,6 +16,9 @@ hero:
     - theme: alt
       text: Liste des composables
       link: /composables
+    - theme: alt
+      text: Recettes
+      link: /recettes/
 
 features:
   - title: Facile d’utilisation

@@ -86,12 +86,12 @@ const tags = [
     { label: 'Petit tag avec icône', icon: 'ri-arrow-right-line', small: true },
   ],
   [
-    { label: 'Tag cliquable sans icône', link: 'https://vue-dsfr.netlify.app' },
-    { label: 'Tag cliquable avec icône', icon: 'ri-arrow-right-line', link: 'https://vue-dsfr.netlify.app' },
+    { label: 'Tag cliquable sans icône', link: 'https://storybook.vue-ds.fr' },
+    { label: 'Tag cliquable avec icône', icon: 'ri-arrow-right-line', link: 'https://storybook.vue-ds.fr' },
   ],
   [
-    { label: 'Petit tag cliquable sans icône', small: true, link: 'https://vue-dsfr.netlify.app' },
-    { label: 'Petit tag cliquable avec icône', icon: 'ri-arrow-right-line', small: true, link: 'https://vue-dsfr.netlify.app' },
+    { label: 'Petit tag cliquable sans icône', small: true, link: 'https://storybook.vue-ds.fr' },
+    { label: 'Petit tag cliquable avec icône', icon: 'ri-arrow-right-line', small: true, link: 'https://storybook.vue-ds.fr' },
   ],
   [
     { label: 'Tag sélectionné sans icône', tagName: 'button', selected: true },
@@ -204,8 +204,8 @@ export const EtiquettesCliquables = (args) => ({
   data () {
     // {
     //   tags: [
-    //     { label: 'Tag cliquable sans icône', link: 'https://vue-dsfr.netlify.app' },
-    //     { label: 'Tag cliquable avec icône', icon: 'ri-arrow-right-line', link: 'https://vue-dsfr.netlify.app' },
+    //     { label: 'Tag cliquable sans icône', link: 'https://storybook.vue-ds.fr' },
+    //     { label: 'Tag cliquable avec icône', icon: 'ri-arrow-right-line', link: 'https://storybook.vue-ds.fr' },
     //   ]
     // }
     return args
@@ -226,8 +226,8 @@ export const EtiquettesCliquablesPetites = (args) => ({
   data () {
     // {
     //   tags: [
-    //     { label: 'Tag cliquable sans icône', small: true, link: 'https://vue-dsfr.netlify.app' },
-    //     { label: 'Tag cliquable avec icône', icon: 'ri-arrow-right-line', small: true, link: 'https://vue-dsfr.netlify.app' },
+    //     { label: 'Tag cliquable sans icône', small: true, link: 'https://storybook.vue-ds.fr' },
+    //     { label: 'Tag cliquable avec icône', icon: 'ri-arrow-right-line', small: true, link: 'https://storybook.vue-ds.fr' },
     //   ]
     // }
     return args
