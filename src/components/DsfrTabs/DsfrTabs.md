@@ -4,6 +4,10 @@
 
 Bonjour les artistes du code ! Voici `DsfrTabs`, le composant d'onglets Vue qui va révolutionner votre façon de présenter des contenus séparés mais cohérents. Avec sa gestion dynamique des onglets et son contenu personnalisable, vous êtes sur le point de donner à vos utilisateurs une expérience de navigation intuitive et élégante. Préparez-vous à plonger dans un monde où chaque onglet raconte sa propre histoire !
 
+🏅 La documentation sur les onglets sur le [DSFR](https://www.systeme-de-design.gouv.fr/elements-d-interface/composants/onglet/)
+
+<VIcon name="vi-file-type-storybook" /> La story sur les onglets sur le storybook de [VueDsfr](https://storybook.vue-ds.fr/?path=/docs/composants-dsfrtabs--docs)
+
 ## 🛠️ Les props
 
 | Nom                  | Type                      | Défaut       | Obligatoire | Description                                                |
