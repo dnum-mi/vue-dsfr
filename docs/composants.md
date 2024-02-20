@@ -16,16 +16,22 @@ Le storybook est toujours disponible [ici](https://vue-ds.fr)
 ## Badges et tags
 
 - [DsfrBadge](./composants/DsfrBadge)
+- [DsfrTag](./composants/DsfrTag)
 
 ## Boutons et contrôles segmentés
 
 - [DsfrButton](./composants/DsfrButton)
+- [DsfrButtonGroup](./composants/DsfrButtonGroup)
 - [DsfrSegmented](./composants/DsfrSegmented) (Contrôle segmenté)
 - [DsfrSegmentedSet](./composants/DsfrSegmentedSet)  (Contrôles segmentés)
 
 ## Carte
 
 - [DsfrCard](./composants/DsfrCard)
+
+## Consentement
+
+- [DsfrConsent](./composants/DsfrConsent)
 
 ## Infobulle (Information contextuelle)
 
@@ -34,3 +40,42 @@ Le storybook est toujours disponible [ici](https://vue-ds.fr)
 ## Fil d’ariane
 
 - [DsfrBreadcrumb](./composants/DsfrBreadcrumb)
+
+## Formulaire (éléments de)
+
+- [DsfrFileUpload](./composants/DsfrInputGroup)
+- [DsfrInput](./composants/DsfrInput)
+- [DsfrInputGroup](./composants/DsfrInputGroup)
+- [DsfrRange](./composants/DsfrRange)
+
+## Groupe de champs
+
+- [DsfrFieldset](./composants/DsfrFieldset)
+
+## Notice
+
+- [DsfrNotice](./composants/DsfrNotice)
+
+## Onglets
+
+- [DsfrTabs](./composants/DsfrTabs)
+
+## Pages d’erreurs
+
+- [DsfrErrorPage](./composants/DsfrErrorPage)
+
+## Retour en haut de page
+
+- [DsfrBackToTop](./composants/DsfrBackToTop)
+
+## Tableau
+
+- [DsfrTable](./composants/DsfrTable)
+- [DsfrTableHeader](./composants/DsfrTableHeader)
+- [DsfrTableHeaders](./composants/DsfrTableHeaders)
+- [DsfrTableRow](./composants/DsfrTableRow)
+- [DsfrTableCell](./composants/DsfrTableCell)
+
+## Téléchargement de fichier
+
+- [DsfrFileDownload](./composants/DsfrFileDownload)

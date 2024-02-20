@@ -27,7 +27,7 @@ export type DsfrTableCellProps = {
 export type DsfrTableProps = {
   title: string
   headers?: DsfrTableHeadersProps
-  rows?: (DsfrTableRowProps | string[] | DsfrTableCellProps[])[]
+  rows?: (DsfrTableRowProps | (DsfrTableCellProps | {component: string, [k: string]: unknown} | string)[])[]
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   rowKey?: ((row: (string | Record<string, any>)[] | undefined) => string | number | symbol | undefined) | string
   noCaption?: boolean

@@ -162,6 +162,26 @@ const composants = [
     link: '/composants/DsfrSegmentedSet.md',
   },
   {
+    text: 'DsfrTable',
+    link: '/composants/DsfrTable.md',
+  },
+  {
+    text: 'DsfrTableHeader',
+    link: '/composants/DsfrTableHeader.md',
+  },
+  {
+    text: 'DsfrTableHeaders',
+    link: '/composants/DsfrTableHeaders.md',
+  },
+  {
+    text: 'DsfrTableRow',
+    link: '/composants/DsfrTableRow.md',
+  },
+  {
+    text: 'DsfrTableCell',
+    link: '/composants/DsfrTableCell.md',
+  },
+  {
     text: 'DsfrTabs',
     link: '/composants/DsfrTabs.md',
   },
