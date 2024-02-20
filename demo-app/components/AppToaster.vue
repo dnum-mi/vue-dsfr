@@ -12,7 +12,7 @@ const close = (id: string) => emit('close-message', id)
 
 <template>
   <div class="toaster-container">
-    <transition-group
+    <TransitionGroup
       mode="out-in"
       name="list"
       tag="div"
@@ -28,7 +28,7 @@ const close = (id: string) => emit('close-message', id)
           @close="close(message.id as string)"
         />
       </template>
-    </transition-group>
+    </TransitionGroup>
   </div>
 </template>
 
