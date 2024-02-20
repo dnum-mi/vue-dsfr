@@ -3,6 +3,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import AboutUs from './views/AboutUs.vue'
 import AppHome from './views/AppHome.vue'
 import AppAlerts from './views/AppAlerts.vue'
+import AppTabs from './views/AppTabs.vue'
 import SchemeSettings from './views/SchemeSettings.vue'
 import LanguageSelector from './views/LanguageSelector.vue'
 import AppForm from './views/AppForm.vue'
@@ -14,6 +15,7 @@ export const routes = [
   { path: '/', name: 'Home', component: AppHome },
   { path: '/about', name: 'AboutUs', component: AboutUs },
   { path: '/modal', name: 'Modal', component: SimpleModal },
+  { path: '/tabs', name: 'Tabs', component: AppTabs },
   { path: '/forms', name: 'Forms', component: AppForm },
   { path: '/languages', name: 'Languages', component: LanguageSelector },
   { path: '/settings', name: 'Settings', component: SchemeSettings },

@@ -70,6 +70,10 @@ const navItems: DsfrNavigationProps['navItems'] = [
     text: 'Modales',
   },
   {
+    to: { name: 'Tabs' },
+    text: 'Onglets',
+  },
+  {
     to: { name: 'Forms' },
     text: 'Formulaires',
   },
