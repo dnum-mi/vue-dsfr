@@ -3,7 +3,7 @@ import { computed, ref, watch } from 'vue'
 import DsfrTableRow, { type DsfrTableRowProps } from './DsfrTableRow.vue'
 import DsfrTableHeaders from './DsfrTableHeaders.vue'
 
-import type { DsfrTableCellProps, DsfrTableProps } from './DsfrTable.types'
+import type { DsfrTableProps } from './DsfrTable.types'
 
 export type { DsfrTableProps }
 
@@ -18,8 +18,8 @@ const props = withDefaults(defineProps<DsfrTableProps>(), {
 // Permet aux utilisateurs d'utiliser une fonction afin de charger des résultats au changement de page
 const emit = defineEmits<{(event: 'update:currentPage'): void }>()
 
-const getRowData = (row: DsfrTableRowProps | string[] | DsfrTableCellProps[]) => {
-  return Array.isArray(row) ? row : row.rowData
+const getRowData = (row: DsfrTableProps['rows']) => {
+  return Array.isArray(row) ? row : (row as unknown as DsfrTableRowProps).rowData
 }
 
 const currentPage = ref(props.currentPage)
@@ -96,13 +96,13 @@ const goLastPage = () => {
           <DsfrTableRow
             v-for="(row, i) of truncatedResults"
             :key="
-              rowKey && getRowData(row)
+              rowKey && getRowData(row as string[][])
                 ? typeof rowKey === 'string'
-                  ? getRowData(row)![headers.indexOf(rowKey)].toString()
-                  : rowKey(getRowData(row))
+                  ? getRowData(row as string[][])![headers.indexOf(rowKey)].toString()
+                  : rowKey(getRowData(row as string[][]))
                 : i
             "
-            :row-data="getRowData(row)"
+            :row-data="getRowData(row as string[][])"
             :row-attrs="'rowAttrs' in row ? row.rowAttrs : {}"
           />
         </template>
