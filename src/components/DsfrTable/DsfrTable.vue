@@ -76,7 +76,7 @@ const goLastPage = () => {
     class="fr-table"
     :class="{ 'fr-table--no-caption': noCaption }"
   >
-    <table class="simple-table">
+    <table>
       <caption class="caption">
         {{ title }}
       </caption>
