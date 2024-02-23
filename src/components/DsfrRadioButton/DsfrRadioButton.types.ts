@@ -1,7 +1,7 @@
 export type DsfrRadioButtonProps = {
   id?: string
   name?: string
-  modelValue?: string | number
+  modelValue?: string | number | undefined
   small?: boolean
   inline?: boolean
   value: string | number
@@ -20,6 +20,6 @@ export type DsfrRadioButtonSetProps = {
   errorMessage?: string,
   validMessage?: string,
   legend?: string,
-  modelValue: string | number,
+  modelValue: string | number | undefined,
   options?: DsfrRadioButtonProps[],
 }
