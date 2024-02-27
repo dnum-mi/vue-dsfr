@@ -1,4 +1,5 @@
 import DsfrRadioButton from './DsfrRadioButton.vue'
+import DsfrRadioButtonSet from './DsfrRadioButtonSet.vue'
 
 /**
  * [Voir quand l’utiliser sur la documentation du DSFR](https://www.systeme-de-design.gouv.fr/elements-d-interface/composants/boutons-radio)
@@ -99,7 +100,7 @@ RadioButton.args = {
 }
 
 export const RichRadioButton = (args) => ({
-  components: { DsfrRadioButton },
+  components: { DsfrRadioButton, DsfrRadioButtonSet },
   data () {
     return args
   },
@@ -112,7 +113,7 @@ export const RichRadioButton = (args) => ({
         :small="small"
         @update:modelValue="updateCheckedValue($event)"
       />
-    <DsfrRadioButtonSet>
+    </DsfrRadioButtonSet>
   `,
   methods: {
     updateCheckedValue (val) {
