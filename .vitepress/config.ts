@@ -250,7 +250,7 @@ export default defineConfig({
           },
           {
             text: 'Storybook de VueDsfr',
-            link: 'https://vue-ds.fr/',
+            link: 'https://storybook.vue-ds.fr/',
             target: '_blank'
           },
         ],

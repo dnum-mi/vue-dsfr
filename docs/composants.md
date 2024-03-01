@@ -2,7 +2,7 @@
 
 La nouvelle documentation des composants est en cours d’écriture.
 
-Le storybook est toujours disponible [ici](https://vue-ds.fr)
+Le storybook est toujours disponible [ici](https://storybook.vue-ds.fr)
 
 ## Accordéon
 
