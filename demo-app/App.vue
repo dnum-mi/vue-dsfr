@@ -51,7 +51,7 @@ const quickLinks: DsfrHeaderProps['quickLinks'] = [
   },
   {
     label: 'DSFR',
-    href: 'https://systeme-de-design.gouv.fr/',
+    href: 'https://www.systeme-de-design.gouv.fr/',
   },
 ]
 
