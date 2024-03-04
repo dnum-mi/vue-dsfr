@@ -19,7 +19,7 @@ et son code source disponible sur <VIconLink href="https://github.com/dnum-mi/vu
 
 Elle permet de créer facilement des applications Vue qui respectent le DSFR.
 
-Le storybook avec tous les composants est disponible sur <https://vue-ds.fr>
+Le storybook avec tous les composants est disponible sur <https://storybook.vue-ds.fr>
 
 Cette documentation faite avec [Vitepress](https://vitepress.dev/) et disponible sur <https://docs.vue-ds.fr> nous a paru plus lisible et accessible qu’un storybook pour un utilisateur de la bibliothèque. Elle est toute récente et encore très incomplète, et son organisation est susceptible de changer (en fonction, notamment, des premiers retours utilisateurs).
 
