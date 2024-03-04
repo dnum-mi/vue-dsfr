@@ -205,13 +205,15 @@ const navItems: DsfrNavigationProps['navItems'] = [
       :quick-links="quickLinks"
       show-search
       placeholder="Rechercher placeholder"
-    />
+    >
+      <template #mainnav>
+        <DsfrNavigation
+          :nav-items="navItems"
+        />
+      </template>
+    </DsfrHeader>
 
     <div class="fr-container">
-      <DsfrNavigation
-        :nav-items="navItems"
-      />
-
       <h1>Demo VueDsfr</h1>
 
       <DsfrBreadcrumb
