@@ -28,5 +28,7 @@ jobs:
         run: npm i -g pnpm
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
-      - name: Test all (client and server)
+      - name: Test
         run: pnpm test
+      - name: Build
+        run: pnpm build
