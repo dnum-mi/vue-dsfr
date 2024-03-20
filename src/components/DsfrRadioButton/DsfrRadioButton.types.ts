@@ -11,15 +11,15 @@ export type DsfrRadioButtonProps = {
 }
 
 export type DsfrRadioButtonSetProps = {
-  titleId?: string,
-  disabled?: boolean,
-  required?: boolean,
-  small?: boolean,
-  inline?: boolean,
-  name?: string,
-  errorMessage?: string,
-  validMessage?: string,
-  legend?: string,
-  modelValue?: string | number | undefined,
-  options?: DsfrRadioButtonProps[],
+  titleId?: string
+  disabled?: boolean
+  required?: boolean
+  small?: boolean
+  inline?: boolean
+  name?: string
+  errorMessage?: string
+  validMessage?: string
+  legend?: string
+  modelValue?: string | number | undefined
+  options?: Omit<DsfrRadioButtonProps, 'modelValue'>[]
 }

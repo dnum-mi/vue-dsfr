@@ -55,7 +55,10 @@ defineEmits<{
   margin: 0;
 }
 
-/* Obligé de faire ça car ils ont hardcode la couleur dans le DSFR sans prendre en compte que ce champ pouvait être disabled */
+/**
+ * Obligé de faire ça car la couleur est codée en dur dans le DSFR
+ * sans prendre en compte que ce champ pouvait être disabled.
+ */
 .fr-search-bar .fr-input:disabled {
   box-shadow: inset 0 -2px 0 0 var(--border-disabled-grey);
   color: var(--text-disabled-grey);

@@ -19,6 +19,7 @@ L’en-tête est sur fond blanc en thème clair et sur fond G800 en thème sombr
 
 | Nom                   | Type                          | Défaut   | Obligatoire | Description                                              |
 |-----------------------|-------------------------------|----------|-------------|----------------------------------------------------------|
+| searchbarId           | `String`                      | `'searchbar-header'` |             | valeur de l’attribut `id` de l’input de la [searchbar](/composants/DsfrSearchBar.md).                 |
 | serviceTitle          | `String`                      | `undefined` |             | Titre du service affiché dans l'en-tête.                 |
 | serviceDescription    | `String`                      | `undefined` |             | Description courte du service.                           |
 | homeTo                | `String`                      | `'/'`      |             | Lien de la page d'accueil.                               |

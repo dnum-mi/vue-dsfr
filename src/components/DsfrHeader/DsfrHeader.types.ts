@@ -15,6 +15,7 @@ export type DsfrHeaderMenuLinkProps = {
 }
 
 export type DsfrHeaderProps = {
+  searchbarId?: string
   serviceTitle?: string
   serviceDescription?: string
   homeTo?: string

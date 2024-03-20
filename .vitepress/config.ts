@@ -118,6 +118,10 @@ const composants = [
     link: '/composants/DsfrConsent.md',
   },
   {
+    text: 'DsfrErrorPage',
+    link: '/composants/DsfrErrorPage.md',
+  },
+  {
     text: 'DsfrFieldset',
     link: '/composants/DsfrFieldset.md',
   },
@@ -126,8 +130,12 @@ const composants = [
     link: '/composants/DsfrFileDownload.md',
   },
   {
-    text: 'DsfrErrorPage',
-    link: '/composants/DsfrErrorPage.md',
+    text: 'DsfrFileUpload',
+    link: '/composants/DsfrFileUpload.md',
+  },
+  {
+    text: 'DsfrHeader',
+    link: '/composants/DsfrHeader.md',
   },
   {
     text: 'DsfrInput',
@@ -138,20 +146,16 @@ const composants = [
     link: '/composants/DsfrInputGroup.md',
   },
   {
-    text: 'DsfrRange',
-    link: '/composants/DsfrRange.md',
-  },
-  {
-    text: 'DsfrFileUpload',
-    link: '/composants/DsfrFileUpload.md',
-  },
-  {
     text: 'DsfrNotice',
     link: '/composants/DsfrNotice.md',
   },
   {
     text: 'DsfrRange',
     link: '/composants/DsfrRange.md',
+  },
+  {
+    text: 'DsfrSearchBar',
+    link: '/composants/DsfrSearchBar.md',
   },
   {
     text: 'DsfrSegmented',

@@ -54,6 +54,7 @@ export {
   RiSaveLine,
   RiFileFill,
   RiFileLine,
+  RiLoader4Line,
   RiMailFill,
   RiMailLine,
   RiPlayFill,
