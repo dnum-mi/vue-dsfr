@@ -72,9 +72,15 @@ Un petit bouton avec le texte 'Aller plus loin', du contenu supplémentaire dans
 
 <<< docs-demo/DsfrButtonDemo.vue [Code de la démo]
 
-<<< DsfrButton.vue
+:::
 
+## ⚙️ Code source du composant
+
+::: code-group
+
+<<< DsfrButton.vue
 <<< DsfrButton.types.ts
+
 :::
 
 Et voilà ! Notre DsfrButton est prêt à illuminer votre interface avec style et fonctionnalité. N'oubliez pas d'appuyer sur ces boutons avec panache ! 🚀

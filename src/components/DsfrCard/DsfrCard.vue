@@ -1,9 +1,9 @@
 <script lang="ts" setup>
 import { computed, ref } from 'vue'
 import DsfrButtonGroup from '../DsfrButton/DsfrButtonGroup.vue'
-
 import type { DsfrCardProps } from './DsfrCard.types'
 import DsfrCardDetail from './DsfrCardDetail.vue'
+import type { RouterLink } from 'vue-router'
 
 export type { DsfrCardProps }
 
