@@ -94,12 +94,12 @@ defineExpose({ goToTargetLink })
           class="fr-card__start"
         >
           <slot name="start-details" />
-          <p
+          <DsfrCardDetail
             v-if="detail"
-            class="fr-card__detail"
+            :icon="detailIcon"
           >
             {{ detail }}
-          </p>
+          </DsfrCardDetail>
         </div>
         <div
           v-if="$slots['end-details'] || endDetail"
