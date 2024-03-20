@@ -4,7 +4,7 @@
 
 La carte c'est tout simplement l'indispensable pour agrémenter vos sites et applications d'amuse-bouches esthétiques vers des contenus proposés. Il s'agit d'un composant permettant un aperçu d'une page et un lien vers cette dernière. Elle fait généralement partie d'une liste menant vers des contenus similaires.
 
-La carte existe en trois tailles (LG, MD, SM) et deux formats (horizontal et vertical) déclinés sur deux supports (desktop et mobile), vous trouverez forcément votre bonheur ! Les cartes horizontales sont réservées au desktop (en mobile, une carte horizontale devient verticale).
+La carte existe en trois tailles (LG, MD, SM) et deux formats (horizontal et vertical) déclinés sur deux supports (desktop et mobile), vous trouverez forcément votre bonheur ! Les cartes horizontales sont réservées au desktop (en mobile, une carte horizontale devient verticale).
 
 🏅 La documentation sur la carte sur le [DSFR](https://www.systeme-de-design.gouv.fr/elements-d-interface/composants/carte)
 
@@ -33,22 +33,24 @@ Autres props :
 
 ## 🛠️ Les props
 
-|  nom                   |   type      |  défaut         | obligatoire        |
-| ---------------------- | ---------   | --------------- | ------------------ |
-| `altImg`               | *`string`*  | `''`            |                    |
-| `buttons`              | *`object`*  | `[]`            |                    |
-| `detail`               | *`string`*  | `''`            |                    |
-| `endDetail`            | *`string`*  | `''`            |                    |
-| `description`          | *`string`*  |                 | ✅                 |
-| `download`             | *`boolean`* | `false`         |                    |
-| `horizontal`           | *`boolean`* | `false`         |                    |
-| `imgSrc`               | *`string`*  | `''`            |                    |
-| `link`                 | *`string`*  | `''`            |                    |
-| `linksGroup`           | *`object`*  | `[]`            |                    |
-| `size`                 | *`string`*  | `'md'`          |                    |
-| `imgRatio`             | *`string`*  | `'md'`          |                    |
-| `title`                | *`string`*  |                 | ✅                 |
-| `titleTag`             | [*`TitleTag`*](/docs/types.md#title-tag "'h1' \| 'h2' \| 'h3' \| 'h4' \| 'h5' \| 'h6'") | `'h3'`          |          |
+|  Nom                   |   Type      |  Défaut         | Obligatoire        | Description |
+| ---------------------- | ---------   | --------------- | ------------------ | ---- |
+| `altImg`               | *`string`*  | `''`            |                    | Contenu de l’attribut `alt` de l’image de la carte |
+| `buttons`              | [*`DsfrButtonProps[]`*](/types#dsfrbutton-et-dsfrbuttongroup)  | `[]`            |                    | Tableau de props à donner à DsfrButton |
+| `detail`               | *`string`*  | `''`            |                    | Texte à mettre dans la première zone de détail |
+| `detailIcon`           | *`string`*  | `''`            |                    | Icône à mettre dans la première zone de détail ([nom d’une icône `oh-vue-icon` ou `DSFR`](/guide/icones)) |
+| `endDetail`            | *`string`*  | `''`            |                    | Texte à mettre dans la deuxième zone de détail |
+| `endDetailIcon         | *`string`*  | `''`            |                    | Icône à mettre dans la deuxième zone de détail ([nom d’une icône `oh-vue-icon` ou `DSFR`](/guide/icones)) |
+| `description`          | *`string`*  |                 | ✅                 | Description de la carte |
+| `download`             | *`boolean`* | `false`         |                    | Est-ce que cette carte permet de télécharger un fichier ? |
+| `horizontal`           | *`boolean`* | `false`         |                    | Est-ce que la carte doit être affiché avec l’image et le texte au même niveau ? |
+| `imgSrc`               | *`string`*  | `''`            |                    | URL vers l’image |
+| `link`                 | *`string`*  | `''`            |                    | Lien vers lequel la carte pointe |
+| `linksGroup`           | *`({ label: string, to?: RouteLocationRaw, link?: string, href?: string })[]`*  | `[]`            |                    | liste de liens : objet contenant `to` ou `href` pour le lien et `label` avec le texte du lien |
+| `size`                 | *`'md' | 'medium' | 'large' | 'lg' | 'sm' | 'small' | undefined`*  | `'md'`          |                    | Taille de la carte |
+| `imgRatio`             | *`'md' | 'medium' | 'large' | 'lg' | 'sm' | 'small' | undefined`*  | `'md'`          |                    |
+| `title`                | *`string`*  |                 | ✅                 | Titre de la carte |
+| `titleTag`             | [*`TitleTag`*](/docs/types.md#title-tag "'h1' \| 'h2' \| 'h3' \| 'h4' \| 'h5' \| 'h6'") | `'h3'`          |          | Balise du titre de la carte |
 
 ## 🧩 Les slots
 
@@ -81,6 +83,15 @@ cf. DSFR : [Composant - Carte](https://www.systeme-de-design.gouv.fr/elements-d
 </Story>
 
 <<< docs-demo/DsfrCardDemoActions.vue [Code de la démo]
+
+:::
+
+## ⚙️ Code source du composant
+
+::: code-group
+
+<<< DsfrCard.vue
+<<< DsfrCard.types.ts
 
 :::
 

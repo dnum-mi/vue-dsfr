@@ -1,9 +1,9 @@
 <script lang="ts" setup>
 import { computed, ref } from 'vue'
 import DsfrButtonGroup from '../DsfrButton/DsfrButtonGroup.vue'
-
 import type { DsfrCardProps } from './DsfrCard.types'
 import DsfrCardDetail from './DsfrCardDetail.vue'
+import type { RouterLink } from 'vue-router'
 
 export type { DsfrCardProps }
 
@@ -94,12 +94,12 @@ defineExpose({ goToTargetLink })
           class="fr-card__start"
         >
           <slot name="start-details" />
-          <p
+          <DsfrCardDetail
             v-if="detail"
-            class="fr-card__detail"
+            :icon="detailIcon"
           >
             {{ detail }}
-          </p>
+          </DsfrCardDetail>
         </div>
         <div
           v-if="$slots['end-details'] || endDetail"

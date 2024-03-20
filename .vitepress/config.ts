@@ -8,6 +8,7 @@ import { hmrFix } from './plugins/hmrFix.js'
 const minimalToc = [
   {
     text: 'Guide',
+    link: '/guide/',
     items: []
   },
   {
