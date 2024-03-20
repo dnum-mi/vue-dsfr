@@ -54,7 +54,7 @@ export default {
 - \`icon\` Nom de l’icône [Remix Icon](https://remixicon.com/) (ou toute autre icône de [oh-vue-icons](https://oh-vue-icons.netlify.app/)) à afficher (\`'ri-phone-line'\` par ex.)
 - \`target\` La target du lien (\`'_self'\`, \`'_blank'\` par ex.)
 - \`iconRight\` Permet de mettre l’icône à droite (si la valeur est \`true\` ou <em>truthy</em> et que \`icon\` est renseigné )
-- \`iconAttrs\` Ensemble des props/attributs à donner à \`<OhVueIcon>\` (Cf. [Doc](https://oh-vue-icons.netlify.app/docs#props)). Ex. : \`{ scale: 0.9, animation: }\`
+- \`iconAttrs\` Ensemble des props/attributs à donner à \`<OhVueIcon>\` (Cf. [Doc](https://oh-vue-icons.netlify.app/docs#props)). Ex. : \`{ scale: 0.9, animation: 'spin' }\`
 - \`button\`: \`true\` pour avoir une balise \`button\`, \`false\` pour laisser en balise \`a\`
 - accepte aussi tout ce qui peut être mis sur un composant, par exemple \`class\`
 `,
@@ -99,7 +99,7 @@ export const EnTeteSimple = (args) => ({
   data () {
     return {
       ...args,
-      quickLincks: args.quickLinks.map((link, idx) => {
+      quickLinks: args.quickLinks.map((link, idx) => {
         if (idx === 0) {
           link.onClick = ($event) => {
             $event.preventDefault()

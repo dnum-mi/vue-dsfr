@@ -13,16 +13,12 @@
     "node": ">=18.x.x",
     "npm": ">=8.x.x"
   },
-  "types": "./types",
+  "types": "./types/index.d.ts",
   "license": "MIT",
-  "main": "./dist/vue-dsfr.umd.js",
+  "main": "./dist/vue-dsfr.js",
   "module": "./dist/vue-dsfr.js",
   "exports": {
     ".": {
-      "require": {
-        "types": "./types/index.d.ts",
-        "default": "./dist/vue-dsfr.umd.js"
-      },
       "import": {
         "types": "./types/index.d.ts",
         "default": "./dist/vue-dsfr.js"
@@ -139,6 +135,7 @@
     "postcss-nested": "^6.0.1",
     "postcss-preset-env": "^9.3.0",
     "postcss-url": "^10.1.3",
+    "publint": "^0.2.7",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "regenerator-runtime": "^0.14.1",

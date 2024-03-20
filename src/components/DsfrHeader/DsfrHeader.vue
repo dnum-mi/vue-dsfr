@@ -10,6 +10,7 @@ import type { DsfrHeaderProps } from './DsfrHeader.types'
 export type { DsfrHeaderProps }
 
 const props = withDefaults(defineProps<DsfrHeaderProps>(), {
+  searchbarId: 'searchbar-header',
   serviceTitle: undefined,
   serviceDescription: undefined,
   homeTo: '/',
@@ -181,6 +182,7 @@ defineEmits<{
               class="fr-header__search  fr-modal"
             >
               <DsfrSearchBar
+                :searchbar-id="searchbarId"
                 :label="searchLabel"
                 :model-value="modelValue"
                 :placeholder="placeholder"
@@ -232,6 +234,7 @@ defineEmits<{
               class="flex justify-center items-center"
             >
               <DsfrSearchBar
+                :searchbar-id="searchbarId"
                 :model-value="modelValue"
                 :placeholder="placeholder"
                 @update:model-value="$emit('update:modelValue', $event)"
