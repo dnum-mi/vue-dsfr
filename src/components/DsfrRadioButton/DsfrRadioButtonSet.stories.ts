@@ -17,7 +17,7 @@ export default {
     },
     name: {
       control: 'text',
-      description: 'Valeur de l’attribut `name` de chaque bouton radio du groupe',
+      description: 'Valeur de l’attribut `name` de chaque bouton radio du groupe. Obligatoire.',
     },
     small: {
       control: 'boolean',
