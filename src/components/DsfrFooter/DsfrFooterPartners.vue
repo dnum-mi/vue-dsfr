@@ -1,7 +1,15 @@
 <script lang="ts" setup>
-import type { DsfrFooterPartnersProps, DsfrFooterPartner } from './DsfrFooter.types'
+export type DsfrFooterPartner = {
+  href: string
+  logo: string
+  name: string
+}
 
-export type { DsfrFooterPartnersProps, DsfrFooterPartner }
+export type DsfrFooterPartnersProps = {
+  mainPartner?: DsfrFooterPartner
+  subPartners?: DsfrFooterPartner[],
+  title?: string,
+}
 
 withDefaults(defineProps<DsfrFooterPartnersProps>(), {
   mainPartner: undefined,

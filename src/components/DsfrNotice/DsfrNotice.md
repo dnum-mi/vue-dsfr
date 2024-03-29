@@ -24,14 +24,14 @@ Slot(s) disponible(s):
 - Le slot par défaut permet d'enrichir le contenu du paragraphe représentant le titre de la notice (tag `p` avec la classe `fr-notice__title`).
   - Ceci permet par exemple d'avoir un titre contenant un lien au fil du texte (tag `a`).
 
-## 🛠️ Les props
+## 🛠️ Props
 
 |  nom                   |   type      |  défaut         | obligatoire |
 | ----------------------- | ---------   | ---------------- | -------- |
 | `title`                 | *`string`*  |      `''`        |  |
 | `closeable`             | *`boolean`* | `false`          | |
 
-## 📡 Les événements
+## 📡 Évenements
 
 `DsfrNotice` déclenche l’événement `'close'` lors du clic sur la croix de fermeture pour fermer la notice.
 
@@ -39,7 +39,7 @@ Slot(s) disponible(s):
 | ---------------------- |  ---------            |
 | `'close'` |       *aucune*       |
 
-## 🧩 Les slots
+## 🧩 Slots
 
 `DsfrNotice` dispose d'un slot par défaut permettant de définir le contenu du titre dans le cas où celui-ci est plus complexe qu'une chaîne de caractères (utilisation de la props `title`).
 

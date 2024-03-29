@@ -10,7 +10,7 @@ Le composant « contrôle segmenté » incite l'utilisateur à choisir entre
 
 <VIcon name="vi-file-type-storybook" /> La story sur l’alerte sur le storybook de [VueDsfr est ici](https://storybook.vue-ds.fr/?path=/docs/composants-dsfrsegmented--docs) (merci [Vincent Lainé](https://github.com/vincentlaine/) !).
 
-## 🛠️ Les props
+## 🛠️ Props
 
 | Nom        | Type                                     | Défaut              | obligatoire |  Description                                                       |
 |------------|------------------------------------------|----------------     | ----        | -------------------------------------------------------------------|
@@ -34,17 +34,17 @@ Le composant « contrôle segmenté » incite l'utilisateur à choisir entre
 
 :::
 
-## 📡 Les événements
+## 📡 Évenements
 
 | Nom                | Valeur               | Description                                  |
 |--------------------|----------------------|----------------------------------------------|
 | `update:modelValue` | `string \| number`   | Émis lorsqu'une nouvelle valeur est sélectionnée. |
 
-## 🧩 Les slots
+## 🧩 Slots
 
 Pas de slots ici ! Ce composant est aussi direct qu'un express Paris-Marseille.
 
-## 📝 Un exemple
+## 📝 Exemple
 
 ```vue
 <DsfrSegmented
@@ -58,6 +58,11 @@ Pas de slots ici ! Ce composant est aussi direct qu'un express Paris-Marseille
 
 `DsfrSegmented` s’utilise forcément à l’intérieur d’un `DsfrSegmentedSet`, ainsi, pour un résultat, consultez la documentation de [`DsfrSegmentedSet`](/composants/DsfrSegmentedSet).
 
----
+## ⚙️ Code source du composant
 
-Voilà ! Votre composant `DsfrSegmented` est prêt à ajouter une touche d'élégance et de fonctionnalité à votre interface. Amusez-vous bien ! 🎉
+::: code-group
+
+<<< DsfrSegmented.vue
+<<< DsfrSegmented.types.ts
+
+:::

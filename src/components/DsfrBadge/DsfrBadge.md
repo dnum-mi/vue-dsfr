@@ -11,10 +11,10 @@ Le `DsfrBadge` est le super-héros des petites étiquettes ! Ce composant Vue es
 ## 📐 Structure
 
 - Le composant est un élément `p` avec la classe `fr-badge`.
-- Les props permettent de modifier l'apparence du badge selon les props : type (), présence d'icône, taille et gestion du texte trop long.
+- Props permettent de modifier l'apparence du badge selon les props : type (), présence d'icône, taille et gestion du texte trop long.
 - Le `label` est affiché à l'intérieur d'un `span`, potentiellement avec la prop `ellipsis` et une taille définie ou maximale pour gérer le texte tronqué.
 
-## 🛠️ Les props
+## 🛠️ Props
 
 | Nom | Type | Défaut | Obligatoire | Description |
 | --- | --- | --- | --- | --- |

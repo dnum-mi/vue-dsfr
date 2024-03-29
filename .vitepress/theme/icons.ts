@@ -3,6 +3,7 @@ export {
   RiArrowDownLine,
   RiArrowDropDownLine,
   RiArrowDropUpLine,
+  RiAddCircleLine,
   RiCloseLine,
   RiMoonLine,
   RiRefreshLine,

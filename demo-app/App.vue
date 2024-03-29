@@ -50,6 +50,11 @@ const quickLinks: DsfrHeaderProps['quickLinks'] = [
     to: { name: 'AboutUs' },
   },
   {
+    label: 'Code source',
+    href: 'https://github.com/dnum-mi/vue-dsfr/tree/main/demo-app',
+    icon: 'ri-github-fill',
+  },
+  {
     label: 'DSFR',
     href: 'https://www.systeme-de-design.gouv.fr/',
   },
@@ -194,6 +199,50 @@ const navItems: DsfrNavigationProps['navItems'] = [
     ],
   },
 ]
+
+const beforeMandatoryLinks = [{ label: 'Before', to: '/before' }]
+const afterMandatoryLinks = [
+  { label: 'After', to: '/after' },
+  {
+    label: 'Paramètres d’affichage',
+    button: true,
+    class: 'fr-icon-theme-fill fr-link--icon-left',
+    to: '/settings',
+    onclick: () => console.log('Settings'),
+  },
+]
+const a11yCompliance = 'partiellement conforme'
+const logoText = ['République', 'des châtons']
+const legalLink = '/mentions-legales'
+const personalDataLink = '/donnees-personnelles'
+const cookiesLink = '/cookies'
+const a11yComplianceLink = '/a11y-conformite'
+const descText = 'Description'
+const homeLink = '/'
+const licenceText = undefined
+const licenceTo = undefined
+const licenceName = undefined
+const licenceLinkProps = undefined
+const ecosystemLinks = [
+  {
+    label: 'legifrance.gouv.fr',
+    href: 'https://legifrance.gouv.fr',
+  },
+  {
+    label: 'gouvernement.fr',
+    href: 'https://gouvernement.fr',
+  },
+  {
+    label: 'service-public.fr',
+    href: 'https://service-public.fr',
+  },
+  {
+    label: 'data.gouv.fr',
+    href: 'https://data.gouv.fr',
+  },
+]
+
+const search = ref('')
 </script>
 
 <template>
@@ -202,6 +251,7 @@ const navItems: DsfrNavigationProps['navItems'] = [
       :links="links"
     />
     <DsfrHeader
+      v-model="search"
       :quick-links="quickLinks"
       show-search
       placeholder="Rechercher placeholder"
@@ -213,7 +263,7 @@ const navItems: DsfrNavigationProps['navItems'] = [
       </template>
     </DsfrHeader>
 
-    <div class="fr-container">
+    <main class="fr-container">
       <h1>Demo VueDsfr</h1>
 
       <DsfrBreadcrumb
@@ -221,7 +271,26 @@ const navItems: DsfrNavigationProps['navItems'] = [
       />
 
       <router-view />
-    </div>
+    </main>
+
+    <DsfrFooter
+      :a11y-compliance="a11yCompliance"
+      :logo-text="logoText"
+      :legal-link="legalLink"
+      :personal-data-link="personalDataLink"
+      :cookies-link="cookiesLink"
+      :a11y-compliance-link="a11yComplianceLink"
+      :desc-text="descText"
+      :home-link="homeLink"
+      :partners="partners"
+      :ecosystem-links="ecosystemLinks"
+      :licence-text="licenceText"
+      :licence-to="licenceTo"
+      :licence-name="licenceName"
+      :licence-link-props="licenceLinkProps"
+      :after-mandatory-links="afterMandatoryLinks"
+      :before-mandatory-links="beforeMandatoryLinks"
+    />
   </div>
 
   <DsfrModal

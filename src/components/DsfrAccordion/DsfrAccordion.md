@@ -22,7 +22,7 @@ Autres props :
 - **`id`** : identifiant du contenu de l’accordéon, qui est utilisé aussi pour l’attribut `aria-controls` du bouton qui permet de plier et déplier l’accordéon
 - **`expandedId`** : identifiant de l’accordéon actuellement déplié (pour savoir si l’accordéon doit être déplié)
 
-## 🛠️ Les props
+## 🛠️ Props
 
 |  nom                    |   type        |  défaut          | obligatoire |
 | ----------------------- | ---------     | ---------------- | --------    |
@@ -31,7 +31,7 @@ Autres props :
 | `id`                    | *`string`*    | *random string*  | |
 | `expandedId`            | *`string`*    | *`undefined`*  | |
 
-## 📡 Les événements
+## 📡 Évenements
 
 `DsfrAccordion` déclenche l’événement `'expand'` au clic sur le titre de l’accordéon.
 
@@ -41,7 +41,7 @@ Autres props :
 
 Ceci permet de récupérer l’id et de passer la prop **`expandedId`** à tous les accordéons du groupe (voir le code de la démo ci-dessous).
 
-## 🧩 Les slots
+## 🧩 Slots
 
 `DsfrAccordion` possède un slot par défaut pour le contenu de l’accordéon.
 
@@ -104,7 +104,7 @@ et
 Cf. la [documentation Vue](https://vuejs.org/guide/essentials/event-handling.html#accessing-event-argument-in-inline-handlers) pour plus de détails.
 :::
 
-## 📝 Un exemple complet
+## 📝 Exemple complet
 
 ::: code-group
 

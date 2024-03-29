@@ -37,7 +37,7 @@ Le composant `DsfrInput`, outil essentiel dans l'arsenal de tout développeur Vu
 
 ## 📝 Exemples
 
-Un exemple simple d'utilisation de `DsfrInput` :
+Exemple simple d'utilisation de `DsfrInput` :
 
 ::: code-group
 <Story data-title="Démo" minH="500px">

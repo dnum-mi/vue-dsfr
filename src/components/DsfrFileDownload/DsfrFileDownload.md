@@ -18,7 +18,7 @@ Le téléchargement de fichier est constitué des éléments suivants :
 - le nom de la ressource (prop **`download`**, de type `string`)
 - le titre du lien permettant de téléchager la ressource (prop **`title`**, de type `string`)
 
-## 🛠️ Les props
+## 🛠️ Props
 
 |  nom                    |   type        |  défaut                      | obligatoire |
 | ----------------------- | ---------     | ---------------------------- | --------    |
@@ -28,7 +28,7 @@ Le téléchargement de fichier est constitué des éléments suivants :
 | `download`              | *`string`*    | `''`                         |             |
 | `title`                 | *`string`*    | `' Télécharger le document'` |             |
 
-## 📝 Un exemple complet
+## 📝 Exemple complet
 
 ::: code-group
 

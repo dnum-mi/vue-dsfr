@@ -15,13 +15,13 @@ Le gestionnaire de consentement est constitué des éléments suivants :
 - une description, le composant en propose une générique et le `slot` par défaut permet d'en personnaliser une et de contenir tout type d'élément,
 - un lien (prop **`url`**, de type `string`), correspondant au chemin menant aux "Données personnelles et cookies" de votre site ou application.
 
-## 🛠️ Les props
+## 🛠️ Props
 
 |  nom                    |   type        |  défaut          | obligatoire |
 | ----------------------- | ---------     | ---------------- | --------    |
 | `url`                   | *`string`*    | `''`             |             |
 
-## 📡 Les événements
+## 📡 Évenements
 
 `DsfrConsent` dispose de trois boutons qui déclenchent chacun un évènement spécifique au clic permettant à l'utilisateur de l'attraper afin de déclencher une fonction correspondante.
 
@@ -31,7 +31,7 @@ Le gestionnaire de consentement est constitué des éléments suivants :
 | `'refuse-all'`         |                      |                      |
 | `'customize'`          |                      |                      |
 
-## 🧩 Les slots
+## 🧩 Slots
 
 `DsfrConsent` possède un slot par défaut pour laisser la possibilité à l'utilisateur d'ajouter une description personnalisée.
 
@@ -51,7 +51,7 @@ Le gestionnaire de consentement est constitué des éléments suivants :
 
 Cf. la [documentation Vue](https://vuejs.org/guide/essentials/event-handling.html#accessing-event-argument-in-inline-handlers) pour plus de détails.
 
-## 📝 Un exemple complet
+## 📝 Exemple complet
 
 ::: code-group
 

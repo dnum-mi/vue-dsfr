@@ -1,7 +1,22 @@
 <script lang="ts" setup>
-import type { DsfrFooterLinkListProps } from './DsfrFooter.types'
+import type { OhVueIcon } from 'oh-vue-icons'
 
-export type { DsfrFooterLinkListProps }
+type DsfrFooterLinkProps = {
+  button?: boolean
+  icon?: string | InstanceType<typeof OhVueIcon>['$props']
+  iconAttrs?: InstanceType<typeof OhVueIcon>['$props'] & import('vue').HTMLAttributes
+  iconRight?: boolean
+  label?: string
+  target?: string
+  onClick?: ($event: MouseEvent) => void
+  to?: import('vue-router').RouteLocationRaw
+  href?: string
+}
+
+type DsfrFooterLinkListProps = {
+  categoryName: string
+  links: DsfrFooterLinkProps[]
+}
 
 withDefaults(defineProps<DsfrFooterLinkListProps>(), {
   categoryName: 'Nom de la catégorie',
@@ -27,7 +42,7 @@ withDefaults(defineProps<DsfrFooterLinkListProps>(), {
           :href="link.to"
         >{{ link.label }}</a>
         <RouterLink
-          v-else
+          v-if="typeof link.to === 'object' || (typeof link.to === 'string' && !link.to.startsWith('http'))"
           class="fr-footer__top-link"
           :to="link.to"
         >

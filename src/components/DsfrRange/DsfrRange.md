@@ -19,7 +19,7 @@ Les curseurs sont des entrées numériques qui permettent de voir graphiquement 
 - Un second curseur est présent si la prop `double` est `true`.
 - Les messages d'erreur ou autres sont affichés dans une `div` spécifique.
 
-## 🛠️ Les props
+## 🛠️ Props
 
 | Nom | Type | Défaut | Description |
 | --- | --- | --- | --- |
@@ -38,11 +38,11 @@ Les curseurs sont des entrées numériques qui permettent de voir graphiquement 
 | `double` | `boolean` | `undefined` | Active un second curseur si `true`. |
 | `disabled` | `boolean` | `undefined` | Désactive le curseur si `true`. |
 
-## 📡 Les événements
+## 📡 Évenements
 
 - **`update:modelValue`**: Émis lors de la modification de la valeur du curseur. Renvoie la nouvelle valeur.
 
-## 📝 Un exemple
+## 📝 Exemple
 
 ::: code-group
 

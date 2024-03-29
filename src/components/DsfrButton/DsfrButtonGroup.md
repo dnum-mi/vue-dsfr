@@ -13,7 +13,7 @@ Ce composant est une simple balise `ul` qui peut recevoir un tableau de `DsfrBut
 
 Le slot par défaut peut être utilisé pour mettre vos boutons si la prop `buttons` est absente (ou un tableau vide).
 
-## 🛠️ Les props
+## 🛠️ Props
 
 Aucune prop n’est obligatoire
 
@@ -26,7 +26,7 @@ Aucune prop n’est obligatoire
 | iconRight        | `boolean`                       | false             | Si `true`, place les icônes à droite du texte dans tous les boutons. |
 | size             | `'sm' \| 'md' \| 'lg'`   | 'md'                 | Détermine la taille des boutons. Peut être `'sm'` (petit), `'md`' (moyen, défaut), `'lg'` (grand). |
 
-## 🧩 Les slots
+## 🧩 Slots
 
 Le slot par défaut peut être utilisé pour mettre des boutons personnalisés.
 
@@ -36,7 +36,7 @@ Si vous utilisez le slot, il faut bien envelopper chaque bouton dans une balise 
 
 :::
 
-## 📝 Des exemples
+## 📝 Exemples
 
 ::: code-group
 
