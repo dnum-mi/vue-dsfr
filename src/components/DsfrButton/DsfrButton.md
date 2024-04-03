@@ -17,7 +17,7 @@ Les boutons sont composés de :
 - Un label - obligatoire, soit en utilisant la prop `label` soit en utilisant le slot par défaut ;
 - Une icône, pouvant être modifiée (voir les icônes disponibles) - optionnelle.
 
-## 🛠️ Les props
+## 🛠️ Props
 
 | Nom         | Type                       | Défaut     | Obligatoire | Description                                           |
 |-------------|----------------------------|------------|:-----------:|-------------------------------------------------------|
@@ -26,11 +26,11 @@ Les boutons sont composés de :
 | `label`     | `string`                   | `undefined`|             | Étiquette textuelle du bouton. Si le label est laissé à undefined, le slot par défaut doit contenir du texte !                        |
 | `onClick`   | `Function`                 | `() => {}` |             | Fonction appelée lors du clic sur le bouton.          |
 
-## 📡 Les événements
+## 📡 Évenements
 
 - `click` : Émis lorsque le bouton est cliqué.
 
-## 🧩 Les slots
+## 🧩 Slots
 
 - `default` : Emplacement pour le contenu personnalisé du bouton. Inséré dans `<button class="fr-btn"><span">`.
 
@@ -38,7 +38,7 @@ Les boutons sont composés de :
 
 Cf. [documentation dédiée](/composants/DsfrButtonGroup)
 
-## 📝 Des exemples
+## 📝 Exemples
 
 Un bouton large avec une icône 'maison' à gauche et le texte 'Accueil' :
 

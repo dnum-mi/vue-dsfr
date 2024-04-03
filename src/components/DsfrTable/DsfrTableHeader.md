@@ -8,7 +8,7 @@ Parfait pour ajouter du texte et des icônes personnalisées, ce composant est u
 
 <VIcon name="vi-file-type-storybook" /> La story sur l’en-tête de tableau sur le storybook de [VueDsfr](https://storybook.vue-ds.fr/?path=/docs/composants-dsfrtableheader--docs)
 
-## Les props 🛠️
+## Props 🛠️
 
 | Nom          | Type                          | Défaut | Obligatoire | Description                                                    |
 |--------------|-------------------------------|--------|-------------|----------------------------------------------------------------|
@@ -70,6 +70,7 @@ Parfait pour ajouter du texte et des icônes personnalisées, ce composant est u
 ::: code-group
 
 <<< DsfrTableHeader.vue
+<<< DsfrTable.types.ts
 
 :::
 

@@ -37,6 +37,16 @@ Le storybook est toujours disponible [ici](https://storybook.vue-ds.fr)
 
 - [DsfrTooltip](./composants/DsfrTooltip)
 
+## En-tête de page
+
+- [DsfrHeader](./composants/DsfrHeader)
+- [DsfrHeaderMenuLink](./composants/DsfrHeaderMenuLink)
+
+## Pied de page
+
+- [DsfrFooter](./composants/DsfrFooter)
+- [DsfrFooterLink](./composants/DsfrFooterLink)
+
 ## Fil d’ariane
 
 - [DsfrBreadcrumb](./composants/DsfrBreadcrumb)

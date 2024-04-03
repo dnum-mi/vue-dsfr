@@ -8,7 +8,7 @@
 
 <VIcon name="vi-file-type-storybook" /> La story sur la cellule de tableau sur le storybook de [VueDsfr](https://storybook.vue-ds.fr/?path=/docs/composants-dsfrtablerow--docs)
 
-## 🛠️ Les props
+## 🛠️ Props
 
 | Nom        | Type                   | Défaut | Obligatoire | Description                                                                       |
 |------------|------------------------|--------|-------------|-----------------------------------------------------------------------------------|
@@ -84,6 +84,7 @@ Utilisez la propriété component pour insérer des composants Vue personnalisé
 ::: code-group
 
 <<< DsfrTableCell.vue
+<<< DsfrTable.types.ts
 
 :::
 

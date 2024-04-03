@@ -8,9 +8,9 @@ Le composant « contrôle segmenté » incite l'utilisateur à choisir entre
 
 <VIcon name="vi-file-type-storybook" /> La story sur l’alerte sur le storybook de [VueDsfr est ici](https://vue-ds.fr/?path=/docs/composants-dsfrsegmentedset--docs) (oui parce que nous on fait rien à moitié, nous 😏, merci [Vincent Lainé](https://github.com/vincentlaine/) !).
 
-## 🛠️ Les props
+## 🛠️ Props
 
-| nom         | type                                  | défaut         | obligatoire | Description                                                    |
+| Nom         | Type                                  | Défaut         | Obligatoire | Description                                                    |
 |-------------|---------------------------------------|----------------|-------------|-------------------------------------------------               |
 | `titleId`   | `string`                              | ID aléatoire   |             | Identifiant unique pour le titre du groupe.                    |
 | `disabled`  | `boolean`                             | `false`        |             | Si `true`, désactive tous les boutons radio du groupe.         |
@@ -27,18 +27,18 @@ Le composant « contrôle segmenté » incite l'utilisateur à choisir entre
 - `titleId`: Généré automatiquement si non spécifié.
 - `options`: Chaque élément représente un bouton radio avec ses props spécifiques.
 
-## 📡 Les événements
+## 📡 Événements
 
 | Nom                | Valeur               | Description                                  |
 |--------------------|----------------------|----------------------------------------------|
 | `update:modelValue` | `string \| number`   | Émis lorsqu'une nouvelle valeur est sélectionnée dans le groupe. |
 
-## 🧩 Les slots
+## 🧩 Slots
 
 1. **slot par défaut**: Permet de personnaliser les boutons radio individuellement.
 2. **Slot `legend`**: Permet de personnaliser la légende avec du contenu riche.
 
-## 📝 Un exemple
+## 📝 Exemple
 
 ```vue
 <DsfrSegmentedSet
@@ -58,7 +58,6 @@ Le composant « contrôle segmenté » incite l'utilisateur à choisir entre
 />
 ```
 
-y
 Assurez-vous d'importer `DsfrSegmentedSet` ainsi que `DsfrSegmented` dans votre projet. Puis, utilisez-le dans votre template en fournissant les props et les options nécessaires.
 
 ::: code-group
@@ -69,15 +68,17 @@ Assurez-vous d'importer `DsfrSegmentedSet` ainsi que `DsfrSegmented` dans votre 
 
 <<< docs-demo/DsfrSegmentedDemo.vue [Code de la démo]
 
+:::
+
+## ⚙️ Code source du composant
+
+::: code-group
+
 <<< DsfrSegmentedSet.vue
-<<< DsfrSegmented.vue
 <<< DsfrSegmented.types.ts
+
 :::
 
 <script setup lang="ts">
 import DsfrSegmentedDemo from './docs-demo/DsfrSegmentedDemo.vue'
 </script>
-
----
-
-Voilà, vous êtes prêt à utiliser `DsfrSegmentedSet` pour créer un ensemble élégant et fonctionnel de boutons radio. À vos marques, prêt, codez ! 🚀

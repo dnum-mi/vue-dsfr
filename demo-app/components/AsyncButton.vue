@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import DsfrButton, { DsfrButtonProps } from '../../src/components/DsfrButton/DsfrButton.vue'
+import DsfrButton, { type DsfrButtonProps } from '../../src/components/DsfrButton/DsfrButton.vue'
 
 defineProps<DsfrButtonProps & { isLoading: boolean }>()
 </script>

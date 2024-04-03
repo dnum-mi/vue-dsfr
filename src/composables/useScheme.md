@@ -2,7 +2,7 @@
 
 Ce composable permet de gérer simplement le thème du site. Vous trouverez ci-dessous des exemples d’utilisation.
 
-Un exemple complet est disponible sur [Stackblitz](https://stackblitz.com/edit/vue-dsfr-use-scheme?file=app.vue).
+Exemple complet est disponible sur [Stackblitz](https://stackblitz.com/edit/vue-dsfr-use-scheme?file=app.vue).
 
 ## Utilisation basique
 

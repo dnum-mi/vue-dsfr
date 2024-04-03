@@ -25,7 +25,7 @@ Le composant `DsfrTable` est un élément puissant et polyvalent pour afficher d
 |----------------------|-------------------------------------------------|
 | `update:currentPage` | Émis lors du changement de la page actuelle.    |
 
-## Slots 🧩
+## 🧩 Slots
 
 - **`header`**: Ce slot permet de personnaliser les en-têtes du tableau. Par défaut, il utilise [`DsfrTableHeaders`](./DsfrTableHeader.md) avec les props `headers`.
 - **Slot par défaut**: Utilisé pour le corps du tableau. Par défaut, il affiche les rangées de données via `DsfrTableRow`.
@@ -65,6 +65,7 @@ Le composant `DsfrTable` est un élément puissant et polyvalent pour afficher d
 ::: code-group
 
 <<< DsfrTable.vue
+<<< DsfrTable.types.ts
 
 :::
 

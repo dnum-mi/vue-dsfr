@@ -31,7 +31,7 @@ Autres props :
 - l'orientation de la carte (verticale par défaut) (prop **`horizontal`**, de type `boolean`) pour la basculer à l'horizontal.
 - une variante de carte indiquant que l’évènement de clic lancera un téléchargement (prop **`download`**, de type `boolean`).
 
-## 🛠️ Les props
+## 🛠️ Props
 
 |  Nom                   |   Type      |  Défaut         | Obligatoire        | Description |
 | ---------------------- | ---------   | --------------- | ------------------ | ---- |
@@ -52,7 +52,7 @@ Autres props :
 | `title`                | *`string`*  |                 | ✅                 | Titre de la carte |
 | `titleTag`             | [*`TitleTag`*](/docs/types.md#title-tag "'h1' \| 'h2' \| 'h3' \| 'h4' \| 'h5' \| 'h6'") | `'h3'`          |          | Balise du titre de la carte |
 
-## 🧩 Les slots
+## 🧩 Slots
 
 `start-details`  permet de placer une précision, sous forme de tags (cliquables ou non)
 
@@ -62,7 +62,7 @@ cf. DSFR : [Composant - Carte](https://www.systeme-de-design.gouv.fr/elements-d
 
 ## 📝 Exemples
 
-### 📝 Un exemple avec tags sans actions
+### 📝 Exemple avec tags sans actions
 
 ::: code-group
 
@@ -74,7 +74,7 @@ cf. DSFR : [Composant - Carte](https://www.systeme-de-design.gouv.fr/elements-d
 
 :::
 
-### 📝 Un exemple avec actions sans tags
+### 📝 Exemple avec actions sans tags
 
 ::: code-group
 

@@ -4,6 +4,7 @@ import type { RouteLocationRaw } from 'vue-router'
 
 import DsfrLogo from '../DsfrLogo/DsfrLogo.vue'
 import DsfrFooterPartners from '../DsfrFooter/DsfrFooterPartners.vue'
+import DsfrFooterLink from '../DsfrFooter/DsfrFooterLink.vue'
 
 import { type DsfrFooterProps } from './DsfrFooter.types'
 
@@ -36,6 +37,7 @@ const props = withDefaults(defineProps<DsfrFooterProps>(), {
     {
       label: 'Mentions légales',
       to: props.legalLink,
+      'data-testid': '/mentions-legales',
     },
     {
       label: 'Données personnelles',
@@ -188,20 +190,9 @@ const aLicenceHref = computed(() => {
             :key="index"
             class="fr-footer__bottom-item"
           >
-            <a
-              v-if="typeof link.to === 'string' && link.to.startsWith('http')"
-              class="fr-footer__bottom-link"
-              :href="link.to"
-              :data-testid="link.to"
-            >{{ link.label }}</a>
-            <RouterLink
-              v-else
-              class="fr-footer__bottom-link"
-              :to="link.to ?? '#'"
-              :data-testid="link.to"
-            >
-              {{ link.label }}
-            </RouterLink>
+            <DsfrFooterLink
+              v-bind="link"
+            />
           </li>
         </ul>
         <div

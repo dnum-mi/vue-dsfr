@@ -25,11 +25,9 @@
       }
     },
     "./dist/vue-dsfr.css": {
-      "require": "./dist/vue-dsfr.css",
       "import": "./dist/vue-dsfr.css"
     },
     "./styles": {
-      "require": "./dist/vue-dsfr.css",
       "import": "./dist/vue-dsfr.css"
     }
   },

@@ -135,8 +135,32 @@ const composants = [
     link: '/composants/DsfrFileUpload.md',
   },
   {
+    text: 'DsfrFooter',
+    link: '/composants/DsfrFooter.md',
+  },
+  {
+    text: 'DsfrFooterLinkList',
+    link: '/composants/DsfrFooterLinkList.md',
+  },
+  {
+    text: 'DsfrFooterLink',
+    link: '/composants/DsfrFooterLink.md',
+  },
+  {
+    text: 'DsfrFooterPartners',
+    link: '/composants/DsfrFooterPartners.md',
+  },
+  {
     text: 'DsfrHeader',
     link: '/composants/DsfrHeader.md',
+  },
+  {
+    text: 'DsfrHeaderMenuLink',
+    link: '/composants/DsfrHeaderMenuLink.md',
+  },
+  {
+    text: 'DsfrHeaderMenuLinks',
+    link: '/composants/DsfrHeaderMenuLinks.md',
   },
   {
     text: 'DsfrInput',

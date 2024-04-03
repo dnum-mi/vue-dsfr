@@ -8,7 +8,7 @@ Bonjour les artistes du code ! Voici `DsfrTabs`, le composant d'onglets Vue qui 
 
 <VIcon name="vi-file-type-storybook" /> La story sur les onglets sur le storybook de [VueDsfr](https://storybook.vue-ds.fr/?path=/docs/composants-dsfrtabs--docs)
 
-## 🛠️ Les props
+## 🛠️ Props
 
 | Nom                  | Type                      | Défaut       | Obligatoire | Description                                                |
 |----------------------|---------------------------|--------------|-------------|------------------------------------------------------------|
@@ -22,7 +22,7 @@ Bonjour les artistes du code ! Voici `DsfrTabs`, le composant d'onglets Vue qui 
 | ---------------------- |  ---------            | --- |
 | `'select-tab '` |       *`string`*       | Émis lorsqu'un onglet est sélectionné. Envoyant l'index de l'onglet sélectionné. |
 
-## 🧩 Les slots
+## 🧩 Slots
 
 | Nom          | Description                                                        |
 |--------------|--------------------------------------------------------------------|

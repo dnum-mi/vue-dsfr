@@ -3,7 +3,7 @@ import DsfrTable from '../DsfrTable.vue'
 import DsfrTag from '../../DsfrTag/DsfrTag.vue'
 
 import { getCurrentInstance } from 'vue'
-import { DsfrTableCellProps, DsfrTableRowProps } from '../DsfrTable.types'
+import type { DsfrTableCellProps, DsfrTableRowProps } from '../DsfrTable.types'
 getCurrentInstance()?.appContext.app.component('DsfrTag', DsfrTag)
 
 const title = 'Utilisateurs'

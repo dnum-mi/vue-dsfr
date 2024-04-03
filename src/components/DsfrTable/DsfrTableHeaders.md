@@ -18,7 +18,7 @@ Bienvenue dans la documentation du composant `DsfrTableHeaders`! Ce composant es
 
 - **`DsfrTableHeadersProps`**: Un tableau composé d'objets ou de chaînes. Un objet peut avoir une propriété `text` (chaîne) pour le texte de l'en-tête et `headerAttrs` (objet) pour les attributs HTML supplémentaires à appliquer sur l'en-tête.
 
-## Slots 🧩
+## 🧩 Slots
 
 Pas de slots spécifiques pour ce composant. Il s'agit principalement d'un composant utilitaire pour `DsfrTable`.
 
@@ -55,6 +55,7 @@ Utiliser des objets pour les en-têtes vous permet d'ajouter des classes CSS ou 
 ::: code-group
 
 <<< DsfrTableHeader.vue
+<<< DsfrTable.types.ts
 
 :::
 
