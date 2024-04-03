@@ -13,7 +13,6 @@ const props = withDefaults(defineProps<DsfrRadioButtonSetProps>(), {
   errorMessage: '',
   validMessage: '',
   legend: '',
-  name: 'no-name',
   options: () => [],
 })
 

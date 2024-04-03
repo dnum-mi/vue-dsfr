@@ -8,6 +8,7 @@ import { hmrFix } from './plugins/hmrFix.js'
 const minimalToc = [
   {
     text: 'Guide',
+    link: '/guide/',
     items: []
   },
   {
@@ -118,6 +119,10 @@ const composants = [
     link: '/composants/DsfrConsent.md',
   },
   {
+    text: 'DsfrErrorPage',
+    link: '/composants/DsfrErrorPage.md',
+  },
+  {
     text: 'DsfrFieldset',
     link: '/composants/DsfrFieldset.md',
   },
@@ -126,8 +131,36 @@ const composants = [
     link: '/composants/DsfrFileDownload.md',
   },
   {
-    text: 'DsfrErrorPage',
-    link: '/composants/DsfrErrorPage.md',
+    text: 'DsfrFileUpload',
+    link: '/composants/DsfrFileUpload.md',
+  },
+  {
+    text: 'DsfrFooter',
+    link: '/composants/DsfrFooter.md',
+  },
+  {
+    text: 'DsfrFooterLinkList',
+    link: '/composants/DsfrFooterLinkList.md',
+  },
+  {
+    text: 'DsfrFooterLink',
+    link: '/composants/DsfrFooterLink.md',
+  },
+  {
+    text: 'DsfrFooterPartners',
+    link: '/composants/DsfrFooterPartners.md',
+  },
+  {
+    text: 'DsfrHeader',
+    link: '/composants/DsfrHeader.md',
+  },
+  {
+    text: 'DsfrHeaderMenuLink',
+    link: '/composants/DsfrHeaderMenuLink.md',
+  },
+  {
+    text: 'DsfrHeaderMenuLinks',
+    link: '/composants/DsfrHeaderMenuLinks.md',
   },
   {
     text: 'DsfrInput',
@@ -138,20 +171,16 @@ const composants = [
     link: '/composants/DsfrInputGroup.md',
   },
   {
-    text: 'DsfrRange',
-    link: '/composants/DsfrRange.md',
-  },
-  {
-    text: 'DsfrFileUpload',
-    link: '/composants/DsfrFileUpload.md',
-  },
-  {
     text: 'DsfrNotice',
     link: '/composants/DsfrNotice.md',
   },
   {
     text: 'DsfrRange',
     link: '/composants/DsfrRange.md',
+  },
+  {
+    text: 'DsfrSearchBar',
+    link: '/composants/DsfrSearchBar.md',
   },
   {
     text: 'DsfrSegmented',

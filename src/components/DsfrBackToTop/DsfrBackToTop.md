@@ -23,7 +23,7 @@ Si il y a des bloc de poursuite de lecture (liens vers d’autres articles), il 
 
 `DsfrBackToTop` est un composant simple mais chic, permettant d'ajouter un lien de retour en haut de la page dans vos applications Vue. Il intègre un style distinctif et des options de positionnement pour s'adapter parfaitement à votre mise en page.
 
-## 🛠️ Les props
+## 🛠️ Props
 
 Notre composant est assez flexible et comprend les props suivantes :
 

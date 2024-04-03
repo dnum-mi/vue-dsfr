@@ -31,7 +31,7 @@ Le regroupement de champs est constitué des éléments suivants :
 - Un slot pour le contenu de la légende du fieldset (`legend`).
 - Un slot pour l'indice placé au dessus du contenu du fieldset (`hint`).
 
-## 📝 Un exemple complet
+## 📝 Exemple complet
 
 ::: code-group
 

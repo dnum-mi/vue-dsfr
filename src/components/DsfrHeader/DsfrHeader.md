@@ -19,41 +19,62 @@ L’en-tête est sur fond blanc en thème clair et sur fond G800 en thème sombr
 
 | Nom                   | Type                          | Défaut   | Obligatoire | Description                                              |
 |-----------------------|-------------------------------|----------|-------------|----------------------------------------------------------|
-| serviceTitle          | `String`                      | `undefined` |             | Titre du service affiché dans l'en-tête.                 |
-| serviceDescription    | `String`                      | `undefined` |             | Description courte du service.                           |
-| homeTo                | `String`                      | `'/'`      |             | Lien de la page d'accueil.                               |
-| logoText              | `String` \| `String[]`        | `'Gouvernement'` |        | Texte ou texte alternatif du logo.                       |
-| modelValue            | `String`                      | `''`       |             | Valeur pour la barre de recherche.                       |
-| operatorImgAlt        | `String`                      | `''`       |             | Texte alternatif pour l'image de l'opérateur.            |
-| operatorImgSrc        | `String`                      | `''`       |             | Source de l'image de l'opérateur.                        |
+| searchbarId           | `string`                      | `'searchbar-header'` |             | valeur de l’attribut `id` de l’input de la [searchbar](/composants/DsfrSearchBar.md).                 |
+| serviceTitle          | `string`                      | `undefined` |             | Titre du service affiché dans l'en-tête.                 |
+| serviceDescription    | `string`                      | `undefined` |             | Description courte du service.                           |
+| homeTo                | `string`                      | `'/'`      |             | Lien de la page d'accueil.                               |
+| logoText              | `string` \| `string[]`        | `'Gouvernement'` |        | Texte ou texte alternatif du logo.                       |
+| modelValue            | `string`                      | `''`       |             | Valeur pour la barre de recherche.                       |
+| operatorImgAlt        | `string`                      | `''`       |             | Texte alternatif pour l'image de l'opérateur.            |
+| operatorImgSrc        | `string`                      | `''`       |             | Source de l'image de l'opérateur.                        |
+>>>>>>> 4647a00 (feat(DsfrFooter): permet de mettre des boutons dans les liens)
 | operatorImgStyle      | `StyleValue`                  | `() => ({})` |           | Style CSS pour l'image de l'opérateur.                   |
-| placeholder           | `String`                      | `'Rechercher...'` |        | Placeholder pour la barre de recherche.                  |
+| placeholder           | `string`                      | `'Rechercher...'` |        | Placeholder pour la barre de recherche.                  |
 | quickLinks            | `DsfrHeaderMenuLinkProps[]`   | `() => []` |             | Liens rapides à afficher dans l'en-tête.                 |
-| searchLabel           | `String`                      | `'Recherche'` |            | Label pour la barre de recherche.                        |
-| quickLinksAriaLabel   | `String`                      | `'Menu secondaire'` |       | Label ARIA pour les liens rapides.                       |
-| showSearch            | `Boolean`                     | `false`    |             | Affiche ou non la barre de recherche.                    |
-| showBeta              | `Boolean`                     | `false`    |             | Affiche ou non l'indicateur BETA.                        |
+| searchLabel           | `string`                      | `'Recherche'` |            | Label pour la barre de recherche.                        |
+| quickLinksAriaLabel   | `string`                      | `'Menu secondaire'` |       | Label ARIA pour les liens rapides.                       |
+| showSearch            | `boolean`                     | `false`    |             | Affiche ou non la barre de recherche.                    |
+| showBeta              | `boolean`                     | `false`    |             | Affiche ou non l'indicateur BETA.                        |
 
 ## 📡 Events
 
-| Nom               | Description                                      |
-|-------------------|--------------------------------------------------|
-| update:modelValue | Émis lors de la mise à jour de la barre de recherche. |
-| search            | Émis lorsqu'une recherche est effectuée.         |
+| Nom               | Description                                      | Charge utile |
+|-------------------|--------------------------------------------------| ---- |
+| update:modelValue | Émis lors de la mise à jour de la barre de recherche. | Contenu (`string`) du champ de saisie pour la recherche |
+| search            | Émis lorsqu'une recherche est effectuée.         | Contenu (`string`) du champ de saisie pour la recherche |
 
 ## 🧩 Slots
 
 | Nom                  | Description                                                    |
 |----------------------|----------------------------------------------------------------|
-| operator             | Slot nommé pour le logo de l'opérateur.                        |
+| operator             | Slot pour le logo de l'opérateur.                        |
 | before-quick-links   | Slot pour ajouter du contenu avant les liens rapides.          |
 | after-quick-links    | Slot pour ajouter du contenu après les liens rapides.          |
-| mainnav              | Slot nommé pour le menu de navigation principal.               |
+| mainnav              | Slot pour le menu de navigation principal.               |
 | default              | Slot par défaut pour le contenu supplémentaire dans l'en-tête. |
 
 ## 📝 Exemples
 
-1. **En-tête Simple :**
+::: code-group
 
-   ```vue
-   <DsfrHeader serviceTitle="Mon Application" />
+<Story data-title="Démo" min-h="300px">
+  <DsfrHeaderDemo />
+</Story>
+
+<<< docs-demo/DsfrHeaderDemo.vue [Code de la démo]
+:::
+
+Exemple plus complet sur l’[application de demo](https://demo.vue-ds.fr/) (dont le code source est disponible [ici](https://github.com/dnum-mi/vue-dsfr/tree/main/demo-app)).
+
+## ⚙️ Code source du composant
+
+::: code-group
+
+<<< DsfrHeader.vue
+<<< DsfrHeader.types.ts
+
+:::
+
+<script setup lang="ts">
+import DsfrHeaderDemo from './docs-demo/DsfrHeaderDemo.vue'
+</script>

@@ -4,7 +4,7 @@
 
 Le `DsfrTooltip` est un composant Vue versatile, conçu pour fournir des infobulles contextuelles. Il supporte le déclenchement au survol ou au clic, et s'adapte automatiquement à la position de l'élément source pour une visibilité optimale. Ce composant est idéal pour ajouter des explications ou des informations supplémentaires sans encombrer l'interface utilisateur.
 
-## 🛠️ Les props
+## 🛠️ Props
 
 | Nom        | Type      | Défaut               | Obligatoire | Description                                                 |
 |------------|-----------|----------------------|:-----------:|-------------------------------------------------------------|
@@ -12,11 +12,11 @@ Le `DsfrTooltip` est un composant Vue versatile, conçu pour fournir des infobul
 | `onHover`  | `boolean` | `false`              |             | Si `true`, l'infobulle s'affiche au survol.                 |
 | `id`       | `string`  | `getRandomId('tooltip')` |         | Identifiant unique pour l'infobulle. Utilisé pour l'accessibilité. |
 
-## 📡 Les événements
+## 📡 Évenements
 
 - Aucun événement personnalisé n'est émis par ce composant.
 
-## 🧩 Les slots
+## 🧩 Slots
 
 - `default` : Contenu personnalisé pour l'élément déclencheur de l'infobulle (peut être un lien ou un bouton selon `onHover`).
 

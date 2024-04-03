@@ -1,4 +1,6 @@
 <script lang="ts" setup>
+import { watch } from 'vue'
+
 import { getRandomId } from '../../utils/random-utils'
 
 import DsfrInput from '../DsfrInput/DsfrInput.vue'
@@ -8,7 +10,7 @@ import type { DsfrSearchBarProps } from './DsfrSearchBar.types'
 
 export type { DsfrSearchBarProps }
 
-withDefaults(defineProps<DsfrSearchBarProps>(), {
+const props = withDefaults(defineProps<DsfrSearchBarProps>(), {
   id: () => getRandomId('search', 'input'),
   label: '',
   buttonText: '',
@@ -17,10 +19,14 @@ withDefaults(defineProps<DsfrSearchBarProps>(), {
 })
 
 // eslint-disable-next-line func-call-spacing
-defineEmits<{
+const emit = defineEmits<{
   (e: 'update:modelValue', payload: string): void,
   (e: 'search', payload: string): void,
 }>()
+
+watch(() => props.modelValue, (newValue) => {
+  console.log('modelValue', newValue)
+})
 </script>
 
 <template>
@@ -37,13 +43,13 @@ defineEmits<{
       :label-visible="labelVisible"
       :label="label"
       :disabled="disabled"
-      @update:model-value="$emit('update:modelValue', $event)"
-      @keydown.enter="$emit('search', '')"
+      @update:model-value="emit('update:modelValue', $event)"
+      @keydown.enter="emit('search', modelValue)"
     />
     <DsfrButton
       title="Rechercher"
       :disabled="disabled"
-      @click="$emit('search', '')"
+      @click="emit('search', modelValue)"
     >
       {{ buttonText }}
     </DsfrButton>
@@ -55,7 +61,10 @@ defineEmits<{
   margin: 0;
 }
 
-/* Obligé de faire ça car ils ont hardcode la couleur dans le DSFR sans prendre en compte que ce champ pouvait être disabled */
+/**
+ * Obligé de faire ça car la couleur est codée en dur dans le DSFR
+ * sans prendre en compte que ce champ pouvait être disabled.
+ */
 .fr-search-bar .fr-input:disabled {
   box-shadow: inset 0 -2px 0 0 var(--border-disabled-grey);
   color: var(--text-disabled-grey);

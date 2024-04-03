@@ -1,5 +1,6 @@
-import type { StyleValue } from 'vue'
+import type { HTMLAttributes, StyleValue } from 'vue'
 import type { RouteLocationRaw } from 'vue-router'
+import type { OhVueIcon as VIcon } from 'oh-vue-icons'
 
 export type DsfrFooterPartner = {
   href: string
@@ -14,8 +15,15 @@ export type DsfrFooterPartnersProps = {
 }
 
 export type DsfrFooterLinkProps = {
-  label: string
-  to: string | RouteLocationRaw
+  button?: boolean
+  icon?: string | InstanceType<typeof VIcon>['$props']
+  iconAttrs?: InstanceType<typeof VIcon>['$props'] & HTMLAttributes
+  iconRight?: boolean
+  label?: string
+  target?: string
+  onClick?: ($event: MouseEvent) => void
+  to?: RouteLocationRaw
+  href?: string
 }
 
 export type DsfrFooterLinkListProps = {
@@ -33,8 +41,8 @@ export type DsfrFooterProps = {
   cookiesLink?: string
   logoText?: string | string[]
   descText?: string
-  beforeMandatoryLinks?: {label: string, to: RouteLocationRaw | undefined}[]
-  afterMandatoryLinks?: {label: string, to: RouteLocationRaw | undefined}[]
+  beforeMandatoryLinks?: DsfrFooterLinkProps[]
+  afterMandatoryLinks?: DsfrFooterLinkProps[]
   mandatoryLinks?: {label: string, to: RouteLocationRaw | undefined}[]
   ecosystemLinks?: {label: string, href: string}[]
   operatorLinkText?: string

@@ -7,7 +7,7 @@ import type { DsfrRadioButtonProps } from './DsfrRadioButton.types'
 export type { DsfrRadioButtonProps }
 
 const props = withDefaults(defineProps<DsfrRadioButtonProps>(), {
-  id: () => getRandomId('basic', 'checkbox'),
+  id: () => getRandomId('basic', 'radio'),
   modelValue: '',
   label: '',
   hint: '',

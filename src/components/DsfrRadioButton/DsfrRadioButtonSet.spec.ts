@@ -67,6 +67,7 @@ describe('DsfrRadioButtonSet', () => {
         },
       },
       props: {
+        name: 'radio-button-set-name',
         errorMessage,
         options,
         legend,

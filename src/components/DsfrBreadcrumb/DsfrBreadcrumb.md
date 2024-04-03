@@ -25,7 +25,7 @@ Dans l’ordre, il se compose des éléments suivants :
 | breadcrumbId | String | () => getRandomId('breadcrumb') | Identifiant unique pour le composant breadcrumb, généré automatiquement pour assurer l'accessibilité. |
 | links        | Array  | () => [{ text: '' }] | Un tableau d'objets représentant les liens dans le fil d'Ariane. Chaque objet peut avoir une propriété 'text' et, optionnellement, 'to' pour les routes. |
 
-## 📡 Les événements
+## 📡 Évenements
 
 Ce composant n'émet pas directement d'événements, mais vous pouvez écouter les événements de clic sur les liens individuels si nécessaire.
 

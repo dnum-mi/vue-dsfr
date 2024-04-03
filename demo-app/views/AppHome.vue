@@ -4,6 +4,7 @@ import pDebounce from 'p-debounce'
 
 import FdrAutoComplete from '../components/FdrAutoComplete.vue'
 import useToaster from '../composables/use-toaster'
+import AsyncButton from '../components/AsyncButton.vue'
 
 defineProps({})
 
@@ -54,6 +55,18 @@ const getCityListWithZipCodeByQuery = async (query) =>
 const selectAddress = (address) => {
   console.log(address)
 }
+
+const isLoading = ref(false)
+const disabled = ref(false)
+
+const onClick = () => {
+  isLoading.value = true
+  disabled.value = true
+  setTimeout(() => {
+    disabled.value = false
+    isLoading.value = false
+  }, 2000)
+}
 </script>
 
 <template>
@@ -88,4 +101,11 @@ const selectAddress = (address) => {
       Cliquer pour voir une alerte
     </DsfrButton>
   </p>
+  <AsyncButton
+    :is-loading="isLoading"
+    :disabled="disabled"
+    @click="onClick($event)"
+  >
+    Cliquer pour voir un chargement
+  </AsyncButton>
 </template>

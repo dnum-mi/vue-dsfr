@@ -20,7 +20,13 @@ export type DsfrCardProps = {
   altImg?: string
   titleTag?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'
   buttons?: DsfrButtonProps[]
-  linksGroup?:({ label: string, to?: RouteLocationRaw, link?: string, href?: string })[]
+  linksGroup?: {
+    label: string
+    to?: RouteLocationRaw
+    /** @deprecated utiliser href à la place, link sera supprimé dans une version future */
+    link?: string
+    href?: string
+  }[]
   noArrow?: boolean
   horizontal?: boolean
   download?: boolean
