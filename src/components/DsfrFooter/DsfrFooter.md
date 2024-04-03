@@ -1,3 +1,5 @@
+# Pied de page - `DsfrFooter`
+
 ## 🌟 Introduction
 
 Le `DsfrFooter` est un composant Vue.js pour créer un pied de page personnalisé sur un site web. Il permet d'intégrer des logos, des liens vers des partenaires, des liens légaux, et d'autres éléments essentiels dans un pied de page.
@@ -44,6 +46,27 @@ Ce composant se structure en plusieurs parties, incluant :
 | `licenceText`           | *`string`*                             | `'Sauf mention contraire, tous les textes de ce site sont sous'` | |
 | `licenceName`           | *`string`*                             | `'licence etalab-2.0'`                     |             |
 
+::: tip Des boutons après la liste de liens
+
+Vous pouvez donc insérer un bouton après la liste de liens obligatoires (ou avant dans `beforeMandatoryLink`) en ajoutant un élément avec un contenu similaire à celui-ci :
+
+```ts
+const afterMandatoryLinks = [
+  // (...)
+  {
+    label: 'Paramètres d’affichage',
+    button: true,
+    class: 'fr-icon-theme-fill fr-link--icon-left fr-px-2v',
+    to: '/settings',
+    onclick: () => console.log('Settings'),
+  },
+  // (...)
+]
+```
+
+C’est le cas dans [l’exemple](#📝-exemple).
+:::
+
 ## 📡 Événements
 
 Aucun événement spécifique pour ce composant.
@@ -53,11 +76,11 @@ Aucun événement spécifique pour ce composant.
 1. `footer-link-lists` : Permet de personnaliser les listes de liens dans la partie supérieure du pied de page.
 2. `description` : Pour personnaliser la description dans le corps du pied de page.
 
-## 📝 Exemples
+## 📝 Exemple
 
 ::: code-group
 
-<Story data-title="Démo">
+<Story data-title="Démo" min-h="400px">
   <DsfrFooterDemo />
 </Story>
 

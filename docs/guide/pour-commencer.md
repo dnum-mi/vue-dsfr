@@ -47,9 +47,7 @@ Et suivez les indications de l’assistant.
 
 ## Ajouter la bibliothèque à un projet existant
 
-### Utiliser la bibliothèque en tant que plugin
-
-#### Installer la bibliothèque en tant que dépendance du projet
+### Installer la bibliothèque en tant que dépendance du projet
 
 Afin d'installer la bibliothèque, taper ces commandes dans votre console au sein du répertoire du projet :
 
@@ -63,6 +61,20 @@ npm install @gouvfr/dsfr @gouvminint/vue-dsfr
 
 :::
 
+### Utiliser la bibliothèque en tant que plugin
+
+::: warning Méthode déconseillée
+
+Cette méthode est déconseillée. Elle est présente dans la documentation pour des raisons historiques.
+Cette méthode est facile à mettre en place et permet de tester rapidement les composants dans une application, cependant, comme elle enregistre tous les composants, ils sont tous présents dans le bundle final, ce qui est loin d’être optimal.
+
+On peut avoir le meilleur des deux mondes (**import automatique** des composants et un **bundle final optimisé** qui ne contient que les composants réellement utilisés) avec l’auto-import et le component resolver livrés avec les versions [5.5+ de VueDsfr](https://github.com/dnum-mi/vue-dsfr/releases/tag/v5.5.0).
+C’est le défaut depuis la version [1.7.0](https://github.com/laruiss/create-vue-dsfr) de l’assistant officiel [create-vue-dsfr](https://github.com/laruiss/create-vue-dsfr).
+
+Voir plus loin la [section correspondante](#avoir-un-bundle-optimise-et-une-dx-optimale).
+
+:::
+
 #### Ajouter le plugin
 
 Ajouter la bibliothèque en tant que plugin a deux conséquences :
@@ -70,13 +82,6 @@ Ajouter la bibliothèque en tant que plugin a deux conséquences :
 | pros | cons |
 | ---- | ---- |
 | Pas besoin d’enregistrer les composants qu’on utilise : le plugin les enregistre tous pour nous | Le bundle final sera plus lourd |
-
-::: info Le meilleur des deux mondes
-
-On peut avoir le meilleur des deux mondes (la tranquilité de ne pas avoir à importer les composants et un bundle final qui ne contient que les composants réellement utilisés) avec l’auto-import et le component resolver livrés avec la version [5.5.0 de VueDsfr](https://github.com/dnum-mi/vue-dsfr/releases/tag/v5.5.0).
-C’est le défaut depuis la version [1.7.0](https://github.com/laruiss/create-vue-dsfr) de l’assistant officiel [create-vue-dsfr](https://github.com/laruiss/create-vue-dsfr).
-
-:::
 
 ##### Dans une application Vite
 
@@ -107,36 +112,7 @@ const app = createApp(App)
 
 ##### Dans nuxt 3
 
-La bibliothèque **`VueDsfr`** fournit bien plusieurs builds (`esm` et `umd`) et Nuxt3 sait lequel choisir.
-
-Ensuite, il faut ajouter le plugin en créant le dossier `/plugins` s’il n’existe pas et en créant dedans un fichier `vue-dsfr.js`
-avec le contenu suivant :
-
-```typescript
-// /plugins/vue-dsfr.js
-
-import { defineNuxtPlugin } from '#app'
-import VueDsfr from '@gouvminint/vue-dsfr'
-
-export default defineNuxtPlugin((nuxtApp) => {
-  nuxtApp.vueApp.use(VueDsfr)
-})
-```
-
-Enfin, il faudra ajouter les feuilles CSS, pour ce faire, ajouter ceci dans `nuxt.config.js` :
-
-```typescript{4-7}
-import { defineNuxtConfig } from 'nuxt3';
-// https://v3.nuxtjs.org/docs/directory-structure/nuxt.config
-export default defineNuxtConfig({
- css: [
-   '@gouvfr/dsfr/dist/dsfr.min.css',
-   '@gouvminint/vue-dsfr/styles',
- ],
-})
-```
-
-Vous pouvez voir une implémentation **[sur Codesandbox ici](https://codesandbox.io/p/github/laruiss/nuxt-dsfr/nuxt-dsfr)**.
+Utiliser le module [`vue-dsfr-nuxt-module`](https://www.npmjs.com/package/vue-dsfr-nuxt-module) et sa documentation (`README.md`).
 
 ## Utiliser la bibliothèque de composants sans plugin
 
@@ -158,7 +134,6 @@ import '@gouvfr/dsfr/dist/dsfr.min.css'         // Import des styles du DSFR
 import '@gouvminint/vue-dsfr/styles'            // Import des styles propres à la bibliothèque VueDSFR
 
 const app = createApp(App)
-  .component('VIcon', OhVueIcon)                // Enregistrement global du composant OhVueIcon (facultatif)
   .component('DsfrHeader', DsfrHeader)          // Enregistrement global du composant DsfrHeader
   .component('DsfrButton', DsfrButton)          // Enregistrement global du composant DsfrButton
   .component('DsfrBreadcrumb', DsfrBreadcrumb)  // Enregistrement global du composant DsfrBreadcrumb
@@ -170,21 +145,27 @@ const app = createApp(App)
 Il faut enregistrer globalement le composant **VIcon** si vous voulez l’utiliser.
 :::
 
+::: warning
+
+Cette méthode permet de n’avoir dans le bundel final que les composants utilisés dans l’application. Cependant, la DX n’est pas optimale.
+
+:::
+
 ## Utiliser les icônes
 
 Cf. [la page dédiée](./icones.md)
 
-## Avoir un bundle optimisé (et une DX optimale)
+## Avoir un bundle optimisé et une DX optimale
 
 Il est possible d’intégrer moins de CSS, et de n’importer que les composants réellement utilisés dans votre application, sans avoir à écrire les imports dans votre code, voici quelques notes à ce propos (voir les commentaires dans le code).
 
 ::: warning Important
 
-Si vous avez utilisé la version 1.7.0+ de `create-vue-dsfr` pour créer votre projet, tout ce qui suit est déjà fait !
+Si vous avez utilisé la version 1.7+ de `create-vue-dsfr` pour créer votre projet, tout ce qui suit est déjà fait !
 
 :::
 
-### Vue3
+### Vue
 
 Dans le point d’entrée de votre application Vue (souvent `main.js` ou `main.ts`) :
 
@@ -195,12 +176,11 @@ import '@gouvfr/dsfr/dist/utility/utility.main.min.css'      // Classes utilitai
 import '@gouvminint/vue-dsfr/styles'                         // Les styles propres aux composants de VueDsfr
 
 import '@gouvfr/dsfr/dist/scheme/scheme.min.css'             // Facultatif : Si les thèmes sont utilisés (thème sombre, thème clair)
-import '@gouvfr/dsfr/dist/utility/icons/icons.min.css'       // Facultatif : Si des icônes sont utilisées avec les classes "fr-icon-..."
 ```
 
 ### Les imports automatiques des composables et des composants
 
-La version [5.5.0 de VueDsfr](https://github.com/dnum-mi/vue-dsfr/releases/tag/v5.5.0) intègre 3 nouveaux exports pour pouvoir importer automatiquement les composables et autres fonctions et les composants (grâce au plugin vite [`unplugin-auto-import`](https://github.com/unplugin/unplugin-auto-import)).
+À partir de la version [`5.5.0`](https://github.com/dnum-mi/vue-dsfr/releases/tag/v5.5.0), VueDsfr intègre 3 nouveaux exports pour pouvoir importer automatiquement les composables et autres fonctions et les composants (grâce au plugin vite [`unplugin-auto-import`](https://github.com/unplugin/unplugin-auto-import)).
 
 #### Les imports automatiques des composables et fonctions
 
@@ -214,7 +194,7 @@ npm i -D unplugin-auto-import unplugin-vue-components
 
 Ajouter ces lignes dans `vite.config.ts` :
 
-```typescript{6-8,18-46}
+```typescript{6-12,22-51}
 import { fileURLToPath, URL } from 'node:url'
 
 import { defineConfig } from 'vite'
@@ -222,7 +202,11 @@ import vue from '@vitejs/plugin-vue'
 import vueJsx from '@vitejs/plugin-vue-jsx'
 import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
-import { vueDsfrAutoimportPreset, ohVueIconAutoimportPreset, vueDsfrComponentResolver } from '@gouvminint/vue-dsfr'
+import {
+  vueDsfrAutoimportPreset,
+  ohVueIconAutoimportPreset,
+  vueDsfrComponentResolver
+} from '@gouvminint/vue-dsfr'
 
 const isCypress = process.env.CYPRESS === 'true'
 
@@ -241,8 +225,8 @@ export default defineConfig({
         'vue',
         'vue-router',
         ...(isCypress ? [] : ['vitest']),
-        vueDsfrAutoimportPreset,                       // Autoimport des composables de VueDsfr
-        ohVueIconAutoimportPreset,                     // Autoimport des fonctions de OhVueIcon (addIcons et OhVueIcon)
+        vueDsfrAutoimportPreset,       // Autoimport des composables de VueDsfr
+        ohVueIconAutoimportPreset,     // Autoimport des fonctions de OhVueIcon (addIcons et OhVueIcon)
       ],
       vueTemplate: true,
       dts: './src/auto-imports.d.ts',
@@ -252,13 +236,14 @@ export default defineConfig({
         globalsPropValue: true,
       },
     }),
+    // Autoimport des composants utilisés dans les templates
     Components({
       extensions: ['vue'],
-      dirs: ['src/components'],                        // Autoimport de vos composants qui sont dans le dossier `src/components`
+      dirs: ['src/components'],        // Autoimport de vos composants qui sont dans le dossier `src/components`
       include: [/\.vue$/, /\.vue\?vue/],
       dts: './src/components.d.ts',
       resolvers: [
-        vueDsfrComponentResolver,                      // Autoimport des composants de VueDsfr dans les templates
+        vueDsfrComponentResolver,      // Autoimport des composants de VueDsfr dans les templates
       ],
     }),
   ],
@@ -271,15 +256,18 @@ export default defineConfig({
 
 ```
 
-##### Avec les auto-imports
+Voici ce que cela permet :
 
-`main.ts`
+::: code-group
 
-```typescript
-import '@gouvfr/dsfr/dist/dsfr.min.css'
-import '@gouvfr/dsfr/dist/utility/icons/icons.min.css'
+```ts [main.ts avec auto-imports]
+import '@gouvfr/dsfr/dist/dsfr.main.min.css'
+import '@gouvfr/dsfr/dist/utility/utility.main.min.css'
 
 import '@gouvminint/vue-dsfr/styles'
+
+
+
 
 import App from './App.vue'
 import router from './router/index'
@@ -295,11 +283,34 @@ createApp(App)                    // createApp est autoimporté grâce au preset
   .mount('#app')
 ```
 
-`App.vue`
+```typescript{6-7} [main.ts sans auto-imports]
+import '@gouvfr/dsfr/dist/dsfr.main.min.css'
+import '@gouvfr/dsfr/dist/utility/utility.main.min.css'
 
-```vue
+import '@gouvminint/vue-dsfr/styles'
+
+import { createApp } from 'vue'
+import { OhVueIcon, addIcons } from 'oh-vue-icon'
+
+import App from './App.vue'
+import router from './router/index'
+import * as icons from './icons'
+
+import './main.css'
+
+addIcons(...Object.values(icons))
+
+createApp(App)
+  .component('VIcon', OhVueIcon)
+  .use(router)
+  .mount('#app')
+```
+
+```vue [App.vue avec auto-imports]
 <script setup lang="ts">
-useScheme()                       // Autoimporté grâce à vueDsfrAutoimportPreset dans vite.config.ts // [!code warning]
+
+
+useScheme() // Autoimporté grâce à vueDsfrAutoimportPreset dans vite.config.ts // [!code warning]
 
 const serviceTitle = 'Service'
 const serviceDescription = 'Description du service'
@@ -328,36 +339,7 @@ const searchQuery = ref('')
 </template>
 ```
 
-##### Sans les auto-imports
-
-`main.ts`
-
-```typescript{6-7}
-import '@gouvfr/dsfr/dist/dsfr.min.css'
-import '@gouvfr/dsfr/dist/utility/icons/icons.min.css'
-
-import '@gouvminint/vue-dsfr/styles'
-
-import { createApp } from 'vue'
-import { OhVueIcon, addIcons } from 'oh-vue-icon'
-
-import App from './App.vue'
-import router from './router/index'
-import * as icons from './icons'
-
-import './main.css'
-
-addIcons(...Object.values(icons))
-
-createApp(App)
-  .component('VIcon', OhVueIcon)
-  .use(router)
-  .mount('#app')
-```
-
-`App.vue`
-
-```vue{2}
+```vue{2} [App.vue sans auto-imports]
 <script setup lang="ts">
 import { DsfrHeader, useScheme } from '@gouvminint/vue-dsfr'
 
@@ -374,6 +356,7 @@ const searchQuery = ref('')
 </script>
 
 <template>
+
   <DsfrHeader
     v-model="searchQuery"
     :service-title="serviceTitle"
@@ -389,52 +372,40 @@ const searchQuery = ref('')
 </template>
 ```
 
-### Nuxt3
+:::
 
-1. Ajouter les dépendances `@gouvfr/dsfr` et `@gouvminint/vue-dsfr` ainsi que les dépendances de développement `vite` et `vue-dsfr-nuxt-module` au projet
+### Nuxt
+
+1. Ajouter les dépendances `@gouvfr/dsfr` et `@gouvminint/vue-dsfr` au projet
 
 ```bash
 # Avec pnpm
 pnpm add @gouvfr/dsfr @gouvminint/vue-dsfr
-pnpm add -D vue-dsfr-nuxt-module vite
 
 # Avec yarn
 yard add @gouvfr/dsfr @gouvminint/vue-dsfr
-yarn add --dev vue-dsfr-nuxt-module vite
 
 # Avec npm
 npm i @gouvfr/dsfr @gouvminint/vue-dsfr
-npm i -D vue-dsfr-nuxt-module vite
 ```
 
-2. Ajouter `vue-dsfr-nuxt-module` dans la section `modules` de `nuxt.config.ts`
+2. Ajouter le CSS de DSFR et de VueDsfr dans la section `css` de `nuxt.config.ts`
 
-```ts{3}
+```ts{3-9}
 export default defineNuxtConfig({
-  modules: [
-    'vue-dsfr-nuxt-module'
-  ]
-})
-```
-
-3. Ajouter le CSS de DSFR dans la section `css` de `nuxt.config.ts`
-
-```ts{5-11}
-export default defineNuxtConfig({
-  modules: [
-    'vue-dsfr-nuxt-module'
-  ],
   css: [
     '@gouvfr/dsfr/dist/core/core.main.min.css',           // Le CSS minimal du DSFR
     '@gouvfr/dsfr/dist/component/component.main.min.css', // Styles de tous les composants du DSFR
     '@gouvfr/dsfr/dist/utility/utility.main.min.css',     // Classes utilitaires : les composants de VueDsfr en ont besoin, contient aussi les icônes
 
     '@gouvfr/dsfr/dist/scheme/scheme.min.css',            // Facultatif : Si les thèmes sont utilisés (thème sombre, thème en bernes)
+
+    '@gouvminint/vue-dsfr/styles',                        // Styles des composants VueDsfr
   ],
 })
 ```
 
-1. Facultatif : ajouter des icônes à utiliser avec OhVueIcon
+3. Facultatif : ajouter des icônes à utiliser avec OhVueIcon
 
 ```ts{1,14-20}
 import * as icons from './icons'                          // Fichier à créer, voir plus loin
@@ -450,17 +421,23 @@ export default defineNuxtConfig({
 
     '@gouvfr/dsfr/dist/scheme/scheme.min.css',            // Facultatif : Si les thèmes sont utilisés (thème sombre, thème en bernes)
   ],
-  runtimeConfig: {
-    public: {
-      vueDsfr: {
-        icons: Object.values(icons),
-      },
-    },
-  },
 })
 ```
 
-Et ajouter un fichier `icons.ts` à la racine dans lequel sont réexportées depuis `'oh-vue-icons/icons'` les icônes utilisées :
+Ajouter un fichier `vue-dsfr.ts` dans le dossier `plugins` (ou le dossier `client/plugins` si vous avez un dossier `client`), avec ce contenu :
+
+```ts{7}
+import { addIcons } from 'oh-vue-icons'
+import { defineNuxtPlugin } from 'nuxt/app'
+
+import * as icons from '../icons'
+
+export default defineNuxtPlugin((/* nuxtApp */) => {
+  addIcons(...Object.values(icons))
+})
+```
+
+Et ajouter un fichier `icons.ts` à la racine (ou dans le dossier `client`) dans lequel sont réexportées depuis `'oh-vue-icons/icons'` les icônes utilisées :
 
 ```ts
 export {
