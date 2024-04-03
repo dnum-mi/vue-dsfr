@@ -7,7 +7,7 @@ import useToaster from './composables/use-toaster.js'
 
 import DsfrModal from '../src/components/DsfrModal/DsfrModal.vue'
 import DsfrHeader, { type DsfrHeaderProps } from '../src/components/DsfrHeader/DsfrHeader.vue'
-import DsfrNavigation, { DsfrNavigationProps } from '../src/components/DsfrNavigation/DsfrNavigation.vue'
+import DsfrNavigation, { type DsfrNavigationProps } from '../src/components/DsfrNavigation/DsfrNavigation.vue'
 import DsfrSkipLinks, { type DsfrSkipLinksProps } from '../src/components/DsfrSkipLinks/DsfrSkipLinks.vue'
 import DsfrBreadcrumb from '../src/components/DsfrBreadcrumb/DsfrBreadcrumb.vue'
 
