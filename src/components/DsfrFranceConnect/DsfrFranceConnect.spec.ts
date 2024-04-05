@@ -13,9 +13,30 @@ describe('DsfrFranceConnect', () => {
       },
     })
 
-    const link = getByTitle('Qu’est ce que FranceConnect+ ? - nouvelle fenêtre')
+    const link = getByTitle('Qu’est-ce que FranceConnect+ ? - nouvelle fenêtre')
 
     // Then
     expect(link.href).toBe('https://franceconnect.gouv.fr/france-connect-plus')
+  })
+
+  it('should mount DsfrFranceConnect with specific url', () => {
+    // Given
+    const secure = true
+    const url = 'https://specific-domain.gouv.fr/specific-url'
+
+    // When
+    const { getByTitle, getByRole } = render(DsfrFranceConnect, {
+      props: {
+        secure,
+        url,
+      },
+    })
+
+    const link = getByTitle('Qu’est-ce que FranceConnect+ ? - nouvelle fenêtre')
+    const button = getByRole('button')
+
+    // Then
+    expect(link.href).toBe(url)
+    expect(button.textContent).toBe('S’identifier avec FranceConnect+')
   })
 })

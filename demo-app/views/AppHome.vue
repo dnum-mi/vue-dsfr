@@ -101,6 +101,7 @@ const onClick = () => {
       Cliquer pour voir une alerte
     </DsfrButton>
   </p>
+
   <AsyncButton
     :is-loading="isLoading"
     :disabled="disabled"
@@ -108,4 +109,18 @@ const onClick = () => {
   >
     Cliquer pour voir un chargement
   </AsyncButton>
+
+  <p class="fr-my-2v">
+    <DsfrFranceConnect secure />
+  </p>
+
+  <p class="fr-my-2v">
+    <DsfrFranceConnect
+      url="https://example.com"
+      help-title="titre du lien d’aide"
+      help-label="texte du lien d’aide"
+    >
+      <span>Se connecter avec</span>
+    </DsfrFranceConnect>
+  </p>
 </template>
