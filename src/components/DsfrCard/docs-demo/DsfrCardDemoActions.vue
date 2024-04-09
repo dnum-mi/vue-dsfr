@@ -1,5 +1,11 @@
 <script lang="ts" setup>
+import { OhVueIcon as VICon } from 'oh-vue-icons'
+import { getCurrentInstance } from 'vue'
+
 import DsfrCard from '../DsfrCard.vue'
+
+const app = getCurrentInstance()
+app?.appContext.app.component('VICon', VICon)
 
 const description = 'Description exceptionellement précise'
 const detail = 'Détails absolument essentiels'
@@ -7,7 +13,7 @@ const detailIcon = 'Détails absolument essentiels'
 const endDetail = 'Autres détails absolument essentiels'
 const endDetailIcon = 'fr-icon-arrow-right-line'
 const altImg = 'Un adorable quoique redoutable chaton'
-const imgSrc = 'https://placekitten.com/450/400'
+const imgSrc = 'https://loremflickr.com/450/400/cat'
 
 const actions = [
   {

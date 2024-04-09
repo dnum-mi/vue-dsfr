@@ -35,21 +35,21 @@ Autres props :
 
 |  Nom                   |   Type      |  Défaut         | Obligatoire        | Description |
 | ---------------------- | ---------   | --------------- | ------------------ | ---- |
+| `title`                | *`string`*  |                 | ✅                 | Titre de la carte |
+| `description`          | *`string`*  |                 | ✅                 | Description de la carte |
 | `altImg`               | *`string`*  | `''`            |                    | Contenu de l’attribut `alt` de l’image de la carte |
 | `buttons`              | [*`DsfrButtonProps[]`*](/types#dsfrbutton-et-dsfrbuttongroup)  | `[]`            |                    | Tableau de props à donner à DsfrButton |
 | `detail`               | *`string`*  | `''`            |                    | Texte à mettre dans la première zone de détail |
 | `detailIcon`           | *`string`*  | `''`            |                    | Icône à mettre dans la première zone de détail ([nom d’une icône `oh-vue-icon` ou `DSFR`](/guide/icones)) |
 | `endDetail`            | *`string`*  | `''`            |                    | Texte à mettre dans la deuxième zone de détail |
-| `endDetailIcon         | *`string`*  | `''`            |                    | Icône à mettre dans la deuxième zone de détail ([nom d’une icône `oh-vue-icon` ou `DSFR`](/guide/icones)) |
-| `description`          | *`string`*  |                 | ✅                 | Description de la carte |
+| `endDetailIcon`         | *`string`*  | `''`            |                    | Icône à mettre dans la deuxième zone de détail ([nom d’une icône `oh-vue-icon` ou `DSFR`](/guide/icones)) |
 | `download`             | *`boolean`* | `false`         |                    | Est-ce que cette carte permet de télécharger un fichier ? |
 | `horizontal`           | *`boolean`* | `false`         |                    | Est-ce que la carte doit être affiché avec l’image et le texte au même niveau ? |
 | `imgSrc`               | *`string`*  | `''`            |                    | URL vers l’image |
 | `link`                 | *`string`*  | `''`            |                    | Lien vers lequel la carte pointe |
 | `linksGroup`           | *`({ label: string, to?: RouteLocationRaw, link?: string, href?: string })[]`*  | `[]`            |                    | liste de liens : objet contenant `to` ou `href` pour le lien et `label` avec le texte du lien |
-| `size`                 | *`'md' | 'medium' | 'large' | 'lg' | 'sm' | 'small' | undefined`*  | `'md'`          |                    | Taille de la carte |
-| `imgRatio`             | *`'md' | 'medium' | 'large' | 'lg' | 'sm' | 'small' | undefined`*  | `'md'`          |                    |
-| `title`                | *`string`*  |                 | ✅                 | Titre de la carte |
+| `size`                 | *`'md'* \| 'medium' \| 'large' \| 'lg' \| 'sm' \| 'small' \| undefined`*  | `'md'`          |                    | Taille de la carte |
+| `imgRatio`             | *`'md' \| 'medium' \| 'large' \| 'lg' \ 'sm' \ 'small' \ undefined`*  | `'md'`          |                    |
 | `titleTag`             | [*`TitleTag`*](/docs/types.md#title-tag "'h1' \| 'h2' \| 'h3' \| 'h4' \| 'h5' \| 'h6'") | `'h3'`          |          | Balise du titre de la carte |
 
 ## 🧩 Slots

@@ -53,8 +53,13 @@ Le storybook est toujours disponible [ici](https://storybook.vue-ds.fr)
 
 ## Formulaire (éléments de)
 
-- [DsfrFileUpload](./composants/DsfrInputGroup)
+- [DsfrFileUpload](./composants/DsfrFileUpload)
+- [DsfrFileDownload](./composants/DsfrFileDownload)
 - [DsfrInput](./composants/DsfrInput)
+- [DsfrRadioButton](./composants/DsfrRadioButton)
+- [DsfrRadioButtonSet](./composants/DsfrRadioButtonSet)
+- [DsfrCheckbox](./composants/DsfrCheckbox)
+- [DsfrCheckboxSet](./composants/DsfrCheckboxSet)
 - [DsfrInputGroup](./composants/DsfrInputGroup)
 - [DsfrRange](./composants/DsfrRange)
 

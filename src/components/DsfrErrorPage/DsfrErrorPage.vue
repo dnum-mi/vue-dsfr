@@ -17,11 +17,11 @@ withDefaults(defineProps<DsfrErrorPageProps>(), {
 <template>
   <div class="fr-container  flex">
     <div class="half">
-      <h1 class="font-25">
+      <h1 class="fr-h1">
         {{ title }}
       </h1>
-      <span class="block mt-15  mb-15">{{ subtitle }}</span>
-      <p class="font-125">
+      <span class="flex fr-my-md-3w">{{ subtitle }}</span>
+      <p class="fr-h6">
         {{ description }}
       </p>
       <p>{{ help }}</p>
@@ -43,42 +43,20 @@ withDefaults(defineProps<DsfrErrorPageProps>(), {
 </template>
 
 <style scoped>
+.flex {
+  display: flex;
+}
 
-  .flex {
-    display: flex;
-  }
+.half {
+  max-width: 50%;
+  width: 50%;
+}
 
-  .block {
-    display: flex;
-  }
+.self-center {
+  align-self: center;
+}
 
-  .half {
-    max-width: 50%;
-    width: 50%;
-  }
-
-  .self-center {
-    align-self: center;
-  }
-
-  .text-center {
-    text-align: center;
-  }
-
-  .mt-15 {
-    margin-top: 1.5rem;
-  }
-
-  .mb-15 {
-    margin-bottom: 1.5rem;
-  }
-
-  .font-125 {
-    font-size: 1.25rem;
-  }
-
-  .font-25 {
-    font-size: 2.5rem;
-  }
-
+.text-center {
+  text-align: center;
+}
 </style>

@@ -20,7 +20,7 @@ describe('DsfrQuote', () => {
     const illustration = 'illustration'
     const source = 'Duckduckgo'
     const sourceUrl = 'https://www.duckduckgo.com'
-    const quoteImage = 'https://placekitten.com/g/150/150'
+    const quoteImage = 'https://loremflickr.com/g/150/150/cat?random=1'
 
     const { container, getByText } = render(DsfrQuote, {
       global: {

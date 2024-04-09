@@ -67,7 +67,7 @@ Citation.args = {
   ],
   source: 'Duckduckgo',
   sourceUrl: 'https://www.duckduckgo.com',
-  quoteImage: 'https://placekitten.com/g/150/150',
+  quoteImage: 'https://loremflickr.com/g/150/150/cat?random=1',
 }
 
 export const CitationSansImage = (args) => ({

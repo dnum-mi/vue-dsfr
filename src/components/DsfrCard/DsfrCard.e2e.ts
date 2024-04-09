@@ -20,7 +20,7 @@ const RouterLink = {
 
 describe('DsfrCard', () => {
   it('should mount DsfrCard', () => {
-    const imgSrc = 'https://placekitten.com/500/300'
+    const imgSrc = 'https://loremflickr.com/500/300/cat'
     const link = 'https://www.systeme-de-design.gouv.fr/'
     const title = 'Le GROS titre'
     const description = 'La GROSSE description'
