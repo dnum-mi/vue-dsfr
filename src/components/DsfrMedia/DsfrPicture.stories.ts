@@ -53,7 +53,7 @@ export const ImageSrc = (args) => ({
 })
 ImageSrc.args = {
   size: 'medium',
-  src: 'https://placekitten.com/300/200',
+  src: 'https://loremflickr.com/300/200/cat',
   alt: '',
   title: 'Photographie d’un chaton',
   legend: 'Photographie d’un chaton',

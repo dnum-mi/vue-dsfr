@@ -1,6 +1,12 @@
 <script lang="ts" setup>
+import { OhVueIcon as VICon } from 'oh-vue-icons'
+import { getCurrentInstance } from 'vue'
+
 import DsfrCard from '../DsfrCard.vue'
 import DsfrTags from '../../DsfrTag/DsfrTags.vue'
+
+const app = getCurrentInstance()
+app?.appContext.app.component('VICon', VICon)
 
 const link = 'https://www.systeme-de-design.gouv.fr/elements-d-interface/composants/carte'
 const description = 'Description exceptionellement précise'
@@ -9,7 +15,7 @@ const detailIcon = 'Détails absolument essentiels'
 const endDetail = 'Autres détails absolument essentiels'
 const endDetailIcon = 'fr-icon-arrow-right-line'
 const altImg = 'Un adorable quoique redoutable chaton'
-const imgSrc = 'https://placekitten.com/450/400'
+const imgSrc = 'https://loremflickr.com/450/400/cat'
 
 const exampleTags = [
   {

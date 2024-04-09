@@ -115,6 +115,14 @@ const composants = [
     link: '/composants/DsfrCard.md',
   },
   {
+    text: 'DsfrCheckbox',
+    link: '/composants/DsfrCheckbox.md',
+  },
+  {
+    text: 'DsfrCheckboxSet',
+    link: '/composants/DsfrCheckboxSet.md',
+  },
+  {
     text: 'DsfrConsent',
     link: '/composants/DsfrConsent.md',
   },
@@ -177,6 +185,14 @@ const composants = [
   {
     text: 'DsfrNotice',
     link: '/composants/DsfrNotice.md',
+  },
+  {
+    text: 'DsfrRadioButton',
+    link: '/composants/DsfrRadioButton.md',
+  },
+  {
+    text: 'DsfrRadioButtonSet',
+    link: '/composants/DsfrRadioButtonSet.md',
   },
   {
     text: 'DsfrRange',

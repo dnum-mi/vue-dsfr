@@ -16,7 +16,7 @@ export type DsfrRadioButtonSetProps = {
   required?: boolean,
   small?: boolean,
   inline?: boolean,
-  name: string,
+  name?: string,
   errorMessage?: string,
   validMessage?: string,
   legend?: string,

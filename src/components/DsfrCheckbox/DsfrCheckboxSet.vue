@@ -40,7 +40,7 @@ const onChange = ({ name, checked }: { name: string, checked: boolean }) => {
       class="fr-fieldset"
       :class="{
         'fr-fieldset--error': errorMessage,
-        'fr-fieldset--valid': validMessage,
+        'fr-fieldset--valid': !errorMessage && validMessage,
       }"
       :disabled="disabled"
       :aria-labelledby="`${titleId} messages-${titleId}`"

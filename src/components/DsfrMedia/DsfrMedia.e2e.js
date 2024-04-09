@@ -3,7 +3,7 @@ import DsfrVideo from './DsfrVideo.vue'
 import '../../main.css'
 
 let size = 'medium'
-let src = 'https://placekitten.com/300/200'
+let src = 'https://loremflickr.com/300/200/cat'
 const alt = ''
 let legend = 'Photographie d’un chaton'
 

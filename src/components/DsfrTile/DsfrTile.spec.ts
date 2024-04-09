@@ -17,7 +17,7 @@ const router = createRouter({
 describe('DsfrTile', () => {
   it('should display a vertical tile', async () => {
     const title = 'Titre de la tuile'
-    const imgSrc = 'https://placekitten.com/80/80'
+    const imgSrc = 'https://loremflickr.com/80/80/cat?random=1'
     const description = 'Lorem ipsum dolor sit amet, consectetur adipiscing, incididunt, ut labore et dol'
 
     const { getByText } = render(DsfrTile, {
@@ -28,7 +28,7 @@ describe('DsfrTile', () => {
         title,
         imgSrc,
         description,
-        to: 'https://placekitten.com/80/80',
+        to: 'https://loremflickr.com/80/80/cat?random=2',
       },
     })
 
@@ -43,7 +43,7 @@ describe('DsfrTile', () => {
 
   it('should display a horizontal tile', async () => {
     const title = 'Titre de la tuile'
-    const imgSrc = 'https://placekitten.com/80/80'
+    const imgSrc = 'https://loremflickr.com/80/80/cat?random=3'
     const description = 'Lorem ipsum dolor sit amet, consectetur adipiscing, incididunt, ut labore et dol'
     const horizontal = true
 
@@ -56,7 +56,7 @@ describe('DsfrTile', () => {
         imgSrc,
         description,
         horizontal,
-        to: 'https://placekitten.com/80/80',
+        to: 'https://loremflickr.com/80/80/cat?random=4',
       },
     })
 
@@ -71,7 +71,7 @@ describe('DsfrTile', () => {
 
   it('should display a tile with a download link', async () => {
     const title = 'Titre de la tuile'
-    const imgSrc = 'https://placekitten.com/80/80'
+    const imgSrc = 'https://loremflickr.com/80/80/cat?random=5'
     const description = 'Lorem ipsum dolor sit amet, consectetur adipiscing, incididunt, ut labore et dol'
     const download = true
     const { getByText } = render(DsfrTile, {
@@ -83,7 +83,7 @@ describe('DsfrTile', () => {
         imgSrc,
         description,
         download,
-        to: 'https://placekitten.com/80/80',
+        to: 'https://loremflickr.com/80/80/cat?random=6',
       },
     })
 
