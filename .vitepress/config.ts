@@ -151,6 +151,10 @@ const composants = [
     link: '/composants/DsfrFooterPartners.md',
   },
   {
+    text: 'DsfrFranceConnect',
+    link: '/composants/DsfrFranceConnect.md',
+  },
+  {
     text: 'DsfrHeader',
     link: '/composants/DsfrHeader.md',
   },

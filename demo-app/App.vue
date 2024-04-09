@@ -263,7 +263,7 @@ const search = ref('')
       </template>
     </DsfrHeader>
 
-    <main class="fr-container">
+    <main class="fr-container fr-pb-2w">
       <h1>Demo VueDsfr</h1>
 
       <DsfrBreadcrumb

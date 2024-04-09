@@ -1,1 +1,4 @@
-export type DsfrFranceConnectProps = {secure: boolean}
+export type DsfrFranceConnectProps = {
+  secure?: boolean
+  url?: string
+}
