@@ -198,6 +198,10 @@ const navItems: DsfrNavigationProps['navItems'] = [
       },
     ],
   },
+  {
+    to: { name: 'Tags' },
+    text: 'Tags',
+  },
 ]
 
 const beforeMandatoryLinks = [{ label: 'Before', to: '/before' }]

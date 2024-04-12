@@ -40,7 +40,7 @@ const iconProps = computed(() => dsfrIcon.value ? undefined : typeof props.icon 
     v-bind="linkProps"
   >
     <VIcon
-      v-if="iconProps"
+      v-if="props.icon"
       :label="iconOnly ? label : undefined"
       v-bind="iconProps"
     />

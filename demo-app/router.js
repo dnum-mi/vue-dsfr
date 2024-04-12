@@ -4,6 +4,7 @@ import AboutUs from './views/AboutUs.vue'
 import AppHome from './views/AppHome.vue'
 import AppAlerts from './views/AppAlerts.vue'
 import AppTabs from './views/AppTabs.vue'
+import AppTags from './views/AppTags.vue'
 import SchemeSettings from './views/SchemeSettings.vue'
 import LanguageSelector from './views/LanguageSelector.vue'
 import AppForm from './views/AppForm.vue'
@@ -27,6 +28,7 @@ export const routes = [
   { path: '/alerts', name: 'Alertes', component: AppAlerts },
   { path: '/bandeaux', name: 'Bandeaux', component: AppAlerts },
   { path: '/callout', name: 'MiseEnAvant', component: CalloutTest },
+  { path: '/tags', name: 'Tags', component: AppTags },
 ]
 
 export default createRouter({
