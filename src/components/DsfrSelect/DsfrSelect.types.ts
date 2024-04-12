@@ -2,6 +2,7 @@ export type DsfrSelectProps = {
   required?: boolean
   disabled?: boolean
   selectId?: string
+  name?: string
   description?: string
   modelValue?: string | number
   label?: string
