@@ -50,7 +50,6 @@ const options5 = structuredClone(options1).map(option => Object.fromEntries(
 const options6 = structuredClone(options1).map(option => Object.fromEntries(
   Object.entries(option).filter(([key]) => key !== 'hint').map(([key, value]) => [key, value.replace('name1', 'name6')]),
 ))
-
 </script>
 
 <template>

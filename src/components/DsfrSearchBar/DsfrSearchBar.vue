@@ -1,6 +1,4 @@
 <script lang="ts" setup>
-import { watch } from 'vue'
-
 import { getRandomId } from '../../utils/random-utils'
 
 import DsfrInput from '../DsfrInput/DsfrInput.vue'
@@ -10,7 +8,7 @@ import type { DsfrSearchBarProps } from './DsfrSearchBar.types'
 
 export type { DsfrSearchBarProps }
 
-const props = withDefaults(defineProps<DsfrSearchBarProps>(), {
+withDefaults(defineProps<DsfrSearchBarProps>(), {
   id: () => getRandomId('search', 'input'),
   label: '',
   buttonText: '',
@@ -23,10 +21,6 @@ const emit = defineEmits<{
   (e: 'update:modelValue', payload: string): void,
   (e: 'search', payload: string): void,
 }>()
-
-watch(() => props.modelValue, (newValue) => {
-  console.log('modelValue', newValue)
-})
 </script>
 
 <template>
