@@ -80,7 +80,7 @@ function selectTab (idx) {
       <DsfrCard
         detail="detail"
         description="description"
-        img-src="https://placekitten.com/300/200"
+        img-src="https://loremflickr.com/300/200/cat"
         title="title"
       />
     </DsfrTabContent>

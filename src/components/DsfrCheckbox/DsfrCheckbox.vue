@@ -6,6 +6,10 @@ import type { DsfrCheckboxProps } from './DsfrCheckbox.types'
 
 export type { DsfrCheckboxProps }
 
+defineOptions({
+  inheritAttrs: false,
+})
+
 const props = withDefaults(defineProps<DsfrCheckboxProps>(), {
   id: () => getRandomId('basic', 'checkbox'),
   hint: '',
@@ -35,7 +39,7 @@ const emitNewValue = ($event: InputEvent) => {
       class="fr-checkbox-group"
       :class="{
         'fr-checkbox-group--error': errorMessage,
-        'fr-checkbox-group--valid': validMessage,
+        'fr-checkbox-group--valid': !errorMessage && validMessage,
         'fr-checkbox-group--sm': small,
       }"
     >

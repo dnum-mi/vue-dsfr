@@ -28,8 +28,8 @@ describe('DsfrTiles', () => {
   it('should display two vertical tiles', async () => {
     const title1 = 'Titre de la tuile 1'
     const title2 = 'Titre de la tuile 2'
-    const imgSrc1 = 'https://placekitten.com/80/81'
-    const imgSrc2 = 'https://placekitten.com/80/82'
+    const imgSrc1 = 'https://loremflickr.com/80/80/cat?random=1'
+    const imgSrc2 = 'https://loremflickr.com/80/80/cat?random=2'
     const description1 = 'Description 1'
     const description2 = 'Description 2'
 
@@ -71,8 +71,8 @@ describe('DsfrTiles', () => {
   it('should display 2 horizontal tiles', async () => {
     const title1 = 'Titre de la tuile 1'
     const title2 = 'Titre de la tuile 2'
-    const imgSrc1 = 'https://placekitten.com/80/81'
-    const imgSrc2 = 'https://placekitten.com/80/82'
+    const imgSrc1 = 'https://loremflickr.com/80/80/cat?random=3'
+    const imgSrc2 = 'https://loremflickr.com/80/80/cat?random=4'
     const description1 = 'Description 1'
     const description2 = 'Description 2'
     const horizontal = true
@@ -113,8 +113,8 @@ describe('DsfrTiles', () => {
   it('should display 1 disabled and 1 enabled tile', async () => {
     const title1 = 'Titre de la tuile 1'
     const title2 = 'Titre de la tuile 2'
-    const imgSrc1 = 'https://placekitten.com/80/81'
-    const imgSrc2 = 'https://placekitten.com/80/82'
+    const imgSrc1 = 'https://loremflickr.com/80/80/cat?random=5'
+    const imgSrc2 = 'https://loremflickr.com/80/80/cat?random=6'
     const description1 = 'Description 1'
     const description2 = 'Description 2'
 
@@ -154,7 +154,7 @@ describe('DsfrTiles', () => {
   it('should display a tile with a download link and one without', async () => {
     const title1 = 'Titre de la tuile 1'
     const title2 = 'Titre de la tuile 2'
-    const imgSrc = 'https://placekitten.com/80/80'
+    const imgSrc = 'https://loremflickr.com/80/80/cat?random=7'
 
     const tiles = [
       {

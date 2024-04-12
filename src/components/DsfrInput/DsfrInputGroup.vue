@@ -9,6 +9,10 @@ import type { DsfrInputGroupProps } from './DsfrInput.types'
 
 export type { DsfrInputGroupProps }
 
+defineOptions({
+  inheritAttrs: false,
+})
+
 const props = withDefaults(defineProps<DsfrInputGroupProps>(), {
   descriptionId: () => getRandomId('basic', 'input'),
   hint: '',
@@ -30,10 +34,13 @@ const messageClass = computed(() => props.errorMessage ? 'fr-error-text' : 'fr-v
 <template>
   <div
     class="fr-input-group"
-    :class="{
-      'fr-input-group--error': errorMessage,
-      'fr-input-group--valid': validMessage,
-    }"
+    :class="[
+      {
+        'fr-input-group--error': errorMessage,
+        'fr-input-group--valid': validMessage,
+      },
+      wrapperClass
+    ]"
   >
     <slot name="before-input" />
     <!-- @slot Slot par défaut pour le contenu du groupe de champ -->

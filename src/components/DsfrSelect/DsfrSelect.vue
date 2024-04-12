@@ -15,6 +15,7 @@ const props = withDefaults(defineProps<DsfrSelectProps>(), {
   modelValue: undefined,
   options: () => [],
   label: '',
+  name: undefined,
   description: undefined,
   successMessage: '',
   errorMessage: '',
@@ -62,7 +63,7 @@ const messageType = computed(() => {
       :id="selectId"
       :class="{ [`fr-select--${messageType}`]: message }"
       class="fr-select"
-      :name="selectId"
+      :name="name || selectId"
       :disabled="disabled"
       :required="required"
       @change="$emit('update:modelValue',($event.target as HTMLInputElement)?.value)"

@@ -115,6 +115,14 @@ const composants = [
     link: '/composants/DsfrCard.md',
   },
   {
+    text: 'DsfrCheckbox',
+    link: '/composants/DsfrCheckbox.md',
+  },
+  {
+    text: 'DsfrCheckboxSet',
+    link: '/composants/DsfrCheckboxSet.md',
+  },
+  {
     text: 'DsfrConsent',
     link: '/composants/DsfrConsent.md',
   },
@@ -151,6 +159,10 @@ const composants = [
     link: '/composants/DsfrFooterPartners.md',
   },
   {
+    text: 'DsfrFranceConnect',
+    link: '/composants/DsfrFranceConnect.md',
+  },
+  {
     text: 'DsfrHeader',
     link: '/composants/DsfrHeader.md',
   },
@@ -173,6 +185,14 @@ const composants = [
   {
     text: 'DsfrNotice',
     link: '/composants/DsfrNotice.md',
+  },
+  {
+    text: 'DsfrRadioButton',
+    link: '/composants/DsfrRadioButton.md',
+  },
+  {
+    text: 'DsfrRadioButtonSet',
+    link: '/composants/DsfrRadioButtonSet.md',
   },
   {
     text: 'DsfrRange',

@@ -198,6 +198,10 @@ const navItems: DsfrNavigationProps['navItems'] = [
       },
     ],
   },
+  {
+    to: { name: 'Tags' },
+    text: 'Tags',
+  },
 ]
 
 const beforeMandatoryLinks = [{ label: 'Before', to: '/before' }]
@@ -263,7 +267,7 @@ const search = ref('')
       </template>
     </DsfrHeader>
 
-    <main class="fr-container">
+    <main class="fr-container fr-pb-2w">
       <h1>Demo VueDsfr</h1>
 
       <DsfrBreadcrumb
