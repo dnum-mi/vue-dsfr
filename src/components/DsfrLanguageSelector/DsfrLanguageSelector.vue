@@ -3,9 +3,9 @@ import { computed, ref, watch } from 'vue'
 import { getRandomId } from '../../utils/random-utils'
 import { useCollapsable } from '../../composables'
 
-import type { DsfrlanguageSelectorProps } from './DsfrLanguageSelector.types'
+import type { DsfrLanguageSelectorProps, DsfrLanguageSelectorElement } from './DsfrLanguageSelector.types'
 
-export type { DsfrlanguageSelectorProps }
+export type { DsfrLanguageSelectorProps, DsfrLanguageSelectorElement }
 
 const {
   collapse,
@@ -15,7 +15,7 @@ const {
   onTransitionEnd,
 } = useCollapsable()
 
-const props = withDefaults(defineProps<DsfrlanguageSelectorProps>(), {
+const props = withDefaults(defineProps<DsfrLanguageSelectorProps>(), {
   id: () => getRandomId('translate'),
   languages: () => [],
   currentLanguage: 'fr',
@@ -23,9 +23,8 @@ const props = withDefaults(defineProps<DsfrlanguageSelectorProps>(), {
 
 const expanded = ref(false)
 
-type Language = { codeIso: string, label: string }
-const emit = defineEmits<{(e: 'select', payload: Language): void}>()
-function selectLanguage (language: Language) {
+const emit = defineEmits<{(e: 'select', payload: DsfrLanguageSelectorElement): void}>()
+function selectLanguage (language: DsfrLanguageSelectorElement) {
   expanded.value = false
   emit('select', language)
 }
@@ -39,7 +38,6 @@ watch(expanded, (newValue, oldValue) => {
     doExpand(newValue)
   }
 })
-
 </script>
 
 <template>

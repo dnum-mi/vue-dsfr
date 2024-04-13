@@ -1,5 +1,10 @@
-export type DsfrlanguageSelectorProps = {
+export type DsfrLanguageSelectorElement = {
+  codeIso: string
+  label: string
+}
+
+export type DsfrLanguageSelectorProps = {
   id?: string,
-  languages?: { codeIso: string; label: string }[]
+  languages: DsfrLanguageSelectorElement[]
   currentLanguage?: string
 }

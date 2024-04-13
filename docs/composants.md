@@ -41,6 +41,7 @@ Le storybook est toujours disponible [ici](https://storybook.vue-ds.fr)
 
 - [DsfrHeader](./composants/DsfrHeader)
 - [DsfrHeaderMenuLink](./composants/DsfrHeaderMenuLink)
+- [DsfrLanguageSelector](./composants/DsfrLanguageSelector)
 
 ## Pied de page
 

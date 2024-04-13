@@ -1,6 +1,7 @@
 import type { HTMLAttributes, StyleValue } from 'vue'
 import type { RouteLocationRaw } from 'vue-router'
 import type { OhVueIcon as VIcon } from 'oh-vue-icons'
+import type { DsfrLanguageSelectorProps } from '../DsfrLanguageSelector/DsfrLanguageSelector.types'
 
 export type DsfrHeaderMenuLinkProps = {
   button?: boolean
@@ -26,6 +27,7 @@ export type DsfrHeaderProps = {
   operatorImgStyle?: StyleValue
   placeholder?: string
   quickLinks?: DsfrHeaderMenuLinkProps[]
+  languageSelector?: DsfrLanguageSelectorProps
   searchLabel?: string
   quickLinksAriaLabel?: string
   showSearch?: boolean
