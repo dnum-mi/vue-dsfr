@@ -1,6 +1,3 @@
-import DsfrHeader from './DsfrHeader.vue'
-import DsfrNavigation from '../DsfrNavigation/DsfrNavigation.vue'
-
 import { addIcons } from 'oh-vue-icons'
 
 import {
@@ -8,6 +5,11 @@ import {
   RiLockLine,
   RiAccountCircleLine,
 } from 'oh-vue-icons/icons'
+
+import DsfrHeader from './DsfrHeader.vue'
+import DsfrNavigation from '../DsfrNavigation/DsfrNavigation.vue'
+import { DsfrLanguageSelectorElement } from '../DsfrLanguageSelector/DsfrLanguageSelector.types'
+
 addIcons(
   RiAddCircleLine,
   RiLockLine,
@@ -443,4 +445,77 @@ EnTeteAvecBadgeBeta.args = {
   placeholder: '',
   homeTo: '#',
   quickLinks: [],
+}
+
+export const EnTeteAvecSelecteurDeLangue = (args) => ({
+  components: {
+    DsfrHeader,
+  },
+  setup () {
+    return {
+      ...args,
+      quickLincks: args.quickLinks.map((link, idx) => {
+        if (idx === 0) {
+          link.onClick = ($event) => {
+            $event.preventDefault()
+            this.actionOnLink()
+          }
+        }
+        return link
+      }),
+    }
+  },
+
+  template: `
+    <DsfrHeader
+      :service-title="serviceTitle"
+      :service-description="serviceDescription"
+      :home-to="homeTo"
+      :quick-links="quickLinks"
+      :show-search="showSearch"
+      :logo-text="logoText"
+      :show-beta="showBeta"
+      v-model="modelValue"
+      :language-selector="languageSelector"
+      @click="onClickOnLogo"
+      @search="onSearch($event)"
+      @language-select="selectLanguage($event)"
+    />
+  `,
+
+  methods: {
+    onClickOnLogo ($event) {
+      $event.preventDefault()
+      $event.stopPropagation()
+      this.actionOnLogo($event)
+    },
+    selectLanguage ({ codeIso }: DsfrLanguageSelectorElement) {
+      this.languageSelector.currentLanguage = codeIso
+    },
+  },
+
+})
+EnTeteAvecSelecteurDeLangue.args = {
+  showSearch: false,
+  showBeta: true,
+  logoText: ['Ministère', 'de l’intérieur'],
+  serviceTitle: 'Nom du Site/Service',
+  serviceDescription: 'baseline - précisions sur l‘organisation',
+  modelValue: '',
+  placeholder: '',
+  homeTo: '#',
+  quickLinks: [
+    { label: 'Créer un espace', to: '/space/create', icon: 'ri-add-circle-line', iconAttrs: { scale: 0.9 } },
+    { label: 'Se connecter', to: '/login', class: 'fr-fi-lock-line', target: '_blank' },
+    { label: 'S’enregistrer', to: '/signin', icon: 'ri-account-circle-line', iconRight: true, iconAttrs: { animation: 'spin', speed: 'slow' } },
+  ],
+  languageSelector: {
+    id: 'language-selector-in-header',
+    currentLanguage: 'fr',
+    languages: [
+      { label: 'Français', codeIso: 'fr' },
+      { label: 'English', codeIso: 'en' },
+      { label: 'Deutsch', codeIso: 'de' },
+    ],
+  },
 }

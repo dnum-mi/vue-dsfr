@@ -1,9 +1,10 @@
 <script lang="ts" setup>
-import { computed, onMounted, onUnmounted, ref, useSlots } from 'vue'
+import { computed, onMounted, onUnmounted, ref, toRef, useSlots } from 'vue'
 
 import DsfrLogo from '../DsfrLogo/DsfrLogo.vue'
 import DsfrSearchBar from '../DsfrSearchBar/DsfrSearchBar.vue'
 import DsfrHeaderMenuLinks from './DsfrHeaderMenuLinks.vue'
+import DsfrLanguageSelector, { type DsfrLanguageSelectorElement } from '../DsfrLanguageSelector/DsfrLanguageSelector.vue'
 
 import type { DsfrHeaderProps } from './DsfrHeader.types'
 
@@ -11,6 +12,7 @@ export type { DsfrHeaderProps }
 
 const props = withDefaults(defineProps<DsfrHeaderProps>(), {
   searchbarId: 'searchbar-header',
+  languageSelector: undefined,
   serviceTitle: undefined,
   serviceDescription: undefined,
   homeTo: '/',
@@ -24,6 +26,8 @@ const props = withDefaults(defineProps<DsfrHeaderProps>(), {
   searchLabel: 'Recherche',
   quickLinksAriaLabel: 'Menu secondaire',
 })
+
+const languageSelector = toRef(props, 'languageSelector')
 
 const onKeyDown = (e: KeyboardEvent) => {
   if (e.key === 'Escape') {
@@ -65,9 +69,10 @@ const isWithSlotOperator = computed(() => Boolean(slots.operator?.().length) || 
 const isWithSlotNav = computed(() => Boolean(slots.mainnav))
 
 // eslint-disable-next-line func-call-spacing
-defineEmits<{
+const emit = defineEmits<{
   (e: 'update:modelValue', payload: string): void,
   (e: 'search', payload: string): void,
+  (e: 'language-select', payload: DsfrLanguageSelectorElement): void,
 }>()
 </script>
 
@@ -166,16 +171,20 @@ defineEmits<{
           </div>
           <div class="fr-header__tools">
             <div
-              v-if="quickLinks?.length"
+              v-if="quickLinks?.length || languageSelector"
               class="fr-header__tools-links"
             >
-              <nav role="navigation">
-                <DsfrHeaderMenuLinks
-                  v-if="!menuOpened"
-                  :links="quickLinks"
-                  :nav-aria-label="quickLinksAriaLabel"
+              <DsfrHeaderMenuLinks
+                v-if="!menuOpened"
+                :links="quickLinks"
+                :nav-aria-label="quickLinksAriaLabel"
+              />
+              <template v-if="languageSelector">
+                <DsfrLanguageSelector
+                  v-bind="languageSelector"
+                  @select="emit('language-select', $event)"
                 />
-              </nav>
+              </template>
             </div>
             <div
               v-if="showSearch"
@@ -187,14 +196,14 @@ defineEmits<{
                 :model-value="modelValue"
                 :placeholder="placeholder"
                 style="justify-content: flex-end"
-                @update:model-value="$emit('update:modelValue', $event)"
-                @search="$emit('search', $event)"
+                @update:model-value="emit('update:modelValue', $event)"
+                @search="emit('search', $event)"
               />
             </div>
           </div>
         </div>
         <div
-          v-if="showSearch || isWithSlotNav || (quickLinks && quickLinks.length)"
+          v-if="showSearch || isWithSlotNav || (quickLinks && quickLinks.length) || languageSelector"
           id="header-navigation"
           class="fr-header__menu  fr-modal"
           :class="{ 'fr-modal--opened': modalOpened }"
@@ -213,6 +222,12 @@ defineEmits<{
               Fermer
             </button>
             <div class="fr-header__menu-links">
+              <template v-if="languageSelector">
+                <DsfrLanguageSelector
+                  v-bind="languageSelector"
+                  @select="languageSelector.currentLanguage = $event.codeIso"
+                />
+              </template>
               <nav role="navigation">
                 <DsfrHeaderMenuLinks
                   v-if="menuOpened"
@@ -223,6 +238,7 @@ defineEmits<{
                 />
               </nav>
             </div>
+
             <template v-if="modalOpened">
               <slot
                 name="mainnav"
@@ -237,8 +253,8 @@ defineEmits<{
                 :searchbar-id="searchbarId"
                 :model-value="modelValue"
                 :placeholder="placeholder"
-                @update:model-value="$emit('update:modelValue', $event)"
-                @search="$emit('search', $event)"
+                @update:model-value="emit('update:modelValue', $event)"
+                @search="emit('search', $event)"
               />
             </div>
           </div>

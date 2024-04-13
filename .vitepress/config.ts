@@ -183,6 +183,10 @@ const composants = [
     link: '/composants/DsfrInputGroup.md',
   },
   {
+    text: 'DsfrLanguageSelector',
+    link: '/composants/DsfrLanguageSelector.md',
+  },
+  {
     text: 'DsfrNotice',
     link: '/composants/DsfrNotice.md',
   },
