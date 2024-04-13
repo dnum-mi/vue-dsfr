@@ -7,7 +7,6 @@ const size = ref('1Mo')
 const href = ref('#')
 const download = ref('')
 const title = ref('Télécharger le manuel d\'utilisation du grille pain Malinox')
-
 </script>
 
 <template>
