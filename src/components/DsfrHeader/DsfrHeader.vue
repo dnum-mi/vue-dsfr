@@ -169,13 +169,11 @@ defineEmits<{
               v-if="quickLinks?.length"
               class="fr-header__tools-links"
             >
-              <nav role="navigation">
-                <DsfrHeaderMenuLinks
-                  v-if="!menuOpened"
-                  :links="quickLinks"
-                  :nav-aria-label="quickLinksAriaLabel"
-                />
-              </nav>
+              <DsfrHeaderMenuLinks
+                v-if="!menuOpened"
+                :links="quickLinks"
+                :nav-aria-label="quickLinksAriaLabel"
+              />
             </div>
             <div
               v-if="showSearch"
