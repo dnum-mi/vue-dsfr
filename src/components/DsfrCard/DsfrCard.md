@@ -56,6 +56,9 @@ Autres props :
 
 `start-details`  permet de placer une précision, sous forme de tags (cliquables ou non)
 
+cf. DSFR : [Composant - Tag](https://www.systeme-de-design.gouv.fr/elements-d-interface/composants/tag) ou [Composant - Badge](https://www.systeme-de-design.gouv.fr/elements-d-interface/composants/badge) (jusqu'à 4 éléments)
+cf. DSFR : [Composant - Carte](https://www.systeme-de-design.gouv.fr/elements-d-interface/composants/carte/).
+
 ## 📝 Exemples
 
 ### 📝 Exemple avec tags sans actions
