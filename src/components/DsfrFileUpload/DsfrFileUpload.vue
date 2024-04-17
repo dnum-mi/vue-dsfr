@@ -65,6 +65,7 @@ const onChange = ($event: InputEvent) => {
     <div
       v-if="error || validMessage"
       class="fr-messages-group"
+      role="alert"
     >
       <p
         v-if="error"
