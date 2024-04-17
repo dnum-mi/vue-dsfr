@@ -32,7 +32,7 @@ Le composant `DsfrRadioButtonSet` est composé des éléments suivants :
 | Nom                   | Type                                    | Description                                                   | Obligatoire |
 |-----------------------|-------------------------------------------|----------------------------------------------------------------|--------------|
 | `name`                  | *`string`*                                 | Nom du champ `<input>` associé à l'ensemble des boutons radio     | ✅           |
-| `modelValue`           | *`string`* ou *`number`*                       | Valeur courante du composant (sélection courante)                 |     ✅      |
+| `modelValue`           | *`string`* ou *`number`* ou *`boolean`*                       | Valeur courante du composant (sélection courante)                 |     ✅      |
 | `inline`                | *`boolean`*                                | Affiche le bouton radio en ligne (par défaut : `false`)            |           |
 | `id`                  | *`string`*                                 | Id du champ `<input>` (par défaut: `undefined`)     |            |
 | `id`                  | *`string`*                                 | Id du champ `<input>` (par défaut: `undefined`)     |            |

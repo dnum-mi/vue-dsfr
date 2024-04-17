@@ -31,7 +31,7 @@ Le composant `DsfrRadioButtonSet` est composé des éléments suivants :
 | `errorMessage`         | *`string`*                                 | Message d'erreur global à afficher                               | Non          |
 | `validMessage`         | *`string`*                                 | Message de validation global à afficher                           | Non          |
 | `legend`                | *`string`*                                 | Texte de la légende                                               | Non          |
-| `modelValue`           | *`string`* ou *`number`*                       | Valeur courante du composant (sélection courante)                 | Non          |
+| `modelValue`           | *`string`* ou *`number`* ou *`boolean`*                       | Valeur courante du composant (sélection courante)                 | Non          |
 | `options`               | *`Omit<DsfrRadioButtonProps, 'modelValue'>[]`* | Tableau d'options définissant les boutons radio individuels       | Oui           |
 
 ::: warning Important
