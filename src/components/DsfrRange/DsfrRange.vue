@@ -153,9 +153,11 @@ onMounted(() => {
       >{{ max }}</span>
     </div>
     <div
+      v-if="message || $slots.messages"
       :id="`${id}-messages`"
       class="fr-messages-group"
       aria-live="polite"
+      role="alert"
     >
       <slot name="messages">
         <p

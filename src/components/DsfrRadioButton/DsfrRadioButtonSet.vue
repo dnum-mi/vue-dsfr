@@ -78,6 +78,7 @@ const onChange = ($event: string) => {
         :id="`messages-${titleId}`"
         class="fr-messages-group"
         aria-live="assertive"
+        role="alert"
       >
         <p
           class="fr-message--info  flex  items-center"

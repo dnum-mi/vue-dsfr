@@ -80,6 +80,7 @@ const emitNewValue = ($event: InputEvent) => {
         v-if="message"
         class="fr-messages-group"
         aria-live="assertive"
+        role="alert"
       >
         <p
           class="fr-message--info  flex  items-center"
