@@ -7,7 +7,7 @@ import DsfrCard from '../DsfrCard.vue'
 const app = getCurrentInstance()
 app?.appContext.app.component('VICon', VICon)
 
-const description = 'Description exceptionellement précise'
+const description = 'Description exceptionnellement précise'
 const detail = 'Détails absolument essentiels'
 const detailIcon = 'Détails absolument essentiels'
 const endDetail = 'Autres détails absolument essentiels'
