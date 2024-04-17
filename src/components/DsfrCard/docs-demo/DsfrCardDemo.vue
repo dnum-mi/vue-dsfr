@@ -9,7 +9,7 @@ const app = getCurrentInstance()
 app?.appContext.app.component('VICon', VICon)
 
 const link = 'https://www.systeme-de-design.gouv.fr/elements-d-interface/composants/carte'
-const description = 'Description exceptionellement précise'
+const description = 'Description exceptionnellement précise'
 const detail = 'Détails absolument essentiels'
 const detailIcon = 'Détails absolument essentiels'
 const endDetail = 'Autres détails absolument essentiels'
