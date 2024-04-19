@@ -64,6 +64,7 @@ const onChange = ($event: string) => {
           v-for="(option, i) of options"
           :key="typeof option.value === 'boolean' ? i : (option.value || i)"
           :name="name"
+          :aria-disabled="option.disabled"
           v-bind="option"
           :small="small"
           :inline="inline"

@@ -2,6 +2,7 @@ export type DsfrRadioButtonProps = {
   id?: string
   name?: string
   modelValue: string | number | boolean | undefined
+  disabled?: boolean
   small?: boolean
   inline?: boolean
   value: string | number | boolean

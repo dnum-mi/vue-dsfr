@@ -48,7 +48,8 @@ const isCurrentPage = (page: Page) => props.pages.indexOf(page) === props.curren
           :href="pages[0]?.href"
           class="fr-pagination__link fr-pagination__link--first"
           :title="firstPageTitle"
-          :disabled="currentPage === 0 ? true : null"
+          :disabled="currentPage === 0 ? true : undefined"
+          :aria-disabled="currentPage === 0 ? true : undefined"
           @click.prevent="tofirstPage()"
         />
       </li>
@@ -57,7 +58,8 @@ const isCurrentPage = (page: Page) => props.pages.indexOf(page) === props.curren
           :href="pages[Math.max(currentPage - 1, 0)]?.href"
           class="fr-pagination__link fr-pagination__link--prev fr-pagination__link--lg-label"
           :title="prevPageTitle"
-          :disabled="currentPage === 0 ? true : null"
+          :disabled="currentPage === 0 ? true : undefined"
+          :aria-disabled="currentPage === 0 ? true : undefined"
           @click.prevent="toPreviousPage()"
         >{{ prevPageTitle }}</a>
       </li>
@@ -82,7 +84,8 @@ const isCurrentPage = (page: Page) => props.pages.indexOf(page) === props.curren
           :href="pages[Math.min(currentPage + 1, pages.length - 1)]?.href"
           class="fr-pagination__link fr-pagination__link--next fr-pagination__link--lg-label"
           :title="nextPageTitle"
-          :disabled="currentPage === pages.length - 1 ? true : null"
+          :disabled="currentPage === pages.length - 1 ? true : undefined"
+          :aria-disabled="currentPage === pages.length - 1 ? true : undefined"
           @click.prevent="toNextPage()"
         >{{ nextPageTitle }}</a>
       </li>
@@ -92,6 +95,7 @@ const isCurrentPage = (page: Page) => props.pages.indexOf(page) === props.curren
           :href="pages[pages.length - 1]?.href"
           :title="lastPageTitle"
           :disabled="currentPage === pages.length - 1 ? true : null"
+          :aria-disabled="currentPage === pages.length - 1 ? true : undefined"
           @click.prevent="toLastPage()"
         />
       </li>

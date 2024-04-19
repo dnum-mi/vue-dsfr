@@ -33,6 +33,7 @@ const labelId = computed(() => {
     <input
       :id="inputId"
       :disabled="disabled"
+      :aria-disabled="disabled"
       type="checkbox"
       :checked="modelValue"
       :data-testid="inputId"
