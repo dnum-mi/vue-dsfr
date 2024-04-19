@@ -71,6 +71,7 @@ const onChange = ({ name, checked }: { name: string, checked: boolean }) => {
           :name="option.name"
           :label="option.label"
           :disabled="option.disabled"
+          :aria-disabled="option.disabled"
           :small="small"
           :inline="inline"
           :model-value="modelValue.includes(option.name)"

@@ -37,6 +37,7 @@ const dsfrIcon = computed(() => {
       :value="value"
       :checked="modelValue === value"
       :disabled="disabled"
+      :aria-disabled="disabled"
       v-bind="$attrs"
       @click="$emit('update:modelValue', value)"
     >

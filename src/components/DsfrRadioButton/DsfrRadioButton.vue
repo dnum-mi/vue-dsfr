@@ -37,6 +37,7 @@ const rich = computed(() => !!props.img)
         :name="name"
         :value="value"
         :checked="modelValue === value"
+        :disabled="disabled"
         v-bind="$attrs"
         @click="$emit('update:modelValue', value)"
       >
