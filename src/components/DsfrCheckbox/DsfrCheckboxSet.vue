@@ -82,6 +82,7 @@ const onChange = ({ name, checked }: { name: string, checked: boolean }) => {
         v-if="message"
         :id="`messages-${titleId}`"
         class="fr-messages-group"
+        role="alert"
       >
         <p
           class="fr-message--info  flex  items-center"

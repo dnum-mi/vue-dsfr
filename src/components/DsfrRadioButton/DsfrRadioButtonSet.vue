@@ -16,7 +16,7 @@ const props = withDefaults(defineProps<DsfrRadioButtonSetProps>(), {
   options: () => [],
 })
 
-const emit = defineEmits<{(e: 'update:modelValue', payload: string | number): void}>()
+const emit = defineEmits<{(e: 'update:modelValue', payload: string | number | boolean): void}>()
 
 const message = computed(() => props.errorMessage || props.validMessage)
 const additionalMessageClass = computed(() => props.errorMessage ? 'fr-error-text' : 'fr-valid-text')
@@ -62,7 +62,7 @@ const onChange = ($event: string) => {
       <slot>
         <DsfrRadioButton
           v-for="(option, i) of options"
-          :key="option.value || i"
+          :key="typeof option.value === 'boolean' ? i : (option.value || i)"
           :name="name"
           v-bind="option"
           :small="small"
@@ -77,6 +77,7 @@ const onChange = ($event: string) => {
         :id="`messages-${titleId}`"
         class="fr-messages-group"
         aria-live="assertive"
+        role="alert"
       >
         <p
           class="fr-message--info  flex  items-center"

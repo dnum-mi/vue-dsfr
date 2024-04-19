@@ -14,7 +14,7 @@ const props = withDefaults(defineProps<DsfrRadioButtonProps>(), {
   img: '',
 })
 
-defineEmits<{(e: 'update:modelValue', payload: string | number): void}>()
+defineEmits<{(e: 'update:modelValue', payload: string | number | boolean): void}>()
 
 const rich = computed(() => !!props.img)
 </script>

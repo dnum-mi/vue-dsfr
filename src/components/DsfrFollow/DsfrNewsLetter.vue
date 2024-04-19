@@ -76,6 +76,7 @@ const updateEmail = ($event: InputEvent) => emit('update:email', $event.target.v
         <div
           v-if="error"
           class="fr-messages-group"
+          role="alert"
         >
           <p
             id="newsletter-email-desc-error"
