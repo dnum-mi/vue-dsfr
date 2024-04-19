@@ -65,6 +65,7 @@ const messageType = computed(() => {
       class="fr-select"
       :name="name || selectId"
       :disabled="disabled"
+      :aria-disabled="disabled"
       :required="required"
       @change="$emit('update:modelValue',($event.target as HTMLInputElement)?.value)"
     >
@@ -83,6 +84,7 @@ const messageType = computed(() => {
         :selected="modelValue === option || (typeof option === 'object' && option.value === modelValue)"
         :value="typeof option === 'object' ? option.value : option"
         :disabled="!!(typeof option === 'object' && option.disabled)"
+        :aria-disabled="!!(typeof option === 'object' && option.disabled)"
       >
         {{ typeof option === 'object' ? option.text : option }}
       </option>

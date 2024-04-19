@@ -37,12 +37,14 @@ const emit = defineEmits<{
       :label-visible="labelVisible"
       :label="label"
       :disabled="disabled"
+      :aria-disabled="disabled"
       @update:model-value="emit('update:modelValue', $event)"
       @keydown.enter="emit('search', modelValue)"
     />
     <DsfrButton
       title="Rechercher"
       :disabled="disabled"
+      :aria-disabled="disabled"
       @click="emit('search', modelValue)"
     >
       {{ buttonText }}

@@ -59,6 +59,7 @@ const onChange = ($event: InputEvent) => {
       v-bind="$attrs"
       :value="modelValue"
       :disabled="disabled"
+      :aria-disabled="disabled"
       :accept="accept.join(',')"
       @change="onChange($event as InputEvent)"
     >
