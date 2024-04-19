@@ -270,7 +270,7 @@ export const CardAvecTags = (args) => ({
       :download="download"
       :no-arrow="noArrow"
   >
-    <template #interactive-details>
+    <template #start-details>
       <DsfrTags
         :tags="exampleTags"
       />
@@ -328,7 +328,7 @@ export const CardAvecBadges = (args) => ({
       :download="download"
       :no-arrow="noArrow"
   >
-    <template #interactive-details>
+    <template #start-details>
       <DsfrBadge
         v-for="(badge, idx) in exampleBadges"
         :key="idx"
