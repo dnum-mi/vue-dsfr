@@ -11,6 +11,8 @@ export type DsfrRadioButtonProps = {
   img?: string
 }
 
+export type DsfrRadioButtonOptions = (Omit<DsfrRadioButtonProps, 'modelValue'>)[]
+
 export type DsfrRadioButtonSetProps = {
   titleId?: string,
   disabled?: boolean,
