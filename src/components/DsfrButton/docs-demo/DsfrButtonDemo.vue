@@ -101,18 +101,18 @@ import DsfrButton from '../DsfrButton.vue'
         />
         <DsfrButton
           label="Bouton secondaire avec icône oh-vue-icon animée (spin)"
-          :icon="{name: 'ri-refresh-line', animation: 'spin'}"
+          :icon="{ name: 'ri-refresh-line', animation: 'spin' }"
           secondary
         />
         <DsfrButton
           label="Bouton tertiaire avec icône oh-vue-icon animée (spin-pulse)"
-          :icon="{name: 'ri-moon-line', animation: 'spin-pulse'}"
+          :icon="{ name: 'ri-moon-line', animation: 'spin-pulse' }"
           tertiary
         />
         <DsfrButton
           label="Bouton 3re ss bordure avec icône OVI colorée avec couleur DSFR"
           title="Bouton tertiaire sans bordure avec icône oh-vue-icon colorée avec une couleur du DSFR"
-          :icon="{name: 'ri-moon-line', fill: 'var(--success-425-625)'}"
+          :icon="{ name: 'ri-moon-line', fill: 'var(--success-425-625)' }"
           tertiary
           no-outline
         />
@@ -155,20 +155,20 @@ import DsfrButton from '../DsfrButton.vue'
           />
           <DsfrButton
             label="Bouton secondaire avec icône oh-vue-icon animée (spin)"
-            :icon="{name: 'ri-refresh-line', animation: 'spin'}"
+            :icon="{ name: 'ri-refresh-line', animation: 'spin' }"
             icon-only
             secondary
           />
           <DsfrButton
             label="Bouton tertiaire avec icône oh-vue-icon animée (spin-pulse)"
-            :icon="{name: 'ri-moon-line', animation: 'spin-pulse'}"
+            :icon="{ name: 'ri-moon-line', animation: 'spin-pulse' }"
             icon-only
             tertiary
           />
           <DsfrButton
             label="Bouton 3re ss bordure avec icône OVI colorée avec couleur DSFR"
             title="Bouton tertiaire sans bordure avec icône oh-vue-icon colorée avec une couleur du DSFR"
-            :icon="{name: 'ri-moon-line', fill: 'var(--success-425-625)'}"
+            :icon="{ name: 'ri-moon-line', fill: 'var(--success-425-625)' }"
             icon-only
             tertiary
             no-outline

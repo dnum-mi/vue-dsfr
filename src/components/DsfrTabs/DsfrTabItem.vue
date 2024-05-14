@@ -10,13 +10,12 @@ const props = withDefaults(defineProps<DsfrTabItemProps>(), {
   icon: undefined,
 })
 
-// eslint-disable-next-line func-call-spacing
-defineEmits<{
-  (e: 'click', payload: MouseEvent): void,
-  (e: 'next'): void,
-  (e: 'previous'): void,
-  (e: 'first'): void,
-  (e: 'last'): void,
+const emit = defineEmits<{
+  (e: 'click', payload: MouseEvent): void
+  (e: 'next'): void
+  (e: 'previous'): void
+  (e: 'first'): void
+  (e: 'last'): void
 }>()
 
 const button = ref<HTMLButtonElement | null>(null)
@@ -26,6 +25,21 @@ watch(() => props.selected, (newValue) => {
     button.value?.focus()
   }
 })
+
+const keyToEventDict = {
+  ArrowRight: 'next',
+  ArrowLeft: 'previous',
+  ArrowDown: 'next',
+  ArrowUp: 'previous',
+  Home: 'first',
+  End: 'last',
+} as const
+
+function onKeyDown(event: KeyboardEvent) {
+  const key = event.key as keyof typeof keyToEventDict
+  // @ts-expect-error 2769
+  emit(keyToEventDict[key])
+}
 </script>
 
 <template>
@@ -43,12 +57,7 @@ watch(() => props.selected, (newValue) => {
       :aria-selected="selected"
       :aria-controls="panelId"
       @click.prevent="$emit('click', $event)"
-      @keydown.right="$emit('next')"
-      @keydown.left="$emit('previous')"
-      @keydown.down="$emit('next')"
-      @keydown.up="$emit('previous')"
-      @keydown.home="$emit('first')"
-      @keydown.end="$emit('last')"
+      @keydown="onKeyDown($event)"
     >
       <span
         v-if="icon"

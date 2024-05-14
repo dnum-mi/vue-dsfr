@@ -6,7 +6,7 @@ describe('DsfrButton', () => {
   it('Simple Button', () => {
     const buttonText = 'Test button'
     const props = {
-      onClick () {}, // eslint-disable-line @typescript-eslint/no-empty-function
+      onClick () {},
     }
     cy.spy(props, 'onClick')
 

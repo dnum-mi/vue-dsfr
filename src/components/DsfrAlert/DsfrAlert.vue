@@ -13,7 +13,7 @@ const props = withDefaults(defineProps<DsfrAlertProps>(), {
   type: 'info',
 })
 
-const emit = defineEmits<{(e: 'close'): void}>()
+const emit = defineEmits<{ (e: 'close'): void }>()
 const onClick = () => emit('close')
 
 const classes = computed(
@@ -24,7 +24,6 @@ const classes = computed(
     },
   ]),
 )
-
 </script>
 
 <template>

@@ -2,10 +2,10 @@ import { OhVueIcon as VIcon } from 'oh-vue-icons'
 import { fireEvent, render } from '@testing-library/vue'
 
 import RadioButtonSet from './DsfrRadioButtonSet.vue'
-import { DsfrRadioButtonProps } from './DsfrRadioButton.types'
+import type { DsfrRadioButtonProps } from './DsfrRadioButton.types'
 
 describe('DsfrRadioButtonSet', () => {
-  it('should render a set of radio buttons with label in div', () => {
+  it('should render a simple set of radio buttons with label in div', () => {
     // Given
     const legend = 'Légende pour l’ensemble des champs'
     const selectedValue = 1

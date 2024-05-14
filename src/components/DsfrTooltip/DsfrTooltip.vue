@@ -111,7 +111,7 @@ const onClick = () => {
 <template>
   <component
     :is="onHover ? 'a' : 'button'"
-    :id="'link-' + id"
+    :id="`link-${id}`"
     ref="source"
     :class="onHover ? 'fr-link' : 'fr-btn  fr-btn--tooltip'"
     :aria-describedby="id"

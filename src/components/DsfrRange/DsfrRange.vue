@@ -18,7 +18,6 @@ const props = withDefaults(defineProps<DsfrRangeProps>(), {
   step: undefined,
 })
 
-// eslint-disable-next-line func-call-spacing
 const emit = defineEmits<{
   (e: 'update:modelValue', payload: string | number): void
   (e: 'update:lowerValue', payload: string | number): void
@@ -44,8 +43,8 @@ const rangeStyle = computed(() => {
   const progressLeft = ((props.lowerValue ?? 0) - props.min) / (props.max - props.min) * inputWidth.value
 
   return {
-    '--progress-right': progressRight + 24 + 'px',
-    ...(double.value ? { '--progress-left': progressLeft + 12 + 'px' } : {}),
+    '--progress-right': `${progressRight + 24}px`,
+    ...(double.value ? { '--progress-left': `${progressLeft + 12}px` } : {}),
   }
 })
 
@@ -65,7 +64,7 @@ watch([() => props.modelValue, () => props.lowerValue], ([upper, lower]) => {
 const outputValue = computed(() => {
   return (props.prefix ?? '')
     .concat(double.value ? `${props.lowerValue} - ` : '')
-    .concat('' + props.modelValue)
+    .concat(`${props.modelValue}`)
     .concat(props.suffix ?? '')
 })
 

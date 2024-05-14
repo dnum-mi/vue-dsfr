@@ -37,8 +37,8 @@ export const Accordeon = (args) => ({
     return {
       ...args,
       expandedId: undefined,
-      title1: args.title + ' 1',
-      title2: args.title + ' 2',
+      title1: `${args.title} 1`,
+      title2: `${args.title} 2`,
     }
   },
 
@@ -78,7 +78,7 @@ export const AccordeonSimple = (args) => ({
     return {
       ...args,
       expandedId: undefined,
-      title1: args.title + ' 1',
+      title1: `${args.title} 1`,
     }
   },
 
@@ -106,8 +106,8 @@ export const AccordeonDejaOuvert = (args) => ({
     return {
       ...args,
       expandedId: 'accordeon-1',
-      title1: args.title + ' 1',
-      title2: args.title + ' 2',
+      title1: `${args.title} 1`,
+      title2: `${args.title} 2`,
     }
   },
 
@@ -149,10 +149,10 @@ export const AccordeonDansUnAccordeon = (args) => ({
   data () {
     return {
       ...args,
-      title1: args.title + ' 1',
-      title2: args.title + ' 2',
-      titleSub1: args.titleSub + ' 1.1',
-      titleSub2: args.titleSub + ' 1.2',
+      title1: `${args.title} 1`,
+      title2: `${args.title} 2`,
+      titleSub1: `${args.titleSub} 1.1`,
+      titleSub2: `${args.titleSub} 1.2`,
       expandedId: undefined,
       subExpandedId: undefined,
     }

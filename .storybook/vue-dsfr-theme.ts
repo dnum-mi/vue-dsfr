@@ -35,4 +35,4 @@ export default create({
   brandTitle: 'Vue DSFR',
   brandUrl: 'https://vue-ds.fr',
   brandImage,
-});
+})

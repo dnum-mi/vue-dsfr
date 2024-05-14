@@ -62,7 +62,7 @@ const options = [
     id: 'name1-2',
     value: 'name1-2',
     hint: 'Description de la deuxième valeur',
-  }
+  },
 ] // pas de propriété `name` sur les objets de `options`
 </script>
 
@@ -90,7 +90,7 @@ const options = [
     name: 'name1', // propriété `name` identique sur chaque objet de `options`
     value: 'name1-2',
     hint: 'Description de la deuxième valeur',
-  }
+  },
 ]
 </script>
 
@@ -115,7 +115,7 @@ const options = [
     id: 'name1-2',
     value: 'name1-2',
     hint: 'Description de la deuxième valeur',
-  }
+  },
 ] // pas de propriété `name` sur les objets de `options`
 </script>
 
@@ -146,7 +146,7 @@ const options = [
     id: 'name1-2',
     value: 'name1-2',
     hint: 'Description de la deuxième valeur',
-  }
+  },
 ] // pas de propriété `name` sur les objets de `options`
 </script>
 
@@ -172,7 +172,7 @@ const options = [
     id: 'name1-2',
     value: 'name1-2',
     hint: 'Description de la deuxième valeur',
-  }
+  },
 ] // pas de propriété `name` sur les objets de `options`
 </script>
 

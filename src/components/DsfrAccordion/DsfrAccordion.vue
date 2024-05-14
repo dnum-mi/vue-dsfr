@@ -14,9 +14,10 @@ const props = withDefaults(
     expandedId: undefined,
     title: 'Sans intitulé',
     titleTag: 'h3',
-  })
+  },
+)
 
-const emit = defineEmits<{(event: 'expand', id: string | undefined): void}>()
+const emit = defineEmits<{ (event: 'expand', id: string | undefined): void }>()
 
 const {
   collapse,

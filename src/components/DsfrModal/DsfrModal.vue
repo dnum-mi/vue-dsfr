@@ -13,14 +13,14 @@ export type { DsfrModalProps }
 const props = withDefaults(defineProps<DsfrModalProps>(), {
   modalId: () => getRandomId('modal', 'dialog'),
   actions: () => [],
-  origin: () => ({ focus () {} }), // eslint-disable-line @typescript-eslint/no-empty-function
+  origin: () => ({ focus () {} }),
   icon: undefined,
   size: 'md',
   closeButtonLabel: 'Fermer',
   closeButtonTitle: 'Fermer la fenêtre modale',
 })
 
-const emit = defineEmits<{(e: 'close'): void}>()
+const emit = defineEmits<{ (e: 'close'): void }>()
 
 const closeIfEscape = ($event: KeyboardEvent) => {
   if ($event.key === 'Escape') {
@@ -33,6 +33,7 @@ const role = computed(() => {
 })
 
 const closeBtn = ref<HTMLButtonElement | null>(null)
+const modal = ref()
 watch(() => props.opened, (newValue) => {
   if (newValue) {
     document.body.classList.add('modal-open')
@@ -45,8 +46,6 @@ watch(() => props.opened, (newValue) => {
     modal.value?.close()
   }
 })
-
-const modal = ref()
 
 onMounted(() => {
   startListeningToEscape()
@@ -81,7 +80,7 @@ const iconProps = computed(() => dsfrIcon.value
 </script>
 
 <template>
-  <focus-trap
+  <FocusTrap
     v-if="opened"
   >
     <dialog
@@ -90,7 +89,7 @@ const iconProps = computed(() => dsfrIcon.value
       :aria-labelledby="modalId"
       :role="role"
       class="fr-modal"
-      :class="{'fr-modal--opened': opened}"
+      :class="{ 'fr-modal--opened': opened }"
       :open="opened"
     >
       <div class="fr-container fr-container--fluid fr-container-md">
@@ -158,7 +157,7 @@ const iconProps = computed(() => dsfrIcon.value
         </div>
       </div>
     </dialog>
-  </focus-trap>
+  </FocusTrap>
 </template>
 
 <style scoped>

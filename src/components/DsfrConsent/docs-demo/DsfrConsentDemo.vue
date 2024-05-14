@@ -4,7 +4,6 @@ import DsfrConsent from '../DsfrConsent.vue'
 const AcceptAllCookies = () => {}
 const RefuseAllCookies = () => {}
 const CustomizeCookies = () => {}
-
 </script>
 
 <template>

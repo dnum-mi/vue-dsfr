@@ -8,7 +8,7 @@ import {
 
 import DsfrHeader from './DsfrHeader.vue'
 import DsfrNavigation from '../DsfrNavigation/DsfrNavigation.vue'
-import { DsfrLanguageSelectorElement } from '../DsfrLanguageSelector/DsfrLanguageSelector.types'
+import type { DsfrLanguageSelectorElement } from '../DsfrLanguageSelector/DsfrLanguageSelector.types'
 
 addIcons(
   RiAddCircleLine,

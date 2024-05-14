@@ -17,12 +17,6 @@ const props = withDefaults(defineProps<DsfrHeaderMenuLinkProps>(), {
   path: '',
 })
 
-const is = computed(() => {
-  if (props.button) {
-    return 'button'
-  }
-  return isExternalLink.value || isMailto.value ? 'a' : 'RouterLink'
-})
 const isPathString = computed(() => {
   return typeof props.path === 'string'
 })
@@ -32,6 +26,13 @@ const isExternalLink = computed(() => {
 const isMailto = computed(() => {
   return props.href?.startsWith('mailto') || (isPathString.value && (props.path as string).startsWith('mailto'))
 })
+const is = computed(() => {
+  if (props.button) {
+    return 'button'
+  }
+  return isExternalLink.value || isMailto.value ? 'a' : 'RouterLink'
+})
+
 const actualHref = computed(() => {
   if (!isExternalLink.value && !isMailto.value) {
     return undefined

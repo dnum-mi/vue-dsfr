@@ -22,7 +22,7 @@ const props = withDefaults(defineProps<DsfrSelectProps>(), {
   defaultUnselectedText: 'Sélectionner une option',
 })
 
-defineEmits<{(e: 'update:modelValue', payload: string): void}>()
+defineEmits<{ (e: 'update:modelValue', payload: string): void }>()
 
 const message = computed(() => {
   return props.errorMessage || props.successMessage
@@ -67,7 +67,7 @@ const messageType = computed(() => {
       :disabled="disabled"
       :aria-disabled="disabled"
       :required="required"
-      @change="$emit('update:modelValue',($event.target as HTMLInputElement)?.value)"
+      @change="$emit('update:modelValue', ($event.target as HTMLInputElement)?.value)"
     >
       <option
         value=""

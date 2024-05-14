@@ -42,8 +42,8 @@ Exemple :
 
 <template>
   <DsfrInput
-    label="Nom d’utilisateur"
     v-model="username"
+    label="Nom d’utilisateur"
     name="username"
     pattern="\w{3,20}"
   />

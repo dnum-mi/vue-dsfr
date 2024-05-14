@@ -22,7 +22,7 @@ const props = withDefaults(defineProps<DsfrInputProps>(), {
   wrapperClass: '',
 })
 
-defineEmits<{(e: 'update:modelValue', payload: string): void}>()
+defineEmits<{ (e: 'update:modelValue', payload: string): void }>()
 
 const attrs = useAttrs()
 

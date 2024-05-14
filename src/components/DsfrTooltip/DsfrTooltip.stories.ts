@@ -1,4 +1,5 @@
 import DsfrTooltip from './DsfrTooltip.vue'
+
 export default {
   component: DsfrTooltip,
   title: 'Composants/DsfrTooltip',

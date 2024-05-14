@@ -95,7 +95,7 @@ export {
   RiFlagLine,
   RiHome2Line,
   RiRefreshLine,
-} from 'oh-vue-icons/icons/ri/index.js'  // Import de quelques icônes de Remix Icon (ri)
+} from 'oh-vue-icons/icons/ri/index.js' // Import de quelques icônes de Remix Icon (ri)
 ```
 
 Ensuite, deux possibilités : soit on les ajoute au plugin, soit directement à `OhVueIcon`. Cf. les prochaines sections selon votre projet.
@@ -166,17 +166,17 @@ export {
   RiFlagLine,
   RiHome2Line,
   RiRefreshLine,
-} from 'oh-vue-icons/icons'  // Export de quelques icônes de Remix Icon (ri)
+} from 'oh-vue-icons/icons' // Export de quelques icônes de Remix Icon (ri)
 
 export {
   FaFlag,
   FaAddressBook,
-} from 'oh-vue-icons/icons/fa/index.js'  // Export de quelques icônes de Font Awesome 5 Free (fa)
+} from 'oh-vue-icons/icons/fa/index.js' // Export de quelques icônes de Font Awesome 5 Free (fa)
 
 export {
   BiBadge3D,
   BiClouds,
-} from 'oh-vue-icons/icons/bi/index.js'  // Export de quelques icônes de Bootstrap Icons (bi)
+} from 'oh-vue-icons/icons/bi/index.js' // Export de quelques icônes de Bootstrap Icons (bi)
 ```
 
 ## Pour Nuxt 3
@@ -190,7 +190,7 @@ import {
   RiFlagLine,
   RiHome2Line,
   RiRefreshLine,
-} from 'oh-vue-icons/icons'  // Import de quelques icônes de Remix Icon (ri)
+} from 'oh-vue-icons/icons' // Import de quelques icônes de Remix Icon (ri)
 
 const icons = [
   RiCloseLine,
@@ -201,9 +201,9 @@ const icons = [
 
 export default defineNuxtPlugin((nuxtApp) => {
   // Enregistrement du plugin avec ajout de toutes les icônes du tableau `icons`
-  nuxtApp.vueApp.use(VueDsfr, { icons }); // le deuxième paramètre est un objet contenant une propriété `icons`
-                                          // qui est un tableau qui contient toutes les icônes que vous souhaitez utiliser
-});
+  nuxtApp.vueApp.use(VueDsfr, { icons }) // le deuxième paramètre est un objet contenant une propriété `icons`
+  // qui est un tableau qui contient toutes les icônes que vous souhaitez utiliser
+})
 ```
 
 Le composant `VIcon` et tous les composants de VueDsfr sont désormais utilisables dans toute l’application Nuxt3

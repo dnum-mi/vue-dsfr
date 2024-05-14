@@ -301,7 +301,7 @@ export const EtiquettesFermables = (args) => ({
           // Si this.tags n’a plus d’éléments,
           if (this.tags.length === 0) {
             // attendre 1 seconde, et réinitialiser les étiquettes de la story
-            setTimeout(resetTags, 1000)
+            setTimeout(resetTags, 1000) // eslint-disable-line ts/no-use-before-define
           }
         },
       }))

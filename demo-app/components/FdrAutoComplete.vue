@@ -1,9 +1,6 @@
 <script setup>
 import { computed, nextTick, ref, watch } from 'vue'
 
-const container = ref(undefined)
-const optionsList = ref(undefined)
-
 const props = defineProps({
   modelValue: {
     type: String,
@@ -14,14 +11,15 @@ const props = defineProps({
     default: () => [],
   },
 })
-
 const emit = defineEmits(['update:modelValue'])
+const container = ref(undefined)
+const optionsList = ref(undefined)
 
 const hasFocus = ref(false)
 const displayOptions = computed(() => hasFocus.value && !!props.options.length)
 
 function convertRemToPixels (rem) {
-  return rem * parseFloat(getComputedStyle(document.documentElement).fontSize)
+  return rem * Number.parseFloat(getComputedStyle(document.documentElement).fontSize)
 }
 
 function selectOption (option) {
@@ -92,7 +90,6 @@ function checkKeyboardNav ($event) {
     moveToNextOption()
   }
 }
-
 </script>
 
 <template>

@@ -6,14 +6,14 @@ import type { TitleTag } from '@/common-types'
 
 const defaultAlerts: {
   [key: string]: {
-    id: string,
-    type: DsfrAlertType,
-    title?: string,
-    small?: true,
-    description: string,
-    titleTag: TitleTag,
-    closed?: boolean,
-    closeable?: true,
+    id: string
+    type: DsfrAlertType
+    title?: string
+    small?: true
+    description: string
+    titleTag: TitleTag
+    closed?: boolean
+    closeable?: true
   }[]
 } = {
   'Grandes non fermables': [

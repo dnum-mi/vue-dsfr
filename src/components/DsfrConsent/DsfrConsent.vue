@@ -9,11 +9,10 @@ const props = withDefaults(defineProps<DsfrConsentProps>(), {
   url: '',
 })
 
-// eslint-disable-next-line func-call-spacing
 defineEmits<{
-  (e: 'accept-all'): void
-  (e: 'refuse-all'): void,
-  (e: 'customize'): void,
+  (e: 'acceptAll'): void
+  (e: 'refuseAll'): void
+  (e: 'customize'): void
 }>()
 
 const isExternalLink = computed(() => typeof props.url === 'string' && props.url.startsWith('http'))
@@ -46,7 +45,7 @@ const linkProps = computed(() => ({ [isExternalLink.value ? 'href' : 'to']: prop
       <button
         class="fr-btn"
         title="Autoriser tous les cookies"
-        @click.stop="$emit('accept-all')"
+        @click.stop="$emit('acceptAll')"
       >
         Tout accepter
       </button>
@@ -56,7 +55,7 @@ const linkProps = computed(() => ({ [isExternalLink.value ? 'href' : 'to']: prop
       <button
         class="fr-btn"
         title="Refuser tous les cookies"
-        @click.stop="$emit('refuse-all')"
+        @click.stop="$emit('refuseAll')"
       >
         Tout refuser
       </button>

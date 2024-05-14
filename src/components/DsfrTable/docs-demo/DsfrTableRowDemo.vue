@@ -1,9 +1,10 @@
 <script lang="ts" setup>
+import { getCurrentInstance } from 'vue'
+
 import DsfrTable from '../DsfrTable.vue'
 import DsfrTableRow from '../DsfrTableRow.vue'
 import DsfrTag from '../../DsfrTag/DsfrTag.vue'
 
-import { getCurrentInstance } from 'vue'
 getCurrentInstance()?.appContext.app.component('DsfrTag', DsfrTag)
 
 const title = 'Utilisateurs'

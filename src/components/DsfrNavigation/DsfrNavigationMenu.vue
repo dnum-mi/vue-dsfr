@@ -10,6 +10,14 @@ import type { DsfrNavigationMenuProps } from './DsfrNavigation.types'
 
 export type { DsfrNavigationMenuProps }
 
+const props = withDefaults(defineProps<DsfrNavigationMenuProps>(), {
+  id: () => getRandomId('menu'),
+  links: () => [],
+  expandedId: '',
+})
+
+defineEmits<{ (event: 'toggleId', id: string): void }>()
+
 const {
   collapse,
   collapsing,
@@ -17,12 +25,6 @@ const {
   doExpand,
   onTransitionEnd,
 } = useCollapsable()
-
-const props = withDefaults(defineProps<DsfrNavigationMenuProps>(), {
-  id: () => getRandomId('menu'),
-  links: () => [],
-  expandedId: '',
-})
 
 const expanded = computed(() => props.id === props.expandedId)
 
@@ -32,8 +34,6 @@ watch(expanded, (newValue, oldValue) => {
     doExpand(newValue)
   }
 })
-
-defineEmits<{(event: 'toggle-id', id: string): void}>()
 
 onMounted(() => {
   // NavigationMenu can be expanded by default
@@ -50,7 +50,7 @@ onMounted(() => {
     :aria-expanded="expanded"
     :aria-current="active || undefined"
     :aria-controls="id"
-    @click="$emit('toggle-id', id)"
+    @click="$emit('toggleId', id)"
   >
     <span>{{ title }}</span>
   </button>
@@ -63,7 +63,6 @@ onMounted(() => {
     @transitionend="onTransitionEnd(expanded)"
   >
     <ul
-      ref="menuList"
       class="fr-menu__list"
     >
       <!-- @slot Slot par défaut pour le contenu de l’item de liste. Sera dans `<ul class="fr-menu__list">` -->
@@ -74,7 +73,7 @@ onMounted(() => {
       >
         <DsfrNavigationMenuLink
           v-bind="link"
-          @toggle-id="$emit('toggle-id', expandedId)"
+          @toggle-id="$emit('toggleId', expandedId)"
         />
       </DsfrNavigationMenuItem>
     </ul>

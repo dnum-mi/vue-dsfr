@@ -15,7 +15,7 @@ const props = withDefaults(defineProps<DsfrSideMenuListProps>(), {
   menuItems: () => [],
 })
 
-defineEmits<{(e: 'toggle-expand', payload: string): void}>()
+defineEmits<{ (e: 'toggleExpand', payload: string): void }>()
 
 const {
   collapse,
@@ -55,7 +55,7 @@ const linkProps = (to: string | RouteLocationRaw | undefined) => {
     :class="{
       'fr-collapse': collapsable,
       'fr-collapsing': collapsing,
-      'fr-collapse--expanded': cssExpanded
+      'fr-collapse--expanded': cssExpanded,
     }"
     @transitionend="onTransitionEnd(!!expanded)"
   >
@@ -85,7 +85,7 @@ const linkProps = (to: string | RouteLocationRaw | undefined) => {
             :active="!!menuItem.active"
             :expanded="!!menuItem.expanded"
             :control-id="(menuItem.id as string)"
-            @toggle-expand="$emit('toggle-expand', $event)"
+            @toggle-expand="$emit('toggleExpand', $event)"
           >
             {{ menuItem.text }}
           </DsfrSideMenuButton>
@@ -95,7 +95,7 @@ const linkProps = (to: string | RouteLocationRaw | undefined) => {
             collapsable
             :expanded="menuItem.expanded"
             :menu-items="menuItem.menuItems"
-            @toggle-expand="$emit('toggle-expand', $event)"
+            @toggle-expand="$emit('toggleExpand', $event)"
           />
         </template>
       </DsfrSideMenuListItem>

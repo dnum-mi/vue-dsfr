@@ -4,7 +4,7 @@ import { computed, ref } from 'vue'
 import DsfrTable from '../DsfrTable.vue'
 import DsfrTableHeader from '../DsfrTableHeader.vue'
 
-const icon = ref<{name: string} | undefined>({
+const icon = ref<{ name: string } | undefined>({
   name: 'ri-sort-desc',
 })
 

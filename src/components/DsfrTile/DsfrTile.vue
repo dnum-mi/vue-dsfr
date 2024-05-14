@@ -38,7 +38,7 @@ const isExternalLink = computed(() => {
       'fr-tile--no-background': noBackground,
       'fr-tile--shadow': shadow,
       'fr-tile--grey': grey,
-    },]"
+    }]"
   >
     <div class="fr-tile__body">
       <div class="fr-tile__content">

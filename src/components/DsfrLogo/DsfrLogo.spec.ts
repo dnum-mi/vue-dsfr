@@ -19,7 +19,7 @@ describe('DsfrLogo', () => {
     expect(getByText(text)).toHaveClass('fr-logo')
   })
 
-  it('should render flag, text and motto', () => {
+  it('should render flag, text and motto, even without setting logoText prop', () => {
     // When
     const { getByText } = render(DsfrLogo)
 

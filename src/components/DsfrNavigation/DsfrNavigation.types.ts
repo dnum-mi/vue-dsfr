@@ -1,10 +1,10 @@
 import type { RouteLocationRaw } from 'vue-router'
 
 export type DsfrNavigationMenuLinkProps = {
-  id?: string,
-  to?: string | RouteLocationRaw,
-  text?: string,
-  icon?: string,
+  id?: string
+  to?: string | RouteLocationRaw
+  text?: string
+  icon?: string
   onClick?: ($event: MouseEvent) => void
 }
 
@@ -47,7 +47,7 @@ export type DsfrNavigationMenuLinks = (DsfrNavigationMenuLinkProps | DsfrNavigat
 export type DsfrNavigationProps = {
   id?: string
   label?: string
-  navItems:(
+  navItems: (
     DsfrNavigationMenuLinkProps
     | DsfrNavigationMenuProps
     | DsfrNavigationMegaMenuProps

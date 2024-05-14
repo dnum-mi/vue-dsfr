@@ -170,12 +170,12 @@ Si vous avez utilisé la version 1.7+ de `create-vue-dsfr` pour créer votre pro
 Dans le point d’entrée de votre application Vue (souvent `main.js` ou `main.ts`) :
 
 ```typescript
-import '@gouvfr/dsfr/dist/core/core.main.min.css'            // Le CSS minimal du DSFR
-import '@gouvfr/dsfr/dist/component/component.main.min.css'  // Styles de tous les composants du DSFR
-import '@gouvfr/dsfr/dist/utility/utility.main.min.css'      // Classes utilitaires : les composants de VueDsfr en ont besoin
-import '@gouvminint/vue-dsfr/styles'                         // Les styles propres aux composants de VueDsfr
+import '@gouvfr/dsfr/dist/core/core.main.min.css' // Le CSS minimal du DSFR
+import '@gouvfr/dsfr/dist/component/component.main.min.css' // Styles de tous les composants du DSFR
+import '@gouvfr/dsfr/dist/utility/utility.main.min.css' // Classes utilitaires : les composants de VueDsfr en ont besoin
+import '@gouvminint/vue-dsfr/styles' // Les styles propres aux composants de VueDsfr
 
-import '@gouvfr/dsfr/dist/scheme/scheme.min.css'             // Facultatif : Si les thèmes sont utilisés (thème sombre, thème clair)
+import '@gouvfr/dsfr/dist/scheme/scheme.min.css' // Facultatif : Si les thèmes sont utilisés (thème sombre, thème clair)
 ```
 
 ### Les imports automatiques des composables et des composants
@@ -266,9 +266,6 @@ import '@gouvfr/dsfr/dist/utility/utility.main.min.css'
 
 import '@gouvminint/vue-dsfr/styles'
 
-
-
-
 import App from './App.vue'
 import router from './router/index'
 import * as icons from './icons'
@@ -277,8 +274,8 @@ import './main.css'
 
 addIcons(...Object.values(icons)) // addIcons est autoimporté grâce à ohVueIconAutoimportPreset dans vite.config.ts // [!code warning]
 
-createApp(App)                    // createApp est autoimporté grâce au preset 'vue' dans vite.config.ts // [!code warning]
-  .component('VIcon', OhVueIcon)  // OhVueIcon est autoimporté grâce à ohVueIconAutoimportPreset dans vite.config.ts // [!code warning]
+createApp(App) // createApp est autoimporté grâce au preset 'vue' dans vite.config.ts // [!code warning]
+  .component('VIcon', OhVueIcon) // OhVueIcon est autoimporté grâce à ohVueIconAutoimportPreset dans vite.config.ts // [!code warning]
   .use(router)
   .mount('#app')
 ```
@@ -308,8 +305,6 @@ createApp(App)
 
 ```vue [App.vue avec auto-imports]
 <script setup lang="ts">
-
-
 useScheme() // Autoimporté grâce à vueDsfrAutoimportPreset dans vite.config.ts // [!code warning]
 
 const serviceTitle = 'Service'

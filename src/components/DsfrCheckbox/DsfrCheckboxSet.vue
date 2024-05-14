@@ -17,7 +17,7 @@ const props = withDefaults(defineProps<DsfrCheckboxSetProps>(), {
   modelValue: () => [],
 })
 
-const emit = defineEmits<{(e: 'update:modelValue', payload: string[]): void}>()
+const emit = defineEmits<{ (e: 'update:modelValue', payload: string[]): void }>()
 
 const message = computed(() => {
   return props.errorMessage || props.validMessage

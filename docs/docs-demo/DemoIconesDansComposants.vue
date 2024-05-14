@@ -1,3 +1,7 @@
+<script lang="ts" setup>
+import DsfrButton from '../../src/components/DsfrButton/DsfrButton.vue'
+</script>
+
 <template>
   <div class="fr-p-2w  flex gap-4  flex-wrap">
     <DsfrButton icon="fr-icon-close-line">
@@ -9,7 +13,7 @@
     </DsfrButton>
 
     <DsfrButton
-      :icon="{name: 'ri-close-line', fill: 'purple'}"
+      :icon="{ name: 'ri-close-line', fill: 'purple' }"
       secondary
     >
       Texte avec icône
@@ -17,10 +21,6 @@
     </DsfrButton>
   </div>
 </template>
-
-<script lang="ts" setup>
-import DsfrButton from '../../src/components/DsfrButton/DsfrButton.vue'
-</script>
 
 <style scoped>
 .flex {

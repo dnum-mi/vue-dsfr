@@ -1,4 +1,4 @@
-import { type Meta } from '@storybook/vue3'
+import type { Meta } from '@storybook/vue3'
 import { expect, fn } from '@storybook/test'
 import { OhVueIcon as VIcon, addIcons } from 'oh-vue-icons'
 import { within, userEvent } from '@storybook/testing-library'

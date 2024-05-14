@@ -4,7 +4,7 @@ import { themes } from '@storybook/theming'
 import { withThemeByDataAttribute } from '@storybook/addon-styling'
 import { FocusTrap } from 'focus-trap-vue'
 import { defineComponent } from 'vue'
-import { OhVueIcon as VIcon} from 'oh-vue-icons'
+import { OhVueIcon as VIcon } from 'oh-vue-icons'
 
 import VueDsfrTheme from './vue-dsfr-theme.js'
 import '../src/assets/variables-fdr.css'
@@ -25,7 +25,7 @@ export const decorators = [
     },
     defaultTheme: 'light',
     attributeName: 'data-fr-theme',
-  })
+  }),
 ]
 
 const preview: Preview = {
@@ -77,7 +77,7 @@ const preview: Preview = {
             height: '1900px',
           },
         },
-      }
+      },
     },
     options: {
       storySort: {
@@ -104,9 +104,9 @@ const RouterLink = defineComponent({
 })
 
 setup(app => {
-  app.component('RouterLink', RouterLink);
+  app.component('RouterLink', RouterLink)
   app.component('VIcon', VIcon)
   app.component('FocusTrap', FocusTrap)
 })
 
-export default preview;
+export default preview
