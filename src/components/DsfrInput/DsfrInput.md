@@ -16,7 +16,41 @@ Le composant `DsfrInput`, outil essentiel dans l'arsenal de tout développeur Vu
 | `modelValue`    | `string`      | `''`                    |               | La valeur liée au modèle de l'input.                                                                        |
 | `wrapperClass`  | `string`      | `''`                    |               | Classe personnalisée pour le style du conteneur de l'input.                                                 |
 
----
+### Attributs implicitement déclarés
+
+::: warning Important
+
+Toutes les props passées à `<DsfrInput>` dans une template et qui ne sont pas définies dans les props seront passées à la balise `<input>` native du composant (cf. [Attributs implicitement déclarés (Fallthrough attributes)](https://fr.vuejs.org/guide/components/attrs.html) de la documentation officielle de Vue.js.). Comme par exemple `readonly`.
+
+Voici une liste non-exhaustive:
+
+- `name`
+- `readonly`
+- `disabled`
+- `autocomplete`
+- `autofocus` ([déconseillé](https://brucelawson.co.uk/2009/the-accessibility-of-html-5-autofocus/))
+- `size`
+- `maxlength`
+- `pattern`
+
+Exemple :
+
+```vue
+<script setup>
+// (...)
+</script>
+
+<template>
+  <DsfrInput
+    label="Nom d’utilisateur"
+    v-model="username"
+    name="username"
+    pattern="\w{3,20}"
+  />
+</template>
+```
+
+:::
 
 ## 📡 Events
 
@@ -45,6 +79,15 @@ Exemple simple d'utilisation de `DsfrInput` :
 </Story>
 
 <<< docs-demo/DsfrInputDemo.vue [Code de la démo]
+:::
+
+## ⚙️ Code source du composant
+
+::: code-group
+
+<<< DsfrInput.vue
+<<< DsfrInput.types.ts
+
 :::
 
 <script setup>

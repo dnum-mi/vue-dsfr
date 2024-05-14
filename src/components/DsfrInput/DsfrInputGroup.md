@@ -20,6 +20,16 @@ Ce composant est très utile si vous souhaitez afficher un message d’erreur ou
 | `errorMessage`  | `string`    | `undefined`             |               | Message d'erreur à afficher si une erreur est présente.       |
 | `validMessage`  | `string`    | `undefined`             |               | Message de validation à afficher si l'input est valide.       |
 
+### Attributs implicitement déclarés
+
+::: warning Important
+
+Toutes les props passées à `<DsfrInputGroup>` dans une template et qui ne sont pas définies dans les props seront passées à la balise `<DsfrInput>`. Si ces props ne sont pas définies non plus en tant que props dans `DsfrInput`, elles seront passés à la balise native `<input>`, comme par exemple `readonly` ou `disabled`.
+
+Cf. la [note important sur DsfrInput](./DsfrInput.md#attributs-implicitement-declares)
+
+:::
+
 ## 📡 Événements
 
 | Nom                 | Description                                                                  |
@@ -43,6 +53,15 @@ Voici comment vous pourriez utiliser `DsfrInputGroup` :
 </Story>
 
 <<< docs-demo/DsfrInputGroupDemo.vue [Code de la démo]
+:::
+
+## ⚙️ Code source du composant
+
+::: code-group
+
+<<< DsfrInputGroup.vue
+<<< DsfrInput.types.ts
+
 :::
 
 <script setup>
