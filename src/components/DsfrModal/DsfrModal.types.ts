@@ -8,5 +8,7 @@ export type DsfrModalProps = {
   origin?: {focus:() => void}
   title: string
   icon?: string
-  size?: 'sm' | 'md' | 'lg' | 'xl'
+  size?: 'sm' | 'md' | 'lg' | 'xl',
+  closeButtonLabel?: string,
+  closeButtonTitle?: string,
 }

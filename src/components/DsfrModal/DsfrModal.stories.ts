@@ -59,6 +59,14 @@ export default {
     onClick: {
       action: 'close',
     },
+    closeButtonLabel: {
+      control: 'text',
+      description: 'Valeur du bouton cliquable permettant la fermeture de la modale',
+    },
+    closeButtonTitle: {
+      control: 'text',
+      description: 'Valeur du texte informatif au survol du bouton cliquable permettant la fermeture de la modale',
+    },
   },
 }
 
