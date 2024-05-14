@@ -2,7 +2,7 @@
 import DsfrFileUpload from '../DsfrFileUpload.vue'
 
 const handleFileChange = (files: FileList) => {
-  console.log(files)
+  console.log(files) // eslint-disable-line no-console
 }
 </script>
 

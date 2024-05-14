@@ -14,10 +14,12 @@ withDefaults(defineProps<DsfrSideMenuProps>(), {
   buttonLabel: 'Dans cette rubrique',
   id: () => getRandomId('sidemenu'),
   collapseValue: '-492px',
-  // @ts-ignore this is really undefined
+  // @ts-expect-error this is really undefined
   menuItems: () => undefined,
   headingTitle: '',
 })
+
+defineEmits<{ (e: 'toggleExpand', payload: string): void }>()
 
 const {
   collapse,
@@ -26,8 +28,6 @@ const {
   doExpand,
   onTransitionEnd,
 } = useCollapsable()
-
-defineEmits<{(e: 'toggle-expand', payload: string): void}>()
 
 const expanded = ref(false)
 
@@ -73,7 +73,7 @@ watch(expanded, (newValue, oldValue) => {
           <DsfrSideMenuList
             :id="getRandomId('sidemenu', 'list')"
             :menu-items="menuItems"
-            @toggle-expand="$emit('toggle-expand', $event)"
+            @toggle-expand="$emit('toggleExpand', $event)"
           />
         </slot>
       </div>

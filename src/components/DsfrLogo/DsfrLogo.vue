@@ -9,7 +9,7 @@ const props = withDefaults(defineProps<DsfrLogoProps>(), {
   logoText: () => 'Gouvernement',
 })
 
-const text = computed(() => props.logoText instanceof Array ? props.logoText.join('<br>') : props.logoText)
+const text = computed(() => Array.isArray(props.logoText) ? props.logoText.join('<br>') : props.logoText)
 </script>
 
 <template>

@@ -1,4 +1,4 @@
-import { ref, watchEffect, computed } from 'vue'
+import { computed, ref, watchEffect } from 'vue'
 import type { ComputedRef } from 'vue'
 
 const PREFERS_DARK_MEDIA_QUERY = '(prefers-color-scheme: dark)'
@@ -118,12 +118,11 @@ export const useScheme = (options?: UseThemeOptions): UseSchemeResult | undefine
     attributes: true,
   }
 
-  const observer = new MutationObserver((mutationList /*, observer */) => {
+  const observer = new MutationObserver((mutationList /* , observer */) => {
     for (const mutation of mutationList) {
       if (mutation.type === 'attributes' && mutation.attributeName === 'data-fr-theme') {
         const newScheme = (mutation.target as HTMLElement).getAttribute(mutation.attributeName) as 'light' | 'dark'
         if (newScheme !== scheme.value) {
-          console.log('mutation:', newScheme, '<-', scheme.value)
           setScheme(newScheme)
         }
       }

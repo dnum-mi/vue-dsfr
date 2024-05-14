@@ -2,7 +2,7 @@ import { render, fireEvent } from '@testing-library/vue'
 import DsfrNotice from './DsfrNotice.vue'
 
 describe('DsfrNotice', () => {
-  it('should render a notice', async () => {
+  it('should render a closeable notice', async () => {
     // Given
     const title = 'Titre de la notice'
     const closeable = true

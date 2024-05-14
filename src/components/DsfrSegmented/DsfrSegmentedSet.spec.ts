@@ -4,7 +4,7 @@ import { fireEvent, render } from '@testing-library/vue'
 import SegmentedSet from './DsfrSegmentedSet.vue'
 
 describe('DsfrSegmentedSet', () => {
-  it('should render a set of segmented with label in div', () => {
+  it('should render a set of simple segmented with label in div', () => {
     // Given
     const legend = 'Légende pour l’ensemble des champs'
     const selectedValue = 1

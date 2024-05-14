@@ -69,6 +69,6 @@
 
     // Makes indentation easier to read
     // https://github.com/oderwat/vscode-indent-rainbow
-    "oderwat.indent-rainbow",
+    "oderwat.indent-rainbow"
   ]
 }

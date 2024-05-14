@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import DsfrHeaderMenuLink from './DsfrHeaderMenuLink.vue'
-import { OhVueIcon as VIcon } from 'oh-vue-icons'
+import type { OhVueIcon as VIcon } from 'oh-vue-icons'
 
 export type DsfrHeaderMenuLinkProps = {
   button?: boolean
@@ -22,7 +22,7 @@ withDefaults(defineProps<{
   navAriaLabel: 'Menu secondaire',
 })
 
-const emit = defineEmits<{'linkClick': [event: MouseEvent]}>()
+const emit = defineEmits<{ linkClick: [event: MouseEvent] }>()
 </script>
 
 <template>
@@ -39,7 +39,7 @@ const emit = defineEmits<{'linkClick': [event: MouseEvent]}>()
       >
         <DsfrHeaderMenuLink
           v-bind="quickLink"
-          :on-click="($event) => {emit('linkClick', $event); quickLink.onClick?.($event)}"
+          :on-click="($event) => { emit('linkClick', $event); quickLink.onClick?.($event) }"
         />
       </li>
     </ul>

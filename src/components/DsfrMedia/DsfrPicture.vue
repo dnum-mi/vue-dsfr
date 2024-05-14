@@ -17,8 +17,8 @@ withDefaults(defineProps<DsfrPictureProps>(), {
     class="fr-content-media"
     role="group"
     :class="{
-      'fr-content-media--sm': size == 'small',
-      'fr-content-media--lg': size == 'large',
+      'fr-content-media--sm': size === 'small',
+      'fr-content-media--lg': size === 'large',
     }"
     :aria-label="legend"
   >

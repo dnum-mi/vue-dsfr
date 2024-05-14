@@ -13,7 +13,7 @@ withDefaults(defineProps<DsfrTagsProps>(), {
 <template>
   <ul class="fr-tags-group">
     <li
-      v-for="({icon, label, ...tagProps}, i) in tags"
+      v-for="({ icon, label, ...tagProps }, i) in tags"
       :key="i"
     >
       <DsfrTag

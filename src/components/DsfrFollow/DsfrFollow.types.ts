@@ -1,7 +1,7 @@
 export type DsfrSocialNetworkName = 'facebook' | 'twitter-x' | 'instagram' | 'linkedin' | 'youtube'
 export type DsfrSocialNetwork = {
-  type: DsfrSocialNetworkName,
-  name: string,
+  type: DsfrSocialNetworkName
+  name: string
   href: string
 }
 

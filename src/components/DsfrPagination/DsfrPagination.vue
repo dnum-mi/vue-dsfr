@@ -15,7 +15,7 @@ const props = withDefaults(defineProps<DsfrPaginationProps>(), {
 
 })
 
-const emit = defineEmits<{(e: 'update:currentPage', payload: number): void}>()
+const emit = defineEmits<{ (e: 'update:currentPage', payload: number): void }>()
 
 const startIndex = computed(() => {
   return Math.min(props.pages.length - 1 - props.truncLimit, Math.max(props.currentPage - (props.truncLimit - props.truncLimit % 2) / 2, 0))

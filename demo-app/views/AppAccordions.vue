@@ -7,6 +7,7 @@ import DsfrAccordionsGroup from '@/components/DsfrAccordion/DsfrAccordionsGroup.
 const accordionTitle = 'Titre de l’accordéon'
 const expandedId = ref(undefined)
 </script>
+
 <template>
   <DsfrAccordionsGroup>
     <li>

@@ -18,8 +18,8 @@ withDefaults(defineProps<DsfrVideoProps>(), {
   <figure
     class="fr-content-media"
     :class="{
-      'fr-content-media--sm': size == 'small',
-      'fr-content-media--lg': size == 'large',
+      'fr-content-media--sm': size === 'small',
+      'fr-content-media--lg': size === 'large',
     }"
   >
     <div

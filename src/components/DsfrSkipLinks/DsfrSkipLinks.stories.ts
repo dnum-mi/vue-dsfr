@@ -9,8 +9,9 @@ export default {
   argTypes: {
     links: {
       control: 'object',
-      description: 'Permet de passer le label du lien et l’id de l’élément html ciblée sous forme de tableau d’objets. Chaque objet aura 2 propriétés : `id` et `text`. <br/>' +
-        ' Il est primordial que les éléments ciblés par les liens d’évitements puissent recevoir le focus (si ce n’est pas le cas nativement, ajouter `tabindex="0"`)',
+      description: `Permet de passer le label du lien et l’id de l’élément html ciblée sous forme de tableau d’objets.
+        Chaque objet aura 2 propriétés : \`id\` et \`text\`. <br/> Il est primordial que les éléments ciblés par les
+        liens d’évitements puissent recevoir le focus (si ce n’est pas le cas nativement, ajouter \`tabindex="0"\`)`,
     },
   },
 }

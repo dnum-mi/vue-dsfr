@@ -5,7 +5,7 @@ export type DsfrModalProps = {
   opened?: boolean
   actions?: DsfrButtonProps[]
   isAlert?: boolean
-  origin?: {focus:() => void}
+  origin?: { focus: () => void }
   title: string
   icon?: string
   size?: 'sm' | 'md' | 'lg' | 'xl',

@@ -6,7 +6,7 @@ export type { DsfrShareProps }
 withDefaults(defineProps<DsfrShareProps>(), {
   title: 'Partager la page',
   copyLabel: 'Copier dans le presse-papier',
-  // @ts-ignore this is really undefined
+  // @ts-expect-error this is really undefined
   mail: () => undefined,
   networks: () => [],
 })

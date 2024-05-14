@@ -21,7 +21,7 @@ const rows: DsfrTableRowProps[] = [
         :headers="[
           { text: 'Nom', headerAttrs: { class: 'header-nom' } },
           { text: 'Age', headerAttrs: { class: 'header-age' } },
-          'Ville'
+          'Ville',
         ]"
       />
     </template>

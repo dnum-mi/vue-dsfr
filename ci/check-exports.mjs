@@ -1,10 +1,13 @@
 #!/usr/bin/env node
-import { fileURLToPath, URL } from 'url'
-import { readFile, writeFile } from 'fs/promises'
+/* eslint no-console: 'off' */
+import process from 'node:process'
+import { fileURLToPath, URL } from 'node:url'
+import { readFile, writeFile } from 'node:fs/promises'
+import path from 'node:path'
+
 import inquirer from 'inquirer'
 import chalk from 'chalk'
 import { globby } from 'globby'
-import path from 'path'
 
 const isCI = process.argv.includes('--ci')
 
@@ -13,15 +16,15 @@ const getNormalizedDir = (relativeDir) => fileURLToPath(new URL(relativeDir, imp
 // const sfcs = await globby(fileURLToPath(new URL('../src/components/**/*.vue', import.meta.url)))
 const sfcs = await globby('src/components/**/*.vue')
 
-const projectFn = component => 'export { default as ' + path.basename(component, '.vue') + ' } from \'' + component.replace('src/components', '.') + '\''
+const projectFn = component => `export { default as ${path.basename(component, '.vue')} } from '${component.replace('src/components', '.')}'`
 
 const correctComponentList = sfcs.map(projectFn).sort()
-const correctString = correctComponentList.join('\n') + '\n'
+const correctString = `${correctComponentList.join('\n')}\n`
 
-const srcIndexFullpath = getNormalizedDir('../src/components') + path.sep + 'index.ts'
-const typesIndexFullpath = getNormalizedDir('../types/components') + path.sep + 'index.d.ts'
+const srcIndexFullpath = `${getNormalizedDir('../src/components') + path.sep}index.ts`
+const typesIndexFullpath = `${getNormalizedDir('../types/components') + path.sep}index.d.ts`
 
-const index = await readFile(getNormalizedDir('../src/components') + '/index.ts')
+const index = await readFile(`${getNormalizedDir('../src/components')}/index.ts`)
 const currentFileContent = index.toString()
 
 if (currentFileContent !== correctString) {
@@ -55,7 +58,7 @@ if (currentFileContent !== correctString) {
   }
 
   if (onlyInCorrectList.length || onlyInCurrentFileList.length) {
-    console.log('dans ' + chalk.yellow.bold(srcIndexFullpath))
+    console.log(`dans ${chalk.yellow.bold(srcIndexFullpath)}`)
   }
 
   if (!isCI) {

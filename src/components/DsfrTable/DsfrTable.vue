@@ -16,7 +16,7 @@ const props = withDefaults(defineProps<DsfrTableProps>(), {
 })
 
 // Permet aux utilisateurs d'utiliser une fonction afin de charger des résultats au changement de page
-const emit = defineEmits<{(event: 'update:currentPage'): void }>()
+const emit = defineEmits<{ (event: 'update:currentPage'): void }>()
 
 const getRowData = (row: DsfrTableProps['rows']) => {
   return Array.isArray(row) ? row : (row as unknown as DsfrTableRowProps).rowData

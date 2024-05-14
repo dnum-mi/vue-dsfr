@@ -7,5 +7,5 @@ export type DsfrPaginationProps = {
   lastPageTitle?: string
   nextPageTitle?: string
   prevPageTitle?: string
-  truncLimit?: number,
+  truncLimit?: number
 }

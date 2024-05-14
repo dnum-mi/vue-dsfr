@@ -65,7 +65,7 @@ describe('DsfrNavigationMenuLink', () => {
     await router.isReady()
 
     const link = getByTestId('nav-router-link')
-    expect(link.innerHTML).toBe('<!--v-if--> ' + text)
+    expect(link.innerHTML).toBe(`<!--v-if--> ${text}`)
     expect(link).toHaveAttribute('href', to)
   })
 })

@@ -30,7 +30,7 @@ const iconProps = computed(() => dsfrIcon.value ? undefined : typeof props.icon 
     />
     <span
       v-if="dsfrIcon"
-      :class="{[String(icon)]: dsfrIcon}"
+      :class="{ [String(icon)]: dsfrIcon }"
     />
   </th>
 </template>

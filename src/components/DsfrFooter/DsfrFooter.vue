@@ -6,7 +6,7 @@ import DsfrLogo from '../DsfrLogo/DsfrLogo.vue'
 import DsfrFooterPartners from '../DsfrFooter/DsfrFooterPartners.vue'
 import DsfrFooterLink from '../DsfrFooter/DsfrFooterLink.vue'
 
-import { type DsfrFooterProps } from './DsfrFooter.types'
+import type { DsfrFooterProps } from './DsfrFooter.types'
 
 export type { DsfrFooterProps }
 export type {
@@ -21,7 +21,7 @@ const props = withDefaults(defineProps<DsfrFooterProps>(), {
   a11yComplianceLink: '/a11y',
   legalLink: '/mentions-legales',
   homeLink: '/',
-  // @ts-ignore this is really undefined
+  // @ts-expect-error this is really undefined
   partners: () => undefined,
   personalDataLink: '/donnees-personnelles',
   cookiesLink: '/cookies',
@@ -73,7 +73,7 @@ const props = withDefaults(defineProps<DsfrFooterProps>(), {
   operatorImgAlt: '',
   licenceText: 'Sauf mention contraire, tous les textes de ce site sont sous',
   licenceTo: 'https://github.com/etalab/licence-ouverte/blob/master/LO.md',
-  // @ts-ignore this is really undefined
+  // @ts-expect-error this is really undefined
   licenceLinkProps: () => undefined,
   licenceName: 'licence etalab-2.0',
 })
@@ -142,10 +142,10 @@ const aLicenceHref = computed(() => {
                 typeof operatorImgStyle === 'string' ? operatorImgStyle : '',
                 {
                   'margin-left': '0.5px',
-                  'padding': '1rem',
+                  padding: '1rem',
                   ...(typeof operatorImgStyle === 'object' ? operatorImgStyle : {}),
-                  'max-width': '12.5rem'
-                }
+                  'max-width': '12.5rem',
+                },
               ]"
               :src="operatorImgSrc"
               :alt="operatorImgAlt"

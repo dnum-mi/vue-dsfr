@@ -4,7 +4,7 @@ import { render } from '@testing-library/vue'
 import CheckBox from './DsfrCheckbox.vue'
 
 describe('DsfrCheckbox', () => {
-  it('should render a checkbox with label in div', () => {
+  it('should render a simple checkbox with label in div', () => {
     // Given
     const label = 'Check box label'
     const modelValue = true

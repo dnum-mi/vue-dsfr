@@ -16,10 +16,9 @@ withDefaults(defineProps<DsfrSearchBarProps>(), {
   placeholder: 'Rechercher',
 })
 
-// eslint-disable-next-line func-call-spacing
 const emit = defineEmits<{
-  (e: 'update:modelValue', payload: string): void,
-  (e: 'search', payload: string): void,
+  (e: 'update:modelValue', payload: string): void
+  (e: 'search', payload: string): void
 }>()
 </script>
 

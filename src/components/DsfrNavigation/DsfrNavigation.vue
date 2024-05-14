@@ -34,16 +34,6 @@ const toggle = (id: string | undefined) => {
   expandedMenuId.value = id
 }
 
-const onDocumentClick = (e: MouseEvent) => {
-  handleElementClick(e.target as HTMLElement)
-}
-
-const onKeyDown = (e: KeyboardEvent) => {
-  if (e.key === 'Escape') {
-    toggle(expandedMenuId.value)
-  }
-}
-
 const handleElementClick = (el: HTMLElement) => {
   if (el === document.getElementById(props.id)) {
     return
@@ -55,6 +45,16 @@ const handleElementClick = (el: HTMLElement) => {
   }
 
   handleElementClick(el.parentNode as HTMLElement)
+}
+
+const onDocumentClick = (e: MouseEvent) => {
+  handleElementClick(e.target as HTMLElement)
+}
+
+const onKeyDown = (e: KeyboardEvent) => {
+  if (e.key === 'Escape') {
+    toggle(expandedMenuId.value)
+  }
 }
 
 onMounted(() => {

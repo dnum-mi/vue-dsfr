@@ -27,19 +27,13 @@ const props = withDefaults(defineProps<DsfrHeaderProps>(), {
   quickLinksAriaLabel: 'Menu secondaire',
 })
 
-const languageSelector = toRef(props, 'languageSelector')
+const emit = defineEmits<{
+  (e: 'update:modelValue', payload: string): void
+  (e: 'search', payload: string): void
+  (e: 'language-select', payload: DsfrLanguageSelectorElement): void
+}>()
 
-const onKeyDown = (e: KeyboardEvent) => {
-  if (e.key === 'Escape') {
-    hideModal()
-  }
-}
-onMounted(() => {
-  document.addEventListener('keydown', onKeyDown)
-})
-onUnmounted(() => {
-  document.removeEventListener('keydown', onKeyDown)
-})
+const languageSelector = toRef(props, 'languageSelector')
 
 const menuOpened = ref(false)
 const searchModalOpened = ref(false)
@@ -51,6 +45,19 @@ const hideModal = () => {
   searchModalOpened.value = false
   document.getElementById('button-menu')?.focus()
 }
+const onKeyDown = (e: KeyboardEvent) => {
+  if (e.key === 'Escape') {
+    hideModal()
+  }
+}
+
+onMounted(() => {
+  document.addEventListener('keydown', onKeyDown)
+})
+onUnmounted(() => {
+  document.removeEventListener('keydown', onKeyDown)
+})
+
 const showMenu = () => {
   modalOpened.value = true
   menuOpened.value = true
@@ -67,13 +74,6 @@ const onQuickLinkClick = hideModal
 const slots = useSlots()
 const isWithSlotOperator = computed(() => Boolean(slots.operator?.().length) || !!props.operatorImgSrc)
 const isWithSlotNav = computed(() => Boolean(slots.mainnav))
-
-// eslint-disable-next-line func-call-spacing
-const emit = defineEmits<{
-  (e: 'update:modelValue', payload: string): void,
-  (e: 'search', payload: string): void,
-  (e: 'language-select', payload: DsfrLanguageSelectorElement): void,
-}>()
 </script>
 
 <template>

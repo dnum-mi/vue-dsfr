@@ -6,6 +6,7 @@ import DsfrInputGroup from './DsfrInputGroup.vue'
 import { OhVueIcon as VIcon, addIcons } from 'oh-vue-icons'
 
 import { RiQuestionFill } from 'oh-vue-icons/icons'
+
 addIcons(RiQuestionFill)
 
 /**

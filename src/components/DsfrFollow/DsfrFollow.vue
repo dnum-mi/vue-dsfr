@@ -9,7 +9,7 @@ import type { DsfrFollowProps } from './DsfrFollow.types'
 export type { DsfrFollowProps }
 
 const props = withDefaults(defineProps<DsfrFollowProps>(), {
-  // @ts-ignore this is really undefined
+  // @ts-expect-error this is really undefined
   newsletterData: () => undefined,
   networks: () => [],
 })
@@ -30,13 +30,15 @@ const hasNewsletter = computed(() => {
         <slot>
           <div
             v-if="newsletterData"
-            :class="{ 'fr-col-12' : true, 'fr-col-md-8': hasNetworks }"
+            class="fr-col-12"
+            :class="{ 'fr-col-md-8': hasNetworks }"
           >
             <DsfrNewsLetter v-bind="newsletterData" />
           </div>
           <div
             v-if="hasNetworks"
-            :class="{ 'fr-col-12' : true, 'fr-col-md-4': hasNewsletter }"
+            class="fr-col-12"
+            :class="{ 'fr-col-md-4': hasNewsletter }"
           >
             <DsfrSocialNetworks :networks="networks" />
           </div>

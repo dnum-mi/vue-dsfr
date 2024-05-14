@@ -8,7 +8,7 @@ import type { DsfrCalloutProps } from './DsfrCallout.types'
 export type { DsfrCalloutProps }
 
 const props = withDefaults(defineProps<DsfrCalloutProps>(), {
-  // @ts-ignore this is really undefined
+  // @ts-expect-error this is really undefined
   button: () => undefined,
   titleTag: 'h3',
   icon: undefined,

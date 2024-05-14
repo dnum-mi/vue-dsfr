@@ -7,8 +7,8 @@ export type DsfrFooterPartner = {
 
 export type DsfrFooterPartnersProps = {
   mainPartner?: DsfrFooterPartner
-  subPartners?: DsfrFooterPartner[],
-  title?: string,
+  subPartners?: DsfrFooterPartner[]
+  title?: string
 }
 
 withDefaults(defineProps<DsfrFooterPartnersProps>(), {

@@ -1,2 +1,5 @@
 import '../../src/init-dsfr.js'
-window.matchMedia = function () { return { matches: false } }
+
+window.matchMedia = function () {
+  return { matches: false }
+}

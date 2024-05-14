@@ -41,7 +41,7 @@ app?.appContext.app.use(
 
 const search = ref('')
 watch(search, (newValue) => {
-  console.log('search', newValue)
+  console.log('search', newValue) // eslint-disable-line no-console
 })
 
 const selectLanguage = (language: DsfrLanguageSelectorElement) => {

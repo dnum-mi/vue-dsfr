@@ -76,7 +76,6 @@ function toggleExpandedForMenuWithId (menuItems, id: string) {
 function toggleExpand (id: string) {
   toggleExpandedForMenuWithId(menuItems.value, id)
 }
-
 </script>
 
 <template>

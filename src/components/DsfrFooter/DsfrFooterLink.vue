@@ -16,17 +16,17 @@ const props = withDefaults(defineProps<DsfrFooterLinkProps>(), {
   to: undefined,
 })
 
-const is = computed(() => {
-  if (props.button) {
-    return 'button'
-  }
-  return isExternalLink.value || isMailto.value ? 'a' : 'RouterLink'
-})
 const isExternalLink = computed(() => {
   return props.href?.startsWith('http')
 })
 const isMailto = computed(() => {
   return props.href?.startsWith('mailto')
+})
+const is = computed(() => {
+  if (props.button) {
+    return 'button'
+  }
+  return isExternalLink.value || isMailto.value ? 'a' : 'RouterLink'
 })
 const actualHref = computed(() => {
   if (!isExternalLink.value && !isMailto.value) {

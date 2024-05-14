@@ -8,13 +8,13 @@ export const getRandomAlphaNum = () => {
   return alphanum[randomIndex]
 }
 
-export const getRandomId = (prefix = '', suffix = '') => {
-  return (prefix ? prefix + '-' : '') + getRandomString(5) + (suffix ? '-' + suffix : '')
-}
-
 export const getRandomString = (length: number) => {
   return Array.from({ length })
     .map(getRandomAlphaNum).join('')
+}
+
+export const getRandomId = (prefix = '', suffix = '') => {
+  return (prefix ? `${prefix}-` : '') + getRandomString(5) + (suffix ? `-${suffix}` : '')
 }
 
 export const repeatFn = <T, U>(

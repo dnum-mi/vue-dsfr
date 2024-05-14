@@ -4,11 +4,12 @@ import DsfrTag from '../../DsfrTag/DsfrTag.vue'
 
 import { getCurrentInstance } from 'vue'
 import type { DsfrTableCellProps, DsfrTableRowProps } from '../DsfrTable.types'
+
 getCurrentInstance()?.appContext.app.component('DsfrTag', DsfrTag)
 
 const title = 'Utilisateurs'
 const headers = ['Nom', 'Prénom', 'Email', 'Statut']
-const rows: (string | DsfrTableRowProps | DsfrTableCellProps | {component: string, [k: string]: unknown})[][] = [
+const rows: (string | DsfrTableRowProps | DsfrTableCellProps | { component: string, [k: string]: unknown })[][] = [
   [
     'SÖZE',
     'Keyser',

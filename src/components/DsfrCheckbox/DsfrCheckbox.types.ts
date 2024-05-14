@@ -15,13 +15,13 @@ export type DsfrCheckboxProps = {
 
 export type DsfrCheckboxSetProps = {
   titleId?: string
-  disabled?: boolean,
-  inline?: boolean,
-  required?: boolean,
-  small?: boolean,
+  disabled?: boolean
+  inline?: boolean
+  required?: boolean
+  small?: boolean
   errorMessage?: string
   validMessage?: string
   legend?: string
-  options?:(DsfrCheckboxProps & InputHTMLAttributes)[]
-  modelValue?: string[],
+  options?: (DsfrCheckboxProps & InputHTMLAttributes)[]
+  modelValue?: string[]
 }

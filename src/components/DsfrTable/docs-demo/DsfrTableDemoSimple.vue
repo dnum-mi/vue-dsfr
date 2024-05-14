@@ -8,7 +8,7 @@ import DsfrTable from '../DsfrTable.vue'
     :headers="['Nom', 'Age', 'Ville']"
     :rows="[
       { rowData: ['Alice', '30', 'Paris'] },
-      { rowData: ['Bob', '24', 'Lyon'] }
+      { rowData: ['Bob', '24', 'Lyon'] },
     ]"
   />
 </template>
