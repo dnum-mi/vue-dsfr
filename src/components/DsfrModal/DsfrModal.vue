@@ -16,6 +16,8 @@ const props = withDefaults(defineProps<DsfrModalProps>(), {
   origin: () => ({ focus () {} }), // eslint-disable-line @typescript-eslint/no-empty-function
   icon: undefined,
   size: 'md',
+  closeButtonLabel: 'Fermer',
+  closeButtonTitle: 'Fermer la fenêtre modale',
 })
 
 const emit = defineEmits<{(e: 'close'): void}>()
@@ -106,13 +108,13 @@ const iconProps = computed(() => dsfrIcon.value
                 <button
                   ref="closeBtn"
                   class="fr-btn fr-btn--close"
-                  title="Fermer la fenêtre modale"
+                  :title="closeButtonTitle"
                   aria-controls="fr-modal-1"
                   type="button"
                   @click="close()"
                 >
                   <span>
-                    Fermer
+                    {{ closeButtonLabel }}
                   </span>
                 </button>
               </div>
