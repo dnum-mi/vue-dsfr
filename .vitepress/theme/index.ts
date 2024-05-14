@@ -13,10 +13,10 @@ addIcons(...Object.values(vpIcons))
 
 export default {
   extends: DefaultTheme,
-  enhanceApp({ app }) {
+  enhanceApp ({ app }) {
     app.component('VIcon', VIcon)
     app.component('VIconLink', VIconLink)
     app.component('Story', Story)
     app.component('RouterLink', RouterLink)
-  }
+  },
 } satisfies Theme

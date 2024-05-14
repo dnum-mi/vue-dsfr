@@ -1,5 +1,17 @@
 {
   "extends": "@vue/tsconfig/tsconfig.dom.json",
+  "compilerOptions": {
+    "composite": true,
+    "baseUrl": ".",
+    "rootDir": "./src",
+    "paths": {
+      "@/*": ["./src/*"],
+      "@tests/*": ["./tests/*"]
+    },
+    "declaration": true,
+    "declarationDir": "./types",
+    "noEmit": false
+  },
   "include": [
     "env.d.ts",
     "src/**/*",
@@ -12,17 +24,5 @@
     "src/**/*.e2e.ts",
     "src/**/*.stories.ts",
     "src/**/docs-demo/**"
-  ],
-  "compilerOptions": {
-    "composite": true,
-    "baseUrl": ".",
-    "noEmit": false,
-    "declaration": true,
-    "declarationDir": "./types",
-    "rootDir": "./src",
-    "paths": {
-      "@/*": ["./src/*"],
-      "@tests/*": ["./tests/*"]
-    }
-  }
+  ]
 }

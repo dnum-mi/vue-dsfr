@@ -10,16 +10,6 @@ defineProps({})
 
 const toaster = useToaster()
 
-const cityList = ref([])
-const cityQuery = ref('')
-watch(
-  cityQuery,
-  pDebounce(async (query) => {
-    cityList.value =
-      cityQuery.value === '' ? [] : await getCityListWithZipCodeByQuery(query)
-  }, 300),
-)
-
 /**
  * @async
  * @function
@@ -32,6 +22,7 @@ const getCityListByQuery = (query) =>
   fetch(
     `https://geo.api.gouv.fr/communes?nom=${query}&fields=codesPostaux`,
   ).then((res) => res.json())
+
 /**
  * @async
  * @function
@@ -52,8 +43,19 @@ const getCityListWithZipCodeByQuery = async (query) =>
       return codesPostaux.map((codePostal) => `${nom} (${codePostal})`)
     })
     .flat()
+
+const cityList = ref([])
+const cityQuery = ref('')
+watch(
+  cityQuery,
+  pDebounce(async (query) => {
+    cityList.value =
+      cityQuery.value === '' ? [] : await getCityListWithZipCodeByQuery(query)
+  }, 300),
+)
+
 const selectAddress = (address) => {
-  console.log(address)
+  console.log(address) // eslint-disable-line no-console
 }
 
 const isLoading = ref(false)
@@ -97,7 +99,7 @@ const onClick = () => {
   <span class="fr-fi-search-line" />
 
   <p class="fr-my-2w">
-    <DsfrButton @click="toaster.addMessage({ description: 'Message pour l’utilisateur', type: 'info'})">
+    <DsfrButton @click="toaster.addMessage({ description: 'Message pour l’utilisateur', type: 'info' })">
       Cliquer pour voir une alerte
     </DsfrButton>
   </p>

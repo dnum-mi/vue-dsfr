@@ -10,7 +10,7 @@ const props = withDefaults(defineProps<DsfrSideMenuLinkProps>(), {
   to: '',
 })
 
-defineEmits<{(e: 'toggle-expand', payload: string): void}>()
+defineEmits<{ (e: 'toggle-expand', payload: string): void }>()
 
 const isExternalLink = computed(() => {
   return typeof props.to === 'string' && props.to.startsWith('http')

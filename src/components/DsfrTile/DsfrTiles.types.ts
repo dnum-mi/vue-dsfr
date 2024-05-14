@@ -8,7 +8,7 @@ export type DsfrTileProps = {
   disabled?: boolean
   horizontal?: boolean
   vertical?: 'md' | 'lg'
-  to?: RouteLocationRaw,
+  to?: RouteLocationRaw
   titleTag?: string
   download?: boolean
   small?: boolean
@@ -20,6 +20,6 @@ export type DsfrTileProps = {
 }
 
 export type DsfrTilesProps = {
-  tiles?:(DsfrTileProps & { containerClass: string })[]
+  tiles?: (DsfrTileProps & { containerClass: string })[]
   horizontal?: boolean
 }

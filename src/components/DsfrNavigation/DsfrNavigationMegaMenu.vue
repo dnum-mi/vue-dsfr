@@ -18,6 +18,8 @@ const props = withDefaults(defineProps<DsfrNavigationMegaMenuProps>(), {
   expandedId: '',
 })
 
+defineEmits<{ (event: 'toggleId', id: string): void }>()
+
 const {
   collapse,
   collapsing,
@@ -46,8 +48,6 @@ onMounted(() => {
     doExpand(true)
   }
 })
-
-defineEmits<{(event: 'toggle-id', id: string): void}>()
 </script>
 
 <template>
@@ -56,7 +56,7 @@ defineEmits<{(event: 'toggle-id', id: string): void}>()
     :aria-expanded="expanded"
     :aria-current="active || undefined"
     :aria-controls="id"
-    @click="$emit('toggle-id', id)"
+    @click="$emit('toggleId', id)"
   >
     {{ title }}
   </button>
@@ -76,12 +76,11 @@ defineEmits<{(event: 'toggle-id', id: string): void}>()
       <button
         class="fr-link--close fr-link"
         aria-controls="mega-menu-695"
-        @click="$emit('toggle-id', id)"
+        @click="$emit('toggleId', id)"
       >
         Fermer
       </button>
       <div
-        ref="megaMenuList"
         class="fr-grid-row fr-grid-row-lg--gutters"
       >
         <div class="fr-col-12 fr-col-lg-8 fr-col-offset-lg-4--right fr-mb-4v">

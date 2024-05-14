@@ -1,5 +1,4 @@
 {
-  "files": [],
   "references": [
     {
       "path": "./tsconfig.node.json"
@@ -11,6 +10,7 @@
       "path": "./tsconfig.vitest.json"
     }
   ],
+  "files": [],
   "ts-node": {
     "transpileOnly": true,
     "compilerOptions": {

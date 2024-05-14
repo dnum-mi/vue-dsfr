@@ -15,10 +15,9 @@ withDefaults(defineProps<DsfrFileUploadProps>(), {
   modelValue: '',
 })
 
-// eslint-disable-next-line func-call-spacing
 const emit = defineEmits<{
-  (e: 'update:modelValue', payload: string): void,
-  (e: 'change', payload: FileList): void,
+  (e: 'update:modelValue', payload: string): void
+  (e: 'change', payload: FileList): void
 }>()
 
 const onChange = ($event: InputEvent) => {

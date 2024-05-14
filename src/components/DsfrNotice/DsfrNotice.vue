@@ -7,7 +7,7 @@ withDefaults(defineProps<DsfrNoticeProps>(), {
   title: '',
 })
 
-defineEmits<{(event: 'close'): void}>()
+defineEmits<{ (event: 'close'): void }>()
 </script>
 
 <template>

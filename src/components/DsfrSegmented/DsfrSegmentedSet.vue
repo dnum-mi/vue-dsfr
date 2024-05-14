@@ -13,7 +13,7 @@ const props = withDefaults(defineProps<DsfrSegmentedSetProps>(), {
   options: () => [],
 })
 
-const emit = defineEmits<{(e: 'update:modelValue', payload: string | number): void}>()
+const emit = defineEmits<{ (e: 'update:modelValue', payload: string | number): void }>()
 
 const onChange = ($event: string) => {
   if ($event === props.modelValue) {

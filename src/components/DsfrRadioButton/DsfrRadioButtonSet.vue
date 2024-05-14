@@ -16,7 +16,7 @@ const props = withDefaults(defineProps<DsfrRadioButtonSetProps>(), {
   options: () => [],
 })
 
-const emit = defineEmits<{(e: 'update:modelValue', payload: string | number | boolean): void}>()
+const emit = defineEmits<{ (e: 'update:modelValue', payload: string | number | boolean): void }>()
 
 const message = computed(() => props.errorMessage || props.validMessage)
 const additionalMessageClass = computed(() => props.errorMessage ? 'fr-error-text' : 'fr-valid-text')

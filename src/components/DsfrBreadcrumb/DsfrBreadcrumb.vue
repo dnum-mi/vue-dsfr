@@ -62,17 +62,16 @@ watch(expanded, (newValue, oldValue) => {
           v-for="(link, index) in links"
           :key="index"
           class="fr-breadcrumb__item"
-          :data-testid="`lis`"
+          data-testid="lis"
         >
-          <component
-            :is="'RouterLink'"
+          <RouterLink
             v-if="link.to"
             class="fr-breadcrumb__link"
             :to="link.to"
             :aria-current="index === links.length - 1 ? 'page' : undefined"
           >
             {{ link.text }}
-          </component>
+          </RouterLink>
           <a
             v-if="!link.to"
             class="fr-breadcrumb__link"

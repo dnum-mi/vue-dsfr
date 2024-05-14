@@ -212,7 +212,7 @@ const afterMandatoryLinks = [
     button: true,
     class: 'fr-icon-theme-fill fr-link--icon-left',
     to: '/settings',
-    onclick: () => console.log('Settings'),
+    onclick: () => console.log('Settings'), // eslint-disable-line no-console
   },
 ]
 const a11yCompliance = 'partiellement conforme'
@@ -271,7 +271,7 @@ const search = ref('')
       <h1>Demo VueDsfr</h1>
 
       <DsfrBreadcrumb
-        :links="[{text: 'Accueil', to: '/'}, {text: 'Test fil d’Ariane'}]"
+        :links="[{ text: 'Accueil', to: '/' }, { text: 'Test fil d’Ariane' }]"
       />
 
       <router-view />

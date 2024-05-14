@@ -1,10 +1,10 @@
 import {
-  getRandomString,
   getRandomAlphaNum,
+  getRandomString,
   repeatFn,
 } from './random-utils.js'
 
-describe('Random-utils', () => {
+describe('random-utils', () => {
   it('should return a random string of specified length Stan', () => {
     const length = 10
 
@@ -40,7 +40,7 @@ describe('Random-utils', () => {
     expect(results).toEqual([42, 42, 42, 42, 42])
   })
 
-  it('should return a random alphanumeric character', () => {
+  it('should return random alphanumeric characters', () => {
     // Given
     const times = 33
 

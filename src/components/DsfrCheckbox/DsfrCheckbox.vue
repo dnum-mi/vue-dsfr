@@ -18,14 +18,14 @@ const props = withDefaults(defineProps<DsfrCheckboxProps>(), {
   label: '',
 })
 
-const emit = defineEmits<{(event: 'update:modelValue', value: boolean): void}>()
+const emit = defineEmits<{ (event: 'update:modelValue', value: boolean): void }>()
 
 const message = computed(() => props.errorMessage || props.validMessage)
 
 const additionalMessageClass = computed(() => props.errorMessage ? 'fr-error-text' : 'fr-valid-text')
 
 const emitNewValue = ($event: InputEvent) => {
-  // @ts-ignore This is a checkbox input event, so `checked` property is present
+  // @ts-expect-error This is a checkbox input event, so `checked` property is present
   emit('update:modelValue', $event.target.checked)
 }
 </script>

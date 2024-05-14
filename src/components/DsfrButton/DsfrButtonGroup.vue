@@ -44,7 +44,7 @@ const computeEquisizedWidth = async () => {
       maxWidth = newWidth
     }
   })
-  equisizedWidth.value = maxWidth + 'px'
+  equisizedWidth.value = `${maxWidth}px`
 }
 
 onMounted(async () => {

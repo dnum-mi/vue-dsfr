@@ -30,4 +30,3 @@ features:
   - title: Prête pour TypeScript
     details: Écrite en TS, tous les composants et leurs propriétés sont typés.
 ---
-

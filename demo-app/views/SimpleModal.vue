@@ -12,7 +12,6 @@ const close = () => {
   )
 }
 
-// eslint-disable-next-line no-unused-vars
 const actions = [
   {
     label: 'Valider',
@@ -31,6 +30,7 @@ const actions = [
   },
 ]
 </script>
+
 <template>
   <div>
     <DsfrButton

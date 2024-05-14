@@ -34,7 +34,7 @@ export default {
 const header = 'En-tête'
 const headerAttrs = {
   class: 'ns-resize',
-  onClick: () => {}, // eslint-disable-line @typescript-eslint/no-empty-function
+  onClick: () => {},
 }
 
 export const EnTeteDeTableau = (args) => ({

@@ -25,7 +25,7 @@ const props = withDefaults(defineProps<DsfrInputGroupProps>(), {
   validMessage: undefined,
 })
 
-defineEmits<{(e: 'update:modelValue', payload: string): void}>()
+defineEmits<{ (e: 'update:modelValue', payload: string): void }>()
 
 const message = computed(() => props.errorMessage || props.validMessage)
 const messageClass = computed(() => props.errorMessage ? 'fr-error-text' : 'fr-valid-text')
@@ -39,7 +39,7 @@ const messageClass = computed(() => props.errorMessage ? 'fr-error-text' : 'fr-v
         'fr-input-group--error': errorMessage,
         'fr-input-group--valid': validMessage,
       },
-      wrapperClass
+      wrapperClass,
     ]"
   >
     <slot name="before-input" />

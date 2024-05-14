@@ -6,15 +6,15 @@ export type DsfrTabItemProps = {
 }
 
 export type DsfrTabContentProps = {
-  asc?: boolean,
-  selected?: boolean,
-  panelId: string,
-  tabId: string,
+  asc?: boolean
+  selected?: boolean
+  panelId: string
+  tabId: string
 }
 
 export type DsfrTabsProps = {
   tabListName: string
-  tabTitles:(Partial<DsfrTabItemProps> & { title: string })[]
+  tabTitles: (Partial<DsfrTabItemProps> & { title: string })[]
   tabContents?: string[]
   initialSelectedIndex?: number
 }

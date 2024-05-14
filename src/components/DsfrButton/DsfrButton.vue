@@ -17,7 +17,7 @@ const sm = computed(() => ['sm', 'small'].includes(props.size))
 const md = computed(() => ['md', 'medium'].includes(props.size))
 const lg = computed(() => ['lg', 'large'].includes(props.size))
 
-const btn = ref<{focus:() => void} | null>(null)
+const btn = ref<{ focus: () => void } | null>(null)
 const focus = () => {
   btn.value?.focus()
 }
@@ -34,8 +34,8 @@ const iconProps = computed(() => typeof props.icon === 'string'
 <template>
   <button
     ref="btn"
+    class="fr-btn"
     :class="{
-      'fr-btn': true,
       'fr-btn--secondary': secondary && !tertiary,
       'fr-btn--tertiary': tertiary && !secondary && !noOutline,
       'fr-btn--tertiary-no-outline': tertiary && !secondary && noOutline,
@@ -45,7 +45,7 @@ const iconProps = computed(() => typeof props.icon === 'string'
       'fr-btn--icon-right': !iconOnly && dsfrIcon && iconRight,
       'fr-btn--icon-left': !iconOnly && dsfrIcon && !iconRight,
       'inline-flex': !dsfrIcon,
-      'reverse': iconRight && !dsfrIcon,
+      reverse: iconRight && !dsfrIcon,
       'justify-center': !dsfrIcon && iconOnly,
       [icon as string]: dsfrIcon,
     }"

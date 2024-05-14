@@ -52,8 +52,7 @@ PageErreur404.args = {
   buttons: [{
     label: 'Page d\'accueil',
     link: 'https://www.systeme-de-design.gouv.fr/',
-  },
-  {
+  }, {
     label: 'Contactez-nous',
     secondary: true,
     link: 'https://www.systeme-de-design.gouv.fr/',

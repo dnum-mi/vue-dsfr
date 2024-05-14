@@ -5,6 +5,6 @@ export type DsfrSearchBarProps = {
   large?: boolean
   buttonText?: string
   modelValue?: string
-  placeholder?: string,
+  placeholder?: string
   disabled?: boolean
 }

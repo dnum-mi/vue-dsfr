@@ -1,17 +1,3 @@
-<template>
-  <div class="fr-container fr-my-2v">
-    <DsfrBreadcrumb
-      breadcrumb-id="mon-fil-dariane"
-      :links="[
-        { text: 'Accueil', to: '/' },
-        { text: 'Bibliothèque', to: '/bibliotheque' },
-        { text: 'Livre', to: '/livre' },
-        { text: 'Le Seigneur des anneaux' }
-      ]"
-    />
-  </div>
-</template>
-
 <script lang="ts" setup>
 import DsfrBreadcrumb from '../DsfrBreadcrumb.vue'
 import { createWebHistory, createRouter } from 'vue-router'
@@ -29,3 +15,17 @@ app?.appContext.app.use(
   }),
 )
 </script>
+
+<template>
+  <div class="fr-container fr-my-2v">
+    <DsfrBreadcrumb
+      breadcrumb-id="mon-fil-dariane"
+      :links="[
+        { text: 'Accueil', to: '/' },
+        { text: 'Bibliothèque', to: '/bibliotheque' },
+        { text: 'Livre', to: '/livre' },
+        { text: 'Le Seigneur des anneaux' },
+      ]"
+    />
+  </div>
+</template>

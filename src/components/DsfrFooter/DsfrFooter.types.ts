@@ -10,8 +10,8 @@ export type DsfrFooterPartner = {
 
 export type DsfrFooterPartnersProps = {
   mainPartner?: DsfrFooterPartner
-  subPartners?: DsfrFooterPartner[],
-  title?: string,
+  subPartners?: DsfrFooterPartner[]
+  title?: string
 }
 
 export type DsfrFooterLinkProps = {
@@ -43,8 +43,8 @@ export type DsfrFooterProps = {
   descText?: string
   beforeMandatoryLinks?: DsfrFooterLinkProps[]
   afterMandatoryLinks?: DsfrFooterLinkProps[]
-  mandatoryLinks?: {label: string, to: RouteLocationRaw | undefined}[]
-  ecosystemLinks?: {label: string, href: string}[]
+  mandatoryLinks?: { label: string, to: RouteLocationRaw | undefined }[]
+  ecosystemLinks?: { label: string, href: string }[]
   operatorLinkText?: string
   operatorTo?: RouteLocationRaw | undefined
   operatorImgStyle?: StyleValue

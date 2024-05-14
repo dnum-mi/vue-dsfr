@@ -20,8 +20,8 @@ export type DsfrSideMenuListProps = {
   id: string
   collapsable?: boolean
   expanded?: boolean
-  menuItems?:(
-    DsfrSideMenuListItemProps & Partial<DsfrSideMenuListProps & {to?: RouteLocationRaw, text?: string}>
-      & { menuItems?: (DsfrSideMenuListItemProps & Partial<DsfrSideMenuListProps & {to?: RouteLocationRaw, text?: string}>)[] }
+  menuItems?: (
+    DsfrSideMenuListItemProps & Partial<DsfrSideMenuListProps & { to?: RouteLocationRaw, text?: string }>
+    & { menuItems?: (DsfrSideMenuListItemProps & Partial<DsfrSideMenuListProps & { to?: RouteLocationRaw, text?: string }>)[] }
   )[]
 }

@@ -16,7 +16,7 @@ const props = withDefaults(defineProps<DsfrNavigationMenuLinkProps>(), {
   to: '#',
 })
 
-defineEmits<{(event: 'toggle-id', id: string): void}>()
+defineEmits<{ (event: 'toggleId', id: string): void }>()
 
 const isExternal = computed(() => typeof props.to === 'string' && props.to.startsWith('http'))
 const dsfrIcon = computed(() => props.icon && typeof props.icon === 'string' && props.icon.startsWith('fr-icon-'))
@@ -35,7 +35,7 @@ const iconProps = computed(() => (dsfrIcon.value || !props.icon)
     class="fr-nav__link"
     data-testid="nav-external-link"
     :href="(to as string)"
-    @click="$emit('toggle-id', id)"
+    @click="$emit('toggleId', id)"
   >
     {{ text }}
   </a>
@@ -47,7 +47,7 @@ const iconProps = computed(() => (dsfrIcon.value || !props.icon)
     :class="{
       [String(icon)]: dsfrIcon,
     }"
-    @click="$emit('toggle-id', id)"
+    @click="$emit('toggleId', id)"
   >
     <VIcon
       v-if="iconProps"

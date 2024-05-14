@@ -1,7 +1,8 @@
-import { fileURLToPath, URL } from 'url'
-import { dirname, resolve } from 'path'
+import process from 'node:process'
+import { URL, fileURLToPath } from 'node:url'
+import { dirname, resolve } from 'node:path'
 
-import { defineConfig, type UserConfig } from 'vite'
+import { type UserConfig, defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import vueJsx from '@vitejs/plugin-vue-jsx'
 
@@ -34,7 +35,7 @@ const config: UserConfig = {
           vue: 'Vue',
           'oh-vue-icons': 'OhVueIcon',
         },
-        assetFileNames: (v) => 'vue-dsfr' + v.name?.replace(/[^.]+\./, '.'),
+        assetFileNames: v => `vue-dsfr${v.name?.replace(/[^.]+\./, '.')}`,
       },
     },
   },

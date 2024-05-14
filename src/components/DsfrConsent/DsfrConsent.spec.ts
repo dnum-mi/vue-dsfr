@@ -23,11 +23,11 @@ describe('DsfrContent', () => {
 
     await fireEvent.click(acceptAllBtn)
 
-    expect(emitted()['accept-all'].length).toBe(1)
+    expect(emitted()['acceptAll'].length).toBe(1)
 
     await fireEvent.click(refuseAllBtn)
 
-    expect(emitted()['refuse-all'].length).toBe(1)
+    expect(emitted()['refuseAll'].length).toBe(1)
 
     await fireEvent.click(customizeBtn)
 

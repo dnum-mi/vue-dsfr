@@ -18,7 +18,7 @@ export const useCollapsable = () => {
     }
     collapse.value.style.setProperty('--collapser', 'none')
     const height = collapse.value.offsetHeight
-    collapse.value.style.setProperty('--collapse', -height + 'px')
+    collapse.value.style.setProperty('--collapse', `${-height}px`)
     collapse.value.style.setProperty('--collapser', '')
   }
 

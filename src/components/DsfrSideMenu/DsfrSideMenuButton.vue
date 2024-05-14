@@ -5,7 +5,7 @@ export type { DsfrSideMenuButtonProps }
 
 defineProps<DsfrSideMenuButtonProps>()
 
-defineEmits<{(e: 'toggle-expand', payload: string): void}>()
+defineEmits<{ (e: 'toggleExpand', payload: string): void }>()
 </script>
 
 <template>
@@ -14,7 +14,7 @@ defineEmits<{(e: 'toggle-expand', payload: string): void}>()
     :aria-current="active ? 'page' : undefined"
     :aria-expanded="!!expanded"
     :aria-controls="controlId"
-    @click="$emit('toggle-expand', controlId)"
+    @click="$emit('toggleExpand', controlId)"
   >
     <!-- @slot Slot par défaut pour le texte du bouton -->
     <slot />

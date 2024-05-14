@@ -1,9 +1,9 @@
 {
   "extends": "./tsconfig.app.json",
-  "exclude": ["**/*.spec.ts", "**/*.stories.ts", "**/*.e2e.ts"],
   "compilerOptions": {
     "composite": true,
     "lib": [],
     "types": ["node", "jsdom"]
-  }
+  },
+  "exclude": ["**/*.spec.ts", "**/*.stories.ts", "**/*.e2e.ts"]
 }

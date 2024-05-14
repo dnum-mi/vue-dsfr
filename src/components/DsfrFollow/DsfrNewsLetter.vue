@@ -18,9 +18,9 @@ withDefaults(defineProps<DsfrNewsLetterProps>(), {
   onlyCallout: false,
 })
 
-const emit = defineEmits<{(e: 'update:email', payload: string): void}>()
+const emit = defineEmits<{ (e: 'update:email', payload: string): void }>()
 
-// @ts-ignore this event comes from the input[type=email] so `value` is there
+// @ts-expect-error this event comes from the input[type=email] so `value` is there
 const updateEmail = ($event: InputEvent) => emit('update:email', $event.target.value as string)
 </script>
 

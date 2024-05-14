@@ -64,7 +64,6 @@ defineExpose({ goToTargetLink })
       <div class="fr-card__content">
         <component
           :is="titleTag"
-          ref="title"
           class="fr-card__title"
         >
           <a
@@ -143,10 +142,8 @@ defineExpose({ goToTargetLink })
             <a
               v-else
               :href="(singleLink.link || singleLink.href)"
+              class="fr-link fr-icon-arrow-right-line fr-link--icon-right"
               :class="{
-                'fr-link': true,
-                'fr-icon-arrow-right-line': true,
-                'fr-link--icon-right': true,
                 'fr-link--sm': sm,
                 'fr-link--lg': lg,
               }"

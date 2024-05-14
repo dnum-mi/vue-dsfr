@@ -36,7 +36,7 @@ Ce composant `AppToaster` sera ajouté une seule fois dans l’application : da
 <script setup lang="ts">
 import { ref } from 'vue'
 // (...)
-import AppToaster from '@/components/AppToaster.vue'   // Import du composant AppToaster
+import AppToaster from '@/components/AppToaster.vue' // Import du composant AppToaster
 // (...)
 </script>
 
@@ -66,23 +66,22 @@ import AppToaster from '@/components/AppToaster.vue'   // Import du composant Ap
 Enfin, depuis n’importe quel fichier, composant ou non, il est possible d’ajouter des messages simplement en utilisant la fonction `addMessage()` du composable :
 
 ```ts [Autre fichier, composant ou non]
-import useToaster from './composables/useToaster'      // Import du composable useToaster()
+import useToaster from './composables/useToaster' // Import du composable useToaster()
 
 const toaster = useToaster() // Récupération du toaster depuis le composable
 
 // (...)
 
-toaster.addMessage({             // Ajout d’un message...
+toaster.addMessage({ // Ajout d’un message...
   title: 'Message 1',
   description: 'Description 1',
-  type: 'info',                  // ...de type info...
-  closeable: true,               // ...que l’utilisateur peut fermer...
+  type: 'info', // ...de type info...
+  closeable: true, // ...que l’utilisateur peut fermer...
   titleTag: 'h3',
-  timeout: 6000,                 // ...qui disparaîtra après 6 secondes
+  timeout: 6000, // ...qui disparaîtra après 6 secondes
 })
 
 // (...)
-
 ```
 
 :::

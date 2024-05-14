@@ -1,4 +1,4 @@
-import { fileURLToPath, URL } from 'url'
+import { fileURLToPath, URL } from 'node:url'
 
 import { defineConfig } from 'vitepress'
 import { whyframe } from '@whyframe/core'
@@ -9,7 +9,7 @@ const minimalToc = [
   {
     text: 'Guide',
     link: '/guide/',
-    items: []
+    items: [],
   },
   {
     text: 'Tous les types',
@@ -250,8 +250,8 @@ const composants = [
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
-  title: "VueDsfr",
-  description: "Une documentation pour les utilisateurs de VueDsfr",
+  title: 'VueDsfr',
+  description: 'Une documentation pour les utilisateurs de VueDsfr',
 
   cleanUrls: true,
   appearance: { listenToStorageChanges: false }, // handling this in Story.vue itself to avoid flickering
@@ -286,7 +286,7 @@ export default defineConfig({
         items: [
           { text: 'Tous les composants', link: '/composants' },
           { text: 'Tous les composables', link: '/composables' },
-          { text: 'Tous les types', link: '/types' }
+          { text: 'Tous les types', link: '/types' },
         ],
       },
       {
@@ -295,17 +295,17 @@ export default defineConfig({
           {
             text: 'Système de Design Français',
             link: 'https://www.systeme-de-design.gouv.fr/',
-            target: '_blank'
+            target: '_blank',
           },
           {
             text: 'Storybook de VueDsfr',
             link: 'https://storybook.vue-ds.fr/',
-            target: '_blank'
+            target: '_blank',
           },
         ],
       },
     ],
-    outline:{
+    outline: {
       level: [2, 3],
       label: 'Sur cette page :',
     },
@@ -315,7 +315,7 @@ export default defineConfig({
         translations: {
           button: {
             buttonText: 'Rechercher...',
-            buttonAriaLabel: 'Rechercher'
+            buttonAriaLabel: 'Rechercher',
           },
           modal: {
             backButtonTitle: 'effacer la recherche',
@@ -325,11 +325,11 @@ export default defineConfig({
             footer: {
               selectText: 'aller à ce texte',
               navigateText: 'naviguer dans les résultats',
-              closeText: 'fermer'
+              closeText: 'fermer',
             },
           },
         },
-      }
+      },
     },
     sidebar: {
       '/composants': minimalToc.map(item => item.text === 'Tous les composants' ? { ...item, items: composants } : item),
@@ -341,7 +341,7 @@ export default defineConfig({
     socialLinks: [
       { icon: 'github', link: 'https://github.com/dnum-mi/vue-dsfr' },
       { icon: 'discord', link: 'https://discord.gg/jbBJ9769ZZ' },
-    ]
+    ],
   },
 
   vite: {

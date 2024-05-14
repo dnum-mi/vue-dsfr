@@ -18,7 +18,7 @@ withDefaults(defineProps<DsfrTilesProps>(), {
       :class="{
         [tile.containerClass]: tile.containerClass,
         'fr-col-6 fr-col-md-4 fr-col-lg-3': !tile.containerClass && !horizontal,
-        'fr-col-12': horizontal
+        'fr-col-12': horizontal,
       }"
     >
       <DsfrTile

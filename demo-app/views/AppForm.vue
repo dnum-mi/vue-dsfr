@@ -10,17 +10,18 @@ const inputValue = ref('')
 const filesToUpload = ref(undefined)
 
 const updateFiles = (files) => {
-  console.log(files)
+  console.log(files) // eslint-disable-line no-console
 }
 
 const sendFile = () => {
-  console.log('inputValue:', inputValue.value)
-  console.log('filesToUpload:', filesToUpload.value)
+  console.log('inputValue:', inputValue.value) // eslint-disable-line no-console
+  console.log('filesToUpload:', filesToUpload.value) // eslint-disable-line no-console
 }
 
 const whatever = ref('')
 const radioTest = ref('')
 </script>
+
 <template>
   <form @submit.prevent="sendFile()">
     <DsfrInput
@@ -48,7 +49,7 @@ const radioTest = ref('')
           {
             label: 'label 2',
             value: 2,
-          }
+          },
         ]"
       />
     </div>

@@ -36,8 +36,8 @@ export const EnsembleDeChamps = (args) => ({
     return {
       ...args,
       expandedId: undefined,
-      title1: args.title + ' 1',
-      title2: args.title + ' 2',
+      title1: `${args.title} 1`,
+      title2: `${args.title} 2`,
     }
   },
 
@@ -71,8 +71,8 @@ export const EnsemblePersonnaliseDeChamps = (args) => ({
     return {
       ...args,
       expandedId: undefined,
-      title1: args.title + ' 1',
-      title2: args.title + ' 2',
+      title1: `${args.title} 1`,
+      title2: `${args.title} 2`,
     }
   },
 

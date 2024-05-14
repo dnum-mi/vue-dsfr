@@ -7,6 +7,14 @@ import type { DsfrLanguageSelectorProps, DsfrLanguageSelectorElement } from './D
 
 export type { DsfrLanguageSelectorProps, DsfrLanguageSelectorElement }
 
+const props = withDefaults(defineProps<DsfrLanguageSelectorProps>(), {
+  id: () => getRandomId('translate'),
+  languages: () => [],
+  currentLanguage: 'fr',
+})
+
+const emit = defineEmits<{ (e: 'select', payload: DsfrLanguageSelectorElement): void }>()
+
 const {
   collapse,
   collapsing,
@@ -15,15 +23,8 @@ const {
   onTransitionEnd,
 } = useCollapsable()
 
-const props = withDefaults(defineProps<DsfrLanguageSelectorProps>(), {
-  id: () => getRandomId('translate'),
-  languages: () => [],
-  currentLanguage: 'fr',
-})
-
 const expanded = ref(false)
 
-const emit = defineEmits<{(e: 'select', payload: DsfrLanguageSelectorElement): void}>()
 function selectLanguage (language: DsfrLanguageSelectorElement) {
   expanded.value = false
   emit('select', language)
@@ -75,7 +76,7 @@ watch(expanded, (newValue, oldValue) => {
               :aria-current="currentLanguage === language.codeIso ? true : undefined"
               :href="`#${language.codeIso}`"
               @click.prevent.stop="selectLanguage(language)"
-            >{{ language.codeIso.toUpperCase() + ' - ' + language.label }}</a>
+            >{{ `${language.codeIso.toUpperCase()} - ${language.label}` }}</a>
           </li>
         </ul>
       </div>

@@ -5,8 +5,10 @@ export type DsfrModalProps = {
   opened?: boolean
   actions?: DsfrButtonProps[]
   isAlert?: boolean
-  origin?: {focus:() => void}
+  origin?: { focus: () => void }
   title: string
   icon?: string
-  size?: 'sm' | 'md' | 'lg' | 'xl'
+  size?: 'sm' | 'md' | 'lg' | 'xl',
+  closeButtonLabel?: string,
+  closeButtonTitle?: string,
 }

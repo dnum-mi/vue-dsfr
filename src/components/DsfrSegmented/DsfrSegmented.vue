@@ -17,7 +17,7 @@ const props = withDefaults(defineProps<DsfrSegmentedProps>(), {
   name: undefined,
 })
 
-defineEmits<{(e: 'update:modelValue', payload: string | number): void}>()
+defineEmits<{ (e: 'update:modelValue', payload: string | number): void }>()
 
 const iconProps = computed(() => typeof props.icon === 'string' ? { name: props.icon } : props.icon)
 

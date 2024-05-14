@@ -30,8 +30,8 @@ describe('DsfrBreadCrumb', () => {
         links,
       },
     })
-    // eslint-disable-next-line
-    cy.viewport(500, 500)
+
+    cy.viewport(500, 500) // eslint-disable-line cypress/no-unnecessary-waiting
       .get('.fr-breadcrumb')
       .should('be.visible')
       .get('.fr-breadcrumb__button')

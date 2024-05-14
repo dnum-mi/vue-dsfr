@@ -15,7 +15,7 @@ const props = withDefaults(defineProps<DsfrToggleSwitchProps>(), {
   borderBottom: false,
 })
 
-defineEmits<{(e: 'update:modelValue', payload: boolean): void}>()
+defineEmits<{ (e: 'update:modelValue', payload: boolean): void }>()
 
 const labelId = computed(() => {
   return `${props.inputId}-hint-text`
@@ -24,8 +24,8 @@ const labelId = computed(() => {
 
 <template>
   <div
+    class="fr-toggle"
     :class="{
-      'fr-toggle': true,
       'fr-toggle--label-left': labelLeft,
       'fr-toggle--border-bottom': borderBottom,
     }"

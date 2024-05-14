@@ -13,7 +13,6 @@ const options = [
 ]
 
 const choice = ref('')
-
 </script>
 
 <template>

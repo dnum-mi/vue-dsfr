@@ -4,7 +4,7 @@ import { fireEvent, render } from '@testing-library/vue'
 import DsfrCheckboxSet from './DsfrCheckboxSet.vue'
 
 describe('DsfrCheckboxSet', () => {
-  it('should render a group of checkboxes in fieldset', () => {
+  it('should render a simple group of checkboxes in fieldset', () => {
     // Given
     const firstLabelText = 'Premier label'
     const firstHintText = 'Premier indice'
@@ -112,9 +112,9 @@ describe('DsfrCheckboxSet', () => {
     // Then
     expect(firstInput).toBeInTheDocument()
     expect(firstInput).toHaveAttribute('name', 'name1')
-    // @ts-ignore This is a checkbox input event, so `checked` property is present
+    // @ts-expect-error This is a checkbox input event, so `checked` property is present
     expect((firstInput).checked).toBe(true)
-    // @ts-ignore This is a checkbox input event, so `checked` property is present
+    // @ts-expect-error This is a checkbox input event, so `checked` property is present
     expect(secondInput.checked).toBe(false)
   })
 

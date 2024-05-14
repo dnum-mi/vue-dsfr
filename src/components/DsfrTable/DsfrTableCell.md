@@ -58,7 +58,7 @@ Utilisez la propriété component pour insérer des composants Vue personnalisé
           href: '/',
           'aria-label': 'Vers la page d’accueil',
         }"
-        :cellAttrs="{ class: 'text-bold', style: 'color: blue;' }"
+        :cell-attrs="{ class: 'text-bold', style: 'color: blue;' }"
       />
     </tr>
   </DsfrTable>

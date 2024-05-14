@@ -15,7 +15,7 @@ const iconProps = computed(() => dsfrIcon.value ? undefined : typeof props.icon 
 <template>
   <p
     class="fr-card__detail"
-    :class="dsfrIcon ? {[String(icon)]: dsfrIcon} : {}"
+    :class="dsfrIcon ? { [String(icon)]: dsfrIcon } : {}"
   >
     <VIcon
       v-if="icon && !dsfrIcon"

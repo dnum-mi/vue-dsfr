@@ -16,7 +16,7 @@ const props = withDefaults(defineProps<DsfrTabsProps>(), {
   initialSelectedIndex: 0,
 })
 
-const emit = defineEmits<{(e: 'select-tab', payload: number): void}>()
+const emit = defineEmits<{ (e: 'selectTab', payload: number): void }>()
 
 const selectedIndex = ref(props.initialSelectedIndex || 0)
 const generatedIds: Record<string, string> = reactive({})
@@ -24,6 +24,61 @@ const asc = ref(true)
 const resizeObserver = ref<ResizeObserver | null>(null)
 const $el = ref<HTMLElement | null>(null)
 const tablist = ref<HTMLUListElement | null>(null)
+
+const isSelected = (idx: number) => {
+  return selectedIndex.value === idx
+}
+
+/*
+ * Need to reimplement tab-height calc
+ * @see https://github.com/GouvernementFR/dsfr/blob/main/src/component/tab/script/tab/tabs-group.js#L117
+ */
+const renderTabs = () => {
+  if (selectedIndex.value < 0) {
+    return
+  }
+  if (!tablist.value || !tablist.value.offsetHeight) {
+    return
+  }
+  const tablistHeight = tablist.value.offsetHeight
+  // Need to manually select tabs-content in case of manual slot filling
+  const selectedTab = $el.value?.querySelectorAll('.fr-tabs__panel')[selectedIndex.value]
+  if (!selectedTab || !(selectedTab as HTMLElement).offsetHeight) {
+    return
+  }
+  const selectedTabHeight = (selectedTab as HTMLElement).offsetHeight
+
+  $el.value?.style.setProperty('--tabs-height', `${tablistHeight + selectedTabHeight}px`)
+}
+
+const getIdFromIndex = (idx: number) => {
+  if (generatedIds[idx]) {
+    return generatedIds[idx]
+  }
+  const id = getRandomId('tab')
+  generatedIds[idx] = id
+  return id
+}
+
+const selectIndex = async (idx: number) => {
+  asc.value = idx > selectedIndex.value
+  selectedIndex.value = idx
+  emit('selectTab', idx)
+}
+const selectPrevious = async () => {
+  const newIndex = selectedIndex.value === 0 ? props.tabTitles.length - 1 : selectedIndex.value - 1
+  await selectIndex(newIndex)
+}
+const selectNext = async () => {
+  const newIndex = selectedIndex.value === props.tabTitles.length - 1 ? 0 : selectedIndex.value + 1
+  await selectIndex(newIndex)
+}
+const selectFirst = async () => {
+  await selectIndex(0)
+}
+const selectLast = async () => {
+  await selectIndex(props.tabTitles.length - 1)
+}
 
 onMounted(() => {
   /*
@@ -50,61 +105,6 @@ onUnmounted(() => {
     }
   })
 })
-
-const isSelected = (idx: number) => {
-  return selectedIndex.value === idx
-}
-
-/*
- * Need to reimplement tab-height calc
- * @see https://github.com/GouvernementFR/dsfr/blob/main/src/component/tab/script/tab/tabs-group.js#L117
- */
-const renderTabs = () => {
-  if (selectedIndex.value < 0) {
-    return
-  }
-  if (!tablist.value || !tablist.value.offsetHeight) {
-    return
-  }
-  const tablistHeight = tablist.value.offsetHeight
-  // Need to manually select tabs-content in case of manual slot filling
-  const selectedTab = $el.value?.querySelectorAll('.fr-tabs__panel')[selectedIndex.value]
-  if (!selectedTab || !(selectedTab as HTMLElement).offsetHeight) {
-    return
-  }
-  const selectedTabHeight = (selectedTab as HTMLElement).offsetHeight
-
-  $el.value?.style.setProperty('--tabs-height', (tablistHeight + selectedTabHeight) + 'px')
-}
-
-const getIdFromIndex = (idx: number) => {
-  if (generatedIds[idx]) {
-    return generatedIds[idx]
-  }
-  const id = getRandomId('tab')
-  generatedIds[idx] = id
-  return id
-}
-
-const selectIndex = async (idx: number) => {
-  asc.value = idx > selectedIndex.value
-  selectedIndex.value = idx
-  emit('select-tab', idx)
-}
-const selectPrevious = async () => {
-  const newIndex = selectedIndex.value === 0 ? props.tabTitles.length - 1 : selectedIndex.value - 1
-  await selectIndex(newIndex)
-}
-const selectNext = async () => {
-  const newIndex = selectedIndex.value === props.tabTitles.length - 1 ? 0 : selectedIndex.value + 1
-  await selectIndex(newIndex)
-}
-const selectFirst = async () => {
-  await selectIndex(0)
-}
-const selectLast = async () => {
-  await selectIndex(props.tabTitles.length - 1)
-}
 
 defineExpose({
   renderTabs,

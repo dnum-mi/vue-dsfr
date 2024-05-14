@@ -20,7 +20,7 @@ const actions = [
     label: 'Valider',
     onClick: (event: MouseEvent) => {
       event.preventDefault()
-      alert('Valider')
+      alert('Valider') // eslint-disable-line no-alert
     },
   },
   {
@@ -28,7 +28,7 @@ const actions = [
     secondary: true,
     onClick: (event: MouseEvent) => {
       event.preventDefault()
-      alert('Annuler')
+      alert('Annuler') // eslint-disable-line no-alert
     },
   },
 ]

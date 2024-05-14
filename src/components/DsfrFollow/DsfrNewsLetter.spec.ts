@@ -89,7 +89,7 @@ describe('DsfrNewsLetter', () => {
     const titleEl = getByText(title)
     const descriptionEl = getByText(description)
     const emailInputEl = queryByDisplayValue(email)
-    // eslint-disable-next-line no-undef
+
     const labelEmailEl = queryByText(labelEmail)
     const placeholderEl = queryByPlaceholderText(placeholder)
     const hintTextEl = queryByText(hintText)
