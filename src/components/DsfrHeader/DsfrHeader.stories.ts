@@ -91,6 +91,26 @@ export default {
     actionOnLink: { action: 'clicked on quickLink' },
     onChangeSearchInput: { action: 'search changed' },
     onSearch: { action: 'Searching' },
+    showSearchLabel: {
+      control: 'text',
+      description: 'Label du bouton pour afficher la recherche.',
+    },
+    menuLabel: {
+      control: 'text',
+      description: 'Label du menu.',
+    },
+    menuModalLabel: {
+      control: 'text',
+      description: 'Label du menu en mode modal.',
+    },
+    closeMenuModalLabel: {
+      control: 'text',
+      description: 'Label du bouton de fermeture du menu en mode modal.',
+    },
+    homeLabel: {
+      control: 'text',
+      description: 'Label de l\'accueil composant le titre du lien présentant le service.',
+    },
   },
 }
 
