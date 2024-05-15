@@ -15,6 +15,14 @@ export default {
       control: 'text',
       description: 'Id de la balise `div` à l’intérieur de la balise `nav` du fil d’Ariane',
     },
+    navigationLabel: {
+      control: 'text',
+      description: 'Label affiché sur la balise `nav` du fil d’Ariane',
+    },
+    showBreadcrumbLabel: {
+      control: 'text',
+      description: 'Label du bouton d\'affichage du fil d’Ariane',
+    },
   },
 }
 
