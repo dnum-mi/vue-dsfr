@@ -28,6 +28,8 @@ jobs:
         run: npm i -g pnpm
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
+      - name: Lint (show only errors)
+        run: pnpm lint --quiet
       - name: Test
         run: pnpm test
       - name: Build
