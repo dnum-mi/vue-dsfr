@@ -50,7 +50,6 @@ Autres props :
 | `closeable`        | *`boolean`*                                                                             | `false`         |             |
 | `closeButtonLabel` | *`string`*                                                                              | `Fermer`        |             |
 
-
 ## 📡 Évenements
 
 `DsfrAlert` déclenche l’événement `'close'` lors du clic sur le bouton pour fermer l’alerte, sans données (sans *payload*).

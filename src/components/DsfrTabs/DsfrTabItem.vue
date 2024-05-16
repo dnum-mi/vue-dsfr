@@ -35,7 +35,7 @@ const keyToEventDict = {
   End: 'last',
 } as const
 
-function onKeyDown(event: KeyboardEvent) {
+function onKeyDown (event: KeyboardEvent) {
   const key = event.key as keyof typeof keyToEventDict
   // @ts-expect-error 2769
   emit(keyToEventDict[key])
