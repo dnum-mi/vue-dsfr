@@ -49,6 +49,10 @@ export default {
       control: 'text',
       description: 'Permet de choisir la balise contenant le titre de l\'alerte (h3 par défaut)',
     },
+    closeButtonLabel: {
+      control: 'text',
+      description: 'Valeur du bouton cliquable permettant la fermeture de l\'alerte',
+    },
   },
 }
 

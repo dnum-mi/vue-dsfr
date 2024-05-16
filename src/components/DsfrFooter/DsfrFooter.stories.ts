@@ -70,6 +70,10 @@ export default {
       control: 'text',
       description: 'URL pour un lien externe ou route ou objet pour un lien externe à associer au logo avec la Marianne',
     },
+    homeTitle: {
+      control: 'text',
+      description: 'Titre pour un lien externe ou route ou objet pour un lien externe à associer au logo avec la Marianne',
+    },
     descText: {
       control: 'text',
       description: 'Texte de la description du footer (sera dans `<p class="fr-footer__content-desc">`)',
