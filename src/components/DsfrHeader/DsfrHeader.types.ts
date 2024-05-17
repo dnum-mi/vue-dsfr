@@ -31,5 +31,10 @@ export type DsfrHeaderProps = {
   searchLabel?: string
   quickLinksAriaLabel?: string
   showSearch?: boolean
+  showSearchLabel?: string
   showBeta?: boolean
+  menuLabel?: string
+  menuModalLabel?: string
+  closeMenuModalLabel?: string
+  homeLabel?: string
 }

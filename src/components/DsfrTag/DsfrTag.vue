@@ -36,12 +36,14 @@ const iconProps = computed(() => dsfrIcon.value ? undefined : typeof props.icon 
     :class="{
       'fr-tag--sm': small,
       [icon as string]: dsfrIcon,
+      'fr-tag--icon-left': dsfrIcon,
     }"
     v-bind="linkProps"
   >
     <VIcon
-      v-if="props.icon"
+      v-if="props.icon && !dsfrIcon"
       :label="iconOnly ? label : undefined"
+      class="fr-mr-1v"
       v-bind="iconProps"
     />
     <template v-if="!iconOnly">

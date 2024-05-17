@@ -41,22 +41,22 @@ JeuDeTuiles.args = {
   tiles: [
     {
       title: 'Ma formidable tuile 1',
-      imgSrc: 'http://placekitten.com/g/80/81',
+      imgSrc: 'https://loremflickr.com/80/80/cat?random=1',
       description: 'Une tuile absolument formidable',
     },
     {
       title: 'Ma formidable tuile 2',
-      imgSrc: 'http://placekitten.com/g/80/82',
+      imgSrc: 'https://loremflickr.com/80/80/cat?random=2',
       description: 'Une tuile absolument formidable',
     },
     {
       title: 'Ma formidable tuile 3',
-      imgSrc: 'http://placekitten.com/g/80/83',
+      imgSrc: 'https://loremflickr.com/80/80/cat?random=3',
       description: 'Une tuile absolument formidable',
     },
     {
       title: 'Ma formidable tuile 4',
-      imgSrc: 'http://placekitten.com/g/80/84',
+      imgSrc: 'https://loremflickr.com/80/80/cat?random=4',
       description: 'Une tuile absolument formidable',
     },
   ],

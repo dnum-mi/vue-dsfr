@@ -21,30 +21,31 @@ Ce composant se structure en plusieurs parties, incluant :
 
 ## 🛠️ Props
 
-| nom                     | type                                   | défaut                                     | obligatoire |
-| ----------------------- | -------------------------------------- | ------------------------------------------ | ----------- |
-| `a11yCompliance`        | *`string`*                             | `'non conforme'`                           |             |
-| `a11yComplianceLink`    | *`import('vue-router').RouteLocationRaw`*                   | `/a11y`                                    |             |
-| `legalLink`             | *`string`*                             | `/mentions-legales`                        |             |
-| `homeLink`              | *`import('vue-router').RouteLocationRaw`*                   | `/`                                        |             |
-| `partners`              | *`DsfrFooterPartnersProps`*            | `undefined`                                |             |
-| `personalDataLink`      | *`string`*                             | `/donnees-personnelles`                    |             |
-| `cookiesLink`           | *`string`*                             | `/cookies`                                 |             |
-| `logoText`              | *`string` \| `string[]`*               | `() => ['République', 'Française']`        |             |
-| `descText`              | *`string`*                             | `undefined`                                |             |
-| `beforeMandatoryLinks`  | *`DsfrFooterLinkProps[]`*              | `() => []`                                 |             |
-| `afterMandatoryLinks`   | *`DsfrFooterLinkProps[]`*              | `() => []`                                 |             |
-| `mandatoryLinks`        | *`{label: string, to: import('vue-router').RouteLocationRaw \| undefined}[]`* | Dynamique (voir script) |         |
-| `ecosystemLinks`        | *`{label: string, href: string}[]`*    | Dynamique (voir script)                    |             |
-| `operatorLinkText`      | *`string`*                             | `'Revenir à l’accueil'`                    |             |
-| `operatorTo`            | *`import('vue-router').RouteLocationRaw` \| `undefined`*    | `/`                                        |             |
-| `operatorImgStyle`      | *`import('vue').StyleValue`*                         | `undefined`                                |             |
-| `operatorImgSrc`        | *`string`*                             | `undefined`                                |             |
-| `operatorImgAlt`        | *`string`*                             | `''`                                       |             |
-| `licenceTo`             | *`string`*                             | `'https://github.com/etalab/licence-ouverte/blob/master/LO.md'` | |
-| `licenceLinkProps`      | *`{ href: string }` \| `{ to: import('vue-router').RouteLocationRaw \| undefined }`* | `undefined`      |             |
-| `licenceText`           | *`string`*                             | `'Sauf mention contraire, tous les textes de ce site sont sous'` | |
-| `licenceName`           | *`string`*                             | `'licence etalab-2.0'`                     |             |
+| nom                    | type                                                                                 | défaut                                     | obligatoire |
+|------------------------|--------------------------------------------------------------------------------------| ------------------------------------------ | ----------- |
+| `a11yCompliance`       | *`string`*                                                                           | `'non conforme'`                           |             |
+| `a11yComplianceLink`   | *`import('vue-router').RouteLocationRaw`*                                            | `/a11y`                                    |             |
+| `legalLink`            | *`string`*                                                                           | `/mentions-legales`                        |             |
+| `homeLink`             | *`import('vue-router').RouteLocationRaw`*                                            | `/`                                        |             |
+| `homeTitle`            | *`string`*                                                                           | `Retour à l’accueil`                                        |             |
+| `partners`             | *`DsfrFooterPartnersProps`*                                                          | `undefined`                                |             |
+| `personalDataLink`     | *`string`*                                                                           | `/donnees-personnelles`                    |             |
+| `cookiesLink`          | *`string`*                                                                           | `/cookies`                                 |             |
+| `logoText`             | *`string` \| `string[]`*                                                             | `() => ['République', 'Française']`        |             |
+| `descText`             | *`string`*                                                                           | `undefined`                                |             |
+| `beforeMandatoryLinks` | *`DsfrFooterLinkProps[]`*                                                            | `() => []`                                 |             |
+| `afterMandatoryLinks`  | *`DsfrFooterLinkProps[]`*                                                            | `() => []`                                 |             |
+| `mandatoryLinks`       | *`{label: string, to: import('vue-router').RouteLocationRaw \| undefined}[]`*        | Dynamique (voir script) |         |
+| `ecosystemLinks`       | *`{label: string, href: string}[]`*                                                  | Dynamique (voir script)                    |             |
+| `operatorLinkText`     | *`string`*                                                                           | `'Revenir à l’accueil'`                    |             |
+| `operatorTo`           | *`import('vue-router').RouteLocationRaw` \| `undefined`*                             | `/`                                        |             |
+| `operatorImgStyle`     | *`import('vue').StyleValue`*                                                         | `undefined`                                |             |
+| `operatorImgSrc`       | *`string`*                                                                           | `undefined`                                |             |
+| `operatorImgAlt`       | *`string`*                                                                           | `''`                                       |             |
+| `licenceTo`            | *`string`*                                                                           | `'https://github.com/etalab/licence-ouverte/blob/master/LO.md'` | |
+| `licenceLinkProps`     | *`{ href: string }` \| `{ to: import('vue-router').RouteLocationRaw \| undefined }`* | `undefined`      |             |
+| `licenceText`          | *`string`*                                                                           | `'Sauf mention contraire, tous les textes de ce site sont sous'` | |
+| `licenceName`          | *`string`*                                                                           | `'licence etalab-2.0'`                     |             |
 
 ::: tip Des boutons après la liste de liens
 

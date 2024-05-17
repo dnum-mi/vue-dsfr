@@ -36,6 +36,7 @@ export type DsfrFooterProps = {
   a11yComplianceLink?: RouteLocationRaw
   legalLink?: string
   homeLink?: RouteLocationRaw
+  homeTitle?: string
   partners?: DsfrFooterPartnersProps
   personalDataLink?: string
   cookiesLink?: string

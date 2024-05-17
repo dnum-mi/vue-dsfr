@@ -25,6 +25,11 @@ const props = withDefaults(defineProps<DsfrHeaderProps>(), {
   quickLinks: () => [],
   searchLabel: 'Recherche',
   quickLinksAriaLabel: 'Menu secondaire',
+  showSearchLabel: 'Recherche',
+  menuLabel: 'Menu',
+  menuModalLabel: 'Menu modal',
+  closeMenuModalLabel: 'Fermer',
+  homeLabel: 'Accueil',
 })
 
 const emit = defineEmits<{
@@ -115,8 +120,8 @@ const isWithSlotNav = computed(() => Boolean(slots.mainnav))
                   v-if="showSearch"
                   class="fr-btn  fr-btn--search"
                   aria-controls="header-search"
-                  aria-label="Recherche"
-                  title="Recherche"
+                  :aria-label="showSearchLabel"
+                  :title="showSearchLabel"
                   :data-fr-opened="searchModalOpened"
                   @click.prevent.stop="showSearchModal()"
                 />
@@ -127,8 +132,8 @@ const isWithSlotNav = computed(() => Boolean(slots.mainnav))
                   :data-fr-opened="showMenu"
                   aria-controls="header-navigation"
                   aria-haspopup="menu"
-                  aria-label="Menu"
-                  title="Menu"
+                  :aria-label="menuLabel"
+                  :title="menuLabel"
                   data-testid="open-menu-btn"
                   @click.prevent.stop="showMenu()"
                 />
@@ -140,7 +145,7 @@ const isWithSlotNav = computed(() => Boolean(slots.mainnav))
             >
               <RouterLink
                 :to="homeTo"
-                :title="`Accueil - ${serviceTitle}`"
+                :title="`${homeLabel} - ${serviceTitle}`"
                 v-bind="$attrs"
               >
                 <p class="fr-header__service-title">
@@ -207,7 +212,7 @@ const isWithSlotNav = computed(() => Boolean(slots.mainnav))
           id="header-navigation"
           class="fr-header__menu  fr-modal"
           :class="{ 'fr-modal--opened': modalOpened }"
-          aria-label="Menu modal"
+          :aria-label="menuModalLabel"
           role="dialog"
           aria-modal="true"
         >
@@ -219,7 +224,7 @@ const isWithSlotNav = computed(() => Boolean(slots.mainnav))
               data-testid="close-modal-btn"
               @click.prevent.stop="hideModal()"
             >
-              Fermer
+              {{ closeMenuModalLabel }}
             </button>
             <div class="fr-header__menu-links">
               <template v-if="languageSelector">

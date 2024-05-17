@@ -32,8 +32,8 @@
     "types"
   ],
   "engines": {
-    "node": ">=18.x.x",
-    "npm": ">=8.x.x"
+    "node": ">=20.x.x",
+    "npm": ">=10.x.x"
   },
   "publishConfig": {
     "@gouvminint:registry": "https://registry.npmjs.com",
@@ -153,7 +153,7 @@
     "vitepress": "^1.1.4",
     "vitest": "^1.6.0",
     "vue-demi": "^0.14.7",
-    "vue-tsc": "^2.0.17"
+    "vue-tsc": "^2.0.19"
   },
   "lint-staged": {
     "*.{vue,js,jsx,ts,tsx}": "run-s check-exports-ci lint --"

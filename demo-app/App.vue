@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { computed, ref } from 'vue'
 import { useRoute } from 'vue-router'
 
 import AppToaster from './components/AppToaster.vue'
@@ -85,6 +85,10 @@ const navItems: DsfrNavigationProps['navItems'] = [
   {
     to: { name: 'SideMenu' },
     text: 'Menu latéral',
+  },
+  {
+    to: { name: 'CardTile' },
+    text: 'Carte et tuile',
   },
   {
     to: { name: 'Languages' },
@@ -247,6 +251,7 @@ const ecosystemLinks = [
 ]
 
 const search = ref('')
+const currentRoute = computed(() => route.name)
 </script>
 
 <template>
@@ -271,7 +276,7 @@ const search = ref('')
       <h1>Demo VueDsfr</h1>
 
       <DsfrBreadcrumb
-        :links="[{ text: 'Accueil', to: '/' }, { text: 'Test fil d’Ariane' }]"
+        :links="[{ text: 'Accueil', to: '/' }, { text: currentRoute }]"
       />
 
       <router-view />

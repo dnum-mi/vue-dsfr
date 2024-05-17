@@ -34,23 +34,25 @@ const exampleTags = [
 </script>
 
 <template>
-  <DsfrCard
-    :img-src="imgSrc"
-    :link="link"
-    :description="description"
-    :detail="detail"
-    :detail-icon="detailIcon"
-    :end-detail="endDetail"
-    :end-detail-icon="endDetailIcon"
-    :alt-img="altImg"
-    title="Titre de la carte"
-    size="large"
-    ratio-img="large"
-  >
-    <template #start-details>
-      <DsfrTags
-        :tags="exampleTags"
-      />
-    </template>
-  </DsfrCard>
+  <div class="fr-container fr-my-2v">
+    <DsfrCard
+      :img-src="imgSrc"
+      :link="link"
+      :description="description"
+      :detail="detail"
+      :detail-icon="detailIcon"
+      :end-detail="endDetail"
+      :end-detail-icon="endDetailIcon"
+      :alt-img="altImg"
+      title="Titre de la carte"
+      size="large"
+      ratio-img="large"
+    >
+      <template #start-details>
+        <DsfrTags
+          :tags="exampleTags"
+        />
+      </template>
+    </DsfrCard>
+  </div>
 </template>

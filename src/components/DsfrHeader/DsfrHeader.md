@@ -19,24 +19,29 @@ L’en-tête est composé :
 
 ## 🛠️ Props
 
-| Nom                   | Type                          | Défaut   | Obligatoire | Description                                              |
-|-----------------------|-------------------------------|----------|-------------|----------------------------------------------------------|
-| `searchbarId`           | `string`                      | `'searchbar-header'` |             | valeur de l’attribut `id` de l’input de la [searchbar](/composants/DsfrSearchBar.md).                 |
-| `serviceTitle`          | `string`                      | `undefined` |             | Titre du service affiché dans l'en-tête.                 |
-| `serviceDescription`    | `string`                      | `undefined` |             | Description courte du service.                           |
-| `homeTo`                | `string`                      | `'/'`      |             | Lien de la page d'accueil.                               |
-| `logoText`              | `string` \| `string[]`        | `'Gouvernement'` |        | Texte ou texte alternatif du logo.                       |
-| `modelValue`            | `string`                      | `''`       |             | Valeur pour la barre de recherche.                       |
-| `operatorImgAlt`        | `string`                      | `''`       |             | Texte alternatif pour l'image de l'opérateur.            |
-| `operatorImgSrc`        | `string`                      | `''`       |             | Source de l'image de l'opérateur.                        |
-| `operatorImgStyle`      | `StyleValue`                  | `() => ({})` |           | Style CSS pour l'image de l'opérateur.                   |
-| `placeholder`           | `string`                      | `'Rechercher...'` |        | Placeholder pour la barre de recherche.                  |
-| `quickLinks`            | `DsfrHeaderMenuLinkProps[]`   | `() => []` |             | Liens rapides à afficher dans l'en-tête.                 |
-| `languageSelector`            | `DsfrLanguageSelectorProps`   | `undefined` |             | Liens rapides à afficher dans l'en-tête.                 |
-| `searchLabel`           | `string`                      | `'Recherche'` |            | Label pour la barre de recherche.                        |
-| `quickLinksAriaLabel`   | `string`                      | `'Menu secondaire'` |       | Label ARIA pour les liens rapides.                       |
-| `showSearch`            | `boolean`                     | `false`    |             | Affiche ou non la barre de recherche.                    |
-| `showBeta`              | `boolean`                     | `false`    |             | Affiche ou non l'indicateur BETA.                        |
+| Nom                   | Type                        | Défaut               | Obligatoire | Description                                                                           |
+|-----------------------|-----------------------------|----------------------|-------------|---------------------------------------------------------------------------------------|
+| `searchbarId`         | `string`                    | `'searchbar-header'` |             | valeur de l’attribut `id` de l’input de la [searchbar](/composants/DsfrSearchBar.md). |
+| `serviceTitle`        | `string`                    | `undefined`          |             | Titre du service affiché dans l'en-tête.                                              |
+| `serviceDescription`  | `string`                    | `undefined`          |             | Description courte du service.                                                        |
+| `homeTo`              | `string`                    | `'/'`                |             | Lien de la page d'accueil.                                                            |
+| `logoText`            | `string` \| `string[]`      | `'Gouvernement'`     |             | Texte ou texte alternatif du logo.                                                    |
+| `modelValue`          | `string`                    | `''`                 |             | Valeur pour la barre de recherche.                                                    |
+| `operatorImgAlt`      | `string`                    | `''`                 |             | Texte alternatif pour l'image de l'opérateur.                                         |
+| `operatorImgSrc`      | `string`                    | `''`                 |             | Source de l'image de l'opérateur.                                                     |
+| `operatorImgStyle`    | `StyleValue`                | `() => ({})`         |             | Style CSS pour l'image de l'opérateur.                                                |
+| `placeholder`         | `string`                    | `'Rechercher...'`    |             | Placeholder pour la barre de recherche.                                               |
+| `quickLinks`          | `DsfrHeaderMenuLinkProps[]` | `() => []`           |             | Liens rapides à afficher dans l'en-tête.                                              |
+| `languageSelector`    | `DsfrLanguageSelectorProps` | `undefined`          |             | Liens rapides à afficher dans l'en-tête.                                              |
+| `searchLabel`         | `string`                    | `'Recherche'`        |             | Label pour la barre de recherche.                                                     |
+| `quickLinksAriaLabel` | `string`                    | `'Menu secondaire'`  |             | Label ARIA pour les liens rapides.                                                    |
+| `showSearch`          | `boolean`                   | `false`              |             | Affiche ou non la barre de recherche.                                                 |
+| `showBeta`            | `boolean`                   | `false`              |             | Affiche ou non l'indicateur BETA.                                                     |
+| `showSearchLabel`     | *`string`*                  | `'Recherche'`        |             | Label du bouton pour afficher la recherche.                                           |
+| `menuLabel`           | *`string`*                  | `'Menu'`             |             | Label du menu.                                                                        |
+| `menuModalLabel`      | *`string`*                  | `'Menu modal'`       |             | Label du menu en mode modal.                                                          |
+| `closeMenuModalLabel` | *`string`*                  | `'Fermer'`           |             | Label du bouton de fermeture du menu en mode modal.                                   |
+| `homeLabel`           | *`string`*                  | `'Accueil'`          |             | Label de l'accueil composant le titre du lien présentant le service.                  |
 
 ## 📡 Events
 

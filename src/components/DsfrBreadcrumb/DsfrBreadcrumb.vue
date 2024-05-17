@@ -10,6 +10,8 @@ export type { DsfrBreadcrumbProps }
 withDefaults(defineProps<DsfrBreadcrumbProps>(), {
   breadcrumbId: () => getRandomId('breadcrumb'),
   links: () => [{ text: '' }],
+  navigationLabel: 'vous êtes ici :',
+  showBreadcrumbLabel: 'Voir le fil d’Ariane',
 })
 
 const {
@@ -36,7 +38,7 @@ watch(expanded, (newValue, oldValue) => {
   <nav
     role="navigation"
     class="fr-breadcrumb"
-    aria-label="vous êtes ici :"
+    :aria-label="navigationLabel"
   >
     <button
       v-show="!expanded"
@@ -45,7 +47,7 @@ watch(expanded, (newValue, oldValue) => {
       :aria-controls="breadcrumbId"
       @click="expanded = !expanded"
     >
-      Voir le fil d’Ariane
+      {{ showBreadcrumbLabel }}
     </button>
     <div
       :id="breadcrumbId"

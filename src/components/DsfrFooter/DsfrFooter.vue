@@ -21,6 +21,7 @@ const props = withDefaults(defineProps<DsfrFooterProps>(), {
   a11yComplianceLink: '/a11y',
   legalLink: '/mentions-legales',
   homeLink: '/',
+  homeTitle: 'Retour à l’accueil',
   // @ts-expect-error this is really undefined
   partners: () => undefined,
   personalDataLink: '/donnees-personnelles',
@@ -124,7 +125,7 @@ const aLicenceHref = computed(() => {
         <div class="fr-footer__brand fr-enlarge-link">
           <RouterLink
             :to="homeLink"
-            title="Retour à l’accueil"
+            :title="homeTitle"
           >
             <DsfrLogo
               :logo-text="logoText"

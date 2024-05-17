@@ -2,6 +2,8 @@ import DsfrTile from './DsfrTile.vue'
 
 /**
  * [Voir quand l’utiliser sur la documentation du DSFR](https://www.systeme-de-design.gouv.fr/elements-d-interface/composants/tuile)
+ *
+ * Nous vous invitons à regarder plutôt la [nouvelle documentation](https://vue-ds.fr/composants/DsfrTile) pour ce composant
  */
 export default {
   component: DsfrTile,
@@ -112,7 +114,7 @@ export const TuileSimple = (args) => ({
 })
 TuileSimple.args = {
   title: 'Ma formidable tuile',
-  imgSrc: 'http://placekitten.com/g/200/200',
+  imgSrc: 'https://loremflickr.com/80/80/cat',
   description: 'Une tuile absolument formidable',
   horizontal: false,
   disabled: false,

@@ -11,6 +11,7 @@ const props = withDefaults(defineProps<DsfrAlertProps>(), {
   title: '',
   titleTag: 'h3',
   type: 'info',
+  closeButtonLabel: 'Fermer',
 })
 
 const emit = defineEmits<{ (e: 'close'): void }>()
@@ -51,8 +52,8 @@ const classes = computed(
       <button
         v-if="closeable"
         class="fr-btn fr-btn--close"
-        title="Fermer"
-        aria-label="Fermer"
+        :title="closeButtonLabel"
+        :aria-label="closeButtonLabel"
         @click="onClick"
       />
     </div>

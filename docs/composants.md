@@ -25,9 +25,10 @@ Le storybook est toujours disponible [ici](https://storybook.vue-ds.fr)
 - [DsfrSegmented](./composants/DsfrSegmented) (Contrôle segmenté)
 - [DsfrSegmentedSet](./composants/DsfrSegmentedSet)  (Contrôles segmentés)
 
-## Carte
+## Carte et tuile
 
 - [DsfrCard](./composants/DsfrCard)
+- [DsfrTile](./composants/DsfrTile)
 
 ## Consentement
 

@@ -35,17 +35,19 @@ const actions = [
 </script>
 
 <template>
-  <DsfrCard
-    :img-src="imgSrc"
-    :description="description"
-    :detail="detail"
-    :detail-icon="detailIcon"
-    :end-detail="endDetail"
-    :end-detail-icon="endDetailIcon"
-    :alt-img="altImg"
-    ratio-img="large"
-    size="large"
-    title="Titre de la carte"
-    :buttons="actions"
-  />
+  <div class="fr-container fr-my-2v">
+    <DsfrCard
+      :img-src="imgSrc"
+      :description="description"
+      :detail="detail"
+      :detail-icon="detailIcon"
+      :end-detail="endDetail"
+      :end-detail-icon="endDetailIcon"
+      :alt-img="altImg"
+      ratio-img="large"
+      size="large"
+      title="Titre de la carte"
+      :buttons="actions"
+    />
+  </div>
 </template>

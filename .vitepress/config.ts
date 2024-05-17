@@ -243,6 +243,10 @@ const composants = [
     link: '/composants/DsfrTag.md',
   },
   {
+    text: 'DsfrTile',
+    link: '/composants/DsfrTile.md',
+  },
+  {
     text: 'DsfrTooltip',
     link: '/composants/DsfrTooltip.md',
   },

@@ -11,4 +11,5 @@ export type DsfrAlertProps = {
   small?: boolean
   titleTag?: TitleTag
   type?: DsfrAlertType
+  closeButtonLabel?: string
 }
