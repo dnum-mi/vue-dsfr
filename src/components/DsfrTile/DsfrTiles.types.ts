@@ -3,6 +3,8 @@ import type { RouteLocationRaw } from 'vue-router'
 export type DsfrTileProps = {
   title?: string
   imgSrc?: string
+  svgPath?: string
+  svgAttrs?: Record<string, unknown>
   description?: string
   details?: string
   disabled?: boolean

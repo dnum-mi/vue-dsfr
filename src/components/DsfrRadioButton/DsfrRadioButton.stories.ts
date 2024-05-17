@@ -134,7 +134,7 @@ RichRadioButton.args = {
       value: '1',
       hint: 'Description 1',
       name: 'Choix',
-      img: 'http://placekitten.com/150/200',
+      img: 'https://loremflickr.com/150/200/cat',
     },
     {
       label: 'Valeur 2',
@@ -142,13 +142,13 @@ RichRadioButton.args = {
       disabled: true,
       hint: 'Description 2',
       name: 'Choix',
-      img: 'http://placekitten.com/200/250',
+      img: 'https://loremflickr.com/200/250/cat',
     },
     {
       label: 'Valeur 3',
       value: '3',
       name: 'Choix',
-      img: 'http://placekitten.com/250/350',
+      img: 'https://loremflickr.com/250/350/cat',
     },
   ],
 }

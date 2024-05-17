@@ -10,6 +10,7 @@ import LanguageSelector from './views/LanguageSelector.vue'
 import AppForm from './views/AppForm.vue'
 import SimpleModal from './views/SimpleModal.vue'
 import SideMenu from './views/SideMenu.vue'
+import CardTile from './views/CardTile.vue'
 import CalloutTest from './views/CalloutTest.vue'
 
 export const routes = [
@@ -26,6 +27,7 @@ export const routes = [
   { path: '/side-menu/rubrique-2/sous-rubrique-2/sous-sous-rubrique-2', name: 'Rubrique222', component: SideMenu },
   { path: '/side-menu', name: 'SideMenu', component: SideMenu },
   { path: '/alerts', name: 'Alertes', component: AppAlerts },
+  { path: '/cartes-tuiles', name: 'CardTile', component: CardTile },
   { path: '/bandeaux', name: 'Bandeaux', component: AppAlerts },
   { path: '/callout', name: 'MiseEnAvant', component: CalloutTest },
   { path: '/tags', name: 'Tags', component: AppTags },

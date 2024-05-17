@@ -8,6 +8,8 @@ export type { DsfrTileProps }
 const props = withDefaults(defineProps<DsfrTileProps>(), {
   title: 'Titre de la tuile',
   imgSrc: undefined,
+  svgPath: undefined,
+  svgAttrs: () => ({ viewBox: '0 0 80 80', width: '80px', height: '80px' }),
   description: undefined,
   details: undefined,
   horizontal: false,
@@ -16,6 +18,8 @@ const props = withDefaults(defineProps<DsfrTileProps>(), {
   titleTag: 'h3',
   icon: true,
 })
+
+const defaultSvgAttrs = { viewBox: '0 0 80 80', width: '80px', height: '80px' }
 
 const isExternalLink = computed(() => {
   return typeof props.to === 'string' && props.to.startsWith('http')
@@ -57,7 +61,7 @@ const isExternalLink = computed(() => {
           <RouterLink
             v-if="!isExternalLink"
             :download="download"
-            class="fr-tile__link so-test"
+            class="fr-tile__link"
             :to="disabled ? '' : to"
           >
             {{ title }}
@@ -75,18 +79,46 @@ const isExternalLink = computed(() => {
         >
           {{ details }}
         </p>
+        <div
+          v-if="$slots['start-details']"
+          class="fr-tile__start"
+        >
+          <!-- @slot Slot pour les détails d’une tuile sous forme de tags (cliquables ou non) ou de badges (4 maximum) -->
+          <slot name="start-details" />
+        </div>
       </div>
     </div>
     <div class="fr-tile__header">
+      <slot name="header" />
       <div
-        v-if="imgSrc"
+        v-if="imgSrc || svgPath"
         class="fr-tile__pictogram"
       >
         <img
+          v-if="imgSrc"
           :src="imgSrc"
           class="fr-artwork"
           alt=""
         >
+        <svg
+          v-else
+          aria-hidden="true"
+          class="fr-artwork"
+          v-bind="{ ...defaultSvgAttrs, ...svgAttrs }"
+        >
+          <use
+            class="fr-artwork-decorative"
+            :href="`${svgPath}#artwork-decorative`"
+          />
+          <use
+            class="fr-artwork-minor"
+            :href="`${svgPath}#artwork-minor`"
+          />
+          <use
+            class="fr-artwork-major"
+            :href="`${svgPath}#artwork-major`"
+          />
+        </svg>
       <!-- L'alternative de l'image (attribut alt) doit à priori rester vide car l'image est illustrative et ne doit pas être restituée aux technologies d’assistance. Vous pouvez toutefois remplir l'alternative si vous estimer qu'elle apporte une information essentielle à la compréhension du contenu non présente dans le texte -->
       </div>
     </div>

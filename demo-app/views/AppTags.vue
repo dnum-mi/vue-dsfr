@@ -4,7 +4,7 @@ import DsfrTags from '../../src/components/DsfrTag/DsfrTags.vue'
 
 const tags = [
   {
-    icon: undefined,
+    icon: 'fr-icon-ancient-pavilion-fill',
     label: 'Elément 1 de la liste de tags',
   },
   {
