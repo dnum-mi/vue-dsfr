@@ -339,7 +339,7 @@ PiedDePageAvecLogoOperateur.args = {
     ],
   },
   operatorLinkText: 'Logo opérateur',
-  operatorTo: 'https://placekitten.com',
+  operatorTo: 'https://loremflickr.com/80/80/cat',
   operatorImgStyle: { 'max-height': '10rem' },
   operatorImgSrc: '/cat.svg',
   operatorImgAlt: 'Logo opérateur',
