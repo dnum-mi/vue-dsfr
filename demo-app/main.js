@@ -4,6 +4,7 @@ import { createApp } from 'vue'
 import {
   RiCheckboxCircleLine,
   RiNotification3Line,
+  RiGithubFill,
 } from 'oh-vue-icons/icons'
 
 import '@gouvfr/dsfr/dist/core/core.main.min.css'
@@ -19,7 +20,7 @@ import App from './App.vue'
 
 createApp(App)
   .use(router)
-  .use(VueDsfr, { icons: [RiCheckboxCircleLine, RiNotification3Line] })
+  .use(VueDsfr, { icons: [RiCheckboxCircleLine, RiNotification3Line, RiGithubFill] })
   .mount('#app')
 
 window.dsfr = {

@@ -12,6 +12,7 @@ import DsfrSkipLinks, { type DsfrSkipLinksProps } from '../src/components/DsfrSk
 import DsfrBreadcrumb from '../src/components/DsfrBreadcrumb/DsfrBreadcrumb.vue'
 
 const toaster = useToaster()
+const partners = []
 
 const links: DsfrSkipLinksProps['links'] = [
   {
