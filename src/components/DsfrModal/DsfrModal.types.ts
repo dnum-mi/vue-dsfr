@@ -1,4 +1,4 @@
-import type { DsfrButtonProps } from '../DsfrButton/DsfrButton.vue'
+import type { DsfrButtonProps } from '../DsfrButton/DsfrButton.types'
 
 export type DsfrModalProps = {
   modalId?: string

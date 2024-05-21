@@ -138,6 +138,13 @@ outline: [2,3]
 <<< ../src/components/DsfrLanguageSelector/DsfrLanguageSelector.types.ts
 :::
 
+### `DsfrModal`
+
+::: code-group
+<<< ../src/components/DsfrModal/DsfrModal.types.ts
+<<< ../src/components/DsfrButton/DsfrButton.types.ts
+:::
+
 ### `DsfrNavigation` et tous les enfants
 
 ::: code-group
