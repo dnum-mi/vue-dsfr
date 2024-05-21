@@ -129,7 +129,7 @@ const iconProps = computed(() => dsfrIcon.value
                     }"
                   >
                     <VIcon
-                      v-if="iconProps"
+                      v-if="icon && iconProps"
                       v-bind="iconProps"
                     />
                   </span>
