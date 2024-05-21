@@ -36,23 +36,30 @@ const closeBtn = ref<HTMLButtonElement | null>(null)
 const modal = ref()
 watch(() => props.opened, (newValue) => {
   if (newValue) {
-    document.body.classList.add('modal-open')
     modal.value?.showModal()
     setTimeout(() => {
       closeBtn.value?.focus()
     }, 100)
   } else {
-    document.body.classList.remove('modal-open')
     modal.value?.close()
   }
+  setAppropriateClassOnBody(newValue)
 })
+
+function setAppropriateClassOnBody (on: boolean) {
+  if (typeof window !== 'undefined') {
+    document.body.classList.toggle('modal-open', on)
+  }
+}
 
 onMounted(() => {
   startListeningToEscape()
+  setAppropriateClassOnBody(props.opened)
 })
 
 onBeforeUnmount(() => {
   stopListeningToEscape()
+  setAppropriateClassOnBody(false)
 })
 
 function startListeningToEscape () {
@@ -164,10 +171,7 @@ const iconProps = computed(() => dsfrIcon.value
 .fr-modal {
   color: var(--text-default-grey);
 }
-</style>
-
-<style>
-body.modal-open {
+:global(body.modal-open) {
   overflow: hidden;
 }
 </style>

@@ -291,7 +291,6 @@ const currentRoute = computed(() => route.name)
       :a11y-compliance-link="a11yComplianceLink"
       :desc-text="descText"
       :home-link="homeLink"
-      :partners="partners"
       :ecosystem-links="ecosystemLinks"
       :licence-text="licenceText"
       :licence-to="licenceTo"

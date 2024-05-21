@@ -31,6 +31,12 @@ export const routes = [
   { path: '/bandeaux', name: 'Bandeaux', component: AppAlerts },
   { path: '/callout', name: 'MiseEnAvant', component: CalloutTest },
   { path: '/tags', name: 'Tags', component: AppTags },
+  { path: '/before', name: 'Before', component: AppHome },
+  { path: '/after', name: 'After', component: AppHome },
+  { path: '/cookies', name: 'Cookies', component: AppHome },
+  { path: '/a11y-conformite', name: 'Conformite', component: AppHome },
+  { path: '/mentions-legales', name: 'MentionsLegales', component: AppHome },
+  { path: '/donnees-personnelles', name: 'DonneesPersonnelles', component: AppHome },
 ]
 
 export default createRouter({

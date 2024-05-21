@@ -42,7 +42,6 @@ const actions = [
   </div>
 
   <DsfrModal
-    v-if="isModalOpen"
     title="Exemple de modale"
     :opened="isModalOpen"
     :actions="actions"
