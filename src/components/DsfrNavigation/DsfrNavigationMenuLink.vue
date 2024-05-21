@@ -50,7 +50,7 @@ const iconProps = computed(() => (dsfrIcon.value || !props.icon)
     @click="$emit('toggleId', id)"
   >
     <VIcon
-      v-if="iconProps"
+      v-if="icon && iconProps"
       v-bind="iconProps"
     />
     {{ text }}

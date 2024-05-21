@@ -24,7 +24,7 @@ const iconProps = computed(() => dsfrIcon.value ? undefined : typeof props.icon 
     :class="{ [String(icon)]: dsfrIcon }"
   >
     <VIcon
-      v-if="iconProps"
+      v-if="icon && iconProps"
       v-bind="iconProps"
     />
     <component
