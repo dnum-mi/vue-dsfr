@@ -24,12 +24,12 @@ Autres props :
 
 ## 🛠️ Props
 
-|  nom                    |   type        |  défaut          | obligatoire |
-| ----------------------- | ---------     | ---------------- | --------    |
-| `title`                 | *`string`*    | | ✅ |
-| `titleTag`              | [*`TitleTag`*](/docs/types.md#title-tag "'h1' \| 'h2' \| 'h3' \| 'h4' \| 'h5' \| 'h6'")  |    `'h3'`     | |
-| `id`                    | *`string`*    | *random string*  | |
-| `expandedId`            | *`string`*    | *`undefined`*  | |
+|  Nom                    |   Type                                    |  Défaut          | Obligatoire  |
+| ----------------------- | ----------------------------------------- | ---------------- | -------------|
+| `title`                 | *`string`*                                |                  | ✅           |
+| `titleTag`              | [*`TitleTag`*](/docs/types.md#title-tag)  |    `'h3'`        |              |
+| `id`                    | *`string`*                                | *random string*  |              |
+| `expandedId`            | *`string`*                                | *`undefined`*    |              |
 
 ## 📡 Évenements
 

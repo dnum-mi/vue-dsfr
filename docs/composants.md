@@ -44,6 +44,10 @@ Le storybook est toujours disponible [ici](https://storybook.vue-ds.fr)
 - [DsfrHeaderMenuLink](./composants/DsfrHeaderMenuLink)
 - [DsfrLanguageSelector](./composants/DsfrLanguageSelector)
 
+## Modale
+
+- [DsfrModal](./composants/DsfrModal)
+
 ## Pied de page
 
 - [DsfrFooter](./composants/DsfrFooter)
@@ -64,14 +68,7 @@ Le storybook est toujours disponible [ici](https://storybook.vue-ds.fr)
 - [DsfrCheckboxSet](./composants/DsfrCheckboxSet)
 - [DsfrInputGroup](./composants/DsfrInputGroup)
 - [DsfrRange](./composants/DsfrRange)
-
-## Groupe de champs
-
 - [DsfrFieldset](./composants/DsfrFieldset)
-
-## Notice
-
-- [DsfrNotice](./composants/DsfrNotice)
 
 ## Onglets
 
