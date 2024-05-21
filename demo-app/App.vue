@@ -237,8 +237,8 @@ const ecosystemLinks = [
     href: 'https://legifrance.gouv.fr',
   },
   {
-    label: 'gouvernement.fr',
-    href: 'https://gouvernement.fr',
+    label: 'info.gouv.fr',
+    href: 'https://info.gouv.fr',
   },
   {
     label: 'service-public.fr',
