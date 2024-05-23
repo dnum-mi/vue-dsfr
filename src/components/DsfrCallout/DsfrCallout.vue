@@ -28,6 +28,7 @@ const iconProps = computed(() => dsfrIcon.value ? undefined : typeof props.icon 
       v-bind="iconProps"
     />
     <component
+      v-if="title"
       :is="titleTag"
       class="fr-callout__title"
     >
