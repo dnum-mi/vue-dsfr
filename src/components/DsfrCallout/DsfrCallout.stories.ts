@@ -105,6 +105,40 @@ export const MiseEnAvant = (args) => ({
   `,
 
 })
+
+export const MiseEnAvantSansTitre = (args) => ({
+  components: {
+    DsfrCallout,
+    VIcon,
+  },
+
+  data () {
+    return {
+      ...args,
+      button: args.button && {
+        ...args.button,
+        onClick: args.onClick,
+      },
+    }
+  },
+
+  template: `
+    <DsfrCallout
+      :content="content"
+      :button="button"
+      :icon="icon"
+      :title-tag="titleTag"
+    />
+  `,
+
+})
+MiseEnAvantSansTitre.args = {
+  button: undefined,
+  icon: '',
+  content: 'Lorem ipsum dolor sit amet, consectetur adipiscing, incididunt, ut labore et dol',
+  titleTag: undefined,
+}
+
 const buttonOnclick = fn()
 MiseEnAvant.args = {
   title: 'Titre de la mise en avant',
