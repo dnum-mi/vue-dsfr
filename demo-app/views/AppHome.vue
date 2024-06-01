@@ -104,6 +104,27 @@ const onClick = () => {
     </DsfrButton>
   </p>
 
+  <h2 class="fr-mt-4w">
+    Infobulles
+  </h2>
+  <div class="flex justify-between w-full relative">
+    <DsfrTooltip
+      on-hover
+      content="Texte de l’info-bulle qui apparaît au survol"
+    >
+      Au survol
+    </DsfrTooltip>
+
+    Et au clic avec une icône seulement :
+    <DsfrTooltip
+      content="Texte de l’info-bulle qui apparaît au clic"
+    />
+  </div>
+
+  <h2 class="fr-mt-4w">
+    Idée pour un bouton avec action asynchrone
+  </h2>
+
   <AsyncButton
     :is-loading="isLoading"
     :disabled="disabled"
@@ -112,6 +133,9 @@ const onClick = () => {
     Cliquer pour voir un chargement
   </AsyncButton>
 
+  <h2 class="fr-mt-4w">
+    Boutons France Connect
+  </h2>
   <p class="fr-my-2v">
     <DsfrFranceConnect secure />
   </p>

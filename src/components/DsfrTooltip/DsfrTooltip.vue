@@ -22,20 +22,19 @@ const arrowX = ref('0px')
 const top = ref(false)
 const opacity = ref(0)
 
-watch(show, async (value) => {
+async function computePosition () {
   if (typeof document === 'undefined') {
     return
   }
-  if (!value) {
+  if (!show.value) {
     return
   }
 
-  opacity.value = 0
   await new Promise(resolve => setTimeout(resolve, 100))
-  const sourceTop = source.value?.offsetTop as number
+  const sourceTop = (source.value?.offsetTop as number) - window.scrollY
   const sourceHeight = source.value?.offsetHeight as number
   const sourceWidth = source.value?.offsetWidth as number
-  const sourceLeft = source.value?.offsetLeft as number
+  const sourceLeft = (source.value?.offsetLeft as number) - window.scrollX
   const tooltipHeight = tooltip.value?.offsetHeight as number
   const tooltipWidth = tooltip.value?.offsetWidth as number
   const isSourceAtTop = (sourceTop - tooltipHeight) < 0
@@ -59,6 +58,15 @@ watch(show, async (value) => {
     : isSourceOnLeftSide
       ? `${-(tooltipWidth / 2) + (sourceWidth / 2) - 4}px`
       : '0px'
+}
+
+watch(show, computePosition, { immediate: true })
+
+onMounted(() => {
+  window.addEventListener('scroll', computePosition)
+})
+onUnmounted (() => {
+  window.removeEventListener('scroll', computePosition)
 })
 
 const tooltipStyle = computed(() => (`transform: translate(${translateX.value}, ${translateY.value}); --arrow-x: ${arrowX.value}; opacity: ${opacity.value};'`))
