@@ -69,6 +69,8 @@ const onClick = () => {
     isLoading.value = false
   }, 2000)
 }
+
+const expandedId = ref('')
 </script>
 
 <template>
@@ -107,6 +109,23 @@ const onClick = () => {
   <h2 class="fr-mt-4w">
     Infobulles
   </h2>
+
+  <div>
+    <DsfrAccordion
+      id="accordion-1"
+      style="position: relative;"
+      title="Accordéon avec infobulle"
+      :expanded-id="expandedId"
+      @expand="expandedId = $event"
+    >
+      Test infobulle dans accordéon
+      <DsfrTooltip
+
+        content="Texte de l’info-bulle qui apparaît au survol"
+      />
+    </DsfrAccordion>
+  </div>
+
   <div class="flex justify-between w-full relative">
     <DsfrTooltip
       on-hover

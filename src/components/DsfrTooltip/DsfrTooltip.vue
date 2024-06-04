@@ -31,10 +31,10 @@ async function computePosition () {
   }
 
   await new Promise(resolve => setTimeout(resolve, 100))
-  const sourceTop = (source.value?.offsetTop as number) - window.scrollY
+  const sourceTop = source.value?.getBoundingClientRect().top as number
   const sourceHeight = source.value?.offsetHeight as number
   const sourceWidth = source.value?.offsetWidth as number
-  const sourceLeft = (source.value?.offsetLeft as number) - window.scrollX
+  const sourceLeft = source.value?.getBoundingClientRect().left as number
   const tooltipHeight = tooltip.value?.offsetHeight as number
   const tooltipWidth = tooltip.value?.offsetWidth as number
   const isSourceAtTop = (sourceTop - tooltipHeight) < 0
