@@ -5,6 +5,7 @@ export {
   RiArrowDropUpLine,
   RiAddCircleLine,
   RiCloseLine,
+  RiFileCopyLine,
   RiMoonLine,
   RiRefreshLine,
   SiDiscord,

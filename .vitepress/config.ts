@@ -12,8 +12,8 @@ const minimalToc = [
     items: [],
   },
   {
-    text: 'Tous les types',
-    link: '/types',
+    text: 'Toutes les couleurs',
+    link: '/couleurs',
     items: [],
   },
   {
@@ -24,6 +24,11 @@ const minimalToc = [
   {
     text: 'Tous les composables',
     link: '/composables',
+    items: [],
+  },
+  {
+    text: 'Tous les types',
+    link: '/types',
     items: [],
   },
   {
