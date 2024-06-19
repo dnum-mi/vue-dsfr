@@ -1,0 +1,5366 @@
+{
+  "colors": {
+    "grey": [
+      {
+        "cssVar": "--grey-0-1000",
+        "name": "grey-0-1000",
+        "hex": "#000",
+        "line": "--grey-0-1000: #000;\n",
+        "tintNumber": 0,
+        "subtintNumber": 1000
+      },
+      {
+        "cssVar": "--grey-50-1000",
+        "name": "grey-50-1000",
+        "hex": "#161616",
+        "line": "--grey-50-1000: #161616;\n",
+        "tintNumber": 50,
+        "subtintNumber": 1000
+      },
+      {
+        "cssVar": "--grey-200-850",
+        "name": "grey-200-850",
+        "hex": "#3a3a3a",
+        "line": "--grey-200-850: #3a3a3a;\n",
+        "tintNumber": 200,
+        "subtintNumber": 850
+      },
+      {
+        "cssVar": "--grey-425-625",
+        "name": "grey-425-625",
+        "hex": "#666",
+        "line": "--grey-425-625: #666;\n",
+        "tintNumber": 425,
+        "subtintNumber": 625
+      },
+      {
+        "cssVar": "--grey-625-425",
+        "name": "grey-625-425",
+        "hex": "#929292",
+        "line": "--grey-625-425: #929292;\n",
+        "tintNumber": 625,
+        "subtintNumber": 425
+      },
+      {
+        "cssVar": "--grey-900-175",
+        "name": "grey-900-175",
+        "hex": "#ddd",
+        "line": "--grey-900-175: #ddd;\n",
+        "tintNumber": 900,
+        "subtintNumber": 175
+      },
+      {
+        "cssVar": "--grey-925-125",
+        "name": "grey-925-125",
+        "hex": "#e5e5e5",
+        "line": "--grey-925-125: #e5e5e5;\n",
+        "tintNumber": 925,
+        "subtintNumber": 125
+      },
+      {
+        "cssVar": "--grey-950-100-active",
+        "name": "grey-950-100-active",
+        "hex": "#c1c1c1",
+        "line": "--grey-950-100-active: #c1c1c1;\n",
+        "tintNumber": 950,
+        "subtintNumber": 100
+      },
+      {
+        "cssVar": "--grey-950-100-hover",
+        "name": "grey-950-100-hover",
+        "hex": "#d2d2d2",
+        "line": "--grey-950-100-hover: #d2d2d2;\n",
+        "tintNumber": 950,
+        "subtintNumber": 100
+      },
+      {
+        "cssVar": "--grey-950-100",
+        "name": "grey-950-100",
+        "hex": "#eee",
+        "line": "--grey-950-100: #eee;\n",
+        "tintNumber": 950,
+        "subtintNumber": 100
+      },
+      {
+        "cssVar": "--grey-950-125-active",
+        "name": "grey-950-125-active",
+        "hex": "#c1c1c1",
+        "line": "--grey-950-125-active: #c1c1c1;\n",
+        "tintNumber": 950,
+        "subtintNumber": 125
+      },
+      {
+        "cssVar": "--grey-950-125-hover",
+        "name": "grey-950-125-hover",
+        "hex": "#d2d2d2",
+        "line": "--grey-950-125-hover: #d2d2d2;\n",
+        "tintNumber": 950,
+        "subtintNumber": 125
+      },
+      {
+        "cssVar": "--grey-950-125",
+        "name": "grey-950-125",
+        "hex": "#eee",
+        "line": "--grey-950-125: #eee;\n",
+        "tintNumber": 950,
+        "subtintNumber": 125
+      },
+      {
+        "cssVar": "--grey-950-150-active",
+        "name": "grey-950-150-active",
+        "hex": "#c1c1c1",
+        "line": "--grey-950-150-active: #c1c1c1;\n",
+        "tintNumber": 950,
+        "subtintNumber": 150
+      },
+      {
+        "cssVar": "--grey-950-150-hover",
+        "name": "grey-950-150-hover",
+        "hex": "#d2d2d2",
+        "line": "--grey-950-150-hover: #d2d2d2;\n",
+        "tintNumber": 950,
+        "subtintNumber": 150
+      },
+      {
+        "cssVar": "--grey-950-150",
+        "name": "grey-950-150",
+        "hex": "#eee",
+        "line": "--grey-950-150: #eee;\n",
+        "tintNumber": 950,
+        "subtintNumber": 150
+      },
+      {
+        "cssVar": "--grey-975-75-active",
+        "name": "grey-975-75-active",
+        "hex": "#cfcfcf",
+        "line": "--grey-975-75-active: #cfcfcf;\n",
+        "tintNumber": 975,
+        "subtintNumber": 75
+      },
+      {
+        "cssVar": "--grey-975-75-hover",
+        "name": "grey-975-75-hover",
+        "hex": "#dfdfdf",
+        "line": "--grey-975-75-hover: #dfdfdf;\n",
+        "tintNumber": 975,
+        "subtintNumber": 75
+      },
+      {
+        "cssVar": "--grey-975-75",
+        "name": "grey-975-75",
+        "hex": "#f6f6f6",
+        "line": "--grey-975-75: #f6f6f6;\n",
+        "tintNumber": 975,
+        "subtintNumber": 75
+      },
+      {
+        "cssVar": "--grey-975-100-active",
+        "name": "grey-975-100-active",
+        "hex": "#cfcfcf",
+        "line": "--grey-975-100-active: #cfcfcf;\n",
+        "tintNumber": 975,
+        "subtintNumber": 100
+      },
+      {
+        "cssVar": "--grey-975-100-hover",
+        "name": "grey-975-100-hover",
+        "hex": "#dfdfdf",
+        "line": "--grey-975-100-hover: #dfdfdf;\n",
+        "tintNumber": 975,
+        "subtintNumber": 100
+      },
+      {
+        "cssVar": "--grey-975-100",
+        "name": "grey-975-100",
+        "hex": "#f6f6f6",
+        "line": "--grey-975-100: #f6f6f6;\n",
+        "tintNumber": 975,
+        "subtintNumber": 100
+      },
+      {
+        "cssVar": "--grey-975-125-active",
+        "name": "grey-975-125-active",
+        "hex": "#cfcfcf",
+        "line": "--grey-975-125-active: #cfcfcf;\n",
+        "tintNumber": 975,
+        "subtintNumber": 125
+      },
+      {
+        "cssVar": "--grey-975-125-hover",
+        "name": "grey-975-125-hover",
+        "hex": "#dfdfdf",
+        "line": "--grey-975-125-hover: #dfdfdf;\n",
+        "tintNumber": 975,
+        "subtintNumber": 125
+      },
+      {
+        "cssVar": "--grey-975-125",
+        "name": "grey-975-125",
+        "hex": "#f6f6f6",
+        "line": "--grey-975-125: #f6f6f6;\n",
+        "tintNumber": 975,
+        "subtintNumber": 125
+      },
+      {
+        "cssVar": "--grey-1000-50-active",
+        "name": "grey-1000-50-active",
+        "hex": "#ededed",
+        "line": "--grey-1000-50-active: #ededed;\n",
+        "tintNumber": 1000,
+        "subtintNumber": 50
+      },
+      {
+        "cssVar": "--grey-1000-50-hover",
+        "name": "grey-1000-50-hover",
+        "hex": "#f6f6f6",
+        "line": "--grey-1000-50-hover: #f6f6f6;\n",
+        "tintNumber": 1000,
+        "subtintNumber": 50
+      },
+      {
+        "cssVar": "--grey-1000-50",
+        "name": "grey-1000-50",
+        "hex": "#fff",
+        "line": "--grey-1000-50: #fff;\n",
+        "tintNumber": 1000,
+        "subtintNumber": 50
+      },
+      {
+        "cssVar": "--grey-1000-75-active",
+        "name": "grey-1000-75-active",
+        "hex": "#ededed",
+        "line": "--grey-1000-75-active: #ededed;\n",
+        "tintNumber": 1000,
+        "subtintNumber": 75
+      },
+      {
+        "cssVar": "--grey-1000-75-hover",
+        "name": "grey-1000-75-hover",
+        "hex": "#f6f6f6",
+        "line": "--grey-1000-75-hover: #f6f6f6;\n",
+        "tintNumber": 1000,
+        "subtintNumber": 75
+      },
+      {
+        "cssVar": "--grey-1000-75",
+        "name": "grey-1000-75",
+        "hex": "#fff",
+        "line": "--grey-1000-75: #fff;\n",
+        "tintNumber": 1000,
+        "subtintNumber": 75
+      },
+      {
+        "cssVar": "--grey-1000-100-active",
+        "name": "grey-1000-100-active",
+        "hex": "#ededed",
+        "line": "--grey-1000-100-active: #ededed;\n",
+        "tintNumber": 1000,
+        "subtintNumber": 100
+      },
+      {
+        "cssVar": "--grey-1000-100-hover",
+        "name": "grey-1000-100-hover",
+        "hex": "#f6f6f6",
+        "line": "--grey-1000-100-hover: #f6f6f6;\n",
+        "tintNumber": 1000,
+        "subtintNumber": 100
+      },
+      {
+        "cssVar": "--grey-1000-100",
+        "name": "grey-1000-100",
+        "hex": "#fff",
+        "line": "--grey-1000-100: #fff;\n",
+        "tintNumber": 1000,
+        "subtintNumber": 100
+      }
+    ],
+    "blue-france": [
+      {
+        "cssVar": "--blue-france-sun-113-625-active",
+        "name": "blue-france-sun-113-625-active",
+        "hex": "#2323ff",
+        "line": "--blue-france-sun-113-625-active: #2323ff;\n",
+        "tintNumber": 113,
+        "subtintNumber": 625
+      },
+      {
+        "cssVar": "--blue-france-sun-113-625-hover",
+        "name": "blue-france-sun-113-625-hover",
+        "hex": "#1212ff",
+        "line": "--blue-france-sun-113-625-hover: #1212ff;\n",
+        "tintNumber": 113,
+        "subtintNumber": 625
+      },
+      {
+        "cssVar": "--blue-france-sun-113-625",
+        "name": "blue-france-sun-113-625",
+        "hex": "#000091",
+        "line": "--blue-france-sun-113-625: #000091;\n",
+        "tintNumber": 113,
+        "subtintNumber": 625
+      },
+      {
+        "cssVar": "--blue-france-main-525",
+        "name": "blue-france-main-525",
+        "hex": "#6a6af4",
+        "line": "--blue-france-main-525: #6a6af4;\n",
+        "tintNumber": 525,
+        "subtintNumber": 0
+      },
+      {
+        "cssVar": "--blue-france-850-200",
+        "name": "blue-france-850-200",
+        "hex": "#cacafb",
+        "line": "--blue-france-850-200: #cacafb;\n",
+        "tintNumber": 850,
+        "subtintNumber": 200
+      },
+      {
+        "cssVar": "--blue-france-925-125-active",
+        "name": "blue-france-925-125-active",
+        "hex": "#adadf9",
+        "line": "--blue-france-925-125-active: #adadf9;\n",
+        "tintNumber": 925,
+        "subtintNumber": 125
+      },
+      {
+        "cssVar": "--blue-france-925-125-hover",
+        "name": "blue-france-925-125-hover",
+        "hex": "#c1c1fb",
+        "line": "--blue-france-925-125-hover: #c1c1fb;\n",
+        "tintNumber": 925,
+        "subtintNumber": 125
+      },
+      {
+        "cssVar": "--blue-france-925-125",
+        "name": "blue-france-925-125",
+        "hex": "#e3e3fd",
+        "line": "--blue-france-925-125: #e3e3fd;\n",
+        "tintNumber": 925,
+        "subtintNumber": 125
+      },
+      {
+        "cssVar": "--blue-france-950-100-active",
+        "name": "blue-france-950-100-active",
+        "hex": "#bbbbfc",
+        "line": "--blue-france-950-100-active: #bbbbfc;\n",
+        "tintNumber": 950,
+        "subtintNumber": 100
+      },
+      {
+        "cssVar": "--blue-france-950-100-hover",
+        "name": "blue-france-950-100-hover",
+        "hex": "#cecefc",
+        "line": "--blue-france-950-100-hover: #cecefc;\n",
+        "tintNumber": 950,
+        "subtintNumber": 100
+      },
+      {
+        "cssVar": "--blue-france-950-100",
+        "name": "blue-france-950-100",
+        "hex": "#ececfe",
+        "line": "--blue-france-950-100: #ececfe;\n",
+        "tintNumber": 950,
+        "subtintNumber": 100
+      },
+      {
+        "cssVar": "--blue-france-975-75-active",
+        "name": "blue-france-975-75-active",
+        "hex": "#cbcbfa",
+        "line": "--blue-france-975-75-active: #cbcbfa;\n",
+        "tintNumber": 975,
+        "subtintNumber": 75
+      },
+      {
+        "cssVar": "--blue-france-975-75-hover",
+        "name": "blue-france-975-75-hover",
+        "hex": "#dcdcfc",
+        "line": "--blue-france-975-75-hover: #dcdcfc;\n",
+        "tintNumber": 975,
+        "subtintNumber": 75
+      },
+      {
+        "cssVar": "--blue-france-975-75",
+        "name": "blue-france-975-75",
+        "hex": "#f5f5fe",
+        "line": "--blue-france-975-75: #f5f5fe;\n",
+        "tintNumber": 975,
+        "subtintNumber": 75
+      },
+      {
+        "cssVar": "--blue-france-975-sun-113",
+        "name": "blue-france-975-sun-113",
+        "hex": "#f5f5fe",
+        "line": "--blue-france-975-sun-113: #f5f5fe;\n",
+        "tintNumber": 975,
+        "subtintNumber": 113
+      }
+    ],
+    "red-marianne": [
+      {
+        "cssVar": "--red-marianne-425-625-active",
+        "name": "red-marianne-425-625-active",
+        "hex": "#f95a5c",
+        "line": "--red-marianne-425-625-active: #f95a5c;\n",
+        "tintNumber": 425,
+        "subtintNumber": 625
+      },
+      {
+        "cssVar": "--red-marianne-425-625-hover",
+        "name": "red-marianne-425-625-hover",
+        "hex": "#f93f42",
+        "line": "--red-marianne-425-625-hover: #f93f42;\n",
+        "tintNumber": 425,
+        "subtintNumber": 625
+      },
+      {
+        "cssVar": "--red-marianne-425-625",
+        "name": "red-marianne-425-625",
+        "hex": "#c9191e",
+        "line": "--red-marianne-425-625: #c9191e;\n",
+        "tintNumber": 425,
+        "subtintNumber": 625
+      },
+      {
+        "cssVar": "--red-marianne-main-472",
+        "name": "red-marianne-main-472",
+        "hex": "#e1000f",
+        "line": "--red-marianne-main-472: #e1000f;\n",
+        "tintNumber": 472,
+        "subtintNumber": 0
+      },
+      {
+        "cssVar": "--red-marianne-850-200",
+        "name": "red-marianne-850-200",
+        "hex": "#fcbfbf",
+        "line": "--red-marianne-850-200: #fcbfbf;\n",
+        "tintNumber": 850,
+        "subtintNumber": 200
+      },
+      {
+        "cssVar": "--red-marianne-925-125-active",
+        "name": "red-marianne-925-125-active",
+        "hex": "#fa9e9e",
+        "line": "--red-marianne-925-125-active: #fa9e9e;\n",
+        "tintNumber": 925,
+        "subtintNumber": 125
+      },
+      {
+        "cssVar": "--red-marianne-925-125-hover",
+        "name": "red-marianne-925-125-hover",
+        "hex": "#fbb6b6",
+        "line": "--red-marianne-925-125-hover: #fbb6b6;\n",
+        "tintNumber": 925,
+        "subtintNumber": 125
+      },
+      {
+        "cssVar": "--red-marianne-925-125",
+        "name": "red-marianne-925-125",
+        "hex": "#fddede",
+        "line": "--red-marianne-925-125: #fddede;\n",
+        "tintNumber": 925,
+        "subtintNumber": 125
+      },
+      {
+        "cssVar": "--red-marianne-950-100-active",
+        "name": "red-marianne-950-100-active",
+        "hex": "#fcafaf",
+        "line": "--red-marianne-950-100-active: #fcafaf;\n",
+        "tintNumber": 950,
+        "subtintNumber": 100
+      },
+      {
+        "cssVar": "--red-marianne-950-100-hover",
+        "name": "red-marianne-950-100-hover",
+        "hex": "#fdc5c5",
+        "line": "--red-marianne-950-100-hover: #fdc5c5;\n",
+        "tintNumber": 950,
+        "subtintNumber": 100
+      },
+      {
+        "cssVar": "--red-marianne-950-100",
+        "name": "red-marianne-950-100",
+        "hex": "#fee9e9",
+        "line": "--red-marianne-950-100: #fee9e9;\n",
+        "tintNumber": 950,
+        "subtintNumber": 100
+      },
+      {
+        "cssVar": "--red-marianne-975-75-active",
+        "name": "red-marianne-975-75-active",
+        "hex": "#fac4c4",
+        "line": "--red-marianne-975-75-active: #fac4c4;\n",
+        "tintNumber": 975,
+        "subtintNumber": 75
+      },
+      {
+        "cssVar": "--red-marianne-975-75-hover",
+        "name": "red-marianne-975-75-hover",
+        "hex": "#fcd7d7",
+        "line": "--red-marianne-975-75-hover: #fcd7d7;\n",
+        "tintNumber": 975,
+        "subtintNumber": 75
+      },
+      {
+        "cssVar": "--red-marianne-975-75",
+        "name": "red-marianne-975-75",
+        "hex": "#fef4f4",
+        "line": "--red-marianne-975-75: #fef4f4;\n",
+        "tintNumber": 975,
+        "subtintNumber": 75
+      }
+    ],
+    "info": [
+      {
+        "cssVar": "--info-425-625-active",
+        "name": "info-425-625-active",
+        "hex": "#6798ff",
+        "line": "--info-425-625-active: #6798ff;\n",
+        "tintNumber": 425,
+        "subtintNumber": 625
+      },
+      {
+        "cssVar": "--info-425-625-hover",
+        "name": "info-425-625-hover",
+        "hex": "#3b87ff",
+        "line": "--info-425-625-hover: #3b87ff;\n",
+        "tintNumber": 425,
+        "subtintNumber": 625
+      },
+      {
+        "cssVar": "--info-425-625",
+        "name": "info-425-625",
+        "hex": "#0063cb",
+        "line": "--info-425-625: #0063cb;\n",
+        "tintNumber": 425,
+        "subtintNumber": 625
+      },
+      {
+        "cssVar": "--info-950-100-active",
+        "name": "info-950-100-active",
+        "hex": "#a9bfff",
+        "line": "--info-950-100-active: #a9bfff;\n",
+        "tintNumber": 950,
+        "subtintNumber": 100
+      },
+      {
+        "cssVar": "--info-950-100-hover",
+        "name": "info-950-100-hover",
+        "hex": "#c2d1ff",
+        "line": "--info-950-100-hover: #c2d1ff;\n",
+        "tintNumber": 950,
+        "subtintNumber": 100
+      },
+      {
+        "cssVar": "--info-950-100",
+        "name": "info-950-100",
+        "hex": "#e8edff",
+        "line": "--info-950-100: #e8edff;\n",
+        "tintNumber": 950,
+        "subtintNumber": 100
+      },
+      {
+        "cssVar": "--info-975-75",
+        "name": "info-975-75",
+        "hex": "#f4f6ff",
+        "line": "--info-975-75: #f4f6ff;\n",
+        "tintNumber": 975,
+        "subtintNumber": 75
+      }
+    ],
+    "success": [
+      {
+        "cssVar": "--success-425-625-active",
+        "name": "success-425-625-active",
+        "hex": "#2fc368",
+        "line": "--success-425-625-active: #2fc368;\n",
+        "tintNumber": 425,
+        "subtintNumber": 625
+      },
+      {
+        "cssVar": "--success-425-625-hover",
+        "name": "success-425-625-hover",
+        "hex": "#27a959",
+        "line": "--success-425-625-hover: #27a959;\n",
+        "tintNumber": 425,
+        "subtintNumber": 625
+      },
+      {
+        "cssVar": "--success-425-625",
+        "name": "success-425-625",
+        "hex": "#18753c",
+        "line": "--success-425-625: #18753c;\n",
+        "tintNumber": 425,
+        "subtintNumber": 625
+      },
+      {
+        "cssVar": "--success-950-100-active",
+        "name": "success-950-100-active",
+        "hex": "#34eb7b",
+        "line": "--success-950-100-active: #34eb7b;\n",
+        "tintNumber": 950,
+        "subtintNumber": 100
+      },
+      {
+        "cssVar": "--success-950-100-hover",
+        "name": "success-950-100-hover",
+        "hex": "#46fd89",
+        "line": "--success-950-100-hover: #46fd89;\n",
+        "tintNumber": 950,
+        "subtintNumber": 100
+      },
+      {
+        "cssVar": "--success-950-100",
+        "name": "success-950-100",
+        "hex": "#b8fec9",
+        "line": "--success-950-100: #b8fec9;\n",
+        "tintNumber": 950,
+        "subtintNumber": 100
+      },
+      {
+        "cssVar": "--success-975-75",
+        "name": "success-975-75",
+        "hex": "#dffee6",
+        "line": "--success-975-75: #dffee6;\n",
+        "tintNumber": 975,
+        "subtintNumber": 75
+      }
+    ],
+    "warning": [
+      {
+        "cssVar": "--warning-425-625-active",
+        "name": "warning-425-625-active",
+        "hex": "#ff7a55",
+        "line": "--warning-425-625-active: #ff7a55;\n",
+        "tintNumber": 425,
+        "subtintNumber": 625
+      },
+      {
+        "cssVar": "--warning-425-625-hover",
+        "name": "warning-425-625-hover",
+        "hex": "#ff6218",
+        "line": "--warning-425-625-hover: #ff6218;\n",
+        "tintNumber": 425,
+        "subtintNumber": 625
+      },
+      {
+        "cssVar": "--warning-425-625",
+        "name": "warning-425-625",
+        "hex": "#b34000",
+        "line": "--warning-425-625: #b34000;\n",
+        "tintNumber": 425,
+        "subtintNumber": 625
+      },
+      {
+        "cssVar": "--warning-950-100-active",
+        "name": "warning-950-100-active",
+        "hex": "#ffb0a2",
+        "line": "--warning-950-100-active: #ffb0a2;\n",
+        "tintNumber": 950,
+        "subtintNumber": 100
+      },
+      {
+        "cssVar": "--warning-950-100-hover",
+        "name": "warning-950-100-hover",
+        "hex": "#ffc6bd",
+        "line": "--warning-950-100-hover: #ffc6bd;\n",
+        "tintNumber": 950,
+        "subtintNumber": 100
+      },
+      {
+        "cssVar": "--warning-950-100",
+        "name": "warning-950-100",
+        "hex": "#ffe9e6",
+        "line": "--warning-950-100: #ffe9e6;\n",
+        "tintNumber": 950,
+        "subtintNumber": 100
+      },
+      {
+        "cssVar": "--warning-975-75",
+        "name": "warning-975-75",
+        "hex": "#fff4f3",
+        "line": "--warning-975-75: #fff4f3;\n",
+        "tintNumber": 975,
+        "subtintNumber": 75
+      }
+    ],
+    "error": [
+      {
+        "cssVar": "--error-425-625-active",
+        "name": "error-425-625-active",
+        "hex": "#ff4140",
+        "line": "--error-425-625-active: #ff4140;\n",
+        "tintNumber": 425,
+        "subtintNumber": 625
+      },
+      {
+        "cssVar": "--error-425-625-hover",
+        "name": "error-425-625-hover",
+        "hex": "#ff2725",
+        "line": "--error-425-625-hover: #ff2725;\n",
+        "tintNumber": 425,
+        "subtintNumber": 625
+      },
+      {
+        "cssVar": "--error-425-625",
+        "name": "error-425-625",
+        "hex": "#ce0500",
+        "line": "--error-425-625: #ce0500;\n",
+        "tintNumber": 425,
+        "subtintNumber": 625
+      },
+      {
+        "cssVar": "--error-950-100-active",
+        "name": "error-950-100-active",
+        "hex": "#ffafaf",
+        "line": "--error-950-100-active: #ffafaf;\n",
+        "tintNumber": 950,
+        "subtintNumber": 100
+      },
+      {
+        "cssVar": "--error-950-100-hover",
+        "name": "error-950-100-hover",
+        "hex": "#ffc5c5",
+        "line": "--error-950-100-hover: #ffc5c5;\n",
+        "tintNumber": 950,
+        "subtintNumber": 100
+      },
+      {
+        "cssVar": "--error-950-100",
+        "name": "error-950-100",
+        "hex": "#ffe9e9",
+        "line": "--error-950-100: #ffe9e9;\n",
+        "tintNumber": 950,
+        "subtintNumber": 100
+      },
+      {
+        "cssVar": "--error-975-75",
+        "name": "error-975-75",
+        "hex": "#fff4f4",
+        "line": "--error-975-75: #fff4f4;\n",
+        "tintNumber": 975,
+        "subtintNumber": 75
+      }
+    ],
+    "green-tilleul-verveine": [
+      {
+        "cssVar": "--green-tilleul-verveine-sun-418-moon-817-active",
+        "name": "green-tilleul-verveine-sun-418-moon-817-active",
+        "hex": "#a7a967",
+        "line": "--green-tilleul-verveine-sun-418-moon-817-active: #a7a967;\n",
+        "tintNumber": 418,
+        "subtintNumber": 817
+      },
+      {
+        "cssVar": "--green-tilleul-verveine-sun-418-moon-817-hover",
+        "name": "green-tilleul-verveine-sun-418-moon-817-hover",
+        "hex": "#929359",
+        "line": "--green-tilleul-verveine-sun-418-moon-817-hover: #929359;\n",
+        "tintNumber": 418,
+        "subtintNumber": 817
+      },
+      {
+        "cssVar": "--green-tilleul-verveine-sun-418-moon-817",
+        "name": "green-tilleul-verveine-sun-418-moon-817",
+        "hex": "#66673d",
+        "line": "--green-tilleul-verveine-sun-418-moon-817: #66673d;\n",
+        "tintNumber": 418,
+        "subtintNumber": 817
+      },
+      {
+        "cssVar": "--green-tilleul-verveine-main-707",
+        "name": "green-tilleul-verveine-main-707",
+        "hex": "#b7a73f",
+        "line": "--green-tilleul-verveine-main-707: #b7a73f;\n",
+        "tintNumber": 707,
+        "subtintNumber": 0
+      },
+      {
+        "cssVar": "--green-tilleul-verveine-850-200",
+        "name": "green-tilleul-verveine-850-200",
+        "hex": "#e2cf58",
+        "line": "--green-tilleul-verveine-850-200: #e2cf58;\n",
+        "tintNumber": 850,
+        "subtintNumber": 200
+      },
+      {
+        "cssVar": "--green-tilleul-verveine-925-125-active",
+        "name": "green-tilleul-verveine-925-125-active",
+        "hex": "#c2b24c",
+        "line": "--green-tilleul-verveine-925-125-active: #c2b24c;\n",
+        "tintNumber": 925,
+        "subtintNumber": 125
+      },
+      {
+        "cssVar": "--green-tilleul-verveine-925-125-hover",
+        "name": "green-tilleul-verveine-925-125-hover",
+        "hex": "#d7c655",
+        "line": "--green-tilleul-verveine-925-125-hover: #d7c655;\n",
+        "tintNumber": 925,
+        "subtintNumber": 125
+      },
+      {
+        "cssVar": "--green-tilleul-verveine-925-125",
+        "name": "green-tilleul-verveine-925-125",
+        "hex": "#fbe769",
+        "line": "--green-tilleul-verveine-925-125: #fbe769;\n",
+        "tintNumber": 925,
+        "subtintNumber": 125
+      },
+      {
+        "cssVar": "--green-tilleul-verveine-950-100-active",
+        "name": "green-tilleul-verveine-950-100-active",
+        "hex": "#d4c254",
+        "line": "--green-tilleul-verveine-950-100-active: #d4c254;\n",
+        "tintNumber": 950,
+        "subtintNumber": 100
+      },
+      {
+        "cssVar": "--green-tilleul-verveine-950-100-hover",
+        "name": "green-tilleul-verveine-950-100-hover",
+        "hex": "#e8d45c",
+        "line": "--green-tilleul-verveine-950-100-hover: #e8d45c;\n",
+        "tintNumber": 950,
+        "subtintNumber": 100
+      },
+      {
+        "cssVar": "--green-tilleul-verveine-950-100",
+        "name": "green-tilleul-verveine-950-100",
+        "hex": "#fceeac",
+        "line": "--green-tilleul-verveine-950-100: #fceeac;\n",
+        "tintNumber": 950,
+        "subtintNumber": 100
+      },
+      {
+        "cssVar": "--green-tilleul-verveine-975-75-active",
+        "name": "green-tilleul-verveine-975-75-active",
+        "hex": "#ebd54c",
+        "line": "--green-tilleul-verveine-975-75-active: #ebd54c;\n",
+        "tintNumber": 975,
+        "subtintNumber": 75
+      },
+      {
+        "cssVar": "--green-tilleul-verveine-975-75-hover",
+        "name": "green-tilleul-verveine-975-75-hover",
+        "hex": "#fce552",
+        "line": "--green-tilleul-verveine-975-75-hover: #fce552;\n",
+        "tintNumber": 975,
+        "subtintNumber": 75
+      },
+      {
+        "cssVar": "--green-tilleul-verveine-975-75",
+        "name": "green-tilleul-verveine-975-75",
+        "hex": "#fef7da",
+        "line": "--green-tilleul-verveine-975-75: #fef7da;\n",
+        "tintNumber": 975,
+        "subtintNumber": 75
+      }
+    ],
+    "green-bourgeon": [
+      {
+        "cssVar": "--green-bourgeon-sun-425-moon-759-active",
+        "name": "green-bourgeon-sun-425-moon-759-active",
+        "hex": "#72b77a",
+        "line": "--green-bourgeon-sun-425-moon-759-active: #72b77a;\n",
+        "tintNumber": 425,
+        "subtintNumber": 759
+      },
+      {
+        "cssVar": "--green-bourgeon-sun-425-moon-759-hover",
+        "name": "green-bourgeon-sun-425-moon-759-hover",
+        "hex": "#639f6a",
+        "line": "--green-bourgeon-sun-425-moon-759-hover: #639f6a;\n",
+        "tintNumber": 425,
+        "subtintNumber": 759
+      },
+      {
+        "cssVar": "--green-bourgeon-sun-425-moon-759",
+        "name": "green-bourgeon-sun-425-moon-759",
+        "hex": "#447049",
+        "line": "--green-bourgeon-sun-425-moon-759: #447049;\n",
+        "tintNumber": 425,
+        "subtintNumber": 759
+      },
+      {
+        "cssVar": "--green-bourgeon-main-640",
+        "name": "green-bourgeon-main-640",
+        "hex": "#68a532",
+        "line": "--green-bourgeon-main-640: #68a532;\n",
+        "tintNumber": 640,
+        "subtintNumber": 0
+      },
+      {
+        "cssVar": "--green-bourgeon-850-200",
+        "name": "green-bourgeon-850-200",
+        "hex": "#95e257",
+        "line": "--green-bourgeon-850-200: #95e257;\n",
+        "tintNumber": 850,
+        "subtintNumber": 200
+      },
+      {
+        "cssVar": "--green-bourgeon-925-125-active",
+        "name": "green-bourgeon-925-125-active",
+        "hex": "#7fc04b",
+        "line": "--green-bourgeon-925-125-active: #7fc04b;\n",
+        "tintNumber": 925,
+        "subtintNumber": 125
+      },
+      {
+        "cssVar": "--green-bourgeon-925-125-hover",
+        "name": "green-bourgeon-925-125-hover",
+        "hex": "#8ed654",
+        "line": "--green-bourgeon-925-125-hover: #8ed654;\n",
+        "tintNumber": 925,
+        "subtintNumber": 125
+      },
+      {
+        "cssVar": "--green-bourgeon-925-125",
+        "name": "green-bourgeon-925-125",
+        "hex": "#a9fb68",
+        "line": "--green-bourgeon-925-125: #a9fb68;\n",
+        "tintNumber": 925,
+        "subtintNumber": 125
+      },
+      {
+        "cssVar": "--green-bourgeon-950-100-active",
+        "name": "green-bourgeon-950-100-active",
+        "hex": "#8dd555",
+        "line": "--green-bourgeon-950-100-active: #8dd555;\n",
+        "tintNumber": 950,
+        "subtintNumber": 100
+      },
+      {
+        "cssVar": "--green-bourgeon-950-100-hover",
+        "name": "green-bourgeon-950-100-hover",
+        "hex": "#9ae95d",
+        "line": "--green-bourgeon-950-100-hover: #9ae95d;\n",
+        "tintNumber": 950,
+        "subtintNumber": 100
+      },
+      {
+        "cssVar": "--green-bourgeon-950-100",
+        "name": "green-bourgeon-950-100",
+        "hex": "#c9fcac",
+        "line": "--green-bourgeon-950-100: #c9fcac;\n",
+        "tintNumber": 950,
+        "subtintNumber": 100
+      },
+      {
+        "cssVar": "--green-bourgeon-975-75-active",
+        "name": "green-bourgeon-975-75-active",
+        "hex": "#98ed4d",
+        "line": "--green-bourgeon-975-75-active: #98ed4d;\n",
+        "tintNumber": 975,
+        "subtintNumber": 75
+      },
+      {
+        "cssVar": "--green-bourgeon-975-75-hover",
+        "name": "green-bourgeon-975-75-hover",
+        "hex": "#a7fc62",
+        "line": "--green-bourgeon-975-75-hover: #a7fc62;\n",
+        "tintNumber": 975,
+        "subtintNumber": 75
+      },
+      {
+        "cssVar": "--green-bourgeon-975-75",
+        "name": "green-bourgeon-975-75",
+        "hex": "#e6feda",
+        "line": "--green-bourgeon-975-75: #e6feda;\n",
+        "tintNumber": 975,
+        "subtintNumber": 75
+      }
+    ],
+    "green-emeraude": [
+      {
+        "cssVar": "--green-emeraude-sun-425-moon-753-active",
+        "name": "green-emeraude-sun-425-moon-753-active",
+        "hex": "#49bc8d",
+        "line": "--green-emeraude-sun-425-moon-753-active: #49bc8d;\n",
+        "tintNumber": 425,
+        "subtintNumber": 753
+      },
+      {
+        "cssVar": "--green-emeraude-sun-425-moon-753-hover",
+        "name": "green-emeraude-sun-425-moon-753-hover",
+        "hex": "#3ea47a",
+        "line": "--green-emeraude-sun-425-moon-753-hover: #3ea47a;\n",
+        "tintNumber": 425,
+        "subtintNumber": 753
+      },
+      {
+        "cssVar": "--green-emeraude-sun-425-moon-753",
+        "name": "green-emeraude-sun-425-moon-753",
+        "hex": "#297254",
+        "line": "--green-emeraude-sun-425-moon-753: #297254;\n",
+        "tintNumber": 425,
+        "subtintNumber": 753
+      },
+      {
+        "cssVar": "--green-emeraude-main-632",
+        "name": "green-emeraude-main-632",
+        "hex": "#00a95f",
+        "line": "--green-emeraude-main-632: #00a95f;\n",
+        "tintNumber": 632,
+        "subtintNumber": 0
+      },
+      {
+        "cssVar": "--green-emeraude-850-200",
+        "name": "green-emeraude-850-200",
+        "hex": "#6fe49d",
+        "line": "--green-emeraude-850-200: #6fe49d;\n",
+        "tintNumber": 850,
+        "subtintNumber": 200
+      },
+      {
+        "cssVar": "--green-emeraude-925-125-active",
+        "name": "green-emeraude-925-125-active",
+        "hex": "#5ec988",
+        "line": "--green-emeraude-925-125-active: #5ec988;\n",
+        "tintNumber": 925,
+        "subtintNumber": 125
+      },
+      {
+        "cssVar": "--green-emeraude-925-125-hover",
+        "name": "green-emeraude-925-125-hover",
+        "hex": "#69df97",
+        "line": "--green-emeraude-925-125-hover: #69df97;\n",
+        "tintNumber": 925,
+        "subtintNumber": 125
+      },
+      {
+        "cssVar": "--green-emeraude-925-125",
+        "name": "green-emeraude-925-125",
+        "hex": "#9ef9be",
+        "line": "--green-emeraude-925-125: #9ef9be;\n",
+        "tintNumber": 925,
+        "subtintNumber": 125
+      },
+      {
+        "cssVar": "--green-emeraude-950-100-active",
+        "name": "green-emeraude-950-100-active",
+        "hex": "#6dd897",
+        "line": "--green-emeraude-950-100-active: #6dd897;\n",
+        "tintNumber": 950,
+        "subtintNumber": 100
+      },
+      {
+        "cssVar": "--green-emeraude-950-100-hover",
+        "name": "green-emeraude-950-100-hover",
+        "hex": "#77eda5",
+        "line": "--green-emeraude-950-100-hover: #77eda5;\n",
+        "tintNumber": 950,
+        "subtintNumber": 100
+      },
+      {
+        "cssVar": "--green-emeraude-950-100",
+        "name": "green-emeraude-950-100",
+        "hex": "#c3fad5",
+        "line": "--green-emeraude-950-100: #c3fad5;\n",
+        "tintNumber": 950,
+        "subtintNumber": 100
+      },
+      {
+        "cssVar": "--green-emeraude-975-75-active",
+        "name": "green-emeraude-975-75-active",
+        "hex": "#6df1a3",
+        "line": "--green-emeraude-975-75-active: #6df1a3;\n",
+        "tintNumber": 975,
+        "subtintNumber": 75
+      },
+      {
+        "cssVar": "--green-emeraude-975-75-hover",
+        "name": "green-emeraude-975-75-hover",
+        "hex": "#94f9b9",
+        "line": "--green-emeraude-975-75-hover: #94f9b9;\n",
+        "tintNumber": 975,
+        "subtintNumber": 75
+      },
+      {
+        "cssVar": "--green-emeraude-975-75",
+        "name": "green-emeraude-975-75",
+        "hex": "#e3fdeb",
+        "line": "--green-emeraude-975-75: #e3fdeb;\n",
+        "tintNumber": 975,
+        "subtintNumber": 75
+      }
+    ],
+    "green-menthe": [
+      {
+        "cssVar": "--green-menthe-sun-373-moon-652-active",
+        "name": "green-menthe-sun-373-moon-652-active",
+        "hex": "#62a9a2",
+        "line": "--green-menthe-sun-373-moon-652-active: #62a9a2;\n",
+        "tintNumber": 373,
+        "subtintNumber": 652
+      },
+      {
+        "cssVar": "--green-menthe-sun-373-moon-652-hover",
+        "name": "green-menthe-sun-373-moon-652-hover",
+        "hex": "#53918c",
+        "line": "--green-menthe-sun-373-moon-652-hover: #53918c;\n",
+        "tintNumber": 373,
+        "subtintNumber": 652
+      },
+      {
+        "cssVar": "--green-menthe-sun-373-moon-652",
+        "name": "green-menthe-sun-373-moon-652",
+        "hex": "#37635f",
+        "line": "--green-menthe-sun-373-moon-652: #37635f;\n",
+        "tintNumber": 373,
+        "subtintNumber": 652
+      },
+      {
+        "cssVar": "--green-menthe-main-548",
+        "name": "green-menthe-main-548",
+        "hex": "#009081",
+        "line": "--green-menthe-main-548: #009081;\n",
+        "tintNumber": 548,
+        "subtintNumber": 0
+      },
+      {
+        "cssVar": "--green-menthe-850-200",
+        "name": "green-menthe-850-200",
+        "hex": "#73e0cf",
+        "line": "--green-menthe-850-200: #73e0cf;\n",
+        "tintNumber": 850,
+        "subtintNumber": 200
+      },
+      {
+        "cssVar": "--green-menthe-925-125-active",
+        "name": "green-menthe-925-125-active",
+        "hex": "#62bfb1",
+        "line": "--green-menthe-925-125-active: #62bfb1;\n",
+        "tintNumber": 925,
+        "subtintNumber": 125
+      },
+      {
+        "cssVar": "--green-menthe-925-125-hover",
+        "name": "green-menthe-925-125-hover",
+        "hex": "#6ed5c5",
+        "line": "--green-menthe-925-125-hover: #6ed5c5;\n",
+        "tintNumber": 925,
+        "subtintNumber": 125
+      },
+      {
+        "cssVar": "--green-menthe-925-125",
+        "name": "green-menthe-925-125",
+        "hex": "#8bf8e7",
+        "line": "--green-menthe-925-125: #8bf8e7;\n",
+        "tintNumber": 925,
+        "subtintNumber": 125
+      },
+      {
+        "cssVar": "--green-menthe-950-100-active",
+        "name": "green-menthe-950-100-active",
+        "hex": "#6fd3c3",
+        "line": "--green-menthe-950-100-active: #6fd3c3;\n",
+        "tintNumber": 950,
+        "subtintNumber": 100
+      },
+      {
+        "cssVar": "--green-menthe-950-100-hover",
+        "name": "green-menthe-950-100-hover",
+        "hex": "#79e7d5",
+        "line": "--green-menthe-950-100-hover: #79e7d5;\n",
+        "tintNumber": 950,
+        "subtintNumber": 100
+      },
+      {
+        "cssVar": "--green-menthe-950-100",
+        "name": "green-menthe-950-100",
+        "hex": "#bafaee",
+        "line": "--green-menthe-950-100: #bafaee;\n",
+        "tintNumber": 950,
+        "subtintNumber": 100
+      },
+      {
+        "cssVar": "--green-menthe-975-75-active",
+        "name": "green-menthe-975-75-active",
+        "hex": "#70ebd8",
+        "line": "--green-menthe-975-75-active: #70ebd8;\n",
+        "tintNumber": 975,
+        "subtintNumber": 75
+      },
+      {
+        "cssVar": "--green-menthe-975-75-hover",
+        "name": "green-menthe-975-75-hover",
+        "hex": "#84f9e7",
+        "line": "--green-menthe-975-75-hover: #84f9e7;\n",
+        "tintNumber": 975,
+        "subtintNumber": 75
+      },
+      {
+        "cssVar": "--green-menthe-975-75",
+        "name": "green-menthe-975-75",
+        "hex": "#dffdf7",
+        "line": "--green-menthe-975-75: #dffdf7;\n",
+        "tintNumber": 975,
+        "subtintNumber": 75
+      }
+    ],
+    "green-archipel": [
+      {
+        "cssVar": "--green-archipel-sun-391-moon-716-active",
+        "name": "green-archipel-sun-391-moon-716-active",
+        "hex": "#00bbc3",
+        "line": "--green-archipel-sun-391-moon-716-active: #00bbc3;\n",
+        "tintNumber": 391,
+        "subtintNumber": 716
+      },
+      {
+        "cssVar": "--green-archipel-sun-391-moon-716-hover",
+        "name": "green-archipel-sun-391-moon-716-hover",
+        "hex": "#009fa7",
+        "line": "--green-archipel-sun-391-moon-716-hover: #009fa7;\n",
+        "tintNumber": 391,
+        "subtintNumber": 716
+      },
+      {
+        "cssVar": "--green-archipel-sun-391-moon-716",
+        "name": "green-archipel-sun-391-moon-716",
+        "hex": "#006a6f",
+        "line": "--green-archipel-sun-391-moon-716: #006a6f;\n",
+        "tintNumber": 391,
+        "subtintNumber": 716
+      },
+      {
+        "cssVar": "--green-archipel-main-557",
+        "name": "green-archipel-main-557",
+        "hex": "#009099",
+        "line": "--green-archipel-main-557: #009099;\n",
+        "tintNumber": 557,
+        "subtintNumber": 0
+      },
+      {
+        "cssVar": "--green-archipel-850-200",
+        "name": "green-archipel-850-200",
+        "hex": "#60e0eb",
+        "line": "--green-archipel-850-200: #60e0eb;\n",
+        "tintNumber": 850,
+        "subtintNumber": 200
+      },
+      {
+        "cssVar": "--green-archipel-925-125-active",
+        "name": "green-archipel-925-125-active",
+        "hex": "#58c5cf",
+        "line": "--green-archipel-925-125-active: #58c5cf;\n",
+        "tintNumber": 925,
+        "subtintNumber": 125
+      },
+      {
+        "cssVar": "--green-archipel-925-125-hover",
+        "name": "green-archipel-925-125-hover",
+        "hex": "#62dbe5",
+        "line": "--green-archipel-925-125-hover: #62dbe5;\n",
+        "tintNumber": 925,
+        "subtintNumber": 125
+      },
+      {
+        "cssVar": "--green-archipel-925-125",
+        "name": "green-archipel-925-125",
+        "hex": "#a6f2fa",
+        "line": "--green-archipel-925-125: #a6f2fa;\n",
+        "tintNumber": 925,
+        "subtintNumber": 125
+      },
+      {
+        "cssVar": "--green-archipel-950-100-active",
+        "name": "green-archipel-950-100-active",
+        "hex": "#5bd8e3",
+        "line": "--green-archipel-950-100-active: #5bd8e3;\n",
+        "tintNumber": 950,
+        "subtintNumber": 100
+      },
+      {
+        "cssVar": "--green-archipel-950-100-hover",
+        "name": "green-archipel-950-100-hover",
+        "hex": "#64ecf8",
+        "line": "--green-archipel-950-100-hover: #64ecf8;\n",
+        "tintNumber": 950,
+        "subtintNumber": 100
+      },
+      {
+        "cssVar": "--green-archipel-950-100",
+        "name": "green-archipel-950-100",
+        "hex": "#c7f6fc",
+        "line": "--green-archipel-950-100: #c7f6fc;\n",
+        "tintNumber": 950,
+        "subtintNumber": 100
+      },
+      {
+        "cssVar": "--green-archipel-975-75-active",
+        "name": "green-archipel-975-75-active",
+        "hex": "#73e9f0",
+        "line": "--green-archipel-975-75-active: #73e9f0;\n",
+        "tintNumber": 975,
+        "subtintNumber": 75
+      },
+      {
+        "cssVar": "--green-archipel-975-75-hover",
+        "name": "green-archipel-975-75-hover",
+        "hex": "#99f2f8",
+        "line": "--green-archipel-975-75-hover: #99f2f8;\n",
+        "tintNumber": 975,
+        "subtintNumber": 75
+      },
+      {
+        "cssVar": "--green-archipel-975-75",
+        "name": "green-archipel-975-75",
+        "hex": "#e5fbfd",
+        "line": "--green-archipel-975-75: #e5fbfd;\n",
+        "tintNumber": 975,
+        "subtintNumber": 75
+      }
+    ],
+    "blue-ecume": [
+      {
+        "cssVar": "--blue-ecume-sun-247-moon-675-active",
+        "name": "blue-ecume-sun-247-moon-675-active",
+        "hex": "#667dcf",
+        "line": "--blue-ecume-sun-247-moon-675-active: #667dcf;\n",
+        "tintNumber": 247,
+        "subtintNumber": 675
+      },
+      {
+        "cssVar": "--blue-ecume-sun-247-moon-675-hover",
+        "name": "blue-ecume-sun-247-moon-675-hover",
+        "hex": "#4e68bb",
+        "line": "--blue-ecume-sun-247-moon-675-hover: #4e68bb;\n",
+        "tintNumber": 247,
+        "subtintNumber": 675
+      },
+      {
+        "cssVar": "--blue-ecume-sun-247-moon-675",
+        "name": "blue-ecume-sun-247-moon-675",
+        "hex": "#2f4077",
+        "line": "--blue-ecume-sun-247-moon-675: #2f4077;\n",
+        "tintNumber": 247,
+        "subtintNumber": 675
+      },
+      {
+        "cssVar": "--blue-ecume-main-400",
+        "name": "blue-ecume-main-400",
+        "hex": "#465f9d",
+        "line": "--blue-ecume-main-400: #465f9d;\n",
+        "tintNumber": 400,
+        "subtintNumber": 0
+      },
+      {
+        "cssVar": "--blue-ecume-850-200",
+        "name": "blue-ecume-850-200",
+        "hex": "#bfccfb",
+        "line": "--blue-ecume-850-200: #bfccfb;\n",
+        "tintNumber": 850,
+        "subtintNumber": 200
+      },
+      {
+        "cssVar": "--blue-ecume-925-125-active",
+        "name": "blue-ecume-925-125-active",
+        "hex": "#99b3f9",
+        "line": "--blue-ecume-925-125-active: #99b3f9;\n",
+        "tintNumber": 925,
+        "subtintNumber": 125
+      },
+      {
+        "cssVar": "--blue-ecume-925-125-hover",
+        "name": "blue-ecume-925-125-hover",
+        "hex": "#b4c5fb",
+        "line": "--blue-ecume-925-125-hover: #b4c5fb;\n",
+        "tintNumber": 925,
+        "subtintNumber": 125
+      },
+      {
+        "cssVar": "--blue-ecume-925-125",
+        "name": "blue-ecume-925-125",
+        "hex": "#dee5fd",
+        "line": "--blue-ecume-925-125: #dee5fd;\n",
+        "tintNumber": 925,
+        "subtintNumber": 125
+      },
+      {
+        "cssVar": "--blue-ecume-950-100-active",
+        "name": "blue-ecume-950-100-active",
+        "hex": "#adbffc",
+        "line": "--blue-ecume-950-100-active: #adbffc;\n",
+        "tintNumber": 950,
+        "subtintNumber": 100
+      },
+      {
+        "cssVar": "--blue-ecume-950-100-hover",
+        "name": "blue-ecume-950-100-hover",
+        "hex": "#c5d0fc",
+        "line": "--blue-ecume-950-100-hover: #c5d0fc;\n",
+        "tintNumber": 950,
+        "subtintNumber": 100
+      },
+      {
+        "cssVar": "--blue-ecume-950-100",
+        "name": "blue-ecume-950-100",
+        "hex": "#e9edfe",
+        "line": "--blue-ecume-950-100: #e9edfe;\n",
+        "tintNumber": 950,
+        "subtintNumber": 100
+      },
+      {
+        "cssVar": "--blue-ecume-975-75-active",
+        "name": "blue-ecume-975-75-active",
+        "hex": "#c3cffa",
+        "line": "--blue-ecume-975-75-active: #c3cffa;\n",
+        "tintNumber": 975,
+        "subtintNumber": 75
+      },
+      {
+        "cssVar": "--blue-ecume-975-75-hover",
+        "name": "blue-ecume-975-75-hover",
+        "hex": "#d7dffb",
+        "line": "--blue-ecume-975-75-hover: #d7dffb;\n",
+        "tintNumber": 975,
+        "subtintNumber": 75
+      },
+      {
+        "cssVar": "--blue-ecume-975-75",
+        "name": "blue-ecume-975-75",
+        "hex": "#f4f6fe",
+        "line": "--blue-ecume-975-75: #f4f6fe;\n",
+        "tintNumber": 975,
+        "subtintNumber": 75
+      }
+    ],
+    "blue-cumulus": [
+      {
+        "cssVar": "--blue-cumulus-sun-368-moon-732-active",
+        "name": "blue-cumulus-sun-368-moon-732-active",
+        "hex": "#7996e6",
+        "line": "--blue-cumulus-sun-368-moon-732-active: #7996e6;\n",
+        "tintNumber": 368,
+        "subtintNumber": 732
+      },
+      {
+        "cssVar": "--blue-cumulus-sun-368-moon-732-hover",
+        "name": "blue-cumulus-sun-368-moon-732-hover",
+        "hex": "#5982e0",
+        "line": "--blue-cumulus-sun-368-moon-732-hover: #5982e0;\n",
+        "tintNumber": 368,
+        "subtintNumber": 732
+      },
+      {
+        "cssVar": "--blue-cumulus-sun-368-moon-732",
+        "name": "blue-cumulus-sun-368-moon-732",
+        "hex": "#3558a2",
+        "line": "--blue-cumulus-sun-368-moon-732: #3558a2;\n",
+        "tintNumber": 368,
+        "subtintNumber": 732
+      },
+      {
+        "cssVar": "--blue-cumulus-main-526",
+        "name": "blue-cumulus-main-526",
+        "hex": "#417dc4",
+        "line": "--blue-cumulus-main-526: #417dc4;\n",
+        "tintNumber": 526,
+        "subtintNumber": 0
+      },
+      {
+        "cssVar": "--blue-cumulus-850-200",
+        "name": "blue-cumulus-850-200",
+        "hex": "#b6cffb",
+        "line": "--blue-cumulus-850-200: #b6cffb;\n",
+        "tintNumber": 850,
+        "subtintNumber": 200
+      },
+      {
+        "cssVar": "--blue-cumulus-925-125-active",
+        "name": "blue-cumulus-925-125-active",
+        "hex": "#8ab8f9",
+        "line": "--blue-cumulus-925-125-active: #8ab8f9;\n",
+        "tintNumber": 925,
+        "subtintNumber": 125
+      },
+      {
+        "cssVar": "--blue-cumulus-925-125-hover",
+        "name": "blue-cumulus-925-125-hover",
+        "hex": "#a9c8fb",
+        "line": "--blue-cumulus-925-125-hover: #a9c8fb;\n",
+        "tintNumber": 925,
+        "subtintNumber": 125
+      },
+      {
+        "cssVar": "--blue-cumulus-925-125",
+        "name": "blue-cumulus-925-125",
+        "hex": "#dae6fd",
+        "line": "--blue-cumulus-925-125: #dae6fd;\n",
+        "tintNumber": 925,
+        "subtintNumber": 125
+      },
+      {
+        "cssVar": "--blue-cumulus-950-100-active",
+        "name": "blue-cumulus-950-100-active",
+        "hex": "#9fc3fc",
+        "line": "--blue-cumulus-950-100-active: #9fc3fc;\n",
+        "tintNumber": 950,
+        "subtintNumber": 100
+      },
+      {
+        "cssVar": "--blue-cumulus-950-100-hover",
+        "name": "blue-cumulus-950-100-hover",
+        "hex": "#bcd3fc",
+        "line": "--blue-cumulus-950-100-hover: #bcd3fc;\n",
+        "tintNumber": 950,
+        "subtintNumber": 100
+      },
+      {
+        "cssVar": "--blue-cumulus-950-100",
+        "name": "blue-cumulus-950-100",
+        "hex": "#e6eefe",
+        "line": "--blue-cumulus-950-100: #e6eefe;\n",
+        "tintNumber": 950,
+        "subtintNumber": 100
+      },
+      {
+        "cssVar": "--blue-cumulus-975-75-active",
+        "name": "blue-cumulus-975-75-active",
+        "hex": "#bed0fa",
+        "line": "--blue-cumulus-975-75-active: #bed0fa;\n",
+        "tintNumber": 975,
+        "subtintNumber": 75
+      },
+      {
+        "cssVar": "--blue-cumulus-975-75-hover",
+        "name": "blue-cumulus-975-75-hover",
+        "hex": "#d3dffc",
+        "line": "--blue-cumulus-975-75-hover: #d3dffc;\n",
+        "tintNumber": 975,
+        "subtintNumber": 75
+      },
+      {
+        "cssVar": "--blue-cumulus-975-75",
+        "name": "blue-cumulus-975-75",
+        "hex": "#f3f6fe",
+        "line": "--blue-cumulus-975-75: #f3f6fe;\n",
+        "tintNumber": 975,
+        "subtintNumber": 75
+      }
+    ],
+    "purple-glycine": [
+      {
+        "cssVar": "--purple-glycine-sun-319-moon-630-active",
+        "name": "purple-glycine-sun-319-moon-630-active",
+        "hex": "#bb7f9e",
+        "line": "--purple-glycine-sun-319-moon-630-active: #bb7f9e;\n",
+        "tintNumber": 319,
+        "subtintNumber": 630
+      },
+      {
+        "cssVar": "--purple-glycine-sun-319-moon-630-hover",
+        "name": "purple-glycine-sun-319-moon-630-hover",
+        "hex": "#a66989",
+        "line": "--purple-glycine-sun-319-moon-630-hover: #a66989;\n",
+        "tintNumber": 319,
+        "subtintNumber": 630
+      },
+      {
+        "cssVar": "--purple-glycine-sun-319-moon-630",
+        "name": "purple-glycine-sun-319-moon-630",
+        "hex": "#6e445a",
+        "line": "--purple-glycine-sun-319-moon-630: #6e445a;\n",
+        "tintNumber": 319,
+        "subtintNumber": 630
+      },
+      {
+        "cssVar": "--purple-glycine-main-494",
+        "name": "purple-glycine-main-494",
+        "hex": "#a558a0",
+        "line": "--purple-glycine-main-494: #a558a0;\n",
+        "tintNumber": 494,
+        "subtintNumber": 0
+      },
+      {
+        "cssVar": "--purple-glycine-850-200",
+        "name": "purple-glycine-850-200",
+        "hex": "#fbb8f6",
+        "line": "--purple-glycine-850-200: #fbb8f6;\n",
+        "tintNumber": 850,
+        "subtintNumber": 200
+      },
+      {
+        "cssVar": "--purple-glycine-925-125-active",
+        "name": "purple-glycine-925-125-active",
+        "hex": "#fa96f2",
+        "line": "--purple-glycine-925-125-active: #fa96f2;\n",
+        "tintNumber": 925,
+        "subtintNumber": 125
+      },
+      {
+        "cssVar": "--purple-glycine-925-125-hover",
+        "name": "purple-glycine-925-125-hover",
+        "hex": "#fbaff5",
+        "line": "--purple-glycine-925-125-hover: #fbaff5;\n",
+        "tintNumber": 925,
+        "subtintNumber": 125
+      },
+      {
+        "cssVar": "--purple-glycine-925-125",
+        "name": "purple-glycine-925-125",
+        "hex": "#fddbfa",
+        "line": "--purple-glycine-925-125: #fddbfa;\n",
+        "tintNumber": 925,
+        "subtintNumber": 125
+      },
+      {
+        "cssVar": "--purple-glycine-950-100-active",
+        "name": "purple-glycine-950-100-active",
+        "hex": "#fca8f6",
+        "line": "--purple-glycine-950-100-active: #fca8f6;\n",
+        "tintNumber": 950,
+        "subtintNumber": 100
+      },
+      {
+        "cssVar": "--purple-glycine-950-100-hover",
+        "name": "purple-glycine-950-100-hover",
+        "hex": "#fdc0f8",
+        "line": "--purple-glycine-950-100-hover: #fdc0f8;\n",
+        "tintNumber": 950,
+        "subtintNumber": 100
+      },
+      {
+        "cssVar": "--purple-glycine-950-100",
+        "name": "purple-glycine-950-100",
+        "hex": "#fee7fc",
+        "line": "--purple-glycine-950-100: #fee7fc;\n",
+        "tintNumber": 950,
+        "subtintNumber": 100
+      },
+      {
+        "cssVar": "--purple-glycine-975-75-active",
+        "name": "purple-glycine-975-75-active",
+        "hex": "#fabff5",
+        "line": "--purple-glycine-975-75-active: #fabff5;\n",
+        "tintNumber": 975,
+        "subtintNumber": 75
+      },
+      {
+        "cssVar": "--purple-glycine-975-75-hover",
+        "name": "purple-glycine-975-75-hover",
+        "hex": "#fcd4f8",
+        "line": "--purple-glycine-975-75-hover: #fcd4f8;\n",
+        "tintNumber": 975,
+        "subtintNumber": 75
+      },
+      {
+        "cssVar": "--purple-glycine-975-75",
+        "name": "purple-glycine-975-75",
+        "hex": "#fef3fd",
+        "line": "--purple-glycine-975-75: #fef3fd;\n",
+        "tintNumber": 975,
+        "subtintNumber": 75
+      }
+    ],
+    "pink-macaron": [
+      {
+        "cssVar": "--pink-macaron-sun-406-moon-833-active",
+        "name": "pink-macaron-sun-406-moon-833-active",
+        "hex": "#e08e73",
+        "line": "--pink-macaron-sun-406-moon-833-active: #e08e73;\n",
+        "tintNumber": 406,
+        "subtintNumber": 833
+      },
+      {
+        "cssVar": "--pink-macaron-sun-406-moon-833-hover",
+        "name": "pink-macaron-sun-406-moon-833-hover",
+        "hex": "#ca795c",
+        "line": "--pink-macaron-sun-406-moon-833-hover: #ca795c;\n",
+        "tintNumber": 406,
+        "subtintNumber": 833
+      },
+      {
+        "cssVar": "--pink-macaron-sun-406-moon-833",
+        "name": "pink-macaron-sun-406-moon-833",
+        "hex": "#8d533e",
+        "line": "--pink-macaron-sun-406-moon-833: #8d533e;\n",
+        "tintNumber": 406,
+        "subtintNumber": 833
+      },
+      {
+        "cssVar": "--pink-macaron-main-689",
+        "name": "pink-macaron-main-689",
+        "hex": "#e18b76",
+        "line": "--pink-macaron-main-689: #e18b76;\n",
+        "tintNumber": 689,
+        "subtintNumber": 0
+      },
+      {
+        "cssVar": "--pink-macaron-850-200",
+        "name": "pink-macaron-850-200",
+        "hex": "#fcc0b4",
+        "line": "--pink-macaron-850-200: #fcc0b4;\n",
+        "tintNumber": 850,
+        "subtintNumber": 200
+      },
+      {
+        "cssVar": "--pink-macaron-925-125-active",
+        "name": "pink-macaron-925-125-active",
+        "hex": "#faa18d",
+        "line": "--pink-macaron-925-125-active: #faa18d;\n",
+        "tintNumber": 925,
+        "subtintNumber": 125
+      },
+      {
+        "cssVar": "--pink-macaron-925-125-hover",
+        "name": "pink-macaron-925-125-hover",
+        "hex": "#fbb8ab",
+        "line": "--pink-macaron-925-125-hover: #fbb8ab;\n",
+        "tintNumber": 925,
+        "subtintNumber": 125
+      },
+      {
+        "cssVar": "--pink-macaron-925-125",
+        "name": "pink-macaron-925-125",
+        "hex": "#fddfda",
+        "line": "--pink-macaron-925-125: #fddfda;\n",
+        "tintNumber": 925,
+        "subtintNumber": 125
+      },
+      {
+        "cssVar": "--pink-macaron-950-100-active",
+        "name": "pink-macaron-950-100-active",
+        "hex": "#fcb0a2",
+        "line": "--pink-macaron-950-100-active: #fcb0a2;\n",
+        "tintNumber": 950,
+        "subtintNumber": 100
+      },
+      {
+        "cssVar": "--pink-macaron-950-100-hover",
+        "name": "pink-macaron-950-100-hover",
+        "hex": "#fdc6bd",
+        "line": "--pink-macaron-950-100-hover: #fdc6bd;\n",
+        "tintNumber": 950,
+        "subtintNumber": 100
+      },
+      {
+        "cssVar": "--pink-macaron-950-100",
+        "name": "pink-macaron-950-100",
+        "hex": "#fee9e6",
+        "line": "--pink-macaron-950-100: #fee9e6;\n",
+        "tintNumber": 950,
+        "subtintNumber": 100
+      },
+      {
+        "cssVar": "--pink-macaron-975-75-active",
+        "name": "pink-macaron-975-75-active",
+        "hex": "#fac5b8",
+        "line": "--pink-macaron-975-75-active: #fac5b8;\n",
+        "tintNumber": 975,
+        "subtintNumber": 75
+      },
+      {
+        "cssVar": "--pink-macaron-975-75-hover",
+        "name": "pink-macaron-975-75-hover",
+        "hex": "#fcd8d0",
+        "line": "--pink-macaron-975-75-hover: #fcd8d0;\n",
+        "tintNumber": 975,
+        "subtintNumber": 75
+      },
+      {
+        "cssVar": "--pink-macaron-975-75",
+        "name": "pink-macaron-975-75",
+        "hex": "#fef4f2",
+        "line": "--pink-macaron-975-75: #fef4f2;\n",
+        "tintNumber": 975,
+        "subtintNumber": 75
+      }
+    ],
+    "pink-tuile": [
+      {
+        "cssVar": "--pink-tuile-sun-425-moon-750-active",
+        "name": "pink-tuile-sun-425-moon-750-active",
+        "hex": "#da8a89",
+        "line": "--pink-tuile-sun-425-moon-750-active: #da8a89;\n",
+        "tintNumber": 425,
+        "subtintNumber": 750
+      },
+      {
+        "cssVar": "--pink-tuile-sun-425-moon-750-hover",
+        "name": "pink-tuile-sun-425-moon-750-hover",
+        "hex": "#d5706f",
+        "line": "--pink-tuile-sun-425-moon-750-hover: #d5706f;\n",
+        "tintNumber": 425,
+        "subtintNumber": 750
+      },
+      {
+        "cssVar": "--pink-tuile-sun-425-moon-750",
+        "name": "pink-tuile-sun-425-moon-750",
+        "hex": "#a94645",
+        "line": "--pink-tuile-sun-425-moon-750: #a94645;\n",
+        "tintNumber": 425,
+        "subtintNumber": 750
+      },
+      {
+        "cssVar": "--pink-tuile-main-556",
+        "name": "pink-tuile-main-556",
+        "hex": "#ce614a",
+        "line": "--pink-tuile-main-556: #ce614a;\n",
+        "tintNumber": 556,
+        "subtintNumber": 0
+      },
+      {
+        "cssVar": "--pink-tuile-850-200",
+        "name": "pink-tuile-850-200",
+        "hex": "#fcbfb7",
+        "line": "--pink-tuile-850-200: #fcbfb7;\n",
+        "tintNumber": 850,
+        "subtintNumber": 200
+      },
+      {
+        "cssVar": "--pink-tuile-925-125-active",
+        "name": "pink-tuile-925-125-active",
+        "hex": "#faa191",
+        "line": "--pink-tuile-925-125-active: #faa191;\n",
+        "tintNumber": 925,
+        "subtintNumber": 125
+      },
+      {
+        "cssVar": "--pink-tuile-925-125-hover",
+        "name": "pink-tuile-925-125-hover",
+        "hex": "#fbb8ad",
+        "line": "--pink-tuile-925-125-hover: #fbb8ad;\n",
+        "tintNumber": 925,
+        "subtintNumber": 125
+      },
+      {
+        "cssVar": "--pink-tuile-925-125",
+        "name": "pink-tuile-925-125",
+        "hex": "#fddfdb",
+        "line": "--pink-tuile-925-125: #fddfdb;\n",
+        "tintNumber": 925,
+        "subtintNumber": 125
+      },
+      {
+        "cssVar": "--pink-tuile-950-100-active",
+        "name": "pink-tuile-950-100-active",
+        "hex": "#fcb0a7",
+        "line": "--pink-tuile-950-100-active: #fcb0a7;\n",
+        "tintNumber": 950,
+        "subtintNumber": 100
+      },
+      {
+        "cssVar": "--pink-tuile-950-100-hover",
+        "name": "pink-tuile-950-100-hover",
+        "hex": "#fdc6c0",
+        "line": "--pink-tuile-950-100-hover: #fdc6c0;\n",
+        "tintNumber": 950,
+        "subtintNumber": 100
+      },
+      {
+        "cssVar": "--pink-tuile-950-100",
+        "name": "pink-tuile-950-100",
+        "hex": "#fee9e7",
+        "line": "--pink-tuile-950-100: #fee9e7;\n",
+        "tintNumber": 950,
+        "subtintNumber": 100
+      },
+      {
+        "cssVar": "--pink-tuile-975-75-active",
+        "name": "pink-tuile-975-75-active",
+        "hex": "#fac4be",
+        "line": "--pink-tuile-975-75-active: #fac4be;\n",
+        "tintNumber": 975,
+        "subtintNumber": 75
+      },
+      {
+        "cssVar": "--pink-tuile-975-75-hover",
+        "name": "pink-tuile-975-75-hover",
+        "hex": "#fcd7d3",
+        "line": "--pink-tuile-975-75-hover: #fcd7d3;\n",
+        "tintNumber": 975,
+        "subtintNumber": 75
+      },
+      {
+        "cssVar": "--pink-tuile-975-75",
+        "name": "pink-tuile-975-75",
+        "hex": "#fef4f3",
+        "line": "--pink-tuile-975-75: #fef4f3;\n",
+        "tintNumber": 975,
+        "subtintNumber": 75
+      }
+    ],
+    "yellow-tournesol": [
+      {
+        "cssVar": "--yellow-tournesol-sun-407-moon-922-active",
+        "name": "yellow-tournesol-sun-407-moon-922-active",
+        "hex": "#ba9f72",
+        "line": "--yellow-tournesol-sun-407-moon-922-active: #ba9f72;\n",
+        "tintNumber": 407,
+        "subtintNumber": 922
+      },
+      {
+        "cssVar": "--yellow-tournesol-sun-407-moon-922-hover",
+        "name": "yellow-tournesol-sun-407-moon-922-hover",
+        "hex": "#a28a62",
+        "line": "--yellow-tournesol-sun-407-moon-922-hover: #a28a62;\n",
+        "tintNumber": 407,
+        "subtintNumber": 922
+      },
+      {
+        "cssVar": "--yellow-tournesol-sun-407-moon-922",
+        "name": "yellow-tournesol-sun-407-moon-922",
+        "hex": "#716043",
+        "line": "--yellow-tournesol-sun-407-moon-922: #716043;\n",
+        "tintNumber": 407,
+        "subtintNumber": 922
+      },
+      {
+        "cssVar": "--yellow-tournesol-main-731",
+        "name": "yellow-tournesol-main-731",
+        "hex": "#c8aa39",
+        "line": "--yellow-tournesol-main-731: #c8aa39;\n",
+        "tintNumber": 731,
+        "subtintNumber": 0
+      },
+      {
+        "cssVar": "--yellow-tournesol-850-200",
+        "name": "yellow-tournesol-850-200",
+        "hex": "#efcb3a",
+        "line": "--yellow-tournesol-850-200: #efcb3a;\n",
+        "tintNumber": 850,
+        "subtintNumber": 200
+      },
+      {
+        "cssVar": "--yellow-tournesol-925-125-active",
+        "name": "yellow-tournesol-925-125-active",
+        "hex": "#d3b235",
+        "line": "--yellow-tournesol-925-125-active: #d3b235;\n",
+        "tintNumber": 925,
+        "subtintNumber": 125
+      },
+      {
+        "cssVar": "--yellow-tournesol-925-125-hover",
+        "name": "yellow-tournesol-925-125-hover",
+        "hex": "#e9c53b",
+        "line": "--yellow-tournesol-925-125-hover: #e9c53b;\n",
+        "tintNumber": 925,
+        "subtintNumber": 125
+      },
+      {
+        "cssVar": "--yellow-tournesol-925-125",
+        "name": "yellow-tournesol-925-125",
+        "hex": "#fde39c",
+        "line": "--yellow-tournesol-925-125: #fde39c;\n",
+        "tintNumber": 925,
+        "subtintNumber": 125
+      },
+      {
+        "cssVar": "--yellow-tournesol-950-100-active",
+        "name": "yellow-tournesol-950-100-active",
+        "hex": "#e6c130",
+        "line": "--yellow-tournesol-950-100-active: #e6c130;\n",
+        "tintNumber": 950,
+        "subtintNumber": 100
+      },
+      {
+        "cssVar": "--yellow-tournesol-950-100-hover",
+        "name": "yellow-tournesol-950-100-hover",
+        "hex": "#fbd335",
+        "line": "--yellow-tournesol-950-100-hover: #fbd335;\n",
+        "tintNumber": 950,
+        "subtintNumber": 100
+      },
+      {
+        "cssVar": "--yellow-tournesol-950-100",
+        "name": "yellow-tournesol-950-100",
+        "hex": "#feecc2",
+        "line": "--yellow-tournesol-950-100: #feecc2;\n",
+        "tintNumber": 950,
+        "subtintNumber": 100
+      },
+      {
+        "cssVar": "--yellow-tournesol-975-75-active",
+        "name": "yellow-tournesol-975-75-active",
+        "hex": "#f5d24b",
+        "line": "--yellow-tournesol-975-75-active: #f5d24b;\n",
+        "tintNumber": 975,
+        "subtintNumber": 75
+      },
+      {
+        "cssVar": "--yellow-tournesol-975-75-hover",
+        "name": "yellow-tournesol-975-75-hover",
+        "hex": "#fce086",
+        "line": "--yellow-tournesol-975-75-hover: #fce086;\n",
+        "tintNumber": 975,
+        "subtintNumber": 75
+      },
+      {
+        "cssVar": "--yellow-tournesol-975-75",
+        "name": "yellow-tournesol-975-75",
+        "hex": "#fef6e3",
+        "line": "--yellow-tournesol-975-75: #fef6e3;\n",
+        "tintNumber": 975,
+        "subtintNumber": 75
+      }
+    ],
+    "yellow-moutarde": [
+      {
+        "cssVar": "--yellow-moutarde-sun-348-moon-860-active",
+        "name": "yellow-moutarde-sun-348-moon-860-active",
+        "hex": "#b58f72",
+        "line": "--yellow-moutarde-sun-348-moon-860-active: #b58f72;\n",
+        "tintNumber": 348,
+        "subtintNumber": 860
+      },
+      {
+        "cssVar": "--yellow-moutarde-sun-348-moon-860-hover",
+        "name": "yellow-moutarde-sun-348-moon-860-hover",
+        "hex": "#9b7b61",
+        "line": "--yellow-moutarde-sun-348-moon-860-hover: #9b7b61;\n",
+        "tintNumber": 348,
+        "subtintNumber": 860
+      },
+      {
+        "cssVar": "--yellow-moutarde-sun-348-moon-860",
+        "name": "yellow-moutarde-sun-348-moon-860",
+        "hex": "#695240",
+        "line": "--yellow-moutarde-sun-348-moon-860: #695240;\n",
+        "tintNumber": 348,
+        "subtintNumber": 860
+      },
+      {
+        "cssVar": "--yellow-moutarde-main-679",
+        "name": "yellow-moutarde-main-679",
+        "hex": "#c3992a",
+        "line": "--yellow-moutarde-main-679: #c3992a;\n",
+        "tintNumber": 679,
+        "subtintNumber": 0
+      },
+      {
+        "cssVar": "--yellow-moutarde-850-200",
+        "name": "yellow-moutarde-850-200",
+        "hex": "#fcc63a",
+        "line": "--yellow-moutarde-850-200: #fcc63a;\n",
+        "tintNumber": 850,
+        "subtintNumber": 200
+      },
+      {
+        "cssVar": "--yellow-moutarde-925-125-active",
+        "name": "yellow-moutarde-925-125-active",
+        "hex": "#dfb135",
+        "line": "--yellow-moutarde-925-125-active: #dfb135;\n",
+        "tintNumber": 925,
+        "subtintNumber": 125
+      },
+      {
+        "cssVar": "--yellow-moutarde-925-125-hover",
+        "name": "yellow-moutarde-925-125-hover",
+        "hex": "#f6c43c",
+        "line": "--yellow-moutarde-925-125-hover: #f6c43c;\n",
+        "tintNumber": 925,
+        "subtintNumber": 125
+      },
+      {
+        "cssVar": "--yellow-moutarde-925-125",
+        "name": "yellow-moutarde-925-125",
+        "hex": "#fde2b5",
+        "line": "--yellow-moutarde-925-125: #fde2b5;\n",
+        "tintNumber": 925,
+        "subtintNumber": 125
+      },
+      {
+        "cssVar": "--yellow-moutarde-950-100-active",
+        "name": "yellow-moutarde-950-100-active",
+        "hex": "#f4be30",
+        "line": "--yellow-moutarde-950-100-active: #f4be30;\n",
+        "tintNumber": 950,
+        "subtintNumber": 100
+      },
+      {
+        "cssVar": "--yellow-moutarde-950-100-hover",
+        "name": "yellow-moutarde-950-100-hover",
+        "hex": "#fdcd6d",
+        "line": "--yellow-moutarde-950-100-hover: #fdcd6d;\n",
+        "tintNumber": 950,
+        "subtintNumber": 100
+      },
+      {
+        "cssVar": "--yellow-moutarde-950-100",
+        "name": "yellow-moutarde-950-100",
+        "hex": "#feebd0",
+        "line": "--yellow-moutarde-950-100: #feebd0;\n",
+        "tintNumber": 950,
+        "subtintNumber": 100
+      },
+      {
+        "cssVar": "--yellow-moutarde-975-75-active",
+        "name": "yellow-moutarde-975-75-active",
+        "hex": "#fbcd64",
+        "line": "--yellow-moutarde-975-75-active: #fbcd64;\n",
+        "tintNumber": 975,
+        "subtintNumber": 75
+      },
+      {
+        "cssVar": "--yellow-moutarde-975-75-hover",
+        "name": "yellow-moutarde-975-75-hover",
+        "hex": "#fcdca3",
+        "line": "--yellow-moutarde-975-75-hover: #fcdca3;\n",
+        "tintNumber": 975,
+        "subtintNumber": 75
+      },
+      {
+        "cssVar": "--yellow-moutarde-975-75",
+        "name": "yellow-moutarde-975-75",
+        "hex": "#fef5e8",
+        "line": "--yellow-moutarde-975-75: #fef5e8;\n",
+        "tintNumber": 975,
+        "subtintNumber": 75
+      }
+    ],
+    "orange-terre-battue": [
+      {
+        "cssVar": "--orange-terre-battue-sun-370-moon-672-active",
+        "name": "orange-terre-battue-sun-370-moon-672-active",
+        "hex": "#c68f7d",
+        "line": "--orange-terre-battue-sun-370-moon-672-active: #c68f7d;\n",
+        "tintNumber": 370,
+        "subtintNumber": 672
+      },
+      {
+        "cssVar": "--orange-terre-battue-sun-370-moon-672-hover",
+        "name": "orange-terre-battue-sun-370-moon-672-hover",
+        "hex": "#ab7b6b",
+        "line": "--orange-terre-battue-sun-370-moon-672-hover: #ab7b6b;\n",
+        "tintNumber": 370,
+        "subtintNumber": 672
+      },
+      {
+        "cssVar": "--orange-terre-battue-sun-370-moon-672",
+        "name": "orange-terre-battue-sun-370-moon-672",
+        "hex": "#755348",
+        "line": "--orange-terre-battue-sun-370-moon-672: #755348;\n",
+        "tintNumber": 370,
+        "subtintNumber": 672
+      },
+      {
+        "cssVar": "--orange-terre-battue-main-645",
+        "name": "orange-terre-battue-main-645",
+        "hex": "#e4794a",
+        "line": "--orange-terre-battue-main-645: #e4794a;\n",
+        "tintNumber": 645,
+        "subtintNumber": 0
+      },
+      {
+        "cssVar": "--orange-terre-battue-850-200",
+        "name": "orange-terre-battue-850-200",
+        "hex": "#fcc0b0",
+        "line": "--orange-terre-battue-850-200: #fcc0b0;\n",
+        "tintNumber": 850,
+        "subtintNumber": 200
+      },
+      {
+        "cssVar": "--orange-terre-battue-925-125-active",
+        "name": "orange-terre-battue-925-125-active",
+        "hex": "#faa184",
+        "line": "--orange-terre-battue-925-125-active: #faa184;\n",
+        "tintNumber": 925,
+        "subtintNumber": 125
+      },
+      {
+        "cssVar": "--orange-terre-battue-925-125-hover",
+        "name": "orange-terre-battue-925-125-hover",
+        "hex": "#fbb8a5",
+        "line": "--orange-terre-battue-925-125-hover: #fbb8a5;\n",
+        "tintNumber": 925,
+        "subtintNumber": 125
+      },
+      {
+        "cssVar": "--orange-terre-battue-925-125",
+        "name": "orange-terre-battue-925-125",
+        "hex": "#fddfd8",
+        "line": "--orange-terre-battue-925-125: #fddfd8;\n",
+        "tintNumber": 925,
+        "subtintNumber": 125
+      },
+      {
+        "cssVar": "--orange-terre-battue-950-100-active",
+        "name": "orange-terre-battue-950-100-active",
+        "hex": "#fcb09e",
+        "line": "--orange-terre-battue-950-100-active: #fcb09e;\n",
+        "tintNumber": 950,
+        "subtintNumber": 100
+      },
+      {
+        "cssVar": "--orange-terre-battue-950-100-hover",
+        "name": "orange-terre-battue-950-100-hover",
+        "hex": "#fdc6ba",
+        "line": "--orange-terre-battue-950-100-hover: #fdc6ba;\n",
+        "tintNumber": 950,
+        "subtintNumber": 100
+      },
+      {
+        "cssVar": "--orange-terre-battue-950-100",
+        "name": "orange-terre-battue-950-100",
+        "hex": "#fee9e5",
+        "line": "--orange-terre-battue-950-100: #fee9e5;\n",
+        "tintNumber": 950,
+        "subtintNumber": 100
+      },
+      {
+        "cssVar": "--orange-terre-battue-975-75-active",
+        "name": "orange-terre-battue-975-75-active",
+        "hex": "#fac5b8",
+        "line": "--orange-terre-battue-975-75-active: #fac5b8;\n",
+        "tintNumber": 975,
+        "subtintNumber": 75
+      },
+      {
+        "cssVar": "--orange-terre-battue-975-75-hover",
+        "name": "orange-terre-battue-975-75-hover",
+        "hex": "#fcd8d0",
+        "line": "--orange-terre-battue-975-75-hover: #fcd8d0;\n",
+        "tintNumber": 975,
+        "subtintNumber": 75
+      },
+      {
+        "cssVar": "--orange-terre-battue-975-75",
+        "name": "orange-terre-battue-975-75",
+        "hex": "#fef4f2",
+        "line": "--orange-terre-battue-975-75: #fef4f2;\n",
+        "tintNumber": 975,
+        "subtintNumber": 75
+      }
+    ],
+    "brown-cafe-creme": [
+      {
+        "cssVar": "--brown-cafe-creme-sun-383-moon-885-active",
+        "name": "brown-cafe-creme-sun-383-moon-885-active",
+        "hex": "#ae9b7b",
+        "line": "--brown-cafe-creme-sun-383-moon-885-active: #ae9b7b;\n",
+        "tintNumber": 383,
+        "subtintNumber": 885
+      },
+      {
+        "cssVar": "--brown-cafe-creme-sun-383-moon-885-hover",
+        "name": "brown-cafe-creme-sun-383-moon-885-hover",
+        "hex": "#97866a",
+        "line": "--brown-cafe-creme-sun-383-moon-885-hover: #97866a;\n",
+        "tintNumber": 383,
+        "subtintNumber": 885
+      },
+      {
+        "cssVar": "--brown-cafe-creme-sun-383-moon-885",
+        "name": "brown-cafe-creme-sun-383-moon-885",
+        "hex": "#685c48",
+        "line": "--brown-cafe-creme-sun-383-moon-885: #685c48;\n",
+        "tintNumber": 383,
+        "subtintNumber": 885
+      },
+      {
+        "cssVar": "--brown-cafe-creme-main-782",
+        "name": "brown-cafe-creme-main-782",
+        "hex": "#d1b781",
+        "line": "--brown-cafe-creme-main-782: #d1b781;\n",
+        "tintNumber": 782,
+        "subtintNumber": 0
+      },
+      {
+        "cssVar": "--brown-cafe-creme-850-200",
+        "name": "brown-cafe-creme-850-200",
+        "hex": "#e7ca8e",
+        "line": "--brown-cafe-creme-850-200: #e7ca8e;\n",
+        "tintNumber": 850,
+        "subtintNumber": 200
+      },
+      {
+        "cssVar": "--brown-cafe-creme-925-125-active",
+        "name": "brown-cafe-creme-925-125-active",
+        "hex": "#ccb078",
+        "line": "--brown-cafe-creme-925-125-active: #ccb078;\n",
+        "tintNumber": 925,
+        "subtintNumber": 125
+      },
+      {
+        "cssVar": "--brown-cafe-creme-925-125-hover",
+        "name": "brown-cafe-creme-925-125-hover",
+        "hex": "#e1c386",
+        "line": "--brown-cafe-creme-925-125-hover: #e1c386;\n",
+        "tintNumber": 925,
+        "subtintNumber": 125
+      },
+      {
+        "cssVar": "--brown-cafe-creme-925-125",
+        "name": "brown-cafe-creme-925-125",
+        "hex": "#f4e3c7",
+        "line": "--brown-cafe-creme-925-125: #f4e3c7;\n",
+        "tintNumber": 925,
+        "subtintNumber": 125
+      },
+      {
+        "cssVar": "--brown-cafe-creme-950-100-active",
+        "name": "brown-cafe-creme-950-100-active",
+        "hex": "#dabd84",
+        "line": "--brown-cafe-creme-950-100-active: #dabd84;\n",
+        "tintNumber": 950,
+        "subtintNumber": 100
+      },
+      {
+        "cssVar": "--brown-cafe-creme-950-100-hover",
+        "name": "brown-cafe-creme-950-100-hover",
+        "hex": "#edce94",
+        "line": "--brown-cafe-creme-950-100-hover: #edce94;\n",
+        "tintNumber": 950,
+        "subtintNumber": 100
+      },
+      {
+        "cssVar": "--brown-cafe-creme-950-100",
+        "name": "brown-cafe-creme-950-100",
+        "hex": "#f7ecdb",
+        "line": "--brown-cafe-creme-950-100: #f7ecdb;\n",
+        "tintNumber": 950,
+        "subtintNumber": 100
+      },
+      {
+        "cssVar": "--brown-cafe-creme-975-75-active",
+        "name": "brown-cafe-creme-975-75-active",
+        "hex": "#eacf91",
+        "line": "--brown-cafe-creme-975-75-active: #eacf91;\n",
+        "tintNumber": 975,
+        "subtintNumber": 75
+      },
+      {
+        "cssVar": "--brown-cafe-creme-975-75-hover",
+        "name": "brown-cafe-creme-975-75-hover",
+        "hex": "#f2deb6",
+        "line": "--brown-cafe-creme-975-75-hover: #f2deb6;\n",
+        "tintNumber": 975,
+        "subtintNumber": 75
+      },
+      {
+        "cssVar": "--brown-cafe-creme-975-75",
+        "name": "brown-cafe-creme-975-75",
+        "hex": "#fbf6ed",
+        "line": "--brown-cafe-creme-975-75: #fbf6ed;\n",
+        "tintNumber": 975,
+        "subtintNumber": 75
+      }
+    ],
+    "brown-caramel": [
+      {
+        "cssVar": "--brown-caramel-sun-425-moon-901-active",
+        "name": "brown-caramel-sun-425-moon-901-active",
+        "hex": "#d69978",
+        "line": "--brown-caramel-sun-425-moon-901-active: #d69978;\n",
+        "tintNumber": 425,
+        "subtintNumber": 901
+      },
+      {
+        "cssVar": "--brown-caramel-sun-425-moon-901-hover",
+        "name": "brown-caramel-sun-425-moon-901-hover",
+        "hex": "#bb8568",
+        "line": "--brown-caramel-sun-425-moon-901-hover: #bb8568;\n",
+        "tintNumber": 425,
+        "subtintNumber": 901
+      },
+      {
+        "cssVar": "--brown-caramel-sun-425-moon-901",
+        "name": "brown-caramel-sun-425-moon-901",
+        "hex": "#845d48",
+        "line": "--brown-caramel-sun-425-moon-901: #845d48;\n",
+        "tintNumber": 425,
+        "subtintNumber": 901
+      },
+      {
+        "cssVar": "--brown-caramel-main-648",
+        "name": "brown-caramel-main-648",
+        "hex": "#c08c65",
+        "line": "--brown-caramel-main-648: #c08c65;\n",
+        "tintNumber": 648,
+        "subtintNumber": 0
+      },
+      {
+        "cssVar": "--brown-caramel-850-200",
+        "name": "brown-caramel-850-200",
+        "hex": "#eac7b2",
+        "line": "--brown-caramel-850-200: #eac7b2;\n",
+        "tintNumber": 850,
+        "subtintNumber": 200
+      },
+      {
+        "cssVar": "--brown-caramel-925-125-active",
+        "name": "brown-caramel-925-125-active",
+        "hex": "#e1a982",
+        "line": "--brown-caramel-925-125-active: #e1a982;\n",
+        "tintNumber": 925,
+        "subtintNumber": 125
+      },
+      {
+        "cssVar": "--brown-caramel-925-125-hover",
+        "name": "brown-caramel-925-125-hover",
+        "hex": "#e7bea6",
+        "line": "--brown-caramel-925-125-hover: #e7bea6;\n",
+        "tintNumber": 925,
+        "subtintNumber": 125
+      },
+      {
+        "cssVar": "--brown-caramel-925-125",
+        "name": "brown-caramel-925-125",
+        "hex": "#f3e2d9",
+        "line": "--brown-caramel-925-125: #f3e2d9;\n",
+        "tintNumber": 925,
+        "subtintNumber": 125
+      },
+      {
+        "cssVar": "--brown-caramel-950-100-active",
+        "name": "brown-caramel-950-100-active",
+        "hex": "#e6b79a",
+        "line": "--brown-caramel-950-100-active: #e6b79a;\n",
+        "tintNumber": 950,
+        "subtintNumber": 100
+      },
+      {
+        "cssVar": "--brown-caramel-950-100-hover",
+        "name": "brown-caramel-950-100-hover",
+        "hex": "#eccbb9",
+        "line": "--brown-caramel-950-100-hover: #eccbb9;\n",
+        "tintNumber": 950,
+        "subtintNumber": 100
+      },
+      {
+        "cssVar": "--brown-caramel-950-100",
+        "name": "brown-caramel-950-100",
+        "hex": "#f7ebe5",
+        "line": "--brown-caramel-950-100: #f7ebe5;\n",
+        "tintNumber": 950,
+        "subtintNumber": 100
+      },
+      {
+        "cssVar": "--brown-caramel-975-75-active",
+        "name": "brown-caramel-975-75-active",
+        "hex": "#ecc9b5",
+        "line": "--brown-caramel-975-75-active: #ecc9b5;\n",
+        "tintNumber": 975,
+        "subtintNumber": 75
+      },
+      {
+        "cssVar": "--brown-caramel-975-75-hover",
+        "name": "brown-caramel-975-75-hover",
+        "hex": "#f1dbcf",
+        "line": "--brown-caramel-975-75-hover: #f1dbcf;\n",
+        "tintNumber": 975,
+        "subtintNumber": 75
+      },
+      {
+        "cssVar": "--brown-caramel-975-75",
+        "name": "brown-caramel-975-75",
+        "hex": "#fbf5f2",
+        "line": "--brown-caramel-975-75: #fbf5f2;\n",
+        "tintNumber": 975,
+        "subtintNumber": 75
+      }
+    ],
+    "brown-opera": [
+      {
+        "cssVar": "--brown-opera-sun-395-moon-820-active",
+        "name": "brown-opera-sun-395-moon-820-active",
+        "hex": "#c09979",
+        "line": "--brown-opera-sun-395-moon-820-active: #c09979;\n",
+        "tintNumber": 395,
+        "subtintNumber": 820
+      },
+      {
+        "cssVar": "--brown-opera-sun-395-moon-820-hover",
+        "name": "brown-opera-sun-395-moon-820-hover",
+        "hex": "#a78468",
+        "line": "--brown-opera-sun-395-moon-820-hover: #a78468;\n",
+        "tintNumber": 395,
+        "subtintNumber": 820
+      },
+      {
+        "cssVar": "--brown-opera-sun-395-moon-820",
+        "name": "brown-opera-sun-395-moon-820",
+        "hex": "#745b47",
+        "line": "--brown-opera-sun-395-moon-820: #745b47;\n",
+        "tintNumber": 395,
+        "subtintNumber": 820
+      },
+      {
+        "cssVar": "--brown-opera-main-680",
+        "name": "brown-opera-main-680",
+        "hex": "#bd987a",
+        "line": "--brown-opera-main-680: #bd987a;\n",
+        "tintNumber": 680,
+        "subtintNumber": 0
+      },
+      {
+        "cssVar": "--brown-opera-850-200",
+        "name": "brown-opera-850-200",
+        "hex": "#eac7ad",
+        "line": "--brown-opera-850-200: #eac7ad;\n",
+        "tintNumber": 850,
+        "subtintNumber": 200
+      },
+      {
+        "cssVar": "--brown-opera-925-125-active",
+        "name": "brown-opera-925-125-active",
+        "hex": "#deaa7e",
+        "line": "--brown-opera-925-125-active: #deaa7e;\n",
+        "tintNumber": 925,
+        "subtintNumber": 125
+      },
+      {
+        "cssVar": "--brown-opera-925-125-hover",
+        "name": "brown-opera-925-125-hover",
+        "hex": "#e7bfa0",
+        "line": "--brown-opera-925-125-hover: #e7bfa0;\n",
+        "tintNumber": 925,
+        "subtintNumber": 125
+      },
+      {
+        "cssVar": "--brown-opera-925-125",
+        "name": "brown-opera-925-125",
+        "hex": "#f3e2d7",
+        "line": "--brown-opera-925-125: #f3e2d7;\n",
+        "tintNumber": 925,
+        "subtintNumber": 125
+      },
+      {
+        "cssVar": "--brown-opera-950-100-active",
+        "name": "brown-opera-950-100-active",
+        "hex": "#e6ba90",
+        "line": "--brown-opera-950-100-active: #e6ba90;\n",
+        "tintNumber": 950,
+        "subtintNumber": 100
+      },
+      {
+        "cssVar": "--brown-opera-950-100-hover",
+        "name": "brown-opera-950-100-hover",
+        "hex": "#eccdb3",
+        "line": "--brown-opera-950-100-hover: #eccdb3;\n",
+        "tintNumber": 950,
+        "subtintNumber": 100
+      },
+      {
+        "cssVar": "--brown-opera-950-100",
+        "name": "brown-opera-950-100",
+        "hex": "#f7ece4",
+        "line": "--brown-opera-950-100: #f7ece4;\n",
+        "tintNumber": 950,
+        "subtintNumber": 100
+      },
+      {
+        "cssVar": "--brown-opera-975-75-active",
+        "name": "brown-opera-975-75-active",
+        "hex": "#ecc9b5",
+        "line": "--brown-opera-975-75-active: #ecc9b5;\n",
+        "tintNumber": 975,
+        "subtintNumber": 75
+      },
+      {
+        "cssVar": "--brown-opera-975-75-hover",
+        "name": "brown-opera-975-75-hover",
+        "hex": "#f1dbcf",
+        "line": "--brown-opera-975-75-hover: #f1dbcf;\n",
+        "tintNumber": 975,
+        "subtintNumber": 75
+      },
+      {
+        "cssVar": "--brown-opera-975-75",
+        "name": "brown-opera-975-75",
+        "hex": "#fbf5f2",
+        "line": "--brown-opera-975-75: #fbf5f2;\n",
+        "tintNumber": 975,
+        "subtintNumber": 75
+      }
+    ],
+    "beige-gris-galet": [
+      {
+        "cssVar": "--beige-gris-galet-sun-407-moon-821-active",
+        "name": "beige-gris-galet-sun-407-moon-821-active",
+        "hex": "#afa08f",
+        "line": "--beige-gris-galet-sun-407-moon-821-active: #afa08f;\n",
+        "tintNumber": 407,
+        "subtintNumber": 821
+      },
+      {
+        "cssVar": "--beige-gris-galet-sun-407-moon-821-hover",
+        "name": "beige-gris-galet-sun-407-moon-821-hover",
+        "hex": "#988b7c",
+        "line": "--beige-gris-galet-sun-407-moon-821-hover: #988b7c;\n",
+        "tintNumber": 407,
+        "subtintNumber": 821
+      },
+      {
+        "cssVar": "--beige-gris-galet-sun-407-moon-821",
+        "name": "beige-gris-galet-sun-407-moon-821",
+        "hex": "#6a6156",
+        "line": "--beige-gris-galet-sun-407-moon-821: #6a6156;\n",
+        "tintNumber": 407,
+        "subtintNumber": 821
+      },
+      {
+        "cssVar": "--beige-gris-galet-main-702",
+        "name": "beige-gris-galet-main-702",
+        "hex": "#aea397",
+        "line": "--beige-gris-galet-main-702: #aea397;\n",
+        "tintNumber": 702,
+        "subtintNumber": 0
+      },
+      {
+        "cssVar": "--beige-gris-galet-850-200",
+        "name": "beige-gris-galet-850-200",
+        "hex": "#e0cab0",
+        "line": "--beige-gris-galet-850-200: #e0cab0;\n",
+        "tintNumber": 850,
+        "subtintNumber": 200
+      },
+      {
+        "cssVar": "--beige-gris-galet-925-125-active",
+        "name": "beige-gris-galet-925-125-active",
+        "hex": "#c6b094",
+        "line": "--beige-gris-galet-925-125-active: #c6b094;\n",
+        "tintNumber": 925,
+        "subtintNumber": 125
+      },
+      {
+        "cssVar": "--beige-gris-galet-925-125-hover",
+        "name": "beige-gris-galet-925-125-hover",
+        "hex": "#dbc3a4",
+        "line": "--beige-gris-galet-925-125-hover: #dbc3a4;\n",
+        "tintNumber": 925,
+        "subtintNumber": 125
+      },
+      {
+        "cssVar": "--beige-gris-galet-925-125",
+        "name": "beige-gris-galet-925-125",
+        "hex": "#eee4d9",
+        "line": "--beige-gris-galet-925-125: #eee4d9;\n",
+        "tintNumber": 925,
+        "subtintNumber": 125
+      },
+      {
+        "cssVar": "--beige-gris-galet-950-100-active",
+        "name": "beige-gris-galet-950-100-active",
+        "hex": "#d1bea2",
+        "line": "--beige-gris-galet-950-100-active: #d1bea2;\n",
+        "tintNumber": 950,
+        "subtintNumber": 100
+      },
+      {
+        "cssVar": "--beige-gris-galet-950-100-hover",
+        "name": "beige-gris-galet-950-100-hover",
+        "hex": "#e1d0b5",
+        "line": "--beige-gris-galet-950-100-hover: #e1d0b5;\n",
+        "tintNumber": 950,
+        "subtintNumber": 100
+      },
+      {
+        "cssVar": "--beige-gris-galet-950-100",
+        "name": "beige-gris-galet-950-100",
+        "hex": "#f3ede5",
+        "line": "--beige-gris-galet-950-100: #f3ede5;\n",
+        "tintNumber": 950,
+        "subtintNumber": 100
+      },
+      {
+        "cssVar": "--beige-gris-galet-975-75-active",
+        "name": "beige-gris-galet-975-75-active",
+        "hex": "#e1ceb1",
+        "line": "--beige-gris-galet-975-75-active: #e1ceb1;\n",
+        "tintNumber": 975,
+        "subtintNumber": 75
+      },
+      {
+        "cssVar": "--beige-gris-galet-975-75-hover",
+        "name": "beige-gris-galet-975-75-hover",
+        "hex": "#eadecd",
+        "line": "--beige-gris-galet-975-75-hover: #eadecd;\n",
+        "tintNumber": 975,
+        "subtintNumber": 75
+      },
+      {
+        "cssVar": "--beige-gris-galet-975-75",
+        "name": "beige-gris-galet-975-75",
+        "hex": "#f9f6f2",
+        "line": "--beige-gris-galet-975-75: #f9f6f2;\n",
+        "tintNumber": 975,
+        "subtintNumber": 75
+      }
+    ]
+  },
+  "darkColors": {
+    "grey": [
+      {
+        "cssVar": "--grey-0-1000",
+        "name": "grey-0-1000",
+        "hex": "#fff",
+        "line": "--grey-0-1000: #fff;\n",
+        "tintNumber": 0,
+        "subtintNumber": 1000
+      },
+      {
+        "cssVar": "--grey-50-1000",
+        "name": "grey-50-1000",
+        "hex": "#fff",
+        "line": "--grey-50-1000: #fff;\n",
+        "tintNumber": 50,
+        "subtintNumber": 1000
+      },
+      {
+        "cssVar": "--grey-200-850",
+        "name": "grey-200-850",
+        "hex": "#cecece",
+        "line": "--grey-200-850: #cecece;\n",
+        "tintNumber": 200,
+        "subtintNumber": 850
+      },
+      {
+        "cssVar": "--grey-425-625",
+        "name": "grey-425-625",
+        "hex": "#929292",
+        "line": "--grey-425-625: #929292;\n",
+        "tintNumber": 425,
+        "subtintNumber": 625
+      },
+      {
+        "cssVar": "--grey-625-425",
+        "name": "grey-625-425",
+        "hex": "#666",
+        "line": "--grey-625-425: #666;\n",
+        "tintNumber": 625,
+        "subtintNumber": 425
+      },
+      {
+        "cssVar": "--grey-900-175",
+        "name": "grey-900-175",
+        "hex": "#353535",
+        "line": "--grey-900-175: #353535;\n",
+        "tintNumber": 900,
+        "subtintNumber": 175
+      },
+      {
+        "cssVar": "--grey-925-125",
+        "name": "grey-925-125",
+        "hex": "#2a2a2a",
+        "line": "--grey-925-125: #2a2a2a;\n",
+        "tintNumber": 925,
+        "subtintNumber": 125
+      },
+      {
+        "cssVar": "--grey-950-100-active",
+        "name": "grey-950-100-active",
+        "hex": "#5b5b5b",
+        "line": "--grey-950-100-active: #5b5b5b;\n",
+        "tintNumber": 950,
+        "subtintNumber": 100
+      },
+      {
+        "cssVar": "--grey-950-100-hover",
+        "name": "grey-950-100-hover",
+        "hex": "#474747",
+        "line": "--grey-950-100-hover: #474747;\n",
+        "tintNumber": 950,
+        "subtintNumber": 100
+      },
+      {
+        "cssVar": "--grey-950-100",
+        "name": "grey-950-100",
+        "hex": "#242424",
+        "line": "--grey-950-100: #242424;\n",
+        "tintNumber": 950,
+        "subtintNumber": 100
+      },
+      {
+        "cssVar": "--grey-950-125-active",
+        "name": "grey-950-125-active",
+        "hex": "#636363",
+        "line": "--grey-950-125-active: #636363;\n",
+        "tintNumber": 950,
+        "subtintNumber": 125
+      },
+      {
+        "cssVar": "--grey-950-125-hover",
+        "name": "grey-950-125-hover",
+        "hex": "#4e4e4e",
+        "line": "--grey-950-125-hover: #4e4e4e;\n",
+        "tintNumber": 950,
+        "subtintNumber": 125
+      },
+      {
+        "cssVar": "--grey-950-125",
+        "name": "grey-950-125",
+        "hex": "#2a2a2a",
+        "line": "--grey-950-125: #2a2a2a;\n",
+        "tintNumber": 950,
+        "subtintNumber": 125
+      },
+      {
+        "cssVar": "--grey-950-150-active",
+        "name": "grey-950-150-active",
+        "hex": "#696969",
+        "line": "--grey-950-150-active: #696969;\n",
+        "tintNumber": 950,
+        "subtintNumber": 150
+      },
+      {
+        "cssVar": "--grey-950-150-hover",
+        "name": "grey-950-150-hover",
+        "hex": "#545454",
+        "line": "--grey-950-150-hover: #545454;\n",
+        "tintNumber": 950,
+        "subtintNumber": 150
+      },
+      {
+        "cssVar": "--grey-950-150",
+        "name": "grey-950-150",
+        "hex": "#2f2f2f",
+        "line": "--grey-950-150: #2f2f2f;\n",
+        "tintNumber": 950,
+        "subtintNumber": 150
+      },
+      {
+        "cssVar": "--grey-975-75-active",
+        "name": "grey-975-75-active",
+        "hex": "#525252",
+        "line": "--grey-975-75-active: #525252;\n",
+        "tintNumber": 975,
+        "subtintNumber": 75
+      },
+      {
+        "cssVar": "--grey-975-75-hover",
+        "name": "grey-975-75-hover",
+        "hex": "#3f3f3f",
+        "line": "--grey-975-75-hover: #3f3f3f;\n",
+        "tintNumber": 975,
+        "subtintNumber": 75
+      },
+      {
+        "cssVar": "--grey-975-75",
+        "name": "grey-975-75",
+        "hex": "#1e1e1e",
+        "line": "--grey-975-75: #1e1e1e;\n",
+        "tintNumber": 975,
+        "subtintNumber": 75
+      },
+      {
+        "cssVar": "--grey-975-100-active",
+        "name": "grey-975-100-active",
+        "hex": "#5b5b5b",
+        "line": "--grey-975-100-active: #5b5b5b;\n",
+        "tintNumber": 975,
+        "subtintNumber": 100
+      },
+      {
+        "cssVar": "--grey-975-100-hover",
+        "name": "grey-975-100-hover",
+        "hex": "#474747",
+        "line": "--grey-975-100-hover: #474747;\n",
+        "tintNumber": 975,
+        "subtintNumber": 100
+      },
+      {
+        "cssVar": "--grey-975-100",
+        "name": "grey-975-100",
+        "hex": "#242424",
+        "line": "--grey-975-100: #242424;\n",
+        "tintNumber": 975,
+        "subtintNumber": 100
+      },
+      {
+        "cssVar": "--grey-975-125-active",
+        "name": "grey-975-125-active",
+        "hex": "#636363",
+        "line": "--grey-975-125-active: #636363;\n",
+        "tintNumber": 975,
+        "subtintNumber": 125
+      },
+      {
+        "cssVar": "--grey-975-125-hover",
+        "name": "grey-975-125-hover",
+        "hex": "#4e4e4e",
+        "line": "--grey-975-125-hover: #4e4e4e;\n",
+        "tintNumber": 975,
+        "subtintNumber": 125
+      },
+      {
+        "cssVar": "--grey-975-125",
+        "name": "grey-975-125",
+        "hex": "#2a2a2a",
+        "line": "--grey-975-125: #2a2a2a;\n",
+        "tintNumber": 975,
+        "subtintNumber": 125
+      },
+      {
+        "cssVar": "--grey-1000-50-active",
+        "name": "grey-1000-50-active",
+        "hex": "#474747",
+        "line": "--grey-1000-50-active: #474747;\n",
+        "tintNumber": 1000,
+        "subtintNumber": 50
+      },
+      {
+        "cssVar": "--grey-1000-50-hover",
+        "name": "grey-1000-50-hover",
+        "hex": "#343434",
+        "line": "--grey-1000-50-hover: #343434;\n",
+        "tintNumber": 1000,
+        "subtintNumber": 50
+      },
+      {
+        "cssVar": "--grey-1000-50",
+        "name": "grey-1000-50",
+        "hex": "#161616",
+        "line": "--grey-1000-50: #161616;\n",
+        "tintNumber": 1000,
+        "subtintNumber": 50
+      },
+      {
+        "cssVar": "--grey-1000-75-active",
+        "name": "grey-1000-75-active",
+        "hex": "#525252",
+        "line": "--grey-1000-75-active: #525252;\n",
+        "tintNumber": 1000,
+        "subtintNumber": 75
+      },
+      {
+        "cssVar": "--grey-1000-75-hover",
+        "name": "grey-1000-75-hover",
+        "hex": "#3f3f3f",
+        "line": "--grey-1000-75-hover: #3f3f3f;\n",
+        "tintNumber": 1000,
+        "subtintNumber": 75
+      },
+      {
+        "cssVar": "--grey-1000-75",
+        "name": "grey-1000-75",
+        "hex": "#1e1e1e",
+        "line": "--grey-1000-75: #1e1e1e;\n",
+        "tintNumber": 1000,
+        "subtintNumber": 75
+      },
+      {
+        "cssVar": "--grey-1000-100-active",
+        "name": "grey-1000-100-active",
+        "hex": "#5b5b5b",
+        "line": "--grey-1000-100-active: #5b5b5b;\n",
+        "tintNumber": 1000,
+        "subtintNumber": 100
+      },
+      {
+        "cssVar": "--grey-1000-100-hover",
+        "name": "grey-1000-100-hover",
+        "hex": "#474747",
+        "line": "--grey-1000-100-hover: #474747;\n",
+        "tintNumber": 1000,
+        "subtintNumber": 100
+      },
+      {
+        "cssVar": "--grey-1000-100",
+        "name": "grey-1000-100",
+        "hex": "#242424",
+        "line": "--grey-1000-100: #242424;\n",
+        "tintNumber": 1000,
+        "subtintNumber": 100
+      }
+    ],
+    "blue-france": [
+      {
+        "cssVar": "--blue-france-sun-113-625-active",
+        "name": "blue-france-sun-113-625-active",
+        "hex": "#c6c6fb",
+        "line": "--blue-france-sun-113-625-active: #c6c6fb;\n",
+        "tintNumber": 113,
+        "subtintNumber": 625
+      },
+      {
+        "cssVar": "--blue-france-sun-113-625-hover",
+        "name": "blue-france-sun-113-625-hover",
+        "hex": "#b1b1f9",
+        "line": "--blue-france-sun-113-625-hover: #b1b1f9;\n",
+        "tintNumber": 113,
+        "subtintNumber": 625
+      },
+      {
+        "cssVar": "--blue-france-sun-113-625",
+        "name": "blue-france-sun-113-625",
+        "hex": "#8585f6",
+        "line": "--blue-france-sun-113-625: #8585f6;\n",
+        "tintNumber": 113,
+        "subtintNumber": 625
+      },
+      {
+        "cssVar": "--blue-france-main-525",
+        "name": "blue-france-main-525",
+        "hex": "#6a6af4",
+        "line": "--blue-france-main-525: #6a6af4;\n",
+        "tintNumber": 525,
+        "subtintNumber": 0
+      },
+      {
+        "cssVar": "--blue-france-850-200",
+        "name": "blue-france-850-200",
+        "hex": "#313178",
+        "line": "--blue-france-850-200: #313178;\n",
+        "tintNumber": 850,
+        "subtintNumber": 200
+      },
+      {
+        "cssVar": "--blue-france-925-125-active",
+        "name": "blue-france-925-125-active",
+        "hex": "#5e5e90",
+        "line": "--blue-france-925-125-active: #5e5e90;\n",
+        "tintNumber": 925,
+        "subtintNumber": 125
+      },
+      {
+        "cssVar": "--blue-france-925-125-hover",
+        "name": "blue-france-925-125-hover",
+        "hex": "#4a4a7d",
+        "line": "--blue-france-925-125-hover: #4a4a7d;\n",
+        "tintNumber": 925,
+        "subtintNumber": 125
+      },
+      {
+        "cssVar": "--blue-france-925-125",
+        "name": "blue-france-925-125",
+        "hex": "#272747",
+        "line": "--blue-france-925-125: #272747;\n",
+        "tintNumber": 925,
+        "subtintNumber": 125
+      },
+      {
+        "cssVar": "--blue-france-950-100-active",
+        "name": "blue-france-950-100-active",
+        "hex": "#56568c",
+        "line": "--blue-france-950-100-active: #56568c;\n",
+        "tintNumber": 950,
+        "subtintNumber": 100
+      },
+      {
+        "cssVar": "--blue-france-950-100-hover",
+        "name": "blue-france-950-100-hover",
+        "hex": "#424275",
+        "line": "--blue-france-950-100-hover: #424275;\n",
+        "tintNumber": 950,
+        "subtintNumber": 100
+      },
+      {
+        "cssVar": "--blue-france-950-100",
+        "name": "blue-france-950-100",
+        "hex": "#21213f",
+        "line": "--blue-france-950-100: #21213f;\n",
+        "tintNumber": 950,
+        "subtintNumber": 100
+      },
+      {
+        "cssVar": "--blue-france-975-75-active",
+        "name": "blue-france-975-75-active",
+        "hex": "#4d4d83",
+        "line": "--blue-france-975-75-active: #4d4d83;\n",
+        "tintNumber": 975,
+        "subtintNumber": 75
+      },
+      {
+        "cssVar": "--blue-france-975-75-hover",
+        "name": "blue-france-975-75-hover",
+        "hex": "#3a3a68",
+        "line": "--blue-france-975-75-hover: #3a3a68;\n",
+        "tintNumber": 975,
+        "subtintNumber": 75
+      },
+      {
+        "cssVar": "--blue-france-975-75",
+        "name": "blue-france-975-75",
+        "hex": "#1b1b35",
+        "line": "--blue-france-975-75: #1b1b35;\n",
+        "tintNumber": 975,
+        "subtintNumber": 75
+      },
+      {
+        "cssVar": "--blue-france-975-sun-113",
+        "name": "blue-france-975-sun-113",
+        "hex": "#000091",
+        "line": "--blue-france-975-sun-113: #000091;\n",
+        "tintNumber": 975,
+        "subtintNumber": 113
+      }
+    ],
+    "red-marianne": [
+      {
+        "cssVar": "--red-marianne-425-625-active",
+        "name": "red-marianne-425-625-active",
+        "hex": "#fbabac",
+        "line": "--red-marianne-425-625-active: #fbabac;\n",
+        "tintNumber": 425,
+        "subtintNumber": 625
+      },
+      {
+        "cssVar": "--red-marianne-425-625-hover",
+        "name": "red-marianne-425-625-hover",
+        "hex": "#fa9293",
+        "line": "--red-marianne-425-625-hover: #fa9293;\n",
+        "tintNumber": 425,
+        "subtintNumber": 625
+      },
+      {
+        "cssVar": "--red-marianne-425-625",
+        "name": "red-marianne-425-625",
+        "hex": "#f95c5e",
+        "line": "--red-marianne-425-625: #f95c5e;\n",
+        "tintNumber": 425,
+        "subtintNumber": 625
+      },
+      {
+        "cssVar": "--red-marianne-main-472",
+        "name": "red-marianne-main-472",
+        "hex": "#e1000f",
+        "line": "--red-marianne-main-472: #e1000f;\n",
+        "tintNumber": 472,
+        "subtintNumber": 0
+      },
+      {
+        "cssVar": "--red-marianne-850-200",
+        "name": "red-marianne-850-200",
+        "hex": "#5e2a2b",
+        "line": "--red-marianne-850-200: #5e2a2b;\n",
+        "tintNumber": 850,
+        "subtintNumber": 200
+      },
+      {
+        "cssVar": "--red-marianne-925-125-active",
+        "name": "red-marianne-925-125-active",
+        "hex": "#865757",
+        "line": "--red-marianne-925-125-active: #865757;\n",
+        "tintNumber": 925,
+        "subtintNumber": 125
+      },
+      {
+        "cssVar": "--red-marianne-925-125-hover",
+        "name": "red-marianne-925-125-hover",
+        "hex": "#6b4545",
+        "line": "--red-marianne-925-125-hover: #6b4545;\n",
+        "tintNumber": 925,
+        "subtintNumber": 125
+      },
+      {
+        "cssVar": "--red-marianne-925-125",
+        "name": "red-marianne-925-125",
+        "hex": "#3b2424",
+        "line": "--red-marianne-925-125: #3b2424;\n",
+        "tintNumber": 925,
+        "subtintNumber": 125
+      },
+      {
+        "cssVar": "--red-marianne-950-100-active",
+        "name": "red-marianne-950-100-active",
+        "hex": "#7b5151",
+        "line": "--red-marianne-950-100-active: #7b5151;\n",
+        "tintNumber": 950,
+        "subtintNumber": 100
+      },
+      {
+        "cssVar": "--red-marianne-950-100-hover",
+        "name": "red-marianne-950-100-hover",
+        "hex": "#613f3f",
+        "line": "--red-marianne-950-100-hover: #613f3f;\n",
+        "tintNumber": 950,
+        "subtintNumber": 100
+      },
+      {
+        "cssVar": "--red-marianne-950-100",
+        "name": "red-marianne-950-100",
+        "hex": "#331f1f",
+        "line": "--red-marianne-950-100: #331f1f;\n",
+        "tintNumber": 950,
+        "subtintNumber": 100
+      },
+      {
+        "cssVar": "--red-marianne-975-75-active",
+        "name": "red-marianne-975-75-active",
+        "hex": "#704848",
+        "line": "--red-marianne-975-75-active: #704848;\n",
+        "tintNumber": 975,
+        "subtintNumber": 75
+      },
+      {
+        "cssVar": "--red-marianne-975-75-hover",
+        "name": "red-marianne-975-75-hover",
+        "hex": "#573737",
+        "line": "--red-marianne-975-75-hover: #573737;\n",
+        "tintNumber": 975,
+        "subtintNumber": 75
+      },
+      {
+        "cssVar": "--red-marianne-975-75",
+        "name": "red-marianne-975-75",
+        "hex": "#2b1919",
+        "line": "--red-marianne-975-75: #2b1919;\n",
+        "tintNumber": 975,
+        "subtintNumber": 75
+      }
+    ],
+    "info": [
+      {
+        "cssVar": "--info-425-625-active",
+        "name": "info-425-625-active",
+        "hex": "#b4c7ff",
+        "line": "--info-425-625-active: #b4c7ff;\n",
+        "tintNumber": 425,
+        "subtintNumber": 625
+      },
+      {
+        "cssVar": "--info-425-625-hover",
+        "name": "info-425-625-hover",
+        "hex": "#98b4ff",
+        "line": "--info-425-625-hover: #98b4ff;\n",
+        "tintNumber": 425,
+        "subtintNumber": 625
+      },
+      {
+        "cssVar": "--info-425-625",
+        "name": "info-425-625",
+        "hex": "#518fff",
+        "line": "--info-425-625: #518fff;\n",
+        "tintNumber": 425,
+        "subtintNumber": 625
+      },
+      {
+        "cssVar": "--info-950-100-active",
+        "name": "info-950-100-active",
+        "hex": "#4c5b83",
+        "line": "--info-950-100-active: #4c5b83;\n",
+        "tintNumber": 950,
+        "subtintNumber": 100
+      },
+      {
+        "cssVar": "--info-950-100-hover",
+        "name": "info-950-100-hover",
+        "hex": "#3b4767",
+        "line": "--info-950-100-hover: #3b4767;\n",
+        "tintNumber": 950,
+        "subtintNumber": 100
+      },
+      {
+        "cssVar": "--info-950-100",
+        "name": "info-950-100",
+        "hex": "#1d2437",
+        "line": "--info-950-100: #1d2437;\n",
+        "tintNumber": 950,
+        "subtintNumber": 100
+      },
+      {
+        "cssVar": "--info-975-75",
+        "name": "info-975-75",
+        "hex": "#171d2e",
+        "line": "--info-975-75: #171d2e;\n",
+        "tintNumber": 975,
+        "subtintNumber": 75
+      }
+    ],
+    "success": [
+      {
+        "cssVar": "--success-425-625-active",
+        "name": "success-425-625-active",
+        "hex": "#3df183",
+        "line": "--success-425-625-active: #3df183;\n",
+        "tintNumber": 425,
+        "subtintNumber": 625
+      },
+      {
+        "cssVar": "--success-425-625-hover",
+        "name": "success-425-625-hover",
+        "hex": "#36d975",
+        "line": "--success-425-625-hover: #36d975;\n",
+        "tintNumber": 425,
+        "subtintNumber": 625
+      },
+      {
+        "cssVar": "--success-425-625",
+        "name": "success-425-625",
+        "hex": "#27a658",
+        "line": "--success-425-625: #27a658;\n",
+        "tintNumber": 425,
+        "subtintNumber": 625
+      },
+      {
+        "cssVar": "--success-950-100-active",
+        "name": "success-950-100-active",
+        "hex": "#44624d",
+        "line": "--success-950-100-active: #44624d;\n",
+        "tintNumber": 950,
+        "subtintNumber": 100
+      },
+      {
+        "cssVar": "--success-950-100-hover",
+        "name": "success-950-100-hover",
+        "hex": "#344c3b",
+        "line": "--success-950-100-hover: #344c3b;\n",
+        "tintNumber": 950,
+        "subtintNumber": 100
+      },
+      {
+        "cssVar": "--success-950-100",
+        "name": "success-950-100",
+        "hex": "#19271d",
+        "line": "--success-950-100: #19271d;\n",
+        "tintNumber": 950,
+        "subtintNumber": 100
+      },
+      {
+        "cssVar": "--success-975-75",
+        "name": "success-975-75",
+        "hex": "#142117",
+        "line": "--success-975-75: #142117;\n",
+        "tintNumber": 975,
+        "subtintNumber": 75
+      }
+    ],
+    "warning": [
+      {
+        "cssVar": "--warning-425-625-active",
+        "name": "warning-425-625-active",
+        "hex": "#ffa595",
+        "line": "--warning-425-625-active: #ffa595;\n",
+        "tintNumber": 425,
+        "subtintNumber": 625
+      },
+      {
+        "cssVar": "--warning-425-625-hover",
+        "name": "warning-425-625-hover",
+        "hex": "#ff8c73",
+        "line": "--warning-425-625-hover: #ff8c73;\n",
+        "tintNumber": 425,
+        "subtintNumber": 625
+      },
+      {
+        "cssVar": "--warning-425-625",
+        "name": "warning-425-625",
+        "hex": "#fc5d00",
+        "line": "--warning-425-625: #fc5d00;\n",
+        "tintNumber": 425,
+        "subtintNumber": 625
+      },
+      {
+        "cssVar": "--warning-950-100-active",
+        "name": "warning-950-100-active",
+        "hex": "#824f44",
+        "line": "--warning-950-100-active: #824f44;\n",
+        "tintNumber": 950,
+        "subtintNumber": 100
+      },
+      {
+        "cssVar": "--warning-950-100-hover",
+        "name": "warning-950-100-hover",
+        "hex": "#663d35",
+        "line": "--warning-950-100-hover: #663d35;\n",
+        "tintNumber": 950,
+        "subtintNumber": 100
+      },
+      {
+        "cssVar": "--warning-950-100",
+        "name": "warning-950-100",
+        "hex": "#361e19",
+        "line": "--warning-950-100: #361e19;\n",
+        "tintNumber": 950,
+        "subtintNumber": 100
+      },
+      {
+        "cssVar": "--warning-975-75",
+        "name": "warning-975-75",
+        "hex": "#2d1814",
+        "line": "--warning-975-75: #2d1814;\n",
+        "tintNumber": 975,
+        "subtintNumber": 75
+      }
+    ],
+    "error": [
+      {
+        "cssVar": "--error-425-625-active",
+        "name": "error-425-625-active",
+        "hex": "#ffa6a6",
+        "line": "--error-425-625-active: #ffa6a6;\n",
+        "tintNumber": 425,
+        "subtintNumber": 625
+      },
+      {
+        "cssVar": "--error-425-625-hover",
+        "name": "error-425-625-hover",
+        "hex": "#ff8c8c",
+        "line": "--error-425-625-hover: #ff8c8c;\n",
+        "tintNumber": 425,
+        "subtintNumber": 625
+      },
+      {
+        "cssVar": "--error-425-625",
+        "name": "error-425-625",
+        "hex": "#ff5655",
+        "line": "--error-425-625: #ff5655;\n",
+        "tintNumber": 425,
+        "subtintNumber": 625
+      },
+      {
+        "cssVar": "--error-950-100-active",
+        "name": "error-950-100-active",
+        "hex": "#894b4b",
+        "line": "--error-950-100-active: #894b4b;\n",
+        "tintNumber": 950,
+        "subtintNumber": 100
+      },
+      {
+        "cssVar": "--error-950-100-hover",
+        "name": "error-950-100-hover",
+        "hex": "#6c3a3a",
+        "line": "--error-950-100-hover: #6c3a3a;\n",
+        "tintNumber": 950,
+        "subtintNumber": 100
+      },
+      {
+        "cssVar": "--error-950-100",
+        "name": "error-950-100",
+        "hex": "#391c1c",
+        "line": "--error-950-100: #391c1c;\n",
+        "tintNumber": 950,
+        "subtintNumber": 100
+      },
+      {
+        "cssVar": "--error-975-75",
+        "name": "error-975-75",
+        "hex": "#301717",
+        "line": "--error-975-75: #301717;\n",
+        "tintNumber": 975,
+        "subtintNumber": 75
+      }
+    ],
+    "green-tilleul-verveine": [
+      {
+        "cssVar": "--green-tilleul-verveine-sun-418-moon-817-active",
+        "name": "green-tilleul-verveine-sun-418-moon-817-active",
+        "hex": "#fef1ab",
+        "line": "--green-tilleul-verveine-sun-418-moon-817-active: #fef1ab;\n",
+        "tintNumber": 418,
+        "subtintNumber": 817
+      },
+      {
+        "cssVar": "--green-tilleul-verveine-sun-418-moon-817-hover",
+        "name": "green-tilleul-verveine-sun-418-moon-817-hover",
+        "hex": "#fee943",
+        "line": "--green-tilleul-verveine-sun-418-moon-817-hover: #fee943;\n",
+        "tintNumber": 418,
+        "subtintNumber": 817
+      },
+      {
+        "cssVar": "--green-tilleul-verveine-sun-418-moon-817",
+        "name": "green-tilleul-verveine-sun-418-moon-817",
+        "hex": "#d8c634",
+        "line": "--green-tilleul-verveine-sun-418-moon-817: #d8c634;\n",
+        "tintNumber": 418,
+        "subtintNumber": 817
+      },
+      {
+        "cssVar": "--green-tilleul-verveine-main-707",
+        "name": "green-tilleul-verveine-main-707",
+        "hex": "#b7a73f",
+        "line": "--green-tilleul-verveine-main-707: #b7a73f;\n",
+        "tintNumber": 707,
+        "subtintNumber": 0
+      },
+      {
+        "cssVar": "--green-tilleul-verveine-850-200",
+        "name": "green-tilleul-verveine-850-200",
+        "hex": "#3f3a20",
+        "line": "--green-tilleul-verveine-850-200: #3f3a20;\n",
+        "tintNumber": 850,
+        "subtintNumber": 200
+      },
+      {
+        "cssVar": "--green-tilleul-verveine-925-125-active",
+        "name": "green-tilleul-verveine-925-125-active",
+        "hex": "#696349",
+        "line": "--green-tilleul-verveine-925-125-active: #696349;\n",
+        "tintNumber": 925,
+        "subtintNumber": 125
+      },
+      {
+        "cssVar": "--green-tilleul-verveine-925-125-hover",
+        "name": "green-tilleul-verveine-925-125-hover",
+        "hex": "#534f39",
+        "line": "--green-tilleul-verveine-925-125-hover: #534f39;\n",
+        "tintNumber": 925,
+        "subtintNumber": 125
+      },
+      {
+        "cssVar": "--green-tilleul-verveine-925-125",
+        "name": "green-tilleul-verveine-925-125",
+        "hex": "#2d2a1d",
+        "line": "--green-tilleul-verveine-925-125: #2d2a1d;\n",
+        "tintNumber": 925,
+        "subtintNumber": 125
+      },
+      {
+        "cssVar": "--green-tilleul-verveine-950-100-active",
+        "name": "green-tilleul-verveine-950-100-active",
+        "hex": "#615b44",
+        "line": "--green-tilleul-verveine-950-100-active: #615b44;\n",
+        "tintNumber": 950,
+        "subtintNumber": 100
+      },
+      {
+        "cssVar": "--green-tilleul-verveine-950-100-hover",
+        "name": "green-tilleul-verveine-950-100-hover",
+        "hex": "#4c4734",
+        "line": "--green-tilleul-verveine-950-100-hover: #4c4734;\n",
+        "tintNumber": 950,
+        "subtintNumber": 100
+      },
+      {
+        "cssVar": "--green-tilleul-verveine-950-100",
+        "name": "green-tilleul-verveine-950-100",
+        "hex": "#272419",
+        "line": "--green-tilleul-verveine-950-100: #272419;\n",
+        "tintNumber": 950,
+        "subtintNumber": 100
+      },
+      {
+        "cssVar": "--green-tilleul-verveine-975-75-active",
+        "name": "green-tilleul-verveine-975-75-active",
+        "hex": "#57533d",
+        "line": "--green-tilleul-verveine-975-75-active: #57533d;\n",
+        "tintNumber": 975,
+        "subtintNumber": 75
+      },
+      {
+        "cssVar": "--green-tilleul-verveine-975-75-hover",
+        "name": "green-tilleul-verveine-975-75-hover",
+        "hex": "#433f2e",
+        "line": "--green-tilleul-verveine-975-75-hover: #433f2e;\n",
+        "tintNumber": 975,
+        "subtintNumber": 75
+      },
+      {
+        "cssVar": "--green-tilleul-verveine-975-75",
+        "name": "green-tilleul-verveine-975-75",
+        "hex": "#201e14",
+        "line": "--green-tilleul-verveine-975-75: #201e14;\n",
+        "tintNumber": 975,
+        "subtintNumber": 75
+      }
+    ],
+    "green-bourgeon": [
+      {
+        "cssVar": "--green-bourgeon-sun-425-moon-759-active",
+        "name": "green-bourgeon-sun-425-moon-759-active",
+        "hex": "#c9fd2e",
+        "line": "--green-bourgeon-sun-425-moon-759-active: #c9fd2e;\n",
+        "tintNumber": 425,
+        "subtintNumber": 759
+      },
+      {
+        "cssVar": "--green-bourgeon-sun-425-moon-759-hover",
+        "name": "green-bourgeon-sun-425-moon-759-hover",
+        "hex": "#baec2a",
+        "line": "--green-bourgeon-sun-425-moon-759-hover: #baec2a;\n",
+        "tintNumber": 425,
+        "subtintNumber": 759
+      },
+      {
+        "cssVar": "--green-bourgeon-sun-425-moon-759",
+        "name": "green-bourgeon-sun-425-moon-759",
+        "hex": "#99c221",
+        "line": "--green-bourgeon-sun-425-moon-759: #99c221;\n",
+        "tintNumber": 425,
+        "subtintNumber": 759
+      },
+      {
+        "cssVar": "--green-bourgeon-main-640",
+        "name": "green-bourgeon-main-640",
+        "hex": "#68a532",
+        "line": "--green-bourgeon-main-640: #68a532;\n",
+        "tintNumber": 640,
+        "subtintNumber": 0
+      },
+      {
+        "cssVar": "--green-bourgeon-850-200",
+        "name": "green-bourgeon-850-200",
+        "hex": "#2a401a",
+        "line": "--green-bourgeon-850-200: #2a401a;\n",
+        "tintNumber": 850,
+        "subtintNumber": 200
+      },
+      {
+        "cssVar": "--green-bourgeon-925-125-active",
+        "name": "green-bourgeon-925-125-active",
+        "hex": "#556949",
+        "line": "--green-bourgeon-925-125-active: #556949;\n",
+        "tintNumber": 925,
+        "subtintNumber": 125
+      },
+      {
+        "cssVar": "--green-bourgeon-925-125-hover",
+        "name": "green-bourgeon-925-125-hover",
+        "hex": "#435339",
+        "line": "--green-bourgeon-925-125-hover: #435339;\n",
+        "tintNumber": 925,
+        "subtintNumber": 125
+      },
+      {
+        "cssVar": "--green-bourgeon-925-125",
+        "name": "green-bourgeon-925-125",
+        "hex": "#232d1d",
+        "line": "--green-bourgeon-925-125: #232d1d;\n",
+        "tintNumber": 925,
+        "subtintNumber": 125
+      },
+      {
+        "cssVar": "--green-bourgeon-950-100-active",
+        "name": "green-bourgeon-950-100-active",
+        "hex": "#4e6144",
+        "line": "--green-bourgeon-950-100-active: #4e6144;\n",
+        "tintNumber": 950,
+        "subtintNumber": 100
+      },
+      {
+        "cssVar": "--green-bourgeon-950-100-hover",
+        "name": "green-bourgeon-950-100-hover",
+        "hex": "#3d4c34",
+        "line": "--green-bourgeon-950-100-hover: #3d4c34;\n",
+        "tintNumber": 950,
+        "subtintNumber": 100
+      },
+      {
+        "cssVar": "--green-bourgeon-950-100",
+        "name": "green-bourgeon-950-100",
+        "hex": "#1e2719",
+        "line": "--green-bourgeon-950-100: #1e2719;\n",
+        "tintNumber": 950,
+        "subtintNumber": 100
+      },
+      {
+        "cssVar": "--green-bourgeon-975-75-active",
+        "name": "green-bourgeon-975-75-active",
+        "hex": "#46573d",
+        "line": "--green-bourgeon-975-75-active: #46573d;\n",
+        "tintNumber": 975,
+        "subtintNumber": 75
+      },
+      {
+        "cssVar": "--green-bourgeon-975-75-hover",
+        "name": "green-bourgeon-975-75-hover",
+        "hex": "#35432e",
+        "line": "--green-bourgeon-975-75-hover: #35432e;\n",
+        "tintNumber": 975,
+        "subtintNumber": 75
+      },
+      {
+        "cssVar": "--green-bourgeon-975-75",
+        "name": "green-bourgeon-975-75",
+        "hex": "#182014",
+        "line": "--green-bourgeon-975-75: #182014;\n",
+        "tintNumber": 975,
+        "subtintNumber": 75
+      }
+    ],
+    "green-emeraude": [
+      {
+        "cssVar": "--green-emeraude-sun-425-moon-753-active",
+        "name": "green-emeraude-sun-425-moon-753-active",
+        "hex": "#80fda3",
+        "line": "--green-emeraude-sun-425-moon-753-active: #80fda3;\n",
+        "tintNumber": 425,
+        "subtintNumber": 753
+      },
+      {
+        "cssVar": "--green-emeraude-sun-425-moon-753-hover",
+        "name": "green-emeraude-sun-425-moon-753-hover",
+        "hex": "#42fb84",
+        "line": "--green-emeraude-sun-425-moon-753-hover: #42fb84;\n",
+        "tintNumber": 425,
+        "subtintNumber": 753
+      },
+      {
+        "cssVar": "--green-emeraude-sun-425-moon-753",
+        "name": "green-emeraude-sun-425-moon-753",
+        "hex": "#34cb6a",
+        "line": "--green-emeraude-sun-425-moon-753: #34cb6a;\n",
+        "tintNumber": 425,
+        "subtintNumber": 753
+      },
+      {
+        "cssVar": "--green-emeraude-main-632",
+        "name": "green-emeraude-main-632",
+        "hex": "#00a95f",
+        "line": "--green-emeraude-main-632: #00a95f;\n",
+        "tintNumber": 632,
+        "subtintNumber": 0
+      },
+      {
+        "cssVar": "--green-emeraude-850-200",
+        "name": "green-emeraude-850-200",
+        "hex": "#21402c",
+        "line": "--green-emeraude-850-200: #21402c;\n",
+        "tintNumber": 850,
+        "subtintNumber": 200
+      },
+      {
+        "cssVar": "--green-emeraude-925-125-active",
+        "name": "green-emeraude-925-125-active",
+        "hex": "#4b6b55",
+        "line": "--green-emeraude-925-125-active: #4b6b55;\n",
+        "tintNumber": 925,
+        "subtintNumber": 125
+      },
+      {
+        "cssVar": "--green-emeraude-925-125-hover",
+        "name": "green-emeraude-925-125-hover",
+        "hex": "#3b5543",
+        "line": "--green-emeraude-925-125-hover: #3b5543;\n",
+        "tintNumber": 925,
+        "subtintNumber": 125
+      },
+      {
+        "cssVar": "--green-emeraude-925-125",
+        "name": "green-emeraude-925-125",
+        "hex": "#1e2e23",
+        "line": "--green-emeraude-925-125: #1e2e23;\n",
+        "tintNumber": 925,
+        "subtintNumber": 125
+      },
+      {
+        "cssVar": "--green-emeraude-950-100-active",
+        "name": "green-emeraude-950-100-active",
+        "hex": "#44624f",
+        "line": "--green-emeraude-950-100-active: #44624f;\n",
+        "tintNumber": 950,
+        "subtintNumber": 100
+      },
+      {
+        "cssVar": "--green-emeraude-950-100-hover",
+        "name": "green-emeraude-950-100-hover",
+        "hex": "#344c3d",
+        "line": "--green-emeraude-950-100-hover: #344c3d;\n",
+        "tintNumber": 950,
+        "subtintNumber": 100
+      },
+      {
+        "cssVar": "--green-emeraude-950-100",
+        "name": "green-emeraude-950-100",
+        "hex": "#19271e",
+        "line": "--green-emeraude-950-100: #19271e;\n",
+        "tintNumber": 950,
+        "subtintNumber": 100
+      },
+      {
+        "cssVar": "--green-emeraude-975-75-active",
+        "name": "green-emeraude-975-75-active",
+        "hex": "#3d5846",
+        "line": "--green-emeraude-975-75-active: #3d5846;\n",
+        "tintNumber": 975,
+        "subtintNumber": 75
+      },
+      {
+        "cssVar": "--green-emeraude-975-75-hover",
+        "name": "green-emeraude-975-75-hover",
+        "hex": "#2e4335",
+        "line": "--green-emeraude-975-75-hover: #2e4335;\n",
+        "tintNumber": 975,
+        "subtintNumber": 75
+      },
+      {
+        "cssVar": "--green-emeraude-975-75",
+        "name": "green-emeraude-975-75",
+        "hex": "#142018",
+        "line": "--green-emeraude-975-75: #142018;\n",
+        "tintNumber": 975,
+        "subtintNumber": 75
+      }
+    ],
+    "green-menthe": [
+      {
+        "cssVar": "--green-menthe-sun-373-moon-652-active",
+        "name": "green-menthe-sun-373-moon-652-active",
+        "hex": "#34f4cc",
+        "line": "--green-menthe-sun-373-moon-652-active: #34f4cc;\n",
+        "tintNumber": 373,
+        "subtintNumber": 652
+      },
+      {
+        "cssVar": "--green-menthe-sun-373-moon-652-hover",
+        "name": "green-menthe-sun-373-moon-652-hover",
+        "hex": "#2eddb8",
+        "line": "--green-menthe-sun-373-moon-652-hover: #2eddb8;\n",
+        "tintNumber": 373,
+        "subtintNumber": 652
+      },
+      {
+        "cssVar": "--green-menthe-sun-373-moon-652",
+        "name": "green-menthe-sun-373-moon-652",
+        "hex": "#21ab8e",
+        "line": "--green-menthe-sun-373-moon-652: #21ab8e;\n",
+        "tintNumber": 373,
+        "subtintNumber": 652
+      },
+      {
+        "cssVar": "--green-menthe-main-548",
+        "name": "green-menthe-main-548",
+        "hex": "#009081",
+        "line": "--green-menthe-main-548: #009081;\n",
+        "tintNumber": 548,
+        "subtintNumber": 0
+      },
+      {
+        "cssVar": "--green-menthe-850-200",
+        "name": "green-menthe-850-200",
+        "hex": "#223f3a",
+        "line": "--green-menthe-850-200: #223f3a;\n",
+        "tintNumber": 850,
+        "subtintNumber": 200
+      },
+      {
+        "cssVar": "--green-menthe-925-125-active",
+        "name": "green-menthe-925-125-active",
+        "hex": "#4d6963",
+        "line": "--green-menthe-925-125-active: #4d6963;\n",
+        "tintNumber": 925,
+        "subtintNumber": 125
+      },
+      {
+        "cssVar": "--green-menthe-925-125-hover",
+        "name": "green-menthe-925-125-hover",
+        "hex": "#3c534e",
+        "line": "--green-menthe-925-125-hover: #3c534e;\n",
+        "tintNumber": 925,
+        "subtintNumber": 125
+      },
+      {
+        "cssVar": "--green-menthe-925-125",
+        "name": "green-menthe-925-125",
+        "hex": "#1f2d2a",
+        "line": "--green-menthe-925-125: #1f2d2a;\n",
+        "tintNumber": 925,
+        "subtintNumber": 125
+      },
+      {
+        "cssVar": "--green-menthe-950-100-active",
+        "name": "green-menthe-950-100-active",
+        "hex": "#46605b",
+        "line": "--green-menthe-950-100-active: #46605b;\n",
+        "tintNumber": 950,
+        "subtintNumber": 100
+      },
+      {
+        "cssVar": "--green-menthe-950-100-hover",
+        "name": "green-menthe-950-100-hover",
+        "hex": "#364b47",
+        "line": "--green-menthe-950-100-hover: #364b47;\n",
+        "tintNumber": 950,
+        "subtintNumber": 100
+      },
+      {
+        "cssVar": "--green-menthe-950-100",
+        "name": "green-menthe-950-100",
+        "hex": "#1a2624",
+        "line": "--green-menthe-950-100: #1a2624;\n",
+        "tintNumber": 950,
+        "subtintNumber": 100
+      },
+      {
+        "cssVar": "--green-menthe-975-75-active",
+        "name": "green-menthe-975-75-active",
+        "hex": "#3f5753",
+        "line": "--green-menthe-975-75-active: #3f5753;\n",
+        "tintNumber": 975,
+        "subtintNumber": 75
+      },
+      {
+        "cssVar": "--green-menthe-975-75-hover",
+        "name": "green-menthe-975-75-hover",
+        "hex": "#30433f",
+        "line": "--green-menthe-975-75-hover: #30433f;\n",
+        "tintNumber": 975,
+        "subtintNumber": 75
+      },
+      {
+        "cssVar": "--green-menthe-975-75",
+        "name": "green-menthe-975-75",
+        "hex": "#15201e",
+        "line": "--green-menthe-975-75: #15201e;\n",
+        "tintNumber": 975,
+        "subtintNumber": 75
+      }
+    ],
+    "green-archipel": [
+      {
+        "cssVar": "--green-archipel-sun-391-moon-716-active",
+        "name": "green-archipel-sun-391-moon-716-active",
+        "hex": "#4cfdf6",
+        "line": "--green-archipel-sun-391-moon-716-active: #4cfdf6;\n",
+        "tintNumber": 391,
+        "subtintNumber": 716
+      },
+      {
+        "cssVar": "--green-archipel-sun-391-moon-716-hover",
+        "name": "green-archipel-sun-391-moon-716-hover",
+        "hex": "#43e9e2",
+        "line": "--green-archipel-sun-391-moon-716-hover: #43e9e2;\n",
+        "tintNumber": 391,
+        "subtintNumber": 716
+      },
+      {
+        "cssVar": "--green-archipel-sun-391-moon-716",
+        "name": "green-archipel-sun-391-moon-716",
+        "hex": "#34bab5",
+        "line": "--green-archipel-sun-391-moon-716: #34bab5;\n",
+        "tintNumber": 391,
+        "subtintNumber": 716
+      },
+      {
+        "cssVar": "--green-archipel-main-557",
+        "name": "green-archipel-main-557",
+        "hex": "#009099",
+        "line": "--green-archipel-main-557: #009099;\n",
+        "tintNumber": 557,
+        "subtintNumber": 0
+      },
+      {
+        "cssVar": "--green-archipel-850-200",
+        "name": "green-archipel-850-200",
+        "hex": "#233e41",
+        "line": "--green-archipel-850-200: #233e41;\n",
+        "tintNumber": 850,
+        "subtintNumber": 200
+      },
+      {
+        "cssVar": "--green-archipel-925-125-active",
+        "name": "green-archipel-925-125-active",
+        "hex": "#4d676b",
+        "line": "--green-archipel-925-125-active: #4d676b;\n",
+        "tintNumber": 925,
+        "subtintNumber": 125
+      },
+      {
+        "cssVar": "--green-archipel-925-125-hover",
+        "name": "green-archipel-925-125-hover",
+        "hex": "#3c5255",
+        "line": "--green-archipel-925-125-hover: #3c5255;\n",
+        "tintNumber": 925,
+        "subtintNumber": 125
+      },
+      {
+        "cssVar": "--green-archipel-925-125",
+        "name": "green-archipel-925-125",
+        "hex": "#1f2c2e",
+        "line": "--green-archipel-925-125: #1f2c2e;\n",
+        "tintNumber": 925,
+        "subtintNumber": 125
+      },
+      {
+        "cssVar": "--green-archipel-950-100-active",
+        "name": "green-archipel-950-100-active",
+        "hex": "#465f63",
+        "line": "--green-archipel-950-100-active: #465f63;\n",
+        "tintNumber": 950,
+        "subtintNumber": 100
+      },
+      {
+        "cssVar": "--green-archipel-950-100-hover",
+        "name": "green-archipel-950-100-hover",
+        "hex": "#364a4e",
+        "line": "--green-archipel-950-100-hover: #364a4e;\n",
+        "tintNumber": 950,
+        "subtintNumber": 100
+      },
+      {
+        "cssVar": "--green-archipel-950-100",
+        "name": "green-archipel-950-100",
+        "hex": "#1a2628",
+        "line": "--green-archipel-950-100: #1a2628;\n",
+        "tintNumber": 950,
+        "subtintNumber": 100
+      },
+      {
+        "cssVar": "--green-archipel-975-75-active",
+        "name": "green-archipel-975-75-active",
+        "hex": "#3f5759",
+        "line": "--green-archipel-975-75-active: #3f5759;\n",
+        "tintNumber": 975,
+        "subtintNumber": 75
+      },
+      {
+        "cssVar": "--green-archipel-975-75-hover",
+        "name": "green-archipel-975-75-hover",
+        "hex": "#2f4345",
+        "line": "--green-archipel-975-75-hover: #2f4345;\n",
+        "tintNumber": 975,
+        "subtintNumber": 75
+      },
+      {
+        "cssVar": "--green-archipel-975-75",
+        "name": "green-archipel-975-75",
+        "hex": "#152021",
+        "line": "--green-archipel-975-75: #152021;\n",
+        "tintNumber": 975,
+        "subtintNumber": 75
+      }
+    ],
+    "blue-ecume": [
+      {
+        "cssVar": "--blue-ecume-sun-247-moon-675-active",
+        "name": "blue-ecume-sun-247-moon-675-active",
+        "hex": "#ced6ea",
+        "line": "--blue-ecume-sun-247-moon-675-active: #ced6ea;\n",
+        "tintNumber": 247,
+        "subtintNumber": 675
+      },
+      {
+        "cssVar": "--blue-ecume-sun-247-moon-675-hover",
+        "name": "blue-ecume-sun-247-moon-675-hover",
+        "hex": "#b8c5e2",
+        "line": "--blue-ecume-sun-247-moon-675-hover: #b8c5e2;\n",
+        "tintNumber": 247,
+        "subtintNumber": 675
+      },
+      {
+        "cssVar": "--blue-ecume-sun-247-moon-675",
+        "name": "blue-ecume-sun-247-moon-675",
+        "hex": "#869ece",
+        "line": "--blue-ecume-sun-247-moon-675: #869ece;\n",
+        "tintNumber": 247,
+        "subtintNumber": 675
+      },
+      {
+        "cssVar": "--blue-ecume-main-400",
+        "name": "blue-ecume-main-400",
+        "hex": "#465f9d",
+        "line": "--blue-ecume-main-400: #465f9d;\n",
+        "tintNumber": 400,
+        "subtintNumber": 0
+      },
+      {
+        "cssVar": "--blue-ecume-850-200",
+        "name": "blue-ecume-850-200",
+        "hex": "#273962",
+        "line": "--blue-ecume-850-200: #273962;\n",
+        "tintNumber": 850,
+        "subtintNumber": 200
+      },
+      {
+        "cssVar": "--blue-ecume-925-125-active",
+        "name": "blue-ecume-925-125-active",
+        "hex": "#536190",
+        "line": "--blue-ecume-925-125-active: #536190;\n",
+        "tintNumber": 925,
+        "subtintNumber": 125
+      },
+      {
+        "cssVar": "--blue-ecume-925-125-hover",
+        "name": "blue-ecume-925-125-hover",
+        "hex": "#424d73",
+        "line": "--blue-ecume-925-125-hover: #424d73;\n",
+        "tintNumber": 925,
+        "subtintNumber": 125
+      },
+      {
+        "cssVar": "--blue-ecume-925-125",
+        "name": "blue-ecume-925-125",
+        "hex": "#222940",
+        "line": "--blue-ecume-925-125: #222940;\n",
+        "tintNumber": 925,
+        "subtintNumber": 125
+      },
+      {
+        "cssVar": "--blue-ecume-950-100-active",
+        "name": "blue-ecume-950-100-active",
+        "hex": "#4c5b83",
+        "line": "--blue-ecume-950-100-active: #4c5b83;\n",
+        "tintNumber": 950,
+        "subtintNumber": 100
+      },
+      {
+        "cssVar": "--blue-ecume-950-100-hover",
+        "name": "blue-ecume-950-100-hover",
+        "hex": "#3b4767",
+        "line": "--blue-ecume-950-100-hover: #3b4767;\n",
+        "tintNumber": 950,
+        "subtintNumber": 100
+      },
+      {
+        "cssVar": "--blue-ecume-950-100",
+        "name": "blue-ecume-950-100",
+        "hex": "#1d2437",
+        "line": "--blue-ecume-950-100: #1d2437;\n",
+        "tintNumber": 950,
+        "subtintNumber": 100
+      },
+      {
+        "cssVar": "--blue-ecume-975-75-active",
+        "name": "blue-ecume-975-75-active",
+        "hex": "#445179",
+        "line": "--blue-ecume-975-75-active: #445179;\n",
+        "tintNumber": 975,
+        "subtintNumber": 75
+      },
+      {
+        "cssVar": "--blue-ecume-975-75-hover",
+        "name": "blue-ecume-975-75-hover",
+        "hex": "#333e5e",
+        "line": "--blue-ecume-975-75-hover: #333e5e;\n",
+        "tintNumber": 975,
+        "subtintNumber": 75
+      },
+      {
+        "cssVar": "--blue-ecume-975-75",
+        "name": "blue-ecume-975-75",
+        "hex": "#171d2f",
+        "line": "--blue-ecume-975-75: #171d2f;\n",
+        "tintNumber": 975,
+        "subtintNumber": 75
+      }
+    ],
+    "blue-cumulus": [
+      {
+        "cssVar": "--blue-cumulus-sun-368-moon-732-active",
+        "name": "blue-cumulus-sun-368-moon-732-active",
+        "hex": "#d2e2f6",
+        "line": "--blue-cumulus-sun-368-moon-732-active: #d2e2f6;\n",
+        "tintNumber": 368,
+        "subtintNumber": 732
+      },
+      {
+        "cssVar": "--blue-cumulus-sun-368-moon-732-hover",
+        "name": "blue-cumulus-sun-368-moon-732-hover",
+        "hex": "#bad2f2",
+        "line": "--blue-cumulus-sun-368-moon-732-hover: #bad2f2;\n",
+        "tintNumber": 368,
+        "subtintNumber": 732
+      },
+      {
+        "cssVar": "--blue-cumulus-sun-368-moon-732",
+        "name": "blue-cumulus-sun-368-moon-732",
+        "hex": "#7ab1e8",
+        "line": "--blue-cumulus-sun-368-moon-732: #7ab1e8;\n",
+        "tintNumber": 368,
+        "subtintNumber": 732
+      },
+      {
+        "cssVar": "--blue-cumulus-main-526",
+        "name": "blue-cumulus-main-526",
+        "hex": "#417dc4",
+        "line": "--blue-cumulus-main-526: #417dc4;\n",
+        "tintNumber": 526,
+        "subtintNumber": 0
+      },
+      {
+        "cssVar": "--blue-cumulus-850-200",
+        "name": "blue-cumulus-850-200",
+        "hex": "#263b58",
+        "line": "--blue-cumulus-850-200: #263b58;\n",
+        "tintNumber": 850,
+        "subtintNumber": 200
+      },
+      {
+        "cssVar": "--blue-cumulus-925-125-active",
+        "name": "blue-cumulus-925-125-active",
+        "hex": "#516384",
+        "line": "--blue-cumulus-925-125-active: #516384;\n",
+        "tintNumber": 925,
+        "subtintNumber": 125
+      },
+      {
+        "cssVar": "--blue-cumulus-925-125-hover",
+        "name": "blue-cumulus-925-125-hover",
+        "hex": "#404f69",
+        "line": "--blue-cumulus-925-125-hover: #404f69;\n",
+        "tintNumber": 925,
+        "subtintNumber": 125
+      },
+      {
+        "cssVar": "--blue-cumulus-925-125",
+        "name": "blue-cumulus-925-125",
+        "hex": "#212a3a",
+        "line": "--blue-cumulus-925-125: #212a3a;\n",
+        "tintNumber": 925,
+        "subtintNumber": 125
+      },
+      {
+        "cssVar": "--blue-cumulus-950-100-active",
+        "name": "blue-cumulus-950-100-active",
+        "hex": "#4a5b7b",
+        "line": "--blue-cumulus-950-100-active: #4a5b7b;\n",
+        "tintNumber": 950,
+        "subtintNumber": 100
+      },
+      {
+        "cssVar": "--blue-cumulus-950-100-hover",
+        "name": "blue-cumulus-950-100-hover",
+        "hex": "#3a4761",
+        "line": "--blue-cumulus-950-100-hover: #3a4761;\n",
+        "tintNumber": 950,
+        "subtintNumber": 100
+      },
+      {
+        "cssVar": "--blue-cumulus-950-100",
+        "name": "blue-cumulus-950-100",
+        "hex": "#1c2433",
+        "line": "--blue-cumulus-950-100: #1c2433;\n",
+        "tintNumber": 950,
+        "subtintNumber": 100
+      },
+      {
+        "cssVar": "--blue-cumulus-975-75-active",
+        "name": "blue-cumulus-975-75-active",
+        "hex": "#43536f",
+        "line": "--blue-cumulus-975-75-active: #43536f;\n",
+        "tintNumber": 975,
+        "subtintNumber": 75
+      },
+      {
+        "cssVar": "--blue-cumulus-975-75-hover",
+        "name": "blue-cumulus-975-75-hover",
+        "hex": "#333f56",
+        "line": "--blue-cumulus-975-75-hover: #333f56;\n",
+        "tintNumber": 975,
+        "subtintNumber": 75
+      },
+      {
+        "cssVar": "--blue-cumulus-975-75",
+        "name": "blue-cumulus-975-75",
+        "hex": "#171e2b",
+        "line": "--blue-cumulus-975-75: #171e2b;\n",
+        "tintNumber": 975,
+        "subtintNumber": 75
+      }
+    ],
+    "purple-glycine": [
+      {
+        "cssVar": "--purple-glycine-sun-319-moon-630-active",
+        "name": "purple-glycine-sun-319-moon-630-active",
+        "hex": "#e7bbe6",
+        "line": "--purple-glycine-sun-319-moon-630-active: #e7bbe6;\n",
+        "tintNumber": 319,
+        "subtintNumber": 630
+      },
+      {
+        "cssVar": "--purple-glycine-sun-319-moon-630-hover",
+        "name": "purple-glycine-sun-319-moon-630-hover",
+        "hex": "#dfa4dd",
+        "line": "--purple-glycine-sun-319-moon-630-hover: #dfa4dd;\n",
+        "tintNumber": 319,
+        "subtintNumber": 630
+      },
+      {
+        "cssVar": "--purple-glycine-sun-319-moon-630",
+        "name": "purple-glycine-sun-319-moon-630",
+        "hex": "#ce70cc",
+        "line": "--purple-glycine-sun-319-moon-630: #ce70cc;\n",
+        "tintNumber": 319,
+        "subtintNumber": 630
+      },
+      {
+        "cssVar": "--purple-glycine-main-494",
+        "name": "purple-glycine-main-494",
+        "hex": "#a558a0",
+        "line": "--purple-glycine-main-494: #a558a0;\n",
+        "tintNumber": 494,
+        "subtintNumber": 0
+      },
+      {
+        "cssVar": "--purple-glycine-850-200",
+        "name": "purple-glycine-850-200",
+        "hex": "#502e4d",
+        "line": "--purple-glycine-850-200: #502e4d;\n",
+        "tintNumber": 850,
+        "subtintNumber": 200
+      },
+      {
+        "cssVar": "--purple-glycine-925-125-active",
+        "name": "purple-glycine-925-125-active",
+        "hex": "#755b73",
+        "line": "--purple-glycine-925-125-active: #755b73;\n",
+        "tintNumber": 925,
+        "subtintNumber": 125
+      },
+      {
+        "cssVar": "--purple-glycine-925-125-hover",
+        "name": "purple-glycine-925-125-hover",
+        "hex": "#5d485c",
+        "line": "--purple-glycine-925-125-hover: #5d485c;\n",
+        "tintNumber": 925,
+        "subtintNumber": 125
+      },
+      {
+        "cssVar": "--purple-glycine-925-125",
+        "name": "purple-glycine-925-125",
+        "hex": "#332632",
+        "line": "--purple-glycine-925-125: #332632;\n",
+        "tintNumber": 925,
+        "subtintNumber": 125
+      },
+      {
+        "cssVar": "--purple-glycine-950-100-active",
+        "name": "purple-glycine-950-100-active",
+        "hex": "#6c536a",
+        "line": "--purple-glycine-950-100-active: #6c536a;\n",
+        "tintNumber": 950,
+        "subtintNumber": 100
+      },
+      {
+        "cssVar": "--purple-glycine-950-100-hover",
+        "name": "purple-glycine-950-100-hover",
+        "hex": "#554053",
+        "line": "--purple-glycine-950-100-hover: #554053;\n",
+        "tintNumber": 950,
+        "subtintNumber": 100
+      },
+      {
+        "cssVar": "--purple-glycine-950-100",
+        "name": "purple-glycine-950-100",
+        "hex": "#2c202b",
+        "line": "--purple-glycine-950-100: #2c202b;\n",
+        "tintNumber": 950,
+        "subtintNumber": 100
+      },
+      {
+        "cssVar": "--purple-glycine-975-75-active",
+        "name": "purple-glycine-975-75-active",
+        "hex": "#634a60",
+        "line": "--purple-glycine-975-75-active: #634a60;\n",
+        "tintNumber": 975,
+        "subtintNumber": 75
+      },
+      {
+        "cssVar": "--purple-glycine-975-75-hover",
+        "name": "purple-glycine-975-75-hover",
+        "hex": "#4c394a",
+        "line": "--purple-glycine-975-75-hover: #4c394a;\n",
+        "tintNumber": 975,
+        "subtintNumber": 75
+      },
+      {
+        "cssVar": "--purple-glycine-975-75",
+        "name": "purple-glycine-975-75",
+        "hex": "#251a24",
+        "line": "--purple-glycine-975-75: #251a24;\n",
+        "tintNumber": 975,
+        "subtintNumber": 75
+      }
+    ],
+    "pink-macaron": [
+      {
+        "cssVar": "--pink-macaron-sun-406-moon-833-active",
+        "name": "pink-macaron-sun-406-moon-833-active",
+        "hex": "#fff0ee",
+        "line": "--pink-macaron-sun-406-moon-833-active: #fff0ee;\n",
+        "tintNumber": 406,
+        "subtintNumber": 833
+      },
+      {
+        "cssVar": "--pink-macaron-sun-406-moon-833-hover",
+        "name": "pink-macaron-sun-406-moon-833-hover",
+        "hex": "#ffe0dc",
+        "line": "--pink-macaron-sun-406-moon-833-hover: #ffe0dc;\n",
+        "tintNumber": 406,
+        "subtintNumber": 833
+      },
+      {
+        "cssVar": "--pink-macaron-sun-406-moon-833",
+        "name": "pink-macaron-sun-406-moon-833",
+        "hex": "#ffb7ae",
+        "line": "--pink-macaron-sun-406-moon-833: #ffb7ae;\n",
+        "tintNumber": 406,
+        "subtintNumber": 833
+      },
+      {
+        "cssVar": "--pink-macaron-main-689",
+        "name": "pink-macaron-main-689",
+        "hex": "#e18b76",
+        "line": "--pink-macaron-main-689: #e18b76;\n",
+        "tintNumber": 689,
+        "subtintNumber": 0
+      },
+      {
+        "cssVar": "--pink-macaron-850-200",
+        "name": "pink-macaron-850-200",
+        "hex": "#52312a",
+        "line": "--pink-macaron-850-200: #52312a;\n",
+        "tintNumber": 850,
+        "subtintNumber": 200
+      },
+      {
+        "cssVar": "--pink-macaron-925-125-active",
+        "name": "pink-macaron-925-125-active",
+        "hex": "#795d57",
+        "line": "--pink-macaron-925-125-active: #795d57;\n",
+        "tintNumber": 925,
+        "subtintNumber": 125
+      },
+      {
+        "cssVar": "--pink-macaron-925-125-hover",
+        "name": "pink-macaron-925-125-hover",
+        "hex": "#614a45",
+        "line": "--pink-macaron-925-125-hover: #614a45;\n",
+        "tintNumber": 925,
+        "subtintNumber": 125
+      },
+      {
+        "cssVar": "--pink-macaron-925-125",
+        "name": "pink-macaron-925-125",
+        "hex": "#352724",
+        "line": "--pink-macaron-925-125: #352724;\n",
+        "tintNumber": 925,
+        "subtintNumber": 125
+      },
+      {
+        "cssVar": "--pink-macaron-950-100-active",
+        "name": "pink-macaron-950-100-active",
+        "hex": "#705551",
+        "line": "--pink-macaron-950-100-active: #705551;\n",
+        "tintNumber": 950,
+        "subtintNumber": 100
+      },
+      {
+        "cssVar": "--pink-macaron-950-100-hover",
+        "name": "pink-macaron-950-100-hover",
+        "hex": "#58423f",
+        "line": "--pink-macaron-950-100-hover: #58423f;\n",
+        "tintNumber": 950,
+        "subtintNumber": 100
+      },
+      {
+        "cssVar": "--pink-macaron-950-100",
+        "name": "pink-macaron-950-100",
+        "hex": "#2e211f",
+        "line": "--pink-macaron-950-100: #2e211f;\n",
+        "tintNumber": 950,
+        "subtintNumber": 100
+      },
+      {
+        "cssVar": "--pink-macaron-975-75-active",
+        "name": "pink-macaron-975-75-active",
+        "hex": "#654c48",
+        "line": "--pink-macaron-975-75-active: #654c48;\n",
+        "tintNumber": 975,
+        "subtintNumber": 75
+      },
+      {
+        "cssVar": "--pink-macaron-975-75-hover",
+        "name": "pink-macaron-975-75-hover",
+        "hex": "#4e3a37",
+        "line": "--pink-macaron-975-75-hover: #4e3a37;\n",
+        "tintNumber": 975,
+        "subtintNumber": 75
+      },
+      {
+        "cssVar": "--pink-macaron-975-75",
+        "name": "pink-macaron-975-75",
+        "hex": "#261b19",
+        "line": "--pink-macaron-975-75: #261b19;\n",
+        "tintNumber": 975,
+        "subtintNumber": 75
+      }
+    ],
+    "pink-tuile": [
+      {
+        "cssVar": "--pink-tuile-sun-425-moon-750-active",
+        "name": "pink-tuile-sun-425-moon-750-active",
+        "hex": "#ffd8d0",
+        "line": "--pink-tuile-sun-425-moon-750-active: #ffd8d0;\n",
+        "tintNumber": 425,
+        "subtintNumber": 750
+      },
+      {
+        "cssVar": "--pink-tuile-sun-425-moon-750-hover",
+        "name": "pink-tuile-sun-425-moon-750-hover",
+        "hex": "#ffc4b7",
+        "line": "--pink-tuile-sun-425-moon-750-hover: #ffc4b7;\n",
+        "tintNumber": 425,
+        "subtintNumber": 750
+      },
+      {
+        "cssVar": "--pink-tuile-sun-425-moon-750",
+        "name": "pink-tuile-sun-425-moon-750",
+        "hex": "#ff9575",
+        "line": "--pink-tuile-sun-425-moon-750: #ff9575;\n",
+        "tintNumber": 425,
+        "subtintNumber": 750
+      },
+      {
+        "cssVar": "--pink-tuile-main-556",
+        "name": "pink-tuile-main-556",
+        "hex": "#ce614a",
+        "line": "--pink-tuile-main-556: #ce614a;\n",
+        "tintNumber": 556,
+        "subtintNumber": 0
+      },
+      {
+        "cssVar": "--pink-tuile-850-200",
+        "name": "pink-tuile-850-200",
+        "hex": "#55302a",
+        "line": "--pink-tuile-850-200: #55302a;\n",
+        "tintNumber": 850,
+        "subtintNumber": 200
+      },
+      {
+        "cssVar": "--pink-tuile-925-125-active",
+        "name": "pink-tuile-925-125-active",
+        "hex": "#7d5b57",
+        "line": "--pink-tuile-925-125-active: #7d5b57;\n",
+        "tintNumber": 925,
+        "subtintNumber": 125
+      },
+      {
+        "cssVar": "--pink-tuile-925-125-hover",
+        "name": "pink-tuile-925-125-hover",
+        "hex": "#644845",
+        "line": "--pink-tuile-925-125-hover: #644845;\n",
+        "tintNumber": 925,
+        "subtintNumber": 125
+      },
+      {
+        "cssVar": "--pink-tuile-925-125",
+        "name": "pink-tuile-925-125",
+        "hex": "#372624",
+        "line": "--pink-tuile-925-125: #372624;\n",
+        "tintNumber": 925,
+        "subtintNumber": 125
+      },
+      {
+        "cssVar": "--pink-tuile-950-100-active",
+        "name": "pink-tuile-950-100-active",
+        "hex": "#725550",
+        "line": "--pink-tuile-950-100-active: #725550;\n",
+        "tintNumber": 950,
+        "subtintNumber": 100
+      },
+      {
+        "cssVar": "--pink-tuile-950-100-hover",
+        "name": "pink-tuile-950-100-hover",
+        "hex": "#5a423e",
+        "line": "--pink-tuile-950-100-hover: #5a423e;\n",
+        "tintNumber": 950,
+        "subtintNumber": 100
+      },
+      {
+        "cssVar": "--pink-tuile-950-100",
+        "name": "pink-tuile-950-100",
+        "hex": "#2f211f",
+        "line": "--pink-tuile-950-100: #2f211f;\n",
+        "tintNumber": 950,
+        "subtintNumber": 100
+      },
+      {
+        "cssVar": "--pink-tuile-975-75-active",
+        "name": "pink-tuile-975-75-active",
+        "hex": "#694c48",
+        "line": "--pink-tuile-975-75-active: #694c48;\n",
+        "tintNumber": 975,
+        "subtintNumber": 75
+      },
+      {
+        "cssVar": "--pink-tuile-975-75-hover",
+        "name": "pink-tuile-975-75-hover",
+        "hex": "#513a37",
+        "line": "--pink-tuile-975-75-hover: #513a37;\n",
+        "tintNumber": 975,
+        "subtintNumber": 75
+      },
+      {
+        "cssVar": "--pink-tuile-975-75",
+        "name": "pink-tuile-975-75",
+        "hex": "#281b19",
+        "line": "--pink-tuile-975-75: #281b19;\n",
+        "tintNumber": 975,
+        "subtintNumber": 75
+      }
+    ],
+    "yellow-tournesol": [
+      {
+        "cssVar": "--yellow-tournesol-sun-407-moon-922-active",
+        "name": "yellow-tournesol-sun-407-moon-922-active",
+        "hex": "#cab300",
+        "line": "--yellow-tournesol-sun-407-moon-922-active: #cab300;\n",
+        "tintNumber": 407,
+        "subtintNumber": 922
+      },
+      {
+        "cssVar": "--yellow-tournesol-sun-407-moon-922-hover",
+        "name": "yellow-tournesol-sun-407-moon-922-hover",
+        "hex": "#e1c700",
+        "line": "--yellow-tournesol-sun-407-moon-922-hover: #e1c700;\n",
+        "tintNumber": 407,
+        "subtintNumber": 922
+      },
+      {
+        "cssVar": "--yellow-tournesol-sun-407-moon-922",
+        "name": "yellow-tournesol-sun-407-moon-922",
+        "hex": "#ffe552",
+        "line": "--yellow-tournesol-sun-407-moon-922: #ffe552;\n",
+        "tintNumber": 407,
+        "subtintNumber": 922
+      },
+      {
+        "cssVar": "--yellow-tournesol-main-731",
+        "name": "yellow-tournesol-main-731",
+        "hex": "#c8aa39",
+        "line": "--yellow-tournesol-main-731: #c8aa39;\n",
+        "tintNumber": 731,
+        "subtintNumber": 0
+      },
+      {
+        "cssVar": "--yellow-tournesol-850-200",
+        "name": "yellow-tournesol-850-200",
+        "hex": "#43391a",
+        "line": "--yellow-tournesol-850-200: #43391a;\n",
+        "tintNumber": 850,
+        "subtintNumber": 200
+      },
+      {
+        "cssVar": "--yellow-tournesol-925-125-active",
+        "name": "yellow-tournesol-925-125-active",
+        "hex": "#6f6342",
+        "line": "--yellow-tournesol-925-125-active: #6f6342;\n",
+        "tintNumber": 925,
+        "subtintNumber": 125
+      },
+      {
+        "cssVar": "--yellow-tournesol-925-125-hover",
+        "name": "yellow-tournesol-925-125-hover",
+        "hex": "#584e34",
+        "line": "--yellow-tournesol-925-125-hover: #584e34;\n",
+        "tintNumber": 925,
+        "subtintNumber": 125
+      },
+      {
+        "cssVar": "--yellow-tournesol-925-125",
+        "name": "yellow-tournesol-925-125",
+        "hex": "#302a1a",
+        "line": "--yellow-tournesol-925-125: #302a1a;\n",
+        "tintNumber": 925,
+        "subtintNumber": 125
+      },
+      {
+        "cssVar": "--yellow-tournesol-950-100-active",
+        "name": "yellow-tournesol-950-100-active",
+        "hex": "#655b3d",
+        "line": "--yellow-tournesol-950-100-active: #655b3d;\n",
+        "tintNumber": 950,
+        "subtintNumber": 100
+      },
+      {
+        "cssVar": "--yellow-tournesol-950-100-hover",
+        "name": "yellow-tournesol-950-100-hover",
+        "hex": "#4f472f",
+        "line": "--yellow-tournesol-950-100-hover: #4f472f;\n",
+        "tintNumber": 950,
+        "subtintNumber": 100
+      },
+      {
+        "cssVar": "--yellow-tournesol-950-100",
+        "name": "yellow-tournesol-950-100",
+        "hex": "#292416",
+        "line": "--yellow-tournesol-950-100: #292416;\n",
+        "tintNumber": 950,
+        "subtintNumber": 100
+      },
+      {
+        "cssVar": "--yellow-tournesol-975-75-active",
+        "name": "yellow-tournesol-975-75-active",
+        "hex": "#5c5136",
+        "line": "--yellow-tournesol-975-75-active: #5c5136;\n",
+        "tintNumber": 975,
+        "subtintNumber": 75
+      },
+      {
+        "cssVar": "--yellow-tournesol-975-75-hover",
+        "name": "yellow-tournesol-975-75-hover",
+        "hex": "#473e29",
+        "line": "--yellow-tournesol-975-75-hover: #473e29;\n",
+        "tintNumber": 975,
+        "subtintNumber": 75
+      },
+      {
+        "cssVar": "--yellow-tournesol-975-75",
+        "name": "yellow-tournesol-975-75",
+        "hex": "#221d11",
+        "line": "--yellow-tournesol-975-75: #221d11;\n",
+        "tintNumber": 975,
+        "subtintNumber": 75
+      }
+    ],
+    "yellow-moutarde": [
+      {
+        "cssVar": "--yellow-moutarde-sun-348-moon-860-active",
+        "name": "yellow-moutarde-sun-348-moon-860-active",
+        "hex": "#b28c00",
+        "line": "--yellow-moutarde-sun-348-moon-860-active: #b28c00;\n",
+        "tintNumber": 348,
+        "subtintNumber": 860
+      },
+      {
+        "cssVar": "--yellow-moutarde-sun-348-moon-860-hover",
+        "name": "yellow-moutarde-sun-348-moon-860-hover",
+        "hex": "#cda200",
+        "line": "--yellow-moutarde-sun-348-moon-860-hover: #cda200;\n",
+        "tintNumber": 348,
+        "subtintNumber": 860
+      },
+      {
+        "cssVar": "--yellow-moutarde-sun-348-moon-860",
+        "name": "yellow-moutarde-sun-348-moon-860",
+        "hex": "#ffca00",
+        "line": "--yellow-moutarde-sun-348-moon-860: #ffca00;\n",
+        "tintNumber": 348,
+        "subtintNumber": 860
+      },
+      {
+        "cssVar": "--yellow-moutarde-main-679",
+        "name": "yellow-moutarde-main-679",
+        "hex": "#c3992a",
+        "line": "--yellow-moutarde-main-679: #c3992a;\n",
+        "tintNumber": 679,
+        "subtintNumber": 0
+      },
+      {
+        "cssVar": "--yellow-moutarde-850-200",
+        "name": "yellow-moutarde-850-200",
+        "hex": "#453820",
+        "line": "--yellow-moutarde-850-200: #453820;\n",
+        "tintNumber": 850,
+        "subtintNumber": 200
+      },
+      {
+        "cssVar": "--yellow-moutarde-925-125-active",
+        "name": "yellow-moutarde-925-125-active",
+        "hex": "#6f6149",
+        "line": "--yellow-moutarde-925-125-active: #6f6149;\n",
+        "tintNumber": 925,
+        "subtintNumber": 125
+      },
+      {
+        "cssVar": "--yellow-moutarde-925-125-hover",
+        "name": "yellow-moutarde-925-125-hover",
+        "hex": "#584d39",
+        "line": "--yellow-moutarde-925-125-hover: #584d39;\n",
+        "tintNumber": 925,
+        "subtintNumber": 125
+      },
+      {
+        "cssVar": "--yellow-moutarde-925-125",
+        "name": "yellow-moutarde-925-125",
+        "hex": "#30291d",
+        "line": "--yellow-moutarde-925-125: #30291d;\n",
+        "tintNumber": 925,
+        "subtintNumber": 125
+      },
+      {
+        "cssVar": "--yellow-moutarde-950-100-active",
+        "name": "yellow-moutarde-950-100-active",
+        "hex": "#685944",
+        "line": "--yellow-moutarde-950-100-active: #685944;\n",
+        "tintNumber": 950,
+        "subtintNumber": 100
+      },
+      {
+        "cssVar": "--yellow-moutarde-950-100-hover",
+        "name": "yellow-moutarde-950-100-hover",
+        "hex": "#514534",
+        "line": "--yellow-moutarde-950-100-hover: #514534;\n",
+        "tintNumber": 950,
+        "subtintNumber": 100
+      },
+      {
+        "cssVar": "--yellow-moutarde-950-100",
+        "name": "yellow-moutarde-950-100",
+        "hex": "#2a2319",
+        "line": "--yellow-moutarde-950-100: #2a2319;\n",
+        "tintNumber": 950,
+        "subtintNumber": 100
+      },
+      {
+        "cssVar": "--yellow-moutarde-975-75-active",
+        "name": "yellow-moutarde-975-75-active",
+        "hex": "#5e513d",
+        "line": "--yellow-moutarde-975-75-active: #5e513d;\n",
+        "tintNumber": 975,
+        "subtintNumber": 75
+      },
+      {
+        "cssVar": "--yellow-moutarde-975-75-hover",
+        "name": "yellow-moutarde-975-75-hover",
+        "hex": "#483e2e",
+        "line": "--yellow-moutarde-975-75-hover: #483e2e;\n",
+        "tintNumber": 975,
+        "subtintNumber": 75
+      },
+      {
+        "cssVar": "--yellow-moutarde-975-75",
+        "name": "yellow-moutarde-975-75",
+        "hex": "#231d14",
+        "line": "--yellow-moutarde-975-75: #231d14;\n",
+        "tintNumber": 975,
+        "subtintNumber": 75
+      }
+    ],
+    "orange-terre-battue": [
+      {
+        "cssVar": "--orange-terre-battue-sun-370-moon-672-active",
+        "name": "orange-terre-battue-sun-370-moon-672-active",
+        "hex": "#ffbbab",
+        "line": "--orange-terre-battue-sun-370-moon-672-active: #ffbbab;\n",
+        "tintNumber": 370,
+        "subtintNumber": 672
+      },
+      {
+        "cssVar": "--orange-terre-battue-sun-370-moon-672-hover",
+        "name": "orange-terre-battue-sun-370-moon-672-hover",
+        "hex": "#ffa48b",
+        "line": "--orange-terre-battue-sun-370-moon-672-hover: #ffa48b;\n",
+        "tintNumber": 370,
+        "subtintNumber": 672
+      },
+      {
+        "cssVar": "--orange-terre-battue-sun-370-moon-672",
+        "name": "orange-terre-battue-sun-370-moon-672",
+        "hex": "#ff732c",
+        "line": "--orange-terre-battue-sun-370-moon-672: #ff732c;\n",
+        "tintNumber": 370,
+        "subtintNumber": 672
+      },
+      {
+        "cssVar": "--orange-terre-battue-main-645",
+        "name": "orange-terre-battue-main-645",
+        "hex": "#e4794a",
+        "line": "--orange-terre-battue-main-645: #e4794a;\n",
+        "tintNumber": 645,
+        "subtintNumber": 0
+      },
+      {
+        "cssVar": "--orange-terre-battue-850-200",
+        "name": "orange-terre-battue-850-200",
+        "hex": "#543125",
+        "line": "--orange-terre-battue-850-200: #543125;\n",
+        "tintNumber": 850,
+        "subtintNumber": 200
+      },
+      {
+        "cssVar": "--orange-terre-battue-925-125-active",
+        "name": "orange-terre-battue-925-125-active",
+        "hex": "#7f5b51",
+        "line": "--orange-terre-battue-925-125-active: #7f5b51;\n",
+        "tintNumber": 925,
+        "subtintNumber": 125
+      },
+      {
+        "cssVar": "--orange-terre-battue-925-125-hover",
+        "name": "orange-terre-battue-925-125-hover",
+        "hex": "#664840",
+        "line": "--orange-terre-battue-925-125-hover: #664840;\n",
+        "tintNumber": 925,
+        "subtintNumber": 125
+      },
+      {
+        "cssVar": "--orange-terre-battue-925-125",
+        "name": "orange-terre-battue-925-125",
+        "hex": "#382621",
+        "line": "--orange-terre-battue-925-125: #382621;\n",
+        "tintNumber": 925,
+        "subtintNumber": 125
+      },
+      {
+        "cssVar": "--orange-terre-battue-950-100-active",
+        "name": "orange-terre-battue-950-100-active",
+        "hex": "#77534a",
+        "line": "--orange-terre-battue-950-100-active: #77534a;\n",
+        "tintNumber": 950,
+        "subtintNumber": 100
+      },
+      {
+        "cssVar": "--orange-terre-battue-950-100-hover",
+        "name": "orange-terre-battue-950-100-hover",
+        "hex": "#5d403a",
+        "line": "--orange-terre-battue-950-100-hover: #5d403a;\n",
+        "tintNumber": 950,
+        "subtintNumber": 100
+      },
+      {
+        "cssVar": "--orange-terre-battue-950-100",
+        "name": "orange-terre-battue-950-100",
+        "hex": "#31201c",
+        "line": "--orange-terre-battue-950-100: #31201c;\n",
+        "tintNumber": 950,
+        "subtintNumber": 100
+      },
+      {
+        "cssVar": "--orange-terre-battue-975-75-active",
+        "name": "orange-terre-battue-975-75-active",
+        "hex": "#6a4b42",
+        "line": "--orange-terre-battue-975-75-active: #6a4b42;\n",
+        "tintNumber": 975,
+        "subtintNumber": 75
+      },
+      {
+        "cssVar": "--orange-terre-battue-975-75-hover",
+        "name": "orange-terre-battue-975-75-hover",
+        "hex": "#513932",
+        "line": "--orange-terre-battue-975-75-hover: #513932;\n",
+        "tintNumber": 975,
+        "subtintNumber": 75
+      },
+      {
+        "cssVar": "--orange-terre-battue-975-75",
+        "name": "orange-terre-battue-975-75",
+        "hex": "#281a16",
+        "line": "--orange-terre-battue-975-75: #281a16;\n",
+        "tintNumber": 975,
+        "subtintNumber": 75
+      }
+    ],
+    "brown-cafe-creme": [
+      {
+        "cssVar": "--brown-cafe-creme-sun-383-moon-885-active",
+        "name": "brown-cafe-creme-sun-383-moon-885-active",
+        "hex": "#af9f77",
+        "line": "--brown-cafe-creme-sun-383-moon-885-active: #af9f77;\n",
+        "tintNumber": 383,
+        "subtintNumber": 885
+      },
+      {
+        "cssVar": "--brown-cafe-creme-sun-383-moon-885-hover",
+        "name": "brown-cafe-creme-sun-383-moon-885-hover",
+        "hex": "#c5b386",
+        "line": "--brown-cafe-creme-sun-383-moon-885-hover: #c5b386;\n",
+        "tintNumber": 383,
+        "subtintNumber": 885
+      },
+      {
+        "cssVar": "--brown-cafe-creme-sun-383-moon-885",
+        "name": "brown-cafe-creme-sun-383-moon-885",
+        "hex": "#ecd7a2",
+        "line": "--brown-cafe-creme-sun-383-moon-885: #ecd7a2;\n",
+        "tintNumber": 383,
+        "subtintNumber": 885
+      },
+      {
+        "cssVar": "--brown-cafe-creme-main-782",
+        "name": "brown-cafe-creme-main-782",
+        "hex": "#d1b781",
+        "line": "--brown-cafe-creme-main-782: #d1b781;\n",
+        "tintNumber": 782,
+        "subtintNumber": 0
+      },
+      {
+        "cssVar": "--brown-cafe-creme-850-200",
+        "name": "brown-cafe-creme-850-200",
+        "hex": "#423925",
+        "line": "--brown-cafe-creme-850-200: #423925;\n",
+        "tintNumber": 850,
+        "subtintNumber": 200
+      },
+      {
+        "cssVar": "--brown-cafe-creme-925-125-active",
+        "name": "brown-cafe-creme-925-125-active",
+        "hex": "#6b6351",
+        "line": "--brown-cafe-creme-925-125-active: #6b6351;\n",
+        "tintNumber": 925,
+        "subtintNumber": 125
+      },
+      {
+        "cssVar": "--brown-cafe-creme-925-125-hover",
+        "name": "brown-cafe-creme-925-125-hover",
+        "hex": "#554e3f",
+        "line": "--brown-cafe-creme-925-125-hover: #554e3f;\n",
+        "tintNumber": 925,
+        "subtintNumber": 125
+      },
+      {
+        "cssVar": "--brown-cafe-creme-925-125",
+        "name": "brown-cafe-creme-925-125",
+        "hex": "#2e2a21",
+        "line": "--brown-cafe-creme-925-125: #2e2a21;\n",
+        "tintNumber": 925,
+        "subtintNumber": 125
+      },
+      {
+        "cssVar": "--brown-cafe-creme-950-100-active",
+        "name": "brown-cafe-creme-950-100-active",
+        "hex": "#635b4a",
+        "line": "--brown-cafe-creme-950-100-active: #635b4a;\n",
+        "tintNumber": 950,
+        "subtintNumber": 100
+      },
+      {
+        "cssVar": "--brown-cafe-creme-950-100-hover",
+        "name": "brown-cafe-creme-950-100-hover",
+        "hex": "#4e4739",
+        "line": "--brown-cafe-creme-950-100-hover: #4e4739;\n",
+        "tintNumber": 950,
+        "subtintNumber": 100
+      },
+      {
+        "cssVar": "--brown-cafe-creme-950-100",
+        "name": "brown-cafe-creme-950-100",
+        "hex": "#28241c",
+        "line": "--brown-cafe-creme-950-100: #28241c;\n",
+        "tintNumber": 950,
+        "subtintNumber": 100
+      },
+      {
+        "cssVar": "--brown-cafe-creme-975-75-active",
+        "name": "brown-cafe-creme-975-75-active",
+        "hex": "#5a5141",
+        "line": "--brown-cafe-creme-975-75-active: #5a5141;\n",
+        "tintNumber": 975,
+        "subtintNumber": 75
+      },
+      {
+        "cssVar": "--brown-cafe-creme-975-75-hover",
+        "name": "brown-cafe-creme-975-75-hover",
+        "hex": "#453e31",
+        "line": "--brown-cafe-creme-975-75-hover: #453e31;\n",
+        "tintNumber": 975,
+        "subtintNumber": 75
+      },
+      {
+        "cssVar": "--brown-cafe-creme-975-75",
+        "name": "brown-cafe-creme-975-75",
+        "hex": "#211d16",
+        "line": "--brown-cafe-creme-975-75: #211d16;\n",
+        "tintNumber": 975,
+        "subtintNumber": 75
+      }
+    ],
+    "brown-caramel": [
+      {
+        "cssVar": "--brown-caramel-sun-425-moon-901-active",
+        "name": "brown-caramel-sun-425-moon-901-active",
+        "hex": "#d6a23e",
+        "line": "--brown-caramel-sun-425-moon-901-active: #d6a23e;\n",
+        "tintNumber": 425,
+        "subtintNumber": 901
+      },
+      {
+        "cssVar": "--brown-caramel-sun-425-moon-901-hover",
+        "name": "brown-caramel-sun-425-moon-901-hover",
+        "hex": "#efb547",
+        "line": "--brown-caramel-sun-425-moon-901-hover: #efb547;\n",
+        "tintNumber": 425,
+        "subtintNumber": 901
+      },
+      {
+        "cssVar": "--brown-caramel-sun-425-moon-901",
+        "name": "brown-caramel-sun-425-moon-901",
+        "hex": "#fbd8ab",
+        "line": "--brown-caramel-sun-425-moon-901: #fbd8ab;\n",
+        "tintNumber": 425,
+        "subtintNumber": 901
+      },
+      {
+        "cssVar": "--brown-caramel-main-648",
+        "name": "brown-caramel-main-648",
+        "hex": "#c08c65",
+        "line": "--brown-caramel-main-648: #c08c65;\n",
+        "tintNumber": 648,
+        "subtintNumber": 0
+      },
+      {
+        "cssVar": "--brown-caramel-850-200",
+        "name": "brown-caramel-850-200",
+        "hex": "#4b3525",
+        "line": "--brown-caramel-850-200: #4b3525;\n",
+        "tintNumber": 850,
+        "subtintNumber": 200
+      },
+      {
+        "cssVar": "--brown-caramel-925-125-active",
+        "name": "brown-caramel-925-125-active",
+        "hex": "#755f51",
+        "line": "--brown-caramel-925-125-active: #755f51;\n",
+        "tintNumber": 925,
+        "subtintNumber": 125
+      },
+      {
+        "cssVar": "--brown-caramel-925-125-hover",
+        "name": "brown-caramel-925-125-hover",
+        "hex": "#5d4b40",
+        "line": "--brown-caramel-925-125-hover: #5d4b40;\n",
+        "tintNumber": 925,
+        "subtintNumber": 125
+      },
+      {
+        "cssVar": "--brown-caramel-925-125",
+        "name": "brown-caramel-925-125",
+        "hex": "#332821",
+        "line": "--brown-caramel-925-125: #332821;\n",
+        "tintNumber": 925,
+        "subtintNumber": 125
+      },
+      {
+        "cssVar": "--brown-caramel-950-100-active",
+        "name": "brown-caramel-950-100-active",
+        "hex": "#6c574a",
+        "line": "--brown-caramel-950-100-active: #6c574a;\n",
+        "tintNumber": 950,
+        "subtintNumber": 100
+      },
+      {
+        "cssVar": "--brown-caramel-950-100-hover",
+        "name": "brown-caramel-950-100-hover",
+        "hex": "#554439",
+        "line": "--brown-caramel-950-100-hover: #554439;\n",
+        "tintNumber": 950,
+        "subtintNumber": 100
+      },
+      {
+        "cssVar": "--brown-caramel-950-100",
+        "name": "brown-caramel-950-100",
+        "hex": "#2c221c",
+        "line": "--brown-caramel-950-100: #2c221c;\n",
+        "tintNumber": 950,
+        "subtintNumber": 100
+      },
+      {
+        "cssVar": "--brown-caramel-975-75-active",
+        "name": "brown-caramel-975-75-active",
+        "hex": "#624e41",
+        "line": "--brown-caramel-975-75-active: #624e41;\n",
+        "tintNumber": 975,
+        "subtintNumber": 75
+      },
+      {
+        "cssVar": "--brown-caramel-975-75-hover",
+        "name": "brown-caramel-975-75-hover",
+        "hex": "#4c3c31",
+        "line": "--brown-caramel-975-75-hover: #4c3c31;\n",
+        "tintNumber": 975,
+        "subtintNumber": 75
+      },
+      {
+        "cssVar": "--brown-caramel-975-75",
+        "name": "brown-caramel-975-75",
+        "hex": "#251c16",
+        "line": "--brown-caramel-975-75: #251c16;\n",
+        "tintNumber": 975,
+        "subtintNumber": 75
+      }
+    ],
+    "brown-opera": [
+      {
+        "cssVar": "--brown-opera-sun-395-moon-820-active",
+        "name": "brown-opera-sun-395-moon-820-active",
+        "hex": "#f8f0e9",
+        "line": "--brown-opera-sun-395-moon-820-active: #f8f0e9;\n",
+        "tintNumber": 395,
+        "subtintNumber": 820
+      },
+      {
+        "cssVar": "--brown-opera-sun-395-moon-820-hover",
+        "name": "brown-opera-sun-395-moon-820-hover",
+        "hex": "#f2e2d3",
+        "line": "--brown-opera-sun-395-moon-820-hover: #f2e2d3;\n",
+        "tintNumber": 395,
+        "subtintNumber": 820
+      },
+      {
+        "cssVar": "--brown-opera-sun-395-moon-820",
+        "name": "brown-opera-sun-395-moon-820",
+        "hex": "#e6be92",
+        "line": "--brown-opera-sun-395-moon-820: #e6be92;\n",
+        "tintNumber": 395,
+        "subtintNumber": 820
+      },
+      {
+        "cssVar": "--brown-opera-main-680",
+        "name": "brown-opera-main-680",
+        "hex": "#bd987a",
+        "line": "--brown-opera-main-680: #bd987a;\n",
+        "tintNumber": 680,
+        "subtintNumber": 0
+      },
+      {
+        "cssVar": "--brown-opera-850-200",
+        "name": "brown-opera-850-200",
+        "hex": "#493625",
+        "line": "--brown-opera-850-200: #493625;\n",
+        "tintNumber": 850,
+        "subtintNumber": 200
+      },
+      {
+        "cssVar": "--brown-opera-925-125-active",
+        "name": "brown-opera-925-125-active",
+        "hex": "#735f51",
+        "line": "--brown-opera-925-125-active: #735f51;\n",
+        "tintNumber": 925,
+        "subtintNumber": 125
+      },
+      {
+        "cssVar": "--brown-opera-925-125-hover",
+        "name": "brown-opera-925-125-hover",
+        "hex": "#5c4b40",
+        "line": "--brown-opera-925-125-hover: #5c4b40;\n",
+        "tintNumber": 925,
+        "subtintNumber": 125
+      },
+      {
+        "cssVar": "--brown-opera-925-125",
+        "name": "brown-opera-925-125",
+        "hex": "#322821",
+        "line": "--brown-opera-925-125: #322821;\n",
+        "tintNumber": 925,
+        "subtintNumber": 125
+      },
+      {
+        "cssVar": "--brown-opera-950-100-active",
+        "name": "brown-opera-950-100-active",
+        "hex": "#6a574a",
+        "line": "--brown-opera-950-100-active: #6a574a;\n",
+        "tintNumber": 950,
+        "subtintNumber": 100
+      },
+      {
+        "cssVar": "--brown-opera-950-100-hover",
+        "name": "brown-opera-950-100-hover",
+        "hex": "#53443a",
+        "line": "--brown-opera-950-100-hover: #53443a;\n",
+        "tintNumber": 950,
+        "subtintNumber": 100
+      },
+      {
+        "cssVar": "--brown-opera-950-100",
+        "name": "brown-opera-950-100",
+        "hex": "#2b221c",
+        "line": "--brown-opera-950-100: #2b221c;\n",
+        "tintNumber": 950,
+        "subtintNumber": 100
+      },
+      {
+        "cssVar": "--brown-opera-975-75-active",
+        "name": "brown-opera-975-75-active",
+        "hex": "#604f44",
+        "line": "--brown-opera-975-75-active: #604f44;\n",
+        "tintNumber": 975,
+        "subtintNumber": 75
+      },
+      {
+        "cssVar": "--brown-opera-975-75-hover",
+        "name": "brown-opera-975-75-hover",
+        "hex": "#4a3c33",
+        "line": "--brown-opera-975-75-hover: #4a3c33;\n",
+        "tintNumber": 975,
+        "subtintNumber": 75
+      },
+      {
+        "cssVar": "--brown-opera-975-75",
+        "name": "brown-opera-975-75",
+        "hex": "#241c17",
+        "line": "--brown-opera-975-75: #241c17;\n",
+        "tintNumber": 975,
+        "subtintNumber": 75
+      }
+    ],
+    "beige-gris-galet": [
+      {
+        "cssVar": "--beige-gris-galet-sun-407-moon-821-active",
+        "name": "beige-gris-galet-sun-407-moon-821-active",
+        "hex": "#f4f2f0",
+        "line": "--beige-gris-galet-sun-407-moon-821-active: #f4f2f0;\n",
+        "tintNumber": 407,
+        "subtintNumber": 821
+      },
+      {
+        "cssVar": "--beige-gris-galet-sun-407-moon-821-hover",
+        "name": "beige-gris-galet-sun-407-moon-821-hover",
+        "hex": "#eae5e1",
+        "line": "--beige-gris-galet-sun-407-moon-821-hover: #eae5e1;\n",
+        "tintNumber": 407,
+        "subtintNumber": 821
+      },
+      {
+        "cssVar": "--beige-gris-galet-sun-407-moon-821",
+        "name": "beige-gris-galet-sun-407-moon-821",
+        "hex": "#d0c3b7",
+        "line": "--beige-gris-galet-sun-407-moon-821: #d0c3b7;\n",
+        "tintNumber": 407,
+        "subtintNumber": 821
+      },
+      {
+        "cssVar": "--beige-gris-galet-main-702",
+        "name": "beige-gris-galet-main-702",
+        "hex": "#aea397",
+        "line": "--beige-gris-galet-main-702: #aea397;\n",
+        "tintNumber": 702,
+        "subtintNumber": 0
+      },
+      {
+        "cssVar": "--beige-gris-galet-850-200",
+        "name": "beige-gris-galet-850-200",
+        "hex": "#433829",
+        "line": "--beige-gris-galet-850-200: #433829;\n",
+        "tintNumber": 850,
+        "subtintNumber": 200
+      },
+      {
+        "cssVar": "--beige-gris-galet-925-125-active",
+        "name": "beige-gris-galet-925-125-active",
+        "hex": "#6b6157",
+        "line": "--beige-gris-galet-925-125-active: #6b6157;\n",
+        "tintNumber": 925,
+        "subtintNumber": 125
+      },
+      {
+        "cssVar": "--beige-gris-galet-925-125-hover",
+        "name": "beige-gris-galet-925-125-hover",
+        "hex": "#554d45",
+        "line": "--beige-gris-galet-925-125-hover: #554d45;\n",
+        "tintNumber": 925,
+        "subtintNumber": 125
+      },
+      {
+        "cssVar": "--beige-gris-galet-925-125",
+        "name": "beige-gris-galet-925-125",
+        "hex": "#2e2924",
+        "line": "--beige-gris-galet-925-125: #2e2924;\n",
+        "tintNumber": 925,
+        "subtintNumber": 125
+      },
+      {
+        "cssVar": "--beige-gris-galet-950-100-active",
+        "name": "beige-gris-galet-950-100-active",
+        "hex": "#635950",
+        "line": "--beige-gris-galet-950-100-active: #635950;\n",
+        "tintNumber": 950,
+        "subtintNumber": 100
+      },
+      {
+        "cssVar": "--beige-gris-galet-950-100-hover",
+        "name": "beige-gris-galet-950-100-hover",
+        "hex": "#4e453f",
+        "line": "--beige-gris-galet-950-100-hover: #4e453f;\n",
+        "tintNumber": 950,
+        "subtintNumber": 100
+      },
+      {
+        "cssVar": "--beige-gris-galet-950-100",
+        "name": "beige-gris-galet-950-100",
+        "hex": "#28231f",
+        "line": "--beige-gris-galet-950-100: #28231f;\n",
+        "tintNumber": 950,
+        "subtintNumber": 100
+      },
+      {
+        "cssVar": "--beige-gris-galet-975-75-active",
+        "name": "beige-gris-galet-975-75-active",
+        "hex": "#595148",
+        "line": "--beige-gris-galet-975-75-active: #595148;\n",
+        "tintNumber": 975,
+        "subtintNumber": 75
+      },
+      {
+        "cssVar": "--beige-gris-galet-975-75-hover",
+        "name": "beige-gris-galet-975-75-hover",
+        "hex": "#453e37",
+        "line": "--beige-gris-galet-975-75-hover: #453e37;\n",
+        "tintNumber": 975,
+        "subtintNumber": 75
+      },
+      {
+        "cssVar": "--beige-gris-galet-975-75",
+        "name": "beige-gris-galet-975-75",
+        "hex": "#211d19",
+        "line": "--beige-gris-galet-975-75: #211d19;\n",
+        "tintNumber": 975,
+        "subtintNumber": 75
+      }
+    ]
+  }
+}
