@@ -297,6 +297,7 @@ export default defineConfig({
       {
         text: 'Références',
         items: [
+          { text: 'Tous les couleurs', link: '/couleurs' },
           { text: 'Tous les composants', link: '/composants' },
           { text: 'Tous les composables', link: '/composables' },
           { text: 'Tous les types', link: '/types' },
@@ -348,6 +349,7 @@ export default defineConfig({
       '/composants': minimalToc.map(item => item.text === 'Tous les composants' ? { ...item, items: composants } : item),
       '/composables': minimalToc.map(item => item.text === 'Tous les composables' ? { ...item, items: composables } : item),
       '/recettes': minimalToc.map(item => item.text === 'Recettes' ? { ...item, items: recipes } : item),
+      '/couleurs': minimalToc,
       '/': minimalToc.map(item => item.text === 'Guide' ? { ...item, items: guideItems } : item),
     },
 

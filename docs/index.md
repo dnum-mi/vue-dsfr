@@ -11,6 +11,9 @@ hero:
       text: Pour commencer
       link: /guide/pour-commencer
     - theme: alt
+      text: Liste des couleurs
+      link: /couleurs
+    - theme: alt
       text: Liste des composants
       link: /composants
     - theme: alt
