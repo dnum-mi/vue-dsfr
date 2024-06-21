@@ -25,14 +25,17 @@ const emit = defineEmits<{
 }>()
 
 const selected = ref<string>()
+const selectedName = ref<string>()
 const timeoutId = ref<number>()
-const copyInClipboard = (text: string) => {
+const copyInClipboard = (text: string, colorName: string) => {
   navigator.clipboard.writeText(text)
   selected.value = text
+  selectedName.value = colorName
   emit('copied', text)
   window.clearTimeout(timeoutId.value)
   timeoutId.value = window.setTimeout(() => {
     selected.value = ''
+    selectedName.value = ''
   }, 3000)
 }
 </script>
@@ -56,11 +59,11 @@ const copyInClipboard = (text: string) => {
           v-for="subColor of subColors"
           :key="subColor.name"
           class="color"
-          @click="copyInClipboard(subColor.cssVar)"
+          @click="copyInClipboard(subColor.cssVar, subColor.name)"
         >
           <div
             role="button"
-            :style="`background-color: ${subColor.hex}; width: 100%; height: 80px;`"
+            :style="`background-color: ${subColor.hex}; flex: 0 0 80px; height: 55px;`"
           />
           <div
             class="color-details"
@@ -68,7 +71,7 @@ const copyInClipboard = (text: string) => {
           >
             <Transition name="fade">
               <div
-                v-if="selected === subColor.cssVar || selected === subColor.hex"
+                v-if="selectedName === subColor.name"
                 class="overlay"
               >
                 <strong>{{ selected }}</strong>
@@ -88,7 +91,7 @@ const copyInClipboard = (text: string) => {
             <button
               class="color-animated"
               style="padding: 0.125rem 0.25rem; margin-inline: 0.25rem"
-              @click.stop="copyInClipboard(subColor.hex)"
+              @click.stop="copyInClipboard(subColor.hex, subColor.name)"
             >
               <em>{{ subColor.hex }}</em>
               <VIcon
@@ -104,45 +107,30 @@ const copyInClipboard = (text: string) => {
 </template>
 
 <style scoped>
-.colors-container {
-  overflow: auto;
-
-  background:linear-gradient(90deg,#fff 33%,rgba(255,255,255,0)),
-    linear-gradient(90deg,rgba(255,255,255,0),#fff 66%) 0 100%,
-    radial-gradient(farthest-side at 50% 80%,rgba(0,0,0,.4),transparent),
-    radial-gradient(farthest-side at 100% 50%,rgba(0,0,0,.4),transparent) 0 100%;
-  background-repeat:no-repeat;
-  background-size:60px 100%,60px 100%,30px 100%,30px 100%;
-  background-position:0 0,100%,0 0,100%;
-  background-attachment:local,local,scroll,scroll
-}
 .colors {
-  display: flex;
-  flex-wrap: no-wrap;
   list-style: none;
 }
+
 ul li.color {
   margin: 0;
 }
 
 .color {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
   align-items: center;
-  flex: 1 0 200px;
+  flex: 1 0 100px;
+  height: 100%;
   cursor: pointer;
 }
+
 .color-details {
   position: relative;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  gap: 1rem;
   align-items: center;
-  flex: 1 0 200px;
-  border: 1px solid;
+  height: 55px;
+  padding-inline: 0.5rem;
   width: 100%;
-  height: 200px;
 }
 
 .color-animated {
@@ -166,6 +154,7 @@ ul li.color {
   --text-color: white;
   --hover-text-color: #ccc;
 }
+
 .color-animated:hover {
   background-position: 0 100%;
 
@@ -184,11 +173,11 @@ ul li.color {
     background-position: 100% 100%;
   }
 }
+
 .overlay {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
   align-items: center;
+  gap: 1rem;
   position: absolute;
   top: 0;
   left: 0;
@@ -197,15 +186,17 @@ ul li.color {
   color: #eee;
   background-color: rgba(0, 0, 0, 0.8);
   z-index: 1;
+  padding-inline: 0.5rem;
 }
+
 .overlay * {
   text-align: center;
 }
+
 .fade-enter-active,
 .fade-leave-active {
   transition: opacity 0.2s ease;
 }
-
 .fade-enter-from,
 .fade-leave-to {
   transition: opacity 0.5s ease;
