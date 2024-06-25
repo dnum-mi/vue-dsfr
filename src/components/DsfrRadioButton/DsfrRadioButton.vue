@@ -11,12 +11,16 @@ const props = withDefaults(defineProps<DsfrRadioButtonProps>(), {
   modelValue: '',
   label: '',
   hint: '',
-  img: '',
+  img: undefined,
+  svgPath: undefined,
+  svgAttrs: () => ({ viewBox: '0 0 80 80', width: '80px', height: '80px' }),
 })
 
 defineEmits<{ (e: 'update:modelValue', payload: string | number | boolean): void }>()
 
-const rich = computed(() => !!props.img)
+const defaultSvgAttrs = { viewBox: '0 0 80 80', width: '80px', height: '80px' }
+
+const rich = computed(() => !!props.img || !!props.svgPath)
 </script>
 
 <template>
@@ -65,13 +69,34 @@ const rich = computed(() => !!props.img)
         </span>
       </label>
       <div
-        v-if="img"
+        v-if="img || svgPath"
         class="fr-radio-rich__pictogram"
       >
         <img
+          v-if="img"
           :src="img"
+          class="fr-artwork"
           alt=""
         >
+        <svg
+          v-else
+          aria-hidden="true"
+          class="fr-artwork"
+          v-bind="{ ...defaultSvgAttrs, ...svgAttrs }"
+        >
+          <use
+            class="fr-artwork-decorative"
+            :href="`${svgPath}#artwork-decorative`"
+          />
+          <use
+            class="fr-artwork-minor"
+            :href="`${svgPath}#artwork-minor`"
+          />
+          <use
+            class="fr-artwork-major"
+            :href="`${svgPath}#artwork-major`"
+          />
+        </svg>
       </div>
     </div>
   </div>

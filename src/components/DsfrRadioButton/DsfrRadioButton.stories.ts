@@ -3,6 +3,8 @@ import DsfrRadioButtonSet from './DsfrRadioButtonSet.vue'
 
 /**
  * [Voir quand l’utiliser sur la documentation du DSFR](https://www.systeme-de-design.gouv.fr/elements-d-interface/composants/boutons-radio)
+ *
+ * Nous vous invitons à regarder plutôt la [nouvelle documentation](https://vue-ds.fr/composants/DsfrRadioButton) pour ce composant
  */
 export default {
   component: DsfrRadioButton,
@@ -32,6 +34,14 @@ export default {
     img: {
       control: 'text',
       description: 'Permet d\'ajouter une image au composant',
+    },
+    svgPath: {
+      control: 'text',
+      description: 'Chemin vers le SVG à afficher. (doit respecter les fondamentaux techniques pour les pictogrammes du DSFR)',
+    },
+    svgAttrs: {
+      control: 'object',
+      description: 'Permet de définir des attributs pour le SVG.',
     },
     'update:modelValue': {
       description: 'Événement émis à chaque changement de valeur du groupe de même bouton radio',
