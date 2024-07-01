@@ -21,7 +21,7 @@
       "import": "./dist/vue-dsfr.css"
     }
   },
-  "main": "./dist/vue-dsfr.js",
+  "main": "./dist/vue-dsfr.umd.cjs",
   "module": "./dist/vue-dsfr.js",
   "types": "./types/index.d.ts",
   "files": [
@@ -128,6 +128,7 @@
     "eslint-plugin-vue": "^9.26.0",
     "husky": "^9.0.11",
     "jsdom": "^24.0.0",
+    "lightningcss": "^1.25.1",
     "lint-staged": "^15.2.2",
     "npm-run-all": "^4.1.5",
     "p-debounce": "^4.0.0",

@@ -1,6 +1,8 @@
 import process from 'node:process'
 import { URL, fileURLToPath } from 'node:url'
 import { dirname, resolve } from 'node:path'
+import browserslist from 'browserslist'
+import { browserslistToTargets } from 'lightningcss'
 
 import { type UserConfig, defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
@@ -21,7 +23,14 @@ const config: UserConfig = {
       vue: 'vue/dist/vue.esm-bundler.js',
     },
   },
+  css: {
+    transformer: 'lightningcss',
+    lightningcss: {
+      targets: browserslistToTargets(browserslist('>= 0.25%')),
+    },
+  },
   build: {
+    cssMinify: 'lightningcss',
     lib: {
       name: 'vue-dsfr',
       entry: resolve(projectDir, 'src', 'index.ts'),
