@@ -9,6 +9,8 @@ export type DsfrRadioButtonProps = {
   label?: string
   hint?: string
   img?: string
+  svgPath?: string
+  svgAttrs?: Record<string, unknown>
 }
 
 export type DsfrRadioButtonOptions = (Omit<DsfrRadioButtonProps, 'modelValue'>)[]
