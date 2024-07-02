@@ -36,9 +36,12 @@ const keyToEventDict = {
 } as const
 
 function onKeyDown (event: KeyboardEvent) {
-  const key = event.key as keyof typeof keyToEventDict
-  // @ts-expect-error 2769
-  emit(keyToEventDict[key])
+  const key = event?.key as keyof typeof keyToEventDict
+  const eventToEmit = keyToEventDict[key]
+  if (eventToEmit) {
+    // @ts-expect-error 2769
+    emit(eventToEmit)
+  }
 }
 </script>
 
