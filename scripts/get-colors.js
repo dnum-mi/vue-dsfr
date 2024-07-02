@@ -29,7 +29,7 @@ const darkColors = etlColors(darkColorsCss)
 const tintNumbersRegex = /^\D+-(\d{1,4})(?:-[a-z]+)?(?:-(\d{1,4}))?/
 
 function sortColors (colors) {
-  for (const [_color, subColors] of Object.entries(colors)) {
+  for (const [subColors] of Object.entries(colors)) {
     subColors.sort((a, b) => {
       const [, a1, a2] = a.name.match(tintNumbersRegex) ?? []
       a.tintNumber ??= Number(a1)
