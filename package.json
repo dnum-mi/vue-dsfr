@@ -23,7 +23,7 @@
   },
   "main": "./dist/vue-dsfr.umd.cjs",
   "module": "./dist/vue-dsfr.js",
-  "types": "./types/index.d.ts",
+  "types": "./types",
   "files": [
     "LICENSE",
     "README.md",

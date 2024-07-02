@@ -3,10 +3,15 @@ import type { ComputedRef } from 'vue'
 
 const PREFERS_DARK_MEDIA_QUERY = '(prefers-color-scheme: dark)'
 const COLOR_SCHEME_LS_KEY = 'vue-dsfr-scheme'
-const LIGHT_SCHEME = 'light'
-const DARK_SCHEME = 'dark'
-const SYSTEM_SCHEME = 'system'
+export const LIGHT_SCHEME = 'light'
+export const DARK_SCHEME = 'dark'
+export const SYSTEM_SCHEME = 'system'
 const DEFAULT_DATA_THEME_ATTRIBUTE = 'data-fr-theme'
+
+export type Preferences = {
+  theme: 'light' | 'dark'
+  scheme: 'light' | 'dark' | 'system'
+}
 
 /**
  * @property {(scheme: string) => void} setScheme - Fonction pour mettre à jour le scheme

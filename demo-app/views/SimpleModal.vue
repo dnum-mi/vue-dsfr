@@ -1,8 +1,14 @@
-<script setup>
-import { ref } from 'vue'
+<script setup lang="ts">
+import { ref, reactive, onMounted, watchEffect } from 'vue'
 import DsfrModal from '@/components/DsfrModal/DsfrModal.vue'
+import type { Preferences, UseSchemeResult } from '@/composables/index'
+import { useScheme } from '@/composables/index'
+import lightThemeSvg from '@gouvfr/dsfr/dist/artwork/pictograms/environment/sun.svg'
+import darkThemeSvg from '@gouvfr/dsfr/dist/artwork/pictograms/environment/moon.svg'
+import systemThemeSvg from '@gouvfr/dsfr/dist/artwork/pictograms/system/system.svg'
 
 const isModalOpen = ref(false)
+const isThemeModalOpen = ref(false)
 const displayAlert = ref(false)
 const close = () => {
   displayAlert.value = false
@@ -29,6 +35,41 @@ const actions = [
     onClick: () => { isModalOpen.value = false },
   },
 ]
+
+const preferences: Preferences = reactive({
+  theme: 'light',
+  scheme: 'light',
+})
+
+onMounted(() => {
+  const { theme, scheme, setScheme } = useScheme() as UseSchemeResult
+  preferences.scheme = scheme.value
+
+  watchEffect(() => {
+    preferences.theme = theme.value
+  })
+
+  watchEffect(() => setScheme(preferences.scheme))
+})
+
+const options = [
+  {
+    label: 'Thème clair',
+    value: 'light',
+    svgPath: lightThemeSvg,
+  },
+  {
+    label: 'Thème sombre',
+    value: 'dark',
+    svgPath: darkThemeSvg,
+  },
+  {
+    label: 'Thème système',
+    value: 'system',
+    hint: 'Utilise les paramètres système',
+    svgPath: systemThemeSvg,
+  },
+]
 </script>
 
 <template>
@@ -37,9 +78,44 @@ const actions = [
       class="my-1"
       @click="isModalOpen = true"
     >
-      Open modal
+      Ouvrir modal
     </DsfrButton>
   </div>
+
+  <DsfrButton
+    ref="modalOrigin"
+    label="Changer le thème"
+    @click="isThemeModalOpen = true"
+  />
+  <DsfrModal
+    :opened="isThemeModalOpen"
+    title="Changer le thème"
+    :origin="$refs.modalOrigin"
+    @close="isThemeModalOpen = false"
+  >
+    <DsfrRadioButtonSet
+      v-model="preferences.scheme"
+      :options="options"
+      name="theme-selector"
+      legend="Choisissez un thème pour personnaliser l’apparence du site."
+    />
+  </DsfrModal>
+
+  <DsfrModal
+    v-if="isThemeModalOpen"
+    title="Exemple de modale"
+    :opened="isModalOpen"
+    :actions="actions"
+    @close="isModalOpen = false"
+  >
+    <DsfrAlert
+      :closed="!displayAlert"
+      type="success"
+      small
+      description="Opération terminée avec succès"
+    />
+    Ceci est une modale. Elle peut se fermer sans aucun changement au clic sur le bouton "Fermer" ou bien simplement avec la touche <kbd>Échap</kbd>
+  </DsfrModal>
 
   <DsfrModal
     title="Exemple de modale"
