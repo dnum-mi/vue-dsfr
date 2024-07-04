@@ -14,15 +14,18 @@ export default {
     },
     description: {
       control: 'text',
-      description: 'Description de l\'erreur et formule d\'excuses à l\'utilisateur.',
+      description:
+        'Description de l\'erreur et formule d\'excuses à l\'utilisateur.',
     },
     help: {
       control: 'text',
-      description: 'Accompagnement de l\'utilisateur qui se retrouve confronté à l\'erreur.',
+      description:
+        'Accompagnement de l\'utilisateur qui se retrouve confronté à l\'erreur.',
     },
     buttons: {
       control: 'object',
-      description: 'Tableau d\'objets contenant les props des boutons d\'actions sur la page.',
+      description:
+        'Tableau d\'objets contenant les props des boutons d\'actions sur la page.',
     },
   },
 }
@@ -41,7 +44,6 @@ export const PageErreur404 = (args) => ({
     :buttons="buttons"
   />
   `,
-
 })
 
 PageErreur404.args = {
@@ -49,12 +51,15 @@ PageErreur404.args = {
   subtitle: 'Erreur 404 !',
   description: 'La page que vous recherchez n’existe pas ou l’url est erronée.',
   help: 'Bonne chance !',
-  buttons: [{
-    label: 'Page d\'accueil',
-    link: 'https://www.systeme-de-design.gouv.fr/',
-  }, {
-    label: 'Contactez-nous',
-    secondary: true,
-    link: 'https://www.systeme-de-design.gouv.fr/',
-  }],
+  buttons: [
+    {
+      label: 'Page d\'accueil',
+      link: 'https://www.systeme-de-design.gouv.fr/',
+    },
+    {
+      label: 'Contactez-nous',
+      secondary: true,
+      link: 'https://www.systeme-de-design.gouv.fr/',
+    },
+  ],
 }

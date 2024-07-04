@@ -9,7 +9,8 @@ export default {
   argTypes: {
     active: {
       control: 'boolean',
-      description: 'Indique si l’item du menu correspond à la page courante (`true`) ou non (`false`)',
+      description:
+        'Indique si l’item du menu correspond à la page courante (`true`) ou non (`false`)',
     },
   },
 }

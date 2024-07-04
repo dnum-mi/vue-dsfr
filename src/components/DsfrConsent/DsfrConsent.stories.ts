@@ -1,3 +1,5 @@
+import { fn } from '@storybook/test'
+
 import DsfrConsent from './DsfrConsent.vue'
 
 /**
@@ -8,17 +10,18 @@ export default {
   title: 'Composants/DsfrConsent',
   argTypes: {
     onAcceptAll: {
-      action: 'onClickAcceptAll',
+      action: fn(),
     },
     onRefuseAll: {
-      action: 'onClickRefuseAll',
+      action: fn(),
     },
     onCustomize: {
-      action: 'onClickCustomize',
+      action: fn(),
     },
     url: {
       control: 'text',
-      description: 'Url de la page concernant les "Données personnelles et cookies" sur votre site ou application.',
+      description:
+        'Url de la page concernant les "Données personnelles et cookies" sur votre site ou application.',
     },
     'accept-all': {
       description: 'Évenement émis lors du clic sur le bouton \'Tout accepter\'',

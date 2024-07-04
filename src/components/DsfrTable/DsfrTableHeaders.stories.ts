@@ -42,7 +42,6 @@ export const EnTetesDeTableau = (args) => ({
         </tr>
       </DsfrTable>
   `,
-
 })
 EnTetesDeTableau.args = {
   title,

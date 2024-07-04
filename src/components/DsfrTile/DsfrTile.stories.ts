@@ -15,7 +15,8 @@ export default {
     },
     imgSrc: {
       control: 'text',
-      description: 'Chemin à indiquer afin d’afficher correctement l’image illustrative accompagnant votre tuile',
+      description:
+        'Chemin à indiquer afin d’afficher correctement l’image illustrative accompagnant votre tuile',
     },
     description: {
       control: 'text',
@@ -34,7 +35,8 @@ export default {
       control: {
         type: 'select',
       },
-      description: 'Permet le basculement de la tuile en mode vertical, selon le point de rupture "md" ou "lg" spécifié',
+      description:
+        'Permet le basculement de la tuile en mode vertical, selon le point de rupture "md" ou "lg" spécifié',
     },
     disabled: {
       control: 'boolean',
@@ -42,11 +44,13 @@ export default {
     },
     to: {
       control: 'text',
-      description: 'Lien vers lequel la tuile pointe. Peut être une string ou objet à donner à `RouterLink` ou un lien externe (`string` commençant par `"http"`)',
+      description:
+        'Lien vers lequel la tuile pointe. Peut être une string ou objet à donner à `RouterLink` ou un lien externe (`string` commençant par `"http"`)',
     },
     titleTag: {
       control: 'text',
-      description: 'Permet de choisir la balise contenant le titre de la tuile (h3 par défaut)',
+      description:
+        'Permet de choisir la balise contenant le titre de la tuile (h3 par défaut)',
     },
     download: {
       control: 'boolean',
@@ -110,7 +114,6 @@ export const TuileSimple = (args) => ({
       :grey="grey"
     />
   `,
-
 })
 TuileSimple.args = {
   title: 'Ma formidable tuile',

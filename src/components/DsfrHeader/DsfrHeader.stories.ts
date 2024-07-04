@@ -1,5 +1,5 @@
+import { fn } from '@storybook/test'
 import { addIcons } from 'oh-vue-icons'
-
 import {
   RiAddCircleLine,
   RiLockLine,
@@ -10,11 +10,7 @@ import DsfrHeader from './DsfrHeader.vue'
 import DsfrNavigation from '../DsfrNavigation/DsfrNavigation.vue'
 import type { DsfrLanguageSelectorElement } from '../DsfrLanguageSelector/DsfrLanguageSelector.types'
 
-addIcons(
-  RiAddCircleLine,
-  RiLockLine,
-  RiAccountCircleLine,
-)
+addIcons(RiAddCircleLine, RiLockLine, RiAccountCircleLine)
 
 /**
  * [Voir quand l’utiliser sur la documentation du DSFR](https://www.systeme-de-design.gouv.fr/elements-d-interface/composants/en-tete)
@@ -25,7 +21,8 @@ export default {
   argTypes: {
     logoText: {
       control: 'object',
-      description: 'Texte ou liste de texte (chaque élément du tableau sera sur une ligne) tu logo',
+      description:
+        'Texte ou liste de texte (chaque élément du tableau sera sur une ligne) tu logo',
     },
     serviceTitle: {
       control: 'text',
@@ -37,11 +34,13 @@ export default {
     },
     showSearch: {
       control: 'boolean',
-      description: 'Indique si le champs de recherche doit être affiché (`true`) ou non (`false`, défaut)',
+      description:
+        'Indique si le champs de recherche doit être affiché (`true`) ou non (`false`, défaut)',
     },
     showBeta: {
       control: 'boolean',
-      description: 'Indique si le badge "BETA" doit être affiché (`true`) ou non (`false`, défaut)',
+      description:
+        'Indique si le badge "BETA" doit être affiché (`true`) ou non (`false`, défaut)',
     },
     homeTo: {
       control: 'text',
@@ -67,13 +66,16 @@ export default {
     },
     placeholder: {
       control: 'text',
-      description: '**placeholder** du champ de saisie de la barre de recherche',
+      description:
+        '**placeholder** du champ de saisie de la barre de recherche',
     },
     'update:modelValue': {
-      description: 'Événement émis lors du changement de la valeur du champ de saisie de la barre de recherche',
+      description:
+        'Événement émis lors du changement de la valeur du champ de saisie de la barre de recherche',
     },
     search: {
-      description: 'Événement émis lors de la validation de la recherche de la barre de recherche',
+      description:
+        'Événement émis lors de la validation de la recherche de la barre de recherche',
     },
     operatorImgSrc: {
       control: 'text',
@@ -90,7 +92,7 @@ export default {
     actionOnLogo: { action: 'clicked on logo' },
     actionOnLink: { action: 'clicked on quickLink' },
     onChangeSearchInput: { action: 'search changed' },
-    onSearch: { action: 'Searching' },
+    onSearch: { action: fn() },
     showSearchLabel: {
       control: 'text',
       description: 'Label du bouton pour afficher la recherche.',
@@ -109,7 +111,8 @@ export default {
     },
     homeLabel: {
       control: 'text',
-      description: 'Label de l\'accueil composant le titre du lien présentant le service.',
+      description:
+        'Label de l\'accueil composant le titre du lien présentant le service.',
     },
   },
 }
@@ -154,7 +157,6 @@ export const EnTeteSimple = (args) => ({
       this.actionOnLogo($event)
     },
   },
-
 })
 EnTeteSimple.args = {
   showSearch: true,
@@ -165,9 +167,25 @@ EnTeteSimple.args = {
   placeholder: '',
   homeTo: '#',
   quickLinks: [
-    { label: 'Créer un espace', to: '/space/create', icon: 'ri-add-circle-line', iconAttrs: { scale: 0.9 } },
-    { label: 'Se connecter', to: '/login', class: 'fr-fi-lock-line', target: '_blank' },
-    { label: 'S’enregistrer', to: '/signin', icon: 'ri-account-circle-line', iconRight: true, iconAttrs: { animation: 'spin', speed: 'slow' } },
+    {
+      label: 'Créer un espace',
+      to: '/space/create',
+      icon: 'ri-add-circle-line',
+      iconAttrs: { scale: 0.9 },
+    },
+    {
+      label: 'Se connecter',
+      to: '/login',
+      class: 'fr-fi-lock-line',
+      target: '_blank',
+    },
+    {
+      label: 'S’enregistrer',
+      to: '/signin',
+      icon: 'ri-account-circle-line',
+      iconRight: true,
+      iconAttrs: { animation: 'spin', speed: 'slow' },
+    },
   ],
 }
 
@@ -213,7 +231,6 @@ export const EnTeteAvecLogoOperateur = (args) => ({
       this.actionOnLogo($event)
     },
   },
-
 })
 EnTeteAvecLogoOperateur.args = {
   showSearch: true,
@@ -224,9 +241,20 @@ EnTeteAvecLogoOperateur.args = {
   placeholder: '',
   homeTo: '#',
   quickLinks: [
-    { label: 'Créer un espace', to: '/space/create', icon: 'ri-add-circle-line', iconAttrs: { scale: 0.9 } },
+    {
+      label: 'Créer un espace',
+      to: '/space/create',
+      icon: 'ri-add-circle-line',
+      iconAttrs: { scale: 0.9 },
+    },
     { label: 'Se connecter', to: '/login', class: 'fr-fi-lock-line' },
-    { label: 'S’enregistrer', to: '/signin', icon: 'ri-account-circle-line', iconRight: true, iconAttrs: { animation: 'spin', speed: 'slow' } },
+    {
+      label: 'S’enregistrer',
+      to: '/signin',
+      icon: 'ri-account-circle-line',
+      iconRight: true,
+      iconAttrs: { animation: 'spin', speed: 'slow' },
+    },
   ],
   operatorImgSrc: '/cat.svg',
   operatorImgAlt: 'Logo opérateur',
@@ -280,7 +308,6 @@ export const EnTeteAvecNavigation = (args) => ({
       this.actionOnLogo($event)
     },
   },
-
 })
 EnTeteAvecNavigation.args = {
   showSearch: true,
@@ -291,9 +318,25 @@ EnTeteAvecNavigation.args = {
   placeholder: '',
   homeTo: '#',
   quickLinks: [
-    { label: 'Créer un espace', to: '/space/create', icon: 'ri-add-circle-line', iconAttrs: { scale: 0.9 } },
-    { label: 'Se connecter', to: '/login', class: 'fr-fi-lock-line', target: '_blank' },
-    { label: 'S’enregistrer', to: '/signin', icon: 'ri-account-circle-line', iconRight: true, iconAttrs: { animation: 'spin', speed: 'slow' } },
+    {
+      label: 'Créer un espace',
+      to: '/space/create',
+      icon: 'ri-add-circle-line',
+      iconAttrs: { scale: 0.9 },
+    },
+    {
+      label: 'Se connecter',
+      to: '/login',
+      class: 'fr-fi-lock-line',
+      target: '_blank',
+    },
+    {
+      label: 'S’enregistrer',
+      to: '/signin',
+      icon: 'ri-account-circle-line',
+      iconRight: true,
+      iconAttrs: { animation: 'spin', speed: 'slow' },
+    },
   ],
   navItems: [
     {
@@ -453,7 +496,6 @@ export const EnTeteAvecBadgeBeta = (args) => ({
       this.actionOnLogo($event)
     },
   },
-
 })
 EnTeteAvecBadgeBeta.args = {
   showSearch: false,
@@ -513,7 +555,6 @@ export const EnTeteAvecSelecteurDeLangue = (args) => ({
       this.languageSelector.currentLanguage = codeIso
     },
   },
-
 })
 EnTeteAvecSelecteurDeLangue.args = {
   showSearch: false,
@@ -525,9 +566,25 @@ EnTeteAvecSelecteurDeLangue.args = {
   placeholder: '',
   homeTo: '#',
   quickLinks: [
-    { label: 'Créer un espace', to: '/space/create', icon: 'ri-add-circle-line', iconAttrs: { scale: 0.9 } },
-    { label: 'Se connecter', to: '/login', class: 'fr-fi-lock-line', target: '_blank' },
-    { label: 'S’enregistrer', to: '/signin', icon: 'ri-account-circle-line', iconRight: true, iconAttrs: { animation: 'spin', speed: 'slow' } },
+    {
+      label: 'Créer un espace',
+      to: '/space/create',
+      icon: 'ri-add-circle-line',
+      iconAttrs: { scale: 0.9 },
+    },
+    {
+      label: 'Se connecter',
+      to: '/login',
+      class: 'fr-fi-lock-line',
+      target: '_blank',
+    },
+    {
+      label: 'S’enregistrer',
+      to: '/signin',
+      icon: 'ri-account-circle-line',
+      iconRight: true,
+      iconAttrs: { animation: 'spin', speed: 'slow' },
+    },
   ],
   languageSelector: {
     id: 'language-selector-in-header',

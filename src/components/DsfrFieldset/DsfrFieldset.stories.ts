@@ -6,11 +6,13 @@ export default {
   argTypes: {
     legend: {
       control: 'text',
-      description: 'Slot pour le contenu du titre du `fieldset` (sera dans `<legend class="fr-fieldset__legend">`). Une props du même nom est utilisable pour du texte simple sans mise en forme.',
+      description:
+        'Slot pour le contenu du titre du `fieldset` (sera dans `<legend class="fr-fieldset__legend">`). Une props du même nom est utilisable pour du texte simple sans mise en forme.',
     },
     legendClass: {
       control: 'text',
-      description: 'Classes à ajouter à l’élément `<legend class="fr-fieldset__legend">`',
+      description:
+        'Classes à ajouter à l’élément `<legend class="fr-fieldset__legend">`',
     },
     legendId: {
       control: 'text',
@@ -18,11 +20,13 @@ export default {
     },
     hint: {
       control: 'text',
-      description: 'Slot pour le contenu de l’indice (sera dans `<span class="fr-hint-text">` qui sera dans `</legend>`). Une props du même nom est utilisable pour du texte simple sans mise en forme.',
+      description:
+        'Slot pour le contenu de l’indice (sera dans `<span class="fr-hint-text">` qui sera dans `</legend>`). Une props du même nom est utilisable pour du texte simple sans mise en forme.',
     },
     hintClass: {
       control: 'text',
-      description: 'Classe(s) à ajouter à l’élément <span class="fr-hint-text">',
+      description:
+        'Classe(s) à ajouter à l’élément <span class="fr-hint-text">',
     },
   },
 }
@@ -52,7 +56,6 @@ export const EnsembleDeChamps = (args) => ({
       Contenu du fieldset
     </DsfrFieldset>
   `,
-
 })
 EnsembleDeChamps.args = {
   legend: 'Titre de l’ensemble des champs',
@@ -91,7 +94,6 @@ export const EnsemblePersonnaliseDeChamps = (args) => ({
       Contenu du fieldset
     </DsfrFieldset>
   `,
-
 })
 EnsemblePersonnaliseDeChamps.args = {
   legend: 'Contenu personnalisé du titre de l’ensemble des champs',

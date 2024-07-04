@@ -26,11 +26,13 @@ export default {
     },
     placeHolder: {
       control: 'text',
-      description: 'Placeholder du champ pour renseigner l’adresse électronique',
+      description:
+        'Placeholder du champ pour renseigner l’adresse électronique',
     },
     hintText: {
       control: 'text',
-      description: 'Explication à afficher sous le champ pour renseigner l’adresse électronique',
+      description:
+        'Explication à afficher sous le champ pour renseigner l’adresse électronique',
     },
     buttonText: {
       control: 'text',
@@ -43,7 +45,8 @@ export default {
     buttonAction: { action: 'clicked' },
     onlyCallout: {
       control: 'boolean',
-      description: 'Newsletter simplifiée avec seulement un bouton, le formulaire sera masqué',
+      description:
+        'Newsletter simplifiée avec seulement un bouton, le formulaire sera masqué',
     },
   },
 }
@@ -77,7 +80,6 @@ export const NewsletterSimple = (args) => ({
     </div>
   </DsfrFollow>
   `,
-
 })
 NewsletterSimple.args = {
   title: 'Titre de la lettre d’information',
@@ -86,7 +88,8 @@ NewsletterSimple.args = {
   labelEmail: 'Votre adresse électronique',
   inputTitle: 'Adresse électronique',
   placeholder: 'james.bond@mi6.gov.uk',
-  hintText: 'En renseignant votre adresse électronique, vous acceptez de recevoir nos actualités par courriel. Vous pouvez vous désinscrire à tout moment à l’aide des liens de désinscription ou en nous contactant.',
+  hintText:
+    'En renseignant votre adresse électronique, vous acceptez de recevoir nos actualités par courriel. Vous pouvez vous désinscrire à tout moment à l’aide des liens de désinscription ou en nous contactant.',
   buttonText: 'S’abonner',
   buttonTitle: 'Titre du bouton (attribut `title`) de la balise `button`',
 }
@@ -105,11 +108,17 @@ export const NewsletterAvecErreur = (args) => ({
 
   watch: {
     email (newValue) {
-      if (/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\])|(([a-z\-0-9]+\.)+[a-z]{2,}))$/i.test(newValue)) { // eslint-disable-line regexp/no-unused-capturing-group
+      if (
+        // eslint-disable-next-line regexp/no-unused-capturing-group
+        /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\])|(([a-z\-0-9]+\.)+[a-z]{2,}))$/i.test(
+          newValue,
+        )
+      ) {
         this.error = ''
         return
       }
-      this.error = 'Le format de l’adresse electronique saisie n’est pas valide. Le format attendu est : nom@example.org'
+      this.error =
+        'Le format de l’adresse electronique saisie n’est pas valide. Le format attendu est : nom@example.org'
     },
   },
 
@@ -131,18 +140,19 @@ export const NewsletterAvecErreur = (args) => ({
     </div>
   </DsfrFollow>
   `,
-
 })
 
 NewsletterAvecErreur.args = {
   title: 'Titre de la lettre d’information',
   description: 'Description de la lettre d’information',
   email: 'email.superchouette.fr',
-  error: 'Le format de l’adresse electronique saisie n’est pas valide. Le format attendu est : nom@example.org',
+  error:
+    'Le format de l’adresse electronique saisie n’est pas valide. Le format attendu est : nom@example.org',
   labelEmail: 'Votre adresse électronique',
   inputTitle: 'Adresse électronique',
   placeholder: 'james.bond@mi6.gov.uk',
-  hintText: 'En renseignant votre adresse électronique, vous acceptez de recevoir nos actualités par courriel. Vous pouvez vous désinscrire à tout moment à l’aide des liens de désinscription ou en nous contactant.',
+  hintText:
+    'En renseignant votre adresse électronique, vous acceptez de recevoir nos actualités par courriel. Vous pouvez vous désinscrire à tout moment à l’aide des liens de désinscription ou en nous contactant.',
   buttonText: 'S’abonner',
   buttonTitle: 'Titre du bouton (attribut `title`) de la balise `button`',
 }
@@ -178,7 +188,6 @@ export const NewsletterMiseEnAvant = (args) => ({
     </div>
   </DsfrFollow>
   `,
-
 })
 NewsletterMiseEnAvant.args = {
   title: 'Titre de la lettre d’information',

@@ -9,11 +9,13 @@ export default {
   argTypes: {
     files: {
       control: 'object',
-      description: 'Tableau d\'objets contenant les propriétés "title", "format", "size", "href" et "download" propres au composant DsfrFileDownload',
+      description:
+        'Tableau d\'objets contenant les propriétés "title", "format", "size", "href" et "download" propres au composant DsfrFileDownload',
     },
     title: {
       control: 'string',
-      description: 'Chaîne de caractères optionnelle permettant d\'ajouter un titre à la liste des liens de téléchargement',
+      description:
+        'Chaîne de caractères optionnelle permettant d\'ajouter un titre à la liste des liens de téléchargement',
     },
   },
 }
@@ -33,7 +35,6 @@ export const ListeDeTelechargements = (args) => ({
       :title="title"
     />
   `,
-
 })
 ListeDeTelechargements.args = {
   files: [

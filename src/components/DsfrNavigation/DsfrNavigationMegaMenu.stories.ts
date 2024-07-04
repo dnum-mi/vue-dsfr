@@ -16,26 +16,32 @@ export default {
     },
     link: {
       control: 'object',
-      description: 'Permet de définir un lien vers une page associée. C’est un objet qui contiendra les props attendues par <a href="/?path=/docs/composants-dsfrnavigationmenulink--docs">DsfrNavigationMenuLink</a>',
+      description:
+        'Permet de définir un lien vers une page associée. C’est un objet qui contiendra les props attendues par <a href="/?path=/docs/composants-dsfrnavigationmenulink--docs">DsfrNavigationMenuLink</a>',
     },
     menus: {
       control: 'object',
-      description: 'Liste des catégories au sein du méga menu via un tableau. Chaque objet de ce tableau contiendra les props attendues par <a href="/?path=/docs/composants-dsfrnavigationmegamenucategory--docs">DsfrNavigationMegaMenuCategory</a>',
+      description:
+        'Liste des catégories au sein du méga menu via un tableau. Chaque objet de ce tableau contiendra les props attendues par <a href="/?path=/docs/composants-dsfrnavigationmegamenucategory--docs">DsfrNavigationMegaMenuCategory</a>',
     },
     expandedId: {
       control: 'text',
-      description: 'Indique l’id de l’élément "ouvert" ou "déplié" dans le menu. Permet au composant de savoir s’il doit être déplié (si `expandedId` est identique à son `id`) ou non (si `expandedId` est différent de son `id`)',
+      description:
+        'Indique l’id de l’élément "ouvert" ou "déplié" dans le menu. Permet au composant de savoir s’il doit être déplié (si `expandedId` est identique à son `id`) ou non (si `expandedId` est différent de son `id`)',
     },
     id: {
       control: 'text',
-      description: '(Optionnel) Valeur de l’attribut `id` de ce sous-menu. *N.B. : Il est recommandé de ne pas le donner, la bibliothèque lui en donnera un pseudo-aléatoire*.',
+      description:
+        '(Optionnel) Valeur de l’attribut `id` de ce sous-menu. *N.B. : Il est recommandé de ne pas le donner, la bibliothèque lui en donnera un pseudo-aléatoire*.',
     },
     active: {
       control: 'boolean',
-      description: '(Optionnel) Est-ce que le menu doit être actif ou non (met l’attribut `aria-current` à la valeur `true`). Par défaut, il est inactif.',
+      description:
+        '(Optionnel) Est-ce que le menu doit être actif ou non (met l’attribut `aria-current` à la valeur `true`). Par défaut, il est inactif.',
     },
     'toggle-id': {
-      description: 'Événement émis lors du click sur le lien, avec en argument l’id de l’élément cliqué',
+      description:
+        'Événement émis lors du click sur le lien, avec en argument l’id de l’élément cliqué',
     },
   },
 }

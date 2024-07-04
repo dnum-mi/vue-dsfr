@@ -22,7 +22,8 @@ export default {
     },
     id: {
       control: 'text',
-      description: '(Optionnel) Valeur de l’attribut `id` de la balise `<nav>`. Aura une valeur pseudo-aléatoire par défaut',
+      description:
+        '(Optionnel) Valeur de l’attribut `id` de la balise `<nav>`. Aura une valeur pseudo-aléatoire par défaut',
     },
   },
 }

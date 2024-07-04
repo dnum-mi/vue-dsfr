@@ -9,7 +9,8 @@ export default {
   argTypes: {
     id: {
       control: 'text',
-      description: 'Valeur de l’attribut `id` de l’input (sera aussi utilisé pour l’attribut `for` du `<label>`), chaîne aléatoire par défaut (conseillé)',
+      description:
+        'Valeur de l’attribut `id` de l’input (sera aussi utilisé pour l’attribut `for` du `<label>`), chaîne aléatoire par défaut (conseillé)',
     },
     modelValue: {
       control: 'text',
@@ -21,7 +22,8 @@ export default {
     },
     hint: {
       control: 'text',
-      description: 'Court texte facultatif donnant des informations sur l’input associé (limitation de taille, unique ou multiple...)',
+      description:
+        'Court texte facultatif donnant des informations sur l’input associé (limitation de taille, unique ou multiple...)',
     },
     error: {
       control: 'text',
@@ -36,10 +38,12 @@ export default {
       description: 'Permet de désactiver visuellement l\'upload de fichier',
     },
     'update:modelValue': {
-      description: 'Événement émis lors du changement de valeur de `modelValue` : le paramètre passé est la valeur de la propriété `value` de l’`input`',
+      description:
+        'Événement émis lors du changement de valeur de `modelValue` : le paramètre passé est la valeur de la propriété `value` de l’`input`',
     },
     change: {
-      description: 'Événement émis lors du changement de valeur de `modelValue` : le paramètre passé est la valeur de la propriété `files` de l’input',
+      description:
+        'Événement émis lors du changement de valeur de `modelValue` : le paramètre passé est la valeur de la propriété `files` de l’input',
     },
   },
 }
@@ -61,7 +65,6 @@ export const Televersement = (args) => ({
       :disabled="disabled"
     />
   `,
-
 })
 Televersement.args = {
   id: undefined,
@@ -90,7 +93,6 @@ export const TeleversementAvecErreur = (args) => ({
     />
   </div>
   `,
-
 })
 TeleversementAvecErreur.args = {
   id: undefined,
@@ -118,7 +120,6 @@ export const TeleversementAvecSucces = (args) => ({
     />
   </div>
   `,
-
 })
 TeleversementAvecSucces.args = {
   id: undefined,
@@ -148,7 +149,6 @@ export const TeleversementDesactive = (args) => ({
     />
   </div>
   `,
-
 })
 TeleversementDesactive.args = {
   id: undefined,

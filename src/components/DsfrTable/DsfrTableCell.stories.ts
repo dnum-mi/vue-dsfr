@@ -1,10 +1,12 @@
+import { fn } from '@storybook/test'
 import { setup } from '@storybook/vue3'
+
 import DsfrTag from '../DsfrTag/DsfrTag.vue'
 import DsfrTable from './DsfrTable.vue'
 import DsfrTableHeaders from './DsfrTableHeaders.vue'
 import DsfrTableCell from './DsfrTableCell.vue'
 
-setup(app => {
+setup((app) => {
   app.component('DsfrTag', DsfrTag) // Composant utilisé dans les stories CelluleDeTableauAvecComposant et CelluleDeTableauComplexe
 })
 
@@ -15,15 +17,17 @@ export default {
     title: { control: 'text' },
     headers: {
       control: 'object',
-      description: 'Liste des en-têtes du tableau (tableau de string). *N.B. : Ne fait pas partie du composant.*',
+      description:
+        'Liste des en-têtes du tableau (tableau de string). *N.B. : Ne fait pas partie du composant.*',
     },
     field: {
       control: 'string',
       description: 'Contenu du champ. Peut être une string ou bien un objet',
     },
     onClickCell: {
-      action: 'Clic sur l’étiquette !',
-      description: 'Fonction pour montrer le clic sur une cellule (Ici seulement pour "Cellule de tableau complexe")',
+      action: fn(),
+      description:
+        'Fonction pour montrer le clic sur une cellule (Ici seulement pour "Cellule de tableau complexe")',
     },
   },
 }
@@ -75,7 +79,6 @@ export const CelluleDeTableauSimple = (args) => ({
       </tr>
     </DsfrTable>
   `,
-
 })
 CelluleDeTableauSimple.args = {
   title,
@@ -108,7 +111,6 @@ export const CelluleDeTableauAvecElementHtml = (args) => ({
         </tr>
       </DsfrTable>
   `,
-
 })
 CelluleDeTableauAvecElementHtml.args = {
   title,
@@ -141,7 +143,6 @@ export const CelluleDeTableauAvecComposant = (args) => ({
         </tr>
       </DsfrTable>
   `,
-
 })
 CelluleDeTableauAvecComposant.args = {
   title,
@@ -175,7 +176,6 @@ export const CelluleDeTableauComplexe = (args) => ({
         </tr>
       </DsfrTable>
   `,
-
 })
 CelluleDeTableauComplexe.args = {
   title,

@@ -1,3 +1,5 @@
+import { fn } from '@storybook/test'
+
 import DsfrRadioButton from './DsfrRadioButton.vue'
 import DsfrRadioButtonSet from './DsfrRadioButtonSet.vue'
 
@@ -12,11 +14,13 @@ export default {
   argTypes: {
     id: {
       control: 'text',
-      description: '(optionnel) Valeur de l’attribut `id` du radio bouton. Par défaut, un id pseudo-aléatoire sera donné.',
+      description:
+        '(optionnel) Valeur de l’attribut `id` du radio bouton. Par défaut, un id pseudo-aléatoire sera donné.',
     },
     options: {
       control: 'object',
-      description: 'Tableau d’objets : chaque objet contient les props à passer à `DsfrRadioButton` - *N.B. : Ne fait pas partie du composant',
+      description:
+        'Tableau d’objets : chaque objet contient les props à passer à `DsfrRadioButton` - *N.B. : Ne fait pas partie du composant',
     },
     small: {
       control: 'boolean',
@@ -30,21 +34,23 @@ export default {
       control: 'text',
       description: 'Valeur de la case cochée',
     },
-    onChange: { action: 'changed' },
+    onChange: { action: fn() },
     img: {
       control: 'text',
       description: 'Permet d\'ajouter une image au composant',
     },
     svgPath: {
       control: 'text',
-      description: 'Chemin vers le SVG à afficher. (doit respecter les fondamentaux techniques pour les pictogrammes du DSFR)',
+      description:
+        'Chemin vers le SVG à afficher. (doit respecter les fondamentaux techniques pour les pictogrammes du DSFR)',
     },
     svgAttrs: {
       control: 'object',
       description: 'Permet de définir des attributs pour le SVG.',
     },
     'update:modelValue': {
-      description: 'Événement émis à chaque changement de valeur du groupe de même bouton radio',
+      description:
+        'Événement émis à chaque changement de valeur du groupe de même bouton radio',
     },
   },
 }

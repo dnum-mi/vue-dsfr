@@ -13,15 +13,18 @@ export default {
     },
     id: {
       control: 'text',
-      description: '(optionnel) Valeur de l’attribut `id` de l’input au sein d. Par défaut, un id pseudo-aléatoire sera donné.',
+      description:
+        '(optionnel) Valeur de l’attribut `id` de l’input au sein d. Par défaut, un id pseudo-aléatoire sera donné.',
     },
     hideIcon: {
       control: 'boolean',
-      description: 'Indique si l’icône doit être masqué (`true`) ou non (`false`, défaut)',
+      description:
+        'Indique si l’icône doit être masqué (`true`) ou non (`false`, défaut)',
     },
     labelVisible: {
       control: 'boolean',
-      description: 'Indique si le label doit être visible (`true`) ou non (`false`, défaut)',
+      description:
+        'Indique si le label doit être visible (`true`) ou non (`false`, défaut)',
     },
     placeholder: {
       control: 'text',
@@ -29,7 +32,8 @@ export default {
     },
     disabled: {
       control: 'boolean',
-      description: 'Permet de désactiver le champ et le bouton, la saisie du champ et le clic sur le bouton sera impossible.',
+      description:
+        'Permet de désactiver le champ et le bouton, la saisie du champ et le clic sur le bouton sera impossible.',
     },
     buttonText: {
       control: 'text',
@@ -41,10 +45,12 @@ export default {
     },
     large: {
       control: 'boolean',
-      description: 'Indique si la barre de recherche doit prendre plus de hauteur (`true`) ou non (`false`, défaut)',
+      description:
+        'Indique si la barre de recherche doit prendre plus de hauteur (`true`) ou non (`false`, défaut)',
     },
     'update:modelValue': {
-      description: 'Événement émis à chaque changement de la valeur du champ de saisie de la recherche',
+      description:
+        'Événement émis à chaque changement de la valeur du champ de saisie de la recherche',
     },
     search: {
       description: 'Événement émis lors de la validation de la recherche',
@@ -70,7 +76,6 @@ export const BarreDeRecherche = (args) => ({
         :large="large"
       />
   `,
-
 })
 BarreDeRecherche.args = {
   label: 'Label de search bar',
@@ -99,7 +104,6 @@ export const BarreDeRechercheLarge = (args) => ({
       :large="large"
     />
   `,
-
 })
 BarreDeRechercheLarge.args = {
   label: 'Label de search bar',
@@ -130,7 +134,6 @@ export const BarreDeRechercheDesactivee = (args) => ({
         :disabled="disabled"
       />
   `,
-
 })
 BarreDeRechercheDesactivee.args = {
   label: 'Label de search bar',

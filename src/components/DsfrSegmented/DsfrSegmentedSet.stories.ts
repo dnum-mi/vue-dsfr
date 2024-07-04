@@ -1,3 +1,5 @@
+import { fn } from '@storybook/test'
+
 import DsfrSegmentedSet from './DsfrSegmentedSet.vue'
 
 /**
@@ -9,11 +11,13 @@ export default {
   argTypes: {
     disabled: {
       control: 'boolean',
-      description: 'Indique si le bouton radio doit être désactivé (`true`) ou non (`false`, défaut)',
+      description:
+        'Indique si le bouton radio doit être désactivé (`true`) ou non (`false`, défaut)',
     },
     inline: {
       control: 'boolean',
-      description: 'Indique si la légende doit être alignée avec les boutons (`true`) ou chacun sur une ligne (`false`, défaut)',
+      description:
+        'Indique si la légende doit être alignée avec les boutons (`true`) ou chacun sur une ligne (`false`, défaut)',
     },
     name: {
       control: 'text',
@@ -29,7 +33,8 @@ export default {
     },
     options: {
       control: 'object',
-      description: 'Tableau d’objets : chaque objet contient les props à passer à `DsfrSegmented`',
+      description:
+        'Tableau d’objets : chaque objet contient les props à passer à `DsfrSegmented`',
     },
     modelValue: {
       control: 'text',
@@ -38,7 +43,7 @@ export default {
     'update:modelValue': {
       description: 'Événement émis à chaque changement de valeur',
     },
-    onChange: { action: 'changed' },
+    onChange: { action: fn() },
   },
 }
 

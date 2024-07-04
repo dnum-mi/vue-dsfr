@@ -6,15 +6,18 @@ export default {
   argTypes: {
     id: {
       control: 'text',
-      description: '(optionnel) Valeur de l’attribut `id` du tooltip. Par défaut, un id pseudo-aléatoire sera donné.',
+      description:
+        '(optionnel) Valeur de l’attribut `id` du tooltip. Par défaut, un id pseudo-aléatoire sera donné.',
     },
     content: {
       control: 'text',
-      description: 'Contenu de votre bulle d’aide : il s’agit d’un texte sans mise en forme.',
+      description:
+        'Contenu de votre bulle d’aide : il s’agit d’un texte sans mise en forme.',
     },
     onHover: {
       control: 'boolean',
-      description: 'Permet de définir si l’infobulle doit s’afficher au survol de l’élément (`true`) ou au clic (`false`, défaut).',
+      description:
+        'Permet de définir si l’infobulle doit s’afficher au survol de l’élément (`true`) ou au clic (`false`, défaut).',
     },
   },
 }
@@ -38,7 +41,6 @@ export const Infobulle = (args) => ({
       Un élément intriguant
     </DsfrTooltip>
   `,
-
 })
 Infobulle.args = {
   content: 'Un élément assez intriguant',
@@ -63,7 +65,6 @@ export const InfobulleParDefaut = (args) => ({
       Un contenu qui n’apparaîtra que si hover est à \`true\`
     </DsfrTooltip>
   `,
-
 })
 InfobulleParDefaut.args = {
   content: 'Un élément assez intriguant',
@@ -89,7 +90,6 @@ export const InfobulleAuSurvol = (args) => ({
       avec une précision à donner ici
     </DsfrTooltip>
   `,
-
 })
 InfobulleAuSurvol.args = {
   content: 'Texte précisant pourquoi ce texte est là',

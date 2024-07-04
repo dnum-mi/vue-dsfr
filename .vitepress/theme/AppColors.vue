@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { computed, ref } from 'vue'
 
 type Colors = Record<string, {
   cssVar: string
@@ -8,9 +8,10 @@ type Colors = Record<string, {
   line: string
 }[]>
 
-withDefaults(defineProps<{
+const props = withDefaults(defineProps<{
   colors: Colors
   title: string
+  theme: 'light' | 'dark'
   textColor?: string
   inverseTextColor?: string
   titleTag?: 'h2' | 'h3' | 'h4' | 'h5' | 'h6'
@@ -23,6 +24,8 @@ withDefaults(defineProps<{
 const emit = defineEmits<{
   copied: [cssVar: string]
 }>()
+
+const color = computed(() => props.theme === 'light' ? '#222' : '#eee')
 
 const selected = ref<string>()
 const selectedName = ref<string>()
@@ -134,7 +137,7 @@ ul li.color {
 }
 
 .color-animated {
-  --text-color: rgb(50, 50, 50);
+  --text-color: v-bind(color);
   --hover-text-color: grey;
   position: relative;
   display: inline-block;
@@ -148,11 +151,6 @@ ul li.color {
   -webkit-text-fill-color: transparent;
   background-size: 200% 100%;
   background-position: 100%;
-}
-
-.dark .color-animated {
-  --text-color: white;
-  --hover-text-color: #ccc;
 }
 
 .color-animated:hover {

@@ -1,6 +1,17 @@
-import { Meta } from '@storybook/addon-docs'
+import { Meta } from '@storybook/blocks'
 
 <Meta title="Docs/2. Guide d’utilisation" />
+
+<div style={{border: 'solid 3px red', fontWeight: 700, padding: '1em', marginBottom: '2rem'}}>
+
+## Cette documentation est obsolète !
+
+Veuillez vous référer au
+[Guide d’utilisation ICI](https://vue-ds.fr/guide/pour-commencer).
+
+</div>
+
+<div style={{fontStyle: 'italic', fontWeight: 300 }}>
 
 # Utiliser VueDsfr
 
@@ -49,8 +60,7 @@ Afin d'installer la bibliothèque, taper cette commande dans votre console au se
 npm install @gouvfr/dsfr @gouvminint/vue-dsfr
 ```
 
-<div class="fr-alert fr-alert--sm fr-alert--info"  style={{'margin-bottom': '1rem'}}><p style={{margin: 0}}><strong>Note :</strong> La bibliothèque VueDsfr utilise le CSS de `@gouvfr/dsfr`, c’est pourquoi il est nécessaire de l’installer.</p></div>
-
+<div class="fr-alert fr-alert--sm fr-alert--info" style={{'margin-bottom': '1rem'}}><p style={{margin: 0}}><strong>Note :</strong> La bibliothèque VueDsfr utilise le CSS de `@gouvfr/dsfr`, c’est pourquoi il est nécessaire de l’installer.</p></div>
 
 ##### Ajouter le plugin
 
@@ -194,3 +204,4 @@ export default defineNuxtConfig({
   ],
 })
 ```
+</div>

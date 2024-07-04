@@ -9,11 +9,13 @@ export default {
   argTypes: {
     tiles: {
       control: 'object',
-      description: 'Tableau avec pour chaque élément :\n\n  - les props attendues par DsfrTile\n  - la prop `containerClass` pour l’attribut `class` du div parent de chaque tile',
+      description:
+        'Tableau avec pour chaque élément :\n\n  - les props attendues par DsfrTile\n  - la prop `containerClass` pour l’attribut `class` du div parent de chaque tile',
     },
     horizontal: {
       control: 'boolean',
-      description: 'Permet de mettre chaque tuile sur une ligne entière, et d’envoyer aussi par défaut cette valeur à chacune des tuiles enfant (Surchargeable éventuellement par chaque objet du tableau `tiles`)',
+      description:
+        'Permet de mettre chaque tuile sur une ligne entière, et d’envoyer aussi par défaut cette valeur à chacune des tuiles enfant (Surchargeable éventuellement par chaque objet du tableau `tiles`)',
     },
   },
 }
@@ -35,7 +37,6 @@ export const JeuDeTuiles = (args) => ({
       :horizontal="horizontal"
     />
   `,
-
 })
 JeuDeTuiles.args = {
   tiles: [

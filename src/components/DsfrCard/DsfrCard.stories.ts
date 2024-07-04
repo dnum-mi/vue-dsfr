@@ -11,7 +11,8 @@ export default {
   argTypes: {
     noArrow: {
       control: 'boolean',
-      description: 'Indique si la carte doit afficher une flèche vers la droite (`false`, défaut) ou non (`true`)',
+      description:
+        'Indique si la carte doit afficher une flèche vers la droite (`false`, défaut) ou non (`true`)',
     },
     altImg: {
       control: 'text',
@@ -35,11 +36,13 @@ export default {
     },
     buttons: {
       control: 'object',
-      description: 'Tableau d’objets (`label` et `link`), chaque objet contiendra les props à passer à DsfrButtonGroup',
+      description:
+        'Tableau d’objets (`label` et `link`), chaque objet contiendra les props à passer à DsfrButtonGroup',
     },
     linksGroup: {
       control: 'object',
-      description: 'Tableau d’objets (`label` et `href`), chaque objet contiendra les props pour chaque lien',
+      description:
+        'Tableau d’objets (`label` et `href`), chaque objet contiendra les props pour chaque lien',
     },
     title: {
       control: 'text',
@@ -47,7 +50,8 @@ export default {
     },
     horizontal: {
       control: 'boolean',
-      description: 'Indique si le contenu de la carte doit être horizontal (passe de toute façon en vertical sur mobile)',
+      description:
+        'Indique si le contenu de la carte doit être horizontal (passe de toute façon en vertical sur mobile)',
     },
     size: {
       control: 'radio',
@@ -61,11 +65,13 @@ export default {
     },
     titleTag: {
       control: 'text',
-      description: 'Permet de choisir la balise contenant le titre de la carte (h3 par défaut',
+      description:
+        'Permet de choisir la balise contenant le titre de la carte (h3 par défaut',
     },
     download: {
       control: 'boolean',
-      description: 'Variante de carte indiquant que l’évènement de clic lancera un téléchargement',
+      description:
+        'Variante de carte indiquant que l’évènement de clic lancera un téléchargement',
     },
   },
 }
@@ -93,7 +99,6 @@ export const Card = (args) => ({
       :title-tag="titleTag"
     />
   `,
-
 })
 Card.args = {
   altImg: '',
@@ -134,7 +139,6 @@ export const CardSansFleche = (args) => ({
       :no-arrow="noArrow"
     />
   `,
-
 })
 CardSansFleche.args = {
   altImg: '',
@@ -174,7 +178,6 @@ export const CardAvecBoutons = (args) => ({
       :no-arrow="noArrow"
     />
   `,
-
 })
 CardAvecBoutons.args = {
   altImg: '',
@@ -223,7 +226,6 @@ export const CardAvecLiens = (args) => ({
       :no-arrow="noArrow"
     />
   `,
-
 })
 CardAvecLiens.args = {
   altImg: '',
@@ -277,7 +279,6 @@ export const CardAvecTags = (args) => ({
     </template>
   </DsfrCard>
   `,
-
 })
 CardAvecTags.args = {
   altImg: '',
@@ -338,7 +339,6 @@ export const CardAvecBadges = (args) => ({
     </template>
   </DsfrCard>
   `,
-
 })
 CardAvecBadges.args = {
   altImg: '',
@@ -394,7 +394,6 @@ export const CardHorizontaleAvecBoutons = (args) => ({
       :no-arrow="noArrow"
     />
   `,
-
 })
 CardHorizontaleAvecBoutons.args = {
   altImg: '',
@@ -443,7 +442,6 @@ export const CardHorizontaleEtSmallAvecLiens = (args) => ({
       :no-arrow="noArrow"
     />
   `,
-
 })
 CardHorizontaleEtSmallAvecLiens.args = {
   altImg: '',

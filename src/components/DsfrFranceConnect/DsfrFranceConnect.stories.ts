@@ -9,7 +9,8 @@ export default {
   argTypes: {
     secure: {
       control: 'boolean',
-      description: 'Change le bouton pour une version FranceConnect+ (pour les démarches nécessitant une sécurité renforcée)',
+      description:
+        'Change le bouton pour une version FranceConnect+ (pour les démarches nécessitant une sécurité renforcée)',
     },
   },
 }
@@ -28,7 +29,6 @@ export const BoutonFranceConnect = (args) => ({
       :secure="secure"
     />
   `,
-
 })
 
 BoutonFranceConnect.args = {

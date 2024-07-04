@@ -1,7 +1,6 @@
 export default {
   title: 'Fondamentaux/1. Titres',
-  argTypes: {
-  },
+  argTypes: {},
 }
 
 export const TitresHn = (args) => ({
@@ -19,8 +18,7 @@ export const TitresHn = (args) => ({
     </div>
   `,
 })
-TitresHn.args = {
-}
+TitresHn.args = {}
 
 export const TitresAlternatifs = (args) => ({
   data () {
@@ -36,5 +34,4 @@ export const TitresAlternatifs = (args) => ({
     </div>
   `,
 })
-TitresAlternatifs.args = {
-}
+TitresAlternatifs.args = {}

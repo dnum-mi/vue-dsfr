@@ -1,3 +1,5 @@
+import { fn } from '@storybook/test'
+
 import DsfrNotice from './DsfrNotice.vue'
 
 /**
@@ -13,10 +15,11 @@ export default {
     },
     closeable: {
       control: 'boolean',
-      description: 'Ajoute la possibilité de présenter un bouton en forme de croix qui émet l’événement `"close"`',
+      description:
+        'Ajoute la possibilité de présenter un bouton en forme de croix qui émet l’événement `"close"`',
     },
     onClose: {
-      action: 'Fermeture du bandeau',
+      action: fn(),
     },
   },
 }
@@ -42,7 +45,9 @@ export const BandeauDAlerte = (args) => ({
   methods: {
     close () {
       this.closed = true
-      setTimeout(() => { this.closed = false }, 2000)
+      setTimeout(() => {
+        this.closed = false
+      }, 2000)
     },
   },
 })
