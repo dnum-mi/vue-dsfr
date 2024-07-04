@@ -302,6 +302,7 @@ const currentRoute = computed(() => route.name)
       operator-img-src="https://loremflickr.com/300/200/cat"
       operator-img-alt="L'opérateur petit chat"
       operator-to="/"
+      :operator-img-style="{ 'margin-left': '0.5px', padding: '1rem', 'max-width': '15rem' }"
     />
   </div>
 
