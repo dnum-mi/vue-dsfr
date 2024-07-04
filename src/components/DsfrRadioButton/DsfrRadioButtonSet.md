@@ -20,19 +20,19 @@ Le composant `DsfrRadioButtonSet` est composé des éléments suivants :
 
 ## 🛠️ Props
 
-| Nom                   | Type                                    | Description                                                       | Obligatoire |
-|-----------------------|------------------------------------------|-------------------------------------------------------------------|--------------|
-| `titleId`               | *`string`*                                 | Identifiant unique du champ (générée automatiquement si non fournie) | Non          |
-| `disabled`              | *`boolean`*                                 | Indique si l'ensemble des boutons radio est désactivé           | Non          |
-| `required`              | *`boolean`*                                 | Indique si le groupe de radio est obligatoire                    | Non          |
-| `small`                 | *`boolean`*                                 | Affiche les boutons radio en taille réduite                     | Non          |
-| `inline`                | *`boolean`*                                 | Affiche les boutons radio en ligne (par défaut : non)            | Non          |
-| `name`                  | *`string`*                                 | Nom du champ `<input>` associé à l'ensemble des boutons radio du tableau données dans la prop `options`, cf. plus loin     | Oui           |
-| `errorMessage`         | *`string`*                                 | Message d'erreur global à afficher                               | Non          |
-| `validMessage`         | *`string`*                                 | Message de validation global à afficher                           | Non          |
-| `legend`                | *`string`*                                 | Texte de la légende                                               | Non          |
-| `modelValue`           | *`string`* ou *`number`* ou *`boolean`*                       | Valeur courante du composant (sélection courante)                 | Non          |
-| `options`               | *`Omit<DsfrRadioButtonProps, 'modelValue'>[]`* | Tableau d'options définissant les boutons radio individuels       | Oui           |
+| Nom            | Type                                           | Description                                                                                                            | Obligatoire |
+|----------------|------------------------------------------------|------------------------------------------------------------------------------------------------------------------------|-------------|
+| `titleId`      | *`string`*                                     | Identifiant unique du champ (générée automatiquement si non fournie)                                                   | Non         |
+| `disabled`     | *`boolean`*                                    | Indique si l'ensemble des boutons radio est désactivé                                                                  | Non         |
+| `required`     | *`boolean`*                                    | Indique si le groupe de radio est obligatoire                                                                          | Non         |
+| `small`        | *`boolean`*                                    | Affiche les boutons radio en taille réduite                                                                            | Non         |
+| `inline`       | *`boolean`*                                    | Affiche les boutons radio en ligne (par défaut : non)                                                                  | Non         |
+| `name`         | *`string`*                                     | Nom du champ `<input>` associé à l'ensemble des boutons radio du tableau données dans la prop `options`, cf. plus loin | Oui         |
+| `errorMessage` | *`string`*                                     | Message d'erreur global à afficher                                                                                     | Non         |
+| `validMessage` | *`string`*                                     | Message de validation global à afficher                                                                                | Non         |
+| `legend`       | *`string`*                                     | Texte de la légende                                                                                                    | Non         |
+| `modelValue`   | *`string`* ou *`number`* ou *`boolean`*        | Valeur courante du composant (sélection courante)                                                                      | Non         |
+| `options`      | *`Omit<DsfrRadioButtonProps, 'modelValue'>[]`* | Tableau d'options définissant les boutons radio individuels                                                            | Oui         |
 
 ::: warning Important
 
@@ -195,9 +195,9 @@ const options = [
 
 `DsfrRadioButtonSet` émet l'événement suivant :
 
-| Nom                  | Description                                         |
-|-----------------------|----------------------------------------------------|
-| `update:modelValue`   | Est émis lorsque la valeur d'un bouton radio est sélectionnée |
+| Nom                 | Description                                                   |
+|---------------------|---------------------------------------------------------------|
+| `update:modelValue` | Est émis lorsque la valeur d'un bouton radio est sélectionnée |
 
 ## 🧩 Slots
 

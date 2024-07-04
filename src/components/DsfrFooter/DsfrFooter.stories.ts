@@ -247,6 +247,11 @@ export const PiedDePageAvecLogoOperateur = (args) => ({
     :licence-to="licenceTo"
     :licence-name="licenceName"
     :licence-link-props="licenceLinkProps"
+    :operator-link-text="operatorLinkText"
+    :operator-to="operatorTo"
+    :operator-img-style="operatorImgStyle"
+    :operator-img-src="operatorImgSrc"
+    :operator-img-alt="operatorImgAlt"
   >
     <template #footer-link-lists>
       <DsfrFooterLinkList
@@ -339,8 +344,8 @@ PiedDePageAvecLogoOperateur.args = {
     ],
   },
   operatorLinkText: 'Logo opérateur',
-  operatorTo: 'https://loremflickr.com/80/80/cat',
-  operatorImgStyle: { 'max-height': '10rem' },
+  operatorTo: 'https://github.com/dnum-mi/vue-dsfr',
+  operatorImgStyle: { 'margin-left': '0.5px', padding: '1rem', height: '150px' },
   operatorImgSrc: '/cat.svg',
   operatorImgAlt: 'Logo opérateur',
 }

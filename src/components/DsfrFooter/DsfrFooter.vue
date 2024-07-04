@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed, useSlots } from 'vue'
-import type { RouteLocationRaw } from 'vue-router'
+import type { RouteLocationRaw, RouterLink } from 'vue-router'
 
 import DsfrLogo from '../DsfrLogo/DsfrLogo.vue'
 import DsfrFooterPartners from '../DsfrFooter/DsfrFooterPartners.vue'
@@ -101,6 +101,10 @@ const routerLinkLicenceTo = computed(() => {
 const aLicenceHref = computed(() => {
   return isExternalLink.value ? props.licenceTo : ''
 })
+
+const externalOperatorLink = computed(() => {
+  return typeof props.operatorTo === 'string' && props.operatorTo.startsWith('http')
+})
 </script>
 
 <template>
@@ -122,7 +126,44 @@ const aLicenceHref = computed(() => {
     </div>
     <div class="fr-container">
       <div class="fr-footer__body">
-        <div class="fr-footer__brand fr-enlarge-link">
+        <div
+          v-if="operatorImgSrc"
+          class="fr-footer__brand fr-enlarge-link"
+        >
+          <DsfrLogo
+            :logo-text="logoText"
+          />
+          <a
+            v-if="externalOperatorLink"
+            :href="(operatorTo as string)"
+            data-testid="card-link"
+            class="fr-footer__brand-link"
+          >
+            <img
+              class="fr-footer__logo"
+              :style="operatorImgStyle"
+              :src="operatorImgSrc"
+              :alt="operatorImgAlt"
+            >
+          </a>
+          <RouterLink
+            v-else
+            class="fr-footer__brand-link"
+            :to="homeLink"
+            :title="homeTitle"
+          >
+            <img
+              class="fr-footer__logo"
+              :style="operatorImgStyle"
+              :src="operatorImgSrc"
+              :alt="operatorImgAlt"
+            >
+          </RouterLink>
+        </div>
+        <div
+          v-else
+          class="fr-footer__brand fr-enlarge-link"
+        >
           <RouterLink
             :to="homeLink"
             :title="homeTitle"
@@ -130,27 +171,6 @@ const aLicenceHref = computed(() => {
             <DsfrLogo
               :logo-text="logoText"
             />
-          </RouterLink>
-          <RouterLink
-            v-if="operatorImgSrc"
-            class="fr-footer__brand-link"
-            :to="operatorTo"
-            :title="operatorLinkText"
-          >
-            <img
-              class="fr-footer__logo  fr-responsive-img"
-              :style="[
-                typeof operatorImgStyle === 'string' ? operatorImgStyle : '',
-                {
-                  'margin-left': '0.5px',
-                  padding: '1rem',
-                  ...(typeof operatorImgStyle === 'object' ? operatorImgStyle : {}),
-                  'max-width': '12.5rem',
-                },
-              ]"
-              :src="operatorImgSrc"
-              :alt="operatorImgAlt"
-            >
           </RouterLink>
         </div>
         <div class="fr-footer__content">

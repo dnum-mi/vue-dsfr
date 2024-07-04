@@ -77,6 +77,18 @@ la modale apparaît ici **en bas de l’écran** parce que l’iframe qui les co
 
 :::
 
+### Modale pour changer le thème
+
+::: code-group
+
+<Story data-title="Démo" min-h="600px">
+  <DsfrModalDemoTheme />
+</Story>
+
+<<< docs-demo/DsfrModalDemoTheme.vue [Code de la démo]
+
+:::
+
 ::: tip N.B.
 
 la modale apparaît ici **en bas de l’écran** et avec les **boutons d’actions verticaux** parce que l’iframe qui les contient est contenu dans une **largeur** correspondant à un **appareil mobile**. Sur un écran plus large, la modale apparaît au milieu de l’écran et les boutons sont par défaut distribués horizontalement.
@@ -94,4 +106,5 @@ la modale apparaît ici **en bas de l’écran** et avec les **boutons d’actio
 <script setup lang="ts">
 import DsfrModalDemo from './docs-demo/DsfrModalDemo.vue'
 import DsfrModalDemoActions from './docs-demo/DsfrModalDemoActions.vue'
+import DsfrModalDemoTheme from './docs-demo/DsfrModalDemoTheme.vue'
 </script>

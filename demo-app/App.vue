@@ -10,6 +10,7 @@ import DsfrHeader, { type DsfrHeaderProps } from '../src/components/DsfrHeader/D
 import DsfrNavigation, { type DsfrNavigationProps } from '../src/components/DsfrNavigation/DsfrNavigation.vue'
 import DsfrSkipLinks, { type DsfrSkipLinksProps } from '../src/components/DsfrSkipLinks/DsfrSkipLinks.vue'
 import DsfrBreadcrumb from '../src/components/DsfrBreadcrumb/DsfrBreadcrumb.vue'
+import DsfrFooter from '../src/components/DsfrFooter/DsfrFooter.vue'
 
 const toaster = useToaster()
 
@@ -298,6 +299,10 @@ const currentRoute = computed(() => route.name)
       :licence-link-props="licenceLinkProps"
       :after-mandatory-links="afterMandatoryLinks"
       :before-mandatory-links="beforeMandatoryLinks"
+      operator-img-src="https://loremflickr.com/300/200/cat"
+      operator-img-alt="L'opérateur petit chat"
+      operator-to="/"
+      :operator-img-style="{ 'margin-left': '0.5px', padding: '1rem', 'max-width': '15rem' }"
     />
   </div>
 
