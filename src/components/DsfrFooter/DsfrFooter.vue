@@ -141,15 +141,7 @@ const externalOperatorLink = computed(() => {
           >
             <img
               class="fr-footer__logo"
-              :style="[
-                typeof operatorImgStyle === 'string' ? operatorImgStyle : '',
-                {
-                  'margin-left': '0.5px',
-                  padding: '1rem',
-                  ...(typeof operatorImgStyle === 'object' ? operatorImgStyle : {}),
-                  'max-width': '12.5rem',
-                },
-              ]"
+              :style="operatorImgStyle"
               :src="operatorImgSrc"
               :alt="operatorImgAlt"
             >
@@ -162,15 +154,7 @@ const externalOperatorLink = computed(() => {
           >
             <img
               class="fr-footer__logo"
-              :style="[
-                typeof operatorImgStyle === 'string' ? operatorImgStyle : '',
-                {
-                  'margin-left': '0.5px',
-                  padding: '1rem',
-                  ...(typeof operatorImgStyle === 'object' ? operatorImgStyle : {}),
-                  'max-width': '12.5rem',
-                },
-              ]"
+              :style="operatorImgStyle"
               :src="operatorImgSrc"
               :alt="operatorImgAlt"
             >
