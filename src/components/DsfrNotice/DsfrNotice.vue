@@ -5,19 +5,30 @@ export type { DsfrNoticeProps }
 
 withDefaults(defineProps<DsfrNoticeProps>(), {
   title: '',
+  desc: '',
+  type: 'info',
 })
 
 defineEmits<{ (event: 'close'): void }>()
 </script>
 
 <template>
-  <div class="fr-notice  fr-notice--info">
+  <div
+    class="fr-notice"
+    :class="`fr-notice--${type}`">
     <div class="fr-container">
       <div class="fr-notice__body">
-        <p class="fr-notice__title">
-          <slot>
-            {{ title }}
-          </slot>
+        <p>
+          <span class="fr-notice__title">
+            <slot>
+              {{ title }}
+            </slot>
+          </span>
+          <span class="fr-notice__desc">
+            <slot name="desc">
+              {{ desc }}
+            </slot>
+          </span>
         </p>
         <button
           v-if="closeable"
