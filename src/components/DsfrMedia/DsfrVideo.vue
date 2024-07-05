@@ -37,9 +37,9 @@ withDefaults(defineProps<DsfrVideoProps>(), {
     <div class="fr-content-media__caption">
       {{ legend }}
     </div>
-    <DsfrTranscription
-      :title="transcriptionTitle"
-      :content="transcriptionContent"
-    />
   </figure>
+  <DsfrTranscription
+    :title="transcriptionTitle"
+    :content="transcriptionContent"
+  />
 </template>
