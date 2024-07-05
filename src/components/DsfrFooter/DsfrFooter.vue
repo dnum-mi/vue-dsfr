@@ -51,16 +51,16 @@ const props = withDefaults(defineProps<DsfrFooterProps>(), {
   ],
   ecosystemLinks: () => [
     {
-      label: 'legifrance.gouv.fr',
-      href: 'https://legifrance.gouv.fr',
-    },
-    {
       label: 'info.gouv.fr',
       href: 'https://info.gouv.fr',
     },
     {
       label: 'service-public.fr',
       href: 'https://service-public.fr',
+    },
+    {
+      label: 'legifrance.gouv.fr',
+      href: 'https://legifrance.gouv.fr',
     },
     {
       label: 'data.gouv.fr',
@@ -72,7 +72,7 @@ const props = withDefaults(defineProps<DsfrFooterProps>(), {
   operatorImgStyle: undefined,
   operatorImgSrc: undefined,
   operatorImgAlt: '',
-  licenceText: 'Sauf mention contraire, tous les textes de ce site sont sous',
+  licenceText: 'Sauf mention explicite de propriété intellectuelle détenue par des tiers, les contenus de ce site sont proposés sous',
   licenceTo: 'https://github.com/etalab/licence-ouverte/blob/master/LO.md',
   // @ts-expect-error this is really undefined
   licenceLinkProps: () => undefined,
