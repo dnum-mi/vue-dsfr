@@ -14,7 +14,8 @@ export default {
     position: {
       options: ['left', 'right'],
       control: 'select',
-      description: '(Optionnel) **Position** de la fleche îcone : `left` (à gauche), `right` (à droite)',
+      description:
+        '(Optionnel) **Position** de la fleche îcone : `left` (à gauche), `right` (à droite)',
     },
   },
 }
@@ -54,5 +55,4 @@ export const TousLesBacktoTop = (args) => ({
       </p>
     `,
 })
-TousLesBacktoTop.args = {
-}
+TousLesBacktoTop.args = {}

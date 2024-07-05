@@ -7,7 +7,6 @@ export default {
   component: DsfrStepper,
   title: 'Composants/DsfrStepper',
   argTypes: {
-
     steps: {
       control: 'object',
       description: 'Tableau de strings des labels d’étapes',
@@ -30,9 +29,13 @@ export const IndicateurDesEtapes = (args) => ({
       :currentStep="currentStep"
     />
   `,
-
 })
 IndicateurDesEtapes.args = {
-  steps: ['Première étape', 'Deuxième étape', 'Troisième étape', 'Quatrième étape'],
+  steps: [
+    'Première étape',
+    'Deuxième étape',
+    'Troisième étape',
+    'Quatrième étape',
+  ],
   currentStep: 1,
 }

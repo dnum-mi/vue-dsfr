@@ -9,11 +9,13 @@ export default {
   argTypes: {
     to: {
       control: 'text',
-      description: 'URL complète pour un lien externe, ou chaîne de caractère ou objet à donner à `to` de `RouterLink` pour un lien interne',
+      description:
+        'URL complète pour un lien externe, ou chaîne de caractère ou objet à donner à `to` de `RouterLink` pour un lien interne',
     },
     active: {
       control: 'boolean',
-      description: 'Indique si le lien correspond à la page courante (`true`) ou non (`false`)',
+      description:
+        'Indique si le lien correspond à la page courante (`true`) ou non (`false`)',
     },
   },
 }

@@ -10,12 +10,7 @@ import {
   RiArrowRightLine,
 } from 'oh-vue-icons/icons'
 
-addIcons(
-  RiArrowLeftFill,
-  RiArrowRightFill,
-  RiArrowLeftLine,
-  RiArrowRightLine,
-)
+addIcons(RiArrowLeftFill, RiArrowRightFill, RiArrowLeftLine, RiArrowRightLine)
 
 /**
  * [Voir quand l’utiliser sur la documentation du DSFR](https://www.systeme-de-design.gouv.fr/elements-d-interface/composants/tag)
@@ -42,15 +37,18 @@ export default {
     },
     icon: {
       control: 'text',
-      description: '**Nom de l’icône** (tel que sur le site [RemixIcon](https://remixicon.com), exemple: `"ri-checkbox-circle-line"`) à afficher à côté du texte du bouton.\n\n Par défaut, l’icône est',
+      description:
+        '**Nom de l’icône** (tel que sur le site [RemixIcon](https://remixicon.com), exemple: `"ri-checkbox-circle-line"`) à afficher à côté du texte du bouton.\n\n Par défaut, l’icône est',
     },
     iconOnly: {
       control: 'boolean',
-      description: 'Indique si l’icône doit apparaître seule (le `label` sera dans l’attribut `aria-label` de l’icône)',
+      description:
+        'Indique si l’icône doit apparaître seule (le `label` sera dans l’attribut `aria-label` de l’icône)',
     },
     link: {
       control: 'text',
-      description: 'URL complète pour un lien externe, ou chaîne de caractère ou objet à donner à `to` de `RouterLink` pour un lien interne',
+      description:
+        'URL complète pour un lien externe, ou chaîne de caractère ou objet à donner à `to` de `RouterLink` pour un lien interne',
     },
     small: {
       control: 'boolean',
@@ -66,7 +64,8 @@ export default {
     },
     tags: {
       control: 'object',
-      description: 'Tableau d’objets à passer à `DsfrTags` (avec un « s »), chaque objet pourra contenir toutes les props à passer à `DsfrTag` (sans « s »)',
+      description:
+        'Tableau d’objets à passer à `DsfrTags` (avec un « s »), chaque objet pourra contenir toutes les props à passer à `DsfrTag` (sans « s »)',
     },
   },
 }
@@ -87,15 +86,33 @@ const tags = [
   ],
   [
     { label: 'Tag cliquable sans icône', link: 'https://storybook.vue-ds.fr' },
-    { label: 'Tag cliquable avec icône', icon: 'ri-arrow-right-line', link: 'https://storybook.vue-ds.fr' },
+    {
+      label: 'Tag cliquable avec icône',
+      icon: 'ri-arrow-right-line',
+      link: 'https://storybook.vue-ds.fr',
+    },
   ],
   [
-    { label: 'Petit tag cliquable sans icône', small: true, link: 'https://storybook.vue-ds.fr' },
-    { label: 'Petit tag cliquable avec icône', icon: 'ri-arrow-right-line', small: true, link: 'https://storybook.vue-ds.fr' },
+    {
+      label: 'Petit tag cliquable sans icône',
+      small: true,
+      link: 'https://storybook.vue-ds.fr',
+    },
+    {
+      label: 'Petit tag cliquable avec icône',
+      icon: 'ri-arrow-right-line',
+      small: true,
+      link: 'https://storybook.vue-ds.fr',
+    },
   ],
   [
     { label: 'Tag sélectionné sans icône', tagName: 'button', selected: true },
-    { label: 'Tag sélectionné avec icône', icon: 'ri-arrow-right-line', tagName: 'button', selected: true },
+    {
+      label: 'Tag sélectionné avec icône',
+      icon: 'ri-arrow-right-line',
+      tagName: 'button',
+      selected: true,
+    },
   ],
   [
     { label: 'Tag fermable 1', class: 'fr-tag--dismiss', tagName: 'button' },
@@ -126,7 +143,6 @@ export const Etiquette = (args) => ({
       :small="small"
     />
   `,
-
 })
 Etiquette.args = {
   label: 'Étiquette',
@@ -149,7 +165,6 @@ export const GroupeDEtiquettes = (args) => ({
       :tags="tags"
     />
   `,
-
 })
 GroupeDEtiquettes.args = {
   tags: tagGroup,
@@ -171,7 +186,6 @@ export const EtiquettesSimples = (args) => ({
       :tags="tags"
     />
   `,
-
 })
 EtiquettesSimples.args = {
   tags: tags[0],
@@ -193,7 +207,6 @@ export const EtiquettesSimplesPetites = (args) => ({
       :tags="tags"
     />
   `,
-
 })
 EtiquettesSimplesPetites.args = {
   tags: tags[1],
@@ -215,7 +228,6 @@ export const EtiquettesCliquables = (args) => ({
       :tags="tags"
     />
   `,
-
 })
 EtiquettesCliquables.args = {
   tags: tags[2],
@@ -237,7 +249,6 @@ export const EtiquettesCliquablesPetites = (args) => ({
       :tags="tags"
     />
   `,
-
 })
 EtiquettesCliquablesPetites.args = {
   tags: tags[3],
@@ -268,7 +279,6 @@ export const EtiquettesSelectionnables = (args) => ({
       :tags="tags"
     />
   `,
-
 })
 EtiquettesSelectionnables.args = {
   tags: tags[4],
@@ -325,7 +335,6 @@ export const EtiquettesFermables = (args) => ({
       :tags="tags"
     />
   `,
-
 })
 EtiquettesFermables.args = {
   tags: tags[5],

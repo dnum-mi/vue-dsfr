@@ -11,11 +11,13 @@ export default {
   argTypes: {
     networks: {
       control: 'object',
-      description: 'Liste des différents réseaux sociaux ; doit avoir 3 props : `name`, `type` (forcément parmi les valeurs suivantes : `\'facebook\'`, `\'twitter-x\'`, `\'youtube\'`, `\'linkedin\'`, `\'instagram\'`)  et `url`',
+      description:
+        'Liste des différents réseaux sociaux ; doit avoir 3 props : `name`, `type` (forcément parmi les valeurs suivantes : `\'facebook\'`, `\'twitter-x\'`, `\'youtube\'`, `\'linkedin\'`, `\'instagram\'`)  et `url`',
     },
     titleTag: {
       control: 'text',
-      description: 'Permet de choisir la balise contenant le titre du composant (h3 par défaut)',
+      description:
+        'Permet de choisir la balise contenant le titre du composant (h3 par défaut)',
     },
   },
 }
@@ -37,7 +39,6 @@ export const ReseauxSociaux = (args) => ({
       </div>
     </DsfrFollow>
   `,
-
 })
 ReseauxSociaux.args = {
   titleTag: undefined,

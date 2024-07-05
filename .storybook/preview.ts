@@ -33,7 +33,6 @@ const preview: Preview = {
     docs: {
       theme: { ...themes.normal, ...VueDsfrTheme },
     },
-    actions: { argTypesRegex: '^on[A-Z].*' },
     controls: {
       matchers: {
         color: /(background|color)$/i,
@@ -91,6 +90,8 @@ const preview: Preview = {
       },
     },
   },
+
+  tags: ['autodocs'],
 }
 
 const RouterLink = defineComponent({

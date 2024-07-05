@@ -8,14 +8,17 @@ export default {
   argTypes: {
     id: {
       control: 'text',
-      description: '(Optionnel) Valeur de l’attribut `id` de ce sous-menu. *N.B. : Il est recommandé de ne pas le donner, la bibliothèque lui en donnera un pseudo-aléatoire*.',
+      description:
+        '(Optionnel) Valeur de l’attribut `id` de ce sous-menu. *N.B. : Il est recommandé de ne pas le donner, la bibliothèque lui en donnera un pseudo-aléatoire*.',
     },
     'toggle-id': {
-      description: 'Événement émis lors du click sur le lien, avec en argument l’id de l’élément cliqué',
+      description:
+        'Événement émis lors du click sur le lien, avec en argument l’id de l’élément cliqué',
     },
     links: {
       control: 'object',
-      description: 'Tableau contenant les liens du menu de navigation. Chaque objet de ce tableau contiendra les props d’un lien direct <a href="/?path=/docs/composants-dsfrnavigationmenulink--docs">DsfrNavigationMenuLink</a> de navigation (`to` et `text`)',
+      description:
+        'Tableau contenant les liens du menu de navigation. Chaque objet de ce tableau contiendra les props d’un lien direct <a href="/?path=/docs/composants-dsfrnavigationmenulink--docs">DsfrNavigationMenuLink</a> de navigation (`to` et `text`)',
     },
     title: {
       control: 'text',
@@ -23,11 +26,13 @@ export default {
     },
     active: {
       control: 'boolean',
-      description: '(Optionnel) Est-ce que le menu doit être actif ou non (met l’attribut `aria-current` à la valeur `true`). Par défaut, il est inactif.',
+      description:
+        '(Optionnel) Est-ce que le menu doit être actif ou non (met l’attribut `aria-current` à la valeur `true`). Par défaut, il est inactif.',
     },
     expandedId: {
       control: 'text',
-      description: 'Indique l’id de l’élément "ouvert" ou "déplié" dans le menu. Permet au composant de savoir s’il doit être déplié (si `expandedId` est identique à son `id`) ou non (si `expandedId` est différent de son `id`)',
+      description:
+        'Indique l’id de l’élément "ouvert" ou "déplié" dans le menu. Permet au composant de savoir s’il doit être déplié (si `expandedId` est identique à son `id`) ou non (si `expandedId` est différent de son `id`)',
     },
   },
 }
@@ -68,7 +73,6 @@ export const NavigationSousMenu = (args) => ({
       </DsfrNavigationItem>
     </DsfrNavigation>
   `,
-
 })
 NavigationSousMenu.args = {
   title: 'Nom de menu original',

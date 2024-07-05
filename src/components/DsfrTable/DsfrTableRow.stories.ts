@@ -1,3 +1,5 @@
+import { fn } from '@storybook/test'
+
 import DsfrTable from './DsfrTable.vue'
 import DsfrTableHeaders from './DsfrTableHeaders.vue'
 import DsfrTableRow from './DsfrTableRow.vue'
@@ -9,15 +11,16 @@ export default {
     title: { control: 'text' },
     headers: {
       control: 'object',
-      description: 'Liste des en-têtes du tableau (tableau de string). *N.B. : Ne fait pas partie du composant.*',
+      description:
+        'Liste des en-têtes du tableau (tableau de string). *N.B. : Ne fait pas partie du composant.*',
     },
     rowData: {
       control: 'object',
       description: `Tableau ou objet.
 
-Si c’est un tableau, chaque élément de ce tableau contiendra les props attendues par <a href="/?path=/docs/composants-tableau-cellule-de-tableau-dsfrtablecell--cellule-de-tableau-simple">DsfrTableCell</a>.
+Si c’est un tableau, chaque élément de ce tableau contiendra les props attendues par <a href="/?path=/docs/composants-dsfrtablecell--docs">DsfrTableCell</a>.
 
-Si c’est un objet, il doit avoir une propriété \`row\` dont la valeur sera un tableau qui contiendra les props attendues par <a href="/?path=/docs/composants-tableau-cellule-de-tableau-dsfrtablecell--cellule-de-tableau-simple">DsfrTableCell</a>.
+Si c’est un objet, il doit avoir une propriété \`row\` dont la valeur sera un tableau qui contiendra les props attendues par <a href="/?path=/docs/composants-dsfrtablecell--docs">DsfrTableCell</a>.
 Toutes les autres propriétés seront mises sur l’élément \`<tr>\` de cette ligne.
         `,
     },
@@ -26,7 +29,7 @@ Toutes les autres propriétés seront mises sur l’élément \`<tr>\` de cette 
       description: 'Objet contenant les props à passer à la balise `<tr>`',
     },
     onClickRow: {
-      action: 'Clicked on row',
+      action: fn(),
       description: 'Fonction pour montrer le clic sur une ligne',
     },
   },
@@ -98,7 +101,6 @@ export const LigneDeTableauSimple = (args) => ({
         <DsfrTableRow :row-data="rowData" />
       </DsfrTable>
   `,
-
 })
 LigneDeTableauSimple.args = {
   title,
@@ -127,7 +129,6 @@ export const LigneDeTableauAvecComposant = (args) => ({
       <DsfrTableRow :row-data="rowData" />
     </DsfrTable>
   `,
-
 })
 LigneDeTableauAvecComposant.args = {
   title,
@@ -160,7 +161,6 @@ export const LigneDeTableauComplexe = (args) => ({
         <DsfrTableRow :row-data="rowData" :row-attrs="rowAttrs" />
       </DsfrTable>
   `,
-
 })
 LigneDeTableauComplexe.args = {
   title,

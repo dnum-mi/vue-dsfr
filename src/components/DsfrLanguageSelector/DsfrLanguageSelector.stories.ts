@@ -7,21 +7,24 @@ export default {
   component: DsfrLanguageSelector,
   title: 'Composants/DsfrLanguageSelector',
   argTypes: {
-
     id: {
       control: 'text',
-      description: '(Facultatif) `id` à donner pour la liste des langues (sera mis sur la balise `div` parente de la balise `ul`)',
+      description:
+        '(Facultatif) `id` à donner pour la liste des langues (sera mis sur la balise `div` parente de la balise `ul`)',
     },
     languages: {
       control: 'object',
-      description: 'Tableau d’objets des langues proposées par le sélecteur : chaque élément doit être un objet avec un code ISO `codeIso` et un `label`',
+      description:
+        'Tableau d’objets des langues proposées par le sélecteur : chaque élément doit être un objet avec un code ISO `codeIso` et un `label`',
     },
     currentLanguage: {
       control: 'text',
-      description: 'Code ISO du language courant (doit correspondre au `codeIso` d’un des objets de la props `languages`',
+      description:
+        'Code ISO du language courant (doit correspondre au `codeIso` d’un des objets de la props `languages`',
     },
     select: {
-      description: 'Événement émis lors du clic sur l’une des langues proposées après dépliage de la liste',
+      description:
+        'Événement émis lors du clic sur l’une des langues proposées après dépliage de la liste',
     },
     onSelect: {
       action: 'Clic sur une langue',
@@ -42,7 +45,6 @@ export const SelecteurDeLangue = (args) => ({
       @select="currentLanguage = $event.codeIso"
     />
   `,
-
 })
 SelecteurDeLangue.args = {
   id: 'translate-1',

@@ -11,14 +11,16 @@ export default {
   argTypes: {
     id: {
       control: 'text',
-      description: '(optionnel) Valeur de l’attribut `id` de l’accordéon. Par défaut, un id pseudo-aléatoire sera donné.',
+      description:
+        '(optionnel) Valeur de l’attribut `id` de l’accordéon. Par défaut, un id pseudo-aléatoire sera donné.',
     },
     title: {
       control: 'text',
       description: 'Intitulé de l’accordéon',
     },
     expand: {
-      description: 'Événement déclenché au clic sur le titre de l’accordéon et qui renvoie l’`id` de l’accordéon correspondant.',
+      description:
+        'Événement déclenché au clic sur le titre de l’accordéon et qui renvoie l’`id` de l’accordéon correspondant.',
     },
     expandedId: {
       control: 'text',
@@ -190,7 +192,6 @@ export const AccordeonDansUnAccordeon = (args) => ({
       </li>
     </DsfrAccordionsGroup>
   `,
-
 })
 AccordeonDansUnAccordeon.args = {
   title: 'Un titre d’accordéon',
@@ -233,7 +234,6 @@ export const AccordeonTitreCustom = (args) => ({
       </li>
     </DsfrAccordionsGroup>
   `,
-
 })
 AccordeonTitreCustom.args = {
   title1: 'Un titre d’accordéon customisé',

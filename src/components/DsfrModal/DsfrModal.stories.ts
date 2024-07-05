@@ -1,5 +1,4 @@
-import { expect } from '@storybook/test'
-import { within, userEvent } from '@storybook/testing-library'
+import { fn, expect, within, userEvent } from '@storybook/test'
 
 import DsfrModal from './DsfrModal.vue'
 import DsfrButton from '../DsfrButton/DsfrButton.vue'
@@ -11,9 +10,10 @@ import { setup } from '@storybook/vue3'
 
 addIcons(RiCheckboxCircleLine)
 
-const delay = (timeout = 100) => new Promise(resolve => setTimeout(resolve, timeout))
+const delay = (timeout = 100) =>
+  new Promise((resolve) => setTimeout(resolve, timeout))
 
-setup(app => {
+setup((app) => {
   app.component('VIcon', VIcon)
 })
 
@@ -26,19 +26,23 @@ export default {
   argTypes: {
     actions: {
       control: 'object',
-      description: 'Tableau d’objets : chaque objet contiendra les props à donner à `DsfrButton`',
+      description:
+        'Tableau d’objets : chaque objet contiendra les props à donner à `DsfrButton`',
     },
     isAlert: {
       control: 'boolean',
-      description: 'Booléen permettant de mettre un `role="alert"` (si `true`) sur la modal ou non (`false`, défaut)',
+      description:
+        'Booléen permettant de mettre un `role="alert"` (si `true`) sur la modal ou non (`false`, défaut)',
     },
     origin: {
       control: 'text',
-      description: 'Valeur de l’attribut `id` du bouton qui déclenche l’ouverture de la modale',
+      description:
+        'Valeur de l’attribut `id` du bouton qui déclenche l’ouverture de la modale',
     },
     opened: {
       control: 'boolean',
-      description: 'Booléen permettant d\'ouvrir (`true`) ou fermer la modale (`false`, défaut)',
+      description:
+        'Booléen permettant d\'ouvrir (`true`) ou fermer la modale (`false`, défaut)',
     },
     title: {
       control: 'text',
@@ -51,21 +55,24 @@ export default {
     size: {
       control: 'radio',
       options: ['sm', 'md', 'lg', 'xl'],
-      description: 'Taille de la modale : `SM` (Small), `MD` (Medium), `LG` (Large), `XL`(Extra large). Attention la taille `XL` ne fait pas partie du Design System de l’État',
+      description:
+        'Taille de la modale : `SM` (Small), `MD` (Medium), `LG` (Large), `XL`(Extra large). Attention la taille `XL` ne fait pas partie du Design System de l’État',
     },
     close: {
       description: 'Événement déclenché à la fermeture de la modale',
     },
     onClick: {
-      action: 'close',
+      action: fn(),
     },
     closeButtonLabel: {
       control: 'text',
-      description: 'Valeur du bouton cliquable permettant la fermeture de la modale',
+      description:
+        'Valeur du bouton cliquable permettant la fermeture de la modale',
     },
     closeButtonTitle: {
       control: 'text',
-      description: 'Valeur du texte informatif au survol du bouton cliquable permettant la fermeture de la modale',
+      description:
+        'Valeur du texte informatif au survol du bouton cliquable permettant la fermeture de la modale',
     },
   },
 }
@@ -83,9 +90,12 @@ export const ModalAvecActions = (args) => ({
 
   computed: {
     modifiedActions () {
-      return this.actions.map(action => ({
+      return this.actions.map((action) => ({
         ...action,
-        onClick: () => { this.onClick?.(action.actionArg); this.onClose() },
+        onClick: () => {
+          this.onClick?.(action.actionArg)
+          this.onClose()
+        },
       }))
     },
   },

@@ -11,11 +11,13 @@ export default {
   argTypes: {
     networks: {
       control: 'object',
-      description: 'Liste des différents réseaux sociaux ; doit avoir 3 props : `name`, `type` (forcément parmi les valeurs suivantes : `\'facebook\'`, `\'twitter-x\'`, `\'youtube\'`, `\'linkedin\'`, `\'instagram\'`)  et `href`',
+      description:
+        'Liste des différents réseaux sociaux ; doit avoir 3 props : `name`, `type` (forcément parmi les valeurs suivantes : `\'facebook\'`, `\'twitter-x\'`, `\'youtube\'`, `\'linkedin\'`, `\'instagram\'`)  et `href`',
     },
     newsletterData: {
       control: 'object',
-      description: 'Objet contenant en propriété les props attendues par DsfrNewsLetter',
+      description:
+        'Objet contenant en propriété les props attendues par DsfrNewsLetter',
     },
   },
 }
@@ -33,7 +35,6 @@ export const Suivre = (args) => ({
       :newsletter-data="newsletterData"
     />
   `,
-
 })
 Suivre.args = {
   networks: [
@@ -71,7 +72,8 @@ Suivre.args = {
     placeholder: 'james.bond@mi6.gov.uk',
     hintText: 'Mise en garde concernant l’abonnement à la lettre d’information',
     buttonText: 'S’abonner',
-    buttonTitle: 'Titre du bouton (valeur de l’attribut `title` de la balise `button`)',
+    buttonTitle:
+      'Titre du bouton (valeur de l’attribut `title` de la balise `button`)',
     buttonAction: () => undefined,
     onlyCallout: false,
   },
@@ -90,7 +92,6 @@ export const SuivreMiseEnAvant = (args) => ({
       :newsletter-data="newsletterData"
     />
   `,
-
 })
 SuivreMiseEnAvant.args = {
   networks: [
@@ -128,7 +129,8 @@ SuivreMiseEnAvant.args = {
     placeholder: '',
     hintText: '',
     buttonText: 'S’abonner',
-    buttonTitle: 'Titre du bouton (valeur de l’attribut `title` de la balise `button`)',
+    buttonTitle:
+      'Titre du bouton (valeur de l’attribut `title` de la balise `button`)',
     buttonAction: () => undefined,
     onlyCallout: true,
   },

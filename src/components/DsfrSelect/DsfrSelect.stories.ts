@@ -13,7 +13,8 @@ export default {
     },
     required: {
       control: 'boolean',
-      description: 'Option permettant de rendre ce champ de formulaire obligatoire et d’assigner au label un astérisque afin de rendre ce changement visible',
+      description:
+        'Option permettant de rendre ce champ de formulaire obligatoire et d’assigner au label un astérisque afin de rendre ce changement visible',
     },
     // label: {
     //   control: 'text',
@@ -21,7 +22,8 @@ export default {
     // },
     options: {
       control: 'object',
-      description: 'Liste des options proposées par le `<select>` à lui passer sous forme de tableau de string ou de tableau d’objets avec une propriété `"text"` et une propriété `"value"`',
+      description:
+        'Liste des options proposées par le `<select>` à lui passer sous forme de tableau de string ou de tableau d’objets avec une propriété `"text"` et une propriété `"value"`',
     },
     description: {
       control: 'text',
@@ -29,15 +31,18 @@ export default {
     },
     successMessage: {
       control: 'text',
-      description: 'Message à afficher en situation de succès, sa présence change la couleur de la police d’écriture',
+      description:
+        'Message à afficher en situation de succès, sa présence change la couleur de la police d’écriture',
     },
     defaultUnselectedText: {
       control: 'text',
-      description: 'Texte de l’option sélectionnée par défaut si aucune option valide n’est sélectionnée',
+      description:
+        'Texte de l’option sélectionnée par défaut si aucune option valide n’est sélectionnée',
     },
     errorMessage: {
       control: 'text',
-      description: 'Message à afficher en cas d’erreur, sa présence change la couleur de la police d’écriture',
+      description:
+        'Message à afficher en cas d’erreur, sa présence change la couleur de la police d’écriture',
     },
     modelValue: {
       control: 'text',
@@ -52,7 +57,7 @@ export default {
       description: 'Événement émis lors du changement de l’option sélectionnée',
     },
     onChange: {
-      action: 'change',
+      action: fn(),
     },
   },
 }
@@ -86,7 +91,6 @@ export const ListeDeroulante = (args) => ({
       this.onChange(newVal)
     },
   },
-
 })
 
 ListeDeroulante.args = {
@@ -137,7 +141,6 @@ export const ListeDeroulanteEnAnglais = (args) => ({
       this.onChange(newVal)
     },
   },
-
 })
 ListeDeroulanteEnAnglais.args = {
   options: [
@@ -186,7 +189,6 @@ export const ListeDeroulanteRequise = (args) => ({
       this.onChange(newVal)
     },
   },
-
 })
 
 ListeDeroulanteRequise.args = {
@@ -240,7 +242,6 @@ export const ListeDeroulanteRequisePersonnalisee = (args) => ({
       this.onChange(newVal)
     },
   },
-
 })
 
 ListeDeroulanteRequisePersonnalisee.args = {
@@ -292,7 +293,6 @@ export const ListeDeroulanteInactive = (args) => ({
       this.onChange(newVal)
     },
   },
-
 })
 ListeDeroulanteInactive.args = {
   options: [
@@ -343,32 +343,38 @@ export const ListeDeroulanteAvecOptionsInactives = (args) => ({
       this.onChange(newVal)
     },
   },
-
 })
 
 ListeDeroulanteAvecOptionsInactives.args = {
-  options: [{
-    text: 'Option 1',
-    value: 0,
-  }, {
-    text: 'Option 2',
-    value: 0,
-    disabled: true,
-  }, {
-    text: 'Option 3',
-    value: 0,
-    disabled: false,
-  }, {
-    text: 'Option 4',
-    value: 0,
-  }, {
-    text: 'Option 5',
-    value: 0,
-    disabled: true,
-  }, {
-    text: 'Option 6',
-    value: 0,
-  }],
+  options: [
+    {
+      text: 'Option 1',
+      value: 0,
+    },
+    {
+      text: 'Option 2',
+      value: 0,
+      disabled: true,
+    },
+    {
+      text: 'Option 3',
+      value: 0,
+      disabled: false,
+    },
+    {
+      text: 'Option 4',
+      value: 0,
+    },
+    {
+      text: 'Option 5',
+      value: 0,
+      disabled: true,
+    },
+    {
+      text: 'Option 6',
+      value: 0,
+    },
+  ],
   label: 'Selection d’options',
   description: 'Je suis une description, je décris, c’est ma raison d’être',
   successMessage: '',

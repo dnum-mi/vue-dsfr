@@ -13,12 +13,13 @@ export default {
     },
     links: {
       control: 'object',
-      description: 'Liste d’objets contenant les props de lien direct <a href="/?path=/docs/composants-dsfrnavigationmenulink--docs">DsfrNavigationMenuLink</a> de navigation (`to` et `text`)',
+      description:
+        'Liste d’objets contenant les props de lien direct <a href="/?path=/docs/composants-dsfrnavigationmenulink--docs">DsfrNavigationMenuLink</a> de navigation (`to` et `text`)',
     },
   },
 }
 
-export const NavigationMegaMenuCategorie = args => ({
+export const NavigationMegaMenuCategorie = (args) => ({
   components: {
     DsfrNavigation,
     DsfrNavigationItem,

@@ -16,15 +16,18 @@ export default {
   argTypes: {
     beforeMandatoryLinks: {
       control: 'object',
-      description: 'Liste de liens précédant les liens par défaut (liens obligatoires)',
+      description:
+        'Liste de liens précédant les liens par défaut (liens obligatoires)',
     },
     afterMandatoryLinks: {
       control: 'object',
-      description: 'Liste de liens succédant aux liens par défaut (liens obligatoires)',
+      description:
+        'Liste de liens succédant aux liens par défaut (liens obligatoires)',
     },
     ecosystemLinks: {
       control: 'object',
-      description: 'Liste de liens relatifs au gouvernement (par défaut si la props n\'est pas renseignée elle contient les quatre liens obligatoires pour un site public)',
+      description:
+        'Liste de liens relatifs au gouvernement (par défaut si la props n\'est pas renseignée elle contient les quatre liens obligatoires pour un site public)',
     },
     a11yCompliance: {
       control: 'radio',
@@ -33,19 +36,23 @@ export default {
         'partiellement conforme',
         'totalement conforme',
       ],
-      description: 'Niveau de conformité de l’a11y : `"non conforme"`, `"partiellement conforme"`, ou `"totalement conforme"`',
+      description:
+        'Niveau de conformité de l’a11y : `"non conforme"`, `"partiellement conforme"`, ou `"totalement conforme"`',
     },
     a11yComplianceLink: {
       control: 'text',
-      description: 'URL pour un lien externe ou route ou objet pour un lien externe à associer au lien `"Accessibilité : <niveau de conformité>"`',
+      description:
+        'URL pour un lien externe ou route ou objet pour un lien externe à associer au lien `"Accessibilité : <niveau de conformité>"`',
     },
     logoText: {
       control: 'object',
-      description: 'Texte du logo. Si c’est une `String`, tout sera sur une ligne. Si c’est un tableau, chaque élément du tableau sera sur une ligne',
+      description:
+        'Texte du logo. Si c’est une `String`, tout sera sur une ligne. Si c’est un tableau, chaque élément du tableau sera sur une ligne',
     },
     legalLink: {
       control: 'text',
-      description: 'URL pour un lien externe ou route ou objet pour un lien externe à associer au lien `"Mentions légales"`',
+      description:
+        'URL pour un lien externe ou route ou objet pour un lien externe à associer au lien `"Mentions légales"`',
     },
     partners: {
       control: 'object',
@@ -56,35 +63,43 @@ export default {
     },
     personalDataLink: {
       control: 'text',
-      description: 'URL pour un lien externe ou route ou objet pour un lien externe à associer au lien `"Données personnelles"`',
+      description:
+        'URL pour un lien externe ou route ou objet pour un lien externe à associer au lien `"Données personnelles"`',
     },
     mandatoryLinks: {
       control: 'object',
-      description: 'Tableau d’objets, avec chaque objet qui contiendra 2 propriétés : `label` et `to`. Mieux vaut garder le défaut',
+      description:
+        'Tableau d’objets, avec chaque objet qui contiendra 2 propriétés : `label` et `to`. Mieux vaut garder le défaut',
     },
     cookiesLink: {
       control: 'text',
-      description: 'URL pour un lien externe ou route ou objet pour un lien externe à associer au lien `"Données personnelles"`',
+      description:
+        'URL pour un lien externe ou route ou objet pour un lien externe à associer au lien `"Données personnelles"`',
     },
     homeLink: {
       control: 'text',
-      description: 'URL pour un lien externe ou route ou objet pour un lien externe à associer au logo avec la Marianne',
+      description:
+        'URL pour un lien externe ou route ou objet pour un lien externe à associer au logo avec la Marianne',
     },
     homeTitle: {
       control: 'text',
-      description: 'Titre pour un lien externe ou route ou objet pour un lien externe à associer au logo avec la Marianne',
+      description:
+        'Titre pour un lien externe ou route ou objet pour un lien externe à associer au logo avec la Marianne',
     },
     descText: {
       control: 'text',
-      description: 'Texte de la description du footer (sera dans `<p class="fr-footer__content-desc">`)',
+      description:
+        'Texte de la description du footer (sera dans `<p class="fr-footer__content-desc">`)',
     },
     operatorLinkText: {
       control: 'text',
-      description: 'Texte de l\'info bulle associée au lien externe du logo de l\'opérateur',
+      description:
+        'Texte de l\'info bulle associée au lien externe du logo de l\'opérateur',
     },
     operatorTo: {
       control: 'text',
-      description: 'URL pour un lien externe ou route ou objet pour un lien externe à associer au lien de l’image de l’opérateur',
+      description:
+        'URL pour un lien externe ou route ou objet pour un lien externe à associer au lien de l’image de l’opérateur',
     },
     operatorImgStyle: {
       control: 'object',
@@ -156,7 +171,6 @@ export const PiedDePageSimple = (args) => ({
     </template>
   </DsfrFooter>
   `,
-
 })
 PiedDePageSimple.args = {
   beforeMandatoryLinks: [{ label: 'Before', to: '/before' }],
@@ -276,7 +290,6 @@ export const PiedDePageAvecLogoOperateur = (args) => ({
     </template>
   </DsfrFooter>
   `,
-
 })
 PiedDePageAvecLogoOperateur.args = {
   beforeMandatoryLinks: [{ label: 'Before', to: '/before' }],
@@ -345,7 +358,11 @@ PiedDePageAvecLogoOperateur.args = {
   },
   operatorLinkText: 'Logo opérateur',
   operatorTo: 'https://github.com/dnum-mi/vue-dsfr',
-  operatorImgStyle: { 'margin-left': '0.5px', padding: '1rem', height: '150px' },
+  operatorImgStyle: {
+    'margin-left': '0.5px',
+    padding: '1rem',
+    height: '150px',
+  },
   operatorImgSrc: '/cat.svg',
   operatorImgAlt: 'Logo opérateur',
 }

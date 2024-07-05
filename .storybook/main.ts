@@ -9,13 +9,13 @@ const config: StorybookConfig = {
     '@storybook/addon-themes',
     '@storybook/addon-a11y',
     '@storybook/addon-styling',
+    '@storybook/addon-mdx-gfm',
+    '@chromatic-com/storybook',
   ],
   framework: {
     name: '@storybook/vue3-vite',
     options: {},
   },
-  docs: {
-    autodocs: true,
-  },
+  docs: {},
 }
 export default config

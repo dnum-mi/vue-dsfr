@@ -1,3 +1,5 @@
+import { fn } from '@storybook/test'
+
 import DsfrCheckboxSet from './DsfrCheckboxSet.vue'
 
 /**
@@ -7,10 +9,10 @@ export default {
   component: DsfrCheckboxSet,
   title: 'Composants/DsfrCheckboxSet',
   argTypes: {
-
     disabled: {
       control: 'boolean',
-      description: 'Indique si l’ensemble des checkboxes doivent être désactivées (`true`) ou non (`false`, défaut)',
+      description:
+        'Indique si l’ensemble des checkboxes doivent être désactivées (`true`) ou non (`false`, défaut)',
     },
     errorMessage: {
       control: 'text',
@@ -22,7 +24,8 @@ export default {
     },
     inline: {
       control: 'boolean',
-      description: 'Indique si les checkboxes doivent apparaître sur une seule ligne (`true`) ou non (`false`, défaut)',
+      description:
+        'Indique si les checkboxes doivent apparaître sur une seule ligne (`true`) ou non (`false`, défaut)',
     },
     small: {
       control: 'boolean',
@@ -34,18 +37,21 @@ export default {
     // },
     options: {
       control: 'object',
-      description: 'Tableau de `string` (la valeur `value` de la checkbox sera identique au `label`) ou d’objets contenant les props à passer à chaque composant DsfrCheckbox, sauf `modelValue` qui sera calculée à partir de `modelValue` du DsfrCheckboxSet.',
+      description:
+        'Tableau de `string` (la valeur `value` de la checkbox sera identique au `label`) ou d’objets contenant les props à passer à chaque composant DsfrCheckbox, sauf `modelValue` qui sera calculée à partir de `modelValue` du DsfrCheckboxSet.',
     },
     modelValue: {
       control: 'object',
-      description: 'Tableau des valeurs sélectionnées (cochées) du groupe de checkboxes',
+      description:
+        'Tableau des valeurs sélectionnées (cochées) du groupe de checkboxes',
     },
     required: {
       control: 'boolean',
-      description: 'Permet de spécifier que cet ensemble de champs doit être renseigné',
+      description:
+        'Permet de spécifier que cet ensemble de champs doit être renseigné',
     },
     onChange: {
-      action: 'changed',
+      action: fn(),
     },
   },
 }
@@ -73,7 +79,6 @@ export const CheckboxSet = (args) => ({
       this.onChange(val)
     },
   },
-
 })
 CheckboxSet.args = {
   legend: 'Légende des champs',
@@ -128,7 +133,6 @@ export const CheckboxSetRequis = (args) => ({
       this.onChange(val)
     },
   },
-
 })
 CheckboxSetRequis.args = {
   legend: 'Veuillez choisir au moins une des propositions suivantes',
@@ -186,7 +190,6 @@ export const CheckboxSetRequisPersonnalise = (args) => ({
       this.onChange(val)
     },
   },
-
 })
 CheckboxSetRequisPersonnalise.args = {
   legend: 'Label de l’ensemble des champs',
@@ -238,7 +241,6 @@ export const CheckboxSetAvecErreur = (args) => ({
       this.onChange(val)
     },
   },
-
 })
 CheckboxSetAvecErreur.args = {
   legend: 'Légende des champs',
@@ -291,7 +293,6 @@ export const CheckboxSetAvecSucces = (args) => ({
       this.onChange(val)
     },
   },
-
 })
 
 CheckboxSetAvecSucces.args = {
@@ -344,7 +345,6 @@ export const CheckboxSetInline = (args) => ({
       this.onChange(val)
     },
   },
-
 })
 CheckboxSetInline.args = {
   legend: 'Légende des champs en ligne',
@@ -397,7 +397,6 @@ export const CheckboxSetInlineAvecErreur = (args) => ({
       this.onChange(val)
     },
   },
-
 })
 CheckboxSetInlineAvecErreur.args = {
   legend: 'Légende des champs en ligne',
@@ -450,7 +449,6 @@ export const CheckboxSetInlineAvecSucces = (args) => ({
       this.onChange(val)
     },
   },
-
 })
 CheckboxSetInlineAvecSucces.args = {
   legend: 'Légende des champs en ligne',

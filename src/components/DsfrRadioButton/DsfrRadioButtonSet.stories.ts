@@ -1,3 +1,5 @@
+import { fn } from '@storybook/test'
+
 import DsfrRadioButtonSet from './DsfrRadioButtonSet.vue'
 
 /**
@@ -9,15 +11,18 @@ export default {
   argTypes: {
     disabled: {
       control: 'boolean',
-      description: 'Indique si le bouton radio doit être désactivé (`true`) ou non (`false`, défaut)',
+      description:
+        'Indique si le bouton radio doit être désactivé (`true`) ou non (`false`, défaut)',
     },
     inline: {
       control: 'boolean',
-      description: 'Indique si les boutons doivent être affichés en ligne (`true`) ou chacun sur une ligne (`false`, défaut)',
+      description:
+        'Indique si les boutons doivent être affichés en ligne (`true`) ou chacun sur une ligne (`false`, défaut)',
     },
     name: {
       control: 'text',
-      description: 'Valeur de l’attribut `name` de chaque bouton radio du groupe. Obligatoire.',
+      description:
+        'Valeur de l’attribut `name` de chaque bouton radio du groupe. Obligatoire.',
     },
     small: {
       control: 'boolean',
@@ -29,7 +34,8 @@ export default {
     // },
     options: {
       control: 'object',
-      description: 'Tableau d’objets : chaque objet contient les props à passer à `DsfrRadioButton`',
+      description:
+        'Tableau d’objets : chaque objet contient les props à passer à `DsfrRadioButton`',
     },
     modelValue: {
       control: 'text',
@@ -44,9 +50,10 @@ export default {
       description: 'Texte du message à afficher en cas de succès',
     },
     'update:modelValue': {
-      description: 'Événement émis à chaque changement de valeur du groupe de même bouton radio',
+      description:
+        'Événement émis à chaque changement de valeur du groupe de même bouton radio',
     },
-    onChange: { action: 'changed' },
+    onChange: { action: fn() },
   },
 }
 

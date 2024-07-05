@@ -1,10 +1,12 @@
+import { fn } from '@storybook/test'
+
 import DsfrSideMenu from './DsfrSideMenu.vue'
 import DsfrAccordion from '../DsfrAccordion/DsfrAccordion.vue'
 import DsfrAccordionsGroup from '../DsfrAccordion/DsfrAccordionsGroup.vue'
 import DsfrCheckboxSet from '../DsfrCheckbox/DsfrCheckboxSet.vue'
 
 function toggleExpandedForMenuWithId (menuItems, id) {
-  menuItems.forEach(menuItem => {
+  menuItems.forEach((menuItem) => {
     if (menuItem.id === id) {
       menuItem.expanded = !menuItem.expanded
       return
@@ -24,7 +26,8 @@ export default {
   argTypes: {
     id: {
       control: 'text',
-      description: '(optionnel) Valeur de l’attribut `id` du side menu. Par défaut, un id pseudo-aléatoire sera donné.',
+      description:
+        '(optionnel) Valeur de l’attribut `id` du side menu. Par défaut, un id pseudo-aléatoire sera donné.',
     },
     headingTitle: {
       control: 'text',
@@ -32,14 +35,16 @@ export default {
     },
     buttonLabel: {
       control: 'text',
-      description: 'Label associé au bouton en état responsive dont le rôle est de déplier le side menu',
+      description:
+        'Label associé au bouton en état responsive dont le rôle est de déplier le side menu',
     },
     menuItems: {
       control: 'object',
-      description: 'Tableau d’objets contenant les props attendus par DsfrSideMenuList',
+      description:
+        'Tableau d’objets contenant les props attendus par DsfrSideMenuList',
     },
     onclick: {
-      action: 'Clicked',
+      action: fn(),
     },
   },
 }

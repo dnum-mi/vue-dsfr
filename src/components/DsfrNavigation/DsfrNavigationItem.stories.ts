@@ -8,16 +8,18 @@ export default {
   argTypes: {
     id: {
       control: 'text',
-      description: '(Optionnel) Valeur de l’attribut `id` de ce sous-menu. *N.B. : Il est recommandé de ne pas le donner, la bibliothèque lui en donnera un pseudo-aléatoire*.',
+      description:
+        '(Optionnel) Valeur de l’attribut `id` de ce sous-menu. *N.B. : Il est recommandé de ne pas le donner, la bibliothèque lui en donnera un pseudo-aléatoire*.',
     },
     active: {
       control: 'boolean',
-      description: 'Indique l’élément est actif (l’utilisateur est actuellement sur la page pointée par cet item de menu de navigation).',
+      description:
+        'Indique l’élément est actif (l’utilisateur est actuellement sur la page pointée par cet item de menu de navigation).',
     },
   },
 }
 
-export const ItemDeNavigation = args => ({
+export const ItemDeNavigation = (args) => ({
   components: {
     DsfrNavigation,
     DsfrNavigationItem,
@@ -38,7 +40,6 @@ export const ItemDeNavigation = args => ({
     </DsfrNavigationItem>
   </DsfrNavigation>
   `,
-
 })
 ItemDeNavigation.args = {
   active: false,

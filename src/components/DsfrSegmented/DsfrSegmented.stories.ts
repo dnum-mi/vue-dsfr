@@ -1,3 +1,5 @@
+import { fn } from '@storybook/test'
+
 import DsfrSegmented from './DsfrSegmented.vue'
 
 /**
@@ -9,17 +11,19 @@ export default {
   argTypes: {
     id: {
       control: 'text',
-      description: '(optionnel) Valeur de l’attribut `id` du contrôle segmenté. Par défaut, un id pseudo-aléatoire sera donné.',
+      description:
+        '(optionnel) Valeur de l’attribut `id` du contrôle segmenté. Par défaut, un id pseudo-aléatoire sera donné.',
     },
     options: {
       control: 'object',
-      description: 'Tableau d’objets : chaque objet contient les props à passer à `DsfrSegmented` - *N.B. : Ne fait pas partie du composant',
+      description:
+        'Tableau d’objets : chaque objet contient les props à passer à `DsfrSegmented` - *N.B. : Ne fait pas partie du composant',
     },
     modelValue: {
       control: 'text',
       description: 'Valeur de la case active',
     },
-    onChange: { action: 'changed' },
+    onChange: { action: fn() },
     'update:modelValue': {
       description: 'Événement émis à chaque changement de valeur',
     },

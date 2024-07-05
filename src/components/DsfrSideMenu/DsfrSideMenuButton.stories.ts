@@ -14,11 +14,13 @@ export default {
     },
     expanded: {
       control: 'boolean',
-      description: 'Permet de dire si le menu associé est plié (`false`) ou déplié (`true`)',
+      description:
+        'Permet de dire si le menu associé est plié (`false`) ou déplié (`true`)',
     },
     controlId: {
       control: 'text',
-      description: 'Valeur de l’id du menu associé qui sera plié et déplié lors du clic sur ce bouton',
+      description:
+        'Valeur de l’id du menu associé qui sera plié et déplié lors du clic sur ce bouton',
     },
   },
 }
