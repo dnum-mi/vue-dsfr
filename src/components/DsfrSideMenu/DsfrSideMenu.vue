@@ -13,6 +13,7 @@ export type { DsfrSideMenuProps }
 withDefaults(defineProps<DsfrSideMenuProps>(), {
   buttonLabel: 'Dans cette rubrique',
   id: () => getRandomId('sidemenu'),
+  sideMenuListId: () => getRandomId('sidemenu', 'list'),
   collapseValue: '-492px',
   // @ts-expect-error this is really undefined
   menuItems: () => undefined,
@@ -71,7 +72,7 @@ watch(expanded, (newValue, oldValue) => {
         <!-- @slot Slot par défaut du contenu du menu latéral -->
         <slot>
           <DsfrSideMenuList
-            :id="getRandomId('sidemenu', 'list')"
+            :id="sideMenuListId"
             :menu-items="menuItems"
             @toggle-expand="$emit('toggleExpand', $event)"
           />
