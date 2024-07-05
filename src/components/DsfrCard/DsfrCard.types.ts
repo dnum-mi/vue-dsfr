@@ -32,4 +32,5 @@ export type DsfrCardProps = {
   noArrow?: boolean
   horizontal?: boolean
   download?: boolean
+  enlarge?: boolean
 }
