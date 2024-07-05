@@ -19,6 +19,7 @@ export type DsfrTileProps = {
   shadow?: boolean
   noBackground?: boolean
   grey?: boolean
+  enlarge?: boolean
 }
 
 export type DsfrTilesProps = {
