@@ -17,11 +17,13 @@ export default {
     },
     mail: {
       control: 'object',
-      description: 'Objet contenant deux propriétés `to` (lien à mettre dans le href et qui doit commencer par `mailto:`) et le `label` associé',
+      description:
+        'Objet contenant deux propriétés `to` (lien à mettre dans le href et qui doit commencer par `mailto:`) et le `label` associé',
     },
     copyLabel: {
       control: 'text',
-      description: 'Texte à afficher au survol de l’icône de partage (contenu de l’attribut `titre` du `<button>)',
+      description:
+        'Texte à afficher au survol de l’icône de partage (contenu de l’attribut `titre` du `<button>)',
     },
   },
 }
@@ -44,7 +46,6 @@ export const Partage = (args) => ({
     :copy-label="copyLabel"
   />
   `,
-
 })
 Partage.args = {
   copyLabel: 'Copier dans le presse-papier',

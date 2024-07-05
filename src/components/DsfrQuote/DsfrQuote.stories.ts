@@ -51,7 +51,6 @@ export const Citation = (args) => ({
       :quoteImage="quoteImage"
     />
   `,
-
 })
 Citation.args = {
   quote: 'LA citation',
@@ -86,7 +85,6 @@ export const CitationSansImage = (args) => ({
       :sourceUrl="sourceUrl"
     />
   `,
-
 })
 CitationSansImage.args = {
   quote: 'LA citation',

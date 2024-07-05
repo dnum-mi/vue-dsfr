@@ -15,7 +15,8 @@ export default {
   argTypes: {
     id: {
       control: 'text',
-      description: '(optionnel) Valeur de l’attribut `id` de l’alerte. Par défaut, un id pseudo-aléatoire sera donné.',
+      description:
+        '(optionnel) Valeur de l’attribut `id` de l’alerte. Par défaut, un id pseudo-aléatoire sera donné.',
     },
     title: {
       control: 'text',
@@ -23,12 +24,14 @@ export default {
     },
     description: {
       control: 'text',
-      description: '**Description** de l\'alerte, peux être passé dans le slot par défaut',
+      description:
+        '**Description** de l\'alerte, peux être passé dans le slot par défaut',
     },
     type: {
       options: ['error', 'success', 'info', 'warning'],
       control: 'radio',
-      description: '**Type** de l\'alerte : `error` (Erreur), `success` (Succès), `warning` (Avertissement), ou `info` (Information)',
+      description:
+        '**Type** de l\'alerte : `error` (Erreur), `success` (Succès), `warning` (Avertissement), ou `info` (Information)',
     },
     small: {
       control: 'boolean',
@@ -43,15 +46,18 @@ export default {
     },
     closeable: {
       control: 'boolean',
-      description: 'Ajoute la possibilité de fermer l\'alerte via un bouton en forme de croix',
+      description:
+        'Ajoute la possibilité de fermer l\'alerte via un bouton en forme de croix',
     },
     titleTag: {
       control: 'text',
-      description: 'Permet de choisir la balise contenant le titre de l\'alerte (h3 par défaut)',
+      description:
+        'Permet de choisir la balise contenant le titre de l\'alerte (h3 par défaut)',
     },
     closeButtonLabel: {
       control: 'text',
-      description: 'Valeur du bouton cliquable permettant la fermeture de l\'alerte',
+      description:
+        'Valeur du bouton cliquable permettant la fermeture de l\'alerte',
     },
   },
 }
@@ -78,10 +84,11 @@ export const Alerte = (args) => ({
   methods: {
     close () {
       this.closed = true
-      setTimeout(() => { this.closed = false }, 2000)
+      setTimeout(() => {
+        this.closed = false
+      }, 2000)
     },
   },
-
 })
 Alerte.args = {
   title: 'Titre alerte',
@@ -130,10 +137,8 @@ export const Alertes = (args) => ({
       />
     </div>
   `,
-
 })
-Alertes.args = {
-}
+Alertes.args = {}
 
 export const PetitesAlertes = (args) => ({
   components: { DsfrAlert },
@@ -172,10 +177,8 @@ export const PetitesAlertes = (args) => ({
       />
     </div>
   `,
-
 })
-PetitesAlertes.args = {
-}
+PetitesAlertes.args = {}
 
 export const AlertesFermables = (args) => ({
   components: { DsfrAlert },
@@ -273,7 +276,9 @@ export const AlertesFermables = (args) => ({
   methods: {
     close (idx) {
       this.closed[idx] = true
-      setTimeout(() => { this.closed[idx] = false }, 3000)
+      setTimeout(() => {
+        this.closed[idx] = false
+      }, 3000)
     },
   },
 })
@@ -304,7 +309,5 @@ export const AlertesSlot = (args) => ({
       </DsfrAlert>
     </div>
   `,
-
 })
-AlertesSlot.args = {
-}
+AlertesSlot.args = {}

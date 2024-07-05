@@ -1,12 +1,11 @@
-import { expect } from '@storybook/test'
-import { within, userEvent } from '@storybook/testing-library'
+import { fn, expect, within, userEvent } from '@storybook/test'
+import { addIcons } from 'oh-vue-icons'
+import { RiCheckboxCircleLine } from 'oh-vue-icons/icons'
+
 import DsfrButton from '../DsfrButton/DsfrButton.vue'
 import DsfrTabs from './DsfrTabs.vue'
 import DsfrTabContent from './DsfrTabContent.vue'
 
-import { addIcons } from 'oh-vue-icons'
-
-import { RiCheckboxCircleLine } from 'oh-vue-icons/icons'
 import DsfrAccordionsGroup from '../DsfrAccordion/DsfrAccordionsGroup.vue'
 import DsfrAccordion from '../DsfrAccordion/DsfrAccordion.vue'
 
@@ -42,25 +41,30 @@ const meta = {
   argTypes: {
     tabListName: {
       control: 'text',
-      description: 'Nom de la liste d’onglet : servira pour le label (l’attribut `aria-label`) de la liste des titres d’onglets - **Obligatoire**',
+      description:
+        'Nom de la liste d’onglet : servira pour le label (l’attribut `aria-label`) de la liste des titres d’onglets - **Obligatoire**',
     },
     tabTitles: {
       control: 'object',
-      description: 'Tableau (`Array`) d’objets contenant les props à donner à chaque `DsfrTabItem` - **Obligatoire**',
+      description:
+        'Tableau (`Array`) d’objets contenant les props à donner à chaque `DsfrTabItem` - **Obligatoire**',
     },
     tabContents: {
       control: 'object',
-      description: 'Tableau de contenu de chaque `DsfrTabContent` - **Obligatoire si `DsfrTabs` n’a pas de contenu**',
+      description:
+        'Tableau de contenu de chaque `DsfrTabContent` - **Obligatoire si `DsfrTabs` n’a pas de contenu**',
     },
     initialSelectedIndex: {
       control: 'number',
-      description: 'Index de l’onglet selectionné par défaut à l’affichage du composant.',
+      description:
+        'Index de l’onglet selectionné par défaut à l’affichage du composant.',
     },
     'select-tab': {
-      description: 'Événement émis lorsque l’onglet actif change, avec en argument l’index de l’onglet sélectionné',
+      description:
+        'Événement émis lorsque l’onglet actif change, avec en argument l’index de l’onglet sélectionné',
     },
     onSelectTab: {
-      action: 'onSelectTab',
+      action: fn(),
     },
   },
 }
@@ -79,7 +83,6 @@ export const OngletsSimples = (args) => ({
       :initial-selected-index="initialSelectedIndex"
     />
   `,
-
 })
 
 OngletsSimples.play = async ({ canvasElement }) => {
@@ -124,10 +127,30 @@ OngletsSimples.args = {
 }
 
 const customTabTitles = [
-  { title: title1, icon: 'ri-checkbox-circle-line', tabId: 'tab-0', panelId: 'tab-content-0' },
-  { title: 'Titre 2', icon: 'ri-checkbox-circle-line', tabId: 'tab-1', panelId: 'tab-content-1' },
-  { title: 'Titre 3', icon: 'ri-checkbox-circle-line', tabId: 'tab-2', panelId: 'tab-content-2' },
-  { title: 'Titre 4', icon: 'ri-checkbox-circle-line', tabId: 'tab-3', panelId: 'tab-content-3' },
+  {
+    title: title1,
+    icon: 'ri-checkbox-circle-line',
+    tabId: 'tab-0',
+    panelId: 'tab-content-0',
+  },
+  {
+    title: 'Titre 2',
+    icon: 'ri-checkbox-circle-line',
+    tabId: 'tab-1',
+    panelId: 'tab-content-1',
+  },
+  {
+    title: 'Titre 3',
+    icon: 'ri-checkbox-circle-line',
+    tabId: 'tab-2',
+    panelId: 'tab-content-2',
+  },
+  {
+    title: 'Titre 4',
+    icon: 'ri-checkbox-circle-line',
+    tabId: 'tab-3',
+    panelId: 'tab-content-3',
+  },
 ]
 
 export const OngletsComplexes = (args) => ({
@@ -210,7 +233,6 @@ export const OngletsComplexes = (args) => ({
       this.selectedTabIndex = idx
     },
   },
-
 })
 OngletsComplexes.args = {
   tabContents: [],
@@ -299,8 +321,18 @@ OngletsAvecAccordeon.args = {
   tabContents: [],
   tabListName,
   tabTitles: [
-    { title: 'Onglet avec accordéon', icon: 'ri-checkbox-circle-line', tabId: 'tab-0', panelId: 'tab-content-0' },
-    { title: 'Titre 2', icon: 'ri-checkbox-circle-line', tabId: 'tab-1', panelId: 'tab-content-1' },
+    {
+      title: 'Onglet avec accordéon',
+      icon: 'ri-checkbox-circle-line',
+      tabId: 'tab-0',
+      panelId: 'tab-content-0',
+    },
+    {
+      title: 'Titre 2',
+      icon: 'ri-checkbox-circle-line',
+      tabId: 'tab-1',
+      panelId: 'tab-content-1',
+    },
   ],
   selectedTabIndex: 0,
   initialSelectedIndex: 0,

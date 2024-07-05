@@ -10,15 +10,18 @@ export default {
   argTypes: {
     id: {
       control: 'text',
-      description: '(optionnel) Valeur de l’attribut `id` du champ de saisie. Par défaut, un id pseudo-aléatoire sera donné.',
+      description:
+        '(optionnel) Valeur de l’attribut `id` du champ de saisie. Par défaut, un id pseudo-aléatoire sera donné.',
     },
     descriptionId: {
       control: 'text',
-      description: '(optionnel) Valeur de l’attribut `id` du paragraphe de description. Par défaut, un id pseudo-aléatoire sera donné.',
+      description:
+        '(optionnel) Valeur de l’attribut `id` du paragraphe de description. Par défaut, un id pseudo-aléatoire sera donné.',
     },
     label: {
       control: 'text',
-      description: 'Label du champ de saisie. Sera passé à DsfrInput si modelValue n’est pas `undefined`',
+      description:
+        'Label du champ de saisie. Sera passé à DsfrInput si modelValue n’est pas `undefined`',
     },
     hint: {
       control: 'text',
@@ -26,15 +29,18 @@ export default {
     },
     type: {
       control: 'text',
-      description: 'Type du champ de saisie cf. [MDN](https://developer.mozilla.org/fr/docs/Web/HTML/Element/Input)',
+      description:
+        'Type du champ de saisie cf. [MDN](https://developer.mozilla.org/fr/docs/Web/HTML/Element/Input)',
     },
     labelVisible: {
       control: 'boolean',
-      description: 'Indique si le label doit être visible (`true`) ou non (`false`, défaut). Sera passé à DsfrInput si modelValue n’est pas `undefined`',
+      description:
+        'Indique si le label doit être visible (`true`) ou non (`false`, défaut). Sera passé à DsfrInput si modelValue n’est pas `undefined`',
     },
     placeholder: {
       control: 'text',
-      description: 'Contenu du champ à afficher lorsqu’il n’est pas rempli par l’utilisateur. Sera passé à DsfrInput si modelValue n’est pas `undefined`',
+      description:
+        'Contenu du champ à afficher lorsqu’il n’est pas rempli par l’utilisateur. Sera passé à DsfrInput si modelValue n’est pas `undefined`',
     },
     modelValue: {
       control: 'text',
@@ -42,7 +48,8 @@ export default {
     },
     disabled: {
       control: 'boolean',
-      description: 'Permet de désactiver le champ, la saisie sera impossible. Sera passé à DsfrInput s’il n’y a pas d’utilisation du slot par défaut',
+      description:
+        'Permet de désactiver le champ, la saisie sera impossible. Sera passé à DsfrInput s’il n’y a pas d’utilisation du slot par défaut',
     },
     errorMessage: {
       control: 'text',
@@ -154,7 +161,6 @@ export const ChampValide = (args) => ({
       :placeholder="placeholder"
     />
   `,
-
 })
 ChampValide.args = {
   type: 'text',

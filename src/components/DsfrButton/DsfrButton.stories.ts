@@ -1,6 +1,11 @@
 import { OhVueIcon as VIcon, addIcons } from 'oh-vue-icons'
+import { fn } from '@storybook/test'
 
-import { RiCheckboxCircleLine, RiLoader4Line, RiSearchLine } from 'oh-vue-icons/icons'
+import {
+  RiCheckboxCircleLine,
+  RiLoader4Line,
+  RiSearchLine,
+} from 'oh-vue-icons/icons'
 
 import DsfrButton from './DsfrButton.vue'
 
@@ -27,7 +32,8 @@ export default {
     },
     noOutline: {
       control: 'boolean',
-      description: 'Permet de basculer sur la variante de style "tertiary-nooutline"',
+      description:
+        'Permet de basculer sur la variante de style "tertiary-nooutline"',
     },
     size: {
       control: 'radio',
@@ -40,13 +46,14 @@ export default {
     },
     icon: {
       control: 'text',
-      description: '**Nom de l’icône** (tel que sur le site [RemixIcon](https://remixicon.com), exemple: `"ri-search-line"`) à afficher à côté du texte du bouton.\n\n Par défaut, l’icône est à gauche',
+      description:
+        '**Nom de l’icône** (tel que sur le site [RemixIcon](https://remixicon.com), exemple: `"ri-search-line"`) à afficher à côté du texte du bouton.\n\n Par défaut, l’icône est à gauche',
     },
     iconRight: {
       control: 'boolean',
       description: 'Indique si l’icône doit **s’afficher à droite** (`true`)',
     },
-    onClick: { action: 'clicked' },
+    onClick: { action: fn() },
   },
 }
 
@@ -71,7 +78,6 @@ export const BoutonPrimaire = (args) => ({
       @click="onClick"
     />
   `,
-
 })
 BoutonPrimaire.args = {
   label: 'Label bouton',
@@ -103,7 +109,6 @@ export const BoutonPrimaireAvecIcone = (args) => ({
       @click="onClick"
     />
   `,
-
 })
 BoutonPrimaireAvecIcone.args = {
   label: 'Label bouton',
@@ -132,7 +137,6 @@ export const BoutonPrimaireAvecIconeAnimee = (args) => ({
       @click="onClick"
     />
   `,
-
 })
 BoutonPrimaireAvecIconeAnimee.args = {
   label: 'Label bouton',
@@ -160,7 +164,6 @@ export const BoutonSecondaire = (args) => ({
       @click="onClick"
     />
   `,
-
 })
 BoutonSecondaire.args = {
   label: 'Label bouton secondaire',
@@ -187,7 +190,6 @@ export const BoutonTertiaire = (args) => ({
       @click="onClick"
     />
   `,
-
 })
 BoutonTertiaire.args = {
   label: 'Label bouton secondaire',
@@ -214,7 +216,6 @@ export const BoutonTertiaireSansBordure = (args) => ({
       @click="onClick"
     />
   `,
-
 })
 BoutonTertiaireSansBordure.args = {
   label: 'Label bouton secondaire',
@@ -248,7 +249,6 @@ export const SuiteDeBoutons = (args) => ({
       />
     </div>
   `,
-
 })
 
 SuiteDeBoutons.args = {

@@ -1,11 +1,12 @@
+import { fn } from '@storybook/test'
+import { setup } from '@storybook/vue3'
+
 import DsfrTable from './DsfrTable.vue'
 import DsfrTag from '../DsfrTag/DsfrTag.vue'
 
-import { setup } from '@storybook/vue3'
-
 import './table.stories.css'
 
-setup(app => {
+setup((app) => {
   app.component('DsfrTag', DsfrTag)
 })
 
@@ -22,7 +23,8 @@ export default {
     },
     noCaption: {
       control: 'boolean',
-      description: 'Indique si la balise caption doit être visible (`false`, défaut) ou cachée (`true`)',
+      description:
+        'Indique si la balise caption doit être visible (`false`, défaut) ou cachée (`true`)',
     },
     pagination: {
       control: 'boolean',
@@ -30,19 +32,23 @@ export default {
     },
     headers: {
       control: 'object',
-      description: 'Liste des en-têtes du tableau (tableau de string). Il existe un slot nommé `headers` pour gérer les en-têtes avec d’autres composants. C’est la même props attendue par <a href="/?path=/docs/composants-tableau-en-t%C3%AAtes-de-tableau-dsfrtableheaders--en-tetes-de-tableau">DsfrTableHeaders</a>',
+      description:
+        'Liste des en-têtes du tableau (tableau de string). Il existe un slot nommé `headers` pour gérer les en-têtes avec d’autres composants. C’est la même props attendue par <a href="/?path=/story/composants-dsfrtableheaders--en-tetes-de-tableau">DsfrTableHeaders</a>',
     },
     rows: {
       control: 'object',
-      description: 'Données des lignes du tableau. Chaque élément doit être un objet contenant les props attendues par <a href="/?path=/docs/composants-tableau-ligne-de-tableau-dsfrtablerow--ligne-de-tableau-simple">DsfrTableRow</a>',
+      description:
+        'Données des lignes du tableau. Chaque élément doit être un objet contenant les props attendues par <a href="/?path=/docs/composants-dsfrtablerow--docs">DsfrTableRow</a>',
     },
     onClickCell: {
-      action: 'clicked on cell',
-      description: 'Fonction pour montrer le clic sur une cellule (Ici seulement la colonne "Téléphone" de la 3è ligne)',
+      action: fn(),
+      description:
+        'Fonction pour montrer le clic sur une cellule (Ici seulement la colonne "Téléphone" de la 3è ligne)',
     },
     onClickRow: {
-      action: 'clicked on row',
-      description: 'Fonction pour montrer le clic sur une ligne (Ici seulement la 2e ligne)',
+      action: fn(),
+      description:
+        'Fonction pour montrer le clic sur une ligne (Ici seulement la 2e ligne)',
     },
     currentPage: {
       control: 'number',
@@ -54,7 +60,8 @@ export default {
     },
     'update:currentPage': {
       control: 'event',
-      description: 'Event se déclenchant au changement de page, laissant la liberté à l\'utilisateur de charger son contenu au fur et à mesure',
+      description:
+        'Event se déclenchant au changement de page, laissant la liberté à l\'utilisateur de charger son contenu au fur et à mesure',
     },
   },
 }
@@ -268,12 +275,31 @@ export const TableauEntier = (args) => ({
   data () {
     return {
       ...args,
-      rows: args.rows
-        .map(
-          rowData => Array.isArray(rowData)
-            ? rowData.map(field => field.cellAttrs?.onClick ? { ...field, cellAttrs: { ...field.cellAttrs, onClick () { args.onClickCell(field) } } } : field)
-            : ({ ...rowData, rowAttrs: { ...rowData.rowAttrs, onClick () { args.onClickRow(rowData) } } }),
-        ),
+      rows: args.rows.map((rowData) =>
+        Array.isArray(rowData)
+          ? rowData.map((field) =>
+            field.cellAttrs?.onClick
+              ? {
+                  ...field,
+                  cellAttrs: {
+                    ...field.cellAttrs,
+                    onClick () {
+                      args.onClickCell(field)
+                    },
+                  },
+                }
+              : field,
+          )
+          : {
+              ...rowData,
+              rowAttrs: {
+                ...rowData.rowAttrs,
+                onClick () {
+                  args.onClickRow(rowData)
+                },
+              },
+            },
+      ),
     }
   },
 
@@ -288,7 +314,6 @@ export const TableauEntier = (args) => ({
         :resultsDisplayed="resultsDisplayed"
       />
   `,
-
 })
 TableauEntier.args = {
   title,

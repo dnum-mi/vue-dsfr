@@ -6,7 +6,8 @@ export default {
   argTypes: {
     logoText: {
       control: 'object',
-      description: '`string` ou tableau (`Array`) de `string` à afficher entre la Marianne et la devise. Si un tableau est donné, chaque `string` sera sur une ligne distincte',
+      description:
+        '`string` ou tableau (`Array`) de `string` à afficher entre la Marianne et la devise. Si un tableau est donné, chaque `string` sera sur une ligne distincte',
     },
     small: {
       control: 'boolean',
@@ -33,7 +34,6 @@ export const Logo = (args) => ({
         :logo-text="logoText"
       />
   `,
-
 })
 Logo.args = {
   logoText: ['République', 'Française'],

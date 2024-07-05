@@ -1,3 +1,5 @@
+import { fn } from '@storybook/test'
+
 import DsfrCheckbox from './DsfrCheckbox.vue'
 
 /**
@@ -9,7 +11,8 @@ export default {
   argTypes: {
     id: {
       control: 'text',
-      description: '(optionnel) Valeur de l’attribut `id` de la checkbox. Par défaut, un id pseudo-aléatoire sera donné.',
+      description:
+        '(optionnel) Valeur de l’attribut `id` de la checkbox. Par défaut, un id pseudo-aléatoire sera donné.',
     },
     // label: {
     //   control: 'text',
@@ -45,12 +48,14 @@ export default {
     },
     modelValue: {
       control: 'boolean',
-      description: 'Valeur de la case à cocher : `true` si cochée, `false` sinon',
+      description:
+        'Valeur de la case à cocher : `true` si cochée, `false` sinon',
     },
     'update:modelValue': {
-      description: 'Événement émis lors du changement de l’état coché (`true`) ou non (`false`)',
+      description:
+        'Événement émis lors du changement de l’état coché (`true`) ou non (`false`)',
     },
-    onChange: { action: 'changed' },
+    onChange: { action: fn() },
   },
 }
 

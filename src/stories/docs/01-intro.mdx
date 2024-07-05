@@ -1,19 +1,27 @@
-import { Meta } from '@storybook/addon-docs'
+import { Meta } from '@storybook/blocks'
 
 import GithubIcon from './github-fill.svg'
 import MailIcon from './mail-fill.svg'
 
 <Meta title="Docs/1. Introduction" />
 
+<div style={{border: 'solid 3px red', fontWeight: 700, padding: '1em', marginBottom: '2rem'}}>
 
-> N.B. : Nous vous recommandons de regarder la **nouvelle documentation ici** : [vue-ds.fr](https://vue-ds.fr).
-> <p>Les stories des composants sont bien à jour (en tout cas pour l’instant), cependant le reste de la documentation n’est plus maintenue ici.</p>
+## Cette documentation est obsolète !
+
+Nous vous recommandons de regarder la **nouvelle documentation ici** : [vue-ds.fr](https://vue-ds.fr).
+<p>Les stories des composants sont bien à jour (en tout cas pour l’instant), cependant le reste de la documentation n’est plus maintenue ici.</p>
 
 Si vous recherchez:
 
-- le [storybook](https://stories.vue-ds.fr), le plus à jour est ici : [https://storybook.vue-ds.fr](https://storybook.vue-ds.fr) ;
-- l’[application de demo](https://demo.vue-ds.fr) avec plusieurs composants utilisés dans une vraie app Vue 3, c’est ici [https://demo.vue-ds.fr](https://demo.vue-ds.fr) ;
-- la [nouvelle documentation](https://vue-ds.fr), c’est ici [https://docs.vue-ds.fr](https://docs.vue-ds.fr) ou plus simplement [https://vue-ds.fr](https://vue-ds.fr) ;
+* le [storybook](https://stories.vue-ds.fr), le plus à jour est ici : [https://storybook.vue-ds.fr](https://storybook.vue-ds.fr) ;
+* l’[application de demo](https://demo.vue-ds.fr) avec plusieurs composants utilisés dans une vraie app Vue 3, c’est ici [https://demo.vue-ds.fr](https://demo.vue-ds.fr) ;
+* la [nouvelle documentation](https://vue-ds.fr), c’est ici [https://docs.vue-ds.fr](https://docs.vue-ds.fr) ou plus simplement [https://vue-ds.fr](https://vue-ds.fr) ;
+
+</div>
+
+
+
 
 ## Qu'est-ce que VueDsfr
 
@@ -40,15 +48,15 @@ Si vous souhaitez participer au projet, poser une question, émettre une critiqu
 
 ## Les acteurs du projet
 
-- **Clément Debroize** [<img src={MailIcon} style={{height: '1.25rem', 'position': 'relative', top: '0.25rem' }} />](mailto:clement.debroize@interieur.gouv.fr) [<img src={GithubIcon} style={{height: '1.25rem', 'position': 'relative', top: '0.25rem' }} />](https://github.com/DaBadBunny)
-- **Pierre-Louis Egaud** [<img src={MailIcon} style={{height: '1.25rem', 'position': 'relative', top: '0.25rem' }} />](mailto:pierre-louis.egaud@interieur.gouv.fr) [<img src={GithubIcon} style={{height: '1.25rem', 'position': 'relative', top: '0.25rem' }} />](https://github.com/plegaud)
-- **Stanislas Ormières** [<img src={MailIcon} style={{height: '1.25rem', 'position': 'relative', top: '0.25rem' }} />](mailto:stan@stormier.ninja) [<img src={GithubIcon} style={{height: '1.25rem', 'position': 'relative', top: '0.25rem' }} />](https://github.com/laruiss) *(Lead dev, architecte, devops, mainteneur principal)*
+* **Clément Debroize** [<img src={MailIcon} style={{height: '1.25rem', 'position': 'relative', top: '0.25rem' }} />](mailto:clement.debroize@interieur.gouv.fr) [<img src={GithubIcon} style={{height: '1.25rem', 'position': 'relative', top: '0.25rem' }} />](https://github.com/DaBadBunny)
+* **Pierre-Louis Egaud** [<img src={MailIcon} style={{height: '1.25rem', 'position': 'relative', top: '0.25rem' }} />](mailto:pierre-louis.egaud@interieur.gouv.fr) [<img src={GithubIcon} style={{height: '1.25rem', 'position': 'relative', top: '0.25rem' }} />](https://github.com/plegaud)
+* **Stanislas Ormières** [<img src={MailIcon} style={{height: '1.25rem', 'position': 'relative', top: '0.25rem' }} />](mailto:stan@stormier.ninja) [<img src={GithubIcon} style={{height: '1.25rem', 'position': 'relative', top: '0.25rem' }} />](https://github.com/laruiss) *(Lead dev, architecte, devops, mainteneur principal)*
 
 Le projet a pu bénéficier des retours et de contributions de
 
-- [Gildéric Deruette](https://github.com/gideruette) ;
-- [Sophie Aitis](https://github.com/sophieaitis) ;
-- et [Ambroise Maupate](https://github.com/ambroisemaupate)
+* [Gildéric Deruette](https://github.com/gideruette) ;
+* [Sophie Aitis](https://github.com/sophieaitis) ;
+* et [Ambroise Maupate](https://github.com/ambroisemaupate)
 
 Merci à vous !
 
@@ -63,17 +71,17 @@ Le BRR a donc besoin d'un portage en Vue 3 de ce DSFR pour ses futurs projets qu
 
 Ce projet de bibliothèque de composants
 
-- reproduit le plus fidèlement possible les composants du [DSFR](https://www.systeme-de-design.gouv.fr/)
-- est fait avec [Vue 3](https://vuejs.org)
-- est utilisable facilement en tant que plugin Vue 3 ou Nuxt 3
-- exporte les types (TypeScript) du plugin, des composants et des composables
-- est utilisable facilement dans un projet [npm](https://www.npmjs.com/package/@gouvminint/vue-dsfr)
-- met à disposition deux parties dans la documentation :
-  - une pour [aider au développement](/?path=/story/docs-3-guide-du-développeur--page)
-  - une autre pour l'[utilisation](/?path=/story/docs-2-guide-d-utilisation--page)
-- publie un [site complet](vue-dsfr.netlify.app/) disponible pour tous avec les composants et leurs variants testables dans celui-ci dans un storybook
-- a une couverture de test optimale
-- met à disposition les composants individuellement sans avoir à importer toute la bibliothèque
+* reproduit le plus fidèlement possible les composants du [DSFR](https://www.systeme-de-design.gouv.fr/)
+* est fait avec [Vue 3](https://vuejs.org)
+* est utilisable facilement en tant que plugin Vue 3 ou Nuxt 3
+* exporte les types (TypeScript) du plugin, des composants et des composables
+* est utilisable facilement dans un projet [npm](https://www.npmjs.com/package/@gouvminint/vue-dsfr)
+* met à disposition deux parties dans la documentation :
+  * une pour [aider au développement](/?path=/story/docs-3-guide-du-développeur--page)
+  * une autre pour l'[utilisation](/?path=/story/docs-2-guide-d-utilisation--page)
+* publie un [site complet](vue-dsfr.netlify.app/) disponible pour tous avec les composants et leurs variants testables dans celui-ci dans un storybook
+* a une couverture de test optimale
+* met à disposition les composants individuellement sans avoir à importer toute la bibliothèque
   (pour les petits projets)
 
 # Les choix techniques retenus
@@ -82,7 +90,7 @@ La bibliothèque est faite avec [Vue 3](https://vuejs.org/) et [Vue-router 4](ht
 
 Le JavaScript est linté avec [ESLint](https://eslint.org/) et formatté selon [StandardJS](https://standardjs.org)
 avec une seule modification : les virgules doivent être ajoutées pour tout ce qui est en multiligne
-(`"comma-dangle": ["error", "always-multiline"]` cf. [Documentation ESLint]((https://eslint.org/docs/rules/comma-dangle#options))).
+(`"comma-dangle": ["error", "always-multiline"]` cf. [Documentation ESLint](\(https://eslint.org/docs/rules/comma-dangle#options\))).
 
 Le serveur de développement est celui de [Storybook](https://storybook.js.org/), toute la documentation est faite avec
 Storybook, et le site pour tester les composants est le storybook lui-même.

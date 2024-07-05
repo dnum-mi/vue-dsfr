@@ -14,7 +14,8 @@ export default {
     type: {
       options: ['error', 'success', 'new', 'info', 'warning', undefined],
       control: 'radio',
-      description: '(Optionnel) **Type** du badge : `error` (Erreur), `success` (Succès), `new` (Nouveau), `info` (Information), `warning` (Avertissement)',
+      description:
+        '(Optionnel) **Type** du badge : `error` (Erreur), `success` (Succès), `new` (Nouveau), `info` (Information), `warning` (Avertissement)',
     },
     noIcon: {
       control: 'boolean',
@@ -37,7 +38,6 @@ export const Badge = (args) => ({
   template: `
     <DsfrBadge :label="label" :small="small" :type="type" :no-icon="noIcon" />
   `,
-
 })
 Badge.args = {
   small: false,
@@ -76,7 +76,5 @@ export const TousLesBadges = (args) => ({
       <DsfrBadge label="Nouveauté" type="new" />
     </p>
   `,
-
 })
-TousLesBadges.args = {
-}
+TousLesBadges.args = {}

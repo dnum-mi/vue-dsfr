@@ -6,19 +6,23 @@ export default {
   argTypes: {
     panelId: {
       control: 'text',
-      description: 'Props de `DsfrTabContent` : Identifiant de l’élément correspondant au contenu de l’onglet à afficher ; doit être identique à la props `tab-id` du `DsfrTabItem` correspondant - **Obligatoire**',
+      description:
+        'Props de `DsfrTabContent` : Identifiant de l’élément correspondant au contenu de l’onglet à afficher ; doit être identique à la props `tab-id` du `DsfrTabItem` correspondant - **Obligatoire**',
     },
     tabId: {
       control: 'text',
-      description: 'Props de et `DsfrTabContent`: Identifiant du titre de l’onglet ̛ ; doit être identique à la props `panel-id` du `DsfrTabContent` correspondant - **Obligatoire**',
+      description:
+        'Props de et `DsfrTabContent`: Identifiant du titre de l’onglet ̛ ; doit être identique à la props `panel-id` du `DsfrTabContent` correspondant - **Obligatoire**',
     },
     selected: {
       control: 'boolean',
-      description: 'Indique si cet onglet est celui sélectionné (`true`) ou non (`false`, défaut)',
+      description:
+        'Indique si cet onglet est celui sélectionné (`true`) ou non (`false`, défaut)',
     },
     asc: {
       control: 'boolean',
-      description: 'Indique si l’onglet suivant à afficher est à droite (`true`, ascendant) ou à gauche (`false`)',
+      description:
+        'Indique si l’onglet suivant à afficher est à droite (`true`, ascendant) ou à gauche (`false`)',
     },
   },
 }
@@ -44,7 +48,6 @@ export const ContenuDOnglet = (args) => ({
       </DsfrTabContent>
     </div>
   `,
-
 })
 ContenuDOnglet.args = {
   panelId: 'tab-content-0',

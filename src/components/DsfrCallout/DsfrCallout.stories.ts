@@ -1,7 +1,6 @@
 import type { Meta } from '@storybook/vue3'
-import { expect, fn } from '@storybook/test'
+import { expect, fn, within, userEvent } from '@storybook/test'
 import { OhVueIcon as VIcon, addIcons } from 'oh-vue-icons'
-import { within, userEvent } from '@storybook/testing-library'
 
 import { RiInformationLine } from 'oh-vue-icons/icons'
 
@@ -9,7 +8,8 @@ import DsfrCallout from './DsfrCallout.vue'
 
 addIcons(RiInformationLine)
 
-const delay = (timeout = 100) => new Promise(resolve => setTimeout(resolve, timeout))
+const delay = (timeout = 100) =>
+  new Promise((resolve) => setTimeout(resolve, timeout))
 
 /**
  * [Voir quand l’utiliser sur la documentation du DSFR](https://www.systeme-de-design.gouv.fr/elements-d-interface/composants/mise-en-avant)
@@ -28,18 +28,21 @@ const meta: Meta<typeof DsfrCallout> = {
     },
     icon: {
       control: 'text',
-      description: 'Permet de passer l’icône désirée en chaîne de caractères (cf. remix-icon)',
+      description:
+        'Permet de passer l’icône désirée en chaîne de caractères (cf. remix-icon)',
     },
     button: {
       control: 'object',
-      description: '(optionnel) Objet contenant les props à passer à DsfrButton (pour afficher un bouton sous la mise en avant)',
+      description:
+        '(optionnel) Objet contenant les props à passer à DsfrButton (pour afficher un bouton sous la mise en avant)',
     },
     onClick: {
-      action: 'Clicked',
+      action: fn(),
     },
     titleTag: {
       control: 'text',
-      description: 'Permet de choisir la balise contenant le titre de la mise en avant (h3 par défaut)',
+      description:
+        'Permet de choisir la balise contenant le titre de la mise en avant (h3 par défaut)',
     },
   },
 }
@@ -71,13 +74,13 @@ export const MiseEnAvantSimple = (args) => ({
       :title-tag="titleTag"
     />
   `,
-
 })
 MiseEnAvantSimple.args = {
   title: 'Titre de la mise en avant',
   button: undefined,
   icon: '',
-  content: 'Lorem ipsum dolor sit amet, consectetur adipiscing, incididunt, ut labore et dol',
+  content:
+    'Lorem ipsum dolor sit amet, consectetur adipiscing, incididunt, ut labore et dol',
   titleTag: undefined,
 }
 
@@ -103,7 +106,6 @@ export const MiseEnAvant = (args) => ({
       :title-tag="titleTag"
     />
   `,
-
 })
 
 export const MiseEnAvantSansTitre = (args) => ({
@@ -130,12 +132,12 @@ export const MiseEnAvantSansTitre = (args) => ({
       :title-tag="titleTag"
     />
   `,
-
 })
 MiseEnAvantSansTitre.args = {
   button: undefined,
   icon: '',
-  content: 'Lorem ipsum dolor sit amet, consectetur adipiscing, incididunt, ut labore et dol',
+  content:
+    'Lorem ipsum dolor sit amet, consectetur adipiscing, incididunt, ut labore et dol',
   titleTag: undefined,
 }
 
@@ -147,7 +149,8 @@ MiseEnAvant.args = {
     onClick: buttonOnclick,
   },
   icon: 'ri-information-line',
-  content: 'Lorem ipsum dolor sit amet, consectetur adipiscing, incididunt, ut labore et dol',
+  content:
+    'Lorem ipsum dolor sit amet, consectetur adipiscing, incididunt, ut labore et dol',
   titleTag: 'h2',
 }
 

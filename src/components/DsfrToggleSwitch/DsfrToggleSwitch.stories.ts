@@ -1,3 +1,5 @@
+import { fn } from '@storybook/test'
+
 import DsfrToggleSwitch from './DsfrToggleSwitch.vue'
 
 /**
@@ -25,7 +27,8 @@ export default {
     },
     disabled: {
       control: 'boolean',
-      description: 'État activé/désactivé de l’interrupteur (activé `false`, ou désactivé `true`)',
+      description:
+        'État activé/désactivé de l’interrupteur (activé `false`, ou désactivé `true`)',
     },
     modelValue: {
       control: 'boolean',
@@ -36,11 +39,13 @@ export default {
       description: 'Id de l’input',
     },
     onChange: {
-      action: 'change',
-      description: 'Appelé à chaque changement de la valeur `checked`.\n\n*N.B. : Ne fait pas partie du composant.*',
+      action: fn(),
+      description:
+        'Appelé à chaque changement de la valeur `checked`.\n\n*N.B. : Ne fait pas partie du composant.*',
     },
     'update:modelValue': {
-      description: 'Evènement de mise à jour de la valeur contenue dans modelValue',
+      description:
+        'Evènement de mise à jour de la valeur contenue dans modelValue',
     },
   },
 }
@@ -64,7 +69,6 @@ export const Interrupteur = (args) => ({
       this.onChange(newVal)
     },
   },
-
 })
 Interrupteur.args = {
   label: 'Interrupteur 1',
@@ -94,7 +98,6 @@ export const InterrupteurAvecLabelAGauche = (args) => ({
       this.onChange(newVal)
     },
   },
-
 })
 InterrupteurAvecLabelAGauche.args = {
   label: 'Interrupteur 1',
@@ -125,7 +128,6 @@ export const InterrupteurAvecBordure = (args) => ({
       this.onChange(newVal)
     },
   },
-
 })
 InterrupteurAvecBordure.args = {
   label: 'Interrupteur 1',

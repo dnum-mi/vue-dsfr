@@ -1,3 +1,5 @@
+import { fn } from '@storybook/test'
+
 import DsfrTable from './DsfrTable.vue'
 import DsfrTableHeader from './DsfrTableHeader.vue'
 
@@ -18,14 +20,16 @@ export default {
     },
     headerAttrs: {
       control: 'object',
-      description: 'Objet contenant les props ou événements à passer à la balise `th`',
+      description:
+        'Objet contenant les props ou événements à passer à la balise `th`',
     },
     icon: {
       control: 'object',
-      description: 'Objet contenant les props à passer à OhVueIcon pour afficher une icône dans l’en-tête',
+      description:
+        'Objet contenant les props à passer à OhVueIcon pour afficher une icône dans l’en-tête',
     },
     onClickHeader: {
-      action: 'Clic sur en-tête',
+      action: fn(),
       description: 'Fonction pour montrer le clic sur un en-tête',
     },
   },
@@ -97,11 +101,12 @@ export const EnTeteDeTableauAvecIcone = (args) => ({
         ...args.headerAttrs,
         onClick: () => {
           const iconName = this.icon?.name
-          this.icon = iconName === 'ri-sort-desc'
-            ? { name: 'ri-sort-asc' }
-            : iconName === 'ri-sort-asc'
-              ? undefined
-              : { name: 'ri-sort-desc' }
+          this.icon =
+            iconName === 'ri-sort-desc'
+              ? { name: 'ri-sort-asc' }
+              : iconName === 'ri-sort-asc'
+                ? undefined
+                : { name: 'ri-sort-desc' }
           args.onClickHeader(args.header)
         },
       },
@@ -124,7 +129,6 @@ export const EnTeteDeTableauAvecIcone = (args) => ({
         </tr>
       </DsfrTable>
   `,
-
 })
 EnTeteDeTableauAvecIcone.args = {
   header,

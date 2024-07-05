@@ -10,16 +10,12 @@ export default {
   argTypes: {
     id: {
       control: 'text',
-      description: '(optionnel) Valeur de l’attribut `id` de l’accordéon. Par défaut, un id pseudo-aléatoire sera donné.',
+      description:
+        '(optionnel) Valeur de l’attribut `id` de l’accordéon. Par défaut, un id pseudo-aléatoire sera donné.',
     },
     expandedId: {
       control: 'radio',
-      options: [
-        'none',
-        'accordion-1',
-        'accordion-2',
-        'accordion-3',
-      ],
+      options: ['none', 'accordion-1', 'accordion-2', 'accordion-3'],
       description: 'Valeur de l’`id` de l’accordéon déplié',
     },
     title1: {
@@ -83,7 +79,6 @@ export const AccordeonGroupe = (args) => ({
     </li>
   </DsfrAccordionsGroup>
   `,
-
 })
 AccordeonGroupe.args = {
   title1: 'Un titre d’accordéon 1',

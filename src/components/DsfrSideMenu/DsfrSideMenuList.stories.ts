@@ -2,7 +2,7 @@ import DsfrSideMenu from './DsfrSideMenu.vue'
 import DsfrSideMenuList from './DsfrSideMenuList.vue'
 
 function toggleExpandedForMenuWithId (menuItems, id) {
-  menuItems.forEach(menuItem => {
+  menuItems.forEach((menuItem) => {
     if (menuItem.id === id) {
       menuItem.expanded = !menuItem.expanded
       return
@@ -23,7 +23,8 @@ export default {
     },
     buttonLabel: {
       control: 'text',
-      description: 'Label associé au bouton en état responsive dont le rôle est de déplier le side menu',
+      description:
+        'Label associé au bouton en état responsive dont le rôle est de déplier le side menu',
     },
     id: {
       control: 'text',
@@ -31,7 +32,8 @@ export default {
     },
     collapsable: {
       control: 'boolean',
-      description: 'Permet que le menu soit dépliable (`true`) ou statique (`false` ou `undefined`)',
+      description:
+        'Permet que le menu soit dépliable (`true`) ou statique (`false` ou `undefined`)',
     },
     expanded: {
       control: 'boolean',

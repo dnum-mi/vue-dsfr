@@ -18,11 +18,13 @@ export default {
   argTypes: {
     id: {
       control: 'text',
-      description: '(optionnel) Valeur de l’attribut `id` du champ de saisie. Par défaut, un id pseudo-aléatoire sera donné.',
+      description:
+        '(optionnel) Valeur de l’attribut `id` du champ de saisie. Par défaut, un id pseudo-aléatoire sera donné.',
     },
     descriptionId: {
       control: 'text',
-      description: '(optionnel) Valeur de l’attribut `id` du paragraphe de description. Par défaut, un id pseudo-aléatoire sera donné.',
+      description:
+        '(optionnel) Valeur de l’attribut `id` du paragraphe de description. Par défaut, un id pseudo-aléatoire sera donné.',
     },
     label: {
       control: 'text',
@@ -30,7 +32,8 @@ export default {
     },
     type: {
       control: 'text',
-      description: 'Type du champ de saisie cf. [MDN](https://developer.mozilla.org/fr/docs/Web/HTML/Element/Input)',
+      description:
+        'Type du champ de saisie cf. [MDN](https://developer.mozilla.org/fr/docs/Web/HTML/Element/Input)',
     },
     hint: {
       control: 'text',
@@ -38,11 +41,13 @@ export default {
     },
     labelVisible: {
       control: 'boolean',
-      description: 'Indique si le label doit être visible (`true`) ou non (`false`, défaut)',
+      description:
+        'Indique si le label doit être visible (`true`) ou non (`false`, défaut)',
     },
     placeholder: {
       control: 'text',
-      description: 'Contenu du champ à afficher lorsqu’il n’est pas rempli par l’utilisateur. *N’est pas déclaré en tant que props, mais fait partie des attributs qui seront passés à l’élément `input` natif**',
+      description:
+        'Contenu du champ à afficher lorsqu’il n’est pas rempli par l’utilisateur. *N’est pas déclaré en tant que props, mais fait partie des attributs qui seront passés à l’élément `input` natif**',
     },
     modelValue: {
       control: 'text',
@@ -50,39 +55,48 @@ export default {
     },
     disabled: {
       control: 'boolean',
-      description: 'Permet de désactiver le champ, la saisie sera impossible. *N’est pas déclaré en tant que props, mais fait partie des attributs qui seront passés à l’élément `input` natif*',
+      description:
+        'Permet de désactiver le champ, la saisie sera impossible. *N’est pas déclaré en tant que props, mais fait partie des attributs qui seront passés à l’élément `input` natif*',
     },
     isValid: {
       control: 'boolean',
-      description: 'Signale si le champ est en état validé (`true`) ou non (`false`, par défaut)',
+      description:
+        'Signale si le champ est en état validé (`true`) ou non (`false`, par défaut)',
     },
     isInvalid: {
       control: 'boolean',
-      description: 'Signale si le champ est en état d’erreur (`true`) ou non (`false`, par défaut)',
+      description:
+        'Signale si le champ est en état d’erreur (`true`) ou non (`false`, par défaut)',
     },
     isTextarea: {
       control: 'boolean',
-      description: 'Signale si le champ est de type textarea (`true`) ou non (`false`, par défaut)',
+      description:
+        'Signale si le champ est de type textarea (`true`) ou non (`false`, par défaut)',
     },
     errorMessage: {
       control: 'text',
-      description: 'Message d’erreur à associer au champ. **Ne fait pas partie du composant. Il appartient à <a href="/?path=/story/composants-champ-de-saisie-champ-avec-message-associ%C3%A9-dsfrinputgroup--champ-en-erreur">DsfrInputGroup</a>**',
+      description:
+        'Message d’erreur à associer au champ. **Ne fait pas partie du composant. Il appartient à <a href="/?path=/story/composants-champ-de-saisie-champ-avec-message-associ%C3%A9-dsfrinputgroup--champ-en-erreur">DsfrInputGroup</a>**',
     },
     validMessage: {
       control: 'text',
-      description: 'Message de validation à associer au champ. **Ne fait pas partie du composant. Il appartient à <a href="/?path=/story/composants-champ-de-saisie-champ-avec-message-associ%C3%A9-dsfrinputgroup--champ-valide">DsfrInputGroup</a>**',
+      description:
+        'Message de validation à associer au champ. **Ne fait pas partie du composant. Il appartient à <a href="/?path=/story/composants-champ-de-saisie-champ-avec-message-associ%C3%A9-dsfrinputgroup--champ-valide">DsfrInputGroup</a>**',
     },
     isWithWrapper: {
       control: 'boolean',
-      description: 'Définit la présence d’une div englobant le champ de saisie et lui met automatiquement la classe `fr-input-wrap`',
+      description:
+        'Définit la présence d’une div englobant le champ de saisie et lui met automatiquement la classe `fr-input-wrap`',
     },
     wrapperClass: {
       control: 'text',
-      description: 'Classe css du div englobant le champ de saisie si l’utilisateur y a recourt.',
+      description:
+        'Classe css du div englobant le champ de saisie si l’utilisateur y a recourt.',
     },
     'update:modelValue': {
       control: 'text',
-      description: 'Événement émis lors du changement de la valeur du champ de saisie',
+      description:
+        'Événement émis lors du changement de la valeur du champ de saisie',
     },
   },
 }
@@ -107,7 +121,6 @@ export const ChampSansLabel = (args) => ({
       :disabled="disabled"
     />
   `,
-
 })
 ChampSansLabel.args = {
   type: 'text',
@@ -138,7 +151,6 @@ export const LabelVisible = (args) => ({
       :disabled="disabled"
     />
   `,
-
 })
 LabelVisible.args = {
   label: 'Label champ de saisie',
@@ -174,7 +186,6 @@ export const ChampRequis = (args) => ({
     >
     </DsfrInput>
   `,
-
 })
 ChampRequis.args = {
   label: 'Label champ de saisie',
@@ -254,7 +265,6 @@ export const ChampAvecLabelPersonnalise = (args) => ({
       </template>
     </DsfrInput>
   `,
-
 })
 ChampAvecLabelPersonnalise.args = {
   label: 'Le label du champ',
@@ -288,7 +298,6 @@ export const ChampRequisPersonnalise = (args) => ({
       </template>
     </DsfrInput>
   `,
-
 })
 ChampRequisPersonnalise.args = {
   label: 'Label champ de saisie',
@@ -324,7 +333,6 @@ export const ChampEnErreur = (args) => ({
       />
     </DsfrInputGroup>
   `,
-
 })
 ChampEnErreur.args = {
   label: 'Label champ de saisie',
@@ -358,7 +366,6 @@ export const ChampValide = (args) => ({
       />
     </DsfrInputGroup>
   `,
-
 })
 ChampValide.args = {
   label: 'Label champ de saisie',
@@ -390,7 +397,6 @@ export const ChampDeSaisieDeDate = (args) => ({
       :is-with-wrapper="true"
     />
   `,
-
 })
 ChampDeSaisieDeDate.args = {
   labelVisible: true,
@@ -449,7 +455,6 @@ export const FocusSurChamp = (args) => ({
       :disabled="disabled"
     />
   `,
-
 })
 FocusSurChamp.args = {
   labelVisible: true,
@@ -480,7 +485,6 @@ export const ZoneDeTexte = (args) => ({
       :is-textarea="isTextarea"
     />
   `,
-
 })
 ZoneDeTexte.args = {
   label: 'Label champ de saisie',

@@ -4,7 +4,7 @@ import DsfrTranscription from './DsfrTranscription.vue'
 import DsfrModal from '../DsfrModal/DsfrModal.vue'
 import { OhVueIcon as VIcon } from 'oh-vue-icons'
 
-setup(app => {
+setup((app) => {
   app.component('DsfrModal', DsfrModal)
   app.component('VIcon', VIcon)
 })
@@ -18,7 +18,8 @@ export default {
   argTypes: {
     title: {
       control: 'text',
-      description: 'Titre du contenu sur lequel porte la transcription à destination des technologies d\'assistance',
+      description:
+        'Titre du contenu sur lequel porte la transcription à destination des technologies d\'assistance',
     },
     content: {
       control: 'text',
@@ -38,7 +39,6 @@ export const Transcription = (args) => ({
       :content="content"
     />
   `,
-
 })
 Transcription.args = {
   title: 'Chats hiver',

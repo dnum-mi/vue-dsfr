@@ -17,7 +17,8 @@ export default {
     },
     size: {
       control: 'text',
-      description: 'Taille du fichier (à afficher pour l\'utilisateur avec son unité) ',
+      description:
+        'Taille du fichier (à afficher pour l\'utilisateur avec son unité) ',
     },
     href: {
       control: 'text',
@@ -48,7 +49,6 @@ export const LienDeTelechargement = (args) => ({
       :title="title"
     />
   `,
-
 })
 LienDeTelechargement.args = {
   format: 'PDF',

@@ -1,14 +1,24 @@
-import { Meta } from '@storybook/addon-docs';
+import { Meta } from '@storybook/blocks';
 
 <Meta title="Docs/3. Guide du développeur" />
 
-## Comment contribuer
 
+<div style={{border: 'solid 3px red', fontWeight: 700, padding: '1em'}}>
+
+## Cette documentation est obsolète !
+
+Veuillez vous référer au
+[Guide du développeur ICI](https://vue-ds.fr/guide/pour-commencer).
+
+</div>
+
+<div style={{fontStyle: 'italic', fontWeight: 300 }}>
 Ceci est le guide du développeur pour contribuer au projet de cette bibliothèque.
 Si vous cherchez à utiliser cette bibliothèque, veuillez vous référer au
 [Guide d’utilisation](?path=/story/docs-guide-d-utilisation--page).
 
 ### TL;DR
+
 Les commits doivent suivre la spécification des **[Commits Conventionnels](https://www.conventionalcommits.org/fr/v1.0.0/)**
 
 Une PR doit être faite avec une branche **à jour avec la branche `develop` en `rebase` (et sans `merge`) avant demande de fusion**,
@@ -23,19 +33,21 @@ git clone https://github.com/dnum-mi/vue-dsfr
 ### Installer le projet
 
 Se positionner à la racine du projet, puis lancer la commande
+
 ```shell
 npm install
 ```
 
-Si le paquet cypress n'arrive pas à se télécharger lors de la précédente commande, alors il faut télécharger le fichier cypress.zip manuellement sur le site cypress.io, et spécifier le fichier dans la variable CYPRESS_INSTALL_BINARY
+Si le paquet cypress n'arrive pas à se télécharger lors de la précédente commande, alors il faut télécharger le fichier cypress.zip manuellement sur le site cypress.io, et spécifier le fichier dans la variable CYPRESS\_INSTALL\_BINARY
+
 ```shell
 CYPRESS_INSTALL_BINARY=/chemin/vers/cypress/cypress.zip npm install
 ```
 
 ### Pré-requis
 
-- npm : version 8 minimum
-- Node.js : version 18 minimum
+* npm : version 8 minimum
+* Node.js : version 18 minimum
 
 #### Installation des pré-requis (testé sous Ubuntu 22.04)
 
@@ -85,10 +97,10 @@ Vous devriez voir 18.x.x
 
 ### Comment contribuer au projet
 
-- Cloner le projet et créer des [pull-request](https://docs.github.com/en/github/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
-- Indiquer les bugs dans des [issues](https://github.com/dnum-mi/vue-dsfr/issues)
-- Faire des demandes dans [discussions](https://github.com/dnum-mi/vue-dsfr/discussions)
-- Rejoindre le [server Discord](https://discord.gg/jbBJ9769ZZ)
+* Cloner le projet et créer des [pull-request](https://docs.github.com/en/github/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+* Indiquer les bugs dans des [issues](https://github.com/dnum-mi/vue-dsfr/issues)
+* Faire des demandes dans [discussions](https://github.com/dnum-mi/vue-dsfr/discussions)
+* Rejoindre le [server Discord](https://discord.gg/jbBJ9769ZZ)
 
 ### À propos des pull-requests
 
@@ -97,3 +109,4 @@ l’outil de release automatique détecte les nouvelles fonctionnalités et les 
 
 Les branches doivent être le plus possible **à jour avec la branche `develop` en `rebase` (et sans `merge`) avant demande de fusion**,
 et **la fusion doit être demandée dans `develop`.**
+</div>

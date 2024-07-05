@@ -9,11 +9,13 @@ export default {
   argTypes: {
     links: {
       control: 'object',
-      description: 'Tableau d’objets, chaque objet contiendra 2 propriétés : `to` avec le lien et `text` avec le texte à afficher',
+      description:
+        'Tableau d’objets, chaque objet contiendra 2 propriétés : `to` avec le lien et `text` avec le texte à afficher',
     },
     breadcrumbId: {
       control: 'text',
-      description: 'Id de la balise `div` à l’intérieur de la balise `nav` du fil d’Ariane',
+      description:
+        'Id de la balise `div` à l’intérieur de la balise `nav` du fil d’Ariane',
     },
     navigationLabel: {
       control: 'text',
@@ -53,7 +55,6 @@ export const FilDAriane = (args) => ({
       :links="links"
     />
   `,
-
 })
 
 FilDAriane.args = {

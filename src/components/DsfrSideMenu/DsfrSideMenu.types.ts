@@ -5,6 +5,7 @@ export type DsfrSideMenuListItemProps = { active?: boolean }
 export type DsfrSideMenuProps = {
   buttonLabel?: string
   id?: string
+  sideMenuListId?: string
   collapseValue?: string
   menuItems?: DsfrSideMenuListItemProps[]
   headingTitle?: string
