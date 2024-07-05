@@ -57,6 +57,7 @@ defineExpose({ goToTargetLink })
       'fr-card--horizontal-tier': smImg,
       'fr-card--horizontal-half': lgImg,
       'fr-card--download': download,
+      'fr-enlarge-button': enlarge,
     }"
     data-testid="fr-card"
   >
