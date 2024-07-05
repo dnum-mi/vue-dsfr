@@ -14,22 +14,39 @@ Il est affiché sur l’ensemble des pages en desktop et en mobile. Il affiche u
 
 La notice est composée des éléments suivants :
 
-- un titre (prop `title`, de type `string`) :
+- Un titre (prop `title`, de type `string`) :
+  - Optionnel avec une valeur par défault `''`
+- Une description (prop `desc`, de type `string`) :
   - optionnel avec une valeur par défault `''`
+- un pictogramme et une couleur déterminés par la prop `type` qui peut valoir une des chaînes suivantes :
+  - `'info'` (valeur par défaut si la prop `type` est absente)
+  - `'warning'`
+  - `'alert'`
+  - `'weather-orange'`
+  - `'weather-red'`
+  - `'weather-purple'`
+  - `'witness'`
+  - `'kidnapping'`
+  - `'attack'`
+  - `'cyberattack'`
 - Une icône d'information
-- une croix de fermeture si la prop `closeable` est à `true`
+- Une croix de fermeture si la prop `closeable` est à `true`
 
 Slot(s) disponible(s):
 
-- Le slot par défaut permet d'enrichir le contenu du paragraphe représentant le titre de la notice (tag `p` avec la classe `fr-notice__title`).
+- Le slot par `défaut` permet d'enrichir le contenu du paragraphe représentant le titre de la notice (tag `p` avec la classe `fr-notice__title`).
+  - Ceci permet par exemple d'avoir un titre contenant un lien au fil du texte (tag `a`).
+- Le slot par `desc` permet d'enrichir le contenu du paragraphe représentant le titre de la notice (tag `p` avec la classe `fr-notice__desc`).
   - Ceci permet par exemple d'avoir un titre contenant un lien au fil du texte (tag `a`).
 
 ## 🛠️ Props
 
-|  nom                   |   type      |  défaut         | obligatoire |
-| ----------------------- | ---------   | ---------------- | -------- |
-| `title`                 | *`string`*  |      `''`        |  |
-| `closeable`             | *`boolean`* | `false`          | |
+|  nom                   |   type                                   |  défaut         | obligatoire |
+| ----------------------- | --------------------------------------  | ---------------- | -------- |
+| `title`                 | *`string`*                              |      `''`        |  |
+| `desc`                  | *`string`*                              |      `''`        |  |
+| `type`                  | *`'info' \| 'warning' \| 'alert'`...*   |     `'info'`     |  |
+| `closeable`             | *`boolean`*                             |     `false       |  |
 
 ## 📡 Évenements
 
@@ -46,6 +63,7 @@ Slot(s) disponible(s):
 | nom         | contenu par défaut |
 |-------------|---------|
 | `'default'` | *aucun* |
+| `'desc'`    | *aucun* |
 
 ## 📝 Toutes les variantes 🌈 de Notice
 
