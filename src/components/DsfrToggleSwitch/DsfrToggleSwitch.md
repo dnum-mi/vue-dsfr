@@ -1,10 +1,12 @@
-# Information contextuelle et Infobulle - DsfrTooggleSwitch
+# Interrupteur - DsfrToggleSwitch
 
 ## 🌟 Introduction
 
-Le `DsfrToggleSwitch` est un composant Vue versatile, conçu pour permet à l’utilisateur de faire un choix entre deux états opposés (activé / désactivé).
+Le `DsfrToggleSwitch` est un composant Vue versatile, conçu pour permettre à l’utilisateur de faire un choix entre deux états opposés (activé / désactivé).
 
 🏅 La documentation sur **les interrupteurs** sur le [DSFR](https://www.systeme-de-design.gouv.fr/composants-et-modeles/composants/interrupteur)
+
+<VIcon name="vi-file-type-storybook" /> La story sur la carte sur le storybook de [VueDsfr](https://storybook.vue-ds.fr/?path=/docs/composants-dsfrtoggleswitch--docs)
 
 ## 🛠️ Props
 
@@ -33,10 +35,10 @@ Aucun slot n'est prévu dans ce composant. Le contenu est entièrement basé sur
 ::: code-group
 
 <Story data-title="Démo" min-h="300px">
-  <DsfrToggleSwitch label="Label action interrupteur" />
+  <DsfrToggleSwitchDemo label="Label action interrupteur" />
 </Story>
 
-<<< docs-demo/DsfrToggleSwitch.vue
+<<< docs-demo/DsfrToggleSwitchDemo.vue
 
 :::
 
@@ -50,5 +52,5 @@ Aucun slot n'est prévu dans ce composant. Le contenu est entièrement basé sur
 :::
 
 <script setup lang="ts">
-import DsfrToggleSwitch from './docs-demo/DsfrToggleSwitch.vue'
+import DsfrToggleSwitchDemo from './docs-demo/DsfrToggleSwitchDemo.vue'
 </script>
