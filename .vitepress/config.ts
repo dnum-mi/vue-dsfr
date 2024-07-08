@@ -256,6 +256,10 @@ const composants = [
     link: '/composants/DsfrTile.md',
   },
   {
+    text: 'DsfrToggleSwitch',
+    link: '/composants/DsfrToggleSwitch.md',
+  },
+  {
     text: 'DsfrTooltip',
     link: '/composants/DsfrTooltip.md',
   },
