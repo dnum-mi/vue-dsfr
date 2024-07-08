@@ -1,3 +1,5 @@
+import { fn } from '@storybook/test'
+
 import DsfrSelect from './DsfrSelect.vue'
 
 /**
