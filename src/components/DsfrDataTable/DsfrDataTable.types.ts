@@ -1,7 +1,8 @@
 export type DsfrDataTableProps = {
   title: string
-  headersRow: string[]
-  contentRows: string[]
+  main: string[]
+  headersRow: (string | { key: string, label: string })[]
+  rows: (string | { id: string | number, content: string | number | boolean | bigint })[][]
   headersColumn?: string[]
   selectableRows?: string[]
   topActionsRow?: string[]
