@@ -12,11 +12,13 @@ Le `DsfrToggleSwitch` est un composant Vue versatile, conçu pour permettre à l
 
 | Nom            | Type      | Défaut                  | Obligatoire | Description                                                               |
 |----------------|-----------|-------------------------|:-----------:|---------------------------------------------------------------------------|
+| `modelValue`   | `boolean` |                         |             | Valeur booléenne associée à la case à cocher                              |
+| `disabled`     | `boolean` |                         |             | Valeur booléenne pour désactiver le toggle                                |
 | `hint`         | `string`  |                         |             | Texte d'information complémentaire affiché en dessous de l'interrupteur   |
 | `label`        | `string`  | `false`                 |             | Texte du label associé à l'interrupteur                                   |
 | `labelLeft`    | `boolean` | `false`                 |             | Permet d'afficher le label à gauche de l'interrupteur                     |
 | `borderBottom` | `boolean` | `false`                 |             | Affiche une bordure sous l'interrupteur et le label                       |
-| `inputId`      | `string`  | `getRandomId('toggle')` |             | Identifiant unique pour l'infobulle. Utilisé pour l'accessibilité.        |
+| `inputId`      | `string`  | `getRandomId('toggle')` |             | Identifiant unique pour le toggle. Utilisé pour l'accessibilité.          |
 
 ## 📡 Évenements
 
