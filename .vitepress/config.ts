@@ -228,6 +228,10 @@ const composants = [
     link: '/composants/DsfrSegmentedSet.md',
   },
   {
+    text: 'DsfrSelect',
+    link: '/composants/DsfrSelect.md',
+  },
+  {
     text: 'DsfrTable',
     link: '/composants/DsfrTable.md',
   },
