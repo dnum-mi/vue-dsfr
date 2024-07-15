@@ -12,8 +12,8 @@ const props = withDefaults(defineProps<DsfrTableCellProps>(), {
 const component = computed(() => {
   return (typeof props.field === 'object' && props.field !== null && props.field.component) ? props.field.component : false
 })
-const isString = computed(() => {
-  return typeof props.field === 'string'
+const isPrimitive = computed(() => {
+  return typeof ['string', 'number', 'boolean'].includes(typeof props.field)
 })
 </script>
 
@@ -27,7 +27,7 @@ const isString = computed(() => {
       {{ (field as Record<string, any>).text }}
     </component>
     <template v-else>
-      {{ isString ? field : (field as Record<string, any>).text }}
+      {{ isPrimitive ? field : (field as Record<string, any>).text }}
     </template>
   </td>
 </template>

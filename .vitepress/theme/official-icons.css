@@ -1,0 +1,25 @@
+[class^=fr-icon-]::before,
+[class^=fr-icon-]::after,
+[class*=" fr-icon-"]::before,
+[class*=" fr-icon-"]::after,
+[class^=fr-fi-]::before,
+[class^=fr-fi-]::after,
+[class*=" fr-fi-"]::before,
+[class*=" fr-fi-"]::after {
+  flex: 0 0 auto;
+  display: inline-block;
+  vertical-align: calc((0.75em - var(--icon-size)) * 0.5);
+  background-color: currentColor;
+  width: var(--icon-size);
+  height: var(--icon-size);
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+  --icon-size: 1.5rem;
+}
+
+[class^=fr-icon-]::before,
+[class*=" fr-icon-"]::before,
+[class^=fr-fi-]::before,
+[class*=" fr-fi-"]::before {
+  content: "";
+}
