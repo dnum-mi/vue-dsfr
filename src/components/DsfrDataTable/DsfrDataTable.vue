@@ -20,7 +20,7 @@ withDefaults(defineProps<DsfrDataTableProps>(), {
         <div class="fr-table__content">
           <table id="table-sm">
             <caption>
-              Titre du tableau (caption)
+              {{ title }}
             </caption>
             <thead>
               <tr>
@@ -31,7 +31,7 @@ withDefaults(defineProps<DsfrDataTableProps>(), {
                 >
                   <slot
                     name="header"
-                    :content="typeof header === 'object' ? header : { key: header, label: header }"
+                    v-bind="typeof header === 'object' ? header : { key: header, label: header }"
                   >
                     {{ typeof header === 'object' ? header.label : header }}
                   </slot>
@@ -41,7 +41,6 @@ withDefaults(defineProps<DsfrDataTableProps>(), {
             <tbody>
               <tr
                 v-for="(row, idx) of rows"
-                id="table-sm-row-key-1"
                 :key="`row-${idx}`"
                 :data-row-key="idx + 1"
               >
@@ -51,7 +50,12 @@ withDefaults(defineProps<DsfrDataTableProps>(), {
                 >
                   <slot
                     name="cell"
-                    :content="{ colKey: typeof headersRow[cellIdx] === 'object' ? headersRow[cellIdx].key : headersRow[cellIdx], cell }"
+                    v-bind="{
+                      colKey: typeof headersRow[cellIdx] === 'object'
+                        ? headersRow[cellIdx].key
+                        : headersRow[cellIdx],
+                      cell,
+                    }"
                   >
                     {{ typeof cell === 'object' ? cell.id : cell }}
                   </slot>

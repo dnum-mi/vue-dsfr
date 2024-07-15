@@ -2,18 +2,9 @@
 import DsfrDataTable from '../DsfrDataTable.vue'
 
 const headers = [
-  {
-    key: 'id',
-    label: 'ID',
-  },
-  {
-    key: 'name',
-    label: 'Name',
-  },
-  {
-    key: 'email',
-    label: 'Email',
-  },
+  'ID',
+  'Name',
+  'Email',
 ]
 
 const rows = [
@@ -24,26 +15,6 @@ const rows = [
 
 <template>
   <div class="fr-container fr-my-2v">
-    <DsfrDataTable
-      :headers-row="headers"
-      :rows="rows"
-    >
-      <template #header="{ content: { key, label } }">
-        <div @click="click($event)">
-          <em>{{ label.toLowerCase() }}</em>
-        </div>
-      </template>
-
-      <template #cell="{ content: { colKey, cell } }">
-        <template v-if="colKey === 'email'">
-          <a :href="`mailto:${cell}`">{{ cell }}</a>
-        </template>
-        <template v-else>
-          {{ cell }} <em>({{ colKey }})</em>
-        </template>
-      </template>
-    </DsfrDataTable>
-
     <DsfrDataTable
       :headers-row="headers"
       :rows="rows"

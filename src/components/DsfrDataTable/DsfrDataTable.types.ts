@@ -1,8 +1,11 @@
+export type DsfrDataTableRow = (
+  string | number | boolean | bigint | symbol | { id: string | number, content: string | number | boolean | bigint | symbol })[]
+
 export type DsfrDataTableProps = {
   title: string
   main: string[]
   headersRow: (string | { key: string, label: string })[]
-  rows: (string | { id: string | number, content: string | number | boolean | bigint })[][]
+  rows: DsfrDataTableRow[]
   headersColumn?: string[]
   selectableRows?: string[]
   topActionsRow?: string[]
