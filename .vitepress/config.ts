@@ -55,6 +55,10 @@ const guideItems = [
     link: '/guide/ecosysteme',
   },
   {
+    text: 'Les icônes officielles',
+    link: '/guide/icones-officielles.md',
+  },
+  {
     text: 'Les icônes',
     link: '/guide/icones.md',
   },
