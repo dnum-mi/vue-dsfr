@@ -18,8 +18,8 @@ withDefaults(defineProps<DsfrTableRowProps>(), {
     <DsfrTableCell
       v-for="(cell, i) of rowData"
       :key="i"
-      :field="cell"
-      :cell-attrs="typeof cell === 'object' && !cell.component ? cell.cellAttrs : {}"
+      :field="cell ?? ''"
+      :cell-attrs="(typeof cell === 'object' && cell !== null && !cell.component) ? cell.cellAttrs : {}"
     />
   </tr>
 </template>
