@@ -1,4 +1,4 @@
-import '@gouvfr/dsfr/dist/dsfr.min.css'
+import '@gouvfr/dsfr/dist/dsfr.main.css'
 
 // ***********************************************************
 // This example support/component.ts is processed and
