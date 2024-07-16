@@ -49,7 +49,7 @@ Suivez la procédure suivante en lançant les commandes détaillées ci-dessous 
 1. Mise à jour des dépôts :
 
 ```shell
-wget -qO- https://deb.nodesource.com/setup_18.x | sudo -E bash -
+wget -qO- https://deb.nodesource.com/setup_20.x | sudo -E bash -
 ```
 
 2. Installer `Node.js` :
@@ -72,7 +72,7 @@ curl https://get.volta.sh | bash
 source ~/.bashrc
 ```
 
-6. Vérifier la version de NVM installée :
+6. Vérifier la version de Volta installée :
 
 ```shell
 volta --version
