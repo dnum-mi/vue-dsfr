@@ -1,14 +1,20 @@
 <script lang="ts" setup>
+import { computed } from 'vue'
+
 import { getRandomId } from '../../utils/random-utils'
 
 import type { DsfrFileUploadProps } from './DsfrFileUpload.types'
 
 export type { DsfrFileUploadProps }
 
-withDefaults(defineProps<DsfrFileUploadProps>(), {
+defineOptions({
+  inheritAttrs: false,
+})
+
+const props = withDefaults(defineProps<DsfrFileUploadProps>(), {
   id: () => getRandomId('file-upload'),
   label: 'Ajouter un fichier',
-  accept: () => [],
+  accept: undefined,
   hint: '',
   validMessage: '',
   error: '',
@@ -24,6 +30,13 @@ const onChange = ($event: InputEvent) => {
   emit('update:modelValue', ($event.target as HTMLInputElement)?.value)
   emit('change', ($event.target as (InputEvent['target'] & { files: FileList }))?.files)
 }
+
+const acceptTypes = computed(() => {
+  if (Array.isArray(props.accept)) {
+    return props.accept.join(',')
+  }
+  return props.accept
+})
 </script>
 
 <template>
@@ -59,7 +72,7 @@ const onChange = ($event: InputEvent) => {
       :value="modelValue"
       :disabled="disabled"
       :aria-disabled="disabled"
-      :accept="accept.join(',')"
+      :accept="acceptTypes"
       @change="onChange($event as InputEvent)"
     >
     <div

@@ -1,20 +1,24 @@
-# Information contextuelle et Infobulle - DsfrTooggleSwitch
+# Interrupteur - DsfrToggleSwitch
 
 ## 🌟 Introduction
 
-Le `DsfrToggleSwitch` est un composant Vue versatile, conçu pour permet à l’utilisateur de faire un choix entre deux états opposés (activé / désactivé).
+Le `DsfrToggleSwitch` est un composant Vue versatile, conçu pour permettre à l’utilisateur de faire un choix entre deux états opposés (activé / désactivé).
 
 🏅 La documentation sur **les interrupteurs** sur le [DSFR](https://www.systeme-de-design.gouv.fr/composants-et-modeles/composants/interrupteur)
+
+<VIcon name="vi-file-type-storybook" /> La story sur la carte sur le storybook de [VueDsfr](https://storybook.vue-ds.fr/?path=/docs/composants-dsfrtoggleswitch--docs)
 
 ## 🛠️ Props
 
 | Nom            | Type      | Défaut                  | Obligatoire | Description                                                               |
 |----------------|-----------|-------------------------|:-----------:|---------------------------------------------------------------------------|
+| `modelValue`   | `boolean` |                         |             | Valeur booléenne associée à la case à cocher                              |
+| `disabled`     | `boolean` |                         |             | Valeur booléenne pour désactiver le toggle                                |
 | `hint`         | `string`  |                         |             | Texte d'information complémentaire affiché en dessous de l'interrupteur   |
 | `label`        | `string`  | `false`                 |             | Texte du label associé à l'interrupteur                                   |
 | `labelLeft`    | `boolean` | `false`                 |             | Permet d'afficher le label à gauche de l'interrupteur                     |
 | `borderBottom` | `boolean` | `false`                 |             | Affiche une bordure sous l'interrupteur et le label                       |
-| `inputId`      | `string`  | `getRandomId('toggle')` |             | Identifiant unique pour l'infobulle. Utilisé pour l'accessibilité.        |
+| `inputId`      | `string`  | `getRandomId('toggle')` |             | Identifiant unique pour le toggle. Utilisé pour l'accessibilité.          |
 
 ## 📡 Évenements
 
@@ -33,10 +37,10 @@ Aucun slot n'est prévu dans ce composant. Le contenu est entièrement basé sur
 ::: code-group
 
 <Story data-title="Démo" min-h="300px">
-  <DsfrToggleSwitch label="Label action interrupteur" />
+  <DsfrToggleSwitchDemo label="Label action interrupteur" />
 </Story>
 
-<<< docs-demo/DsfrToggleSwitch.vue
+<<< docs-demo/DsfrToggleSwitchDemo.vue
 
 :::
 
@@ -50,5 +54,5 @@ Aucun slot n'est prévu dans ce composant. Le contenu est entièrement basé sur
 :::
 
 <script setup lang="ts">
-import DsfrToggleSwitch from './docs-demo/DsfrToggleSwitch.vue'
+import DsfrToggleSwitchDemo from './docs-demo/DsfrToggleSwitchDemo.vue'
 </script>

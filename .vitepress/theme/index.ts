@@ -5,9 +5,12 @@ import { RouterLink } from 'vue-router'
 
 import Story from './Story.vue'
 import AppColors from './AppColors.vue'
+import AppIcons from './AppIcons.vue'
 import VIconLink from './VIconLink.vue'
 import * as vpIcons from './icons'
 
+import './official-icons.css'
+import '@gouvfr/dsfr/dist/utility/icons/icons.main.css'
 import './style.css'
 
 addIcons(...Object.values(vpIcons))
@@ -20,5 +23,6 @@ export default {
     app.component('Story', Story)
     app.component('RouterLink', RouterLink)
     app.component('AppColors', AppColors)
+    app.component('AppIcons', AppIcons)
   },
 } satisfies Theme

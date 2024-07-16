@@ -73,4 +73,65 @@ describe('DsfrFileUpload', () => {
 
     expect(errorEl).toBeDefined()
   })
+
+  it('should accept only pdf', () => {
+    const hint = 'Indice d’upload avec erreur'
+    const label = 'Label d’upload avec erreur'
+    const error = 'Erreur d’upload avec erreur'
+    const accept = '.pdf'
+
+    const { container, getByText, getByLabelText } = render(DsfrFileUpload, {
+      global: {
+        components: {
+          VIcon,
+        },
+      },
+      props: {
+        hint,
+        label,
+        error,
+        accept,
+      },
+    })
+
+    getByText(label)
+    const input = getByLabelText(`${label} ${hint}`)
+    getByText(error)
+
+    const errorEl = container.querySelector('.fr-error-text')
+
+    expect(errorEl).toBeDefined()
+    expect(input).toHaveAttribute('accept', accept)
+  })
+
+  it('should accept only pdf and jpg', () => {
+    const hint = 'Indice d’upload avec erreur'
+    const label = 'Label d’upload avec erreur'
+    const error = 'Erreur d’upload avec erreur'
+    const acceptString = '.pdf,.jpg'
+    const accept = acceptString.split(',')
+
+    const { container, getByText, getByLabelText } = render(DsfrFileUpload, {
+      global: {
+        components: {
+          VIcon,
+        },
+      },
+      props: {
+        hint,
+        label,
+        error,
+        accept,
+      },
+    })
+
+    getByText(label)
+    const input = getByLabelText(`${label} ${hint}`)
+    getByText(error)
+
+    const errorEl = container.querySelector('.fr-error-text')
+
+    expect(errorEl).toBeDefined()
+    expect(input).toHaveAttribute('accept', acceptString)
+  })
 })

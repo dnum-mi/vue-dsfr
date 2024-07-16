@@ -55,6 +55,10 @@ const guideItems = [
     link: '/guide/ecosysteme',
   },
   {
+    text: 'Les icônes officielles',
+    link: '/guide/icones-officielles.md',
+  },
+  {
     text: 'Les icônes',
     link: '/guide/icones.md',
   },
@@ -222,6 +226,10 @@ const composants = [
   {
     text: 'DsfrSegmentedSet',
     link: '/composants/DsfrSegmentedSet.md',
+  },
+  {
+    text: 'DsfrSelect',
+    link: '/composants/DsfrSelect.md',
   },
   {
     text: 'DsfrTable',

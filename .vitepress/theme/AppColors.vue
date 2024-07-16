@@ -67,6 +67,7 @@ const copyInClipboard = (text: string, colorName: string) => {
           <div
             role="button"
             :style="`background-color: ${subColor.hex}; flex: 0 0 80px; height: 55px;`"
+            @key.down.enter="copyInClipboard(subColor.cssVar, subColor.name)"
           />
           <div
             class="color-details"
