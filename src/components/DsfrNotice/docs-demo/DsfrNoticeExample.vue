@@ -12,7 +12,9 @@ const close = () => {
 
 <template>
   <div class="demo-container-col">
-    <DsfrNotice title="Notice simple" />
+    <DsfrNotice
+      title="Notice simple"
+    />
 
     <DsfrNotice
       v-if="!isClosed"
@@ -28,5 +30,25 @@ const close = () => {
         lien externe
       </a>
     </DsfrNotice>
+
+    <DsfrNotice
+      title="Notice simple"
+      desc="Texte de description plutot long lorem ipsum sit consectetur adipiscing elit."
+    />
+
+    <DsfrNotice
+      title="Notice simple"
+      type="warning"
+    />
+
+    <DsfrNotice
+      title="Notice simple"
+      type="alert"
+    />
+
+    <DsfrNotice
+      title="Notice simple"
+      type="weather-orange"
+    />
   </div>
 </template>
