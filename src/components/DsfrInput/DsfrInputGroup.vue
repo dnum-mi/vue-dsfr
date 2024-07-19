@@ -62,6 +62,7 @@ const messageClass = computed(() => props.errorMessage ? 'fr-error-text' : 'fr-v
       v-if="message"
       class="fr-messages-group"
       role="alert"
+      aria-live="polite"
     >
       <p
         :id="descriptionId"
