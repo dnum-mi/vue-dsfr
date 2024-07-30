@@ -8,6 +8,7 @@ export type { DsfrTabItemProps }
 
 const props = withDefaults(defineProps<DsfrTabItemProps>(), {
   icon: undefined,
+  expand: false,
 })
 
 const emit = defineEmits<{
@@ -48,6 +49,7 @@ function onKeyDown (event: KeyboardEvent) {
 <template>
   <li
     role="presentation"
+    :class="props.expand ? 'grow' : ''"
   >
     <button
       :id="tabId"
