@@ -10,6 +10,7 @@ const tabListName = 'Liste d’onglet'
 const tabTitles = [
   { title: 'Onglet avec accordéon', icon: 'ri-checkbox-circle-line', tabId: 'tab-0', panelId: 'tab-content-0' },
   { title: 'Titre 2', icon: 'ri-checkbox-circle-line', tabId: 'tab-1', panelId: 'tab-content-1' },
+  { title: 'Onglet sur la droite', icon: 'ri-close-circle-line', tabId: 'tab-2', panelId: 'tab-content-2' },
 ]
 const selectedTabIndex = ref(0)
 const asc = ref(true)
@@ -30,6 +31,7 @@ function selectTab (idx) {
     :tab-list-name="tabListName"
     :tab-titles="tabTitles"
     :initial-selected-index="initialSelectedIndex"
+    :expand-at-index="1"
     @select-tab="selectTab"
   >
     <DsfrTabContent
@@ -83,6 +85,14 @@ function selectTab (idx) {
         img-src="https://loremflickr.com/300/200/cat"
         title="title"
       />
+    </DsfrTabContent>
+    <DsfrTabContent
+      panel-id="tab-content-2"
+      tab-id="tab-2"
+      :selected="selectedTabIndex === 2"
+      :asc="asc"
+    >
+      Fermer l'onglet ?
     </DsfrTabContent>
   </DsfrTabs>
 </template>

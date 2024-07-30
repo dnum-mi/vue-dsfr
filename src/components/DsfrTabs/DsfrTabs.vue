@@ -14,6 +14,7 @@ const props = withDefaults(defineProps<DsfrTabsProps>(), {
   tabContents: () => [],
   tabTitles: () => [],
   initialSelectedIndex: 0,
+  expandAtIndex: -1,
 })
 
 const emit = defineEmits<{ (e: 'selectTab', payload: number): void }>()
@@ -134,6 +135,7 @@ defineExpose({
           :panel-id="tabTitle.panelId || `${getIdFromIndex(index)}-panel`"
           :tab-id="tabTitle.tabId || getIdFromIndex(index)"
           :selected="isSelected(index)"
+          :expand="index - 1 === props.expandAtIndex"
           @click="selectIndex(index)"
           @next="selectNext()"
           @previous="selectPrevious()"

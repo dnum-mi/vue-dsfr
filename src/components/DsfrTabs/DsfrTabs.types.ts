@@ -3,6 +3,7 @@ export type DsfrTabItemProps = {
   tabId: string
   selected?: boolean
   icon?: string
+  expand: boolean
 }
 
 export type DsfrTabContentProps = {
@@ -17,4 +18,5 @@ export type DsfrTabsProps = {
   tabTitles: (Partial<DsfrTabItemProps> & { title: string })[]
   tabContents?: string[]
   initialSelectedIndex?: number
+  expandAtIndex?: number
 }
