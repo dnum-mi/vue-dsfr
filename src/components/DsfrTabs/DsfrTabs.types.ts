@@ -13,8 +13,8 @@ export type DsfrTabContentProps = {
 }
 
 export type DsfrTabsProps = {
+  modelValue: number
   tabListName: string
   tabTitles: (Partial<DsfrTabItemProps> & { title: string })[]
   tabContents?: string[]
-  initialSelectedIndex?: number
 }

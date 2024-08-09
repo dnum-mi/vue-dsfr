@@ -50,10 +50,10 @@ const meta = {
       description:
         'Tableau de contenu de chaque `DsfrTabContent` - **Obligatoire si `DsfrTabs` n’a pas de contenu**',
     },
-    initialSelectedIndex: {
+    modelValue: {
       control: 'number',
       description:
-        'Index de l’onglet selectionné par défaut à l’affichage du composant.',
+        'Index de l’onglet selectionné',
     },
     'select-tab': {
       description:
@@ -76,19 +76,25 @@ export const OngletsSimples = (args) => ({
       :tab-list-name="tabListName"
       :tab-titles="tabTitles"
       :tab-contents="tabContents"
-      :initial-selected-index="initialSelectedIndex"
+      v-model="selectedIndex"
     />
   `,
 })
-
+OngletsSimples.args = {
+  tabListName,
+  tabTitles,
+  tabContents,
+  selectedIndex: 0,
+}
 OngletsSimples.play = async ({ canvasElement }) => {
   const canvas = within(canvasElement)
   // const firstTab = await canvas.getByLabelText(tabTitles[0].title)
   // await userEvent.click(firstTab)
-  const firstTab = canvas.getAllByRole('tab')[0]
-  const secondTab = canvas.getAllByRole('tab')[1]
-  const thirdTab = canvas.getAllByRole('tab')[2]
-  const fourthTab = canvas.getAllByRole('tab')[3]
+  const tabs = canvas.getAllByRole('tab')
+  const firstTab = tabs[0]
+  const secondTab = tabs[1]
+  const thirdTab = tabs[2]
+  const fourthTab = tabs[3]
   const firstTabPanel = canvas.getByLabelText(tabTitles[0].title)
   const secondTabPanel = canvas.getByLabelText(tabTitles[1].title)
   const thirdTabPanel = canvas.getByLabelText(tabTitles[2].title)
@@ -114,12 +120,6 @@ OngletsSimples.play = async ({ canvasElement }) => {
   await userEvent.tab()
   expect(firstTabPanel).toHaveFocus()
   await userEvent.tab()
-}
-OngletsSimples.args = {
-  tabListName,
-  tabTitles,
-  tabContents,
-  initialSelectedIndex: 0,
 }
 
 const customTabTitles = [
@@ -163,14 +163,11 @@ export const OngletsComplexes = (args) => ({
       ref="tabs"
       :tab-list-name="tabListName"
       :tab-titles="tabTitles"
-      :initial-selected-index="initialSelectedIndex"
-      @select-tab="selectTab"
+      v-model="selectedIndex"
     >
       <DsfrTabContent
         panel-id="tab-content-0"
         tab-id="tab-0"
-        :selected="selectedTabIndex === 0"
-        :asc="asc"
       >
         <div>Contenu 1 avec d'autres composants</div>
       </DsfrTabContent>
@@ -178,8 +175,6 @@ export const OngletsComplexes = (args) => ({
       <DsfrTabContent
         panel-id="tab-content-1"
         tab-id="tab-1"
-        :selected="selectedTabIndex === 1"
-        :asc="asc"
       >
         <div>Contenu 2 avec d'autres composants</div>
       </DsfrTabContent>
@@ -187,8 +182,6 @@ export const OngletsComplexes = (args) => ({
       <DsfrTabContent
         panel-id="tab-content-2"
         tab-id="tab-2"
-        :selected="selectedTabIndex === 2"
-        :asc="asc"
       >
         <div>Contenu 3 avec d'autres composants</div>
       </DsfrTabContent>
@@ -196,8 +189,6 @@ export const OngletsComplexes = (args) => ({
       <DsfrTabContent
         panel-id="tab-content-3"
         tab-id="tab-3"
-        :selected="selectedTabIndex === 3"
-        :asc="asc"
       >
         <div>Contenu 4 avec d'autres composants</div>
       </DsfrTabContent>
@@ -205,28 +196,26 @@ export const OngletsComplexes = (args) => ({
     <div style="display: flex; gap: 1rem; margin-block: 1rem;">
       <DsfrButton
         label="Activer le 1er onglet"
-        @click="() => { $refs.tabs.selectFirst() }"
+        @click="selectedIndex = 0"
       />
       <DsfrButton
         label="Activer le 2è onglet"
-        @click="() => { $refs.tabs.selectIndex(1) }"
+        @click="selectedIndex = 1"
       />
       <DsfrButton
         label="Activer le 3è onglet"
-        @click="() => { $refs.tabs.selectIndex(2) }"
+        @click="selectedIndex = 2"
       />
       <DsfrButton
         label="Activer le dernier onglet"
-        @click="() => { $refs.tabs.selectLast() }"
+        @click="selectedIndex = 3"
       />
     </div>
   `,
 
-  methods: {
-    selectTab (idx) {
+  watch: {
+    selectedIndex (idx) {
       this.onSelectTab(idx)
-      this.asc = this.selectedTabIndex < idx
-      this.selectedTabIndex = idx
     },
   },
 })
@@ -234,8 +223,7 @@ OngletsComplexes.args = {
   tabContents: [],
   tabListName,
   tabTitles: customTabTitles,
-  selectedTabIndex: 1,
-  initialSelectedIndex: 1,
+  selectedIndex: 1,
 }
 
 export const OngletsAvecAccordeon = (args) => ({
@@ -251,54 +239,37 @@ export const OngletsAvecAccordeon = (args) => ({
     <DsfrTabs
       :tab-list-name="tabListName"
       :tab-titles="tabTitles"
-      :initial-selected-index="initialSelectedIndex"
-      @select-tab="selectTab"
+      v-model="selectedTabIndex"
     >
       <DsfrTabContent
         panel-id="tab-content-0"
         tab-id="tab-0"
-        :selected="selectedTabIndex === 0"
-        :asc="asc"
       >
-        <DsfrAccordionsGroup>
-          <li>
-            <DsfrAccordion
-              id="accordion-1"
-              :title="title1"
-              :expanded-id="expandedId"
-              @expand="expandedId = $event"
-            >
-              Contenu de l’accordéon 1
-            </DsfrAccordion>
-          </li>
-          <li>
-            <DsfrAccordion
-              id="accordion-2"
-              :title="title2"
-              :expanded-id="expandedId"
-              @expand="id => expandedId = id"
-            >
-              Contenu de l’accordéon 2
-            </DsfrAccordion>
-          </li>
-          <li>
-            <DsfrAccordion
-              id="accordion-3"
-              :title="title3"
-              :expanded-id="expandedId"
-              @expand="id => expandedId = id"
-            >
-              Contenu de l’accordéon 3
-            </DsfrAccordion>
-          </li>
+        <DsfrAccordionsGroup v-model="selectedAccordion">
+          <DsfrAccordion
+            id="accordion-1"
+            :title="title1"
+          >
+            Contenu de l’accordéon 1
+          </DsfrAccordion>
+          <DsfrAccordion
+            id="accordion-2"
+            :title="title2"
+          >
+            Contenu de l’accordéon 2
+          </DsfrAccordion>
+          <DsfrAccordion
+            id="accordion-3"
+            :title="title3"
+          >
+            Contenu de l’accordéon 3
+          </DsfrAccordion>
         </DsfrAccordionsGroup>
       </DsfrTabContent>
 
       <DsfrTabContent
         panel-id="tab-content-1"
         tab-id="tab-1"
-        :selected="selectedTabIndex === 1"
-        :asc="asc"
       >
         <div>Contenu 2 avec d'autres composants</div>
       </DsfrTabContent>
@@ -331,9 +302,8 @@ OngletsAvecAccordeon.args = {
     },
   ],
   selectedTabIndex: 0,
-  initialSelectedIndex: 0,
   title1: 'Un titre d’accordéon 1',
   title2: 'Un titre d’accordéon 2',
   title3: 'Un titre d’accordéon 3',
-  expandedId: undefined,
+  selectedAccordion: undefined,
 }
