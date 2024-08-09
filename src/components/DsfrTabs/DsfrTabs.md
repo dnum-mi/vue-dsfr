@@ -24,7 +24,9 @@ Bonjour les artistes du code ! Voici `DsfrTabs`, le composant d'onglets Vue qui 
 | `'update:modelValue'` |       *`number`*       | Émis lorsqu'un onglet est sélectionné. Envoyant l'index de l'onglet sélectionné. |
 
 ::: warning Important
-Depuis la v6, le composant `DsfrTabs` déclarant la prop `modelValue` et émettant l’événement `update:modelValue`, il est recommandé d’utiliser la directive `v-model`. Elle contient l’index (commençant à 0) de l’onglet à afficher. Aussi, plus besoin, depuis la v6, d’utiliser le composable `useTabs()`. Cf. les exemples ci-dessous.
+Depuis la v6, le composant `DsfrTabs` déclarant la prop `modelValue` et émettant l’événement `update:modelValue`, il est recommandé d’utiliser la directive `v-model`. Elle contient l’index (commençant à 0) de l’onglet à afficher.
+
+Aussi, plus besoin, depuis la v6, d’utiliser le composable `useTabs()`. Cf. les exemples ci-dessous.
 :::
 
 ## 🧩 Slots

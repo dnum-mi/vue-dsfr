@@ -97,10 +97,8 @@ export const AccordeonSimple = (args) => ({
   template: `
     <DsfrAccordion
       :title="title1"
-      :expanded-id="expandedId"
-      @expand="expandedId = $event"
     >
-    Contenu de l’accordéon 1
+      Contenu de l’accordéon 1
     </DsfrAccordion>
   `,
 })

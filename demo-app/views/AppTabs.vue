@@ -11,12 +11,11 @@ const tabTitles = [
   { title: 'Onglet avec accordéon', icon: 'ri-checkbox-circle-line', tabId: 'tab-0', panelId: 'tab-content-0' },
   { title: 'Titre 2', icon: 'ri-checkbox-circle-line', tabId: 'tab-1', panelId: 'tab-content-1' },
 ]
-const selectedTabIndex = ref(1)
-const initialSelectedIndex = 0
+const selectedTabIndex = ref(0)
 const title1 = 'Un titre d’accordéon 1'
 const title2 = 'Un titre d’accordéon 2'
 const title3 = 'Un titre d’accordéon 3'
-const expandedId = ref(undefined)
+const activeAccordion = ref(-1)
 </script>
 
 <template>
@@ -24,43 +23,30 @@ const expandedId = ref(undefined)
     v-model="selectedTabIndex"
     :tab-list-name="tabListName"
     :tab-titles="tabTitles"
-    :initial-selected-index="initialSelectedIndex"
   >
     <DsfrTabContent
       panel-id="tab-content-0"
       tab-id="tab-0"
     >
-      <DsfrAccordionsGroup>
-        <li>
-          <DsfrAccordion
-            id="accordion-1"
-            :title="title1"
-            :expanded-id="expandedId"
-            @expand="expandedId = $event"
-          >
-            Contenu de l’accordéon 1
-          </DsfrAccordion>
-        </li>
-        <li>
-          <DsfrAccordion
-            id="accordion-2"
-            :title="title2"
-            :expanded-id="expandedId"
-            @expand="id => expandedId = id"
-          >
-            Contenu de l’accordéon 2
-          </DsfrAccordion>
-        </li>
-        <li>
-          <DsfrAccordion
-            id="accordion-3"
-            :title="title3"
-            :expanded-id="expandedId"
-            @expand="id => expandedId = id"
-          >
-            Contenu de l’accordéon 3
-          </DsfrAccordion>
-        </li>
+      <DsfrAccordionsGroup v-model="activeAccordion">
+        <DsfrAccordion
+          id="accordion-1"
+          :title="title1"
+        >
+          Contenu de l’accordéon 1
+        </DsfrAccordion>
+        <DsfrAccordion
+          id="accordion-2"
+          :title="title2"
+        >
+          Contenu de l’accordéon 2
+        </DsfrAccordion>
+        <DsfrAccordion
+          id="accordion-3"
+          :title="title3"
+        >
+          Contenu de l’accordéon 3
+        </DsfrAccordion>
       </DsfrAccordionsGroup>
     </DsfrTabContent>
     <DsfrTabContent

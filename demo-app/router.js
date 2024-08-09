@@ -12,12 +12,14 @@ import SimpleModal from './views/SimpleModal.vue'
 import SideMenu from './views/SideMenu.vue'
 import CardTile from './views/CardTile.vue'
 import CalloutTest from './views/CalloutTest.vue'
+import AppAccordions from './views/AppAccordions.vue'
 
 export const routes = [
   { path: '/', name: 'Home', component: AppHome },
   { path: '/about', name: 'AboutUs', component: AboutUs },
   { path: '/modal', name: 'Modal', component: SimpleModal },
   { path: '/tabs', name: 'Tabs', component: AppTabs },
+  { path: '/accordions', name: 'Accordions', component: AppAccordions },
   { path: '/forms', name: 'Forms', component: AppForm },
   { path: '/languages', name: 'Languages', component: LanguageSelector },
   { path: '/settings', name: 'Settings', component: SchemeSettings },

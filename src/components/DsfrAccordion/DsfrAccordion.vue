@@ -1,9 +1,10 @@
 <script lang="ts" setup>
-import { computed, onMounted, watch } from 'vue'
+import { inject, onMounted, ref, toRef, watch } from 'vue'
 
 import { getRandomId } from '../../utils/random-utils'
 import { useCollapsable } from '../../composables'
 import type { DsfrAccordionProps } from './DsfrAccordion.types'
+import { registerTabKey } from './injection-key'
 
 export type { DsfrAccordionProps }
 
@@ -11,13 +12,10 @@ const props = withDefaults(
   defineProps<DsfrAccordionProps>(),
   {
     id: () => getRandomId('accordion'),
-    expandedId: undefined,
     title: 'Sans intitulé',
     titleTag: 'h3',
   },
 )
-
-const emit = defineEmits<{ (event: 'expand', id: string | undefined): void }>()
 
 const {
   collapse,
@@ -27,17 +25,20 @@ const {
   onTransitionEnd,
 } = useCollapsable()
 
-const expanded = computed(() => props.expandedId === props.id)
+const isStandaloneActive = ref()
+
+const useAccordion = inject(registerTabKey)!
+const { isActive, expand } = useAccordion?.(toRef(() => props.title)) ?? { isActive: isStandaloneActive, expand: () => isStandaloneActive.value = !isStandaloneActive.value }
 
 onMounted(() => {
   // Accordion can be expanded by default
   // We need to trigger the expand animation on mounted
-  if (expanded.value) {
+  if (isActive.value) {
     doExpand(true)
   }
 })
 
-watch(expanded, (newValue, oldValue) => {
+watch(isActive, (newValue, oldValue) => {
   /*
   * @see https://github.com/GouvernementFR/dsfr/blob/main/src/core/script/collapse/collapse.js
   */
@@ -45,13 +46,6 @@ watch(expanded, (newValue, oldValue) => {
     doExpand(newValue)
   }
 })
-
-const toggleExpanded = () => {
-  /*
-   * Close current accordion if expanded
-   */
-  emit('expand', expanded.value ? undefined : props.id)
-}
 </script>
 
 <template>
@@ -62,14 +56,14 @@ const toggleExpanded = () => {
     >
       <button
         class="fr-accordion__btn"
-        :aria-expanded="expanded"
+        :aria-expanded="isActive"
         :aria-controls="id"
         type="button"
-        @click="toggleExpanded()"
+        @click="expand()"
       >
         <!-- @slot Slot pour le contenu personnalisé du titre de l’accordéon. Une **props du même nom est utilisable pour du texte simple** sans mise en forme. -->
         <slot name="title">
-          <span>{{ title }}</span>
+          {{ title }}
         </slot>
       </button>
     </component>
@@ -81,7 +75,7 @@ const toggleExpanded = () => {
         'fr-collapse--expanded': cssExpanded, // Need to use a separate data to add/remove the class after a RAF
         'fr-collapsing': collapsing,
       }"
-      @transitionend="onTransitionEnd(expanded)"
+      @transitionend="onTransitionEnd(isActive)"
     >
       <!-- @slot Slot par défaut pour le contenu de l’accordéon: sera dans `<div class="fr-collapse">` -->
       <slot />
