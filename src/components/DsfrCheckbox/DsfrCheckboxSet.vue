@@ -32,6 +32,7 @@ const onChange = ({ name, checked }: { name: string, checked: boolean }) => {
     : props.modelValue.filter(val => val !== name)
   emit('update:modelValue', selected)
 }
+const ariaLabelledby = computed(() => message.value ? `${props.titleId} messages-${props.titleId}` : props.titleId)
 </script>
 
 <template>
@@ -43,7 +44,8 @@ const onChange = ({ name, checked }: { name: string, checked: boolean }) => {
         'fr-fieldset--valid': !errorMessage && validMessage,
       }"
       :disabled="disabled"
-      :aria-labelledby="`${titleId} messages-${titleId}`"
+      :aria-labelledby="ariaLabelledby"
+      :aria-invalid="ariaInvalid"
       :role="(errorMessage || validMessage) ? 'group' : undefined"
     >
       <legend

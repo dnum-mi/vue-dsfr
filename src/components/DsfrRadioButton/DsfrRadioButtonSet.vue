@@ -41,6 +41,7 @@ const ariaLabelledby = computed(() => message.value ? `${props.titleId} messages
       }"
       :disabled="disabled"
       :aria-labelledby="ariaLabelledby"
+      :aria-invalid="ariaInvalid"
       :role="(errorMessage || validMessage) ? 'group' : undefined"
     >
       <legend

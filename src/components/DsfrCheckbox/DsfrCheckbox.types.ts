@@ -24,4 +24,5 @@ export type DsfrCheckboxSetProps = {
   legend?: string
   options?: (DsfrCheckboxProps & InputHTMLAttributes)[]
   modelValue?: string[]
+  ariaInvalid?: boolean
 }
