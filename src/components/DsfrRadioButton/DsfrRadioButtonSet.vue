@@ -27,6 +27,8 @@ const onChange = ($event: string) => {
   }
   emit('update:modelValue', $event)
 }
+
+const ariaLabelledby = computed(() => message.value ? `${props.titleId} messages-${props.titleId}` : props.titleId)
 </script>
 
 <template>
@@ -38,7 +40,7 @@ const onChange = ($event: string) => {
         'fr-fieldset--valid': validMessage,
       }"
       :disabled="disabled"
-      :aria-labelledby="`${titleId} messages-${titleId}`"
+      :aria-labelledby="ariaLabelledby"
       :role="(errorMessage || validMessage) ? 'group' : undefined"
     >
       <legend
