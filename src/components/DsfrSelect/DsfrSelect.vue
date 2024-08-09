@@ -67,6 +67,7 @@ const messageType = computed(() => {
       :disabled="disabled"
       :aria-disabled="disabled"
       :required="required"
+      v-bind="$attrs"
       @change="$emit('update:modelValue', ($event.target as HTMLInputElement)?.value)"
     >
       <option

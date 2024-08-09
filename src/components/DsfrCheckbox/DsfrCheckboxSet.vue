@@ -44,6 +44,7 @@ const onChange = ({ name, checked }: { name: string, checked: boolean }) => {
       }"
       :disabled="disabled"
       :aria-labelledby="`${titleId} messages-${titleId}`"
+      :aria-invalid="ariaInvalid"
       :role="(errorMessage || validMessage) ? 'group' : undefined"
     >
       <legend
