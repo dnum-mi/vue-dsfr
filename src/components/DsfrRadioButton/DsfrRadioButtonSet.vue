@@ -44,7 +44,7 @@ const ariaLabelledby = computed(() => message.value ? `${props.titleId} messages
       :role="(errorMessage || validMessage) ? 'group' : undefined"
     >
       <legend
-        v-if="legend"
+        v-if="legend || $slots.legend"
         :id="titleId"
         class="fr-fieldset__legend fr-fieldset__legend--regular"
       >

@@ -38,7 +38,7 @@ const radioTest = ref('')
     <div>
       <DsfrRadioButtonSet
         v-model="radioTest"
-        legend="Légende des boutons radio"
+        legend="Légende des boutons radio dans la prop"
         name="radio-123aui"
         :options="[
           {
@@ -52,6 +52,25 @@ const radioTest = ref('')
           },
         ]"
       />
+      <DsfrRadioButtonSet
+        v-model="radioTest"
+        name="radio-123aui"
+        :options="[
+          {
+            label: 'label 1',
+            value: 1,
+            required: true,
+          },
+          {
+            label: 'label 2',
+            value: 2,
+          },
+        ]"
+      >
+        <template #legend>
+          Légende des boutons radio dans le slot
+        </template>
+      </DsfrRadioButtonSet>
     </div>
     <DsfrButton
       type="submit"
