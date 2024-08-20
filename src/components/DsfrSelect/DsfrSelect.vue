@@ -72,7 +72,7 @@ const messageType = computed(() => {
     >
       <option
         value=""
-        :selected="modelValue == null"
+        :selected="typeof modelValue === 'undefined' || modelValue === ''"
         disabled
         hidden
       >
