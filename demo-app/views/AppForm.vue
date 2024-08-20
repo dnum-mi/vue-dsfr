@@ -20,6 +20,8 @@ const sendFile = () => {
 
 const whatever = ref('')
 const radioTest = ref('')
+const selectTest = ref('2')
+const selectTest2 = ref(undefined)
 </script>
 
 <template>
@@ -71,6 +73,37 @@ const radioTest = ref('')
           Légende des boutons radio dans le slot
         </template>
       </DsfrRadioButtonSet>
+      <DsfrSelect
+        v-model="selectTest"
+        name="select-123aui"
+        label="Select avec désactivé et value vide"
+        :options="[
+          {
+            text: 'label 1',
+            value: '1',
+            disabled: true,
+          },
+          {
+            text: 'label 2',
+            value: '2',
+          },
+          {
+            text: 'valeur vide',
+            value: '',
+          },
+        ]"
+      />
+      <DsfrSelect
+        v-model="selectTest2"
+        name="select-123aui"
+        label="Select sans valeur sélectionné"
+        :options="[
+          {
+            text: 'label 1',
+            value: 1,
+          },
+        ]"
+      />
     </div>
     <DsfrButton
       type="submit"

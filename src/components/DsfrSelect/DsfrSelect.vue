@@ -2,7 +2,7 @@
 import { computed } from 'vue'
 import { getRandomId } from '../../utils/random-utils'
 
-import type { DsfrSelectProps } from './DsfrSelect.types'
+import type { DsfrSelectProps, DsfrSelectOption } from './DsfrSelect.types'
 
 export type { DsfrSelectProps }
 
@@ -13,7 +13,7 @@ defineOptions({
 const props = withDefaults(defineProps<DsfrSelectProps>(), {
   selectId: () => getRandomId('select'),
   modelValue: undefined,
-  options: () => [],
+  options: () => [] as DsfrSelectOption[],
   label: '',
   name: undefined,
   description: undefined,
@@ -58,7 +58,6 @@ const messageType = computed(() => {
         class="fr-hint-text"
       >{{ description }}</span>
     </label>
-
     <select
       :id="selectId"
       :class="{ [`fr-select--${messageType}`]: message }"
@@ -71,8 +70,8 @@ const messageType = computed(() => {
       @change="$emit('update:modelValue', ($event.target as HTMLInputElement)?.value)"
     >
       <option
-        value=""
-        :selected="modelValue == null"
+        :value="undefined"
+        :selected="typeof modelValue === 'undefined'"
         disabled
         hidden
       >
@@ -82,7 +81,7 @@ const messageType = computed(() => {
       <option
         v-for="(option, index) in options"
         :key="index"
-        :selected="modelValue === option || (typeof option === 'object' && option.value === modelValue)"
+        :selected="(typeof option === 'object' && option.value === modelValue) || modelValue === option"
         :value="typeof option === 'object' ? option.value : option"
         :disabled="!!(typeof option === 'object' && option.disabled)"
         :aria-disabled="!!(typeof option === 'object' && option.disabled)"
