@@ -22,7 +22,7 @@ const props = withDefaults(defineProps<DsfrSelectProps>(), {
   defaultUnselectedText: 'Sélectionner une option',
 })
 
-defineEmits<{ (e: 'update:modelValue', payload: string): void }>()
+defineEmits<{ (e: 'update:modelValue', payload: string | number): void }>()
 
 const message = computed(() => {
   return props.errorMessage || props.successMessage
@@ -71,7 +71,6 @@ const messageType = computed(() => {
       @change="$emit('update:modelValue', ($event.target as HTMLInputElement)?.value)"
     >
       <option
-        value=""
         :selected="modelValue == null"
         disabled
         hidden
@@ -82,12 +81,12 @@ const messageType = computed(() => {
       <option
         v-for="(option, index) in options"
         :key="index"
-        :selected="modelValue === option || (typeof option === 'object' && option.value === modelValue)"
-        :value="typeof option === 'object' ? option.value : option"
-        :disabled="!!(typeof option === 'object' && option.disabled)"
-        :aria-disabled="!!(typeof option === 'object' && option.disabled)"
+        :selected="modelValue === option || (typeof option === 'object' && option!.value === modelValue)"
+        :value="typeof option === 'object' ? option!.value : option"
+        :disabled="!!(typeof option === 'object' && option!.disabled)"
+        :aria-disabled="!!(typeof option === 'object' && option!.disabled)"
       >
-        {{ typeof option === 'object' ? option.text : option }}
+        {{ typeof option === 'object' ? option!.text : option }}
       </option>
     </select>
 
