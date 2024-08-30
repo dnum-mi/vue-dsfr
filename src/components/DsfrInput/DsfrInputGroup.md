@@ -10,15 +10,15 @@ Ce composant est très utile si vous souhaitez afficher un message d’erreur ou
 
 | Nom             | Type        | Défaut                  | Obligatoire   | Description                                                   |
 |-----------------|-------------|-------------------------|---------------|---------------------------------------------------------------|
-| `descriptionId` | `Function`  | `() => getRandomId(...)`|               | ID unique pour la description du groupe, généré automatiquement si non spécifié. |
-| `hint`          | `string`    | `''`                    |               | Texte d'indice pour guider l'utilisateur dans le groupe de champs. |
-| `label`         | `string`    | `''`                    |               | Le libellé associé au groupe de champs.                       |
-| `labelClass`    | `string`    | `''`                    |               | Classe CSS personnalisée pour le style du libellé.            |
-| `modelValue`    | `string`    | `''`                    |               | La valeur liée au modèle du composant `DsfrInput`.            |
-| `wrapperClass`  | `string`    | `''`                    |               | Classe CSS pour le style du conteneur du groupe.              |
-| `placeholder`   | `string`    | `undefined`             |               | Texte de l'espace réservé pour l'input.                       |
-| `errorMessage`  | `string`    | `undefined`             |               | Message d'erreur à afficher si une erreur est présente.       |
-| `validMessage`  | `string`    | `undefined`             |               | Message de validation à afficher si l'input est valide.       |
+| `descriptionId` | `Function`           | `() => getRandomId(...)`|               | ID unique pour la description du groupe, généré automatiquement si non spécifié. |
+| `hint`          | `string`             | `''`                    |               | Texte d'indice pour guider l'utilisateur dans le groupe de champs. |
+| `label`         | `string`             | `''`                    |               | Le libellé associé au groupe de champs.                       |
+| `labelClass`    | `string`             | `''`                    |               | Classe CSS personnalisée pour le style du libellé.            |
+| `modelValue`    | `string`             | `''`                    |               | La valeur liée au modèle du composant `DsfrInput`.            |
+| `wrapperClass`  | `string`             | `''`                    |               | Classe CSS pour le style du conteneur du groupe.              |
+| `placeholder`   | `string`             | `undefined`             |               | Texte de l'espace réservé pour l'input.                       |
+| `errorMessage`  | `string \| string[]` | `undefined`             |               | Message(s) d'erreur à afficher si une erreur est présente.       |
+| `validMessage`  | `string \| string[]` | `undefined`             |               | Message(s) de validation à afficher si l'input est valide.       |
 
 ### Attributs implicitement déclarés
 
