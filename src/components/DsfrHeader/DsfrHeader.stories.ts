@@ -1,16 +1,8 @@
 import { fn } from '@storybook/test'
-import { addIcons } from 'oh-vue-icons'
-import {
-  RiAddCircleLine,
-  RiLockLine,
-  RiAccountCircleLine,
-} from 'oh-vue-icons/icons'
 
 import DsfrHeader from './DsfrHeader.vue'
 import DsfrNavigation from '../DsfrNavigation/DsfrNavigation.vue'
 import type { DsfrLanguageSelectorElement } from '../DsfrLanguageSelector/DsfrLanguageSelector.types'
-
-addIcons(RiAddCircleLine, RiLockLine, RiAccountCircleLine)
 
 /**
  * [Voir quand l’utiliser sur la documentation du DSFR](https://www.systeme-de-design.gouv.fr/elements-d-interface/composants/en-tete)
@@ -52,10 +44,10 @@ export default {
 - \`label\`: Texte du lien (\`'Notifications'\`, par ex.)
 - \`to\`: Chemin ou objet à passer à \`to\` de \`RouterLink\` (\`'/notification'\` ou \`{ name: 'Notifications' }\` par ex.)
 - \`href\`: URL à passer à \`href\` de la balise \`<a>\` (\`'https://www.systeme-de-design.gouv.fr\` par ex.) **pour un lien externe uniquement**.
-- \`icon\` Nom de l’icône [Remix Icon](https://remixicon.com/) (ou toute autre icône de [oh-vue-icons](https://oh-vue-icons.netlify.app/)) à afficher (\`'ri-phone-line'\` par ex.)
+- \`icon\` Nom de l’icône [Remix Icon](https://remixicon.com/) (ou toute autre icône de [@iconify/vue](https://iconify.design/docs/icon-components/vue/)) à afficher (\`'ri-phone-line'\` par ex.)
 - \`target\` La target du lien (\`'_self'\`, \`'_blank'\` par ex.)
 - \`iconRight\` Permet de mettre l’icône à droite (si la valeur est \`true\` ou <em>truthy</em> et que \`icon\` est renseigné )
-- \`iconAttrs\` Ensemble des props/attributs à donner à \`<OhVueIcon>\` (Cf. [Doc](https://oh-vue-icons.netlify.app/docs#props)). Ex. : \`{ scale: 0.9, animation: 'spin' }\`
+- \`iconAttrs\` Ensemble des props/attributs à donner à \`<VIcon>\` (Cf. [Doc](/composants/VIcon)). Ex. : \`{ scale: 0.9, animation: 'spin' }\`
 - \`button\`: \`true\` pour avoir une balise \`button\`, \`false\` pour laisser en balise \`a\`
 - accepte aussi tout ce qui peut être mis sur un composant, par exemple \`class\`
 `,

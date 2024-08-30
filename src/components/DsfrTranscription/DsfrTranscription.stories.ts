@@ -2,7 +2,7 @@ import { setup } from '@storybook/vue3'
 
 import DsfrTranscription from './DsfrTranscription.vue'
 import DsfrModal from '../DsfrModal/DsfrModal.vue'
-import { OhVueIcon as VIcon } from 'oh-vue-icons'
+import VIcon from '../VIcon/VIcon.vue'
 
 setup((app) => {
   app.component('DsfrModal', DsfrModal)

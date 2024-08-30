@@ -3,11 +3,7 @@ import DsfrButton from '../DsfrButton/DsfrButton.vue'
 import DsfrInput from './DsfrInput.vue'
 import DsfrInputGroup from './DsfrInputGroup.vue'
 
-import { OhVueIcon as VIcon, addIcons } from 'oh-vue-icons'
-
-import { RiQuestionFill } from 'oh-vue-icons/icons'
-
-addIcons(RiQuestionFill)
+import VIcon from '../VIcon/VIcon.vue'
 
 /**
  * [Voir quand l’utiliser sur la documentation du DSFR](https://www.systeme-de-design.gouv.fr/elements-d-interface/composants/champ-de-saisie)

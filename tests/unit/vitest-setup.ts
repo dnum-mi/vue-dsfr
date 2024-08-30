@@ -5,6 +5,3 @@ import '@testing-library/jest-dom'
 window.matchMedia = function () {
   return { matches: false }
 }
-
-// jest.mock('oh-vue-icons/dist/v3/icon.es', () => ({ add () {}, template: '<span />' }))
-// jest.mock('oh-vue-icons/icons', () => ({}))

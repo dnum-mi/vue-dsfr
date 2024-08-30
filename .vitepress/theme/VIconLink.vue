@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { OhVueIcon as VIcon } from 'oh-vue-icons'
+import type VIcon from '../../src/components/VIcon.vue'
 
 withDefaults(defineProps<{
   href: string

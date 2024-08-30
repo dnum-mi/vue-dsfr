@@ -41,9 +41,9 @@ Autres props :
 | `buttons`              | [*`DsfrButtonProps[]`*](/types#dsfrbutton-et-dsfrbuttongroup)  | `[]`            |                    | Tableau de props à donner à DsfrButton |
 | `badges`              | [*`DsfrBadgeProps[]`*](/types#dsfrbadge)  | `[]`            |                    | Tableau de props à donner à DsfrBadge |
 | `detail`               | *`string`*  | `''`            |                    | Texte à mettre dans la première zone de détail |
-| `detailIcon`           | *`string`*  | `''`            |                    | Icône à mettre dans la première zone de détail ([nom d’une icône `oh-vue-icon` ou `DSFR`](/guide/icones)) |
+| `detailIcon`           | *`string`*  | `''`            |                    | Icône à mettre dans la première zone de détail ([nom d’une icône `@iconify/vue` ou `DSFR`](/guide/icones)) |
 | `endDetail`            | *`string`*  | `''`            |                    | Texte à mettre dans la deuxième zone de détail |
-| `endDetailIcon`         | *`string`*  | `''`            |                    | Icône à mettre dans la deuxième zone de détail ([nom d’une icône `oh-vue-icon` ou `DSFR`](/guide/icones)) |
+| `endDetailIcon`         | *`string`*  | `''`            |                    | Icône à mettre dans la deuxième zone de détail ([nom d’une icône `@iconify/vue` ou `DSFR`](/guide/icones)) |
 | `download`             | *`boolean`* | `false`         |                    | Est-ce que cette carte permet de télécharger un fichier ? |
 | `horizontal`           | *`boolean`* | `false`         |                    | Est-ce que la carte doit être affiché avec l’image et le texte au même niveau ? |
 | `imgSrc`               | *`string`*  | `''`            |                    | URL vers l’image |

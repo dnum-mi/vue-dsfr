@@ -2,7 +2,7 @@
 
 ## 🌟 Introduction
 
-Le composant `DsfrHeaderMenuLink` offre une flexibilité pour des liens internes, externes, des boutons, et même des liens mailto, tout en intégrant la possibilité d'ajouter des icônes du DSFR ou grâce à `OhVueIcons`.
+Le composant `DsfrHeaderMenuLink` offre une flexibilité pour des liens internes, externes, des boutons, et même des liens mailto, tout en intégrant la possibilité d'ajouter des icônes du DSFR ou grâce à `Iconify` (cf. la documentation sur les [icônes VueDsfr](/guide/icones)).
 
 ## 📐 Structure
 
@@ -15,8 +15,8 @@ Le composant `DsfrHeaderMenuLink` offre une flexibilité pour des liens internes
 | Propriété   | Type                               | Description                                                                                        | Valeur par défaut |
 |-------------|------------------------------------|----------------------------------------------------------------------------------------------------|-------------------|
 | `button`    | `boolean`                          | Si vrai, le composant se comporte comme un bouton.                                                 | `undefined`       |
-| `icon`      | `string \| OhVueIcon['$props']`        | Nom de l'icône ou les props de l'icône à utiliser.                                                 | `undefined`       |
-| `iconAttrs` | `OhVueIcon['$props'] & import('vue').HTMLAttributes` | Attributs supplémentaires pour l'icône.                                                            | `{}`              |
+| `icon`      | `string \| VIcon['$props']`        | Nom de l'icône ou les [props de l'icône](/composants/VIcon) à utiliser.                                                 | `undefined`       |
+| `iconAttrs` | `VIcon['$props'] & import('vue').HTMLAttributes` | Attributs supplémentaires pour l'icône.                                                            | `{}`              |
 | `iconRight` | `boolean`                          | Si vrai, positionne l'icône à droite du label.                                                     | `false`           |
 | `label`     | `string`                           | Texte du lien ou du bouton.                                                                        | `''`              |
 | `target`    | `string`                           | Cible du lien, par exemple `_blank` pour ouvrir dans un nouvel onglet.                             | `'_self'`         |

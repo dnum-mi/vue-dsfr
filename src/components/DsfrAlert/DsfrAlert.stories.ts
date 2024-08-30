@@ -1,11 +1,5 @@
 import DsfrAlert from './DsfrAlert.vue'
 
-import { addIcons } from 'oh-vue-icons'
-
-import { RiCloseLine } from 'oh-vue-icons/icons'
-
-addIcons(RiCloseLine)
-
 /**
  * [Voir quand l’utiliser sur la documentation du DSFR](https://www.systeme-de-design.gouv.fr/elements-d-interface/composants/alerte)
  */

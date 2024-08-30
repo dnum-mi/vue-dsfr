@@ -1,6 +1,6 @@
 import DsfrCheckbox from './DsfrCheckbox.vue'
 import DsfrCheckboxSet from './DsfrCheckboxSet.vue'
-import { OhVueIcon as VIcon } from 'oh-vue-icons'
+import VIcon from '../VIcon/VIcon.vue'
 
 import '../../main.css'
 

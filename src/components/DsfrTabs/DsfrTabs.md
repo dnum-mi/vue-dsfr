@@ -12,11 +12,11 @@ Bonjour les artistes du code ! Voici `DsfrTabs`, le composant d'onglets Vue qui 
 
 | Nom                  | Type                      | Défaut       | Obligatoire | Description                                                |
 |----------------------|---------------------------|--------------|-------------|------------------------------------------------------------|
-| tabContents          | `string[]`                   | `[]`   |             | Contenus des onglets.                                      |
-| initialSelectedIndex | `number`                  | `0`          |             | Index de l'onglet sélectionné au chargement.               |
-| tabTitles            | `string[]`                   | `[]`   |             | Titres des onglets avec les id des panneaux et onglets associés. |
+| `'tabContents'`          | `string[]`                   | `[]`   |             | Contenus des onglets.                                      |
+| `'initialSelectedIndex'` | `number`                  | `0`          |             | Index de l'onglet sélectionné au chargement.               |
+| `'tabTitles'`            | `string[]`                   | `[]`   |             | Titres des onglets avec les id des panneaux et onglets associés. |
 
-## 📡 Les Événements
+## 📡 Événements
 
 |  nom                   |   donnée (*payload*) | détail de la donnée
 | ---------------------- |  ---------            | --- |
@@ -26,8 +26,8 @@ Bonjour les artistes du code ! Voici `DsfrTabs`, le composant d'onglets Vue qui 
 
 | Nom          | Description                                                        |
 |--------------|--------------------------------------------------------------------|
-| tab-items    | Slot nommé pour insérer des titres d’onglets personnalisés. Si rempli, la prop `tabTitles` n’a aucun effet. |
-| default      | Slot par défaut pour le contenu des onglets.                       |
+| `'tab-items'`    | Slot nommé pour insérer des titres d’onglets personnalisés. Si rempli, la prop `tabTitles` n’a aucun effet. |
+| `'default'`      | Slot par défaut pour le contenu des onglets.                       |
 
 ## Les méthodes exposées
 

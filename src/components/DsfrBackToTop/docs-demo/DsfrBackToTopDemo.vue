@@ -3,8 +3,10 @@ import DsfrBackToTop from '../DsfrBackToTop.vue'
 </script>
 
 <template>
-  <DsfrBackToTop
-    label="Retour vers le futur !"
-    position="left"
-  />
+  <div>
+    <DsfrBackToTop
+      label="Retour vers le futur !"
+      position="left"
+    />
+  </div>
 </template>

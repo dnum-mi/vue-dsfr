@@ -3,12 +3,9 @@ import { fn, expect, within, userEvent } from '@storybook/test'
 import DsfrModal from './DsfrModal.vue'
 import DsfrButton from '../DsfrButton/DsfrButton.vue'
 
-import { OhVueIcon as VIcon, addIcons } from 'oh-vue-icons'
+import VIcon from '../VIcon/VIcon.vue'
 
-import { RiCheckboxCircleLine } from 'oh-vue-icons/icons'
 import { setup } from '@storybook/vue3'
-
-addIcons(RiCheckboxCircleLine)
 
 const delay = (timeout = 100) =>
   new Promise((resolve) => setTimeout(resolve, timeout))

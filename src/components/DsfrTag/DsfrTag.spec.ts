@@ -1,13 +1,9 @@
-import { OhVueIcon as VIcon, addIcons } from 'oh-vue-icons'
 import { render } from '@testing-library/vue'
 // import '@gouvfr/dsfr/dist/core/core.module.js'
 
+import VIcon from '../VIcon/VIcon.vue'
 import DsfrTag from './DsfrTag.vue'
 import DsfrTags from './DsfrTags.vue'
-
-import { RiArrowLeftLine } from 'oh-vue-icons/icons'
-
-addIcons(RiArrowLeftLine)
 
 describe('DsfrTag', () => {
   it('should render simple tag', () => {

@@ -1,21 +1,8 @@
 <script lang="ts" setup>
-import type { OhVueIcon } from 'oh-vue-icons'
+import type { DsfrFooterLinkListProps } from './DsfrFooter.types'
 
-type DsfrFooterLinkProps = {
-  button?: boolean
-  icon?: string | InstanceType<typeof OhVueIcon>['$props']
-  iconAttrs?: InstanceType<typeof OhVueIcon>['$props'] & import('vue').HTMLAttributes
-  iconRight?: boolean
-  label?: string
-  target?: string
-  onClick?: ($event: MouseEvent) => void
-  to?: import('vue-router').RouteLocationRaw
-  href?: string
-}
-
-type DsfrFooterLinkListProps = {
-  categoryName: string
-  links: DsfrFooterLinkProps[]
+export type {
+  DsfrFooterLinkListProps,
 }
 
 withDefaults(defineProps<DsfrFooterLinkListProps>(), {

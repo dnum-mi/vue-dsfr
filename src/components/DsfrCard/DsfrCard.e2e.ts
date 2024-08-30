@@ -1,4 +1,4 @@
-import { OhVueIcon as VIcon } from 'oh-vue-icons'
+import VIcon from '../VIcon/VIcon.vue'
 import DsfrCard from './DsfrCard.vue'
 import '../../main.css'
 

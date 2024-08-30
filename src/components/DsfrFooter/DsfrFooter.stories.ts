@@ -1,11 +1,7 @@
-import { OhVueIcon as VIcon, addIcons } from 'oh-vue-icons'
-
-import { RiExternalLinkLine } from 'oh-vue-icons/icons'
+import VIcon from '../VIcon/VIcon.vue'
 
 import DsfrFooter from './DsfrFooter.vue'
 import DsfrFooterLinkList from './DsfrFooterLinkList.vue'
-
-addIcons(RiExternalLinkLine)
 
 /**
  * [Voir quand l’utiliser sur la documentation du DSFR](https://www.systeme-de-design.gouv.fr/elements-d-interface/composants/pied-de-page)

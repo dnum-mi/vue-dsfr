@@ -1,5 +1,5 @@
 import DsfrBreadcrumb from './DsfrBreadcrumb.vue'
-import { OhVueIcon as VIcon } from 'oh-vue-icons'
+import VIcon from '../VIcon/VIcon.vue'
 
 import '../../main.css'
 

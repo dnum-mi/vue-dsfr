@@ -8,7 +8,7 @@ Le composant `DsfrTable` est un élément puissant et polyvalent pour afficher d
 
 <VIcon name="vi-file-type-storybook" /> La story sur le tableau sur le storybook de [VueDsfr](https://storybook.vue-ds.fr/?path=/docs/composants-dsfrtable--docs)
 
-## Props 🛠️
+## 🛠️ Props
 
 | Nom               | Type                                           | Défaut    | Obligatoire | Description                                                                                         |
 |-------------------|------------------------------------------------|-----------|-------------|-----------------------------------------------------------------------------------------------------|
@@ -19,7 +19,7 @@ Le composant `DsfrTable` est un élément puissant et polyvalent pour afficher d
 | `currentPage`     | `number`                                       | `1`       |             | La page actuelle dans la pagination du tableau.                                                     |
 | `resultsDisplayed`| `number`                                       | `10`      |             | Le nombre de résultats affichés par page dans la pagination.                                        |
 
-## Events 📡
+## 📡 Événements
 
 | Nom                  | Description                                     |
 |----------------------|-------------------------------------------------|
@@ -30,7 +30,7 @@ Le composant `DsfrTable` est un élément puissant et polyvalent pour afficher d
 - **`header`**: Ce slot permet de personnaliser les en-têtes du tableau. Par défaut, il utilise [`DsfrTableHeaders`](./DsfrTableHeader.md) avec les props `headers`.
 - **Slot par défaut**: Utilisé pour le corps du tableau. Par défaut, il affiche les rangées de données via `DsfrTableRow`.
 
-## Exemples 📝
+## 📝 Exemples
 
 ### Exemple Basique
 
@@ -74,4 +74,5 @@ C'est tout, amis développeurs ! Avec DsfrTable, donnez vie à vos données comm
 <script setup lang="ts">
 import DsfrTableDemoSimple from './docs-demo/DsfrTableDemoSimple.vue'
 import DsfrTableDemoComplexe from './docs-demo/DsfrTableDemoComplexe.vue'
+import VIcon from '../VIcon/VIcon.vue'
 </script>
