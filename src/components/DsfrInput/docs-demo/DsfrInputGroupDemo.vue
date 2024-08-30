@@ -9,8 +9,9 @@ const label = 'Label champ de saisie'
 const placeholder = 'Yo'
 const modelValue = ref('')
 const modelValue2 = ref('')
-const validMessage = 'Message de validation'
-const errorMessage = 'Message d’erreur'
+const validMessage1 = 'Message de validation'
+const errorMessage1 = 'Message d’erreur'
+const errorMessage2 = 'Message d’erreur 2'
 const hint = 'Texte d’indice du champ'
 const id = ''
 const readonly = ''
@@ -22,7 +23,7 @@ const readonly = ''
 
     <DsfrInputGroup
       :id="id"
-      :valid-message="validMessage"
+      :valid-message="validMessage1"
       :placeholder="placeholder"
       :readonly="readonly !== ''"
       :model-value="modelValue"
@@ -36,7 +37,7 @@ const readonly = ''
 
     <DsfrInputGroup
       :id="id"
-      :error-message="errorMessage"
+      :error-message="errorMessage1"
       :placeholder="placeholder"
       :readonly="readonly !== ''"
       :model-value="modelValue"
@@ -46,7 +47,22 @@ const readonly = ''
       label-visible
     />
 
-    <h2>3. Avec plusieurs champs de saisie</h2>
+    <h2>3. Avec plusieurs messages</h2>
+
+    <DsfrInputGroup
+      :id="id"
+      :error-message="[errorMessage1, errorMessage2]"
+      :valid-message="[validMessage1]"
+      :placeholder="placeholder"
+      :readonly="readonly !== ''"
+      :model-value="modelValue"
+      :label="label"
+      :type="type"
+      :hint="hint"
+      label-visible
+    />
+
+    <h2>4. Avec plusieurs champs de saisie</h2>
 
     <DsfrInputGroup
       valid-message="Tout va bien pour ces deux champs"

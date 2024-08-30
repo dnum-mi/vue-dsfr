@@ -73,16 +73,6 @@ export default {
       description:
         'Signale si le champ est de type textarea (`true`) ou non (`false`, par défaut)',
     },
-    errorMessage: {
-      control: 'text',
-      description:
-        'Message d’erreur à associer au champ. **Ne fait pas partie du composant. Il appartient à <a href="/?path=/story/composants-champ-de-saisie-champ-avec-message-associ%C3%A9-dsfrinputgroup--champ-en-erreur">DsfrInputGroup</a>**',
-    },
-    validMessage: {
-      control: 'text',
-      description:
-        'Message de validation à associer au champ. **Ne fait pas partie du composant. Il appartient à <a href="/?path=/story/composants-champ-de-saisie-champ-avec-message-associ%C3%A9-dsfrinputgroup--champ-valide">DsfrInputGroup</a>**',
-    },
     isWithWrapper: {
       control: 'boolean',
       description:

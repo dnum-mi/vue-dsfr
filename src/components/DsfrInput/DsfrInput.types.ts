@@ -21,7 +21,7 @@ export type DsfrInputGroupProps = {
   labelClass?: string
   modelValue?: string | number | null
   placeholder?: string
-  errorMessage?: string
-  validMessage?: string
+  errorMessage?: string | string[]
+  validMessage?: string | string[]
   wrapperClass?: string
 }

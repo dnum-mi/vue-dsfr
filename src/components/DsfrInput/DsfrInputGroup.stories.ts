@@ -53,11 +53,11 @@ export default {
     },
     errorMessage: {
       control: 'text',
-      description: 'Message d’erreur',
+      description: 'Message d’erreur (ou tableau de messages)',
     },
     validMessage: {
       control: 'text',
-      description: 'Message de validation',
+      description: 'Message de validation (ou tableau de messages)',
     },
   },
 }

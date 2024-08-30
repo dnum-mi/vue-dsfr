@@ -1,6 +1,4 @@
 <script lang="ts" setup>
-import { computed } from 'vue'
-
 import DsfrInput from './DsfrInput.vue'
 
 import { getRandomId } from '../../utils/random-utils'
@@ -13,7 +11,7 @@ defineOptions({
   inheritAttrs: false,
 })
 
-const props = withDefaults(defineProps<DsfrInputGroupProps>(), {
+withDefaults(defineProps<DsfrInputGroupProps>(), {
   descriptionId: () => getRandomId('basic', 'input'),
   hint: '',
   label: '',
@@ -26,9 +24,6 @@ const props = withDefaults(defineProps<DsfrInputGroupProps>(), {
 })
 
 defineEmits<{ (e: 'update:modelValue', payload: string): void }>()
-
-const message = computed(() => props.errorMessage || props.validMessage)
-const messageClass = computed(() => props.errorMessage ? 'fr-error-text' : 'fr-valid-text')
 </script>
 
 <template>
@@ -37,7 +32,7 @@ const messageClass = computed(() => props.errorMessage ? 'fr-error-text' : 'fr-v
     :class="[
       {
         'fr-input-group--error': errorMessage,
-        'fr-input-group--valid': validMessage,
+        'fr-input-group--valid': (validMessage && !errorMessage),
       },
       wrapperClass,
     ]"
@@ -52,24 +47,61 @@ const messageClass = computed(() => props.errorMessage ? 'fr-error-text' : 'fr-v
       :is-invalid="!!errorMessage"
       :label="label"
       :hint="hint"
-      :description-id="(message && descriptionId) || undefined"
+      :description-id="((errorMessage || validMessage) && descriptionId) || undefined"
       :label-visible="labelVisible"
       :model-value="modelValue"
       :placeholder="placeholder"
       @update:model-value="$emit('update:modelValue', $event)"
     />
     <div
-      v-if="message"
       class="fr-messages-group"
       role="alert"
       aria-live="polite"
     >
-      <p
-        :id="descriptionId"
-        :data-testid="descriptionId"
-        :class="messageClass"
+      <template
+        v-if="Array.isArray(errorMessage)"
       >
-        <span>{{ message }}</span>
+        <p
+          v-for="message in errorMessage"
+          :id="descriptionId"
+          :key="message"
+          :data-testid="descriptionId"
+          class="fr-error-text"
+        >
+          <span>{{ message }}</span>
+        </p>
+      </template>
+      <p
+        v-else-if="errorMessage"
+        :id="descriptionId"
+        :key="errorMessage"
+        :data-testid="descriptionId"
+        class="fr-error-text"
+      >
+        <span>{{ errorMessage }}</span>
+      </p>
+
+      <template
+        v-if="Array.isArray(validMessage)"
+      >
+        <p
+          v-for="message in validMessage"
+          :id="descriptionId"
+          :key="message"
+          :data-testid="descriptionId"
+          class="fr-valid-text"
+        >
+          <span>{{ message }}</span>
+        </p>
+      </template>
+      <p
+        v-else-if="validMessage"
+        :id="descriptionId"
+        :key="validMessage"
+        :data-testid="descriptionId"
+        class="fr-valid-text"
+      >
+        <span>{{ validMessage }}</span>
       </p>
     </div>
   </div>
