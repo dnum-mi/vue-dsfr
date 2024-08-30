@@ -43,6 +43,18 @@ export default {
       description:
         'Appelé à chaque changement de la valeur `checked`.\n\n*N.B. : Ne fait pas partie du composant.*',
     },
+    activeText: {
+      control: 'text',
+      description: 'Texte à afficher sous l\'interrupteur lorsqu\'il est activé',
+    },
+    inactiveText: {
+      control: 'text',
+      description: 'Texte à afficher sous l\'interrupteur lorsqu\'il est désactivé',
+    },
+    noText: {
+      control: 'boolean',
+      description: 'Désactive l\'affichage de activeText et inactiveText',
+    },
     'update:modelValue': {
       description:
         'Evènement de mise à jour de la valeur contenue dans modelValue',
@@ -136,4 +148,62 @@ InterrupteurAvecBordure.args = {
   inputId: 'toggle-3',
   modelValue: true,
   borderBottom: true,
+}
+
+export const InterrupteurAvecTextePersonalisé = (args) => ({
+  components: { DsfrToggleSwitch },
+  data () {
+    return args
+  },
+  template: `
+    <DsfrToggleSwitch
+      v-model="modelValue"
+      :label="label"
+      :hint="hint"
+      :input-id="inputId"
+      :active-text="activeText"
+      :inactive-text="inactiveText"
+    />
+  `,
+  watch: {
+    modelValue (newVal) {
+      this.onChange(newVal)
+    },
+  },
+})
+InterrupteurAvecTextePersonalisé.args = {
+  label: 'Interrupteur 1',
+  hint: 'Indice',
+  inputId: 'toggle-4',
+  modelValue: true,
+  activeText: 'Autorisé',
+  inactiveText: 'Interdit',
+}
+
+export const InterrupteurSansTexte = (args) => ({
+  components: { DsfrToggleSwitch },
+  data () {
+    return args
+  },
+  template: `
+    <DsfrToggleSwitch
+      v-model="modelValue"
+      :label="label"
+      :hint="hint"
+      :input-id="inputId"
+      :no-text="noText"
+    />
+  `,
+  watch: {
+    modelValue (newVal) {
+      this.onChange(newVal)
+    },
+  },
+})
+InterrupteurSansTexte.args = {
+  label: 'Interrupteur 1',
+  hint: 'Indice',
+  inputId: 'toggle-5',
+  modelValue: true,
+  noText: true,
 }
