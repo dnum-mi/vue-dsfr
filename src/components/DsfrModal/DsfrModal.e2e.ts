@@ -1,6 +1,6 @@
 import DsfrButton from '../DsfrButton/DsfrButton.vue'
 import DsfrModal from './DsfrModal.vue'
-import { OhVueIcon as VIcon } from 'oh-vue-icons'
+import VIcon from '../VIcon/VIcon.vue'
 import '../../main.css'
 
 const ModalWrapper = {

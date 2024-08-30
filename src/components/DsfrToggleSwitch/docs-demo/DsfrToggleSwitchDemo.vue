@@ -6,14 +6,20 @@ import DsfrToggleSwitch from '../DsfrToggleSwitch.vue'
   <div
     class="flex flex-col"
   >
-    <DsfrToggleSwitch label="Label action interrupteur" />
-    <DsfrToggleSwitch
-      label="Label action interrupteur"
-      label-left
-    />
-    <DsfrToggleSwitch
-      label="Label action interrupteur"
-      border-bottom
-    />
+    <div>
+      <DsfrToggleSwitch label="Label action interrupteur" />
+    </div>
+    <div>
+      <DsfrToggleSwitch
+        label="Label action interrupteur"
+        label-left
+      />
+    </div>
+    <div>
+      <DsfrToggleSwitch
+        label="Label action interrupteur"
+        border-bottom
+      />
+    </div>
   </div>
 </template>

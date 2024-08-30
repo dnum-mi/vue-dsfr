@@ -22,7 +22,7 @@ Bienvenue dans la documentation du composant `DsfrFileUpload`. Ce composant est 
 
 ---
 
-## 📡 Events
+## 📡 Événements
 
 | Nom                | Description                                                                        |
 |--------------------|------------------------------------------------------------------------------------|

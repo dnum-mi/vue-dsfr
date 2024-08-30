@@ -16,17 +16,17 @@ Le BRR a donc besoin d'un portage en Vue 3 de ce DSFR pour ses futurs projets qu
 
 Ce projet de bibliothèque de composants :
 
-- reproduit le plus fidèlement possible les composants du [DSFR][dsfr] ;
-- est fait avec [Vue 3][vue3] ;
-- est utilisable facilement en tant que plugin Vue 3 ou Nuxt 3 ;
-- exporte les types (TypeScript) du plugin, des composants et des composables ;
-- est utilisable facilement dans un projet [npm][vue-dsfr-npm] ;
+- reproduit le plus fidèlement possible les composants du [DSFR][dsfr] ;
+- est fait avec [Vue 3][vue3] ;
+- est utilisable facilement en tant que plugin Vue 3 ou Nuxt 3 ;
+- exporte les types (TypeScript) du plugin, des composants et des composables ;
+- est utilisable facilement dans un projet [npm][vue-dsfr-npm] ;
 - met à disposition deux parties dans la documentation :
-  - une pour [aider au développement](/?path=/story/docs-3-guide-du-développeur--page) ;
-  - une autre pour l'[utilisation](/?path=/story/docs-2-guide-d-utilisation--page) ;
-- publie une [documentation][vue-dsfr] disponible pour tous avec les composants et leurs variants et des exemples ;
-- publie un [storybook][storybook-vue-dsfr] disponible pour tous avec les composants et leurs variants testables dans celui-ci dans un storybook ;
-- a une couverture de test optimale ;
+  - une pour [aider au développement](/?path=/story/docs-3-guide-du-développeur--page) ;
+  - une autre pour l'[utilisation](/?path=/story/docs-2-guide-d-utilisation--page) ;
+- publie une [documentation][vue-dsfr] disponible pour tous avec les composants et leurs variants et des exemples ;
+- publie un [storybook][storybook-vue-dsfr] disponible pour tous avec les composants et leurs variants testables dans celui-ci dans un storybook ;
+- a une couverture de test optimale ;
 - met à disposition les composants individuellement sans avoir à importer toute la bibliothèque (recommandé).
 
 ## Les choix techniques retenus
@@ -37,16 +37,9 @@ La bibliothèque est faite avec [Vue 3][vue3] et [Vue-router 4][vue-router].
 
 La bibliothèque est mise en paquet grâce à [Vite][vite] en [mode bibliothèque][vite-library-mode].
 
-Le CSS est écrit avec [PostCSS]{postcss} et notamment le plugin [postcss-preset-env][postcss-preset-env] (mais très peu de CSS est propre à la bibliothèque). Bientôt c’est lightingCSS qui sera utilisé, sans aucun changement pour les utilisateurs.
+Le CSS est transpilé avec [LightningCSS]{lightningcss} (mais très peu de CSS est propre à la bibliothèque).
 
-Le JavaScript est "linté" avec [ESLint][eslint] et configuré selon [StandardJS][standard-js].
-
-::: info Configuration spécifique
-Ci-dessous les modifications de la configuration de StandardJS :
-
-- les virgules doivent être ajoutées pour tout ce qui est en multiligne (cf. [`comma-dangle`][eslint-comma-dangle]).\
-`"comma-dangle": ["error", "always-multiline"]`
-:::
+Le JavaScript est "linté" avec [ESLint][eslint] et configuré grossièrement selon [StandardJS][standard-js], avec tous les ajouts de [@antfu/eslint-config](https://eslint-config.antfu.me/configs).
 
 ### Environnements
 
@@ -60,22 +53,22 @@ Les tests sont faits avec [Vitest][vitest] et [Vue Testing Library][vue-testing-
 
 ### Ressources
 
-Les icônes sont toujours celles de [RemixIcon][remixicon], grâce au DSFR et parfois grâce à [Oh, Vue Icons!][oh-vue-icons] (qui permet d’ajouter d’[autres icônes](./icones.md)).
+Les icônes sont toujours celles de [RemixIcon][remixicon], grâce au DSFR et parfois grâce à [`@iconify/vue`][iconify-vue] (qui permet d’ajouter d’[autres icônes](./icones.md)).
 
 ## Les acteurs du projet
 
-- **Clément Debroize** ;
-- **Pierre-Louis Egaud** ;
 - **Stanislas Ormières** *(Lead dev, architecte, devops, mainteneur principal)*.
+- **Clément Debroize** ;
+- **Pierre-Louis Egaud** ;
 
 Le projet a pu bénéficier des retours et de contributions de :
 
-- [Sophie Aitis][github-user-sophieaitis] ;
-- [Alexandre Cailliaud][github-user-cailliaud] ;
-- [Gildéric Deruette][github-user-gideruette] ;
-- [Vincent Lainé][github-user-vincentlaine]
-- [Ambroise Maupate][github-user-ambroisemaupate] ;
-- [Adrien Martinez][github-user-adrylen]
+- [Sophie Aitis][github-user-sophieaitis] ;
+- [Alexandre Cailliaud][github-user-cailliaud] ;
+- [Gildéric Deruette][github-user-gideruette] ;
+- [Vincent Lainé][github-user-vincentlaine] ;
+- [Ambroise Maupate][github-user-ambroisemaupate] ;
+- [Adrien Martinez][github-user-adrylen].
 
 Merci à vous !
 
@@ -98,10 +91,8 @@ Merci à vous !
 [cypress]: https://www.cypress.io/
 [cypress-component-testing]: https://docs.cypress.io/guides/component-testing/introduction
 [eslint]: https://eslint.org/
-[eslint-comma-dangle]: https://eslint.org/docs/rules/comma-dangle#options
-[oh-vue-icons]: https://github.com/Renovamen/oh-vue-icons/
-[postcss]: https://postcss.org/
-[postcss-preset-env]: https://preset-env.cssdb.org/
+[iconify-vue]: https://iconify.design/docs/icon-components/vue/
+[lightningcss]: https://lightningcss.dev/
 [remixicon]: https://remixicon.com/
 [standard-js]: https://standardjs.org/
 [storybook]: https://storybook.js.org/

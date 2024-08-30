@@ -95,23 +95,23 @@ import DsfrButton from '../DsfrButton.vue'
       </div>
       <div class="flex  flex-col  gap-4  flex-end  w-full">
         <DsfrButton
-          label="Bouton primaire avec icône oh-vue-icon"
+          label="Bouton primaire avec icône iconify"
           icon="ri-moon-line"
           primary
         />
         <DsfrButton
-          label="Bouton secondaire avec icône oh-vue-icon animée (spin)"
+          label="Bouton secondaire avec icône iconify animée (spin)"
           :icon="{ name: 'ri-refresh-line', animation: 'spin' }"
           secondary
         />
         <DsfrButton
-          label="Bouton tertiaire avec icône oh-vue-icon animée (spin-pulse)"
+          label="Bouton tertiaire avec icône iconify animée (spin-pulse)"
           :icon="{ name: 'ri-moon-line', animation: 'spin-pulse' }"
           tertiary
         />
         <DsfrButton
           label="Bouton 3re ss bordure avec icône OVI colorée avec couleur DSFR"
-          title="Bouton tertiaire sans bordure avec icône oh-vue-icon colorée avec une couleur du DSFR"
+          title="Bouton tertiaire sans bordure avec icône iconify colorée avec une couleur du DSFR"
           :icon="{ name: 'ri-moon-line', fill: 'var(--success-425-625)' }"
           tertiary
           no-outline
@@ -148,26 +148,26 @@ import DsfrButton from '../DsfrButton.vue'
         </div>
         <div class="flex  flex-col  gap-4  flex-end  w-full">
           <DsfrButton
-            label="Bouton primaire icône seulement avec icône oh-vue-icon"
+            label="Bouton primaire icône seulement avec icône iconify"
             icon="ri-moon-line"
             icon-only
             primary
           />
           <DsfrButton
-            label="Bouton secondaire avec icône oh-vue-icon animée (spin)"
+            label="Bouton secondaire avec icône iconify animée (spin)"
             :icon="{ name: 'ri-refresh-line', animation: 'spin' }"
             icon-only
             secondary
           />
           <DsfrButton
-            label="Bouton tertiaire avec icône oh-vue-icon animée (spin-pulse)"
+            label="Bouton tertiaire avec icône iconify animée (spin-pulse)"
             :icon="{ name: 'ri-moon-line', animation: 'spin-pulse' }"
             icon-only
             tertiary
           />
           <DsfrButton
             label="Bouton 3re ss bordure avec icône OVI colorée avec couleur DSFR"
-            title="Bouton tertiaire sans bordure avec icône oh-vue-icon colorée avec une couleur du DSFR"
+            title="Bouton tertiaire sans bordure avec icône iconify colorée avec une couleur du DSFR"
             :icon="{ name: 'ri-moon-line', fill: 'var(--success-425-625)' }"
             icon-only
             tertiary

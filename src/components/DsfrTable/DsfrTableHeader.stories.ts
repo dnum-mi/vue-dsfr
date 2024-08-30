@@ -3,12 +3,9 @@ import { fn } from '@storybook/test'
 import DsfrTable from './DsfrTable.vue'
 import DsfrTableHeader from './DsfrTableHeader.vue'
 
-import { OhVueIcon as VIcon, addIcons } from 'oh-vue-icons'
-import { RiSortAsc, RiSortDesc } from 'oh-vue-icons/icons'
+import VIcon from '../VIcon/VIcon.vue'
 
 import './table.stories.css'
-
-addIcons(RiSortAsc, RiSortDesc)
 
 export default {
   component: DsfrTableHeader,
@@ -26,7 +23,7 @@ export default {
     icon: {
       control: 'object',
       description:
-        'Objet contenant les props à passer à OhVueIcon pour afficher une icône dans l’en-tête',
+        'Objet contenant les props à passer à VIcon pour afficher une icône dans l’en-tête',
     },
     onClickHeader: {
       action: fn(),

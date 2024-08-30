@@ -1,17 +1,8 @@
 <script lang="ts" setup>
-import DsfrHeaderMenuLink from './DsfrHeaderMenuLink.vue'
-import type { OhVueIcon as VIcon } from 'oh-vue-icons'
+import DsfrHeaderMenuLink, { type DsfrHeaderMenuLinkProps } from './DsfrHeaderMenuLink.vue'
 
-export type DsfrHeaderMenuLinkProps = {
-  button?: boolean
-  icon?: string | InstanceType<typeof VIcon>['$props']
-  iconAttrs?: InstanceType<typeof VIcon>['$props'] & import('vue').HTMLAttributes
-  iconRight?: boolean
-  label?: string
-  target?: string
-  onClick?: ($event: MouseEvent) => void
-  to?: import('vue-router').RouteLocationRaw
-  href?: string
+export type {
+  DsfrHeaderMenuLinkProps,
 }
 
 withDefaults(defineProps<{

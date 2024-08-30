@@ -65,7 +65,6 @@ describe('DsfrNewsLetter', () => {
     const hintText = 'En renseignant votre adresse électronique, vous acceptez de recevoir nos actualités par courriel...'
     const buttonText = 'S’abonner'
     const buttonTitle = 'S’abonner à notre lettre d’information'
-    const buttonAction = () => undefined
     const onlyCallout = true
 
     // When
@@ -81,7 +80,7 @@ describe('DsfrNewsLetter', () => {
         hintText,
         buttonText,
         buttonTitle,
-        buttonAction,
+        buttonAction: () => undefined,
         onlyCallout,
       },
     })

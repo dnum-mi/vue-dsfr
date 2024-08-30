@@ -8,7 +8,7 @@ Bienvenue dans la documentation du composant `DsfrTableHeaders`! Ce composant es
 
 <VIcon name="vi-file-type-storybook" /> La story sur les en-têtes de tableau sur le storybook de [VueDsfr](https://storybook.vue-ds.fr/?path=/docs/composants-dsfrtableheaders--docs)
 
-## Props 🛠️
+## 🛠️ Props
 
 | Nom       | Type                        | Défaut | Obligatoire | Description                                                          |
 |-----------|-----------------------------|--------|-------------|----------------------------------------------------------------------|
@@ -22,7 +22,7 @@ Bienvenue dans la documentation du composant `DsfrTableHeaders`! Ce composant es
 
 Pas de slots spécifiques pour ce composant. Il s'agit principalement d'un composant utilitaire pour `DsfrTable`.
 
-## Exemples 📝
+## 📝 Exemples
 
 ### Exemple Basique
 

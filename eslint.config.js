@@ -1,5 +1,4 @@
 import antfu from '@antfu/eslint-config'
-import storybook from 'eslint-plugin-storybook'
 import cypress from 'eslint-plugin-cypress'
 
 // const compat = new FlatCompat({
@@ -11,7 +10,6 @@ export default antfu({
 }, [
   {
     plugins: {
-      storybook,
       cypress,
     },
     rules: {
