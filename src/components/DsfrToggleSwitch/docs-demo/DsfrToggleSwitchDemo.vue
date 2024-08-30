@@ -12,8 +12,10 @@ import DsfrToggleSwitch from '../DsfrToggleSwitch.vue'
       label-left
     />
     <DsfrToggleSwitch
-      label="Label action interrupteur"
+      label="Vitesse lumière ?"
       border-bottom
+      active-text="Vers l'infini et au-delà"
+      inactive-text="restons terre à terre"
     />
   </div>
 </template>

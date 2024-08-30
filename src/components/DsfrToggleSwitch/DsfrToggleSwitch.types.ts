@@ -6,4 +6,7 @@ export type DsfrToggleSwitchProps = {
   disabled?: boolean
   labelLeft?: boolean
   borderBottom?: boolean
+  activeText?: string
+  inactiveText?: string
+  noText?: boolean
 }

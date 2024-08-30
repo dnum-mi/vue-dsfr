@@ -1,4 +1,4 @@
-import { fn } from '@storybook/test'
+import { expect, fn, within } from '@storybook/test'
 
 import DsfrToggleSwitch from './DsfrToggleSwitch.vue'
 
@@ -42,6 +42,18 @@ export default {
       action: fn(),
       description:
         'Appelé à chaque changement de la valeur `checked`.\n\n*N.B. : Ne fait pas partie du composant.*',
+    },
+    activeText: {
+      control: 'text',
+      description: 'Texte à afficher sous l\'interrupteur lorsqu\'il est activé',
+    },
+    inactiveText: {
+      control: 'text',
+      description: 'Texte à afficher sous l\'interrupteur lorsqu\'il est désactivé',
+    },
+    noText: {
+      control: 'boolean',
+      description: 'Désactive l\'affichage de activeText et inactiveText',
     },
     'update:modelValue': {
       description:
@@ -136,4 +148,80 @@ InterrupteurAvecBordure.args = {
   inputId: 'toggle-3',
   modelValue: true,
   borderBottom: true,
+}
+
+export const InterrupteurAvecTextePersonnalisé = (args) => ({
+  components: { DsfrToggleSwitch },
+  data () {
+    return args
+  },
+  template: `
+    <DsfrToggleSwitch
+      v-model="modelValue"
+      :label="label"
+      :hint="hint"
+      :input-id="inputId"
+      :active-text="activeText"
+      :inactive-text="inactiveText"
+    />
+  `,
+  watch: {
+    modelValue (newVal) {
+      this.onChange(newVal)
+    },
+  },
+})
+InterrupteurAvecTextePersonnalisé.args = {
+  label: 'Interrupteur 1',
+  hint: 'Indice',
+  inputId: 'toggle-4',
+  modelValue: true,
+  activeText: 'Autorisé',
+  inactiveText: 'Interdit',
+}
+
+export const InterrupteurSansTexte = (args) => ({
+  components: { DsfrToggleSwitch },
+  data () {
+    return args
+  },
+  template: `
+    <DsfrToggleSwitch
+      v-model="modelValue"
+      :label="label"
+      :hint="hint"
+      :input-id="inputId"
+      :no-text="noText"
+    />
+  `,
+  watch: {
+    modelValue (newVal) {
+      this.onChange(newVal)
+    },
+  },
+})
+InterrupteurSansTexte.args = {
+  label: 'Interrupteur 1',
+  hint: 'Indice',
+  inputId: 'toggle-5',
+  modelValue: true,
+  noText: true,
+}
+
+InterrupteurAvecTextePersonnalisé.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement)
+  const toggleSwitch = canvas.getByLabelText('Interrupteur 1') as HTMLInputElement
+  expect(toggleSwitch.checked).toBe(true)
+  toggleSwitch.click()
+  expect(toggleSwitch.checked).toBe(false)
+  toggleSwitch.click()
+
+  const toggleSwitchLabel = canvas.getByText('Interrupteur 1') as HTMLLabelElement
+  toggleSwitchLabel.click()
+  expect(toggleSwitch.checked).toBe(false)
+  toggleSwitchLabel.click()
+  expect(toggleSwitch.checked).toBe(true)
+
+  const hint = canvas.getByText('Indice') as HTMLParagraphElement
+  expect(hint).toBeVisible()
 }

@@ -13,6 +13,9 @@ const props = withDefaults(defineProps<DsfrToggleSwitchProps>(), {
   label: '',
   labelLeft: false,
   borderBottom: false,
+  activeText: 'Activé',
+  inactiveText: 'Désactivé',
+  noText: false,
 })
 
 defineEmits<{ (e: 'update:modelValue', payload: boolean): void }>()
@@ -45,8 +48,8 @@ const labelId = computed(() => {
       :id="labelId"
       class="fr-toggle__label"
       :for="inputId"
-      data-fr-checked-label="Activé"
-      data-fr-unchecked-label="Désactivé"
+      :data-fr-checked-label="noText ? undefined : activeText"
+      :data-fr-unchecked-label="noText ? undefined : inactiveText"
       style="--toggle-status-width: 3.55208125rem;"
     >
       {{ label }}
