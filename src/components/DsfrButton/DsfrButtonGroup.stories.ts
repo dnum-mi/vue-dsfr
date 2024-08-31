@@ -1,4 +1,4 @@
-import { fn } from '@storybook/test'
+import { expect, fn, within } from '@storybook/test'
 
 import VIcon from '../VIcon/VIcon.vue'
 import DsfrButtonGroup from './DsfrButtonGroup.vue'
@@ -106,4 +106,12 @@ GroupeDeBoutons.args = {
       icon: 'ri-checkbox-circle-line',
     },
   ],
+}
+GroupeDeBoutons.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement)
+  const buttons = canvas.getAllByRole('button')
+  expect(buttons).toHaveLength(4)
+  for (const button of buttons) {
+    expect(button).toBeVisible()
+  }
 }
