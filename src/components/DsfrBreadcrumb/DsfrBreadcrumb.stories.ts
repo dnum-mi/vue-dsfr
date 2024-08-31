@@ -1,3 +1,6 @@
+import { expect, within } from '@storybook/test'
+import type { Meta, StoryFn } from '@storybook/vue3'
+
 import DsfrBreadcrumb from './DsfrBreadcrumb.vue'
 
 /**
@@ -26,7 +29,7 @@ export default {
       description: 'Label du bouton d\'affichage du fil d’Ariane',
     },
   },
-}
+} as Meta<typeof DsfrBreadcrumb>
 
 const secondLinkText = 'Lien deux'
 const currentPageText = 'Lien 3 avec plein de texte et patati et patata'
@@ -45,7 +48,7 @@ const links = [
   },
 ]
 
-export const FilDAriane = (args) => ({
+export const FilDAriane: StoryFn<typeof DsfrBreadcrumb> = (args) => ({
   components: { DsfrBreadcrumb },
   data () {
     return args
@@ -56,7 +59,22 @@ export const FilDAriane = (args) => ({
     />
   `,
 })
-
 FilDAriane.args = {
   links,
+}
+FilDAriane.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement)
+  const breadcrumb1 = canvas.getByText(FilDAriane.args?.links?.at(0)?.text as string)
+  expect(breadcrumb1).toBeVisible()
+  expect(breadcrumb1).toHaveProperty('href')
+  expect(breadcrumb1).not.toHaveAttribute('aria-current', 'page')
+  const breadcrumb2 = canvas.getByText(FilDAriane.args?.links?.at(1)?.text as string)
+  expect(breadcrumb2).toBeVisible()
+  expect(breadcrumb2).toHaveAttribute('href')
+  expect(breadcrumb2.href).toContain(FilDAriane.args?.links?.at(1)?.to)
+  expect(breadcrumb2).not.toHaveAttribute('aria-current', 'page')
+  const breadcrumb3 = canvas.getByText(FilDAriane.args?.links?.at(2)?.text as string)
+  expect(breadcrumb3).toBeVisible()
+  expect(breadcrumb3).not.toHaveAttribute('href')
+  expect(breadcrumb3).toHaveAttribute('aria-current', 'page')
 }
