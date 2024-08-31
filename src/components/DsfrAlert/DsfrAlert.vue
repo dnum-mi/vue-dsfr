@@ -28,34 +28,29 @@ const classes = computed(
 </script>
 
 <template>
-  <transition name="slide-fade">
-    <div
-      v-if="!closed"
-      :id="id"
-      class="fr-alert"
-      :class="classes"
+  <div
+    v-if="!closed"
+    :id="id"
+    class="fr-alert"
+    :class="classes"
+    :role="alert ? 'alert' : undefined"
+  >
+    <component
+      :is="titleTag"
+      v-if="!small"
+      class="fr-alert__title"
     >
-      <div class="alert-content">
-        <component
-          :is="titleTag"
-          v-if="!small"
-          class="fr-alert__title"
-        >
-          {{ title }}
-        </component>
-        <p class="fr-alert__description">
-          <slot>
-            {{ description }}
-          </slot>
-        </p>
-      </div>
-      <button
-        v-if="closeable"
-        class="fr-btn fr-btn--close"
-        :title="closeButtonLabel"
-        :aria-label="closeButtonLabel"
-        @click="onClick"
-      />
-    </div>
-  </transition>
+      {{ title }}
+    </component>
+    <slot>
+      {{ description }}
+    </slot>
+    <button
+      v-if="closeable"
+      class="fr-btn fr-btn--close"
+      :title="closeButtonLabel"
+      :aria-label="closeButtonLabel"
+      @click="onClick"
+    />
+  </div>
 </template>
