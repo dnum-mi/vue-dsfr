@@ -4,6 +4,18 @@
   // $1, $2 for tab stops, $0 for the final cursor position, and \${1:label}, \${2:another} for placeholders. Placeholders with the
   // same ids are connected.
   // Example:
+  "play": {
+    "scope": "typescript",
+    "prefix": "play",
+    "body": [
+      "$1play = async ({ canvasElement }) => {",
+      "  const canvas = within(canvasElement)",
+      "  const $2 = canvas.get$3",
+      "  expect($4).to$5",
+      "}"
+    ],
+    "description": "Crée un début de fonction play de storybook"
+  },
   "vbase": {
     "scope": "vue",
     "prefix": "vbase",
