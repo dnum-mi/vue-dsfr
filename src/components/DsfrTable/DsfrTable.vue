@@ -16,7 +16,10 @@ const props = withDefaults(defineProps<DsfrTableProps>(), {
 })
 
 // Permet aux utilisateurs d'utiliser une fonction afin de charger des résultats au changement de page
-const emit = defineEmits<{ (event: 'update:currentPage'): void }>()
+const emit = defineEmits<{
+  'update:currentPage': []
+  'update:resultsDisplayed': [n: number]
+}>()
 
 const getRowData = (row: DsfrTableProps['rows']) => {
   return Array.isArray(row) ? row : (row as unknown as DsfrTableRowProps).rowData
@@ -69,6 +72,12 @@ const goLastPage = () => {
   currentPage.value = pageCount.value
   emit('update:currentPage')
 }
+
+const updatePaginationOptions = () => {
+  emit('update:currentPage')
+  emit('update:resultsDisplayed', optionSelected.value)
+}
+
 </script>
 
 <template>
@@ -113,7 +122,7 @@ const goLastPage = () => {
                 <span>Résultats par page : </span>
                 <select
                   v-model="optionSelected"
-                  @change="emit('update:currentPage')"
+                  @change="() => updatePaginationOptions()"
                 >
                   <option
                     v-for="(option, idx) in paginationOptions"
