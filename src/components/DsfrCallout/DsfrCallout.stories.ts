@@ -1,12 +1,8 @@
 import type { Meta } from '@storybook/vue3'
 import { expect, fn, within, userEvent } from '@storybook/test'
-import { OhVueIcon as VIcon, addIcons } from 'oh-vue-icons'
 
-import { RiInformationLine } from 'oh-vue-icons/icons'
-
+import VIcon from '../VIcon/VIcon.vue'
 import DsfrCallout from './DsfrCallout.vue'
-
-addIcons(RiInformationLine)
 
 const delay = (timeout = 100) =>
   new Promise((resolve) => setTimeout(resolve, timeout))

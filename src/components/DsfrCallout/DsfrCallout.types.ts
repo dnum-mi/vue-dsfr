@@ -1,4 +1,4 @@
-import type { OhVueIcon as VIcon } from 'oh-vue-icons'
+import type VIcon from '../VIcon/VIcon.vue'
 import type { DsfrButtonProps } from '../DsfrButton/DsfrButton.types'
 
 export type DsfrCalloutProps = {

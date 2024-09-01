@@ -1,6 +1,6 @@
 import { render } from '@testing-library/vue'
 
-import { OhVueIcon as VIcon } from 'oh-vue-icons'
+import VIcon from '../VIcon/VIcon.vue'
 
 import DsfrTranscription from './DsfrTranscription.vue'
 import DsfrModal from '../DsfrModal/DsfrModal.vue'

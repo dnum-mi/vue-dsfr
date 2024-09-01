@@ -1,5 +1,5 @@
 import { fireEvent, render } from '@testing-library/vue'
-import { OhVueIcon as VIcon } from 'oh-vue-icons'
+import VIcon from '../VIcon/VIcon.vue'
 // import '@gouvfr/dsfr/dist/core/core.module.js'
 
 import DsfrAccordion from './DsfrAccordion.vue'

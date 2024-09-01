@@ -43,7 +43,7 @@ L’en-tête est composé :
 | `closeMenuModalLabel` | *`string`*                  | `'Fermer'`           |             | Label du bouton de fermeture du menu en mode modal.                                   |
 | `homeLabel`           | *`string`*                  | `'Accueil'`          |             | Label de l'accueil composant le titre du lien présentant le service.                  |
 
-## 📡 Events
+## 📡 Événements
 
 | Nom               | Description                                      | Charge utile |
 |-------------------|--------------------------------------------------| ---- |

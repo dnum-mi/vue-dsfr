@@ -1,6 +1,6 @@
 import type { HTMLAttributes, StyleValue } from 'vue'
 import type { RouteLocationRaw } from 'vue-router'
-import type { OhVueIcon as VIcon } from 'oh-vue-icons'
+import type VIcon from '../VIcon/VIcon.vue'
 
 export type DsfrFooterPartner = {
   href: string

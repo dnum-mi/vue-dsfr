@@ -1,6 +1,6 @@
 import DsfrAccordion from './DsfrAccordion.vue'
 import DsfrAccordionsGroup from './DsfrAccordionsGroup.vue'
-import { OhVueIcon as VIcon } from 'oh-vue-icons'
+import VIcon from '../VIcon/VIcon.vue'
 
 import { mount } from 'cypress/vue'
 

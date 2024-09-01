@@ -30,10 +30,9 @@ describe('random-utils', () => {
   it('should repeat x times a specific function', () => {
     // Given
     const n = 5
-    const fn = () => 42
 
     // When
-    const results = repeatFn(n, fn)
+    const results = repeatFn(n, () => 42)
 
     // Then
     expect(results).toBeInstanceOf(Array)

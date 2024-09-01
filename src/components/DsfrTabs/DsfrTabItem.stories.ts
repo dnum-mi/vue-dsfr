@@ -1,7 +1,7 @@
 import { setup } from '@storybook/vue3'
 
 import DsfrTabItem from './DsfrTabItem.vue'
-import { OhVueIcon as VIcon } from 'oh-vue-icons'
+import VIcon from '../VIcon/VIcon.vue'
 
 setup((app) => {
   app.component('VIcon', VIcon)

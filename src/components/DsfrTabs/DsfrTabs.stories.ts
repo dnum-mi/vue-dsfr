@@ -1,6 +1,4 @@
 import { fn, expect, within, userEvent } from '@storybook/test'
-import { addIcons } from 'oh-vue-icons'
-import { RiCheckboxCircleLine } from 'oh-vue-icons/icons'
 
 import DsfrButton from '../DsfrButton/DsfrButton.vue'
 import DsfrTabs from './DsfrTabs.vue'
@@ -8,8 +6,6 @@ import DsfrTabContent from './DsfrTabContent.vue'
 
 import DsfrAccordionsGroup from '../DsfrAccordion/DsfrAccordionsGroup.vue'
 import DsfrAccordion from '../DsfrAccordion/DsfrAccordion.vue'
-
-addIcons(RiCheckboxCircleLine)
 
 const tabListName = 'Liste d’onglet'
 const title1 = 'Titre 1'

@@ -63,6 +63,10 @@ const guideItems = [
     link: '/guide/icones.md',
   },
   {
+    text: 'Migrations',
+    link: '/guide/migrations.md',
+  },
+  {
     text: 'Guide du développeur',
     link: '/guide/guide-developpeur.md',
   },
@@ -270,6 +274,10 @@ const composants = [
   {
     text: 'DsfrTooltip',
     link: '/composants/DsfrTooltip.md',
+  },
+  {
+    text: 'VIcon',
+    link: '/composants/VIcon.md',
   },
 ]
 

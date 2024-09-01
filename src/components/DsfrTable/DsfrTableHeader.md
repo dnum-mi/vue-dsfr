@@ -8,7 +8,7 @@ Parfait pour ajouter du texte et des icônes personnalisées, ce composant est u
 
 <VIcon name="vi-file-type-storybook" /> La story sur l’en-tête de tableau sur le storybook de [VueDsfr](https://storybook.vue-ds.fr/?path=/docs/composants-dsfrtableheader--docs)
 
-## Props 🛠️
+## 🛠️ Props
 
 | Nom          | Type                          | Défaut | Obligatoire | Description                                                    |
 |--------------|-------------------------------|--------|-------------|----------------------------------------------------------------|
@@ -16,7 +16,7 @@ Parfait pour ajouter du texte et des icônes personnalisées, ce composant est u
 | `headerAttrs`| `Object`                      | `{}`   |             | Les attributs HTML supplémentaires pour l'élément `<th>`.      |
 | `icon`       | `string \| Object \| undefined` | `undefined` |         | L'icône à afficher dans l'en-tête. Peut être une chaîne ou un objet pour les icônes personnalisées. |
 
-## Exemples 📝
+## 📝 Exemples
 
 ### Exemple basique
 
