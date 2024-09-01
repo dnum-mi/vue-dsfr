@@ -7,11 +7,11 @@ const expand = (id: string): void => { expandedId.value = id }
 </script>
 
 <template>
-  <ul
+  <div
     class="fr-accordions-group"
     @expand="expand($event)"
   >
     <!-- @slot Slot par défaut pour le contenu de la liste. Sera dans `<ul class="fr-accordions-group">` -->
     <slot :expanded-id="expandedId" />
-  </ul>
+  </div>
 </template>
