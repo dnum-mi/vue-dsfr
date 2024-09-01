@@ -248,11 +248,6 @@ export const PiedDePageAvecLogoOperateur = (args) => ({
     :desc-text="descText"
     :home-link="homeLink"
     :partners="partners"
-    :operator-link-text="operatorLinkText"
-    :operator-to="operatorTo"
-    :operator-img-style="operatorImgStyle"
-    :operator-img-src="operatorImgSrc"
-    :operator-img-alt="operatorImgAlt"
     :licence-text="licenceText"
     :licence-to="licenceTo"
     :licence-name="licenceName"
@@ -304,13 +299,13 @@ PiedDePageAvecLogoOperateur.args = {
   licenceLinkProps: undefined,
   categoryName1: 'Nom de la categorie 1',
   linkList1: [
-    { label: 'Lien 1.1', to: '/lien1/1' },
-    { label: 'Lien 1.2', to: '/lien1/2' },
+    { label: 'Lien 1.1', to: '/#lien1-1' },
+    { label: 'Lien 1.2', to: '/#lien1-2' },
   ],
   categoryName2: 'Nom de la categorie 2',
   linkList2: [
-    { label: 'Lien 2.1', to: '/lien2/1' },
-    { label: 'Lien 2.2', to: '/lien 2/2' },
+    { label: 'Lien 2.1', to: '/#lien2-1' },
+    { label: 'Lien 2.2', to: '/#lien2-2' },
   ],
   ecosystemLinks: [
     {
