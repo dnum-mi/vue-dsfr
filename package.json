@@ -67,7 +67,9 @@
     "build-storybook": "storybook build",
     "docs:dev": "cross-env VITEPRESS=true vitepress dev",
     "docs:build": "cross-env VITEPRESS=true vitepress build",
-    "docs:preview": "cross-env VITEPRESS=true vitepress preview"
+    "docs:build-only": "cross-env VITEPRESS=true vitepress build",
+    "docs:preview": "cross-env VITEPRESS=true vitepress preview",
+    "commitlint": "commitlint --edit"
   },
   "peerDependencies": {
     "@iconify/vue": "^4.1.2",
@@ -75,7 +77,7 @@
     "vue-router": "^4.4.3"
   },
   "dependencies": {
-    "@gouvfr/dsfr": "~1.11.2",
+    "@gouvfr/dsfr": "~1.12.1",
     "focus-trap": "^7.5.4",
     "focus-trap-vue": "^4.0.3",
     "vue": "^3.4.38",
@@ -118,6 +120,7 @@
     "@whyframe/core": "^0.1.11",
     "@whyframe/vue": "^0.1.7",
     "browserslist": "^4.23.3",
+    "commitlint": "^19.4.1",
     "cross-env": "^7.0.3",
     "cypress": "^13.14.1",
     "eslint": "^9.9.1",
