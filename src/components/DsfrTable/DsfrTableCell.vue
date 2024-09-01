@@ -13,7 +13,7 @@ const component = computed(() => {
   return (typeof props.field === 'object' && props.field !== null && props.field.component) ? props.field.component : false
 })
 const isPrimitive = computed(() => {
-  return typeof ['string', 'number', 'boolean'].includes(typeof props.field)
+  return ['string', 'number', 'boolean'].includes(typeof props.field)
 })
 </script>
 
