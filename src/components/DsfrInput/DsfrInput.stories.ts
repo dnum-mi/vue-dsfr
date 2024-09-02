@@ -4,6 +4,7 @@ import DsfrInput from './DsfrInput.vue'
 import DsfrInputGroup from './DsfrInputGroup.vue'
 
 import VIcon from '../VIcon/VIcon.vue'
+import { within, expect } from '@storybook/test'
 
 /**
  * [Voir quand l’utiliser sur la documentation du DSFR](https://www.systeme-de-design.gouv.fr/elements-d-interface/composants/champ-de-saisie)
@@ -117,6 +118,13 @@ ChampSansLabel.args = {
   modelValue: '',
   disabled: false,
 }
+ChampSansLabel.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement)
+  const label = canvas.getByText(ChampSansLabel.args.label)
+  expect(label).toHaveClass('fr-label')
+  const input = canvas.getByRole('textbox')
+  expect(input).not.toHaveAttribute('required')
+}
 
 export const LabelVisible = (args) => ({
   components: {
@@ -145,6 +153,14 @@ LabelVisible.args = {
   placeholder: 'Placeholder',
   modelValue: '',
   disabled: false,
+}
+ChampSansLabel.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement)
+  const label = canvas.getByText(ChampSansLabel.args.label)
+  expect(label).toHaveClass('fr-label')
+  expect(label).toBeVisible()
+  const input = canvas.getByRole('textbox')
+  expect(input).not.toHaveAttribute('required')
 }
 
 export const ChampRequis = (args) => ({
@@ -180,6 +196,13 @@ ChampRequis.args = {
   modelValue: '',
   disabled: false,
   isTextarea: true,
+}
+ChampRequis.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement)
+  const label = canvas.getByText(ChampRequis.args.label)
+  expect(label).toHaveClass('fr-label')
+  const input = canvas.getByRole('textbox')
+  expect(input).toHaveAttribute('required')
 }
 
 export const ChampAvecLabelPersonnalise = (args) => ({
@@ -260,6 +283,13 @@ ChampAvecLabelPersonnalise.args = {
   disabled: false,
   isTextarea: true,
 }
+ChampAvecLabelPersonnalise.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement)
+  const label = canvas.getByText(ChampAvecLabelPersonnalise.args.label).parentElement
+  expect(label).toHaveClass('fr-label')
+  const input = canvas.getByRole('textbox')
+  expect(input).toHaveAttribute('required')
+}
 
 export const ChampRequisPersonnalise = (args) => ({
   components: {
@@ -280,7 +310,7 @@ export const ChampRequisPersonnalise = (args) => ({
       :required="true"
     >
       <template #required-tip>
-        <em> (obligatoire)</em>
+        <em> {{ requiredText }}</em>
       </template>
     </DsfrInput>
   `,
@@ -292,6 +322,16 @@ ChampRequisPersonnalise.args = {
   modelValue: '',
   disabled: false,
   isTextarea: true,
+  requiredText: '(obligatoire)',
+}
+ChampRequisPersonnalise.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement)
+  const label = canvas.getByText(ChampRequisPersonnalise.args.label)
+  const em = canvas.getByText(ChampRequisPersonnalise.args.requiredText)
+  expect(em).toHaveProperty('tagName', 'EM')
+  expect(label).toHaveClass('fr-label')
+  const input = canvas.getByRole('textbox')
+  expect(input).toHaveAttribute('required')
 }
 
 export const ChampEnErreur = (args) => ({
@@ -328,6 +368,16 @@ ChampEnErreur.args = {
   errorMessage: 'Message d’erreur',
   isInvalid: true,
 }
+ChampEnErreur.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement)
+  const inputWrapper = canvas.getByText(ChampEnErreur.args.label).parentElement
+  const messageEl = canvas.getByText(ChampEnErreur.args.errorMessage)
+
+  expect(inputWrapper).toHaveClass('fr-input-group')
+  expect(inputWrapper).toHaveClass('fr-input-group--error')
+  expect(messageEl).toHaveClass('fr-error-text')
+  expect(messageEl.parentElement).toHaveClass('fr-messages-group')
+}
 
 export const ChampValide = (args) => ({
   components: {
@@ -361,6 +411,16 @@ ChampValide.args = {
   validMessage: 'Message de validation',
   isValid: true,
 }
+ChampValide.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement)
+  const inputWrapper = canvas.getByText(ChampValide.args.label).parentElement
+  const messageEl = canvas.getByText(ChampValide.args.validMessage)
+
+  expect(inputWrapper).toHaveClass('fr-input-group')
+  expect(inputWrapper).toHaveClass('fr-input-group--valid')
+  expect(messageEl).toHaveClass('fr-valid-text')
+  expect(messageEl.parentElement).toHaveClass('fr-messages-group')
+}
 
 export const ChampDeSaisieDeDate = (args) => ({
   components: {
@@ -392,6 +452,11 @@ ChampDeSaisieDeDate.args = {
   label: 'Date de naissance',
   hint: 'JJ/MM/AAAA',
 }
+ChampDeSaisieDeDate.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement)
+  const input = canvas.getByText(ChampDeSaisieDeDate.args.label).nextElementSibling?.querySelector('input')
+  expect(input).toHaveAttribute('type', 'date')
+}
 
 export const FocusSurChamp = (args) => ({
   components: {
@@ -413,7 +478,7 @@ export const FocusSurChamp = (args) => ({
   },
   template: `
     <DsfrButton @click="focusInput()">
-      Focus sur l’input
+      {{ inputButtonText }}
     </DsfrButton>
 
     <DsfrInput
@@ -427,7 +492,7 @@ export const FocusSurChamp = (args) => ({
     />
 
     <DsfrButton @click="focusTextarea()">
-      Focus sur le textarea
+      {{ textareaButtonText }}
     </DsfrButton>
 
     <DsfrInput
@@ -450,6 +515,18 @@ FocusSurChamp.args = {
   isTextarea: true,
   label: 'Label du champ',
   hint: '',
+  inputButtonText: 'Focus sur l’input',
+  textareaButtonText: 'Focus sur le textarea',
+}
+ChampValide.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement)
+  const inputWrapper = canvas.getByText(ChampValide.args.label).parentElement
+  const messageEl = canvas.getByText(ChampValide.args.validMessage)
+
+  expect(inputWrapper).toHaveClass('fr-input-group')
+  expect(inputWrapper).toHaveClass('fr-input-group--valid')
+  expect(messageEl).toHaveClass('fr-valid-text')
+  expect(messageEl.parentElement).toHaveClass('fr-messages-group')
 }
 
 export const ZoneDeTexte = (args) => ({
@@ -479,4 +556,9 @@ ZoneDeTexte.args = {
   modelValue: '',
   disabled: false,
   isTextarea: true,
+}
+ZoneDeTexte.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement)
+  const textarea = canvas.getByRole('textbox')
+  expect(textarea).toHaveProperty('tagName', 'TEXTAREA')
 }
