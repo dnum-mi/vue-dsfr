@@ -1,4 +1,4 @@
-import { fn } from '@storybook/test'
+import { fn, within, expect } from '@storybook/test'
 
 import DsfrCheckboxSet from './DsfrCheckboxSet.vue'
 
@@ -110,6 +110,15 @@ CheckboxSet.args = {
     },
   ],
 }
+CheckboxSet.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement)
+  const checkboxes = canvas.getAllByRole('checkbox')
+  const firstCheckbox = checkboxes.at(0)
+  expect(firstCheckbox).toHaveAttribute('checked')
+  expect(firstCheckbox).toHaveProperty('checked', true)
+  expect(checkboxes.at(1)).not.toHaveAttribute('checked')
+  expect(checkboxes.at(2)).not.toHaveAttribute('checked')
+}
 
 export const CheckboxSetRequis = (args) => ({
   components: { DsfrCheckboxSet },
@@ -163,6 +172,13 @@ CheckboxSetRequis.args = {
     },
   ],
 }
+CheckboxSetRequis.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement)
+  const checkboxes = canvas.getAllByRole('checkbox')
+  const firstCheckbox = checkboxes.at(0)
+  expect(firstCheckbox).toHaveAttribute('checked')
+  expect(firstCheckbox).toHaveProperty('checked', true)
+}
 
 export const CheckboxSetRequisPersonnalise = (args) => ({
   components: { DsfrCheckboxSet },
@@ -181,7 +197,7 @@ export const CheckboxSetRequisPersonnalise = (args) => ({
       :validMessage="validMessage"
     >
       <template #required-tip>
-        <em> (en choisir au moins un)</em>
+        <em> {{requiredText}}</em>
       </template>
     </DsfrCheckboxSet>
   `,
@@ -198,6 +214,7 @@ CheckboxSetRequisPersonnalise.args = {
   required: true,
   errorMessage: '',
   validMessage: '',
+  requiredText: '(en choisir au moins un)',
   modelValue: ['name1'],
   options: [
     {
@@ -219,6 +236,15 @@ CheckboxSetRequisPersonnalise.args = {
       hint: 'Description 3',
     },
   ],
+}
+CheckboxSetRequisPersonnalise.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement)
+  const checkboxes = canvas.getAllByRole('checkbox')
+  const requiredEm = canvas.getByText(CheckboxSetRequisPersonnalise.args.requiredText)
+  const firstCheckbox = checkboxes.at(0)
+  expect(requiredEm).toHaveProperty('tagName', 'EM')
+  expect(firstCheckbox).toHaveAttribute('checked')
+  expect(firstCheckbox).toHaveProperty('checked', true)
 }
 
 export const CheckboxSetAvecErreur = (args) => ({
@@ -273,6 +299,29 @@ CheckboxSetAvecErreur.args = {
     },
   ],
 }
+CheckboxSetAvecErreur.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement)
+  const checkboxes = canvas.getAllByRole('checkbox')
+  const firstCheckbox = checkboxes.at(0)
+  const legend = canvas.getByText(CheckboxSetAvecErreur.args.legend)
+  expect(legend).toHaveClass('fr-fieldset__legend')
+
+  const checkboxWrapper = firstCheckbox?.parentElement
+  expect(checkboxWrapper).toHaveClass('fr-checkbox-group')
+
+  const fieldsetElement = checkboxWrapper?.parentElement
+  expect(fieldsetElement).toHaveClass('fr-fieldset__element')
+  const fieldset = fieldsetElement?.parentElement
+  expect(fieldset).toHaveClass('fr-fieldset')
+  expect(fieldset).toHaveClass('fr-fieldset--error')
+
+  const errorEl = canvas.getByText(CheckboxSetAvecErreur.args.errorMessage).parentElement
+  expect(errorEl).toHaveClass('fr-error-text')
+  expect(errorEl).toHaveClass('fr-message--info')
+
+  expect(firstCheckbox).toHaveAttribute('checked')
+  expect(firstCheckbox).toHaveProperty('checked', true)
+}
 
 export const CheckboxSetAvecSucces = (args) => ({
   components: { DsfrCheckboxSet },
@@ -294,7 +343,6 @@ export const CheckboxSetAvecSucces = (args) => ({
     },
   },
 })
-
 CheckboxSetAvecSucces.args = {
   legend: 'Légende des champs',
   modelValue: ['name1'],
@@ -323,6 +371,29 @@ CheckboxSetAvecSucces.args = {
       checked: false,
     },
   ],
+}
+CheckboxSetAvecSucces.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement)
+  const checkboxes = canvas.getAllByRole('checkbox')
+  const firstCheckbox = checkboxes.at(0)
+  const legend = canvas.getByText(CheckboxSetAvecSucces.args.legend)
+  expect(legend).toHaveClass('fr-fieldset__legend')
+
+  const checkboxWrapper = firstCheckbox?.parentElement
+  expect(checkboxWrapper).toHaveClass('fr-checkbox-group')
+
+  const fieldsetElement = checkboxWrapper?.parentElement
+  expect(fieldsetElement).toHaveClass('fr-fieldset__element')
+  const fieldset = fieldsetElement?.parentElement
+  expect(fieldset).toHaveClass('fr-fieldset')
+  expect(fieldset).toHaveClass('fr-fieldset--valid')
+
+  const validEl = canvas.getByText(CheckboxSetAvecSucces.args.validMessage).parentElement
+  expect(validEl).toHaveClass('fr-valid-text')
+  expect(validEl).toHaveClass('fr-message--info')
+
+  expect(firstCheckbox).toHaveAttribute('checked')
+  expect(firstCheckbox).toHaveProperty('checked', true)
 }
 
 export const CheckboxSetInline = (args) => ({
@@ -375,6 +446,18 @@ CheckboxSetInline.args = {
       checked: false,
     },
   ],
+}
+CheckboxSetInline.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement)
+
+  const checkboxes = canvas.getAllByRole('checkbox')
+  const firstCheckbox = checkboxes.at(0)
+
+  const checkboxWrapper = firstCheckbox?.parentElement
+  expect(checkboxWrapper).toHaveClass('fr-checkbox-group')
+
+  const fieldsetElement = checkboxWrapper?.parentElement
+  expect(fieldsetElement).toHaveClass('fr-fieldset__element--inline')
 }
 
 export const CheckboxSetInlineAvecErreur = (args) => ({
