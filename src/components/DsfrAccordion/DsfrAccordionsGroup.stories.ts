@@ -1,6 +1,11 @@
 import DsfrAccordionsGroup from './DsfrAccordionsGroup.vue'
 import DsfrAccordion from './DsfrAccordion.vue'
 
+import { expect, within } from '@storybook/test'
+
+const delay = (timeout = 100) =>
+  new Promise((resolve) => setTimeout(resolve, timeout))
+
 /**
  * [Voir quand l’utiliser sur la documentation du DSFR](https://www.systeme-de-design.gouv.fr/elements-d-interface/composants/accordeon/)
  */
@@ -47,36 +52,30 @@ export const AccordeonGroupe = (args) => ({
 
   template: `
   <DsfrAccordionsGroup>
-    <li>
-      <DsfrAccordion
-        id="accordion-1"
-        :title="title1"
-        :expanded-id="expandedId"
-        @expand="expandedId = $event"
-      >
-        Contenu de l’accordéon 1
-      </DsfrAccordion>
-    </li>
-    <li>
-      <DsfrAccordion
-        id="accordion-2"
-        :title="title2"
-        :expanded-id="expandedId"
-        @expand="id => expandedId = id"
-      >
-        Contenu de l’accordéon 2
-      </DsfrAccordion>
-    </li>
-    <li>
-      <DsfrAccordion
-        id="accordion-3"
-        :title="title3"
-        :expanded-id="expandedId"
-        @expand="id => expandedId = id"
-      >
-        Contenu de l’accordéon 3
-      </DsfrAccordion>
-    </li>
+    <DsfrAccordion
+      id="accordion-1"
+      :title="title1"
+      :expanded-id="expandedId"
+      @expand="expandedId = $event"
+    >
+      Contenu de l’accordéon 1
+    </DsfrAccordion>
+    <DsfrAccordion
+      id="accordion-2"
+      :title="title2"
+      :expanded-id="expandedId"
+      @expand="id => expandedId = id"
+    >
+      Contenu de l’accordéon 2
+    </DsfrAccordion>
+    <DsfrAccordion
+      id="accordion-3"
+      :title="title3"
+      :expanded-id="expandedId"
+      @expand="id => expandedId = id"
+    >
+      Contenu de l’accordéon 3
+    </DsfrAccordion>
   </DsfrAccordionsGroup>
   `,
 })
@@ -85,4 +84,18 @@ AccordeonGroupe.args = {
   title2: 'Un titre d’accordéon 2',
   title3: 'Un titre d’accordéon 3',
   expandedId: '',
+}
+
+AccordeonGroupe.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement)
+  const title1 = canvas.getByText('Un titre d’accordéon 1')
+  expect(title1).toBeVisible()
+  const content1 = canvas.getByText('Contenu de l’accordéon 1')
+  expect(content1).not.toBeVisible()
+  title1.click()
+  await delay(500)
+  expect(content1).toBeVisible()
+  title1.click()
+  await delay(500)
+  expect(content1).not.toBeVisible()
 }

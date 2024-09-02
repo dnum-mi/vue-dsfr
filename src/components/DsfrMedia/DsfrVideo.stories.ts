@@ -4,11 +4,15 @@ import DsfrVideo from './DsfrVideo.vue'
 
 import DsfrModal from '../DsfrModal/DsfrModal.vue'
 import VIcon from '../VIcon/VIcon.vue'
+import { within, expect } from '@storybook/test'
 
 setup((app) => {
   app.component('DsfrModal', DsfrModal)
   app.component('VIcon', VIcon)
 })
+
+const delay = (timeout = 100) =>
+  new Promise((resolve) => setTimeout(resolve, timeout))
 
 export default {
   component: DsfrVideo,
@@ -66,7 +70,6 @@ export const Video = (args) => ({
     />
   `,
 })
-
 Video.args = {
   size: 'medium',
   src: 'https://www.youtube.com/embed/HyirpmPL43I',
@@ -74,4 +77,15 @@ Video.args = {
   transcriptionTitle: 'Titre de la transcription',
   transcriptionContent: 'Contenu de la transcription',
   ratio: '16x9',
+}
+Video.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement)
+  const caption = canvas.getByText(Video.args.legend)
+  const transcriptionContent = canvas.getByText(Video.args.transcriptionContent)
+  const button = canvas.getByRole('button')
+  expect(transcriptionContent).not.toBeVisible()
+  expect(caption).toHaveClass('fr-content-media__caption')
+  button.click()
+  await delay(500)
+  expect(transcriptionContent).toBeVisible()
 }

@@ -52,11 +52,9 @@
     "vitest": "vitest",
     "coverage": "vitest run --coverage",
     "test-storybook": "test-storybook --url $TEST_STORYBOOK_URL",
-    "test": "run-s test:unit test:ct-ci",
+    "test": "run-s test:unit",
     "test:watch": "vitest",
     "test:unit": "vitest run",
-    "test:ct": "cypress open --component",
-    "test:ct-ci": "cypress run --component",
     "format": "run-s lint -- --fix",
     "lint": "eslint .",
     "lint:staged": "eslint ",
@@ -67,7 +65,9 @@
     "build-storybook": "storybook build",
     "docs:dev": "cross-env VITEPRESS=true vitepress dev",
     "docs:build": "cross-env VITEPRESS=true vitepress build",
-    "docs:preview": "cross-env VITEPRESS=true vitepress preview"
+    "docs:build-only": "cross-env VITEPRESS=true vitepress build",
+    "docs:preview": "cross-env VITEPRESS=true vitepress preview",
+    "commitlint": "commitlint --edit"
   },
   "peerDependencies": {
     "@iconify/vue": "^4.1.2",
@@ -75,7 +75,7 @@
     "vue-router": "^4.4.3"
   },
   "dependencies": {
-    "@gouvfr/dsfr": "~1.11.2",
+    "@gouvfr/dsfr": "~1.12.1",
     "focus-trap": "^7.5.4",
     "focus-trap-vue": "^4.0.3",
     "vue": "^3.4.38",
@@ -86,8 +86,6 @@
     "@chromatic-com/storybook": "^1.8.0",
     "@commitlint/cli": "^19.4.1",
     "@commitlint/config-conventional": "^19.4.1",
-    "@cypress/vite-dev-server": "^5.2.0",
-    "@cypress/vue": "^6.0.1",
     "@iconify/vue": "^4.1.2",
     "@storybook/addon-a11y": "^8.2.9",
     "@storybook/addon-docs": "^8.2.9",
@@ -118,10 +116,9 @@
     "@whyframe/core": "^0.1.11",
     "@whyframe/vue": "^0.1.7",
     "browserslist": "^4.23.3",
+    "commitlint": "^19.4.1",
     "cross-env": "^7.0.3",
-    "cypress": "^13.14.1",
     "eslint": "^9.9.1",
-    "eslint-plugin-cypress": "^3.5.0",
     "eslint-plugin-vue": "^9.27.0",
     "husky": "^9.1.5",
     "jsdom": "^25.0.0",

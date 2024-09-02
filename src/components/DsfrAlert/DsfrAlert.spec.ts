@@ -29,8 +29,8 @@ describe('DsfrAlert', () => {
     // Then
     expect(titleEl.tagName).toBe('H3')
     expect(titleEl).toHaveClass('fr-alert__title')
-    expect(descritptionEl.tagName).toBe('P')
-    expect(descritptionEl).toHaveClass('fr-alert__description')
+    expect(descritptionEl.tagName).toBe('DIV')
+    expect(descritptionEl).toHaveClass('fr-alert')
   })
 
   it('should mount DsfrAlert with right content with description in slot', () => {
@@ -60,8 +60,8 @@ describe('DsfrAlert', () => {
     // Then
     expect(titleEl.tagName).toBe('H3')
     expect(titleEl).toHaveClass('fr-alert__title')
-    expect(descritptionEl.tagName).toBe('P')
-    expect(descritptionEl).toHaveClass('fr-alert__description')
+    expect(descritptionEl.tagName).toBe('DIV')
+    expect(descritptionEl).toHaveClass('fr-alert')
   })
 
   it('should mount DsfrAlert with a working close button', async () => {

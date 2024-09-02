@@ -23,7 +23,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: 18
+          node-version: 20
       - name: Install pnpm
         run: npm i -g pnpm
       - name: Install dependencies
@@ -32,5 +32,16 @@ jobs:
         run: pnpm lint --quiet
       - name: Test
         run: pnpm test
+      - name: Install Playwright
+        run: pnpx playwright install --with-deps
+      - name: Build Storybook
+        run: pnpm build-storybook --quiet
+      - name: Serve Storybook and run tests
+        env:
+          TEST_STORYBOOK_URL: http://localhost:6006
+        run: |
+          pnpx concurrently -k -s first -n "SB,TEST" -c "magenta,blue" \
+            "pnpx http-server storybook-static --port 6006 --silent" \
+            "pnpx wait-on tcp:6006 && pnpm test-storybook"
       - name: Build
         run: pnpm build

@@ -42,6 +42,7 @@ Le composant `DsfrRadioButton` est composé des éléments suivants :
 | `small`      | *`boolean`*                                              | Affiche le bouton radio en taille réduite                     | `false`                                                   |                        |
 | `disabled`   | *`boolean`*                                              | Indique si le bouton radio est désactivé.                     | `false`                                                   |                        |
 | `img`        | *`string`*                                               | Source de l'image à afficher.                                 | `undefined`                                               |                        |
+| `imgTitle`        | *`string`*                                               | Titre de l'image à ajouter en attribut `title` a `img` ou à ajouter en élément `title` dans la balise `svg`.                                 | `undefined`                                               |                        |
 | `svgPath`    | *`string`*                                               | Chemin vers le SVG à afficher.                                | `undefined`                                               |                        |
 | `svgAttrs`   | *`Record<string, unknown>`*                              | Chemin vers le SVG à afficher.                                | `{ viewBox: '0 0 80 80', width: '80px', height: '80px' }` | Attributs pour le SVG. |
 

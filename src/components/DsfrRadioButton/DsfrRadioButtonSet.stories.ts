@@ -1,4 +1,4 @@
-import { fn } from '@storybook/test'
+import { fn, within, expect } from '@storybook/test'
 
 import DsfrRadioButtonSet from './DsfrRadioButtonSet.vue'
 
@@ -97,6 +97,21 @@ GroupeDeBoutonsRadio.args = {
     },
   ],
 }
+GroupeDeBoutonsRadio.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement)
+  const firstInputLabel = canvas.getByText(GroupeDeBoutonsRadio.args.options.at(0)!.label)
+  const initialCheckedInputLabel = canvas.getByText(GroupeDeBoutonsRadio.args.options.at(2)!.label)
+  expect(initialCheckedInputLabel).toHaveClass('fr-label')
+  expect(firstInputLabel).toHaveClass('fr-label')
+  const firstInput = canvas.getAllByRole('radio').at(0) as HTMLInputElement
+  const initialCheckedInput = canvas.getAllByRole('radio').at(2) as HTMLInputElement
+  expect(initialCheckedInput.parentElement).toHaveClass('fr-radio-group')
+  expect(firstInput).not.toBeChecked()
+  expect(initialCheckedInput).toBeChecked()
+  firstInputLabel.click()
+  expect(firstInput).toBeChecked()
+  expect(initialCheckedInput).not.toBeChecked()
+}
 
 export const GroupeDeBoutonsRadioRequis = (args) => ({
   components: { DsfrRadioButtonSet },
@@ -139,6 +154,11 @@ GroupeDeBoutonsRadioRequis.args = {
       hint: 'Description 3',
     },
   ],
+}
+GroupeDeBoutonsRadioRequis.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement)
+  const legend = canvas.getByText(GroupeDeBoutonsRadioRequis.args.legend)
+  expect(legend).toContainHTML('*')
 }
 
 export const GroupeDeBoutonsRadioRequisPersonnalise = (args) => ({
@@ -187,6 +207,11 @@ GroupeDeBoutonsRadioRequisPersonnalise.args = {
     },
   ],
 }
+GroupeDeBoutonsRadioRequisPersonnalise.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement)
+  const legend = canvas.getByText(GroupeDeBoutonsRadioRequisPersonnalise.args.legend)
+  expect(legend).toContainHTML('(obligatoire)')
+}
 
 export const GroupeDeBoutonsRadioEnErreur = (args) => ({
   components: { DsfrRadioButtonSet },
@@ -230,6 +255,16 @@ GroupeDeBoutonsRadioEnErreur.args = {
       hint: 'Description 3',
     },
   ],
+}
+GroupeDeBoutonsRadioEnErreur.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement)
+  const radioWrapper = canvas.getByText(GroupeDeBoutonsRadioEnErreur.args.options.at(0)!.label).parentElement
+  const messageEl = canvas.getByText(GroupeDeBoutonsRadioEnErreur.args.error)
+
+  expect(radioWrapper).toHaveClass('fr-radio-group')
+  expect(radioWrapper?.parentElement?.parentElement).toHaveClass('fr-fieldset--error')
+  expect(messageEl).toHaveClass('fr-message--info')
+  expect(messageEl).toHaveClass('fr-error-text')
 }
 
 export const GroupeDeBoutonsRadioEnSucces = (args) => ({
@@ -275,6 +310,16 @@ GroupeDeBoutonsRadioEnSucces.args = {
     },
   ],
 }
+GroupeDeBoutonsRadioEnSucces.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement)
+  const radioWrapper = canvas.getByText(GroupeDeBoutonsRadioEnSucces.args.options.at(0)!.label).parentElement
+  const messageEl = canvas.getByText(GroupeDeBoutonsRadioEnSucces.args.validMessage)
+
+  expect(radioWrapper).toHaveClass('fr-radio-group')
+  expect(radioWrapper?.parentElement?.parentElement).toHaveClass('fr-fieldset--valid')
+  expect(messageEl).toHaveClass('fr-message--info')
+  expect(messageEl).toHaveClass('fr-valid-text')
+}
 
 export const GroupeDeBoutonsRadioDisabled = (args) => ({
   components: { DsfrRadioButtonSet },
@@ -317,6 +362,11 @@ GroupeDeBoutonsRadioDisabled.args = {
     },
   ],
 }
+GroupeDeBoutonsRadioDisabled.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement)
+  const legend = canvas.getByText(GroupeDeBoutonsRadioRequis.args.legend).parentElement
+  expect(legend).toHaveAttribute('disabled')
+}
 
 export const GroupeDeBoutonsRadioInline = (args) => ({
   components: { DsfrRadioButtonSet },
@@ -338,7 +388,7 @@ export const GroupeDeBoutonsRadioInline = (args) => ({
 GroupeDeBoutonsRadioInline.args = {
   legend: 'Légende des champs en ligne',
   selectedValue: 1,
-  disabled: true,
+  disabled: false,
   inline: true,
   options: [
     {

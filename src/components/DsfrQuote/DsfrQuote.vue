@@ -33,7 +33,7 @@ withDefaults(defineProps<DsfrQuoteProps>(), {
         </li>
 
         <li
-          v-for="(detail, index) in details"
+          v-for="(detail, index) of details"
           :key="index"
         >
           <a
@@ -44,7 +44,9 @@ withDefaults(defineProps<DsfrQuoteProps>(), {
           >
             {{ detail.label }}
           </a>
-          {{ typeof detail !== 'object' ? detail : '' }}
+          <template v-else>
+            {{ detail }}
+          </template>
         </li>
       </ul>
 

@@ -61,3 +61,12 @@ Affiche une simple étiquette avec le texte "Bonjour VueDsfr !".
 ```html
 <DsfrTag label="Vue Power" icon="fr-icon-success-line" />
 ```
+
+## ⚙️ Code source du composant
+
+::: code-group
+
+<<< DsfrTag.vue
+<<< DsfrTags.types.ts
+
+:::

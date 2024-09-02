@@ -87,7 +87,7 @@ const ariaLabelledby = computed(() => message.value ? `${props.titleId} messages
           class="fr-message--info  flex  items-center"
           :class="additionalMessageClass"
         >
-          <span class="line-1">{{ message }}</span>
+          {{ message }}
         </p>
       </div>
     </fieldset>

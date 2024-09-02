@@ -1,3 +1,4 @@
+import { within, expect } from '@storybook/test'
 import DsfrPagination from './DsfrPagination.vue'
 
 /**
@@ -61,7 +62,6 @@ export const Pagination = (args) => ({
       />
   `,
 })
-
 Pagination.args = {
   pages: [
     {
@@ -92,6 +92,16 @@ Pagination.args = {
   ],
   currentPage: 0,
 }
+Pagination.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement)
+  const links = canvas.getAllByRole('link')
+  expect(links).toHaveLength(9)
+
+  const currentPageLink = canvas.getByText(`${Pagination.args.currentPage + 1}`)
+  expect(currentPageLink).toHaveAttribute('aria-current', 'page')
+  const secondPageLink = canvas.getByText(`${Pagination.args.currentPage + 2}`)
+  expect(secondPageLink).not.toHaveAttribute('aria-current', 'page')
+}
 
 export const PaginationTruncated = (args) => ({
   components: {
@@ -109,7 +119,6 @@ export const PaginationTruncated = (args) => ({
       />
   `,
 })
-
 PaginationTruncated.args = {
   pages: [
     {
