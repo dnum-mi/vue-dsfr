@@ -95,11 +95,19 @@ const ariaLabelledby = computed(() => message.value ? `${props.titleId} messages
 </template>
 
 <style>
-.fr-fieldset--error .fr-radio-group .fr-label::before {
-  box-shadow: inset 0 0 0 1px var(--border-plain-error), inset 0 0 0 12px var(--background-default-grey), inset 0 0 0 12px var(--border-plain-success)
+.fr-fieldset--error .fr-radio-group  .fr-label::before {
+  box-shadow: inset 0 0 0 1px var(--border-plain-error), inset 0 0 0 12px var(--background-default-grey), inset 0 0 0 12px var(--border-plain-error)
+}
+
+.fr-fieldset--error .fr-radio-group input[type="radio"]:checked + .fr-label::before {
+  box-shadow: inset 0 0 0 1px var(--border-plain-error), inset 0 0 0 6px var(--background-default-grey), inset 0 0 0 12px var(--border-plain-error)
 }
 
 .fr-fieldset--valid .fr-radio-group .fr-label::before {
   box-shadow: inset 0 0 0 1px var(--border-plain-success), inset 0 0 0 12px var(--background-default-grey), inset 0 0 0 12px var(--border-plain-success)
+}
+
+.fr-fieldset--valid .fr-radio-group input[type="radio"]:checked + .fr-label::before {
+  box-shadow: inset 0 0 0 1px var(--border-plain-success), inset 0 0 0 6px var(--background-default-grey), inset 0 0 0 12px var(--border-plain-success)
 }
 </style>
