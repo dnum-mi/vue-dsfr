@@ -30,7 +30,6 @@ Ce composant ne déclenche pas d'événements personnalisés.
 
 - `default` : Contenu additionnel à afficher à l'intérieur de l'encadré. Ce slot est intégré dans la structure principale du composant et s'affiche sous le texte principal.
 
-
 ::: code-group
 
 <Story data-title="Démo" min-h="200px">
