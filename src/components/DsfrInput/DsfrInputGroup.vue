@@ -69,7 +69,7 @@ const messageClass = computed(() => props.errorMessage ? 'fr-error-text' : 'fr-v
         :data-testid="descriptionId"
         :class="messageClass"
       >
-        <span>{{ message }}</span>
+        {{ message }}
       </p>
     </div>
   </div>
