@@ -1,3 +1,4 @@
+import { within, expect } from '@storybook/test'
 import DsfrPicture from './DsfrPicture.vue'
 
 export default {
@@ -61,6 +62,14 @@ ImageSrc.args = {
   title: 'Photographie d’un chaton',
   legend: 'Photographie d’un chaton',
   ratio: '16x9',
+}
+ImageSrc.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement)
+  const img = canvas.getByTitle(ImageSrc.args.title)
+  const figCaption = canvas.getByText(ImageSrc.args.legend)
+  expect(img).toHaveAttribute('src', ImageSrc.args.src)
+  expect(img).toHaveAttribute('title', ImageSrc.args.title)
+  expect(figCaption).toHaveProperty('tagName', 'FIGCAPTION')
 }
 
 export const ImageSvg = (args) => ({
