@@ -1,3 +1,4 @@
+import { within, expect } from '@storybook/test'
 import DsfrHighlight from './DsfrHighlight.vue'
 
 /**
@@ -44,6 +45,11 @@ MiseEnExergue.args = {
   large: false,
   text: 'Texte original de la mise en exergue',
 }
+MiseEnExergue.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement)
+  const highlight = canvas.getByText(MiseEnExergue.args.text)
+  expect(highlight).toBeVisible()
+}
 
 export const MiseEnExergueAvecSlot = (args) => ({
   components: {
@@ -60,7 +66,7 @@ export const MiseEnExergueAvecSlot = (args) => ({
       :small="small"
       :large="large"
     >
-      <p v-if="!text">Le fameux slot mis en exergue</p>
+      <template v-if="!text">{{ slotText }}</template>
     </DsfrHighlight>
   `,
 })
@@ -68,4 +74,10 @@ MiseEnExergueAvecSlot.args = {
   small: false,
   large: false,
   text: '',
+  slotText: 'Le fameux slot mis en exergue',
+}
+MiseEnExergueAvecSlot.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement)
+  const highlight = canvas.getByText(MiseEnExergueAvecSlot.args.slotText)
+  expect(highlight).toBeVisible()
 }
