@@ -1,5 +1,6 @@
-import VIcon from '../VIcon/VIcon.vue'
+import { expect, within } from '@storybook/test'
 
+import VIcon from '../VIcon/VIcon.vue'
 import DsfrFooter from './DsfrFooter.vue'
 import DsfrFooterLinkList from './DsfrFooterLinkList.vue'
 
@@ -180,7 +181,7 @@ PiedDePageSimple.args = {
   descText: 'Description',
   homeLink: '/',
   licenceText: undefined,
-  licenceTo: undefined,
+  licenceTo: 'https://github.com/etalab/licence-ouverte/blob/master/LO.md',
   licenceName: undefined,
   licenceLinkProps: undefined,
   ecosystemLinks: [
@@ -224,8 +225,34 @@ PiedDePageSimple.args = {
     ],
   },
 }
+PiedDePageSimple.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement)
+  const links = canvas.getAllByRole('link')
 
-export const PiedDePageAvecLogoOperateur = (args) => ({
+  const knownLinks = [
+    { name: '', href: PiedDePageSimple.args.homeLink },
+    { name: 'ici', href: 'http://www.duckduckgo.com' },
+    ...PiedDePageSimple.args.ecosystemLinks,
+    PiedDePageSimple.args.partners.mainPartner,
+    ...PiedDePageSimple.args.partners.subPartners,
+    ...PiedDePageSimple.args.beforeMandatoryLinks.map(({ to }) => ({ href: to })),
+    { name: '', href: PiedDePageSimple.args.a11yComplianceLink },
+    { name: '', href: PiedDePageSimple.args.legalLink },
+    { name: '', href: PiedDePageSimple.args.personalDataLink },
+    { name: '', href: PiedDePageSimple.args.cookiesLink },
+    ...PiedDePageSimple.args.afterMandatoryLinks.map(({ to }) => ({ href: to })),
+    { href: PiedDePageSimple.args.licenceTo },
+  ]
+
+  let i = 0
+
+  for (const link of links) {
+    expect(link).toHaveAttribute('href', knownLinks.at(i)?.href)
+    i++
+  }
+}
+
+export const PiedDePageAvecLogoOperateurEtListeDeLiens = (args) => ({
   components: {
     DsfrFooter,
     DsfrFooterLinkList,
@@ -282,7 +309,7 @@ export const PiedDePageAvecLogoOperateur = (args) => ({
   </DsfrFooter>
   `,
 })
-PiedDePageAvecLogoOperateur.args = {
+PiedDePageAvecLogoOperateurEtListeDeLiens.args = {
   beforeMandatoryLinks: [{ label: 'Before', to: '/before' }],
   afterMandatoryLinks: [{ label: 'After', to: '/after' }],
   a11yCompliance: 'partiellement conforme',
@@ -356,4 +383,34 @@ PiedDePageAvecLogoOperateur.args = {
   },
   operatorImgSrc: '/cat.svg',
   operatorImgAlt: 'Logo opérateur',
+}
+PiedDePageAvecLogoOperateurEtListeDeLiens.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement)
+  const links = canvas.getAllByRole('link')
+  expect(links).toHaveLength(20)
+
+  const knownLinks = [
+    ...PiedDePageAvecLogoOperateurEtListeDeLiens.args.linkList1.map(({ to }) => ({ href: to })),
+    ...PiedDePageAvecLogoOperateurEtListeDeLiens.args.linkList2.map(({ to }) => ({ href: to })),
+    { name: '', href: PiedDePageAvecLogoOperateurEtListeDeLiens.args.operatorTo },
+    { name: 'ici', href: 'http://www.duckduckgo.com' },
+    ...PiedDePageAvecLogoOperateurEtListeDeLiens.args.ecosystemLinks,
+    PiedDePageAvecLogoOperateurEtListeDeLiens.args.partners.mainPartner,
+    ...PiedDePageAvecLogoOperateurEtListeDeLiens.args.partners.subPartners,
+    ...PiedDePageAvecLogoOperateurEtListeDeLiens.args.beforeMandatoryLinks.map(({ to }) => ({ href: to })),
+    { name: '', href: PiedDePageAvecLogoOperateurEtListeDeLiens.args.a11yComplianceLink },
+    { name: '', href: PiedDePageAvecLogoOperateurEtListeDeLiens.args.legalLink },
+    { name: '', href: PiedDePageAvecLogoOperateurEtListeDeLiens.args.personalDataLink },
+    { name: '', href: PiedDePageAvecLogoOperateurEtListeDeLiens.args.cookiesLink },
+    ...PiedDePageAvecLogoOperateurEtListeDeLiens.args.afterMandatoryLinks.map(({ to }) => ({ href: to })),
+    { href: PiedDePageAvecLogoOperateurEtListeDeLiens.args.licenceTo },
+  ]
+
+  let i = 0
+
+  for (const link of links) {
+    expect(link).toBeVisible()
+    expect(link).toHaveAttribute('href', knownLinks.at(i)?.href)
+    i++
+  }
 }
