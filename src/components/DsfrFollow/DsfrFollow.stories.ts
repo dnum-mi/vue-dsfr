@@ -1,3 +1,4 @@
+import { within, expect } from '@storybook/test'
 import DsfrFollow from './DsfrFollow.vue'
 
 /**
@@ -77,6 +78,24 @@ Suivre.args = {
     buttonAction: () => undefined,
     onlyCallout: false,
   },
+}
+Suivre.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement)
+  const title = canvas.getByText(Suivre.args.newsletterData.title)
+  expect(title).toHaveClass('fr-follow__title')
+  const newsletter = title.parentElement?.parentElement
+  expect(newsletter).toHaveClass('fr-follow__newsletter')
+  const follow = newsletter?.parentElement?.parentElement?.parentElement?.parentElement
+  expect(follow).toHaveClass('fr-follow')
+  const networks = canvas.getAllByRole('link')
+  expect(networks).toHaveLength(5)
+
+  let i = 0
+  for (const network of networks) {
+    expect(network).toHaveAttribute('title', Suivre.args.networks.at(i)?.name)
+    expect(network).toHaveAttribute('href', Suivre.args.networks.at(i)?.href)
+    i++
+  }
 }
 
 export const SuivreMiseEnAvant = (args) => ({
