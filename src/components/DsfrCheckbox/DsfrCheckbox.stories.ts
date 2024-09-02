@@ -1,4 +1,4 @@
-import { fn } from '@storybook/test'
+import { expect, fn, within } from '@storybook/test'
 
 import DsfrCheckbox from './DsfrCheckbox.vue'
 
@@ -90,6 +90,19 @@ Checkbox.args = {
   name: 'name1',
   hint: 'Description 1',
 }
+Checkbox.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement)
+  const label = canvas.getByText(Checkbox.args.label)
+  expect(label).toHaveClass('fr-label')
+  const input = canvas.getByRole('checkbox')
+  expect(input.parentElement).toHaveClass('fr-checkbox-group')
+  expect(input).not.toHaveAttribute('required')
+  expect(input).not.toBeChecked()
+  label.click()
+  expect(input).toBeChecked()
+  label.click()
+}
+
 export const CheckboxRequis = (args) => ({
   components: { DsfrCheckbox },
   data () {
@@ -123,6 +136,13 @@ CheckboxRequis.args = {
   label: 'En cochant vous acceptez...',
   name: 'name1',
   hint: 'Description 1',
+}
+CheckboxRequis.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement)
+  const label = canvas.getByText(CheckboxRequis.args.label)
+  expect(label).toHaveClass('fr-label')
+  const input = canvas.getByRole('checkbox')
+  expect(input).toHaveAttribute('required', '')
 }
 
 export const CheckboxRequisPersonnalise = (args) => ({
@@ -163,6 +183,15 @@ CheckboxRequisPersonnalise.args = {
   name: 'name1',
   hint: 'Description 1',
 }
+CheckboxRequisPersonnalise.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement)
+  const label = canvas.getByText(CheckboxRequisPersonnalise.args.label)
+  const em = canvas.getByText('(obligatoire)')
+  expect(em).toHaveProperty('tagName', 'EM')
+  expect(label).toHaveClass('fr-label')
+  const input = canvas.getByRole('checkbox')
+  expect(input).toHaveAttribute('required', '')
+}
 
 export const CheckboxAvecErreur = (args) => ({
   components: { DsfrCheckbox },
@@ -195,6 +224,16 @@ CheckboxAvecErreur.args = {
   errorMessage: 'Erreur formulaire',
   name: 'cb-error',
 }
+CheckboxAvecErreur.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement)
+  const checkboxWrapper = canvas.getByText(CheckboxAvecErreur.args.label).parentElement
+  const messageEl = canvas.getByText(CheckboxAvecErreur.args.errorMessage)
+
+  expect(checkboxWrapper).toHaveClass('fr-checkbox-group')
+  expect(checkboxWrapper).toHaveClass('fr-checkbox-group--error')
+  expect(messageEl).toHaveClass('fr-message--info')
+  expect(messageEl).toHaveClass('fr-error-text')
+}
 
 export const CheckboxAvecSucces = (args) => ({
   components: { DsfrCheckbox },
@@ -217,7 +256,6 @@ export const CheckboxAvecSucces = (args) => ({
     },
   },
 })
-
 CheckboxAvecSucces.args = {
   disabled: false,
   modelValue: false,
@@ -225,4 +263,14 @@ CheckboxAvecSucces.args = {
   hint: 'Description 1',
   validMessage: 'Formulaire valide',
   name: 'cb-success',
+}
+CheckboxAvecSucces.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement)
+  const checkboxWrapper = canvas.getByText(CheckboxAvecSucces.args.label).parentElement
+  const messageEl = canvas.getByText(CheckboxAvecSucces.args.validMessage)
+
+  expect(checkboxWrapper).toHaveClass('fr-checkbox-group')
+  expect(checkboxWrapper).toHaveClass('fr-checkbox-group--valid')
+  expect(messageEl).toHaveClass('fr-message--info')
+  expect(messageEl).toHaveClass('fr-valid-text')
 }
