@@ -77,6 +77,7 @@ const rich = computed(() => !!props.img || !!props.svgPath)
           :src="img"
           class="fr-artwork"
           alt=""
+          :title="imgTitle"
         >
         <svg
           v-else
@@ -84,6 +85,7 @@ const rich = computed(() => !!props.img || !!props.svgPath)
           class="fr-artwork"
           v-bind="{ ...defaultSvgAttrs, ...svgAttrs }"
         >
+          <title v-if="imgTitle">{{ imgTitle }}</title>
           <use
             class="fr-artwork-decorative"
             :href="`${svgPath}#artwork-decorative`"
