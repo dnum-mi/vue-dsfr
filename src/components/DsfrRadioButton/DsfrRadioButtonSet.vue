@@ -93,13 +93,3 @@ const ariaLabelledby = computed(() => message.value ? `${props.titleId} messages
     </fieldset>
   </div>
 </template>
-
-<style>
-.fr-fieldset--error .fr-radio-group .fr-label::before {
-  box-shadow: inset 0 0 0 1px var(--border-plain-error), inset 0 0 0 12px var(--background-default-grey), inset 0 0 0 12px var(--border-plain-success)
-}
-
-.fr-fieldset--valid .fr-radio-group .fr-label::before {
-  box-shadow: inset 0 0 0 1px var(--border-plain-success), inset 0 0 0 12px var(--background-default-grey), inset 0 0 0 12px var(--border-plain-success)
-}
-</style>
