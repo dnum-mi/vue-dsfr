@@ -58,6 +58,7 @@ const options6 = structuredClone(options1).map(option => Object.fromEntries(
       <DsfrRadioButtonSet
         v-model="modelValue1"
         legend="Groupe de boutons radio simple"
+        hint="Texte de description additionnel"
         :options="options1"
         name="name-1"
       />
