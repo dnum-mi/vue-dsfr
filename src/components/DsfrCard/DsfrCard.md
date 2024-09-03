@@ -61,7 +61,7 @@ cf. DSFR : [Composant - Carte](https://www.systeme-de-design.gouv.fr/elements-d-
 
 ## 📝 Exemples
 
-### 📝 Exemple avec tags sans actions
+### 📝 Exemple avec tags et badges dans l’en-tête sans actions
 
 ::: code-group
 
