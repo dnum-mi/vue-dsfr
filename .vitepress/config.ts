@@ -148,6 +148,10 @@ const composants = [
     link: '/composants/DsfrConsent.md',
   },
   {
+    text: 'DsfrDataTable',
+    link: '/composants/DsfrDataTable.md',
+  },
+  {
     text: 'DsfrErrorPage',
     link: '/composants/DsfrErrorPage.md',
   },
