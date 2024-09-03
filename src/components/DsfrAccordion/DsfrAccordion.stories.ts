@@ -49,18 +49,14 @@ export const Accordeon = (args) => ({
   },
 
   template: `
-  <DsfrAccordionsGroup>
+  <DsfrAccordionsGroup v-model="selectedAccordion">
     <DsfrAccordion
       :title="title1"
-      :expanded-id="expandedId"
-      @expand="expandedId = $event"
     >
       Contenu de l’accordéon 1
     </DsfrAccordion>
     <DsfrAccordion
       :title="title2"
-      :expanded-id="expandedId"
-      @expand="expandedId = $event"
     >
       Contenu de l’accordéon 2
     </DsfrAccordion>
@@ -69,6 +65,7 @@ export const Accordeon = (args) => ({
 })
 Accordeon.args = {
   title: 'Un titre d’accordéon',
+  selectedAccordion: undefined,
 }
 Accordeon.play = async ({ canvasElement }) => {
   const canvas = within(canvasElement)
@@ -84,12 +81,12 @@ Accordeon.play = async ({ canvasElement }) => {
 export const AccordeonSimple = (args) => ({
   components: {
     DsfrAccordion,
+    DsfrAccordionsGroup,
   },
 
   data () {
     return {
       ...args,
-      expandedId: undefined,
       title1: `${args.title} 1`,
     }
   },
@@ -97,15 +94,14 @@ export const AccordeonSimple = (args) => ({
   template: `
     <DsfrAccordion
       :title="title1"
-      :expanded-id="expandedId"
-      @expand="expandedId = $event"
     >
-    Contenu de l’accordéon 1
+      Contenu de l’accordéon 1
     </DsfrAccordion>
   `,
 })
 AccordeonSimple.args = {
   title: 'Un titre d’accordéon',
+  selectedAccordion: undefined,
 }
 AccordeonSimple.play = async ({ canvasElement }) => {
   const canvas = within(canvasElement)
@@ -134,20 +130,16 @@ export const AccordeonDejaOuvert = (args) => ({
   },
 
   template: `
-  <DsfrAccordionsGroup>
+  <DsfrAccordionsGroup v-model="selectedAccordion">
     <DsfrAccordion
       :title="title1"
       id="accordeon-1"
-      :expanded-id="expandedId"
-      @expand="expandedId = $event"
     >
       Contenu de l’accordéon 1
     </DsfrAccordion>
     <DsfrAccordion
       :title="title2"
       id="accordeon-2"
-      :expanded-id="expandedId"
-      @expand="expandedId = $event"
     >
       Contenu de l’accordéon 2
     </DsfrAccordion>
@@ -156,6 +148,7 @@ export const AccordeonDejaOuvert = (args) => ({
 })
 AccordeonDejaOuvert.args = {
   title: 'Un titre d’accordéon',
+  selectedAccordion: 0,
 }
 AccordeonDejaOuvert.play = async ({ canvasElement }) => {
   const canvas = within(canvasElement)
@@ -189,24 +182,18 @@ export const AccordeonDansUnAccordeon = (args) => ({
   },
 
   template: `
-    <DsfrAccordionsGroup>
+    <DsfrAccordionsGroup v-model="selectedAccordion">
       <DsfrAccordion
         :title="title1"
-        :expanded-id="expandedId"
-        @expand="expandedId = $event"
       >
-        <DsfrAccordionsGroup>
+        <DsfrAccordionsGroup v-model="selectedSubAccordion">
           <DsfrAccordion
             :title="titleSub1"
-            :expanded-id="subExpandedId"
-            @expand="subExpandedId = $event"
           >
             Contenu de l’accordéon dans l’accordéon 1.1
           </DsfrAccordion>
           <DsfrAccordion
             :title="titleSub2"
-            :expanded-id="subExpandedId"
-            @expand="subExpandedId = $event"
           >
             Contenu de l’accordéon dans l’accordéon 1.2
           </DsfrAccordion>
@@ -218,6 +205,8 @@ export const AccordeonDansUnAccordeon = (args) => ({
 AccordeonDansUnAccordeon.args = {
   title: 'Un titre d’accordéon',
   titleSub: 'Accordéon dans l’accordéon',
+  selectedAccordion: undefined,
+  selectedSubAccordion: undefined,
 }
 AccordeonDansUnAccordeon.play = async ({ canvasElement }) => {
   const canvas = within(canvasElement)
@@ -250,18 +239,14 @@ export const AccordeonTitreCustom = (args) => ({
   },
 
   template: `
-    <DsfrAccordionsGroup>
+    <DsfrAccordionsGroup v-model="selectedAccordion">
       <DsfrAccordion
-        :expanded-id="expandedId"
-        @expand="expandedId = $event"
       >
         <template #title><h1>{{title1}}</h1></template>
         Contenu de l’accordéon avec titre customisé
       </DsfrAccordion>
       <DsfrAccordion
         :title="title2"
-        :expanded-id="expandedId"
-        @expand="expandedId = $event"
       >
         Test DsfrAccordion
       </DsfrAccordion>
@@ -271,6 +256,7 @@ export const AccordeonTitreCustom = (args) => ({
 AccordeonTitreCustom.args = {
   title1: 'Un titre d’accordéon customisé',
   title2: 'Un autre titre d’accordéon',
+  selectedAccordion: undefined,
 }
 AccordeonTitreCustom.play = async ({ canvasElement }) => {
   const canvas = within(canvasElement)
@@ -299,7 +285,7 @@ export const AccordeonAvecCheckbox = (args) => ({
   },
 
   template: `
-    <DsfrAccordionsGroup>
+    <DsfrAccordionsGroup v-model="selectedAccordion">
       <template
         v-for="(accordion, name) in accordions"
         :id="\`accordion_${name}\`"
@@ -308,8 +294,6 @@ export const AccordeonAvecCheckbox = (args) => ({
         <DsfrAccordion
           :id="name"
           :title="name"
-          :expanded-id="expandedId"
-          @expand="id => expandedId = id"
         >
           <DsfrCheckboxSet
             :options="accordion.options"
@@ -320,6 +304,7 @@ export const AccordeonAvecCheckbox = (args) => ({
   `,
 })
 AccordeonAvecCheckbox.args = {
+  selectedAccordion: undefined,
   accordions: {
     'Accordéon 1': {
       options: [

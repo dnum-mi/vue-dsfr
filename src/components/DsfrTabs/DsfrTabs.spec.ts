@@ -1,6 +1,7 @@
 import VIcon from '../VIcon/VIcon.vue'
 import { fireEvent } from '@testing-library/dom'
 import { render } from '@testing-library/vue'
+import { ref } from 'vue'
 
 // import '@gouvfr/dsfr/dist/core/core.module.js'
 
@@ -13,6 +14,7 @@ describe('DsfrTabs', () => {
     const title1 = 'Titre 1'
     const title2 = 'Titre 2'
     const title3 = 'Titre 3'
+    const modelValue = ref(0)
 
     const tabTitles = [
       { title: title1, tabId: 'tab1' },
@@ -24,7 +26,7 @@ describe('DsfrTabs', () => {
     const tabContents = ['Contenu1', 'Contenu2', 'Contenu3', 'Contenu4']
 
     // When
-    const { getByText, getByTestId, getAllByRole, getByRole } = render(DsfrTabs, {
+    const { getByText, getByTestId, getAllByRole, getByRole, emitted } = render(DsfrTabs, {
       global: {
         components: {
           VIcon,
@@ -34,6 +36,7 @@ describe('DsfrTabs', () => {
         tabListName,
         tabTitles,
         tabContents,
+        modelValue: modelValue.value,
       },
     })
 
@@ -60,15 +63,9 @@ describe('DsfrTabs', () => {
     await fireEvent.click(thirdTabEl)
     await fireEvent.click(secondTabEl)
 
-    i = 0
-    for (const tabItemEl of tabItemEls) {
-      if (i === 1) {
-        expect(tabItemEl).toHaveAttribute('aria-selected', 'true')
-      } else {
-        expect(tabItemEl).toHaveAttribute('aria-selected', 'false')
-      }
-      i++
-    }
+    expect(emitted()['update:modelValue']).toBeTruthy()
+    expect(emitted()['update:modelValue'][1]).toEqual([2]) // 2nd tab
+    expect(emitted()['update:modelValue'][2]).toEqual([1]) // 2nd tab
 
     // Then
     expect(tabTitleEls[0]).toContainElement(firstTabEl)

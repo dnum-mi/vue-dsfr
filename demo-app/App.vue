@@ -76,10 +76,6 @@ const navItems: DsfrNavigationProps['navItems'] = [
     text: 'Modales',
   },
   {
-    to: { name: 'Tabs' },
-    text: 'Onglets',
-  },
-  {
     to: { name: 'Forms' },
     text: 'Formulaires',
   },
@@ -94,6 +90,22 @@ const navItems: DsfrNavigationProps['navItems'] = [
   {
     to: { name: 'Languages' },
     text: 'Languages',
+  },
+  {
+    title: 'Accordéons et Onglets',
+    get active () {
+      return ['Accordéons', 'Onglets'].includes(route.name as string)
+    },
+    links: [
+      {
+        to: { name: 'Accordions' },
+        text: 'Accordéons',
+      },
+      {
+        to: { name: 'Tabs' },
+        text: 'Onglets',
+      },
+    ],
   },
   {
     title: 'Alertes et Bandeau',

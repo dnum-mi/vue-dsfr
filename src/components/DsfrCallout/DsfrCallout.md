@@ -33,17 +33,17 @@ Ce composant ne déclenche pas d'événements personnalisés.
 ::: code-group
 
 <Story data-title="Démo" min-h="200px">
-  <DsfrConsentDemo />
+  <DsfrCalloutDemo />
 </Story>
 
-<<< docs-demo/DsfrConsentDemo.vue [Code de la démo]
+<<< docs-demo/DsfrCalloutDemo.vue [Code de la démo]
 
-<<< DsfrConsent.vue
+<<< DsfrCallout.vue
 
 :::
 
 <script setup lang="ts">
-import DsfrConsentDemo from './docs-demo/DsfrConsentDemo.vue'
+import DsfrCalloutDemo from './docs-demo/DsfrCalloutDemo.vue'
 </script>
 
 ## ⚙️ Code source du composant

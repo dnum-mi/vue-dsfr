@@ -3,6 +3,8 @@ import { computed, nextTick, onMounted, ref, watch } from 'vue'
 import { Icon } from '@iconify/vue'
 import type { VIconProps } from './VIcon.types'
 
+export type { VIconProps }
+
 const props = withDefaults(defineProps<VIconProps>(), {
   scale: 1,
   verticalAlign: '-0.2em',
