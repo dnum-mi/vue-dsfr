@@ -33,6 +33,12 @@ Il faudra peut-être dans certains cas renommer les icônes car la syntaxe atten
 
 Dans les cas ou le nom de la collection ne contient pas de tiret `-`, alors le `-` est accepté en tant que séparateur entre le nom de collection et le nom d’icône.
 
+### Les onglets
+
+Avant la version 6.x de VueDsfr, pour activer un onglet particulier, il fallait passer la prop `selected` au bon titre d’onglet et à la bonne zone de contenu.
+
+Désormais c’est beaucoup plus simple, il suffit d’utiliser `v-model` sur le composant parent `DsfrTabs`.
+
 ## Migration vers 3.x (depuis 1.x ou 2.x)
 
 La migration de la version 1.x ou 2.x vers la version 3.x nécessite un certain nombre de changements

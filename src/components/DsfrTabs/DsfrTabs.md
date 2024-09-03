@@ -2,11 +2,22 @@
 
 ## 🌟 Introduction
 
-Bonjour les artistes du code ! Voici `DsfrTabs`, le composant d'onglets Vue qui va révolutionner votre façon de présenter des contenus séparés mais cohérents. Avec sa gestion dynamique des onglets et son contenu personnalisable, vous êtes sur le point de donner à vos utilisateurs une expérience de navigation intuitive et élégante. Préparez-vous à plonger dans un monde où chaque onglet raconte sa propre histoire !
+Le composant onglet permet aux utilisateurs de naviguer dans différentes sections de contenu au sein d’une même page.
+
+Le système d'onglet aide à regrouper différents contenus dans un espace limité et permet de diviser un contenu dense en sections accessibles individuellement afin de faciliter la lecture pour l'utilisateur.
 
 🏅 La documentation sur les onglets sur le [DSFR](https://www.systeme-de-design.gouv.fr/elements-d-interface/composants/onglet/)
 
 <VIcon name="vi-file-type-storybook" /> La story sur les onglets sur le storybook de [VueDsfr](https://storybook.vue-ds.fr/?path=/docs/composants-dsfrtabs--docs)
+
+## 📐 Structure
+
+Chaque onglet se compose des éléments suivants :
+
+- un icône à gauche du titre - optionnel.
+- un titre cliquable - obligatoire ( permet d’afficher la zone de contenu qui lui est associée).
+
+Si le nombre d’onglets dépasse la largeur du container, un scroll horizontal permet de naviguer entre les différents onglets.
 
 ## 🛠️ Props
 
@@ -15,7 +26,6 @@ Bonjour les artistes du code ! Voici `DsfrTabs`, le composant d'onglets Vue qui 
 | `tabContents`          | `string[]`                   | `[]`   |             | Contenus (simples) des onglets.                                      |
 | `modelValue` | `number`                  | `0`          |             | Index de l'onglet sélectionné au chargement (*existe depuis VueDsfr v6.0.0*).               |
 | `tabTitles`            | `string[]`                   | `[]`   |             | Titres des onglets avec les id des panneaux et onglets associés. |
->>>>>>> 8171671 (feat: :sparkles: remanie DsfrTabs pour pouvoir utiliser v-model)
 
 ## 📡 Événements
 
@@ -42,24 +52,27 @@ Aussi, plus besoin, depuis la v6, d’utiliser le composable `useTabs()`. Cf. le
 
 ::: warning Important depuis la v6
 
-Méthodes supprimées :
+Méthodes supprimées :
 
-- `DsfrTabs#selectFirst` : permet de sélectionner le premier onglet (raccourci de `selectIndex(0)`)
-- `DsfrTabs#selectLast` : permet de sélectionner le dernier onglet (raccourci de `selectIndex(tabs.length - 1)`)
-- `DsfrTabs#selectIndex()`: n’existe plus : utiliser directement la *ref* utilisée dans le `v-model` de `DsfrTabs`
+- `DsfrTabs#selectFirst()` : permet de sélectionner le premier onglet (raccourci de `selectIndex(0)`)
+- `DsfrTabs#selectLast()` : permet de sélectionner le dernier onglet (raccourci de `selectIndex(tabs.length - 1)`)
+- `DsfrTabs#selectIndex(index: number)` : permet de sélectionner un onglet particulier
 
-Au lieu de :
+Ces méthodes n’existent plus, il faut désormais utiliser directement la *ref* utilisée dans le `v-model` de `DsfrTabs`.
+
+Au lieu de :
 
 ```vue
 <script lang="ts">
 import { ref } from 'vue'
 
 const tabs = ref<HTMLElement>()
+const activeTab = ref(0)
 
-// Quelque part dans le code :
+// Quelque part dans le code :
 tabs.value.selectFirst()
 tabs.value.selectLast()
-tabs.value.selectIndex(n)
+tabs.value.selectIndex(activeTab.value)
 
 // (...)
 </script>
@@ -72,14 +85,14 @@ tabs.value.selectIndex(n)
 </template>
 ```
 
-Utiliser :
+Utiliser :
 
 ```vue
 <script lang="ts">
 import { ref } from 'vue'
 
 const activeTab = ref(0)
-// Quelque part dans le code :
+// Quelque part dans le code :
 activeTab.value = 0 // active le premier onglet
 activeTab.value = n // active l’onglet n
 activeTab.value = tabTitles.length - 1 // active le dernier onglet

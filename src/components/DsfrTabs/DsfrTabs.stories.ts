@@ -7,6 +7,9 @@ import DsfrTabContent from './DsfrTabContent.vue'
 import DsfrAccordionsGroup from '../DsfrAccordion/DsfrAccordionsGroup.vue'
 import DsfrAccordion from '../DsfrAccordion/DsfrAccordion.vue'
 
+const delay = (timeout = 100) =>
+  new Promise((resolve) => setTimeout(resolve, timeout))
+
 const tabListName = 'Liste d’onglet'
 const title1 = 'Titre 1'
 const tabTitles = [
@@ -225,6 +228,47 @@ OngletsComplexes.args = {
   tabTitles: customTabTitles,
   selectedIndex: 1,
 }
+OngletsComplexes.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement)
+  // const firstTab = await canvas.getByLabelText(tabTitles[0].title)
+  // await userEvent.click(firstTab)
+  const buttons = canvas.getAllByRole('button')
+  const tabs = canvas.getAllByRole('tab')
+  const firstTab = tabs[0]
+  const secondTab = tabs[1]
+  const thirdTab = tabs[2]
+  const fourthTab = tabs[3]
+  const firstTabPanel = canvas.getByLabelText(tabTitles[0].title)
+  const secondTabPanel = canvas.getByLabelText(tabTitles[1].title)
+  const thirdTabPanel = canvas.getByLabelText(tabTitles[2].title)
+  const fourthTabPanel = canvas.getByLabelText(tabTitles[3].title)
+  await userEvent.click(buttons.at(1) as HTMLButtonElement)
+  await userEvent.type(secondTab, '{arrowright}')
+  expect(firstTabPanel).not.toHaveClass('fr-tabs__panel--selected')
+  expect(secondTabPanel).not.toHaveClass('fr-tabs__panel--selected')
+  expect(thirdTabPanel).toHaveClass('fr-tabs__panel--selected')
+  expect(thirdTab).toHaveAttribute('aria-selected', 'true')
+  await userEvent.type(thirdTab, '{arrowright}')
+  await userEvent.type(fourthTab, '{arrowright}')
+  expect(thirdTabPanel).not.toHaveClass('fr-tabs__panel--selected')
+  expect(thirdTab).not.toHaveAttribute('aria-selected', 'true')
+  expect(firstTabPanel).toHaveClass('fr-tabs__panel--selected')
+  expect(firstTab).toHaveAttribute('aria-selected', 'true')
+  await userEvent.type(firstTab, '{arrowup}')
+  expect(firstTabPanel).not.toHaveClass('fr-tabs__panel--selected')
+  expect(firstTab).not.toHaveAttribute('aria-selected', 'true')
+  expect(fourthTabPanel).toHaveClass('fr-tabs__panel--selected')
+  expect(fourthTab).toHaveAttribute('aria-selected', 'true')
+  await userEvent.type(fourthTab, '{arrowdown}')
+  await userEvent.tab()
+  expect(firstTabPanel).toHaveFocus()
+  await userEvent.tab()
+  await userEvent.click(buttons.at(2) as HTMLButtonElement)
+  expect(firstTab).not.toHaveAttribute('aria-selected', 'true')
+  expect(secondTab).not.toHaveAttribute('aria-selected', 'true')
+  expect(thirdTab).toHaveAttribute('aria-selected', 'true')
+  expect(fourthTab).not.toHaveAttribute('aria-selected', 'true')
+}
 
 export const OngletsAvecAccordeon = (args) => ({
   components: { DsfrTabs, DsfrTabContent, DsfrAccordionsGroup, DsfrAccordion },
@@ -287,23 +331,20 @@ export const OngletsAvecAccordeon = (args) => ({
 OngletsAvecAccordeon.args = {
   tabContents: [],
   tabListName,
-  tabTitles: [
-    {
-      title: 'Onglet avec accordéon',
-      icon: 'ri-checkbox-circle-line',
-      tabId: 'tab-0',
-      panelId: 'tab-content-0',
-    },
-    {
-      title: 'Titre 2',
-      icon: 'ri-checkbox-circle-line',
-      tabId: 'tab-1',
-      panelId: 'tab-content-1',
-    },
-  ],
+  tabTitles: customTabTitles.slice(0, 2),
   selectedTabIndex: 0,
   title1: 'Un titre d’accordéon 1',
   title2: 'Un titre d’accordéon 2',
   title3: 'Un titre d’accordéon 3',
   selectedAccordion: undefined,
+}
+OngletsAvecAccordeon.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement)
+  const thirdAccordionTitle = canvas.getByText(OngletsAvecAccordeon.args.title3)
+  const thirdAccordion = canvas.getByText('Contenu de l’accordéon 3')
+  expect(thirdAccordionTitle).toBeVisible()
+  expect(thirdAccordion).not.toBeVisible()
+  userEvent.click(thirdAccordionTitle)
+  await delay(500)
+  expect(thirdAccordion).toBeVisible()
 }
