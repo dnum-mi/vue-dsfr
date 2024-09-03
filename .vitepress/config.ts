@@ -100,6 +100,10 @@ const composants = [
     link: '/composants/DsfrAccordion.md',
   },
   {
+    text: 'DsfrAccordionsGroup',
+    link: '/composants/DsfrAccordionsGroup.md',
+  },
+  {
     text: 'DsfrAlert',
     link: '/composants/DsfrAlert.md',
   },
@@ -122,6 +126,10 @@ const composants = [
   {
     text: 'DsfrButtonGroup',
     link: '/composants/DsfrButtonGroup.md',
+  },
+  {
+    text: 'DsfrCallout',
+    link: '/composants/DsfrCallout.md',
   },
   {
     text: 'DsfrCard',

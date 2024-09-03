@@ -51,28 +51,22 @@ export const AccordeonGroupe = (args) => ({
   },
 
   template: `
-  <DsfrAccordionsGroup>
+  <DsfrAccordionsGroup v-model="selectedAccordion">
     <DsfrAccordion
       id="accordion-1"
       :title="title1"
-      :expanded-id="expandedId"
-      @expand="expandedId = $event"
     >
       Contenu de l’accordéon 1
     </DsfrAccordion>
     <DsfrAccordion
       id="accordion-2"
       :title="title2"
-      :expanded-id="expandedId"
-      @expand="id => expandedId = id"
     >
       Contenu de l’accordéon 2
     </DsfrAccordion>
     <DsfrAccordion
       id="accordion-3"
       :title="title3"
-      :expanded-id="expandedId"
-      @expand="id => expandedId = id"
     >
       Contenu de l’accordéon 3
     </DsfrAccordion>
@@ -83,7 +77,7 @@ AccordeonGroupe.args = {
   title1: 'Un titre d’accordéon 1',
   title2: 'Un titre d’accordéon 2',
   title3: 'Un titre d’accordéon 3',
-  expandedId: '',
+  selectedAccordion: undefined,
 }
 
 AccordeonGroupe.play = async ({ canvasElement }) => {

@@ -41,7 +41,7 @@ Le composant `DsfrAccordionsGroup` agit comme un conteneur pour les composants d
 ## ⚙️ Code source des composants
 
 ::: code-group
-<<< DsfrAccordion.vue
+<<< DsfrAccordionsGroup.vue
 <<< DsfrAccordion.types.ts
 :::
 

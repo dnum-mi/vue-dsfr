@@ -1,5 +1,6 @@
 import { setup } from '@storybook/vue3'
 
+import DsfrTabs from './DsfrTabs.vue'
 import DsfrTabItem from './DsfrTabItem.vue'
 import VIcon from '../VIcon/VIcon.vue'
 
@@ -59,6 +60,7 @@ export default {
 
 export const TitreDOnglet = (args) => ({
   components: {
+    DsfrTabs,
     DsfrTabItem,
   },
 
@@ -67,11 +69,8 @@ export const TitreDOnglet = (args) => ({
   },
 
   template: `
-    <div class="fr-tabs" style="overflow: visible">
-      <ul
-        class="fr-tabs__list"
-        role="tablist"
-      >
+    <DsfrTabs :model-value="0">
+      <template #tab-items>
         <DsfrTabItem
           :panel-id="panelId"
           :tab-id="tabId"
@@ -80,8 +79,8 @@ export const TitreDOnglet = (args) => ({
         >
           {{ tabTitle }}
         </DsfrTabItem>
-      </ul>
-    </div>
+      </template>
+    </DsfrTabs>
   `,
 })
 TitreDOnglet.args = {
