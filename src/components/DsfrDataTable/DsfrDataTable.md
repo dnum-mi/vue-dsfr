@@ -4,6 +4,14 @@
 
 Le composant `DsfrDataTable` est un élément puissant et polyvalent pour afficher des données sous forme de tableaux dans vos applications Vue. Utilisant une combinaison de slots, de props, et d'événements personnalisés, ce composant offre une flexibilité remarquable. Plongeons dans les détails !
 
+::: warning Prudence
+
+Ce composant est tout neuf et a besoin de vos retours. Son API ne devrait pas changer, elle devrait s’étoffer dans les prochaines semaines ou les prochains mois.
+
+Si vous avez des propositions, lancer une [**discussion**](https://github.com/dnum-mi/vue-dsfr/discussions) avant d’ouvrir une issue.
+
+:::
+
 🏅 La documentation sur le tableau sur le [DSFR](https://www.systeme-de-design.gouv.fr/elements-d-interface/composants/tableau/)
 
 <VIcon name="vi-file-type-storybook" /> La story sur le tableau de données sur le storybook de [VueDsfr](https://storybook.vue-ds.fr/?path=/docs/composants-dsfrdatatable--docs)

@@ -81,6 +81,7 @@ describe('DsfrTabs', () => {
     const title1 = 'Titre 1'
     const title2 = 'Titre 2'
     const title3 = 'Titre 3'
+    const modelValue = ref(0)
 
     const tabTitles = [
       { title: title1 },
@@ -102,6 +103,7 @@ describe('DsfrTabs', () => {
         tabListName,
         tabTitles,
         tabContents,
+        modelValue: modelValue.value,
       },
     })
 

@@ -64,12 +64,14 @@ const pages = computed<Page[]>(() => props.pages ?? Array.from({ length: pageCou
 const lowestLimit = computed(() => currentPage.value * rowsPerPage.value)
 const highestLimit = computed(() => (currentPage.value + 1) * rowsPerPage.value)
 
-function defaultSortFn (a, b) {
-  const key = props.sorted
-  if ((a[key] ?? a) < (b[key] ?? b)) {
+function defaultSortFn (a: string | DsfrDataTableRow, b: string | DsfrDataTableRow) {
+  const key = props.sorted as string
+  // @ts-expect-error TS7015
+  if (((a as DsfrDataTableRow)[key] ?? a) < ((b as DsfrDataTableRow)[key] ?? b)) {
     return -1
   }
-  if ((a[key] ?? a) > (b[key] ?? b)) {
+  // @ts-expect-error TS7015
+  if (((a as DsfrDataTableRow)[key] ?? a) > ((b as DsfrDataTableRow)[key] ?? b)) {
     return 1
   }
   return 0

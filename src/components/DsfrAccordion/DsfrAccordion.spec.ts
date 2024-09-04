@@ -26,7 +26,6 @@ describe('DsfrAccordion', () => {
       props: {
         title,
         id: 'accordion-1',
-        expandedId: undefined,
       },
       slots: {
         default: content,

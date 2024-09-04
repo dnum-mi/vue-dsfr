@@ -8,7 +8,6 @@ describe('DsfrVideo', () => {
   it('should render a div with a small video with transcription', () => {
     // Given
     const size = 'small'
-    const format4x3 = false
     const src = 'https://www.youtube.com/embed/HyirpmPL43I'
     const legend = 'Vidéo de ouf'
 
@@ -22,7 +21,6 @@ describe('DsfrVideo', () => {
       },
       props: {
         size,
-        format4x3,
         src,
         legend,
       },
