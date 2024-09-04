@@ -45,7 +45,7 @@ const currentPage = ref<number>(0)
       bottom-action-bar-class="bottom-action-bar-class"
       pagination-wrapper-class="pagination-wrapper-class"
       sorted="id"
-      sortable-rows
+      :sortable-rows="['id']"
     >
       <template #header="{ label }">
         <em>{{ label }}</em>
