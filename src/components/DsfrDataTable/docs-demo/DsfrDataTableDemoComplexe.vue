@@ -40,6 +40,7 @@ const selection = ref<string[]>([])
       :headers-row="headers"
       :rows="rows"
       selectable-rows
+      sortable-rows
       :row-key="0"
     >
       <template #header="{ key, label }">

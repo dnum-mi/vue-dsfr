@@ -20,14 +20,10 @@ const headers: DsfrDataTableProps['headersRow'] = [
 ]
 
 const rows = [
-  { id: 1, name: 'John Doe', email: 'john.doe@gmail.com' },
   { id: 2, name: 'Jane Doe', email: 'jane.doe@gmail.com' },
+  { id: 1, name: 'John Doe', email: 'john.doe@gmail.com' },
   { id: 3, name: 'James Bond', email: 'james.bond@mi6.gov.uk' },
 ]
-
-const click = (event: MouseEvent, key: string) => {
-  console.warn(event, key)
-}
 
 const selection = ref<string[]>([])
 const currentPage = ref<number>(0)
@@ -48,11 +44,11 @@ const currentPage = ref<number>(0)
       :pagination-options="[1, 2, 3]"
       bottom-action-bar-class="bottom-action-bar-class"
       pagination-wrapper-class="pagination-wrapper-class"
+      sorted="id"
+      sortable-rows
     >
-      <template #header="{ key, label }">
-        <div @click="click($event, key)">
-          <em>{{ label }}</em>
-        </div>
+      <template #header="{ label }">
+        <em>{{ label }}</em>
       </template>
 
       <template #cell="{ colKey, cell }">
