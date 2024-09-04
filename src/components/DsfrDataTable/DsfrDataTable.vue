@@ -139,6 +139,10 @@ function onPaginationOptionsChange () {
   wholeSelection.value = false
   selection.value.length = 0
 }
+
+function copyToClipboard (text) {
+  navigator.clipboard.writeText(text)
+}
 </script>
 
 <template>
@@ -240,6 +244,9 @@ function onPaginationOptionsChange () {
                 <td
                   v-for="(cell, cellIdx) of row"
                   :key="typeof cell === 'object' ? cell[rowKey] : cell"
+                  tabindex="0"
+                  @keydown.ctrl.c="copyToClipboard(typeof cell === 'object' ? cell[rowKey] : cell)"
+                  @keydown.meta.c="copyToClipboard(typeof cell === 'object' ? cell[rowKey] : cell)"
                 >
                   <slot
                     name="cell"
