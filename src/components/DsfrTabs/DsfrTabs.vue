@@ -45,11 +45,6 @@ provide(registerTabKey, (tabId: Ref<string>) => {
 
   const isVisible = computed(() => myIndex === activeTab.value)
 
-  // watch(tabId, () => {
-  //   console.log({ myIndex, tabId: tabId.value })
-  //   tabs.value.set(myIndex, tabId.value)
-  // })
-
   watch(tabId, () => {
     tabs.value.set(myIndex, tabId.value)
   })

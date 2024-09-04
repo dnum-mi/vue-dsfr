@@ -2,8 +2,40 @@
 import { computed, ref } from 'vue'
 
 import { getRandomId } from '@/utils/random-utils'
-import DsfrPagination, { type Page } from '../DsfrPagination/DsfrPagination.vue'
-import type { DsfrDataTableProps } from './DsfrDataTable.types'
+import VIcon from '../VIcon/VIcon.vue'
+import DsfrPagination from '../DsfrPagination/DsfrPagination.vue'
+
+export type Page = { href?: string, label: string, title: string }
+
+export type DsfrDataTableRow = (string | number | boolean | bigint | symbol)[]
+  | Record<string | symbol | number, unknown>
+
+export type DsfrDataTableHeaderCellObject = { key: string, label: string, headerAttrs?: Record<string, unknown> }
+export type DsfrDataTableHeaderCell = (string | DsfrDataTableHeaderCellObject)
+
+export type DsfrDataTableProps = {
+  id?: string
+  title: string
+  rowKey?: string | number
+  headersRow: DsfrDataTableHeaderCell[]
+  rows: DsfrDataTableRow[]
+  topActionsRow?: string[]
+  bottomActionsRow?: string[]
+  selectableRows?: boolean
+  sortableRows?: boolean
+  sorted: string
+  sortFn?: (a: unknown, b: unknown) => number
+  verticalBorders?: boolean
+  bottomCaption?: boolean
+  noCaption?: boolean
+  pages?: Page[]
+  pagination?: boolean
+  paginationOptions?: number[]
+  currentPage?: number
+  rowsPerPage?: number
+  bottomActionBarClass?: string | Record<string, boolean> | Array<string | Record<string, boolean>>
+  paginationWrapperClass?: string | Record<string, boolean> | Array<string | Record<string, boolean>>
+}
 
 const props = withDefaults(defineProps<DsfrDataTableProps>(), {
   id: () => getRandomId('table'),
@@ -32,6 +64,42 @@ const pages = computed<Page[]>(() => props.pages ?? Array.from({ length: pageCou
 const lowestLimit = computed(() => currentPage.value * rowsPerPage.value)
 const highestLimit = computed(() => (currentPage.value + 1) * rowsPerPage.value)
 
+function defaultSortFn (a, b) {
+  const key = props.sorted
+  if ((a[key] ?? a) < (b[key] ?? b)) {
+    return -1
+  }
+  if ((a[key] ?? a) > (b[key] ?? b)) {
+    return 1
+  }
+  return 0
+}
+
+const sorted = defineModel<string | undefined>('sorted', { default: undefined })
+const sortedDesc = defineModel('sortedDesc', { default: false })
+function sortBy (key: string) {
+  if (!props.sortableRows) {
+    return
+  }
+  if (sorted.value === key) {
+    if (sortedDesc.value) {
+      sorted.value = undefined
+      sortedDesc.value = false
+      return
+    }
+    sortedDesc.value = true
+    return
+  }
+  sortedDesc.value = false
+  sorted.value = key
+}
+const sortedRows = computed(() => {
+  const _sortedRows = sorted.value ? props.rows.slice().sort(props.sortFn ?? defaultSortFn) : props.rows.slice()
+  if (sortedDesc.value) {
+    _sortedRows.reverse()
+  }
+  return _sortedRows
+})
 const finalRows = computed(() => {
   const rowKeys = props.headersRow.map((header) => {
     if (typeof header !== 'object') {
@@ -40,7 +108,7 @@ const finalRows = computed(() => {
     return header.key
   })
 
-  const rows = props.rows.map((row) => {
+  const rows = sortedRows.value.map((row) => {
     if (Array.isArray(row)) {
       return row
     }
@@ -108,17 +176,34 @@ function onPaginationOptionsChange () {
                   </div>
                 </th>
                 <th
-                  v-for="header of headersRow"
+                  v-for="(header, idx) of headersRow"
                   :key="typeof header === 'object' ? header.key : header"
                   scope="col"
                   v-bind="typeof header === 'object' && header.headerAttrs"
+                  :tabindex="sortableRows ? 0 : undefined"
+                  @click="sortBy((header as DsfrDataTableHeaderCellObject).key ?? (Array.isArray(rows[0]) ? idx : header))"
+                  @keydown.enter="sortBy((header as DsfrDataTableHeaderCellObject).key ?? header)"
+                  @keydown.space="sortBy((header as DsfrDataTableHeaderCellObject).key ?? header)"
                 >
-                  <slot
-                    name="header"
-                    v-bind="typeof header === 'object' ? header : { key: header, label: header }"
+                  <div
+                    :class="{ 'sortable-header': sortableRows }"
                   >
-                    {{ typeof header === 'object' ? header.label : header }}
-                  </slot>
+                    <slot
+                      name="header"
+                      v-bind="typeof header === 'object' ? header : { key: header, label: header }"
+                    >
+                      {{ typeof header === 'object' ? header.label : header }}
+                    </slot>
+                    <span v-if="sorted !== ((header as DsfrDataTableHeaderCellObject).key ?? header) && sortableRows">
+                      <VIcon
+                        name="ri-sort-asc"
+                        color="var(--grey-625-425)"
+                      />
+                    </span>
+                    <span v-else-if="sorted === ((header as DsfrDataTableHeaderCellObject).key ?? header)">
+                      <VIcon :name="sortedDesc ? 'ri-sort-desc' : 'ri-sort-asc'" />
+                    </span>
+                  </div>
                 </th>
               </tr>
             </thead>
@@ -246,5 +331,10 @@ function onPaginationOptionsChange () {
 }
 :deep(.fr-pagination__link) {
   margin-bottom: 0 !important;
+}
+.sortable-header {
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
 }
 </style>
