@@ -20,4 +20,6 @@ export type DsfrDataTableProps = {
   paginationOptions?: number[]
   currentPage?: number
   rowsPerPage?: number
+  bottomActionBarClass?: string | Record<string, boolean> | Array<string | Record<string, boolean>>
+  paginationWrapperClass?: string | Record<string, boolean> | Array<string | Record<string, boolean>>
 }

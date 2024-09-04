@@ -34,18 +34,20 @@ const currentPage = ref<number>(0)
 </script>
 
 <template>
-  <div class="fr-container fr-my-2v">
+  <div class="fr-container fr-my-2v w-[800px]">
     <DsfrDataTable
       v-model:selection="selection"
       v-model:current-page="currentPage"
       :headers-row="headers"
       :rows="rows"
       selectable-rows
-      :row-key="0"
+      row-key="id"
       title="Titre du tableau (caption)"
       pagination
       :rows-per-page="2"
       :pagination-options="[1, 2, 3]"
+      bottom-action-bar-class="bottom-action-bar-class"
+      pagination-wrapper-class="pagination-wrapper-class"
     >
       <template #header="{ key, label }">
         <div @click="click($event, key)">
@@ -65,3 +67,12 @@ const currentPage = ref<number>(0)
     IDs sélectionnées : {{ selection }}
   </div>
 </template>
+
+<style scoped>
+:deep(.bottom-action-bar-class) {
+  width: 860px;
+}
+:deep(.pagination-wrapper-class) {
+  width: 860px;
+}
+</style>

@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { computed } from 'vue'
+import { computed, ref } from 'vue'
 
 import { getRandomId } from '@/utils/random-utils'
 import DsfrPagination, { type Page } from '../DsfrPagination/DsfrPagination.vue'
@@ -11,6 +11,7 @@ const props = withDefaults(defineProps<DsfrDataTableProps>(), {
   bottomActionsRow: () => [],
   currentPage: 0,
   rowsPerPage: 10,
+  rowKey: 0,
   paginationOptions: () => [
     5,
     10,
@@ -22,7 +23,7 @@ const emit = defineEmits<{
   'update:current-page': [page: number]
 }>()
 
-const selection = defineModel<string[]>('selection')
+const selection = defineModel<string[]>('selection', { default: [] })
 const rowsPerPage = defineModel<number>('rowsPerPage', { default: 10 })
 const currentPage = defineModel<number>('currentPage', { default: 1 })
 const pageCount = computed(() => Math.ceil(props.rows.length / rowsPerPage.value))
@@ -52,6 +53,24 @@ const finalRows = computed(() => {
 
   return rows
 })
+
+function selectAll (bool: boolean) {
+  if (bool) {
+    const keyIndex = props.headersRow.findIndex(header => (header as DsfrDataTableHeaderCellObject).key ?? header)
+    selection.value = finalRows.value.map(row => row[keyIndex] as string)
+  }
+  selection.value!.length = 0
+}
+const wholeSelection = ref(false)
+function checkSelection () {
+  wholeSelection.value = selection.value.length === finalRows.value.length
+}
+
+function onPaginationOptionsChange () {
+  emit('update:current-page', 0)
+  wholeSelection.value = false
+  selection.value.length = 0
+}
 </script>
 
 <template>
@@ -72,7 +91,21 @@ const finalRows = computed(() => {
                   class="fr-cell--fixed"
                   role="columnheader"
                 >
-                  <span class="fr-sr-only">Sélectionner</span>
+                  <div class="fr-checkbox-group fr-checkbox-group--sm">
+                    <!-- @vue-expect-error TS2538 -->
+                    <input
+                      :id="`table-select--${id}-all`"
+                      :checked="wholeSelection"
+                      type="checkbox"
+                      @input="selectAll($event.target.checked)"
+                    >
+                    <label
+                      class="fr-label"
+                      :for="`table-select--${id}-all`"
+                    >
+                      Sélectionner tout
+                    </label>
+                  </div>
                 </th>
                 <th
                   v-for="header of headersRow"
@@ -103,14 +136,15 @@ const finalRows = computed(() => {
                   <div class="fr-checkbox-group fr-checkbox-group--sm">
                     <!-- @vue-expect-error TS2538 -->
                     <input
-                      id="table-select-checkbox-7748--0"
+                      :id="`row-select-${id}-${idx}`"
                       v-model="selection"
-                      :value="row[rowKey] ?? `row-${idx}`"
+                      :value="rows[idx][rowKey] ?? `row-${idx}`"
                       type="checkbox"
+                      @change="checkSelection()"
                     >
                     <label
                       class="fr-label"
-                      for="table-select-checkbox-7748--0"
+                      :for="`row-select-${id}-${idx}`"
                     >
                       Sélectionner la ligne {{ idx + 1 }}
                     </label>
@@ -141,51 +175,76 @@ const finalRows = computed(() => {
         </div>
       </div>
     </div>
-    <slot name="pagination">
-      <template
-        v-if="pagination"
-      >
-        <div class="flex">
-          <div class="fr-select-group flex">
-            <label class="fr-label">Résultats par page : </label>
-            <select
-              v-model="rowsPerPage"
-              class="fr-select"
-              @change="emit('update:current-page', 0)"
-            >
-              <option
-                value=""
-                :selected="!paginationOptions.includes(rowsPerPage)"
-                disabled="true"
-                hidden="hidden"
+    <div
+      :class="bottomActionBarClass"
+    >
+      <slot name="pagination">
+        <template
+          v-if="pagination && !$slots.pagination"
+        >
+          <div
+            class="flex  justify-between  items-center"
+            :class="paginationWrapperClass"
+          >
+            <div class="flex  gap-2  items-center">
+              <label
+                class="fr-label"
+                for="pagination-options"
               >
-                Sélectionner une option
-              </option>
-              <option
-                v-for="(option, idx) in paginationOptions"
-                :key="idx"
-                :value="option"
-                :selected="+option === rowsPerPage"
+                Résultats par page :
+              </label>
+              <select
+                id="pagination-options"
+                v-model="rowsPerPage"
+                class="fr-select"
+                @change="onPaginationOptionsChange()"
               >
-                {{ option }}
-              </option>
-            </select>
+                <option
+                  value=""
+                  :selected="!paginationOptions.includes(rowsPerPage)"
+                  disabled="true"
+                  hidden="hidden"
+                >
+                  Sélectionner une option
+                </option>
+                <option
+                  v-for="(option, idx) in paginationOptions"
+                  :key="idx"
+                  :value="option"
+                  :selected="+option === rowsPerPage"
+                >
+                  {{ option }}
+                </option>
+              </select>
+            </div>
+            <div class="flex ml-1">
+              <span class="self-center">Page {{ currentPage + 1 }} sur {{ pageCount }}</span>
+            </div>
+            <DsfrPagination
+              v-model:current-page="currentPage"
+              :pages="pages"
+            />
           </div>
-          <div class="flex ml-1">
-            <span class="self-center">Page {{ currentPage + 1 }} sur {{ pageCount }}</span>
-          </div>
-          <DsfrPagination
-            v-model:current-page="currentPage"
-            :pages="pages"
-          />
-        </div>
-      </template>
-    </slot>
+        </template>
+      </slot>
+    </div>
   </div>
 </template>
 
 <style scoped>
 .flex {
   display: flex;
+}
+.justify-between {
+  justify-content: space-between;
+}
+.items-center {
+  align-items: center;
+}
+.gap-2 {
+  gap: 0.5rem;
+}
+:deep(.fr-pagination__link) {
+  margin-bottom: 0 !important;
 }
 </style>
