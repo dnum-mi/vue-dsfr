@@ -22,7 +22,7 @@ export type DsfrDataTableProps = {
   topActionsRow?: string[]
   bottomActionsRow?: string[]
   selectableRows?: boolean
-  sortableRows?: boolean
+  sortableRows?: boolean | string[]
   sorted: string
   sortFn?: (a: unknown, b: unknown) => number
   verticalBorders?: boolean
@@ -75,15 +75,15 @@ function defaultSortFn (a, b) {
   return 0
 }
 
-const sorted = defineModel<string | undefined>('sorted', { default: undefined })
+const sortedBy = defineModel<string | undefined>('sortedBy', { default: undefined })
 const sortedDesc = defineModel('sortedDesc', { default: false })
 function sortBy (key: string) {
-  if (!props.sortableRows) {
+  if (!props.sortableRows || (Array.isArray(props.sortableRows) && !props.sortableRows.includes(key))) {
     return
   }
-  if (sorted.value === key) {
+  if (sortedBy.value === key) {
     if (sortedDesc.value) {
-      sorted.value = undefined
+      sortedBy.value = undefined
       sortedDesc.value = false
       return
     }
@@ -91,10 +91,10 @@ function sortBy (key: string) {
     return
   }
   sortedDesc.value = false
-  sorted.value = key
+  sortedBy.value = key
 }
 const sortedRows = computed(() => {
-  const _sortedRows = sorted.value ? props.rows.slice().sort(props.sortFn ?? defaultSortFn) : props.rows.slice()
+  const _sortedRows = sortedBy.value ? props.rows.slice().sort(props.sortFn ?? defaultSortFn) : props.rows.slice()
   if (sortedDesc.value) {
     _sortedRows.reverse()
   }
@@ -140,7 +140,7 @@ function onPaginationOptionsChange () {
   selection.value.length = 0
 }
 
-function copyToClipboard (text) {
+function copyToClipboard (text: string) {
   navigator.clipboard.writeText(text)
 }
 </script>
@@ -190,7 +190,7 @@ function copyToClipboard (text) {
                   @keydown.space="sortBy((header as DsfrDataTableHeaderCellObject).key ?? header)"
                 >
                   <div
-                    :class="{ 'sortable-header': sortableRows }"
+                    :class="{ 'sortable-header': sortableRows === true || (Array.isArray(sortableRows) && sortableRows.includes((header as DsfrDataTableHeaderCellObject).key ?? header)) }"
                   >
                     <slot
                       name="header"
@@ -198,13 +198,13 @@ function copyToClipboard (text) {
                     >
                       {{ typeof header === 'object' ? header.label : header }}
                     </slot>
-                    <span v-if="sorted !== ((header as DsfrDataTableHeaderCellObject).key ?? header) && sortableRows">
+                    <span v-if="sortedBy !== ((header as DsfrDataTableHeaderCellObject).key ?? header) && (sortableRows === true || (Array.isArray(sortableRows) && sortableRows.includes((header as DsfrDataTableHeaderCellObject).key ?? header)))">
                       <VIcon
                         name="ri-sort-asc"
                         color="var(--grey-625-425)"
                       />
                     </span>
-                    <span v-else-if="sorted === ((header as DsfrDataTableHeaderCellObject).key ?? header)">
+                    <span v-else-if="sortedBy === ((header as DsfrDataTableHeaderCellObject).key ?? header)">
                       <VIcon :name="sortedDesc ? 'ri-sort-desc' : 'ri-sort-asc'" />
                     </span>
                   </div>
