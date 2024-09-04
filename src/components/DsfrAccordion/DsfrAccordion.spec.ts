@@ -1,24 +1,31 @@
-import { fireEvent, render } from '@testing-library/vue'
-import { OhVueIcon as VIcon } from 'oh-vue-icons'
+import { render } from '@testing-library/vue'
+import VIcon from '../VIcon/VIcon.vue'
 // import '@gouvfr/dsfr/dist/core/core.module.js'
 
 import DsfrAccordion from './DsfrAccordion.vue'
+import { registerTabKey } from './injection-key'
+import { ref } from 'vue'
 
 describe('DsfrAccordion', () => {
   it('should render a simple accordion', async () => {
     const title = 'Intitulé de l’accordéon'
     const content = 'Contenu de l’accordéon'
 
-    const { getByText, emitted } = render(DsfrAccordion, {
+    const { getByText } = render(DsfrAccordion, {
       global: {
         components: {
           VIcon,
+        },
+        provide: {
+          [registerTabKey as symbol]: () => ({
+            isActive: ref(false),
+            expand: () => {},
+          }),
         },
       },
       props: {
         title,
         id: 'accordion-1',
-        expandedId: undefined,
       },
       slots: {
         default: content,
@@ -30,15 +37,8 @@ describe('DsfrAccordion', () => {
 
     expect(contentEl).toHaveClass('fr-collapse')
     expect(contentEl).toHaveAttribute('id', 'accordion-1')
-    expect(titleEl.parentNode).toHaveClass('fr-accordion__btn')
-    expect(titleEl.parentNode.parentNode).toHaveClass('fr-accordion__title')
-    expect(titleEl.parentNode.parentNode.parentNode).toHaveClass('fr-accordion')
-
-    await fireEvent.click(titleEl.parentNode)
-
-    expect(emitted()).toHaveProperty('expand')
-    expect(emitted().expand).toStrictEqual([['accordion-1']])
-
-    // Cannot test expandedId because Component is not wrapped in a listening Vue instance
+    expect(titleEl).toHaveClass('fr-accordion__btn')
+    expect(titleEl.parentNode).toHaveClass('fr-accordion__title')
+    expect(titleEl.parentNode.parentNode).toHaveClass('fr-accordion')
   })
 })

@@ -1,15 +1,7 @@
-import { OhVueIcon as VIcon, addIcons } from 'oh-vue-icons'
-import { fn } from '@storybook/test'
+import { expect, fn, within } from '@storybook/test'
 
-import {
-  RiCheckboxCircleLine,
-  RiLoader4Line,
-  RiSearchLine,
-} from 'oh-vue-icons/icons'
-
+import VIcon from '../VIcon/VIcon.vue'
 import DsfrButton from './DsfrButton.vue'
-
-addIcons(RiCheckboxCircleLine, RiSearchLine, RiLoader4Line)
 
 /**
  * [Voir quand l’utiliser sur la documentation du DSFR](https://www.systeme-de-design.gouv.fr/elements-d-interface/composants/bouton)
@@ -62,6 +54,10 @@ export const BoutonPrimaire = (args) => ({
   data () {
     return {
       ...args,
+      onClickWrapper () {
+        this.theClick()
+        this.onClick()
+      },
     }
   },
   template: `
@@ -75,7 +71,7 @@ export const BoutonPrimaire = (args) => ({
       :no-outline="noOutline"
       :icon-only="iconOnly"
       :icon-right="iconRight"
-      @click="onClick"
+      @click="onClickWrapper()"
     />
   `,
 })
@@ -89,6 +85,15 @@ BoutonPrimaire.args = {
   iconRight: false,
   noOutline: false,
   size: undefined,
+  theClick: fn(),
+}
+
+BoutonPrimaire.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement)
+  const button = canvas.getByRole('button')
+  expect(BoutonPrimaire.args.theClick).not.toHaveBeenCalled()
+  button.click()
+  expect(BoutonPrimaire.args.theClick).toHaveBeenCalledOnce()
 }
 
 export const BoutonPrimaireAvecIcone = (args) => ({
@@ -117,6 +122,11 @@ BoutonPrimaireAvecIcone.args = {
   iconRight: false,
   noOutline: false,
   size: undefined,
+}
+BoutonPrimaireAvecIcone.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement)
+  const button = canvas.getByRole('button')
+  expect(button.firstElementChild?.nextElementSibling).toContainHTML('<svg')
 }
 
 export const BoutonPrimaireAvecIconeAnimee = (args) => ({
@@ -172,6 +182,11 @@ BoutonSecondaire.args = {
   noOutline: false,
   size: undefined,
 }
+BoutonSecondaire.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement)
+  const button = canvas.getByRole('button')
+  expect(button).toHaveClass('fr-btn--secondary')
+}
 
 export const BoutonTertiaire = (args) => ({
   components: { DsfrButton },
@@ -198,6 +213,11 @@ BoutonTertiaire.args = {
   noOutline: false,
   size: undefined,
 }
+BoutonTertiaire.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement)
+  const button = canvas.getByRole('button')
+  expect(button).toHaveClass('fr-btn--tertiary')
+}
 
 export const BoutonTertiaireSansBordure = (args) => ({
   components: { DsfrButton },
@@ -223,6 +243,11 @@ BoutonTertiaireSansBordure.args = {
   tertiary: true,
   noOutline: true,
   size: undefined,
+}
+BoutonTertiaireSansBordure.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement)
+  const button = canvas.getByRole('button')
+  expect(button).toHaveClass('fr-btn--tertiary-no-outline')
 }
 
 export const SuiteDeBoutons = (args) => ({
@@ -276,4 +301,13 @@ SuiteDeBoutons.args = {
       iconRight: true,
     },
   ],
+}
+
+SuiteDeBoutons.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement)
+  const buttons = canvas.getAllByRole('button')
+  expect(buttons).toHaveLength(4)
+  for (const button of buttons) {
+    expect(button).toBeVisible()
+  }
 }

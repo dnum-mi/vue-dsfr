@@ -139,9 +139,9 @@ import {
   DsfrButton,
   DsfrBreadcrumb,
   DsfrCard,
+  VIcon,
 } from '@gouvminint/vue-dsfr'                                // Imports nommés de la bibliothèque
 
-import { OhVueIcon } from 'oh-vue-icons'                     // Import de OhVueIcon, dont dépendent certains composants de VueDsfr
 import '@gouvfr/dsfr/dist/dsfr.min.css'                      // Import des styles du DSFR
 import '@gouvminint/vue-dsfr/styles'                         // Import des styles propres à la bibliothèque VueDSFR
 
@@ -150,7 +150,7 @@ const app = createApp(App)
   .component('DsfrButton', DsfrButton)                       // Enregistrement global du composant DsfrButton
   .component('DsfrBreadcrumb', DsfrBreadcrumb)               // Enregistrement global du composant DsfrBreadcrumb
   .component('DsfrCard', DsfrCard)                           // Enregistrement global du composant DsfrCard
-  .component('VIcon', OhVueIcon)                             // Enregistrement global du composant VIcon, dont dépendent certains composants de VueDsfr
+  .component('VIcon', VIcon)                             // Enregistrement global du composant VIcon, dont dépendent certains composants de VueDsfr
   .mount('#app')
 ```
 

@@ -1,6 +1,4 @@
 import antfu from '@antfu/eslint-config'
-import storybook from 'eslint-plugin-storybook'
-import cypress from 'eslint-plugin-cypress'
 
 // const compat = new FlatCompat({
 //   baseDirectory: import.meta.dirname,
@@ -10,10 +8,6 @@ export default antfu({
   vue: true,
 }, [
   {
-    plugins: {
-      storybook,
-      cypress,
-    },
     rules: {
       'test/prefer-lowercase-title': 'off',
       'sort-imports': 'off', // Should be 'error'
@@ -73,23 +67,6 @@ export default antfu({
       'storybook/story-exports': 'error',
       'storybook/use-storybook-expect': 'error',
       'storybook/use-storybook-testing-library': 'error',
-    },
-  },
-  {
-    files: [
-      'cypress/support/*.{js,ts,jsx,tsx}',
-      'cypress/integration/*.{spec,e2e}.{js,ts,jsx,tsx}',
-      'cypress/e2e/**/*.{cy,spec,e2e}.{js,ts,jsx,tsx}',
-      'src/**/*.ct.{js,ts,jsx,tsx}',
-      '**/src/**/*.e2e.{j,t}s?(x)',
-    ],
-    languageOptions: {
-      globals: {
-        'cypress/globals': true,
-      },
-    },
-    rules: {
-      'cypress/no-unnecessary-waiting': 'error',
     },
   },
 ])

@@ -1,17 +1,20 @@
 <script setup lang="ts">
-import { computed } from 'vue'
+import { computed, inject, toRef } from 'vue'
 
 import type { DsfrTabContentProps } from './DsfrTabs.types'
+import { registerTabKey } from './injection-key'
 
 export type { DsfrTabContentProps }
 
 const props = defineProps<DsfrTabContentProps>()
 
 const values = { true: '100%', false: '-100%' }
+const useTab = inject(registerTabKey)!
+const { isVisible, asc } = useTab(toRef(() => props.tabId))
 // @ts-expect-error this will be fine
-const translateValueFrom = computed(() => values[String(props.asc)])
+const translateValueFrom = computed(() => values[String(asc?.value)])
 // @ts-expect-error this will be fine
-const translateValueTo = computed(() => values[String(!props.asc)])
+const translateValueTo = computed(() => values[String(!asc?.value)])
 </script>
 
 <template>
@@ -20,15 +23,15 @@ const translateValueTo = computed(() => values[String(!props.asc)])
     mode="in-out"
   >
     <div
-      v-show="selected"
+      v-show="isVisible"
       :id="panelId"
       class="fr-tabs__panel"
       :class="{
-        'fr-tabs__panel--selected': selected,
+        'fr-tabs__panel--selected': isVisible,
       }"
       role="tabpanel"
       :aria-labelledby="tabId"
-      :tabindex="selected ? 0 : -1"
+      :tabindex="isVisible ? 0 : -1"
     >
       <!-- @slot Slot par défaut pour le contenu de l’onglet. Sera dans `<div class="fr-tabs__panel">` -->
       <slot />

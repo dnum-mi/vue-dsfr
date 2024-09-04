@@ -15,7 +15,8 @@ describe('DsfrNotice', () => {
       },
     })
 
-    getByText(title)
+    const titleEl = getByText(title)
+    expect(titleEl).toHaveClass('fr-notice__title')
     const closeButton = getByRole('button')
     await fireEvent.click(closeButton)
 
@@ -26,6 +27,7 @@ describe('DsfrNotice', () => {
   it('should render a notice', async () => {
     // Given
     const title = 'Titre de la notice'
+    const desc = 'Description de la notice'
     const closeable = false
 
     // When
@@ -33,10 +35,14 @@ describe('DsfrNotice', () => {
       props: {
         closeable,
         title,
+        desc,
       },
     })
 
-    getByText(title)
+    const titleEl = getByText(title)
+    expect(titleEl).toHaveClass('fr-notice__title')
+    const descEl = getByText(desc)
+    expect(descEl).toHaveClass('fr-notice__desc')
     expect(() => getByRole('button')).toThrow()
   })
 })

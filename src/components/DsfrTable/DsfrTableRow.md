@@ -2,7 +2,7 @@
 
 Rencontrez `DsfrTableRow`, le composant incontournable pour structurer les lignes de votre tableau Vue avec style et efficacité. Parfait pour organiser les données et les présenter de manière claire, ce composant est un véritable atout dans votre boîte à outils de développeur.
 
-## Props 🛠️
+## 🛠️ Props
 
 | Nom        | Type                   | Défaut | Obligatoire | Description                                                 |
 |------------|------------------------|--------|-------------|-------------------------------------------------------------|
@@ -18,7 +18,7 @@ Rencontrez `DsfrTableRow`, le composant incontournable pour structurer les ligne
 
 - **Slot par défaut**: Utilisé pour insérer du contenu personnalisé dans la rangée du tableau, avant les cellules générées automatiquement.
 
-## Exemples 📝
+## 📝 Exemples
 
 ### Exemple basique
 

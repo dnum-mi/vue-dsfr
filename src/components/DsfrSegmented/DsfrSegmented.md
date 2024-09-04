@@ -20,7 +20,7 @@ Le composant « contrôle segmenté » incite l'utilisateur à choisir entre
 | `value`    | `string \| number`                       |                     | ✅          |  Valeur du bouton radio.                                           |
 | `label`    | `string`                                 | `''`                |             |  Texte du label associé au bouton.                                 |
 | `disabled` | `boolean`                                | `false`             |             |  Si `true`, désactive le bouton radio.                             |
-| `icon`     | `string \| InstanceType<typeof VIcon>['$props']` | `undefined` |             |  Icône à afficher à côté du label (facultatif). Si la valeur est une string commençant par `'fr-'`, cette classe sera ajoutée à la balise `<label>`, sinon c’est une icône OhVueIcon qui sera utilisée                        |
+| `icon`     | `string \| InstanceType<typeof VIcon>['$props']` | `undefined` |             |  Icône à afficher à côté du label (facultatif). Si la valeur est une string commençant par `'fr-'`, cette classe sera ajoutée à la balise `<label>`, sinon c’est une icône [Iconify](/composants/VIcon) qui sera utilisée                        |
 
 ::: info Astuce 1
 

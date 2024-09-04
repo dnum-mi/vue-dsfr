@@ -2,7 +2,7 @@
   "extends": "./tsconfig.app.json",
   "compilerOptions": {
     "composite": true,
-    "lib": [],
+    "lib": ["ES2022"],
     "types": ["node", "jsdom"]
   },
   "exclude": ["**/*.spec.ts", "**/*.stories.ts", "**/*.e2e.ts"]

@@ -1,4 +1,4 @@
-import type { OhVueIcon as VIcon } from 'oh-vue-icons'
+import type VIcon from '../VIcon/VIcon.vue'
 
 export type DsfrSegmentedProps = {
   id?: string

@@ -1,4 +1,4 @@
-import { OhVueIcon as VIcon } from 'oh-vue-icons'
+import VIcon from '../VIcon/VIcon.vue'
 import { fireEvent, render } from '@testing-library/vue'
 
 import DsfrTableHeader from './DsfrTableHeader.vue'

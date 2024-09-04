@@ -1,4 +1,4 @@
-import { OhVueIcon as VIcon } from 'oh-vue-icons'
+import VIcon from '../VIcon/VIcon.vue'
 import { render } from '@testing-library/vue'
 
 import RadioButton from './DsfrRadioButton.vue'
@@ -19,6 +19,7 @@ describe('DsfrRadioButton', () => {
       },
       props: {
         label,
+        modelValue: undefined,
         value,
         name,
       },
@@ -50,6 +51,7 @@ describe('DsfrRadioButton', () => {
       props: {
         label,
         value,
+        modelValue: undefined,
         name,
         img,
       },

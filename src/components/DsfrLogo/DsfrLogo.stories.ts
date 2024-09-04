@@ -1,3 +1,4 @@
+import { within, expect } from '@storybook/test'
 import DsfrLogo from './DsfrLogo.vue'
 
 export default {
@@ -39,4 +40,9 @@ Logo.args = {
   logoText: ['République', 'Française'],
   small: false,
   large: false,
+}
+Logo.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement)
+  const p = canvas.getByText(new RegExp(Logo.args.logoText.join('.*')))
+  expect(p).toHaveClass('fr-logo')
 }

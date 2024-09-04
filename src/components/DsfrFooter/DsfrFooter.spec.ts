@@ -1,11 +1,8 @@
-import { OhVueIcon as VIcon, addIcons } from 'oh-vue-icons'
 import { render } from '@testing-library/vue'
 import { createRouter, createWebHistory } from 'vue-router'
 
-import { RiExternalLinkLine } from 'oh-vue-icons/icons'
+import VIcon from '../VIcon/VIcon.vue'
 import DsfrFooter from './DsfrFooter.vue'
-
-addIcons(RiExternalLinkLine)
 
 const router = createRouter({
   history: createWebHistory('/'),

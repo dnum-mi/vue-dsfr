@@ -4,7 +4,7 @@ import { themes } from '@storybook/theming'
 import { withThemeByDataAttribute } from '@storybook/addon-styling'
 import { FocusTrap } from 'focus-trap-vue'
 import { defineComponent } from 'vue'
-import { OhVueIcon as VIcon } from 'oh-vue-icons'
+import VIcon from '../src/components/VIcon/VIcon.vue'
 
 import VueDsfrTheme from './vue-dsfr-theme.js'
 import '../src/assets/variables-fdr.css'

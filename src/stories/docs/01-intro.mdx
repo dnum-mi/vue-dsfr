@@ -95,8 +95,7 @@ avec une seule modification : les virgules doivent être ajoutées pour tout ce 
 Le serveur de développement est celui de [Storybook](https://storybook.js.org/), toute la documentation est faite avec
 Storybook, et le site pour tester les composants est le storybook lui-même.
 
-Le CSS est écrit avec [PostCSS](https://postcss.org/) et notamment
-le plugin [postcss-preset-env](https://preset-env.cssdb.org/) (mais très peu de CSS est propre à la bibliothèque).
+Le CSS est transpilé avec [LightningCSS](https://lightningcss.dev/) (mais très peu de CSS est propre à la bibliothèque).
 
 Storybook est configuré pour utiliser PostCSS.
 
@@ -105,7 +104,6 @@ et des tests d’accessibilité sont faits avec [Cypress](https://www.cypress.io
 [tests de composants](https://docs.cypress.io/guides/component-testing/introduction).
 
 Les icônes sont toujours celles de [RemixIcon](https://remixicon.com/), grâce au DSFR et parfois grâce à
-[Oh, Vue Icons!](https://github.com/Renovamen/oh-vue-icons/)
-(qui permet d’ajouter d’[autres icônes](/?path=/story/fondamentaux-4-1-icônes-personnalisées--page))
+[@iconify/vue!](https://iconify.design/docs/icon-components/vue/).
 
 La bibliothèque est mise en paquet grâce à [Vite](https://vitejs.dev/) en [mode bibliothèque](https://vitejs.dev/guide/build.html#library-mode).
