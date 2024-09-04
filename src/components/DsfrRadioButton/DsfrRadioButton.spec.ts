@@ -19,6 +19,7 @@ describe('DsfrRadioButton', () => {
       },
       props: {
         label,
+        modelValue: undefined,
         value,
         name,
       },
@@ -50,6 +51,7 @@ describe('DsfrRadioButton', () => {
       props: {
         label,
         value,
+        modelValue: undefined,
         name,
         img,
       },
