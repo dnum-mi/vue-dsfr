@@ -68,7 +68,7 @@ defineEmits<{ (e: 'update:modelValue', payload: string): void }>()
           :data-testid="descriptionId"
           class="fr-error-text"
         >
-          <span>{{ message }}</span>
+          {{ message }}
         </p>
       </template>
       <p
@@ -78,7 +78,7 @@ defineEmits<{ (e: 'update:modelValue', payload: string): void }>()
         :data-testid="descriptionId"
         class="fr-error-text"
       >
-        <span>{{ errorMessage }}</span>
+        {{ errorMessage }}
       </p>
 
       <template
@@ -91,7 +91,7 @@ defineEmits<{ (e: 'update:modelValue', payload: string): void }>()
           :data-testid="descriptionId"
           class="fr-valid-text"
         >
-          <span>{{ message }}</span>
+          {{ message }}
         </p>
       </template>
       <p
@@ -101,7 +101,7 @@ defineEmits<{ (e: 'update:modelValue', payload: string): void }>()
         :data-testid="descriptionId"
         class="fr-valid-text"
       >
-        <span>{{ validMessage }}</span>
+        {{ validMessage }}
       </p>
     </div>
   </div>
