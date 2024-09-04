@@ -72,5 +72,6 @@ Cf. la [documentation Vue](https://vuejs.org/guide/essentials/event-handling.htm
 
 :::
 
+<script setup>
 import DsfrConsentDemo from './docs-demo/DsfrConsentDemo.vue'
 </script>

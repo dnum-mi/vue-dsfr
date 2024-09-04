@@ -46,6 +46,5 @@ Le composant `DsfrAccordionsGroup` agit comme un conteneur pour les composants d
 :::
 
 <script setup lang="ts">
-import DsfrAccordionDemoSimple from './docs-demo/DsfrAccordionDemoSimple.vue'
 import DsfrAccordionDemo from './docs-demo/DsfrAccordionDemo.vue'
 </script>
