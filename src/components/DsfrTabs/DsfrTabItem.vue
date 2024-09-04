@@ -1,8 +1,9 @@
 <script lang="ts" setup>
-import { ref, watch } from 'vue'
-import { OhVueIcon as VIcon } from 'oh-vue-icons'
+import { inject, ref, toRef, watch } from 'vue'
+import VIcon from '../VIcon/VIcon.vue'
 
 import type { DsfrTabItemProps } from './DsfrTabs.types'
+import { registerTabKey } from './injection-key'
 
 export type { DsfrTabItemProps }
 
@@ -11,7 +12,7 @@ const props = withDefaults(defineProps<DsfrTabItemProps>(), {
 })
 
 const emit = defineEmits<{
-  (e: 'click', payload: MouseEvent): void
+  (e: 'click', tabId: string): void
   (e: 'next'): void
   (e: 'previous'): void
   (e: 'first'): void
@@ -43,6 +44,9 @@ function onKeyDown (event: KeyboardEvent) {
     emit(eventToEmit)
   }
 }
+
+const useTab = inject(registerTabKey)!
+const { isVisible } = useTab(toRef(() => props.tabId))
 </script>
 
 <template>
@@ -54,12 +58,12 @@ function onKeyDown (event: KeyboardEvent) {
       ref="button"
       :data-testid="`test-${tabId}`"
       class="fr-tabs__tab"
-      :tabindex="selected ? 0 : -1"
+      :tabindex="isVisible ? 0 : -1"
       role="tab"
       type="button"
-      :aria-selected="selected"
+      :aria-selected="isVisible"
       :aria-controls="panelId"
-      @click.prevent="$emit('click', $event)"
+      @click.prevent="$emit('click', tabId)"
       @keydown="onKeyDown($event)"
     >
       <span

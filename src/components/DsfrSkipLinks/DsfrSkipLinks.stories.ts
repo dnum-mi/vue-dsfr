@@ -1,3 +1,4 @@
+import { within, userEvent, expect } from '@storybook/test'
 import DsfrSkipLinks from './DsfrSkipLinks.vue'
 
 /**
@@ -32,7 +33,7 @@ export const LiensDEvitement = (args) => ({
   :links="links"
   />
   <section id="what" tabindex="0">
-    <h2>Qu'est-ce que le Lorem Ipsum?</h2>
+    <h2>{{ title }}</h2>
     <p>Le <strong>Lorem Ipsum</strong> est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l'imprimerie depuis les années 1500, quand un imprimeur anonyme assembla ensemble des morceaux de texte pour réaliser un livre spécimen de polices de texte. Il n'a pas fait que survivre cinq siècles, mais s'est aussi adapté à la bureautique informatique, sans que son contenu n'en soit modifié. Il a été popularisé dans les années 1960 grâce à la vente de feuilles Letraset contenant des passages du Lorem Ipsum, et, plus récemment, par son inclusion dans des applications de mise en page de texte, comme Aldus PageMaker.</p>
     <p>Le <strong>Lorem Ipsum</strong> est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l'imprimerie depuis les années 1500, quand un imprimeur anonyme assembla ensemble des morceaux de texte pour réaliser un livre spécimen de polices de texte. Il n'a pas fait que survivre cinq siècles, mais s'est aussi adapté à la bureautique informatique, sans que son contenu n'en soit modifié. Il a été popularisé dans les années 1960 grâce à la vente de feuilles Letraset contenant des passages du Lorem Ipsum, et, plus récemment, par son inclusion dans des applications de mise en page de texte, comme Aldus PageMaker.</p>
     <p>Le <a href="#">Lorem Ipsum</a> est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l'imprimerie depuis les années 1500, quand un imprimeur anonyme assembla ensemble des morceaux de texte pour réaliser un livre spécimen de polices de texte. Il n'a pas fait que survivre cinq siècles, mais s'est aussi adapté à la bureautique informatique, sans que son contenu n'en soit modifié. Il a été popularisé dans les années 1960 grâce à la vente de feuilles Letraset contenant des passages du Lorem Ipsum, et, plus récemment, par son inclusion dans des applications de mise en page de texte, comme Aldus PageMaker.</p>
@@ -56,4 +57,20 @@ LiensDEvitement.args = {
       text: 'Allons à la question du comment ?',
     },
   ],
+  title: 'Qu’est-ce que le Lorem Ipsum ?',
+}
+LiensDEvitement.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement)
+  const title = canvas.getAllByRole('heading', { level: 2 }).at(0) as HTMLHeadingElement
+  const lien1 = canvas.getByText(LiensDEvitement.args.links.at(0)!.text)
+  const lien2 = canvas.getByText(LiensDEvitement.args.links.at(1)!.text)
+  expect(lien1).not.toBeVisible()
+  expect(lien2).not.toBeVisible()
+  title.click()
+  await userEvent.tab({ shift: true })
+  await userEvent.tab({ shift: true })
+  await userEvent.tab({ shift: true })
+  await userEvent.tab({ shift: true })
+  await userEvent.tab({ shift: true })
+  expect(lien2).toHaveFocus()
 }

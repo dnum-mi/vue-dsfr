@@ -1,4 +1,4 @@
-import { OhVueIcon as VIcon, addIcons } from 'oh-vue-icons'
+import VIcon from '../VIcon/VIcon.vue'
 import { fireEvent } from '@testing-library/dom'
 import { render } from '@testing-library/vue'
 import { createRouter, createWebHistory } from 'vue-router'
@@ -6,10 +6,6 @@ import { createRouter, createWebHistory } from 'vue-router'
 // import '@gouvfr/dsfr/dist/core/core.module.js'
 
 import DsfrHeader from './DsfrHeader.vue'
-
-import { RiNotification3Line, RiPhoneLine, RiSearchLine } from 'oh-vue-icons/icons'
-
-addIcons(RiNotification3Line, RiPhoneLine, RiSearchLine)
 
 const router = createRouter({
   history: createWebHistory('/'),

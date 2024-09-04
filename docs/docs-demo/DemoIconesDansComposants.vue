@@ -5,19 +5,21 @@ import DsfrButton from '../../src/components/DsfrButton/DsfrButton.vue'
 <template>
   <div class="fr-p-2w  flex gap-4  flex-wrap">
     <DsfrButton icon="fr-icon-close-line">
-      Texte avec icône Dsfr
+      Texte avec icône Dsfr (commence par <code>'fr-'</code>)
     </DsfrButton>
 
     <DsfrButton icon="ri-close-line">
-      Texte avec icône OhVueIcon
+      Texte avec icône @iconify/vue
     </DsfrButton>
 
     <DsfrButton
-      :icon="{ name: 'ri-close-line', fill: 'purple' }"
+      :icon="{ name: 'ri-close-line', color: 'green', animation: 'flash' }"
       secondary
     >
       Texte avec icône
-      OhVueIcon violette
+      <code>@iconify/vue</code>
+      <span style="color: green"> verte </span>
+      avec animation 'flash'
     </DsfrButton>
   </div>
 </template>

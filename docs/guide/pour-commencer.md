@@ -120,7 +120,6 @@ Il est possible de ne pas importer tous les composants, et de sélectionner les 
 
 ```js{2,16}=
 import { createApp } from 'vue'
-import { OhVueIcon } from 'oh-vue-icons'        // Import du composant OhVueIcon du pkg oh-vue-icons (facultatif)
 
 import App from './App.vue'
 import {
@@ -128,6 +127,7 @@ import {
   DsfrButton,
   DsfrBreadcrumb,
   DsfrCard,
+  VIcon,
 } from '@gouvminint/vue-dsfr'                   // Imports nommés de la bibliothèque
 
 import '@gouvfr/dsfr/dist/dsfr.min.css'         // Import des styles du DSFR
@@ -138,11 +138,12 @@ const app = createApp(App)
   .component('DsfrButton', DsfrButton)          // Enregistrement global du composant DsfrButton
   .component('DsfrBreadcrumb', DsfrBreadcrumb)  // Enregistrement global du composant DsfrBreadcrumb
   .component('DsfrCard', DsfrCard)              // Enregistrement global du composant DsfrCard
+  .component('VIcon', VIcon)                    // Enregistrement global du composant VIcon
   .mount('#app')
 ```
 
 :::info
-Il faut enregistrer globalement le composant **VIcon** si vous voulez l’utiliser.
+Il faut enregistrer globalement le composant **VIcon** si vous voulez l’utiliser comme dans l’exemple ci-dessus, ou bien l’importer dans chaque composant où il sera utilisé.
 :::
 
 ::: warning
@@ -173,9 +174,9 @@ Dans le point d’entrée de votre application Vue (souvent `main.js` ou `main.t
 import '@gouvfr/dsfr/dist/core/core.main.min.css' // Le CSS minimal du DSFR
 import '@gouvfr/dsfr/dist/component/component.main.min.css' // Styles de tous les composants du DSFR
 import '@gouvfr/dsfr/dist/utility/utility.main.min.css' // Classes utilitaires : les composants de VueDsfr en ont besoin
-import '@gouvminint/vue-dsfr/styles' // Les styles propres aux composants de VueDsfr
-
 import '@gouvfr/dsfr/dist/scheme/scheme.min.css' // Facultatif : Si les thèmes sont utilisés (thème sombre, thème clair)
+
+import '@gouvminint/vue-dsfr/styles' // Les styles propres aux composants de VueDsfr
 ```
 
 ### Les imports automatiques des composables et des composants
@@ -204,7 +205,6 @@ import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
 import {
   vueDsfrAutoimportPreset,
-  ohVueIconAutoimportPreset,
   vueDsfrComponentResolver
 } from '@gouvminint/vue-dsfr'
 
@@ -226,7 +226,6 @@ export default defineConfig({
         'vue-router',
         ...(isCypress ? [] : ['vitest']),
         vueDsfrAutoimportPreset,       // Autoimport des composables de VueDsfr
-        ohVueIconAutoimportPreset,     // Autoimport des fonctions de OhVueIcon (addIcons et OhVueIcon)
       ],
       vueTemplate: true,
       dts: './src/auto-imports.d.ts',
@@ -268,14 +267,10 @@ import '@gouvminint/vue-dsfr/styles'
 
 import App from './App.vue'
 import router from './router/index'
-import * as icons from './icons'
 
 import './main.css'
 
-addIcons(...Object.values(icons)) // addIcons est autoimporté grâce à ohVueIconAutoimportPreset dans vite.config.ts // [!code warning]
-
 createApp(App) // createApp est autoimporté grâce au preset 'vue' dans vite.config.ts // [!code warning]
-  .component('VIcon', OhVueIcon) // OhVueIcon est autoimporté grâce à ohVueIconAutoimportPreset dans vite.config.ts // [!code warning]
   .use(router)
   .mount('#app')
 ```
@@ -286,8 +281,8 @@ import '@gouvfr/dsfr/dist/utility/utility.main.min.css'
 
 import '@gouvminint/vue-dsfr/styles'
 
-import { createApp } from 'vue'
-import { OhVueIcon, addIcons } from 'oh-vue-icon'
+import { createApp } from 'vue' // [!code ++]
+import { VIcon } from '@gouvminint/vue-dsfr' // Facultatif : uniquement si vous utilisez VIcon dans votre projet // [!code ++]
 
 import App from './App.vue'
 import router from './router/index'
@@ -295,10 +290,8 @@ import * as icons from './icons'
 
 import './main.css'
 
-addIcons(...Object.values(icons))
-
 createApp(App)
-  .component('VIcon', OhVueIcon)
+  .component('VIcon', VIcon) // Facultatif : uniquement si vous utilisez VIcon dans votre projet  // [!code ++]
   .use(router)
   .mount('#app')
 ```
@@ -329,14 +322,14 @@ const searchQuery = ref('')
   />
 
   <div class="fr-container  fr-mt-3w  fr-mt-md-5w  fr-mb-5w">
-    <router-view />
+    <RouterView />
   </div>
 </template>
 ```
 
 ```vue{2} [App.vue sans auto-imports]
 <script setup lang="ts">
-import { DsfrHeader, useScheme } from '@gouvminint/vue-dsfr'
+import { DsfrHeader, useScheme } from '@gouvminint/vue-dsfr' // [!code ++]
 
 useScheme()
 
@@ -362,7 +355,7 @@ const searchQuery = ref('')
   />
 
   <div class="fr-container  fr-mt-3w  fr-mt-md-5w  fr-mb-5w">
-    <router-view />
+    <RouterView />
   </div>
 </template>
 ```
@@ -398,47 +391,6 @@ export default defineNuxtConfig({
     '@gouvminint/vue-dsfr/styles',                        // Styles des composants VueDsfr
   ],
 })
-```
-
-3. Facultatif : ajouter des icônes à utiliser avec OhVueIcon
-
-```ts{1,14-20}
-import * as icons from './icons'                          // Fichier à créer, voir plus loin
-
-export default defineNuxtConfig({
-  modules: [
-    'vue-dsfr-nuxt-module'
-  ],
-  css: [
-    '@gouvfr/dsfr/dist/core/core.main.min.css',           // Le CSS minimal du DSFR
-    '@gouvfr/dsfr/dist/component/component.main.min.css', // Styles de tous les composants du DSFR
-    '@gouvfr/dsfr/dist/utility/utility.main.min.css',     // Classes utilitaires : les composants de VueDsfr en ont besoin, contient aussi les icônes
-
-    '@gouvfr/dsfr/dist/scheme/scheme.min.css',            // Facultatif : Si les thèmes sont utilisés (thème sombre, thème en bernes)
-  ],
-})
-```
-
-Ajouter un fichier `vue-dsfr.ts` dans le dossier `plugins` (ou le dossier `client/plugins` si vous avez un dossier `client`), avec ce contenu :
-
-```ts{7}
-import { addIcons } from 'oh-vue-icons'
-import { defineNuxtPlugin } from 'nuxt/app'
-
-import * as icons from '../icons'
-
-export default defineNuxtPlugin((/* nuxtApp */) => {
-  addIcons(...Object.values(icons))
-})
-```
-
-Et ajouter un fichier `icons.ts` à la racine (ou dans le dossier `client`) dans lequel sont réexportées depuis `'oh-vue-icons/icons'` les icônes utilisées :
-
-```ts
-export {
-  RiFlagLine,
-  RiHome2Line,
-} from 'oh-vue-icons/icons'
 ```
 
 Et voilà ! Vous êtes prêts à utiliser VueDsfr dans votre app Nuxt ✨

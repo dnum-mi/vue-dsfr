@@ -7,15 +7,10 @@ layout: false
 <script setup lang="ts">
 import { useStyleTag } from '@vueuse/core'
 import { onMounted, ref } from 'vue'
-import { OhVueIcon as VIcon, addIcons } from 'oh-vue-icons'
 import { createApp } from 'whyframe:app'
 
 import dsfrStyles from '@gouvfr/dsfr/dist/dsfr.min.css?inline'
 import dsfrIcons from '@gouvfr/dsfr/dist/utility/icons/icons.min.css?inline'
-
-import * as icons from '../src/icons'
-
-addIcons(...Object.values(icons))
 
 useStyleTag(dsfrStyles, { id: 'dsfr' })
 useStyleTag(dsfrIcons, { id: 'dsfr-icons' })

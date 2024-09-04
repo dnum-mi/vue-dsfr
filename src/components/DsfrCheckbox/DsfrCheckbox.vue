@@ -48,6 +48,7 @@ const emitNewValue = ($event: InputEvent) => {
         :name="name"
         type="checkbox"
         :checked="modelValue"
+        :required
         v-bind="$attrs"
         :data-testid="`input-checkbox-${id}`"
         :data-test="`input-checkbox-${id}`"

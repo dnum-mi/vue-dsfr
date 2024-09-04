@@ -1,9 +1,8 @@
-import { OhVueIcon as VIcon, addIcons } from 'oh-vue-icons'
-import { RiCheckLine } from 'oh-vue-icons/icons'
 import { render } from '@testing-library/vue'
 import { createRouter, createWebHistory } from 'vue-router'
 // import '@gouvfr/dsfr/dist/core/core.module.js'
 
+import VIcon from '../VIcon/VIcon.vue'
 import DsfrNavigationMenuLink from './DsfrNavigationMenuLink.vue'
 
 const router = createRouter({
@@ -14,8 +13,6 @@ const router = createRouter({
     component: { template: '<div />' },
   }],
 })
-
-addIcons(RiCheckLine)
 
 describe('DsfrNavigationMenuLink', () => {
   it('should render a navigation menu link (internal) with icon', async () => {

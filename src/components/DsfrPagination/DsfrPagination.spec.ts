@@ -1,4 +1,4 @@
-import { OhVueIcon as VIcon } from 'oh-vue-icons'
+import VIcon from '../VIcon/VIcon.vue'
 import { render, fireEvent } from '@testing-library/vue'
 
 import Pagination from './DsfrPagination.vue'
@@ -32,7 +32,7 @@ describe('DsfrPagination', () => {
     await fireEvent.click(thirdLink)
 
     // Then
-    expect(emitted()['update:currentPage']).toBeTruthy()
-    expect(emitted()['update:currentPage'][0][0]).toBe(2)
+    expect(emitted()['update:current-page']).toBeTruthy()
+    expect(emitted()['update:current-page'][0][0]).toBe(2)
   })
 })

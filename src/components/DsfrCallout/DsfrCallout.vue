@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 import { computed } from 'vue'
 
+import VIcon from '../VIcon/VIcon.vue'
 import DsfrButton from '../DsfrButton/DsfrButton.vue'
 
 import type { DsfrCalloutProps } from './DsfrCallout.types'

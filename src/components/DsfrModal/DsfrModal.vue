@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { onMounted, onBeforeUnmount, computed, ref, nextTick, watch } from 'vue'
 import { FocusTrap } from 'focus-trap-vue'
-import { OhVueIcon as VIcon } from 'oh-vue-icons'
+import VIcon from '../VIcon/VIcon.vue'
 
 import DsfrButtonGroup from '../DsfrButton/DsfrButtonGroup.vue'
 import { getRandomId } from '@/utils/random-utils'

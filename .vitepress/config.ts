@@ -63,6 +63,10 @@ const guideItems = [
     link: '/guide/icones.md',
   },
   {
+    text: 'Migrations',
+    link: '/guide/migrations.md',
+  },
+  {
     text: 'Guide du développeur',
     link: '/guide/guide-developpeur.md',
   },
@@ -96,6 +100,10 @@ const composants = [
     link: '/composants/DsfrAccordion.md',
   },
   {
+    text: 'DsfrAccordionsGroup',
+    link: '/composants/DsfrAccordionsGroup.md',
+  },
+  {
     text: 'DsfrAlert',
     link: '/composants/DsfrAlert.md',
   },
@@ -120,6 +128,10 @@ const composants = [
     link: '/composants/DsfrButtonGroup.md',
   },
   {
+    text: 'DsfrCallout',
+    link: '/composants/DsfrCallout.md',
+  },
+  {
     text: 'DsfrCard',
     link: '/composants/DsfrCard.md',
   },
@@ -134,6 +146,10 @@ const composants = [
   {
     text: 'DsfrConsent',
     link: '/composants/DsfrConsent.md',
+  },
+  {
+    text: 'DsfrDataTable',
+    link: '/composants/DsfrDataTable.md',
   },
   {
     text: 'DsfrErrorPage',
@@ -270,6 +286,10 @@ const composants = [
   {
     text: 'DsfrTooltip',
     link: '/composants/DsfrTooltip.md',
+  },
+  {
+    text: 'VIcon',
+    link: '/composants/VIcon.md',
   },
 ]
 

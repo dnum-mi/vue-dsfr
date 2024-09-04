@@ -1,11 +1,7 @@
-import { OhVueIcon as VIcon, addIcons } from 'oh-vue-icons'
 import { fireEvent, render } from '@testing-library/vue'
 
+import VIcon from '../VIcon/VIcon.vue'
 import DsfrAlert from './DsfrAlert.vue'
-
-import { RiCloseLine } from 'oh-vue-icons/icons'
-
-addIcons(RiCloseLine)
 
 describe('DsfrAlert', () => {
   it('should mount DsfrAlert with right content', () => {
@@ -33,8 +29,8 @@ describe('DsfrAlert', () => {
     // Then
     expect(titleEl.tagName).toBe('H3')
     expect(titleEl).toHaveClass('fr-alert__title')
-    expect(descritptionEl.tagName).toBe('P')
-    expect(descritptionEl).toHaveClass('fr-alert__description')
+    expect(descritptionEl.tagName).toBe('DIV')
+    expect(descritptionEl).toHaveClass('fr-alert')
   })
 
   it('should mount DsfrAlert with right content with description in slot', () => {
@@ -64,8 +60,8 @@ describe('DsfrAlert', () => {
     // Then
     expect(titleEl.tagName).toBe('H3')
     expect(titleEl).toHaveClass('fr-alert__title')
-    expect(descritptionEl.tagName).toBe('P')
-    expect(descritptionEl).toHaveClass('fr-alert__description')
+    expect(descritptionEl.tagName).toBe('DIV')
+    expect(descritptionEl).toHaveClass('fr-alert')
   })
 
   it('should mount DsfrAlert with a working close button', async () => {

@@ -1,10 +1,7 @@
-import { OhVueIcon as VIcon, addIcons } from 'oh-vue-icons'
-import { RiCheckboxCircleLine } from 'oh-vue-icons/icons'
-import { fn } from '@storybook/test'
+import { expect, fn, within } from '@storybook/test'
 
+import VIcon from '../VIcon/VIcon.vue'
 import DsfrButtonGroup from './DsfrButtonGroup.vue'
-
-addIcons(RiCheckboxCircleLine)
 
 /**
  * [Voir quand l’utiliser sur la documentation du DSFR](https://www.systeme-de-design.gouv.fr/elements-d-interface/composants/groupe-de-boutons)
@@ -109,4 +106,12 @@ GroupeDeBoutons.args = {
       icon: 'ri-checkbox-circle-line',
     },
   ],
+}
+GroupeDeBoutons.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement)
+  const buttons = canvas.getAllByRole('button')
+  expect(buttons).toHaveLength(4)
+  for (const button of buttons) {
+    expect(button).toBeVisible()
+  }
 }

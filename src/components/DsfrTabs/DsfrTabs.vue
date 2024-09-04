@@ -1,5 +1,7 @@
 <script lang="ts" setup>
-import { ref, onMounted, onUnmounted, reactive } from 'vue'
+import { ref, computed, onMounted, onUnmounted, reactive, provide, watch, type Ref } from 'vue'
+
+import { registerTabKey } from './injection-key'
 
 import { getRandomId } from '../../utils/random-utils'
 
@@ -13,44 +15,51 @@ export type { DsfrTabsProps }
 const props = withDefaults(defineProps<DsfrTabsProps>(), {
   tabContents: () => [],
   tabTitles: () => [],
-  initialSelectedIndex: 0,
+  modelValue: 0,
 })
 
-const emit = defineEmits<{ (e: 'selectTab', payload: number): void }>()
+const emit = defineEmits<{
+  'update:modelValue': [tabIndex: number]
+}>()
 
-const selectedIndex = ref(props.initialSelectedIndex || 0)
-const generatedIds: Record<string, string> = reactive({})
-const asc = ref(true)
-const resizeObserver = ref<ResizeObserver | null>(null)
+const asc = ref(false)
+const activeTab = computed({
+  get: () => props.modelValue,
+  set (tabIndex: number) {
+    emit('update:modelValue', tabIndex)
+  },
+})
+const tabs = ref(new Map<number, string>())
+const currentIndex = ref(0)
+provide(registerTabKey, (tabId: Ref<string>) => {
+  const asc = ref(true)
+  watch(activeTab, (newIndex, lastIndex) => {
+    asc.value = newIndex > lastIndex
+  })
+
+  if ([...tabs.value.values()].includes(tabId.value)) {
+    return { isVisible: computed(() => tabs.value.get(activeTab.value) === tabId.value), asc }
+  }
+  const myIndex = currentIndex.value++
+  tabs.value.set(myIndex, tabId.value)
+
+  const isVisible = computed(() => myIndex === activeTab.value)
+
+  watch(tabId, () => {
+    tabs.value.set(myIndex, tabId.value)
+  })
+
+  onUnmounted(() => {
+    tabs.value.delete(myIndex)
+  })
+
+  return { isVisible }
+})
+
 const $el = ref<HTMLElement | null>(null)
 const tablist = ref<HTMLUListElement | null>(null)
 
-const isSelected = (idx: number) => {
-  return selectedIndex.value === idx
-}
-
-/*
- * Need to reimplement tab-height calc
- * @see https://github.com/GouvernementFR/dsfr/blob/main/src/component/tab/script/tab/tabs-group.js#L117
- */
-const renderTabs = () => {
-  if (selectedIndex.value < 0) {
-    return
-  }
-  if (!tablist.value || !tablist.value.offsetHeight) {
-    return
-  }
-  const tablistHeight = tablist.value.offsetHeight
-  // Need to manually select tabs-content in case of manual slot filling
-  const selectedTab = $el.value?.querySelectorAll('.fr-tabs__panel')[selectedIndex.value]
-  if (!selectedTab || !(selectedTab as HTMLElement).offsetHeight) {
-    return
-  }
-  const selectedTabHeight = (selectedTab as HTMLElement).offsetHeight
-
-  $el.value?.style.setProperty('--tabs-height', `${tablistHeight + selectedTabHeight}px`)
-}
-
+const generatedIds: Record<string, string> = reactive({})
 const getIdFromIndex = (idx: number) => {
   if (generatedIds[idx]) {
     return generatedIds[idx]
@@ -60,29 +69,50 @@ const getIdFromIndex = (idx: number) => {
   return id
 }
 
-const selectIndex = async (idx: number) => {
-  asc.value = idx > selectedIndex.value
-  selectedIndex.value = idx
-  emit('selectTab', idx)
-}
 const selectPrevious = async () => {
-  const newIndex = selectedIndex.value === 0 ? props.tabTitles.length - 1 : selectedIndex.value - 1
-  await selectIndex(newIndex)
+  const newIndex = activeTab.value === 0 ? props.tabTitles.length - 1 : activeTab.value - 1
+  asc.value = false
+  activeTab.value = newIndex
 }
 const selectNext = async () => {
-  const newIndex = selectedIndex.value === props.tabTitles.length - 1 ? 0 : selectedIndex.value + 1
-  await selectIndex(newIndex)
+  const newIndex = activeTab.value === props.tabTitles.length - 1 ? 0 : activeTab.value + 1
+  asc.value = true
+  activeTab.value = newIndex
 }
 const selectFirst = async () => {
-  await selectIndex(0)
+  activeTab.value = 0
 }
 const selectLast = async () => {
-  await selectIndex(props.tabTitles.length - 1)
+  activeTab.value = props.tabTitles.length - 1
 }
 
+const tabsStyle = ref({ '--tabs-height': '100px' })
+
+/*
+* Need to reimplement tab-height calc
+* @see https://github.com/GouvernementFR/dsfr/blob/main/src/component/tab/script/tab/tabs-group.js#L117
+*/
+const renderTabs = () => {
+  if (activeTab.value < 0) {
+    return
+  }
+  if (!tablist.value || !tablist.value.offsetHeight) {
+    return
+  }
+  const tablistHeight = tablist.value.offsetHeight
+  // Need to manually select tabs-content in case of manual slot filling
+  const selectedTab = $el.value?.querySelectorAll('.fr-tabs__panel')[activeTab.value]
+  if (!selectedTab || !(selectedTab as HTMLElement).offsetHeight) {
+    return
+  }
+  const selectedTabHeight = (selectedTab as HTMLElement).offsetHeight
+  tabsStyle.value['--tabs-height'] = `${tablistHeight + selectedTabHeight}px`
+}
+
+const resizeObserver = ref<ResizeObserver | null>(null)
 onMounted(() => {
   /*
-    * Need to use a resize-observer as tab-content height can
+  * Need to use a resize-observer as tab-content height can
     * change according to its inner components.
     */
   if (window.ResizeObserver) {
@@ -108,7 +138,6 @@ onUnmounted(() => {
 
 defineExpose({
   renderTabs,
-  selectIndex,
   selectFirst,
   selectLast,
 })
@@ -118,6 +147,7 @@ defineExpose({
   <div
     ref="$el"
     class="fr-tabs"
+    :style="tabsStyle"
   >
     <ul
       ref="tablist"
@@ -133,8 +163,7 @@ defineExpose({
           :icon="tabTitle.icon"
           :panel-id="tabTitle.panelId || `${getIdFromIndex(index)}-panel`"
           :tab-id="tabTitle.tabId || getIdFromIndex(index)"
-          :selected="isSelected(index)"
-          @click="selectIndex(index)"
+          @click="activeTab = index"
           @next="selectNext()"
           @previous="selectPrevious()"
           @first="selectFirst()"
@@ -150,12 +179,8 @@ defineExpose({
       :key="index"
       :panel-id="tabTitles?.[index]?.panelId || `${getIdFromIndex(index)}-panel`"
       :tab-id="tabTitles?.[index]?.tabId || getIdFromIndex(index)"
-      :selected="isSelected(index)"
-      :asc="asc"
     >
-      <p>
-        {{ tabContent }}
-      </p>
+      {{ tabContent }}
     </DsfrTabContent>
 
     <!-- @slot Slot par défaut pour le contenu des onglets -->

@@ -1,17 +1,57 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { computed, ref, watch, onUnmounted, provide, type Ref } from 'vue'
 
-const expandedId = ref<string>()
+import { registerTabKey } from './injection-key'
 
-const expand = (id: string): void => { expandedId.value = id }
+const props = withDefaults(defineProps<{
+  modelValue: number
+}>(), {
+  modelValue: -1,
+})
+
+const emit = defineEmits<{
+  'update:modelValue': [value: number]
+}>()
+
+const activeAccordion = computed({
+  get: () => props.modelValue,
+  set (accordionId: number) {
+    emit('update:modelValue', accordionId)
+  },
+})
+const accordions = ref(new Map<number, string>())
+const currentId = ref(0)
+provide(registerTabKey, (title: Ref<string>) => {
+  const myIndex = currentId.value++
+  accordions.value.set(myIndex, title.value)
+
+  const isActive = computed(() => myIndex === activeAccordion.value)
+
+  watch(title, () => {
+    accordions.value.set(myIndex, title.value)
+  })
+
+  function expand (): void {
+    if (activeAccordion.value === myIndex) {
+      activeAccordion.value = -1
+      return
+    }
+    activeAccordion.value = myIndex
+  }
+
+  onUnmounted(() => {
+    accordions.value.delete(myIndex)
+  })
+
+  return { isActive, expand }
+})
 </script>
 
 <template>
-  <ul
+  <div
     class="fr-accordions-group"
-    @expand="expand($event)"
   >
-    <!-- @slot Slot par défaut pour le contenu de la liste. Sera dans `<ul class="fr-accordions-group">` -->
-    <slot :expanded-id="expandedId" />
-  </ul>
+    <!-- @slot Slot par défaut pour le contenu de la liste. Sera dans `<div class="fr-accordions-group">` -->
+    <slot />
+  </div>
 </template>

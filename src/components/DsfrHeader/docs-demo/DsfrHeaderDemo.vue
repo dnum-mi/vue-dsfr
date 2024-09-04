@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { ref, watch, getCurrentInstance } from 'vue'
-import { OhVueIcon } from 'oh-vue-icons'
+import VIcon from '../../VIcon/VIcon.vue'
 import { createWebHistory, createRouter } from 'vue-router'
 
 import DsfrHeader from '../DsfrHeader.vue'
@@ -37,7 +37,7 @@ app?.appContext.app.use(
       { path: '/signup', component: { template: '<div>signup</div>' } },
     ],
   }),
-).component('VIcon', OhVueIcon)
+).component('VIcon', VIcon)
 
 const search = ref('')
 watch(search, (newValue) => {

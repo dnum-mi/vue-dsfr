@@ -1,4 +1,6 @@
 <script lang="ts" setup>
+import { ref } from 'vue'
+
 import DsfrTabs from '../DsfrTabs.vue'
 
 const tabListName = 'Liste d’onglet'
@@ -15,16 +17,16 @@ const tabContents = [
   'Contenu 3 avec seulement des strings',
   'Contenu 4 avec seulement des strings',
 ]
-const initialSelectedIndex = 0
+const activeTab = ref(0)
 </script>
 
 <template>
   <div class="fr-container fr-my-2w">
     <DsfrTabs
+      v-model="activeTab"
       :tab-list-name="tabListName"
       :tab-titles="tabTitles"
       :tab-contents="tabContents"
-      :initial-selected-index="initialSelectedIndex"
     />
   </div>
 </template>

@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { OhVueIcon as VICon } from 'oh-vue-icons'
+import VICon from '../../VIcon/VIcon.vue'
 import { getCurrentInstance } from 'vue'
 
 import DsfrCard from '../DsfrCard.vue'

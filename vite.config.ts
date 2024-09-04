@@ -36,13 +36,12 @@ const config: UserConfig = {
       entry: resolve(projectDir, 'src', 'index.ts'),
     },
     rollupOptions: {
-      external: ['vue', 'oh-vue-icons', 'vue-router'],
+      external: ['vue', 'vue-router'],
       output: {
         exports: 'named',
         dir: 'dist',
         globals: {
           vue: 'Vue',
-          'oh-vue-icons': 'OhVueIcon',
         },
         assetFileNames: v => `vue-dsfr${v.name?.replace(/[^.]+\./, '.')}`,
       },

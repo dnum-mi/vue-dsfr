@@ -1,3 +1,5 @@
+import { expect, within } from '@storybook/test'
+
 import DsfrCard from './DsfrCard.vue'
 import DsfrTags from './../DsfrTag/DsfrTags.vue'
 import DsfrBadge from './../DsfrBadge/DsfrBadge.vue'
@@ -76,7 +78,7 @@ export default {
   },
 }
 
-export const Card = (args) => ({
+export const Carte = (args) => ({
   components: { DsfrCard },
   data () {
     return args
@@ -100,7 +102,7 @@ export const Card = (args) => ({
     />
   `,
 })
-Card.args = {
+Carte.args = {
   altImg: '',
   detail: 'Détails sur la carte en question',
   description: 'Description sommaire de la carte',
@@ -116,8 +118,16 @@ Card.args = {
   buttons: [],
   linksGroup: [],
 }
+Carte.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement)
+  const card = canvas.getByText(Carte.args.title)
+  expect(card).toBeVisible()
+  expect(card).toHaveProperty('tagName', 'A')
+  expect(card).toHaveProperty('href')
+  expect(card.parentElement).toHaveProperty('tagName', 'H3')
+}
 
-export const CardSansFleche = (args) => ({
+export const CarteSansFleche = (args) => ({
   components: { DsfrCard },
   data () {
     return args
@@ -140,7 +150,7 @@ export const CardSansFleche = (args) => ({
     />
   `,
 })
-CardSansFleche.args = {
+CarteSansFleche.args = {
   altImg: '',
   detail: 'Détails sur la carte en question',
   description: 'Description sommaire de la carte',
@@ -155,56 +165,18 @@ CardSansFleche.args = {
   buttons: [],
   linksGroup: [],
 }
-
-export const CardAvecBoutons = (args) => ({
-  components: { DsfrCard },
-  data () {
-    return args
-  },
-  template: `
-    <DsfrCard
-      :style="\`max-width: \${horizontal ? 600 : 400}px\`"
-      :alt-img="altImg"
-      :detail="detail"
-      :buttons="buttons"
-      :description="description"
-      :img-src="imgSrc"
-      :link="link"
-      :size="size"
-      :ratio-img="ratioImg"
-      :title="title"
-      :horizontal="horizontal"
-      :download="download"
-      :no-arrow="noArrow"
-    />
-  `,
-})
-CardAvecBoutons.args = {
-  altImg: '',
-  detail: 'Détails sur la carte en question',
-  description: 'Description sommaire de la carte',
-  imgSrc: 'https://loremflickr.com/300/200/cat?random=3',
-  link: undefined,
-  title: 'Qu’est-ce que le Pass Culture et comment l’obtenir ?',
-  noArrow: true,
-  horizontal: false,
-  download: false,
-  size: 'medium',
-  ratioImg: 'medium',
-  buttons: [
-    {
-      label: 'Télécharger',
-      link: 'https://www.systeme-de-design.gouv.fr/',
-    },
-    {
-      label: 'En savoir plus',
-      secondary: true,
-      link: 'https://www.systeme-de-design.gouv.fr/',
-    },
-  ],
+CarteSansFleche.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement)
+  const cardTitleA = canvas.getByText(CarteSansFleche.args.title)
+  const cardTitle = cardTitleA.parentElement
+  const cardContent = cardTitle?.parentElement
+  const cardBody = cardContent?.parentElement
+  expect(cardBody).toHaveClass('fr-card__body')
+  expect(cardTitle).toHaveClass('fr-card__title')
+  expect(cardContent).toHaveClass('fr-card__content')
 }
 
-export const CardAvecLiens = (args) => ({
+export const CarteAvecLiens = (args) => ({
   components: { DsfrCard },
   data () {
     return args
@@ -227,7 +199,7 @@ export const CardAvecLiens = (args) => ({
     />
   `,
 })
-CardAvecLiens.args = {
+CarteAvecLiens.args = {
   altImg: '',
   detail: 'Détails sur la carte en question',
   description: 'Description sommaire de la carte',
@@ -250,8 +222,17 @@ CardAvecLiens.args = {
     },
   ],
 }
+CarteAvecLiens.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement)
+  const lien1 = canvas.getByText(CarteAvecLiens.args.linksGroup.at(0)?.label as string)
+  expect(lien1).toBeVisible()
+  expect(lien1).toHaveAttribute('href', CarteAvecLiens.args.linksGroup.at(0)?.href)
+  const lien2 = canvas.getByText(CarteAvecLiens.args.linksGroup.at(1)?.label as string)
+  expect(lien2).toBeVisible()
+  expect(lien2).toHaveAttribute('href', CarteAvecLiens.args.linksGroup.at(1)?.href)
+}
 
-export const CardAvecTags = (args) => ({
+export const CarteAvecTags = (args) => ({
   components: { DsfrCard, DsfrTags },
   data () {
     return args
@@ -280,7 +261,7 @@ export const CardAvecTags = (args) => ({
   </DsfrCard>
   `,
 })
-CardAvecTags.args = {
+CarteAvecTags.args = {
   altImg: '',
   detail: 'Détails sur la carte en question',
   description: 'Description sommaire de la carte',
@@ -307,8 +288,16 @@ CardAvecTags.args = {
     },
   ],
 }
+CarteAvecTags.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement)
+  for (const tag of CarteAvecTags.args.exampleTags) {
+    const tagEl = canvas.getByText(tag.label as string)
+    expect(tagEl).toBeVisible()
+    expect(tagEl).toHaveClass('fr-tag')
+  }
+}
 
-export const CardAvecBadges = (args) => ({
+export const CarteAvecBadges = (args) => ({
   components: { DsfrCard, DsfrBadge },
   data () {
     return args
@@ -340,7 +329,7 @@ export const CardAvecBadges = (args) => ({
   </DsfrCard>
   `,
 })
-CardAvecBadges.args = {
+CarteAvecBadges.args = {
   altImg: '',
   detail: 'Détails sur la carte en question',
   description: 'Description sommaire de la carte',
@@ -371,56 +360,17 @@ CardAvecBadges.args = {
     },
   ],
 }
-
-export const CardHorizontaleAvecBoutons = (args) => ({
-  components: { DsfrCard },
-  data () {
-    return args
-  },
-  template: `
-    <DsfrCard
-      :style="\`max-width: \${horizontal ? 600 : 400}px\`"
-      :alt-img="altImg"
-      :detail="detail"
-      :buttons="buttons"
-      :description="description"
-      :img-src="imgSrc"
-      :link="link"
-      :size="size"
-      :ratio-img="ratioImg"
-      :title="title"
-      :horizontal="horizontal"
-      :download="download"
-      :no-arrow="noArrow"
-    />
-  `,
-})
-CardHorizontaleAvecBoutons.args = {
-  altImg: '',
-  detail: 'Détails sur la carte en question',
-  description: 'Description sommaire de la carte',
-  imgSrc: 'https://loremflickr.com/300/200/cat?random=7',
-  link: undefined,
-  title: 'Qu’est-ce que le Pass Culture et comment l’obtenir ?',
-  noArrow: true,
-  horizontal: true,
-  download: false,
-  size: 'medium',
-  ratioImg: 'medium',
-  buttons: [
-    {
-      label: 'Télécharger',
-      link: 'https://www.systeme-de-design.gouv.fr/',
-    },
-    {
-      label: 'En savoir plus',
-      secondary: true,
-      link: 'https://www.systeme-de-design.gouv.fr/',
-    },
-  ],
+CarteAvecBadges.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement)
+  for (const badge of CarteAvecBadges.args.exampleBadges) {
+    const badgeEl = canvas.getByText(badge.label as string).parentElement
+    expect(badgeEl).toBeVisible()
+    expect(badgeEl).toHaveClass('fr-badge')
+    expect(badgeEl).toHaveClass(`fr-badge--${badge.type}`)
+  }
 }
 
-export const CardHorizontaleEtSmallAvecLiens = (args) => ({
+export const CarteHorizontaleEtPetiteAvecLiens = (args) => ({
   components: { DsfrCard },
   data () {
     return args
@@ -443,7 +393,7 @@ export const CardHorizontaleEtSmallAvecLiens = (args) => ({
     />
   `,
 })
-CardHorizontaleEtSmallAvecLiens.args = {
+CarteHorizontaleEtPetiteAvecLiens.args = {
   altImg: '',
   detail: 'Détails sur la carte en question',
   description: 'Description sommaire de la carte',
@@ -465,4 +415,10 @@ CardHorizontaleEtSmallAvecLiens.args = {
       href: 'https://www.systeme-de-design.gouv.fr/',
     },
   ],
+}
+CarteHorizontaleEtPetiteAvecLiens.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement)
+  const cardEl = canvas.getByText(CarteHorizontaleEtPetiteAvecLiens.args.title).parentElement?.parentElement?.parentElement
+  expect(cardEl).toHaveClass('fr-card')
+  expect(cardEl).toHaveClass('fr-card--horizontal')
 }

@@ -1,12 +1,8 @@
 import type { Meta } from '@storybook/vue3'
 import { expect, fn, within, userEvent } from '@storybook/test'
-import { OhVueIcon as VIcon, addIcons } from 'oh-vue-icons'
 
-import { RiInformationLine } from 'oh-vue-icons/icons'
-
+import VIcon from '../VIcon/VIcon.vue'
 import DsfrCallout from './DsfrCallout.vue'
-
-addIcons(RiInformationLine)
 
 const delay = (timeout = 100) =>
   new Promise((resolve) => setTimeout(resolve, timeout))
@@ -36,6 +32,7 @@ const meta: Meta<typeof DsfrCallout> = {
       description:
         '(optionnel) Objet contenant les props à passer à DsfrButton (pour afficher un bouton sous la mise en avant)',
     },
+    // @ts-expect-error TS2353
     onClick: {
       action: fn(),
     },
@@ -84,7 +81,7 @@ MiseEnAvantSimple.args = {
   titleTag: undefined,
 }
 
-export const MiseEnAvant = (args) => ({
+export const MiseEnAvantAvecBouton = (args) => ({
   components: {
     DsfrCallout,
     VIcon,
@@ -107,6 +104,29 @@ export const MiseEnAvant = (args) => ({
     />
   `,
 })
+const buttonOnclick = fn()
+MiseEnAvantAvecBouton.args = {
+  title: 'Titre de la mise en avant',
+  button: {
+    label: 'Label bouton',
+    onClick: buttonOnclick,
+  },
+  icon: 'ri-information-line',
+  content:
+    'Lorem ipsum dolor sit amet, consectetur adipiscing, incididunt, ut labore et dol',
+  titleTag: 'h2',
+}
+MiseEnAvantAvecBouton.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement)
+  const closeButton = canvas.getByRole('button')
+  await userEvent.tab()
+  expect(buttonOnclick).not.toHaveBeenCalled()
+  await userEvent.click(closeButton)
+
+  expect(closeButton).toHaveFocus()
+  await delay()
+  expect(buttonOnclick).toHaveBeenCalled()
+}
 
 export const MiseEnAvantSansTitre = (args) => ({
   components: {
@@ -139,29 +159,4 @@ MiseEnAvantSansTitre.args = {
   content:
     'Lorem ipsum dolor sit amet, consectetur adipiscing, incididunt, ut labore et dol',
   titleTag: undefined,
-}
-
-const buttonOnclick = fn()
-MiseEnAvant.args = {
-  title: 'Titre de la mise en avant',
-  button: {
-    label: 'Label bouton',
-    onClick: buttonOnclick,
-  },
-  icon: 'ri-information-line',
-  content:
-    'Lorem ipsum dolor sit amet, consectetur adipiscing, incididunt, ut labore et dol',
-  titleTag: 'h2',
-}
-
-MiseEnAvant.play = async ({ canvasElement }) => {
-  const canvas = within(canvasElement)
-  const closeButton = canvas.getByRole('button')
-  await userEvent.tab()
-  expect(buttonOnclick).not.toHaveBeenCalled()
-  await userEvent.click(closeButton)
-
-  expect(closeButton).toHaveFocus()
-  await delay()
-  expect(buttonOnclick).toHaveBeenCalled()
 }

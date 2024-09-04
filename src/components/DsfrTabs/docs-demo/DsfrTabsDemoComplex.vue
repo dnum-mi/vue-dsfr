@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import { ref } from 'vue'
+
 import DsfrButton from '../../DsfrButton/DsfrButton.vue'
 import DsfrTabs from '../DsfrTabs.vue'
 import DsfrTabContent from '../DsfrTabContent.vue'
@@ -7,37 +8,25 @@ import DsfrTabContent from '../DsfrTabContent.vue'
 const tabListName = 'Liste d’onglet'
 const title1 = 'Titre 1'
 const tabTitles = [
-  { title: title1, icon: 'ri-checkbox-circle-line' },
-  { title: 'Titre 2', icon: 'ri-checkbox-circle-line' },
-  { title: 'Titre 3', icon: 'ri-checkbox-circle-line' },
-  { title: 'Titre 4', icon: 'ri-checkbox-circle-line' },
+  { title: title1, icon: 'ri-checkbox-circle-line', tabId: 'tab-0', panelId: 'tab-content-0' },
+  { title: 'Titre 2', icon: 'ri-checkbox-circle-line', tabId: 'tab-1', panelId: 'tab-content-1' },
+  { title: 'Titre 3', icon: 'ri-checkbox-circle-line', tabId: 'tab-2', panelId: 'tab-content-2' },
+  { title: 'Titre 4', icon: 'ri-checkbox-circle-line', tabId: 'tab-3', panelId: 'tab-content-3' },
 ]
 
-const initialSelectedIndex = 0
-
-const asc = ref(true)
-const selectedTabIndex = ref(initialSelectedIndex)
-
-const selectTab = (idx: number) => {
-  asc.value = selectedTabIndex.value < idx
-  selectedTabIndex.value = idx
-}
+const selectedTabIndex = ref(0)
 </script>
 
 <template>
   <div class="fr-container fr-my-2w">
     <DsfrTabs
-      ref="tabs"
+      v-model="selectedTabIndex"
       :tab-list-name="tabListName"
       :tab-titles="tabTitles"
-      :initial-selected-index="initialSelectedIndex"
-      @select-tab="selectTab"
     >
       <DsfrTabContent
         panel-id="tab-content-0"
         tab-id="tab-0"
-        :selected="selectedTabIndex === 0"
-        :asc="asc"
       >
         <div>Contenu 1 avec d'<em>autres composants</em></div>
       </DsfrTabContent>
@@ -45,8 +34,6 @@ const selectTab = (idx: number) => {
       <DsfrTabContent
         panel-id="tab-content-1"
         tab-id="tab-1"
-        :selected="selectedTabIndex === 1"
-        :asc="asc"
       >
         <div>Contenu 2 avec d'<strong>autres composants</strong></div>
       </DsfrTabContent>
@@ -54,8 +41,6 @@ const selectTab = (idx: number) => {
       <DsfrTabContent
         panel-id="tab-content-2"
         tab-id="tab-2"
-        :selected="selectedTabIndex === 2"
-        :asc="asc"
       >
         <div>Contenu 3 avec d'<em><strong>autres composants</strong></em></div>
       </DsfrTabContent>
@@ -63,8 +48,6 @@ const selectTab = (idx: number) => {
       <DsfrTabContent
         panel-id="tab-content-3"
         tab-id="tab-3"
-        :selected="selectedTabIndex === 3"
-        :asc="asc"
       >
         <div>
           <p>Contenu 4 avec beaucoup de contenus</p>
@@ -79,19 +62,23 @@ const selectTab = (idx: number) => {
     <div style="display: flex; gap: 1rem; margin-block: 1rem;">
       <DsfrButton
         label="Activer le 1er onglet"
-        @click="() => { $refs.tabs.selectFirst() }"
+        :disabled="selectedTabIndex === 0"
+        @click="selectedTabIndex = 0"
       />
       <DsfrButton
         label="Activer le 2è onglet"
-        @click="() => { $refs.tabs.selectIndex(1) }"
+        :disabled="selectedTabIndex === 1"
+        @click="selectedTabIndex = 1"
       />
       <DsfrButton
         label="Activer le 3è onglet"
-        @click="() => { $refs.tabs.selectIndex(2) }"
+        :disabled="selectedTabIndex === 2"
+        @click="selectedTabIndex = 2"
       />
       <DsfrButton
         label="Activer le dernier onglet"
-        @click="() => { $refs.tabs.selectLast() }"
+        :disabled="selectedTabIndex === tabTitles.length - 1"
+        @click="selectedTabIndex = tabTitles.length - 1"
       />
     </div>
   </div>

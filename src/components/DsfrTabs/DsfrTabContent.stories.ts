@@ -1,3 +1,4 @@
+import DsfrTabs from './DsfrTabs.vue'
 import DsfrTabContent from './DsfrTabContent.vue'
 
 export default {
@@ -29,6 +30,7 @@ export default {
 
 export const ContenuDOnglet = (args) => ({
   components: {
+    DsfrTabs,
     DsfrTabContent,
   },
 
@@ -37,21 +39,26 @@ export const ContenuDOnglet = (args) => ({
   },
 
   template: `
-    <div class="fr-tabs" style="overflow: visible">
+    <DsfrTabs
+      v-model="selectedTabIndex"
+      :tab-list-name="tabListName"
+      :tab-titles="tabTitles"
+    >
       <DsfrTabContent
-        panel-id="tab-content-3"
-        tab-id="tab-3"
-        :selected="selected"
-        :asc="asc"
+        panel-id="tab-content-0"
+        tab-id="tab-0"
       >
         <div>Contenu personnalisé</div>
       </DsfrTabContent>
-    </div>
+    </DsfrTabs>
   `,
 })
 ContenuDOnglet.args = {
   panelId: 'tab-content-0',
   tabId: 'tab-0',
-  selected: true,
-  asc: true,
+  selectedTabIndex: 0,
+  tabListName: 'Liste d’onglet',
+  tabTitles: [
+    { title: 'Titre 1', icon: 'ri-checkbox-circle-line', tabId: 'tab-0', panelId: 'tab-content-0' },
+  ],
 }

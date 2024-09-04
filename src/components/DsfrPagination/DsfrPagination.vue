@@ -12,10 +12,9 @@ const props = withDefaults(defineProps<DsfrPaginationProps>(), {
   lastPageTitle: 'Dernière page',
   nextPageTitle: 'Page suivante',
   prevPageTitle: 'Page précédente',
-
 })
 
-const emit = defineEmits<{ (e: 'update:currentPage', payload: number): void }>()
+const emit = defineEmits<{ (e: 'update:current-page', payload: number): void }>()
 
 const startIndex = computed(() => {
   return Math.min(props.pages.length - 1 - props.truncLimit, Math.max(props.currentPage - (props.truncLimit - props.truncLimit % 2) / 2, 0))
@@ -27,7 +26,7 @@ const displayedPages = computed(() => {
   return props.pages.length > props.truncLimit ? props.pages.slice(startIndex.value, endIndex.value + 1) : props.pages
 })
 
-const updatePage = (index: number) => emit('update:currentPage', index)
+const updatePage = (index: number) => emit('update:current-page', index)
 const toPage = (index: number) => updatePage(index)
 const tofirstPage = () => toPage(0)
 const toPreviousPage = () => toPage(Math.max(0, props.currentPage - 1))
@@ -92,9 +91,9 @@ const isCurrentPage = (page: Page) => props.pages.indexOf(page) === props.curren
       <li>
         <a
           class="fr-pagination__link fr-pagination__link--last"
-          :href="pages[pages.length - 1]?.href"
+          :href="pages.at(-1)?.href"
           :title="lastPageTitle"
-          :disabled="currentPage === pages.length - 1 ? true : null"
+          :disabled="currentPage === pages.length - 1 ? true : undefined"
           :aria-disabled="currentPage === pages.length - 1 ? true : undefined"
           @click.prevent="toLastPage()"
         />

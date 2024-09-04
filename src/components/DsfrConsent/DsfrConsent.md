@@ -61,10 +61,17 @@ Cf. la [documentation Vue](https://vuejs.org/guide/essentials/event-handling.htm
 
 <<< docs-demo/DsfrConsentDemo.vue [Code de la démo]
 
+:::
+
+## ⚙️ Code source du composant
+
+::: code-group
+
 <<< DsfrConsent.vue
+<<< DsfrConsent.types.ts
 
 :::
 
-<script setup lang="ts">
+<script setup>
 import DsfrConsentDemo from './docs-demo/DsfrConsentDemo.vue'
 </script>

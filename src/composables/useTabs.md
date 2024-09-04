@@ -1,5 +1,11 @@
 # `useTabs`
 
+::: error Obsolète depuis la v6 !!!
+
+Ce composable ne sert plus depuis la version 6 de VueDsfr. Utiliser `v-model` sur `DsfrTabs` à la place, cf. [doc](/composants/DsfrTabs).
+
+:::
+
 Ce composable permet de gérer simplement les props de [DsfrTabs](/composants/DsfrTabs) et de ses enfants pour gérer l’affichage du contenu de l’onglet (grâce à la prop `selected` de `DsfrTabContent`) et le sens de l’animation (grâce à la prop `asc` sur `DsfrTabContent`).
 
 ## Utilisation (Script setup TypeScript)

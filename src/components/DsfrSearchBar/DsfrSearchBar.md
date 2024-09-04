@@ -28,7 +28,7 @@ La barre de recherche se compose des éléments suivants :
 | `labelVisible` | `Boolean` | `false`       |             | Si `true`, affiche le libellé de la barre de recherche.                 |
 | `disabled`  | `Boolean` | `false`          |             | Si `true`, désactive la barre de recherche.                             |
 
-## 📡 Events
+## 📡 Événements
 
 - **`update:modelValue`**: Événement émis lorsque la valeur de la barre de recherche est mise à jour.
 - **`search`**: Événement émis lors de l'exécution d'une recherche.

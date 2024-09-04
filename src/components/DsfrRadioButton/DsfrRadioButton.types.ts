@@ -9,6 +9,7 @@ export type DsfrRadioButtonProps = {
   label?: string
   hint?: string
   img?: string
+  imgTitle?: string
   svgPath?: string
   svgAttrs?: Record<string, unknown>
 }

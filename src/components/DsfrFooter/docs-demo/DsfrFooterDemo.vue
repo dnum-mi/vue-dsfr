@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { OhVueIcon } from 'oh-vue-icons'
+import VIcon from '../../VIcon/VIcon.vue'
 import { createWebHistory, createRouter } from 'vue-router'
 import { getCurrentInstance } from 'vue'
 
@@ -69,7 +69,7 @@ app?.appContext.app.use(
       { path: '/_frame', component: { template: '<div>frame</div>' } },
     ],
   }),
-).component('VIcon', OhVueIcon)
+).component('VIcon', VIcon)
 </script>
 
 <template>
