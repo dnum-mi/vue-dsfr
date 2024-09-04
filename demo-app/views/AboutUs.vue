@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { ref } from 'vue'
 
-import MyIcon from '../../src/components/VIcon.vue'
+import MyIcon from '../../src/components/VIcon/VIcon.vue'
 
 const title = ref('SVG À propos')
 setTimeout(() => {
