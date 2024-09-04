@@ -13,6 +13,7 @@ const props = withDefaults(defineProps<DsfrRadioButtonSetProps>(), {
   errorMessage: '',
   validMessage: '',
   legend: '',
+  hint: '',
   options: () => [],
 })
 
@@ -45,13 +46,21 @@ const ariaLabelledby = computed(() => message.value ? `${props.titleId} messages
       :role="(errorMessage || validMessage) ? 'group' : undefined"
     >
       <legend
-        v-if="legend || $slots.legend"
+        v-if="legend || $slots.legend || hint || $slots.hint"
         :id="titleId"
         class="fr-fieldset__legend fr-fieldset__legend--regular"
       >
         <!-- @slot Slot pour personnaliser tout le contenu de la balise <legend> cf. [DsfrInput](/?path=/story/composants-champ-de-saisie-champ-simple-dsfrinput--champ-avec-label-personnalise). Une **props porte le même nom pour une légende simple** (texte sans mise en forme) -->
         <slot name="legend">
           {{ legend }}
+          <span
+            class="fr-hint-text"
+            v-if="hint || $slots.hint"
+          >
+            <slot name="hint">
+              {{ hint }}
+            </slot>
+          </span>
           <!-- @slot Slot pour indiquer que le champ est obligatoire. Par défaut, met une astérisque si `required` est à true (dans un `<span class="required">`) -->
           <slot name="required-tip">
             <span

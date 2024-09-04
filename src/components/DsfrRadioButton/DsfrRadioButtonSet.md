@@ -15,6 +15,7 @@ Le composant `DsfrRadioButtonSet` est composé des éléments suivants :
 - Un élément `<div>` englobant l'ensemble du groupe de radio.
 - Un élément `<fieldset>` contenant les boutons radio et les messages associés.
 - Une légende (`legend`) définie par la prop `legend` et personnalisable avec le slot `legend`.
+- Un hint (`hint`) définie par la prop `hint` et personnalisable avec le slot `hint`.
 - Un groupe de boutons radio individuels rendus par le composant `DsfrRadioButton`.
 - Un message d'information, d'erreur ou de validation, affiché en dessous du groupe de boutons radio (facultatif).
 
@@ -31,6 +32,7 @@ Le composant `DsfrRadioButtonSet` est composé des éléments suivants :
 | `errorMessage` | *`string`*                                     | Message d'erreur global à afficher                                                                                     | Non         |
 | `validMessage` | *`string`*                                     | Message de validation global à afficher                                                                                | Non         |
 | `legend`       | *`string`*                                     | Texte de la légende                                                                                                    | Non         |
+| `hint`         | *`string`*                                     | Texte du hint                                                                                                          | Non         |
 | `modelValue`   | *`string`* ou *`number`* ou *`boolean`*        | Valeur courante du composant (sélection courante)                                                                      | Non         |
 | `options`      | *`Omit<DsfrRadioButtonProps, 'modelValue'>[]`* | Tableau d'options définissant les boutons radio individuels                                                            | Oui         |
 
@@ -204,6 +206,7 @@ const options = [
 `DsfrRadioButtonSet` fournit les slots suivants pour la personnalisation :
 
 - `legend` : Permet de personnaliser le contenu de la légende.
+- `hint` : Permet de personnaliser le contenu d'un hint.
 - `required-tip` : Permet d'ajouter un astérisque indiquant que le champ est obligatoire (fonctionne uniquement si l'attribut `required` est défini sur le composant).
 
 ## 🪆 Relation avec `DsfrRadioButton`

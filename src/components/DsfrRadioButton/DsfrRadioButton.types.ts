@@ -25,6 +25,7 @@ export type DsfrRadioButtonSetProps = {
   errorMessage?: string
   validMessage?: string
   legend?: string
+  hint?: string
   modelValue?: string | number | boolean | undefined
   options?: Omit<DsfrRadioButtonProps, 'modelValue'>[]
   ariaInvalid?: boolean | 'grammar' | 'spelling'
