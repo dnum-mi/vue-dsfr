@@ -119,7 +119,7 @@ Avant la version 6.x de VueDsfr, pour activer un onglet particulier, il fallait 
 
 Nous avions exposé un composable `useTabs()` pour faciliter un peu cette gestion. C’était pourtant déjà trop compliqué à notre goût.
 
-Désormais c’est beaucoup plus simple, il suffit d’utiliser `v-model` sur le composant parent `DsfrTabs`.
+Désormais c’est beaucoup plus simple, il suffit d’utiliser `v-model` sur le composant parent [`DsfrTabs`](/composants/DsfrTabs).
 
 ### Les accordéons
 

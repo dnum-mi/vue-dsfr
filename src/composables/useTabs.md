@@ -1,8 +1,10 @@
 # `useTabs`
 
-::: error Obsolète depuis la v6 !!!
+::: danger Obsolète depuis la v6 !!!
 
-Ce composable ne sert plus depuis la version 6 de VueDsfr. Utiliser `v-model` sur `DsfrTabs` à la place, cf. [doc](/composants/DsfrTabs).
+Ce composable ne sert plus depuis la version 6 de VueDsfr. Utiliser `v-model` sur `DsfrTabs` à la place, cf. [documentation de `DsfrTabs`](/composants/DsfrTabs).
+
+La démo ne fonctionnant plus avec la v6, elle n’est plus visible sur ce site. Le code de la démo est néanmoins toujours accessible pour ceux qui utilisent encore la v5.
 
 :::
 
@@ -11,10 +13,6 @@ Ce composable permet de gérer simplement les props de [DsfrTabs](/composants/Ds
 ## Utilisation (Script setup TypeScript)
 
 ::: code-group
-
-<Story data-title="Démo" min-h="280px">
-  <UseTabsDemo />
-</Story>
 
 <<< docs-demo/UseTabsDemo.vue [Code de la démo]
 
