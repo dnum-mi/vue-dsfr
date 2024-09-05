@@ -26,10 +26,6 @@
     // https://github.com/DavidAnson/vscode-markdownlint
     "DavidAnson.vscode-markdownlint",
 
-    // Test `.unit.js` files on save with Jest
-    // https://github.com/jest-community/vscode-jest
-    "Orta.vscode-jest",
-
     // npm support for VS Code
     // https://github.com/Microsoft/vscode-npm-scripts
     "eg2.vscode-npm-script",
