@@ -27,17 +27,103 @@ Pour rendre la migration la plus douce possible un composant `VIcon` a été ajo
 
 #### Implication et changements à faire sur vos projets
 
+##### Vue + vite
+
 Il vous suffira donc dans vos projets d’importer VIcon depuis `@gouvminint/vue-dsfr` dans tous les fichiers où vous utilisez VIcon de OhVueIcons.
 
-Il faudra peut-être dans certains cas renommer les icônes car la syntaxe attendue par `@iconify/vue` est `nom-de-collection:nom-d-icone` alors que `oh-vue-icon` attendait simplement `nom-de-collection-nom-d-icone`.
+Il faudra enlever les références à `oh-vue-icons`, par exemple dans `main.ts` :
+
+::: code-group
+
+```ts [main.ts]
+import '@gouvfr/dsfr/dist/core/core.main.min.css'
+import '@gouvfr/dsfr/dist/component/component.main.min.css'
+import '@gouvfr/dsfr/dist/utility/utility.main.min.css'
+import '@gouvminint/vue-dsfr/styles'
+
+import '@gouvfr/dsfr/dist/scheme/scheme.min.css'
+import '@gouvfr/dsfr/dist/utility/icons/icons.min.css'
+
+import { createApp } from 'vue'
+import { OhVueIcon, addIcons } from 'oh-vue-icons' // [!code --]
+
+import App from './App.vue'
+import router from './router/index'
+import * as icons from './icons' // [!code --]
+
+import './main.css'
+
+addIcons(...Object.values(icons)) // [!code --]
+
+createApp(App)
+  .use(router)
+  .component('VIcon', OhVueIcon) // [!code --]
+  .mount('#app')
+```
+
+:::
+
+Il faudra supprimer le fichier `icons.ts` qui n’est plus utile.
+
+Si vous importiez vous-même `OhVueIcon` de `oh-vue-icons` dans certains composants, il faudra remplacer le module de l’import par `@gouvminint/vue-dsfr` :
+
+```vue
+<script lang="ts" setup>
+import { OhVueIcon as VIcon } from 'oh-vue-icons' // [!code --]
+import { VIcon } from '@gouvminint/vue-dsfr' // [!code ++]
+</script>
+```
+
+Il faudra peut-être dans certains cas renommer les icônes car la syntaxe attendue par `@iconify/vue` est `nom-de-collection:nom-d-icone` alors que `oh-vue-icon` attendait simplement `nom-de-collection-nom-d-icone` et les noms de collections ne sont pas forcément identiques entre `oh-vue-icons` et `@iconify/vue`.
+
+::: tip Astuce
+Si vous en êtes resté aux icônes remix icons, le nom de la collection étant d’une part sans tiret `-` et d’autre part identique entre `oh-vue-icons` et `@iconify/vue` (`ri`), vous n’aurez rien à modifier. Idem pour Bootstrap Icons (`bi`).
+:::
 
 Dans les cas ou le nom de la collection ne contient pas de tiret `-`, alors le `-` est accepté en tant que séparateur entre le nom de collection et le nom d’icône.
+
+##### Nuxt
+
+Il faudra utiliser la [v2](https://github.com/laruiss/vue-dsfr-nuxt-module/releases/tag/v2.0.0) de [`vue-dsfr-nuxt-module`](https://github.com/laruiss/vue-dsfr-nuxt-module), et enlever `oh-vue-icons` des dépendances et supprimer les références à `oh-vue-icons` :
+
+Dans `nuxt.config.ts` :
+
+```diff
+-import * as icons from './icons'
+ // (...)
+ export default defineNuxtConfig({
+   // (...)
+-  runtimeConfig: {
+-    public: {
+-      vueDsfr: {
+-        icons: Object.values(icons),
+-      },
+-    },
+-  },
+
+```
+
+et supprimer le fichier `icons.ts` si vous en avez un
+
+Il faudra peut-être dans certains cas renommer les icônes car la syntaxe attendue par `@iconify/vue` est `nom-de-collection:nom-d-icone` alors que `oh-vue-icon` attendait simplement `nom-de-collection-nom-d-icone` et les noms de collections ne sont pas forcément identiques entre `oh-vue-icons` et `@iconify/vue`.
+
+Dans les cas ou le nom de la collection ne contient pas de tiret `-`, alors le `-` est accepté en tant que séparateur entre le nom de collection et le nom d’icône.
+
+::: tip Astuce
+Si vous en êtes resté aux icônes remix icons, le nom de la collection étant d’une part sans tiret `-` et d’autre part identique entre `oh-vue-icons` et `@iconify/vue` (`ri`), vous n’aurez rien à modifier. Idem pour Bootstrap Icons (`bi`).
+:::
 
 ### Les onglets
 
 Avant la version 6.x de VueDsfr, pour activer un onglet particulier, il fallait passer la prop `selected` au bon titre d’onglet et à la bonne zone de contenu.
 
+Nous avions exposé un composable `useTabs()` pour faciliter un peu cette gestion. C’était pourtant déjà trop compliqué à notre goût.
+
 Désormais c’est beaucoup plus simple, il suffit d’utiliser `v-model` sur le composant parent `DsfrTabs`.
+
+### Les accordéons
+
+Désormais, comme pour les onglets, pour choisir un accordéon particulier à ouvrir, il faudra utiliser `v-model` sur le composant [`DsfrAccordionsGroup`](/composants/DsfrAccordionsGroup), tel que décrit dans la [documentation](/composants/DsfrAccordionsGroup).
 
 ## Migration vers 3.x (depuis 1.x ou 2.x)
 

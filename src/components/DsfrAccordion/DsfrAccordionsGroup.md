@@ -1,4 +1,4 @@
-# DsfrAccordionsGroup - Documentation Vue.js
+# Groupe d’accordéons - `DsfrAccordionsGroup`
 
 ## 🌟 Introduction
 
@@ -14,13 +14,17 @@ Le composant `DsfrAccordionsGroup` agit comme un conteneur pour les composants d
 
 | Nom de Prop | Type | Par défaut | Description |
 |-------------|------|------------|-------------|
-| `modelValue` | `number` | `-1` | Index de l'accordéon actuellement actif. Ce prop est utilisé pour le contrôle externe de l'accordéon sélectionné. |
+| `modelValue` | `number` | `-1` | Index de l'accordéon actuellement actif. Cette prop est utilisée pour le contrôle externe de l'accordéon ouvert (un seul peut être ouvert à la fois). |
 
 ## 📡 Événements
 
 | Nom de l'Événement | Payload | Description |
 |--------------------|---------|-------------|
-| `update:modelValue` | `number` | Émis lorsque l'accordéon actif change. Le payload est l'index du nouvel accordéon actif. |
+| `update:modelValue` | `number` | Émis lorsque l'accordéon actif change. Le payload est l'index du nouvel accordéon ouvert. |
+
+::: tip Astuce
+Il est donc possible (et recommandé) d’utiliser la directive `v-model` sur ce composant.
+:::
 
 ## 🧩 Slots
 
