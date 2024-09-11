@@ -1,10 +1,10 @@
 <script lang="ts" setup>
 import { ref } from 'vue'
 
-import DsfrTabs from '../../src/components/DsfrTabs/DsfrTabs.vue'
-import DsfrTabContent from '../../src/components/DsfrTabs/DsfrTabContent.vue'
-import DsfrCard from '../../src/components/DsfrCard/DsfrCard.vue'
 import DsfrAccordion from '../../src/components/DsfrAccordion/DsfrAccordion.vue'
+import DsfrCard from '../../src/components/DsfrCard/DsfrCard.vue'
+import DsfrTabContent from '../../src/components/DsfrTabs/DsfrTabContent.vue'
+import DsfrTabs from '../../src/components/DsfrTabs/DsfrTabs.vue'
 
 const tabListName = 'Liste d’onglet'
 const tabTitles = [

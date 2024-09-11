@@ -36,20 +36,20 @@ Il faudra enlever les références à `oh-vue-icons`, par exemple dans `main.ts`
 ::: code-group
 
 ```ts [main.ts]
+import { addIcons, OhVueIcon } from 'oh-vue-icons'
+import { createApp } from 'vue'
 import '@gouvfr/dsfr/dist/core/core.main.min.css'
 import '@gouvfr/dsfr/dist/component/component.main.min.css'
+
 import '@gouvfr/dsfr/dist/utility/utility.main.min.css'
 import '@gouvminint/vue-dsfr/styles'
 
 import '@gouvfr/dsfr/dist/scheme/scheme.min.css'
-import '@gouvfr/dsfr/dist/utility/icons/icons.min.css'
-
-import { createApp } from 'vue'
-import { OhVueIcon, addIcons } from 'oh-vue-icons' // [!code --]
+import '@gouvfr/dsfr/dist/utility/icons/icons.min.css' // [!code --]
 
 import App from './App.vue'
-import router from './router/index'
-import * as icons from './icons' // [!code --]
+import * as icons from './icons'
+import router from './router/index' // [!code --]
 
 import './main.css'
 

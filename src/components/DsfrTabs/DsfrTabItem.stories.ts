@@ -1,8 +1,8 @@
 import { setup } from '@storybook/vue3'
 
-import DsfrTabs from './DsfrTabs.vue'
-import DsfrTabItem from './DsfrTabItem.vue'
 import VIcon from '../VIcon/VIcon.vue'
+import DsfrTabItem from './DsfrTabItem.vue'
+import DsfrTabs from './DsfrTabs.vue'
 
 setup((app) => {
   app.component('VIcon', VIcon)

@@ -1,8 +1,8 @@
 <script setup>
+import DsfrAlert from '@/components/DsfrAlert/DsfrAlert.vue'
+import DsfrNotice from '@/components/DsfrNotice/DsfrNotice.vue'
 // @ts-check
 import { ref } from 'vue'
-import DsfrNotice from '@/components/DsfrNotice/DsfrNotice.vue'
-import DsfrAlert from '@/components/DsfrAlert/DsfrAlert.vue'
 
 const noticeClosed = ref(false)
 

@@ -1,22 +1,26 @@
 #!/usr/bin/env node
+import { readFile, writeFile } from 'node:fs/promises'
+import path from 'node:path'
 /* eslint no-console: 'off' */
 import process from 'node:process'
 import { fileURLToPath, URL } from 'node:url'
-import { readFile, writeFile } from 'node:fs/promises'
-import path from 'node:path'
 
-import inquirer from 'inquirer'
 import chalk from 'chalk'
 import { globby } from 'globby'
+import inquirer from 'inquirer'
 
 const isCI = process.argv.includes('--ci')
 
 const getNormalizedDir = (relativeDir) => fileURLToPath(new URL(relativeDir, import.meta.url))
 
 // const sfcs = await globby(fileURLToPath(new URL('../src/components/**/*.vue', import.meta.url)))
-const sfcs = await globby('src/components/**/*.vue')
+const sfcs = (await globby('src/components/**/*.{vue,types.ts}'))
+  .filter(path => !/Demo|Example/.test(path))
+  .map(path => path.replace(/^(.*).types.ts$/, '$1.types'))
 
-const projectFn = component => `export { default as ${path.basename(component, '.vue')} } from '${component.replace('src/components', '.')}'`
+const projectFn = component => component.endsWith('types')
+  ? `export * from '${component.replace('src/components', '.')}'`
+  : `export { default as ${path.basename(component, '.vue')} } from '${component.replace('src/components', '.')}'`
 
 const correctComponentList = sfcs.map(projectFn).sort()
 const correctString = `${correctComponentList.join('\n')}\n`

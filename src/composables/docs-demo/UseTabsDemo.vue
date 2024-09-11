@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useTabs, DsfrTabs, DsfrTabContent, type DsfrTabsProps } from '../../index'
+import { DsfrTabContent, DsfrTabs, type DsfrTabsProps, useTabs } from '../../index'
 
 const { ascendant, selected, select } = useTabs(true, 0)
 

@@ -1,8 +1,8 @@
 import { fireEvent, render } from '@testing-library/vue'
 
-import DsfrTableRow from './DsfrTableRow.vue'
-
 import { spy } from '@tests/unit/test-utils'
+
+import DsfrTableRow from './DsfrTableRow.vue'
 
 describe('DsfrTableRow', () => {
   it('should render simple row', () => {

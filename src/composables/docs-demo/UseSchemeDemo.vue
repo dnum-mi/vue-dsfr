@@ -1,6 +1,6 @@
 <script setup>
-import { useScheme, DsfrButton } from '../../index'
 import { onMounted, reactive, watchEffect } from 'vue'
+import { DsfrButton, useScheme } from '../../index'
 
 const preferences = reactive({
   theme: undefined,

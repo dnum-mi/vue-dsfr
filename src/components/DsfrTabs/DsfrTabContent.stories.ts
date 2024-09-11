@@ -1,5 +1,5 @@
-import DsfrTabs from './DsfrTabs.vue'
 import DsfrTabContent from './DsfrTabContent.vue'
+import DsfrTabs from './DsfrTabs.vue'
 
 export default {
   component: DsfrTabContent,

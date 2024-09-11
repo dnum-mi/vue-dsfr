@@ -1,9 +1,9 @@
-import VIcon from '../VIcon/VIcon.vue'
 import { fireEvent, render } from '@testing-library/vue'
+import { spy } from '@tests/unit/test-utils'
+
+import VIcon from '../VIcon/VIcon.vue'
 
 import DsfrTableHeaders from './DsfrTableHeaders.vue'
-
-import { spy } from '@tests/unit/test-utils'
 
 describe('DsfrTableHeaders', () => {
   it('should render simple header row', async () => {

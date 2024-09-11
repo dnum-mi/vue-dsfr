@@ -1,12 +1,12 @@
 <script lang="ts" setup>
-import { ref, computed, onMounted, onUnmounted, reactive, provide, watch, type Ref } from 'vue'
-
-import { registerTabKey } from './injection-key'
+import { computed, onMounted, onUnmounted, provide, reactive, ref, type Ref, watch } from 'vue'
 
 import { getRandomId } from '../../utils/random-utils'
 
-import DsfrTabItem from './DsfrTabItem.vue'
 import DsfrTabContent from './DsfrTabContent.vue'
+
+import DsfrTabItem from './DsfrTabItem.vue'
+import { registerTabKey } from './injection-key'
 
 import type { DsfrTabsProps } from './DsfrTabs.types'
 

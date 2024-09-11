@@ -1,8 +1,8 @@
 <script lang="ts" setup>
-import DsfrTable from '../DsfrTable.vue'
+import { getCurrentInstance } from 'vue'
 import DsfrTag from '../../DsfrTag/DsfrTag.vue'
 
-import { getCurrentInstance } from 'vue'
+import DsfrTable from '../DsfrTable.vue'
 import type { DsfrTableCellProps, DsfrTableRowProps } from '../DsfrTable.types'
 
 getCurrentInstance()?.appContext.app.component('DsfrTag', DsfrTag)

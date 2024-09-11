@@ -1,7 +1,7 @@
+import { expect, within } from '@storybook/test'
+import DsfrCheckboxSet from '../DsfrCheckbox/DsfrCheckboxSet.vue'
 import DsfrAccordion from './DsfrAccordion.vue'
 import DsfrAccordionsGroup from './DsfrAccordionsGroup.vue'
-import DsfrCheckboxSet from '../DsfrCheckbox/DsfrCheckboxSet.vue'
-import { expect, within } from '@storybook/test'
 
 const delay = (timeout = 100) =>
   new Promise((resolve) => setTimeout(resolve, timeout))

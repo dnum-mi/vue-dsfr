@@ -1,4 +1,4 @@
-import { within, expect } from '@storybook/test'
+import { expect, within } from '@storybook/test'
 import DsfrPagination from './DsfrPagination.vue'
 
 /**

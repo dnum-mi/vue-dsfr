@@ -1,10 +1,10 @@
 <script lang="ts" setup>
-import VIcon from '../../VIcon/VIcon.vue'
-import { createWebHistory, createRouter } from 'vue-router'
-import { getCurrentInstance } from 'vue'
-
-import DsfrFooter from '../DsfrFooter.vue'
 import { useScheme } from '@/composables'
+import { getCurrentInstance } from 'vue'
+import { createRouter, createWebHistory } from 'vue-router'
+
+import VIcon from '../../VIcon/VIcon.vue'
+import DsfrFooter from '../DsfrFooter.vue'
 
 const { setScheme, theme } = useScheme()
 

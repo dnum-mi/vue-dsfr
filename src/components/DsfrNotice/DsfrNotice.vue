@@ -15,7 +15,8 @@ defineEmits<{ (event: 'close'): void }>()
 <template>
   <div
     class="fr-notice"
-    :class="`fr-notice--${type}`">
+    :class="`fr-notice--${type}`"
+  >
     <div class="fr-container">
       <div class="fr-notice__body">
         <p>

@@ -1,6 +1,6 @@
+import { render } from '@testing-library/vue'
 import VIcon from '../VIcon/VIcon.vue'
 import DsfrFileUpload from './DsfrFileUpload.vue'
-import { render } from '@testing-library/vue'
 
 describe('DsfrFileUpload', () => {
   it('should render file input without hint nor error', () => {

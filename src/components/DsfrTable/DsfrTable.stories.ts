@@ -1,8 +1,8 @@
 import { fn } from '@storybook/test'
 import { setup } from '@storybook/vue3'
 
-import DsfrTable from './DsfrTable.vue'
 import DsfrTag from '../DsfrTag/DsfrTag.vue'
+import DsfrTable from './DsfrTable.vue'
 
 import './table.stories.css'
 

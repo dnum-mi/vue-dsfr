@@ -1,7 +1,7 @@
 import DsfrSideMenu from './DsfrSideMenu.vue'
+import DsfrSideMenuLink from './DsfrSideMenuLink.vue'
 import DsfrSideMenuList from './DsfrSideMenuList.vue'
 import DsfrSideMenuListItem from './DsfrSideMenuListItem.vue'
-import DsfrSideMenuLink from './DsfrSideMenuLink.vue'
 
 export default {
   component: DsfrSideMenuListItem,

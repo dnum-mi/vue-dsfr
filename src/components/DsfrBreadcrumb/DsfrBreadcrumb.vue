@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { ref, watch } from 'vue'
 
-import type { DsfrBreadcrumbProps } from './DsfrBreadcrumb.types'
-import { getRandomId } from '../../utils/random-utils'
 import { useCollapsable } from '../../composables'
+import { getRandomId } from '../../utils/random-utils'
+import type { DsfrBreadcrumbProps } from './DsfrBreadcrumb.types'
 
 export type { DsfrBreadcrumbProps }
 

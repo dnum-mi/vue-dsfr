@@ -1,8 +1,8 @@
 import { expect, within } from '@storybook/test'
 
-import DsfrCard from './DsfrCard.vue'
-import DsfrTags from './../DsfrTag/DsfrTags.vue'
 import DsfrBadge from './../DsfrBadge/DsfrBadge.vue'
+import DsfrTags from './../DsfrTag/DsfrTags.vue'
+import DsfrCard from './DsfrCard.vue'
 
 /**
  * [Voir quand l’utiliser sur la documentation du DSFR](https://www.systeme-de-design.gouv.fr/elements-d-interface/composants/carte)

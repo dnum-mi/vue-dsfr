@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { computed } from 'vue'
-
 import { getRandomId } from '@/utils/random-utils'
+
+import { computed } from 'vue'
 import type { DsfrAlertProps } from './DsfrAlert.types'
 
 export type { DsfrAlertProps, DsfrAlertType } from './DsfrAlert.types'

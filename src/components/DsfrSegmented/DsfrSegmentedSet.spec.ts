@@ -1,5 +1,5 @@
-import VIcon from '../VIcon/VIcon.vue'
 import { fireEvent, render } from '@testing-library/vue'
+import VIcon from '../VIcon/VIcon.vue'
 
 import SegmentedSet from './DsfrSegmentedSet.vue'
 

@@ -1,10 +1,10 @@
+import { expect, within } from '@storybook/test'
 import DsfrAlert from '../DsfrAlert/DsfrAlert.vue'
 import DsfrButton from '../DsfrButton/DsfrButton.vue'
+import VIcon from '../VIcon/VIcon.vue'
+
 import DsfrInput from './DsfrInput.vue'
 import DsfrInputGroup from './DsfrInputGroup.vue'
-
-import VIcon from '../VIcon/VIcon.vue'
-import { within, expect } from '@storybook/test'
 
 /**
  * [Voir quand l’utiliser sur la documentation du DSFR](https://www.systeme-de-design.gouv.fr/elements-d-interface/composants/champ-de-saisie)

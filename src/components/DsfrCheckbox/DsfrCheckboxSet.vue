@@ -1,8 +1,8 @@
 <script lang="ts" setup>
 import { computed } from 'vue'
 
-import DsfrCheckbox from './DsfrCheckbox.vue'
 import { getRandomId } from '../../utils/random-utils'
+import DsfrCheckbox from './DsfrCheckbox.vue'
 
 import type { DsfrCheckboxSetProps } from './DsfrCheckbox.types'
 

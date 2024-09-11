@@ -1,8 +1,8 @@
 <script lang="ts" setup>
-import { ref, computed, watch } from 'vue'
+import { computed, ref, watch } from 'vue'
 
-import { getRandomId } from '../../utils/random-utils'
 import { useCollapsable } from '../../composables'
+import { getRandomId } from '../../utils/random-utils'
 
 import type { DsfrTranscriptionProps } from './DsfrTranscription.types'
 

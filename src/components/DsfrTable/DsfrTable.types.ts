@@ -1,5 +1,5 @@
+import type { HTMLAttributes, TdHTMLAttributes, ThHTMLAttributes } from 'vue'
 import type VIcon from '../VIcon/VIcon.vue'
-import type { TdHTMLAttributes, ThHTMLAttributes, HTMLAttributes } from 'vue'
 
 export type DsfrTableRowProps = {
   rowData?: (string | Record<string, any>)[]

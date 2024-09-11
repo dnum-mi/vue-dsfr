@@ -2,8 +2,8 @@
 import { ref } from 'vue'
 
 import DsfrButton from '../../DsfrButton/DsfrButton.vue'
-import DsfrTabs from '../DsfrTabs.vue'
 import DsfrTabContent from '../DsfrTabContent.vue'
+import DsfrTabs from '../DsfrTabs.vue'
 
 const tabListName = 'Liste d’onglet'
 const title1 = 'Titre 1'

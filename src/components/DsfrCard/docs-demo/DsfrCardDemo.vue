@@ -1,9 +1,9 @@
 <script lang="ts" setup>
-import VICon from '../../VIcon/VIcon.vue'
 import { getCurrentInstance } from 'vue'
-
-import DsfrCard from '../DsfrCard.vue'
 import DsfrTags from '../../DsfrTag/DsfrTags.vue'
+
+import VICon from '../../VIcon/VIcon.vue'
+import DsfrCard from '../DsfrCard.vue'
 
 import type { DsfrBadgeProps } from '../../DsfrBadge/DsfrBadge.types'
 

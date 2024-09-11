@@ -1,8 +1,8 @@
 <script lang="ts" setup>
 import { ref } from 'vue'
 
-import DsfrInputGroup from '../DsfrInputGroup.vue'
 import DsfrInput from '../DsfrInput.vue'
+import DsfrInputGroup from '../DsfrInputGroup.vue'
 
 const type = 'text'
 const label = 'Label champ de saisie'

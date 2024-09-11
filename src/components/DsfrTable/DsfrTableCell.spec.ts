@@ -1,10 +1,10 @@
-import VIcon from '../VIcon/VIcon.vue'
 import { fireEvent, render } from '@testing-library/vue'
+import { spy } from '@tests/unit/test-utils'
+
+import DsfrTag from '../DsfrTag/DsfrTag.vue'
+import VIcon from '../VIcon/VIcon.vue'
 
 import DsfrTableCell from './DsfrTableCell.vue'
-import DsfrTag from '../DsfrTag/DsfrTag.vue'
-
-import { spy } from '@tests/unit/test-utils'
 
 describe('DsfrTableCell', () => {
   it('should render simple cell', () => {

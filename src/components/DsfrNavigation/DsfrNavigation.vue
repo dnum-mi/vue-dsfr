@@ -1,19 +1,19 @@
 <script lang="ts" setup>
-import { ref, onMounted, onUnmounted } from 'vue'
+import { onMounted, onUnmounted, ref } from 'vue'
 
 import { getRandomId } from '../../utils/random-utils'
 
 import DsfrNavigationItem from './DsfrNavigationItem.vue'
-import DsfrNavigationMenuLink from './DsfrNavigationMenuLink.vue'
-import DsfrNavigationMenu from './DsfrNavigationMenu.vue'
 import DsfrNavigationMegaMenu from './DsfrNavigationMegaMenu.vue'
+import DsfrNavigationMenu from './DsfrNavigationMenu.vue'
+import DsfrNavigationMenuLink from './DsfrNavigationMenuLink.vue'
 
 import type {
-  DsfrNavigationMenuLinks,
-  DsfrNavigationProps,
-  DsfrNavigationMenuProps,
-  DsfrNavigationMenuLinkProps,
   DsfrNavigationMegaMenuProps,
+  DsfrNavigationMenuLinkProps,
+  DsfrNavigationMenuLinks,
+  DsfrNavigationMenuProps,
+  DsfrNavigationProps,
 } from './DsfrNavigation.types'
 
 export type { DsfrNavigationMenuLinks, DsfrNavigationProps }
