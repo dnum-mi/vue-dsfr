@@ -1,5 +1,5 @@
+import { fireEvent, render } from '@testing-library/vue'
 import VIcon from '../VIcon/VIcon.vue'
-import { render, fireEvent } from '@testing-library/vue'
 
 import Pagination from './DsfrPagination.vue'
 

@@ -1,9 +1,9 @@
-import VIcon from '../VIcon/VIcon.vue'
 import { fireEvent } from '@testing-library/dom'
 import { render } from '@testing-library/vue'
-
 // import '@gouvfr/dsfr/dist/core/core.module.js'
 import { spy } from '@tests/unit/test-utils'
+
+import VIcon from '../VIcon/VIcon.vue'
 
 import DsfrButtonGroup from './DsfrButtonGroup.vue'
 

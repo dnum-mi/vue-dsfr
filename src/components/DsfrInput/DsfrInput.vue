@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { ref, computed, useAttrs } from 'vue'
+import { computed, ref, useAttrs } from 'vue'
 import type { Ref } from 'vue'
 
 import { getRandomId } from '../../utils/random-utils'

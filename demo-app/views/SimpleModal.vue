@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import { ref, reactive, onMounted, watchEffect } from 'vue'
 import DsfrModal from '@/components/DsfrModal/DsfrModal.vue'
-import type { Preferences, UseSchemeResult } from '@/composables/index'
 import { useScheme } from '@/composables/index'
-import lightThemeSvg from '@gouvfr/dsfr/dist/artwork/pictograms/environment/sun.svg'
 import darkThemeSvg from '@gouvfr/dsfr/dist/artwork/pictograms/environment/moon.svg'
+import lightThemeSvg from '@gouvfr/dsfr/dist/artwork/pictograms/environment/sun.svg'
 import systemThemeSvg from '@gouvfr/dsfr/dist/artwork/pictograms/system/system.svg'
+import { onMounted, reactive, ref, watchEffect } from 'vue'
+import type { Preferences, UseSchemeResult } from '@/composables/index'
 
 const isModalOpen = ref(false)
 const isThemeModalOpen = ref(false)

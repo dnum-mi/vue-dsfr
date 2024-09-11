@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, ref, watch, onUnmounted, provide, type Ref } from 'vue'
+import { computed, onUnmounted, provide, ref, type Ref, watch } from 'vue'
 
 import { registerTabKey } from './injection-key'
 

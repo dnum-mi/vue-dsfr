@@ -1,9 +1,9 @@
 import { fn } from '@storybook/test'
 
-import DsfrTable from './DsfrTable.vue'
-import DsfrTableHeader from './DsfrTableHeader.vue'
-
 import VIcon from '../VIcon/VIcon.vue'
+import DsfrTable from './DsfrTable.vue'
+
+import DsfrTableHeader from './DsfrTableHeader.vue'
 
 import './table.stories.css'
 

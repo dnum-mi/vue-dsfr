@@ -1,9 +1,9 @@
 <script lang="ts" setup>
 import { getCurrentInstance } from 'vue'
 
+import DsfrTag from '../../DsfrTag/DsfrTag.vue'
 import DsfrTable from '../DsfrTable.vue'
 import DsfrTableRow from '../DsfrTableRow.vue'
-import DsfrTag from '../../DsfrTag/DsfrTag.vue'
 
 getCurrentInstance()?.appContext.app.component('DsfrTag', DsfrTag)
 

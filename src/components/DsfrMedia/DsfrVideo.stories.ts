@@ -1,10 +1,10 @@
-import { setup } from '@storybook/vue3'
+import { expect, within } from '@storybook/test'
 
-import DsfrVideo from './DsfrVideo.vue'
+import { setup } from '@storybook/vue3'
 
 import DsfrModal from '../DsfrModal/DsfrModal.vue'
 import VIcon from '../VIcon/VIcon.vue'
-import { within, expect } from '@storybook/test'
+import DsfrVideo from './DsfrVideo.vue'
 
 setup((app) => {
   app.component('DsfrModal', DsfrModal)

@@ -1,8 +1,8 @@
 <script lang="ts" setup>
 import { getRandomId } from '../../utils/random-utils'
 
-import DsfrInput from '../DsfrInput/DsfrInput.vue'
 import DsfrButton from '../DsfrButton/DsfrButton.vue'
+import DsfrInput from '../DsfrInput/DsfrInput.vue'
 
 import type { DsfrSearchBarProps } from './DsfrSearchBar.types'
 

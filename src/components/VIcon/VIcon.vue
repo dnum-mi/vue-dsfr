@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import { computed, nextTick, onMounted, ref, watch } from 'vue'
 import { Icon } from '@iconify/vue'
+import { computed, nextTick, onMounted, ref, watch } from 'vue'
 import type { VIconProps } from './VIcon.types'
 
 export type { VIconProps }

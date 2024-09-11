@@ -1,8 +1,8 @@
 <script lang="ts" setup>
 import { computed } from 'vue'
 
-import DsfrRadioButton from './DsfrRadioButton.vue'
 import { getRandomId } from '../../utils/random-utils'
+import DsfrRadioButton from './DsfrRadioButton.vue'
 
 import type { DsfrRadioButtonSetProps } from './DsfrRadioButton.types'
 
@@ -54,8 +54,8 @@ const ariaLabelledby = computed(() => message.value ? `${props.titleId} messages
         <slot name="legend">
           {{ legend }}
           <span
-            class="fr-hint-text"
             v-if="hint || $slots.hint"
+            class="fr-hint-text"
           >
             <slot name="hint">
               {{ hint }}

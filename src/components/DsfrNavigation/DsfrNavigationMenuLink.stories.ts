@@ -1,5 +1,5 @@
-import DsfrNavigationMenuLink from './DsfrNavigationMenuLink.vue'
 import DsfrNavigation from './DsfrNavigation.vue'
+import DsfrNavigationMenuLink from './DsfrNavigationMenuLink.vue'
 
 export default {
   component: DsfrNavigationMenuLink,

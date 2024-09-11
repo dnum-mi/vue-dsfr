@@ -1,7 +1,7 @@
-import DsfrAccordionsGroup from './DsfrAccordionsGroup.vue'
+import { expect, within } from '@storybook/test'
 import DsfrAccordion from './DsfrAccordion.vue'
 
-import { expect, within } from '@storybook/test'
+import DsfrAccordionsGroup from './DsfrAccordionsGroup.vue'
 
 const delay = (timeout = 100) =>
   new Promise((resolve) => setTimeout(resolve, timeout))

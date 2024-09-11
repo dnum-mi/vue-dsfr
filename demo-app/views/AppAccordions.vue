@@ -1,9 +1,9 @@
 <script setup>
-import { ref } from 'vue'
-
 import DsfrAccordion from '@/components/DsfrAccordion/DsfrAccordion.vue'
+
 import DsfrAccordionsGroup from '@/components/DsfrAccordion/DsfrAccordionsGroup.vue'
 import DsfrTranscription from '@/components/DsfrTranscription/DsfrTranscription.vue'
+import { ref } from 'vue'
 
 const activeAccordion = ref(-1)
 const activeAccordionInGroup = ref(-1)

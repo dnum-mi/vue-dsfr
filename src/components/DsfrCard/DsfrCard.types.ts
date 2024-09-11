@@ -1,7 +1,7 @@
 import type { RouteLocationRaw } from 'vue-router'
 
-import type { DsfrButtonProps } from '../DsfrButton/DsfrButton.types'
 import type { DsfrBadgeProps } from '../DsfrBadge/DsfrBadge.types'
+import type { DsfrButtonProps } from '../DsfrButton/DsfrButton.types'
 import type VIcon from '../VIcon/VIcon.vue'
 
 export type DsfrCardDetailProps = {
@@ -22,6 +22,7 @@ export type DsfrCardProps = {
   titleTag?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'
   badges?: DsfrBadgeProps[]
   buttons?: DsfrButtonProps[]
+  imgRatio?: 'md' | 'medium' | 'lg' | 'large' | 'sm' | 'small'
   linksGroup?: {
     label: string
     to?: RouteLocationRaw

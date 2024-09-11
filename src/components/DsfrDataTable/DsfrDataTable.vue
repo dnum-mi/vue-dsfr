@@ -1,9 +1,9 @@
 <script lang="ts" setup>
-import { computed, ref } from 'vue'
-
 import { getRandomId } from '@/utils/random-utils'
-import VIcon from '../VIcon/VIcon.vue'
+
+import { computed, ref } from 'vue'
 import DsfrPagination from '../DsfrPagination/DsfrPagination.vue'
+import VIcon from '../VIcon/VIcon.vue'
 
 export type Page = { href?: string, label: string, title: string }
 

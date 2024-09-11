@@ -2,8 +2,8 @@
 import { ref } from 'vue'
 
 import type { VIconProps } from '@/components/VIcon/VIcon.types'
-import DsfrCallout from '../DsfrCallout.vue'
 import DsfrButton from '../../DsfrButton/DsfrButton.vue'
+import DsfrCallout from '../DsfrCallout.vue'
 
 const title = 'Titre de la mise en avant'
 const button = undefined

@@ -1,13 +1,13 @@
 #!/usr/bin/env node
+import { readFile, writeFile } from 'node:fs/promises'
+import path from 'node:path'
 /* eslint no-console: 'off' */
 import process from 'node:process'
 import { fileURLToPath, URL } from 'node:url'
-import { readFile, writeFile } from 'node:fs/promises'
-import path from 'node:path'
 
-import inquirer from 'inquirer'
 import chalk from 'chalk'
 import { globby } from 'globby'
+import inquirer from 'inquirer'
 
 const isCI = process.argv.includes('--ci')
 

@@ -1,9 +1,9 @@
 <script lang="ts" setup>
 import { computed, onMounted, watch } from 'vue'
 
-import { getRandomId } from '../../utils/random-utils'
-
 import { useCollapsable } from '../../composables'
+
+import { getRandomId } from '../../utils/random-utils'
 import DsfrNavigationMegaMenuCategory from './DsfrNavigationMegaMenuCategory.vue'
 
 import type { DsfrNavigationMegaMenuProps } from './DsfrNavigation.types'

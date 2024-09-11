@@ -34,9 +34,9 @@ Ce composant `AppToaster` sera ajouté une seule fois dans l’application : da
 
 ```vue [App.vue]
 <script setup lang="ts">
-import { ref } from 'vue'
 // (...)
-import AppToaster from '@/components/AppToaster.vue' // Import du composant AppToaster
+import AppToaster from '@/components/AppToaster.vue'
+import { ref } from 'vue' // Import du composant AppToaster
 // (...)
 </script>
 

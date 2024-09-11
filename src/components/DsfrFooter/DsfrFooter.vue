@@ -2,18 +2,18 @@
 import { computed, useSlots } from 'vue'
 import type { RouteLocationRaw, RouterLink } from 'vue-router'
 
-import DsfrLogo from '../DsfrLogo/DsfrLogo.vue'
-import DsfrFooterPartners from '../DsfrFooter/DsfrFooterPartners.vue'
 import DsfrFooterLink from '../DsfrFooter/DsfrFooterLink.vue'
+import DsfrFooterPartners from '../DsfrFooter/DsfrFooterPartners.vue'
+import DsfrLogo from '../DsfrLogo/DsfrLogo.vue'
 
 import type { DsfrFooterProps } from './DsfrFooter.types'
 
 export type { DsfrFooterProps }
 export type {
-  DsfrFooterLinkProps,
   DsfrFooterLinkListProps,
-  DsfrFooterPartnersProps,
+  DsfrFooterLinkProps,
   DsfrFooterPartner,
+  DsfrFooterPartnersProps,
 } from './DsfrFooter.types'
 
 const props = withDefaults(defineProps<DsfrFooterProps>(), {

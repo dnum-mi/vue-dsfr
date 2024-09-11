@@ -1,4 +1,4 @@
-import { fn, within, expect } from '@storybook/test'
+import { expect, fn, within } from '@storybook/test'
 
 import DsfrCheckboxSet from './DsfrCheckboxSet.vue'
 

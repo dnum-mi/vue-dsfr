@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { ref } from 'vue'
-
 import DsfrButton from '@/components/DsfrButton/DsfrButton.vue'
+
+import { ref } from 'vue'
 import DsfrModal from '../DsfrModal.vue'
 
 const opened = ref(false)

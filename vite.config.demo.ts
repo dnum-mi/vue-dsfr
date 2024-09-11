@@ -1,9 +1,9 @@
 import process from 'node:process'
-import { URL, fileURLToPath } from 'node:url'
+import { fileURLToPath, URL } from 'node:url'
 
-import { type UserConfig, defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import vueJsx from '@vitejs/plugin-vue-jsx'
+import { defineConfig, type UserConfig } from 'vite'
 
 const isVitepress = process.env.VITEPRESS === 'true'
 

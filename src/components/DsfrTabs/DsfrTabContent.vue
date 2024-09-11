@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { computed, inject, toRef } from 'vue'
 
-import type { DsfrTabContentProps } from './DsfrTabs.types'
 import { registerTabKey } from './injection-key'
+import type { DsfrTabContentProps } from './DsfrTabs.types'
 
 export type { DsfrTabContentProps }
 

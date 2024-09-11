@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import DsfrNotice from '../DsfrNotice.vue'
 import { ref } from 'vue'
+import DsfrNotice from '../DsfrNotice.vue'
 
 const isClosed = ref(false)
 const close = () => {

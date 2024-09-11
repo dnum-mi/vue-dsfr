@@ -1,5 +1,5 @@
-import { resolve } from 'node:path'
 import { readFile, writeFile } from 'node:fs/promises'
+import { resolve } from 'node:path'
 
 const coreCss = await readFile('node_modules/@gouvfr/dsfr/dist/core/core.css', 'utf8')
 const schemeCss = await readFile('node_modules/@gouvfr/dsfr/dist/scheme/scheme.css', 'utf8')

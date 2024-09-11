@@ -1,5 +1,5 @@
-import * as vueDsfrComponents from './components/index.js'
 import type { App, Component } from 'vue'
+import * as vueDsfrComponents from './components/index.js'
 import VIcon from './components/VIcon/VIcon.vue'
 
 export type VueDsfrPluginOptions = {
@@ -17,8 +17,8 @@ export default {
   },
 }
 
+export * from './common-types.js'
 export * from './components/index.js'
-export * from './utils/random-utils'
 export * from './composables/index'
 export * from './meta/index'
-export * from './common-types.js'
+export * from './utils/random-utils'

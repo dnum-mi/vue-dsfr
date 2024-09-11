@@ -1,8 +1,8 @@
 <script lang="ts" setup>
 import { computed } from 'vue'
 
-import DsfrSocialNetworks from './DsfrSocialNetworks.vue'
 import DsfrNewsLetter from './DsfrNewsLetter.vue'
+import DsfrSocialNetworks from './DsfrSocialNetworks.vue'
 
 import type { DsfrFollowProps } from './DsfrFollow.types'
 

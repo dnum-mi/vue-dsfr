@@ -1,8 +1,8 @@
 <script lang="ts" setup>
 import { ref } from 'vue'
 
-import DsfrRadioButtonSet from '../DsfrRadioButtonSet.vue'
 import DsfrRadioButton from '../DsfrRadioButton.vue'
+import DsfrRadioButtonSet from '../DsfrRadioButtonSet.vue'
 
 const modelValue1 = ref()
 const options = [

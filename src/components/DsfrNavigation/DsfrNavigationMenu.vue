@@ -1,10 +1,10 @@
 <script lang="ts" setup>
-import { computed, watch, onMounted } from 'vue'
+import { computed, onMounted, watch } from 'vue'
 
+import { useCollapsable } from '../../composables'
 import { getRandomId } from '../../utils/random-utils'
 import DsfrNavigationMenuItem from './DsfrNavigationMenuItem.vue'
 import DsfrNavigationMenuLink from './DsfrNavigationMenuLink.vue'
-import { useCollapsable } from '../../composables'
 
 import type { DsfrNavigationMenuProps } from './DsfrNavigation.types'
 
