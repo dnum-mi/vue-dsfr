@@ -1,7 +1,7 @@
 <script lang="ts" setup>
-import DsfrInput from './DsfrInput.vue'
-
 import { getRandomId } from '../../utils/random-utils'
+
+import DsfrInput from './DsfrInput.vue'
 
 import type { DsfrInputGroupProps } from './DsfrInput.types'
 

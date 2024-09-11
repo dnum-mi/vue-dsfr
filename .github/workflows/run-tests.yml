@@ -30,6 +30,8 @@ jobs:
         run: pnpm install --frozen-lockfile
       - name: Lint (show only errors)
         run: pnpm lint --quiet
+      - name: Check exports
+        run: pnpm check-exports-ci
       - name: Test
         run: pnpm test
       - name: Install Playwright

@@ -1,11 +1,11 @@
-import { fn, expect, within, userEvent } from '@storybook/test'
+import { expect, fn, userEvent, within } from '@storybook/test'
 
-import DsfrButton from '../DsfrButton/DsfrButton.vue'
-import DsfrTabs from './DsfrTabs.vue'
-import DsfrTabContent from './DsfrTabContent.vue'
-
-import DsfrAccordionsGroup from '../DsfrAccordion/DsfrAccordionsGroup.vue'
 import DsfrAccordion from '../DsfrAccordion/DsfrAccordion.vue'
+import DsfrAccordionsGroup from '../DsfrAccordion/DsfrAccordionsGroup.vue'
+import DsfrButton from '../DsfrButton/DsfrButton.vue'
+
+import DsfrTabContent from './DsfrTabContent.vue'
+import DsfrTabs from './DsfrTabs.vue'
 
 const delay = (timeout = 100) =>
   new Promise((resolve) => setTimeout(resolve, timeout))

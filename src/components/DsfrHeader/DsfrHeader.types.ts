@@ -1,7 +1,7 @@
 import type { HTMLAttributes, StyleValue } from 'vue'
 import type { RouteLocationRaw } from 'vue-router'
-import type VIcon from '../VIcon/VIcon.vue'
 import type { DsfrLanguageSelectorProps } from '../DsfrLanguageSelector/DsfrLanguageSelector.types'
+import type VIcon from '../VIcon/VIcon.vue'
 
 export type DsfrHeaderMenuLinkProps = {
   button?: boolean
@@ -13,6 +13,7 @@ export type DsfrHeaderMenuLinkProps = {
   onClick?: ($event: MouseEvent) => void
   to?: RouteLocationRaw
   href?: string
+  path?: string
 }
 
 export type DsfrHeaderProps = {

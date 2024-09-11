@@ -1,10 +1,10 @@
 <script lang="ts" setup>
 import { computed, onMounted, onUnmounted, ref, toRef, useSlots } from 'vue'
 
+import DsfrLanguageSelector, { type DsfrLanguageSelectorElement } from '../DsfrLanguageSelector/DsfrLanguageSelector.vue'
 import DsfrLogo from '../DsfrLogo/DsfrLogo.vue'
 import DsfrSearchBar from '../DsfrSearchBar/DsfrSearchBar.vue'
 import DsfrHeaderMenuLinks from './DsfrHeaderMenuLinks.vue'
-import DsfrLanguageSelector, { type DsfrLanguageSelectorElement } from '../DsfrLanguageSelector/DsfrLanguageSelector.vue'
 
 import type { DsfrHeaderProps } from './DsfrHeader.types'
 

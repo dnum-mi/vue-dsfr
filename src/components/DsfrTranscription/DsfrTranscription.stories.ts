@@ -1,8 +1,8 @@
 import { setup } from '@storybook/vue3'
 
-import DsfrTranscription from './DsfrTranscription.vue'
 import DsfrModal from '../DsfrModal/DsfrModal.vue'
 import VIcon from '../VIcon/VIcon.vue'
+import DsfrTranscription from './DsfrTranscription.vue'
 
 setup((app) => {
   app.component('DsfrModal', DsfrModal)

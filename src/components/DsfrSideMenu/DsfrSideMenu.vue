@@ -1,9 +1,9 @@
 <script lang="ts" setup>
 import { ref, watch } from 'vue'
 
-import { getRandomId } from '../../utils/random-utils'
-
 import { useCollapsable } from '../../composables'
+
+import { getRandomId } from '../../utils/random-utils'
 import DsfrSideMenuList from './DsfrSideMenuList.vue'
 
 import type { DsfrSideMenuProps } from './DsfrSideMenu.types'

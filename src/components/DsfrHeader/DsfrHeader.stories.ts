@@ -1,7 +1,7 @@
-import { fn, expect, within } from '@storybook/test'
+import { expect, fn, within } from '@storybook/test'
 
-import DsfrHeader from './DsfrHeader.vue'
 import DsfrNavigation from '../DsfrNavigation/DsfrNavigation.vue'
+import DsfrHeader from './DsfrHeader.vue'
 import type { DsfrLanguageSelectorElement } from '../DsfrLanguageSelector/DsfrLanguageSelector.types'
 
 const delay = (timeout = 100) =>

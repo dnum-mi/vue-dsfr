@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, ref, watch, onUnmounted, onMounted } from 'vue'
+import { computed, onMounted, onUnmounted, ref, watch } from 'vue'
 
 import { getRandomId } from '../../utils/random-utils'
 

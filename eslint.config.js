@@ -69,4 +69,10 @@ export default antfu({
       'storybook/use-storybook-testing-library': 'error',
     },
   },
+  {
+    files: ['src/components/index.ts'],
+    rules: {
+      'perfectionist/sort-exports': 'off',
+    },
+  },
 ])

@@ -1,11 +1,11 @@
 <script lang="ts" setup>
 import { computed, ref, watch } from 'vue'
-import { getRandomId } from '../../utils/random-utils'
 import { useCollapsable } from '../../composables'
+import { getRandomId } from '../../utils/random-utils'
 
-import type { DsfrLanguageSelectorProps, DsfrLanguageSelectorElement } from './DsfrLanguageSelector.types'
+import type { DsfrLanguageSelectorElement, DsfrLanguageSelectorProps } from './DsfrLanguageSelector.types'
 
-export type { DsfrLanguageSelectorProps, DsfrLanguageSelectorElement }
+export type { DsfrLanguageSelectorElement, DsfrLanguageSelectorProps }
 
 const props = withDefaults(defineProps<DsfrLanguageSelectorProps>(), {
   id: () => getRandomId('translate'),

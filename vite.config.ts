@@ -1,12 +1,11 @@
-import process from 'node:process'
-import { URL, fileURLToPath } from 'node:url'
 import { dirname, resolve } from 'node:path'
-import browserslist from 'browserslist'
-import { browserslistToTargets } from 'lightningcss'
-
-import { type UserConfig, defineConfig } from 'vite'
+import process from 'node:process'
+import { fileURLToPath, URL } from 'node:url'
 import vue from '@vitejs/plugin-vue'
 import vueJsx from '@vitejs/plugin-vue-jsx'
+import browserslist from 'browserslist'
+import { browserslistToTargets } from 'lightningcss'
+import { defineConfig, type UserConfig } from 'vite'
 
 const projectDir = dirname(new URL(import.meta.url).pathname)
 

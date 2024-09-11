@@ -1,11 +1,11 @@
-import { fn, expect, within, userEvent } from '@storybook/test'
+import { expect, fn, userEvent, within } from '@storybook/test'
 
-import DsfrModal from './DsfrModal.vue'
+import { setup } from '@storybook/vue3'
 import DsfrButton from '../DsfrButton/DsfrButton.vue'
 
 import VIcon from '../VIcon/VIcon.vue'
 
-import { setup } from '@storybook/vue3'
+import DsfrModal from './DsfrModal.vue'
 
 const delay = (timeout = 100) =>
   new Promise((resolve) => setTimeout(resolve, timeout))

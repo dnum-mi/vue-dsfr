@@ -1,6 +1,6 @@
-import DsfrNavigationMegaMenu from './DsfrNavigationMegaMenu.vue'
-import DsfrNavigationItem from './DsfrNavigationItem.vue'
 import DsfrNavigation from './DsfrNavigation.vue'
+import DsfrNavigationItem from './DsfrNavigationItem.vue'
+import DsfrNavigationMegaMenu from './DsfrNavigationMegaMenu.vue'
 
 export default {
   component: DsfrNavigationMegaMenu,

@@ -1,4 +1,4 @@
-import { within, userEvent, expect } from '@storybook/test'
+import { expect, userEvent, within } from '@storybook/test'
 import DsfrSkipLinks from './DsfrSkipLinks.vue'
 
 /**

@@ -1,5 +1,5 @@
-import VIcon from '../VIcon/VIcon.vue'
 import { render } from '@testing-library/vue'
+import VIcon from '../VIcon/VIcon.vue'
 
 import DsfrSocialNetworks from './DsfrSocialNetworks.vue'
 

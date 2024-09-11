@@ -2,8 +2,8 @@
 import { inject, ref, toRef, watch } from 'vue'
 import VIcon from '../VIcon/VIcon.vue'
 
-import type { DsfrTabItemProps } from './DsfrTabs.types'
 import { registerTabKey } from './injection-key'
+import type { DsfrTabItemProps } from './DsfrTabs.types'
 
 export type { DsfrTabItemProps }
 

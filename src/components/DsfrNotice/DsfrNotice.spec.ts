@@ -1,4 +1,4 @@
-import { render, fireEvent } from '@testing-library/vue'
+import { fireEvent, render } from '@testing-library/vue'
 import DsfrNotice from './DsfrNotice.vue'
 
 describe('DsfrNotice', () => {

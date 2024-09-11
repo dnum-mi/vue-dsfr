@@ -1,10 +1,10 @@
 <script lang="ts" setup>
 import { computed, ref } from 'vue'
-import DsfrButtonGroup from '../DsfrButton/DsfrButtonGroup.vue'
-import DsfrBadge from '../DsfrBadge/DsfrBadge.vue'
-import type { DsfrCardProps } from './DsfrCard.types'
-import DsfrCardDetail from './DsfrCardDetail.vue'
 import type { RouterLink } from 'vue-router'
+import DsfrBadge from '../DsfrBadge/DsfrBadge.vue'
+import DsfrButtonGroup from '../DsfrButton/DsfrButtonGroup.vue'
+import DsfrCardDetail from './DsfrCardDetail.vue'
+import type { DsfrCardProps } from './DsfrCard.types'
 
 export type { DsfrCardProps }
 

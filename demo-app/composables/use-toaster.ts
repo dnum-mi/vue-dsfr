@@ -12,7 +12,8 @@ const getRandomAlphaNum = () => {
 
 const getRandomString = (length: number) => {
   return Array.from({ length })
-    .map(getRandomAlphaNum).join('')
+    .map(getRandomAlphaNum)
+    .join('')
 }
 
 const getRandomHtmlId = (prefix = '', suffix = '') => {

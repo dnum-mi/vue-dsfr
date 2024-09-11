@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import DsfrTableHeader from './DsfrTableHeader.vue'
 
-import type { DsfrTableHeadersProps, DsfrTableHeaderProps } from './DsfrTable.types'
+import type { DsfrTableHeaderProps, DsfrTableHeadersProps } from './DsfrTable.types'
 
 export type { DsfrTableHeadersProps }
 

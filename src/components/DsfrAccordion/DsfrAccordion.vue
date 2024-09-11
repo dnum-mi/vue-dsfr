@@ -1,10 +1,10 @@
 <script lang="ts" setup>
 import { inject, onMounted, ref, toRef, watch } from 'vue'
 
-import { getRandomId } from '../../utils/random-utils'
 import { useCollapsable } from '../../composables'
-import type { DsfrAccordionProps } from './DsfrAccordion.types'
+import { getRandomId } from '../../utils/random-utils'
 import { registerTabKey } from './injection-key'
+import type { DsfrAccordionProps } from './DsfrAccordion.types'
 
 export type { DsfrAccordionProps }
 

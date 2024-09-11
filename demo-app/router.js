@@ -1,18 +1,18 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
 import AboutUs from './views/AboutUs.vue'
-import AppHome from './views/AppHome.vue'
+import AppAccordions from './views/AppAccordions.vue'
 import AppAlerts from './views/AppAlerts.vue'
+import AppForm from './views/AppForm.vue'
+import AppHome from './views/AppHome.vue'
 import AppTabs from './views/AppTabs.vue'
 import AppTags from './views/AppTags.vue'
-import SchemeSettings from './views/SchemeSettings.vue'
-import LanguageSelector from './views/LanguageSelector.vue'
-import AppForm from './views/AppForm.vue'
-import SimpleModal from './views/SimpleModal.vue'
-import SideMenu from './views/SideMenu.vue'
-import CardTile from './views/CardTile.vue'
 import CalloutTest from './views/CalloutTest.vue'
-import AppAccordions from './views/AppAccordions.vue'
+import CardTile from './views/CardTile.vue'
+import LanguageSelector from './views/LanguageSelector.vue'
+import SchemeSettings from './views/SchemeSettings.vue'
+import SideMenu from './views/SideMenu.vue'
+import SimpleModal from './views/SimpleModal.vue'
 
 export const routes = [
   { path: '/', name: 'Home', component: AppHome },

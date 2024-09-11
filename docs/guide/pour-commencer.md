@@ -260,13 +260,13 @@ Voici ce que cela permet :
 ::: code-group
 
 ```ts [main.ts avec auto-imports]
-import '@gouvfr/dsfr/dist/dsfr.main.min.css'
-import '@gouvfr/dsfr/dist/utility/utility.main.min.css'
-
-import '@gouvminint/vue-dsfr/styles'
-
 import App from './App.vue'
 import router from './router/index'
+
+import '@gouvfr/dsfr/dist/dsfr.main.min.css'
+
+import '@gouvfr/dsfr/dist/utility/utility.main.min.css'
+import '@gouvminint/vue-dsfr/styles'
 
 import './main.css'
 
