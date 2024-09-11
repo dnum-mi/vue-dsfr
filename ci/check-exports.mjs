@@ -14,9 +14,13 @@ const isCI = process.argv.includes('--ci')
 const getNormalizedDir = (relativeDir) => fileURLToPath(new URL(relativeDir, import.meta.url))
 
 // const sfcs = await globby(fileURLToPath(new URL('../src/components/**/*.vue', import.meta.url)))
-const sfcs = await globby('src/components/**/*.vue')
+const sfcs = (await globby('src/components/**/*.{vue,types.ts}'))
+  .filter(path => !/Demo|Example/.test(path))
+  .map(path => path.replace(/^(.*).types.ts$/, '$1.types'))
 
-const projectFn = component => `export { default as ${path.basename(component, '.vue')} } from '${component.replace('src/components', '.')}'`
+const projectFn = component => component.endsWith('types')
+  ? `export * from '${component.replace('src/components', '.')}'`
+  : `export { default as ${path.basename(component, '.vue')} } from '${component.replace('src/components', '.')}'`
 
 const correctComponentList = sfcs.map(projectFn).sort()
 const correctString = `${correctComponentList.join('\n')}\n`
