@@ -141,6 +141,7 @@ activeTab.value = tabTitles.length - 1 // active le dernier onglet
 <<< DsfrTabContent.vue
 <<< DsfrTabItem.vue
 <<< DsfrTabs.types.ts
+<<< injection-key.ts
 :::
 
 <script setup lang="ts">

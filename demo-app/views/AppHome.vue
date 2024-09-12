@@ -70,7 +70,7 @@ const onClick = () => {
   }, 2000)
 }
 
-const expandedId = ref('')
+const activeAccordion = ref(-1)
 </script>
 
 <template>
@@ -111,19 +111,20 @@ const expandedId = ref('')
   </h2>
 
   <div>
-    <DsfrAccordion
-      id="accordion-1"
-      style="position: relative;"
-      title="Accordéon avec infobulle"
-      :expanded-id="expandedId"
-      @expand="expandedId = $event"
+    <DsfrAccordionsGroup
+      v-model="activeAccordion"
     >
-      Test infobulle dans accordéon
-      <DsfrTooltip
+      <DsfrAccordion
+        style="position: relative;"
+        title="Accordéon avec infobulle"
+      >
+        Test infobulle dans accordéon
+        <DsfrTooltip
 
-        content="Texte de l’info-bulle qui apparaît au survol"
-      />
-    </DsfrAccordion>
+          content="Texte de l’info-bulle qui apparaît au survol"
+        />
+      </DsfrAccordion>
+    </DsfrAccordionsGroup>
   </div>
 
   <div class="flex justify-between w-full relative">

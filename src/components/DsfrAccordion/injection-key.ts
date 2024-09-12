@@ -5,4 +5,4 @@ type RegisterTab = (title: Ref<string>) => {
   expand: () => void
 }
 
-export const registerTabKey: InjectionKey<RegisterTab> = Symbol('accordions')
+export const registerAccordionKey: InjectionKey<RegisterTab> = Symbol('accordions')

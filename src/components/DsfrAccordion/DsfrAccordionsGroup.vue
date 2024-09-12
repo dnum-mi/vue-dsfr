@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { computed, onUnmounted, provide, ref, type Ref, watch } from 'vue'
 
-import { registerTabKey } from './injection-key'
+import { registerAccordionKey } from './injection-key'
 
 const props = withDefaults(defineProps<{
-  modelValue: number
+  modelValue?: number
 }>(), {
   modelValue: -1,
 })
@@ -21,7 +21,7 @@ const activeAccordion = computed({
 })
 const accordions = ref(new Map<number, string>())
 const currentId = ref(0)
-provide(registerTabKey, (title: Ref<string>) => {
+provide(registerAccordionKey, (title: Ref<string>) => {
   const myIndex = currentId.value++
   accordions.value.set(myIndex, title.value)
 

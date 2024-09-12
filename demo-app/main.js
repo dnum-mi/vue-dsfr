@@ -1,5 +1,4 @@
 import VueDsfr from '@/index'
-import { Icon } from '@iconify/vue'
 
 import { createApp } from 'vue'
 import App from './App.vue'
@@ -14,7 +13,6 @@ import '@gouvfr/dsfr/dist/utility/icons/icons.main.min.css'
 
 createApp(App)
   .use(router)
-  .component('Icon', Icon)
   .use(VueDsfr)
   .mount('#app')
 
