@@ -36,6 +36,7 @@ const iconProps = computed(() => (dsfrIcon.value || !props.icon)
     data-testid="nav-external-link"
     :href="(to as string)"
     @click="$emit('toggleId', id)"
+    @click.stop="onClick($event)"
   >
     {{ text }}
   </a>
@@ -48,6 +49,7 @@ const iconProps = computed(() => (dsfrIcon.value || !props.icon)
       [String(icon)]: dsfrIcon,
     }"
     @click="$emit('toggleId', id)"
+    @click.stop="onClick($event)"
   >
     <VIcon
       v-if="icon && iconProps"
