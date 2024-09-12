@@ -80,6 +80,7 @@ Exemple plus complet sur l’[application de demo](https://demo.vue-ds.fr/) (don
 
 <<< DsfrHeader.vue
 <<< DsfrHeader.types.ts
+<<< injection-key.ts
 
 :::
 

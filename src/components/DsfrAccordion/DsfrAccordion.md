@@ -48,4 +48,5 @@ Ce composant peut être utilisé uniquement avec [`DsfrAccordionsGroup`](/compos
 ::: code-group
 <<< DsfrAccordion.vue
 <<< DsfrAccordion.types.ts
+<<< injection-key.ts
 :::
