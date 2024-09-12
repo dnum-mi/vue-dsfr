@@ -67,7 +67,7 @@ const iconProps = computed(() => typeof props.icon === 'string'
     }"
     v-bind="linkData"
     :target="target"
-    @click.stop="onClick"
+    @click.stop="onClick($event)"
   >
     <template
       v-if="!dsfrIcon && (icon || iconAttrs?.name) && !iconRight"

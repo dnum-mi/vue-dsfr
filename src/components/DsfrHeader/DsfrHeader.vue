@@ -1,10 +1,11 @@
 <script lang="ts" setup>
-import { computed, onMounted, onUnmounted, ref, toRef, useSlots } from 'vue'
+import { computed, onMounted, onUnmounted, provide, ref, toRef, useSlots } from 'vue'
 
 import DsfrLanguageSelector, { type DsfrLanguageSelectorElement } from '../DsfrLanguageSelector/DsfrLanguageSelector.vue'
 import DsfrLogo from '../DsfrLogo/DsfrLogo.vue'
 import DsfrSearchBar from '../DsfrSearchBar/DsfrSearchBar.vue'
 import DsfrHeaderMenuLinks from './DsfrHeaderMenuLinks.vue'
+import { registerNavigationLinkKey } from './injection-key'
 
 import type { DsfrHeaderProps } from './DsfrHeader.types'
 
@@ -79,6 +80,9 @@ const onQuickLinkClick = hideModal
 const slots = useSlots()
 const isWithSlotOperator = computed(() => Boolean(slots.operator?.().length) || !!props.operatorImgSrc)
 const isWithSlotNav = computed(() => Boolean(slots.mainnav))
+provide(registerNavigationLinkKey, () => {
+  return hideModal
+})
 </script>
 
 <template>

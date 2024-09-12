@@ -1,9 +1,10 @@
 <script lang="ts" setup>
-import { computed } from 'vue'
+import { computed, hasInjectionContext, inject } from 'vue'
 import { getRandomId } from '../../utils/random-utils'
 
-import VIcon from '../VIcon/VIcon.vue'
+import { registerNavigationLinkKey } from '../DsfrHeader/injection-key'
 
+import VIcon from '../VIcon/VIcon.vue'
 import type { DsfrNavigationMenuLinkProps } from './DsfrNavigation.types'
 
 export type { DsfrNavigationMenuLinkProps }
@@ -27,6 +28,9 @@ const iconProps = computed(() => (dsfrIcon.value || !props.icon)
       ? { scale: defaultScale, name: props.icon }
       : { scale: defaultScale, ...((props.icon as Record<string, string>) || {}) },
 )
+
+const useHeader = hasInjectionContext() ? inject(registerNavigationLinkKey)! : undefined
+const closeModal = useHeader?.() ?? (() => {})
 </script>
 
 <template>
@@ -35,7 +39,7 @@ const iconProps = computed(() => (dsfrIcon.value || !props.icon)
     class="fr-nav__link"
     data-testid="nav-external-link"
     :href="(to as string)"
-    @click="$emit('toggleId', id)"
+    @click="$emit('toggleId', id); onClick($event)"
   >
     {{ text }}
   </a>
@@ -47,7 +51,7 @@ const iconProps = computed(() => (dsfrIcon.value || !props.icon)
     :class="{
       [String(icon)]: dsfrIcon,
     }"
-    @click="$emit('toggleId', id)"
+    @click="closeModal(); $emit('toggleId', id); onClick?.($event)"
   >
     <VIcon
       v-if="icon && iconProps"

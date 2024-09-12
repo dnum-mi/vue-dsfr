@@ -4,7 +4,7 @@ import { computed, onUnmounted, provide, ref, type Ref, watch } from 'vue'
 import { registerTabKey } from './injection-key'
 
 const props = withDefaults(defineProps<{
-  modelValue: number
+  modelValue?: number
 }>(), {
   modelValue: -1,
 })
