@@ -3,7 +3,7 @@ import { inject, onMounted, ref, toRef, watch } from 'vue'
 
 import { useCollapsable } from '../../composables'
 import { getRandomId } from '../../utils/random-utils'
-import { registerTabKey } from './injection-key'
+import { registerAccordionKey } from './injection-key'
 import type { DsfrAccordionProps } from './DsfrAccordion.types'
 
 export type { DsfrAccordionProps }
@@ -27,7 +27,7 @@ const {
 
 const isStandaloneActive = ref()
 
-const useAccordion = inject(registerTabKey)!
+const useAccordion = inject(registerAccordionKey)!
 const { isActive, expand } = useAccordion?.(toRef(() => props.title)) ?? { isActive: isStandaloneActive, expand: () => isStandaloneActive.value = !isStandaloneActive.value }
 
 onMounted(() => {
