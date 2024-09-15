@@ -14,6 +14,7 @@ const validMessage = 'Message de validation'
   <div class="fr-container fr-my-2v">
     <DsfrCheckbox
       v-model="modelValue"
+      value="valeur 1"
       name="checkbox-simple"
       label="Case à cocher simple"
     />
@@ -21,6 +22,7 @@ const validMessage = 'Message de validation'
 
     <DsfrCheckbox
       v-model="modelValue"
+      :value="42"
       name="checkbox-disabled"
       label="Case à cocher désactivée"
       disabled
@@ -28,6 +30,7 @@ const validMessage = 'Message de validation'
 
     <DsfrCheckbox
       v-model="modelValue"
+      :value="{ foo: 'foo' }"
       name="checkbox-hint"
       label="Case à cocher avec indication"
       :hint="hint"
@@ -35,6 +38,8 @@ const validMessage = 'Message de validation'
 
     <DsfrCheckbox
       v-model="modelValue"
+      name="obligatoire"
+      value="obligatoire"
       label="Case à cocher obligatoire"
       required
       :hint="hint"
@@ -43,6 +48,7 @@ const validMessage = 'Message de validation'
     <DsfrCheckbox
       v-model="modelValue"
       name="checkbox-required-custom"
+      value="custom"
       label="Case à cocher obligatoire personnalisée"
       required
       :hint="hint"
@@ -55,6 +61,7 @@ const validMessage = 'Message de validation'
     <DsfrCheckbox
       v-model="modelValue"
       name="checkbox-error"
+      value="avec erreur"
       label="Case à cocher avec message d’erreur"
       required
       :hint="hint"
@@ -63,7 +70,8 @@ const validMessage = 'Message de validation'
 
     <DsfrCheckbox
       v-model="modelValue"
-      name="checkbox-error"
+      name="checkbox-valid"
+      value="valide"
       label="Case à cocher avec message de validation"
       required
       :hint="hint"

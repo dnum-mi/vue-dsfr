@@ -3,52 +3,55 @@ import { ref } from 'vue'
 
 import DsfrCheckboxSet from '../DsfrCheckboxSet.vue'
 
-const modelValue1 = ref(undefined)
-const modelValue2 = ref(undefined)
-const modelValue3 = ref(undefined)
-const modelValue4 = ref(undefined)
-const modelValue5 = ref(undefined)
-const modelValue6 = ref(undefined)
+const modelValue1 = ref([])
+const modelValue2 = ref([])
+const modelValue3 = ref([])
+const modelValue4 = ref([])
+const modelValue5 = ref([])
+const modelValue6 = ref([])
 
 const options1 = [
   {
     label: 'Première valeur',
+    value: 'une chaîne en premier',
     id: 'name1-1',
     name: 'name1-1',
-    hint: 'Description de la première valeur',
+    hint: 'La première valeur est une chaîne de caractères',
   },
   {
     label: 'Deuxième valeur',
+    value: 42,
     id: 'name1-2',
     name: 'name1-2',
-    hint: 'Description de la deuxième valeur',
+    hint: 'La valeur est ici un chiffre',
   },
   {
     label: 'Troisième valeur',
+    value: { foo: 'foo', bar: 42 },
     id: 'name1-3',
     name: 'name1-3',
-    hint: 'Description de la troisième valeur',
+    hint: 'Et ici la valeur est un littéral objet',
   },
-] as const
+]
 
 const options2 = structuredClone(options1).map(option => Object.fromEntries(
-  Object.entries(option).map(([key, value]) => [key, value.replace('name1', 'name2')]),
+  Object.entries(option).map(([key, value]) => [key, ['id', 'name'].includes(key) ? value.replace('name1', 'name2') : value]),
 ))
 
 const options3 = structuredClone(options1).map(option => Object.fromEntries(
-  Object.entries(option).map(([key, value]) => [key, value.replace('name1', 'name3')]),
+  Object.entries(option).map(([key, value]) => [key, ['id', 'name'].includes(key) ? value.replace('name1', 'name3') : value]),
 ))
 
 const options4 = structuredClone(options1).map(option => Object.fromEntries(
-  Object.entries(option).filter(([key]) => key !== 'hint').map(([key, value]) => [key, value.replace('name1', 'name4')]),
+  Object.entries(option).filter(([key]) => key !== 'hint').map(([key, value]) => [key, ['id', 'name'].includes(key) ? value.replace('name1', 'name4') : value]),
 ))
 
 const options5 = structuredClone(options1).map(option => Object.fromEntries(
-  Object.entries(option).filter(([key]) => key !== 'hint').map(([key, value]) => [key, value.replace('name1', 'name5')]),
+  Object.entries(option).filter(([key]) => key !== 'hint').map(([key, value]) => [key, ['id', 'name'].includes(key) ? value.replace('name1', 'name5') : value]),
 ))
 
 const options6 = structuredClone(options1).map(option => Object.fromEntries(
-  Object.entries(option).filter(([key]) => key !== 'hint').map(([key, value]) => [key, value.replace('name1', 'name6')]),
+  Object.entries(option).filter(([key]) => key !== 'hint').map(([key, value]) => [key, ['id', 'name'].includes(key) ? value.replace('name1', 'name6') : value]),
 ))
 
 const errorMessage = 'Message d’erreur'

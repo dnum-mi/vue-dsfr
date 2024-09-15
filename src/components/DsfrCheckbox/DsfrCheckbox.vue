@@ -18,16 +18,10 @@ const props = withDefaults(defineProps<DsfrCheckboxProps>(), {
   label: '',
 })
 
-const emit = defineEmits<{ (event: 'update:modelValue', value: boolean): void }>()
-
 const message = computed(() => props.errorMessage || props.validMessage)
 
 const additionalMessageClass = computed(() => props.errorMessage ? 'fr-error-text' : 'fr-valid-text')
-
-const emitNewValue = ($event: InputEvent) => {
-  // @ts-expect-error This is a checkbox input event, so `checked` property is present
-  emit('update:modelValue', $event.target.checked)
-}
+const modelValue = defineModel()
 </script>
 
 <template>
@@ -45,14 +39,15 @@ const emitNewValue = ($event: InputEvent) => {
     >
       <input
         :id="id"
+        v-model="modelValue"
         :name="name"
         type="checkbox"
-        :checked="modelValue"
+        :value="value"
+        :checked="modelValue === true || (Array.isArray(modelValue) && modelValue.includes(value))"
         :required
         v-bind="$attrs"
         :data-testid="`input-checkbox-${id}`"
         :data-test="`input-checkbox-${id}`"
-        @change="emitNewValue($event as InputEvent)"
       >
       <label
         :for="id"
