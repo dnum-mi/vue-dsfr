@@ -186,9 +186,10 @@ EnTeteSimple.args = {
 EnTeteSimple.play = async ({ canvasElement }) => {
   const canvas = within(canvasElement)
   const links = canvas.getAllByRole('link')
-  expect(links).toHaveLength(4)
+  expect(links).toHaveLength(5)
 
   const knownLinks = [
+    { name: '', href: EnTeteSimple.args.homeTo },
     { name: '', href: EnTeteSimple.args.homeTo },
     ...EnTeteSimple.args.quickLinks.map(({ to }) => ({ href: to })),
   ]
