@@ -2,10 +2,11 @@
 import { computed, inject, toRef } from 'vue'
 
 import { registerTabKey } from './injection-key'
-import type { DsfrTabContentProps } from './DsfrTabs.types'
 
-export type { DsfrTabContentProps }
-
+export type DsfrTabContentProps = {
+  panelId: string
+  tabId: string
+}
 const props = defineProps<DsfrTabContentProps>()
 
 const values = { true: '100%', false: '-100%' }
