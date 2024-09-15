@@ -96,10 +96,15 @@ provide(registerNavigationLinkKey, () => {
           <div class="fr-header__brand  fr-enlarge-link">
             <div class="fr-header__brand-top">
               <div class="fr-header__logo">
-                <DsfrLogo
-                  :logo-text="logoText"
-                  data-testid="header-logo"
-                />
+                <RouterLink
+                  :to="homeTo"
+                  :title="`${homeLabel} - ${serviceTitle}`"
+                >
+                  <DsfrLogo
+                    :logo-text="logoText"
+                    data-testid="header-logo"
+                  />
+                </RouterLink>
               </div>
               <div
                 v-if="isWithSlotOperator"
