@@ -21,10 +21,14 @@ const isPathString = computed(() => {
   return typeof props.path === 'string'
 })
 const isExternalLink = computed(() => {
-  return props.href?.startsWith('http') || (isPathString.value && (props.path as string).startsWith('http'))
+  return props.href?.startsWith('http') ||
+    (isPathString.value && (props.path as string).startsWith('http')) ||
+    (typeof props.to === 'string' && (props.to as string).startsWith('http'))
 })
 const isMailto = computed(() => {
-  return props.href?.startsWith('mailto') || (isPathString.value && (props.path as string).startsWith('mailto'))
+  return props.href?.startsWith('mailto') ||
+    (isPathString.value && (props.path as string).startsWith('mailto')) ||
+    (typeof props.to === 'string' && (props.to as string).startsWith('mailto'))
 })
 const is = computed(() => {
   if (props.button) {
@@ -37,13 +41,13 @@ const actualHref = computed(() => {
   if (!isExternalLink.value && !isMailto.value) {
     return undefined
   }
-  return props.href !== undefined ? props.href : props.path
+  return props.to ?? props.href ?? props.path
 })
 const actualTo = computed(() => {
   if (isExternalLink.value || isMailto.value) {
     return undefined
   }
-  return props.to || props.path
+  return props.to ?? props.path
 })
 const linkData = computed(() => {
   return actualTo.value ? { to: actualTo.value } : { href: actualHref.value }
