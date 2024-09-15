@@ -236,6 +236,10 @@ const composants = [
     link: '/composants/DsfrNotice.md',
   },
   {
+    text: 'DsfrPicture',
+    link: '/composants/DsfrPicture.md',
+  },
+  {
     text: 'DsfrRadioButton',
     link: '/composants/DsfrRadioButton.md',
     items: [
@@ -324,6 +328,10 @@ const composants = [
   {
     text: 'DsfrTooltip',
     link: '/composants/DsfrTooltip.md',
+  },
+  {
+    text: 'DsfrVideo',
+    link: '/composants/DsfrVideo.md',
   },
   {
     text: 'VIcon',

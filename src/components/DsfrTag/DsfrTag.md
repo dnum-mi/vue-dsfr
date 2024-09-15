@@ -48,19 +48,15 @@ Pas d'événements personnalisés pour ce composant. Il se repose sur les évén
 
 ## 📝 Exemples
 
-1. **Étiquette Basique :**
+::: code-group
 
-```html
-<DsfrTag label="Bonjour VueDsfr !" />
-```
+<Story data-title="Démo" min-h="400px">
+  <DsfrTagDemo />
+</Story>
 
-Affiche une simple étiquette avec le texte "Bonjour VueDsfr !".
+<<< docs-demo/DsfrTagDemo.vue [Code de la démo]
 
-1. **Étiquette avec icône :**
-
-```html
-<DsfrTag label="Vue Power" icon="fr-icon-success-line" />
-```
+:::
 
 ## ⚙️ Code source du composant
 
@@ -70,3 +66,7 @@ Affiche une simple étiquette avec le texte "Bonjour VueDsfr !".
 <<< DsfrTags.types.ts
 
 :::
+
+<script setup lang="ts">
+import DsfrTagDemo from './docs-demo/DsfrTagDemo.vue'
+</script>
