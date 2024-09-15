@@ -200,6 +200,10 @@ const composants = [
     link: '/composants/DsfrHeaderMenuLinks.md',
   },
   {
+    text: 'DsfrHighlight',
+    link: '/composants/DsfrHighlight.md',
+  },
+  {
     text: 'DsfrInput',
     link: '/composants/DsfrInput.md',
   },

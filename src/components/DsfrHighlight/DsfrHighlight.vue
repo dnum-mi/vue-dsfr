@@ -9,7 +9,10 @@ withDefaults(defineProps<DsfrHighlightProps>(), {
 </script>
 
 <template>
-  <div class="fr-highlight">
+  <div
+    class="fr-highlight"
+    :class="{ [`fr-highlight--${color}`]: color }"
+  >
     <p
       :class="{
         'fr-text--lg': large && !small,
