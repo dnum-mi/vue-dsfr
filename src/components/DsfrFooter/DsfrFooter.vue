@@ -53,18 +53,22 @@ const props = withDefaults(defineProps<DsfrFooterProps>(), {
     {
       label: 'info.gouv.fr',
       href: 'https://info.gouv.fr',
+      title: 'Informations gouvernementales, nouvelle fenêtre',
     },
     {
       label: 'service-public.fr',
       href: 'https://service-public.fr',
+      title: 'Informations et démarches administratives, nouvelle fenêtre',
     },
     {
       label: 'legifrance.gouv.fr',
       href: 'https://legifrance.gouv.fr',
+      title: 'Service public de diffusion du droit, nouvelle fenêtre',
     },
     {
       label: 'data.gouv.fr',
       href: 'https://data.gouv.fr',
+      title: 'Plateforme des données publiques, nouvelle fenêtre',
     },
   ],
   operatorLinkText: 'Revenir à l’accueil',
@@ -95,6 +99,12 @@ const isExternalLink = computed(() => {
   const to = props.licenceTo || (props.licenceLinkProps as { to: RouteLocationRaw }).to
   return to && typeof to === 'string' && to.startsWith('http')
 })
+
+const licenceLinkAttrs = computed(() => {
+  const { to, href, ...attrs } = props.licenceLinkProps ?? {}
+  return attrs
+})
+
 const routerLinkLicenceTo = computed(() => {
   return isExternalLink.value ? '' : props.licenceTo
 })
@@ -184,17 +194,19 @@ const externalOperatorLink = computed(() => {
           </p>
           <ul class="fr-footer__content-list">
             <li
-              v-for="(link, index) in ecosystemLinks"
+              v-for="({ href, label, title, ...attrs }, index) in ecosystemLinks"
               :key="index"
               class="fr-footer__content-item"
             >
               <a
                 class="fr-footer__content-link"
-                :href="link.href"
+                :href="href"
                 target="_blank"
                 rel="noopener noreferrer"
+                :title="title"
+                v-bind="attrs"
               >
-                {{ link.label }}
+                {{ label }}
               </a>
             </li>
           </ul>
@@ -225,11 +237,11 @@ const externalOperatorLink = computed(() => {
             <component
               :is="isExternalLink ? 'a' : 'RouterLink'"
               class="fr-link-licence  no-content-after"
-              :to="isExternalLink ? null : routerLinkLicenceTo"
-              :href="aLicenceHref"
+              :to="isExternalLink ? undefined : routerLinkLicenceTo"
+              :href="isExternalLink ? aLicenceHref : undefined"
               :target="isExternalLink ? '_blank' : undefined"
               rel="noopener noreferrer"
-              v-bind="licenceLinkProps"
+              v-bind="licenceLinkAttrs"
             >
               {{ licenceName }}
             </component>
