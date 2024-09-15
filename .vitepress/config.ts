@@ -98,10 +98,12 @@ const composants = [
   {
     text: 'DsfrAccordion',
     link: '/composants/DsfrAccordion.md',
-  },
-  {
-    text: 'DsfrAccordionsGroup',
-    link: '/composants/DsfrAccordionsGroup.md',
+    items: [
+      {
+        text: 'DsfrAccordionsGroup',
+        link: '/composants/DsfrAccordionsGroup.md',
+      },
+    ],
   },
   {
     text: 'DsfrAlert',
@@ -122,10 +124,12 @@ const composants = [
   {
     text: 'DsfrButton',
     link: '/composants/DsfrButton.md',
-  },
-  {
-    text: 'DsfrButtonGroup',
-    link: '/composants/DsfrButtonGroup.md',
+    items: [
+      {
+        text: 'DsfrButtonGroup',
+        link: '/composants/DsfrButtonGroup.md',
+      },
+    ],
   },
   {
     text: 'DsfrCallout',
@@ -138,10 +142,12 @@ const composants = [
   {
     text: 'DsfrCheckbox',
     link: '/composants/DsfrCheckbox.md',
-  },
-  {
-    text: 'DsfrCheckboxSet',
-    link: '/composants/DsfrCheckboxSet.md',
+    items: [
+      {
+        text: 'DsfrCheckboxSet',
+        link: '/composants/DsfrCheckboxSet.md',
+      },
+    ],
   },
   {
     text: 'DsfrConsent',
@@ -170,34 +176,38 @@ const composants = [
   {
     text: 'DsfrFooter',
     link: '/composants/DsfrFooter.md',
-  },
-  {
-    text: 'DsfrFooterLinkList',
-    link: '/composants/DsfrFooterLinkList.md',
-  },
-  {
-    text: 'DsfrFooterLink',
-    link: '/composants/DsfrFooterLink.md',
-  },
-  {
-    text: 'DsfrFooterPartners',
-    link: '/composants/DsfrFooterPartners.md',
-  },
-  {
-    text: 'DsfrFranceConnect',
-    link: '/composants/DsfrFranceConnect.md',
+    items: [
+      {
+        text: 'DsfrFooterLinkList',
+        link: '/composants/DsfrFooterLinkList.md',
+      },
+      {
+        text: 'DsfrFooterLink',
+        link: '/composants/DsfrFooterLink.md',
+      },
+      {
+        text: 'DsfrFooterPartners',
+        link: '/composants/DsfrFooterPartners.md',
+      },
+      {
+        text: 'DsfrFranceConnect',
+        link: '/composants/DsfrFranceConnect.md',
+      },
+    ],
   },
   {
     text: 'DsfrHeader',
     link: '/composants/DsfrHeader.md',
-  },
-  {
-    text: 'DsfrHeaderMenuLink',
-    link: '/composants/DsfrHeaderMenuLink.md',
-  },
-  {
-    text: 'DsfrHeaderMenuLinks',
-    link: '/composants/DsfrHeaderMenuLinks.md',
+    items: [
+      {
+        text: 'DsfrHeaderMenuLink',
+        link: '/composants/DsfrHeaderMenuLink.md',
+      },
+      {
+        text: 'DsfrHeaderMenuLinks',
+        link: '/composants/DsfrHeaderMenuLinks.md',
+      },
+    ],
   },
   {
     text: 'DsfrHighlight',
@@ -206,10 +216,12 @@ const composants = [
   {
     text: 'DsfrInput',
     link: '/composants/DsfrInput.md',
-  },
-  {
-    text: 'DsfrInputGroup',
-    link: '/composants/DsfrInputGroup.md',
+    items: [
+      {
+        text: 'DsfrInputGroup',
+        link: '/composants/DsfrInputGroup.md',
+      },
+    ],
   },
   {
     text: 'DsfrLanguageSelector',
@@ -226,10 +238,12 @@ const composants = [
   {
     text: 'DsfrRadioButton',
     link: '/composants/DsfrRadioButton.md',
-  },
-  {
-    text: 'DsfrRadioButtonSet',
-    link: '/composants/DsfrRadioButtonSet.md',
+    items: [
+      {
+        text: 'DsfrRadioButtonSet',
+        link: '/composants/DsfrRadioButtonSet.md',
+      },
+    ],
   },
   {
     text: 'DsfrRange',
@@ -242,10 +256,12 @@ const composants = [
   {
     text: 'DsfrSegmented',
     link: '/composants/DsfrSegmented.md',
-  },
-  {
-    text: 'DsfrSegmentedSet',
-    link: '/composants/DsfrSegmentedSet.md',
+    items: [
+      {
+        text: 'DsfrSegmentedSet',
+        link: '/composants/DsfrSegmentedSet.md',
+      },
+    ],
   },
   {
     text: 'DsfrSelect',
@@ -254,26 +270,38 @@ const composants = [
   {
     text: 'DsfrTable',
     link: '/composants/DsfrTable.md',
-  },
-  {
-    text: 'DsfrTableHeader',
-    link: '/composants/DsfrTableHeader.md',
-  },
-  {
-    text: 'DsfrTableHeaders',
-    link: '/composants/DsfrTableHeaders.md',
-  },
-  {
-    text: 'DsfrTableRow',
-    link: '/composants/DsfrTableRow.md',
-  },
-  {
-    text: 'DsfrTableCell',
-    link: '/composants/DsfrTableCell.md',
+    items: [
+      {
+        text: 'DsfrTableHeader',
+        link: '/composants/DsfrTableHeader.md',
+      },
+      {
+        text: 'DsfrTableHeaders',
+        link: '/composants/DsfrTableHeaders.md',
+      },
+      {
+        text: 'DsfrTableRow',
+        link: '/composants/DsfrTableRow.md',
+      },
+      {
+        text: 'DsfrTableCell',
+        link: '/composants/DsfrTableCell.md',
+      },
+    ],
   },
   {
     text: 'DsfrTabs',
     link: '/composants/DsfrTabs.md',
+    items: [
+      {
+        text: 'DsfrTabItem',
+        link: '/composants/DsfrTabItem.md',
+      },
+      {
+        text: 'DsfrTabContent',
+        link: '/composants/DsfrTabContent.md',
+      },
+    ],
   },
   {
     text: 'DsfrTag',
@@ -282,6 +310,12 @@ const composants = [
   {
     text: 'DsfrTile',
     link: '/composants/DsfrTile.md',
+    items: [
+      {
+        text: 'DsfrTiles',
+        link: '/composants/DsfrTiles.md',
+      },
+    ],
   },
   {
     text: 'DsfrToggleSwitch',

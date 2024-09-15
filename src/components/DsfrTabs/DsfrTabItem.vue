@@ -1,31 +1,27 @@
 <script lang="ts" setup>
-import { inject, ref, toRef, watch } from 'vue'
+import { inject, ref, toRef } from 'vue'
 import VIcon from '../VIcon/VIcon.vue'
 
 import { registerTabKey } from './injection-key'
-import type { DsfrTabItemProps } from './DsfrTabs.types'
 
-export type { DsfrTabItemProps }
-
+export type DsfrTabItemProps = {
+  panelId: string
+  tabId: string
+  icon?: string
+}
 const props = withDefaults(defineProps<DsfrTabItemProps>(), {
   icon: undefined,
 })
 
 const emit = defineEmits<{
-  (e: 'click', tabId: string): void
-  (e: 'next'): void
-  (e: 'previous'): void
-  (e: 'first'): void
-  (e: 'last'): void
+  click: [tabId: string]
+  next: []
+  previous: []
+  first: []
+  last: []
 }>()
 
 const button = ref<HTMLButtonElement | null>(null)
-
-watch(() => props.selected, (newValue) => {
-  if (newValue) {
-    button.value?.focus()
-  }
-})
 
 const keyToEventDict = {
   ArrowRight: 'next',
