@@ -4,14 +4,14 @@ import { createRouter, createWebHistory } from 'vue-router'
 import type { DsfrLanguageSelectorElement } from '@/components/DsfrLanguageSelector/DsfrLanguageSelector.types'
 
 import VIcon from '../../VIcon/VIcon.vue'
-import DsfrHeader from '../DsfrHeader.vue'
+import DsfrHeader, { type DsfrHeaderProps } from '../DsfrHeader.vue'
 
 const logoText = ['Ministère', 'de l’intérieur']
 const serviceTitle = 'Nom du Site/Service'
 const serviceDescription = 'baseline - précisions sur l‘organisation'
 const placeholder = ''
 const homeTo = '/'
-const quickLinks = [
+const quickLinks: DsfrHeaderProps['quickLinks'] = [
   { label: 'Créer un espace', to: '/space/create', icon: 'ri-add-circle-line', iconRight: true },
   { label: 'Se connecter', to: '/login', class: 'fr-icon-user-fill' },
   { label: 'S’enregistrer', to: '/signup', icon: 'ri-account-circle-line', iconRight: true, iconAttrs: { animation: 'spin', speed: 'slow' } },

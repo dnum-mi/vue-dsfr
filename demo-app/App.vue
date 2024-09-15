@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue'
+
 import { useRoute } from 'vue-router'
-
 import DsfrBreadcrumb from '../src/components/DsfrBreadcrumb/DsfrBreadcrumb.vue'
-import DsfrFooter from '../src/components/DsfrFooter/DsfrFooter.vue'
 
+import DsfrFooter from '../src/components/DsfrFooter/DsfrFooter.vue'
 import DsfrHeader, { type DsfrHeaderProps } from '../src/components/DsfrHeader/DsfrHeader.vue'
 import DsfrModal from '../src/components/DsfrModal/DsfrModal.vue'
 import DsfrNavigation, { type DsfrNavigationProps } from '../src/components/DsfrNavigation/DsfrNavigation.vue'
@@ -246,20 +246,24 @@ const licenceName = undefined
 const licenceLinkProps = undefined
 const ecosystemLinks = [
   {
-    label: 'legifrance.gouv.fr',
-    href: 'https://legifrance.gouv.fr',
-  },
-  {
     label: 'info.gouv.fr',
     href: 'https://info.gouv.fr',
+    title: 'Informations gouvernementales, nouvelle fenêtre',
   },
   {
     label: 'service-public.fr',
     href: 'https://service-public.fr',
+    title: 'Informations et démarches administratives, nouvelle fenêtre',
+  },
+  {
+    label: 'legifrance.gouv.fr',
+    href: 'https://legifrance.gouv.fr',
+    title: 'Service public de diffusion du droit, nouvelle fenêtre',
   },
   {
     label: 'data.gouv.fr',
     href: 'https://data.gouv.fr',
+    title: 'Plateforme des données publiques, nouvelle fenêtre',
   },
 ]
 
@@ -289,7 +293,7 @@ const currentRoute = computed(() => route.name)
       <h1>Demo VueDsfr</h1>
 
       <DsfrBreadcrumb
-        :links="[{ text: 'Accueil', to: '/' }, { text: currentRoute }]"
+        :links="[{ text: 'Accueil', to: '/' }, { text: (currentRoute as string) }]"
       />
 
       <router-view />
@@ -335,9 +339,5 @@ const currentRoute = computed(() => route.name)
 #app {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-
-.my-1 {
-  margin-block: 0.5rem;
 }
 </style>

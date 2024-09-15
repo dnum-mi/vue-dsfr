@@ -93,7 +93,7 @@ const ariaLabelledby = computed(() => message.value ? `${props.titleId} messages
         role="alert"
       >
         <p
-          class="fr-message--info  flex  items-center"
+          class="fr-message  fr-message--info  flex  items-center"
           :class="additionalMessageClass"
         >
           {{ message }}

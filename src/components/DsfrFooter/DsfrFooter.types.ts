@@ -24,6 +24,7 @@ export type DsfrFooterLinkProps = {
   onClick?: ($event: MouseEvent) => void
   to?: RouteLocationRaw
   href?: string
+  title?: string
 }
 
 export type DsfrFooterLinkListProps = {
@@ -44,15 +45,15 @@ export type DsfrFooterProps = {
   descText?: string
   beforeMandatoryLinks?: DsfrFooterLinkProps[]
   afterMandatoryLinks?: DsfrFooterLinkProps[]
-  mandatoryLinks?: { label: string, to: RouteLocationRaw | undefined }[]
-  ecosystemLinks?: { label: string, href: string }[]
+  mandatoryLinks?: { label: string, to: RouteLocationRaw | undefined, title?: string }[]
+  ecosystemLinks?: { label: string, href: string, title: string, [key: string]: string }[]
   operatorLinkText?: string
   operatorTo?: RouteLocationRaw | undefined
   operatorImgStyle?: StyleValue
   operatorImgSrc?: string
   operatorImgAlt?: string
   licenceTo?: string
-  licenceLinkProps?: { href: string } | { to: RouteLocationRaw | undefined }
+  licenceLinkProps?: ({ href: string } | { to: RouteLocationRaw | undefined }) & Record<string, string>
   licenceText?: string
   licenceName?: string
 }
