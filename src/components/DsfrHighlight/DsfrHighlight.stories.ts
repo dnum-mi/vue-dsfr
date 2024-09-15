@@ -12,6 +12,10 @@ export default {
       control: 'text',
       description: 'Texte de la mise en avant',
     },
+    color: {
+      control: 'text',
+      description: 'Couleur de la bordure (doit être une couleur du DSFR comme `"green-emeraude"` ou `"purple-glycine"`)',
+    },
     small: {
       control: 'boolean',
       description: 'Permet d’afficher le texte en petit',
@@ -37,6 +41,7 @@ export const MiseEnExergue = (args) => ({
       :text="text"
       :small="small"
       :large="large"
+      :color="color"
     />
   `,
 })
@@ -44,6 +49,7 @@ MiseEnExergue.args = {
   small: false,
   large: false,
   text: 'Texte original de la mise en exergue',
+  color: undefined,
 }
 MiseEnExergue.play = async ({ canvasElement }) => {
   const canvas = within(canvasElement)
@@ -65,6 +71,7 @@ export const MiseEnExergueAvecSlot = (args) => ({
       :text="text"
       :small="small"
       :large="large"
+      :color="color"
     >
       <template v-if="!text">{{ slotText }}</template>
     </DsfrHighlight>
@@ -74,6 +81,7 @@ MiseEnExergueAvecSlot.args = {
   small: false,
   large: false,
   text: '',
+  color: 'pink-macaron',
   slotText: 'Le fameux slot mis en exergue',
 }
 MiseEnExergueAvecSlot.play = async ({ canvasElement }) => {
