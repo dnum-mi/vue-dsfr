@@ -6,9 +6,9 @@ La tuile est un raccourci ou point d’entrée qui redirige les utilisateurs ver
 
 Le composant `DsfrTile` est une tuile flexible et stylisée, idéale pour afficher des informations sous forme de cartes visuelles dans une interface utilisateur. Ce composant permet d'intégrer des images, des SVG, des descriptions, des détails et des liens, tout en offrant de nombreuses options de personnalisation visuelle.
 
-🏅 La documentation sur la tuile sur le [DSFR](https://www.systeme-de-design.gouv.fr/elements-d-interface/composants/<nom-dsfr>)
+🏅 La documentation sur la tuile sur le [DSFR](https://www.systeme-de-design.gouv.fr/elements-d-interface/composants/tuile)
 
-<VIcon name="vi-file-type-storybook" /> La story sur la tuile sur le storybook de [VueDsfr](https://storybook.vue-ds.fr/?path=/docs/composants-dsfr<nom-composant>--docs)
+<VIcon name="vi-file-type-storybook" /> La story sur la tuile sur le storybook de [VueDsfr](https://storybook.vue-ds.fr/?path=/docs/composants-dsfrtile--docs)
 
 ## 📐 Structure
 
@@ -38,7 +38,7 @@ Le composant `DsfrTile` est une tuile flexible et stylisée, idéale pour affich
 | `small`        | `boolean`                                                                                 | Si vrai, affiche une tuile plus petite.                         | `false`                                                   |             |
 | `icon`         | `boolean`                                                                                 | Si faux, n'affiche pas d'icône dans la tuile.                   | `true`                                                    |             |
 | `noBorder`     | `boolean`                                                                                 | Si vrai, n'affiche pas de bordure autour de la tuile.           | `false`                                                   |             |
-| `shadow`       | `boolean`                                                                                 | Si vrai, affiche une ombre autour de la tuile.                  | `false`                                                   |             |
+| `shadow`       | `boolean`                                                                               | Si vrai, affiche une ombre autour de la tuile.                  | `false`                                                   |             |
 | `noBackground` | `boolean`                                                                                 | Si vrai, n'affiche pas de fond dans la tuile.                   | `false`                                                   |             |
 | `grey`         | `boolean`                                                                                 | Si vrai, affiche un fond gris pour la tuile.                    | `false`                                                   |             |
 

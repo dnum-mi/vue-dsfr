@@ -1,6 +1,5 @@
 <script lang="ts" setup>
 import DsfrTile from './DsfrTile.vue'
-
 import type { DsfrTilesProps } from './DsfrTiles.types'
 
 export type { DsfrTilesProps }
@@ -16,7 +15,7 @@ withDefaults(defineProps<DsfrTilesProps>(), {
       v-for="(tile, idx) of tiles"
       :key="idx"
       :class="{
-        [tile.containerClass]: tile.containerClass,
+        [tile.containerClass ?? 'no-class']: tile.containerClass,
         'fr-col-6 fr-col-md-4 fr-col-lg-3': !tile.containerClass && !horizontal,
         'fr-col-12': horizontal,
       }"
