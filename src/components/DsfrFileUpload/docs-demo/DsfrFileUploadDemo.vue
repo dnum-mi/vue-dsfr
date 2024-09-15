@@ -15,5 +15,14 @@ const handleFileChange = (files: FileList) => {
       @change="handleFileChange"
     />
     (regardez la console pour voir les fichiers sélectionnés)
+
+    <DsfrFileUpload
+      label="Télécharger une photo"
+      hint="Formats acceptés : .jpg, .png"
+      readonly
+      accept=".pdf,.doc"
+      @change="handleFileChange"
+    />
+    (regardez la console pour voir les fichiers sélectionnés)
   </div>
 </template>
