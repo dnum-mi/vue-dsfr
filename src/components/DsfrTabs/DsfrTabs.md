@@ -126,7 +126,7 @@ activeTab.value = tabTitles.length - 1 // active le dernier onglet
 
   ::: code-group
 
-  <Story data-title="Démo" min-h="260px">
+  <Story data-title="Démo" min-h="600px">
     <DsfrTabsDemoComplex />
   </Story>
 

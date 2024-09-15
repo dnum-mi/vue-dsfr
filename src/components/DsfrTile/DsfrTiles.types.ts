@@ -23,6 +23,6 @@ export type DsfrTileProps = {
 }
 
 export type DsfrTilesProps = {
-  tiles?: (DsfrTileProps & { containerClass: string })[]
+  tiles?: (DsfrTileProps & { containerClass?: string })[]
   horizontal?: boolean
 }

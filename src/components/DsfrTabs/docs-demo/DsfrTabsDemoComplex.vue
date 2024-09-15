@@ -3,6 +3,7 @@ import { ref } from 'vue'
 
 import DsfrButton from '../../DsfrButton/DsfrButton.vue'
 import DsfrTabContent from '../DsfrTabContent.vue'
+import DsfrTabItem from '../DsfrTabItem.vue'
 import DsfrTabs from '../DsfrTabs.vue'
 
 const tabListName = 'Liste d’onglet'
@@ -14,16 +15,45 @@ const tabTitles = [
   { title: 'Titre 4', icon: 'ri-checkbox-circle-line', tabId: 'tab-3', panelId: 'tab-content-3' },
 ]
 
-const selectedTabIndex = ref(0)
+const activeTab = ref(0)
+const selectPrevious = async () => {
+  const newIndex = activeTab.value === 0 ? tabTitles.length - 1 : activeTab.value - 1
+  activeTab.value = newIndex
+}
+const selectNext = async () => {
+  const newIndex = activeTab.value === tabTitles.length - 1 ? 0 : activeTab.value + 1
+  activeTab.value = newIndex
+}
+const selectFirst = async () => {
+  activeTab.value = 0
+}
+const selectLast = async () => {
+  activeTab.value = tabTitles.length - 1
+}
 </script>
 
 <template>
   <div class="fr-container fr-my-2w">
     <DsfrTabs
-      v-model="selectedTabIndex"
+      v-model="activeTab"
       :tab-list-name="tabListName"
-      :tab-titles="tabTitles"
     >
+      <template #tab-items>
+        <DsfrTabItem
+          v-for="(tab, index) of tabTitles"
+          :key="tab.tabId"
+          :tab-id="tab.tabId"
+          :panel-id="tab.panelId"
+          :icon="tab.icon"
+          @click="activeTab = index"
+          @next="selectNext()"
+          @previous="selectPrevious()"
+          @first="selectFirst()"
+          @last="selectLast()"
+        >
+          {{ tab.title }}
+        </DsfrTabItem>
+      </template>
       <DsfrTabContent
         panel-id="tab-content-0"
         tab-id="tab-0"
@@ -54,31 +84,29 @@ const selectedTabIndex = ref(0)
           <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vitae fugit sit et eos a officiis adipisci nulla repellat cupiditate? Assumenda, explicabo ullam laboriosam ex sit corporis enim illum a itaque.</p>
           <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quasi animi quis quos consectetur alias delectus recusandae sunt quisquam incidunt provident quidem, at voluptatibus id, molestias et? Temporibus perspiciatis aut voluptates.</p>
           <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quibusdam obcaecati at delectus iusto possimus! Molestiae, iusto veritatis. Nostrum magni officiis autem, in ullam aliquid, mollitia, commodi architecto vitae omnis vero.</p>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore explicabo voluptates, pariatur excepturi ad sint voluptatum vero molestias aut qui beatae. Porro laudantium, saepe consequuntur voluptatem magni earum labore veniam.</p>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo quo nisi explicabo corrupti assumenda! Eaque quod, perspiciatis facere molestias nihil eum beatae commodi laudantium possimus qui error veniam enim at!</p>
         </div>
       </DsfrTabContent>
     </DsfrTabs>
     <div style="display: flex; gap: 1rem; margin-block: 1rem;">
       <DsfrButton
         label="Activer le 1er onglet"
-        :disabled="selectedTabIndex === 0"
-        @click="selectedTabIndex = 0"
+        :disabled="activeTab === 0"
+        @click="activeTab = 0"
       />
       <DsfrButton
         label="Activer le 2è onglet"
-        :disabled="selectedTabIndex === 1"
-        @click="selectedTabIndex = 1"
+        :disabled="activeTab === 1"
+        @click="activeTab = 1"
       />
       <DsfrButton
         label="Activer le 3è onglet"
-        :disabled="selectedTabIndex === 2"
-        @click="selectedTabIndex = 2"
+        :disabled="activeTab === 2"
+        @click="activeTab = 2"
       />
       <DsfrButton
         label="Activer le dernier onglet"
-        :disabled="selectedTabIndex === tabTitles.length - 1"
-        @click="selectedTabIndex = tabTitles.length - 1"
+        :disabled="activeTab === tabTitles.length - 1"
+        @click="activeTab = tabTitles.length - 1"
       />
     </div>
   </div>
