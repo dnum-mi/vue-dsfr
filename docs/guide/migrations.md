@@ -1,10 +1,19 @@
 # Migrations
 
-## Migration vers 6.x (depuis 4.x ou 5.x)
+## Migration vers 7.x (depuis 4.x, 5.x ou 6.x)
 
-Dans cette version majeure, il y a plusieurs sujets à traiter lorsque vous migrerez :
+Avant la v7, le tableau `modelValue` de [`DsfrCheckboxSet`](/composants/DsfrCheckboxSet) était un tableau de `string` avec les valeurs des propriétés de l’attribut `name` de chaque case à cocher.
 
-1. Les icônes
+Ce n’était ni une API idéale, ni le comportement attendu en Vue natif ou en HTML/JS natif.
+
+::: code-group
+<Story data-title="Démo" min-h="350px">
+  <DsfrCheckboxSetV7Demo />
+</Story>
+
+<<< ../docs-demo/DsfrCheckboxSetV7Demo.vue [Code de la démo]
+:::
+
 2. Les onglets
 3. Les accordéons
 
@@ -250,3 +259,7 @@ export default defineNuxtConfig({
   ],
 })
 ```
+
+<script setup>
+import DsfrCheckboxSetV7Demo from '../docs-demo/DsfrCheckboxSetV7Demo.vue'
+</script>

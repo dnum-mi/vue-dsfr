@@ -71,9 +71,11 @@ export const Checkbox = (args) => ({
         :required="required"
         :small="small"
         :hint="hint"
+        :value="value"
         :name="name || 'name1'"
         v-model="modelValue"
       />
+      {{ modelValue }}
   `,
   watch: {
     modelValue (newValue) {
@@ -88,6 +90,7 @@ Checkbox.args = {
   small: false,
   label: 'Checkbox 1',
   name: 'name1',
+  value: 'name1',
   hint: 'Description 1',
 }
 Checkbox.play = async ({ canvasElement }) => {

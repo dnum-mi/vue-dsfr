@@ -1,12 +1,14 @@
-<script setup>
+<script setup lang="ts">
 import DsfrAlert from '@/components/DsfrAlert/DsfrAlert.vue'
-
 import DsfrButton from '@/components/DsfrButton/DsfrButton.vue'
+import DsfrCheckboxSet from '@/components/DsfrCheckbox/DsfrCheckboxSet.vue'
 import DsfrFileUpload from '@/components/DsfrFileUpload/DsfrFileUpload.vue'
 import DsfrRadioButtonSet from '@/components/DsfrRadioButton/DsfrRadioButtonSet.vue'
 import { ref } from 'vue'
+import type { DsfrCheckboxSetProps } from '@/components/DsfrCheckbox/DsfrCheckbox.types'
 
 const inputValue = ref('')
+const showAlert = ref(true)
 const filesToUpload = ref(undefined)
 
 const updateFiles = (files) => {
@@ -20,6 +22,27 @@ const sendFile = () => {
 
 const whatever = ref('')
 const radioTest = ref('')
+
+const selectedCheckbox = ref(false)
+const selectedCheckboxes = ref([])
+const cbLegend = 'Légende des cases à cocher'
+const cbOptions: DsfrCheckboxSetProps['options'] = [
+  {
+    value: 'test1',
+    modelValue: 'test1',
+    label: 'Test 1',
+  },
+  {
+    value: 'test2',
+    modelValue: 'test2',
+    label: 'Test 2',
+  },
+  {
+    value: 'test3',
+    modelValue: 'test3',
+    label: 'Test 3',
+  },
+]
 </script>
 
 <template>
@@ -72,6 +95,7 @@ const radioTest = ref('')
         </template>
       </DsfrRadioButtonSet>
     </div>
+
     <DsfrButton
       type="submit"
       label="Bouton de soumission du formulaire"
@@ -89,5 +113,21 @@ const radioTest = ref('')
         />
       </template>
     </DsfrInput>
+
+    <h2>ChecboxSet :</h2>
+    <DsfrCheckboxSet
+      v-model="selectedCheckboxes"
+      :legend="cbLegend"
+      :options="cbOptions"
+    />
+    Sélectionné(s) : {{ selectedCheckboxes }}
+
+    <h2>Checbox seule :</h2>
+    <DsfrCheckbox
+      v-model="selectedCheckbox"
+      label="Une seule checkbox"
+      value="test_only_cb"
+    />
+    Sélectionné : {{ selectedCheckbox }}
   </form>
 </template>
