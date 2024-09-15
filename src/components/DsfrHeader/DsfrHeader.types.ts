@@ -20,6 +20,7 @@ export type DsfrHeaderMenuLinkProps = {
    * @deprecated Use the prop `to` instead
    */
   path?: string
+  class?: string | Record<string, string> | Array<string | Record<string, string>>
 }
 
 export type DsfrHeaderProps = {
