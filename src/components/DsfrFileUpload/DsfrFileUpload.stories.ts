@@ -12,6 +12,10 @@ export default {
       description:
         'Valeur de l’attribut `id` de l’input (sera aussi utilisé pour l’attribut `for` du `<label>`), chaîne aléatoire par défaut (conseillé)',
     },
+    accept: {
+      control: 'text',
+      description: 'valeur de l’attribut `accept` html (string, ex. : `".pdf,.doc"`) ou bien tableau d’extension qui sera transformé en string ex. (`[".pdf", ".doc"]`)',
+    },
     modelValue: {
       control: 'text',
       description: 'Valeur du fichier sélectionné',
@@ -63,6 +67,7 @@ export const Televersement = (args) => ({
       :error="error"
       :validMessage="validMessage"
       :disabled="disabled"
+      :accept="accept"
     />
   `,
 })
@@ -73,6 +78,7 @@ Televersement.args = {
   error: undefined,
   validMessage: undefined,
   disabled: false,
+  accept: '.pdf,.doc,.docx',
 }
 
 export const TeleversementAvecErreur = (args) => ({
@@ -89,6 +95,7 @@ export const TeleversementAvecErreur = (args) => ({
       :label="label"
       :hint="hint"
       :error="error"
+      :accept="accept"
       required
     />
   </div>
@@ -99,6 +106,7 @@ TeleversementAvecErreur.args = {
   label: 'Ajouter un fichier',
   hint: 'Pas trop volumineux svp',
   error: 'Message d’erreur',
+  accept: ['.pdf', '.doc', '.docx'],
 }
 
 export const TeleversementAvecSucces = (args) => ({
