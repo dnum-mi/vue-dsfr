@@ -12,7 +12,13 @@ export type DsfrHeaderMenuLinkProps = {
   target?: string
   onClick?: ($event: MouseEvent) => void
   to?: RouteLocationRaw
+  /**
+   * @deprecated Use the prop `to` instead
+   */
   href?: string
+  /**
+   * @deprecated Use the prop `to` instead
+   */
   path?: string
 }
 
