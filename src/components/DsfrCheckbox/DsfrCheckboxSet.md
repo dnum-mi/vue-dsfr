@@ -16,7 +16,7 @@ Le composant `DsfrCheckboxSet` est composé des éléments suivants :
 | Nom                   | Type                                    | Description                                                   | Obligatoire |
 |-----------------------|-------------------------------------------|----------------------------------------------------------------|--------------|
 | `options`               | *`(DsfrCheckboxProps & InputHTMLAttributes)[]`* | Tableau d'options définissant les cases à cocher individuelles   | ✅           |
-| `modelValue`            | *`string[]`*                                | Valeur courante du composant, un tableau de noms des cases cochées | ✅           |
+| `modelValue`            | *`string[]`*                                | Valeur courante du composant, un tableau de valeurs (propriété `value` de chaque option de la prop `options`) des cases cochées | ✅           |
 | `disabled`              | *`boolean`*                                | Indique si l'ensemble des cases à cocher est désactivé           |           |
 | `errorMessage`         | *`string`*                                 | Message d'erreur global à afficher                             |           |
 | `inline`                | *`boolean`*                                | Affiche les cases à cocher en ligne (par défaut : `false`)            |           |
@@ -25,6 +25,14 @@ Le composant `DsfrCheckboxSet` est composé des éléments suivants :
 | `small`                 | *`boolean`*                                | Affiche les cases à cocher en taille réduite                     |           |
 | `titleId`               | *`string`*                                 | Identifiant unique du champ (générée automatiquement si non fournie) |           |
 | `validMessage`         | *`string`*                                 | Message de validation global à afficher                         |           |
+
+::: danger Attention
+
+Avant la v7, le tableau `modelValue` était un tableau de `string` avec les valeurs des propriétés de l’attribut `name` de chaque case à cocher.
+
+Ce n’était ni une API idéale, ni le comportement attendu en Vue natif ou en HTML/JS natif.
+
+:::
 
 ## 📡 Événements
 
@@ -43,7 +51,7 @@ Le composant `DsfrCheckboxSet` est composé des éléments suivants :
 
 ## 🪆 Relation avec `DsfrCheckbox`
 
-`DsfrChecboxSet` utilise en interne `DsfrCheckbox`, et permet de récupérer dans `modelValue` sous forme de tableau non pas les états de chaque case à cocher, mais un tableau de `string` contenant les valeurs de la prop `name` de chaque case à cocher qui est cochée.
+`DsfrChecboxSet` utilise en interne `DsfrCheckbox`, et permet de récupérer dans `modelValue` sous forme de tableau les valeurs de la prop `value` de chaque case à cocher qui est cochée.
 
 Cf. les exemples ci-dessous
 

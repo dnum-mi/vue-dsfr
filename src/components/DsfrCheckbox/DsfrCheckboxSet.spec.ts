@@ -12,26 +12,30 @@ describe('DsfrCheckboxSet', () => {
     const secondHintText = 'Deuxième indice'
     const thirdLabelText = 'Troisième label'
     const thirdHintText = 'Troisième indice'
+    const modelValue = []
     const options = [
       {
         id: '1',
         label: firstLabelText,
-        checked: false,
+        value: 'un',
         hint: firstHintText,
+        modelValue,
         name: '1',
       },
       {
         id: '2',
         label: secondLabelText,
-        checked: false,
+        value: 'deux',
         hint: secondHintText,
+        modelValue,
         name: '2',
       },
       {
         id: '3',
         label: thirdLabelText,
-        checked: false,
+        value: 'trois',
         hint: thirdHintText,
+        modelValue,
         name: '3',
       },
     ]
@@ -64,22 +68,27 @@ describe('DsfrCheckboxSet', () => {
     const secondHintText = 'Deuxième indice'
     const thirdLabelText = 'Troisième label'
     const thirdHintText = 'Troisième indice'
+    const modelValue = ['name2']
+
     const options = [
       {
         id: '1',
         name: 'name1',
+        value: 'name1',
         label: firstLabelText,
         hint: firstHintText,
       },
       {
         id: '2',
         name: 'name2',
+        value: 'name2',
         label: secondLabelText,
         hint: secondHintText,
       },
       {
         id: '3',
         name: 'name3',
+        value: 'name3',
         label: thirdLabelText,
         hint: thirdHintText,
       },
@@ -87,7 +96,7 @@ describe('DsfrCheckboxSet', () => {
     const legendText = 'Légende de l’ensemble des champs'
 
     // When
-    const { getByText, getByTestId } = render(DsfrCheckboxSet, {
+    const { getByText, getByLabelText, getByTestId } = render(DsfrCheckboxSet, {
       global: {
         components: {
           VIcon,
@@ -96,26 +105,34 @@ describe('DsfrCheckboxSet', () => {
       props: {
         legend: legendText,
         options,
+        modelValue,
         validMessage: 'Message d’erreur',
-        modelValue: ['name3'],
       },
     })
 
     const firstLabelEl = getByText(firstLabelText)
     const secondLabelEl = getByText(secondLabelText)
+    const thirdLabelEl = getByText(`${thirdLabelText}`)
+    const thirdInput = getByLabelText(`${thirdLabelText} ${thirdHintText}`)
     const firstInput = getByTestId('input-checkbox-1')
     const secondInput = getByTestId('input-checkbox-2')
+    // @ts-expect-error This is a checkbox input event, so `checked` property is present
+    expect((firstInput).checked).toBe(false)
+    // @ts-expect-error This is a checkbox input event, so `checked` property is present
+    expect(secondInput.checked).toBe(true)
     await fireEvent.click(firstLabelEl)
     await fireEvent.click(secondLabelEl)
-    await fireEvent.click(secondLabelEl)
+    await fireEvent.click(thirdLabelEl)
 
     // Then
     expect(firstInput).toBeInTheDocument()
     expect(firstInput).toHaveAttribute('name', 'name1')
+    expect(secondInput).toHaveAttribute('name', 'name2')
     // @ts-expect-error This is a checkbox input event, so `checked` property is present
     expect((firstInput).checked).toBe(true)
     // @ts-expect-error This is a checkbox input event, so `checked` property is present
     expect(secondInput.checked).toBe(false)
+    expect(thirdInput.checked).toBe(true)
   })
 
   it('should render no checkboxes', async () => {

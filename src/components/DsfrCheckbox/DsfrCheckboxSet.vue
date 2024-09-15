@@ -1,13 +1,15 @@
-<script lang="ts" setup>
+<script lang="ts">
 import { computed } from 'vue'
-
 import { getRandomId } from '../../utils/random-utils'
+
 import DsfrCheckbox from './DsfrCheckbox.vue'
 
 import type { DsfrCheckboxSetProps } from './DsfrCheckbox.types'
 
 export type { DsfrCheckboxSetProps }
+</script>
 
+<script lang="ts" setup>
 const props = withDefaults(defineProps<DsfrCheckboxSetProps>(), {
   titleId: () => getRandomId('checkbox', 'group'),
   errorMessage: '',
@@ -17,8 +19,6 @@ const props = withDefaults(defineProps<DsfrCheckboxSetProps>(), {
   modelValue: () => [],
 })
 
-const emit = defineEmits<{ (e: 'update:modelValue', payload: string[]): void }>()
-
 const message = computed(() => {
   return props.errorMessage || props.validMessage
 })
@@ -26,13 +26,9 @@ const additionalMessageClass = computed(() => {
   return props.errorMessage ? 'fr-error-text' : 'fr-valid-text'
 })
 
-const onChange = ({ name, checked }: { name: string, checked: boolean }) => {
-  const selected = checked
-    ? [...props.modelValue, name]
-    : props.modelValue.filter(val => val !== name)
-  emit('update:modelValue', selected)
-}
 const ariaLabelledby = computed(() => message.value ? `${props.titleId} messages-${props.titleId}` : props.titleId)
+
+const modelValue = defineModel()
 </script>
 
 <template>
@@ -70,15 +66,15 @@ const ariaLabelledby = computed(() => message.value ? `${props.titleId} messages
           v-for="option in options"
           :id="option.id"
           :key="option.id || option.name"
+          v-model="modelValue"
+          :value="option.value"
           :name="option.name"
           :label="option.label"
           :disabled="option.disabled"
           :aria-disabled="option.disabled"
           :small="small"
           :inline="inline"
-          :model-value="modelValue.includes(option.name)"
           :hint="option.hint"
-          @update:model-value="onChange({ name: option.name, checked: $event })"
         />
       </slot>
       <div
