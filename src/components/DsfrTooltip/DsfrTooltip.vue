@@ -89,12 +89,20 @@ const clickListener = (event: MouseEvent) => {
   show.value = false
 }
 
+const onEscapeKey = (event: KeyboardEvent) => {
+  if (event.key === 'Escape') {
+    show.value = false
+  }
+}
+
 onMounted(() => {
   document.documentElement.addEventListener('click', clickListener)
+  document.documentElement.addEventListener('keydown', onEscapeKey)
 })
 
 onUnmounted(() => {
   document.documentElement.removeEventListener('click', clickListener)
+  document.documentElement.removeEventListener('keydown', onEscapeKey)
 })
 
 const onMouseEnter = () => {
@@ -127,6 +135,8 @@ const onClick = () => {
     @click.stop="onClick()"
     @mouseenter="onMouseEnter()"
     @mouseleave="onMouseLeave()"
+    @focus="onMouseEnter()"
+    @blur="onMouseLeave()"
   >
     <!-- @slot Slot par défaut pour le contenu de l’infobulle -->
     <slot />
