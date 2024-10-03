@@ -124,7 +124,7 @@ const onClick = () => {
     :class="onHover ? 'fr-link' : 'fr-btn  fr-btn--tooltip'"
     :aria-describedby="id"
     :href="onHover ? '#' : undefined"
-    @click="onClick()"
+    @click.stop="onClick()"
     @mouseenter="onMouseEnter()"
     @mouseleave="onMouseLeave()"
   >
