@@ -242,15 +242,13 @@ provide(registerNavigationLinkKey, () => {
                   @select="languageSelector.currentLanguage = $event.codeIso"
                 />
               </template>
-              <nav role="navigation">
-                <DsfrHeaderMenuLinks
-                  v-if="menuOpened"
-                  role="navigation"
-                  :links="quickLinks"
-                  :nav-aria-label="quickLinksAriaLabel"
-                  @link-click="onQuickLinkClick"
-                />
-              </nav>
+              <DsfrHeaderMenuLinks
+                v-if="menuOpened"
+                role="navigation"
+                :links="quickLinks"
+                :nav-aria-label="quickLinksAriaLabel"
+                @link-click="onQuickLinkClick"
+              />
             </div>
 
             <template v-if="modalOpened">
