@@ -65,7 +65,7 @@ const lowestLimit = computed(() => currentPage.value * rowsPerPage.value)
 const highestLimit = computed(() => (currentPage.value + 1) * rowsPerPage.value)
 
 function defaultSortFn (a: string | DsfrDataTableRow, b: string | DsfrDataTableRow) {
-  const key = props.sorted as string
+  const key = sortedBy.value ?? props.sorted
   // @ts-expect-error TS7015
   if (((a as DsfrDataTableRow)[key] ?? a) < ((b as DsfrDataTableRow)[key] ?? b)) {
     return -1
