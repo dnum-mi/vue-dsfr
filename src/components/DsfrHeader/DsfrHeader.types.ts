@@ -20,7 +20,6 @@ export type DsfrHeaderMenuLinkProps = {
    * @deprecated Use the prop `to` instead
    */
   path?: string
-  class?: string | Record<string, string> | Array<string | Record<string, string>>
 }
 
 export type DsfrHeaderProps = {
@@ -34,7 +33,7 @@ export type DsfrHeaderProps = {
   operatorImgSrc?: string
   operatorImgStyle?: StyleValue
   placeholder?: string
-  quickLinks?: DsfrHeaderMenuLinkProps[]
+  quickLinks?: (DsfrHeaderMenuLinkProps & HTMLAttributes)[]
   languageSelector?: DsfrLanguageSelectorProps
   searchLabel?: string
   quickLinksAriaLabel?: string
