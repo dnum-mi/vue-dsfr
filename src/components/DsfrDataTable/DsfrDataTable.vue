@@ -64,8 +64,10 @@ const pages = computed<Page[]>(() => props.pages ?? Array.from({ length: pageCou
 const lowestLimit = computed(() => currentPage.value * rowsPerPage.value)
 const highestLimit = computed(() => (currentPage.value + 1) * rowsPerPage.value)
 
+const sortedBy = defineModel<string | undefined>('sortedBy', { default: undefined })
+const sortedDesc = defineModel('sortedDesc', { default: false })
 function defaultSortFn (a: string | DsfrDataTableRow, b: string | DsfrDataTableRow) {
-  const key = props.sorted as string
+  const key = sortedBy.value ?? props.sorted
   // @ts-expect-error TS7015
   if (((a as DsfrDataTableRow)[key] ?? a) < ((b as DsfrDataTableRow)[key] ?? b)) {
     return -1
@@ -76,9 +78,6 @@ function defaultSortFn (a: string | DsfrDataTableRow, b: string | DsfrDataTableR
   }
   return 0
 }
-
-const sortedBy = defineModel<string | undefined>('sortedBy', { default: undefined })
-const sortedDesc = defineModel('sortedDesc', { default: false })
 function sortBy (key: string) {
   if (!props.sortableRows || (Array.isArray(props.sortableRows) && !props.sortableRows.includes(key))) {
     return

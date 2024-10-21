@@ -126,6 +126,7 @@ const onClick = () => {
 
 <template>
   <component
+    v-bind="$attrs"
     :is="onHover ? 'a' : 'button'"
     :id="`link-${id}`"
     ref="source"

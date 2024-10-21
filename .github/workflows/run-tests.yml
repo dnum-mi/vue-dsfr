@@ -19,11 +19,11 @@ jobs:
       VITE_APP_GIT_SHA: ${{github.sha}}
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       - name: Setup Node.js
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22
       - name: Install pnpm
         run: npm i -g pnpm
       - name: Install dependencies
