@@ -17,9 +17,6 @@ importers:
       focus-trap-vue:
         specifier: ^4.0.3
         version: 4.0.3(focus-trap@7.5.4)(vue@3.5.4(typescript@5.5.4))
-      pnpm:
-        specifier: ^9.10.0
-        version: 9.10.0
       vue:
         specifier: ^3.5.4
         version: 3.5.4(typescript@5.5.4)
@@ -171,6 +168,9 @@ importers:
       p-debounce:
         specifier: ^4.0.0
         version: 4.0.0
+      pnpm:
+        specifier: ^9.10.0
+        version: 9.10.0
       publint:
         specifier: ^0.2.10
         version: 0.2.10
@@ -7574,8 +7574,8 @@ packages:
   vue-component-type-helpers@2.0.24:
     resolution: {integrity: sha512-Jr5N8QVYEcbQuMN1LRgvg61758G8HTnzUlQsAFOxx6Y6X8kmhJ7C+jOvWsQruYxi3uHhhS6BghyRlyiwO99DBg==}
 
-  vue-component-type-helpers@2.1.6:
-    resolution: {integrity: sha512-ng11B8B/ZADUMMOsRbqv0arc442q7lifSubD0v8oDXIFoMg/mXwAPUunrroIDkY+mcD0dHKccdaznSVp8EoX3w==}
+  vue-component-type-helpers@2.1.10:
+    resolution: {integrity: sha512-lfgdSLQKrUmADiSV6PbBvYgQ33KF3Ztv6gP85MfGaGaSGMTXORVaHT1EHfsqCgzRNBstPKYDmvAV9Do5CmJ07A==}
 
   vue-demi@0.14.10:
     resolution: {integrity: sha512-nMZBOwuzabUO0nLgIcc6rycZEebF6eeUfaiQx9+WSk8e29IbLvPU9feI6tqW4kTo3hvoYAJkMh8n8D0fuISphg==}
@@ -10168,7 +10168,7 @@ snapshots:
       ts-dedent: 2.2.0
       type-fest: 2.19.0
       vue: 3.5.4(typescript@5.5.4)
-      vue-component-type-helpers: 2.1.6
+      vue-component-type-helpers: 2.1.10
 
   '@stylistic/eslint-plugin@2.8.0(eslint@9.10.0(jiti@1.21.0))(typescript@5.5.4)':
     dependencies:
@@ -16562,7 +16562,7 @@ snapshots:
 
   vue-component-type-helpers@2.0.24: {}
 
-  vue-component-type-helpers@2.1.6: {}
+  vue-component-type-helpers@2.1.10: {}
 
   vue-demi@0.14.10(vue@3.5.4(typescript@5.5.4)):
     dependencies:
