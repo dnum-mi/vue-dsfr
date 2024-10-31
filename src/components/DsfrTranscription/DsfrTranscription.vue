@@ -3,7 +3,6 @@ import { computed, ref, watch } from 'vue'
 
 import { useCollapsable } from '../../composables'
 import { getRandomId } from '../../utils/random-utils'
-
 import DsfrModal from '../DsfrModal/DsfrModal.vue'
 
 import type { DsfrTranscriptionProps } from './DsfrTranscription.types'

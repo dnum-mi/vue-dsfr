@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import { computed, ref, watch } from 'vue'
+
 import { useCollapsable } from '../../composables'
 import { getRandomId } from '../../utils/random-utils'
 

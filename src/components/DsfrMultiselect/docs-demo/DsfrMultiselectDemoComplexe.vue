@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue'
+
 import DsfrMultiselect from '../DsfrMultiselect.vue'
 
 const options = [

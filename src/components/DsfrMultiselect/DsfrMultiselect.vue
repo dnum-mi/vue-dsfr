@@ -1,14 +1,15 @@
 <script lang="ts" setup generic="T extends Object | string | number">
-import { getRandomId } from '@/utils/random-utils'
 import { computed, onUnmounted, ref } from 'vue'
 
 import { useCollapsable } from '../../composables'
 import DsfrButton from '../DsfrButton/DsfrButton.vue'
 import DsfrCheckbox from '../DsfrCheckbox/DsfrCheckbox.vue'
 import DsfrFieldset from '../DsfrFieldset/DsfrFieldset.vue'
-
 import DsfrInput from '../DsfrInput/DsfrInput.vue'
+
 import type { DsfrMultiSelectProps, DsfrMultiSelectSlots } from './DsfrMultiselect.types'
+
+import { getRandomId } from '@/utils/random-utils'
 
 const props = withDefaults(
   defineProps<DsfrMultiSelectProps<T>>(),
@@ -285,10 +286,13 @@ onUnmounted(() => {
 
 const defaultButtonLabel = computed(() => {
   const nbElements = model.value?.length
-  if (nbElements === 0) {
+  const noElements = nbElements === 0
+  const severalElements = nbElements > 1
+
+  if (noElements) {
     return 'Sélectionner une option'
   }
-  return `${nbElements} option${nbElements > 1 ? 's' : ''} sélectionnée${nbElements > 1 ? 's' : ''}`
+  return `${nbElements} option${severalElements ? 's' : ''} sélectionnée${severalElements ? 's' : ''}`
 })
 
 const finalLabelClass = computed(() => [
@@ -507,14 +511,12 @@ const finalLabelClass = computed(() => [
 }
 
 .fr-multiselect__collapse {
-  z-index: 20000;
+  z-index: 1;
   position: absolute;
   transform-origin: left top;
   width: var(--width-host);
-  left: var(--left-position);
-  top: var(--top-position);
   padding: 1rem;
-  margin-top: 4px;
+  margin-top: 0.25rem;
   background-color: var(--background-overlap-grey);
   filter: drop-shadow(var(--overlap-shadow));
 }

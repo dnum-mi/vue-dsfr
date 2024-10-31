@@ -1,4 +1,5 @@
 import { fileURLToPath } from 'node:url'
+
 import fullReload from 'vite-plugin-full-reload'
 import type { Plugin } from 'vitepress'
 

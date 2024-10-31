@@ -1,5 +1,6 @@
 import type { HTMLAttributes, StyleValue } from 'vue'
 import type { RouteLocationRaw } from 'vue-router'
+
 import type VIcon from '../VIcon/VIcon.vue'
 
 export type DsfrFooterPartner = {

@@ -3,6 +3,7 @@ import { fn } from '@storybook/test'
 import DsfrAccordion from '../DsfrAccordion/DsfrAccordion.vue'
 import DsfrAccordionsGroup from '../DsfrAccordion/DsfrAccordionsGroup.vue'
 import DsfrCheckboxSet from '../DsfrCheckbox/DsfrCheckboxSet.vue'
+
 import DsfrSideMenu from './DsfrSideMenu.vue'
 
 function toggleExpandedForMenuWithId (menuItems, id) {

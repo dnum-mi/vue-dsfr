@@ -2,7 +2,6 @@
 import { getRandomId } from '../../utils/random-utils'
 
 import DsfrInput from './DsfrInput.vue'
-
 import type { DsfrInputGroupProps } from './DsfrInput.types'
 
 export type { DsfrInputGroupProps }

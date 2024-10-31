@@ -1,9 +1,10 @@
 <script lang="ts" setup>
 import { ref } from 'vue'
 
-import type { VIconProps } from '@/components/VIcon/VIcon.types'
 import DsfrButton from '../../DsfrButton/DsfrButton.vue'
 import DsfrCallout from '../DsfrCallout.vue'
+
+import type { VIconProps } from '@/components/VIcon/VIcon.types'
 
 const title = 'Titre de la mise en avant'
 const button = undefined

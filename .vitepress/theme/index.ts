@@ -3,10 +3,10 @@ import { RouterLink } from 'vue-router'
 import type { Theme } from 'vitepress'
 
 import VIcon from '../../src/components/VIcon/VIcon.vue'
+
 import AppColors from './AppColors.vue'
 import AppIcons from './AppIcons.vue'
 import Story from './Story.vue'
-
 import VIconLink from './VIconLink.vue'
 import './official-icons.css'
 import '@gouvfr/dsfr/dist/utility/icons/icons.main.css'

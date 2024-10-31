@@ -1,4 +1,5 @@
 import { expect, within } from '@storybook/test'
+
 import DsfrHighlight from './DsfrHighlight.vue'
 
 /**

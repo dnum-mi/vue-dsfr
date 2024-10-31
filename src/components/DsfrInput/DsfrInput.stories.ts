@@ -1,4 +1,5 @@
 import { expect, within } from '@storybook/test'
+
 import DsfrAlert from '../DsfrAlert/DsfrAlert.vue'
 import DsfrButton from '../DsfrButton/DsfrButton.vue'
 import VIcon from '../VIcon/VIcon.vue'

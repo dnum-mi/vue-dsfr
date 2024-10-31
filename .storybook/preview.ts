@@ -4,6 +4,7 @@ import { setup } from '@storybook/vue3'
 import { FocusTrap } from 'focus-trap-vue'
 import { defineComponent } from 'vue'
 import type { Preview } from '@storybook/vue3'
+
 import VIcon from '../src/components/VIcon/VIcon.vue'
 
 import VueDsfrTheme from './vue-dsfr-theme.js'

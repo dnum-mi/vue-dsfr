@@ -1,4 +1,5 @@
 import type { ButtonHTMLAttributes } from 'vue'
+
 import type VIcon from '../VIcon/VIcon.vue'
 
 export type DsfrButtonProps = {

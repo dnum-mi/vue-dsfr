@@ -3,6 +3,7 @@ import { inject, onMounted, ref, toRef, watch } from 'vue'
 
 import { useCollapsable } from '../../composables'
 import { getRandomId } from '../../utils/random-utils'
+
 import { registerAccordionKey } from './injection-key'
 import type { DsfrAccordionProps } from './DsfrAccordion.types'
 

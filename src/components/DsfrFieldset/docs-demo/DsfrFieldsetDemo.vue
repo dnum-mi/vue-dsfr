@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import { ref } from 'vue'
+
 import DsfrRadioButtonSet from '../../DsfrRadioButton/DsfrRadioButtonSet.vue'
 import DsfrFieldset from '../DsfrFieldset.vue'
 

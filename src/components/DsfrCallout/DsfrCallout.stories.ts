@@ -2,6 +2,7 @@ import { expect, fn, userEvent, within } from '@storybook/test'
 import type { Meta } from '@storybook/vue3'
 
 import VIcon from '../VIcon/VIcon.vue'
+
 import DsfrCallout from './DsfrCallout.vue'
 
 const delay = (timeout = 100) =>

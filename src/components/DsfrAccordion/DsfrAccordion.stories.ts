@@ -1,5 +1,7 @@
 import { expect, within } from '@storybook/test'
+
 import DsfrCheckboxSet from '../DsfrCheckbox/DsfrCheckboxSet.vue'
+
 import DsfrAccordion from './DsfrAccordion.vue'
 import DsfrAccordionsGroup from './DsfrAccordionsGroup.vue'
 

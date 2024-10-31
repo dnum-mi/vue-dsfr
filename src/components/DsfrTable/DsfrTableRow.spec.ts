@@ -1,5 +1,4 @@
 import { fireEvent, render } from '@testing-library/vue'
-
 import { spy } from '@tests/unit/test-utils'
 
 import DsfrTableRow from './DsfrTableRow.vue'

@@ -1,12 +1,12 @@
 <script lang="ts" setup>
 import svgCityHall from '@gouvfr/dsfr/dist/artwork/pictograms/buildings/city-hall.svg'
 import svgHouse from '@gouvfr/dsfr/dist/artwork/pictograms/buildings/house.svg'
-
 import svgSchool from '@gouvfr/dsfr/dist/artwork/pictograms/buildings/school.svg'
 import svgContract from '@gouvfr/dsfr/dist/artwork/pictograms/document/contract.svg'
 import svgDocument from '@gouvfr/dsfr/dist/artwork/pictograms/document/driving-licence.svg'
 import { getCurrentInstance, ref } from 'vue'
 import { createRouter, createWebHistory } from 'vue-router'
+
 import DsfrButton from '../../DsfrButton/DsfrButton.vue'
 import DsfrTile from '../DsfrTile.vue'
 

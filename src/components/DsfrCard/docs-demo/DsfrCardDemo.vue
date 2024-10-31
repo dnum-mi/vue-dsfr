@@ -1,10 +1,9 @@
 <script lang="ts" setup>
 import { getCurrentInstance } from 'vue'
-import DsfrTags from '../../DsfrTag/DsfrTags.vue'
 
+import DsfrTags from '../../DsfrTag/DsfrTags.vue'
 import VICon from '../../VIcon/VIcon.vue'
 import DsfrCard from '../DsfrCard.vue'
-
 import type { DsfrBadgeProps } from '../../DsfrBadge/DsfrBadge.types'
 
 const app = getCurrentInstance()

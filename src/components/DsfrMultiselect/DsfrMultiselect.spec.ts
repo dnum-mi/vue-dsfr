@@ -1,4 +1,5 @@
 import { fireEvent, render } from '@testing-library/vue'
+
 import DsfrMultiselect from './DsfrMultiselect.vue'
 
 describe('DsfrMultiselect', () => {

@@ -1,6 +1,5 @@
 <script lang="ts" setup>
 import DsfrTableCell from './DsfrTableCell.vue'
-
 import type { DsfrTableRowProps } from './DsfrTable.types'
 
 export type { DsfrTableRowProps }

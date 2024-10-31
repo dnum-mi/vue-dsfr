@@ -1,8 +1,7 @@
 import { expect, fn, userEvent, within } from '@storybook/test'
-
 import { setup } from '@storybook/vue3'
-import DsfrButton from '../DsfrButton/DsfrButton.vue'
 
+import DsfrButton from '../DsfrButton/DsfrButton.vue'
 import VIcon from '../VIcon/VIcon.vue'
 
 import DsfrModal from './DsfrModal.vue'

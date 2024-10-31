@@ -1,6 +1,7 @@
 import { fireEvent, render } from '@testing-library/vue'
 
 import VIcon from '../VIcon/VIcon.vue'
+
 import DsfrAlert from './DsfrAlert.vue'
 
 describe('DsfrAlert', () => {

@@ -1,4 +1,5 @@
 import type { HTMLAttributes, TdHTMLAttributes, ThHTMLAttributes } from 'vue'
+
 import type VIcon from '../VIcon/VIcon.vue'
 
 export type DsfrTableRowProps = {

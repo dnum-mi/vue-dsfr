@@ -1,8 +1,9 @@
-import VueDsfr from '@/index'
-
 import { createApp } from 'vue'
+
 import App from './App.vue'
 import router from './router.js'
+
+import VueDsfr from '@/index'
 import '@gouvfr/dsfr/dist/core/core.main.min.css'
 import '@gouvfr/dsfr/dist/scheme/scheme.min.css'
 
