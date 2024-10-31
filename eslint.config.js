@@ -12,6 +12,10 @@ export default antfu({
       'test/prefer-lowercase-title': 'off',
       'sort-imports': 'off', // Should be 'error'
       'import/order': 'off', // Should be 'error'
+      // 'import/order': ['error', {
+      //   'newlines-between': 'always',
+      //   groups: ['builtin', 'external', 'internal', 'parent', 'sibling', 'index'],
+      // }], // Should be 'error'
       'antfu/top-level-function': 'off', // Should be 'error'
       'style/quote-props': ['error', 'as-needed'], // Should be ['error', 'consistent-as-needed']
       'vue/quote-props': ['error', 'as-needed'], // Should be ['error', 'consistent-as-needed']
@@ -21,6 +25,8 @@ export default antfu({
       'style/max-statements-per-line': 'off', // Should be 'error'
       'vue/no-irregular-whitespace': 'warn',
       'no-irregular-whitespace': 'warn',
+      'perfectionist/sort-imports': 'off', // import/order is better
+      'perfectionist/sort-exports': 'off', // Think about it
       'style/space-before-function-paren': ['error', 'always'],
       'style/brace-style': ['error', '1tbs', { allowSingleLine: true }],
       curly: ['error', 'all'],
@@ -70,9 +76,9 @@ export default antfu({
     },
   },
   {
-    files: ['src/components/index.ts'],
+    files: ['ci/**/*.mjs'],
     rules: {
-      'perfectionist/sort-exports': 'off',
+      'antfu/no-top-level-await': 'off',
     },
   },
 ])

@@ -280,6 +280,7 @@ const currentRoute = computed(() => route.name)
       v-model="search"
       :quick-links="quickLinks"
       show-search
+      service-title="VueDSFR demo App"
       placeholder="Rechercher placeholder"
     >
       <template #mainnav>
