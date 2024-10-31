@@ -1,10 +1,10 @@
 <script lang="ts" setup>
 import { computed, hasInjectionContext, inject } from 'vue'
+
 import { getRandomId } from '../../utils/random-utils'
-
 import { registerNavigationLinkKey } from '../DsfrHeader/injection-key'
-
 import VIcon from '../VIcon/VIcon.vue'
+
 import type { DsfrNavigationMenuLinkProps } from './DsfrNavigation.types'
 
 export type { DsfrNavigationMenuLinkProps }

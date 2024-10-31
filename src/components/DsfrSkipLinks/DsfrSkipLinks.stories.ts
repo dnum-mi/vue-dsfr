@@ -1,4 +1,5 @@
 import { expect, userEvent, within } from '@storybook/test'
+
 import DsfrSkipLinks from './DsfrSkipLinks.vue'
 
 /**

@@ -1,8 +1,9 @@
 <script lang="ts" setup>
 import { ref } from 'vue'
 
-import type { TitleTag } from '@/common-types'
 import DsfrAlert, { type DsfrAlertType } from '../DsfrAlert.vue'
+
+import type { TitleTag } from '@/common-types'
 
 const defaultAlerts: {
   [key: string]: {

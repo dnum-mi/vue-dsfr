@@ -89,6 +89,7 @@ Ajouter la bibliothèque en tant que plugin a deux conséquences :
 
 ```js
 import { createApp } from 'vue'
+
 import App from './App.vue'
 
 const app = createApp(App)

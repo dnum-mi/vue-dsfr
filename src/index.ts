@@ -1,4 +1,5 @@
 import type { App, Component } from 'vue'
+
 import * as vueDsfrComponents from './components/index.js'
 import VIcon from './components/VIcon/VIcon.vue'
 

@@ -6,7 +6,6 @@ import { useCollapsable } from '../../composables'
 
 import DsfrSideMenuButton from './DsfrSideMenuButton.vue'
 import DsfrSideMenuListItem from './DsfrSideMenuListItem.vue'
-
 import type { DsfrSideMenuListProps } from './DsfrSideMenu.types'
 
 export type { DsfrSideMenuListProps }

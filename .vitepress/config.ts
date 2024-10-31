@@ -3,6 +3,7 @@ import { fileURLToPath, URL } from 'node:url'
 import { whyframe } from '@whyframe/core'
 import { whyframeVue } from '@whyframe/vue'
 import { defineConfig } from 'vitepress'
+
 import { hmrFix } from './plugins/hmrFix.js'
 
 const minimalToc = [

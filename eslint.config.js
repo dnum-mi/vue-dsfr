@@ -1,9 +1,5 @@
 import antfu from '@antfu/eslint-config'
 
-// const compat = new FlatCompat({
-//   baseDirectory: import.meta.dirname,
-// })
-
 export default antfu({
   vue: true,
 }, [
@@ -11,11 +7,10 @@ export default antfu({
     rules: {
       'test/prefer-lowercase-title': 'off',
       'sort-imports': 'off', // Should be 'error'
-      'import/order': 'off', // Should be 'error'
-      // 'import/order': ['error', {
-      //   'newlines-between': 'always',
-      //   groups: ['builtin', 'external', 'internal', 'parent', 'sibling', 'index'],
-      // }], // Should be 'error'
+      'import/order': ['error', {
+        'newlines-between': 'always',
+        groups: ['builtin', 'external', 'internal', 'parent', 'sibling', 'index'],
+      }],
       'antfu/top-level-function': 'off', // Should be 'error'
       'style/quote-props': ['error', 'as-needed'], // Should be ['error', 'consistent-as-needed']
       'vue/quote-props': ['error', 'as-needed'], // Should be ['error', 'consistent-as-needed']

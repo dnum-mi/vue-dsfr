@@ -1,6 +1,7 @@
 <script lang="ts" setup>
-import DsfrCheckboxSet from '@/components/DsfrCheckbox/DsfrCheckboxSet.vue'
 import { ref } from 'vue'
+
+import DsfrCheckboxSet from '@/components/DsfrCheckbox/DsfrCheckboxSet.vue'
 import type { DsfrCheckboxSetProps } from '@/components/DsfrCheckbox/DsfrCheckbox.types'
 
 const selectedCheckboxes = ref([])

@@ -3,6 +3,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 // import '@gouvfr/dsfr/dist/core/core.module.js'
 
 import VIcon from '../VIcon/VIcon.vue'
+
 import DsfrNavigationMenuLink from './DsfrNavigationMenuLink.vue'
 
 const router = createRouter({

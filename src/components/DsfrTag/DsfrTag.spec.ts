@@ -2,6 +2,7 @@ import { render } from '@testing-library/vue'
 // import '@gouvfr/dsfr/dist/core/core.module.js'
 
 import VIcon from '../VIcon/VIcon.vue'
+
 import DsfrTag from './DsfrTag.vue'
 import DsfrTags from './DsfrTags.vue'
 

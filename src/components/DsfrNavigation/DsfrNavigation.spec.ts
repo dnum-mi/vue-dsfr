@@ -1,10 +1,10 @@
 import { fireEvent } from '@testing-library/dom'
 import { render } from '@testing-library/vue'
 import { createRouter, createWebHistory } from 'vue-router'
+import { spy } from '@tests/unit/test-utils.js'
+
 import VIcon from '../VIcon/VIcon.vue'
 // import '@gouvfr/dsfr/dist/core/core.module.js'
-
-import { spy } from '@tests/unit/test-utils.js'
 
 import DsfrNavigation from './DsfrNavigation.vue'
 

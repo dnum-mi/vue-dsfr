@@ -2,6 +2,7 @@ import { render } from '@testing-library/vue'
 import { createRouter, createWebHistory } from 'vue-router'
 
 import VIcon from '../VIcon/VIcon.vue'
+
 import DsfrFooter from './DsfrFooter.vue'
 
 const router = createRouter({

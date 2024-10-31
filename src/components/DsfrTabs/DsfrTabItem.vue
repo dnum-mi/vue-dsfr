@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import { inject, ref, toRef } from 'vue'
+
 import VIcon from '../VIcon/VIcon.vue'
 
 import { registerTabKey } from './injection-key'

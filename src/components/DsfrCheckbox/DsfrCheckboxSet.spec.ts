@@ -1,4 +1,5 @@
 import { fireEvent, render } from '@testing-library/vue'
+
 import VIcon from '../VIcon/VIcon.vue'
 
 import DsfrCheckboxSet from './DsfrCheckboxSet.vue'

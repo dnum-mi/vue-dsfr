@@ -7,7 +7,6 @@ import DsfrNavigationItem from './DsfrNavigationItem.vue'
 import DsfrNavigationMegaMenu from './DsfrNavigationMegaMenu.vue'
 import DsfrNavigationMenu from './DsfrNavigationMenu.vue'
 import DsfrNavigationMenuLink from './DsfrNavigationMenuLink.vue'
-
 import type {
   DsfrNavigationMegaMenuProps,
   DsfrNavigationMenuLinkProps,

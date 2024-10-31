@@ -1,8 +1,9 @@
 import { render } from '@testing-library/vue'
+import { ref } from 'vue'
+
 import VIcon from '../VIcon/VIcon.vue'
 // import '@gouvfr/dsfr/dist/core/core.module.js'
 
-import { ref } from 'vue'
 import DsfrAccordion from './DsfrAccordion.vue'
 import { registerTabKey } from './injection-key'
 

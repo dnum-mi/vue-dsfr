@@ -4,6 +4,7 @@ import { computed, onMounted, onUnmounted, provide, ref, toRef, useSlots } from 
 import DsfrLanguageSelector, { type DsfrLanguageSelectorElement } from '../DsfrLanguageSelector/DsfrLanguageSelector.vue'
 import DsfrLogo from '../DsfrLogo/DsfrLogo.vue'
 import DsfrSearchBar from '../DsfrSearchBar/DsfrSearchBar.vue'
+
 import DsfrHeaderMenuLinks from './DsfrHeaderMenuLinks.vue'
 import { registerNavigationLinkKey } from './injection-key'
 import type { DsfrHeaderProps } from './DsfrHeader.types'

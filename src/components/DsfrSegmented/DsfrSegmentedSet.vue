@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { getRandomId } from '../../utils/random-utils'
-import DsfrSegmented from './DsfrSegmented.vue'
 
+import DsfrSegmented from './DsfrSegmented.vue'
 import type { DsfrSegmentedSetProps } from './DsfrSegmented.types'
 
 export type { DsfrSegmentedSetProps }

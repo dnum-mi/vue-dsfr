@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { getCurrentInstance } from 'vue'
-import VICon from '../../VIcon/VIcon.vue'
 
+import VICon from '../../VIcon/VIcon.vue'
 import DsfrCard from '../DsfrCard.vue'
 
 const app = getCurrentInstance()
