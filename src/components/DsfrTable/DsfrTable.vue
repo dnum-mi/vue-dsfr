@@ -1,8 +1,8 @@
 <script lang="ts" setup>
 import { computed, ref, watch } from 'vue'
+
 import DsfrTableHeaders from './DsfrTableHeaders.vue'
 import DsfrTableRow, { type DsfrTableRowProps } from './DsfrTableRow.vue'
-
 import type { DsfrTableProps } from './DsfrTable.types'
 
 export type { DsfrTableProps }

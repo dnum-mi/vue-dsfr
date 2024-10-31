@@ -1,4 +1,5 @@
 import type { App, Component } from 'vue'
+
 import * as vueDsfrComponents from './components/index.js'
 import VIcon from './components/VIcon/VIcon.vue'
 
@@ -10,6 +11,7 @@ export default {
   install: (app: App, { components }: VueDsfrPluginOptions = {}) => {
     Object.entries(vueDsfrComponents).forEach(([componentName, component]) => {
       if (components === undefined || components === 'all' || components.map(({ name }) => name).includes(componentName)) {
+        // @ts-expect-error TS2345
         app.component(componentName, component)
       }
     })

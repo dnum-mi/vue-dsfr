@@ -1,6 +1,5 @@
 <script lang="ts" setup>
 import DsfrFileDownload from './DsfrFileDownload.vue'
-
 import type { DsfrFileDownloadListProps } from './DsfrFileDownload.types'
 
 export type { DsfrFileDownloadListProps }

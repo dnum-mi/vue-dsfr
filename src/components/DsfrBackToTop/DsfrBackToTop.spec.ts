@@ -1,4 +1,5 @@
 import { render } from '@testing-library/vue'
+
 import DsfrBackToTop from './DsfrBackToTop.vue'
 
 describe('DsfrBackToTop', () => {

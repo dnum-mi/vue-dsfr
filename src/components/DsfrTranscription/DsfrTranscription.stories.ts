@@ -2,6 +2,7 @@ import { setup } from '@storybook/vue3'
 
 import DsfrModal from '../DsfrModal/DsfrModal.vue'
 import VIcon from '../VIcon/VIcon.vue'
+
 import DsfrTranscription from './DsfrTranscription.vue'
 
 setup((app) => {

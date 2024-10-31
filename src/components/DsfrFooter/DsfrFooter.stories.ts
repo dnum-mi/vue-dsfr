@@ -1,6 +1,7 @@
 import { expect, within } from '@storybook/test'
 
 import VIcon from '../VIcon/VIcon.vue'
+
 import DsfrFooter from './DsfrFooter.vue'
 import DsfrFooterLinkList from './DsfrFooterLinkList.vue'
 

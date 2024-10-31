@@ -1,8 +1,8 @@
 <script lang="ts" setup>
-import DsfrSideMenu from '@/components/DsfrSideMenu/DsfrSideMenu.vue'
 import { ref } from 'vue'
-
 import { useRoute } from 'vue-router'
+
+import DsfrSideMenu from '@/components/DsfrSideMenu/DsfrSideMenu.vue'
 
 const buttonLabel = 'Dans cette rubrique'
 const headingTitle = 'Titre de la rubrique'

@@ -3,7 +3,6 @@ import { computed } from 'vue'
 
 import DsfrNewsLetter from './DsfrNewsLetter.vue'
 import DsfrSocialNetworks from './DsfrSocialNetworks.vue'
-
 import type { DsfrFollowProps } from './DsfrFollow.types'
 
 export type { DsfrFollowProps }

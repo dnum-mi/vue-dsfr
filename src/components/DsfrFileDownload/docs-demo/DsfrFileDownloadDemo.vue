@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import { ref } from 'vue'
+
 import DsfrFileDownload from '../DsfrFileDownload.vue'
 
 const format = ref('PDF')

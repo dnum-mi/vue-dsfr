@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 import { getCurrentInstance } from 'vue'
 import { createRouter, createWebHistory } from 'vue-router'
+
 import DsfrBreadcrumb from '../DsfrBreadcrumb.vue'
 
 const app = getCurrentInstance()

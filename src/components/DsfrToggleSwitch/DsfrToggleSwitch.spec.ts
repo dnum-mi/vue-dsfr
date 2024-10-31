@@ -1,4 +1,5 @@
 import { render } from '@testing-library/vue'
+
 import VIcon from '../VIcon/VIcon.vue'
 
 // import '@gouvfr/dsfr/dist/core/core.module.js'

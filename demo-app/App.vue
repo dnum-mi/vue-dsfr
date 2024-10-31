@@ -1,14 +1,14 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue'
-
 import { useRoute } from 'vue-router'
-import DsfrBreadcrumb from '../src/components/DsfrBreadcrumb/DsfrBreadcrumb.vue'
 
+import DsfrBreadcrumb from '../src/components/DsfrBreadcrumb/DsfrBreadcrumb.vue'
 import DsfrFooter from '../src/components/DsfrFooter/DsfrFooter.vue'
 import DsfrHeader, { type DsfrHeaderProps } from '../src/components/DsfrHeader/DsfrHeader.vue'
 import DsfrModal from '../src/components/DsfrModal/DsfrModal.vue'
 import DsfrNavigation, { type DsfrNavigationProps } from '../src/components/DsfrNavigation/DsfrNavigation.vue'
 import DsfrSkipLinks, { type DsfrSkipLinksProps } from '../src/components/DsfrSkipLinks/DsfrSkipLinks.vue'
+
 import AppToaster from './components/AppToaster.vue'
 import useToaster from './composables/use-toaster.js'
 
@@ -280,6 +280,7 @@ const currentRoute = computed(() => route.name)
       v-model="search"
       :quick-links="quickLinks"
       show-search
+      service-title="VueDSFR demo App"
       placeholder="Rechercher placeholder"
     >
       <template #mainnav>

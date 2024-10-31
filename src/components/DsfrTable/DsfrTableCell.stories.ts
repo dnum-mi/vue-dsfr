@@ -2,6 +2,7 @@ import { fn } from '@storybook/test'
 import { setup } from '@storybook/vue3'
 
 import DsfrTag from '../DsfrTag/DsfrTag.vue'
+
 import DsfrTable from './DsfrTable.vue'
 import DsfrTableCell from './DsfrTableCell.vue'
 import DsfrTableHeaders from './DsfrTableHeaders.vue'

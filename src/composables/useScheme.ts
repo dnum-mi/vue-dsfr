@@ -2,7 +2,8 @@ import { computed, ref, watchEffect } from 'vue'
 import type { ComputedRef } from 'vue'
 
 const PREFERS_DARK_MEDIA_QUERY = '(prefers-color-scheme: dark)'
-const COLOR_SCHEME_LS_KEY = 'vue-dsfr-scheme'
+const DEFAULT_COLOR_SCHEME_LS_KEY = 'vue-dsfr-scheme'
+let localStorageKey: string
 export const LIGHT_SCHEME = 'light'
 export const DARK_SCHEME = 'dark'
 export const SYSTEM_SCHEME = 'system'
@@ -31,10 +32,11 @@ export declare type UseSchemeResult = {
 export declare type UseThemeOptions = {
   scheme?: string
   dataThemeAttribute?: string
+  localStorageKey?: string
 }
 
 const getProperSchemeValue = (desiredScheme: string): string => {
-  const scheme = desiredScheme ?? (localStorage.getItem(COLOR_SCHEME_LS_KEY) || SYSTEM_SCHEME)
+  const scheme = desiredScheme ?? (localStorage.getItem(localStorageKey) || SYSTEM_SCHEME)
   return [LIGHT_SCHEME, DARK_SCHEME, SYSTEM_SCHEME].includes(scheme)
     ? scheme
     : SYSTEM_SCHEME
@@ -48,26 +50,26 @@ const getThemeMatchingScheme = (scheme: string, mediaQuery: MediaQueryList): str
   return scheme
 }
 
-/*
 /**
  * Permet de gérer le thème selon le scheme donné.
  * Si dans les options, `scheme` vaut 'system', le thème sera celui du système,
  * si `scheme` vaut `'light'`, le theme sera clair,
  * et s’il vaut `'dark'`, le thème sera sombre.
  *
- * @param {UseThemeOptions=} options - Peut contenir les clés `scheme` pour le scheme voulu et `dataThemeAttribute` pour l’attribut
- *                   qui contiendra la valeur de scheme.
+ * @param {UseThemeOptions=} options - Peut contenir les clés `scheme` pour le scheme voulu, `dataThemeAttribute` pour l’attribut
+ *                   qui contiendra la valeur de scheme, et `localStorageKey` pour personnaliser la clé utilisée dans stockage local.
  *
- * @returns {UseSchemeResult} Objet contenant la fonction `setScheme` pour changer le scheme, et les
+ * @return {UseSchemeResult} Objet contenant la fonction `setScheme` pour changer le scheme, et les
  *          propriétés calculés (réactives et en lecture seule) `theme` et `scheme`.
  */
 export const useScheme = (options?: UseThemeOptions): UseSchemeResult | undefined => {
   if (typeof window === 'undefined') {
     return
   }
+  localStorageKey = options?.localStorageKey ?? DEFAULT_COLOR_SCHEME_LS_KEY
 
   const opts = {
-    scheme: localStorage.getItem(COLOR_SCHEME_LS_KEY) || SYSTEM_SCHEME,
+    scheme: localStorage.getItem(localStorageKey) || SYSTEM_SCHEME,
     dataThemeAttribute: DEFAULT_DATA_THEME_ATTRIBUTE,
     ...options,
   }
@@ -77,7 +79,7 @@ export const useScheme = (options?: UseThemeOptions): UseSchemeResult | undefine
 
   const scheme = ref(getProperSchemeValue(opts.scheme))
 
-  localStorage.setItem(COLOR_SCHEME_LS_KEY, scheme.value)
+  localStorage.setItem(localStorageKey, scheme.value)
 
   const theme = ref(getThemeMatchingScheme(scheme.value, mediaQuery))
   const force = ref(scheme.value !== SYSTEM_SCHEME)
@@ -106,7 +108,7 @@ export const useScheme = (options?: UseThemeOptions): UseSchemeResult | undefine
 
   const setScheme = (newScheme: string): void => {
     scheme.value = getProperSchemeValue(newScheme)
-    localStorage.setItem(COLOR_SCHEME_LS_KEY, scheme.value)
+    localStorage.setItem(localStorageKey, scheme.value)
     if ([LIGHT_SCHEME, DARK_SCHEME].includes(scheme.value)) {
       theme.value = scheme.value
       force.value = true

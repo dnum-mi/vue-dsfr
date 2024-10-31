@@ -1,6 +1,5 @@
 <script lang="ts" setup>
 import { getRandomId } from '../../utils/random-utils'
-
 import DsfrButton from '../DsfrButton/DsfrButton.vue'
 import DsfrInput from '../DsfrInput/DsfrInput.vue'
 

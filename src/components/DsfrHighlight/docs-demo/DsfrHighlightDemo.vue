@@ -1,8 +1,9 @@
 <script lang="ts" setup>
-import DsfrInput from '@/components/DsfrInput/DsfrInput.vue'
-
 import { ref } from 'vue'
+
 import DsfrHighlight from '../DsfrHighlight.vue'
+
+import DsfrInput from '@/components/DsfrInput/DsfrInput.vue'
 
 const color = ref('green-emeraude')
 </script>

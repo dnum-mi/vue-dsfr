@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import svgSchool from '@gouvfr/dsfr/dist/artwork/pictograms/buildings/school.svg'
+
 import DsfrTile from '../../src/components/DsfrTile/DsfrTile.vue'
 </script>
 

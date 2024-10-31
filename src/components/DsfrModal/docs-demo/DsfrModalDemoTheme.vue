@@ -1,15 +1,15 @@
 <script setup lang="ts">
-import DsfrButton from '@/components/DsfrButton/DsfrButton.vue'
-
-import DsfrRadioButtonSet from '@/components/DsfrRadioButton/DsfrRadioButtonSet.vue'
-import { useScheme } from '@/composables/index'
 import darkThemeSvg from '@gouvfr/dsfr/dist/artwork/pictograms/environment/moon.svg'
 import lightThemeSvg from '@gouvfr/dsfr/dist/artwork/pictograms/environment/sun.svg'
 import systemThemeSvg from '@gouvfr/dsfr/dist/artwork/pictograms/system/system.svg'
-
 import { onMounted, reactive, ref, watchEffect } from 'vue'
-import type { Preferences, UseSchemeResult } from '@/composables/index'
+
 import DsfrModal from '../DsfrModal.vue'
+
+import type { Preferences, UseSchemeResult } from '@/composables/index'
+import DsfrRadioButtonSet from '@/components/DsfrRadioButton/DsfrRadioButtonSet.vue'
+import { useScheme } from '@/composables/index'
+import DsfrButton from '@/components/DsfrButton/DsfrButton.vue'
 
 const isThemeModalOpen = ref(false)
 

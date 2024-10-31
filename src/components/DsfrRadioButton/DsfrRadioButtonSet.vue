@@ -2,8 +2,8 @@
 import { computed } from 'vue'
 
 import { getRandomId } from '../../utils/random-utils'
-import DsfrRadioButton from './DsfrRadioButton.vue'
 
+import DsfrRadioButton from './DsfrRadioButton.vue'
 import type { DsfrRadioButtonSetProps } from './DsfrRadioButton.types'
 
 export type { DsfrRadioButtonSetProps }

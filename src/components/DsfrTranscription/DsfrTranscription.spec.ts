@@ -1,8 +1,8 @@
 import { render } from '@testing-library/vue'
 
 import DsfrModal from '../DsfrModal/DsfrModal.vue'
-
 import VIcon from '../VIcon/VIcon.vue'
+
 import DsfrTranscription from './DsfrTranscription.vue'
 
 describe('DsfrTranscription', () => {

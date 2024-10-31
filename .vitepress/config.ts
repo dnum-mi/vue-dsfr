@@ -3,6 +3,7 @@ import { fileURLToPath, URL } from 'node:url'
 import { whyframe } from '@whyframe/core'
 import { whyframeVue } from '@whyframe/vue'
 import { defineConfig } from 'vitepress'
+
 import { hmrFix } from './plugins/hmrFix.js'
 
 const minimalToc = [
@@ -230,6 +231,10 @@ const composants = [
   {
     text: 'DsfrModal',
     link: '/composants/DsfrModal.md',
+  },
+  {
+    text: 'DsfrMultiselect',
+    link: '/composants/DsfrMultiselect.md',
   },
   {
     text: 'DsfrNotice',

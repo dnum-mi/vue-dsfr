@@ -4,9 +4,9 @@ import { computed, onMounted, onUnmounted, provide, ref, toRef, useSlots } from 
 import DsfrLanguageSelector, { type DsfrLanguageSelectorElement } from '../DsfrLanguageSelector/DsfrLanguageSelector.vue'
 import DsfrLogo from '../DsfrLogo/DsfrLogo.vue'
 import DsfrSearchBar from '../DsfrSearchBar/DsfrSearchBar.vue'
+
 import DsfrHeaderMenuLinks from './DsfrHeaderMenuLinks.vue'
 import { registerNavigationLinkKey } from './injection-key'
-
 import type { DsfrHeaderProps } from './DsfrHeader.types'
 
 export type { DsfrHeaderProps }
@@ -36,7 +36,7 @@ const props = withDefaults(defineProps<DsfrHeaderProps>(), {
 const emit = defineEmits<{
   (e: 'update:modelValue', payload: string): void
   (e: 'search', payload: string): void
-  (e: 'language-select', payload: DsfrLanguageSelectorElement): void
+  (e: 'languageSelect', payload: DsfrLanguageSelectorElement): void
 }>()
 
 const languageSelector = toRef(props, 'languageSelector')
@@ -77,6 +77,8 @@ const showSearchModal = () => {
 }
 const onQuickLinkClick = hideModal
 
+const title = computed(() => [props.homeLabel, props.serviceTitle].filter(x => x).join(' - '))
+
 const slots = useSlots()
 const isWithSlotOperator = computed(() => Boolean(slots.operator?.().length) || !!props.operatorImgSrc)
 const isWithSlotNav = computed(() => Boolean(slots.mainnav))
@@ -98,7 +100,7 @@ provide(registerNavigationLinkKey, () => {
               <div class="fr-header__logo">
                 <RouterLink
                   :to="homeTo"
-                  :title="`${homeLabel} - ${serviceTitle}`"
+                  :title
                 >
                   <DsfrLogo
                     :logo-text="logoText"
@@ -154,7 +156,7 @@ provide(registerNavigationLinkKey, () => {
             >
               <RouterLink
                 :to="homeTo"
-                :title="`${homeLabel} - ${serviceTitle}`"
+                :title
                 v-bind="$attrs"
               >
                 <p class="fr-header__service-title">
@@ -196,7 +198,7 @@ provide(registerNavigationLinkKey, () => {
               <template v-if="languageSelector">
                 <DsfrLanguageSelector
                   v-bind="languageSelector"
-                  @select="emit('language-select', $event)"
+                  @select="emit('languageSelect', $event)"
                 />
               </template>
             </div>

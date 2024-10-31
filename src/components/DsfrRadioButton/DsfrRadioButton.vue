@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import { computed } from 'vue'
+
 import { getRandomId } from '../../utils/random-utils'
 
 import type { DsfrRadioButtonProps } from './DsfrRadioButton.types'

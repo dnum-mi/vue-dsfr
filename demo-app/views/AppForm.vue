@@ -1,10 +1,11 @@
 <script setup lang="ts">
+import { ref } from 'vue'
+
 import DsfrAlert from '@/components/DsfrAlert/DsfrAlert.vue'
 import DsfrButton from '@/components/DsfrButton/DsfrButton.vue'
 import DsfrCheckboxSet from '@/components/DsfrCheckbox/DsfrCheckboxSet.vue'
 import DsfrFileUpload from '@/components/DsfrFileUpload/DsfrFileUpload.vue'
 import DsfrRadioButtonSet from '@/components/DsfrRadioButton/DsfrRadioButtonSet.vue'
-import { ref } from 'vue'
 import type { DsfrCheckboxSetProps } from '@/components/DsfrCheckbox/DsfrCheckbox.types'
 
 const inputValue = ref('')
