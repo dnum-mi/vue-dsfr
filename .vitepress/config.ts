@@ -232,6 +232,10 @@ const composants = [
     link: '/composants/DsfrModal.md',
   },
   {
+    text: 'DsfrMultiselect',
+    link: '/composants/DsfrMultiselect.md',
+  },
+  {
     text: 'DsfrNotice',
     link: '/composants/DsfrNotice.md',
   },
