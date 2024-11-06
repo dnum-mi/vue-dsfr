@@ -78,6 +78,7 @@ onUnmounted(() => {
       <slot />
       <DsfrNavigationItem
         v-for="(navItem, idx) of navItems"
+        :id="navItem.id"
         :key="idx"
       >
         <DsfrNavigationMenuLink
