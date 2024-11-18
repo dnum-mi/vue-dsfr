@@ -1,6 +1,6 @@
 import { render } from '@testing-library/vue'
 // import '@gouvfr/dsfr/dist/core/core.module.js'
-import { useId } from 'vue-demi'
+import { useId } from 'vue'
 
 import DsfrNavigationItem from './DsfrNavigationItem.vue'
 
