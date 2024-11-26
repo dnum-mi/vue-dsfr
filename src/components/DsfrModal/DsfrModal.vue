@@ -94,6 +94,7 @@ const iconProps = computed(() => dsfrIcon.value
     <dialog
       id="fr-modal-1"
       ref="modal"
+      aria-modal="true"
       :aria-labelledby="modalId"
       :role="role"
       class="fr-modal"
