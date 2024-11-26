@@ -28,7 +28,7 @@ const props = withDefaults(defineProps<DsfrHeaderProps>(), {
   quickLinksAriaLabel: 'Menu secondaire',
   showSearchLabel: 'Recherche',
   menuLabel: 'Menu',
-  menuModalLabel: 'Menu modal',
+  menuModalLabel: 'Menu',
   closeMenuModalLabel: 'Fermer',
   homeLabel: 'Accueil',
 })
@@ -68,7 +68,10 @@ const showMenu = () => {
   modalOpened.value = true
   menuOpened.value = true
   searchModalOpened.value = false
-  document.getElementById('close-button')?.focus()
+  // Sans le setTimeout, le focus n'est pas fait
+  setTimeout(() => {
+    document.getElementById('close-button')?.focus()
+  })
 }
 const showSearchModal = () => {
   modalOpened.value = true
@@ -142,7 +145,7 @@ provide(registerNavigationLinkKey, () => {
                   class="fr-btn--menu  fr-btn"
                   :data-fr-opened="showMenu"
                   aria-controls="header-navigation"
-                  aria-haspopup="menu"
+                  aria-haspopup="dialog"
                   :aria-label="menuLabel"
                   :title="menuLabel"
                   data-testid="open-menu-btn"
