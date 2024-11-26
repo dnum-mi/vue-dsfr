@@ -240,6 +240,7 @@ const externalOperatorLink = computed(() => {
               :to="isExternalLink ? undefined : routerLinkLicenceTo"
               :href="isExternalLink ? aLicenceHref : undefined"
               :target="isExternalLink ? '_blank' : undefined"
+              :title="isExternalLink ? `${licenceName} (nouvelle fenêtre)` : licenceName"
               rel="noopener noreferrer"
               v-bind="licenceLinkAttrs"
             >
