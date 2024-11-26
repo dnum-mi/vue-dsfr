@@ -43,7 +43,6 @@ const config: UserConfig = {
         globals: {
           vue: 'Vue',
         },
-        assetFileNames: v => `vue-dsfr${v.name?.replace(/[^.]+\./, '.')}`,
       },
     },
   },

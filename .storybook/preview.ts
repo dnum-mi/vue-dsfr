@@ -1,4 +1,4 @@
-import { withThemeByDataAttribute } from '@storybook/addon-styling'
+import { withThemeByDataAttribute } from '@storybook/addon-themes'
 import { themes } from '@storybook/theming'
 import { setup } from '@storybook/vue3'
 import { FocusTrap } from 'focus-trap-vue'
