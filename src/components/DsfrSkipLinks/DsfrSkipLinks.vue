@@ -26,7 +26,7 @@ const scrollMeTo = (elementId: string) => {
           <a
             class="fr-link"
             :href="`#${link.id}`"
-            @click.prevent="scrollMeTo(link.id)"
+            @click="scrollMeTo(link.id)"
           >{{ link.text }}</a>
         </li>
       </ul>
