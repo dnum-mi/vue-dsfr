@@ -54,6 +54,7 @@ export const useCollapsable = () => {
    */
   const onTransitionEnd = (expanded: boolean): void => {
     collapsing.value = false
+    collapse.value?.querySelector('a')?.focus()
     if (collapse.value && expanded === false) {
       collapse.value.style.removeProperty('--collapse-max-height')
     }

@@ -44,8 +44,6 @@ watch(expanded, (newValue, oldValue) => {
     <button
       v-show="!expanded"
       class="fr-breadcrumb__button"
-      :aria-expanded="expanded"
-      :aria-controls="breadcrumbId"
       @click="expanded = !expanded"
     >
       {{ showBreadcrumbLabel }}
