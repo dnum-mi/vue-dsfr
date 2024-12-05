@@ -1,4 +1,4 @@
-import { render } from '@testing-library/vue'
+import {fireEvent, render, waitFor} from '@testing-library/vue'
 
 import DsfrTag from '../DsfrTag/DsfrTag.vue'
 
@@ -99,4 +99,84 @@ describe('DsfrTable', () => {
     // Then
     expect(trs).toHaveLength(0)
   })
+
+  it('should update page count when rows change', async () => {
+    // Given
+    const title = 'Utilisateurs'
+
+    const headers = ['Nom', 'Prénom']
+    const rows = generateRowsWithTwoColumns(5);
+    const props = {
+      title,
+      headers,
+      rows,
+      pagination: true
+    }
+
+    const component = render(DsfrTable, {
+      global: {
+        components: {
+          VIcon,
+          DsfrTag,
+        },
+      },
+      props,
+    })
+
+    // When
+    const newRows = generateRowsWithTwoColumns(25);
+
+    component.rerender({
+      ...props,
+      rows: newRows,
+    })
+
+    // Then
+    await waitFor(() => {
+      expect(component.getByText('Page 1 sur 3')).toBeDefined()
+    })
+  })
+
+  it('should update page count when selected different number of results per page', async () => {
+    // Given
+    const title = 'Utilisateurs'
+
+    const headers = ['Nom', 'Prénom']
+    const rows = generateRowsWithTwoColumns(50);
+    const props = {
+      title,
+      headers,
+      rows,
+      pagination: true
+    }
+
+    const component = render(DsfrTable, {
+      global: {
+        components: {
+          VIcon,
+          DsfrTag,
+        },
+      },
+      props,
+    })
+
+    // When
+    const select = component.getByLabelText('Résultats par page :')
+    await fireEvent.update(select, '25')
+
+    // Then
+    await waitFor(() => {
+      expect(component.getByText('Page 1 sur 2')).toBeDefined()
+    })
+  })
+
+  function generateRowsWithTwoColumns(numberOfRows: number): string[][] {
+    const rows: string[][] = []
+
+    for (let i = 0; i < numberOfRows; i++) {
+      rows.push(['EGAUD', 'Pierre-Louis'])
+    }
+
+    return rows
+  }
 })

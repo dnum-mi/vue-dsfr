@@ -18,12 +18,19 @@ const props = withDefaults(defineProps<DsfrSelectProps>(), {
   label: '',
   name: undefined,
   description: undefined,
+  hint: undefined,
   successMessage: '',
   errorMessage: '',
   defaultUnselectedText: 'Sélectionner une option',
 })
 
 defineEmits<{ (e: 'update:modelValue', payload: string | number): void }>()
+
+if (props.description) {
+  console.warn(
+    '[DsfrSelect] : La prop `description` est dépréciée. Veuillez utiliser `hint` à la place.',
+  )
+}
 
 const message = computed(() => {
   return props.errorMessage || props.successMessage
@@ -55,9 +62,9 @@ const messageType = computed(() => {
       </slot>
 
       <span
-        v-if="description"
+        v-if="hint ?? description"
         class="fr-hint-text"
-      >{{ description }}</span>
+      >{{ hint ?? description }}</span>
     </label>
 
     <select

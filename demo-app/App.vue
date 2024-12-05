@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, ref } from 'vue'
+import { computed, ref, useId } from 'vue'
 import { useRoute } from 'vue-router'
 
 import DsfrBreadcrumb from '../src/components/DsfrBreadcrumb/DsfrBreadcrumb.vue'
@@ -64,6 +64,7 @@ const quickLinks: DsfrHeaderProps['quickLinks'] = [
 const route = useRoute()
 const navItems: DsfrNavigationProps['navItems'] = [
   {
+    id: useId(),
     to: { name: 'Home' },
     text: 'Accueil',
   },

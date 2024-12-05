@@ -4,6 +4,7 @@ import { computed, ref, watch } from 'vue'
 import DsfrTableHeaders from './DsfrTableHeaders.vue'
 import DsfrTableRow, { type DsfrTableRowProps } from './DsfrTableRow.vue'
 import type { DsfrTableProps } from './DsfrTable.types'
+import {getRandomId} from "@/utils/random-utils";
 
 export type { DsfrTableProps }
 
@@ -24,22 +25,14 @@ const getRowData = (row: DsfrTableProps['rows']) => {
 
 const currentPage = ref(props.currentPage)
 const optionSelected = ref(props.resultsDisplayed)
-const pageCount = ref(
+const pageCount = computed(() =>
   props.rows.length > optionSelected.value
     ? Math.ceil(props.rows.length / optionSelected.value)
-    : 1,
+    : 1
 )
 const paginationOptions = [5, 10, 25, 50, 100]
 const returnLowestLimit = () => currentPage.value * optionSelected.value - optionSelected.value
 const returnHighestLimit = () => currentPage.value * optionSelected.value
-
-watch(
-  () => optionSelected.value,
-  (newVal) => {
-    pageCount.value =
-      props.rows.length > optionSelected.value ? Math.ceil(props.rows.length / newVal) : 1
-  },
-)
 
 const truncatedResults = computed(() => {
   if (props.pagination) {
@@ -69,6 +62,8 @@ const goLastPage = () => {
   currentPage.value = pageCount.value
   emit('update:currentPage')
 }
+
+const selectId = getRandomId('resultPerPage')
 </script>
 
 <template>
@@ -110,8 +105,9 @@ const goLastPage = () => {
           <td :colspan="headers.length">
             <div class="flex justify-right">
               <div class="self-center">
-                <span>Résultats par page : </span>
+                <label :for="selectId">Résultats par page : </label>
                 <select
+                  :id="selectId"
                   v-model="optionSelected"
                   @change="emit('update:currentPage')"
                 >
