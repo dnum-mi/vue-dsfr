@@ -1,13 +1,12 @@
 import { render } from '@testing-library/vue'
 // import '@gouvfr/dsfr/dist/core/core.module.js'
-import { useId } from 'vue'
 
 import DsfrNavigationItem from './DsfrNavigationItem.vue'
 
 describe('DsfrNavigationItem', () => {
   it('should render a navigation item', () => {
     const content = 'Contenu d’un item de menu de navigation'
-    const id = useId()
+    const id = 'dsfr-id'
     const { getByText } = render(DsfrNavigationItem, {
       props: {
         id,
