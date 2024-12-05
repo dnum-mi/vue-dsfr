@@ -17,6 +17,7 @@ withDefaults(defineProps<DsfrSideMenuProps>(), {
   // @ts-expect-error this is really undefined
   menuItems: () => undefined,
   headingTitle: '',
+  titleTag: 'h3',
 })
 
 defineEmits<{ (e: 'toggleExpand', payload: string): void }>()
@@ -65,9 +66,12 @@ watch(expanded, (newValue, oldValue) => {
         }"
         @transitionend="onTransitionEnd(expanded)"
       >
-        <div class="fr-sidemenu__title">
+        <component
+          :is="titleTag"
+          class="fr-sidemenu__title"
+        >
           {{ headingTitle }}
-        </div>
+        </component>
         <!-- @slot Slot par défaut du contenu du menu latéral -->
         <slot>
           <DsfrSideMenuList

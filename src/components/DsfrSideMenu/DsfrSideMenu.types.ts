@@ -9,6 +9,7 @@ export type DsfrSideMenuProps = {
   collapseValue?: string
   menuItems?: DsfrSideMenuListItemProps[]
   headingTitle?: string
+  titleTag?: string
 }
 
 export type DsfrSideMenuButtonProps = {
