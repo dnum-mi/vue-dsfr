@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { computed, ref } from 'vue'
+import { computed } from 'vue'
 
 import DsfrPagination from '../DsfrPagination/DsfrPagination.vue'
 import VIcon from '../VIcon/VIcon.vue'
@@ -128,17 +128,15 @@ function selectAll (bool: boolean) {
   if (bool) {
     const keyIndex = props.headersRow.findIndex(header => (header as DsfrDataTableHeaderCellObject).key ?? header)
     selection.value = finalRows.value.map(row => row[keyIndex] as string)
+  } else {
+    selection.value.length = 0
   }
-  selection.value!.length = 0
 }
-const wholeSelection = ref(false)
-function checkSelection () {
-  wholeSelection.value = selection.value.length === finalRows.value.length
-}
+
+const wholeSelection = computed(() => selection.value.length === finalRows.value.length)
 
 function onPaginationOptionsChange () {
   emit('update:current-page', 0)
-  wholeSelection.value = false
   selection.value.length = 0
 }
 
@@ -231,7 +229,6 @@ function copyToClipboard (text: string) {
                       v-model="selection"
                       :value="rows[idx][rowKey] ?? `row-${idx}`"
                       type="checkbox"
-                      @change="checkSelection()"
                     >
                     <label
                       class="fr-label"
@@ -317,6 +314,7 @@ function copyToClipboard (text: string) {
             <DsfrPagination
               v-model:current-page="currentPage"
               :pages="pages"
+              @update:current-page="selection.length = 0"
             />
           </div>
         </template>
