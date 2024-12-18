@@ -58,7 +58,7 @@ const emit = defineEmits<{
 
 const selection = defineModel<string[]>('selection', { default: [] })
 const rowsPerPage = defineModel<number>('rowsPerPage', { default: 10 })
-const currentPage = defineModel<number>('currentPage', { default: 1 })
+const currentPage = defineModel<number>('currentPage', { default: 0 })
 const pageCount = computed(() => Math.ceil(props.rows.length / rowsPerPage.value))
 const pages = computed<Page[]>(() => props.pages ?? Array.from({ length: pageCount.value }).map((x, i) => ({ label: `${i + 1}`, title: `Page ${i + 1}`, href: `#${i + 1}` })))
 
