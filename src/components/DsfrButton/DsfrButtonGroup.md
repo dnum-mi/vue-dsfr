@@ -1,4 +1,4 @@
-# Groupe de boutons - DsfrButtonGroup
+# Groupe de boutons - `DsfrButtonGroup`
 
 ## 🌟 Introduction
 

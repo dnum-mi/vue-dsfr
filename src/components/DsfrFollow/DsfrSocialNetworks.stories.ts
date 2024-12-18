@@ -6,6 +6,7 @@ import DsfrSocialNetworks from './DsfrSocialNetworks.vue'
  */
 export default {
   title: 'Composants/DsfrSocialNetworks',
+  tags: ['réseaux sociaux'],
   name: '',
   component: DsfrSocialNetworks,
   argTypes: {

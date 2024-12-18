@@ -7,6 +7,7 @@ import DsfrTags from './DsfrTags.vue'
 export default {
   component: DsfrTags,
   title: 'Composants/DsfrTags',
+  tags: ['chip'],
   argTypes: {
     class: {
       control: 'text',

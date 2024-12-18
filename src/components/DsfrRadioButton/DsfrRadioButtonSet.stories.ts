@@ -8,6 +8,7 @@ import DsfrRadioButtonSet from './DsfrRadioButtonSet.vue'
 export default {
   component: DsfrRadioButtonSet,
   title: 'Composants/DsfrRadioButtonSet',
+  tags: ['formulaire'],
   argTypes: {
     disabled: {
       control: 'boolean',

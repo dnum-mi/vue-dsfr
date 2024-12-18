@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { getCurrentInstance } from 'vue'
+import { getCurrentInstance, ref } from 'vue'
 
 import DsfrTag from '../../DsfrTag/DsfrTag.vue'
 import DsfrTable from '../DsfrTable.vue'
@@ -61,6 +61,10 @@ const rows: (string | DsfrTableRowProps | DsfrTableCellProps | { component: stri
     },
   ],
 ]
+
+const noCaption = true
+const currentPage = ref(1)
+const resultsDisplayed = 5
 </script>
 
 <template>
@@ -69,7 +73,6 @@ const rows: (string | DsfrTableRowProps | DsfrTableCellProps | { component: stri
     :headers="headers"
     :rows="rows"
     :no-caption="noCaption"
-    :pagination="pagination"
     :current-page="currentPage"
     :results-displayed="resultsDisplayed"
   />

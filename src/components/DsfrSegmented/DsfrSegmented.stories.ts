@@ -8,6 +8,7 @@ import DsfrSegmented from './DsfrSegmented.vue'
 export default {
   component: DsfrSegmented,
   title: 'Composants/DsfrSegmented',
+  tags: ['formulaire', 'bouton'],
   argTypes: {
     id: {
       control: 'text',

@@ -8,6 +8,12 @@ Le composant `DsfrTable` est un élément puissant et polyvalent pour afficher d
 
 <VIcon name="vi-file-type-storybook" /> La story sur le tableau sur le storybook de [VueDsfr](https://storybook.vue-ds.fr/?path=/docs/composants-dsfrtable--docs)
 
+::: warning
+
+Pour des tableaux complexes, nous vous recommandons d’utiliser [DsfrDataTable](/composants/DsfrDataTable)
+
+:::
+
 ## 🛠️ Props
 
 | Nom               | Type                                           | Défaut    | Obligatoire | Description                                                                                         |

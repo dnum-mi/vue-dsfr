@@ -241,6 +241,10 @@ const composants = [
     link: '/composants/DsfrNotice.md',
   },
   {
+    text: 'DsfrPagination',
+    link: '/composants/DsfrPagination.md',
+  },
+  {
     text: 'DsfrPicture',
     link: '/composants/DsfrPicture.md',
   },

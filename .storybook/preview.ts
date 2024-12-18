@@ -1,4 +1,3 @@
-import { withThemeByDataAttribute } from '@storybook/addon-styling'
 import { themes } from '@storybook/theming'
 import { setup } from '@storybook/vue3'
 import { FocusTrap } from 'focus-trap-vue'
@@ -20,19 +19,11 @@ import '../src/main.css'
 import './theme.css'
 // import '@gouvfr/dsfr/dist/core/core.min.css'
 
-export const decorators = [
-  withThemeByDataAttribute({
-    themes: {
-      Clair: 'light',
-      Sombre: 'dark',
-    },
-    defaultTheme: 'light',
-    attributeName: 'data-fr-theme',
-  }),
-]
-
 const preview: Preview = {
   parameters: {
+    backgrounds: {
+      disable: true,
+    },
     docs: {
       theme: { ...themes.normal, ...VueDsfrTheme },
     },
@@ -95,6 +86,32 @@ const preview: Preview = {
   },
 
   tags: ['autodocs'],
+
+  // Gestion des thèmes clair et sombre des stories
+  globalTypes: {
+    theme: {
+      description: 'Global theme for components',
+      toolbar: {
+        // The label to show for this toolbar item
+        title: 'Thème',
+        icon: 'circlehollow',
+        // Array of plain string values or MenuItem shape (see below)
+        items: ['Thème clair', 'Thème sombre'],
+        // Change title based on selected value
+        dynamicTitle: true,
+      },
+    },
+  },
+  initialGlobals: {
+    theme: 'Thème clair',
+  },
+  decorators: [
+    (story, context) => {
+      const selectedTheme = context.globals.theme.includes('clair') ? 'light' : 'dark'
+      document.documentElement.setAttribute('data-fr-theme', selectedTheme)
+      return story()
+    },
+  ],
 }
 
 const RouterLink = defineComponent({

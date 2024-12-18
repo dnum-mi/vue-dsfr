@@ -6,6 +6,7 @@ import DsfrShare from './DsfrShare.vue'
 export default {
   component: DsfrShare,
   title: 'Composants/DsfrShare',
+  tags: ['réseaux sociaux'],
   argTypes: {
     title: {
       control: 'text',

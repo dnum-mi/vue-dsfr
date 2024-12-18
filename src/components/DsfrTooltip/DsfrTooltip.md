@@ -1,4 +1,4 @@
-# Information contextuelle et Infobulle - DsfrTooltip
+# Information contextuelle et Infobulle - `DsfrTooltip`
 
 ## 🌟 Introduction
 

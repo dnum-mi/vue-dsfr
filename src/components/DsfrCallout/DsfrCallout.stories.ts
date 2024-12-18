@@ -14,6 +14,7 @@ const delay = (timeout = 100) =>
 const meta: Meta<typeof DsfrCallout> = {
   component: DsfrCallout,
   title: 'Composants/DsfrCallout',
+  tags: ['message'],
   argTypes: {
     title: {
       control: 'text',

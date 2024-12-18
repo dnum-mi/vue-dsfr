@@ -1,9 +1,11 @@
 <script lang="ts" setup>
-import { computed, ref, watch } from 'vue'
+import { computed, ref } from 'vue'
 
 import DsfrTableHeaders from './DsfrTableHeaders.vue'
 import DsfrTableRow, { type DsfrTableRowProps } from './DsfrTableRow.vue'
 import type { DsfrTableProps } from './DsfrTable.types'
+
+import { getRandomId } from '@/utils/random-utils'
 
 export type { DsfrTableProps }
 
@@ -23,8 +25,9 @@ const getRowData = (row: DsfrTableProps['rows']) => {
 }
 
 const currentPage = ref(props.currentPage)
+const selectId = getRandomId('resultPerPage')
 const optionSelected = ref(props.resultsDisplayed)
-const pageCount = ref(
+const pageCount = computed(() =>
   props.rows.length > optionSelected.value
     ? Math.ceil(props.rows.length / optionSelected.value)
     : 1,
@@ -32,14 +35,6 @@ const pageCount = ref(
 const paginationOptions = [5, 10, 25, 50, 100]
 const returnLowestLimit = () => currentPage.value * optionSelected.value - optionSelected.value
 const returnHighestLimit = () => currentPage.value * optionSelected.value
-
-watch(
-  () => optionSelected.value,
-  (newVal) => {
-    pageCount.value =
-      props.rows.length > optionSelected.value ? Math.ceil(props.rows.length / newVal) : 1
-  },
-)
 
 const truncatedResults = computed(() => {
   if (props.pagination) {
@@ -110,9 +105,11 @@ const goLastPage = () => {
           <td :colspan="headers.length">
             <div class="flex justify-right">
               <div class="self-center">
-                <span>Résultats par page : </span>
+                <label :for="selectId">Résultats par page : </label>
                 <select
+                  :id="selectId"
                   v-model="optionSelected"
+                  title="Résultats par page - le nombre résultats est mis à jour dès sélection d’une valeur"
                   @change="emit('update:currentPage')"
                 >
                   <option
@@ -124,26 +121,40 @@ const goLastPage = () => {
                   </option>
                 </select>
               </div>
-              <div class="flex ml-1">
-                <span class="self-center">Page {{ currentPage }} sur {{ pageCount }}</span>
+              <div
+                class="flex ml-1"
+                aria-live="polite"
+                aria-atomic="true"
+              >
+                <p class="self-center fr-m-0">
+                  Page {{ currentPage }} sur {{ pageCount }}
+                </p>
               </div>
               <div class="flex ml-1">
                 <button
                   class="fr-icon-arrow-left-s-first-line"
                   @click="goFirstPage()"
-                />
+                >
+                  <span class="fr-sr-only">Première page du tableau</span>
+                </button>
                 <button
                   class="fr-icon-arrow-left-s-line"
                   @click="goPreviousPage()"
-                />
+                >
+                  <span class="fr-sr-only">Page précédente du tableau</span>
+                </button>
                 <button
                   class="fr-icon-arrow-right-s-line"
                   @click="goNextPage()"
-                />
+                >
+                  <span class="fr-sr-only">Page suivante du tableau</span>
+                </button>
                 <button
                   class="fr-icon-arrow-right-s-last-line"
                   @click="goLastPage()"
-                />
+                >
+                  <span class="fr-sr-only">Dernière page du tableau</span>
+                </button>
               </div>
             </div>
           </td>

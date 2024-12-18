@@ -1,4 +1,4 @@
-# Barre de recherche - DsfrSearchBar
+# Barre de recherche - `DsfrSearchBar`
 
 ## 🌟 Introduction
 

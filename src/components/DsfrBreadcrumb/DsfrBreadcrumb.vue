@@ -42,7 +42,7 @@ watch(expanded, (newValue, oldValue) => {
     :aria-label="navigationLabel"
   >
     <button
-      v-show="!expanded"
+      v-if="!expanded"
       class="fr-breadcrumb__button"
       :aria-expanded="expanded"
       :aria-controls="breadcrumbId"

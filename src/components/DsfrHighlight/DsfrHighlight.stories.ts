@@ -8,6 +8,7 @@ import DsfrHighlight from './DsfrHighlight.vue'
 export default {
   component: DsfrHighlight,
   title: 'Composants/DsfrHighlight',
+  tags: ['message'],
   argTypes: {
     text: {
       control: 'text',

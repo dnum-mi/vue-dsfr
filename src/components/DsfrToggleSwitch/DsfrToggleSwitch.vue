@@ -16,6 +16,7 @@ const props = withDefaults(defineProps<DsfrToggleSwitchProps>(), {
   activeText: 'Activé',
   inactiveText: 'Désactivé',
   noText: false,
+  name: undefined,
 })
 
 defineEmits<{ (e: 'update:modelValue', payload: boolean): void }>()
@@ -42,6 +43,7 @@ const labelId = computed(() => {
       :data-testid="inputId"
       class="fr-toggle__input"
       :aria-describedby="labelId"
+      :name="name"
       @input="$emit('update:modelValue', ($event.target as HTMLInputElement).checked)"
     >
     <label

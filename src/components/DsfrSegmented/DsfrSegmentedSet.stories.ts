@@ -8,6 +8,7 @@ import DsfrSegmentedSet from './DsfrSegmentedSet.vue'
 export default {
   component: DsfrSegmentedSet,
   title: 'Composants/DsfrSegmentedSet',
+  tags: ['formulaire', 'bouton'],
   argTypes: {
     disabled: {
       control: 'boolean',

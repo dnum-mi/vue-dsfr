@@ -6,6 +6,7 @@ import DsfrBadge from './DsfrBadge.vue'
 export default {
   component: DsfrBadge,
   title: 'Composants/DsfrBadge',
+  tags: ['chip'],
   argTypes: {
     label: {
       control: 'text',

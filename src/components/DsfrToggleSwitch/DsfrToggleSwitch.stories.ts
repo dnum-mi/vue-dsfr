@@ -8,6 +8,7 @@ import DsfrToggleSwitch from './DsfrToggleSwitch.vue'
 export default {
   component: DsfrToggleSwitch,
   title: 'Composants/DsfrToggleSwitch',
+  tags: ['formulaire'],
   argTypes: {
     label: {
       control: 'text',

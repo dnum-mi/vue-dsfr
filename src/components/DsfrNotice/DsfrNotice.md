@@ -1,4 +1,4 @@
-# Bandeau d'information importante - Notice - `DsfrNotice`
+# Bandeau d'information importante - `DsfrNotice`
 
 ## 🌟 Introduction
 
