@@ -1,4 +1,4 @@
-# DsfrFooterLinkList - Documentation Vue.js
+# Liste de lien du pied de page - `DsfrFooterLinkList`
 
 ## 🌟 Introduction
 

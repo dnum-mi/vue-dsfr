@@ -18,6 +18,7 @@ const rows = [
     <DsfrDataTable
       title="Titre du tableau (caption)"
       :headers-row="headers"
+      no-caption
       :rows="rows"
     />
   </div>

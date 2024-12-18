@@ -4,6 +4,7 @@ import DsfrRange from './DsfrRange.vue'
 // Story par défaut
 export default {
   title: 'Composants/DsfrRange',
+  tags: ['formulaire'],
   component: DsfrRange,
   argTypes: {
     label: { control: 'text' },

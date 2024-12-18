@@ -8,6 +8,7 @@ import DsfrCheckboxSet from './DsfrCheckboxSet.vue'
 export default {
   component: DsfrCheckboxSet,
   title: 'Composants/DsfrCheckboxSet',
+  tags: ['formulaire'],
   argTypes: {
     disabled: {
       control: 'boolean',

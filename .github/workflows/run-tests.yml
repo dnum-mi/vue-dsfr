@@ -34,8 +34,10 @@ jobs:
         run: pnpm check-exports-ci
       - name: Test
         run: pnpm test
-      - name: Install Playwright
+      - name: Install Playwright dependencies
         run: pnpx playwright install --with-deps
+      - name: Install Playwright
+        run: pnpx playwright install
       - name: Build Storybook
         run: pnpm build-storybook --quiet
       - name: Serve Storybook and run tests

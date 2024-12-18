@@ -11,6 +11,7 @@ const delay = (timeout = 100) =>
 export default {
   component: DsfrAlert,
   title: 'Composants/DsfrAlert',
+  tags: ['message'],
   argTypes: {
     id: {
       control: 'text',

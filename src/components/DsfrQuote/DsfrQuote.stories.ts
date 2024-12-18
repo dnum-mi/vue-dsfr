@@ -6,6 +6,7 @@ import DsfrQuote from './DsfrQuote.vue'
 export default {
   component: DsfrQuote,
   title: 'Composants/DsfrQuote',
+  tags: ['message'],
   argTypes: {
     quote: {
       control: 'text',

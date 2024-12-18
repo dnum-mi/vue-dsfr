@@ -1,4 +1,4 @@
-# En-tête - DsfrHeader
+# En-tête - `DsfrHeader`
 
 ## 🌟 Introduction
 

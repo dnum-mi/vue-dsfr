@@ -1,4 +1,4 @@
-import {fireEvent, render, waitFor} from '@testing-library/vue'
+import { fireEvent, render, waitFor } from '@testing-library/vue'
 
 import DsfrTag from '../DsfrTag/DsfrTag.vue'
 
@@ -105,12 +105,12 @@ describe('DsfrTable', () => {
     const title = 'Utilisateurs'
 
     const headers = ['Nom', 'Prénom']
-    const rows = generateRowsWithTwoColumns(5);
+    const rows = generateRowsWithTwoColumns(5)
     const props = {
       title,
       headers,
       rows,
-      pagination: true
+      pagination: true,
     }
 
     const component = render(DsfrTable, {
@@ -124,7 +124,7 @@ describe('DsfrTable', () => {
     })
 
     // When
-    const newRows = generateRowsWithTwoColumns(25);
+    const newRows = generateRowsWithTwoColumns(25)
 
     component.rerender({
       ...props,
@@ -142,12 +142,12 @@ describe('DsfrTable', () => {
     const title = 'Utilisateurs'
 
     const headers = ['Nom', 'Prénom']
-    const rows = generateRowsWithTwoColumns(50);
+    const rows = generateRowsWithTwoColumns(50)
     const props = {
       title,
       headers,
       rows,
-      pagination: true
+      pagination: true,
     }
 
     const component = render(DsfrTable, {
@@ -170,7 +170,7 @@ describe('DsfrTable', () => {
     })
   })
 
-  function generateRowsWithTwoColumns(numberOfRows: number): string[][] {
+  function generateRowsWithTwoColumns (numberOfRows: number): string[][] {
     const rows: string[][] = []
 
     for (let i = 0; i < numberOfRows; i++) {

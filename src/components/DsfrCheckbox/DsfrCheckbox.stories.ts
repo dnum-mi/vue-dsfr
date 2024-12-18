@@ -8,6 +8,7 @@ import DsfrCheckbox from './DsfrCheckbox.vue'
 export default {
   component: DsfrCheckbox,
   title: 'Composants/DsfrCheckbox',
+  tags: ['formulaire'],
   argTypes: {
     id: {
       control: 'text',

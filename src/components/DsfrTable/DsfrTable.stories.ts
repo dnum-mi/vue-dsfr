@@ -279,18 +279,18 @@ export const TableauEntier = (args) => ({
       rows: args.rows.map((rowData) =>
         Array.isArray(rowData)
           ? rowData.map((field) =>
-            field.cellAttrs?.onClick
-              ? {
-                  ...field,
-                  cellAttrs: {
-                    ...field.cellAttrs,
-                    onClick () {
-                      args.onClickCell(field)
+              field.cellAttrs?.onClick
+                ? {
+                    ...field,
+                    cellAttrs: {
+                      ...field.cellAttrs,
+                      onClick () {
+                        args.onClickCell(field)
+                      },
                     },
-                  },
-                }
-              : field,
-          )
+                  }
+                : field,
+            )
           : {
               ...rowData,
               rowAttrs: {

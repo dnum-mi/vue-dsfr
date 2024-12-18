@@ -10,6 +10,7 @@ import DsfrButtonGroup from './DsfrButtonGroup.vue'
 export default {
   component: DsfrButtonGroup,
   title: 'Composants/DsfrButtonGroup',
+  tags: ['bouton'],
   argTypes: {
     buttons: {
       control: 'object',

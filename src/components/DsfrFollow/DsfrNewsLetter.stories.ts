@@ -7,6 +7,7 @@ import DsfrNewsLetter from './DsfrNewsLetter.vue'
 export default {
   component: DsfrNewsLetter,
   title: 'Composants/DsfrNewsletter',
+  tags: ['réseaux sociaux'],
   argTypes: {
     title: {
       control: 'text',

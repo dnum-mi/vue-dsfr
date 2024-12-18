@@ -1,4 +1,4 @@
-# Fil d’ariane - DsfrBreadcrumb
+# Fil d’ariane - `DsfrBreadcrumb`
 
 ## 🌟 Introduction
 

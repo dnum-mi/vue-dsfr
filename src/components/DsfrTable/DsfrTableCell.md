@@ -1,4 +1,4 @@
-# Cellule de tableau - DsfrTableCell
+# Cellule de tableau - `DsfrTableCell`
 
 ## 🌟 Introduction
 

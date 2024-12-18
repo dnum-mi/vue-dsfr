@@ -9,4 +9,5 @@ export type DsfrToggleSwitchProps = {
   activeText?: string
   inactiveText?: string
   noText?: boolean
+  name?: string
 }

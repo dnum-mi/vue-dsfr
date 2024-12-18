@@ -8,7 +8,7 @@ Le composant `DsfrDataTable` est un élément puissant et polyvalent pour affich
 
 Ce composant est tout neuf et a besoin de vos retours. Son API ne devrait pas changer, elle devrait s’étoffer dans les prochaines semaines ou les prochains mois.
 
-Si vous avez des propositions, lancer une [**discussion**](https://github.com/dnum-mi/vue-dsfr/discussions) avant d’ouvrir une issue.
+Si vous avez des propositions, veuillez lancer une [**discussion**](https://github.com/dnum-mi/vue-dsfr/discussions) avant d’ouvrir une issue.
 
 :::
 

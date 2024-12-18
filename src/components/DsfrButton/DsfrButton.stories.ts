@@ -10,6 +10,7 @@ import DsfrButton from './DsfrButton.vue'
 export default {
   component: DsfrButton,
   title: 'Composants/DsfrButton',
+  tags: ['bouton'],
   argTypes: {
     label: {
       control: 'text',
