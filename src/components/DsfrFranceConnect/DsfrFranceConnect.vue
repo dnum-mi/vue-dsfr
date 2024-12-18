@@ -15,7 +15,7 @@ defineProps<DsfrFranceConnectProps>()
       <span class="fr-connect__login">S’identifier avec </span>
       <span
         class="fr-connect__brand"
-      >FranceConnect{{ secure ? '+' : '' }}</span>
+      >FranceConnect</span>
     </button>
     <p>
       <a
