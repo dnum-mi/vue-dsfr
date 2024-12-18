@@ -1,13 +1,13 @@
 import { fn } from '@storybook/test'
 
-import DsfrSelect from './DsfrSelect.vue'
+import DsfrMultiSelect from './DsfrMultiSelect.vue'
 
 /**
  * [Voir quand l’utiliser sur la documentation du DSFR](https://www.systeme-de-design.gouv.fr/elements-d-interface/composants/liste-deroulante)
  */
 export default {
-  component: DsfrSelect,
-  title: 'Composants/DsfrSelect',
+  component: DsfrMultiSelect,
+  title: 'Composants/DsfrMultiSelect',
   tags: ['formulaire'],
   argTypes: {
     selectId: {
@@ -67,7 +67,7 @@ export default {
 
 export const ListeDeroulante = (args) => ({
   components: {
-    DsfrSelect,
+    DsfrMultiSelect,
   },
 
   data () {
@@ -77,7 +77,7 @@ export const ListeDeroulante = (args) => ({
   },
 
   template: `
-    <DsfrSelect
+    <DsfrMultiSelect
       :required="required"
       :label="label"
       :options="options"
@@ -116,7 +116,7 @@ ListeDeroulante.args = {
 
 export const ListeDeroulanteEnAnglais = (args) => ({
   components: {
-    DsfrSelect,
+    DsfrMultiSelect,
   },
 
   data () {
@@ -126,7 +126,7 @@ export const ListeDeroulanteEnAnglais = (args) => ({
   },
 
   template: `
-    <DsfrSelect
+    <DsfrMultiSelect
       :required="required"
       :label="label"
       :options="options"
@@ -165,7 +165,7 @@ ListeDeroulanteEnAnglais.args = {
 
 export const ListeDeroulanteRequise = (args) => ({
   components: {
-    DsfrSelect,
+    DsfrMultiSelect,
   },
 
   data () {
@@ -175,7 +175,7 @@ export const ListeDeroulanteRequise = (args) => ({
   },
 
   template: `
-    <DsfrSelect
+    <DsfrMultiSelect
       :required="required"
       :label="label"
       :options="options"
@@ -214,7 +214,7 @@ ListeDeroulanteRequise.args = {
 
 export const ListeDeroulanteRequisePersonnalisee = (args) => ({
   components: {
-    DsfrSelect,
+    DsfrMultiSelect,
   },
 
   data () {
@@ -224,7 +224,7 @@ export const ListeDeroulanteRequisePersonnalisee = (args) => ({
   },
 
   template: `
-    <DsfrSelect
+    <DsfrMultiSelect
       :required="required"
       :label="label"
       :options="options"
@@ -237,7 +237,7 @@ export const ListeDeroulanteRequisePersonnalisee = (args) => ({
     <template #required-tip>
       <em> (obligatoire)</em>
     </template>
-  </DsfrSelect>
+  </DsfrMultiSelect>
   `,
 
   watch: {
@@ -267,7 +267,7 @@ ListeDeroulanteRequisePersonnalisee.args = {
 
 export const ListeDeroulanteInactive = (args) => ({
   components: {
-    DsfrSelect,
+    DsfrMultiSelect,
   },
 
   data () {
@@ -278,7 +278,7 @@ export const ListeDeroulanteInactive = (args) => ({
 
   template: `
   <div :data-fr-theme="dark ? 'dark' : ''" style="background-color: var(--grey-1000-50); padding: 1rem;">
-    <DsfrSelect
+    <DsfrMultiSelect
       :required="required"
       :label="label"
       :options="options"
@@ -317,7 +317,7 @@ ListeDeroulanteInactive.args = {
 
 export const ListeDeroulanteAvecOptionsInactives = (args) => ({
   components: {
-    DsfrSelect,
+    DsfrMultiSelect,
   },
 
   data () {
@@ -328,7 +328,7 @@ export const ListeDeroulanteAvecOptionsInactives = (args) => ({
 
   template: `
     <div :data-fr-theme="dark ? 'dark' : ''" style="background-color: var(--grey-1000-50); padding: 1rem;">
-      <DsfrSelect
+      <DsfrMultiSelect
         :required="required"
         :label="label"
         :options="options"

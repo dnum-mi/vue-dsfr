@@ -3,6 +3,7 @@ import DsfrFieldset from './DsfrFieldset.vue'
 export default {
   component: DsfrFieldset,
   title: 'Composants/DsfrFieldset',
+  tags: ['formulaire'],
   argTypes: {
     legend: {
       control: 'text',

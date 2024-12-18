@@ -14,7 +14,6 @@ import { getRandomId } from '@/utils/random-utils'
 const props = withDefaults(
   defineProps<DsfrMultiSelectProps<T>>(),
   {
-    label: '',
     labelVisible: true,
     labelClass: '',
     hint: '',
@@ -189,7 +188,7 @@ function clean () {
   document.removeEventListener('keydown', handleKeyDownEscape)
 }
 
-const filterdOptions = computed(() =>
+const filteredOptions = computed(() =>
   props.options.filter((option) => {
     if (typeof option === 'object' && option !== null) {
       return props.filteringKeys.some((key) =>
@@ -203,11 +202,11 @@ const filterdOptions = computed(() =>
 )
 
 const isAllSelected = computed(() => {
-  if (props.modelValue.length < filterdOptions.value.length) {
+  if (props.modelValue.length < filteredOptions.value.length) {
     return false
   }
 
-  return filterdOptions.value.every((option) => {
+  return filteredOptions.value.every((option) => {
     const value = getValueOrId(option, props.idKey)
     return props.modelValue.includes(value)
   })
@@ -217,12 +216,12 @@ const handleClickSelectAllClick = () => {
   const modelSet = new Set<string | number>(model.value || [])
 
   if (isAllSelected.value) {
-    filterdOptions.value.forEach((option) => {
+    filteredOptions.value.forEach((option) => {
       const value = getValueOrId(option, props.idKey)
       modelSet.delete(value)
     })
   } else {
-    filterdOptions.value.forEach((option) => {
+    filteredOptions.value.forEach((option) => {
       const value = getValueOrId(option, props.idKey)
       modelSet.add(value)
     })
@@ -285,7 +284,7 @@ onUnmounted(() => {
 })
 
 const defaultButtonLabel = computed(() => {
-  const nbElements = model.value?.length
+  const nbElements = model.value?.length ?? 0
   const noElements = nbElements === 0
   const severalElements = nbElements > 1
 
@@ -377,7 +376,7 @@ const finalLabelClass = computed(() => [
             name="select-all"
             secondary
             size="sm"
-            :disabled="filterdOptions.length === 0"
+            :disabled="filteredOptions.length === 0"
             @click="handleClickSelectAllClick"
             @keydown.shift.tab="handleFocusPreviousElement"
           >
@@ -424,7 +423,7 @@ const finalLabelClass = computed(() => [
       >
         <slot name="legend" />
         <div
-          v-for="option in filterdOptions"
+          v-for="option in filteredOptions"
           :key="`${generateId(option as T, id, props.idKey)}-checkbox`"
           class="fr-fieldset__element"
         >
@@ -453,7 +452,7 @@ const finalLabelClass = computed(() => [
           </div>
         </div>
       </DsfrFieldset>
-      <div v-if="filterdOptions.length === 0">
+      <div v-if="filteredOptions.length === 0">
         <slot name="no-results">
           Pas de résultat
         </slot>

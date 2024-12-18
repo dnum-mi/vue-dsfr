@@ -1,4 +1,4 @@
-# Liste déroulante - DsfrSelect
+# Liste déroulante - `DsfrSelect`
 
 ## 🌟 Introduction
 

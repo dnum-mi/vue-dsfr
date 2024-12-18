@@ -1,4 +1,4 @@
-# Liste déroulante enrichie - DsfrMultiselect
+# Liste déroulante enrichie - `DsfrMultiselect`
 
 ## 🌟 Introduction
 
@@ -8,14 +8,29 @@ La liste déroulante fournit une liste d’option parmi lesquelles l’utilisate
 
 🏅 La documentation sur **liste déroulante riche** sur le [DSFR](https://www.systeme-de-design.gouv.fr/composants-et-modeles/composants-beta/liste-deroulante-riche)
 
-## 🛠️ Props
+## 📐 Structure
+
+1. Libellé - Obligatoire (prop `label`)
+2. Une description - Optionnelle (prop `hint` ou slot `hint`)
+3. Une liste, composée d’un ensemble d’options sélectionnables - Obligatoire (prop `options`)
+
+    À l’intérieur de la liste :
+
+     4. Un bouton “tout sélectionner” “tout désélectionner” - Optionnel (props `selectAll` et `selectAllLabel`)
+     5. Un champs de saisie - Optionnel
+
+     Une section de formulaire (fieldset) contenant :
+
+     6. Une légende - Optionnelle (qui peut être masquée à l’écran - prop `legend` ou slot `legend`)
+     7. Une description du groupe - Optionnelle (qui peut être masquée à l’écran)
+     8. Une liste d’options - Obligatoire (prop `options`)
 
 | nom                | type                                  | défaut                                        | obligatoire | Description                                                                   |
-|--------------------|---------------------------------------|-----------------------------------------------|-------------|-------------------------------------------------------------------------------|
+|--------------------|---------------------------------------|-----------------------------------------------|-------------|------------------------------------------------------------------------------|
 | `id`               | *`string`*                            | *random string*                               |             | Identifiant unique pour l'input. Si non spécifié, un ID aléatoire est généré. |
 | `modelValue`       | *`(string \| number)[]`*              | ``                                            | ✅          | La valeur liée au modèle de l'input.                                          |
-| `options`          | *`(T \| string \| number)[]`*         | `''`                                          | ✅          | Options sélectionnables.                                                      |
-| `label`            | *`string`*                            | `''`                                          |             | Le libellé de l'input.                                                        |
+| `options`          | *`(T \| string \| number)[]`*         |                                               | ✅          | Options sélectionnables.                                                      |
+| `label`            | *`string`*                            |                                               | ✅          | Le libellé de l'input.                                                        |
 | `labelVisible`     | *`boolean`*                           | `true`                                        |             | Gére l'affichage du label ou non.                                             |
 | `labelClass`       | *`string`*                            | `''`                                          |             | Classe personnalisée pour le style du libellé.                                |
 | `legend`           | *`string`*                            | `''`                                          |             | Texte de legend.                                                              |
@@ -25,11 +40,13 @@ La liste déroulante fournit une liste d’option parmi lesquelles l’utilisate
 | `buttonLabel`      | *`string`*                            | `Sélectionner une option, ...`                |             | Texte qui s'affiche sur le bouton.                                            |
 | `selectAll`        | *`boolean`*                           | `true`                                        |             | Gérer l'affichage du bouton de 'sélectionner tout'.                           |
 | `search`           | *`boolean`*                           | `true`                                        |             | Gérer le label du 'sélectionner tout'.                                        |
-| `selectAllLabel`   | *`boolean`*                           | `["Tout sélectionner", "Tout désélectionner"]`|             | Gérer le label du 'sélectionner tout'.                                        |
+| `selectAllLabel`   | *`[string, string]`*                  | `["Tout sélectionner", "Tout désélectionner"]`|             | Gérer le label du 'sélectionner tout'.                                        |
 | `idKey`            | *`keyof T`*                           | `id`                                          |             | Voir ci dessous.                                                              |
 | `labelKey`         | *`keyof T`*                           | `label`                                       |             | Voir ci dessous.                                                              |
 | `filteringKeys`    | *`(keyof T)[]`*                       | `['label']`                                   |             | Voir ci dessous.                                                              |
 | `maxOverflowHeight`| *`CSSStyleDeclaration['maxHeight']`*  | `'400px'`                                     |             | Taille maximum du dropdown.                                                   |
+
+## ⚠️ Cas particuliers
 
 ### Cas d'utilisation d'objets dans des options
 
@@ -72,7 +89,7 @@ Si DsfrMultiselect est placé dans une iframe, il n'aura pas accès aux clics ex
 
 | Nom                | type                     | Description                                  |
 |--------------------|--------------------------|----------------------------------------------|
-| `update:modelValue`| *`(string \| number)[]`* | Est émis lorsque la valeur du select change. |
+| `update:modelValue`| *`Array<(T \| string \| number)>`* | Est émis lorsque la valeur du select change. |
 
 ## 🧩 Slots
 

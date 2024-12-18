@@ -17,7 +17,7 @@ Le tag peut être utilisé dans deux contextes :
 
 <VIcon name="vi-file-type-storybook" /> La story sur le tag sur le storybook de [VueDsfr](https://storybook.vue-ds.fr/?path=/docs/composants-dsfrtags--docs)
 
-## 📐 Structure
+## 📐 Structure
 
 Il se compose des éléments suivants :
 

@@ -1,4 +1,4 @@
-# Interrupteur - DsfrToggleSwitch
+# Interrupteur - `DsfrToggleSwitch`
 
 ## 🌟 Introduction
 

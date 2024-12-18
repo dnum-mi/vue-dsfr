@@ -11,6 +11,7 @@ import DsfrRadioButtonSet from './DsfrRadioButtonSet.vue'
 export default {
   component: DsfrRadioButton,
   title: 'Composants/DsfrRadioButton',
+  tags: ['formulaire'],
   argTypes: {
     id: {
       control: 'text',

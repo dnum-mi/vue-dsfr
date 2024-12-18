@@ -3,7 +3,7 @@ import type { VNode } from 'vue'
 export type DsfrMultiSelectProps<T> = {
   modelValue: (string | number)[]
   options: T[]
-  label?: string
+  label: string
   labelVisible?: boolean
   labelClass?: string
   hint?: string

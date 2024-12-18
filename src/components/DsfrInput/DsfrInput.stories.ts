@@ -13,6 +13,7 @@ import DsfrInputGroup from './DsfrInputGroup.vue'
 export default {
   component: DsfrInput,
   title: 'Composants/DsfrInput',
+  tags: ['formulaire'],
   argTypes: {
     id: {
       control: 'text',
