@@ -51,6 +51,7 @@ const acceptTypes = computed(() => {
     <label
       class="fr-label"
       :for="id"
+      @click.prevent
     >
       {{ label }}
       <span
@@ -79,6 +80,7 @@ const acceptTypes = computed(() => {
       v-if="error || validMessage"
       class="fr-messages-group"
       role="alert"
+      @click.prevent
     >
       <p
         v-if="error"
