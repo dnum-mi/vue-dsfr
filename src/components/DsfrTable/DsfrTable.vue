@@ -1,10 +1,9 @@
 <script lang="ts" setup>
-import { computed, ref, watch } from 'vue'
+import { computed, ref } from 'vue'
 
 import DsfrTableHeaders from './DsfrTableHeaders.vue'
 import DsfrTableRow, { type DsfrTableRowProps } from './DsfrTableRow.vue'
 import type { DsfrTableProps } from './DsfrTable.types'
-import {getRandomId} from "@/utils/random-utils";
 
 import { getRandomId } from '@/utils/random-utils'
 
@@ -26,12 +25,12 @@ const getRowData = (row: DsfrTableProps['rows']) => {
 }
 
 const currentPage = ref(props.currentPage)
-const selectId = getRandomId()
+const selectId = getRandomId('resultPerPage')
 const optionSelected = ref(props.resultsDisplayed)
 const pageCount = computed(() =>
   props.rows.length > optionSelected.value
     ? Math.ceil(props.rows.length / optionSelected.value)
-    : 1
+    : 1,
 )
 const paginationOptions = [5, 10, 25, 50, 100]
 const returnLowestLimit = () => currentPage.value * optionSelected.value - optionSelected.value
@@ -65,8 +64,6 @@ const goLastPage = () => {
   currentPage.value = pageCount.value
   emit('update:currentPage')
 }
-
-const selectId = getRandomId('resultPerPage')
 </script>
 
 <template>
@@ -124,11 +121,14 @@ const selectId = getRandomId('resultPerPage')
                   </option>
                 </select>
               </div>
-              <div class="flex ml-1"
-                   aria-live="polite"
-                   aria-atomic="true"
+              <div
+                class="flex ml-1"
+                aria-live="polite"
+                aria-atomic="true"
               >
-                <p class="self-center fr-m-0">Page {{ currentPage }} sur {{ pageCount }}</p>
+                <p class="self-center fr-m-0">
+                  Page {{ currentPage }} sur {{ pageCount }}
+                </p>
               </div>
               <div class="flex ml-1">
                 <button
