@@ -1,6 +1,6 @@
 import { fn } from '@storybook/test'
 
-import DsfrMultiSelect from './DsfrMultiSelect.vue'
+import DsfrMultiSelect from './DsfrMultiselect.vue'
 
 /**
  * [Voir quand l’utiliser sur la documentation du DSFR](https://www.systeme-de-design.gouv.fr/elements-d-interface/composants/liste-deroulante)
