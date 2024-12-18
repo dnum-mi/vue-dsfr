@@ -6,6 +6,8 @@ import DsfrTableRow, { type DsfrTableRowProps } from './DsfrTableRow.vue'
 import type { DsfrTableProps } from './DsfrTable.types'
 import {getRandomId} from "@/utils/random-utils";
 
+import { getRandomId } from '@/utils/random-utils'
+
 export type { DsfrTableProps }
 
 const props = withDefaults(defineProps<DsfrTableProps>(), {
@@ -24,6 +26,7 @@ const getRowData = (row: DsfrTableProps['rows']) => {
 }
 
 const currentPage = ref(props.currentPage)
+const selectId = getRandomId()
 const optionSelected = ref(props.resultsDisplayed)
 const pageCount = computed(() =>
   props.rows.length > optionSelected.value
@@ -109,6 +112,7 @@ const selectId = getRandomId('resultPerPage')
                 <select
                   :id="selectId"
                   v-model="optionSelected"
+                  title="Résultats par page - le nombre résultats est mis à jour dès sélection d’une valeur"
                   @change="emit('update:currentPage')"
                 >
                   <option
@@ -120,26 +124,37 @@ const selectId = getRandomId('resultPerPage')
                   </option>
                 </select>
               </div>
-              <div class="flex ml-1">
-                <span class="self-center">Page {{ currentPage }} sur {{ pageCount }}</span>
+              <div class="flex ml-1"
+                   aria-live="polite"
+                   aria-atomic="true"
+              >
+                <p class="self-center fr-m-0">Page {{ currentPage }} sur {{ pageCount }}</p>
               </div>
               <div class="flex ml-1">
                 <button
                   class="fr-icon-arrow-left-s-first-line"
                   @click="goFirstPage()"
-                />
+                >
+                  <span class="fr-sr-only">Première page du tableau</span>
+                </button>
                 <button
                   class="fr-icon-arrow-left-s-line"
                   @click="goPreviousPage()"
-                />
+                >
+                  <span class="fr-sr-only">Page précédente du tableau</span>
+                </button>
                 <button
                   class="fr-icon-arrow-right-s-line"
                   @click="goNextPage()"
-                />
+                >
+                  <span class="fr-sr-only">Page suivante du tableau</span>
+                </button>
                 <button
                   class="fr-icon-arrow-right-s-last-line"
                   @click="goLastPage()"
-                />
+                >
+                  <span class="fr-sr-only">Dernière page du tableau</span>
+                </button>
               </div>
             </div>
           </td>
