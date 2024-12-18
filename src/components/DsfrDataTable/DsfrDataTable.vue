@@ -155,7 +155,7 @@ function copyToClipboard (text: string) {
       <div class="fr-table__container">
         <div class="fr-table__content">
           <table :id="id">
-            <caption>
+            <caption v-if="!noCaption">
               {{ title }}
             </caption>
             <thead>
