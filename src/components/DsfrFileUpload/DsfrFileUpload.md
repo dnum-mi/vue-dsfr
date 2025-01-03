@@ -4,6 +4,10 @@
 
 Bienvenue dans la documentation du composant `DsfrFileUpload`. Ce composant est l'équivalent numérique d'une balade dans les ruelles pittoresques de Montmartre, mais pour télécharger vos fichiers. Que ce soit pour des photos de vacances ou des documents importants, `DsfrFileUpload` rend le processus simple et élégant.
 
+🏅 La documentation sur le pied de page sur le [DSFR](https://www.systeme-de-design.gouv.fr/composants-et-modeles/composants/ajout-de-fichier)
+
+<VIcon name="vi-file-type-storybook" /> La story sur le pied de page sur le storybook de [VueDsfr](https://storybook.vue-ds.fr/?path=/story/composants-dsfrfileupload--docs)
+
 ## 🛠️ Props
 
 | Nom            | Type        | Défaut                  | Obligatoire   | Description                                                    |

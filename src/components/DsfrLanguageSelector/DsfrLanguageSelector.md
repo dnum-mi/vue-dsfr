@@ -1,3 +1,5 @@
+# Sélecteur de langue - Translate - `DsfrLanguageSelector`
+
 ## 🌟 Introduction
 
 Le sélecteur de langue permet à l’utilisateur de choisir la langue dans laquelle est affichée le contenu du site, si celui-ci est disponible en plusieurs langues.
@@ -24,7 +26,7 @@ Ce composant est utilisé en interne dans [DsfrHeader](/composants/DsfrHeader) (
 
 | Propriété          | Type                          | Description                                                   | Valeur par défaut         |
 |--------------------|-------------------------------|---------------------------------------------------------------|---------------------------|
-| `id`               | `string`                      | Identifiant unique pour les éléments de contrôle d'accessibilité. | `getRandomId('translate')` |
+| `id`               | `string`                      | Identifiant unique pour les éléments de contrôle d'accessibilité. | `getRandomId('language-selector')` |
 | `languages`        | [`DsfrLanguageSelectorElement[]`](/types#dsfrlanguageselector) | Liste des langues disponibles. Chaque langue est représentée par un objet contenant un `codeIso` et un `label`. | `[]`                      |
 | `currentLanguage`  | `string`                      | Code ISO de la langue actuellement sélectionnée.              | `'fr'`                    |
 
