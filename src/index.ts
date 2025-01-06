@@ -21,6 +21,5 @@ export default {
 
 export * from './common-types.js'
 export * from './components/index.js'
-export * from './composables/index'
-export * from './meta/index'
-export * from './utils/random-utils'
+export * from './composables/index.js'
+export * from './utils/random-utils.js'

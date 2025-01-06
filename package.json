@@ -1,7 +1,7 @@
 {
   "name": "@gouvminint/vue-dsfr",
   "type": "module",
-  "version": "3.6.0",
+  "version": "3.7.5",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -17,6 +17,10 @@
     "./dist/vue-dsfr.css": {
       "import": "./dist/vue-dsfr.css"
     },
+    "./meta": {
+      "types": "./meta-dts/index.d.ts",
+      "import": "./meta/index.js"
+    },
     "./styles": {
       "import": "./dist/vue-dsfr.css"
     }
@@ -24,11 +28,16 @@
   "main": "./dist/vue-dsfr.umd.cjs",
   "module": "./dist/vue-dsfr.js",
   "types": "./types",
+  "bin": {
+    "vue-dsfr-icons": "./meta/custom-icon-collections-creator-bin.js"
+  },
   "files": [
     "LICENSE",
     "README.md",
     "dist",
     "lib",
+    "meta",
+    "meta-dts",
     "types"
   ],
   "engines": {
@@ -44,8 +53,9 @@
     "check-exports-ci": "node ./ci/check-exports.mjs --ci",
     "clean-dist": "rimraf dist lib",
     "prebuild": "run-s clean-dist",
-    "build": "run-s build:vite type-gen",
+    "build": "run-s build:vite type-gen build:meta",
     "build:vite": "vite build",
+    "build:meta": "tsc -p tsconfig.meta.json",
     "demo": "vite",
     "build:demo": "vite -c vite.config.demo.js build",
     "dev": "storybook dev -p 6006",
@@ -117,6 +127,7 @@
     "@whyframe/vue": "^0.1.7",
     "browserslist": "^4.24.3",
     "chalk": "^5.4.0",
+    "commander": "^13.0.0",
     "commitlint": "^19.6.1",
     "cross-env": "^7.0.3",
     "eslint": "^9.17.0",

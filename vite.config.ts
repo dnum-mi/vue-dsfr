@@ -36,7 +36,7 @@ const config: UserConfig = {
       entry: resolve(projectDir, 'src', 'index.ts'),
     },
     rollupOptions: {
-      external: ['vue', 'vue-router'],
+      external: ['vue', 'vue-router', '@iconify/vue'],
       output: {
         exports: 'named',
         dir: 'dist',
