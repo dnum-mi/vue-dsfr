@@ -37,6 +37,6 @@ describe('DsfrFranceConnect', () => {
 
     // Then
     expect(link.href).toBe(url)
-    expect(button.textContent).toBe('S’identifier avec FranceConnect+')
+    expect(button.textContent).toBe('S’identifier avec FranceConnect')
   })
 })
