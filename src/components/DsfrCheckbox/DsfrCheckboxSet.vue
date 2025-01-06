@@ -11,7 +11,7 @@ export type { DsfrCheckboxSetProps }
 
 <script lang="ts" setup>
 const props = withDefaults(defineProps<DsfrCheckboxSetProps>(), {
-  titleId: () => getRandomId('checkbox', 'group'),
+  titleId: () => getRandomId('checkbox', 'set'),
   errorMessage: '',
   validMessage: '',
   legend: '',

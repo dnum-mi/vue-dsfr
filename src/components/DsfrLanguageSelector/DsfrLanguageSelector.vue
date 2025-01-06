@@ -9,7 +9,7 @@ import type { DsfrLanguageSelectorElement, DsfrLanguageSelectorProps } from './D
 export type { DsfrLanguageSelectorElement, DsfrLanguageSelectorProps }
 
 const props = withDefaults(defineProps<DsfrLanguageSelectorProps>(), {
-  id: () => getRandomId('translate'),
+  id: () => getRandomId('language-selector'),
   languages: () => [],
   currentLanguage: 'fr',
 })
