@@ -18,7 +18,7 @@ import type {
 export type { DsfrNavigationMenuLinks, DsfrNavigationProps }
 
 const props = withDefaults(defineProps<DsfrNavigationProps>(), {
-  id: () => getRandomId('menu'),
+  id: () => getRandomId('nav'),
   label: 'Menu principal',
   navItems: () => [],
 })

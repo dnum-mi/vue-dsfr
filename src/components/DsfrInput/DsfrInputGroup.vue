@@ -11,7 +11,7 @@ defineOptions({
 })
 
 withDefaults(defineProps<DsfrInputGroupProps>(), {
-  descriptionId: () => getRandomId('basic', 'input'),
+  descriptionId: () => getRandomId('input', 'group'),
   hint: '',
   label: '',
   labelClass: '',

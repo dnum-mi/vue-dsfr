@@ -7,9 +7,9 @@ import type { DsfrSegmentedSetProps } from './DsfrSegmented.types'
 export type { DsfrSegmentedSetProps }
 
 const props = withDefaults(defineProps<DsfrSegmentedSetProps>(), {
-  titleId: () => getRandomId('radio-button', 'group'),
+  titleId: () => getRandomId('segmented-button', 'set'),
   legend: '',
-  name: 'no-name',
+  name: () => getRandomId('segmented-button', 'set'),
   options: () => [],
 })
 

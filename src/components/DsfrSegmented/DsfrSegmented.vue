@@ -9,7 +9,7 @@ import type { DsfrSegmentedProps } from './DsfrSegmented.types'
 export type { DsfrSegmentedProps }
 
 const props = withDefaults(defineProps<DsfrSegmentedProps>(), {
-  id: () => getRandomId('basic', 'checkbox'),
+  id: () => getRandomId('segmented'),
   hint: '',
   icon: undefined,
   label: '',

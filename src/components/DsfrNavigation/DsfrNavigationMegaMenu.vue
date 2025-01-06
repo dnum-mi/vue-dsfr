@@ -10,7 +10,7 @@ import type { DsfrNavigationMegaMenuProps } from './DsfrNavigation.types'
 export type { DsfrNavigationMegaMenuProps }
 
 const props = withDefaults(defineProps<DsfrNavigationMegaMenuProps>(), {
-  id: () => getRandomId('menu'),
+  id: () => getRandomId('mega-menu'),
   description: '',
   link: () => ({ to: '#', text: 'Voir toute la rubrique' }),
   menus: () => [],
