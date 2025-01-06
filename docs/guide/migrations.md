@@ -1,5 +1,25 @@
 # Migrations
 
+## Migration vers 8.x (depuis 7.x)
+
+Avant la v8, certaines fonctions qui ne devaient pas être dans le bundel final l’étaient : `vueDsfrComponentResolver` et `vueDsfrAutoimportPreset`.
+
+Ils sont désormais dans un export à part, ce qui allège le bundle de la bibliothèque, et sépare bien la bibliothèque des fonctions méta.
+
+Voici ce qui doit être changé dans votre `vite.config.ts` (uniquement si vous utilisiez déjà ces deux fonctions) :
+
+```diff
+ import {
+   vueDsfrAutoimportPreset,
+   vueDsfrComponentResolver,
+-} from '@laruiss/vue-dsfr'
++} from '@laruiss/vue-dsfr/meta'
+```
+
+Et c’est tout ce que vous devrez changer.
+
+Maintenant, si vous souhaitez ne plus avoir d’appels réseaux et utiliser les icônes de `@iconify/vue`, nous vous invitons à lire la documentation améliorée en ce sens [ici](/guide/icones.md).
+
 ## Migration vers 7.x (depuis 4.x, 5.x ou 6.x)
 
 Avant la v7, le tableau `modelValue` de [`DsfrCheckboxSet`](/composants/DsfrCheckboxSet) était un tableau de `string` avec les valeurs des propriétés de l’attribut `name` de chaque case à cocher.
