@@ -177,9 +177,10 @@ Avec cette modification, il est possible d’ajouter des collections d’icônes
   export default collections
   ```
 - ajouter les collections dans votre point d’entrée (généralement `src/main.ts`) :
+
   ```ts
   // (...)
-  import collections from './icon-collections.js'
+  import { collections } from './icon-collections.js'
   // (...)
 
   for (const collection of collections) {
