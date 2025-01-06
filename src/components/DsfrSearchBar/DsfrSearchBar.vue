@@ -32,7 +32,6 @@ const emit = defineEmits<{
       type="search"
       :placeholder="placeholder"
       :model-value="modelValue"
-      :label-visible="labelVisible"
       :label="label"
       :disabled="disabled"
       :aria-disabled="disabled"

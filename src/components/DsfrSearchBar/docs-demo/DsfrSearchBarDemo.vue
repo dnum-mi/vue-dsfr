@@ -11,7 +11,7 @@ const value = ref('')
     <div>
       <DsfrSearchBar
         v-model="value"
-        label="Label du curseur"
+        label="Label de la barre de recherche"
       />
     </div>
     <p class="fr-my-4w">
