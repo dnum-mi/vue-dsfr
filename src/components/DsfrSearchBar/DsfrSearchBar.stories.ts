@@ -21,11 +21,6 @@ export default {
       description:
         'Indique si l’icône doit être masqué (`true`) ou non (`false`, défaut)',
     },
-    labelVisible: {
-      control: 'boolean',
-      description:
-        'Indique si le label doit être visible (`true`) ou non (`false`, défaut)',
-    },
     placeholder: {
       control: 'text',
       description: 'Texte à afficher si le champ de recherhe n’est pas rempli',
@@ -69,7 +64,6 @@ export const BarreDeRecherche = (args) => ({
       <DsfrSearchBar
         :label="label"
         :placeholder="placeholder"
-        :labelVisible="labelVisible"
         :button-text="buttonText"
         :hide-icon="hideIcon"
         v-model="modelValue"
@@ -82,7 +76,6 @@ BarreDeRecherche.args = {
   hideIcon: false,
   placeholder: 'Rechercher',
   buttonText: '',
-  labelVisible: false,
   modelValue: '',
   large: false,
 }
@@ -98,7 +91,6 @@ export const BarreDeRechercheLarge = (args) => ({
     <DsfrSearchBar
       :label="label"
       :placeholder="placeholder"
-      :labelVisible="labelVisible"
       :hide-icon="hideIcon"
       :button-text="buttonText"
       :large="large"
@@ -110,7 +102,6 @@ BarreDeRechercheLarge.args = {
   hideIcon: true,
   placeholder: 'Rechercher',
   buttonText: 'Rechercher',
-  labelVisible: false,
   modelValue: '',
   large: true,
 }
@@ -126,7 +117,6 @@ export const BarreDeRechercheDesactivee = (args) => ({
       <DsfrSearchBar
         :label="label"
         :placeholder="placeholder"
-        :labelVisible="labelVisible"
         :button-text="buttonText"
         :hide-icon="hideIcon"
         v-model="modelValue"
@@ -140,7 +130,6 @@ BarreDeRechercheDesactivee.args = {
   hideIcon: false,
   placeholder: 'Rechercher',
   buttonText: '',
-  labelVisible: false,
   modelValue: '',
   large: false,
   disabled: true,

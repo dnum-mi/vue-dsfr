@@ -25,7 +25,6 @@ La barre de recherche se compose des éléments suivants :
 | `modelValue`| `String` | `''`              |             | Valeur liée à la barre de recherche.                                    |
 | `placeholder`| `String`| `'Rechercher'`    |             | Placeholder pour la barre de recherche.                                 |
 | `large`     | `Boolean`| `false`           |             | Si `true`, utilise une version plus grande de la barre de recherche.    |
-| `labelVisible` | `Boolean` | `false`       |             | Si `true`, affiche le libellé de la barre de recherche.                 |
 | `disabled`  | `Boolean` | `false`          |             | Si `true`, désactive la barre de recherche.                             |
 
 ## 📡 Événements
