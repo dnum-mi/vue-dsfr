@@ -53,9 +53,9 @@ export const useCollapsable = () => {
    * @param {boolean} focusFirstAnchor
    * @return void
    */
-  const onTransitionEnd = (expanded: boolean, focusFirstAnchor: boolean = true): void => {
+  const onTransitionEnd = (expanded: boolean, autoFocus: boolean = true): void => {
     collapsing.value = false
-    if (focusFirstAnchor) {
+    if (autoFocus) {
       collapse.value?.querySelector('a')?.focus()
     }
     if (collapse.value && expanded === false) {
