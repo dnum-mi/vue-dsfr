@@ -30,20 +30,26 @@ Ce composant ne déclenche pas d'événements personnalisés.
 
 - `default` : Contenu additionnel à afficher à l'intérieur de l'encadré. Ce slot est intégré dans la structure principale du composant et s'affiche sous le texte principal.
 
+## 📝 Exemples
+
 ::: code-group
 
-<Story data-title="Démo" min-h="200px">
+<Story data-title="Démo" min-h="420px">
   <DsfrCalloutDemo />
 </Story>
 
 <<< docs-demo/DsfrCalloutDemo.vue [Code de la démo]
+:::
+
+## ⚙️ Code source du composant
+
+::: code-group
 
 <<< DsfrCallout.vue
+<<< DsfrCallout.types.ts
 
 :::
 
 <script setup lang="ts">
 import DsfrCalloutDemo from './docs-demo/DsfrCalloutDemo.vue'
 </script>
-
-## ⚙️ Code source du composant

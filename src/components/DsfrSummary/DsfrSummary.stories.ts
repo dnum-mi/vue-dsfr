@@ -26,7 +26,6 @@ export const Sommaire = (args) => ({
   },
   template: `
     <DsfrSummary
-      :dark="dark"
       :title="title"
       :anchors="anchors"
     />
