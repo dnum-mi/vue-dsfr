@@ -48,13 +48,16 @@ export const useCollapsable = () => {
   }
 
   /**
-   * @see https://github.com/GouvernementFR/dsfr/blob/main/src/core/script/collapse/collapse.js#L25
+   * @see https://github.com/GouvernementFR/dsfr/blob/main/src/dsfr/core/script/collapse/collapse.js#L25
    * @param {boolean} expanded
+   * @param {boolean} focusFirstAnchor
    * @return void
    */
-  const onTransitionEnd = (expanded: boolean): void => {
+  const onTransitionEnd = (expanded: boolean, focusFirstAnchor: boolean = true): void => {
     collapsing.value = false
-    collapse.value?.querySelector('a')?.focus()
+    if (focusFirstAnchor) {
+      collapse.value?.querySelector('a')?.focus()
+    }
     if (collapse.value && expanded === false) {
       collapse.value.style.removeProperty('--collapse-max-height')
     }
