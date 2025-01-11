@@ -1,4 +1,4 @@
-# Highlight - `DsfrHighlight`
+# Mise en exergue - `DsfrHighlight`
 
 ## 🌟 Introduction
 

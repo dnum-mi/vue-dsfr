@@ -175,6 +175,20 @@ const composants = [
     link: '/composants/DsfrFileUpload.md',
   },
   {
+    text: 'DsfrFollow',
+    link: '/composants/DsfrFollow.md',
+    items: [
+      {
+        text: 'DsfrNewsLetter',
+        link: '/composants/DsfrNewsLetter.md',
+      },
+      {
+        text: 'DsfrSocialNetworks',
+        link: '/composants/DsfrSocialNetworks.md',
+      },
+    ],
+  },
+  {
     text: 'DsfrFooter',
     link: '/composants/DsfrFooter.md',
     items: [
@@ -229,6 +243,10 @@ const composants = [
     link: '/composants/DsfrLanguageSelector.md',
   },
   {
+    text: 'DsfrLogo',
+    link: '/composants/DsfrLogo.md',
+  },
+  {
     text: 'DsfrModal',
     link: '/composants/DsfrModal.md',
   },
@@ -247,6 +265,10 @@ const composants = [
   {
     text: 'DsfrPicture',
     link: '/composants/DsfrPicture.md',
+  },
+  {
+    text: 'DsfrQuote',
+    link: '/composants/DsfrQuote.md',
   },
   {
     text: 'DsfrRadioButton',
@@ -279,6 +301,22 @@ const composants = [
   {
     text: 'DsfrSelect',
     link: '/composants/DsfrSelect.md',
+  },
+  {
+    text: 'DsfrSkipLinks',
+    link: '/composants/DsfrSkipLinks.md',
+  },
+  {
+    text: 'DsfrShare',
+    link: '/composants/DsfrShare.md',
+  },
+  {
+    text: 'DsfrStepper',
+    link: '/composants/DsfrStepper.md',
+  },
+  {
+    text: 'DsfrSummary',
+    link: '/composants/DsfrSummary.md',
   },
   {
     text: 'DsfrTable',

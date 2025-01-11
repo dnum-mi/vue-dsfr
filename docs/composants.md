@@ -18,6 +18,10 @@ Le storybook est toujours disponible [ici](https://storybook.vue-ds.fr)
 - [DsfrBadge](./composants/DsfrBadge)
 - [DsfrTag](./composants/DsfrTag)
 
+## Barre de recherche
+
+- [DsfrSearchBar](./composants/DsfrSearchBar)
+
 ## Boutons et contrôles segmentés
 
 - [DsfrButton](./composants/DsfrButton)
@@ -30,15 +34,26 @@ Le storybook est toujours disponible [ici](https://storybook.vue-ds.fr)
 - [DsfrCard](./composants/DsfrCard)
 - [DsfrTile](./composants/DsfrTile)
 
+## Citation
+
+- [DsfrQuote](./composants/DsfrQuote)
+
 ## Consentement
 
 - [DsfrConsent](./composants/DsfrConsent)
 
-## En-tête de page
+## Étapier (indicateur d’étape)
+
+- [DsfrStepper](./composants/DsfrStepper)
+
+## En-tête, pied de page et logo
 
 - [DsfrHeader](./composants/DsfrHeader)
 - [DsfrHeaderMenuLink](./composants/DsfrHeaderMenuLink)
 - [DsfrLanguageSelector](./composants/DsfrLanguageSelector)
+- [DsfrFooter](./composants/DsfrFooter)
+- [DsfrFooterLink](./composants/DsfrFooterLink)
+- [DsfrLogo](./composants/DsfrLogo)
 
 ## Fil d’ariane
 
@@ -46,41 +61,79 @@ Le storybook est toujours disponible [ici](https://storybook.vue-ds.fr)
 
 ## Formulaire (éléments de)
 
+- [DsfrCheckbox](./composants/DsfrCheckbox)
+- [DsfrCheckboxSet](./composants/DsfrCheckboxSet)
+- [DsfrFieldset](./composants/DsfrFieldset)
 - [DsfrFileUpload](./composants/DsfrFileUpload)
 - [DsfrFileDownload](./composants/DsfrFileDownload)
 - [DsfrInput](./composants/DsfrInput)
+- [DsfrInputGroup](./composants/DsfrInputGroup)
 - [DsfrRadioButton](./composants/DsfrRadioButton)
 - [DsfrRadioButtonSet](./composants/DsfrRadioButtonSet)
-- [DsfrCheckbox](./composants/DsfrCheckbox)
-- [DsfrCheckboxSet](./composants/DsfrCheckboxSet)
-- [DsfrInputGroup](./composants/DsfrInputGroup)
 - [DsfrRange](./composants/DsfrRange)
-- [DsfrFieldset](./composants/DsfrFieldset)
+- [DsfrToggleSwitch](./composants/DsfrToggleSwitch)
+
+## Icône
+
+- [VIcon](./composants/VIcon)
+
+## Image et vidéos
+
+- [DsfrPicture](./composants/DsfrPicture)
+- [DsfrVideo](./composants/DsfrVideo)
+- [DsfrTranscription](./composants/DsfrTranscription)
 
 ## Infobulle (Information contextuelle)
 
 - [DsfrTooltip](./composants/DsfrTooltip)
 
+## Liens d’évitement
+
+- [DsfrSkipLinks](./composants/DsfrSkipLinks)
+
+## Mise en avant et mise en exergue
+
+- [DsfrCallout](./composants/DsfrCallout)
+- [DsfrHighlight](./composants/DsfrHighlight)
+
 ## Modale
 
 - [DsfrModal](./composants/DsfrModal)
+
+## Notice
+
+- [DsfrNotice](./composants/DsfrNotice)
 
 ## Onglets
 
 - [DsfrTabs](./composants/DsfrTabs)
 
+## Partage et réseaux sociaux
+
+- [DsfrFollow](./composants/DsfrFollow)
+- [DsfrNewsLetter](./composants/DsfrNewsLetter)
+- [DsfrSocialNetworks](./composants/DsfrSocialNetworks)
+- [DsfrShare](./composants/DsfrShare)
+
+## Pagination
+
+- [DsfrPagination](./composants/DsfrPagination)
+
 ## Pages d’erreurs
 
 - [DsfrErrorPage](./composants/DsfrErrorPage)
 
-## Pied de page
-
-- [DsfrFooter](./composants/DsfrFooter)
-- [DsfrFooterLink](./composants/DsfrFooterLink)
-
 ## Retour en haut de page
 
 - [DsfrBackToTop](./composants/DsfrBackToTop)
+
+## Sommaire
+
+- [DsfrSummary](./composants/DsfrSummary)
+
+## Sélecteur de langage
+
+- [DsfrLanguageSelector](./composants/DsfrLanguageSelector)
 
 ## Tableau
 

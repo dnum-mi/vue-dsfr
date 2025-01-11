@@ -97,7 +97,7 @@ import { VIcon } from '@gouvminint/vue-dsfr'
 Si vous développez des applications destinées à des agents internes avec potentiellement des accès internet réduits, il
 est possible que les appels vers l’API iconify soient bloqués. Vous voudrez donc éviter ces appels réseaux.
 
-Dans ce but, depuis la version [7.3.0](https://github.com/dnum-mi/vue-dsfr/releases/tag/v7.3.0), la dépendance `@iconify/vue`
+Dans ce but, depuis la version [8.0.0](https://github.com/dnum-mi/vue-dsfr/releases/tag/v8.0.0), la dépendance `@iconify/vue`
 n’est plus incluse dans la bibliothèque, et doit être installée dans votre application.
 
 Avec cette modification, il est possible d’ajouter des collections d’icônes qui ne feront pas d’appels réseaux.
