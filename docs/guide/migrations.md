@@ -2,7 +2,7 @@
 
 ## Migration vers 8.x (depuis 7.x)
 
-Avant la v8, certaines fonctions qui ne devaient pas être dans le bundel final l’étaient : `vueDsfrComponentResolver` et `vueDsfrAutoimportPreset`.
+Avant la v8, certaines fonctions qui ne devaient pas être dans le bundle final l’étaient : `vueDsfrComponentResolver` et `vueDsfrAutoimportPreset`.
 
 Ils sont désormais dans un export à part, ce qui allège le bundle de la bibliothèque, et sépare bien la bibliothèque des fonctions méta.
 
