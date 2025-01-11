@@ -175,6 +175,20 @@ const composants = [
     link: '/composants/DsfrFileUpload.md',
   },
   {
+    text: 'DsfrFollow',
+    link: '/composants/DsfrFollow.md',
+    items: [
+      {
+        text: 'DsfrNewsLetter',
+        link: '/composants/DsfrNewsLetter.md',
+      },
+      {
+        text: 'DsfrSocialNetworks',
+        link: '/composants/DsfrSocialNetworks.md',
+      },
+    ],
+  },
+  {
     text: 'DsfrFooter',
     link: '/composants/DsfrFooter.md',
     items: [
