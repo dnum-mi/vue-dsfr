@@ -41,7 +41,7 @@ onMounted(() => {
 
 watch(isActive, (newValue, oldValue) => {
   /*
-  * @see https://github.com/GouvernementFR/dsfr/blob/main/src/core/script/collapse/collapse.js
+  * @see https://github.com/GouvernementFR/dsfr/blob/main/src/dsfr/core/script/collapse/collapse.js
   */
   if (newValue !== oldValue) {
     doExpand(newValue)
@@ -76,7 +76,7 @@ watch(isActive, (newValue, oldValue) => {
         'fr-collapse--expanded': cssExpanded, // Need to use a separate data to add/remove the class after a RAF
         'fr-collapsing': collapsing,
       }"
-      @transitionend="onTransitionEnd(isActive)"
+      @transitionend="onTransitionEnd(isActive, false)"
     >
       <!-- @slot Slot par défaut pour le contenu de l’accordéon: sera dans `<div class="fr-collapse">` -->
       <slot />

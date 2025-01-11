@@ -32,11 +32,11 @@ export const useCollapsable = () => {
     }
     if (newValue === true) {
       // unbound
-      // @see https://github.com/GouvernementFR/dsfr/blob/main/src/core/script/collapse/collapse.js#L33
+      // @see https://github.com/GouvernementFR/dsfr/blob/main/src/dsfr/core/script/collapse/collapse.js
       collapse.value.style.setProperty('--collapse-max-height', 'none')
     }
     // We need to wait for the next RAF to be sure the CSS variable will be set
-    // DSFR use RAF too https://github.com/GouvernementFR/dsfr/blob/main/src/core/script/api/modules/render/renderer.js#L22
+    // DSFR use RAF too https://github.com/GouvernementFR/dsfr/blob/main/src/dsfr/core/script/api/modules/render/renderer.js#L22
     window.requestAnimationFrame(() => {
       collapsing.value = true
       adjust()
@@ -48,13 +48,16 @@ export const useCollapsable = () => {
   }
 
   /**
-   * @see https://github.com/GouvernementFR/dsfr/blob/main/src/core/script/collapse/collapse.js#L25
+   * @see https://github.com/GouvernementFR/dsfr/blob/main/src/dsfr/core/script/collapse/collapse.js#L25
    * @param {boolean} expanded
+   * @param {boolean} focusFirstAnchor
    * @return void
    */
-  const onTransitionEnd = (expanded: boolean): void => {
+  const onTransitionEnd = (expanded: boolean, autoFocus = true): void => {
     collapsing.value = false
-    collapse.value?.querySelector('a')?.focus()
+    if (autoFocus) {
+      collapse.value?.querySelector('a')?.focus()
+    }
     if (collapse.value && expanded === false) {
       collapse.value.style.removeProperty('--collapse-max-height')
     }

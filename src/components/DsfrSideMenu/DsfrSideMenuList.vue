@@ -56,7 +56,7 @@ const linkProps = (to: string | RouteLocationRaw | undefined) => {
       'fr-collapsing': collapsing,
       'fr-collapse--expanded': cssExpanded,
     }"
-    @transitionend="onTransitionEnd(!!expanded)"
+    @transitionend="onTransitionEnd(!!expanded, focusOnExpanding)"
   >
     <ul
       class="fr-sidemenu__list"

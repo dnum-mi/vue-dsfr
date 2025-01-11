@@ -18,6 +18,7 @@ withDefaults(defineProps<DsfrSideMenuProps>(), {
   menuItems: () => undefined,
   headingTitle: '',
   titleTag: 'h3',
+  focusOnExpanding: true,
 })
 
 defineEmits<{ (e: 'toggleExpand', payload: string): void }>()
@@ -64,7 +65,7 @@ watch(expanded, (newValue, oldValue) => {
           'fr-collapse--expanded': cssExpanded, // Need to use a separate data to add/remove the class after a RAF
           'fr-collapsing': collapsing,
         }"
-        @transitionend="onTransitionEnd(expanded)"
+        @transitionend="onTransitionEnd(expanded, focusOnExpanding)"
       >
         <component
           :is="titleTag"
