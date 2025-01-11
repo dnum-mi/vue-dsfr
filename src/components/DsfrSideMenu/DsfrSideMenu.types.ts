@@ -10,6 +10,7 @@ export type DsfrSideMenuProps = {
   menuItems?: DsfrSideMenuListItemProps[]
   headingTitle?: string
   titleTag?: string
+  focusOnExpanding?: boolean
 }
 
 export type DsfrSideMenuButtonProps = {
@@ -26,4 +27,5 @@ export type DsfrSideMenuListProps = {
     DsfrSideMenuListItemProps & Partial<DsfrSideMenuListProps & { to?: RouteLocationRaw, text?: string }>
     & { menuItems?: (DsfrSideMenuListItemProps & Partial<DsfrSideMenuListProps & { to?: RouteLocationRaw, text?: string }>)[] }
   )[]
+  focusOnExpanding?: boolean
 }
