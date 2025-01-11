@@ -267,6 +267,10 @@ const composants = [
     link: '/composants/DsfrPicture.md',
   },
   {
+    text: 'DsfrQuote',
+    link: '/composants/DsfrQuote.md',
+  },
+  {
     text: 'DsfrRadioButton',
     link: '/composants/DsfrRadioButton.md',
     items: [
@@ -297,6 +301,22 @@ const composants = [
   {
     text: 'DsfrSelect',
     link: '/composants/DsfrSelect.md',
+  },
+  {
+    text: 'DsfrSkipLinks',
+    link: '/composants/DsfrSkipLinks.md',
+  },
+  {
+    text: 'DsfrShare',
+    link: '/composants/DsfrShare.md',
+  },
+  {
+    text: 'DsfrStepper',
+    link: '/composants/DsfrStepper.md',
+  },
+  {
+    text: 'DsfrSummary',
+    link: '/composants/DsfrSummary.md',
   },
   {
     text: 'DsfrTable',
