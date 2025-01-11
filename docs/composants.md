@@ -34,24 +34,11 @@ Le storybook est toujours disponible [ici](https://storybook.vue-ds.fr)
 
 - [DsfrConsent](./composants/DsfrConsent)
 
-## Infobulle (Information contextuelle)
-
-- [DsfrTooltip](./composants/DsfrTooltip)
-
 ## En-tête de page
 
 - [DsfrHeader](./composants/DsfrHeader)
 - [DsfrHeaderMenuLink](./composants/DsfrHeaderMenuLink)
 - [DsfrLanguageSelector](./composants/DsfrLanguageSelector)
-
-## Modale
-
-- [DsfrModal](./composants/DsfrModal)
-
-## Pied de page
-
-- [DsfrFooter](./composants/DsfrFooter)
-- [DsfrFooterLink](./composants/DsfrFooterLink)
 
 ## Fil d’ariane
 
@@ -70,6 +57,14 @@ Le storybook est toujours disponible [ici](https://storybook.vue-ds.fr)
 - [DsfrRange](./composants/DsfrRange)
 - [DsfrFieldset](./composants/DsfrFieldset)
 
+## Infobulle (Information contextuelle)
+
+- [DsfrTooltip](./composants/DsfrTooltip)
+
+## Modale
+
+- [DsfrModal](./composants/DsfrModal)
+
 ## Onglets
 
 - [DsfrTabs](./composants/DsfrTabs)
@@ -78,11 +73,22 @@ Le storybook est toujours disponible [ici](https://storybook.vue-ds.fr)
 
 - [DsfrErrorPage](./composants/DsfrErrorPage)
 
+## Pied de page
+
+- [DsfrFooter](./composants/DsfrFooter)
+- [DsfrFooterLink](./composants/DsfrFooterLink)
+
 ## Retour en haut de page
 
 - [DsfrBackToTop](./composants/DsfrBackToTop)
 
 ## Tableau
+
+Conseillé pour des tableaux complexes :
+
+- [DsfrDataTable](./composants/DsfrDataTable)
+
+Conseillé pour des tableaux simples :
 
 - [DsfrTable](./composants/DsfrTable)
 - [DsfrTableHeader](./composants/DsfrTableHeader)
