@@ -41,7 +41,7 @@ onMounted(() => {
 
 watch(isActive, (newValue, oldValue) => {
   /*
-  * @see https://github.com/GouvernementFR/dsfr/blob/main/src/core/script/collapse/collapse.js
+  * @see https://github.com/GouvernementFR/dsfr/blob/main/src/dsfr/core/script/collapse/collapse.js
   */
   if (newValue !== oldValue) {
     doExpand(newValue)
