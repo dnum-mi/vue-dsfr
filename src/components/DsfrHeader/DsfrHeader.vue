@@ -193,11 +193,13 @@ provide(registerNavigationLinkKey, () => {
               v-if="quickLinks?.length || languageSelector"
               class="fr-header__tools-links"
             >
+              <slot name="before-quick-links" />
               <DsfrHeaderMenuLinks
                 v-if="!menuOpened"
                 :links="quickLinks"
                 :nav-aria-label="quickLinksAriaLabel"
               />
+              <slot name="after-quick-links" />
               <template v-if="languageSelector">
                 <DsfrLanguageSelector
                   v-bind="languageSelector"
@@ -247,6 +249,7 @@ provide(registerNavigationLinkKey, () => {
                   @select="languageSelector.currentLanguage = $event.codeIso"
                 />
               </template>
+              <slot name="before-quick-links" />
               <DsfrHeaderMenuLinks
                 v-if="menuOpened"
                 role="navigation"
@@ -254,6 +257,7 @@ provide(registerNavigationLinkKey, () => {
                 :nav-aria-label="quickLinksAriaLabel"
                 @link-click="onQuickLinkClick"
               />
+              <slot name="after-quick-links" />
             </div>
 
             <template v-if="modalOpened">
