@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { computed } from 'vue'
 
-import { getRandomId } from '../../utils/random-utils'
+import { useRandomId } from '../../utils/random-utils'
 
 import type { DsfrCheckboxProps } from './DsfrCheckbox.types'
 
@@ -12,7 +12,7 @@ defineOptions({
 })
 
 const props = withDefaults(defineProps<DsfrCheckboxProps>(), {
-  id: () => getRandomId('basic', 'checkbox'),
+  id: () => useRandomId('basic', 'checkbox'),
   hint: '',
   errorMessage: '',
   validMessage: '',

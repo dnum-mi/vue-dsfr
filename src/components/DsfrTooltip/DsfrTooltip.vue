@@ -1,14 +1,14 @@
 <script setup lang="ts">
 import { computed, onMounted, onUnmounted, ref, watch } from 'vue'
 
-import { getRandomId } from '../../utils/random-utils'
+import { useRandomId } from '../../utils/random-utils'
 
 import type { DsfrTooltipProps } from './DsfrTooltip.types'
 
 export type { DsfrTooltipProps }
 
 const props = withDefaults(defineProps<DsfrTooltipProps>(), {
-  id: () => getRandomId('tooltip'),
+  id: () => useRandomId('tooltip'),
 })
 
 const show = ref(false)

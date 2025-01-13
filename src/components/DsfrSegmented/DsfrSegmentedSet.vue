@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { getRandomId } from '../../utils/random-utils'
+import { useRandomId } from '../../utils/random-utils'
 
 import DsfrSegmented from './DsfrSegmented.vue'
 import type { DsfrSegmentedSetProps } from './DsfrSegmented.types'
@@ -7,9 +7,9 @@ import type { DsfrSegmentedSetProps } from './DsfrSegmented.types'
 export type { DsfrSegmentedSetProps }
 
 const props = withDefaults(defineProps<DsfrSegmentedSetProps>(), {
-  titleId: () => getRandomId('segmented-button', 'set'),
+  titleId: () => useRandomId('segmented-button', 'set'),
   legend: '',
-  name: () => getRandomId('segmented-button', 'set'),
+  name: () => useRandomId('segmented-button', 'set'),
   options: () => [],
 })
 

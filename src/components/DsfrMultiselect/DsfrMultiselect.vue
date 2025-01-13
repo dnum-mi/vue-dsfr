@@ -9,7 +9,7 @@ import DsfrInput from '../DsfrInput/DsfrInput.vue'
 
 import type { DsfrMultiSelectProps, DsfrMultiSelectSlots } from './DsfrMultiselect.types'
 
-import { getRandomId } from '@/utils/random-utils'
+import { useRandomId } from '@/utils/random-utils'
 
 const props = withDefaults(
   defineProps<DsfrMultiSelectProps<T>>(),
@@ -18,7 +18,7 @@ const props = withDefaults(
     labelClass: '',
     hint: '',
     legend: '',
-    id: () => getRandomId('multiselect'),
+    id: () => useRandomId('multiselect'),
     buttonLabel: '',
     selectAll: false,
     errorMessage: '',

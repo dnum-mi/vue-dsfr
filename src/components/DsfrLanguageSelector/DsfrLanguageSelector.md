@@ -26,7 +26,7 @@ Ce composant est utilisé en interne dans [DsfrHeader](/composants/DsfrHeader) (
 
 | Propriété          | Type                          | Description                                                   | Valeur par défaut         |
 |--------------------|-------------------------------|---------------------------------------------------------------|---------------------------|
-| `id`               | `string`                      | Identifiant unique pour les éléments de contrôle d'accessibilité. | `getRandomId('language-selector')` |
+| `id`               | `string`                      | Identifiant unique pour les éléments de contrôle d'accessibilité. | `useRandomId('language-selector')` |
 | `languages`        | [`DsfrLanguageSelectorElement[]`](/types#dsfrlanguageselector) | Liste des langues disponibles. Chaque langue est représentée par un objet contenant un `codeIso` et un `label`. | `[]`                      |
 | `currentLanguage`  | `string`                      | Code ISO de la langue actuellement sélectionnée.              | `'fr'`                    |
 

@@ -2,7 +2,7 @@
 import { computed, ref, useAttrs } from 'vue'
 import type { Ref } from 'vue'
 
-import { getRandomId } from '../../utils/random-utils'
+import { useRandomId } from '../../utils/random-utils'
 
 import type { DsfrInputProps } from './DsfrInput.types'
 
@@ -13,7 +13,7 @@ defineOptions({
 })
 
 const props = withDefaults(defineProps<DsfrInputProps>(), {
-  id: () => getRandomId('basic', 'input'),
+  id: () => useRandomId('basic', 'input'),
   descriptionId: undefined,
   hint: '',
   label: '',
