@@ -25,7 +25,7 @@ La liste déroulante fournit une liste d’option parmi lesquelles l’utilisate
 | `successMessage`         | `string`                                                                                    | `''`                        |             | Message de validation à afficher en dessous du select.           |
 | `errorMessage`           | `string`                                                                                    | `''`                        |             | Message d'erreur à afficher en dessous du select.                |
 | `defaultUnselectedText`  | `string`                                                                                    | `'Sélectionner une option'` |             | Si `true`, l'infobulle s'affiche au survol.                      |
-| `selectId`               | `string`                                                                                    | `getRandomId('select')`     |             | Identifiant unique pour le select. Utilisé pour l'accessibilité. |
+| `selectId`               | `string`                                                                                    | `useRandomId('select')`     |             | Identifiant unique pour le select. Utilisé pour l'accessibilité. |
 
 ## 📡 Évenements
 

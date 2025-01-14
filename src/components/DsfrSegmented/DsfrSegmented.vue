@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { computed } from 'vue'
 
-import { getRandomId } from '../../utils/random-utils'
+import { useRandomId } from '../../utils/random-utils'
 import VIcon from '../VIcon/VIcon.vue'
 
 import type { DsfrSegmentedProps } from './DsfrSegmented.types'
@@ -9,7 +9,7 @@ import type { DsfrSegmentedProps } from './DsfrSegmented.types'
 export type { DsfrSegmentedProps }
 
 const props = withDefaults(defineProps<DsfrSegmentedProps>(), {
-  id: () => getRandomId('segmented'),
+  id: () => useRandomId('segmented'),
   hint: '',
   icon: undefined,
   label: '',

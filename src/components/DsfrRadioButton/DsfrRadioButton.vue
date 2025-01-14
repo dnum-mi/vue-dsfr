@@ -1,14 +1,14 @@
 <script lang="ts" setup>
 import { computed } from 'vue'
 
-import { getRandomId } from '../../utils/random-utils'
+import { useRandomId } from '../../utils/random-utils'
 
 import type { DsfrRadioButtonProps } from './DsfrRadioButton.types'
 
 export type { DsfrRadioButtonProps }
 
 const props = withDefaults(defineProps<DsfrRadioButtonProps>(), {
-  id: () => getRandomId('basic', 'radio'),
+  id: () => useRandomId('basic', 'radio'),
   modelValue: '',
   label: '',
   hint: '',
