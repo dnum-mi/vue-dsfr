@@ -2,7 +2,7 @@
 import { computed, onMounted, watch } from 'vue'
 
 import { useCollapsable } from '../../composables'
-import { getRandomId } from '../../utils/random-utils'
+import { useRandomId } from '../../utils/random-utils'
 
 import DsfrNavigationMegaMenuCategory from './DsfrNavigationMegaMenuCategory.vue'
 import type { DsfrNavigationMegaMenuProps } from './DsfrNavigation.types'
@@ -10,7 +10,7 @@ import type { DsfrNavigationMegaMenuProps } from './DsfrNavigation.types'
 export type { DsfrNavigationMegaMenuProps }
 
 const props = withDefaults(defineProps<DsfrNavigationMegaMenuProps>(), {
-  id: () => getRandomId('mega-menu'),
+  id: () => useRandomId('mega-menu'),
   description: '',
   link: () => ({ to: '#', text: 'Voir toute la rubrique' }),
   menus: () => [],

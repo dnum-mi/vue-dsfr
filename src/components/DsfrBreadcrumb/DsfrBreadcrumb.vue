@@ -2,14 +2,14 @@
 import { ref, watch } from 'vue'
 
 import { useCollapsable } from '../../composables'
-import { getRandomId } from '../../utils/random-utils'
+import { useRandomId } from '../../utils/random-utils'
 
 import type { DsfrBreadcrumbProps } from './DsfrBreadcrumb.types'
 
 export type { DsfrBreadcrumbProps }
 
 withDefaults(defineProps<DsfrBreadcrumbProps>(), {
-  breadcrumbId: () => getRandomId('breadcrumb'),
+  breadcrumbId: () => useRandomId('breadcrumb'),
   links: () => [{ text: '' }],
   navigationLabel: 'vous êtes ici :',
   showBreadcrumbLabel: 'Voir le fil d’Ariane',

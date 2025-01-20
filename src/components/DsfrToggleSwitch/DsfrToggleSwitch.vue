@@ -1,14 +1,14 @@
 <script lang="ts" setup>
 import { computed } from 'vue'
 
-import { getRandomId } from '../../utils/random-utils'
+import { useRandomId } from '../../utils/random-utils'
 
 import type { DsfrToggleSwitchProps } from './DsfrToggleSwitch.types'
 
 export type { DsfrToggleSwitchProps }
 
 const props = withDefaults(defineProps<DsfrToggleSwitchProps>(), {
-  inputId: () => getRandomId('toggle'),
+  inputId: () => useRandomId('toggle'),
   hint: '',
   label: '',
   labelLeft: false,

@@ -19,7 +19,7 @@ La barre de recherche se compose des éléments suivants :
 
 | Nom         | Type     | Défaut            | Obligatoire | Description                                                             |
 |-------------|----------|-------------------|-------------|-------------------------------------------------------------------------|
-| `id`        | `Function`| `() => getRandomId('search', 'input')`| | Identifiant unique pour la barre de recherche.                          |
+| `id`        | `Function`| `() => useRandomId('search', 'input')`| | Identifiant unique pour la barre de recherche.                          |
 | `label`     | `String` | `''`              |             | Libellé de la barre de recherche.                                       |
 | `buttonText`| `String` | `''`              |             | Texte du bouton de recherche.                                           |
 | `modelValue`| `String` | `''`              |             | Valeur liée à la barre de recherche.                                    |

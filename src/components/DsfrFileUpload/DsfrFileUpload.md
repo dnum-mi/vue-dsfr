@@ -12,7 +12,7 @@ Bienvenue dans la documentation du composant `DsfrFileUpload`. Ce composant est 
 
 | Nom            | Type        | Défaut                  | Obligatoire   | Description                                                    |
 |----------------|-------------|-------------------------|---------------|----------------------------------------------------------------|
-| `id`           | `Function`  | `() => getRandomId(...)`|               | Identifiant unique pour le composant de téléchargement de fichier. Si non spécifié, un ID aléatoire est généré.    |
+| `id`           | `Function`  | `() => useRandomId(...)`|               | Identifiant unique pour le composant de téléchargement de fichier. Si non spécifié, un ID aléatoire est généré.    |
 | `label`        | `string`    | `'Ajouter un fichier'`  |               | Libellé pour le bouton de téléchargement de fichier.          |
 | `accept`       | `string \| string[]`  | `undefined`   |               | Types de fichiers acceptés, spécifiés sous forme de chaîne de caractères (comme l’attribut `accept` de HTML) ou d'un tableau de chaînes de caractères (qui sera transformé en chaîne).   |
 | `hint`         | `string`    | `''`                    |               | Texte d'indice pour guider l'utilisateur.                    |

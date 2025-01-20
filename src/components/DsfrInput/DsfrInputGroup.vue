@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { getRandomId } from '../../utils/random-utils'
+import { useRandomId } from '../../utils/random-utils'
 
 import DsfrInput from './DsfrInput.vue'
 import type { DsfrInputGroupProps } from './DsfrInput.types'
@@ -11,7 +11,7 @@ defineOptions({
 })
 
 withDefaults(defineProps<DsfrInputGroupProps>(), {
-  descriptionId: () => getRandomId('input', 'group'),
+  descriptionId: () => useRandomId('input', 'group'),
   hint: '',
   label: '',
   labelClass: '',

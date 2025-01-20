@@ -4,7 +4,7 @@ import { computed } from 'vue'
 import DsfrPagination from '../DsfrPagination/DsfrPagination.vue'
 import VIcon from '../VIcon/VIcon.vue'
 
-import { getRandomId } from '@/utils/random-utils'
+import { useRandomId } from '@/utils/random-utils'
 
 export type Page = { href?: string, label: string, title: string }
 
@@ -39,7 +39,7 @@ export type DsfrDataTableProps = {
 }
 
 const props = withDefaults(defineProps<DsfrDataTableProps>(), {
-  id: () => getRandomId('table'),
+  id: () => useRandomId('table'),
   topActionsRow: () => [],
   bottomActionsRow: () => [],
   currentPage: 0,

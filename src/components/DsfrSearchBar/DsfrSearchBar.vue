@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { getRandomId } from '../../utils/random-utils'
+import { useRandomId } from '../../utils/random-utils'
 import DsfrButton from '../DsfrButton/DsfrButton.vue'
 import DsfrInput from '../DsfrInput/DsfrInput.vue'
 
@@ -8,7 +8,7 @@ import type { DsfrSearchBarProps } from './DsfrSearchBar.types'
 export type { DsfrSearchBarProps }
 
 withDefaults(defineProps<DsfrSearchBarProps>(), {
-  id: () => getRandomId('search', 'input'),
+  id: () => useRandomId('search', 'input'),
   label: '',
   buttonText: '',
   modelValue: '',

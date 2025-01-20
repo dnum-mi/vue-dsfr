@@ -7,12 +7,12 @@ import VIcon from '../VIcon/VIcon.vue'
 
 import type { DsfrModalProps } from './DsfrModal.types'
 
-import { getRandomId } from '@/utils/random-utils'
+import { useRandomId } from '@/utils/random-utils'
 
 export type { DsfrModalProps }
 
 const props = withDefaults(defineProps<DsfrModalProps>(), {
-  modalId: () => getRandomId('modal', 'dialog'),
+  modalId: () => useRandomId('modal', 'dialog'),
   actions: () => [],
   origin: () => ({ focus () {} }),
   icon: undefined,

@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { computed, onMounted, onUnmounted, provide, reactive, ref, type Ref, watch } from 'vue'
 
-import { getRandomId } from '../../utils/random-utils'
+import { useRandomId } from '../../utils/random-utils'
 
 import DsfrTabContent from './DsfrTabContent.vue'
 import DsfrTabItem from './DsfrTabItem.vue'
@@ -62,7 +62,7 @@ const getIdFromIndex = (idx: number) => {
   if (generatedIds[idx]) {
     return generatedIds[idx]
   }
-  const id = getRandomId('tab')
+  const id = useRandomId('tab')
   generatedIds[idx] = id
   return id
 }

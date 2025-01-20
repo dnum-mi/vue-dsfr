@@ -5,7 +5,7 @@ import DsfrTableHeaders from './DsfrTableHeaders.vue'
 import DsfrTableRow, { type DsfrTableRowProps } from './DsfrTableRow.vue'
 import type { DsfrTableProps } from './DsfrTable.types'
 
-import { getRandomId } from '@/utils/random-utils'
+import { useRandomId } from '@/utils/random-utils'
 
 export type { DsfrTableProps }
 
@@ -25,7 +25,7 @@ const getRowData = (row: DsfrTableProps['rows']) => {
 }
 
 const currentPage = ref(props.currentPage)
-const selectId = getRandomId('resultPerPage')
+const selectId = useRandomId('resultPerPage')
 const optionSelected = ref(props.resultsDisplayed)
 const pageCount = computed(() =>
   props.rows.length > optionSelected.value

@@ -2,7 +2,7 @@
 import { computed, onMounted, watch } from 'vue'
 
 import { useCollapsable } from '../../composables'
-import { getRandomId } from '../../utils/random-utils'
+import { useRandomId } from '../../utils/random-utils'
 
 import DsfrNavigationMenuItem from './DsfrNavigationMenuItem.vue'
 import DsfrNavigationMenuLink from './DsfrNavigationMenuLink.vue'
@@ -11,7 +11,7 @@ import type { DsfrNavigationMenuProps } from './DsfrNavigation.types'
 export type { DsfrNavigationMenuProps }
 
 const props = withDefaults(defineProps<DsfrNavigationMenuProps>(), {
-  id: () => getRandomId('menu'),
+  id: () => useRandomId('menu'),
   links: () => [],
   expandedId: '',
 })

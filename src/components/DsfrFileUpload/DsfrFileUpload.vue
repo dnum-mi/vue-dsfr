@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { computed } from 'vue'
 
-import { getRandomId } from '../../utils/random-utils'
+import { useRandomId } from '../../utils/random-utils'
 
 import type { DsfrFileUploadProps } from './DsfrFileUpload.types'
 
@@ -12,7 +12,7 @@ defineOptions({
 })
 
 const props = withDefaults(defineProps<DsfrFileUploadProps>(), {
-  id: () => getRandomId('file-upload'),
+  id: () => useRandomId('file-upload'),
   label: 'Ajouter un fichier',
   accept: undefined,
   hint: '',

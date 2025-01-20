@@ -10,7 +10,7 @@ Ce composant est très utile si vous souhaitez afficher un message d’erreur ou
 
 | Nom             | Type        | Défaut                  | Obligatoire   | Description                                                   |
 |-----------------|-------------|-------------------------|---------------|---------------------------------------------------------------|
-| `descriptionId` | `Function`           | `() => getRandomId(...)`|               | ID unique pour la description du groupe, généré automatiquement si non spécifié. |
+| `descriptionId` | `Function`           | `() => useRandomId(...)`|               | ID unique pour la description du groupe, généré automatiquement si non spécifié. |
 | `hint`          | `string`             | `''`                    |               | Texte d'indice pour guider l'utilisateur dans le groupe de champs. |
 | `label`         | `string`             | `''`                    |               | Le libellé associé au groupe de champs.                       |
 | `labelClass`    | `string`             | `''`                    |               | Classe CSS personnalisée pour le style du libellé.            |

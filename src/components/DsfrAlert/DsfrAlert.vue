@@ -3,12 +3,12 @@ import { computed } from 'vue'
 
 import type { DsfrAlertProps } from './DsfrAlert.types.js'
 
-import { getRandomId } from '@/utils/random-utils'
+import { useRandomId } from '@/utils/random-utils'
 
 export type { DsfrAlertProps, DsfrAlertType } from './DsfrAlert.types.js'
 
 const props = withDefaults(defineProps<DsfrAlertProps>(), {
-  id: () => getRandomId('basic', 'alert'),
+  id: () => useRandomId('basic', 'alert'),
   title: '',
   titleTag: 'h3',
   type: 'info',

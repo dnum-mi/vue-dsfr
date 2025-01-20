@@ -12,15 +12,21 @@ const execPromise = util.promisify(childProcess.exec)
  * Filtre les icônes d'une collection en fonction d'une liste de noms.
  * @function
  *
- * @param {string} sourcePath - Fichier source
- * @param {string} targetPath - Fichier destination
+ * @param {string} sourcePath - Chemin vers le fichier source
+ * @param {string} targetPath - Chemin vers le fichier destination
+ *
+ * @returns {Promise<{ status: 'COULD_NOT_GET_COLLECTIONS_ERROR' | 'COULD_NOT_WRITE_FILE_ERROR' | 'COULD_NOT_LINT_FILE_ERROR', error: Error } | undefined>} Le résultat si une erreur est survenue, undefined sinon
  *
  */
 export async function createCustomCollectionFile (sourcePath, targetPath) {
-  /**
-   * @type {[import('@iconify/vue').IconifyJSON, string[]][]}
-   */
-  const collectionsToFilter = await import(sourcePath).then(({ collectionsToFilter }) => collectionsToFilter)
+  const [error, collectionsToFilter] = await getCollectionsToFilter(sourcePath)
+
+  if (error) {
+    return {
+      status: 'COULD_NOT_GET_COLLECTIONS_ERROR',
+      error,
+    }
+  }
 
   const collections = collectionsToFilter.map(tuple => filterIcons(...tuple))
 
@@ -28,14 +34,63 @@ export async function createCustomCollectionFile (sourcePath, targetPath) {
 const collections: IconifyJSON[] = ${JSON.stringify(collections)}
 export default collections`
 
-  await fs.writeFile(targetPath, code)
+  try {
+    await fs.writeFile(targetPath, code)
+  } catch (error) {
+    console.error(error)
+    if (error instanceof Error) {
+      return {
+        status: 'COULD_NOT_WRITE_FILE_ERROR',
+        error,
+      }
+    }
+    return {
+      status: 'COULD_NOT_WRITE_FILE_ERROR',
+      error: new Error(`Erreur inconnue : ${error}`),
+    }
+  }
 
-  await runShellCommand(`npx eslint ${path.resolve(process.cwd(), targetPath)} --fix`)
+  try {
+    await runShellCommand(`npx eslint ${path.resolve(process.cwd(), targetPath)} --fix`)
+  } catch (error) {
+    if (error instanceof Error) {
+      return {
+        status: 'COULD_NOT_LINT_FILE_ERROR',
+        error,
+      }
+    }
+    return {
+      status: 'COULD_NOT_LINT_FILE_ERROR',
+      error: new Error(`Erreur inconnue : ${error}`),
+    }
+  }
 }
 
 /**
  * Fonctions utilitaires
  */
+
+/**
+ * @function
+ *
+ * @param {string} sourcePath - Chemin vers le fichier source
+ *
+ * @returns {Promise<[Error] | [null, [import('@iconify/vue').IconifyJSON, string[]][]]>}
+ */
+async function getCollectionsToFilter (sourcePath) {
+  try {
+    /**
+     * @type {[import('@iconify/vue').IconifyJSON, string[]][]}
+     */
+    const collectionsToFilter = await import(sourcePath).then(({ collectionsToFilter }) => collectionsToFilter)
+    return [null, collectionsToFilter]
+  } catch (error) {
+    if (error instanceof Error) {
+      return [error]
+    }
+    return [new Error(`Erreur inconnue : ${error}`)]
+  }
+}
 
 /**
  * Filtre les icônes d'une collection en fonction d'une liste de noms.

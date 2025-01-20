@@ -8,7 +8,7 @@ Le composant `DsfrInput`, outil essentiel dans l'arsenal de tout développeur Vu
 
 | Nom             | Type          | Défaut                  | Obligatoire   | Description                                                                                                 |
 |-----------------|---------------|-------------------------|---------------|-------------------------------------------------------------------------------------------------------------|
-| `id`            | `Function`    | `() => getRandomId(...)`|               | Identifiant unique pour l'input. Si non spécifié, un ID aléatoire est généré.                               |
+| `id`            | `Function`    | `() => useRandomId(...)`|               | Identifiant unique pour l'input. Si non spécifié, un ID aléatoire est généré.                               |
 | `descriptionId` | `string`      | `undefined`             |               | ID pour la description associée à l'input. Utile pour l'accessibilité.                                      |
 | `hint`          | `string`      | `''`                    |               | Texte d'indice pour guider l'utilisateur.                                                                   |
 | `label`         | `string`      | `''`                    |               | Le libellé de l'input.                                                                                      |

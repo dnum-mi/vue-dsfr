@@ -20,7 +20,7 @@ Le `DsfrTranscription` peut afficher la transcription dans une section extensibl
 
 | Propriété | Type     | Description                                                | Valeur par défaut                   |
 |-----------|----------|------------------------------------------------------------|-------------------------------------|
-| `id`      | `string` | ID unique pour le composant, utilisé pour l'accessibilité. | `getRandomId('transcription')`      |
+| `id`      | `string` | ID unique pour le composant, utilisé pour l'accessibilité. | `useRandomId('transcription')`      |
 | `title`   | `string` | Titre de la transcription.                                  | `'Titre de la vidéo'`               |
 | `content` | `string` | Contenu de la transcription.                                | `'Transcription du contenu de la vidéo'` |
 

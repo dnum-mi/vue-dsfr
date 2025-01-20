@@ -2,7 +2,7 @@
 import { ref, watch } from 'vue'
 
 import { useCollapsable } from '../../composables'
-import { getRandomId } from '../../utils/random-utils'
+import { useRandomId } from '../../utils/random-utils'
 
 import DsfrSideMenuList from './DsfrSideMenuList.vue'
 import type { DsfrSideMenuProps } from './DsfrSideMenu.types'
@@ -11,8 +11,8 @@ export type { DsfrSideMenuProps }
 
 withDefaults(defineProps<DsfrSideMenuProps>(), {
   buttonLabel: 'Dans cette rubrique',
-  id: () => getRandomId('sidemenu'),
-  sideMenuListId: () => getRandomId('sidemenu', 'list'),
+  id: () => useRandomId('sidemenu'),
+  sideMenuListId: () => useRandomId('sidemenu', 'list'),
   collapseValue: '-492px',
   // @ts-expect-error this is really undefined
   menuItems: () => undefined,
