@@ -1,12 +1,12 @@
 <script lang="ts" setup>
-import { getRandomId } from '../../utils/random-utils'
+import { useRandomId } from '../../utils/random-utils'
 
 import type { DsfrNavigationMenuItemProps } from './DsfrNavigation.types'
 
 export type { DsfrNavigationMenuItemProps }
 
 withDefaults(defineProps<DsfrNavigationMenuItemProps>(), {
-  id: () => getRandomId('menu', 'item'),
+  id: () => useRandomId('menu', 'item'),
 })
 </script>
 

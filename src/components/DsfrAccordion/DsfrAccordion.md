@@ -26,7 +26,7 @@ Autres props :
 
 |  Nom                    |   Type                                    |  Défaut          | Obligatoire  |
 | ----------------------- | ----------------------------------------- | ---------------- | -------------|
-| `title`                 | *`string`*                                | `getRandomId('accordion')`                 | ✅           |
+| `title`                 | *`string`*                                | `useRandomId('accordion')`                 | ✅           |
 | `titleTag`              | [*`TitleTag`*](/docs/types.md#title-tag)  |    `'h3'`        |              |
 | `id`                    | *`string`*                                | *random string*  |              |
 

@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { computed } from 'vue'
 
-import { getRandomId } from '../../utils/random-utils'
+import { useRandomId } from '../../utils/random-utils'
 
 import type { DsfrSelectProps } from './DsfrSelect.types'
 
@@ -12,7 +12,7 @@ defineOptions({
 })
 
 const props = withDefaults(defineProps<DsfrSelectProps>(), {
-  selectId: () => getRandomId('select'),
+  selectId: () => useRandomId('select'),
   modelValue: undefined,
   options: () => [],
   label: '',

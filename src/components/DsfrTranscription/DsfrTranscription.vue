@@ -2,7 +2,7 @@
 import { computed, ref, watch } from 'vue'
 
 import { useCollapsable } from '../../composables'
-import { getRandomId } from '../../utils/random-utils'
+import { useRandomId } from '../../utils/random-utils'
 import DsfrModal from '../DsfrModal/DsfrModal.vue'
 
 import type { DsfrTranscriptionProps } from './DsfrTranscription.types'
@@ -10,7 +10,7 @@ import type { DsfrTranscriptionProps } from './DsfrTranscription.types'
 export type { DsfrTranscriptionProps }
 
 const props = withDefaults(defineProps<DsfrTranscriptionProps>(), {
-  id: () => getRandomId('transcription'),
+  id: () => useRandomId('transcription'),
   title: 'Titre de la vidéo',
   content: 'Transcription du contenu de la vidéo',
 })

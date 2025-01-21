@@ -23,7 +23,7 @@ Les curseurs sont des entrées numériques qui permettent de voir graphiquement 
 
 | Nom | Type | Défaut | Description |
 | --- | --- | --- | --- |
-| `id` | `string` | `getRandomId('range')` | Identifiant unique du curseur. Si non fourni, un id est généré aléatoirement. |
+| `id` | `string` | `useRandomId('range')` | Identifiant unique du curseur. Si non fourni, un id est généré aléatoirement. |
 | `min` | `number` | `0` | Valeur minimale du curseur. |
 | `max` | `number` | `100` | Valeur maximale du curseur. |
 | `modelValue` | `number` | `0` | Valeur actuelle du curseur. |

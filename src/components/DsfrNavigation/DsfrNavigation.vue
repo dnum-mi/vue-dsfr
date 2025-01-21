@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { onMounted, onUnmounted, ref } from 'vue'
 
-import { getRandomId } from '../../utils/random-utils'
+import { useRandomId } from '../../utils/random-utils'
 
 import DsfrNavigationItem from './DsfrNavigationItem.vue'
 import DsfrNavigationMegaMenu from './DsfrNavigationMegaMenu.vue'
@@ -18,7 +18,7 @@ import type {
 export type { DsfrNavigationMenuLinks, DsfrNavigationProps }
 
 const props = withDefaults(defineProps<DsfrNavigationProps>(), {
-  id: () => getRandomId('nav'),
+  id: () => useRandomId('nav'),
   label: 'Menu principal',
   navItems: () => [],
 })

@@ -2,14 +2,14 @@
 import { computed, ref, watch } from 'vue'
 
 import { useCollapsable } from '../../composables'
-import { getRandomId } from '../../utils/random-utils'
+import { useRandomId } from '../../utils/random-utils'
 
 import type { DsfrLanguageSelectorElement, DsfrLanguageSelectorProps } from './DsfrLanguageSelector.types'
 
 export type { DsfrLanguageSelectorElement, DsfrLanguageSelectorProps }
 
 const props = withDefaults(defineProps<DsfrLanguageSelectorProps>(), {
-  id: () => getRandomId('language-selector'),
+  id: () => useRandomId('language-selector'),
   languages: () => [],
   currentLanguage: 'fr',
 })

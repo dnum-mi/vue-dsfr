@@ -212,7 +212,7 @@ provide(registerNavigationLinkKey, () => {
               class="fr-header__search  fr-modal"
             >
               <DsfrSearchBar
-                :searchbar-id="searchbarId"
+                :id="searchbarId"
                 :label="searchLabel"
                 :model-value="modelValue"
                 :placeholder="placeholder"

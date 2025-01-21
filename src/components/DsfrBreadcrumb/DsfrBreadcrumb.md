@@ -22,7 +22,7 @@ Dans l’ordre, il se compose des éléments suivants :
 
 | Nom                 | Type   | Défaut                          | Description                                                                                                                                              |
 |---------------------|--------|---------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------|
-| breadcrumbId        | String | () => getRandomId('breadcrumb') | Identifiant unique pour le composant breadcrumb, généré automatiquement pour assurer l'accessibilité.                                                    |
+| breadcrumbId        | String | () => useRandomId('breadcrumb') | Identifiant unique pour le composant breadcrumb, généré automatiquement pour assurer l'accessibilité.                                                    |
 | links               | Array  | () => [{ text: '' }]            | Un tableau d'objets représentant les liens dans le fil d'Ariane. Chaque objet peut avoir une propriété 'text' et, optionnellement, 'to' pour les routes. |
 | navigationLabel     | String | `'vous êtes ici :'`             | Label affiché sur la balise `nav` du fil d’Ariane.                                                                                                       |
 | showBreadcrumbLabel | String | `'Voir le fil d’Ariane'`        | Label du bouton d'affichage du fil d’Ariane.                                                                                                             |
