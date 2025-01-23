@@ -15,6 +15,8 @@ export type DsfrCheckboxProps = {
   hint?: string
 }
 
+export type DsfrCheckboxSetOptions = (Omit<DsfrCheckboxProps, 'modelValue'> & InputHTMLAttributes)[]
+
 export type DsfrCheckboxSetProps = {
   titleId?: string
   disabled?: boolean
