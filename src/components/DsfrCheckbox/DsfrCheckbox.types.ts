@@ -24,7 +24,7 @@ export type DsfrCheckboxSetProps = {
   errorMessage?: string
   validMessage?: string
   legend?: string
-  options?: (DsfrCheckboxProps & InputHTMLAttributes)[]
+  options?: (Omit<DsfrCheckboxProps, 'modelValue'> & InputHTMLAttributes)[]
   modelValue?: Array<unknown>
   ariaInvalid?: boolean
 }
