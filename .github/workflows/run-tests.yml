@@ -35,9 +35,7 @@ jobs:
       - name: Test
         run: pnpm test
       - name: Install Playwright with dependencies
-        run: pnpx playwright install --with-deps
-      - name: Install Playwright
-        run: pnpx playwright install
+        run: pnpx playwright install --with-deps firefox
 
       - name: Build Storybook
         run: pnpm build-storybook --quiet
