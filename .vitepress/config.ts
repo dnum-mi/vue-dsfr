@@ -357,6 +357,12 @@ const composants = [
   {
     text: 'DsfrTag',
     link: '/composants/DsfrTag.md',
+    items: [
+      {
+        text: 'DsfrTags',
+        link: '/composants/DsfrTags.md',
+      },
+    ],
   },
   {
     text: 'DsfrTile',
