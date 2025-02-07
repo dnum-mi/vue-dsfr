@@ -167,18 +167,19 @@ const rows = [
           </DsfrTooltip>
         </template>
         <template v-else>
-          <DsfrTooltip
-            :content="`(${colKey})`"
-            on-hover
-          >
+          <div class="flex items-center">
             {{ cell }}
-          </DsfrTooltip>
+            <DsfrTooltip
+              :content="`(${colKey})`"
+              href="#"
+            />
+          </div>
         </template>
       </template>
     </DsfrDataTable>
   </div>
 
-  <div class="flex justify-between w-full relative">
+  <div class="flex justify-between items-center gap-2 w-full relative">
     <DsfrTooltip
       on-hover
       content="Texte de l’info-bulle qui apparaît au survol"
@@ -186,7 +187,8 @@ const rows = [
       Au survol
     </DsfrTooltip>
 
-    Et au clic avec une icône seulement :
+    <span>Et au clic avec une icône seulement :</span>
+
     <DsfrTooltip
       content="Texte de l’info-bulle qui apparaît au clic"
     />

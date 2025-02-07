@@ -73,7 +73,7 @@ Autres props :
 <<< docs-demo/DsfrAlertDemo.vue [Code de la démo]
 :::
 
-## ⚙️ Code source du composant
+## ⚙️ Code source du composant
 
 ::: code-group
 

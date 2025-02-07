@@ -1,9 +1,18 @@
 <script lang="ts" setup>
+import { ref } from 'vue'
+
 import DsfrTag from '@/components/DsfrTag/DsfrTag.vue'
+
+const loneTag = ref(false)
+
+const filters = ref(['individualTags', 'tagSets'])
 </script>
 
 <template>
-  <div class="flex  gap-2  fr-m-2v  flex-wrap">
+  <div
+    v-if="filters.includes('individualTags')"
+    class="flex  gap-2  fr-m-2v  flex-wrap"
+  >
     <DsfrTag
       label="Vue Power"
     />
@@ -43,6 +52,19 @@ import DsfrTag from '@/components/DsfrTag/DsfrTag.vue'
       title="Petite"
       small
       icon="ri-checkbox-circle-line"
+    />
+    <DsfrTag
+      label="Tag tout cliquable seul !"
+      selectable
+      :selected="loneTag"
+      @select="loneTag = !loneTag"
+    />
+    <DsfrTag
+      label="Tag cliquable tout seul mais désactivé !"
+      selectable
+      disabled
+      :selected="loneTag"
+      @select="loneTag = !loneTag"
     />
   </div>
 </template>

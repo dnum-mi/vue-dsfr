@@ -37,6 +37,8 @@ async function computePosition () {
   const sourceLeft = source.value?.getBoundingClientRect().left as number
   const tooltipHeight = tooltip.value?.offsetHeight as number
   const tooltipWidth = tooltip.value?.offsetWidth as number
+  const tooltipTop = tooltip.value?.offsetTop as number
+  const tooltipLeft = tooltip.value?.offsetLeft as number
   const isSourceAtTop = (sourceTop - tooltipHeight) < 0
   const isSourceAtBottom = !isSourceAtTop && (sourceTop + sourceHeight + tooltipHeight) >= document.documentElement.offsetHeight
   top.value = isSourceAtBottom
@@ -44,14 +46,14 @@ async function computePosition () {
   const isSourceOnLeftSide = (sourceLeft + (sourceWidth / 2) - (tooltipWidth / 2)) <= 0
 
   translateY.value = isSourceAtBottom
-    ? `${sourceTop - tooltipHeight + 8}px`
-    : `${sourceTop + sourceHeight - 8}px`
+    ? `${sourceTop - tooltipTop - tooltipHeight + 8}px`
+    : `${sourceTop - tooltipTop + sourceHeight - 8}px`
   opacity.value = 1
   translateX.value = isSourceOnRightSide
-    ? `${sourceLeft + sourceWidth - tooltipWidth - 4}px`
+    ? `${sourceLeft - tooltipLeft + sourceWidth - tooltipWidth - 4}px`
     : isSourceOnLeftSide
-      ? `${sourceLeft + 4}px`
-      : `${sourceLeft + (sourceWidth / 2) - (tooltipWidth / 2)}px`
+      ? `${sourceLeft - tooltipLeft + 4}px`
+      : `${sourceLeft - tooltipLeft + (sourceWidth / 2) - (tooltipWidth / 2)}px`
 
   arrowX.value = isSourceOnRightSide
     ? `${(tooltipWidth / 2) - (sourceWidth / 2) + 4}px`
@@ -76,7 +78,7 @@ const tooltipClass = computed(() => ({
   'fr-placement--bottom': !top.value,
 }))
 
-const clickListener = (event: MouseEvent) => {
+const clickHandler = (event: MouseEvent) => {
   if (!show.value) {
     return
   }
@@ -89,25 +91,17 @@ const clickListener = (event: MouseEvent) => {
   show.value = false
 }
 
-const onEscapeKey = (event: KeyboardEvent) => {
+const keydownHandler = (event: KeyboardEvent) => {
   if (event.key === 'Escape') {
     show.value = false
   }
 }
 
-onMounted(() => {
-  document.documentElement.addEventListener('click', clickListener)
-  document.documentElement.addEventListener('keydown', onEscapeKey)
-})
-
-onUnmounted(() => {
-  document.documentElement.removeEventListener('click', clickListener)
-  document.documentElement.removeEventListener('keydown', onEscapeKey)
-})
-
-const onMouseEnter = () => {
-  if (props.onHover) {
+const onMouseEnterHandler = (event: MouseEvent) => {
+  if (props.onHover && (event.target === source.value || source.value?.contains(event.target as Node))) {
     show.value = true
+    // @ts-ignore internal property available just for this component
+    globalThis.__vueDsfr__lastTooltipShow.value = false
   }
 }
 
@@ -119,9 +113,23 @@ const onMouseLeave = () => {
 
 const onClick = () => {
   if (!props.onHover) {
-    show.value = !show.value
+    show.value = true
+    // @ts-ignore internal property available just for this component
+    globalThis.__vueDsfr__lastTooltipShow = show
   }
 }
+
+onMounted(() => {
+  document.documentElement.addEventListener('click', clickHandler)
+  document.documentElement.addEventListener('keydown', keydownHandler)
+  document.documentElement.addEventListener('mouseover', onMouseEnterHandler)
+})
+
+onUnmounted(() => {
+  document.documentElement.removeEventListener('click', clickHandler)
+  document.documentElement.removeEventListener('keydown', keydownHandler)
+  document.documentElement.removeEventListener('mouseover', onMouseEnterHandler)
+})
 </script>
 
 <template>
@@ -133,10 +141,9 @@ const onClick = () => {
     :class="onHover ? 'fr-link' : 'fr-btn  fr-btn--tooltip'"
     :aria-describedby="id"
     :href="onHover ? '#' : undefined"
-    @click.stop="onClick()"
-    @mouseenter="onMouseEnter()"
+    @click="onClick()"
     @mouseleave="onMouseLeave()"
-    @focus="onMouseEnter()"
+    @focus="onMouseEnterHandler($event)"
     @blur="onMouseLeave()"
   >
     <!-- @slot Slot par défaut pour le contenu de l’infobulle -->
