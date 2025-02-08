@@ -3,7 +3,8 @@ import { ref } from 'vue'
 
 import DsfrModal from '../DsfrModal.vue'
 
-import DsfrButton, { type DsfrButtonProps } from '@/components/DsfrButton/DsfrButton.vue'
+import type { DsfrButtonProps } from '@/components/DsfrButton/DsfrButton.vue'
+import DsfrButton from '@/components/DsfrButton/DsfrButton.vue'
 
 const opened = ref(false)
 const title = 'Titre de la modale'

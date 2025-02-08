@@ -6,7 +6,9 @@ import vue from '@vitejs/plugin-vue'
 import vueJsx from '@vitejs/plugin-vue-jsx'
 import browserslist from 'browserslist'
 import { browserslistToTargets } from 'lightningcss'
-import { defineConfig, type UserConfig } from 'vite'
+import { defineConfig } from 'vite'
+import type { UserConfig } from 'vite'
+import LightningCSS from 'unplugin-lightningcss/vite'
 
 const projectDir = dirname(new URL(import.meta.url).pathname)
 
@@ -16,6 +18,11 @@ const config: UserConfig = {
   plugins: [
     vue(),
     vueJsx(),
+    LightningCSS({
+      options: {
+        targets: browserslistToTargets(browserslist('>= 0.25%')),
+      },
+    }),
   ],
   resolve: {
     alias: {
@@ -23,17 +30,17 @@ const config: UserConfig = {
       vue: 'vue/dist/vue.esm-bundler.js',
     },
   },
-  css: {
-    transformer: 'lightningcss',
-    lightningcss: {
-      targets: browserslistToTargets(browserslist('>= 0.25%')),
-    },
-  },
+  // css: {
+  //   transformer: 'lightningcss',
+  //   lightningcss: {
+  //     targets: browserslistToTargets(browserslist('>= 0.25%')),
+  //   },
+  // },
   build: {
-    cssMinify: 'lightningcss',
     lib: {
       name: 'vue-dsfr',
       entry: resolve(projectDir, 'src', 'index.ts'),
+      formats: ['es'],
     },
     rollupOptions: {
       external: ['vue', 'vue-router', '@iconify/vue'],
@@ -42,8 +49,9 @@ const config: UserConfig = {
         dir: 'dist',
         globals: {
           vue: 'Vue',
+          '@iconify/vue': 'iconify',
         },
-        assetFileNames: v => `vue-dsfr${v.name?.replace(/[^.]+\./, '.')}`,
+        // assetFileNames: v => `vue-dsfr${v.name?.replace(/[^.]+\./, '.')}`,
       },
     },
   },

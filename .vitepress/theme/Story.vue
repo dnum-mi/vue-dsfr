@@ -2,7 +2,8 @@
 import { useData } from 'vitepress'
 import { onMounted, onUnmounted, ref, watchEffect } from 'vue'
 
-import { useScheme, type UseSchemeResult } from '../../src/index'
+import type { UseSchemeResult } from '../../src/index'
+import { useScheme } from '../../src/index'
 
 withDefaults(defineProps<{
   minH?: string

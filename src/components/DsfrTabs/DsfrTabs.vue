@@ -1,5 +1,6 @@
 <script lang="ts" setup>
-import { computed, onMounted, onUnmounted, provide, reactive, ref, type Ref, watch } from 'vue'
+import type { Ref } from 'vue'
+import { computed, onMounted, onUnmounted, provide, reactive, ref, watch } from 'vue'
 
 import { useRandomId } from '../../utils/random-utils'
 
