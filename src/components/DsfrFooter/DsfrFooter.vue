@@ -1,6 +1,7 @@
 <script setup lang="ts">
-import { computed, useSlots, type VNode } from 'vue'
+import type { VNode } from 'vue'
 import type { RouteLocationRaw, RouterLink } from 'vue-router'
+import { computed, useSlots } from 'vue'
 
 import DsfrFooterLink from '../DsfrFooter/DsfrFooterLink.vue'
 import DsfrFooterPartners from '../DsfrFooter/DsfrFooterPartners.vue'

@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { computed, onUnmounted, provide, ref, type Ref, watch } from 'vue'
+import type { Ref } from 'vue'
+import { computed, onUnmounted, provide, ref, watch } from 'vue'
 
 import { registerAccordionKey } from './injection-key'
 

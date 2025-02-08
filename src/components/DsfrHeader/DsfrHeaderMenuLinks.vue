@@ -1,5 +1,6 @@
 <script lang="ts" setup>
-import DsfrHeaderMenuLink, { type DsfrHeaderMenuLinkProps } from './DsfrHeaderMenuLink.vue'
+import type { DsfrHeaderMenuLinkProps } from './DsfrHeaderMenuLink.vue'
+import DsfrHeaderMenuLink from './DsfrHeaderMenuLink.vue'
 
 export type {
   DsfrHeaderMenuLinkProps,

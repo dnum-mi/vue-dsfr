@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 
-import DsfrPagination, { type Page } from '../DsfrPagination.vue'
+import type { Page } from '../DsfrPagination.vue'
+import DsfrPagination from '../DsfrPagination.vue'
 
 const currentPage = ref(1)
 
