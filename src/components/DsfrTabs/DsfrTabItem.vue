@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { inject, ref, toRef } from 'vue'
+import { inject, ref, toRef, useTemplateRef, watch } from 'vue'
 
 import VIcon from '../VIcon/VIcon.vue'
 
@@ -27,8 +27,6 @@ const button = ref<HTMLButtonElement | null>(null)
 const keyToEventDict = {
   ArrowRight: 'next',
   ArrowLeft: 'previous',
-  ArrowDown: 'next',
-  ArrowUp: 'previous',
   Home: 'first',
   End: 'last',
 } as const
@@ -44,6 +42,14 @@ function onKeyDown (event: KeyboardEvent) {
 
 const useTab = inject(registerTabKey)!
 const { isVisible } = useTab(toRef(() => props.tabId))
+
+const buttonEl = useTemplateRef('button')
+
+watch(isVisible, () => {
+  if (isVisible.value) {
+    buttonEl.value?.focus()
+  }
+})
 </script>
 
 <template>
