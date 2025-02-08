@@ -24,7 +24,7 @@ export type DsfrDataTableProps = {
   bottomActionsRow?: string[]
   selectableRows?: boolean
   sortableRows?: boolean | string[]
-  sorted: string
+  sorted?: string
   sortFn?: (a: unknown, b: unknown) => number
   verticalBorders?: boolean
   bottomCaption?: boolean

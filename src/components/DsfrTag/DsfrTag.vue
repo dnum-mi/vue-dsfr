@@ -1,24 +1,27 @@
-<script lang="ts" setup>
+<script lang="ts" setup generic="T = string">
 import { computed } from 'vue'
 
 import VIcon from '../VIcon/VIcon.vue'
 
 import type { DsfrTagProps } from './DsfrTags.types'
 
-export type { DsfrTagProps }
-
-const props = withDefaults(defineProps<DsfrTagProps>(), {
+const props = withDefaults(defineProps<DsfrTagProps<T>>(), {
   label: undefined,
   link: undefined,
   tagName: 'p',
   icon: undefined,
+  disabled: undefined,
 })
+
+defineEmits<{
+  select: [[unknown, boolean]]
+}>()
 
 const isExternalLink = computed(() => typeof props.link === 'string' && props.link.startsWith('http'))
 const is = computed(() => {
   return props.link
     ? (isExternalLink.value ? 'a' : 'RouterLink')
-    : ((props.disabled && props.tagName === 'p') ? 'button' : props.tagName)
+    : (((props.disabled && props.tagName === 'p') || props.selectable) ? 'button' : props.tagName)
 })
 const linkProps = computed(() => {
   return { [isExternalLink.value ? 'href' : 'to']: props.link }
@@ -39,12 +42,14 @@ const iconProps = computed(() => dsfrIcon.value ? undefined : typeof props.icon 
       [icon as string]: dsfrIcon,
       'fr-tag--icon-left': dsfrIcon,
     }"
-    v-bind="linkProps"
+    :aria-pressed="selectable ? selected : undefined"
+    v-bind="{ ...linkProps, ...$attrs }"
+    @click="!disabled && $emit('select', [value, selected])"
   >
     <VIcon
       v-if="props.icon && !dsfrIcon"
       :label="iconOnly ? label : undefined"
-      class="fr-mr-1v"
+      :class="{ 'fr-mr-1v': !iconOnly }"
       v-bind="iconProps"
     />
     <template v-if="!iconOnly">

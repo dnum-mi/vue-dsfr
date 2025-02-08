@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import pDebounce from 'p-debounce'
 import { ref, watch } from 'vue'
 
@@ -71,6 +71,27 @@ const onClick = () => {
 }
 
 const activeAccordion = ref(-1)
+
+const selection = ref([])
+const headers = [
+  {
+    key: 'id',
+    label: 'ID',
+  },
+  {
+    key: 'name',
+    label: 'Name',
+  },
+  {
+    key: 'email',
+    label: 'Email',
+  },
+]
+const rows = [
+  [1, 'John Doe', 'john.doe@gmail.com'],
+  [2, 'Jane Doe', 'jane.doe@gmail.com'],
+  [3, 'James Bond', 'james.bond@mi6.gov.uk'],
+]
 </script>
 
 <template>
@@ -126,8 +147,39 @@ const activeAccordion = ref(-1)
       </DsfrAccordion>
     </DsfrAccordionsGroup>
   </div>
+  <div>
+    <DsfrDataTable
+      v-model:selection="selection"
+      title="Titre du tableau (caption)"
+      :headers-row="headers"
+      :rows="rows"
+      selectable-rows
+      sortable-rows
+      :row-key="0"
+    >
+      <template #cell="{ colKey, cell }">
+        <template v-if="colKey === 'email'">
+          <DsfrTooltip
+            content="Envoyer un courriel"
+            on-hover
+          >
+            <a :href="`mailto:${cell as string}`">{{ cell }}</a>
+          </DsfrTooltip>
+        </template>
+        <template v-else>
+          <div class="flex items-center">
+            {{ cell }}
+            <DsfrTooltip
+              :content="`(${colKey})`"
+              href="#"
+            />
+          </div>
+        </template>
+      </template>
+    </DsfrDataTable>
+  </div>
 
-  <div class="flex justify-between w-full relative">
+  <div class="flex justify-between items-center gap-2 w-full relative">
     <DsfrTooltip
       on-hover
       content="Texte de l’info-bulle qui apparaît au survol"
@@ -135,7 +187,8 @@ const activeAccordion = ref(-1)
       Au survol
     </DsfrTooltip>
 
-    Et au clic avec une icône seulement :
+    <span>Et au clic avec une icône seulement :</span>
+
     <DsfrTooltip
       content="Texte de l’info-bulle qui apparaît au clic"
     />
@@ -148,7 +201,7 @@ const activeAccordion = ref(-1)
   <AsyncButton
     :is-loading="isLoading"
     :disabled="disabled"
-    @click="onClick($event)"
+    @click="onClick()"
   >
     Cliquer pour voir un chargement
   </AsyncButton>

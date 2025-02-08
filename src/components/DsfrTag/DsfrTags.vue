@@ -4,9 +4,27 @@ import type { DsfrTagsProps } from './DsfrTags.types'
 
 export type { DsfrTagsProps }
 
-withDefaults(defineProps<DsfrTagsProps>(), {
+const props = withDefaults(defineProps<DsfrTagsProps>(), {
   tags: () => [],
 })
+
+const emit = defineEmits<{
+  'update:modelValue': [unknown[]]
+}>()
+
+function onSelect ([value, selected]: [string, boolean]) {
+  if (typeof props.modelValue === 'undefined') {
+    return
+  }
+  if (selected) {
+    const newValue = new Set([...props.modelValue])
+    newValue.delete(value)
+    emit('update:modelValue', [...newValue])
+    return
+  }
+  const newValue = [...new Set([...props.modelValue, value])]
+  emit('update:modelValue', newValue)
+}
 </script>
 
 <template>
@@ -19,6 +37,9 @@ withDefaults(defineProps<DsfrTagsProps>(), {
         v-bind="tagProps"
         :icon="icon"
         :label="label"
+        :selectable="tagProps.selectable"
+        :selected="tagProps.selectable ? modelValue?.includes(tagProps.value as string) : undefined"
+        @select="onSelect($event as [string, boolean])"
       />
     </li>
   </ul>

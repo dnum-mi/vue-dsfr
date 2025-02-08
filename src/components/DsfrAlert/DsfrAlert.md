@@ -1,6 +1,6 @@
 # Alertes - `DsfrAlert`
 
-## 🌟 Introduction
+## 🌟 Introduction
 
 Les alertes permettent d’attirer l’attention de l’utilisateur sur une information sans interrompre sa tâche en cours.
 
@@ -73,7 +73,7 @@ Autres props :
 <<< docs-demo/DsfrAlertDemo.vue [Code de la démo]
 :::
 
-## ⚙️ Code source du composant
+## ⚙️ Code source du composant
 
 ::: code-group
 
