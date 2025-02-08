@@ -1,9 +1,10 @@
 <script lang="ts" setup>
 import { computed, ref } from 'vue'
 
-import DsfrTableHeaders from './DsfrTableHeaders.vue'
-import DsfrTableRow, { type DsfrTableRowProps } from './DsfrTableRow.vue'
+import type { DsfrTableRowProps } from './DsfrTableRow.vue'
 import type { DsfrTableProps } from './DsfrTable.types'
+import DsfrTableHeaders from './DsfrTableHeaders.vue'
+import DsfrTableRow from './DsfrTableRow.vue'
 
 import { useRandomId } from '@/utils/random-utils'
 
