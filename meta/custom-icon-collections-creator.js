@@ -32,6 +32,7 @@ export async function createCustomCollectionFile (sourcePath, targetPath) {
 
   const code = `import type { IconifyJSON } from '@iconify/vue'
 const collections: IconifyJSON[] = ${JSON.stringify(collections)}
+${collections.map(collection => `export const ${collection.prefix} = ${makeCollection(collection)} as const`).join('\n')}
 export default collections`
 
   try {
@@ -130,4 +131,25 @@ export async function runShellCommand (command) {
   } catch (error) {
     console.error('Erreur d’exécution :', error)
   }
+}
+
+/**
+ * @function
+ * @param {string} icon
+ *
+ * @returns {string} a camelCase icon
+ */
+function camelize (icon) {
+  return icon.replace(/-./g, x => x[1].toUpperCase())
+}
+
+/**
+ * @function
+ * @param {import('@iconify/vue/dist/iconify.js').IconifyJSON} collection
+ *
+ * @returns {string} stringified collection
+ */
+function makeCollection (collection) {
+  return JSON.stringify(Object.fromEntries(Object.keys(collection.icons)
+    .map(icon => ([camelize(icon), `${collection.prefix}:${icon}`]))))
 }
