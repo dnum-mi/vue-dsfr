@@ -1,8 +1,10 @@
+import type VIcon from '../VIcon/VIcon.vue'
+
 export type DsfrTagProps<T = string> = {
   label?: string
   link?: string
   tagName?: string
-  icon?: string
+  icon?: string | InstanceType<typeof VIcon>['$props']
   disabled?: boolean
   small?: boolean
   iconOnly?: boolean
