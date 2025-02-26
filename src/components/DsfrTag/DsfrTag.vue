@@ -28,8 +28,11 @@ const linkProps = computed(() => {
 })
 
 const dsfrIcon = computed(() => typeof props.icon === 'string' && props.icon.startsWith('fr-icon-'))
-const defaultScale = props.small ? 0.65 : 0.9
-const iconProps = computed(() => dsfrIcon.value ? undefined : typeof props.icon === 'string' ? { name: props.icon, scale: defaultScale } : { scale: defaultScale, ...(props.icon ?? {}) })
+const defaultScale = computed(() => props.small ? 0.65 : 0.9)
+const iconProps = computed(() => typeof props.icon === 'string'
+  ? { scale: defaultScale.value, name: props.icon }
+  : { scale: defaultScale.value, ...props.icon },
+)
 </script>
 
 <template>

@@ -26,18 +26,18 @@ Il se compose des éléments suivants :
 
 ## 🛠️ Props
 
-| Nom       | Type      | Défaut    | Obligatoire | Description                                              |
-|-----------|-----------|-----------|-------------|----------------------------------------------------------|
-| `label`     | `string`  | `undefined` |             | Le texte affiché sur l'étiquette.                        |
-| `link`      | `string`  | `undefined` |             | URL pour un lien externe. Détermine aussi le type de balise (a ou RouterLink). |
-| `tagName`   | `string`  | `'p'`       |             | Nom de la balise utilisée pour l'étiquette (devrait être `'p'` ou `'button'`).              |
-| `icon`      | `string`  | `undefined` |             | Nom de l'icône ([`@iconify/vue`](https://iconify.design/docs/icon-components/vue/)) à afficher sur l'étiquette. |
-| `disabled`  | `boolean` | `undefined`     |             | Désactive l'étiquette si elle est un bouton.             |
-| `small`     | `boolean` | `undefined`     |             | Réduit la taille de l'étiquette.                         |
-| `iconOnly`  | `boolean` | `undefined`     |             | Affiche uniquement l'icône, sans texte.                  |
-| `selectable` | `boolean`                  | `false`     | Rend le tag sélectionnable. |
-| `selected`  | `boolean` (si selectable) | `false`     | Indique si le tag est sélectionné. |
-| `value`     | `T` (si selectable)       | `undefined` | Valeur associée au tag (utile dans une liste de tags sélectionnables). |
+| Nom          | Type                      | Défaut      | Obligatoire | Description                                              |
+|--------------|---------------------------|-------------|-------------|----------------------------------------------------------|
+| `label`      | `string`                  | `undefined` |             | Le texte affiché sur l'étiquette.                        |
+| `link`       | `string`                  | `undefined` |             | URL pour un lien externe. Détermine aussi le type de balise (a ou RouterLink). |
+| `tagName`    | `string`                  | `'p'`       |             | Nom de la balise utilisée pour l'étiquette (devrait être `'p'` ou `'button'`).              |
+| `icon`       | `string \| InstanceType<typeof VIcon>['$props']`        | `undefined` |             | Icône à afficher dans le tag Peut être un nom ou une configuration d'icône. |
+| `disabled`   | `boolean`                 | `undefined` |             | Désactive l'étiquette si elle est un bouton.             |
+| `small`      | `boolean`                 | `undefined` |             | Réduit la taille de l'étiquette.                         |
+| `iconOnly`   | `boolean`                 | `undefined` |             | Affiche uniquement l'icône, sans texte.                  |
+| `selectable` | `boolean`                 | `false`     |             | Rend le tag sélectionnable. |
+| `selected`   | `boolean` (si selectable) | `false`     |             | Indique si le tag est sélectionné. |
+| `value`      | `T` (si selectable)       | `undefined` |             | Valeur associée au tag (utile dans une liste de tags sélectionnables). |
 
 ## 📡 Évenements
 
