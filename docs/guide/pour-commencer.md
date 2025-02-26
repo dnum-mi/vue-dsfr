@@ -207,7 +207,7 @@ import Components from 'unplugin-vue-components/vite'
 import {
   vueDsfrAutoimportPreset,
   vueDsfrComponentResolver
-} from '@gouvminint/vue-dsfr'
+} from '@gouvminint/vue-dsfr/meta'
 
 const isCypress = process.env.CYPRESS === 'true'
 
