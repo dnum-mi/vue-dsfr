@@ -28,23 +28,31 @@ const output = ref<HTMLSpanElement>()
 const inputWidth = ref()
 
 const double = computed(() => props.lowerValue !== undefined)
+const stepped = computed(() => props.step !== undefined)
 
 const outputStyle = computed(() => {
   if (props.lowerValue === undefined) {
     const translateXValue = (props.modelValue - props.min) / (props.max - props.min) * inputWidth.value
-    return `transform: translateX(${translateXValue}px) translateX(-${props.modelValue}%);`
+    return `transform: translateX(${translateXValue}px) translateX(-${translateXValue / inputWidth.value * 100}%);`
   }
   const translateXValue = (props.modelValue + props.lowerValue - props.min) / 2 / (props.max - props.min) * inputWidth.value
   return `transform: translateX(${translateXValue}px) translateX(-${props.lowerValue + ((props.modelValue - props.lowerValue) / 2)}%);`
 })
 
 const rangeStyle = computed(() => {
-  const progressRight = (props.modelValue - props.min) / (props.max - props.min) * inputWidth.value - (double.value ? 12 : 0)
-  const progressLeft = ((props.lowerValue ?? 0) - props.min) / (props.max - props.min) * inputWidth.value
+  const range = props.max - props.min
+
+  const ratioRight = (props.modelValue - props.min) / range
+  const ratioLeft = ((props.lowerValue ?? 0) - props.min) / range
+
+  const innerPadding = props.small ? 12 : 24
+  const stepWidth = (inputWidth.value - innerPadding) / (range / (props.step ?? 1 + 1))
+  const paddingRight = double.value ? 32 * (1 - ratioRight) : 0
 
   return {
-    '--progress-right': `${progressRight + 24}px`,
-    ...(double.value ? { '--progress-left': `${progressLeft + 12}px` } : {}),
+    '--progress-right': `${(ratioRight * inputWidth.value + paddingRight).toFixed(2)}px`,
+    ...(double.value ? { '--progress-left': `${(ratioLeft * inputWidth.value).toFixed(2)}px` } : {}),
+    ...(stepped.value ? { '--step-width': `${Math.floor(stepWidth)}px` } : {}),
   }
 })
 
@@ -97,6 +105,7 @@ onMounted(() => {
       data-fr-js-range="true"
       :class="{
         'fr-range--sm': small,
+        'fr-range--step': stepped,
         'fr-range--double': double,
         'fr-range-group--disabled': disabled,
       }"
