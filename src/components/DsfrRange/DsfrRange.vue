@@ -50,10 +50,10 @@ const rangeStyle = computed(() => {
   const paddingRight = double.value ? 32 * (1 - ratioRight) : 0
 
   return {
-    "--progress-right": `${(ratioRight * inputWidth.value + paddingRight).toFixed(2)}px`,
-    ...(double.value ? {"--progress-left": `${(ratioLeft * inputWidth.value).toFixed(2)}px`} : {}),
-    ...(stepped.value ? {"--step-width": `${Math.floor(stepWidth)}px`} : {})
-  };
+    '--progress-right': `${(ratioRight * inputWidth.value + paddingRight).toFixed(2)}px`,
+    ...(double.value ? { '--progress-left': `${(ratioLeft * inputWidth.value).toFixed(2)}px` } : {}),
+    ...(stepped.value ? { '--step-width': `${Math.floor(stepWidth)}px` } : {}),
+  }
 })
 
 watch([() => props.modelValue, () => props.lowerValue], ([upper, lower]) => {
@@ -180,4 +180,3 @@ onMounted(() => {
     </div>
   </div>
 </template>
-
