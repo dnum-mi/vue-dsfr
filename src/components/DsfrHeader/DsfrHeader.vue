@@ -110,6 +110,7 @@ provide(registerNavigationLinkKey, () => {
             <div class="fr-header__brand-top">
               <div class="fr-header__logo">
                 <RouterLink
+                  v-if="!serviceTitle"
                   :to="homeTo"
                   :title
                 >
@@ -118,6 +119,11 @@ provide(registerNavigationLinkKey, () => {
                     data-testid="header-logo"
                   />
                 </RouterLink>
+                <DsfrLogo
+                  v-else
+                  :logo-text="logoText"
+                  data-testid="header-logo"
+                />
               </div>
               <div
                 v-if="isWithSlotOperator"
