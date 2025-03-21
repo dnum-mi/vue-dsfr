@@ -17,6 +17,7 @@ withDefaults(defineProps<DsfrInputGroupProps>(), {
   labelClass: '',
   modelValue: '',
   wrapperClass: '',
+  wrapperClassDsfrInput: '',
   placeholder: undefined,
   errorMessage: undefined,
   validMessage: undefined,
@@ -50,6 +51,7 @@ defineEmits<{ (e: 'update:modelValue', payload: string): void }>()
       :label-visible="labelVisible"
       :model-value="modelValue"
       :placeholder="placeholder"
+      :wrapper-class="wrapperClassDsfrInput"
       @update:model-value="$emit('update:modelValue', $event)"
     />
     <div

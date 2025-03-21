@@ -59,6 +59,14 @@ export default {
       control: 'text',
       description: 'Message de validation (ou tableau de messages)',
     },
+    wrapperClass: {
+      control: 'text',
+      description: 'Classe CSS pour le style du conteneur du groupe.',
+    },
+    wrapperClassDsfrInput: {
+      control: 'text',
+      description: 'Classe CSS pour le style du DsfrInput enfant du DsfrInputGroup.',
+    },
   },
 }
 
@@ -86,6 +94,8 @@ export const GroupeDeChampAvecPersonnalisation = (args) => ({
         :type="type"
         :hint="hint"
         :label-visible="labelVisible"
+        :wrapperClass="wrapperClass"
+        :wrapperClassDsfrInput="wrapperClassDsfrInput"
       />
     </DsfrInputGroup>
   `,
@@ -101,6 +111,8 @@ GroupeDeChampAvecPersonnalisation.args = {
   hint: 'Texte d’indice du champ',
   id: '',
   readonly: '',
+  wrapperClass: '',
+  wrapperClassDsfrInput: '',
 }
 
 export const ChampEnErreur = (args) => ({
@@ -125,6 +137,8 @@ export const ChampEnErreur = (args) => ({
       :label-visible="labelVisible"
       :placeholder="placeholder"
       :is-invalid="isInvalid"
+      :wrapperClass="wrapperClass"
+      :wrapperClassDsfrInput="wrapperClassDsfrInput"
     />
   `,
 })
@@ -137,6 +151,8 @@ ChampEnErreur.args = {
   isInvalid: true,
   type: 'text',
   hint: 'Texte d’indice du champ',
+  wrapperClass: '',
+  wrapperClassDsfrInput: '',
 }
 
 export const ChampValide = (args) => ({
@@ -159,6 +175,8 @@ export const ChampValide = (args) => ({
       :label="label"
       :label-visible="labelVisible"
       :placeholder="placeholder"
+      :wrapperClass="wrapperClass"
+      :wrapperClassDsfrInput="wrapperClassDsfrInput"
     />
   `,
 })
@@ -172,4 +190,6 @@ ChampValide.args = {
   errorMessage: '',
   isValid: true,
   hint: 'Texte d’indice du champ',
+  wrapperClass: '',
+  wrapperClassDsfrInput: '',
 }

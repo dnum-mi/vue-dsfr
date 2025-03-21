@@ -19,6 +19,7 @@ Ce composant est très utile si vous souhaitez afficher un message d’erreur ou
 | `placeholder`   | `string`             | `undefined`             |               | Texte de l'espace réservé pour l'input.                       |
 | `errorMessage`  | `string \| string[]` | `undefined`             |               | Message(s) d'erreur à afficher si une erreur est présente.       |
 | `validMessage`  | `string \| string[]` | `undefined`             |               | Message(s) de validation à afficher si l'input est valide.       |
+| `wrapperClassDsfrInput`  | `string`             | `''`                    |               | Classe CSS pour le style du DsfrInput enfant du DsfrInputGroup.              |
 
 ### Attributs implicitement déclarés
 

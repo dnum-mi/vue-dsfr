@@ -24,4 +24,5 @@ export type DsfrInputGroupProps = {
   errorMessage?: string | string[]
   validMessage?: string | string[]
   wrapperClass?: string
+  wrapperClassDsfrInput?: string
 }
