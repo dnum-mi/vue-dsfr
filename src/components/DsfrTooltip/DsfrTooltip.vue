@@ -101,7 +101,7 @@ const onMouseEnterHandler = (event: MouseEvent) => {
   if (props.onHover && (event.target === source.value || source.value?.contains(event.target as Node))) {
     show.value = true
     // @ts-ignore internal property available just for this component
-    globalThis.__vueDsfr__lastTooltipShow.value = false
+    globalThis.__vueDsfr__lastTooltipShow = false
   }
 }
 
