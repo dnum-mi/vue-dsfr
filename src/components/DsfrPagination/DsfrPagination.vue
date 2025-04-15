@@ -12,6 +12,7 @@ const props = withDefaults(defineProps<DsfrPaginationProps>(), {
   lastPageTitle: 'Dernière page',
   nextPageTitle: 'Page suivante',
   prevPageTitle: 'Page précédente',
+  ariaLabel: 'Pagination',
 })
 
 const emit = defineEmits<{ (e: 'update:current-page', payload: number): void }>()
@@ -39,7 +40,7 @@ const isCurrentPage = (page: Page) => props.pages.indexOf(page) === props.curren
   <nav
     role="navigation"
     class="fr-pagination"
-    aria-label="Pagination"
+    :aria-label="ariaLabel"
   >
     <ul class="fr-pagination__list">
       <li>
