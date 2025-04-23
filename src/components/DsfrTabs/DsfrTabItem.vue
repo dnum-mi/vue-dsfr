@@ -57,6 +57,7 @@ watch(isVisible, () => {
     role="presentation"
   >
     <button
+      v-bind="$attrs"
       :id="tabId"
       ref="button"
       :data-testid="`test-${tabId}`"
