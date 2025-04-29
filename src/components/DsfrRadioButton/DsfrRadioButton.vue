@@ -14,6 +14,7 @@ const props = withDefaults(defineProps<DsfrRadioButtonProps>(), {
   hint: '',
   img: undefined,
   svgPath: undefined,
+  rich: false,
   svgAttrs: () => ({ viewBox: '0 0 80 80', width: '80px', height: '80px' }),
 })
 
@@ -21,7 +22,7 @@ defineEmits<{ (e: 'update:modelValue', payload: string | number | boolean): void
 
 const defaultSvgAttrs = { viewBox: '0 0 80 80', width: '80px', height: '80px' }
 
-const rich = computed(() => !!props.img || !!props.svgPath)
+const richComputed = computed(() => props.rich || (!!props.img || !!props.svgPath))
 </script>
 
 <template>
@@ -32,7 +33,7 @@ const rich = computed(() => !!props.img || !!props.svgPath)
     <div
       class="fr-radio-group"
       :class="{
-        'fr-radio-rich': rich,
+        'fr-radio-rich': richComputed,
         'fr-radio-group--sm': small,
       }"
     >
