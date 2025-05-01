@@ -8,4 +8,5 @@ export type DsfrPaginationProps = {
   nextPageTitle?: string
   prevPageTitle?: string
   truncLimit?: number
+  ariaLabel?: string
 }
