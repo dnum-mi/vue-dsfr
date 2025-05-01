@@ -47,7 +47,6 @@ const isCurrentPage = (page: Page) => props.pages.indexOf(page) === props.curren
           :href="pages[0]?.href"
           class="fr-pagination__link fr-pagination__link--first"
           :title="firstPageTitle"
-          :disabled="currentPage === 0 ? true : undefined"
           :aria-disabled="currentPage === 0 ? true : undefined"
           @click.prevent="tofirstPage()"
         />
@@ -57,7 +56,6 @@ const isCurrentPage = (page: Page) => props.pages.indexOf(page) === props.curren
           :href="pages[Math.max(currentPage - 1, 0)]?.href"
           class="fr-pagination__link fr-pagination__link--prev fr-pagination__link--lg-label"
           :title="prevPageTitle"
-          :disabled="currentPage === 0 ? true : undefined"
           :aria-disabled="currentPage === 0 ? true : undefined"
           @click.prevent="toPreviousPage()"
         >{{ prevPageTitle }}</a>
