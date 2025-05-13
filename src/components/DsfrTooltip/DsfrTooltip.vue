@@ -26,6 +26,9 @@ async function computePosition () {
   if (typeof document === 'undefined') {
     return
   }
+  if (typeof window === 'undefined') {
+    return
+  }
   if (!show.value) {
     return
   }
@@ -40,7 +43,7 @@ async function computePosition () {
   const tooltipTop = tooltip.value?.offsetTop as number
   const tooltipLeft = tooltip.value?.offsetLeft as number
 
-  const isTooltipAtBottom = sourceTop + sourceHeight + tooltipHeight >= document.documentElement.offsetHeight
+  const isTooltipAtBottom = sourceTop + sourceHeight + tooltipHeight >= window.innerHeight
   top.value = isTooltipAtBottom
 
   const isTooltipOnRightSide = (sourceLeft + (sourceWidth / 2) + (tooltipWidth / 2)) >= document.documentElement.offsetWidth
