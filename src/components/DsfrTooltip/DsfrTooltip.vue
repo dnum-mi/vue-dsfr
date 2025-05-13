@@ -70,9 +70,11 @@ watch(show, computePosition, { immediate: true })
 
 onMounted(() => {
   window.addEventListener('scroll', computePosition)
+  window.addEventListener('resize', computePosition)
 })
 onUnmounted (() => {
   window.removeEventListener('scroll', computePosition)
+  window.removeEventListener('resize', computePosition)
 })
 
 const tooltipStyle = computed(() => (`transform: translate(${translateX.value}, ${translateY.value}); --arrow-x: ${arrowX.value}; opacity: ${opacity.value};'`))
