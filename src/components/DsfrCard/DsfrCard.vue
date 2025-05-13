@@ -71,24 +71,26 @@ defineExpose({ goToTargetLink })
           :is="titleTag"
           class="fr-card__title"
         >
-          <a
-            v-if="externalLink"
-            :href="(link as string)"
-            data-testid="card-link"
-            class="fr-card__link"
-          >{{ title }}</a>
-          <RouterLink
-            v-else-if="link"
-            :to="link"
-            class="fr-card__link"
-            data-testid="card-link"
-            @click="$event.stopPropagation()"
-          >
-            {{ title }}
-          </RouterLink>
-          <template v-else>
-            {{ title }}
-          </template>
+          <slot name="title">
+            <a
+              v-if="externalLink"
+              :href="(link as string)"
+              data-testid="card-link"
+              class="fr-card__link"
+            >{{ title }}</a>
+            <RouterLink
+              v-else-if="link"
+              :to="link"
+              class="fr-card__link"
+              data-testid="card-link"
+              @click="$event.stopPropagation()"
+            >
+              {{ title }}
+            </RouterLink>
+            <template v-else>
+              {{ title }}
+            </template>
+          </slot>
         </component>
         <p class="fr-card__desc">
           {{ description }}
