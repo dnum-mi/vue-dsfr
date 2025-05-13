@@ -39,25 +39,26 @@ async function computePosition () {
   const tooltipWidth = tooltip.value?.offsetWidth as number
   const tooltipTop = tooltip.value?.offsetTop as number
   const tooltipLeft = tooltip.value?.offsetLeft as number
-  const isSourceAtTop = (sourceTop - tooltipHeight) < 0
-  const isSourceAtBottom = !isSourceAtTop && (sourceTop + sourceHeight + tooltipHeight) >= document.documentElement.offsetHeight
-  top.value = isSourceAtBottom
-  const isSourceOnRightSide = (sourceLeft + sourceWidth) >= document.documentElement.offsetWidth
-  const isSourceOnLeftSide = (sourceLeft + (sourceWidth / 2) - (tooltipWidth / 2)) <= 0
 
-  translateY.value = isSourceAtBottom
+  const isTooltipAtBottom = sourceTop + sourceHeight + tooltipHeight >= document.documentElement.offsetHeight
+  top.value = isTooltipAtBottom
+
+  const isTooltipOnRightSide = (sourceLeft + (sourceWidth / 2) + (tooltipWidth / 2)) >= document.documentElement.offsetWidth
+  const isTooltipOnLeftSide = (sourceLeft + (sourceWidth / 2) - (tooltipWidth / 2)) < 0
+
+  translateY.value = isTooltipAtBottom
     ? `${sourceTop - tooltipTop - tooltipHeight + 8}px`
     : `${sourceTop - tooltipTop + sourceHeight - 8}px`
   opacity.value = 1
-  translateX.value = isSourceOnRightSide
+  translateX.value = isTooltipOnRightSide
     ? `${sourceLeft - tooltipLeft + sourceWidth - tooltipWidth - 4}px`
-    : isSourceOnLeftSide
+    : isTooltipOnLeftSide
       ? `${sourceLeft - tooltipLeft + 4}px`
       : `${sourceLeft - tooltipLeft + (sourceWidth / 2) - (tooltipWidth / 2)}px`
 
-  arrowX.value = isSourceOnRightSide
+  arrowX.value = isTooltipOnRightSide
     ? `${(tooltipWidth / 2) - (sourceWidth / 2) + 4}px`
-    : isSourceOnLeftSide
+    : isTooltipOnLeftSide
       ? `${-(tooltipWidth / 2) + (sourceWidth / 2) - 4}px`
       : '0px'
 }
