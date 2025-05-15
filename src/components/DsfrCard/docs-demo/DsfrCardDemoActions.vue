@@ -37,6 +37,11 @@ const actions = [
 <template>
   <div class="fr-container fr-my-2v">
     <DsfrCard
+      link="https://www.data.gouv.fr/fr/datasets/r/0c3f1b2e-4a5d-4a7b-8f9c-6d1e0f3a2b8c"
+      :title-link-attrs="{
+        target: '_blank',
+        rel: 'noopener noreferrer',
+      }"
       :img-src="imgSrc"
       :description="description"
       :detail="detail"
