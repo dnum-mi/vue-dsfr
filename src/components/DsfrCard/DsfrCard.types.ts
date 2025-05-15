@@ -12,6 +12,7 @@ export type DsfrCardProps = {
   imgSrc?: string
   link?: string | RouteLocationRaw
   title: string
+  titleLinkAttrs: Record<string, unknown>
   description: string
   size?: 'md' | 'medium' | 'large' | 'lg' | 'sm' | 'small' | undefined
   detail?: string
