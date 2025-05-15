@@ -1,6 +1,5 @@
 <script lang="ts" setup>
 import { computed, ref } from 'vue'
-import type { RouterLink } from 'vue-router'
 
 import DsfrBadge from '../DsfrBadge/DsfrBadge.vue'
 import DsfrButtonGroup from '../DsfrButton/DsfrButtonGroup.vue'
@@ -11,6 +10,7 @@ import type { DsfrCardProps } from './DsfrCard.types'
 export type { DsfrCardProps }
 
 const props = withDefaults(defineProps<DsfrCardProps>(), {
+  titleLinkAttrs: () => ({}),
   imgSrc: undefined,
   link: undefined,
   detail: undefined,
@@ -76,13 +76,15 @@ defineExpose({ goToTargetLink })
             :href="(link as string)"
             data-testid="card-link"
             class="fr-card__link"
+            v-bind="titleLinkAttrs"
           >{{ title }}</a>
           <RouterLink
             v-else-if="link"
             :to="link"
             class="fr-card__link"
             data-testid="card-link"
-            @click="$event.stopPropagation()"
+            v-bind="titleLinkAttrs"
+            @click.stop=""
           >
             {{ title }}
           </RouterLink>

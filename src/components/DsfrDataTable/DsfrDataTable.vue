@@ -32,6 +32,7 @@ export type DsfrDataTableProps = {
   pages?: Page[]
   pagination?: boolean
   paginationOptions?: number[]
+  paginationAriaLabel?: string
   currentPage?: number
   rowsPerPage?: number
   bottomActionBarClass?: string | Record<string, boolean> | Array<string | Record<string, boolean>>
@@ -50,6 +51,7 @@ const props = withDefaults(defineProps<DsfrDataTableProps>(), {
     10,
     20,
   ],
+  paginationAriaLabel: 'Pagination',
 })
 
 const emit = defineEmits<{
@@ -102,19 +104,20 @@ const sortedRows = computed(() => {
   }
   return _sortedRows
 })
-const finalRows = computed(() => {
-  const rowKeys = props.headersRow.map((header) => {
-    if (typeof header !== 'object') {
-      return header
-    }
-    return header.key
-  })
+const rowKeys = computed(() => props.headersRow.map((header) => {
+  if (typeof header !== 'object') {
+    return header
+  }
+  return header.key
+}))
+const rowKeyIndex = computed(() => rowKeys.value.findIndex(key => key === props.rowKey))
 
+const finalRows = computed(() => {
   const rows = sortedRows.value.map((row) => {
     if (Array.isArray(row)) {
       return row
     }
-    return rowKeys.map(key => typeof row !== 'object' ? row : row[key] ?? row)
+    return rowKeys.value.map(key => typeof row !== 'object' ? row : row[key] ?? row)
   })
 
   if (props.pagination) {
@@ -223,11 +226,10 @@ function copyToClipboard (text: string) {
                   role="columnheader"
                 >
                   <div class="fr-checkbox-group fr-checkbox-group--sm">
-                    <!-- @vue-expect-error TS2538 -->
                     <input
                       :id="`row-select-${id}-${idx}`"
                       v-model="selection"
-                      :value="rows[idx][rowKey] ?? `row-${idx}`"
+                      :value="row[rowKeyIndex] ?? `row-${idx}`"
                       type="checkbox"
                     >
                     <label
@@ -280,12 +282,12 @@ function copyToClipboard (text: string) {
             <div class="flex  gap-2  items-center">
               <label
                 class="fr-label"
-                for="pagination-options"
+                :for="`${id}-pagination-options`"
               >
                 Résultats par page :
               </label>
               <select
-                id="pagination-options"
+                :id="`${id}-pagination-options`"
                 v-model="rowsPerPage"
                 class="fr-select"
                 @change="onPaginationOptionsChange()"
@@ -314,6 +316,7 @@ function copyToClipboard (text: string) {
             <DsfrPagination
               v-model:current-page="currentPage"
               :pages="pages"
+              :aria-label="paginationAriaLabel"
               @update:current-page="selection.length = 0"
             />
           </div>

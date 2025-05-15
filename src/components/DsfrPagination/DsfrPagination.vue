@@ -12,6 +12,7 @@ const props = withDefaults(defineProps<DsfrPaginationProps>(), {
   lastPageTitle: 'Dernière page',
   nextPageTitle: 'Page suivante',
   prevPageTitle: 'Page précédente',
+  ariaLabel: 'Pagination',
 })
 
 const emit = defineEmits<{ (e: 'update:current-page', payload: number): void }>()
@@ -39,7 +40,7 @@ const isCurrentPage = (page: Page) => props.pages.indexOf(page) === props.curren
   <nav
     role="navigation"
     class="fr-pagination"
-    aria-label="Pagination"
+    :aria-label="ariaLabel"
   >
     <ul class="fr-pagination__list">
       <li>
@@ -47,7 +48,6 @@ const isCurrentPage = (page: Page) => props.pages.indexOf(page) === props.curren
           :href="pages[0]?.href"
           class="fr-pagination__link fr-pagination__link--first"
           :title="firstPageTitle"
-          :disabled="currentPage === 0 ? true : undefined"
           :aria-disabled="currentPage === 0 ? true : undefined"
           @click.prevent="tofirstPage()"
         />
@@ -57,7 +57,6 @@ const isCurrentPage = (page: Page) => props.pages.indexOf(page) === props.curren
           :href="pages[Math.max(currentPage - 1, 0)]?.href"
           class="fr-pagination__link fr-pagination__link--prev fr-pagination__link--lg-label"
           :title="prevPageTitle"
-          :disabled="currentPage === 0 ? true : undefined"
           :aria-disabled="currentPage === 0 ? true : undefined"
           @click.prevent="toPreviousPage()"
         >{{ prevPageTitle }}</a>
