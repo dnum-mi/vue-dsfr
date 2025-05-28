@@ -80,7 +80,7 @@ const showMenu = () => {
   // Sans le setTimeout, le focus n'est pas fait
   setTimeout(() => {
     document.getElementById('close-button')?.focus()
-  })
+  }, 50)
 }
 const showSearchModal = () => {
   modalOpened.value = true
