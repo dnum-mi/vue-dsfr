@@ -152,7 +152,11 @@ provide(registerNavigationLinkKey, () => {
                   :title="showSearchLabel"
                   :data-fr-opened="searchModalOpened"
                   @click.prevent.stop="showSearchModal()"
-                />
+                >
+                  <span class="fr-sr-only">
+                    {{ showSearchLabel }}
+                  </span>
+                </button>
                 <button
                   v-if="isWithSlotNav || quickLinks?.length"
                   id="button-menu"
