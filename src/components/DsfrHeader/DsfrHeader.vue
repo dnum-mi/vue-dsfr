@@ -168,7 +168,11 @@ provide(registerNavigationLinkKey, () => {
                   :title="menuLabel"
                   data-testid="open-menu-btn"
                   @click.prevent.stop="showMenu()"
-                />
+                >
+                  <span class="fr-sr-only">
+                    {{ menuLabel }}
+                  </span>
+                </button>
               </div>
             </div>
             <div
