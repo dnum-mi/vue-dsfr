@@ -66,9 +66,11 @@ const readonly = ''
 
     <DsfrInputGroup
       valid-message="Tout va bien pour ces deux champs"
+      v-slot="slotProps"
     >
       <p>
         <DsfrInput
+          v-bind="slotProps"
           :id="id"
           :placeholder="placeholder"
           :readonly="readonly !== ''"
@@ -82,6 +84,7 @@ const readonly = ''
 
       <p>
         <DsfrInput
+          v-bind="slotProps"
           :id="id"
           :placeholder="placeholder"
           :readonly="readonly !== ''"
