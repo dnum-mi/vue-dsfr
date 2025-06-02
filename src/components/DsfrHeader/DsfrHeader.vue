@@ -80,7 +80,7 @@ const showMenu = () => {
   // Sans le setTimeout, le focus n'est pas fait
   setTimeout(() => {
     document.getElementById('close-button')?.focus()
-  })
+  }, 50)
 }
 const showSearchModal = () => {
   modalOpened.value = true
@@ -152,7 +152,11 @@ provide(registerNavigationLinkKey, () => {
                   :title="showSearchLabel"
                   :data-fr-opened="searchModalOpened"
                   @click.prevent.stop="showSearchModal()"
-                />
+                >
+                  <span class="fr-sr-only">
+                    {{ showSearchLabel }}
+                  </span>
+                </button>
                 <button
                   v-if="isWithSlotNav || quickLinks?.length"
                   id="button-menu"
@@ -164,7 +168,11 @@ provide(registerNavigationLinkKey, () => {
                   :title="menuLabel"
                   data-testid="open-menu-btn"
                   @click.prevent.stop="showMenu()"
-                />
+                >
+                  <span class="fr-sr-only">
+                    {{ menuLabel }}
+                  </span>
+                </button>
               </div>
             </div>
             <div
