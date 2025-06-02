@@ -37,6 +37,7 @@ const classes = computed(
     :role="alert ? 'alert' : undefined"
   >
     <component
+      id="message-notif"
       :is="titleTag"
       v-if="!small"
       class="fr-alert__title"
@@ -49,9 +50,11 @@ const classes = computed(
     <button
       v-if="closeable"
       class="fr-btn fr-btn--close"
+      aria-describedby="message-notif"
       :title="closeButtonLabel"
       :aria-label="closeButtonLabel"
-      @click="onClick"
-    />
+      @click="onClick">
+      <span class="fr-sr-only">Fermer la notification</span>
+    </button>
   </div>
 </template>
