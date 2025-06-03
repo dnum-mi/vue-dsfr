@@ -9,6 +9,7 @@ export type DsfrAlertProps = {
   id?: string
   title?: string
   description?: string
+  idAlert?:string,
   small?: boolean
   titleTag?: TitleTag
   type?: DsfrAlertType

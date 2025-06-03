@@ -51,7 +51,7 @@ const classes = computed(
     <button
       v-if="closeable"
       class="fr-btn fr-btn--close"
-      :aria-describedby="props.idAlert"
+      :aria-describedby="props.idAlert+"
       :title="closeButtonLabel"
       :aria-label="closeButtonLabel"
       @click="onClick">
