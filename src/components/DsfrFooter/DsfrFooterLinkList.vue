@@ -8,14 +8,18 @@ export type {
 withDefaults(defineProps<DsfrFooterLinkListProps>(), {
   categoryName: 'Nom de la catégorie',
   links: () => [],
+  titleTag: 'h3',
 })
 </script>
 
 <template>
   <div>
-    <h3 class="fr-footer__top-cat">
+    <component
+      class="fr-footer__top-cat"
+      :is="titleTag"
+    >
       {{ categoryName }}
-    </h3>
+    </component>
     <ul class="fr-footer__top-list">
       <li
         v-for="(link, idx) in links"
