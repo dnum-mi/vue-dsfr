@@ -30,7 +30,8 @@ export type DsfrFooterLinkProps = {
 
 export type DsfrFooterLinkListProps = {
   categoryName: string
-  links: DsfrFooterLinkProps[]
+  links: DsfrFooterLinkProps[],
+  titleTag: string,
 }
 
 export type DsfrFooterProps = {

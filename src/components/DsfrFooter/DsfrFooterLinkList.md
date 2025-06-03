@@ -13,10 +13,11 @@ Le composant se compose de deux parties principales :
 
 ## 🛠️ Props
 
-| Nom de Prop | Type | Par défaut | Description |
-|-------------|------|------------|-------------|
-| `categoryName` | `string` | `'Nom de la catégorie'` | Le nom de la catégorie de liens affichée. |
-| `links` | `Array<DsfrFooterLinkProps>` | `[]` | Un tableau d'objets représentant les liens à afficher. Chaque objet peut avoir les propriétés de `DsfrFooterLinkProps`. |
+| Nom de Prop    | Type                         | Par défaut | Description                                                                                                           |
+|----------------|------------------------------|------------|-----------------------------------------------------------------------------------------------------------------------|
+| `categoryName` | `string`                     | `'Nom de la catégorie'` | Le nom de la catégorie de liens affichée.                                                                             |
+| `links`        | `Array<DsfrFooterLinkProps>` | `[]` | Un tableau d'objets représentant les liens à afficher. Chaque objet peut avoir les propriétés de `DsfrFooterLinkProps`. |
+| `titleTag`     | `string`                     | `'h3'` | Le type de balise pour afficher `categoryName`                                                 |                                                 |
 
 ## 📡Événements
 
