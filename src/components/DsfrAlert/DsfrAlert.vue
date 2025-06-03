@@ -12,6 +12,7 @@ const props = withDefaults(defineProps<DsfrAlertProps>(), {
   title: '',
   titleTag: 'h3',
   type: 'info',
+  idAlert: 'message-notif',
   closeButtonLabel: 'Fermer',
 })
 
@@ -37,7 +38,7 @@ const classes = computed(
     :role="alert ? 'alert' : undefined"
   >
     <component
-      id="message-notif"
+      :id="props.idAlert"
       :is="titleTag"
       v-if="!small"
       class="fr-alert__title"
@@ -50,7 +51,7 @@ const classes = computed(
     <button
       v-if="closeable"
       class="fr-btn fr-btn--close"
-      aria-describedby="message-notif"
+      :aria-describedby="props.idAlert"
       :title="closeButtonLabel"
       :aria-label="closeButtonLabel"
       @click="onClick">
