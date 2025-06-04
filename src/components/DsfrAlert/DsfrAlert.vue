@@ -18,7 +18,7 @@ const props = withDefaults(defineProps<DsfrAlertProps>(), {
 const emit = defineEmits<{ (e: 'close'): void }>()
 const onClick = () => emit('close')
 
-const idAlert = computed( () => `message-notif-${props.id}`)
+const idAlert = computed(() => `message-notif-${props.id}`)
 
 const classes = computed(
   () => ([
