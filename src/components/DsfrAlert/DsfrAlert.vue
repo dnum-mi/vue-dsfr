@@ -39,6 +39,7 @@ const classes = computed(
     <component
       :is="titleTag"
       v-if="!small"
+      :id="`${id}-title`"
       class="fr-alert__title"
     >
       {{ title }}
