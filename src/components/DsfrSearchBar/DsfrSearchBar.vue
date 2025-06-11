@@ -44,7 +44,15 @@ const emit = defineEmits<{
       :aria-disabled="disabled"
       @click="emit('search', modelValue)"
     >
-      {{ buttonText }}
+      <template v-if="buttonText">
+        {{ buttonText }}
+      </template>
+      <span
+        v-else
+        class="fr-sr-only"
+      >
+        Rechercher
+      </span>
     </DsfrButton>
   </div>
 </template>
