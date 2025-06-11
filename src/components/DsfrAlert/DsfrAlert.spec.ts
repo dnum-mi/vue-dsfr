@@ -30,8 +30,7 @@ describe('DsfrAlert', () => {
     // Then
     expect(titleEl.tagName).toBe('H3')
     expect(titleEl).toHaveClass('fr-alert__title')
-    expect(descritptionEl.tagName).toBe('DIV')
-    expect(descritptionEl).toHaveClass('fr-alert')
+    expect(descritptionEl.tagName).toBe('P')
   })
 
   it('should mount DsfrAlert with right content with description in slot', () => {
@@ -87,7 +86,7 @@ describe('DsfrAlert', () => {
       },
     })
 
-    const closeBtn = getByTitle('Fermer')
+    const closeBtn = getByTitle('Fermer le message')
     await fireEvent.click(closeBtn)
 
     // Then
