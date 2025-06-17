@@ -21,6 +21,7 @@ const props = withDefaults(defineProps<DsfrCheckboxProps>(), {
 })
 
 const message = computed(() => props.errorMessage || props.validMessage)
+const messageId = computed(() => message.value ? useRandomId('message', 'checkbox') : undefined)
 
 const additionalMessageClass = computed(() => props.errorMessage ? 'fr-error-text' : 'fr-valid-text')
 const modelValue = defineModel()
@@ -51,6 +52,7 @@ const modelValue = defineModel()
         :data-testid="`input-checkbox-${id}`"
         :data-test="`input-checkbox-${id}`"
         :tabindex="readonly ? -1 : undefined"
+        :aria-describedby="messageId"
       >
       <label
         :for="id"
@@ -77,6 +79,7 @@ const modelValue = defineModel()
       </label>
       <div
         v-if="message"
+        :id="messageId"
         class="fr-messages-group"
         aria-live="assertive"
         role="alert"
