@@ -29,7 +29,7 @@ const onChange = ($event: string) => {
   emit('update:modelValue', $event)
 }
 
-const ariaLabelledby = computed(() => message.value ? `${props.titleId} messages-${props.titleId}` : props.titleId)
+const describedByElement = computed(() => message.value ? `messages-${props.titleId}` : undefined)
 </script>
 
 <template>
@@ -41,7 +41,8 @@ const ariaLabelledby = computed(() => message.value ? `${props.titleId} messages
         'fr-fieldset--valid': validMessage,
       }"
       :disabled="disabled"
-      :aria-labelledby="ariaLabelledby"
+      :aria-labelledby="titleId"
+      :aria-describedby="describedByElement"
       :aria-invalid="ariaInvalid"
       :role="(errorMessage || validMessage) ? 'group' : undefined"
     >
