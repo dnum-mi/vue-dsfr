@@ -12,7 +12,7 @@ const props = withDefaults(defineProps<DsfrAlertProps>(), {
   title: '',
   titleTag: 'h3',
   type: 'info',
-  closeButtonLabel: 'Fermer',
+  closeButtonLabel: 'Fermer le message',
 })
 
 const emit = defineEmits<{ (e: 'close'): void }>()
@@ -26,6 +26,19 @@ const classes = computed(
     },
   ]),
 )
+
+const idTitle = computed(() => useRandomId('alert', 'title'))
+const idDescription = computed(() => useRandomId('alert', 'description'))
+
+const idListDescribedby = computed(() => {
+  if (props.description && !props.title) {
+    return idDescription.value
+  }
+  if (!props.description && props.title) {
+    return idTitle.value
+  }
+  return `${idTitle.value} ${idDescription.value}`
+})
 </script>
 
 <template>
@@ -39,19 +52,37 @@ const classes = computed(
     <component
       :is="titleTag"
       v-if="!small"
+      :id="idTitle"
       class="fr-alert__title"
     >
       {{ title }}
     </component>
-    <slot>
+    <p
+      v-if="description"
+      :id="idDescription"
+    >
       {{ description }}
-    </slot>
+    </p>
+    <slot v-else />
     <button
       v-if="closeable"
-      class="fr-btn fr-btn--close"
+      :aria-describedby="idListDescribedby"
       :title="closeButtonLabel"
-      :aria-label="closeButtonLabel"
+      class="fr-btn fr-btn--close"
       @click="onClick"
-    />
+    >
+      <span class="fr-sr-only">{{ closeButtonLabel }}</span>
+    </button>
   </div>
 </template>
+
+<style scoped>
+p {
+  padding: 0;
+  margin: 0;
+}
+
+.fr-alert--sm {
+  padding: .5rem 2.25rem .5rem 3rem;
+}
+</style>
