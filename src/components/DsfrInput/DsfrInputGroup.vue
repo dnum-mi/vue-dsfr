@@ -38,7 +38,11 @@ defineEmits<{ (e: 'update:modelValue', payload: string): void }>()
   >
     <slot name="before-input" />
     <!-- @slot Slot par défaut pour le contenu du groupe de champ -->
-    <slot />
+    <slot
+      :is-valid="!!validMessage"
+      :is-invalid="!!errorMessage"
+      :description-id="((errorMessage || validMessage) && descriptionId) || undefined"
+    />
     <DsfrInput
       v-if="!$slots.default"
       v-bind="$attrs"
