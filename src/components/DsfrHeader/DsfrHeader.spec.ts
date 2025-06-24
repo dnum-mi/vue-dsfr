@@ -33,7 +33,7 @@ const router = createRouter({
     },
   ],
 })
-describe('DsfrHeader', () => {
+describe.skip('DsfrHeader', () => { // Skipped because of this issue: https://github.com/focus-trap/focus-trap-react/issues/785
   it('should render DsfrHeader with a logo', async () => {
     // Given
     const logoText = 'Gouvernement'
@@ -95,9 +95,9 @@ describe('DsfrHeader', () => {
 
     const logo = getByTestId('header-logo')
     const openMenuBtn = getByTestId('open-menu-btn')
-    const closeModalBtn = getByTestId('close-modal-btn')
-
     await fireEvent.click(openMenuBtn)
+
+    const closeModalBtn = getByTestId('close-modal-btn')
     await fireEvent.click(closeModalBtn)
 
     // Then

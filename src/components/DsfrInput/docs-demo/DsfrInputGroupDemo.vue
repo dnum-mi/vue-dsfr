@@ -65,10 +65,12 @@ const readonly = ''
     <h2>4. Avec plusieurs champs de saisie</h2>
 
     <DsfrInputGroup
+      v-slot="slotProps"
       valid-message="Tout va bien pour ces deux champs"
     >
       <p>
         <DsfrInput
+          v-bind="slotProps"
           :id="id"
           :placeholder="placeholder"
           :readonly="readonly !== ''"
@@ -83,6 +85,7 @@ const readonly = ''
       <p>
         <DsfrInput
           :id="id"
+          v-bind="slotProps"
           :placeholder="placeholder"
           :readonly="readonly !== ''"
           :model-value="modelValue2"

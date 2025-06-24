@@ -50,7 +50,9 @@ const isCurrentPage = (page: Page) => props.pages.indexOf(page) === props.curren
           :title="firstPageTitle"
           :aria-disabled="currentPage === 0 ? true : undefined"
           @click.prevent="tofirstPage()"
-        />
+        >
+          <span class="fr-sr-only">{{ firstPageTitle }}</span>
+        </a>
       </li>
       <li>
         <a
@@ -95,7 +97,9 @@ const isCurrentPage = (page: Page) => props.pages.indexOf(page) === props.curren
           :disabled="currentPage === pages.length - 1 ? true : undefined"
           :aria-disabled="currentPage === pages.length - 1 ? true : undefined"
           @click.prevent="toLastPage()"
-        />
+        >
+          <span class="fr-sr-only">{{ lastPageTitle }}</span>
+        </a>
       </li>
     </ul>
   </nav>

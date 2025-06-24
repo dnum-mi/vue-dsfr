@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import { computed, onMounted, onUnmounted, provide, ref, toRef } from 'vue'
+import { FocusTrap } from 'focus-trap-vue'
 
 import type { DsfrLanguageSelectorElement } from '../DsfrLanguageSelector/DsfrLanguageSelector.vue'
 import DsfrLanguageSelector from '../DsfrLanguageSelector/DsfrLanguageSelector.vue'
@@ -80,7 +81,7 @@ const showMenu = () => {
   // Sans le setTimeout, le focus n'est pas fait
   setTimeout(() => {
     document.getElementById('close-button')?.focus()
-  })
+  }, 50)
 }
 const showSearchModal = () => {
   modalOpened.value = true
@@ -152,7 +153,11 @@ provide(registerNavigationLinkKey, () => {
                   :title="showSearchLabel"
                   :data-fr-opened="searchModalOpened"
                   @click.prevent.stop="showSearchModal()"
-                />
+                >
+                  <span class="fr-sr-only">
+                    {{ showSearchLabel }}
+                  </span>
+                </button>
                 <button
                   v-if="isWithSlotNav || quickLinks?.length"
                   id="button-menu"
@@ -160,11 +165,13 @@ provide(registerNavigationLinkKey, () => {
                   :data-fr-opened="showMenu"
                   aria-controls="header-navigation"
                   aria-haspopup="dialog"
-                  :aria-label="menuLabel"
-                  :title="menuLabel"
                   data-testid="open-menu-btn"
                   @click.prevent.stop="showMenu()"
-                />
+                >
+                  <span class="fr-sr-only">
+                    {{ menuLabel }}
+                  </span>
+                </button>
               </div>
             </div>
             <div
@@ -237,63 +244,74 @@ provide(registerNavigationLinkKey, () => {
             </div>
           </div>
         </div>
-        <div
-          v-if="showSearch || isWithSlotNav || (quickLinks && quickLinks.length) || languageSelector"
-          id="header-navigation"
-          class="fr-header__menu  fr-modal"
-          :class="{ 'fr-modal--opened': modalOpened }"
-          :aria-label="menuModalLabel"
-          role="dialog"
-          aria-modal="true"
+        <FocusTrap
+          v-if="modalOpened"
+          :active="modalOpened"
+          :focus-trap-options="{
+            initialFocus: '#close-button',
+            fallbackFocus: '#close-button',
+            escapeDeactivates: true,
+            clickOutsideDeactivates: true,
+            returnFocusOnDeactivate: true,
+          }"
         >
-          <div class="fr-container">
-            <button
-              id="close-button"
-              class="fr-btn fr-btn--close"
-              aria-controls="header-navigation"
-              data-testid="close-modal-btn"
-              @click.prevent.stop="hideModal()"
-            >
-              {{ closeMenuModalLabel }}
-            </button>
-            <div class="fr-header__menu-links">
-              <template v-if="languageSelector">
-                <DsfrLanguageSelector
-                  v-bind="languageSelector"
-                  @select="languageSelector.currentLanguage = $event.codeIso"
+          <div
+            v-if="(showSearch || isWithSlotNav || (quickLinks && quickLinks.length) || languageSelector) && modalOpened"
+            id="header-navigation"
+            class="fr-header__menu  fr-modal  fr-modal--opened"
+            :aria-label="menuModalLabel"
+            role="dialog"
+            aria-modal="true"
+          >
+            <div class="fr-container">
+              <button
+                id="close-button"
+                class="fr-btn fr-btn--close"
+                aria-controls="header-navigation"
+                data-testid="close-modal-btn"
+                @click.prevent.stop="hideModal()"
+              >
+                {{ closeMenuModalLabel }}
+              </button>
+              <div class="fr-header__menu-links">
+                <template v-if="languageSelector">
+                  <DsfrLanguageSelector
+                    v-bind="languageSelector"
+                    @select="languageSelector.currentLanguage = $event.codeIso"
+                  />
+                </template>
+                <slot name="before-quick-links" />
+                <DsfrHeaderMenuLinks
+                  v-if="menuOpened"
+                  role="navigation"
+                  :links="quickLinks"
+                  :nav-aria-label="quickLinksAriaLabel"
+                  @link-click="onQuickLinkClick"
+                />
+                <slot name="after-quick-links" />
+              </div>
+
+              <template v-if="modalOpened">
+                <slot
+                  name="mainnav"
+                  :hidemodal="hideModal"
                 />
               </template>
-              <slot name="before-quick-links" />
-              <DsfrHeaderMenuLinks
-                v-if="menuOpened"
-                role="navigation"
-                :links="quickLinks"
-                :nav-aria-label="quickLinksAriaLabel"
-                @link-click="onQuickLinkClick"
-              />
-              <slot name="after-quick-links" />
-            </div>
-
-            <template v-if="modalOpened">
-              <slot
-                name="mainnav"
-                :hidemodal="hideModal"
-              />
-            </template>
-            <div
-              v-if="searchModalOpened"
-              class="flex justify-center items-center"
-            >
-              <DsfrSearchBar
-                :searchbar-id="searchbarId"
-                :model-value="modelValue"
-                :placeholder="placeholder"
-                @update:model-value="emit('update:modelValue', $event)"
-                @search="emit('search', $event)"
-              />
+              <div
+                v-if="searchModalOpened"
+                class="flex justify-center items-center"
+              >
+                <DsfrSearchBar
+                  :searchbar-id="searchbarId"
+                  :model-value="modelValue"
+                  :placeholder="placeholder"
+                  @update:model-value="emit('update:modelValue', $event)"
+                  @search="emit('search', $event)"
+                />
+              </div>
             </div>
           </div>
-        </div>
+        </FocusTrap>
         <!-- @slot Slot par défaut pour le contenu du fieldset (sera dans `<div class="fr-header__body-row">`) -->
         <slot />
       </div>
