@@ -12,6 +12,7 @@ const props = withDefaults(defineProps<DsfrLanguageSelectorProps>(), {
   id: () => useRandomId('language-selector'),
   languages: () => [],
   currentLanguage: 'fr',
+  title: 'Sélectionner une langue',
 })
 
 const emit = defineEmits<{ (e: 'select', payload: DsfrLanguageSelectorElement): void }>()
@@ -52,7 +53,7 @@ watch(expanded, (newValue, oldValue) => {
         class="fr-translate__btn fr-btn fr-btn--tertiary"
         :aria-controls="id"
         :aria-expanded="expanded"
-        title="Sélectionner une langue"
+        :title
         type="button"
         @click.prevent.stop="expanded = !expanded"
       >

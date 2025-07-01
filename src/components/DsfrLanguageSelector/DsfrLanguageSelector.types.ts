@@ -7,4 +7,5 @@ export type DsfrLanguageSelectorProps = {
   id?: string
   languages: DsfrLanguageSelectorElement[]
   currentLanguage?: string
+  title?: string
 }
