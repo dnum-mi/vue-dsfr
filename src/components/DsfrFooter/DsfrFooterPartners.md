@@ -13,11 +13,12 @@ Le composant `DsfrFooterPartners` est conçu pour afficher une liste de partenai
 
 ## 🛠️ Props
 
-| Propriété      | Type                    | Description                                                                     | Valeur par défaut |
-|----------------|-------------------------|---------------------------------------------------------------------------------|-------------------|
-| `mainPartner`  | `DsfrFooterPartner`     | Objet représentant le partenaire principal avec lien, logo, et nom.             | `undefined`       |
-| `subPartners`  | `DsfrFooterPartner[]`   | Tableau d'objets représentant les sous-partenaires.                             | `[]`              |
-| `title`        | `string`                | Titre de la section des partenaires.                                            | `''`              |
+| Propriété      | Type                  | Description                                                                     | Valeur par défaut |
+|----------------|-----------------------|---------------------------------------------------------------------------------|-------------------|
+| `mainPartner`  | `DsfrFooterPartner`   | Objet représentant le partenaire principal avec lien, logo, et nom.             | `undefined`       |
+| `subPartners`  | `DsfrFooterPartner[]` | Tableau d'objets représentant les sous-partenaires.                             | `[]`              |
+| `title`        | `string`              | Titre de la section des partenaires.                                            | `''`              |
+| `titleTag`     | `TitleTag`            | Tag HTML pour le titre.                                                         | `'h3'`            |
 
 ## 📡Événements
 
