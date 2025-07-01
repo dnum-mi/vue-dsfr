@@ -1,4 +1,6 @@
 <script lang="ts" setup>
+import type { TitleTag } from '@/common-types'
+
 export type DsfrFooterPartner = {
   href: string
   logo: string
@@ -9,23 +11,26 @@ export type DsfrFooterPartnersProps = {
   mainPartner?: DsfrFooterPartner
   subPartners?: DsfrFooterPartner[]
   title?: string
+  titleTag?: TitleTag
 }
 
 withDefaults(defineProps<DsfrFooterPartnersProps>(), {
   mainPartner: undefined,
   subPartners: () => [],
   title: '',
+  titleTag: 'h4',
 })
 </script>
 
 <template>
   <div class="fr-footer__partners">
-    <h4
+    <component
+      :is="titleTag"
       v-if="title"
       class="fr-footer__partners-title"
     >
       {{ title }}
-    </h4>
+    </component>
     <div class="fr-footer__partners-logos">
       <div
         v-if="mainPartner"
