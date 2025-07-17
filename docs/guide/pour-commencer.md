@@ -61,11 +61,11 @@ npm install @gouvfr/dsfr @gouvminint/vue-dsfr
 
 :::
 
-### Utiliser la bibliothèque en tant que plugin
+### ~~Utiliser la bibliothèque en tant que plugin~~
 
-::: warning Méthode déconseillée
+::: danger Méthode déconseillée
 
-Cette méthode est déconseillée. Elle est présente dans la documentation pour des raisons historiques.
+Cette méthode est **déconseillée**. Elle est présente dans la documentation pour des raisons historiques.
 Cette méthode est facile à mettre en place et permet de tester rapidement les composants dans une application, cependant, comme elle enregistre tous les composants, ils sont tous présents dans le bundle final, ce qui est loin d’être optimal.
 
 On peut avoir le meilleur des deux mondes (**import automatique** des composants et un **bundle final optimisé** qui ne contient que les composants réellement utilisés) avec l’auto-import et le component resolver livrés avec les versions [5.5+ de VueDsfr](https://github.com/dnum-mi/vue-dsfr/releases/tag/v5.5.0).
@@ -75,7 +75,7 @@ Voir plus loin la [section correspondante](#avoir-un-bundle-optimise-et-une-dx-o
 
 :::
 
-#### Ajouter le plugin
+#### ~~Ajouter le plugin~~
 
 Ajouter la bibliothèque en tant que plugin a deux conséquences :
 
