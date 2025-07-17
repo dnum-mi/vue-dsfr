@@ -196,7 +196,7 @@ npm i -D unplugin-auto-import unplugin-vue-components
 
 Ajouter ces lignes dans `vite.config.ts` :
 
-```typescript{6-12,22-51}
+```typescript{6-12,21-50}
 import { fileURLToPath, URL } from 'node:url'
 
 import { defineConfig } from 'vite'
