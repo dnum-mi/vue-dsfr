@@ -76,6 +76,7 @@ Aucun événement spécifique pour ce composant.
 
 1. `footer-link-lists` : Permet de personnaliser les listes de liens dans la partie supérieure du pied de page.
 2. `description` : Pour personnaliser la description dans le corps du pied de page.
+3. `footer-partners` : Pour personnaliser les liens vers les partenaires, par défaut est généré grâce à la prop `partners`.
 
 ## 📝 Exemple
 

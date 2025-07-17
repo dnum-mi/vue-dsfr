@@ -40,18 +40,22 @@ const ecosystemLinks = [
   {
     label: 'legifrance.gouv.fr',
     href: 'https://legifrance.gouv.fr',
+    title: 'Légifrance, nouvelle fenêtre',
   },
   {
     label: 'info.gouv.fr',
     href: 'https://info.gouv.fr',
+    title: 'Informations gouvernementales, nouvelle fenêtre',
   },
   {
     label: 'service-public.fr',
     href: 'https://service-public.fr',
+    title: 'Informations et démarches administratives, nouvelle fenêtre',
   },
   {
     label: 'data.gouv.fr',
     href: 'https://data.gouv.fr',
+    title: 'Plateforme des données publiques, nouvelle fenêtre',
   },
 ]
 
@@ -71,24 +75,35 @@ app?.appContext.app.use(
     ],
   }),
 ).component('VIcon', VIcon)
+
+const partners = {
+  titleTag: 'h5',
+  title: 'Partenaires',
+  mainPartner: {
+    name: 'Partenaire 1',
+    href: '/partenaire-1',
+    logo: 'https://loremflickr.com/100/100/cat?random=1',
+  },
+}
 </script>
 
 <template>
   <DsfrFooter
-    :before-mandatory-links="beforeMandatoryLinks"
-    :after-mandatory-links="afterMandatoryLinks"
-    :a11y-compliance="a11yCompliance"
-    :logo-text="logoText"
-    :legal-link="legalLink"
-    :personal-data-link="personalDataLink"
-    :cookies-link="cookiesLink"
-    :a11y-compliance-link="a11yComplianceLink"
-    :desc-text="descText"
-    :home-link="homeLink"
-    :licence-text="licenceText"
-    :licence-to="licenceTo"
-    :licence-name="licenceName"
-    :licence-link-props="licenceLinkProps"
-    :ecosystem-links="ecosystemLinks"
+    :before-mandatory-links
+    :after-mandatory-links
+    :a11y-compliance
+    :logo-text
+    :legal-link
+    :personal-data-link
+    :cookies-link
+    :a11y-compliance-link
+    :desc-text
+    :home-link
+    :licence-text
+    :licence-to
+    :licence-name
+    :licence-link-props
+    :ecosystem-links
+    :partners
   />
 </template>
