@@ -54,22 +54,22 @@ const props = withDefaults(defineProps<DsfrFooterProps>(), {
     {
       label: 'info.gouv.fr',
       href: 'https://info.gouv.fr',
-      title: 'Informations gouvernementales, nouvelle fenêtre',
+      title: 'info.gouv.fr, Informations gouvernementales, ouvre une nouvelle fenêtre',
     },
     {
       label: 'service-public.fr',
       href: 'https://service-public.fr',
-      title: 'Informations et démarches administratives, nouvelle fenêtre',
+      title: 'service-public.fr, Informations et démarches administratives, ouvre une nouvelle fenêtre',
     },
     {
       label: 'legifrance.gouv.fr',
       href: 'https://legifrance.gouv.fr',
-      title: 'Service public de diffusion du droit, nouvelle fenêtre',
+      title: 'legifrance.gouv.fr, Service public de diffusion du droit, ouvre une nouvelle fenêtre',
     },
     {
       label: 'data.gouv.fr',
       href: 'https://data.gouv.fr',
-      title: 'Plateforme des données publiques, nouvelle fenêtre',
+      title: 'data.gouv.fr, Plateforme des données publiques, ouvre une nouvelle fenêtre',
     },
   ],
   operatorLinkText: 'Revenir à l’accueil',
