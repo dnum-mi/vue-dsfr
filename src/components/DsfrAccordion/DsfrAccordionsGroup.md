@@ -4,7 +4,7 @@
 
 Le composant `DsfrAccordionsGroup` permet de regrouper plusieurs accordéons en une seule unité cohérente. Il gère la logique de sélection active entre les accordéons enfants, permettant ainsi d'ouvrir un accordéon tout en fermant les autres. Ce composant est essentiel pour organiser des ensembles d'accordéons liés de manière interactive.
 
-🏅 La documentation sur l’accordéon sur le [DSFR](https://www.systeme-de-design.gouv.fr/elements-d-interface/composants/accordeon)
+🏅 La documentation sur l’accordéon sur le [DSFR](https://www.systeme-de-design.gouv.fr/version-courante/fr/composants/accordeon)
 
 <VIcon name="vi-file-type-storybook" /> La story sur l’accordéon sur le storybook de [VueDsfr](https://storybook.vue-ds.fr/?path=/docs/composants-dsfraccordionsgroup--docs)
 

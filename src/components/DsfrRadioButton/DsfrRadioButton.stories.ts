@@ -4,7 +4,7 @@ import DsfrRadioButton from './DsfrRadioButton.vue'
 import DsfrRadioButtonSet from './DsfrRadioButtonSet.vue'
 
 /**
- * [Voir quand l’utiliser sur la documentation du DSFR](https://www.systeme-de-design.gouv.fr/elements-d-interface/composants/boutons-radio)
+ * [Voir quand l’utiliser sur la documentation du DSFR](https://www.systeme-de-design.gouv.fr/version-courante/fr/composants/boutons-radio)
  *
  * Nous vous invitons à regarder plutôt la [nouvelle documentation](https://vue-ds.fr/composants/DsfrRadioButton) pour ce composant
  */

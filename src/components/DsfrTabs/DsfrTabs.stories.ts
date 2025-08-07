@@ -26,7 +26,7 @@ const tabContents = [
 ]
 
 /**
- * [Voir quand l’utiliser sur la documentation du DSFR](https://www.systeme-de-design.gouv.fr/elements-d-interface/composants/onglet)
+ * [Voir quand l’utiliser sur la documentation du DSFR](https://www.systeme-de-design.gouv.fr/version-courante/fr/composants/onglet)
  */
 const meta = {
   component: DsfrTabs,

@@ -6,7 +6,7 @@ import DsfrFooter from './DsfrFooter.vue'
 import DsfrFooterLinkList from './DsfrFooterLinkList.vue'
 
 /**
- * [Voir quand l’utiliser sur la documentation du DSFR](https://www.systeme-de-design.gouv.fr/elements-d-interface/composants/pied-de-page)
+ * [Voir quand l’utiliser sur la documentation du DSFR](https://www.systeme-de-design.gouv.fr/version-courante/fr/composants/pied-de-page)
  */
 export default {
   component: DsfrFooter,

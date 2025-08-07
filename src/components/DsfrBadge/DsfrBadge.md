@@ -4,7 +4,7 @@
 
 Le `DsfrBadge` est le super-héros des petites étiquettes ! Ce composant Vue est idéal pour afficher des informations courtes et importantes, comme des catégories, des étiquettes ou des statuts. C'est comme le fromage sur votre pizza : petit mais essentiel !
 
-🏅 La documentation sur le badge sur le [DSFR](https://www.systeme-de-design.gouv.fr/elements-d-interface/composants/badge)
+🏅 La documentation sur le badge sur le [DSFR](https://www.systeme-de-design.gouv.fr/version-courante/fr/composants/badge)
 
 <VIcon name="vi-file-type-storybook" /> La story sur le badge sur le storybook de [VueDsfr](https://storybook.vue-ds.fr/?path=/docs/composants-dsfrbadge--docs)
 

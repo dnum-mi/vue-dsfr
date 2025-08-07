@@ -6,7 +6,7 @@ La carte c'est tout simplement l'indispensable pour agrémenter vos sites et app
 
 La carte existe en trois tailles (LG, MD, SM) et deux formats (horizontal et vertical) déclinés sur deux supports (desktop et mobile), vous trouverez forcément votre bonheur ! Les cartes horizontales sont réservées au desktop (en mobile, une carte horizontale devient verticale).
 
-🏅 La documentation sur la carte sur le [DSFR](https://www.systeme-de-design.gouv.fr/elements-d-interface/composants/carte)
+🏅 La documentation sur la carte sur le [DSFR](https://www.systeme-de-design.gouv.fr/version-courante/fr/composants/carte)
 
 <VIcon name="vi-file-type-storybook" /> La story sur la carte sur le storybook de [VueDsfr](https://storybook.vue-ds.fr/?path=/docs/composants-dsfrcard--docs)
 
@@ -58,8 +58,8 @@ Autres props :
 
 `start-details`  permet de placer une précision, sous forme de tags (cliquables ou non)
 
-cf. DSFR : [Composant - Tag](https://www.systeme-de-design.gouv.fr/elements-d-interface/composants/tag) ou [Composant - Badge](https://www.systeme-de-design.gouv.fr/elements-d-interface/composants/badge) (jusqu'à 4 éléments)
-cf. DSFR : [Composant - Carte](https://www.systeme-de-design.gouv.fr/elements-d-interface/composants/carte/).
+cf. DSFR : [Composant - Tag](https://www.systeme-de-design.gouv.fr/version-courante/fr/composants/tag) ou [Composant - Badge](https://www.systeme-de-design.gouv.fr/version-courante/fr/composants/badge) (jusqu'à 4 éléments)
+cf. DSFR : [Composant - Carte](https://www.systeme-de-design.gouv.fr/version-courante/fr/composants/carte/).
 
 ## 📝 Exemples
 

@@ -4,7 +4,7 @@
 
 Le composant `DsfrQuote` permet d’afficher une citation stylisée, accompagnée d’un auteur, d’une source, et éventuellement d’une image illustrative. Ce composant respecte les standards du [Design System de l'État Français (DSFR)](https://www.systeme-de-design.gouv.fr/) pour offrir une présentation élégante et accessible.
 
-🏅 La documentation sur les liens d’évitement le [DSFR](https://www.systeme-de-design.gouv.fr/elements-d-interface/composants/citation)
+🏅 La documentation sur les liens d’évitement le [DSFR](https://www.systeme-de-design.gouv.fr/version-courante/fr/composants/citation)
 
 <VIcon name="vi-file-type-storybook" /> La story sur les liens d’évitement sur le storybook de [VueDsfr](https://storybook.vue-ds.fr/?path=/docs/composants-dsfrquote--docs)
 

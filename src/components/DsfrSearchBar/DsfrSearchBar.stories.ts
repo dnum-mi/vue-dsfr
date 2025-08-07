@@ -1,7 +1,7 @@
 import DsfrSearchBar from './DsfrSearchBar.vue'
 
 /**
- * [Voir quand l’utiliser sur la documentation du DSFR](https://www.systeme-de-design.gouv.fr/elements-d-interface/composants/barre-de-recherche)
+ * [Voir quand l’utiliser sur la documentation du DSFR](https://www.systeme-de-design.gouv.fr/version-courante/fr/composants/barre-de-recherche)
  */
 export default {
   component: DsfrSearchBar,

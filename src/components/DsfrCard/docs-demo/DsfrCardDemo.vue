@@ -9,7 +9,7 @@ import type { DsfrBadgeProps } from '../../DsfrBadge/DsfrBadge.types'
 const app = getCurrentInstance()
 app?.appContext.app.component('VICon', VICon)
 
-const link = 'https://www.systeme-de-design.gouv.fr/elements-d-interface/composants/carte'
+const link = 'https://www.systeme-de-design.gouv.fr/version-courante/fr/composants/carte'
 const description = 'Description exceptionnellement précise'
 const detail = 'Détails absolument essentiels'
 const detailIcon = 'Détails absolument essentiels'

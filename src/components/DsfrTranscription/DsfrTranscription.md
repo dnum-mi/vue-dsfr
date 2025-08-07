@@ -1,6 +1,6 @@
 # Transcription - `DsfrTranscription`
 
-🏅 La documentation sur la transcription sur le [DSFR](https://www.systeme-de-design.gouv.fr/elements-d-interface/composants/transcription)
+🏅 La documentation sur la transcription sur le [DSFR](https://www.systeme-de-design.gouv.fr/version-courante/fr/composants/transcription)
 
 <VIcon name="vi-file-type-storybook" /> La story sur la transcription sur le storybook de [VueDsfr](https://storybook.vue-ds.fr/?path=/docs/composants-dsfrtranscription--docs)
 

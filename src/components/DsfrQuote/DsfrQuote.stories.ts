@@ -1,7 +1,7 @@
 import DsfrQuote from './DsfrQuote.vue'
 
 /**
- * [Voir quand l’utiliser sur la documentation du DSFR](https://www.systeme-de-design.gouv.fr/elements-d-interface/composants/citation)
+ * [Voir quand l’utiliser sur la documentation du DSFR](https://www.systeme-de-design.gouv.fr/version-courante/fr/composants/citation)
  */
 export default {
   component: DsfrQuote,

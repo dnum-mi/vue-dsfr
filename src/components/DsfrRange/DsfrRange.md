@@ -6,7 +6,7 @@ Bienvenue dans la documentation du `DsfrRange`, un composant Vue qui va slider d
 
 Les curseurs sont des entrées numériques qui permettent de voir graphiquement une sélection par rapport a une valeur minimale et maximale. Ils servent à montrer en temps réel les options choisies et éclairer la prise de décision. ("Why so serious?" 🦇🃏)
 
-🏅 La documentation sur le curseur importante sur le [DSFR](https://www.systeme-de-design.gouv.fr/elements-d-interface/composants/bandeau-d-information-importante)
+🏅 La documentation sur le curseur importante sur le [DSFR](https://www.systeme-de-design.gouv.fr/version-courante/fr/composants/bandeau-d-information-importante)
 
 <VIcon name="vi-file-type-storybook" /> La story sur le curseur importante sur le storybook de [VueDsfr](https://storybook.vue-ds.fr/?path=/docs/composants-dsfrnotice--docs)
 

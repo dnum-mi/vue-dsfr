@@ -1,7 +1,7 @@
 import DsfrSummary from './DsfrSummary.vue'
 
 /**
- * [Voir quand l’utiliser sur la documentation du DSFR](https://www.systeme-de-design.gouv.fr/elements-d-interface/composants/sommaire)
+ * [Voir quand l’utiliser sur la documentation du DSFR](https://www.systeme-de-design.gouv.fr/version-courante/fr/composants/sommaire)
  */
 export default {
   component: DsfrSummary,

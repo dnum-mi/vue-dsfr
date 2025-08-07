@@ -9,7 +9,7 @@ L’alerte est disponible en deux tailles :
 - taille médium (MD, par défaut, si la prop `small` est absente ou à `false`) et
 - petite taille ‘SM’ si la prop `small` est à `true`.
 
-🏅 La documentation sur l’alerte sur le [DSFR](https://www.systeme-de-design.gouv.fr/elements-d-interface/composants/alerte)
+🏅 La documentation sur l’alerte sur le [DSFR](https://www.systeme-de-design.gouv.fr/version-courante/fr/composants/alerte)
 
 <VIcon name="vi-file-type-storybook" /> La story sur l’alerte sur le storybook de [VueDsfr](https://storybook.vue-ds.fr/?path=/docs/composants-dsfralert--docs)
 

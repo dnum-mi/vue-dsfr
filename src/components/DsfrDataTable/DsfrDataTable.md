@@ -12,7 +12,7 @@ Si vous avez des propositions, veuillez lancer une [**discussion**](https://gith
 
 :::
 
-🏅 La documentation sur le tableau sur le [DSFR](https://www.systeme-de-design.gouv.fr/elements-d-interface/composants/tableau/)
+🏅 La documentation sur le tableau sur le [DSFR](https://www.systeme-de-design.gouv.fr/version-courante/fr/composants/tableau/)
 
 <VIcon name="vi-file-type-storybook" /> La story sur le tableau de données sur le storybook de [VueDsfr](https://storybook.vue-ds.fr/?path=/docs/composants-dsfrdatatable--docs)
 

@@ -2,7 +2,7 @@
 
 Le composant `DsfrCallout` est un composant Vue.js qui permet de créer des encadrés de mise en avant avec un titre, un contenu, une icône optionnelle, et un bouton configurable. Il est conçu pour s'intégrer harmonieusement dans les projets utilisant le Design System Français (DSFR), tout en offrant une grande flexibilité grâce à la personnalisation des éléments visuels.
 
-🏅 La documentation sur la mise en avant sur le [DSFR](https://www.systeme-de-design.gouv.fr/elements-d-interface/composants/mise-en-avant)
+🏅 La documentation sur la mise en avant sur le [DSFR](https://www.systeme-de-design.gouv.fr/version-courante/fr/composants/mise-en-avant)
 
 <VIcon name="vi-file-type-storybook" /> La story sur la mise en avant sur le storybook de [VueDsfr](https://storybook.vue-ds.fr/?path=/docs/composants-dsfrcallout--docs)
 

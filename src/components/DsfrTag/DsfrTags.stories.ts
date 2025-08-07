@@ -2,7 +2,7 @@ import DsfrTag from './DsfrTag.vue'
 import DsfrTags from './DsfrTags.vue'
 
 /**
- * [Voir quand l’utiliser sur la documentation du DSFR](https://www.systeme-de-design.gouv.fr/elements-d-interface/composants/tag)
+ * [Voir quand l’utiliser sur la documentation du DSFR](https://www.systeme-de-design.gouv.fr/version-courante/fr/composants/tag)
  */
 export default {
   component: DsfrTags,

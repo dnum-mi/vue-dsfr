@@ -1,7 +1,7 @@
 import DsfrLanguageSelector from './DsfrLanguageSelector.vue'
 
 /**
- * [Voir quand l’utiliser sur la documentation du DSFR](https://www.systeme-de-design.gouv.fr/elements-d-interface/composants/selecteur-de-langue)
+ * [Voir quand l’utiliser sur la documentation du DSFR](https://www.systeme-de-design.gouv.fr/version-courante/fr/composants/selecteur-de-langue)
  */
 export default {
   component: DsfrLanguageSelector,
