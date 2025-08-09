@@ -6,6 +6,10 @@ Bienvenue dans la documentation du composant `DsfrInputGroup`, conçu pour envel
 
 Ce composant est très utile si vous souhaitez afficher un message d’erreur ou de succès pour un ou plusieurs champs de saisie `DsfrInput`.
 
+🏅 La documentation sur le champ de saisie sur le [DSFR](https://www.systeme-de-design.gouv.fr/version-courante/fr/composants/champ-de-saisie)
+
+<VIcon name="vi-file-type-storybook" /> La story sur le champ de saisie sur le storybook de [VueDsfr](https://storybook.vue-ds.fr/?path=/docs/composants-dsfrinputgroup--docs)
+
 ## 🛠️ Props
 
 | Nom             | Type        | Défaut                  | Obligatoire   | Description                                                   |

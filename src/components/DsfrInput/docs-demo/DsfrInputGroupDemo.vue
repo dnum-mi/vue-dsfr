@@ -13,16 +13,27 @@ const validMessage1 = 'Message de validation'
 const errorMessage1 = 'Message d’erreur'
 const errorMessage2 = 'Message d’erreur 2'
 const hint = 'Texte d’indice du champ'
-const id = ''
 const readonly = ''
 </script>
 
 <template>
   <div class="fr-container fr-my-2w">
-    <h2>1. Avec un message de succès</h2>
+    <h2>1. Désactivé</h2>
 
     <DsfrInputGroup
-      :id="id"
+      :placeholder="placeholder"
+      :readonly="readonly !== ''"
+      :model-value="modelValue"
+      :label="label"
+      :type="type"
+      :hint="hint"
+      label-visible
+      disabled
+    />
+
+    <h2>2. Avec un message de succès</h2>
+
+    <DsfrInputGroup
       :valid-message="validMessage1"
       :placeholder="placeholder"
       :readonly="readonly !== ''"
@@ -33,10 +44,9 @@ const readonly = ''
       label-visible
     />
 
-    <h2>2. Avec un message d’erreur</h2>
+    <h2>3. Avec un message d’erreur</h2>
 
     <DsfrInputGroup
-      :id="id"
       :error-message="errorMessage1"
       :placeholder="placeholder"
       :readonly="readonly !== ''"
@@ -47,10 +57,9 @@ const readonly = ''
       label-visible
     />
 
-    <h2>3. Avec plusieurs messages</h2>
+    <h2>4. Avec plusieurs messages</h2>
 
     <DsfrInputGroup
-      :id="id"
       :error-message="[errorMessage1, errorMessage2]"
       :valid-message="[validMessage1]"
       :placeholder="placeholder"
@@ -62,7 +71,7 @@ const readonly = ''
       label-visible
     />
 
-    <h2>4. Avec plusieurs champs de saisie</h2>
+    <h2>5. Avec plusieurs champs de saisie</h2>
 
     <DsfrInputGroup
       v-slot="slotProps"
@@ -71,7 +80,6 @@ const readonly = ''
       <p>
         <DsfrInput
           v-bind="slotProps"
-          :id="id"
           :placeholder="placeholder"
           :readonly="readonly !== ''"
           :model-value="modelValue"
@@ -84,7 +92,6 @@ const readonly = ''
 
       <p>
         <DsfrInput
-          :id="id"
           v-bind="slotProps"
           :placeholder="placeholder"
           :readonly="readonly !== ''"
