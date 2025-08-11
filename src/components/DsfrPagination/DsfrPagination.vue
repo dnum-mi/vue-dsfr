@@ -110,4 +110,10 @@ const isCurrentPage = (page: Page) => props.pages.indexOf(page) === props.curren
   background-image: linear-gradient(
   deg, rgba(224,224,224,0.5), rgba(224,224,224,0.5));
 }
+.fr-pagination__link--disabled {
+  color: currentColor;
+  cursor: not-allowed;
+  opacity: 0.5;
+  text-decoration: none;
+}
 </style>
