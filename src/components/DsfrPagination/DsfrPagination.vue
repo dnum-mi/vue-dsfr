@@ -47,9 +47,10 @@ const isCurrentPage = (page: Page) => props.pages.indexOf(page) === props.curren
         <a
           :href="pages[0]?.href"
           class="fr-pagination__link fr-pagination__link--first"
+          :class="{ 'fr-pagination__link--disabled': currentPage === 0 }"
           :title="firstPageTitle"
           :aria-disabled="currentPage === 0 ? true : undefined"
-          @click.prevent="tofirstPage()"
+          @click.prevent="currentPage === 0 ? null : tofirstPage()"
         >
           <span class="fr-sr-only">{{ firstPageTitle }}</span>
         </a>
@@ -58,9 +59,10 @@ const isCurrentPage = (page: Page) => props.pages.indexOf(page) === props.curren
         <a
           :href="pages[Math.max(currentPage - 1, 0)]?.href"
           class="fr-pagination__link fr-pagination__link--prev fr-pagination__link--lg-label"
+          :class="{ 'fr-pagination__link--disabled': currentPage === 0 }"
           :title="prevPageTitle"
           :aria-disabled="currentPage === 0 ? true : undefined"
-          @click.prevent="toPreviousPage()"
+          @click.prevent="currentPage === 0 ? null : toPreviousPage()"
         >{{ prevPageTitle }}</a>
       </li>
       <li
@@ -83,20 +85,22 @@ const isCurrentPage = (page: Page) => props.pages.indexOf(page) === props.curren
         <a
           :href="pages[Math.min(currentPage + 1, pages.length - 1)]?.href"
           class="fr-pagination__link fr-pagination__link--next fr-pagination__link--lg-label"
+          :class="{ 'fr-pagination__link--disabled': currentPage === pages.length - 1 }"
           :title="nextPageTitle"
           :disabled="currentPage === pages.length - 1 ? true : undefined"
           :aria-disabled="currentPage === pages.length - 1 ? true : undefined"
-          @click.prevent="toNextPage()"
+          @click.prevent="currentPage === pages.length - 1 ? null : toNextPage()"
         >{{ nextPageTitle }}</a>
       </li>
       <li>
         <a
-          class="fr-pagination__link fr-pagination__link--last"
           :href="pages.at(-1)?.href"
+          class="fr-pagination__link fr-pagination__link--last"
+          :class="{ 'fr-pagination__link--disabled': currentPage === pages.length - 1 }"
           :title="lastPageTitle"
           :disabled="currentPage === pages.length - 1 ? true : undefined"
           :aria-disabled="currentPage === pages.length - 1 ? true : undefined"
-          @click.prevent="toLastPage()"
+          @click.prevent="currentPage === pages.length - 1 ? null : toLastPage()"
         >
           <span class="fr-sr-only">{{ lastPageTitle }}</span>
         </a>
