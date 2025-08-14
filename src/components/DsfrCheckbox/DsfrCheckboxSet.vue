@@ -19,6 +19,12 @@ const props = withDefaults(defineProps<DsfrCheckboxSetProps>(), {
   modelValue: () => [],
 })
 
+defineSlots<{
+  default?: () => any
+  legend?: () => any
+  'required-tip'?: () => any
+}>()
+
 const message = computed(() => {
   return props.errorMessage || props.validMessage
 })
@@ -45,6 +51,7 @@ const modelValue = defineModel()
       :role="(errorMessage || validMessage) ? 'group' : undefined"
     >
       <legend
+        v-if="legend || $slots.legend"
         :id="titleId"
         class="fr-fieldset__legend fr-text--regular"
       >
