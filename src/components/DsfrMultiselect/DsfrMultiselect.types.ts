@@ -26,11 +26,11 @@ export type DsfrMultiSelectProps<T> = {
 }
 
 export type DsfrMultiSelectSlots<T> = {
-  label: () => VNode
-  'required-tip': () => VNode
-  hint: () => VNode
-  'button-label': () => VNode
-  legend: () => VNode
-  'checkbox-label': (props: { option: T }) => VNode
-  'no-results': () => VNode
+  label?: () => VNode
+  'required-tip'?: () => VNode
+  hint?: () => VNode
+  'button-label'?: () => VNode
+  legend?: () => VNode
+  'checkbox-label'?: (props: { option: T }) => VNode
+  'no-results'?: () => VNode
 }

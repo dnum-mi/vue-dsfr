@@ -321,7 +321,7 @@ const finalLabelClass = computed(() => [
       </slot>
 
       <span
-        v-if="props.hint || $slots.hint?.()"
+        v-if="props.hint || $slots.hint"
         class="fr-hint-text"
       >
         <slot name="hint">{{ props.hint }}</slot>

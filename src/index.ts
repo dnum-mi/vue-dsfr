@@ -11,7 +11,6 @@ export default {
   install: (app: App, { components }: VueDsfrPluginOptions = {}) => {
     Object.entries(vueDsfrComponents).forEach(([componentName, component]) => {
       if (components === undefined || components === 'all' || components.map(({ name }) => name).includes(componentName)) {
-        // @ts-expect-error TS2345
         app.component(componentName, component)
       }
     })
