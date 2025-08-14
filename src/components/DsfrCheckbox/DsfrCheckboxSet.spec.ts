@@ -155,4 +155,63 @@ describe('DsfrCheckboxSet', () => {
     // Then
     expect(legendEl.nextElementSibling).toBe(null)
   })
+
+  describe('legend', () => {
+    // Given
+    const firstLabelText = 'Premier label'
+    const secondLabelText = 'Deuxième label'
+    const modelValue = []
+    const options = [
+      {
+        id: '1',
+        label: firstLabelText,
+        value: 'un',
+        modelValue,
+        name: '1',
+      },
+      {
+        id: '2',
+        label: secondLabelText,
+        value: 'deux',
+        modelValue,
+        name: '2',
+      },
+    ]
+    const legendText = 'Légende de l’ensemble des champs'
+    it('should render legend cause slot is used', async () => {
+      // When
+      const { container } = render(DsfrCheckboxSet, {
+        props: {
+          legend: legendText,
+          errorMessage: 'Message d’erreur',
+          options,
+        },
+      })
+      expect(container.querySelectorAll('legend')).toHaveLength(1)
+    })
+    it('should render legend cause props legend is not empty', async () => {
+      // When
+      const { container } = render(DsfrCheckboxSet, {
+        props: {
+          legend: legendText,
+          options,
+        },
+        slots: {
+          legend: () => legendText,
+        },
+      })
+      expect(container.querySelectorAll('legend')).toHaveLength(1)
+    })
+    it('should not render legend cause no legend is provided', async () => {
+      // When
+      const { container } = render(DsfrCheckboxSet, {
+        props: {
+          options,
+        },
+      })
+
+      // Then
+      expect(container.querySelectorAll('legend')).toHaveLength(0)
+    })
+  })
 })

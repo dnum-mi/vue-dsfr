@@ -16,7 +16,7 @@ withDefaults(defineProps<DsfrQuoteProps>(), {
 <template>
   <figure class="fr-quote fr-quote--column">
     <blockquote
-      v-if="source"
+      v-if="quote"
       :cite="sourceUrl"
     >
       <p>« {{ quote }} »</p>

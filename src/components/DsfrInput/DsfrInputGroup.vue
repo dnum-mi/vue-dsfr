@@ -1,4 +1,6 @@
 <script lang="ts" setup>
+import { computed } from 'vue'
+
 import { useRandomId } from '../../utils/random-utils'
 
 import DsfrInput from './DsfrInput.vue'
@@ -10,7 +12,7 @@ defineOptions({
   inheritAttrs: false,
 })
 
-withDefaults(defineProps<DsfrInputGroupProps>(), {
+const props = withDefaults(defineProps<DsfrInputGroupProps>(), {
   descriptionId: () => useRandomId('input', 'group'),
   hint: '',
   label: '',
@@ -23,6 +25,28 @@ withDefaults(defineProps<DsfrInputGroupProps>(), {
 })
 
 defineEmits<{ (e: 'update:modelValue', payload: string): void }>()
+
+function getDescriptionIdFromArray (messages: string[], baseId: string): string {
+  return Array.from(Array.from({ length: messages.length })).map((_, idx) => `${baseId}-${idx + 1}`).join(' ')
+}
+const descId = computed(() => {
+  if (!props.errorMessage && !props.validMessage) {
+    return undefined
+  }
+  if (Array.isArray(props.errorMessage)) {
+    return getDescriptionIdFromArray(props.errorMessage, props.descriptionId)
+  }
+  if (typeof props.errorMessage === 'string') {
+    return props.errorMessage
+  }
+  if (typeof props.validMessage === 'string') {
+    return props.validMessage
+  }
+  if (Array.isArray(props.validMessage)) {
+    return getDescriptionIdFromArray(props.validMessage, props.descriptionId)
+  }
+  return undefined
+})
 </script>
 
 <template>
@@ -41,7 +65,7 @@ defineEmits<{ (e: 'update:modelValue', payload: string): void }>()
     <slot
       :is-valid="!!validMessage"
       :is-invalid="!!errorMessage"
-      :description-id="((errorMessage || validMessage) && descriptionId) || undefined"
+      :description-id="descId"
     />
     <DsfrInput
       v-if="!$slots.default"
@@ -50,7 +74,7 @@ defineEmits<{ (e: 'update:modelValue', payload: string): void }>()
       :is-invalid="!!errorMessage"
       :label="label"
       :hint="hint"
-      :description-id="((errorMessage || validMessage) && descriptionId) || undefined"
+      :description-id="descId"
       :label-visible="labelVisible"
       :model-value="modelValue"
       :placeholder="placeholder"
@@ -65,8 +89,8 @@ defineEmits<{ (e: 'update:modelValue', payload: string): void }>()
         v-if="Array.isArray(errorMessage)"
       >
         <p
-          v-for="message in errorMessage"
-          :id="descriptionId"
+          v-for="(message, idx) in errorMessage"
+          :id="`${descriptionId}-${idx + 1}`"
           :key="message"
           :data-testid="descriptionId"
           class="fr-error-text"
@@ -85,11 +109,11 @@ defineEmits<{ (e: 'update:modelValue', payload: string): void }>()
       </p>
 
       <template
-        v-if="Array.isArray(validMessage)"
+        v-else-if="Array.isArray(validMessage)"
       >
         <p
-          v-for="message in validMessage"
-          :id="descriptionId"
+          v-for="(message, idx) in validMessage"
+          :id="`${descriptionId}-${idx + 1}`"
           :key="message"
           :data-testid="descriptionId"
           class="fr-valid-text"
