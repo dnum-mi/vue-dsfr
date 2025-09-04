@@ -6,7 +6,7 @@ Le composant `DsfrTiles` utilise le composant .
 
 Le composant `DsfrTiles` permet d'afficher une collection de tuiles ([`DsfrTile`](/composants/DsfrTile)) de manière organisée dans une grille. Il offre la possibilité de personnaliser la disposition de chaque tuile, de les afficher en mode horizontal ou vertical, et d'appliquer des classes spécifiques pour un style personnalisé. Ce composant est idéal pour créer des galeries ou des listes d'éléments visuels interactifs.
 
-🏅 La documentation sur la tuile sur le [DSFR](https://www.systeme-de-design.gouv.fr/elements-d-interface/composants/tuile)
+🏅 La documentation sur la tuile sur le [DSFR](https://www.systeme-de-design.gouv.fr/version-courante/fr/composants/tuile)
 
 <VIcon name="vi-file-type-storybook" /> La story sur la tuile sur le storybook de [VueDsfr](https://storybook.vue-ds.fr/?path=/docs/composants-dsfrtiles--docs)
 

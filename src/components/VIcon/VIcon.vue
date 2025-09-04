@@ -54,7 +54,7 @@ const finalColor = computed(() => {
   <Icon
     ref="icon"
     :icon="finalName"
-    :style="{ fontSize, verticalAlign, display }"
+    :style="{ fontSize, verticalAlign, display, color: finalColor }"
     :aria-label="label"
     class="vicon"
     :class="{
@@ -75,9 +75,6 @@ const finalColor = computed(() => {
 </template>
 
 <style scoped>
-.vicon {
-  color: v-bind(finalColor);
-}
 .vicon-inverse {
   color: #fff;
 }

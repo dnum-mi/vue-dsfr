@@ -4,7 +4,7 @@
 
 Salut les développeurs ! Découvrez `DsfrHeader`, le composant d'en-tête ultra-flexible pour vos applications Vue. Conçu pour mettre en valeur votre service et vos partenaires avec style, il intègre une barre de recherche, des liens rapides, et même un emplacement pour un logo personnalisé. Préparez-vous à donner à votre application une tête bien pensée !
 
-🏅 La documentation sur l’en-tête sur le [DSFR](https://www.systeme-de-design.gouv.fr/elements-d-interface/composants/en-tete)
+🏅 La documentation sur l’en-tête sur le [DSFR](https://www.systeme-de-design.gouv.fr/version-courante/fr/composants/en-tete)
 
 <VIcon name="vi-file-type-storybook" /> La story sur l’en-tête sur le storybook de [VueDsfr](https://storybook.vue-ds.fr/?path=/docs/composants-dsfrheader--docs)
 

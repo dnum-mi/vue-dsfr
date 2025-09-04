@@ -4,7 +4,7 @@ import type { Meta, StoryFn } from '@storybook/vue3'
 import DsfrBreadcrumb from './DsfrBreadcrumb.vue'
 
 /**
- * [Voir quand l’utiliser sur la documentation du DSFR](https://www.systeme-de-design.gouv.fr/elements-d-interface/composants/fil-d-ariane)
+ * [Voir quand l’utiliser sur la documentation du DSFR](https://www.systeme-de-design.gouv.fr/version-courante/fr/composants/fil-d-ariane)
  */
 export default {
   component: DsfrBreadcrumb,

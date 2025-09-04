@@ -4,6 +4,10 @@
 
 Le composant `DsfrInput`, outil essentiel dans l'arsenal de tout développeur Vue ! Que ce soit pour saisir votre nom de fromage préféré ou la date de votre dernière visite à la Tour Eiffel, `DsfrInput` est là pour rendre la saisie de données aussi douce qu'un croissant frais le matin 🥐 (oui, on aime bien les croissants par ici).
 
+🏅 La documentation sur le champ de saisie sur le [DSFR](https://www.systeme-de-design.gouv.fr/version-courante/fr/composants/champ-de-saisie)
+
+<VIcon name="vi-file-type-storybook" /> La story sur le champ de saisie sur le storybook de [VueDsfr](https://storybook.vue-ds.fr/?path=/docs/composants-dsfrinput--docs)
+
 ## 🛠️Props
 
 | Nom             | Type          | Défaut                  | Obligatoire   | Description                                                                                                 |

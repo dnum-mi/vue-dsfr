@@ -4,7 +4,7 @@
 
 Les accordéons permettent aux utilisateurs d'afficher et de masquer des sections de contenu présentés dans une page.
 
-🏅 La documentation sur l’accordéon sur le [DSFR](https://www.systeme-de-design.gouv.fr/elements-d-interface/composants/accordeon)
+🏅 La documentation sur l’accordéon sur le [DSFR](https://www.systeme-de-design.gouv.fr/version-courante/fr/composants/accordeon)
 
 <VIcon name="vi-file-type-storybook" /> La story sur l’accordéon sur le storybook de [VueDsfr](https://storybook.vue-ds.fr/?path=/docs/composants-dsfraccordion--docs)
 

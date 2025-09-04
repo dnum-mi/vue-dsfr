@@ -4,7 +4,7 @@
 
 Le téléchargement de fichier permet à l'utilisateur de choisir un fichier à téléverser depuis son poste.
 
-🏅 La documentation du composant téléchargement de fichier sur le [DSFR](https://www.systeme-de-design.gouv.fr/elements-d-interface/composants/telechargement-de-fichier)
+🏅 La documentation du composant téléchargement de fichier sur le [DSFR](https://www.systeme-de-design.gouv.fr/version-courante/fr/composants/telechargement-de-fichier)
 
 <VIcon name="vi-file-type-storybook" /> La story du téléchargement de fichier sur le storybook de [VueDsfr](https://storybook.vue-ds.fr/?path=/docs/composants-dsfrfiledownload--docs)
 

@@ -13,7 +13,7 @@ Le tag peut être utilisé dans deux contextes :
   - activable comme filtre en place à sélectionner/désélectionner ;
   - supprimable, il sert de rappel à un filtre qui a été coché dans une sidebar ou une liste déroulante.
 
-🏅 La documentation sur le tag sur le [DSFR](https://www.systeme-de-design.gouv.fr/elements-d-interface/composants/tag)
+🏅 La documentation sur le tag sur le [DSFR](https://www.systeme-de-design.gouv.fr/version-courante/fr/composants/tag)
 
 <VIcon name="vi-file-type-storybook" /> La story sur le tag sur le storybook de [VueDsfr](https://storybook.vue-ds.fr/?path=/docs/composants-dsfrtags--docs)
 

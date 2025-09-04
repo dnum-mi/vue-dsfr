@@ -4,7 +4,7 @@
 
 Bienvenue dans la documentation du composant `DsfrTableHeaders`! Ce composant est comme le maestro d'un orchestre, orchestrant l'affichage des en-têtes de vos tableaux Vue avec élégance et précision. Allons-y pour découvrir ses caractéristiques.
 
-🏅 La documentation sur le tableau sur le [DSFR](https://www.systeme-de-design.gouv.fr/elements-d-interface/composants/tableau/)
+🏅 La documentation sur le tableau sur le [DSFR](https://www.systeme-de-design.gouv.fr/version-courante/fr/composants/tableau/)
 
 <VIcon name="vi-file-type-storybook" /> La story sur les en-têtes de tableau sur le storybook de [VueDsfr](https://storybook.vue-ds.fr/?path=/docs/composants-dsfrtableheaders--docs)
 

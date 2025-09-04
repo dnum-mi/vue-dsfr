@@ -4,7 +4,7 @@
 
 Le gestionnaire de consentement permet à l'utilisateur de définir ses préférences sur l'utilisation de ses données personnelles, notamment le dépôt de cookies non fonctionnels dans son navigateur.
 
-🏅 La documentation du gestionnaire de consentement sur le [DSFR](https://www.systeme-de-design.gouv.fr/elements-d-interface/composants/gestionnaire-de-consentement)
+🏅 La documentation du gestionnaire de consentement sur le [DSFR](https://www.systeme-de-design.gouv.fr/version-courante/fr/composants/gestionnaire-de-consentement)
 
 <VIcon name="vi-file-type-storybook" /> La story du gestionnaire de consentement sur le storybook de [VueDsfr](https://storybook.vue-ds.fr/?path=/docs/composants-dsfrconsent--docs)
 

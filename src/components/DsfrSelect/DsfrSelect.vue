@@ -79,9 +79,10 @@ const messageType = computed(() => {
       @change="$emit('update:modelValue', ($event.target as HTMLInputElement)?.value)"
     >
       <option
-        :selected="!options.some(option => typeof option !== 'object' || option === null ? option === modelValue : option.value === modelValue)"
+        :selected="!options.some(option => (typeof option !== 'object' || option === null) ? option === modelValue : option.value === modelValue)"
         disabled
-        hidden
+        value=""
+        hidden=""
       >
         {{ defaultUnselectedText }}
       </option>

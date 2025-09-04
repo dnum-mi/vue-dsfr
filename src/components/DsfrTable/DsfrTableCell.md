@@ -4,7 +4,7 @@
 
 `DsfrTableCell`, c'est la cellule magique de vos tableaux Vue ! Ce composant flexible gère l'affichage de chaque cellule, avec la possibilité d'inclure du texte, des composants personnalisés, et plus encore. Découvrons ensemble comment l'utiliser au mieux.
 
-🏅 La documentation sur le tableau sur le [DSFR](https://www.systeme-de-design.gouv.fr/elements-d-interface/composants/tableau)
+🏅 La documentation sur le tableau sur le [DSFR](https://www.systeme-de-design.gouv.fr/version-courante/fr/composants/tableau)
 
 <VIcon name="vi-file-type-storybook" /> La story sur la cellule de tableau sur le storybook de [VueDsfr](https://storybook.vue-ds.fr/?path=/docs/composants-dsfrtablerow--docs)
 

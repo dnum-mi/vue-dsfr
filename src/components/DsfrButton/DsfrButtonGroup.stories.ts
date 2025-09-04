@@ -5,7 +5,7 @@ import VIcon from '../VIcon/VIcon.vue'
 import DsfrButtonGroup from './DsfrButtonGroup.vue'
 
 /**
- * [Voir quand l’utiliser sur la documentation du DSFR](https://www.systeme-de-design.gouv.fr/elements-d-interface/composants/groupe-de-boutons)
+ * [Voir quand l’utiliser sur la documentation du DSFR](https://www.systeme-de-design.gouv.fr/version-courante/fr/composants/groupe-de-boutons)
  */
 export default {
   component: DsfrButtonGroup,

@@ -210,7 +210,7 @@ Utiliser le minimum de CSS du DSFR :
 - les **styles des liens** du DSFR
 - les **classes utilitaires** du DSFR
 - le **CSS de VueDsfr**
-- éventuellement d’autres parties du CSS (notamment pour les icônes, cf. [la documentation officielle du DSFR](https://www.systeme-de-design.gouv.fr/elements-d-interface/fondamentaux-techniques/icones))
+- éventuellement d’autres parties du CSS (notamment pour les icônes, cf. [la documentation officielle du DSFR](https://www.systeme-de-design.gouv.fr/version-courante/fr/fondamentaux-techniques/icones))
 
 ```javascript
 import '@gouvfr/dsfr/dist/core/core.main.min.css' // Le CSS minimal du DSFR

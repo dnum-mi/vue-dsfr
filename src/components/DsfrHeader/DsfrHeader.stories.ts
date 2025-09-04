@@ -9,7 +9,7 @@ const delay = (timeout = 100) =>
   new Promise((resolve) => setTimeout(resolve, timeout))
 
 /**
- * [Voir quand l’utiliser sur la documentation du DSFR](https://www.systeme-de-design.gouv.fr/elements-d-interface/composants/en-tete)
+ * [Voir quand l’utiliser sur la documentation du DSFR](https://www.systeme-de-design.gouv.fr/version-courante/fr/composants/en-tete)
  */
 export default {
   component: DsfrHeader,
