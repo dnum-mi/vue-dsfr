@@ -4,7 +4,7 @@ import { ref } from 'vue'
 import type { DsfrAlertType } from '../DsfrAlert.vue'
 import DsfrAlert from '../DsfrAlert.vue'
 
-import type { TitleTag } from '@/common-types'
+import type { TitleTag } from '../../common-types'
 
 const defaultAlerts: {
   [key: string]: {

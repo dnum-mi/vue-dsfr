@@ -1,4 +1,4 @@
-import type { TitleTag } from '@/common-types'
+import type { TitleTag } from '../../common-types'
 
 export type DsfrAlertType = 'error' | 'success' | 'warning' | 'info'
 

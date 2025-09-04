@@ -1,4 +1,4 @@
-import type { TitleTag } from '@/common-types'
+import type { TitleTag } from '../../common-types'
 
 export type DsfrAccordionProps = {
   id?: string

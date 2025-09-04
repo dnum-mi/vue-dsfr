@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import type { TitleTag } from '@/common-types'
+import type { TitleTag } from '../../common-types'
 
 export type DsfrFooterPartner = {
   href: string
