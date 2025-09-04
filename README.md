@@ -41,6 +41,19 @@ et **la fusion doit être demandée dans `develop`.**
 
 Cf [le site officiel](https://vue-ds.fr/guide/guide-developpeur)
 
+## Projets utilisant VueDsfr
+
+- [VAO](https://vao.social.gouv.fr) : Vacances Adaptées Organisées
+- [Console](https://github.com/cloud-pi-native/console) : Console de management de la plateforme Cloud Pi Native
+- [Basegun](https://basegun.interieur.gouv.fr/) : identification et sécurisation d’armes à feu létales, armes d’alarme et armes factices
+- [IGNF](https://ignf.github.io/cartes.gouv.fr-entree-carto/) : Vitre cartographique de [cartes.gouv.fr](https://cartes.gouv.fr)
+- [Compl’Alim](https://compl-alim.beta.gouv.fr/accueil/) : Vers une circulation de compléments alimentaires sûrs et conformes
+- [Aides simplifiées](https://aides.beta.numerique.gouv.fr/)
+- [Mission transition écologique](https://mission-transition-ecologique.beta.gouv.fr/) : Transition écologique des entreprises
+- [POOLPE](https://poolpe.ofb.gouv.fr/fr) : Le **PO**rtail d’**O**bservation des **L**iens **P**ressions-**E**cosystèmes
+- [Cynodex](https://www.cynodex.interieur.gouv.fr) : (programme de certification)
+- et bien d’autres (Bibliothèque numérique, ...)
+
 ## Plus d'informations
 
 Veuillez consulter [le site officiel](https://vue-ds.fr/) pour plus d'informations.
