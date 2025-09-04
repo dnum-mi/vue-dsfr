@@ -6,7 +6,7 @@ Bienvenue à la documentation du composant DsfrBreadcrumb ! Ce composant est un 
 
 Le fil d’Ariane est un système de navigation secondaire qui permet à l’utilisateur de se situer sur le site qu’il consulte.
 
-🏅 La documentation sur le fil d’Ariane sur le [DSFR](https://www.systeme-de-design.gouv.fr/elements-d-interface/composants/fil-d-ariane)
+🏅 La documentation sur le fil d’Ariane sur le [DSFR](https://www.systeme-de-design.gouv.fr/version-courante/fr/composants/fil-d-ariane)
 
 <VIcon name="vi-file-type-storybook" /> La story sur le fil d’Ariane sur le storybook de [VueDsfr](https://storybook.vue-ds.fr/?path=/docs/composants-dsfrbreadcrumb--docs)
 

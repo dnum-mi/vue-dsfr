@@ -14,9 +14,9 @@ Le bouton radio ne peut pas être utilisé seul : il faut au minimum 2 options. 
 
 Les boutons radio riches permettent de sélectionner un choix parmi une liste d’options illustrées. À la différence du bouton radio simple, l’image permet d’illustrer et d’accompagner l’utilisateur dans son choix.
 
-Concernant les images, elles peuvent être des artworks/pictogrammes au format SVG. Il faut alors se référer [aux fondamentaux techniques du DSFR pour la définition des SVG](https://www.systeme-de-design.gouv.fr/elements-d-interface/fondamentaux-techniques/pictogramme).
+Concernant les images, elles peuvent être des artworks/pictogrammes au format SVG. Il faut alors se référer [aux fondamentaux techniques du DSFR pour la définition des SVG](https://www.systeme-de-design.gouv.fr/version-courante/fr/fondamentaux-techniques/pictogramme).
 
-🏅 La documentation sur le [bouton radio](https://www.systeme-de-design.gouv.fr/elements-d-interface/composants/bouton-radio) et le [bouton radio riche](https://www.systeme-de-design.gouv.fr/elements-d-interface/composants/bouton-radio-riche) sur le DSFR
+🏅 La documentation sur le [bouton radio](https://www.systeme-de-design.gouv.fr/version-courante/fr/composants/bouton-radio) et le [bouton radio riche](https://www.systeme-de-design.gouv.fr/version-courante/fr/composants/bouton-radio-riche) sur le DSFR
 
 <VIcon name="vi-file-type-storybook" /> La story sur le bouton radio sur le storybook de [VueDsfr](https://storybook.vue-ds.fr/?path=/docs/composants-dsfrradiobutton--docs)
 

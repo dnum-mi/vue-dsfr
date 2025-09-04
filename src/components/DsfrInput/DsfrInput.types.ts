@@ -14,6 +14,7 @@ export type DsfrInputProps = {
 }
 
 export type DsfrInputGroupProps = {
+  inputGroupId?: string
   descriptionId?: string
   hint?: string
   labelVisible?: boolean

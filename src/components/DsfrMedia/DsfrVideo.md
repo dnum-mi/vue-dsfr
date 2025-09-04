@@ -2,7 +2,7 @@
 
 Les contenus médias désignent vos contenus photos et vidéos. Lorsqu’ils sont intégrés à une page de contenu, il est recommandé de suivre les règles décrites ci-dessous.
 
-🏅 La documentation sur les contenus médias sur le [DSFR](https://www.systeme-de-design.gouv.fr/elements-d-interface/composants/contenus-medias)
+🏅 La documentation sur les contenus médias sur le [DSFR](https://www.systeme-de-design.gouv.fr/version-courante/fr/composants/contenus-medias)
 
 <VIcon name="vi-file-type-storybook" /> La story sur le contenus média video sur le storybook de [VueDsfr](https://storybook.vue-ds.fr/?path=/docs/composants-dsfrvideo--docs)
 

@@ -6,7 +6,7 @@ La modale permet de concentrer l’attention de l’utilisateur exclusivement su
 
 Le composant `DsfrModal` est une fenêtre modale configurable, offrant des fonctionnalités avancées telles que le piégeage de focus, l'écoute des touches d'échappement pour la fermeture, et la gestion des boutons d'action. Ce composant est conçu pour afficher des dialogues et des alertes de manière accessible et ergonomique.
 
-🏅 La documentation sur la modale sur le [DSFR](https://www.systeme-de-design.gouv.fr/elements-d-interface/composants/modale/)
+🏅 La documentation sur la modale sur le [DSFR](https://www.systeme-de-design.gouv.fr/version-courante/fr/composants/modale/)
 
 <VIcon name="vi-file-type-storybook" /> La story sur la modale sur le storybook de [VueDsfr](https://storybook.vue-ds.fr/?path=/docs/composants-dsfrmodal--docs)
 

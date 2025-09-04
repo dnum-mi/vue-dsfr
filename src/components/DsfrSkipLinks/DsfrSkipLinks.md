@@ -4,7 +4,7 @@
 
 Le composant `DsfrSkipLinks` fournit des liens d'accès rapide, permettant aux utilisateurs de naviguer directement vers des sections clés de la page. Ce composant est particulièrement utile pour améliorer l'accessibilité, notamment pour les utilisateurs de lecteurs d'écran ou de navigation clavier, en respectant les standards du [Design System de l'État Français (DSFR)](https://www.systeme-de-design.gouv.fr/).
 
-🏅 La documentation sur les liens d’évitement le [DSFR](https://www.systeme-de-design.gouv.fr/elements-d-interface/composants/lien-d-evitement)
+🏅 La documentation sur les liens d’évitement le [DSFR](https://www.systeme-de-design.gouv.fr/version-courante/fr/composants/lien-d-evitement)
 
 <VIcon name="vi-file-type-storybook" /> La story sur les liens d’évitement sur le storybook de [VueDsfr](https://storybook.vue-ds.fr/?path=/docs/composants-dsfrskiplinks--docs)
 

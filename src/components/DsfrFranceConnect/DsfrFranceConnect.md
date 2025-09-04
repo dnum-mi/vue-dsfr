@@ -10,7 +10,7 @@ Le fonctionnement en détail : <https://franceconnect.gouv.fr/partenaires>
 
 Le bouton FranceConnect est primordial dans l’usage du service FranceConnect. C’est par lui que passe la reconnaissance et la confiance dans la marque FranceConnect.
 
-🏅 La documentation sur le bouton FranceConnect sur le [DSFR](https://www.systeme-de-design.gouv.fr/elements-d-interface/composants/bouton-franceconnect)
+🏅 La documentation sur le bouton FranceConnect sur le [DSFR](https://www.systeme-de-design.gouv.fr/version-courante/fr/composants/bouton-franceconnect)
 
 <VIcon name="vi-file-type-storybook" /> La story sur le bouton FranceConnect sur le storybook de [VueDsfr](https://storybook.vue-ds.fr/?path=/docs/composants-dsfrfranceconnect--docs)
 
@@ -57,7 +57,7 @@ Pas de slot.
 
 `DsfrFranceConnect` est conçu pour être simple et direct, permettant une intégration facile dans n'importe quelle application nécessitant une fonctionnalité de connexion FranceConnect.
 
-Il offre très peu de personnalisation, et cela est voulu (cf. les sections [« À ne pas faire » de la documentation officielle DSFR](https://www.systeme-de-design.gouv.fr/elements-d-interface/composants/bouton-franceconnect/)).
+Il offre très peu de personnalisation, et cela est voulu (cf. les sections [« À ne pas faire » de la documentation officielle DSFR](https://www.systeme-de-design.gouv.fr/version-courante/fr/composants/bouton-franceconnect/)).
 
 <script setup lang="ts">
 import DsfrFranceConnectDemo from './docs-demo/DsfrFranceConnectDemo.vue'

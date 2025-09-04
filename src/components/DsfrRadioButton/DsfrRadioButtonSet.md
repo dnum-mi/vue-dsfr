@@ -4,7 +4,7 @@
 
 Les groupes de boutons radio (riches) permettent d’éviter d’écrire plusieurs fois le composant [`DsfrRadioButton`](./DsfrRadioButton), il est fortement conseillé de l’utiliser plutôt que de répéter `DsfrRadioButton`.
 
-🏅 La documentation sur le [bouton radio](https://www.systeme-de-design.gouv.fr/elements-d-interface/composants/bouton-radio) et le [bouton radio riche](https://www.systeme-de-design.gouv.fr/elements-d-interface/composants/bouton-radio-riche) sur le DSFR
+🏅 La documentation sur le [bouton radio](https://www.systeme-de-design.gouv.fr/version-courante/fr/composants/bouton-radio) et le [bouton radio riche](https://www.systeme-de-design.gouv.fr/version-courante/fr/composants/bouton-radio-riche) sur le DSFR
 
 <VIcon name="vi-file-type-storybook" /> La story sur le groupe de boutons radio sur le storybook de [VueDsfr](https://storybook.vue-ds.fr/?path=/docs/composants-dsfrradiobuttonset--docs)
 

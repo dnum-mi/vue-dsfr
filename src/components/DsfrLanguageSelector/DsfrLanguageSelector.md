@@ -12,7 +12,7 @@ Ce composant est utilisé en interne dans [DsfrHeader](/composants/DsfrHeader) (
 
 :::
 
-🏅 La documentation sur le **sélecteur de langue** sur le [DSFR](https://www.systeme-de-design.gouv.fr/elements-d-interface/composants/selecteur-de-langue)
+🏅 La documentation sur le **sélecteur de langue** sur le [DSFR](https://www.systeme-de-design.gouv.fr/version-courante/fr/composants/selecteur-de-langue)
 
 <VIcon name="vi-file-type-storybook" /> La story sur le **sélecteur de langue** sur le storybook de [VueDsfr](https://storybook.vue-ds.fr/?path=/docs/composants-dsfrlanguageselector--docs)
 

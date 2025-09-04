@@ -3,7 +3,7 @@ import { fn } from '@storybook/test'
 import DsfrSegmentedSet from './DsfrSegmentedSet.vue'
 
 /**
- * [Voir quand l’utiliser sur la documentation du DSFR](https://www.systeme-de-design.gouv.fr/elements-d-interface/composants/controle-segmente)
+ * [Voir quand l’utiliser sur la documentation du DSFR](https://www.systeme-de-design.gouv.fr/version-courante/fr/composants/controle-segmente)
  */
 export default {
   component: DsfrSegmentedSet,

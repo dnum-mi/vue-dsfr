@@ -15,7 +15,7 @@ Le lien de retour en haut de page se place à la fin du contenu de la page, avan
 
 Si il y a des bloc de poursuite de lecture (liens vers d’autres articles), il est conseillé de placer le retour en haut de page avant ces blocs.
 
-🏅 La documentation sur le retour en haut de page sur le [DSFR](https://www.systeme-de-design.gouv.fr/elements-d-interface/composants/retour-en-haut-de-page/)
+🏅 La documentation sur le retour en haut de page sur le [DSFR](https://www.systeme-de-design.gouv.fr/version-courante/fr/composants/retour-en-haut-de-page/)
 
 <VIcon name="vi-file-type-storybook" /> La story sur le retour en haut de page sur le storybook de [VueDsfr](https://storybook.vue-ds.fr/?path=/docs/composants-dsfrbacktotop--docs)
 

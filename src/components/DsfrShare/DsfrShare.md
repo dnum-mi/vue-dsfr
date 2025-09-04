@@ -4,7 +4,7 @@
 
 Le composant `DsfrShare` permet d’ajouter une fonctionnalité de partage sur une page, en respectant les standards du [Design System de l'État Français (DSFR)](https://www.systeme-de-design.gouv.fr/). Il propose des boutons configurables pour partager via des réseaux sociaux, par email ou en copiant le lien dans le presse-papier.
 
-🏅 La documentation sur le partage le [DSFR](https://www.systeme-de-design.gouv.fr/elements-d-interface/composants/partage)
+🏅 La documentation sur le partage le [DSFR](https://www.systeme-de-design.gouv.fr/version-courante/fr/composants/partage)
 
 <VIcon name="vi-file-type-storybook" /> La story sur le partage sur le storybook de [VueDsfr](https://storybook.vue-ds.fr/?path=/docs/composants-dsfrshare--docs)
 

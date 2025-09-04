@@ -1,7 +1,7 @@
 import DsfrBackToTop from './DsfrBackToTop.vue'
 
 /**
- * [Voir quand l’utiliser sur la documentation du DSFR](https://www.systeme-de-design.gouv.fr/elements-d-interface/composants/retour-en-haut-de-page/)
+ * [Voir quand l’utiliser sur la documentation du DSFR](https://www.systeme-de-design.gouv.fr/version-courante/fr/composants/retour-en-haut-de-page/)
  */
 export default {
   component: DsfrBackToTop,

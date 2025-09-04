@@ -3,7 +3,7 @@ import { expect, within } from '@storybook/test'
 import DsfrHighlight from './DsfrHighlight.vue'
 
 /**
- * [Voir quand l’utiliser sur la documentation du DSFR](https://www.systeme-de-design.gouv.fr/elements-d-interface/composants/mise-en-exergue)
+ * [Voir quand l’utiliser sur la documentation du DSFR](https://www.systeme-de-design.gouv.fr/version-courante/fr/composants/mise-en-exergue)
  */
 export default {
   component: DsfrHighlight,

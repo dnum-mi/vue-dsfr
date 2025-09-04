@@ -4,7 +4,7 @@
 
 Le composant « contrôle segmenté » incite l'utilisateur à choisir entre plusieurs options d'affichage disponibles (vues), mutuellement exclusives avec une valeur sélectionnée par défaut (Il faut toujours ramener un peu de sérieux dans l’affaire...).
 
-🏅 La documentation sur les boutons segmentés sur le [DSFR sera ici](https://www.systeme-de-design.gouv.fr/elements-d-interface/composants/controle-segmente) (n’existe pas non plus à l’heure où cette documentation est écrite, on est trop en avance, nous !).
+🏅 La documentation sur les boutons segmentés sur le [DSFR sera ici](https://www.systeme-de-design.gouv.fr/version-courante/fr/composants/controle-segmente) (n’existe pas non plus à l’heure où cette documentation est écrite, on est trop en avance, nous !).
 
 <VIcon name="vi-file-type-storybook" /> La story sur l’alerte sur le storybook de [VueDsfr est ici](https://vue-ds.fr/?path=/docs/composants-dsfrsegmentedset--docs) (oui parce que nous on fait rien à moitié, nous 😏, merci [Vincent Lainé](https://github.com/vincentlaine/) !).
 

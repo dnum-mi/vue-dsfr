@@ -4,7 +4,7 @@
 
 Le composant `DsfrPagination` est un système de pagination conforme aux bonnes pratiques ergonomiques et accessible (ARIA). Il permet de naviguer facilement à travers plusieurs pages avec des fonctionnalités avancées comme la limitation de pages affichées et la gestion des événements.
 
-🏅 La documentation sur le pagination sur le [DSFR](https://www.systeme-de-design.gouv.fr/elements-d-interface/composants/pagination)
+🏅 La documentation sur le pagination sur le [DSFR](https://www.systeme-de-design.gouv.fr/version-courante/fr/composants/pagination)
 
 <VIcon name="vi-file-type-storybook" /> La story sur le tag sur le storybook de [VueDsfr](https://storybook.vue-ds.fr/?path=/docs/composants-dsfrpagination--docs)
 

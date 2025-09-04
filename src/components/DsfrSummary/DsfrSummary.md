@@ -4,7 +4,7 @@
 
 Le composant `DsfrSummary` est conçu pour afficher un sommaire accessible et stylisé selon les standards du [Design System de l'État Français (DSFR)](https://www.systeme-de-design.gouv.fr/). Il est idéal pour améliorer la navigation dans une page en proposant des liens vers les différentes sections.
 
-🏅 La documentation sur le tag sommaire le [DSFR](https://www.systeme-de-design.gouv.fr/elements-d-interface/composants/sommaire)
+🏅 La documentation sur le tag sommaire le [DSFR](https://www.systeme-de-design.gouv.fr/version-courante/fr/composants/sommaire)
 
 <VIcon name="vi-file-type-storybook" /> La story sur le sommaire sur le storybook de [VueDsfr](https://storybook.vue-ds.fr/?path=/docs/composants-dsfrsummary--docs)
 

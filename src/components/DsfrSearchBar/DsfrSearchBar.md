@@ -4,7 +4,7 @@
 
 La barre de recherche est un système de navigation qui permet à l'utilisateur d’accéder rapidement à un contenu en lançant une recherche sur un mot clé ou une expression.
 
-🏅 La documentation sur la barre de recherche sur le [DSFR](https://www.systeme-de-design.gouv.fr/elements-d-interface/composants/barre-de-recherche)
+🏅 La documentation sur la barre de recherche sur le [DSFR](https://www.systeme-de-design.gouv.fr/version-courante/fr/composants/barre-de-recherche)
 
 <VIcon name="vi-file-type-storybook" /> La story sur la barre de recherche sur le storybook de [VueDsfr](https://storybook.vue-ds.fr/?path=/docs/composants-dsfrsearchbar--docs)
 

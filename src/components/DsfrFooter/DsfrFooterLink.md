@@ -4,7 +4,7 @@
 
 Le composant `DsfrFooterLink` de Vue.js permet de créer des liens personnalisés dans le pied de page. Ce composant versatile gère différents types de liens (boutons, liens internes, externes, e-mail) et peut être enrichi d'icônes.
 
-🏅 La documentation sur le pied de page sur le [DSFR](https://www.systeme-de-design.gouv.fr/elements-d-interface/composants/pied-de-page)
+🏅 La documentation sur le pied de page sur le [DSFR](https://www.systeme-de-design.gouv.fr/version-courante/fr/composants/pied-de-page)
 
 <VIcon name="vi-file-type-storybook" /> La story sur le pied de page sur le storybook de [VueDsfr](https://storybook.vue-ds.fr/?path=/docs/composants-dsfrfooter--docs)
 

@@ -4,7 +4,7 @@ Enfant de `DsfrHeaders` (attention au pluriel), `DsfrHeader` (ici donc au singul
 
 Parfait pour ajouter du texte et des icônes personnalisées, ce composant est un incontournable pour un tableau élégant et fonctionnel.
 
-🏅 La documentation sur le tableau sur le [DSFR](https://www.systeme-de-design.gouv.fr/elements-d-interface/composants/tableau/)
+🏅 La documentation sur le tableau sur le [DSFR](https://www.systeme-de-design.gouv.fr/version-courante/fr/composants/tableau/)
 
 <VIcon name="vi-file-type-storybook" /> La story sur l’en-tête de tableau sur le storybook de [VueDsfr](https://storybook.vue-ds.fr/?path=/docs/composants-dsfrtableheader--docs)
 

@@ -4,7 +4,7 @@ Les cases à cocher permettent à l’utilisateur de sélectionner une ou plusie
 
 La case à cocher peut être utilisée seule ou en liste. Évitez les listes de plus de 5 items et lorsque vous souhaitez contraindre le choix à un seul élément - utiliser [les boutons radios](/composants/DsfrRadioButton).
 
-🏅 La documentation sur **les cases à cocher** sur le [DSFR](https://www.systeme-de-design.gouv.fr/elements-d-interface/composants/case-a-cocher)
+🏅 La documentation sur **les cases à cocher** sur le [DSFR](https://www.systeme-de-design.gouv.fr/version-courante/fr/composants/case-a-cocher)
 
 <VIcon name="vi-file-type-storybook" /> La story sur **les cases à cocher** sur le storybook de [VueDsfr](https://storybook.vue-ds.fr/?path=/docs/composants-dsfrcheckbox--docs)
 

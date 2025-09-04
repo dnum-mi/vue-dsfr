@@ -13,6 +13,7 @@ defineOptions({
 })
 
 const props = withDefaults(defineProps<DsfrInputGroupProps>(), {
+  inputGroupId: () => useRandomId('input-group', ''),
   descriptionId: () => useRandomId('input', 'group'),
   hint: '',
   label: '',
@@ -37,10 +38,10 @@ const descId = computed(() => {
     return getDescriptionIdFromArray(props.errorMessage, props.descriptionId)
   }
   if (typeof props.errorMessage === 'string') {
-    return props.errorMessage
+    return props.descriptionId
   }
   if (typeof props.validMessage === 'string') {
-    return props.validMessage
+    return props.descriptionId
   }
   if (Array.isArray(props.validMessage)) {
     return getDescriptionIdFromArray(props.validMessage, props.descriptionId)
@@ -54,11 +55,13 @@ const descId = computed(() => {
     class="fr-input-group"
     :class="[
       {
+        'fr-input-group--disabled': 'disabled' in $attrs,
         'fr-input-group--error': errorMessage,
         'fr-input-group--valid': (validMessage && !errorMessage),
       },
       wrapperClass,
     ]"
+    :data-testid="inputGroupId"
   >
     <slot name="before-input" />
     <!-- @slot Slot par défaut pour le contenu du groupe de champ -->

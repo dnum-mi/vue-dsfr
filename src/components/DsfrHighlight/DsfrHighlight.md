@@ -6,7 +6,7 @@ La mise en exergue permet à l’utilisateur de distinguer et repérer une infor
 
 Le composant `DsfrHighlight` est conçu pour mettre en exergue un texte ou un contenu particulier. Il permet d'afficher du texte avec des tailles personnalisables, en mettant l'accent sur l'importance du contenu. Ce composant est idéal pour attirer l'attention des utilisateurs sur des informations clés.
 
-🏅 La documentation sur le tag sur le [DSFR](https://www.systeme-de-design.gouv.fr/elements-d-interface/composants/tag)
+🏅 La documentation sur le tag sur le [DSFR](https://www.systeme-de-design.gouv.fr/version-courante/fr/composants/tag)
 
 <VIcon name="vi-file-type-storybook" /> La story sur le tag sur le storybook de [VueDsfr](https://storybook.vue-ds.fr/?path=/docs/composants-dsfrtags--docs)
 

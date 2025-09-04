@@ -1,7 +1,7 @@
 import DsfrFileUpload from './DsfrFileUpload.vue'
 
 /**
- * [Voir quand l’utiliser sur la documentation du DSFR](https://www.systeme-de-design.gouv.fr/elements-d-interface/composants/ajout-de-fichier)
+ * [Voir quand l’utiliser sur la documentation du DSFR](https://www.systeme-de-design.gouv.fr/version-courante/fr/composants/ajout-de-fichier)
  */
 export default {
   component: DsfrFileUpload,

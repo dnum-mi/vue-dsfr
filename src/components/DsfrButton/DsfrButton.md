@@ -6,7 +6,7 @@ Le bouton est un élément d’interaction avec l’interface permettant à l’
 
 Le `DsfrButton` est un composant Vue élégant et réutilisable, conçu pour simplifier la création de boutons personnalisés. Il intègre des tailles ajustables, des icônes optionnelles et un gestionnaire de clics, tout en respectant le style de `DSFR`. Son utilisation est simple, avec une grande flexibilité pour s'adapter à différents contextes.
 
-🏅 La documentation sur l’alerte sur le [DSFR](https://www.systeme-de-design.gouv.fr/elements-d-interface/composants/bouton)
+🏅 La documentation sur l’alerte sur le [DSFR](https://www.systeme-de-design.gouv.fr/version-courante/fr/composants/bouton)
 
 <VIcon name="vi-file-type-storybook" /> La story sur l’alerte sur le storybook de [VueDsfr](https://storybook.vue-ds.fr/?path=/docs/composants-dsfrbutton--docs)
 

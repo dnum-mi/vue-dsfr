@@ -3,7 +3,7 @@ import { fn } from '@storybook/test'
 import DsfrMultiSelect from './DsfrMultiselect.vue'
 
 /**
- * [Voir quand l’utiliser sur la documentation du DSFR](https://www.systeme-de-design.gouv.fr/elements-d-interface/composants/liste-deroulante)
+ * [Voir quand l’utiliser sur la documentation du DSFR](https://www.systeme-de-design.gouv.fr/version-courante/fr/composants/liste-deroulante)
  */
 export default {
   component: DsfrMultiSelect,

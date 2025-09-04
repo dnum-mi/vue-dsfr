@@ -6,7 +6,7 @@ Le composant onglet permet aux utilisateurs de naviguer dans différentes sectio
 
 Le système d'onglet aide à regrouper différents contenus dans un espace limité et permet de diviser un contenu dense en sections accessibles individuellement afin de faciliter la lecture pour l'utilisateur.
 
-🏅 La documentation sur les onglets sur le [DSFR](https://www.systeme-de-design.gouv.fr/elements-d-interface/composants/onglet/)
+🏅 La documentation sur les onglets sur le [DSFR](https://www.systeme-de-design.gouv.fr/version-courante/fr/composants/onglet/)
 
 <VIcon name="vi-file-type-storybook" /> La story sur les onglets sur le storybook de [VueDsfr](https://storybook.vue-ds.fr/?path=/docs/composants-dsfrtabs--docs)
 

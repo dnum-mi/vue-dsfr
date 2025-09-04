@@ -6,7 +6,7 @@ La tuile est un raccourci ou point d’entrée qui redirige les utilisateurs ver
 
 Le composant `DsfrTile` est une tuile flexible et stylisée, idéale pour afficher des informations sous forme de cartes visuelles dans une interface utilisateur. Ce composant permet d'intégrer des images, des SVG, des descriptions, des détails et des liens, tout en offrant de nombreuses options de personnalisation visuelle.
 
-🏅 La documentation sur la tuile sur le [DSFR](https://www.systeme-de-design.gouv.fr/elements-d-interface/composants/tuile)
+🏅 La documentation sur la tuile sur le [DSFR](https://www.systeme-de-design.gouv.fr/version-courante/fr/composants/tuile)
 
 <VIcon name="vi-file-type-storybook" /> La story sur la tuile sur le storybook de [VueDsfr](https://storybook.vue-ds.fr/?path=/docs/composants-dsfrtile--docs)
 

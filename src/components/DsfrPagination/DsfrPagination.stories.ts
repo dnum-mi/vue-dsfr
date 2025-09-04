@@ -3,7 +3,7 @@ import { expect, within } from '@storybook/test'
 import DsfrPagination from './DsfrPagination.vue'
 
 /**
- * [Voir quand l’utiliser sur la documentation du DSFR](https://www.systeme-de-design.gouv.fr/elements-d-interface/composants/pagination)
+ * [Voir quand l’utiliser sur la documentation du DSFR](https://www.systeme-de-design.gouv.fr/version-courante/fr/composants/pagination)
  */
 export default {
   component: DsfrPagination,

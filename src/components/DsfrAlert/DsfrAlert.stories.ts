@@ -6,7 +6,7 @@ const delay = (timeout = 100) =>
   new Promise((resolve) => setTimeout(resolve, timeout))
 
 /**
- * [Voir quand l’utiliser sur la documentation du DSFR](https://www.systeme-de-design.gouv.fr/elements-d-interface/composants/alerte)
+ * [Voir quand l’utiliser sur la documentation du DSFR](https://www.systeme-de-design.gouv.fr/version-courante/fr/composants/alerte)
  */
 export default {
   component: DsfrAlert,
