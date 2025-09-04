@@ -182,6 +182,8 @@ const rows = [
   <div class="flex justify-between items-center gap-2 w-full relative">
     <DsfrTooltip
       on-hover
+      title="Titre"
+      aria-label="Le libellé"
       content="Texte de l’info-bulle qui apparaît au survol"
     >
       Au survol
