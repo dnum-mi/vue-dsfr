@@ -87,6 +87,7 @@ const props = withDefaults(defineProps<DsfrFooterProps>(), {
 defineSlots<{
   'footer-link-lists': () => VNode
   description: () => VNode
+  'footer-partners': () => VNode
 }>()
 
 const allLinks = computed(() => {
@@ -218,10 +219,13 @@ const externalOperatorLink = computed(() => {
           </ul>
         </div>
       </div>
-      <DsfrFooterPartners
-        v-if="partners"
-        v-bind="partners"
-      />
+      <!-- @slot Slot #description pour le contenu de la description du footer. Sera dans `<p class="fr-footer__content-desc">` -->
+      <slot name="footer-partners">
+        <DsfrFooterPartners
+          v-if="partners"
+          v-bind="partners"
+        />
+      </slot>
       <div class="fr-footer__bottom">
         <ul class="fr-footer__bottom-list">
           <li
