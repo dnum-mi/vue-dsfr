@@ -307,6 +307,10 @@ const composants = [
     link: '/composants/DsfrSelect.md',
   },
   {
+    text: 'DsfrSideMenu',
+    link: '/composants/DsfrSideMenu.md',
+  },
+  {
     text: 'DsfrSkipLinks',
     link: '/composants/DsfrSkipLinks.md',
   },
