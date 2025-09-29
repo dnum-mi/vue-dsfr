@@ -13,6 +13,7 @@ const props = withDefaults(defineProps<DsfrCalloutProps>(), {
   button: () => undefined,
   titleTag: 'h3',
   icon: undefined,
+  accent: undefined,
 })
 
 const dsfrIcon = computed(() => typeof props.icon === 'string' && props.icon.startsWith('fr-icon-'))
@@ -22,7 +23,7 @@ const iconProps = computed(() => dsfrIcon.value ? undefined : typeof props.icon 
 <template>
   <div
     class="fr-callout"
-    :class="{ [String(icon)]: dsfrIcon }"
+    :class="{ [String(icon)]: dsfrIcon, [`fr-callout--${accent}`]: !!accent }"
   >
     <VIcon
       v-if="icon && iconProps"
