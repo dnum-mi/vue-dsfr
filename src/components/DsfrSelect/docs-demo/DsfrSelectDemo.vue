@@ -6,6 +6,7 @@ import DsfrSelect from '../DsfrSelect.vue'
 const selectedOption1 = ref(0)
 const selectedOption2 = ref(null)
 const selectedOption3 = ref('')
+const selectedOption4 = ref('')
 </script>
 
 <template>
@@ -30,6 +31,7 @@ const selectedOption3 = ref('')
       label="Label du select 3"
       border-bottom
       required
+      disabled
       :options="[
         { value: 'Value 1', text: 'Text 1' },
         { value: 'Value 2', text: 'Text 2' },
@@ -39,5 +41,30 @@ const selectedOption3 = ref('')
       ]"
     />
     Select 3 : {{ selectedOption3 }} ({{ typeof selectedOption3 }})
+    <DsfrSelect
+      v-model="selectedOption4"
+      label="Select 4 avec groupes d'options (optgroup) dont 1 est désactivé"
+      border-bottom
+      required
+      :option-groups="[
+        {
+          label: 'groupe 1',
+          options: [
+            { value: 'Value 1', text: 'Text 1' },
+            { value: 'Value 2', text: 'Text 2' },
+          ],
+        },
+        {
+          label: 'groupe 2',
+          disabled: true,
+          options: [
+            { value: 'Value 3', text: 'Text 3' },
+            { value: 'Value 4', text: 'Text 4' },
+            { value: 'Value 5', text: 'Text 5' },
+          ],
+        },
+      ]"
+    />
+    Select 4 : {{ selectedOption4 }} ({{ typeof selectedOption4 }})
   </div>
 </template>

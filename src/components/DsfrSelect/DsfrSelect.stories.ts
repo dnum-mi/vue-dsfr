@@ -28,6 +28,11 @@ export default {
       description:
         'Liste des options proposées par le `<select>` à lui passer sous forme de tableau de string ou de tableau d’objets avec une propriété `"text"` et une propriété `"value"`',
     },
+    optionGroups: {
+      control: 'object',
+      description:
+        'Liste des options groupées proposées par le `<select>` à lui passer sous forme de tableau d’objets (groupe) avec une propriété `"label"` et une propriété options qui est un tableau d‘options`',
+    },
     description: {
       control: 'text',
       description: 'Description optionnelle du `select`',
@@ -384,5 +389,66 @@ ListeDeroulanteAvecOptionsInactives.args = {
   errorMessage: '',
   disabled: false,
   modelValue: 'Option 2',
+  required: false,
+}
+
+export const ListeDeroulanteAvecOptionsGroupees = (args) => ({
+  components: {
+    DsfrSelect,
+  },
+
+  data () {
+    return {
+      ...args,
+    }
+  },
+
+  template: `
+    <div :data-fr-theme="dark ? 'dark' : ''" style="background-color: var(--grey-1000-50); padding: 1rem;">
+      <DsfrSelect
+        :required="required"
+        :label="label"
+        :optionGroups="optionGroups"
+        :description="description"
+        :success-message="successMessage"
+        :error-message="errorMessage"
+        :disabled="disabled"
+        v-model="modelValue"
+      />
+    </div>
+    `,
+
+  watch: {
+    modelValue (newVal) {
+      this.onChange(newVal)
+    },
+  },
+})
+
+ListeDeroulanteAvecOptionsGroupees.args = {
+  optionGroups: [
+    {
+      label: 'groupe 1',
+      options: [
+        { value: 'Value 1', text: 'Option 1' },
+        { value: 'Value 2', text: 'Option 2' },
+      ],
+    },
+    {
+      label: 'groupe 2',
+      disabled: true,
+      options: [
+        { value: 'Value 3', text: 'Option 3' },
+        { value: 'Value 4', text: 'Option 4' },
+        { value: 'Value 5', text: 'Option 5' },
+      ],
+    },
+  ],
+  label: 'Selection d’options groupées',
+  description: 'le groupe 1 est actif et le 2 est inactif, l‘option 1 est selectionnée par défaut',
+  successMessage: '',
+  errorMessage: '',
+  disabled: false,
+  modelValue: 'Value 1',
   required: false,
 }
