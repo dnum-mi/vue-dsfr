@@ -12,4 +12,5 @@ export type DsfrSelectProps = {
   successMessage?: string
   errorMessage?: string
   defaultUnselectedText?: string
+  optionGroups?: ({ label: string, options: (DsfrSelectOption | { value: DsfrSelectOption, text: string, disabled?: boolean })[], disabled?: boolean })[]
 }

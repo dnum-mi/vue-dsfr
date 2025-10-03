@@ -90,4 +90,56 @@ describe('DsfrSelect', () => {
       expect(element.disabled).toBe(activeState)
     })
   })
+  it('should render optgroup', async () => {
+    const optionGroups = [
+      {
+        label: 'groupe 1',
+        disabled: true,
+        options: [
+          { value: 'Value 1', text: 'Text 1' },
+          { value: 'Value 2', text: 'Text 2' },
+        ],
+      },
+      {
+        label: 'groupe 2',
+        options: [
+          { value: 'Value 3', text: 'Text 3' },
+          { value: 'Value 4', text: 'Text 4', disabled: true },
+          { value: 'Value 5', text: 'Text 5' },
+        ],
+      },
+    ]
+    const selectId = 'select-id'
+    const { container, getByText } = render(DsfrSelect, {
+      props: {
+        optionGroups,
+        modelValue: undefined,
+        selectId,
+      },
+    })
+    const selectEl = container.querySelector('select')
+    console.log(selectEl?.innerHTML) // eslint-disable-line no-console
+
+    const optGroupEls = selectEl.querySelectorAll('optgroup')
+    const optionEl1 = getByText('Text 1')
+    const optionEl2 = getByText('Text 2')
+    const optionEl3 = getByText('Text 3')
+    const optionEl4 = getByText('Text 4')
+
+    expect(optGroupEls[0].disabled).toBe(true)
+    expect(optGroupEls[0].ariaDisabled).toBe('true')
+
+    expect(optionEl1?.ariaDisabled).toBe('true')
+    expect(optionEl2?.ariaDisabled).toBe('true')
+
+    expect(optGroupEls[1].disabled).toBe(false)
+    expect(optGroupEls[1].ariaDisabled).toBe('false')
+
+    expect(optionEl3?.ariaDisabled).toBe('false')
+    expect(optionEl4?.ariaDisabled).toBe('true')
+    expect(optionEl4.disabled).toBe(true)
+
+    console.log(optGroupEls[0]?.ariaDisabled) // eslint-disable-line no-console
+    console.log(optionEl1?.ariaDisabled) // eslint-disable-line no-console
+  })
 })

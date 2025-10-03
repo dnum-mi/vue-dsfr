@@ -15,6 +15,7 @@ const props = withDefaults(defineProps<DsfrSelectProps>(), {
   selectId: () => useRandomId('select'),
   modelValue: undefined,
   options: () => [],
+  optionGroups: () => [],
   label: '',
   name: undefined,
   description: undefined,
@@ -92,11 +93,29 @@ const messageType = computed(() => {
         :key="index"
         :selected="modelValue === option || (typeof option === 'object' && option!.value === modelValue)"
         :value="typeof option === 'object' ? option!.value : option"
-        :disabled="!!(typeof option === 'object' && option!.disabled)"
-        :aria-disabled="!!(typeof option === 'object' && option!.disabled)"
+        :disabled="!!(disabled || typeof option === 'object' && option!.disabled)"
+        :aria-disabled="!!(disabled || typeof option === 'object' && option!.disabled)"
       >
         {{ typeof option === 'object' ? option!.text : option }}
       </option>
+      <optgroup
+        v-for="(optionGroup, index) in optionGroups"
+        :key="index"
+        :label="optionGroup.label"
+        :disabled="optionGroup.disabled"
+        :aria-disabled="!!optionGroup.disabled"
+      >
+        <option
+          v-for="(option, idx) in optionGroup.options"
+          :key="idx"
+          :selected="modelValue === option || (typeof option === 'object' && option!.value === modelValue)"
+          :value="typeof option === 'object' ? option!.value : option"
+          :disabled="!!(disabled || typeof option === 'object' && option!.disabled || optionGroup.disabled)"
+          :aria-disabled="!!(disabled || typeof option === 'object' && option!.disabled || optionGroup.disabled)"
+        >
+          {{ typeof option === 'object' ? option!.text : option }}
+        </option>
+      </optgroup>
     </select>
 
     <p
