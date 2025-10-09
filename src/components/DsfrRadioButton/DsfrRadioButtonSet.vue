@@ -14,6 +14,7 @@ const props = withDefaults(defineProps<DsfrRadioButtonSetProps>(), {
   validMessage: '',
   legend: '',
   hint: '',
+  rich: false,
   options: () => [],
 })
 
@@ -83,6 +84,7 @@ const describedByElement = computed(() => message.value ? `messages-${props.titl
           :inline="inline"
           :model-value="modelValue"
           @update:model-value="onChange($event as string)"
+          :rich="rich"
         />
       </slot>
 
