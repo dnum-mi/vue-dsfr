@@ -1,11 +1,12 @@
 <script lang="ts" setup>
+import type { DsfrSideMenuProps } from './DsfrSideMenu.types'
+
 import { ref, watch } from 'vue'
 
 import { useCollapsable } from '../../composables'
 import { useRandomId } from '../../utils/random-utils'
 
 import DsfrSideMenuList from './DsfrSideMenuList.vue'
-import type { DsfrSideMenuProps } from './DsfrSideMenu.types'
 
 export type { DsfrSideMenuProps }
 

@@ -1,5 +1,7 @@
 <script lang="ts" setup>
+import type { DsfrTabsProps } from './DsfrTabs.types'
 import type { Ref } from 'vue'
+
 import { computed, onMounted, onUnmounted, provide, reactive, ref, watch } from 'vue'
 
 import { useRandomId } from '../../utils/random-utils'
@@ -7,7 +9,6 @@ import { useRandomId } from '../../utils/random-utils'
 import DsfrTabContent from './DsfrTabContent.vue'
 import DsfrTabItem from './DsfrTabItem.vue'
 import { registerTabKey } from './injection-key'
-import type { DsfrTabsProps } from './DsfrTabs.types'
 
 export type { DsfrTabsProps }
 

@@ -1,9 +1,9 @@
 <script setup lang="ts">
+import type { DsfrTooltipProps } from './DsfrTooltip.types'
+
 import { computed, onMounted, onUnmounted, ref, watch } from 'vue'
 
 import { useRandomId } from '../../utils/random-utils'
-
-import type { DsfrTooltipProps } from './DsfrTooltip.types'
 
 export type { DsfrTooltipProps }
 

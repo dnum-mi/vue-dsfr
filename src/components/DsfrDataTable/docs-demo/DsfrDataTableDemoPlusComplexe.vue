@@ -1,8 +1,9 @@
 <script lang="ts" setup>
+import type { DsfrDataTableProps } from '../DsfrDataTable.types'
+
 import { ref } from 'vue'
 
 import DsfrDataTable from '../DsfrDataTable.vue'
-import type { DsfrDataTableProps } from '../DsfrDataTable.types'
 
 const headers: DsfrDataTableProps['headersRow'] = [
   {

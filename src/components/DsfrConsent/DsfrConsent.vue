@@ -1,7 +1,7 @@
 <script lang="ts" setup>
-import { computed } from 'vue'
-
 import type { DsfrConsentProps } from './DsfrConsent.types'
+
+import { computed } from 'vue'
 
 export type { DsfrConsentProps }
 

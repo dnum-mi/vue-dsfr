@@ -1,11 +1,12 @@
 <script lang="ts" setup>
+import type { DsfrCardProps } from './DsfrCard.types'
+
 import { computed, ref } from 'vue'
 
 import DsfrBadge from '../DsfrBadge/DsfrBadge.vue'
 import DsfrButtonGroup from '../DsfrButton/DsfrButtonGroup.vue'
 
 import DsfrCardDetail from './DsfrCardDetail.vue'
-import type { DsfrCardProps } from './DsfrCard.types'
 
 export type { DsfrCardProps }
 

@@ -1,9 +1,9 @@
 <script lang="ts" setup>
+import type { DsfrRangeProps } from './DsfrRange.types'
+
 import { computed, onMounted, ref, watch } from 'vue'
 
 import { useRandomId } from '../../utils/random-utils'
-
-import type { DsfrRangeProps } from './DsfrRange.types'
 
 const props = withDefaults(defineProps<DsfrRangeProps>(), {
   id: () => useRandomId('range'),

@@ -1,5 +1,6 @@
-import { computed, ref, watchEffect } from 'vue'
 import type { ComputedRef } from 'vue'
+
+import { computed, ref, watchEffect } from 'vue'
 
 const PREFERS_DARK_MEDIA_QUERY = '(prefers-color-scheme: dark)'
 const DEFAULT_COLOR_SCHEME_LS_KEY = 'vue-dsfr-scheme'

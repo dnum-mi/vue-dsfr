@@ -1,7 +1,7 @@
 <script lang="ts" setup>
-import { computed } from 'vue'
-
 import type { DsfrPaginationProps, Page } from './DsfrPagination.types'
+
+import { computed } from 'vue'
 
 export type { DsfrPaginationProps, Page }
 

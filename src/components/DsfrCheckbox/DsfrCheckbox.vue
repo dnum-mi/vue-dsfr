@@ -1,9 +1,9 @@
 <script lang="ts" setup>
+import type { DsfrCheckboxProps } from './DsfrCheckbox.types'
+
 import { computed } from 'vue'
 
 import { useRandomId } from '../../utils/random-utils'
-
-import type { DsfrCheckboxProps } from './DsfrCheckbox.types'
 
 export type { DsfrCheckboxProps }
 

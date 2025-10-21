@@ -1,8 +1,7 @@
-import type { HTMLAttributes, StyleValue } from 'vue'
-import type { RouteLocationRaw } from 'vue-router'
-
 import type { DsfrLanguageSelectorProps } from '../DsfrLanguageSelector/DsfrLanguageSelector.types'
 import type VIcon from '../VIcon/VIcon.vue'
+import type { HTMLAttributes, StyleValue } from 'vue'
+import type { RouteLocationRaw } from 'vue-router'
 
 export type DsfrHeaderMenuLinkProps = {
   button?: boolean

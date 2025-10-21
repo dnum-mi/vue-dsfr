@@ -1,10 +1,10 @@
 <script lang="ts" setup>
+import type { DsfrSegmentedProps } from './DsfrSegmented.types'
+
 import { computed } from 'vue'
 
 import { useRandomId } from '../../utils/random-utils'
 import VIcon from '../VIcon/VIcon.vue'
-
-import type { DsfrSegmentedProps } from './DsfrSegmented.types'
 
 export type { DsfrSegmentedProps }
 

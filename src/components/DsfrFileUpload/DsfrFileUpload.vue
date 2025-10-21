@@ -1,9 +1,9 @@
 <script lang="ts" setup>
+import type { DsfrFileUploadProps } from './DsfrFileUpload.types'
+
 import { computed } from 'vue'
 
 import { useRandomId } from '../../utils/random-utils'
-
-import type { DsfrFileUploadProps } from './DsfrFileUpload.types'
 
 export type { DsfrFileUploadProps }
 

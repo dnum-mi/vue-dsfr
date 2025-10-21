@@ -1,4 +1,6 @@
 <script lang="ts" setup>
+import type { DsfrNavigationMenuProps } from './DsfrNavigation.types'
+
 import { computed, onMounted, watch } from 'vue'
 
 import { useCollapsable } from '../../composables'
@@ -6,7 +8,6 @@ import { useRandomId } from '../../utils/random-utils'
 
 import DsfrNavigationMenuItem from './DsfrNavigationMenuItem.vue'
 import DsfrNavigationMenuLink from './DsfrNavigationMenuLink.vue'
-import type { DsfrNavigationMenuProps } from './DsfrNavigation.types'
 
 export type { DsfrNavigationMenuProps }
 

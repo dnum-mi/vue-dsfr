@@ -1,15 +1,16 @@
 <script setup lang="ts">
+import type { DsfrHeaderProps } from '../src/components/DsfrHeader/DsfrHeader.vue'
+import type { DsfrNavigationProps } from '../src/components/DsfrNavigation/DsfrNavigation.vue'
+import type { DsfrSkipLinksProps } from '../src/components/DsfrSkipLinks/DsfrSkipLinks.vue'
+
 import { computed, ref, useId } from 'vue'
 import { useRoute } from 'vue-router'
 
 import DsfrBreadcrumb from '../src/components/DsfrBreadcrumb/DsfrBreadcrumb.vue'
 import DsfrFooter from '../src/components/DsfrFooter/DsfrFooter.vue'
-import type { DsfrHeaderProps } from '../src/components/DsfrHeader/DsfrHeader.vue'
 import DsfrHeader from '../src/components/DsfrHeader/DsfrHeader.vue'
 import DsfrModal from '../src/components/DsfrModal/DsfrModal.vue'
-import type { DsfrNavigationProps } from '../src/components/DsfrNavigation/DsfrNavigation.vue'
 import DsfrNavigation from '../src/components/DsfrNavigation/DsfrNavigation.vue'
-import type { DsfrSkipLinksProps } from '../src/components/DsfrSkipLinks/DsfrSkipLinks.vue'
 import DsfrSkipLinks from '../src/components/DsfrSkipLinks/DsfrSkipLinks.vue'
 
 import AppToaster from './components/AppToaster.vue'

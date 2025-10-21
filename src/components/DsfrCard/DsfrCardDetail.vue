@@ -1,9 +1,9 @@
 <script lang="ts" setup>
+import type { DsfrCardDetailProps } from './DsfrCard.types'
+
 import { computed } from 'vue'
 
 import VIcon from '../VIcon/VIcon.vue'
-
-import type { DsfrCardDetailProps } from './DsfrCard.types'
 
 const props = defineProps<DsfrCardDetailProps>()
 

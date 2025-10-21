@@ -1,7 +1,8 @@
 <script lang="ts" setup>
+import type { DsfrTagProps } from '@/components/DsfrTag/DsfrTags.types.ts'
+
 import { computed, ref } from 'vue'
 
-import type { DsfrTagProps } from '@/components/DsfrTag/DsfrTags.types.ts'
 import DsfrTags from '@/components/DsfrTag/DsfrTags.vue'
 
 const tagSet: (DsfrTagProps)[] = [

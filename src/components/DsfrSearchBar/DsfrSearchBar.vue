@@ -1,9 +1,9 @@
 <script lang="ts" setup>
+import type { DsfrSearchBarProps } from './DsfrSearchBar.types'
+
 import { useRandomId } from '../../utils/random-utils'
 import DsfrButton from '../DsfrButton/DsfrButton.vue'
 import DsfrInput from '../DsfrInput/DsfrInput.vue'
-
-import type { DsfrSearchBarProps } from './DsfrSearchBar.types'
 
 export type { DsfrSearchBarProps }
 

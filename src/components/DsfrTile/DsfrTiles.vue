@@ -1,6 +1,7 @@
 <script lang="ts" setup>
-import DsfrTile from './DsfrTile.vue'
 import type { DsfrTilesProps } from './DsfrTiles.types'
+
+import DsfrTile from './DsfrTile.vue'
 
 export type { DsfrTilesProps }
 

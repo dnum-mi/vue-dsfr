@@ -15,8 +15,8 @@ withDefaults(defineProps<DsfrFooterLinkListProps>(), {
 <template>
   <div>
     <component
-      class="fr-footer__top-cat"
       :is="titleTag"
+      class="fr-footer__top-cat"
     >
       {{ categoryName }}
     </component>

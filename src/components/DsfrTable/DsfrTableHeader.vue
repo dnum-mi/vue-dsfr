@@ -1,9 +1,9 @@
 <script lang="ts" setup>
+import type { DsfrTableHeaderProps } from './DsfrTable.types'
+
 import { computed } from 'vue'
 
 import VIcon from '../VIcon/VIcon.vue'
-
-import type { DsfrTableHeaderProps } from './DsfrTable.types'
 
 export type { DsfrTableHeaderProps }
 
