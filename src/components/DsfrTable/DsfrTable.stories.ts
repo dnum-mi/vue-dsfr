@@ -1,5 +1,5 @@
-import { fn } from '@storybook/test'
-import { setup } from '@storybook/vue3'
+import { setup } from '@storybook/vue3-vite'
+import { fn } from 'storybook/test'
 
 import DsfrTag from '../DsfrTag/DsfrTag.vue'
 

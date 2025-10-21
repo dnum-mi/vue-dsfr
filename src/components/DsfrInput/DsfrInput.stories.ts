@@ -1,4 +1,4 @@
-import { expect, within } from '@storybook/test'
+import { expect, within } from 'storybook/test'
 
 import DsfrAlert from '../DsfrAlert/DsfrAlert.vue'
 import DsfrButton from '../DsfrButton/DsfrButton.vue'

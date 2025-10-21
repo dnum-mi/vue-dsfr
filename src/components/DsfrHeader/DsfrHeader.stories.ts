@@ -1,6 +1,6 @@
 import type { DsfrLanguageSelectorElement } from '../DsfrLanguageSelector/DsfrLanguageSelector.types'
 
-import { expect, fn, within } from '@storybook/test'
+import { expect, fn, within } from 'storybook/test'
 
 import DsfrNavigation from '../DsfrNavigation/DsfrNavigation.vue'
 

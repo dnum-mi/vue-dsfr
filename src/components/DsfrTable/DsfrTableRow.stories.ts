@@ -1,4 +1,4 @@
-import { fn } from '@storybook/test'
+import { fn } from 'storybook/test'
 
 import DsfrTable from './DsfrTable.vue'
 import DsfrTableHeaders from './DsfrTableHeaders.vue'

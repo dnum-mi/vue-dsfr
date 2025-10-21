@@ -1,4 +1,4 @@
-import { expect, fn, within } from '@storybook/test'
+import { expect, fn, within } from 'storybook/test'
 
 import VIcon from '../VIcon/VIcon.vue'
 

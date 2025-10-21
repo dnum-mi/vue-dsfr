@@ -1,5 +1,5 @@
-import { expect, fn, userEvent, within } from '@storybook/test'
-import { setup } from '@storybook/vue3'
+import { setup } from '@storybook/vue3-vite'
+import { expect, fn, userEvent, within } from 'storybook/test'
 
 import DsfrButton from '../DsfrButton/DsfrButton.vue'
 import VIcon from '../VIcon/VIcon.vue'

@@ -1,4 +1,4 @@
-import { expect, within } from '@storybook/test'
+import { expect, within } from 'storybook/test'
 
 import DsfrAccordion from './DsfrAccordion.vue'
 import DsfrAccordionsGroup from './DsfrAccordionsGroup.vue'

@@ -1,5 +1,5 @@
-import { expect, within } from '@storybook/test'
-import { setup } from '@storybook/vue3'
+import { setup } from '@storybook/vue3-vite'
+import { expect, within } from 'storybook/test'
 
 import DsfrModal from '../DsfrModal/DsfrModal.vue'
 import VIcon from '../VIcon/VIcon.vue'
