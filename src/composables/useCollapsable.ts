@@ -50,7 +50,7 @@ export const useCollapsable = () => {
   /**
    * @see https://github.com/GouvernementFR/dsfr/blob/main/src/dsfr/core/script/collapse/collapse.js#L25
    * @param {boolean} expanded
-   * @param {boolean} focusFirstAnchor
+   * @param {boolean} autoFocus
    * @return void
    */
   const onTransitionEnd = (expanded: boolean, autoFocus = true): void => {

@@ -56,7 +56,7 @@ const descId = computed(() => {
     class="fr-input-group"
     :class="[
       {
-        'fr-input-group--disabled': 'disabled' in $attrs,
+        'fr-input-group--disabled': 'disabled' in $attrs && $attrs.disabled !== false && $attrs.disabled !== undefined,
         'fr-input-group--error': errorMessage,
         'fr-input-group--valid': (validMessage && !errorMessage),
       },
