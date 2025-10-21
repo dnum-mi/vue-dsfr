@@ -34,7 +34,6 @@ Le storybook est toujours disponible [ici](https://storybook.vue-ds.fr)
 ## Carte et tuile
 
 - [DsfrCard](./composants/DsfrCard)
-- [DsfrCardDetail](./composants/DsfrCardDetail)
 - [DsfrTile](./composants/DsfrTile)
 - [DsfrTiles](./composants/DsfrTile)
 

@@ -169,6 +169,12 @@ const composants = [
   {
     text: 'DsfrFileDownload',
     link: '/composants/DsfrFileDownload.md',
+    items: [
+      {
+        text: 'DsfrFileDownloadList',
+        link: '/composants/DsfrFileDownloadList.md',
+      },
+    ],
   },
   {
     text: 'DsfrFileUpload',
