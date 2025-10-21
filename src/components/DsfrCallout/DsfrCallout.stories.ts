@@ -1,5 +1,6 @@
-import { expect, fn, userEvent, within } from '@storybook/test'
 import type { Meta } from '@storybook/vue3'
+
+import { expect, fn, userEvent, within } from '@storybook/test'
 
 import VIcon from '../VIcon/VIcon.vue'
 

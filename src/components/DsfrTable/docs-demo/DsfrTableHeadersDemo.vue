@@ -1,7 +1,8 @@
 <script setup lang="ts">
+import type { DsfrTableRowProps } from '../DsfrTable.types'
+
 import DsfrTable from '../DsfrTable.vue'
 import DsfrTableHeaders from '../DsfrTableHeaders.vue'
-import type { DsfrTableRowProps } from '../DsfrTable.types'
 
 const title = 'Exemple de tableau avec entêtes personnalisées'
 const rows: DsfrTableRowProps[] = [

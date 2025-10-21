@@ -1,10 +1,10 @@
 <script lang="ts" setup>
+import type { DsfrCalloutProps } from './DsfrCallout.types'
+
 import { computed } from 'vue'
 
 import DsfrButton from '../DsfrButton/DsfrButton.vue'
 import VIcon from '../VIcon/VIcon.vue'
-
-import type { DsfrCalloutProps } from './DsfrCallout.types'
 
 export type { DsfrCalloutProps }
 

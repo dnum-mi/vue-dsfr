@@ -169,6 +169,12 @@ const composants = [
   {
     text: 'DsfrFileDownload',
     link: '/composants/DsfrFileDownload.md',
+    items: [
+      {
+        text: 'DsfrFileDownloadList',
+        link: '/composants/DsfrFileDownloadList.md',
+      },
+    ],
   },
   {
     text: 'DsfrFileUpload',
@@ -257,6 +263,32 @@ const composants = [
   {
     text: 'DsfrNavigation',
     link: '/composants/DsfrNavigation.md',
+    items: [
+      {
+        text: 'DsfrNavigationItem',
+        link: '/composants/DsfrNavigationItem.md',
+      },
+      {
+        text: 'DsfrNavigationMenu',
+        link: '/composants/DsfrNavigationMenu.md',
+      },
+      {
+        text: 'DsfrNavigationMenuItem',
+        link: '/composants/DsfrNavigationMenuItem.md',
+      },
+      {
+        text: 'DsfrNavigationMenuLink',
+        link: '/composants/DsfrNavigationMenuLink.md',
+      },
+      {
+        text: 'DsfrNavigationMegaMenu',
+        link: '/composants/DsfrNavigationMegaMenu.md',
+      },
+      {
+        text: 'DsfrNavigationMegaMenuCategory',
+        link: '/composants/DsfrNavigationMegaMenuCategory.md',
+      },
+    ],
   },
   {
     text: 'DsfrNotice',
@@ -313,6 +345,28 @@ const composants = [
   {
     text: 'DsfrShare',
     link: '/composants/DsfrShare.md',
+  },
+  {
+    text: 'DsfrSideMenu',
+    link: '/composants/DsfrSideMenu.md',
+    items: [
+      {
+        text: 'DsfrSideMenuButton',
+        link: '/composants/DsfrSideMenuButton.md',
+      },
+      {
+        text: 'DsfrSideMenuLink',
+        link: '/composants/DsfrSideMenuLink.md',
+      },
+      {
+        text: 'DsfrSideMenuList',
+        link: '/composants/DsfrSideMenuList.md',
+      },
+      {
+        text: 'DsfrSideMenuListItem',
+        link: '/composants/DsfrSideMenuListItem.md',
+      },
+    ],
   },
   {
     text: 'DsfrStepper',

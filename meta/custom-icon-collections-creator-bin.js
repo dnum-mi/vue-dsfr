@@ -3,8 +3,8 @@
 import path from 'node:path'
 import process from 'node:process'
 
-import { Command } from 'commander'
 import chalk from 'chalk'
+import { Command } from 'commander'
 
 import { createCustomCollectionFile } from './custom-icon-collections-creator.js'
 

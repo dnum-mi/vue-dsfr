@@ -1,10 +1,10 @@
 <script lang="ts" setup>
+import type { DsfrLanguageSelectorElement, DsfrLanguageSelectorProps } from './DsfrLanguageSelector.types'
+
 import { computed, ref, watch } from 'vue'
 
 import { useCollapsable } from '../../composables'
 import { useRandomId } from '../../utils/random-utils'
-
-import type { DsfrLanguageSelectorElement, DsfrLanguageSelectorProps } from './DsfrLanguageSelector.types'
 
 export type { DsfrLanguageSelectorElement, DsfrLanguageSelectorProps }
 

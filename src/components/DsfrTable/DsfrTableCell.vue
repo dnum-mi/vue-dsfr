@@ -1,7 +1,7 @@
 <script lang="ts" setup>
-import { computed } from 'vue'
-
 import type { DsfrTableCellProps } from './DsfrTable.types'
+
+import { computed } from 'vue'
 
 export type { DsfrTableCellProps }
 

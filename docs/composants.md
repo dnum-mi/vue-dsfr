@@ -7,6 +7,7 @@ Le storybook est toujours disponible [ici](https://storybook.vue-ds.fr)
 ## Accordéon
 
 - [DsfrAccordion](./composants/DsfrAccordion)
+- [DsfrAccordionsGroup](./composants/DsfrAccordionsGroup)
 
 ## Alertes et notices
 
@@ -17,6 +18,7 @@ Le storybook est toujours disponible [ici](https://storybook.vue-ds.fr)
 
 - [DsfrBadge](./composants/DsfrBadge)
 - [DsfrTag](./composants/DsfrTag)
+- [DsfrTags](./composants/DsfrTag)
 
 ## Barre de recherche
 
@@ -27,12 +29,13 @@ Le storybook est toujours disponible [ici](https://storybook.vue-ds.fr)
 - [DsfrButton](./composants/DsfrButton)
 - [DsfrButtonGroup](./composants/DsfrButtonGroup)
 - [DsfrSegmented](./composants/DsfrSegmented) (Contrôle segmenté)
-- [DsfrSegmentedSet](./composants/DsfrSegmentedSet)  (Contrôles segmentés)
+- [DsfrSegmentedSet](./composants/DsfrSegmentedSet) (Contrôles segmentés)
 
 ## Carte et tuile
 
 - [DsfrCard](./composants/DsfrCard)
 - [DsfrTile](./composants/DsfrTile)
+- [DsfrTiles](./composants/DsfrTile)
 
 ## Citation
 
@@ -50,14 +53,20 @@ Le storybook est toujours disponible [ici](https://storybook.vue-ds.fr)
 
 - [DsfrHeader](./composants/DsfrHeader)
 - [DsfrHeaderMenuLink](./composants/DsfrHeaderMenuLink)
-- [DsfrLanguageSelector](./composants/DsfrLanguageSelector)
+- [DsfrHeaderMenuLinks](./composants/DsfrHeaderMenuLinks)
 - [DsfrFooter](./composants/DsfrFooter)
 - [DsfrFooterLink](./composants/DsfrFooterLink)
+- [DsfrFooterLinkList](./composants/DsfrFooterLinkList)
+- [DsfrFooterPartners](./composants/DsfrFooterPartners)
 - [DsfrLogo](./composants/DsfrLogo)
 
 ## Fil d’ariane
 
 - [DsfrBreadcrumb](./composants/DsfrBreadcrumb)
+
+## FranceConnect
+
+- [DsfrFranceConnect](./composants/DsfrFranceConnect)
 
 ## Formulaire (éléments de)
 
@@ -65,12 +74,13 @@ Le storybook est toujours disponible [ici](https://storybook.vue-ds.fr)
 - [DsfrCheckboxSet](./composants/DsfrCheckboxSet)
 - [DsfrFieldset](./composants/DsfrFieldset)
 - [DsfrFileUpload](./composants/DsfrFileUpload)
-- [DsfrFileDownload](./composants/DsfrFileDownload)
 - [DsfrInput](./composants/DsfrInput)
 - [DsfrInputGroup](./composants/DsfrInputGroup)
+- [DsfrMultiselect](./composants/DsfrMultiselect)
 - [DsfrRadioButton](./composants/DsfrRadioButton)
 - [DsfrRadioButtonSet](./composants/DsfrRadioButtonSet)
 - [DsfrRange](./composants/DsfrRange)
+- [DsfrSelect](./composants/DsfrSelect)
 - [DsfrToggleSwitch](./composants/DsfrToggleSwitch)
 
 ## Icône
@@ -100,13 +110,26 @@ Le storybook est toujours disponible [ici](https://storybook.vue-ds.fr)
 
 - [DsfrModal](./composants/DsfrModal)
 
-## Notice
+## Navigation et menu
 
-- [DsfrNotice](./composants/DsfrNotice)
+- [DsfrNavigation](./composants/DsfrNavigation)
+- [DsfrNavigationItem](./composants/DsfrNavigationItem)
+- [DsfrNavigationMegaMenu](./composants/DsfrNavigationMegaMenu)
+- [DsfrNavigationMegaMenuCategory](./composants/DsfrNavigationMegaMenuCategory)
+- [DsfrNavigationMenu](./composants/DsfrNavigationMenu)
+- [DsfrNavigationMenuItem](./composants/DsfrNavigationMenuItem)
+- [DsfrNavigationMenuLink](./composants/DsfrNavigationMenuLink)
+- [DsfrSideMenu](./composants/DsfrSideMenu)
+- [DsfrSideMenuButton](./composants/DsfrSideMenuButton)
+- [DsfrSideMenuLink](./composants/DsfrSideMenuLink)
+- [DsfrSideMenuList](./composants/DsfrSideMenuList)
+- [DsfrSideMenuListItem](./composants/DsfrSideMenuListItem)
 
 ## Onglets
 
 - [DsfrTabs](./composants/DsfrTabs)
+- [DsfrTabContent](./composants/DsfrTabs)
+- [DsfrTabItem](./composants/DsfrTabs)
 
 ## Partage et réseaux sociaux
 
@@ -152,3 +175,4 @@ Conseillé pour des tableaux simples :
 ## Téléchargement de fichier
 
 - [DsfrFileDownload](./composants/DsfrFileDownload)
+- [DsfrFileDownloadList](./composants/DsfrFileDownload)

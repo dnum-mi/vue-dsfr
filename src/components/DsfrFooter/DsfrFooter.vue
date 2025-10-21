@@ -1,13 +1,13 @@
 <script setup lang="ts">
+import type { DsfrFooterProps } from './DsfrFooter.types'
 import type { VNode } from 'vue'
 import type { RouteLocationRaw, RouterLink } from 'vue-router'
+
 import { computed, useSlots } from 'vue'
 
 import DsfrFooterLink from '../DsfrFooter/DsfrFooterLink.vue'
 import DsfrFooterPartners from '../DsfrFooter/DsfrFooterPartners.vue'
 import DsfrLogo from '../DsfrLogo/DsfrLogo.vue'
-
-import type { DsfrFooterProps } from './DsfrFooter.types'
 
 export type { DsfrFooterProps }
 export type {

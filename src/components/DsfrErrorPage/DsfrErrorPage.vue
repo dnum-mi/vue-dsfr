@@ -1,7 +1,7 @@
 <script lang="ts" setup>
-import DsfrButtonGroup from '../DsfrButton/DsfrButtonGroup.vue'
-
 import type { DsfrErrorPageProps } from './DsfrErrorPage.types'
+
+import DsfrButtonGroup from '../DsfrButton/DsfrButtonGroup.vue'
 
 export type { DsfrErrorPageProps }
 

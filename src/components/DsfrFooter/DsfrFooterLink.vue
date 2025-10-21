@@ -1,9 +1,9 @@
 <script lang="ts" setup>
+import type { DsfrFooterLinkProps } from './DsfrFooter.types'
+
 import { computed } from 'vue'
 
 import VIcon from '../VIcon/VIcon.vue'
-
-import type { DsfrFooterLinkProps } from './DsfrFooter.types'
 
 export type { DsfrFooterLinkProps }
 

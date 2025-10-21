@@ -1,3 +1,5 @@
+import type { UserConfig } from 'vite'
+
 import { dirname, resolve } from 'node:path'
 import process from 'node:process'
 import { fileURLToPath, URL } from 'node:url'
@@ -6,9 +8,8 @@ import vue from '@vitejs/plugin-vue'
 import vueJsx from '@vitejs/plugin-vue-jsx'
 import browserslist from 'browserslist'
 import { browserslistToTargets } from 'lightningcss'
-import { defineConfig } from 'vite'
-import type { UserConfig } from 'vite'
 import LightningCSS from 'unplugin-lightningcss/vite'
+import { defineConfig } from 'vite'
 
 const projectDir = dirname(new URL(import.meta.url).pathname)
 

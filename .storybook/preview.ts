@@ -1,8 +1,9 @@
+import type { Preview } from '@storybook/vue3'
+
 import { themes } from '@storybook/theming'
 import { setup } from '@storybook/vue3'
 import { FocusTrap } from 'focus-trap-vue'
 import { defineComponent } from 'vue'
-import type { Preview } from '@storybook/vue3'
 
 import VIcon from '../src/components/VIcon/VIcon.vue'
 

@@ -1,10 +1,11 @@
 <script lang="ts" setup>
+import type { DsfrInputGroupProps } from './DsfrInput.types'
+
 import { computed } from 'vue'
 
 import { useRandomId } from '../../utils/random-utils'
 
 import DsfrInput from './DsfrInput.vue'
-import type { DsfrInputGroupProps } from './DsfrInput.types'
 
 export type { DsfrInputGroupProps }
 

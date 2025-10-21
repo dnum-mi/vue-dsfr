@@ -1,6 +1,5 @@
-import type { ButtonHTMLAttributes } from 'vue'
-
 import type VIcon from '../VIcon/VIcon.vue'
+import type { ButtonHTMLAttributes } from 'vue'
 
 export type DsfrButtonProps = {
   disabled?: boolean

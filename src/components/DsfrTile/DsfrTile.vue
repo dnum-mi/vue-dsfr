@@ -1,7 +1,7 @@
 <script lang="ts" setup>
-import { computed } from 'vue'
-
 import type { DsfrTileProps } from './DsfrTiles.types'
+
+import { computed } from 'vue'
 
 export type { DsfrTileProps }
 

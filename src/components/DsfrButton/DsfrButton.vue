@@ -1,9 +1,9 @@
 <script lang="ts" setup>
+import type { DsfrButtonProps } from './DsfrButton.types'
+
 import { computed, ref } from 'vue'
 
 import VIcon from '../VIcon/VIcon.vue'
-
-import type { DsfrButtonProps } from './DsfrButton.types'
 
 export type { DsfrButtonProps }
 

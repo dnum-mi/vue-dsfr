@@ -1,9 +1,9 @@
 <script lang="ts" setup>
+import type { DsfrSelectProps } from './DsfrSelect.types'
+
 import { computed } from 'vue'
 
 import { useRandomId } from '../../utils/random-utils'
-
-import type { DsfrSelectProps } from './DsfrSelect.types'
 
 export type { DsfrSelectProps }
 

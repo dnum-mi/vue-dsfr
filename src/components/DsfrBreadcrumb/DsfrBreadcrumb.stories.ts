@@ -1,5 +1,6 @@
-import { expect, within } from '@storybook/test'
 import type { Meta, StoryFn } from '@storybook/vue3'
+
+import { expect, within } from '@storybook/test'
 
 import DsfrBreadcrumb from './DsfrBreadcrumb.vue'
 

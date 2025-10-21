@@ -1,13 +1,14 @@
 <script lang="ts" setup>
-import { computed, onMounted, onUnmounted, provide, ref, toRef } from 'vue'
-import { FocusTrap } from 'focus-trap-vue'
-
+import type { DsfrHeaderProps } from './DsfrHeader.types'
 import type { DsfrLanguageSelectorElement } from '../DsfrLanguageSelector/DsfrLanguageSelector.vue'
+
+import { FocusTrap } from 'focus-trap-vue'
+import { computed, onMounted, onUnmounted, provide, ref, toRef } from 'vue'
+
 import DsfrLanguageSelector from '../DsfrLanguageSelector/DsfrLanguageSelector.vue'
 import DsfrLogo from '../DsfrLogo/DsfrLogo.vue'
 import DsfrSearchBar from '../DsfrSearchBar/DsfrSearchBar.vue'
 
-import type { DsfrHeaderProps } from './DsfrHeader.types'
 import DsfrHeaderMenuLinks from './DsfrHeaderMenuLinks.vue'
 import { registerNavigationLinkKey } from './injection-key'
 

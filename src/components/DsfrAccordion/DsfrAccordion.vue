@@ -1,11 +1,12 @@
 <script lang="ts" setup>
+import type { DsfrAccordionProps } from './DsfrAccordion.types'
+
 import { inject, onMounted, ref, toRef, watch } from 'vue'
 
 import { useCollapsable } from '../../composables'
 import { useRandomId } from '../../utils/random-utils'
 
 import { registerAccordionKey } from './injection-key'
-import type { DsfrAccordionProps } from './DsfrAccordion.types'
 
 export type { DsfrAccordionProps }
 

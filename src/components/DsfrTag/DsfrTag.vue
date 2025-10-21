@@ -1,9 +1,9 @@
 <script lang="ts" setup generic="T = string">
+import type { DsfrTagProps } from './DsfrTags.types'
+
 import { computed } from 'vue'
 
 import VIcon from '../VIcon/VIcon.vue'
-
-import type { DsfrTagProps } from './DsfrTags.types'
 
 const props = withDefaults(defineProps<DsfrTagProps<T>>(), {
   label: undefined,

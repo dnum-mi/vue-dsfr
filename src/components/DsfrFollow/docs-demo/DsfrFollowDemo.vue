@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import type { DsfrSocialNetwork } from '../DsfrFollow.types'
+
 import DsfrFollow from '../DsfrFollow.vue'
 
 const networks: DsfrSocialNetwork[] = [

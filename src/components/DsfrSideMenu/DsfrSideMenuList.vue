@@ -1,12 +1,13 @@
 <script lang="ts" setup>
-import { onMounted, watch } from 'vue'
+import type { DsfrSideMenuListProps } from './DsfrSideMenu.types'
 import type { RouteLocationRaw } from 'vue-router'
+
+import { onMounted, watch } from 'vue'
 
 import { useCollapsable } from '../../composables'
 
 import DsfrSideMenuButton from './DsfrSideMenuButton.vue'
 import DsfrSideMenuListItem from './DsfrSideMenuListItem.vue'
-import type { DsfrSideMenuListProps } from './DsfrSideMenu.types'
 
 export type { DsfrSideMenuListProps }
 

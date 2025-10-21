@@ -1,8 +1,9 @@
 <script setup lang="ts">
+import type { UseSchemeResult } from '../../src/index'
+
 import { useData } from 'vitepress'
 import { onMounted, onUnmounted, ref, watchEffect } from 'vue'
 
-import type { UseSchemeResult } from '../../src/index'
 import { useScheme } from '../../src/index'
 
 withDefaults(defineProps<{

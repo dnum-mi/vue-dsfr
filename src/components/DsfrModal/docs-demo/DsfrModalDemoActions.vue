@@ -1,9 +1,10 @@
 <script setup lang="ts">
+import type { DsfrButtonProps } from '@/components/DsfrButton/DsfrButton.vue'
+
 import { ref } from 'vue'
 
 import DsfrModal from '../DsfrModal.vue'
 
-import type { DsfrButtonProps } from '@/components/DsfrButton/DsfrButton.vue'
 import DsfrButton from '@/components/DsfrButton/DsfrButton.vue'
 
 const opened = ref(false)

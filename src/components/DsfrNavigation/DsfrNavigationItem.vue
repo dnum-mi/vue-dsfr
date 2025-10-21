@@ -1,7 +1,7 @@
 <script lang="ts" setup>
-import { useRandomId } from '../../utils/random-utils'
-
 import type { DsfrNavigationItemProps } from './DsfrNavigation.types'
+
+import { useRandomId } from '../../utils/random-utils'
 
 export type { DsfrNavigationItemProps }
 

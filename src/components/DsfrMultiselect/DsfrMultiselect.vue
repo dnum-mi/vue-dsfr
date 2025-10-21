@@ -1,4 +1,6 @@
 <script lang="ts" setup generic="T extends Object | string | number">
+import type { DsfrMultiSelectProps, DsfrMultiSelectSlots } from './DsfrMultiselect.types'
+
 import { computed, onUnmounted, ref } from 'vue'
 
 import { useCollapsable } from '../../composables'
@@ -6,8 +8,6 @@ import DsfrButton from '../DsfrButton/DsfrButton.vue'
 import DsfrCheckbox from '../DsfrCheckbox/DsfrCheckbox.vue'
 import DsfrFieldset from '../DsfrFieldset/DsfrFieldset.vue'
 import DsfrInput from '../DsfrInput/DsfrInput.vue'
-
-import type { DsfrMultiSelectProps, DsfrMultiSelectSlots } from './DsfrMultiselect.types'
 
 import { useRandomId } from '@/utils/random-utils'
 

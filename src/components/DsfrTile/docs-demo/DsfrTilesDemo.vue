@@ -1,10 +1,11 @@
 <script lang="ts" setup>
+import type { DsfrTileProps } from '../DsfrTiles.types'
+
 import { getCurrentInstance, ref } from 'vue'
 import { createRouter, createWebHistory } from 'vue-router'
 
 import DsfrToggleSwitch from '../../DsfrToggleSwitch/DsfrToggleSwitch.vue'
 import DsfrTiles from '../DsfrTiles.vue'
-import type { DsfrTileProps } from '../DsfrTiles.types'
 
 const horizontal = ref(false)
 const tiles: DsfrTileProps[] = [

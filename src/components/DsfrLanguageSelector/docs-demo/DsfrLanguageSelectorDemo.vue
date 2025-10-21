@@ -1,7 +1,8 @@
 <script lang="ts" setup>
+import type { DsfrLanguageSelectorElement } from '../DsfrLanguageSelector.vue'
+
 import { ref } from 'vue'
 
-import type { DsfrLanguageSelectorElement } from '../DsfrLanguageSelector.vue'
 import DsfrLanguageSelector from '../DsfrLanguageSelector.vue'
 
 const languages = [

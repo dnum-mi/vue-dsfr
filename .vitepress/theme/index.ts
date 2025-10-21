@@ -1,6 +1,7 @@
+import type { Theme } from 'vitepress'
+
 import DefaultTheme from 'vitepress/theme'
 import { RouterLink } from 'vue-router'
-import type { Theme } from 'vitepress'
 
 import VIcon from '../../src/components/VIcon/VIcon.vue'
 

@@ -1,8 +1,9 @@
 <script lang="ts" setup>
+import type { DsfrCheckboxProps } from '../DsfrCheckbox.types'
+
 import { ref } from 'vue'
 
 import DsfrCheckboxSet from '../DsfrCheckboxSet.vue'
-import type { DsfrCheckboxProps } from '../DsfrCheckbox.types'
 
 const modelValue1 = ref([])
 const modelValue2 = ref([])

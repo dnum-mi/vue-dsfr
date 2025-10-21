@@ -1,9 +1,10 @@
+import type { DsfrRadioButtonProps } from './DsfrRadioButton.types'
+
 import { fireEvent, render } from '@testing-library/vue'
 
 import VIcon from '../VIcon/VIcon.vue'
 
 import RadioButtonSet from './DsfrRadioButtonSet.vue'
-import type { DsfrRadioButtonProps } from './DsfrRadioButton.types'
 
 describe('DsfrRadioButtonSet', () => {
   it('should render a simple set of radio buttons with label in div', () => {

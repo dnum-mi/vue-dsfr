@@ -1,9 +1,9 @@
 <script lang="ts" setup>
+import type { DsfrToggleSwitchProps } from './DsfrToggleSwitch.types'
+
 import { computed } from 'vue'
 
 import { useRandomId } from '../../utils/random-utils'
-
-import type { DsfrToggleSwitchProps } from './DsfrToggleSwitch.types'
 
 export type { DsfrToggleSwitchProps }
 

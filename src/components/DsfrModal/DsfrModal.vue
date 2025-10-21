@@ -1,11 +1,11 @@
 <script lang="ts" setup>
+import type { DsfrModalProps } from './DsfrModal.types'
+
 import { FocusTrap } from 'focus-trap-vue'
 import { computed, nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 
 import DsfrButtonGroup from '../DsfrButton/DsfrButtonGroup.vue'
 import VIcon from '../VIcon/VIcon.vue'
-
-import type { DsfrModalProps } from './DsfrModal.types'
 
 import { useRandomId } from '@/utils/random-utils'
 
