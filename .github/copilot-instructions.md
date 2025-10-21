@@ -149,23 +149,26 @@ Utilise la troisième personne du singulier au présent de l'indicatif pour la d
 - Exposer les références nécessaires avec `defineExpose()`
 
 #### ✅ Props & Emits - Bonnes pratiques
+
 ```vue
 <!-- ✅ Correct - Types TypeScript -->
 <script setup lang="ts">
 // Props simples
 const props = defineProps<{
-  show?: boolean        // false par défaut, pas besoin de withDefaults
-  title?: string        // undefined par défaut
-  count?: number        // undefined par défaut
+  show?: boolean // false par défaut, pas besoin de withDefaults
+  title?: string // undefined par défaut
+  count?: number // undefined par défaut
 }>()
 
 // Emits avec types
 const emit = defineEmits<{
   'update:modelValue': [value: string]
-  'close': []
-  'submit': [data: FormData]
+  close: []
+  submit: [data: FormData]
 }>()
+```
 
+```vue
 // Props avec defaults personnalisés
 const props = withDefaults(defineProps<{
   size?: 'sm' | 'md' | 'lg'
@@ -181,7 +184,7 @@ const props = withDefaults(defineProps<{
 <script setup>
 const props = defineProps({
   show: { type: Boolean, default: false }, // Verbeux
-  title: { type: String }
+  title: { type: String },
 })
 const emit = defineEmits(['update:show', 'close']) // Pas de typage
 </script>
@@ -189,12 +192,12 @@ const emit = defineEmits(['update:show', 'close']) // Pas de typage
 
 ### Structure des composables
 ```typescript
-export function useFeatureName() {
+export function useFeatureName () {
   const data = ref()
   const isLoading = ref(false)
   const error = ref()
 
-  async function fetchData() {
+  async function fetchData () {
     // logique
   }
 
@@ -202,7 +205,7 @@ export function useFeatureName() {
     data: readonly(data),
     isLoading: readonly(isLoading),
     error: readonly(error),
-    fetchData
+    fetchData,
   }
 }
 ```
