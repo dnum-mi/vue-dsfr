@@ -257,6 +257,32 @@ const composants = [
   {
     text: 'DsfrNavigation',
     link: '/composants/DsfrNavigation.md',
+    items: [
+      {
+        text: 'DsfrNavigationItem',
+        link: '/composants/DsfrNavigationItem.md',
+      },
+      {
+        text: 'DsfrNavigationMenu',
+        link: '/composants/DsfrNavigationMenu.md',
+      },
+      {
+        text: 'DsfrNavigationMenuItem',
+        link: '/composants/DsfrNavigationMenuItem.md',
+      },
+      {
+        text: 'DsfrNavigationMenuLink',
+        link: '/composants/DsfrNavigationMenuLink.md',
+      },
+      {
+        text: 'DsfrNavigationMegaMenu',
+        link: '/composants/DsfrNavigationMegaMenu.md',
+      },
+      {
+        text: 'DsfrNavigationMegaMenuCategory',
+        link: '/composants/DsfrNavigationMegaMenuCategory.md',
+      },
+    ],
   },
   {
     text: 'DsfrNotice',
