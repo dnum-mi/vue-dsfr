@@ -1,5 +1,5 @@
-import { describe, expect, it } from 'vitest'
 import { render } from '@testing-library/vue'
+import { describe, expect, it } from 'vitest'
 
 import VIcon from '../VIcon/VIcon.vue'
 
