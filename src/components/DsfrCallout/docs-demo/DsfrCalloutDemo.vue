@@ -12,6 +12,11 @@ const icon = 'ri:notification-3-line'
 const content = 'Lorem ipsum dolor sit amet, consectetur adipiscing, incididunt, ut labore et dol'
 const titleTag = undefined
 
+const accent = 'orange-terre-battue'
+const accentTitle = 'Titre de la mise en avant accentué'
+const accentIcon = 'fr-icon-alarm-warning-line'
+const accentContent = 'Accentuation à partir des couleurs du Dsfr (ex orange-terre-battue)'
+
 const animateTitle = 'Titre de la mise en avant stylée'
 const animatedIcon: VIconProps = { name: 'bi:bell', animation: 'ring' }
 const animatedtitleTag = 'h4'
@@ -34,6 +39,14 @@ const getRandomAnimation = () => getRandomEl<(typeof possibleAnimations)[number]
     :button="button"
     :icon="icon"
     :title-tag="titleTag"
+  />
+  <DsfrCallout
+    :title="`${accentTitle} (${accentTitleTag ?? 'h3'})`"
+    :content="accentContent"
+    :button="button"
+    :icon="accentIcon"
+    :title-tag="titleTag"
+    :accent="accent"
   />
   <DsfrCallout
     :title="`${animateTitle} (${animatedtitleTag ?? 'h3'})`"
