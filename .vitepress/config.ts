@@ -341,6 +341,28 @@ const composants = [
     link: '/composants/DsfrShare.md',
   },
   {
+    text: 'DsfrSideMenu',
+    link: '/composants/DsfrSideMenu.md',
+    items: [
+      {
+        text: 'DsfrSideMenuButton',
+        link: '/composants/DsfrSideMenuButton.md',
+      },
+      {
+        text: 'DsfrSideMenuLink',
+        link: '/composants/DsfrSideMenuLink.md',
+      },
+      {
+        text: 'DsfrSideMenuList',
+        link: '/composants/DsfrSideMenuList.md',
+      },
+      {
+        text: 'DsfrSideMenuListItem',
+        link: '/composants/DsfrSideMenuListItem.md',
+      },
+    ],
+  },
+  {
     text: 'DsfrStepper',
     link: '/composants/DsfrStepper.md',
   },
