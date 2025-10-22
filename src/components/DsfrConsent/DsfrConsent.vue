@@ -5,6 +5,16 @@ import { computed } from 'vue'
 
 export type { DsfrConsentProps }
 
+/**
+ * Slots disponibles pour DsfrConsent
+ */
+defineSlots<{
+  /**
+   * Slot par défaut pour personnaliser la description du consentement
+   */
+  default?: () => any
+}>()
+
 const props = withDefaults(defineProps<DsfrConsentProps>(), {
   url: '',
 })
