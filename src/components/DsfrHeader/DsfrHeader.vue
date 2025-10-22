@@ -42,6 +42,13 @@ const emit = defineEmits<{
   (e: 'languageSelect', payload: DsfrLanguageSelectorElement): void
 }>()
 
+/**
+ * @slot default - Slot par défaut pour le contenu du fieldset (sera dans `<div class="fr-header__body-row">`)
+ * @slot operator - Slot nommé operator pour le logo opérateur. Sera dans `<div class="fr-header__operator">`
+ * @slot mainnav - Slot nommé mainnav pour le menu de navigation principal
+ * @slot before-quick-links - Slot pour du contenu avant les liens rapides
+ * @slot after-quick-links - Slot pour du contenu après les liens rapides
+ */
 const slots = defineSlots<{
   default: () => any
   operator: () => any
@@ -131,7 +138,6 @@ provide(registerNavigationLinkKey, () => {
                 v-if="isWithSlotOperator"
                 class="fr-header__operator"
               >
-                <!-- @slot Slot nommé operator pour le logo opérateur. Sera dans `<div class="fr-header__operator">` -->
                 <slot name="operator">
                   <img
                     v-if="operatorImgSrc"
@@ -313,7 +319,6 @@ provide(registerNavigationLinkKey, () => {
             </div>
           </div>
         </FocusTrap>
-        <!-- @slot Slot par défaut pour le contenu du fieldset (sera dans `<div class="fr-header__body-row">`) -->
         <slot />
       </div>
     </div>
@@ -322,7 +327,6 @@ provide(registerNavigationLinkKey, () => {
         v-if="isWithSlotNav && !modalOpened"
         class="fr-container"
       >
-        <!-- @slot Slot nommé mainnav pour le menu de navigation principal -->
         <slot
           name="mainnav"
           :hidemodal="hideModal"

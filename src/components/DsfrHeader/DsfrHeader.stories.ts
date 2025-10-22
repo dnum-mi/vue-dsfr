@@ -1,6 +1,7 @@
+import type { Meta, StoryObj } from '@storybook/vue3-vite'
 import type { DsfrLanguageSelectorElement } from '../DsfrLanguageSelector/DsfrLanguageSelector.types'
 
-import { expect, fn, within } from 'storybook/test'
+import { expect, fn, within } from '@storybook/test'
 
 import DsfrNavigation from '../DsfrNavigation/DsfrNavigation.vue'
 
@@ -10,9 +11,9 @@ const delay = (timeout = 100) =>
   new Promise((resolve) => setTimeout(resolve, timeout))
 
 /**
- * [Voir quand l’utiliser sur la documentation du DSFR](https://www.systeme-de-design.gouv.fr/version-courante/fr/composants/en-tete)
+ * [Voir quand l\'utiliser sur la documentation du DSFR](https://www.systeme-de-design.gouv.fr/version-courante/fr/composants/en-tete)
  */
-export default {
+const meta = {
   component: DsfrHeader,
   title: 'Composants/DsfrHeader',
   argTypes: {
@@ -112,7 +113,11 @@ export default {
         'Label de l\'accueil composant le titre du lien présentant le service.',
     },
   },
-}
+} satisfies Meta<typeof DsfrHeader>
+
+export default meta
+
+type Story = StoryObj<typeof meta>
 
 export const EnTeteSimple = (args) => ({
   components: {
