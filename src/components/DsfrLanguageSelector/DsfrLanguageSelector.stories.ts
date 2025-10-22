@@ -1,9 +1,11 @@
+import type { Meta, StoryObj } from '@storybook/vue3-vite'
+
 import DsfrLanguageSelector from './DsfrLanguageSelector.vue'
 
 /**
- * [Voir quand l’utiliser sur la documentation du DSFR](https://www.systeme-de-design.gouv.fr/version-courante/fr/composants/selecteur-de-langue)
+ * [Voir quand l'utiliser sur la documentation du DSFR](https://www.systeme-de-design.gouv.fr/version-courante/fr/composants/selecteur-de-langue)
  */
-export default {
+const meta = {
   component: DsfrLanguageSelector,
   title: 'Composants/DsfrLanguageSelector',
   argTypes: {
@@ -20,17 +22,21 @@ export default {
     currentLanguage: {
       control: 'text',
       description:
-        'Code ISO du language courant (doit correspondre au `codeIso` d’un des objets de la props `languages`',
+        'Code ISO du language courant (doit correspondre au `codeIso` d\'un des objets de la props `languages`',
     },
     select: {
       description:
-        'Événement émis lors du clic sur l’une des langues proposées après dépliage de la liste',
+        'Événement émis lors du clic sur l\'une des langues proposées après dépliage de la liste',
     },
     onSelect: {
       action: 'Clic sur une langue',
     },
   },
-}
+} satisfies Meta<typeof DsfrLanguageSelector>
+
+export default meta
+
+type Story = StoryObj<typeof meta>
 
 export const SelecteurDeLangue = (args) => ({
   components: { DsfrLanguageSelector },
