@@ -66,7 +66,8 @@ export default {
       description: 'Indique la largeur de l’image',
     },
     titleTag: {
-      control: 'text',
+      control: 'select',
+      options: ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'],
       description:
         'Permet de choisir la balise contenant le titre de la carte (h3 par défaut',
     },
