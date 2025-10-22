@@ -3,6 +3,13 @@ import type { DsfrHighlightProps } from './DsfrHighlight.types'
 
 export type { DsfrHighlightProps }
 
+/**
+ * @slot default - Slot par défaut pour le contenu de la mise en exergue
+ */
+defineSlots<{
+  default?: () => any
+}>()
+
 withDefaults(defineProps<DsfrHighlightProps>(), {
   text: undefined,
 })
@@ -20,7 +27,6 @@ withDefaults(defineProps<DsfrHighlightProps>(), {
       }"
     >
       {{ text }}
-      <!-- @slot Slot par défaut pour le contenu de la mise en exergue -->
       <slot />
     </p>
   </div>

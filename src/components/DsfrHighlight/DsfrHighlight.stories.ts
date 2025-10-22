@@ -1,11 +1,12 @@
-import { expect, within } from 'storybook/test'
+import type { Meta, StoryObj } from '@storybook/vue3-vite'
+import { expect, within } from '@storybook/test'
 
 import DsfrHighlight from './DsfrHighlight.vue'
 
 /**
- * [Voir quand l’utiliser sur la documentation du DSFR](https://www.systeme-de-design.gouv.fr/version-courante/fr/composants/mise-en-exergue)
+ * [Voir quand l'utiliser sur la documentation du DSFR](https://www.systeme-de-design.gouv.fr/version-courante/fr/composants/mise-en-exergue)
  */
-export default {
+const meta = {
   component: DsfrHighlight,
   title: 'Composants/DsfrHighlight',
   tags: ['message'],
@@ -20,14 +21,18 @@ export default {
     },
     small: {
       control: 'boolean',
-      description: 'Permet d’afficher le texte en petit',
+      description: 'Permet d\'afficher le texte en petit',
     },
     large: {
       control: 'boolean',
-      description: 'Permet d’afficher le texte en plus grand',
+      description: 'Permet d\'afficher le texte en plus grand',
     },
   },
-}
+} satisfies Meta<typeof DsfrHighlight>
+
+export default meta
+
+type Story = StoryObj<typeof meta>
 
 export const MiseEnExergue = (args) => ({
   components: {
