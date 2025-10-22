@@ -7,6 +7,20 @@ import { useRandomId } from '../../utils/random-utils'
 
 export type { DsfrCheckboxProps }
 
+/**
+ * Slots disponibles pour DsfrCheckbox
+ */
+defineSlots<{
+  /**
+   * Slot pour personnaliser tout le contenu de la balise <label>
+   */
+  label?: () => any
+  /**
+   * Slot pour indiquer que le champ est obligatoire
+   */
+  'required-tip'?: () => any
+}>()
+
 defineOptions({
   inheritAttrs: false,
 })

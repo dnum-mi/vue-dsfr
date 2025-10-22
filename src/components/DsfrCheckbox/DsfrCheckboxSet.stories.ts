@@ -1,11 +1,13 @@
-import { expect, fn, within } from 'storybook/test'
+import type { Meta, StoryObj } from '@storybook/vue3-vite'
+
+import { expect, within } from '@storybook/test'
 
 import DsfrCheckboxSet from './DsfrCheckboxSet.vue'
 
 /**
- * [Voir quand l’utiliser sur la documentation du DSFR](https://www.systeme-de-design.gouv.fr/version-courante/fr/composants/case-a-cocher)
+ * [Voir quand l'utiliser sur la documentation du DSFR](https://www.systeme-de-design.gouv.fr/version-courante/fr/composants/case-a-cocher)
  */
-export default {
+const meta = {
   component: DsfrCheckboxSet,
   title: 'Composants/DsfrCheckboxSet',
   tags: ['formulaire'],
@@ -13,11 +15,11 @@ export default {
     disabled: {
       control: 'boolean',
       description:
-        'Indique si l’ensemble des checkboxes doivent être désactivées (`true`) ou non (`false`, défaut)',
+        'Indique si l\'ensemble des checkboxes doivent être désactivées (`true`) ou non (`false`, défaut)',
     },
     errorMessage: {
       control: 'text',
-      description: 'Texte du message à afficher en cas d’erreur',
+      description: 'Texte du message à afficher en cas d\'erreur',
     },
     validMessage: {
       control: 'text',
@@ -34,12 +36,12 @@ export default {
     },
     // legend: {
     //   control: 'text',
-    //   description: 'Titre de l’ensemble (Set) des checkboxes',
+    //   description: 'Titre de l'ensemble (Set) des checkboxes',
     // },
     options: {
       control: 'object',
       description:
-        'Tableau de `string` (la valeur `value` de la checkbox sera identique au `label`) ou d’objets contenant les props à passer à chaque composant DsfrCheckbox, sauf `modelValue` qui sera calculée à partir de `modelValue` du DsfrCheckboxSet.',
+        'Tableau de `string` (la valeur `value` de la checkbox sera identique au `label`) ou d\'objets contenant les props à passer à chaque composant DsfrCheckbox, sauf `modelValue` qui sera calculée à partir de `modelValue` du DsfrCheckboxSet.',
     },
     modelValue: {
       control: 'object',
@@ -55,7 +57,11 @@ export default {
       action: fn(),
     },
   },
-}
+} satisfies Meta<typeof DsfrCheckboxSet>
+
+export default meta
+
+type Story = StoryObj<typeof meta>
 
 export const CheckboxSet = (args) => ({
   components: { DsfrCheckboxSet },

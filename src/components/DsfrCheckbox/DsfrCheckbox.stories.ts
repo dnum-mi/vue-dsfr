@@ -1,11 +1,13 @@
-import { expect, fn, within } from 'storybook/test'
+import type { Meta, StoryObj } from '@storybook/vue3-vite'
+
+import { expect, fn, within } from '@storybook/test'
 
 import DsfrCheckbox from './DsfrCheckbox.vue'
 
 /**
- * [Voir quand l’utiliser sur la documentation du DSFR](https://www.systeme-de-design.gouv.fr/version-courante/fr/composants/case-a-cocher)
+ * [Voir quand l'utiliser sur la documentation du DSFR](https://www.systeme-de-design.gouv.fr/version-courante/fr/composants/case-a-cocher)
  */
-export default {
+const meta = {
   component: DsfrCheckbox,
   title: 'Composants/DsfrCheckbox',
   tags: ['formulaire'],
@@ -13,7 +15,7 @@ export default {
     id: {
       control: 'text',
       description:
-        '(optionnel) Valeur de l’attribut `id` de la checkbox. Par défaut, un id pseudo-aléatoire sera donné.',
+        '(optionnel) Valeur de l\'attribut `id` de la checkbox. Par défaut, un id pseudo-aléatoire sera donné.',
     },
     // label: {
     //   control: 'text',
@@ -21,7 +23,7 @@ export default {
     // },
     name: {
       control: 'text',
-      description: 'Valeur de l’attribut `name` de la case à cocher',
+      description: 'Valeur de l\'attribut `name` de la case à cocher',
     },
     hint: {
       control: 'text',
@@ -41,7 +43,7 @@ export default {
     },
     errorMessage: {
       control: 'text',
-      description: 'Texte du message à afficher en cas d’erreur',
+      description: 'Texte du message à afficher en cas d\'erreur',
     },
     validMessage: {
       control: 'text',
@@ -54,11 +56,15 @@ export default {
     },
     'update:modelValue': {
       description:
-        'Événement émis lors du changement de l’état coché (`true`) ou non (`false`)',
+        'Événement émis lors du changement de l\'état coché (`true`) ou non (`false`)',
     },
     onChange: { action: fn() },
   },
-}
+} satisfies Meta<typeof DsfrCheckbox>
+
+export default meta
+
+type Story = StoryObj<typeof meta>
 
 export const Checkbox = (args) => ({
   components: { DsfrCheckbox },
