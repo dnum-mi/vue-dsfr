@@ -1,6 +1,8 @@
+import type { Meta, StoryObj } from '@storybook/vue3-vite'
+
 import DsfrErrorPage from './DsfrErrorPage.vue'
 
-export default {
+const meta = {
   component: DsfrErrorPage,
   title: 'Composants/DsfrErrorPage',
   argTypes: {
@@ -28,38 +30,41 @@ export default {
         'Tableau d\'objets contenant les props des boutons d\'actions sur la page.',
     },
   },
-}
+} satisfies Meta<typeof DsfrErrorPage>
 
-export const PageErreur404 = (args) => ({
-  components: { DsfrErrorPage },
-  data () {
-    return args
+export default meta
+
+type Story = StoryObj<typeof meta>
+
+export const PageErreur404: Story = {
+  args: {
+    title: 'Page non trouvée, ne paniquez pas',
+    subtitle: 'Erreur 404 !',
+    description: 'La page que vous recherchez n’existe pas ou l’url est erronée.',
+    help: 'Bonne chance !',
+    buttons: [
+      {
+        label: 'Page d\'accueil',
+      },
+      {
+        label: 'Contactez-nous',
+        secondary: true,
+      },
+    ],
   },
-  template: `
+  render: (args) => ({
+    components: { DsfrErrorPage },
+    setup () {
+      return { args }
+    },
+    template: `
   <DsfrErrorPage
-    :title="title"
-    :subtitle="subtitle"
-    :description="description"
-    :help="help"
-    :buttons="buttons"
+    :title="args.title"
+    :subtitle="args.subtitle"
+    :description="args.description"
+    :help="args.help"
+    :buttons="args.buttons"
   />
   `,
-})
-
-PageErreur404.args = {
-  title: 'Page non trouvée, ne paniquez pas',
-  subtitle: 'Erreur 404 !',
-  description: 'La page que vous recherchez n’existe pas ou l’url est erronée.',
-  help: 'Bonne chance !',
-  buttons: [
-    {
-      label: 'Page d\'accueil',
-      link: 'https://www.systeme-de-design.gouv.fr/',
-    },
-    {
-      label: 'Contactez-nous',
-      secondary: true,
-      link: 'https://www.systeme-de-design.gouv.fr/',
-    },
-  ],
+  }),
 }
