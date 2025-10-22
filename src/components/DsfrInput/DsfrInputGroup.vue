@@ -9,15 +9,6 @@ import DsfrInput from './DsfrInput.vue'
 
 export type { DsfrInputGroupProps }
 
-/**
- * @slot before-input - Slot pour ajouter du contenu avant le champ de saisie
- * @slot default - Slot par défaut pour le contenu du groupe de champ. Reçoit les props `isValid`, `isInvalid`, et `descriptionId`
- */
-defineSlots<{
-  'before-input'?: () => any
-  default?: (props: { isValid: boolean, isInvalid: boolean, descriptionId: string | undefined }) => any
-}>()
-
 defineOptions({
   inheritAttrs: false,
 })
@@ -36,6 +27,15 @@ const props = withDefaults(defineProps<DsfrInputGroupProps>(), {
 })
 
 defineEmits<{ (e: 'update:modelValue', payload: string): void }>()
+
+/**
+ * @slot before-input - Slot pour ajouter du contenu avant le champ de saisie
+ * @slot default - Slot par défaut pour le contenu du groupe de champ. Reçoit les props `isValid`, `isInvalid`, et `descriptionId`
+ */
+defineSlots<{
+  'before-input'?: () => any
+  default?: (props: { isValid: boolean, isInvalid: boolean, descriptionId: string | undefined }) => any
+}>()
 
 function getDescriptionIdFromArray (messages: string[], baseId: string): string {
   return Array.from(Array.from({ length: messages.length })).map((_, idx) => `${baseId}-${idx + 1}`).join(' ')

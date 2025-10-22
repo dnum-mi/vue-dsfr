@@ -5,16 +5,6 @@ import { computed } from 'vue'
 
 export type { DsfrConsentProps }
 
-/**
- * Slots disponibles pour DsfrConsent
- */
-defineSlots<{
-  /**
-   * Slot par défaut pour personnaliser la description du consentement
-   */
-  default?: () => any
-}>()
-
 const props = withDefaults(defineProps<DsfrConsentProps>(), {
   url: '',
 })
@@ -23,6 +13,16 @@ defineEmits<{
   (e: 'acceptAll'): void
   (e: 'refuseAll'): void
   (e: 'customize'): void
+}>()
+
+/**
+ * Slots disponibles pour DsfrConsent
+ */
+defineSlots<{
+  /**
+   * Slot par défaut pour personnaliser la description du consentement
+   */
+  default?: () => any
 }>()
 
 const isExternalLink = computed(() => typeof props.url === 'string' && props.url.startsWith('http'))

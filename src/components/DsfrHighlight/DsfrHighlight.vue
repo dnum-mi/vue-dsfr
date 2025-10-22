@@ -3,16 +3,16 @@ import type { DsfrHighlightProps } from './DsfrHighlight.types'
 
 export type { DsfrHighlightProps }
 
+withDefaults(defineProps<DsfrHighlightProps>(), {
+  text: undefined,
+})
+
 /**
  * @slot default - Slot par défaut pour le contenu de la mise en exergue
  */
 defineSlots<{
   default?: () => any
 }>()
-
-withDefaults(defineProps<DsfrHighlightProps>(), {
-  text: undefined,
-})
 </script>
 
 <template>

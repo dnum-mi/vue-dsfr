@@ -1,5 +1,5 @@
-import type { Meta, StoryObj } from '@storybook/vue3-vite'
 import type { DsfrLanguageSelectorElement } from '../DsfrLanguageSelector/DsfrLanguageSelector.types'
+import type { Meta, StoryObj } from '@storybook/vue3-vite'
 
 import { expect, fn, within } from '@storybook/test'
 

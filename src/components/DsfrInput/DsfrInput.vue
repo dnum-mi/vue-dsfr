@@ -8,15 +8,6 @@ import { useRandomId } from '../../utils/random-utils'
 
 export type { DsfrInputProps }
 
-/**
- * @slot label - Slot pour personnaliser tout le contenu de la balise `<label>`
- * @slot required-tip - Slot pour indiquer que le champ est obligatoire. Par défaut, met une astérisque si `required` est à true (dans un `<span class="required">`)
- */
-defineSlots<{
-  label?: () => any
-  'required-tip'?: () => any
-}>()
-
 defineOptions({
   inheritAttrs: false,
 })
@@ -32,6 +23,15 @@ const props = withDefaults(defineProps<DsfrInputProps>(), {
 })
 
 defineEmits<{ (e: 'update:modelValue', payload: string): void }>()
+
+/**
+ * @slot label - Slot pour personnaliser tout le contenu de la balise `<label>`
+ * @slot required-tip - Slot pour indiquer que le champ est obligatoire. Par défaut, met une astérisque si `required` est à true (dans un `<span class="required">`)
+ */
+defineSlots<{
+  label?: () => any
+  'required-tip'?: () => any
+}>()
 
 const attrs = useAttrs()
 

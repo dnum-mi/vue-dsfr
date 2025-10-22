@@ -8,18 +8,18 @@ import DsfrSocialNetworks from './DsfrSocialNetworks.vue'
 
 export type { DsfrFollowProps }
 
+const props = withDefaults(defineProps<DsfrFollowProps>(), {
+  // @ts-expect-error this is really undefined
+  newsletterData: () => undefined,
+  networks: () => [],
+})
+
 /**
  * @slot default - Slot par défaut pour le contenu. Sera dans `<div class="fr-grid-row">`
  */
 defineSlots<{
   default?: () => any
 }>()
-
-const props = withDefaults(defineProps<DsfrFollowProps>(), {
-  // @ts-expect-error this is really undefined
-  newsletterData: () => undefined,
-  networks: () => [],
-})
 
 const hasNetworks = computed(() => {
   return props.networks && props.networks.length

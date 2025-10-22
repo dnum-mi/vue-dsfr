@@ -7,6 +7,19 @@ import { useRandomId } from '../../utils/random-utils'
 
 export type { DsfrCheckboxProps }
 
+defineOptions({
+  inheritAttrs: false,
+})
+
+const props = withDefaults(defineProps<DsfrCheckboxProps>(), {
+  id: () => useRandomId('basic', 'checkbox'),
+  hint: '',
+  errorMessage: '',
+  validMessage: '',
+  label: '',
+  readonlyOpacity: 0.75,
+})
+
 /**
  * Slots disponibles pour DsfrCheckbox
  */
@@ -20,19 +33,6 @@ defineSlots<{
    */
   'required-tip'?: () => any
 }>()
-
-defineOptions({
-  inheritAttrs: false,
-})
-
-const props = withDefaults(defineProps<DsfrCheckboxProps>(), {
-  id: () => useRandomId('basic', 'checkbox'),
-  hint: '',
-  errorMessage: '',
-  validMessage: '',
-  label: '',
-  readonlyOpacity: 0.75,
-})
 
 const message = computed(() => props.errorMessage || props.validMessage)
 const messageId = computed(() => message.value ? useRandomId('message', 'checkbox') : undefined)

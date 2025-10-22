@@ -5,13 +5,6 @@ import DsfrButtonGroup from '../DsfrButton/DsfrButtonGroup.vue'
 
 export type { DsfrErrorPageProps }
 
-/**
- * @slot default - Slot par défaut : sera après ou à la place des boutons
- */
-defineSlots<{
-  default?: () => any
-}>()
-
 withDefaults(defineProps<DsfrErrorPageProps>(), {
   title: 'Page non trouvée',
   subtitle: 'Erreur 404',
@@ -19,6 +12,13 @@ withDefaults(defineProps<DsfrErrorPageProps>(), {
   help: 'Si vous avez tapé l\'adresse web dans le navigateur, vérifiez qu\'elle est correcte. La page n\'est peut être plus disponible.',
   buttons: undefined,
 })
+
+/**
+ * @slot default - Slot par défaut : sera après ou à la place des boutons
+ */
+defineSlots<{
+  default?: () => any
+}>()
 </script>
 
 <template>

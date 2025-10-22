@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/vue3-vite'
+
 import { expect, within } from '@storybook/test'
 
 import DsfrHighlight from './DsfrHighlight.vue'
@@ -34,65 +35,69 @@ export default meta
 
 type Story = StoryObj<typeof meta>
 
-export const MiseEnExergue = (args) => ({
-  components: {
-    DsfrHighlight,
+export const MiseEnExergue: Story = {
+  args: {
+    small: false,
+    large: false,
+    text: 'Texte original de la mise en exergue',
+    color: undefined,
   },
+  render: (args) => ({
+    components: {
+      DsfrHighlight,
+    },
 
-  data () {
-    return { ...args }
-  },
+    setup () {
+      return { args }
+    },
 
-  template: `
+    template: `
     <DsfrHighlight
-      :text="text"
-      :small="small"
-      :large="large"
-      :color="color"
+      :text="args.text"
+      :small="args.small"
+      :large="args.large"
+      :color="args.color"
     />
   `,
-})
-MiseEnExergue.args = {
-  small: false,
-  large: false,
-  text: 'Texte original de la mise en exergue',
-  color: undefined,
-}
-MiseEnExergue.play = async ({ canvasElement }) => {
-  const canvas = within(canvasElement)
-  const highlight = canvas.getByText(MiseEnExergue.args.text)
-  expect(highlight).toBeVisible()
+  }),
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement)
+    const highlight = canvas.getByText('Texte original de la mise en exergue')
+    expect(highlight).toBeVisible()
+  },
 }
 
-export const MiseEnExergueAvecSlot = (args) => ({
-  components: {
-    DsfrHighlight,
+export const MiseEnExergueAvecSlot: Story = {
+  args: {
+    small: false,
+    large: false,
+    text: '',
+    color: 'pink-macaron',
+    slotText: 'Le fameux slot mis en exergue',
   },
+  render: (args) => ({
+    components: {
+      DsfrHighlight,
+    },
 
-  data () {
-    return { ...args }
-  },
+    setup () {
+      return { args }
+    },
 
-  template: `
+    template: `
     <DsfrHighlight
-      :text="text"
-      :small="small"
-      :large="large"
-      :color="color"
+      :text="args.text"
+      :small="args.small"
+      :large="args.large"
+      :color="args.color"
     >
-      <template v-if="!text">{{ slotText }}</template>
+      <template v-if="!args.text">{{ args.slotText }}</template>
     </DsfrHighlight>
   `,
-})
-MiseEnExergueAvecSlot.args = {
-  small: false,
-  large: false,
-  text: '',
-  color: 'pink-macaron',
-  slotText: 'Le fameux slot mis en exergue',
-}
-MiseEnExergueAvecSlot.play = async ({ canvasElement }) => {
-  const canvas = within(canvasElement)
-  const highlight = canvas.getByText(MiseEnExergueAvecSlot.args.slotText)
-  expect(highlight).toBeVisible()
+  }),
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement)
+    const highlight = canvas.getByText('Le fameux slot mis en exergue')
+    expect(highlight).toBeVisible()
+  },
 }

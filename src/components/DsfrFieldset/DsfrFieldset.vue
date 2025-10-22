@@ -3,6 +3,14 @@ import type { DsfrFieldsetProps } from './DsfrFieldset.types'
 
 export type { DsfrFieldsetProps }
 
+withDefaults(defineProps<DsfrFieldsetProps>(), {
+  legend: '',
+  legendId: '',
+  legendClass: '',
+  hint: '',
+  hintClass: '',
+})
+
 /**
  * @slot default - Slot par défaut pour le contenu du fieldset (sera dans `<div class="fr-fieldset__element">`)
  * @slot legend - Slot pour le contenu du titre du `fieldset` (sera dans `<legend class="fr-fieldset__legend">`). Une props du même nom est utilisable pour du texte simple sans mise en forme.
@@ -13,14 +21,6 @@ defineSlots<{
   legend?: () => any
   hint?: () => any
 }>()
-
-withDefaults(defineProps<DsfrFieldsetProps>(), {
-  legend: '',
-  legendId: '',
-  legendClass: '',
-  hint: '',
-  hintClass: '',
-})
 </script>
 
 <template>
