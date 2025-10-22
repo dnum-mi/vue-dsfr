@@ -84,6 +84,11 @@ const props = withDefaults(defineProps<DsfrFooterProps>(), {
   licenceName: 'licence etalab-2.0',
 })
 
+/**
+ * @slot footer-link-lists - Slot pour pouvoir changer les liens dans la rubrique en haut du pied de page
+ * @slot description - Slot pour le contenu de la description du footer. Sera dans `<p class="fr-footer__content-desc">`
+ * @slot footer-partners - Slot pour le contenu des partenaires du footer
+ */
 defineSlots<{
   'footer-link-lists': () => VNode
   description: () => VNode
@@ -136,7 +141,6 @@ const externalOperatorLink = computed(() => {
     >
       <div class="fr-container">
         <div class="fr-grid-row fr-grid-row--start fr-grid-row--gutters">
-          <!-- @slot Slot #footer-link-lists pour pouvoir changer les liens dans la rubrique en haut du pied de page  -->
           <slot name="footer-link-lists" />
         </div>
       </div>
@@ -194,7 +198,6 @@ const externalOperatorLink = computed(() => {
           <p
             class="fr-footer__content-desc"
           >
-            <!-- @slot Slot #description pour le contenu de la description du footer. Sera dans `<p class="fr-footer__content-desc">` -->
             <slot name="description">
               {{ descText }}
             </slot>
@@ -219,7 +222,6 @@ const externalOperatorLink = computed(() => {
           </ul>
         </div>
       </div>
-      <!-- @slot Slot #description pour le contenu de la description du footer. Sera dans `<p class="fr-footer__content-desc">` -->
       <slot name="footer-partners">
         <DsfrFooterPartners
           v-if="partners"
