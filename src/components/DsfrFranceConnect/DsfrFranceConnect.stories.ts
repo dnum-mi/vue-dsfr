@@ -1,9 +1,11 @@
+import type { Meta, StoryObj } from '@storybook/vue3-vite'
+
 import DsfrFranceConnect from './DsfrFranceConnect.vue'
 
 /**
- * [Voir quand l’utiliser sur la documentation du DSFR](https://www.systeme-de-design.gouv.fr/version-courante/fr/composants/bouton-franceconnect)
+ * [Voir quand l\'utiliser sur la documentation du DSFR](https://www.systeme-de-design.gouv.fr/version-courante/fr/composants/bouton-franceconnect)
  */
-export default {
+const meta = {
   component: DsfrFranceConnect,
   title: 'Composants/DsfrFranceConnect',
   argTypes: {
@@ -13,7 +15,11 @@ export default {
         'Change le bouton pour une version FranceConnect+ (pour les démarches nécessitant une sécurité renforcée)',
     },
   },
-}
+} satisfies Meta<typeof DsfrFranceConnect>
+
+export default meta
+
+type Story = StoryObj<typeof meta>
 
 export const BoutonFranceConnect = (args) => ({
   components: {
