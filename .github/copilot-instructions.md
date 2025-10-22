@@ -91,9 +91,10 @@ pnpm format              # Corriger automatiquement ESLint
 ## 🎯 Conventions Git & Commits
 
 ### Format des commits
+
 Utilise **TOUJOURS** le format : `type(scope): gitmoji description`
 
-**Exemple** : `feat(auth): ✨ add user authentication system`
+**Exemple** : `feat(auth): ✨ ajoute la fonctionnalité de connexion OAuth2`
 
 ### Types de commits conventionnels
 - `feat`: ✨ Nouvelles fonctionnalités
