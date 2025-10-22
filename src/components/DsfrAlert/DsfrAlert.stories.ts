@@ -37,9 +37,6 @@ const meta = {
       control: 'boolean',
       description: 'Permet d\'obtenir une version minimaliste de l\'alerte',
     },
-    close: {
-      description: 'Event de fermeture de l\'alerte',
-    },
     closed: {
       control: 'boolean',
       description: 'Permet d\'alterner entre l\'état ouvert ou fermé de l\'alerte',
