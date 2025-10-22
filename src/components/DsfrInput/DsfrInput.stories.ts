@@ -1,4 +1,5 @@
-import { expect, within } from 'storybook/test'
+import type { Meta, StoryObj } from '@storybook/vue3-vite'
+import { expect, within } from '@storybook/test'
 
 import DsfrAlert from '../DsfrAlert/DsfrAlert.vue'
 import DsfrButton from '../DsfrButton/DsfrButton.vue'
@@ -8,9 +9,9 @@ import DsfrInput from './DsfrInput.vue'
 import DsfrInputGroup from './DsfrInputGroup.vue'
 
 /**
- * [Voir quand l’utiliser sur la documentation du DSFR](https://www.systeme-de-design.gouv.fr/version-courante/fr/composants/champ-de-saisie)
+ * [Voir quand l'utiliser sur la documentation du DSFR](https://www.systeme-de-design.gouv.fr/version-courante/fr/composants/champ-de-saisie)
  */
-export default {
+const meta = {
   component: DsfrInput,
   title: 'Composants/DsfrInput',
   tags: ['formulaire'],
@@ -80,7 +81,7 @@ export default {
     wrapperClass: {
       control: 'text',
       description:
-        'Classe css du div englobant le champ de saisie si l’utilisateur y a recourt.',
+        'Classe css du div englobant le champ de saisie si l\'utilisateur y a recourt.',
     },
     'update:modelValue': {
       control: 'text',
@@ -88,7 +89,11 @@ export default {
         'Événement émis lors du changement de la valeur du champ de saisie',
     },
   },
-}
+} satisfies Meta<typeof DsfrInput>
+
+export default meta
+
+type Story = StoryObj<typeof meta>
 
 export const ChampSansLabel = (args) => ({
   components: {

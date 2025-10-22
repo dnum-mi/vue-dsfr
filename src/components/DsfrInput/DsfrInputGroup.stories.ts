@@ -1,10 +1,12 @@
+import type { Meta, StoryObj } from '@storybook/vue3-vite'
+
 import DsfrInput from './DsfrInput.vue'
 import DsfrInputGroup from './DsfrInputGroup.vue'
 
 /**
- * [Voir quand l’utiliser sur la documentation du DSFR](https://www.systeme-de-design.gouv.fr/version-courante/fr/composants/champ-de-saisie)
+ * [Voir quand l'utiliser sur la documentation du DSFR](https://www.systeme-de-design.gouv.fr/version-courante/fr/composants/champ-de-saisie)
  */
-export default {
+const meta = {
   component: DsfrInputGroup,
   title: 'Composants/DsfrInputGroup',
   argTypes: {
@@ -53,14 +55,18 @@ export default {
     },
     errorMessage: {
       control: 'text',
-      description: 'Message d’erreur (ou tableau de messages)',
+      description: 'Message d\'erreur (ou tableau de messages)',
     },
     validMessage: {
       control: 'text',
       description: 'Message de validation (ou tableau de messages)',
     },
   },
-}
+} satisfies Meta<typeof DsfrInputGroup>
+
+export default meta
+
+type Story = StoryObj<typeof meta>
 
 export const GroupeDeChampAvecPersonnalisation = (args) => ({
   components: {

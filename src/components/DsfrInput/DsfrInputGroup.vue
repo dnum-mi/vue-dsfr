@@ -9,6 +9,15 @@ import DsfrInput from './DsfrInput.vue'
 
 export type { DsfrInputGroupProps }
 
+/**
+ * @slot before-input - Slot pour ajouter du contenu avant le champ de saisie
+ * @slot default - Slot par défaut pour le contenu du groupe de champ. Reçoit les props `isValid`, `isInvalid`, et `descriptionId`
+ */
+defineSlots<{
+  'before-input'?: () => any
+  default?: (props: { isValid: boolean, isInvalid: boolean, descriptionId: string | undefined }) => any
+}>()
+
 defineOptions({
   inheritAttrs: false,
 })
@@ -65,7 +74,6 @@ const descId = computed(() => {
     :data-testid="inputGroupId"
   >
     <slot name="before-input" />
-    <!-- @slot Slot par défaut pour le contenu du groupe de champ -->
     <slot
       :is-valid="!!validMessage"
       :is-invalid="!!errorMessage"

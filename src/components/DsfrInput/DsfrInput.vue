@@ -8,6 +8,15 @@ import { useRandomId } from '../../utils/random-utils'
 
 export type { DsfrInputProps }
 
+/**
+ * @slot label - Slot pour personnaliser tout le contenu de la balise `<label>`
+ * @slot required-tip - Slot pour indiquer que le champ est obligatoire. Par défaut, met une astérisque si `required` est à true (dans un `<span class="required">`)
+ */
+defineSlots<{
+  label?: () => any
+  'required-tip'?: () => any
+}>()
+
 defineOptions({
   inheritAttrs: false,
 })
@@ -47,10 +56,8 @@ defineExpose({
     :class="finalLabelClass"
     :for="id"
   >
-    <!-- @slot Slot pour personnaliser tout le contenu de la balise <label> -->
     <slot name="label">
       {{ label }}
-      <!-- @slot Slot pour indiquer que le champ est obligatoire. Par défaut, met une astérisque si `required` est à true (dans un `<span class="required">`) -->
       <slot name="required-tip">
         <span
           v-if="'required' in $attrs && $attrs.required !== false"
