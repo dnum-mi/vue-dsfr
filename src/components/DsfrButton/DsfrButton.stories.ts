@@ -43,11 +43,11 @@ const meta = {
     icon: {
       control: 'text',
       description:
-        '**Nom de l\'icône** (tel que sur le site [RemixIcon](https://remixicon.com), exemple: `"ri-search-line"`) à afficher à côté du texte du bouton.\n\n Par défaut, l\'icône est à gauche',
+        '**Nom de l’icône** (tel que sur le site [RemixIcon](https://remixicon.com), exemple: `"ri-search-line"`) à afficher à côté du texte du bouton.\n\n Par défaut, l’icône est à gauche',
     },
     iconRight: {
       control: 'boolean',
-      description: 'Indique si l\'icône doit **s\'afficher à droite** (`true`)',
+      description: 'Indique si l’icône doit **s’afficher à droite** (`true`)',
     },
     onClick: { action: fn() },
   },

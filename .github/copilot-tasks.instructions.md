@@ -23,6 +23,7 @@ Elles respectent les conventions définies dans `copilot-instructions.md`, `fron
 
 > Refactorise ce code selon nos conventions (TypeScript strict, composition API, fonctions pures, etc.).
 > Garde la même logique métier.
+> Garde les règles typographiques françaises comme les apostrophes françaises `’` et les espaces insécables ` ` devant `:` et les espaces fines insécables ` ` devant les autres ponctuations doubles `; ! ?`.
 
 ---
 
