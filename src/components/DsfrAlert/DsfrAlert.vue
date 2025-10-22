@@ -16,6 +16,12 @@ const props = withDefaults(defineProps<DsfrAlertProps>(), {
 })
 
 const emit = defineEmits<{ (e: 'close'): void }>()
+
+defineSlots<{
+  /** Slot par défaut pour le contenu de l’alerte. Utilisable si pas de description en props */
+  default: () => any
+}>()
+
 const onClick = () => emit('close')
 
 const classes = computed(

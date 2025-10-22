@@ -19,6 +19,13 @@ const props = withDefaults(
   },
 )
 
+defineSlots<{
+  /** Slot pour le contenu personnalisé du titre de l’accordéon. Une **props du même nom est utilisable pour du texte simple** sans mise en forme. */
+  title: () => any
+  /** Slot par défaut pour le contenu de l’accordéon: sera dans `<div class="fr-collapse">` */
+  default: () => any
+}>()
+
 const {
   collapse,
   collapsing,
@@ -63,7 +70,6 @@ watch(isActive, (newValue, oldValue) => {
         type="button"
         @click="expand()"
       >
-        <!-- @slot Slot pour le contenu personnalisé du titre de l’accordéon. Une **props du même nom est utilisable pour du texte simple** sans mise en forme. -->
         <slot name="title">
           {{ title }}
         </slot>
@@ -79,7 +85,6 @@ watch(isActive, (newValue, oldValue) => {
       }"
       @transitionend="onTransitionEnd(isActive, false)"
     >
-      <!-- @slot Slot par défaut pour le contenu de l’accordéon: sera dans `<div class="fr-collapse">` -->
       <slot />
     </div>
   </section>
