@@ -3,6 +3,17 @@ import type { DsfrFieldsetProps } from './DsfrFieldset.types'
 
 export type { DsfrFieldsetProps }
 
+/**
+ * @slot default - Slot par défaut pour le contenu du fieldset (sera dans `<div class="fr-fieldset__element">`)
+ * @slot legend - Slot pour le contenu du titre du `fieldset` (sera dans `<legend class="fr-fieldset__legend">`). Une props du même nom est utilisable pour du texte simple sans mise en forme.
+ * @slot hint - Slot pour le contenu de l'indice (sera dans `<span class="fr-hint-text">` qui sera dans `</legend>`). Une **props du même nom est utilisable pour du texte simple** sans mise en forme.
+ */
+defineSlots<{
+  default?: () => any
+  legend?: () => any
+  hint?: () => any
+}>()
+
 withDefaults(defineProps<DsfrFieldsetProps>(), {
   legend: '',
   legendId: '',
@@ -10,12 +21,6 @@ withDefaults(defineProps<DsfrFieldsetProps>(), {
   hint: '',
   hintClass: '',
 })
-
-defineSlots<{
-  default?: () => any
-  legend?: () => any
-  hint?: () => any
-}>()
 </script>
 
 <template>
@@ -27,7 +32,6 @@ defineSlots<{
       :class="legendClass"
     >
       {{ legend }}
-      <!-- @slot Slot pour le contenu du titre du `fieldset` (sera dans `<legend class="fr-fieldset__legend">`). Une props du même nom est utilisable pour du texte simple sans mise en forme. -->
       <slot name="legend" />
     </legend>
     <div
@@ -39,12 +43,10 @@ defineSlots<{
         :class="hintClass"
       >
         {{ hint }}
-        <!-- @slot Slot pour le contenu de l’indice (sera dans `<span class="fr-hint-text">` qui sera dans `</legend>`). Une **props du même nom est utilisable pour du texte simple** sans mise en forme. -->
         <slot name="hint" />
       </span>
     </div>
     <div class="fr-fieldset__element">
-      <!-- @slot Slot par défaut pour le contenu du fieldset (sera dans `<div class="fr-fieldset__element">`) -->
       <slot />
     </div>
   </fieldset>
