@@ -73,7 +73,7 @@ export const MiseEnExergueAvecSlot: Story = {
     large: false,
     text: '',
     color: 'pink-macaron',
-    slotText: 'Le fameux slot mis en exergue',
+    slotText: 'Texte personnalisé de la mise en exergue',
   },
   render: (args) => ({
     components: {

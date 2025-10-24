@@ -7,10 +7,8 @@ withDefaults(defineProps<DsfrHighlightProps>(), {
   text: undefined,
 })
 
-/**
- * @slot default - Slot par défaut pour le contenu de la mise en exergue
- */
 defineSlots<{
+  /** Slot par défaut pour le contenu de la mise en exergue */
   default?: () => any
 }>()
 </script>
