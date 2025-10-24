@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/vue3-vite'
+import type { Meta, StoryObj } from '@storybook/vue3'
 
 import DsfrFranceConnect from './DsfrFranceConnect.vue'
 
@@ -8,35 +8,33 @@ import DsfrFranceConnect from './DsfrFranceConnect.vue'
 const meta = {
   component: DsfrFranceConnect,
   title: 'Composants/DsfrFranceConnect',
+  tags: ['autodocs'],
   argTypes: {
     secure: {
       control: 'boolean',
       description:
         'Change le bouton pour une version FranceConnect+ (pour les démarches nécessitant une sécurité renforcée)',
     },
+    url: {
+      control: 'text',
+      description: 'URL de redirection vers la documentation FranceConnect',
+    },
   },
 } satisfies Meta<typeof DsfrFranceConnect>
 
 export default meta
-
 type Story = StoryObj<typeof meta>
 
-export const BoutonFranceConnect = (args) => ({
-  components: {
-    DsfrFranceConnect,
+export const BoutonFranceConnect: Story = {
+  args: {
+    secure: false,
+    url: 'https://franceconnect.gouv.fr',
   },
-  data () {
-    return {
-      ...args,
-    }
-  },
-  template: `
-    <DsfrFranceConnect
-      :secure="secure"
-    />
-  `,
-})
+}
 
-BoutonFranceConnect.args = {
-  secure: false,
+export const BoutonFranceConnectPlus: Story = {
+  args: {
+    secure: true,
+    url: 'https://franceconnect.gouv.fr',
+  },
 }
