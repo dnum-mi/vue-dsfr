@@ -47,7 +47,8 @@ const meta = {
         'Ajoute la possibilité de fermer l\'alerte via un bouton en forme de croix',
     },
     titleTag: {
-      control: 'text',
+      control: { type: 'select' },
+      options: ['h2', 'h3', 'h4', 'h5', 'h6'],
       description:
         'Permet de choisir la balise contenant le titre de l\'alerte (h3 par défaut)',
     },

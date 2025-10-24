@@ -14,14 +14,12 @@ withDefaults(defineProps<DsfrNewsLetterProps>(), {
   hintText: '',
   buttonText: 'S’abonner',
   buttonTitle: 'S‘abonner à notre lettre d’information',
-  buttonAction: () => undefined,
+  buttonAction: () => {},
+  onSubmit: () => {},
   onlyCallout: false,
 })
 
-const emit = defineEmits<{ (e: 'update:email', payload: string): void }>()
-
-// @ts-expect-error this event comes from the input[type=email] so `value` is there
-const updateEmail = ($event: InputEvent) => emit('update:email', $event.target.value as string)
+const emailValue = defineModel<string>('email')
 </script>
 
 <template>
@@ -44,7 +42,7 @@ const updateEmail = ($event: InputEvent) => emit('update:email', $event.target.v
       </button>
     </div>
     <div v-else>
-      <form action="">
+      <form @submit.prevent="onSubmit(emailValue)">
         <label
           class="fr-label"
           for="newsletter-email"
@@ -54,15 +52,14 @@ const updateEmail = ($event: InputEvent) => emit('update:email', $event.target.v
         <div class="fr-input-wrap fr-input-wrap--addon">
           <input
             id="newsletter-email"
+            v-model="emailValue"
             class="fr-input"
             aria-describedby="fr-newsletter-hint-text"
             :title="inputTitle || labelEmail"
             :placeholder="placeholder || labelEmail"
             type="email"
             name="newsletter-email"
-            :value="email"
             autocomplete="email"
-            @input="updateEmail($event as InputEvent)"
           >
           <button
             id="newsletter-button"

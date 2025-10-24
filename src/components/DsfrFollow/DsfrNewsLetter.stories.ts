@@ -1,205 +1,103 @@
-import DsfrFollow from './DsfrFollow.vue'
+import type { Meta, StoryObj } from '@storybook/vue3'
+
 import DsfrNewsLetter from './DsfrNewsLetter.vue'
 
-/**
- * [Voir quand l’utiliser sur la documentation du DSFR](https://www.systeme-de-design.gouv.fr/version-courante/fr/composants/lettre-d-information-et-reseaux-sociaux)
- */
-export default {
+const meta = {
   component: DsfrNewsLetter,
-  title: 'Composants/DsfrNewsletter',
-  tags: ['réseaux sociaux'],
+  title: 'Composants/DsfrNewsLetter',
   argTypes: {
     title: {
       control: 'text',
-      description: 'Titre de la newsletter',
+      description: 'Titre de la lettre d’information',
     },
     description: {
       control: 'text',
-      description: 'Description de la newsletter',
+      description: 'Description de la lettre d’information',
     },
     email: {
       control: 'text',
-      description: 'V-model de l’adresse électronique',
+      description: 'Adresse électronique de l’utilisateur',
     },
     labelEmail: {
       control: 'text',
-      description: 'Label du champ pour renseigner l’adresse électronique',
+      description: 'Label du champ pour l’adresse électronique',
     },
-    placeHolder: {
+    placeholder: {
       control: 'text',
-      description:
-        'Placeholder du champ pour renseigner l’adresse électronique',
+      description: 'Placeholder du champ pour l’adresse électronique',
     },
     hintText: {
       control: 'text',
-      description:
-        'Explication à afficher sous le champ pour renseigner l’adresse électronique',
+      description: 'Indice à afficher sous le champ de l’adresse électronique',
     },
     buttonText: {
       control: 'text',
-      description: 'S’abonner',
+      description: 'Texte du bouton d’abonnement',
     },
     buttonTitle: {
       control: 'text',
-      description: 'Contenu de l’attribut `title` du bouton d’abonnement',
+      description: 'Titre du bouton d’abonnement',
     },
-    buttonAction: { action: 'clicked' },
     onlyCallout: {
       control: 'boolean',
-      description:
-        'Newsletter simplifiée avec seulement un bouton, le formulaire sera masqué',
+      description: 'Afficher uniquement un bouton sans champ de saisie',
+    },
+    error: {
+      control: 'text',
+      description: 'Message d’erreur à afficher',
+    },
+    inputTitle: {
+      control: 'text',
+      description: 'Titre de l’input (attribut `title`)',
+    },
+    onSubmit: {
+      action: 'submit',
+    },
+    'button-action': {
+      action: 'button-action',
     },
   },
-}
+} satisfies Meta<typeof DsfrNewsLetter>
 
-export const NewsletterSimple = (args) => ({
-  components: {
-    DsfrNewsLetter,
-    DsfrFollow,
-  },
+export default meta
+type Story = StoryObj<typeof meta>
 
-  data () {
-    return {
-      ...args,
-    }
-  },
-
-  template: `
-  <DsfrFollow>
-    <div class="fr-col-12">
-      <DsfrNewsLetter
-        :title="title"
-        :description="description"
-        v-model:email="email"
-        :labelEmail="labelEmail"
-        :inputTitle="inputTitle"
-        :placeholder="placeholder"
-        :hintText="hintText"
-        :buttonText="buttonText"
-        :buttonTitle="buttonTitle"
-      />
-    </div>
-  </DsfrFollow>
-  `,
-})
-NewsletterSimple.args = {
-  title: 'Titre de la lettre d’information',
-  description: 'Description de la lettre d’information',
-  email: 'email.super@chouette.fr',
-  labelEmail: 'Votre adresse électronique',
-  inputTitle: 'Adresse électronique',
-  placeholder: 'james.bond@mi6.gov.uk',
-  hintText:
-    'En renseignant votre adresse électronique, vous acceptez de recevoir nos actualités par courriel. Vous pouvez vous désinscrire à tout moment à l’aide des liens de désinscription ou en nous contactant.',
-  buttonText: 'S’abonner',
-  buttonTitle: 'Titre du bouton (attribut `title`) de la balise `button`',
-}
-
-export const NewsletterAvecErreur = (args) => ({
-  components: {
-    DsfrNewsLetter,
-    DsfrFollow,
-  },
-
-  data () {
-    return {
-      ...args,
-    }
-  },
-
-  watch: {
-    email (newValue) {
-      if (
-        // eslint-disable-next-line regexp/no-unused-capturing-group
-        /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\])|(([a-z\-0-9]+\.)+[a-z]{2,}))$/i.test(
-          newValue,
-        )
-      ) {
-        this.error = ''
-        return
-      }
-      this.error =
-        'Le format de l’adresse electronique saisie n’est pas valide. Le format attendu est : nom@example.org'
+export const LettreDInformationSimple: Story = {
+  render: (args) => ({
+    components: { DsfrNewsLetter },
+    setup () {
+      return { args }
     },
+    template: `
+      <DsfrNewsLetter v-bind="args" />
+    `,
+  }),
+  args: {
+    title: 'Abonnez-vous à notre lettre d’information',
+    description:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas varius tortor nibh, sit amet tempor nibh finibus et.',
+    email: '',
+    labelEmail: 'Votre adresse électronique (ex. : prenom.nom@example.com)',
+    placeholder: 'prenom.nom@example.com',
+    hintText: 'Texte de politique de confidentialité',
+    buttonText: 'S’abonner',
+    buttonTitle: 'S’abonner à notre lettre d’information',
+    onlyCallout: false,
+    error: '',
+    inputTitle: 'Titre de l’input',
   },
-
-  template: `
-  <DsfrFollow>
-    <div class="fr-col-12">
-      <DsfrNewsLetter
-        :title="title"
-        :description="description"
-        :error="error"
-        v-model:email="email"
-        :labelEmail="labelEmail"
-        :inputTitle="inputTitle"
-        :placeholder="placeholder"
-        :hintText="hintText"
-        :buttonText="buttonText"
-        :buttonTitle="buttonTitle"
-      />
-    </div>
-  </DsfrFollow>
-  `,
-})
-
-NewsletterAvecErreur.args = {
-  title: 'Titre de la lettre d’information',
-  description: 'Description de la lettre d’information',
-  email: 'email.superchouette.fr',
-  error:
-    'Le format de l’adresse electronique saisie n’est pas valide. Le format attendu est : nom@example.org',
-  labelEmail: 'Votre adresse électronique',
-  inputTitle: 'Adresse électronique',
-  placeholder: 'james.bond@mi6.gov.uk',
-  hintText:
-    'En renseignant votre adresse électronique, vous acceptez de recevoir nos actualités par courriel. Vous pouvez vous désinscrire à tout moment à l’aide des liens de désinscription ou en nous contactant.',
-  buttonText: 'S’abonner',
-  buttonTitle: 'Titre du bouton (attribut `title`) de la balise `button`',
 }
 
-export const NewsletterMiseEnAvant = (args) => ({
-  components: {
-    DsfrNewsLetter,
-    DsfrFollow,
+export const LettreDInformationSimplifiee: Story = {
+  args: {
+    ...LettreDInformationSimple.args,
+    onlyCallout: true,
   },
+}
 
-  data () {
-    return {
-      ...args,
-    }
+export const LettreDInformationAvecErreur: Story = {
+  args: {
+    ...LettreDInformationSimple.args,
+    error: 'Message d’erreur',
   },
-
-  template: `
-  <DsfrFollow>
-    <div class="fr-col-12">
-      <DsfrNewsLetter
-        :title="title"
-        :description="description"
-        v-model:email="email"
-        :labelEmail="labelEmail"
-        :inputTitle="inputTitle"
-        :placeholder="placeholder"
-        :hintText="hintText"
-        :buttonText="buttonText"
-        :buttonTitle="buttonTitle"
-        :buttonAction="buttonAction"
-        :onlyCallout="onlyCallout"
-      />
-    </div>
-  </DsfrFollow>
-  `,
-})
-NewsletterMiseEnAvant.args = {
-  title: 'Titre de la lettre d’information',
-  description: 'Description de la lettre d’information',
-  email: '',
-  labelEmail: '',
-  inputTitle: '',
-  placeholder: '',
-  hintText: '',
-  buttonText: 'S’abonner',
-  buttonTitle: 'Titre du bouton (attribut `title`) de la balise `button`',
-  buttonAction: () => undefined,
-  onlyCallout: true,
 }

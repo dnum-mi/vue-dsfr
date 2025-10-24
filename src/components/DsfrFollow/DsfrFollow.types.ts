@@ -22,6 +22,7 @@ export type DsfrNewsLetterProps = {
   buttonText?: string
   buttonTitle?: string
   buttonAction?: ($event: MouseEvent) => void
+  onSubmit?: (email: string | undefined) => void
   onlyCallout?: boolean
 }
 

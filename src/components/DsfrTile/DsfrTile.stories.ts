@@ -48,7 +48,8 @@ export default {
         'Lien vers lequel la tuile pointe. Peut être une string ou objet à donner à `RouterLink` ou un lien externe (`string` commençant par `"http"`)',
     },
     titleTag: {
-      control: 'text',
+      control: { type: 'select' },
+      options: ['h2', 'h3', 'h4', 'h5', 'h6'],
       description:
         'Permet de choisir la balise contenant le titre de la tuile (h3 par défaut)',
     },
