@@ -84,21 +84,41 @@ const props = withDefaults(defineProps<DsfrFooterProps>(), {
   licenceName: 'licence etalab-2.0',
 })
 
-/**
- * @slot footer-link-lists - Slot pour pouvoir changer les liens dans la rubrique en haut du pied de page
- * @slot description - Slot pour le contenu de la description du footer. Sera dans `<p class="fr-footer__content-desc">`
- * @slot footer-partners - Slot pour le contenu des partenaires du footer
- */
 defineSlots<{
+  /** Slot pour pouvoir changer les liens dans la rubrique en haut du pied de page */
   'footer-link-lists': () => VNode
+  /** Slot pour le contenu de la description du footer. Sera dans `<p class="fr-footer__content-desc">` */
   description: () => VNode
+  /** Slot pour le contenu des partenaires du footer */
   'footer-partners': () => VNode
 }>()
+
+const mandatoryLinks = computed(() => {
+  return [
+    {
+      label: `Accessibilité : ${props.a11yCompliance}`,
+      to: props.a11yComplianceLink,
+    },
+    {
+      label: 'Mentions légales',
+      to: props.legalLink,
+      'data-testid': '/mentions-legales',
+    },
+    {
+      label: 'Données personnelles',
+      to: props.personalDataLink,
+    },
+    {
+      label: 'Gestion des cookies',
+      to: props.cookiesLink,
+    },
+  ]
+})
 
 const allLinks = computed(() => {
   return [
     ...props.beforeMandatoryLinks,
-    ...props.mandatoryLinks,
+    ...mandatoryLinks.value,
     ...props.afterMandatoryLinks,
   ]
 })

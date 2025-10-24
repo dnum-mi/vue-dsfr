@@ -8,7 +8,7 @@ import DsfrFooter from './DsfrFooter.vue'
 import DsfrFooterLinkList from './DsfrFooterLinkList.vue'
 
 /**
- * [Voir quand l\'utiliser sur la documentation du DSFR](https://www.systeme-de-design.gouv.fr/version-courante/fr/composants/pied-de-page)
+ * [Voir quand l’utiliser sur la documentation du DSFR](https://www.systeme-de-design.gouv.fr/version-courante/fr/composants/pied-de-page)
  */
 const meta = {
   component: DsfrFooter,
@@ -30,7 +30,7 @@ const meta = {
         'Liste de liens relatifs au gouvernement (par défaut si la props n\'est pas renseignée elle contient les quatre liens obligatoires pour un site public)',
     },
     a11yCompliance: {
-      control: 'radio',
+      control: 'select',
       options: [
         'non conforme',
         'partiellement conforme',
@@ -138,8 +138,8 @@ type Story = StoryObj<typeof meta>
 
 export const PiedDePageSimple: Story = {
   args: {
-    beforeMandatoryLinks: [{ label: 'Before', to: '/before' }],
-    afterMandatoryLinks: [{ label: 'After', to: '/after' }],
+    beforeMandatoryLinks: [{ label: 'Avant', to: '/avant' }],
+    afterMandatoryLinks: [{ label: 'Après', to: '/apres' }],
     a11yCompliance: 'partiellement conforme',
     logoText: ['République', 'des châtons'],
     legalLink: '/mentions-legales',
@@ -263,8 +263,8 @@ export const PiedDePageSimple: Story = {
 
 export const PiedDePageAvecLogoOperateurEtListeDeLiens: Story = {
   args: {
-    beforeMandatoryLinks: [{ label: 'Before', to: '/before' }],
-    afterMandatoryLinks: [{ label: 'After', to: '/after' }],
+    beforeMandatoryLinks: [{ label: 'Avant', to: '/avant' }],
+    afterMandatoryLinks: [{ label: 'Après', to: '/apres' }],
     a11yCompliance: 'partiellement conforme',
     logoText: ['République', 'des châtons'],
     legalLink: '/mentions-legales',
