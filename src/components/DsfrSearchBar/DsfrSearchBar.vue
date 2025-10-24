@@ -16,8 +16,8 @@ withDefaults(defineProps<DsfrSearchBarProps>(), {
 })
 
 const emit = defineEmits<{
-  (e: 'update:modelValue', payload: string): void
-  (e: 'search', payload: string): void
+  'update:modelValue': [payload: string | number | undefined]
+  search: [payload: string]
 }>()
 </script>
 

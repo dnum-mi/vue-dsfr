@@ -274,6 +274,19 @@ const ecosystemLinks = [
 
 const search = ref('')
 const currentRoute = computed(() => route.name)
+const language = ref('fr')
+const languageSelector = ref({
+  currentLanguage: 'fr',
+  languages: [
+    { label: 'Français', codeIso: 'fr' },
+    { label: 'English', codeIso: 'en' },
+    { label: 'Español', codeIso: 'es' },
+  ],
+  onLanguageSelect: (languageCode: string) => {
+    toaster.addMessage({ description: `Langue changée en ${languageCode}`, type: 'info' })
+    language.value = languageCode
+  },
+})
 </script>
 
 <template>
@@ -287,6 +300,8 @@ const currentRoute = computed(() => route.name)
       show-search
       service-title="VueDSFR demo App"
       placeholder="Rechercher placeholder"
+      :language-selector="languageSelector"
+      @language-select="languageSelector.currentLanguage = $event.codeIso"
     >
       <template #mainnav>
         <DsfrNavigation

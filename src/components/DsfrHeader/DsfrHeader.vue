@@ -42,18 +42,16 @@ const emit = defineEmits<{
   (e: 'languageSelect', payload: DsfrLanguageSelectorElement): void
 }>()
 
-/**
- * @slot default - Slot par défaut pour le contenu du fieldset (sera dans `<div class="fr-header__body-row">`)
- * @slot operator - Slot nommé operator pour le logo opérateur. Sera dans `<div class="fr-header__operator">`
- * @slot mainnav - Slot nommé mainnav pour le menu de navigation principal
- * @slot before-quick-links - Slot pour du contenu avant les liens rapides
- * @slot after-quick-links - Slot pour du contenu après les liens rapides
- */
 const slots = defineSlots<{
+  /** Slot par défaut pour le contenu du fieldset (sera dans `<div class="fr-header__body-row">`) */
   default: () => any
+  /** Slot nommé operator pour le logo opérateur. Sera dans `<div class="fr-header__operator">` */
   operator: () => any
+  /** Slot nommé mainnav pour le menu de navigation principal */
   mainnav: () => any
+  /** Slot pour du contenu avant les liens rapides */
   'before-quick-links': () => any
+  /** Slot pour du contenu après les liens rapides */
   'after-quick-links': () => any
 }>()
 
@@ -284,7 +282,7 @@ provide(registerNavigationLinkKey, () => {
                 <template v-if="languageSelector">
                   <DsfrLanguageSelector
                     v-bind="languageSelector"
-                    @select="languageSelector.currentLanguage = $event.codeIso"
+                    @select="emit('languageSelect', $event)"
                   />
                 </template>
                 <slot name="before-quick-links" />
