@@ -1,65 +1,26 @@
-import type { Meta, StoryObj } from '@storybook/vue3-vite'
+import type { Meta, StoryObj } from '@storybook/vue3'
+
+import { fn } from '@storybook/test'
+import { ref, watch } from 'vue'
 
 import DsfrInput from './DsfrInput.vue'
 import DsfrInputGroup from './DsfrInputGroup.vue'
 
-/**
- * [Voir quand l'utiliser sur la documentation du DSFR](https://www.systeme-de-design.gouv.fr/version-courante/fr/composants/champ-de-saisie)
- */
 const meta = {
   component: DsfrInputGroup,
   title: 'Composants/DsfrInputGroup',
+  tags: ['autodocs'],
   argTypes: {
-    id: {
-      control: 'text',
-      description:
-        '(optionnel) Valeur de l’attribut `id` du champ de saisie. Par défaut, un id pseudo-aléatoire sera donné.',
-    },
-    descriptionId: {
-      control: 'text',
-      description:
-        '(optionnel) Valeur de l’attribut `id` du paragraphe de description. Par défaut, un id pseudo-aléatoire sera donné.',
-    },
-    label: {
-      control: 'text',
-      description:
-        'Label du champ de saisie. Sera passé à DsfrInput si modelValue n’est pas `undefined`',
-    },
-    hint: {
-      control: 'text',
-      description: 'Indice associé au champ de saisie',
-    },
-    type: {
-      control: 'text',
-      description:
-        'Type du champ de saisie cf. [MDN](https://developer.mozilla.org/fr/docs/Web/HTML/Element/Input)',
-    },
-    labelVisible: {
-      control: 'boolean',
-      description:
-        'Indique si le label doit être visible (`true`) ou non (`false`, défaut). Sera passé à DsfrInput si modelValue n’est pas `undefined`',
-    },
-    placeholder: {
-      control: 'text',
-      description:
-        'Contenu du champ à afficher lorsqu’il n’est pas rempli par l’utilisateur. Sera passé à DsfrInput si modelValue n’est pas `undefined`',
-    },
-    modelValue: {
-      control: 'text',
-      description: 'Valeur du champ de saisie',
-    },
-    disabled: {
-      control: 'boolean',
-      description:
-        'Permet de désactiver le champ, la saisie sera impossible. Sera passé à DsfrInput s’il n’y a pas d’utilisation du slot par défaut',
-    },
-    errorMessage: {
-      control: 'text',
-      description: 'Message d\'erreur (ou tableau de messages)',
-    },
-    validMessage: {
-      control: 'text',
-      description: 'Message de validation (ou tableau de messages)',
+    // Props de DsfrInputGroup
+    label: { control: 'text' },
+    hint: { control: 'text' },
+    labelVisible: { control: 'boolean' },
+    modelValue: { control: 'text' },
+    errorMessage: { control: 'text' },
+    validMessage: { control: 'text' },
+    // Action
+    'onUpdate:modelValue': {
+      action: fn(),
     },
   },
 } satisfies Meta<typeof DsfrInputGroup>
@@ -68,114 +29,109 @@ export default meta
 
 type Story = StoryObj<typeof meta>
 
-export const GroupeDeChampAvecPersonnalisation = (args) => ({
-  components: {
-    DsfrInput,
-    DsfrInputGroup,
+export const GroupeDeChampAvecPersonnalisation: Story = {
+  name: 'Champ avec personnalisation',
+  argTypes: {
+    // Props de DsfrInput passées via le slot
+    placeholder: { control: 'text' },
+    readonly: { control: 'boolean' },
+    type: { control: 'text' },
   },
-  data () {
-    return {
-      ...args,
-    }
+  render: args => ({
+    components: { DsfrInput, DsfrInputGroup },
+    setup () {
+      const modelValue = ref(args.modelValue)
+      watch(() => args.modelValue, val => (modelValue.value = val))
+      return { args, modelValue }
+    },
+    template: `
+      <DsfrInputGroup
+        :error-message="args.errorMessage"
+        :valid-message="args.validMessage"
+      >
+        <DsfrInput
+          :placeholder="args.placeholder"
+          :readonly="args.readonly"
+          :model-value="modelValue"
+          :label="args.label"
+          :type="args.type"
+          :hint="args.hint"
+          :label-visible="args.labelVisible"
+          @update:model-value="modelValue = $event; args['onUpdate:modelValue']($event)"
+        />
+      </DsfrInputGroup>
+    `,
+  }),
+  args: {
+    // DsfrInputGroup props
+    label: 'Label champ de saisie',
+    labelVisible: true,
+    modelValue: '',
+    validMessage: '',
+    errorMessage: '',
+    hint: 'Texte d’indice du champ',
+    // DsfrInput props
+    type: 'text',
+    placeholder: 'Veuillez saisir du texte',
+    readonly: false,
   },
-  template: `
-    <DsfrInputGroup
-      :error-message="errorMessage"
-      :valid-message="validMessage"
-    >
-      <DsfrInput
-        :id="id"
-        :placeholder="placeholder"
-        :readonly="readonly !== ''"
-        :model-value="modelValue"
-        :label="label"
-        :type="type"
-        :hint="hint"
-        :label-visible="labelVisible"
-      />
-    </DsfrInputGroup>
-  `,
-})
-GroupeDeChampAvecPersonnalisation.args = {
-  type: 'text',
-  label: 'Label champ de saisie',
-  labelVisible: true,
-  placeholder: 'Yo',
-  modelValue: '',
-  validMessage: 'Message de validation',
-  errorMessage: '',
-  hint: 'Texte d’indice du champ',
-  id: '',
-  readonly: '',
 }
 
-export const ChampEnErreur = (args) => ({
-  components: {
-    DsfrInput,
-    DsfrInputGroup,
+const renderSimple = (args: any) => ({
+  components: { DsfrInputGroup },
+  setup () {
+    const modelValue = ref(args.modelValue)
+    watch(() => args.modelValue, val => (modelValue.value = val))
+    return { args, modelValue }
   },
-
-  data () {
-    return {
-      ...args,
-    }
-  },
-
   template: `
     <DsfrInputGroup
-      :error-message="errorMessage"
-      :model-value="modelValue"
-      :type="type"
-      :label="label"
-      :hint="hint"
-      :label-visible="labelVisible"
-      :placeholder="placeholder"
-      :is-invalid="isInvalid"
+      :error-message="args.errorMessage"
+      :valid-message="args.validMessage"
+      v-model="modelValue"
+      :type="args.type"
+      :label="args.label"
+      :hint="args.hint"
+      :label-visible="args.labelVisible"
+      :placeholder="args.placeholder"
+      @update:model-value="args['onUpdate:modelValue']($event)"
     />
   `,
 })
-ChampEnErreur.args = {
-  label: 'Label champ de saisie',
-  labelVisible: true,
-  placeholder: 'Placeholder',
-  modelValue: '',
-  errorMessage: 'Message d’erreur',
-  isInvalid: true,
-  type: 'text',
-  hint: 'Texte d’indice du champ',
+
+export const ChampEnErreur: Story = {
+  name: 'Champ en erreur',
+  render: renderSimple,
+  argTypes: {
+    placeholder: { control: 'text' },
+    type: { control: 'text' },
+  },
+  args: {
+    label: 'Label champ de saisie',
+    labelVisible: true,
+    placeholder: 'Placeholder',
+    modelValue: '',
+    errorMessage: 'Message d’erreur',
+    hint: 'Texte d’indice du champ',
+    type: 'text',
+  },
 }
 
-export const ChampValide = (args) => ({
-  components: {
-    DsfrInput,
-    DsfrInputGroup,
+export const ChampValide: Story = {
+  name: 'Champ valide',
+  render: renderSimple,
+  argTypes: {
+    placeholder: { control: 'text' },
+    type: { control: 'text' },
   },
-  data () {
-    return {
-      ...args,
-    }
+  args: {
+    label: 'Label champ de saisie',
+    labelVisible: true,
+    placeholder: 'Placeholder',
+    modelValue: '',
+    validMessage: 'Message de validation',
+    errorMessage: '',
+    hint: 'Texte d’indice du champ',
+    type: 'text',
   },
-  template: `
-    <DsfrInputGroup
-      :valid-message="validMessage"
-      :error-message="errorMessage"
-      :model-value="modelValue"
-      :type="type"
-      :hint="hint"
-      :label="label"
-      :label-visible="labelVisible"
-      :placeholder="placeholder"
-    />
-  `,
-})
-ChampValide.args = {
-  type: 'text',
-  label: 'Label champ de saisie',
-  labelVisible: true,
-  placeholder: 'Placeholder',
-  modelValue: '',
-  validMessage: 'Message de validation',
-  errorMessage: '',
-  isValid: true,
-  hint: 'Texte d’indice du champ',
 }

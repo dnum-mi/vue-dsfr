@@ -26,14 +26,15 @@ const props = withDefaults(defineProps<DsfrInputGroupProps>(), {
   validMessage: undefined,
 })
 
-defineEmits<{ (e: 'update:modelValue', payload: string): void }>()
+defineEmits<{
+  /** Événement émis lors du changement de la valeur du champ de saisie */
+  (e: 'update:modelValue', payload: string | number | undefined): void
+}>()
 
-/**
- * @slot before-input - Slot pour ajouter du contenu avant le champ de saisie
- * @slot default - Slot par défaut pour le contenu du groupe de champ. Reçoit les props `isValid`, `isInvalid`, et `descriptionId`
- */
 defineSlots<{
+  /** Slot pour ajouter du contenu avant le champ de saisie */
   'before-input'?: () => any
+  /** Slot par défaut pour le contenu du groupe de champ. Reçoit les props `isValid`, `isInvalid`, et `descriptionId` */
   default?: (props: { isValid: boolean, isInvalid: boolean, descriptionId: string | undefined }) => any
 }>()
 
