@@ -19,6 +19,14 @@ const props = withDefaults(defineProps<DsfrNavigationMenuProps>(), {
 
 defineEmits<{ (event: 'toggleId', id: string): void }>()
 
+defineSlots<{
+  /**
+   * Slot par défaut pour le contenu de l’item de liste.
+   * Sera dans `<ul class="fr-menu__list">`
+   */
+  default: () => any
+}>()
+
 const {
   collapse,
   collapsing,
@@ -66,7 +74,6 @@ onMounted(() => {
     <ul
       class="fr-menu__list"
     >
-      <!-- @slot Slot par défaut pour le contenu de l’item de liste. Sera dans `<ul class="fr-menu__list">` -->
       <slot />
       <DsfrNavigationMenuItem
         v-for="(link, idx) of links"
