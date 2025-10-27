@@ -1,8 +1,10 @@
-import { expect, within } from 'storybook/test'
+import type { Meta, StoryObj } from '@storybook/vue3'
+
+import { expect, within } from '@storybook/test'
 
 import DsfrPicture from './DsfrPicture.vue'
 
-export default {
+const meta = {
   component: DsfrPicture,
   title: 'Composants/DsfrPicture',
   argTypes: {
@@ -37,52 +39,41 @@ export default {
         'Permet d’alterner entre les différents ratio possibles pour le contenu ("32x9", "16x9", "3x2", "4x3", "1x1", "3x4", "2x3") la chaine de caractères changera la classe associée, "16x9" par défaut',
     },
   },
+} satisfies Meta<typeof DsfrPicture>
+
+export default meta
+type Story = StoryObj<typeof meta>
+
+export const ImageSrc: Story = {
+  name: 'Image avec source',
+  args: {
+    size: 'medium',
+    src: 'https://loremflickr.com/300/200/cat',
+    alt: '',
+    title: 'Photographie d’un chaton',
+    legend: 'Photographie d’un chaton',
+    ratio: '16x9',
+  },
+  play: async ({ canvasElement, args }) => {
+    const canvas = within(canvasElement)
+    const img = canvas.getByTitle(args.title!)
+    const figCaption = canvas.getByText(args.legend!)
+    expect(img).toHaveAttribute('src', args.src)
+    expect(img).toHaveAttribute('title', args.title)
+    expect(figCaption).toHaveProperty('tagName', 'FIGCAPTION')
+  },
 }
 
-export const ImageSrc = (args) => ({
-  components: { DsfrPicture },
-  data () {
-    return args
-  },
-  template: `
+export const ImageSvg: Story = {
+  name: 'Image avec SVG',
+  render: args => ({
+    components: { DsfrPicture },
+    setup: () => ({ args }),
+    template: `
     <DsfrPicture
-      :src="src"
-      :alt="alt"
-      :title="title"
-      :legend="legend"
-      :size="size"
-      :ratio="ratio"
-      style="max-width: 500px"
-    />
-  `,
-})
-ImageSrc.args = {
-  size: 'medium',
-  src: 'https://loremflickr.com/300/200/cat',
-  alt: '',
-  title: 'Photographie d’un chaton',
-  legend: 'Photographie d’un chaton',
-  ratio: '16x9',
-}
-ImageSrc.play = async ({ canvasElement }) => {
-  const canvas = within(canvasElement)
-  const img = canvas.getByTitle(ImageSrc.args.title)
-  const figCaption = canvas.getByText(ImageSrc.args.legend)
-  expect(img).toHaveAttribute('src', ImageSrc.args.src)
-  expect(img).toHaveAttribute('title', ImageSrc.args.title)
-  expect(figCaption).toHaveProperty('tagName', 'FIGCAPTION')
-}
-
-export const ImageSvg = (args) => ({
-  components: { DsfrPicture },
-  data () {
-    return args
-  },
-  template: `
-    <DsfrPicture
-      :legend="legend"
-      :size="size"
-      :ratio="ratio"
+      :legend="args.legend"
+      :size="args.size"
+      :ratio="args.ratio"
       style="max-width: 500px"
     >
       <svg version="1.1" id="Layer_1" style="enable-background:new 0 0 122.88 106.42; width: 200px" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 122.88 106.42"  xml:space="preserve">
@@ -93,9 +84,10 @@ export const ImageSvg = (args) => ({
       </svg>
     </DsfrPicture>
   `,
-})
-ImageSvg.args = {
-  size: 'medium',
-  legend: 'Vue in Gotham',
-  ratio: '16x9',
+  }),
+  args: {
+    size: 'medium',
+    legend: 'Vue in Gotham',
+    ratio: '16x9',
+  },
 }
