@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/vue3'
+
 import { fn } from '@storybook/test'
 import { ref, watch } from 'vue'
 
@@ -10,7 +11,7 @@ import DsfrMultiSelect from './DsfrMultiselect.vue'
 const meta = {
   component: DsfrMultiSelect,
   title: 'Composants/DsfrMultiSelect',
-  tags: ['autodocs', 'formulaire'],
+  tags: ['formulaire'],
   argTypes: {
     selectId: {
       control: 'text',
