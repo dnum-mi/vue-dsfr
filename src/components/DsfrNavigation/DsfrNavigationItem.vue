@@ -8,6 +8,14 @@ export type { DsfrNavigationItemProps }
 withDefaults(defineProps<DsfrNavigationItemProps>(), {
   id: () => useRandomId('nav', 'item'),
 })
+
+defineSlots<{
+  /**
+   * Slot par défaut pour le contenu de l’item de liste.
+   * Sera dans `<li class="fr-nav__item">`
+   */
+  default: () => any
+}>()
 </script>
 
 <template>
@@ -16,7 +24,6 @@ withDefaults(defineProps<DsfrNavigationItemProps>(), {
     class="fr-nav__item"
     :aria-current="active ? 'page' : undefined"
   >
-    <!-- @slot Slot par défaut pour le contenu de l’item de liste. Sera dans `<li class="fr-nav__item">` -->
     <slot />
   </li>
 </template>
