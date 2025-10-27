@@ -1,8 +1,13 @@
+import type { Meta, StoryObj } from '@storybook/vue3'
+
+import { fn } from '@storybook/test'
+import { ref } from 'vue'
+
 import DsfrNavigation from './DsfrNavigation.vue'
 import DsfrNavigationItem from './DsfrNavigationItem.vue'
 import DsfrNavigationMegaMenu from './DsfrNavigationMegaMenu.vue'
 
-export default {
+const meta = {
   component: DsfrNavigationMegaMenu,
   title: 'Composants/DsfrNavigationMegaMenu',
   argTypes: {
@@ -39,135 +44,139 @@ export default {
       description:
         '(Optionnel) Est-ce que le menu doit être actif ou non (met l’attribut `aria-current` à la valeur `true`). Par défaut, il est inactif.',
     },
-    'toggle-id': {
-      description:
-        'Événement émis lors du click sur le lien, avec en argument l’id de l’élément cliqué',
+    onToggleId: fn(),
+  },
+  render: (args) => ({
+    components: {
+      DsfrNavigationMegaMenu,
+      DsfrNavigation,
+      DsfrNavigationItem,
     },
-  },
-}
+    setup () {
+      const expandedId = ref(args.expandedId)
 
-export const NavigationMegaMenu = (args) => ({
-  components: {
-    DsfrNavigationMegaMenu,
-    DsfrNavigation,
-    DsfrNavigationItem,
-  },
-
-  data () {
-    return {
-      ...args,
-    }
-  },
-
-  methods: {
-    toggle (id) {
-      if (id === this.expandedId) {
-        this.expandedId = undefined
-        return
+      function toggle (id: string) {
+        if (id === expandedId.value) {
+          expandedId.value = undefined
+        } else {
+          expandedId.value = id
+        }
+        args.onToggleId(id)
       }
-      this.expandedId = id
-    },
-  },
 
-  template: `
+      return {
+        args,
+        expandedId,
+        toggle,
+      }
+    },
+    template: `
     <DsfrNavigation>
       <DsfrNavigationItem>
         <DsfrNavigationMegaMenu
-          :title="title"
-          :description="description"
-          :link="link"
-          :menus="menus"
-          :expandedId="expandedId"
-          @toggle-id="toggle($event)"
+          :title="args.title"
+          :description="args.description"
+          :link="args.link"
+          :menus="args.menus"
+          :expanded-id="expandedId"
+          @toggle-id="toggle"
         />
       </DsfrNavigationItem>
     </DsfrNavigation>
   `,
-})
+  }),
+} satisfies Meta<typeof DsfrNavigationMegaMenu>
 
-NavigationMegaMenu.args = {
-  title: 'Titre de MEGA MENU',
-  expandedId: undefined,
-  description: 'Un charmant MEGA MENU',
-  link: {
-    to: '#',
-    text: 'Aller à la rubrique du MEGA MENU',
+export default meta
+type Story = StoryObj<typeof meta>
+
+export const MegaMenu: Story = {
+  name: 'Mega menu',
+  args: {
+    title: 'Titre de MEGA MENU',
+    expandedId: undefined,
+    description: 'Un charmant MEGA MENU',
+    onToggleId: fn(),
+    link: {
+      to: '#',
+      text: 'Aller à la rubrique du MEGA MENU',
+    },
+    menus: [
+      {
+        title: 'Nom de catégorie 1',
+        links: [
+          {
+            text: 'Lien 1',
+            to: '#',
+          },
+          {
+            text: 'Lien 2',
+            to: '#',
+          },
+          {
+            text: 'Lien 3',
+            to: '#',
+          },
+          {
+            text: 'Lien 4',
+            to: '#',
+          },
+          {
+            text: 'Lien 5',
+            to: '#',
+          },
+        ],
+      },
+      {
+        title: 'Nom de catégorie 2',
+        links: [
+          {
+            text: 'Lien 1',
+            to: '#',
+          },
+          {
+            text: 'Lien 2',
+            to: '#',
+          },
+          {
+            text: 'Lien 3',
+            to: '#',
+          },
+          {
+            text: 'Lien 4',
+            to: '#',
+          },
+          {
+            text: 'Lien 5',
+            to: '#',
+          },
+        ],
+      },
+      {
+        title: 'Nom de catégorie 3',
+        links: [
+          {
+            text: 'Lien 1',
+            to: '#',
+          },
+          {
+            text: 'Lien 2',
+            to: '#',
+          },
+          {
+            text: 'Lien 3',
+            to: '#',
+          },
+          {
+            text: 'Lien 4',
+            to: '#',
+          },
+          {
+            text: 'Lien 5',
+            to: '#',
+          },
+        ],
+      },
+    ],
   },
-  menus: [
-    {
-      title: 'Nom de catégorie 1',
-      links: [
-        {
-          text: 'Lien 1',
-          to: '#',
-        },
-        {
-          text: 'Lien 2',
-          to: '#',
-        },
-        {
-          text: 'Lien 3',
-          to: '#',
-        },
-        {
-          text: 'Lien 4',
-          to: '#',
-        },
-        {
-          text: 'Lien 5',
-          to: '#',
-        },
-      ],
-    },
-    {
-      title: 'Nom de catégorie 2',
-      links: [
-        {
-          text: 'Lien 1',
-          to: '#',
-        },
-        {
-          text: 'Lien 2',
-          to: '#',
-        },
-        {
-          text: 'Lien 3',
-          to: '#',
-        },
-        {
-          text: 'Lien 4',
-          to: '#',
-        },
-        {
-          text: 'Lien 5',
-          to: '#',
-        },
-      ],
-    },
-    {
-      title: 'Nom de catégorie 3',
-      links: [
-        {
-          text: 'Lien 1',
-          to: '#',
-        },
-        {
-          text: 'Lien 2',
-          to: '#',
-        },
-        {
-          text: 'Lien 3',
-          to: '#',
-        },
-        {
-          text: 'Lien 4',
-          to: '#',
-        },
-        {
-          text: 'Lien 5',
-          to: '#',
-        },
-      ],
-    },
-  ],
 }
