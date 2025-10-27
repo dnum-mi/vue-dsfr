@@ -76,6 +76,17 @@ const outputValue = computed(() => {
     .concat(props.suffix ?? '')
 })
 
+defineSlots<{
+  /** Pour un libellé plus personnalisé du champ */
+  label(props: Record<string, never>): any
+  /** Pour une indication plus personnalisée sur le champ */
+  hint(props: Record<string, never>): any
+  /** Pour remplacer l’astérisque par autre chose pour un champ requis */
+  'required-tip'(props: Record<string, never>): any
+  /** Pour les messages d’erreur ou de succès */
+  messages(props: Record<string, never>): any
+}>()
+
 onMounted(() => {
   inputWidth.value = input.value?.offsetWidth
 })
@@ -93,11 +104,18 @@ onMounted(() => {
     >
       <slot name="label">
         {{ label }}
-      </slot>
-      <span class="fr-hint-text">
-        <slot name="hint">
-          {{ hint }}
+        <slot name="required-tip">
+          <span
+            v-if="$attrs.required"
+            class="required"
+          >&nbsp;*</span>
         </slot>
+      </slot>
+      <span
+        v-if="hint"
+        class="fr-hint-text"
+      >
+        {{ hint }}
       </span>
     </label>
     <div
