@@ -24,6 +24,14 @@ const props = withDefaults(defineProps<DsfrNavigationProps>(), {
   navItems: () => [],
 })
 
+defineSlots<{
+  /**
+   * Slot par défaut pour le contenu de la liste.
+   * Sera dans `<ul class="fr-nav__list">`
+   */
+  default: () => any
+}>()
+
 const expandedMenuId = ref<string | undefined>(undefined)
 
 const toggle = (id: string | undefined) => {
@@ -75,7 +83,6 @@ onUnmounted(() => {
     :aria-label="label"
   >
     <ul class="fr-nav__list">
-      <!-- @slot Slot par défaut pour le contenu de la liste. Sera dans `<ul class="fr-nav__list">` -->
       <slot />
       <DsfrNavigationItem
         v-for="(navItem, idx) of navItems"
@@ -88,14 +95,12 @@ onUnmounted(() => {
           :expanded-id="expandedMenuId"
           @toggle-id="toggle($event)"
         />
-        <!-- @vue-ignore -->
         <DsfrNavigationMenu
           v-else-if="(navItem as DsfrNavigationMenuProps).title && (navItem as DsfrNavigationMenuProps).links"
           v-bind="(navItem as DsfrNavigationMenuProps)"
           :expanded-id="expandedMenuId"
           @toggle-id="toggle($event)"
         />
-        <!-- @vue-ignore -->
         <DsfrNavigationMegaMenu
           v-else-if="(navItem as DsfrNavigationMegaMenuProps).title && (navItem as DsfrNavigationMegaMenuProps).menus"
           v-bind="(navItem as DsfrNavigationMegaMenuProps)"
