@@ -1,8 +1,10 @@
-import { expect, within } from 'storybook/test'
+import type { Meta, StoryObj } from '@storybook/vue3'
+
+import { expect, within } from '@storybook/test'
 
 import DsfrLogo from './DsfrLogo.vue'
 
-export default {
+const meta = {
   component: DsfrLogo,
   title: 'Composants/DsfrLogo',
   argTypes: {
@@ -20,30 +22,22 @@ export default {
       description: 'Indique si le logo doit avoir une **grande taille**',
     },
   },
-}
+} satisfies Meta<typeof DsfrLogo>
 
-export const Logo = (args) => ({
-  components: {
-    DsfrLogo,
+export default meta
+
+type Story = StoryObj<typeof meta>
+
+export const Logo: Story = {
+  args: {
+    logoText: ['République', 'Française'],
+    small: false,
+    large: false,
   },
-  data () {
-    return args
+  play: async ({ canvasElement, args }) => {
+    const canvas = within(canvasElement)
+    const logoText = Array.isArray(args.logoText) ? args.logoText.join('.*') : args.logoText
+    const p = canvas.getByText(new RegExp(logoText as string))
+    expect(p).toHaveClass('fr-logo')
   },
-  template: `
-      <DsfrLogo
-        :small="small"
-        :large="large"
-        :logo-text="logoText"
-      />
-  `,
-})
-Logo.args = {
-  logoText: ['République', 'Française'],
-  small: false,
-  large: false,
-}
-Logo.play = async ({ canvasElement }) => {
-  const canvas = within(canvasElement)
-  const p = canvas.getByText(new RegExp(Logo.args.logoText.join('.*')))
-  expect(p).toHaveClass('fr-logo')
 }
