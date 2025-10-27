@@ -79,7 +79,6 @@ const render = (args) => ({
         :large="large"
         :disabled="disabled"
         @search="onSearch"
-        @update:model-value="onUpdateModelValue"
       />
   `,
 })
