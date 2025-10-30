@@ -85,7 +85,7 @@ const linkProps = (to: string | RouteLocationRaw | undefined) => {
             :active="!!menuItem.active"
             :expanded="!!menuItem.expanded"
             :control-id="(menuItem.id as string)"
-            @toggle-expand="$emit('toggleExpand', $event)"
+            @toggle-expand="menuItem.expanded = !menuItem.expanded"
           >
             {{ menuItem.text }}
           </DsfrSideMenuButton>
@@ -93,7 +93,7 @@ const linkProps = (to: string | RouteLocationRaw | undefined) => {
             v-if="menuItem.menuItems"
             :id="(menuItem.id as string)"
             collapsable
-            :expanded="menuItem.expanded"
+            :expanded="!!menuItem.expanded"
             :menu-items="menuItem.menuItems"
             @toggle-expand="$emit('toggleExpand', $event)"
           />
