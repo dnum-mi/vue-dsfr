@@ -8,7 +8,7 @@ describe('DsfrShare', () => {
     const copyLabel = 'Label de la copie dans le presse-papier'
     const mail = {
       to: 'mailto:?subject=[À MODIFIER - objet du mail]&body=[À MODIFIER - titre ou texte descriptif de la page] [À MODIFIER - url de la page]',
-      label: 'Partager par mail personnalisé',
+      label: 'Partager par mail personnalisé - nouvelle fenêtre',
     }
     const networks = [
       {
@@ -47,7 +47,7 @@ describe('DsfrShare', () => {
     }
 
     const mailToLinkElement = getByText(mail.label)
-    expect(mailToLinkElement).toHaveAttribute('title', mail.label)
+    expect(mailToLinkElement).toHaveAttribute('title', `${mail.label} - nouvelle fenêtre`)
     expect(mailToLinkElement).toHaveAttribute('href', mail.to)
 
     const copyButtonElement = getByText(copyLabel)
