@@ -8,16 +8,16 @@ describe('DsfrPagination', () => {
   it('should render a list of links to give quick access to several pages', async () => {
     // Given
     const pages = [
-      { label: '1', href: '/#', title: 'Page 1' },
-      { label: '2', href: '/#', title: 'Page 2' },
-      { label: '3', href: '/#', title: 'Page 3' },
-      { label: '4', href: '/#', title: 'Page 4' },
-      { label: '5', href: '/#', title: 'Page 5' },
+      { label: '1', href: '/#' },
+      { label: '2', href: '/#' },
+      { label: '3', href: '/#' },
+      { label: '4', href: '/#' },
+      { label: '5', href: '/#' },
     ]
     const currentPage = 1
 
     // When
-    const { getByTitle, emitted } = render(Pagination, {
+    const { getByText, emitted } = render(Pagination, {
       global: {
         components: {
           VIcon,
@@ -29,7 +29,7 @@ describe('DsfrPagination', () => {
       },
     })
 
-    const thirdLink = getByTitle('Page 3')
+    const thirdLink = getByText('3')
     await fireEvent.click(thirdLink)
 
     // Then
