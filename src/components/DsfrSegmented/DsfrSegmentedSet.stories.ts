@@ -38,7 +38,7 @@ const meta = {
     options: {
       control: 'object',
       description:
-        'Tableau d\'objets : chaque objet contient les props à passer à `DsfrSegmented`',
+        'Tableau d’objets : chaque objet contient les props à passer à `DsfrSegmented`',
     },
     modelValue: {
       control: 'text',

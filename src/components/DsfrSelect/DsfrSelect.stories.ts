@@ -1,13 +1,14 @@
 import type { Meta, StoryObj } from '@storybook/vue3-vite'
 
 import { fn } from 'storybook/test'
+import { watch } from 'vue'
 
 import DsfrSelect from './DsfrSelect.vue'
 
 /**
  * [Voir quand l’utiliser sur la documentation du DSFR](https://www.systeme-de-design.gouv.fr/version-courante/fr/composants/liste-deroulante)
  */
-export default {
+const meta = {
   component: DsfrSelect,
   title: 'Composants/DsfrSelect',
   tags: ['formulaire'],
@@ -19,7 +20,7 @@ export default {
     required: {
       control: 'boolean',
       description:
-        'Option permettant de rendre ce champ de formulaire obligatoire et d'assigner au label un astérisque afin de rendre ce changement visible',
+        'Option permettant de rendre ce champ de formulaire obligatoire et d’assigner au label un astérisque afin de rendre ce changement visible',
     },
     label: {
       control: 'text',
@@ -33,11 +34,11 @@ export default {
     optionGroups: {
       control: 'object',
       description:
-        'Liste des options groupées proposées par le `<select>` à lui passer sous forme de tableau d'objets (groupe) avec une propriété `"label"` et une propriété options qui est un tableau d'options`',
+        'Liste des options groupées proposées par le `<select>` à lui passer sous forme de tableau d’objets (groupe) avec une propriété `"label"` et une propriété options qui est un tableau d’options`',
     },
     hint: {
       control: 'text',
-      description: 'Texte d'aide associé au champ',
+      description: 'Texte d’aide associé au champ',
     },
     description: {
       control: 'text',
@@ -68,7 +69,8 @@ export default {
     },
     'onUpdate:modelValue': {
       action: fn(),
-      description: 'Événement émis lors du changement de l'option sélectionnée (visible dans l'onglet ***Actions*** de Storybook)',
+      description: 'Événement émis lors du changement de l’option sélectionnée (visible dans l’onglet ***Actions*** de Storybook)',
+      table: { category: 'Hors composant' },
     },
   },
 } satisfies Meta<typeof DsfrSelect>
@@ -79,11 +81,15 @@ type Story = StoryObj<typeof meta>
 export const ListeDeroulante: Story = {
   render: (args) => ({
     components: { DsfrSelect },
-    setup() {
+    setup () {
+      watch(() => args.modelValue, (newVal) => {
+        args['onUpdate:modelValue'](newVal)
+      })
       return { args }
     },
     template: `
       <DsfrSelect
+        v-model="args.modelValue"
         :required="args.required"
         :label="args.label"
         :options="args.options"
@@ -91,8 +97,6 @@ export const ListeDeroulante: Story = {
         :success-message="args.successMessage"
         :error-message="args.errorMessage"
         :disabled="args.disabled"
-        v-model="args.modelValue"
-        @update:model-value="args['onUpdate:modelValue']"
       />
     `,
   }),
@@ -107,8 +111,8 @@ ListeDeroulante.args = {
     'Option 5',
     'Option 6',
   ],
-  label: 'Sélection d'options',
-  hint: 'Je suis une description, je décris, c'est ma raison d'être',
+  label: 'Sélection d’options',
+  hint: 'Je suis une description, je décris, c’est ma raison d’être',
   successMessage: '',
   errorMessage: '',
   disabled: false,
@@ -116,336 +120,293 @@ ListeDeroulante.args = {
   required: false,
 }
 
-export const ListeDeroulanteEnAnglais = (args) => ({
-  components: {
-    DsfrSelect,
+export const ListeDeroulanteEnAnglais: Story = {
+  args: {
+    options: [
+      'Option 1',
+      'Option 2',
+      'Option 3',
+      'Option 4',
+      'Option 5',
+      'Option 6',
+    ],
+    label: 'Those are the options:',
+    hint: 'I am a description',
+    successMessage: '',
+    errorMessage: '',
+    defaultUnselectedText: 'Please select an option',
+    disabled: false,
+    required: false,
   },
-
-  data () {
-    return {
-      ...args,
-    }
-  },
-
-  template: `
-    <DsfrSelect
-      :required="required"
-      :label="label"
-      :options="options"
-      :description="description"
-      :success-message="successMessage"
-      :error-message="errorMessage"
-      :disabled="disabled"
-      :defaultUnselectedText="defaultUnselectedText"
-      v-model="modelValue"
-    />
-  `,
-
-  watch: {
-    modelValue (newVal) {
-      this.onChange(newVal)
+  render: (args) => ({
+    components: { DsfrSelect },
+    setup() {
+      watch(() => args.modelValue, (newVal) => {
+        args['onUpdate:modelValue'](newVal)
+      })
+      return { args }
     },
-  },
-})
-ListeDeroulanteEnAnglais.args = {
-  options: [
-    'Option 1',
-    'Option 2',
-    'Option 3',
-    'Option 4',
-    'Option 5',
-    'Option 6',
-  ],
-  label: 'Those are the options:',
-  description: 'I am a description',
-  successMessage: '',
-  errorMessage: '',
-  defaultUnselectedText: 'Please select an option',
-  disabled: false,
-  required: false,
-}
-
-export const ListeDeroulanteRequise = (args) => ({
-  components: {
-    DsfrSelect,
-  },
-
-  data () {
-    return {
-      ...args,
-    }
-  },
-
-  template: `
-    <DsfrSelect
-      :required="required"
-      :label="label"
-      :options="options"
-      :description="description"
-      :success-message="successMessage"
-      :error-message="errorMessage"
-      :disabled="disabled"
-      v-model="modelValue"
-    />
-  `,
-
-  watch: {
-    modelValue (newVal) {
-      this.onChange(newVal)
-    },
-  },
-})
-
-ListeDeroulanteRequise.args = {
-  options: [
-    'Option 1',
-    'Option 2',
-    'Option 3',
-    'Option 4',
-    'Option 5',
-    'Option 6',
-  ],
-  label: 'Selection d’options',
-  description: 'Je suis une description, je décris, c’est ma raison d’être',
-  successMessage: '',
-  errorMessage: '',
-  disabled: false,
-  modelValue: 'Option 2',
-  required: true,
-}
-
-export const ListeDeroulanteRequisePersonnalisee = (args) => ({
-  components: {
-    DsfrSelect,
-  },
-
-  data () {
-    return {
-      ...args,
-    }
-  },
-
-  template: `
-    <DsfrSelect
-      :required="required"
-      :label="label"
-      :options="options"
-      :description="description"
-      :success-message="successMessage"
-      :error-message="errorMessage"
-      :disabled="disabled"
-      v-model="modelValue"
-    >
-    <template #required-tip>
-      <em> (obligatoire)</em>
-    </template>
-  </DsfrSelect>
-  `,
-
-  watch: {
-    modelValue (newVal) {
-      this.onChange(newVal)
-    },
-  },
-})
-
-ListeDeroulanteRequisePersonnalisee.args = {
-  options: [
-    'Option 1',
-    'Option 2',
-    'Option 3',
-    'Option 4',
-    'Option 5',
-    'Option 6',
-  ],
-  label: 'Selection d’options',
-  description: 'Je suis une description, je décris, c’est ma raison d’être',
-  successMessage: '',
-  errorMessage: '',
-  disabled: false,
-  modelValue: 'Option 2',
-  required: true,
-}
-
-export const ListeDeroulanteInactive = (args) => ({
-  components: {
-    DsfrSelect,
-  },
-
-  data () {
-    return {
-      ...args,
-    }
-  },
-
-  template: `
-  <div :data-fr-theme="dark ? 'dark' : ''" style="background-color: var(--grey-1000-50); padding: 1rem;">
-    <DsfrSelect
-      :required="required"
-      :label="label"
-      :options="options"
-      :description="description"
-      :success-message="successMessage"
-      :error-message="errorMessage"
-      :disabled="disabled"
-      v-model="modelValue"
-    />
-  </div>
-  `,
-
-  watch: {
-    modelValue (newVal) {
-      this.onChange(newVal)
-    },
-  },
-})
-ListeDeroulanteInactive.args = {
-  options: [
-    'Option 1',
-    'Option 2',
-    'Option 3',
-    'Option 4',
-    'Option 5',
-    'Option 6',
-  ],
-  label: 'Selection d’options',
-  description: 'Je suis une description, je décris, c’est ma raison d’être',
-  successMessage: '',
-  errorMessage: '',
-  disabled: true,
-  modelValue: 'Option 2',
-  required: false,
-}
-
-export const ListeDeroulanteAvecOptionsInactives = (args) => ({
-  components: {
-    DsfrSelect,
-  },
-
-  data () {
-    return {
-      ...args,
-    }
-  },
-
-  template: `
-    <div :data-fr-theme="dark ? 'dark' : ''" style="background-color: var(--grey-1000-50); padding: 1rem;">
+    template: `
       <DsfrSelect
-        :required="required"
-        :label="label"
-        :options="options"
-        :description="description"
-        :success-message="successMessage"
-        :error-message="errorMessage"
-        :disabled="disabled"
-        v-model="modelValue"
+        v-model="args.modelValue"
+        :required="args.required"
+        :label="args.label"
+        :options="args.options"
+        :hint="args.hint"
+        :success-message="args.successMessage"
+        :error-message="args.errorMessage"
+        :disabled="args.disabled"
+        :default-unselected-text="args.defaultUnselectedText"
       />
-    </div>
     `,
-
-  watch: {
-    modelValue (newVal) {
-      this.onChange(newVal)
-    },
-  },
-})
-
-ListeDeroulanteAvecOptionsInactives.args = {
-  options: [
-    {
-      text: 'Option 1',
-      value: 0,
-    },
-    {
-      text: 'Option 2',
-      value: 0,
-      disabled: true,
-    },
-    {
-      text: 'Option 3',
-      value: 0,
-      disabled: false,
-    },
-    {
-      text: 'Option 4',
-      value: 0,
-    },
-    {
-      text: 'Option 5',
-      value: 0,
-      disabled: true,
-    },
-    {
-      text: 'Option 6',
-      value: 0,
-    },
-  ],
-  label: 'Selection d’options',
-  description: 'Je suis une description, je décris, c’est ma raison d’être',
-  successMessage: '',
-  errorMessage: '',
-  disabled: false,
-  modelValue: 'Option 2',
-  required: false,
+  }),
 }
 
-export const ListeDeroulanteAvecOptionsGroupees = (args) => ({
-  components: {
-    DsfrSelect,
+export const ListeDeroulanteRequise: StoryObj<typeof meta> = {
+  args: {
+    options: [
+      'Option 1',
+      'Option 2',
+      'Option 3',
+      'Option 4',
+      'Option 5',
+      'Option 6',
+    ],
+    label: 'Sélection d\'options',
+    description: 'Je suis une description, je décris, c\'est ma raison d\'être',
+    successMessage: '',
+    errorMessage: '',
+    disabled: false,
+    modelValue: 'Option 2',
+    required: true,
   },
-
-  data () {
-    return {
-      ...args,
-    }
-  },
-
-  template: `
-    <div :data-fr-theme="dark ? 'dark' : ''" style="background-color: var(--grey-1000-50); padding: 1rem;">
+  render: (args) => ({
+    components: { DsfrSelect },
+    setup() {
+      return { args }
+    },
+    template: `
       <DsfrSelect
-        :required="required"
-        :label="label"
-        :optionGroups="optionGroups"
-        :description="description"
-        :success-message="successMessage"
-        :error-message="errorMessage"
-        :disabled="disabled"
-        v-model="modelValue"
+        v-model="args.modelValue"
+        :required="args.required"
+        :label="args.label"
+        :options="args.options"
+        :description="args.description"
+        :success-message="args.successMessage"
+        :error-message="args.errorMessage"
+        :disabled="args.disabled"
       />
-    </div>
     `,
-
-  watch: {
-    modelValue (newVal) {
-      this.onChange(newVal)
-    },
-  },
-})
-
-ListeDeroulanteAvecOptionsGroupees.args = {
-  optionGroups: [
-    {
-      label: 'groupe 1',
-      options: [
-        { value: 'Value 1', text: 'Option 1' },
-        { value: 'Value 2', text: 'Option 2' },
-      ],
-    },
-    {
-      label: 'groupe 2',
-      disabled: true,
-      options: [
-        { value: 'Value 3', text: 'Option 3' },
-        { value: 'Value 4', text: 'Option 4' },
-        { value: 'Value 5', text: 'Option 5' },
-      ],
-    },
-  ],
-  label: 'Selection d’options groupées',
-  description: 'le groupe 1 est actif et le 2 est inactif, l‘option 1 est selectionnée par défaut',
-  successMessage: '',
-  errorMessage: '',
-  disabled: false,
-  modelValue: 'Value 1',
-  required: false,
+  }),
 }
+
+
+export const ListeDeroulanteRequisePersonnalisee: StoryObj<typeof meta> = {
+  args: {
+    options: [
+      'Option 1',
+      'Option 2',
+      'Option 3',
+      'Option 4',
+      'Option 5',
+      'Option 6',
+    ],
+    label: 'Sélection d\'options',
+    description: 'Je suis une description, je décris, c\'est ma raison d\'être',
+    successMessage: '',
+    errorMessage: '',
+    disabled: false,
+    modelValue: 'Option 2',
+    required: true,
+  },
+  render: (args) => ({
+    components: { DsfrSelect },
+    setup() {
+      watch(() => args.modelValue, (newVal) => {
+        args['onUpdate:modelValue'](newVal)
+      })
+      return { args }
+    },
+    template: `
+      <DsfrSelect
+        :required="args.required"
+        :label="args.label"
+        :options="args.options"
+        :description="args.description"
+        :success-message="args.successMessage"
+        :error-message="args.errorMessage"
+        :disabled="args.disabled"
+        v-model="args.modelValue"
+      >
+        <template #required-tip>
+          <em> (obligatoire)</em>
+        </template>
+      </DsfrSelect>
+    `,
+  }),
+}
+
+
+
+export const ListeDeroulanteInactive: StoryObj<typeof meta> = {
+  args: {
+    options: [
+      'Option 1',
+      'Option 2',
+      'Option 3',
+      'Option 4',
+      'Option 5',
+      'Option 6',
+    ],
+    label: 'Sélection d\'options',
+    description: 'Je suis une description, je décris, c\'est ma raison d\'être',
+    successMessage: '',
+    errorMessage: '',
+    disabled: true,
+    modelValue: 'Option 2',
+    required: false,
+  },
+  render: (args) => ({
+    components: { DsfrSelect },
+    setup() {
+      watch(() => args.modelValue, (newVal) => {
+        args['onUpdate:modelValue'](newVal)
+      })
+      return { args }
+    },
+    template: `
+      <div :data-fr-theme="dark ? 'dark' : ''" style="background-color: var(--grey-1000-50); padding: 1rem;">
+        <DsfrSelect
+          :required="args.required"
+          :label="args.label"
+          :options="args.options"
+          :description="args.description"
+          :success-message="args.successMessage"
+          :error-message="args.errorMessage"
+          :disabled="args.disabled"
+          v-model="args.modelValue"
+        />
+      </div>
+    `,
+  }),
+}
+
+
+export const ListeDeroulanteAvecOptionsInactives: StoryObj<typeof meta> = {
+  args: {
+    options: [
+      {
+        text: 'Option 1',
+        value: 0,
+      },
+      {
+        text: 'Option 2',
+        value: 0,
+        disabled: true,
+      },
+      {
+        text: 'Option 3',
+        value: 0,
+        disabled: false,
+      },
+      {
+        text: 'Option 4',
+        value: 0,
+      },
+      {
+        text: 'Option 5',
+        value: 0,
+        disabled: true,
+      },
+      {
+        text: 'Option 6',
+        value: 0,
+      },
+    ],
+    label: 'Sélection d\'options',
+    description: 'Je suis une description, je décris, c\'est ma raison d\'être',
+    successMessage: '',
+    errorMessage: '',
+    disabled: false,
+    modelValue: 'Option 2',
+    required: false,
+  },
+  render: (args) => ({
+    components: { DsfrSelect },
+    setup() {
+      watch(() => args.modelValue, (newVal) => {
+        args['onUpdate:modelValue'](newVal)
+      })
+      return { args }
+    },
+    template: `
+      <div :data-fr-theme="dark ? 'dark' : ''" style="background-color: var(--grey-1000-50); padding: 1rem;">
+        <DsfrSelect
+          :required="args.required"
+          :label="args.label"
+          :options="args.options"
+          :description="args.description"
+          :success-message="args.successMessage"
+          :error-message="args.errorMessage"
+          :disabled="args.disabled"
+          v-model="args.modelValue"
+        />
+      </div>
+    `,
+  }),
+}
+
+export const ListeDeroulanteAvecOptionsGroupees: StoryObj<typeof meta> = {
+  args: {
+    optionGroups: [
+      {
+        label: 'groupe 1',
+        options: [
+          { value: 'Value 1', text: 'Option 1' },
+          { value: 'Value 2', text: 'Option 2' },
+        ],
+      },
+      {
+        label: 'groupe 2',
+        disabled: true,
+        options: [
+          { value: 'Value 3', text: 'Option 3' },
+          { value: 'Value 4', text: 'Option 4' },
+          { value: 'Value 5', text: 'Option 5' },
+        ],
+      },
+    ],
+    label: 'Sélection d\'options groupées',
+    description: 'le groupe 1 est actif et le 2 est inactif, l\'option 1 est selectionnée par défaut',
+    successMessage: '',
+    errorMessage: '',
+    disabled: false,
+    modelValue: 'Value 1',
+    required: false,
+  },
+  render: (args) => ({
+    components: { DsfrSelect },
+    setup() {
+      watch(() => args.modelValue, (newVal) => {
+        args['onUpdate:modelValue'](newVal)
+      })
+      return { args }
+    },
+    template: `
+      <div :data-fr-theme="args.dark ? 'dark' : ''" style="background-color: var(--grey-1000-50); padding: 1rem;">
+        <DsfrSelect
+          :required="args.required"
+          :label="args.label"
+          :optionGroups="args.optionGroups"
+          :description="args.description"
+          :success-message="args.successMessage"
+          :error-message="args.errorMessage"
+          :disabled="args.disabled"
+          v-model="args.modelValue"
+        />
+      </div>
+    `,
+  }),
+}
+
+
