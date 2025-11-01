@@ -1,9 +1,11 @@
+import type { Meta, StoryObj } from '@storybook/vue3'
+
 import DsfrSummary from './DsfrSummary.vue'
 
 /**
  * [Voir quand l’utiliser sur la documentation du DSFR](https://www.systeme-de-design.gouv.fr/version-courante/fr/composants/sommaire)
  */
-export default {
+const meta = {
   component: DsfrSummary,
   title: 'Composants/DsfrSummary',
   argTypes: {
@@ -17,25 +19,31 @@ export default {
         'Tableau d\'objets contenant le nom des ancres et le lien correspondant',
     },
   },
-}
+} satisfies Meta<typeof DsfrSummary>
 
-export const Sommaire = (args) => ({
-  components: { DsfrSummary },
-  data () {
-    return args
-  },
-  template: `
+export default meta
+
+type Story = StoryObj<typeof meta>
+
+export const Sommaire: Story = {
+  render: (args) => ({
+    components: { DsfrSummary },
+    setup () {
+      return { args }
+    },
+    template: `
     <DsfrSummary
-      :title="title"
-      :anchors="anchors"
+      :title="args.title"
+      :anchors="args.anchors"
     />
   `,
-})
-Sommaire.args = {
-  title: 'Exemple de sommaire',
-  anchors: [
-    { link: '#', name: 'Première étape' },
-    { link: '#', name: 'Deuxième étape' },
-    { link: '#', name: 'Troisième étape' },
-  ],
+  }),
+  args: {
+    title: 'Exemple de sommaire',
+    anchors: [
+      { link: '#', name: 'Première étape' },
+      { link: '#', name: 'Deuxième étape' },
+      { link: '#', name: 'Troisième étape' },
+    ],
+  },
 }
