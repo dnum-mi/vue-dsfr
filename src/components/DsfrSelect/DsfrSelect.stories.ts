@@ -1,3 +1,5 @@
+import type { Meta, StoryObj } from '@storybook/vue3-vite'
+
 import { fn } from 'storybook/test'
 
 import DsfrSelect from './DsfrSelect.vue'
@@ -17,12 +19,12 @@ export default {
     required: {
       control: 'boolean',
       description:
-        'Option permettant de rendre ce champ de formulaire obligatoire et d’assigner au label un astérisque afin de rendre ce changement visible',
+        'Option permettant de rendre ce champ de formulaire obligatoire et d'assigner au label un astérisque afin de rendre ce changement visible',
     },
-    // label: {
-    //   control: 'text',
-    //   description: 'Label associé au `select`, donne le focus sur ce dernier au clic',
-    // },
+    label: {
+      control: 'text',
+      description: 'Label associé au `select`, donne le focus sur ce dernier au clic',
+    },
     options: {
       control: 'object',
       description:
@@ -31,11 +33,15 @@ export default {
     optionGroups: {
       control: 'object',
       description:
-        'Liste des options groupées proposées par le `<select>` à lui passer sous forme de tableau d’objets (groupe) avec une propriété `"label"` et une propriété options qui est un tableau d‘options`',
+        'Liste des options groupées proposées par le `<select>` à lui passer sous forme de tableau d'objets (groupe) avec une propriété `"label"` et une propriété options qui est un tableau d'options`',
+    },
+    hint: {
+      control: 'text',
+      description: 'Texte d'aide associé au champ',
     },
     description: {
       control: 'text',
-      description: 'Description optionnelle du `select`',
+      description: 'Description optionnelle du `select` (déprécié, utiliser `hint`)',
     },
     successMessage: {
       control: 'text',
@@ -60,46 +66,37 @@ export default {
       control: 'boolean',
       description: 'Option empêchant toute interaction avec le `select`',
     },
-    'update:modelValue': {
-      control: 'text',
-      description: 'Événement émis lors du changement de l’option sélectionnée',
-    },
-    onChange: {
+    'onUpdate:modelValue': {
       action: fn(),
+      description: 'Événement émis lors du changement de l'option sélectionnée (visible dans l'onglet ***Actions*** de Storybook)',
     },
   },
+} satisfies Meta<typeof DsfrSelect>
+
+export default meta
+type Story = StoryObj<typeof meta>
+
+export const ListeDeroulante: Story = {
+  render: (args) => ({
+    components: { DsfrSelect },
+    setup() {
+      return { args }
+    },
+    template: `
+      <DsfrSelect
+        :required="args.required"
+        :label="args.label"
+        :options="args.options"
+        :hint="args.hint"
+        :success-message="args.successMessage"
+        :error-message="args.errorMessage"
+        :disabled="args.disabled"
+        v-model="args.modelValue"
+        @update:model-value="args['onUpdate:modelValue']"
+      />
+    `,
+  }),
 }
-
-export const ListeDeroulante = (args) => ({
-  components: {
-    DsfrSelect,
-  },
-
-  data () {
-    return {
-      ...args,
-    }
-  },
-
-  template: `
-    <DsfrSelect
-      :required="required"
-      :label="label"
-      :options="options"
-      :description="description"
-      :success-message="successMessage"
-      :error-message="errorMessage"
-      :disabled="disabled"
-      v-model="modelValue"
-    />
-  `,
-
-  watch: {
-    modelValue (newVal) {
-      this.onChange(newVal)
-    },
-  },
-})
 
 ListeDeroulante.args = {
   options: [
@@ -110,8 +107,8 @@ ListeDeroulante.args = {
     'Option 5',
     'Option 6',
   ],
-  label: 'Selection d’options',
-  description: 'Je suis une description, je décris, c’est ma raison d’être',
+  label: 'Sélection d'options',
+  hint: 'Je suis une description, je décris, c'est ma raison d'être',
   successMessage: '',
   errorMessage: '',
   disabled: false,

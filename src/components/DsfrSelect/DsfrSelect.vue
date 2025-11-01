@@ -25,7 +25,24 @@ const props = withDefaults(defineProps<DsfrSelectProps>(), {
   defaultUnselectedText: 'Sélectionner une option',
 })
 
-defineEmits<{ (e: 'update:modelValue', payload: string | number): void }>()
+defineEmits<{
+  /** Événement émis lors du changement de l'option sélectionnée */
+  'update:modelValue': [payload: string | number]
+}>()
+
+defineSlots<{
+  /**
+   * Slot pour personnaliser tout le contenu de la balise <label>
+   * cf. [DsfrInput](/?path=/story/composants-champ-de-saisie-champ-simple-dsfrinput--champ-avec-label-personnalise).
+   * Une **props porte le même nom pour un label simple** (texte sans mise en forme)
+   */
+  label: () => any
+  /**
+   * Slot pour indiquer que le champ est obligatoire.
+   * Par défaut, met une astérisque si `required` est à true (dans un `<span class="required">`)
+   */
+  'required-tip': () => any
+}>()
 
 if (props.description) {
   console.warn(
@@ -50,10 +67,8 @@ const messageType = computed(() => {
       class="fr-label"
       :for="selectId"
     >
-      <!-- @slot Slot pour personnaliser tout le contenu de la balise <label> cf. [DsfrInput](/?path=/story/composants-champ-de-saisie-champ-simple-dsfrinput--champ-avec-label-personnalise). Une **props porte le même nom pour un label simple** (texte sans mise en forme) -->
       <slot name="label">
         {{ label }}
-        <!-- @slot Slot pour indiquer que le champ est obligatoire. Par défaut, met une astérisque si `required` est à true (dans un `<span class="required">`) -->
         <slot name="required-tip">
           <span
             v-if="required"
