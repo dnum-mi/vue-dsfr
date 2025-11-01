@@ -11,6 +11,11 @@ const props = withDefaults(defineProps<DsfrTooltipProps>(), {
   id: () => useRandomId('tooltip'),
 })
 
+defineSlots<{
+  /** Slot par défaut pour le contenu sur lequel sera l'infobulle */
+  default?: () => any
+}>()
+
 const show = ref(false)
 
 const source = ref<HTMLElement | null>(null)
@@ -155,7 +160,6 @@ onUnmounted(() => {
     @focus="onMouseEnterHandler($event)"
     @blur="onMouseLeave()"
   >
-    <!-- @slot Slot par défaut pour le contenu de l’infobulle -->
     <slot />
   </component>
   <span
