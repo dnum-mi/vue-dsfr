@@ -1,11 +1,14 @@
+import type { Meta, StoryObj } from '@storybook/vue3'
+
 import { expect, fn, within } from 'storybook/test'
+import { ref, watch } from 'vue'
 
 import DsfrToggleSwitch from './DsfrToggleSwitch.vue'
 
 /**
  * [Voir quand l’utiliser sur la documentation du DSFR](https://www.systeme-de-design.gouv.fr/version-courante/fr/composants/interrupteur)
  */
-export default {
+const meta = {
   component: DsfrToggleSwitch,
   title: 'Composants/DsfrToggleSwitch',
   tags: ['formulaire'],
@@ -43,6 +46,7 @@ export default {
       action: fn(),
       description:
         'Appelé à chaque changement de la valeur `checked`.\n\n*N.B. : Ne fait pas partie du composant.*',
+      table: { category: 'Hors composant' },
     },
     activeText: {
       control: 'text',
@@ -61,168 +65,187 @@ export default {
         'Evènement de mise à jour de la valeur contenue dans modelValue',
     },
   },
-}
+} satisfies Meta<typeof DsfrToggleSwitch>
 
-export const Interrupteur = (args) => ({
-  components: { DsfrToggleSwitch },
-  data () {
-    return args
-  },
-  template: `
+export default meta
+
+type Story = StoryObj<typeof meta>
+
+export const Interrupteur: Story = {
+  render: (args) => ({
+    components: { DsfrToggleSwitch },
+    setup () {
+      watch(() => args.modelValue, (newVal) => {
+        args.onChange?.(newVal)
+      })
+
+      return {
+        args,
+      }
+    },
+    template: `
     <DsfrToggleSwitch
-      v-model="modelValue"
-      :label="label"
-      :hint="hint"
-      :disabled="disabled"
-      :input-id="inputId"
+      v-model="args.modelValue"
+      :label="args.label"
+      :hint="args.hint"
+      :disabled="args.disabled"
+      :input-id="args.inputId"
     />
   `,
-  watch: {
-    modelValue (newVal) {
-      this.onChange(newVal)
-    },
+  }),
+  args: {
+    label: 'Interrupteur 1',
+    hint: 'Indice',
+    disabled: false,
+    inputId: 'toggle-1',
+    modelValue: true,
   },
-})
-Interrupteur.args = {
-  label: 'Interrupteur 1',
-  hint: 'Indice',
-  disabled: false,
-  inputId: 'toggle-1',
-  modelValue: true,
 }
 
-export const InterrupteurAvecLabelAGauche = (args) => ({
-  components: { DsfrToggleSwitch },
-  data () {
-    return args
-  },
-  template: `
+export const InterrupteurAvecLabelAGauche: Story = {
+  name: 'Interrupteur Avec Label À Gauche',
+  render: (args) => ({
+    components: { DsfrToggleSwitch },
+    setup () {
+      watch(() => args.modelValue, (newVal) => {
+        args.onChange?.(newVal)
+      })
+
+      return {
+        args,
+      }
+    },
+    template: `
     <DsfrToggleSwitch
-      v-model="modelValue"
-      :label="label"
-      :hint="hint"
-      :disabled="disabled"
-      :input-id="inputId"
-      :labelLeft="labelLeft"
+      v-model="args.modelValue"
+      :label="args.label"
+      :hint="args.hint"
+      :disabled="args.disabled"
+      :input-id="args.inputId"
+      :labelLeft="args.labelLeft"
     />
   `,
-  watch: {
-    modelValue (newVal) {
-      this.onChange(newVal)
-    },
+  }),
+  args: {
+    label: 'Interrupteur 1',
+    hint: 'Indice',
+    disabled: false,
+    inputId: 'toggle-2',
+    modelValue: true,
+    labelLeft: true,
   },
-})
-InterrupteurAvecLabelAGauche.args = {
-  label: 'Interrupteur 1',
-  hint: 'Indice',
-  disabled: false,
-  inputId: 'toggle-2',
-  modelValue: true,
-  labelLeft: true,
 }
 
-export const InterrupteurAvecBordure = (args) => ({
-  components: { DsfrToggleSwitch },
-  data () {
-    return args
-  },
-  template: `
+export const InterrupteurAvecBordure: Story = {
+  render: (args) => ({
+    components: { DsfrToggleSwitch },
+    setup () {
+      watch(() => args.modelValue, (newVal) => {
+        args.onChange?.(newVal)
+      })
+
+      return {
+        args,
+      }
+    },
+    template: `
     <DsfrToggleSwitch
-      v-model="modelValue"
-      :label="label"
-      :hint="hint"
-      :disabled="disabled"
-      :input-id="inputId"
-      :borderBottom="borderBottom"
+      v-model="args.modelValue"
+      :label="args.label"
+      :hint="args.hint"
+      :disabled="args.disabled"
+      :input-id="args.inputId"
+      :borderBottom="args.borderBottom"
     />
   `,
-  watch: {
-    modelValue (newVal) {
-      this.onChange(newVal)
-    },
+  }),
+  args: {
+    label: 'Interrupteur 1',
+    hint: 'Indice',
+    disabled: false,
+    inputId: 'toggle-3',
+    modelValue: true,
+    borderBottom: true,
   },
-})
-InterrupteurAvecBordure.args = {
-  label: 'Interrupteur 1',
-  hint: 'Indice',
-  disabled: false,
-  inputId: 'toggle-3',
-  modelValue: true,
-  borderBottom: true,
 }
 
-export const InterrupteurAvecTextePersonnalisé = (args) => ({
-  components: { DsfrToggleSwitch },
-  data () {
-    return args
-  },
-  template: `
+export const InterrupteurAvecTextePersonnalise: Story = {
+  name: 'Interrupteur Avec Texte Personnalisé',
+  render: (args) => ({
+    components: { DsfrToggleSwitch },
+    setup () {
+      watch(() => args.modelValue, (newVal) => {
+        args.onChange?.(newVal)
+      })
+
+      return {
+        args,
+      }
+    },
+    template: `
     <DsfrToggleSwitch
-      v-model="modelValue"
-      :label="label"
-      :hint="hint"
-      :input-id="inputId"
-      :active-text="activeText"
-      :inactive-text="inactiveText"
+      v-model="args.modelValue"
+      :label="args.label"
+      :hint="args.hint"
+      :disabled="args.disabled"
+      :input-id="args.inputId"
+      :active-text="args.activeText"
+      :inactive-text="args.inactiveText"
     />
   `,
-  watch: {
-    modelValue (newVal) {
-      this.onChange(newVal)
-    },
+  }),
+  args: {
+    label: 'Interrupteur 1',
+    hint: 'Indice',
+    inputId: 'toggle-4',
+    modelValue: true,
+    disabled: false,
+    activeText: 'Autorisé',
+    inactiveText: 'Interdit',
   },
-})
-InterrupteurAvecTextePersonnalisé.args = {
-  label: 'Interrupteur 1',
-  hint: 'Indice',
-  inputId: 'toggle-4',
-  modelValue: true,
-  activeText: 'Autorisé',
-  inactiveText: 'Interdit',
+  async play ({ canvasElement }) {
+    const canvas = within(canvasElement)
+    const toggleSwitch = canvas.getByLabelText('Interrupteur 1') as HTMLInputElement
+    expect(toggleSwitch).toHaveProperty('checked', true)
+    toggleSwitch.click()
+    expect(toggleSwitch).toHaveProperty('checked', false)
+    toggleSwitch.click()
+    expect(toggleSwitch).toHaveProperty('checked', true)
+
+    const hint = canvas.getByText('Indice') as HTMLParagraphElement
+    expect(hint).toBeVisible()
+  },
 }
 
-export const InterrupteurSansTexte = (args) => ({
-  components: { DsfrToggleSwitch },
-  data () {
-    return args
-  },
-  template: `
+export const InterrupteurSansTexte: Story = {
+  render: (args) => ({
+    components: { DsfrToggleSwitch },
+    setup () {
+      watch(() => args.modelValue, (newVal) => {
+        args.onChange?.(newVal)
+      })
+
+      return {
+        args,
+      }
+    },
+    template: `
     <DsfrToggleSwitch
-      v-model="modelValue"
-      :label="label"
-      :hint="hint"
-      :input-id="inputId"
-      :no-text="noText"
+      v-model="args.modelValue"
+      :label="args.label"
+      :hint="args.hint"
+      :disabled="args.disabled"
+      :input-id="args.inputId"
+      :no-text="args.noText"
     />
   `,
-  watch: {
-    modelValue (newVal) {
-      this.onChange(newVal)
-    },
+  }),
+  args: {
+    label: 'Interrupteur 1',
+    hint: 'Indice',
+    inputId: 'toggle-5',
+    modelValue: true,
+    disabled: true,
+    noText: true,
   },
-})
-InterrupteurSansTexte.args = {
-  label: 'Interrupteur 1',
-  hint: 'Indice',
-  inputId: 'toggle-5',
-  modelValue: true,
-  noText: true,
-}
-
-InterrupteurAvecTextePersonnalisé.play = async ({ canvasElement }) => {
-  const canvas = within(canvasElement)
-  const toggleSwitch = canvas.getByLabelText('Interrupteur 1') as HTMLInputElement
-  expect(toggleSwitch.checked).toBe(true)
-  toggleSwitch.click()
-  expect(toggleSwitch.checked).toBe(false)
-  toggleSwitch.click()
-
-  const toggleSwitchLabel = canvas.getByText('Interrupteur 1') as HTMLLabelElement
-  toggleSwitchLabel.click()
-  expect(toggleSwitch.checked).toBe(false)
-  toggleSwitchLabel.click()
-  expect(toggleSwitch.checked).toBe(true)
-
-  const hint = canvas.getByText('Indice') as HTMLParagraphElement
-  expect(hint).toBeVisible()
 }
