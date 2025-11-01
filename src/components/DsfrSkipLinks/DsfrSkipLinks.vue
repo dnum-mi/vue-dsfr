@@ -5,6 +5,10 @@ export type { DsfrSkipLinksProps }
 
 defineProps<DsfrSkipLinksProps>()
 
+/**
+ * Fait défiler la page vers l'élément ciblé et lui donne le focus
+ * @param elementId - L'ID de l'élément vers lequel naviguer
+ */
 const scrollMeTo = (elementId: string) => {
   const element = document.getElementById(elementId)
   element?.focus()
