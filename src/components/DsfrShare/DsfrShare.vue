@@ -27,9 +27,7 @@ const openWindow = ({ url, label }: { url: string, label: string }) => {
 <template>
   <div class="fr-share">
     <p class="fr-share__title">
-      <slot name="title">
-        {{ title }}
-      </slot>
+      {{ title }}
     </p>
     <ul class="fr-btns-group">
       <li

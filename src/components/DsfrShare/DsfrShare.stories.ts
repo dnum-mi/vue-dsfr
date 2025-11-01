@@ -5,7 +5,7 @@ import DsfrShare from './DsfrShare.vue'
 /**
  * [Voir quand l’utiliser sur la documentation du DSFR](https://www.systeme-de-design.gouv.fr/version-courante/fr/composants/partage)
  */
-export default {
+const meta = {
   component: DsfrShare,
   title: 'Composants/DsfrShare',
   tags: ['réseaux sociaux'],
@@ -62,7 +62,7 @@ export const Partage: Story = {
   },
   render: (args) => ({
     components: { DsfrShare },
-    setup() {
+    setup () {
       return { args }
     },
     template: `

@@ -140,7 +140,7 @@ export const ListeDeroulanteEnAnglais: Story = {
   },
   render: (args) => ({
     components: { DsfrSelect },
-    setup() {
+    setup () {
       watch(() => args.modelValue, (newVal) => {
         args['onUpdate:modelValue'](newVal)
       })
@@ -182,7 +182,7 @@ export const ListeDeroulanteRequise: StoryObj<typeof meta> = {
   },
   render: (args) => ({
     components: { DsfrSelect },
-    setup() {
+    setup () {
       return { args }
     },
     template: `
@@ -199,7 +199,6 @@ export const ListeDeroulanteRequise: StoryObj<typeof meta> = {
     `,
   }),
 }
-
 
 export const ListeDeroulanteRequisePersonnalisee: StoryObj<typeof meta> = {
   args: {
@@ -221,7 +220,7 @@ export const ListeDeroulanteRequisePersonnalisee: StoryObj<typeof meta> = {
   },
   render: (args) => ({
     components: { DsfrSelect },
-    setup() {
+    setup () {
       watch(() => args.modelValue, (newVal) => {
         args['onUpdate:modelValue'](newVal)
       })
@@ -246,8 +245,6 @@ export const ListeDeroulanteRequisePersonnalisee: StoryObj<typeof meta> = {
   }),
 }
 
-
-
 export const ListeDeroulanteInactive: StoryObj<typeof meta> = {
   args: {
     options: [
@@ -268,7 +265,7 @@ export const ListeDeroulanteInactive: StoryObj<typeof meta> = {
   },
   render: (args) => ({
     components: { DsfrSelect },
-    setup() {
+    setup () {
       watch(() => args.modelValue, (newVal) => {
         args['onUpdate:modelValue'](newVal)
       })
@@ -290,7 +287,6 @@ export const ListeDeroulanteInactive: StoryObj<typeof meta> = {
     `,
   }),
 }
-
 
 export const ListeDeroulanteAvecOptionsInactives: StoryObj<typeof meta> = {
   args: {
@@ -333,7 +329,7 @@ export const ListeDeroulanteAvecOptionsInactives: StoryObj<typeof meta> = {
   },
   render: (args) => ({
     components: { DsfrSelect },
-    setup() {
+    setup () {
       watch(() => args.modelValue, (newVal) => {
         args['onUpdate:modelValue'](newVal)
       })
@@ -386,7 +382,7 @@ export const ListeDeroulanteAvecOptionsGroupees: StoryObj<typeof meta> = {
   },
   render: (args) => ({
     components: { DsfrSelect },
-    setup() {
+    setup () {
       watch(() => args.modelValue, (newVal) => {
         args['onUpdate:modelValue'](newVal)
       })
@@ -408,5 +404,3 @@ export const ListeDeroulanteAvecOptionsGroupees: StoryObj<typeof meta> = {
     `,
   }),
 }
-
-
