@@ -1,3 +1,5 @@
+import type { Meta, StoryObj } from '@storybook/vue3'
+
 import { setup } from '@storybook/vue3-vite'
 
 import DsfrModal from '../DsfrModal/DsfrModal.vue'
@@ -10,10 +12,7 @@ setup((app) => {
   app.component('VIcon', VIcon)
 })
 
-/**
- * [Voir quand l’utiliser sur la documentation du DSFR](https://www.systeme-de-design.gouv.fr/version-courante/fr/composants/transcription)
- */
-export default {
+const meta = {
   component: DsfrTranscription,
   title: 'Composants/DsfrTranscription',
   argTypes: {
@@ -27,21 +26,35 @@ export default {
       description: 'Transcription du contenu de la vidéo',
     },
   },
-}
+} satisfies Meta<typeof DsfrTranscription>
 
-export const Transcription = (args) => ({
-  components: { DsfrTranscription, DsfrModal },
-  data () {
-    return args
-  },
-  template: `
+export default meta
+
+type Story = StoryObj<typeof meta>
+
+/**
+ * [Voir quand l'utiliser sur la documentation du DSFR](https://www.systeme-de-design.gouv.fr/version-courante/fr/composants/transcription)
+ */
+
+export const Transcription: Story = {
+  render: (args) => ({
+    components: { DsfrTranscription, DsfrModal },
+
+    setup () {
+      return args
+    },
+
+    template: `
     <DsfrTranscription
-      :title="title"
-      :content="content"
+      :id
+      :title
+      :content
     />
   `,
-})
-Transcription.args = {
-  title: 'Chats hiver',
-  content: 'Des chatons jouant dans la neige',
+  }),
+  args: {
+    title: 'Chats hiver',
+    content: 'Des chatons jouant dans la neige',
+    id: '123',
+  },
 }
