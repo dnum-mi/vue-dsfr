@@ -1,6 +1,6 @@
-import type { Meta, StoryObj } from '@storybook/vue3'
-import { fn } from '@storybook/test'
-import { ref } from 'vue'
+import type { Meta, StoryObj } from '@storybook/vue3-vite'
+
+import { fn } from 'storybook/test'
 
 import DsfrSegmented from './DsfrSegmented.vue'
 
@@ -17,50 +17,43 @@ const meta = {
       description:
         '(optionnel) Valeur de l’attribut `id` du contrôle segmenté. Par défaut, un id pseudo-aléatoire sera donné.',
     },
-    options: {
-      control: 'object',
-      description:
-        'Tableau d’objets : chaque objet contient les props à passer à `DsfrSegmented` - *N.B. : Ne fait pas partie du composant',
+    name: {
+      control: 'text',
+      description: 'Nom du groupe de boutons radio',
     },
+    value: {
+      control: 'text',
+      description: 'Valeur du bouton radio (obligatoire)',
+    },
+    label: {
+      control: 'text',
+      description: 'Texte du label associé au bouton',
+    },
+    disabled: {
+      control: 'boolean',
+      description: 'Si `true`, désactive le bouton radio',
+    },
+    icon: {
+      control: 'text',
+      description: 'Icône à afficher à côté du label. Si la valeur commence par `fr-`, cette classe sera ajoutée à la balise `<label>`, sinon c\'est une icône Iconify qui sera utilisée',
+    },
+
     modelValue: {
       control: 'radio',
       options: ['1', '3'],
       description: 'Valeur de la case active',
     },
-    'onUpdate:modelValue': fn(),
+    'onUpdate:modelValue': {
+      action: fn(),
+      table: { category: 'Pour cette histoire uniquement' },
+    },
   },
-} satisfies Meta<typeof DsfrSegmented>
+} as any
 
 export default meta
 type Story = StoryObj<typeof meta>
 
 export const ControleSegmente: Story = {
-  render: (args) => ({
-    components: { DsfrSegmented },
-    setup () {
-      return {
-        args,
-      }
-    },
-    template: `
-  <div class="fr-form-group">
-    <fieldset
-      class="fr-segmented"
-    >
-      <div
-        class="fr-segmented__elements"
-      >
-        <DsfrSegmented
-          v-for="(option, i) of args.options"
-          :key="i"
-          v-model="args.modelValue"
-          v-bind="option"
-        />
-      </div>
-    </fieldset>
-  </div>
-  `,
-  }),
   args: {
     modelValue: '3',
     'onUpdate:modelValue': fn(),
@@ -82,5 +75,30 @@ export const ControleSegmente: Story = {
         name: 'Choix',
       },
     ],
-  },
+  } as any,
+  render: (args) => ({
+    components: { DsfrSegmented },
+    setup () {
+      return {
+        args,
+      }
+    },
+    template: `
+  <div class="fr-form-group">
+    <fieldset
+      class="fr-segmented"
+    >
+      <div
+        class="fr-segmented__elements"
+      >
+        <DsfrSegmented
+          v-model="args.modelValue"
+          v-for="(option, i) of args.options"
+          :key="i"
+          v-bind="option"
+        />
+      </div>
+    </fieldset>
+  </div>
+  `,
 }
