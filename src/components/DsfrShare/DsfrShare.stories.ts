@@ -1,3 +1,5 @@
+import type { Meta, StoryObj } from '@storybook/vue3'
+
 import DsfrShare from './DsfrShare.vue'
 
 /**
@@ -27,49 +29,49 @@ export default {
         'Texte à afficher au survol de l’icône de partage (contenu de l’attribut `titre` du `<button>)',
     },
   },
-}
+} satisfies Meta<typeof DsfrShare>
 
-export const Partage = (args) => ({
-  components: {
-    DsfrShare,
-  },
-  data () {
-    return {
-      ...args,
-    }
-  },
+export default meta
+type Story = StoryObj<typeof meta>
 
-  template: `
-  <DsfrShare
-    :title="title"
-    :networks="networks"
-    :mail="mail"
-    :copy-label="copyLabel"
-  />
-  `,
-})
-Partage.args = {
-  copyLabel: 'Copier dans le presse-papier',
-  mail: {
-    to: 'mailto:user@example.com?subject=Sujet&body=Corps du courriel',
-    label: 'Envoyer un mail',
+export const Partage: Story = {
+  args: {
+    copyLabel: 'Copier dans le presse-papier',
+    mail: {
+      to: 'mailto:user@example.com?subject=Sujet&body=Corps du courriel',
+      label: 'Envoyer un mail',
+    },
+    networks: [
+      {
+        name: 'facebook',
+        label: 'Partager sur Facebook',
+        url: 'https://www.facebook.com/sharer.php?u=[À MODIFIER - url de la page]',
+      },
+      {
+        name: 'twitter-x',
+        label: 'Partager sur X (anciennement Twitter)',
+        url: 'https://twitter.com/intent/tweet?url=[À MODIFIER - url de la page]&text=[À MODIFIER - titre ou texte descriptif de la page]&via=[À MODIFIER - via]&hashtags=[À MODIFIER - hashtags]',
+      },
+      {
+        name: 'linkedin',
+        label: 'Partager sur LinkedIn',
+        url: 'https://www.linkedin.com/shareArticle?url=[À MODIFIER - url de la page]&title=[À MODIFIER - titre ou texte descriptif de la page]',
+      },
+    ],
+    title: 'Partages',
   },
-  networks: [
-    {
-      name: 'facebook',
-      label: 'Partager sur Facebook',
-      url: 'https://www.facebook.com/sharer.php?u=[À MODIFIER - url de la page]',
+  render: (args) => ({
+    components: { DsfrShare },
+    setup() {
+      return { args }
     },
-    {
-      name: 'twitter-x',
-      label: 'Partager sur X (anciennement Twitter)',
-      url: 'https://twitter.com/intent/tweet?url=[À MODIFIER - url de la page]&text=[À MODIFIER - titre ou texte descriptif de la page]&via=[À MODIFIER - via]&hashtags=[À MODIFIER - hashtags]',
-    },
-    {
-      name: 'linkedin',
-      label: 'Partager sur LinkedIn',
-      url: 'https://www.linkedin.com/shareArticle?url=[À MODIFIER - url de la page]&title=[À MODIFIER - titre ou texte descriptif de la page]',
-    },
-  ],
-  title: 'Partages',
+    template: `
+      <DsfrShare
+        :title="args.title"
+        :networks="args.networks"
+        :mail="args.mail"
+        :copy-label="args.copyLabel"
+      />
+    `,
+  }),
 }
