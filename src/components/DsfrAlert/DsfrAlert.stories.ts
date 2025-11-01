@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/vue3-vite'
 
-import { expect, within } from '@storybook/test'
+import { expect, within } from 'storybook/test'
 import { ref } from 'vue'
 
 import DsfrAlert from './DsfrAlert.vue'

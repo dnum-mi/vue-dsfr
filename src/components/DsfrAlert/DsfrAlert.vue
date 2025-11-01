@@ -15,7 +15,10 @@ const props = withDefaults(defineProps<DsfrAlertProps>(), {
   closeButtonLabel: 'Fermer le message',
 })
 
-const emit = defineEmits<{ (e: 'close'): void }>()
+const emit = defineEmits<{
+  /** Émis lors de la fermeture de l’alerte */
+  close: []
+}>()
 
 defineSlots<{
   /** Slot par défaut pour le contenu de l’alerte. Utilisable si pas de description en props */

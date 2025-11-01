@@ -1,5 +1,6 @@
-import type { Meta, StoryObj } from '@storybook/vue3'
-import { fn } from '@storybook/test'
+import type { Meta, StoryObj } from '@storybook/vue3-vite'
+
+import { fn } from 'storybook/test'
 import { ref } from 'vue'
 
 import DsfrRange from './DsfrRange.vue'
@@ -66,8 +67,14 @@ const meta = {
       control: 'boolean',
       description: 'Désactivé',
     },
-    'onUpdate:modelValue': { action: fn() },
-    'onUpdate:lowerValue': { action: fn() },
+    'onUpdate:modelValue': {
+      description: 'Appelé à chaque changement de valeur (visible dans l’onglet ***Actions*** de Storybook)',
+      action: fn(),
+    },
+    'onUpdate:lowerValue': {
+      description: 'Appelé à chaque changement de valeur basse (visible dans l’onglet ***Actions*** de Storybook)',
+      action: fn(),
+    },
   },
 } satisfies Meta<typeof DsfrRange>
 

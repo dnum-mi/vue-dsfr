@@ -1,6 +1,6 @@
-import type { Meta, StoryObj } from '@storybook/vue3'
+import type { Meta, StoryObj } from '@storybook/vue3-vite'
 
-import { expect, userEvent, within } from '@storybook/test'
+import { expect, userEvent, within } from 'storybook/test'
 import { ref, watch } from 'vue'
 
 import DsfrLanguageSelector from './DsfrLanguageSelector.vue'

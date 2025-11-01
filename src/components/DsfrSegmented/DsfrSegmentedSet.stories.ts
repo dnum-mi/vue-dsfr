@@ -1,7 +1,7 @@
-import type { Meta, StoryObj } from '@storybook/vue3'
+import type { Meta, StoryObj } from '@storybook/vue3-vite'
 
-import { fn } from '@storybook/test'
-import { ref } from 'vue'
+import { fn } from 'storybook/test'
+import { ref, watch } from 'vue'
 
 import DsfrSegmentedSet from './DsfrSegmentedSet.vue'
 
@@ -46,7 +46,8 @@ const meta = {
     },
     'onUpdate:modelValue': {
       action: fn(),
-      description: 'Événement émis à chaque changement de valeur',
+      table: { category: 'Hors composant' },
+      description: 'Appelé à chaque changement de valeur (visible dans l’onglet ***Actions*** de Storybook)',
     },
   },
 } satisfies Meta<typeof DsfrSegmentedSet>
@@ -58,22 +59,27 @@ const render = (args: typeof ControleSegmenteSimple.args) => ({
   components: { DsfrSegmentedSet },
   setup () {
     const modelValue = ref(args.modelValue)
+
+    watch(modelValue, (newValue) => {
+      if (newValue !== undefined) {
+        args['onUpdate:modelValue']?.(newValue)
+      }
+    })
     return {
-      ...args,
+      args,
       modelValue,
     }
   },
   template: `
     <DsfrSegmentedSet
-      :legend="legend"
+      :legend="args.legend"
       v-model="modelValue"
-      :name="name"
-      :options="options"
-      :inline="inline"
-      :small="small"
-      :hint="hint"
-      :disabled="disabled"
-      @update:model-value="args['onUpdate:modelValue']"
+      :name="args.name"
+      :options="args.options"
+      :inline="args.inline"
+      :small="args.small"
+      :hint="args.hint"
+      :disabled="args.disabled"
     />
   `,
 })
@@ -96,6 +102,7 @@ export const ControleSegmenteSimple: Story = {
       {
         label: 'Valeur 2',
         value: '2',
+        disabled: true,
       },
       {
         label: 'Valeur 3',

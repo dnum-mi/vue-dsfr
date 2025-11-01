@@ -1,5 +1,5 @@
-import type { Meta, StoryObj } from '@storybook/vue3'
-import { expect, fn, within } from '@storybook/test'
+import type { Meta, StoryObj } from '@storybook/vue3-vite'
+import { expect, fn, within } from 'storybook/test'
 import { ref } from 'vue'
 
 import DsfrRadioButton from './DsfrRadioButton.vue'

@@ -14,7 +14,10 @@ const props = withDefaults(defineProps<DsfrSegmentedSetProps>(), {
   options: () => [],
 })
 
-const emit = defineEmits<{ (e: 'update:modelValue', payload: string | number): void }>()
+const emit = defineEmits<{
+  /** Événement émis lors de la mise à jour de la valeur sélectionnée */
+  'update:modelValue': [payload: string | number]
+}>()
 
 defineSlots<{
   /**

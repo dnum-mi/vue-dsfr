@@ -1,8 +1,16 @@
+import type { DsfrSegmentedProps } from './DsfrSegmented.types'
 import type { Meta, StoryObj } from '@storybook/vue3-vite'
 
 import { fn } from 'storybook/test'
+import { watch } from 'vue'
 
 import DsfrSegmented from './DsfrSegmented.vue'
+
+// Interface étendue pour les stories avec la propriété options et les événements
+interface StoryArgs extends DsfrSegmentedProps {
+  options?: DsfrSegmentedProps[]
+  'onUpdate:modelValue'?: (value: string | number) => void
+}
 
 /**
  * [Voir quand l’utiliser sur la documentation du DSFR](https://www.systeme-de-design.gouv.fr/version-courante/fr/composants/controle-segmente)
@@ -37,7 +45,12 @@ const meta = {
       control: 'text',
       description: 'Icône à afficher à côté du label. Si la valeur commence par `fr-`, cette classe sera ajoutée à la balise `<label>`, sinon c\'est une icône Iconify qui sera utilisée',
     },
-
+    options: {
+      control: 'object',
+      description:
+        'Tableau d\'objets : chaque objet contient les props à passer à `DsfrSegmented` - *N.B. : Ne fait pas partie du composant',
+      table: { category: 'Hors composant' },
+    },
     modelValue: {
       control: 'radio',
       options: ['1', '3'],
@@ -45,13 +58,14 @@ const meta = {
     },
     'onUpdate:modelValue': {
       action: fn(),
-      table: { category: 'Pour cette histoire uniquement' },
+      description: 'Appelé à chaque changement de valeur (visible dans l’onglet ***Actions*** de Storybook)',
+      table: { category: 'Hors composant' },
     },
   },
-} as any
+} satisfies Meta<StoryArgs>
 
 export default meta
-type Story = StoryObj<typeof meta>
+type Story = StoryObj<Meta<StoryArgs>>
 
 export const ControleSegmente: Story = {
   args: {
@@ -75,10 +89,15 @@ export const ControleSegmente: Story = {
         name: 'Choix',
       },
     ],
-  } as any,
+  },
   render: (args) => ({
     components: { DsfrSegmented },
     setup () {
+      watch(() => args.modelValue, (newValue: string | number | undefined) => {
+        if (newValue !== undefined) {
+          args['onUpdate:modelValue']?.(newValue)
+        }
+      })
       return {
         args,
       }
@@ -101,4 +120,5 @@ export const ControleSegmente: Story = {
     </fieldset>
   </div>
   `,
+  }),
 }

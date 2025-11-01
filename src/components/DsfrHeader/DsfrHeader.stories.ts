@@ -1,7 +1,7 @@
 import type { DsfrHeaderProps } from './DsfrHeader.types'
-import type { Meta, StoryObj } from '@storybook/vue3'
+import type { Meta, StoryObj } from '@storybook/vue3-vite'
 
-import { expect, fn, userEvent, within } from '@storybook/test'
+import { expect, fn, userEvent, within } from 'storybook/test'
 import { ref, watch } from 'vue'
 
 import DsfrNavigation from '../DsfrNavigation/DsfrNavigation.vue'

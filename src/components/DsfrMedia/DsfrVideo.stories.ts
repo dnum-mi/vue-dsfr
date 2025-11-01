@@ -1,7 +1,7 @@
-import type { Meta, StoryObj } from '@storybook/vue3'
+import type { Meta, StoryObj } from '@storybook/vue3-vite'
 
-import { expect, fn, within } from '@storybook/test'
-import { setup } from '@storybook/vue3'
+import { expect, fn, within } from 'storybook/test'
+import { setup } from '@storybook/vue3-vite'
 
 import DsfrModal from '../DsfrModal/DsfrModal.vue'
 import VIcon from '../VIcon/VIcon.vue'

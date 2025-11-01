@@ -1,6 +1,6 @@
-import type { Meta, StoryObj } from '@storybook/vue3'
+import type { Meta, StoryObj } from '@storybook/vue3-vite'
 
-import { expect, fn, within } from '@storybook/test'
+import { expect, fn, within } from 'storybook/test'
 import { ref, watch } from 'vue'
 
 import DsfrPagination from './DsfrPagination.vue'
