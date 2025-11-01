@@ -15,7 +15,17 @@ const props = withDefaults(defineProps<DsfrSideMenuListProps>(), {
   menuItems: () => [],
 })
 
-defineEmits<{ (e: 'toggleExpand', payload: string): void }>()
+/**
+ * Événements émis par le composant DsfrSideMenuList
+ */
+const emit = defineEmits<{
+  toggleExpand: [payload: string]
+}>()
+
+defineSlots<{
+  /** Slot par défaut pour le contenu d'une liste du menu latéral */
+  default?: () => any
+}>()
 
 const {
   collapse,
@@ -62,7 +72,6 @@ const linkProps = (to: string | RouteLocationRaw | undefined) => {
     <ul
       class="fr-sidemenu__list"
     >
-      <!-- @slot Slot par défaut pour le contenu d’une liste du menu latéral -->
       <slot />
 
       <DsfrSideMenuListItem
@@ -85,7 +94,7 @@ const linkProps = (to: string | RouteLocationRaw | undefined) => {
             :active="!!menuItem.active"
             :expanded="!!menuItem.expanded"
             :control-id="(menuItem.id as string)"
-            @toggle-expand="menuItem.expanded = !menuItem.expanded"
+            @toggle-expand="emit('toggleExpand', $event)"
           >
             {{ menuItem.text }}
           </DsfrSideMenuButton>
@@ -95,7 +104,7 @@ const linkProps = (to: string | RouteLocationRaw | undefined) => {
             collapsable
             :expanded="!!menuItem.expanded"
             :menu-items="menuItem.menuItems"
-            @toggle-expand="$emit('toggleExpand', $event)"
+            @toggle-expand="emit('toggleExpand', $event)"
           />
         </template>
       </DsfrSideMenuListItem>
