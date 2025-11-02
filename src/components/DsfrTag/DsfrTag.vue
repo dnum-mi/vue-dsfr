@@ -14,6 +14,7 @@ const props = withDefaults(defineProps<DsfrTagProps<T>>(), {
 })
 
 defineEmits<{
+  /** Émis lors de la sélection et désélection du tag */
   select: [[unknown, boolean]]
 }>()
 

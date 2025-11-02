@@ -9,10 +9,6 @@ export default {
   title: 'Composants/DsfrTags',
   tags: ['chip'],
   argTypes: {
-    class: {
-      control: 'text',
-      description: 'Classe CSS (facultative) pour utiliser les icônes du DSFR',
-    },
     label: {
       control: 'text',
       description: '**Texte** du tag',
@@ -60,11 +56,6 @@ export default {
   },
 }
 
-const tagGroup = [
-  { label: 'Tag sans icône' },
-  { label: 'Tag avec icône', icon: 'ri-arrow-right-line' },
-]
-
 const tags = [
   [
     { label: 'Tag sans icône' },
@@ -111,40 +102,6 @@ const tags = [
   ],
 ]
 
-export const Etiquette = (args) => ({
-  components: { DsfrTag },
-  data () {
-    const obj = {
-      ...args,
-      className: args.class,
-    }
-    delete obj.class
-    return obj
-  },
-  template: `
-    <DsfrTag
-      :class="className"
-      :label="label"
-      :icon="icon"
-      :tagName="tagName"
-      :iconOnly="iconOnly"
-      :disabled="disabled"
-      :selected="selected"
-      :small="small"
-    />
-  `,
-})
-Etiquette.args = {
-  label: 'Étiquette',
-  class: '',
-  icon: '',
-  iconOnly: false,
-  disabled: false,
-  small: false,
-  selected: false,
-  tagName: 'button',
-}
-
 export const GroupeDEtiquettes = (args) => ({
   components: { DsfrTags },
   data () {
@@ -157,7 +114,7 @@ export const GroupeDEtiquettes = (args) => ({
   `,
 })
 GroupeDEtiquettes.args = {
-  tags: tagGroup,
+  tags: tags[0],
 }
 
 export const EtiquettesSimples = (args) => ({
