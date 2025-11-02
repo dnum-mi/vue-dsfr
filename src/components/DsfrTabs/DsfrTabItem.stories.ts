@@ -1,3 +1,5 @@
+import type { Meta, StoryObj } from '@storybook/vue3'
+
 import { setup } from '@storybook/vue3-vite'
 
 import VIcon from '../VIcon/VIcon.vue'
@@ -9,84 +11,69 @@ setup((app) => {
   app.component('VIcon', VIcon)
 })
 
-export default {
+const meta = {
   component: DsfrTabItem,
   title: 'Composants/DsfrTabs',
   argTypes: {
     tabTitle: {
       control: 'object',
       description:
-        'Props de `DsfrTabItem` : Titre de l’onglet `DsfrTabItem` - **Obligatoire**',
+        'Titre de l’onglet `DsfrTabItem` - **Obligatoire**',
+      
+      table: {
+        category: 'Props du parent (DsfrTabs)'
+      }
     },
     panelId: {
       control: 'text',
       description:
-        'Props de `DsfrTabItem` et `DsfrTabContent` : Identifiant de l’élément correspondant au contenu de l’onglet à afficher ; doit être identique à la props `tab-id` du `DsfrTabItem` correspondant - **Obligatoire**',
+        'Props de `DsfrTabItem` et `DsfrTabContent` : Identifiant de l’élément correspondant au contenu de l’onglet à afficher ; doit être identique à la props `tab-id` du `DsfrTabItem` correspondant - **Obligatoire**',
     },
     tabId: {
       control: 'text',
       description:
-        'Props de `DsfrTabItem` et `DsfrTabContent` : Identifiant du titre de l’onglet ̛ ; doit être identique à la props `panel-id` du `DsfrTabContent` correspondant - **Obligatoire**',
+        'Props de `DsfrTabItem` et `DsfrTabContent` : Identifiant du titre de l’onglet ̛ ; doit être identique à la props `panel-id` du `DsfrTabContent` correspondant - **Obligatoire**',
     },
     icon: {
       control: 'text',
-      description: 'Props de `DsfrTabItem` : Nom de l’icône à afficher',
-    },
-    selected: {
-      control: 'boolean',
-      description: 'Indique si le titre de cet onglet est celui qui est actif',
-    },
-    click: {
-      description:
-        'Événement déclenché au clic sur le titre de l’onglet. Passe en argument l’événement natif \'click\' (dans lequel on peut récuperer l’élément dans la propriété `target` et l’id dans `target.id`)',
-    },
-    next: {
-      description:
-        'Événement déclenché à la pression sur la touche Flèche droite ou Flèche bas si le focus est sur le bouton de ce titre d’onglet',
-    },
-    previous: {
-      description:
-        'Événement déclenché à la pression sur la touche Flèche gauche ou Flèche haut si le focus est sur le bouton de ce titre d’onglet',
-    },
-    first: {
-      description:
-        'Événement déclenché à la pression sur la touche `Début` (`Home`) si le focus est sur le bouton de ce titre d’onglet',
-    },
-    last: {
-      description:
-        'Événement déclenché à la pression sur la touche `End` (`Fin`) si le focus est sur le bouton de ce titre d’onglet',
+      description: 'Props de `DsfrTabItem` : Nom de l’icône à afficher',
     },
   },
-}
+} satisfies Meta<typeof DsfrTabItem>
 
-export const TitreDOnglet = (args) => ({
-  components: {
-    DsfrTabs,
-    DsfrTabItem,
-  },
+export default meta
 
-  data () {
-    return args
-  },
+type Story = StoryObj<typeof meta>
 
-  template: `
+export const TitreDOnglet: Story = {
+  render: (args) => ({
+    components: {
+      DsfrTabs,
+      DsfrTabItem,
+    },
+
+    setup () {
+      return args
+    },
+
+    template: `
     <DsfrTabs :model-value="0">
       <template #tab-items>
         <DsfrTabItem
           :panel-id="panelId"
           :tab-id="tabId"
           :icon="icon"
-          :selected="true"
         >
           {{ tabTitle }}
         </DsfrTabItem>
       </template>
     </DsfrTabs>
   `,
-})
-TitreDOnglet.args = {
-  panelId: 'tab-content-0',
-  tabId: 'tab-0',
-  icon: 'ri-checkbox-circle-line',
-  tabTitle: 'Titre onglet seul',
+  }),
+  args: {
+    panelId: 'tab-content-0',
+    tabId: 'tab-0',
+    icon: 'ri-checkbox-circle-line',
+    tabTitle: 'Titre onglet seul',
+  },
 }
