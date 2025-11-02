@@ -9,6 +9,13 @@ export type DsfrTabContentProps = {
 }
 const props = defineProps<DsfrTabContentProps>()
 
+defineSlots<{
+  /**
+   * Slot par défaut pour le contenu de l’onglet. Sera dans `<div class="fr-tabs__panel">`
+   */
+  default?: () => any
+}>()
+
 const values = { true: '100%', false: '-100%' }
 const useTab = inject(registerTabKey)!
 const { isVisible, asc } = useTab(toRef(() => props.tabId))
@@ -34,7 +41,6 @@ const translateValueTo = computed(() => values[String(!asc?.value)])
       :aria-labelledby="tabId"
       :tabindex="isVisible ? 0 : -1"
     >
-      <!-- @slot Slot par défaut pour le contenu de l’onglet. Sera dans `<div class="fr-tabs__panel">` -->
       <slot />
     </div>
   </Transition>
