@@ -42,7 +42,7 @@ const selection = ref<string[]>([])
       :rows="rows"
       selectable-rows
       sortable-rows
-      :row-key="0"
+      row-key="id"
     >
       <template #header="{ key, label }">
         <div @click="click($event, key)">
