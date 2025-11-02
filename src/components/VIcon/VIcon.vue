@@ -76,7 +76,7 @@ const finalColor = computed(() => {
 
 <style scoped>
 .vicon-inverse {
-  color: #fff;
+  color: #fff !important;
 }
 /* ---------------- spin ---------------- */
 .vicon-spin:not(.vicon-hover),
