@@ -19,7 +19,21 @@ const props = withDefaults(defineProps<DsfrTabsProps>(), {
 })
 
 const emit = defineEmits<{
+  /**
+   * Émis lorsque l'onglet actif change, avec en argument l'index de l'onglet sélectionné
+   */
   'update:modelValue': [tabIndex: number]
+}>()
+
+defineSlots<{
+  /**
+   * Slot nommé `tab-items` pour y mettre des Titres d'onglets personnalisés. S'il est rempli, la props `tabTitles` n'aura aucun effet
+   */
+  'tab-items'?: () => any
+  /**
+   * Slot par défaut pour le contenu des onglets
+   */
+  default?: () => any
 }>()
 
 const asc = ref(false)
