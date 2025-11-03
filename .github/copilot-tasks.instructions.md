@@ -274,6 +274,7 @@ Elles servent à surveiller la qualité du code, détecter les points d’améli
 > Il faut s’assurer que les stories sont au format attendu par Storybook 9, CSF3, et qu’elles utilisent les bonnes pratiques du projet.
 > Utilise les conventions de nommage et d’organisation du projet.
 > Génère des exemples d’utilisation clairs et typés.
+> Utilise les apostrophes françaises `’` et les espaces insécables ` ` devant `:` et les espaces fines insécables ` ` devant les autres ponctuations doubles `; ! ?` dans les stories et les commentaires.
 > Garde les règles typographiques françaises comme les apostrophes françaises `’` et les espaces insécables ` ` devant `:` et les espaces fines insécables ` ` devant les autres ponctuations doubles `; ! ?` dans tes refactorisations.
 > Les apostrophes françaises `’` ne posent pas de problème dans le code TypeScript ou les fichiers stories et doivent être utilisées partout où c’est pertinent, et laissées inchangées lors de la refactorisation.
 > Prends exemple sur les stories de DsfrAlert.stories.ts
