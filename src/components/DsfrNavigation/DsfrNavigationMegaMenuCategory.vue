@@ -5,9 +5,7 @@ import DsfrNavigationMenuLink from './DsfrNavigationMenuLink.vue'
 
 export type { DsfrNavigationMegaMenuCategoryProps }
 
-withDefaults(defineProps<DsfrNavigationMegaMenuCategoryProps>(), {
-
-})
+defineProps<DsfrNavigationMegaMenuCategoryProps>()
 </script>
 
 <template>
