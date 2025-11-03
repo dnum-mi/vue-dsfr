@@ -1,6 +1,6 @@
 .sbdocs-a, .sbdocs a, .docblock-argstable-body a {
-  color: #000091 !important;
-  outline-color: #000091 !important;
+  color: #000091;
+  outline-color: #000091;
   --link-underline: 0;
   --link-blank-content: "";
   text-decoration: none;
