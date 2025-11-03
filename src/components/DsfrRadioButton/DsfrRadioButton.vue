@@ -24,11 +24,11 @@ defineSlots<{
   /**
    * Slot pour personnaliser tout le contenu de la balise <label>
    */
-  label(props: { label: string }): any
+  label: (props: { label: string }) => any
   /**
    * Slot pour indiquer que le champ est obligatoire. Par défaut, met une astérisque si `required` est à true (dans un `<span class="required">`)
    */
-  'required-tip'(props: Record<string, never>): any
+  'required-tip': (props: Record<string, never>) => any
 }>()
 
 const defaultSvgAttrs = { viewBox: '0 0 80 80', width: '80px', height: '80px' }

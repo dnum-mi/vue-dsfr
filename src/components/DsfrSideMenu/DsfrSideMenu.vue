@@ -10,13 +10,6 @@ import DsfrSideMenuList from './DsfrSideMenuList.vue'
 
 export type { DsfrSideMenuProps }
 
-defineSlots<{
-  /**
-   * Contenu personnalisé du menu latéral (remplace la liste des éléments par défaut)
-   */
-  default?: any
-}>()
-
 withDefaults(defineProps<DsfrSideMenuProps>(), {
   buttonLabel: 'Dans cette rubrique',
   id: () => useRandomId('sidemenu'),
@@ -32,6 +25,13 @@ withDefaults(defineProps<DsfrSideMenuProps>(), {
 const emit = defineEmits<{
   /** Événement émis lors du basculement de l'expansion d'un élément de menu */
   toggleExpand: [payload: string]
+}>()
+
+defineSlots<{
+  /**
+   * Contenu personnalisé du menu latéral (remplace la liste des éléments par défaut)
+   */
+  default?: any
 }>()
 
 const {

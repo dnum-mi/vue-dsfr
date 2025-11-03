@@ -19,10 +19,10 @@ const meta = {
       control: 'object',
       description:
         'Titre de l’onglet `DsfrTabItem` - **Obligatoire**',
-      
+
       table: {
-        category: 'Props du parent (DsfrTabs)'
-      }
+        category: 'Props du parent (DsfrTabs)',
+      },
     },
     panelId: {
       control: 'text',

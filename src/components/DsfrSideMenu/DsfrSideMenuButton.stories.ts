@@ -1,7 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/vue3'
 
-import { ref } from 'vue'
-
 import DsfrSideMenu from './DsfrSideMenu.vue'
 import DsfrSideMenuButton from './DsfrSideMenuButton.vue'
 import DsfrSideMenuLink from './DsfrSideMenuLink.vue'

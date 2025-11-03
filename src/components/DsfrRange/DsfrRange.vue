@@ -23,6 +23,16 @@ const emit = defineEmits<{
   (e: 'update:lowerValue', payload: string | number): void
 }>()
 
+defineSlots<{
+  /** Pour un libellé plus personnalisé du champ */
+  label: (props: Record<string, never>) => any
+  /** Pour une indication plus personnalisée sur le champ */
+  hint: (props: Record<string, never>) => any
+  /** Pour remplacer l’astérisque par autre chose pour un champ requis */
+  'required-tip': (props: Record<string, never>) => any
+  /** Pour les messages d’erreur ou de succès */
+  messages: (props: Record<string, never>) => any
+}>()
 const input = ref<HTMLInputElement>()
 const output = ref<HTMLSpanElement>()
 const inputWidth = ref()
@@ -75,17 +85,6 @@ const outputValue = computed(() => {
     .concat(`${props.modelValue}`)
     .concat(props.suffix ?? '')
 })
-
-defineSlots<{
-  /** Pour un libellé plus personnalisé du champ */
-  label(props: Record<string, never>): any
-  /** Pour une indication plus personnalisée sur le champ */
-  hint(props: Record<string, never>): any
-  /** Pour remplacer l’astérisque par autre chose pour un champ requis */
-  'required-tip'(props: Record<string, never>): any
-  /** Pour les messages d’erreur ou de succès */
-  messages(props: Record<string, never>): any
-}>()
 
 onMounted(() => {
   inputWidth.value = input.value?.offsetWidth

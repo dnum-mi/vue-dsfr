@@ -1,7 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/vue3'
 
-import { ref } from 'vue'
-
 import DsfrTabContent from './DsfrTabContent.vue'
 import DsfrTabs from './DsfrTabs.vue'
 

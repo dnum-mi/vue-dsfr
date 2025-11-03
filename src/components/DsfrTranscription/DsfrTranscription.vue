@@ -9,6 +9,12 @@ import DsfrModal from '../DsfrModal/DsfrModal.vue'
 
 export type { DsfrTranscriptionProps }
 
+const props = withDefaults(defineProps<DsfrTranscriptionProps>(), {
+  id: () => useRandomId('transcription'),
+  title: 'Titre de la vidéo',
+  content: 'Transcription du contenu de la vidéo',
+})
+
 defineSlots<{
   /**
    * Contenu de la transcription
@@ -16,12 +22,6 @@ defineSlots<{
    */
   default?: () => any
 }>()
-
-const props = withDefaults(defineProps<DsfrTranscriptionProps>(), {
-  id: () => useRandomId('transcription'),
-  title: 'Titre de la vidéo',
-  content: 'Transcription du contenu de la vidéo',
-})
 
 const {
   collapse,

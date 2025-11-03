@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/vue3'
 
 import { expect, fn, within } from 'storybook/test'
-import { ref, watch } from 'vue'
+import { watch } from 'vue'
 
 import DsfrToggleSwitch from './DsfrToggleSwitch.vue'
 
