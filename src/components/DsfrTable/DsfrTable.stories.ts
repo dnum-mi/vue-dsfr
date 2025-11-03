@@ -1,3 +1,5 @@
+import type { Meta, StoryObj } from '@storybook/vue3'
+
 import { setup } from '@storybook/vue3-vite'
 import { fn } from 'storybook/test'
 
@@ -14,7 +16,7 @@ setup((app) => {
 /**
  * [Voir quand l’utiliser sur la documentation du DSFR](https://www.systeme-de-design.gouv.fr/version-courante/fr/composants/tableau)
  */
-export default {
+const meta = {
   component: DsfrTable,
   title: 'Composants/DsfrTable',
   argTypes: {
@@ -65,218 +67,222 @@ export default {
         'Event se déclenchant au changement de page, laissant la liberté à l\'utilisateur de charger son contenu au fur et à mesure',
     },
   },
-}
+} as Meta<typeof DsfrTable>
 
-const title = 'Utilisateurs'
-const headers = ['Nom', 'Prénom', 'Email', 'Téléphone', 'Portable', 'Statut']
-const rows = [
-  [
-    'EGAUD',
-    'Pierre-Louis',
-    'pierre.egaud@castor.fr',
-    '02 04 06 08 10',
-    '06 05 04 03 02',
-    {
-      component: 'DsfrTag',
-      label: 'Erreur',
-      class: 'error',
-    },
-  ],
-  {
-    rowAttrs: {
-      onClick: () => {},
-      class: 'pointer',
-    },
-    rowData: [
-      'DEBROIZE',
-      'Clément',
-      'clement.debroize@exile.com',
-      '02 44 66 55 99',
-      '07 88 77 22 33',
+export default meta
+type Story = StoryObj<typeof meta>
+
+export const TableauEntier: Story = {
+  args: {
+    title: 'Utilisateurs',
+    headers: ['Nom', 'Prénom', 'Email', 'Téléphone', 'Portable', 'Statut'],
+    rows: [
+      [
+        'EGAUD',
+        'Pierre-Louis',
+        'pierre.egaud@castor.fr',
+        '02 04 06 08 10',
+        '06 05 04 03 02',
+        {
+          component: 'DsfrTag',
+          label: 'Erreur',
+          class: 'error',
+        },
+      ],
       {
-        component: 'DsfrTag',
-        label: 'Succès',
-        class: 'success',
+        rowAttrs: {
+          onClick: () => {},
+          class: 'pointer',
+        },
+        rowData: [
+          'DEBROIZE',
+          'Clément',
+          'clement.debroize@exile.com',
+          '02 44 66 55 99',
+          '07 88 77 22 33',
+          {
+            component: 'DsfrTag',
+            label: 'Succès',
+            class: 'success',
+          },
+        ],
       },
+      [
+        'ORMIERES',
+        'Stan',
+        'stan.ormieres@ninja.com',
+        {
+          text: '02 77 00 00 77',
+          cellAttrs: {
+            class: 'pointer',
+            onClick: () => {},
+          },
+        },
+        '06 08 07 09 08',
+        {
+          component: 'DsfrTag',
+          label: 'Info',
+          class: 'info',
+        },
+      ],
+      [
+        'MONTANA',
+        'Tony',
+        'tony.montana@depalma.com',
+        '02 07 03 19 84',
+        '06 07 03 19 84',
+        {
+          component: 'DsfrTag',
+          label: 'Erreur',
+          class: 'error',
+        },
+      ],
+      [
+        'BOND',
+        'James',
+        'james.bond@mi6.com',
+        '02 00 07 19 62',
+        '06 00 07 19 62',
+        {
+          component: 'DsfrTag',
+          label: 'Succès',
+          class: 'success',
+        },
+      ],
+      [
+        'RAMBO',
+        'John',
+        'john.rambo@veterans.com',
+        '02 00 00 19 82',
+        '06 00 00 19 82',
+        {
+          component: 'DsfrTag',
+          label: 'Info',
+          class: 'info',
+        },
+      ],
+      [
+        'CONNOR',
+        'Sarah',
+        'sarah.connor@skynet.com',
+        '02 00 00 19 84',
+        '06 00 00 19 84',
+        {
+          component: 'DsfrTag',
+          label: 'Erreur',
+          class: 'error',
+        },
+      ],
+      [
+        'KENOBI',
+        'Obiwan',
+        'obiwan.kenobi@jedimaster.com',
+        '02 00 00 19 77',
+        '06 00 00 19 77',
+        {
+          component: 'DsfrTag',
+          label: 'Succès',
+          class: 'success',
+        },
+      ],
+      [
+        'KRUEGER',
+        'Freddy',
+        'freddy.krueger@goodnight.com',
+        '02 00 00 19 84',
+        '06 00 00 19 84',
+        {
+          component: 'DsfrTag',
+          label: 'Info',
+          class: 'info',
+        },
+      ],
+      [
+        'LEGRIS',
+        'Gandalf',
+        'gandalf.leblanc@mellon.com',
+        '02 00 00 20 01',
+        '06 00 00 20 01',
+        {
+          component: 'DsfrTag',
+          label: 'Erreur',
+          class: 'error',
+        },
+      ],
+      [
+        'SÖZE',
+        'Keyser',
+        'keyser.soze@mastermind.com',
+        '02 00 00 19 95',
+        '06 00 00 19 95',
+        {
+          component: 'DsfrTag',
+          label: 'Info',
+          class: 'info',
+        },
+      ],
+      [
+        'HUNT',
+        'Ethan',
+        'ethan.hunt@impossible.com',
+        '02 00 00 19 96',
+        '06 00 00 19 96',
+        {
+          component: 'DsfrTag',
+          label: 'Erreur',
+          class: 'error',
+        },
+      ],
+      [
+        'HOLMES',
+        'Sherlock',
+        'sherlock.holmes@whodunit.com',
+        '02 00 00 18 87',
+        '06 00 00 18 87',
+        {
+          component: 'DsfrTag',
+          label: 'Succès',
+          class: 'success',
+        },
+      ],
+      [
+        'JONES',
+        'Indiana',
+        'indiana.jones@london-university.com',
+        '02 00 00 19 81',
+        '06 00 00 19 81',
+        {
+          component: 'DsfrTag',
+          label: 'Info',
+          class: 'info',
+        },
+      ],
+      [
+        'WAYNE',
+        'Bruce',
+        'bruce.wayne@batmail.com',
+        '02 00 00 19 89',
+        '06 00 00 19 89',
+        {
+          component: 'DsfrTag',
+          label: 'Erreur',
+          class: 'error',
+        },
+      ],
     ],
+    noCaption: false,
+    pagination: true,
+    currentPage: 2,
+    resultsDisplayed: 5,
+    onClickCell: fn(),
+    onClickRow: fn(),
   },
-  [
-    'ORMIERES',
-    'Stan',
-    'stan.ormieres@ninja.com',
-    {
-      text: '02 77 00 00 77',
-      cellAttrs: {
-        class: 'pointer',
-        onClick: () => {},
-      },
+  render: (args) => ({
+    components: {
+      DsfrTable,
     },
-    '06 08 07 09 08',
-    {
-      component: 'DsfrTag',
-      label: 'Info',
-      class: 'info',
-    },
-  ],
-  [
-    'MONTANA',
-    'Tony',
-    'tony.montana@depalma.com',
-    '02 07 03 19 84',
-    '06 07 03 19 84',
-    {
-      component: 'DsfrTag',
-      label: 'Erreur',
-      class: 'error',
-    },
-  ],
-  [
-    'BOND',
-    'James',
-    'james.bond@mi6.com',
-    '02 00 07 19 62',
-    '06 00 07 19 62',
-    {
-      component: 'DsfrTag',
-      label: 'Succès',
-      class: 'success',
-    },
-  ],
-  [
-    'RAMBO',
-    'John',
-    'john.rambo@veterans.com',
-    '02 00 00 19 82',
-    '06 00 00 19 82',
-    {
-      component: 'DsfrTag',
-      label: 'Info',
-      class: 'info',
-    },
-  ],
-  [
-    'CONNOR',
-    'Sarah',
-    'sarah.connor@skynet.com',
-    '02 00 00 19 84',
-    '06 00 00 19 84',
-    {
-      component: 'DsfrTag',
-      label: 'Erreur',
-      class: 'error',
-    },
-  ],
-  [
-    'KENOBI',
-    'Obiwan',
-    'obiwan.kenobi@jedimaster.com',
-    '02 00 00 19 77',
-    '06 00 00 19 77',
-    {
-      component: 'DsfrTag',
-      label: 'Succès',
-      class: 'success',
-    },
-  ],
-  [
-    'KRUEGER',
-    'Freddy',
-    'freddy.krueger@goodnight.com',
-    '02 00 00 19 84',
-    '06 00 00 19 84',
-    {
-      component: 'DsfrTag',
-      label: 'Info',
-      class: 'info',
-    },
-  ],
-  [
-    'LEGRIS',
-    'Gandalf',
-    'gandalf.leblanc@mellon.com',
-    '02 00 00 20 01',
-    '06 00 00 20 01',
-    {
-      component: 'DsfrTag',
-      label: 'Erreur',
-      class: 'error',
-    },
-  ],
-  [
-    'SÖZE',
-    'Keyser',
-    'keyser.soze@mastermind.com',
-    '02 00 00 19 95',
-    '06 00 00 19 95',
-    {
-      component: 'DsfrTag',
-      label: 'Info',
-      class: 'info',
-    },
-  ],
-  [
-    'HUNT',
-    'Ethan',
-    'ethan.hunt@impossible.com',
-    '02 00 00 19 96',
-    '06 00 00 19 96',
-    {
-      component: 'DsfrTag',
-      label: 'Erreur',
-      class: 'error',
-    },
-  ],
-  [
-    'HOLMES',
-    'Sherlock',
-    'sherlock.holmes@whodunit.com',
-    '02 00 00 18 87',
-    '06 00 00 18 87',
-    {
-      component: 'DsfrTag',
-      label: 'Succès',
-      class: 'success',
-    },
-  ],
-  [
-    'JONES',
-    'Indiana',
-    'indiana.jones@london-university.com',
-    '02 00 00 19 81',
-    '06 00 00 19 81',
-    {
-      component: 'DsfrTag',
-      label: 'Info',
-      class: 'info',
-    },
-  ],
-  [
-    'WAYNE',
-    'Bruce',
-    'bruce.wayne@batmail.com',
-    '02 00 00 19 89',
-    '06 00 00 19 89',
-    {
-      component: 'DsfrTag',
-      label: 'Erreur',
-      class: 'error',
-    },
-  ],
-]
-const noCaption = false
-const pagination = true
-const currentPage = 2
-const resultsDisplayed = 5
-
-export const TableauEntier = (args) => ({
-  components: {
-    DsfrTable,
-  },
-
-  data () {
-    return {
-      ...args,
-      rows: args.rows.map((rowData) =>
+    setup () {
+      const rows = args.rows.map((rowData) =>
         Array.isArray(rowData)
           ? rowData.map((field) =>
               field.cellAttrs?.onClick
@@ -300,28 +306,20 @@ export const TableauEntier = (args) => ({
                 },
               },
             },
-      ),
-    }
-  },
+      )
 
-  template: `
+      return { args, rows }
+    },
+    template: `
       <DsfrTable
-        :title="title"
-        :headers="headers"
+        :title="args.title"
+        :headers="args.headers"
         :rows="rows"
-        :no-caption="noCaption"
-        :pagination="pagination"
-        :currentPage="currentPage"
-        :resultsDisplayed="resultsDisplayed"
+        :no-caption="args.noCaption"
+        :pagination="args.pagination"
+        :currentPage="args.currentPage"
+        :resultsDisplayed="args.resultsDisplayed"
       />
-  `,
-})
-TableauEntier.args = {
-  title,
-  headers,
-  rows,
-  noCaption,
-  pagination,
-  currentPage,
-  resultsDisplayed,
+    `,
+  }),
 }
