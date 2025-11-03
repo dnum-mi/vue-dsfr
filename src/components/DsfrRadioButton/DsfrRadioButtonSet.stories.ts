@@ -232,7 +232,7 @@ export const GroupeDeBoutonsRadioRequisPersonnalise: Story = {
 
 export const GroupeDeBoutonsRadioEnErreur: Story = {
   args: {
-    error: 'Texte de l\'erreur',
+    error: 'Texte de l’erreur',
     legend: 'Légende des champs',
     inline: false,
     selectedValue: 1,
