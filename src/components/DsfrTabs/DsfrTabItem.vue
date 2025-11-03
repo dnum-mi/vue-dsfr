@@ -15,11 +15,21 @@ const props = withDefaults(defineProps<DsfrTabItemProps>(), {
 })
 
 const emit = defineEmits<{
+  /** Émis au clic sur le titre de l'onglet. Passe en argument l'événement natif 'click' (dans lequel on peut récuperer l'élément dans la propriété `target` et l'id dans `target.id`) */
   click: [tabId: string]
+  /** Émis à la pression sur la touche Flèche droite ou Flèche bas si le focus est sur le bouton de ce titre d'onglet */
   next: []
+  /** Émis à la pression sur la touche Flèche gauche ou Flèche haut si le focus est sur le bouton de ce titre d'onglet */
   previous: []
+  /** Émis à la pression sur la touche `Début` (`Home`) si le focus est sur le bouton de ce titre d'onglet */
   first: []
+  /** Émis à la pression sur la touche `End` (`Fin`) si le focus est sur le bouton de ce titre d'onglet */
   last: []
+}>()
+
+defineSlots<{
+  /** Slot par défaut pour le contenu de l’onglet. Sera dans `<button class="fr-tabs__tab">` */
+  default?: () => any
 }>()
 
 const button = ref<HTMLButtonElement | null>(null)
@@ -78,7 +88,6 @@ watch(isVisible, () => {
           :name="icon"
         />
       </span>
-      <!-- @slot Slot par défaut pour le contenu de l’onglet. Sera dans `<button class="fr-tabs__tab">` -->
       <slot />
     </button>
   </li>

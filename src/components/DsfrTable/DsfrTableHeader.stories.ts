@@ -1,4 +1,7 @@
-import { fn } from '@storybook/test'
+import type { Meta, StoryObj } from '@storybook/vue3-vite'
+
+import { fn } from 'storybook/test'
+import { ref } from 'vue'
 
 import VIcon from '../VIcon/VIcon.vue'
 
@@ -7,7 +10,7 @@ import DsfrTableHeader from './DsfrTableHeader.vue'
 
 import './table.stories.css'
 
-export default {
+const meta = {
   component: DsfrTableHeader,
   title: 'Composants/DsfrTableHeader',
   argTypes: {
@@ -30,7 +33,10 @@ export default {
       description: 'Fonction pour montrer le clic sur un en-tête',
     },
   },
-}
+} as Meta<typeof DsfrTableHeader>
+
+export default meta
+type Story = StoryObj<typeof meta>
 
 const header = 'En-tête'
 const headerAttrs = {
@@ -38,32 +44,34 @@ const headerAttrs = {
   onClick: () => {},
 }
 
-export const EnTeteDeTableau = (args) => ({
-  components: {
-    DsfrTable,
-    DsfrTableHeader,
-    VIcon,
+export const EnTeteDeTableau: Story = {
+  args: {
+    header,
+    headerAttrs,
+    onClickHeader: fn(),
   },
-
-  data () {
-    return {
-      ...args,
-      headerAttrs: {
+  render: (args) => ({
+    components: {
+      DsfrTable,
+      DsfrTableHeader,
+      VIcon,
+    },
+    setup () {
+      const computedHeaderAttrs = {
         ...args.headerAttrs,
         onClick () {
           args.onClickHeader(args.header)
         },
-      },
-    }
-  },
-
-  template: `
+      }
+      return { args, computedHeaderAttrs }
+    },
+    template: `
       <DsfrTable
         title="Titre du tableau"
       >
         <template v-slot:header>
           <tr>
-            <DsfrTableHeader :header="header" :header-attrs="headerAttrs" />
+            <DsfrTableHeader :header="args.header" :header-attrs="computedHeaderAttrs" />
           </tr>
         </template>
         <tr>
@@ -72,33 +80,38 @@ export const EnTeteDeTableau = (args) => ({
           </td>
         </tr>
       </DsfrTable>
-  `,
-})
-
-EnTeteDeTableau.args = {
-  header,
-  headerAttrs,
+    `,
+  }),
 }
 
 const icon = {
   name: 'ri-sort-desc',
 }
 
-export const EnTeteDeTableauAvecIcone = (args) => ({
-  components: {
-    DsfrTable,
-    DsfrTableHeader,
-    VIcon,
+export const EnTeteDeTableauAvecIcone: Story = {
+  args: {
+    header,
+    headerAttrs: {
+      ...headerAttrs,
+      style: 'display: flex; justify-content: space-between; align-items: center',
+    },
+    icon,
+    onClickHeader: fn(),
   },
+  render: (args) => ({
+    components: {
+      DsfrTable,
+      DsfrTableHeader,
+      VIcon,
+    },
+    setup () {
+      const currentIcon = ref(args.icon)
 
-  data () {
-    return {
-      ...args,
-      headerAttrs: {
+      const computedHeaderAttrs = {
         ...args.headerAttrs,
         onClick: () => {
-          const iconName = this.icon?.name
-          this.icon =
+          const iconName = currentIcon.value?.name
+          currentIcon.value =
             iconName === 'ri-sort-desc'
               ? { name: 'ri-sort-asc' }
               : iconName === 'ri-sort-asc'
@@ -106,17 +119,17 @@ export const EnTeteDeTableauAvecIcone = (args) => ({
                 : { name: 'ri-sort-desc' }
           args.onClickHeader(args.header)
         },
-      },
-    }
-  },
+      }
 
-  template: `
+      return { args, computedHeaderAttrs, currentIcon }
+    },
+    template: `
       <DsfrTable
         title="Titre du tableau"
       >
         <template v-slot:header>
           <tr>
-            <DsfrTableHeader :header="header" :header-attrs="headerAttrs" :icon="icon" />
+            <DsfrTableHeader :header="args.header" :header-attrs="computedHeaderAttrs" :icon="currentIcon" />
           </tr>
         </template>
         <tr>
@@ -125,13 +138,6 @@ export const EnTeteDeTableauAvecIcone = (args) => ({
           </td>
         </tr>
       </DsfrTable>
-  `,
-})
-EnTeteDeTableauAvecIcone.args = {
-  header,
-  headerAttrs: {
-    ...headerAttrs,
-    style: 'display: flex; justify-content: space-between; align-items: center',
-  },
-  icon,
+    `,
+  }),
 }

@@ -17,7 +17,10 @@ const props = withDefaults(defineProps<DsfrSegmentedProps>(), {
   name: undefined,
 })
 
-defineEmits<{ (e: 'update:modelValue', payload: string | number): void }>()
+defineEmits<{
+  /** Événement émis lors de la mise à jour de la valeur sélectionnée */
+  'update:modelValue': [string | number]
+}>()
 
 const iconProps = computed(() => typeof props.icon === 'string' ? { name: props.icon } : props.icon)
 

@@ -9,7 +9,7 @@ export type DsfrInputProps = {
   labelVisible?: boolean
   label?: string
   labelClass?: string
-  modelValue?: string | number | null
+  modelValue?: string | number | undefined
   wrapperClass?: string
 }
 
@@ -20,7 +20,7 @@ export type DsfrInputGroupProps = {
   labelVisible?: boolean
   label?: string
   labelClass?: string
-  modelValue?: string | number | null
+  modelValue?: string | number | undefined
   placeholder?: string
   errorMessage?: string | string[]
   validMessage?: string | string[]

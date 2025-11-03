@@ -14,7 +14,21 @@ const props = withDefaults(defineProps<DsfrSegmentedSetProps>(), {
   options: () => [],
 })
 
-const emit = defineEmits<{ (e: 'update:modelValue', payload: string | number): void }>()
+const emit = defineEmits<{
+  /** Événement émis lors de la mise à jour de la valeur sélectionnée */
+  'update:modelValue': [payload: string | number]
+}>()
+
+defineSlots<{
+  /**
+   * Slot pour personnaliser tout le contenu de la balise <legend>
+   */
+  legend: (props: Record<string, never>) => any
+  /**
+   * Slot par défaut pour personnaliser les contrôles segmentés
+   */
+  default: (props: Record<string, never>) => any
+}>()
 
 const onChange = ($event: string) => {
   if ($event === props.modelValue) {
@@ -42,7 +56,6 @@ const onChange = ($event: string) => {
           'fr-segmented__legend--inline': inline,
         }"
       >
-        <!-- @slot Slot pour personnaliser tout le contenu de la balise <legend> cf. [DsfrInput](/?path=/story/composants-champ-de-saisie-champ-simple-dsfrinput--champ-avec-label-personnalise). Une **props porte le même nom pour une légende simple** (texte sans mise en forme) -->
         <slot name="legend">
           {{ legend }}
         </slot>

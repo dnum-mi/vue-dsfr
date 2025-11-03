@@ -1,7 +1,9 @@
+import type { Meta, StoryObj } from '@storybook/vue3-vite'
+
 import DsfrSideMenu from './DsfrSideMenu.vue'
 import DsfrSideMenuList from './DsfrSideMenuList.vue'
 
-function toggleExpandedForMenuWithId (menuItems, id) {
+function toggleExpandedForMenuWithId (menuItems: any[], id: string) {
   menuItems.forEach((menuItem) => {
     if (menuItem.id === id) {
       menuItem.expanded = !menuItem.expanded
@@ -13,13 +15,13 @@ function toggleExpandedForMenuWithId (menuItems, id) {
   })
 }
 
-export default {
+const meta = {
   component: DsfrSideMenuList,
   title: 'Composants/DsfrSideMenuList',
   argTypes: {
     headingTitle: {
       control: 'text',
-      description: 'Titre de la rubrique (c’est le titre du menu latéral)',
+      description: 'Titre de la rubrique (c\'est le titre du menu latéral)',
     },
     buttonLabel: {
       control: 'text',
@@ -45,84 +47,89 @@ export default {
   - \`id\`: identifiant unique d'item de menu
   - \`to\`: URL complète pour un lien externe, ou chaîne de caractère ou objet à donner à \`to\` de \`RouterLink\` pour un lien interne
   - \`text\`: texte du menu
-  - \`active\`: indique que l’item de menu correspond à la page courante
+  - \`active\`: indique que l'item de menu correspond à la page courante
       `,
     },
   },
-}
+} satisfies Meta<typeof DsfrSideMenuList>
 
-export const MenuLateral = (args) => ({
-  components: {
-    DsfrSideMenu,
-    DsfrSideMenuList,
-  },
+export default meta
 
-  data () {
-    return {
-      ...args,
-    }
-  },
+type Story = StoryObj<typeof meta>
 
-  methods: {
-    toggleExpand (id) {
-      toggleExpandedForMenuWithId(this.menuItems, id)
+export const MenuLateral: Story = {
+  render: (args) => ({
+    components: {
+      DsfrSideMenu,
+      DsfrSideMenuList,
     },
-  },
 
-  template: `
+    setup () {
+      const toggleExpand = (id: string) => {
+        toggleExpandedForMenuWithId(args.menuItems, id)
+      }
+
+      return {
+        args,
+        toggleExpand,
+      }
+    },
+
+    template: `
     <DsfrSideMenu
-      :heading-title="headingTitle"
-      :buttonLabel="buttonLabel"
+      :heading-title="args.headingTitle"
+      :buttonLabel="args.buttonLabel"
       >
       <DsfrSideMenuList
-        :id="id"
-        :menu-items="menuItems"
+        :id="args.id"
+        :menu-items="args.menuItems"
         @toggle-expand="toggleExpand"
       />
     </DsfrSideMenu>
   `,
-})
-MenuLateral.args = {
-  buttonLabel: 'Dans cette rubrique',
-  headingTitle: 'Titre de la rubrique',
-  id: 'list',
-  menuItems: [
-    {
-      id: '11',
-      to: '/rubrique-1',
-      text: 'Premier titre de niveau 1',
-    },
-    {
-      id: '12',
-      to: '/rubrique-2',
-      text: 'Deuxième titre de niveau 1',
-      active: true,
-      menuItems: [
-        {
-          id: '21',
-          to: '/rubrique-2/sous-rubrique-1',
-          text: 'Premier titre de niveau 2',
-        },
-        {
-          id: '22',
-          to: '/rubrique-2/sous-rubrique-2',
-          text: 'Deuxième titre de niveau 2',
-          active: true,
-          menuItems: [
-            {
-              id: '31',
-              to: '/rubrique-2/sous-rubrique-2/sous-sous-rubrique-1',
-              text: 'Premier titre de niveau 3',
-            },
-            {
-              id: '32',
-              to: '/rubrique-2/sous-rubrique-2/sous-sous-rubrique-2',
-              text: 'Deuxième titre de niveau 3',
-              active: true,
-            },
-          ],
-        },
-      ],
-    },
-  ],
+  }),
+  args: {
+    buttonLabel: 'Dans cette rubrique',
+    headingTitle: 'Titre de la rubrique',
+    id: 'list',
+    menuItems: [
+      {
+        id: '11',
+        to: '/rubrique-1',
+        text: 'Premier titre de niveau 1',
+      },
+      {
+        id: '12',
+        to: '/rubrique-2',
+        text: 'Deuxième titre de niveau 1',
+        active: true,
+        menuItems: [
+          {
+            id: '21',
+            to: '/rubrique-2/sous-rubrique-1',
+            text: 'Premier titre de niveau 2',
+          },
+          {
+            id: '22',
+            to: '/rubrique-2/sous-rubrique-2',
+            text: 'Deuxième titre de niveau 2',
+            active: true,
+            menuItems: [
+              {
+                id: '31',
+                to: '/rubrique-2/sous-rubrique-2/sous-sous-rubrique-1',
+                text: 'Premier titre de niveau 3',
+              },
+              {
+                id: '32',
+                to: '/rubrique-2/sous-rubrique-2/sous-sous-rubrique-2',
+                text: 'Deuxième titre de niveau 3',
+                active: true,
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  },
 }

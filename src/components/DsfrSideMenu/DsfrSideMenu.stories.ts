@@ -1,4 +1,7 @@
-import { fn } from '@storybook/test'
+import type { Meta, StoryObj } from '@storybook/vue3-vite'
+
+import { fn } from 'storybook/test'
+import { ref } from 'vue'
 
 import DsfrAccordion from '../DsfrAccordion/DsfrAccordion.vue'
 import DsfrAccordionsGroup from '../DsfrAccordion/DsfrAccordionsGroup.vue'
@@ -21,7 +24,7 @@ function toggleExpandedForMenuWithId (menuItems, id) {
 /**
  * [Voir quand l’utiliser sur la documentation du DSFR](https://www.systeme-de-design.gouv.fr/version-courante/fr/composants/menu-lateral)
  */
-export default {
+const meta = {
   component: DsfrSideMenu,
   title: 'Composants/DsfrSideMenu',
   argTypes: {
@@ -48,143 +51,136 @@ export default {
       action: fn(),
     },
   },
+} satisfies Meta<typeof DsfrSideMenu>
+
+export default meta
+type Story = StoryObj<typeof meta>
+
+export const MenuLateral: Story = {
+  args: {
+    buttonLabel: 'Dans cette rubrique',
+    headingTitle: 'Titre de la rubrique',
+    menuItems: [
+      {
+        id: '11',
+        to: '/rubrique-1',
+        text: 'Premier titre de niveau 1',
+      },
+      {
+        id: '12',
+        to: '/rubrique-2',
+        text: 'Deuxième titre de niveau 1',
+        active: true,
+        menuItems: [
+          {
+            id: '21',
+            to: '/rubrique-2/sous-rubrique-1',
+            text: 'Premier titre de niveau 2',
+          },
+          {
+            id: '22',
+            to: '/rubrique-2/sous-rubrique-2',
+            text: 'Deuxième titre de niveau 2',
+            active: true,
+            menuItems: [
+              {
+                id: '31',
+                to: '/rubrique-2/sous-rubrique-2/sous-sous-rubrique-1',
+                text: 'Premier titre de niveau 3',
+              },
+              {
+                id: '32',
+                to: '/rubrique-2/sous-rubrique-2/sous-sous-rubrique-2',
+                text: 'Deuxième titre de niveau 3',
+                active: true,
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  },
+  render: (args) => ({
+    components: { DsfrSideMenu },
+    setup () {
+      const toggleExpand = (id: string) => {
+        toggleExpandedForMenuWithId(args.menuItems, id)
+      }
+      return { args, toggleExpand }
+    },
+    template: `
+      <DsfrSideMenu
+        :heading-title="args.headingTitle"
+        :button-label="args.buttonLabel"
+        :menu-items="args.menuItems"
+        @toggle-expand="toggleExpand"
+      />
+    `,
+  }),
 }
 
-export const MenuLateral = (args) => ({
-  components: {
-    DsfrSideMenu,
-  },
-
-  data () {
-    return {
-      ...args,
-    }
-  },
-
-  methods: {
-    toggleExpand (id) {
-      toggleExpandedForMenuWithId(this.menuItems, id)
+export const MenuLateralAvecAccordeonEtCheckbox: Story = {
+  args: {
+    accordions: {
+      'Accordéon 1': {
+        options: [
+          { label: 'Option 1', value: 'option1', name: 'option1' },
+          { label: 'Option 2', value: 'option2', name: 'option2' },
+          { label: 'Option 3', value: 'option3', name: 'option3' },
+        ],
+      },
+      'Accordéon 2': {
+        options: [
+          { label: 'Option 1', value: 'option1', name: 'option1' },
+          { label: 'Option 2', value: 'option2', name: 'option2' },
+          { label: 'Option 3', value: 'option3', name: 'option3' },
+        ],
+      },
+      'Accordéon 3': {
+        options: [
+          { label: 'Option 1', value: 'option1', name: 'option1' },
+          { label: 'Option 2', value: 'option2', name: 'option2' },
+          { label: 'Option 3', value: 'option3', name: 'option3' },
+        ],
+      },
     },
   },
-
-  template: `
-    <DsfrSideMenu
-      :heading-title="headingTitle"
-      :buttonLabel="buttonLabel"
-      :menu-items="menuItems"
-      @toggle-expand="toggleExpand"
-    />
-  `,
-})
-MenuLateral.args = {
-  buttonLabel: 'Dans cette rubrique',
-  headingTitle: 'Titre de la rubrique',
-  menuItems: [
-    {
-      id: '11',
-      to: '/rubrique-1',
-      text: 'Premier titre de niveau 1',
+  render: (args) => ({
+    components: {
+      DsfrSideMenu,
+      DsfrAccordion,
+      DsfrAccordionsGroup,
+      DsfrCheckboxSet,
     },
-    {
-      id: '12',
-      to: '/rubrique-2',
-      text: 'Deuxième titre de niveau 1',
-      active: true,
-      menuItems: [
-        {
-          id: '21',
-          to: '/rubrique-2/sous-rubrique-1',
-          text: 'Premier titre de niveau 2',
-        },
-        {
-          id: '22',
-          to: '/rubrique-2/sous-rubrique-2',
-          text: 'Deuxième titre de niveau 2',
-          active: true,
-          menuItems: [
-            {
-              id: '31',
-              to: '/rubrique-2/sous-rubrique-2/sous-sous-rubrique-1',
-              text: 'Premier titre de niveau 3',
-            },
-            {
-              id: '32',
-              to: '/rubrique-2/sous-rubrique-2/sous-sous-rubrique-2',
-              text: 'Deuxième titre de niveau 3',
-              active: true,
-            },
-          ],
-        },
-      ],
+    setup () {
+      const expandedId = ref(undefined)
+      return { args, expandedId }
     },
-  ],
-}
-
-export const MenuLateralAvecAccordeonEtCheckbox = (args) => ({
-  components: {
-    DsfrSideMenu,
-    DsfrAccordion,
-    DsfrAccordionsGroup,
-    DsfrCheckboxSet,
-  },
-
-  data () {
-    return {
-      ...args,
-      expandedId: undefined,
-      accordions: args.accordions,
-    }
-  },
-
-  template: `
-    <dsfr-side-menu
-      heading-title="Filtres"
-      button-label="Afficher les filtres"
-    >
-      <dsfr-accordions-group>
-        <li
-          v-for="(accordion, name) in accordions"
-          :id="\`accordion_${name}\`"
-          :key="name"
-        >
-          <dsfr-accordion
-            :id="name"
-            :title="name"
-            :expanded-id="expandedId"
-            @expand="id => expandedId = id"
+    template: `
+      <DsfrSideMenu
+        heading-title="Filtres"
+        button-label="Afficher les filtres"
+      >
+        <DsfrAccordionsGroup>
+          <li
+            v-for="(accordion, name) in args.accordions"
+            :id="\`accordion_\${name}\`"
+            :key="name"
           >
-            <dsfr-checkbox-set
-              :options="accordion.options"
-              small
-            />
-          </dsfr-accordion>
-        </li>
-      </dsfr-accordions-group>
-    </dsfr-side-menu>
-  `,
-})
-MenuLateralAvecAccordeonEtCheckbox.args = {
-  accordions: {
-    'Accordéon 1': {
-      options: [
-        { label: 'Option 1', value: 'option1', name: 'option1' },
-        { label: 'Option 2', value: 'option2', name: 'option2' },
-        { label: 'Option 3', value: 'option3', name: 'option3' },
-      ],
-    },
-    'Accordéon 2': {
-      options: [
-        { label: 'Option 1', value: 'option1', name: 'option1' },
-        { label: 'Option 2', value: 'option2', name: 'option2' },
-        { label: 'Option 3', value: 'option3', name: 'option3' },
-      ],
-    },
-    'Accordéon 3': {
-      options: [
-        { label: 'Option 1', value: 'option1', name: 'option1' },
-        { label: 'Option 2', value: 'option2', name: 'option2' },
-        { label: 'Option 3', value: 'option3', name: 'option3' },
-      ],
-    },
-  },
+            <DsfrAccordion
+              :id="name"
+              :title="name"
+              :expanded-id="expandedId"
+              @expand="id => expandedId = id"
+            >
+              <DsfrCheckboxSet
+                :options="accordion.options"
+                small
+              />
+            </DsfrAccordion>
+          </li>
+        </DsfrAccordionsGroup>
+      </DsfrSideMenu>
+    `,
+  }),
 }

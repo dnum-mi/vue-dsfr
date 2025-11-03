@@ -1,11 +1,13 @@
-import { expect, fn, within } from '@storybook/test'
+import type { Meta, StoryObj } from '@storybook/vue3-vite'
+
+import { expect, fn, within } from 'storybook/test'
 
 import DsfrCheckbox from './DsfrCheckbox.vue'
 
 /**
- * [Voir quand l’utiliser sur la documentation du DSFR](https://www.systeme-de-design.gouv.fr/version-courante/fr/composants/case-a-cocher)
+ * [Voir quand l'utiliser sur la documentation du DSFR](https://www.systeme-de-design.gouv.fr/version-courante/fr/composants/case-a-cocher)
  */
-export default {
+const meta = {
   component: DsfrCheckbox,
   title: 'Composants/DsfrCheckbox',
   tags: ['formulaire'],
@@ -13,7 +15,7 @@ export default {
     id: {
       control: 'text',
       description:
-        '(optionnel) Valeur de l’attribut `id` de la checkbox. Par défaut, un id pseudo-aléatoire sera donné.',
+        '(optionnel) Valeur de l\'attribut `id` de la checkbox. Par défaut, un id pseudo-aléatoire sera donné.',
     },
     // label: {
     //   control: 'text',
@@ -21,7 +23,7 @@ export default {
     // },
     name: {
       control: 'text',
-      description: 'Valeur de l’attribut `name` de la case à cocher',
+      description: 'Valeur de l\'attribut `name` de la case à cocher',
     },
     hint: {
       control: 'text',
@@ -41,7 +43,7 @@ export default {
     },
     errorMessage: {
       control: 'text',
-      description: 'Texte du message à afficher en cas d’erreur',
+      description: 'Texte du message à afficher en cas d\'erreur',
     },
     validMessage: {
       control: 'text',
@@ -54,227 +56,241 @@ export default {
     },
     'update:modelValue': {
       description:
-        'Événement émis lors du changement de l’état coché (`true`) ou non (`false`)',
+        'Événement émis lors du changement de l\'état coché (`true`) ou non (`false`)',
     },
     onChange: { action: fn() },
   },
-}
+} satisfies Meta<typeof DsfrCheckbox>
 
-export const Checkbox = (args) => ({
-  components: { DsfrCheckbox },
-  data () {
-    return { ...args }
-  },
-  template: `
-      <DsfrCheckbox
-        :label="label"
-        :disabled="disabled"
-        :required="required"
-        :small="small"
-        :hint="hint"
-        :value="value"
-        :name="name || 'name1'"
-        v-model="modelValue"
-      />
-      {{ modelValue }}
-  `,
-  watch: {
-    modelValue (newValue) {
-      this.onChange(newValue)
+export default meta
+
+type Story = StoryObj<typeof meta>
+
+export const Checkbox: Story = {
+  args: {
+    disabled: false,
+    modelValue: false,
+    required: false,
+    small: false,
+    label: 'Checkbox 1',
+    name: 'name1',
+    value: 'name1',
+    hint: 'Description 1',
+  } as any,
+  render: (args) => ({
+    components: { DsfrCheckbox },
+    setup () {
+      return { args }
     },
+    template: `
+      <DsfrCheckbox
+        :label="args.label"
+        :disabled="args.disabled"
+        :required="args.required"
+        :small="args.small"
+        :hint="args.hint"
+        :value="args.value"
+        :name="args.name || 'name1'"
+        v-model="args.modelValue"
+      />
+      {{ args.modelValue }}
+  `,
+    watch: {
+      'args.modelValue': (newValue: boolean) => {
+        if ((args as any).onChange) { (args as any).onChange(newValue) }
+      },
+    },
+  }),
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement)
+    const label = canvas.getByText('Checkbox 1')
+    expect(label).toHaveClass('fr-label')
+    const input = canvas.getByRole('checkbox')
+    expect(input.parentElement).toHaveClass('fr-checkbox-group')
+    expect(input).not.toHaveAttribute('required')
+    expect(input).not.toBeChecked()
+    label.click()
+    expect(input).toBeChecked()
+    label.click()
   },
-})
-Checkbox.args = {
-  disabled: false,
-  modelValue: false,
-  required: false,
-  small: false,
-  label: 'Checkbox 1',
-  name: 'name1',
-  value: 'name1',
-  hint: 'Description 1',
-}
-Checkbox.play = async ({ canvasElement }) => {
-  const canvas = within(canvasElement)
-  const label = canvas.getByText(Checkbox.args.label)
-  expect(label).toHaveClass('fr-label')
-  const input = canvas.getByRole('checkbox')
-  expect(input.parentElement).toHaveClass('fr-checkbox-group')
-  expect(input).not.toHaveAttribute('required')
-  expect(input).not.toBeChecked()
-  label.click()
-  expect(input).toBeChecked()
-  label.click()
 }
 
-export const CheckboxRequis = (args) => ({
-  components: { DsfrCheckbox },
-  data () {
-    return { ...args }
-  },
-  template: `
+export const CheckboxRequis: Story = {
+  args: {
+    disabled: false,
+    modelValue: false,
+    required: true,
+    label: 'En cochant vous acceptez...',
+    name: 'name1',
+    hint: 'Description 1',
+  } as any,
+  render: (args) => ({
+    components: { DsfrCheckbox },
+    setup () {
+      return { args }
+    },
+    template: `
     <component :is="'style'">
       .required {
         color: #f60700;
       }
     </component>
     <DsfrCheckbox
-      :label="label"
-      :disabled="disabled"
-      :required="required"
-      :hint="hint"
-      :name="name || 'name1'"
-      v-model="modelValue"
+      :label="args.label"
+      :disabled="args.disabled"
+      :required="args.required"
+      :hint="args.hint"
+      :name="args.name || 'name1'"
+      v-model="args.modelValue"
     />
   `,
-  watch: {
-    modelValue (newValue) {
-      this.onChange(newValue)
+    watch: {
+      'args.modelValue': (newValue: boolean) => {
+        if ((args as any).onChange) { (args as any).onChange(newValue) }
+      },
     },
+  }),
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement)
+    const label = canvas.getByText('En cochant vous acceptez...')
+    expect(label).toHaveClass('fr-label')
+    const input = canvas.getByRole('checkbox')
+    expect(input).toHaveAttribute('required', '')
   },
-})
-CheckboxRequis.args = {
-  disabled: false,
-  modelValue: false,
-  required: true,
-  label: 'En cochant vous acceptez...',
-  name: 'name1',
-  hint: 'Description 1',
-}
-CheckboxRequis.play = async ({ canvasElement }) => {
-  const canvas = within(canvasElement)
-  const label = canvas.getByText(CheckboxRequis.args.label)
-  expect(label).toHaveClass('fr-label')
-  const input = canvas.getByRole('checkbox')
-  expect(input).toHaveAttribute('required', '')
 }
 
-export const CheckboxRequisPersonnalise = (args) => ({
-  components: { DsfrCheckbox },
-  data () {
-    return { ...args }
-  },
-  template: `
+export const CheckboxRequisPersonnalise: Story = {
+  args: {
+    disabled: false,
+    modelValue: false,
+    required: true,
+    label: 'En cochant vous acceptez...',
+    name: 'name1',
+    hint: 'Description 1',
+  } as any,
+  render: (args) => ({
+    components: { DsfrCheckbox },
+    setup () {
+      return { args }
+    },
+    template: `
     <component :is="'style'">
       .required {
         color: #f60700;
       }
     </component>
     <DsfrCheckbox
-      :label="label"
-      :disabled="disabled"
-      :required="required"
-      :hint="hint"
-      :name="name || 'name1'"
-      v-model="modelValue"
+      :label="args.label"
+      :disabled="args.disabled"
+      :required="args.required"
+      :hint="args.hint"
+      :name="args.name || 'name1'"
+      v-model="args.modelValue"
     >
       <template #required-tip>
         <em>&nbsp;(obligatoire)</em>
       </template>
     </DsfrCheckbox>
   `,
-  watch: {
-    modelValue (newValue) {
-      this.onChange(newValue)
+    watch: {
+      'args.modelValue': (newValue: boolean) => {
+        if ((args as any).onChange) { (args as any).onChange(newValue) }
+      },
     },
+  }),
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement)
+    const label = canvas.getByText('En cochant vous acceptez...')
+    const em = canvas.getByText('(obligatoire)')
+    expect(em).toHaveProperty('tagName', 'EM')
+    expect(label).toHaveClass('fr-label')
+    const input = canvas.getByRole('checkbox')
+    expect(input).toHaveAttribute('required', '')
   },
-})
-CheckboxRequisPersonnalise.args = {
-  disabled: false,
-  modelValue: false,
-  required: true,
-  label: 'En cochant vous acceptez...',
-  name: 'name1',
-  hint: 'Description 1',
-}
-CheckboxRequisPersonnalise.play = async ({ canvasElement }) => {
-  const canvas = within(canvasElement)
-  const label = canvas.getByText(CheckboxRequisPersonnalise.args.label)
-  const em = canvas.getByText('(obligatoire)')
-  expect(em).toHaveProperty('tagName', 'EM')
-  expect(label).toHaveClass('fr-label')
-  const input = canvas.getByRole('checkbox')
-  expect(input).toHaveAttribute('required', '')
 }
 
-export const CheckboxAvecErreur = (args) => ({
-  components: { DsfrCheckbox },
-  data () {
-    return args
-  },
-  template: `
+export const CheckboxAvecErreur: Story = {
+  args: {
+    disabled: false,
+    modelValue: false,
+    required: false,
+    label: 'Checkbox 1',
+    hint: 'Description 1',
+    errorMessage: 'Erreur formulaire',
+    name: 'cb-error',
+  } as any,
+  render: (args) => ({
+    components: { DsfrCheckbox },
+    setup () {
+      return { args }
+    },
+    template: `
       <DsfrCheckbox
-        :label="label"
-        :disabled="disabled"
-        :required="required"
-        :hint="hint"
-        :error-message="errorMessage"
-        :name="name || 'name-error'"
-        v-model="modelValue"
+        :label="args.label"
+        :disabled="args.disabled"
+        :required="args.required"
+        :hint="args.hint"
+        :error-message="args.errorMessage"
+        :name="args.name || 'name-error'"
+        v-model="args.modelValue"
       />
   `,
-  watch: {
-    modelValue (newValue) {
-      this.onChange(newValue)
+    watch: {
+      'args.modelValue': (newValue: boolean) => {
+        if ((args as any).onChange) { (args as any).onChange(newValue) }
+      },
     },
-  },
-})
-CheckboxAvecErreur.args = {
-  disabled: false,
-  modelValue: false,
-  required: false,
-  label: 'Checkbox 1',
-  hint: 'Description 1',
-  errorMessage: 'Erreur formulaire',
-  name: 'cb-error',
-}
-CheckboxAvecErreur.play = async ({ canvasElement }) => {
-  const canvas = within(canvasElement)
-  const checkboxWrapper = canvas.getByText(CheckboxAvecErreur.args.label).parentElement
-  const messageEl = canvas.getByText(CheckboxAvecErreur.args.errorMessage)
+  }),
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement)
+    const checkboxWrapper = canvas.getByText('Checkbox 1').parentElement
+    const messageEl = canvas.getByText('Erreur formulaire')
 
-  expect(checkboxWrapper).toHaveClass('fr-checkbox-group')
-  expect(checkboxWrapper).toHaveClass('fr-checkbox-group--error')
-  expect(messageEl).toHaveClass('fr-message--info')
-  expect(messageEl).toHaveClass('fr-error-text')
+    expect(checkboxWrapper).toHaveClass('fr-checkbox-group')
+    expect(checkboxWrapper).toHaveClass('fr-checkbox-group--error')
+    expect(messageEl).toHaveClass('fr-message--info')
+    expect(messageEl).toHaveClass('fr-error-text')
+  },
 }
 
-export const CheckboxAvecSucces = (args) => ({
-  components: { DsfrCheckbox },
-  data () {
-    return args
-  },
-  template: `
+export const CheckboxAvecSucces: Story = {
+  args: {
+    disabled: false,
+    modelValue: false,
+    label: 'Checkbox 1',
+    hint: 'Description 1',
+    validMessage: 'Formulaire valide',
+    name: 'cb-success',
+  } as any,
+  render: (args) => ({
+    components: { DsfrCheckbox },
+    setup () {
+      return { args }
+    },
+    template: `
       <DsfrCheckbox
-        :label="label"
-        :disabled="disabled"
-        :hint="hint"
-        :valid-message="validMessage"
-        :name="name || 'name-success'"
-        v-model="modelValue"
+        :label="args.label"
+        :disabled="args.disabled"
+        :hint="args.hint"
+        :valid-message="args.validMessage"
+        :name="args.name || 'name-success'"
+        v-model="args.modelValue"
       />
   `,
-  watch: {
-    modelValue (newValue) {
-      this.onChange(newValue)
+    watch: {
+      'args.modelValue': (newValue: boolean) => {
+        if ((args as any).onChange) { (args as any).onChange(newValue) }
+      },
     },
-  },
-})
-CheckboxAvecSucces.args = {
-  disabled: false,
-  modelValue: false,
-  label: 'Checkbox 1',
-  hint: 'Description 1',
-  validMessage: 'Formulaire valide',
-  name: 'cb-success',
-}
-CheckboxAvecSucces.play = async ({ canvasElement }) => {
-  const canvas = within(canvasElement)
-  const checkboxWrapper = canvas.getByText(CheckboxAvecSucces.args.label).parentElement
-  const messageEl = canvas.getByText(CheckboxAvecSucces.args.validMessage)
+  }),
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement)
+    const checkboxWrapper = canvas.getByText('Checkbox 1').parentElement
+    const messageEl = canvas.getByText('Formulaire valide')
 
-  expect(checkboxWrapper).toHaveClass('fr-checkbox-group')
-  expect(checkboxWrapper).toHaveClass('fr-checkbox-group--valid')
-  expect(messageEl).toHaveClass('fr-message--info')
-  expect(messageEl).toHaveClass('fr-valid-text')
+    expect(checkboxWrapper).toHaveClass('fr-checkbox-group')
+    expect(checkboxWrapper).toHaveClass('fr-checkbox-group--valid')
+    expect(messageEl).toHaveClass('fr-message--info')
+    expect(messageEl).toHaveClass('fr-valid-text')
+  },
 }

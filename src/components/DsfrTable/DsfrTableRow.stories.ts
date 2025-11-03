@@ -1,10 +1,12 @@
-import { fn } from '@storybook/test'
+import type { Meta, StoryObj } from '@storybook/vue3-vite'
+
+import { fn } from 'storybook/test'
 
 import DsfrTable from './DsfrTable.vue'
 import DsfrTableHeaders from './DsfrTableHeaders.vue'
 import DsfrTableRow from './DsfrTableRow.vue'
 
-export default {
+const meta = {
   component: DsfrTableRow,
   title: 'Composants/DsfrTableRow',
   argTypes: {
@@ -33,7 +35,10 @@ Toutes les autres propriétés seront mises sur l’élément \`<tr>\` de cette 
       description: 'Fonction pour montrer le clic sur une ligne',
     },
   },
-}
+} as Meta<typeof DsfrTableRow>
+
+export default meta
+type Story = StoryObj<typeof meta>
 
 const title = 'Utilisateurs'
 const headers = ['Nom', 'Prénom', 'Email', 'Téléphone', 'Portable', 'Statut']
@@ -78,93 +83,88 @@ const complexRowData = {
   ],
 }
 
-export const LigneDeTableauSimple = (args) => ({
-  components: {
-    DsfrTable,
-    DsfrTableRow,
-    DsfrTableHeaders,
+export const LigneDeTableauSimple: Story = {
+  args: {
+    title,
+    headers,
+    rowData,
   },
-
-  data () {
-    return {
-      ...args,
-    }
-  },
-
-  template: `
+  render: (args: any) => ({
+    components: {
+      DsfrTable,
+      DsfrTableRow,
+      DsfrTableHeaders,
+    },
+    setup () {
+      return { args }
+    },
+    template: `
       <DsfrTable
-        :title="title"
+        :title="args.title"
       >
         <template v-slot:header>
-          <DsfrTableHeaders :headers="headers" />
+          <DsfrTableHeaders :headers="args.headers" />
         </template>
-        <DsfrTableRow :row-data="rowData" />
+        <DsfrTableRow :row-data="args.rowData" />
       </DsfrTable>
-  `,
-})
-LigneDeTableauSimple.args = {
-  title,
-  headers,
-  rowData,
+    `,
+  }),
 }
 
-export const LigneDeTableauAvecComposant = (args) => ({
-  components: {
-    DsfrTable,
-    DsfrTableRow,
-    DsfrTableHeaders,
+export const LigneDeTableauAvecComposant: Story = {
+  args: {
+    title,
+    headers,
+    rowData: rowDataWithComponent,
   },
-
-  data () {
-    return {
-      ...args,
-    }
-  },
-
-  template: `
-    <DsfrTable
-      :title="title"
-      :headers="headers"
-    >
-      <DsfrTableRow :row-data="rowData" />
-    </DsfrTable>
-  `,
-})
-LigneDeTableauAvecComposant.args = {
-  title,
-  headers,
-  rowData: rowDataWithComponent,
+  render: (args: any) => ({
+    components: {
+      DsfrTable,
+      DsfrTableRow,
+      DsfrTableHeaders,
+    },
+    setup () {
+      return { args }
+    },
+    template: `
+      <DsfrTable
+        :title="args.title"
+        :headers="args.headers"
+      >
+        <DsfrTableRow :row-data="args.rowData" />
+      </DsfrTable>
+    `,
+  }),
 }
 
-export const LigneDeTableauComplexe = (args) => ({
-  components: {
-    DsfrTable,
-    DsfrTableRow,
-    DsfrTableHeaders,
+export const LigneDeTableauComplexe: Story = {
+  args: {
+    title,
+    headers,
+    rowData: complexRowData.rowData,
+    rowAttrs: complexRowData.rowAttrs,
   },
-
-  data () {
-    return {
-      ...args,
-      rowAttrs: {
+  render: (args: any) => ({
+    components: {
+      DsfrTable,
+      DsfrTableRow,
+      DsfrTableHeaders,
+    },
+    setup () {
+      const rowAttrs = {
         ...args.rowAttrs,
         onClick: () => args.onClickRow(args.rowData),
-      },
-    }
-  },
+      }
 
-  template: `
+      return { args, rowAttrs }
+    },
+    template: `
       <DsfrTable
-        :title="title"
-        :headers="headers"
+        :title="args.title"
+        :headers="args.headers"
       >
-        <DsfrTableRow :row-data="rowData" :row-attrs="rowAttrs" />
+        <DsfrTableRow :row-data="args.rowData" :row-attrs="rowAttrs" />
       </DsfrTable>
-  `,
-})
-LigneDeTableauComplexe.args = {
-  title,
-  headers,
-  rowData: complexRowData.rowData,
-  rowAttrs: complexRowData.rowAttrs,
+    `,
+  }),
 }

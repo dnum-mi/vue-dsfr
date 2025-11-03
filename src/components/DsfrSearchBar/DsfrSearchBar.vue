@@ -16,16 +16,19 @@ withDefaults(defineProps<DsfrSearchBarProps>(), {
 })
 
 const emit = defineEmits<{
-  (e: 'update:modelValue', payload: string): void
-  (e: 'search', payload: string): void
+  /** Émis lors du changement du contenu du champ de saisie */
+  'update:modelValue': [payload: string | number | undefined]
+  /** Émis lors de la validation de la recherche */
+  search: [payload: string]
 }>()
 </script>
 
 <template>
-  <div
+  <form
     class="fr-search-bar"
     :class="{ 'fr-search-bar--lg': large }"
     role="search"
+    @submit.prevent="emit('search', modelValue)"
   >
     <DsfrInput
       :id="id"
@@ -42,7 +45,6 @@ const emit = defineEmits<{
       title="Rechercher"
       :disabled="disabled"
       :aria-disabled="disabled"
-      @click="emit('search', modelValue)"
     >
       <template v-if="buttonText">
         {{ buttonText }}
@@ -54,7 +56,7 @@ const emit = defineEmits<{
         Rechercher
       </span>
     </DsfrButton>
-  </div>
+  </form>
 </template>
 
 <style>

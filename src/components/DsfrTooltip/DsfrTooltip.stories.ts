@@ -1,39 +1,46 @@
+import type { Meta, StoryObj } from '@storybook/vue3-vite'
+
 import DsfrTooltip from './DsfrTooltip.vue'
 
-export default {
+const meta = {
   component: DsfrTooltip,
   title: 'Composants/DsfrTooltip',
   argTypes: {
     id: {
       control: 'text',
       description:
-        '(optionnel) Valeur de l’attribut `id` du tooltip. Par défaut, un id pseudo-aléatoire sera donné.',
+        '(optionnel) Valeur de l\'attribut `id` du tooltip. Par défaut, un id pseudo-aléatoire sera donné.',
     },
     content: {
       control: 'text',
       description:
-        'Contenu de votre bulle d’aide : il s’agit d’un texte sans mise en forme.',
+        'Contenu de votre bulle d\'aide : il s\'agit d\'un texte sans mise en forme.',
     },
     onHover: {
       control: 'boolean',
       description:
-        'Permet de définir si l’infobulle doit s’afficher au survol de l’élément (`true`) ou au clic (`false`, défaut).',
+        'Permet de définir si l\'infobulle doit s\'afficher au survol de l\'élément (`true`) ou au clic (`false`, défaut).',
     },
   },
-}
+} satisfies Meta<typeof DsfrTooltip>
 
-export const Infobulle = (args) => ({
-  components: {
-    DsfrTooltip,
-  },
+export default meta
 
-  data () {
-    return {
-      ...args,
-    }
-  },
+type Story = StoryObj<typeof meta>
 
-  template: `
+export const Infobulle: Story = {
+  render: (args) => ({
+    components: {
+      DsfrTooltip,
+    },
+
+    setup () {
+      return {
+        ...args,
+      }
+    },
+
+    template: `
     <DsfrTooltip
       :content="content"
       :on-hover="onHover"
@@ -41,47 +48,51 @@ export const Infobulle = (args) => ({
       Un élément intriguant
     </DsfrTooltip>
   `,
-})
-Infobulle.args = {
-  content: 'Un élément assez intriguant',
-  onHover: false,
+  }),
+  args: {
+    content: 'Un élément assez intriguant',
+    onHover: false,
+  },
 }
 
-export const InfobulleParDefaut = (args) => ({
-  components: {
-    DsfrTooltip,
-  },
+export const InfobulleParDefaut: Story = {
+  render: (args) => ({
+    components: {
+      DsfrTooltip,
+    },
 
-  data () {
-    return {
-      ...args,
-    }
-  },
+    setup () {
+      return {
+        ...args,
+      }
+    },
 
-  template: `
+    template: `
     <DsfrTooltip
       :content="content"
     >
-      Un contenu qui n’apparaîtra que si hover est à \`true\`
+      Un contenu qui n'apparaîtra que si hover est à \`true\`
     </DsfrTooltip>
   `,
-})
-InfobulleParDefaut.args = {
-  content: 'Un élément assez intriguant',
+  }),
+  args: {
+    content: 'Un élément assez intriguant',
+  },
 }
 
-export const InfobulleAuSurvol = (args) => ({
-  components: {
-    DsfrTooltip,
-  },
+export const InfobulleAuSurvol: Story = {
+  render: (args) => ({
+    components: {
+      DsfrTooltip,
+    },
 
-  data () {
-    return {
-      ...args,
-    }
-  },
+    setup () {
+      return {
+        ...args,
+      }
+    },
 
-  template: `
+    template: `
     Du texte
     <DsfrTooltip
       :content="content"
@@ -90,7 +101,8 @@ export const InfobulleAuSurvol = (args) => ({
       avec une précision à donner ici
     </DsfrTooltip>
   `,
-})
-InfobulleAuSurvol.args = {
-  content: 'Texte précisant pourquoi ce texte est là',
+  }),
+  args: {
+    content: 'Texte précisant pourquoi ce texte est là',
+  },
 }

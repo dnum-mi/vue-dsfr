@@ -15,7 +15,10 @@ const props = withDefaults(defineProps<DsfrPaginationProps>(), {
   ariaLabel: 'Pagination',
 })
 
-const emit = defineEmits<{ (e: 'update:current-page', payload: number): void }>()
+const emit = defineEmits<{
+  /** Émis lors de la mise à jour de la page courante */
+  'update:current-page': [payload: number]
+}>()
 
 const startIndex = computed(() => {
   return Math.min(props.pages.length - 1 - props.truncLimit, Math.max(props.currentPage - (props.truncLimit - props.truncLimit % 2) / 2, 0))

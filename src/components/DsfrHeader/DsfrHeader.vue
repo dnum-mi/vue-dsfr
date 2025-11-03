@@ -37,16 +37,24 @@ const props = withDefaults(defineProps<DsfrHeaderProps>(), {
 })
 
 const emit = defineEmits<{
-  (e: 'update:modelValue', payload: string): void
-  (e: 'search', payload: string): void
-  (e: 'languageSelect', payload: DsfrLanguageSelectorElement): void
+  /** Émis lors du changement de la valeur de recherche */
+  'update:modelValue': [payload: string | number | undefined]
+  /** Émis lors de la validation de la recherche */
+  search: [payload: string]
+  /** Émis lors de la sélection d'une langue */
+  languageSelect: [payload: DsfrLanguageSelectorElement]
 }>()
 
 const slots = defineSlots<{
+  /** Slot par défaut pour le contenu du fieldset (sera dans `<div class="fr-header__body-row">`) */
   default: () => any
+  /** Slot nommé operator pour le logo opérateur. Sera dans `<div class="fr-header__operator">` */
   operator: () => any
+  /** Slot nommé mainnav pour le menu de navigation principal */
   mainnav: () => any
+  /** Slot pour du contenu avant les liens rapides */
   'before-quick-links': () => any
+  /** Slot pour du contenu après les liens rapides */
   'after-quick-links': () => any
 }>()
 
@@ -131,7 +139,6 @@ provide(registerNavigationLinkKey, () => {
                 v-if="isWithSlotOperator"
                 class="fr-header__operator"
               >
-                <!-- @slot Slot nommé operator pour le logo opérateur. Sera dans `<div class="fr-header__operator">` -->
                 <slot name="operator">
                   <img
                     v-if="operatorImgSrc"
@@ -236,10 +243,10 @@ provide(registerNavigationLinkKey, () => {
               <DsfrSearchBar
                 :id="searchbarId"
                 :label="searchLabel"
-                :model-value="modelValue"
+                :model-value="String(modelValue || '')"
                 :placeholder="placeholder"
                 style="justify-content: flex-end"
-                @update:model-value="emit('update:modelValue', $event)"
+                @update:model-value="emit('update:modelValue', $event!)"
                 @search="emit('search', $event)"
               />
             </div>
@@ -278,7 +285,7 @@ provide(registerNavigationLinkKey, () => {
                 <template v-if="languageSelector">
                   <DsfrLanguageSelector
                     v-bind="languageSelector"
-                    @select="languageSelector.currentLanguage = $event.codeIso"
+                    @select="emit('languageSelect', $event)"
                   />
                 </template>
                 <slot name="before-quick-links" />
@@ -304,7 +311,7 @@ provide(registerNavigationLinkKey, () => {
               >
                 <DsfrSearchBar
                   :searchbar-id="searchbarId"
-                  :model-value="modelValue"
+                  :model-value="String(modelValue || '')"
                   :placeholder="placeholder"
                   @update:model-value="emit('update:modelValue', $event)"
                   @search="emit('search', $event)"
@@ -313,7 +320,6 @@ provide(registerNavigationLinkKey, () => {
             </div>
           </div>
         </FocusTrap>
-        <!-- @slot Slot par défaut pour le contenu du fieldset (sera dans `<div class="fr-header__body-row">`) -->
         <slot />
       </div>
     </div>
@@ -322,7 +328,6 @@ provide(registerNavigationLinkKey, () => {
         v-if="isWithSlotNav && !modalOpened"
         class="fr-container"
       >
-        <!-- @slot Slot nommé mainnav pour le menu de navigation principal -->
         <slot
           name="mainnav"
           :hidemodal="hideModal"

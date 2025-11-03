@@ -18,7 +18,7 @@ function onSelect ([value, selected]: [string, boolean]) {
     return
   }
   if (selected) {
-    const newValue = new Set([...props.modelValue])
+    const newValue = new Set(props.modelValue)
     newValue.delete(value)
     emit('update:modelValue', [...newValue])
     return
@@ -31,15 +31,20 @@ function onSelect ([value, selected]: [string, boolean]) {
 <template>
   <ul class="fr-tags-group">
     <li
-      v-for="({ icon, label, ...tagProps }, i) in tags"
+      v-for="(tag, i) in tags"
       :key="i"
     >
       <DsfrTag
-        v-bind="tagProps"
-        :icon="icon"
-        :label="label"
-        :selectable="tagProps.selectable"
-        :selected="tagProps.selectable ? modelValue?.includes(tagProps.value as string) : undefined"
+        :label="tag.label"
+        :link="tag.link"
+        :tag-name="tag.tagName"
+        :icon="tag.icon"
+        :disabled="tag.disabled"
+        :small="tag.small"
+        :icon-only="tag.iconOnly"
+        :selectable="tag.selectable"
+        :selected="tag.selectable ? modelValue?.includes(tag.value as string) : undefined"
+        :value="tag.selectable ? tag.value : undefined"
         @select="onSelect($event as [string, boolean])"
       />
     </li>

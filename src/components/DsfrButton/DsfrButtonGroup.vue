@@ -14,6 +14,11 @@ const props = withDefaults(defineProps<DsfrButtonGroupProps>(), {
   align: undefined,
 })
 
+defineSlots<{
+  /** Slot par défaut pour le contenu de la liste de boutons. Sera dans `<ul class="fr-btns-group">` */
+  default: () => any
+}>()
+
 const buttonsEl = ref<HTMLUListElement | null>(null)
 
 const sm = computed(() => ['sm', 'small'].includes(props.size))
@@ -85,7 +90,6 @@ onMounted(async () => {
         @click="onClick"
       />
     </li>
-    <!-- @slot Slot par défaut pour le contenu de la liste de boutons. Sera dans `<ul class="fr-btns-group">` -->
     <slot />
   </ul>
 </template>

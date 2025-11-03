@@ -15,6 +15,16 @@ defineEmits<{
   (e: 'customize'): void
 }>()
 
+/**
+ * Slots disponibles pour DsfrConsent
+ */
+defineSlots<{
+  /**
+   * Slot par défaut pour personnaliser la description du consentement
+   */
+  default?: () => any
+}>()
+
 const isExternalLink = computed(() => typeof props.url === 'string' && props.url.startsWith('http'))
 const is = computed(() => props.url ? (isExternalLink.value ? 'a' : 'RouterLink') : 'a')
 const linkProps = computed(() => ({ [isExternalLink.value ? 'href' : 'to']: props.url }))

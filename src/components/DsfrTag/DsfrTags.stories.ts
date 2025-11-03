@@ -1,18 +1,17 @@
-import DsfrTag from './DsfrTag.vue'
+import type { Meta, StoryObj } from '@storybook/vue3-vite'
+
+import { ref } from 'vue'
+
 import DsfrTags from './DsfrTags.vue'
 
 /**
- * [Voir quand l’utiliser sur la documentation du DSFR](https://www.systeme-de-design.gouv.fr/version-courante/fr/composants/tag)
+ * [Voir quand l'utiliser sur la documentation du DSFR](https://www.systeme-de-design.gouv.fr/version-courante/fr/composants/tag)
  */
-export default {
+const meta = {
   component: DsfrTags,
   title: 'Composants/DsfrTags',
   tags: ['chip'],
   argTypes: {
-    class: {
-      control: 'text',
-      description: 'Classe CSS (facultative) pour utiliser les icônes du DSFR',
-    },
     label: {
       control: 'text',
       description: '**Texte** du tag',
@@ -55,15 +54,13 @@ export default {
     tags: {
       control: 'object',
       description:
-        'Tableau d’objets à passer à `DsfrTags` (avec un « s »), chaque objet pourra contenir toutes les props à passer à `DsfrTag` (sans « s »)',
+        'Tableau d\'objets à passer à `DsfrTags` (avec un « s »), chaque objet pourra contenir toutes les props à passer à `DsfrTag` (sans « s »)',
     },
   },
-}
+} as Meta<typeof DsfrTags>
 
-const tagGroup = [
-  { label: 'Tag sans icône' },
-  { label: 'Tag avec icône', icon: 'ri-arrow-right-line' },
-]
+export default meta
+type Story = StoryObj<typeof meta>
 
 const tags = [
   [
@@ -111,221 +108,157 @@ const tags = [
   ],
 ]
 
-export const Etiquette = (args) => ({
-  components: { DsfrTag },
-  data () {
-    const obj = {
-      ...args,
-      className: args.class,
-    }
-    delete obj.class
-    return obj
+export const GroupeDEtiquettes: Story = {
+  name: 'Groupe d\'étiquettes avec contrôles',
+  args: {
+    tags: tags[0],
   },
-  template: `
-    <DsfrTag
-      :class="className"
-      :label="label"
-      :icon="icon"
-      :tagName="tagName"
-      :iconOnly="iconOnly"
-      :disabled="disabled"
-      :selected="selected"
-      :small="small"
-    />
-  `,
-})
-Etiquette.args = {
-  label: 'Étiquette',
-  class: '',
-  icon: '',
-  iconOnly: false,
-  disabled: false,
-  small: false,
-  selected: false,
-  tagName: 'button',
+  render: (args) => ({
+    components: { DsfrTags },
+    setup () {
+      return { args }
+    },
+    template: `
+      <DsfrTags :tags="args.tags" />
+    `,
+  }),
 }
 
-export const GroupeDEtiquettes = (args) => ({
-  components: { DsfrTags },
-  data () {
-    return args
+export const EtiquettesSimples: Story = {
+  args: {
+    tags: tags[0],
   },
-  template: `
-    <DsfrTags
-      :tags="tags"
-    />
-  `,
-})
-GroupeDEtiquettes.args = {
-  tags: tagGroup,
+  render: (args) => ({
+    components: { DsfrTags },
+    setup () {
+      return { args }
+    },
+    template: `
+      <DsfrTags :tags="args.tags" />
+    `,
+  }),
 }
 
-export const EtiquettesSimples = (args) => ({
-  components: { DsfrTags },
-  data () {
-    // {
-    //   tags: [
-    //     { label: 'Tag sans icône' },
-    //     { label: 'Tag avec icône', icon: 'ri-arrow-right-line' },
-    //   ]
-    // }
-    return args
+export const EtiquettesSimplesPetites: Story = {
+  args: {
+    tags: tags[1],
   },
-  template: `
-    <DsfrTags
-      :tags="tags"
-    />
-  `,
-})
-EtiquettesSimples.args = {
-  tags: tags[0],
+  render: (args) => ({
+    components: { DsfrTags },
+    setup () {
+      return { args }
+    },
+    template: `
+      <DsfrTags :tags="args.tags" />
+    `,
+  }),
 }
 
-export const EtiquettesSimplesPetites = (args) => ({
-  components: { DsfrTags },
-  data () {
-    // {
-    //   tags: [
-    //     { label: 'Petit tag sans icône', small: true },
-    //     { label: 'Petit tag avec icône', icon: 'ri-arrow-right-line', small: true },
-    //   ],
-    // }
-    return args
+export const EtiquettesCliquables: Story = {
+  args: {
+    tags: tags[2],
   },
-  template: `
-    <DsfrTags
-      :tags="tags"
-    />
-  `,
-})
-EtiquettesSimplesPetites.args = {
-  tags: tags[1],
+  render: (args) => ({
+    components: { DsfrTags },
+    setup () {
+      return { args }
+    },
+    template: `
+      <DsfrTags :tags="args.tags" />
+    `,
+  }),
 }
 
-export const EtiquettesCliquables = (args) => ({
-  components: { DsfrTags },
-  data () {
-    // {
-    //   tags: [
-    //     { label: 'Tag cliquable sans icône', link: 'https://storybook.vue-ds.fr' },
-    //     { label: 'Tag cliquable avec icône', icon: 'ri-arrow-right-line', link: 'https://storybook.vue-ds.fr' },
-    //   ]
-    // }
-    return args
+export const EtiquettesCliquablesPetites: Story = {
+  args: {
+    tags: tags[3],
   },
-  template: `
-    <DsfrTags
-      :tags="tags"
-    />
-  `,
-})
-EtiquettesCliquables.args = {
-  tags: tags[2],
+  render: (args) => ({
+    components: { DsfrTags },
+    setup () {
+      return { args }
+    },
+    template: `
+      <DsfrTags :tags="args.tags" />
+    `,
+  }),
 }
 
-export const EtiquettesCliquablesPetites = (args) => ({
-  components: { DsfrTags },
-  data () {
-    // {
-    //   tags: [
-    //     { label: 'Tag cliquable sans icône', small: true, link: 'https://storybook.vue-ds.fr' },
-    //     { label: 'Tag cliquable avec icône', icon: 'ri-arrow-right-line', small: true, link: 'https://storybook.vue-ds.fr' },
-    //   ]
-    // }
-    return args
+export const EtiquettesSelectionnables: Story = {
+  args: {
+    tags: tags[4],
   },
-  template: `
-    <DsfrTags
-      :tags="tags"
-    />
-  `,
-})
-EtiquettesCliquablesPetites.args = {
-  tags: tags[3],
+  render: (args) => ({
+    components: { DsfrTags },
+    setup () {
+      const tagsRef = ref<any[]>(
+        args.tags.map((tag: any, idx) => ({
+          ...tag,
+          onClick: () => {
+            const clickedTag = tagsRef.value[idx]
+            clickedTag.selected = !clickedTag.selected
+          },
+        })),
+      )
+
+      return {
+        tags: tagsRef,
+      }
+    },
+    template: `
+      <DsfrTags :tags="tags" />
+    `,
+  }),
 }
 
-export const EtiquettesSelectionnables = (args) => ({
-  components: { DsfrTags },
-  data () {
-    // {
-    //   tags: [
-    //     { label: 'Tag sélectionné sans icône', tagName: 'button', selected: true },
-    //     { label: 'Tag sélectionné avec icône', icon: 'ri-arrow-right-line', tagName: 'button', selected: true },
-    //   ],
-    // }
-    return {
-      ...args,
-      tags: args.tags.map((tag, idx) => ({
-        ...tag,
-        onClick: () => {
-          const clickedTag = this.tags.find((tag, i) => i === idx)
-          clickedTag.selected = !clickedTag.selected
-        },
-      })),
-    }
+export const EtiquettesFermables: Story = {
+  args: {
+    tags: tags[5],
   },
-  template: `
-    <DsfrTags
-      :tags="tags"
-    />
-  `,
-})
-EtiquettesSelectionnables.args = {
-  tags: tags[4],
-}
+  render: (args) => ({
+    components: { DsfrTags },
+    setup () {
+      const tagsRef = ref<any[]>([])
+      const closedTags = ref<any[]>([])
 
-export const EtiquettesFermables = (args) => ({
-  components: { DsfrTags },
-  data () {
-    // {
-    //   tags: [
-    //     { label: 'Tag 1 fermable', class: 'fr-tag--dismiss', tagName: 'button' },
-    //     { label: 'Tag 2 fermable', class: 'fr-tag--dismiss', tagName: 'button' },
-    //     { label: 'Tag 3 fermable', class: 'fr-tag--dismiss', tagName: 'button' },
-    //   ],
-    // }
+      let addClickHandlers: (tagsList: any[]) => any[]
 
-    const addClickHandlers = (tags) => {
-      return tags.map((tag, idx) => ({
-        ...tag,
-        onClick: () => {
-          // Récupérer le tag sur lequel on vient de cliquer
-          const clickedTag = this.tags.find((tag, i) => i === idx)
-          // Le retirer du tableau this.tags : recréer un nouveau tableau SANS l’élément
-          // et AVEC dans le nouveau tableau les bons indexes dans la fonction onClick
-          const newTags = this.tags.filter((tag, i) => i !== idx)
-          this.tags = addClickHandlers(newTags)
-          // L’ajouter dans this.closedTags
-          this.closedTags = [...this.closedTags, clickedTag]
+      const resetTags = () => {
+        // mettre tous les éléments de closedTags dans tagsRef
+        tagsRef.value = addClickHandlers(closedTags.value)
+        // et réinitialiser closedTags à tableau vide
+        closedTags.value = []
+      }
 
-          // Si this.tags n’a plus d’éléments,
-          if (this.tags.length === 0) {
-            // attendre 1 seconde, et réinitialiser les étiquettes de la story
-            setTimeout(resetTags, 1000) // eslint-disable-line ts/no-use-before-define
-          }
-        },
-      }))
-    }
+      addClickHandlers = (tagsList: any[]) => {
+        return tagsList.map((tag, idx) => ({
+          ...tag,
+          onClick: () => {
+            // Récupérer le tag sur lequel on vient de cliquer
+            const clickedTag = tagsRef.value[idx]
+            // Le retirer du tableau tagsRef.value : recréer un nouveau tableau SANS l'élément
+            const newTags = tagsRef.value.filter((_tag, i) => i !== idx)
+            tagsRef.value = addClickHandlers(newTags)
+            // L'ajouter dans closedTags
+            closedTags.value = [...closedTags.value, clickedTag]
 
-    const resetTags = () => {
-      // mettre tous les éléments de this.closedTags dans this.tags
-      this.tags = addClickHandlers(this.closedTags)
-      // et réinitialiser this.closedTags à tableau vide
-      this.closedTags = []
-    }
+            // Si tagsRef.value n'a plus d'éléments,
+            if (tagsRef.value.length === 0) {
+              // attendre 1 seconde, et réinitialiser les étiquettes de la story
+              setTimeout(resetTags, 1000)
+            }
+          },
+        }))
+      }
 
-    return {
-      ...args,
-      closedTags: [],
-      tags: addClickHandlers(args.tags),
-    }
-  },
-  template: `
-    <DsfrTags
-      :tags="tags"
-    />
-  `,
-})
-EtiquettesFermables.args = {
-  tags: tags[5],
+      tagsRef.value = addClickHandlers(args.tags)
+
+      return {
+        tags: tagsRef,
+      }
+    },
+    template: `
+      <DsfrTags :tags="tags" />
+    `,
+  }),
 }

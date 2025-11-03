@@ -15,6 +15,14 @@ const props = withDefaults(defineProps<DsfrTranscriptionProps>(), {
   content: 'Transcription du contenu de la vidéo',
 })
 
+defineSlots<{
+  /**
+   * Contenu de la transcription
+   * @default content prop
+   */
+  default?: () => any
+}>()
+
 const {
   collapse,
   collapsing,

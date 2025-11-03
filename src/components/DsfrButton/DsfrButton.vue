@@ -14,6 +14,11 @@ const props = withDefaults(defineProps<DsfrButtonProps>(), {
   onClick: () => undefined,
 })
 
+defineSlots<{
+  /** Slot par défaut pour le contenu du bouton. Sera dans `<button class="fr-btn"><span>` */
+  default: () => any
+}>()
+
 const sm = computed(() => ['sm', 'small'].includes(props.size))
 const md = computed(() => ['md', 'medium'].includes(props.size))
 const lg = computed(() => ['lg', 'large'].includes(props.size))
@@ -62,7 +67,6 @@ const iconProps = computed(() => typeof props.icon === 'string'
     />
     <span v-if="!iconOnly">
       {{ label }}
-      <!-- @slot Slot par défaut pour le contenu du bouton. Sera dans `<button class="fr-btn"><span">` -->
       <slot />
     </span>
   </button>

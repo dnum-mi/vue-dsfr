@@ -1,6 +1,6 @@
-import type { Meta } from '@storybook/vue3'
+import type { Meta, StoryObj } from '@storybook/vue3-vite'
 
-import { expect, fn, userEvent, within } from '@storybook/test'
+import { expect, fn, userEvent, within } from 'storybook/test'
 
 import VIcon from '../VIcon/VIcon.vue'
 
@@ -10,9 +10,9 @@ const delay = (timeout = 100) =>
   new Promise((resolve) => setTimeout(resolve, timeout))
 
 /**
- * [Voir quand l’utiliser sur la documentation du DSFR](https://www.systeme-de-design.gouv.fr/version-courante/fr/composants/mise-en-avant)
+ * [Voir quand l'utiliser sur la documentation du DSFR](https://www.systeme-de-design.gouv.fr/version-courante/fr/composants/mise-en-avant)
  */
-const meta: Meta<typeof DsfrCallout> = {
+const meta = {
   component: DsfrCallout,
   title: 'Composants/DsfrCallout',
   tags: ['message'],
@@ -28,180 +28,154 @@ const meta: Meta<typeof DsfrCallout> = {
     icon: {
       control: 'text',
       description:
-        'Permet de passer l’icône désirée en chaîne de caractères (cf. remix-icon)',
+        'Permet de passer l\'icône désirée en chaîne de caractères (cf. remix-icon)',
     },
     accent: {
       control: 'text',
       description:
-        'Permet de passer la couleur d‘accentuation',
+        'Permet de passer la couleur d\'accentuation',
     },
     button: {
       control: 'object',
       description:
         '(optionnel) Objet contenant les props à passer à DsfrButton (pour afficher un bouton sous la mise en avant)',
     },
-    // @ts-expect-error TS2353
-    onClick: {
-      action: fn(),
-    },
     titleTag: {
-      control: 'text',
+      control: 'select',
+      options: ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'],
       description:
         'Permet de choisir la balise contenant le titre de la mise en avant (h3 par défaut)',
     },
   },
-}
+} satisfies Meta<typeof DsfrCallout>
 
 export default meta
 
-export const MiseEnAvantSimple = (args) => ({
-  components: {
-    DsfrCallout,
-    VIcon,
-  },
+type Story = StoryObj<typeof meta>
 
-  data () {
-    return {
-      ...args,
-      button: args.button && {
-        ...args.button,
-        onClick: args.onClick,
-      },
-    }
+export const MiseEnAvantSimple: Story = {
+  args: {
+    title: 'Titre de la mise en avant',
+    button: undefined,
+    icon: '',
+    content:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing, incididunt, ut labore et dol',
+    titleTag: undefined,
   },
-
-  template: `
-    <DsfrCallout
-      :title="\`\${title} (\${titleTag || 'h3'})\`"
-      :content="content"
-      :button="button"
-      :icon="icon"
-      :title-tag="titleTag"
-    />
-  `,
-})
-MiseEnAvantSimple.args = {
-  title: 'Titre de la mise en avant',
-  button: undefined,
-  icon: '',
-  content:
-    'Lorem ipsum dolor sit amet, consectetur adipiscing, incididunt, ut labore et dol',
-  titleTag: undefined,
+  render: (args) => ({
+    components: {
+      DsfrCallout,
+      VIcon,
+    },
+    setup () {
+      return { args }
+    },
+    template: `
+      <DsfrCallout
+        :title="\`\${args.title} (\${args.titleTag || 'h3'})\`"
+        :content="args.content"
+        :button="args.button"
+        :icon="args.icon"
+        :title-tag="args.titleTag"
+      />
+    `,
+  }),
 }
 
-export const MiseEnAvantAvecBouton = (args) => ({
-  components: {
-    DsfrCallout,
-    VIcon,
-  },
-
-  data () {
-    return {
-      ...args,
-      button: args.button,
-    }
-  },
-
-  template: `
-    <DsfrCallout
-      :title="\`\${title} (\${titleTag || 'h3'})\`"
-      :content="content"
-      :button="button"
-      :icon="icon"
-      :title-tag="titleTag"
-    />
-  `,
-})
 const buttonOnclick = fn()
-MiseEnAvantAvecBouton.args = {
-  title: 'Titre de la mise en avant',
-  button: {
-    label: 'Label bouton',
-    onClick: buttonOnclick,
+export const MiseEnAvantAvecBouton: Story = {
+  args: {
+    title: 'Titre de la mise en avant',
+    button: {
+      label: 'Label bouton',
+      onClick: buttonOnclick,
+    },
+    icon: 'ri-information-line',
+    content:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing, incididunt, ut labore et dol',
+    titleTag: 'h2',
   },
-  icon: 'ri-information-line',
-  content:
-    'Lorem ipsum dolor sit amet, consectetur adipiscing, incididunt, ut labore et dol',
-  titleTag: 'h2',
-}
-MiseEnAvantAvecBouton.play = async ({ canvasElement }) => {
-  const canvas = within(canvasElement)
-  const closeButton = canvas.getByRole('button')
-  await userEvent.tab()
-  expect(buttonOnclick).not.toHaveBeenCalled()
-  await userEvent.click(closeButton)
+  render: (args) => ({
+    components: {
+      DsfrCallout,
+      VIcon,
+    },
+    setup () {
+      return { args }
+    },
+    template: `
+      <DsfrCallout
+        :title="\`\${args.title} (\${args.titleTag || 'h3'})\`"
+        :content="args.content"
+        :button="args.button"
+        :icon="args.icon"
+        :title-tag="args.titleTag"
+      />
+    `,
+  }),
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement)
+    const closeButton = canvas.getByRole('button')
+    await userEvent.tab()
+    expect(buttonOnclick).not.toHaveBeenCalled()
+    await userEvent.click(closeButton)
 
-  expect(closeButton).toHaveFocus()
-  await delay()
-  expect(buttonOnclick).toHaveBeenCalled()
-}
-
-export const MiseEnAvantSansTitre = (args) => ({
-  components: {
-    DsfrCallout,
-    VIcon,
+    expect(closeButton).toHaveFocus()
+    await delay()
+    expect(buttonOnclick).toHaveBeenCalled()
   },
-
-  data () {
-    return {
-      ...args,
-      button: args.button && {
-        ...args.button,
-        onClick: args.onClick,
-      },
-    }
-  },
-
-  template: `
-    <DsfrCallout
-      :content="content"
-      :button="button"
-      :icon="icon"
-      :title-tag="titleTag"
-    />
-  `,
-})
-MiseEnAvantSansTitre.args = {
-  button: undefined,
-  icon: '',
-  content:
-    'Lorem ipsum dolor sit amet, consectetur adipiscing, incididunt, ut labore et dol',
-  titleTag: undefined,
 }
 
-export const MiseEnAvantAvecAccentuation = (args) => ({
-  components: {
-    DsfrCallout,
-    VIcon,
+export const MiseEnAvantSansTitre: Story = {
+  render: (args) => ({
+    components: {
+      DsfrCallout,
+      VIcon,
+    },
+    setup () {
+      return {
+        args,
+      }
+    },
+    template: `
+      <DsfrCallout
+        v-bind="args"
+      />
+    `,
+  }),
+  args: {
+    button: undefined,
+    icon: '',
+    content:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing, incididunt, ut labore et dol',
+    titleTag: undefined,
   },
+}
 
-  data () {
-    return {
-      ...args,
-      button: args.button && {
-        ...args.button,
-        onClick: args.onClick,
-      },
-    }
+export const MiseEnAvantAvecAccentuation: Story = {
+  render: (args) => ({
+    components: {
+      DsfrCallout,
+      VIcon,
+    },
+    setup () {
+      return {
+        args,
+      }
+    },
+    template: `
+      <DsfrCallout
+        v-bind="args"
+      />
+    `,
+  }),
+  args: {
+    title: 'Titre de la mise en avant',
+    button: undefined,
+    icon: '',
+    content:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing, incididunt, ut labore et dol',
+    titleTag: undefined,
+    accent: 'orange-terre-battue',
   },
-
-  template: `
-    <DsfrCallout
-      :title
-      :content
-      :button
-      :icon
-      :title-tag
-      :accent
-    />
-  `,
-})
-MiseEnAvantAvecAccentuation.args = {
-  title: 'Titre de la mise en avant',
-  button: undefined,
-  icon: '',
-  content:
-    'Lorem ipsum dolor sit amet, consectetur adipiscing, incididunt, ut labore et dol',
-  titleTag: undefined,
-  accent: 'orange-terre-battue',
 }

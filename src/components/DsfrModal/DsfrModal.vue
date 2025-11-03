@@ -23,6 +23,19 @@ const props = withDefaults(defineProps<DsfrModalProps>(), {
 
 const emit = defineEmits<{ (e: 'close'): void }>()
 
+defineSlots<{
+  /**
+   * Slot par défaut pour le contenu de la modale.
+   * Sera dans `<div class="fr-modal__content">`
+   */
+  default: () => any
+  /**
+   * Slot pour le pied-de-page de la modale.
+   * Sera dans `<div class="fr-modal__footer">`
+   */
+  footer?: () => any
+}>()
+
 const closeIfEscape = ($event: KeyboardEvent) => {
   if ($event.key === 'Escape') {
     close()
@@ -83,7 +96,9 @@ const iconProps = computed(() => dsfrIcon.value
   ? undefined
   : typeof props.icon === 'string'
     ? { name: props.icon, scale: defaultScale }
-    : { scale: defaultScale, ...(props.icon ?? {}) },
+    : props.icon && typeof props.icon === 'object'
+      ? { scale: defaultScale, ...(props.icon as Record<string, any>) }
+      : undefined,
 )
 </script>
 

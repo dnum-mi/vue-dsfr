@@ -1,11 +1,13 @@
-import { expect, userEvent, within } from '@storybook/test'
+import type { Meta, StoryObj } from '@storybook/vue3-vite'
+
+import { expect, userEvent, within } from 'storybook/test'
 
 import DsfrSkipLinks from './DsfrSkipLinks.vue'
 
 /**
  * [Voir quand l’utiliser sur la documentation du DSFR](https://www.systeme-de-design.gouv.fr/version-courante/fr/composants/lien-d-evitement)
  */
-export default {
+const meta = {
   component: DsfrSkipLinks,
   title: 'Composants/DsfrSkipLinks',
   argTypes: {
@@ -16,25 +18,30 @@ export default {
         liens d’évitements puissent recevoir le focus (si ce n’est pas le cas nativement, ajouter \`tabindex="0"\`)`,
     },
   },
-}
+} satisfies Meta<typeof DsfrSkipLinks>
 
-export const LiensDEvitement = (args) => ({
-  components: {
-    DsfrSkipLinks,
-  },
+export default meta
 
-  data () {
-    return {
-      ...args,
-    }
-  },
+type Story = StoryObj<typeof meta>
 
-  template: `
+export const LiensDEvitement: Story = {
+  render: (args) => ({
+    components: {
+      DsfrSkipLinks,
+    },
+
+    setup () {
+      return {
+        args,
+      }
+    },
+
+    template: `
   <DsfrSkipLinks
-  :links="links"
+  :links="args.links"
   />
   <section id="what" tabindex="0">
-    <h2>{{ title }}</h2>
+    <h2>{{ args.title }}</h2>
     <p>Le <strong>Lorem Ipsum</strong> est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l'imprimerie depuis les années 1500, quand un imprimeur anonyme assembla ensemble des morceaux de texte pour réaliser un livre spécimen de polices de texte. Il n'a pas fait que survivre cinq siècles, mais s'est aussi adapté à la bureautique informatique, sans que son contenu n'en soit modifié. Il a été popularisé dans les années 1960 grâce à la vente de feuilles Letraset contenant des passages du Lorem Ipsum, et, plus récemment, par son inclusion dans des applications de mise en page de texte, comme Aldus PageMaker.</p>
     <p>Le <strong>Lorem Ipsum</strong> est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l'imprimerie depuis les années 1500, quand un imprimeur anonyme assembla ensemble des morceaux de texte pour réaliser un livre spécimen de polices de texte. Il n'a pas fait que survivre cinq siècles, mais s'est aussi adapté à la bureautique informatique, sans que son contenu n'en soit modifié. Il a été popularisé dans les années 1960 grâce à la vente de feuilles Letraset contenant des passages du Lorem Ipsum, et, plus récemment, par son inclusion dans des applications de mise en page de texte, comme Aldus PageMaker.</p>
     <p>Le <a href="#">Lorem Ipsum</a> est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l'imprimerie depuis les années 1500, quand un imprimeur anonyme assembla ensemble des morceaux de texte pour réaliser un livre spécimen de polices de texte. Il n'a pas fait que survivre cinq siècles, mais s'est aussi adapté à la bureautique informatique, sans que son contenu n'en soit modifié. Il a été popularisé dans les années 1960 grâce à la vente de feuilles Letraset contenant des passages du Lorem Ipsum, et, plus récemment, par son inclusion dans des applications de mise en page de texte, comme Aldus PageMaker.</p>
@@ -45,33 +52,33 @@ export const LiensDEvitement = (args) => ({
     <p>Le <a href="#">Lorem Ipsum</a> est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l'imprimerie depuis les années 1500, quand un imprimeur anonyme assembla ensemble des morceaux de texte pour réaliser un livre spécimen de polices de texte. Il n'a pas fait que survivre cinq siècles, mais s'est aussi adapté à la bureautique informatique, sans que son contenu n'en soit modifié. Il a été popularisé dans les années 1960 grâce à la vente de feuilles Letraset contenant des passages du Lorem Ipsum, et, plus récemment, par son inclusion dans des applications de mise en page de texte, comme Aldus PageMaker.</p>
   </section>
   `,
-})
-
-LiensDEvitement.args = {
-  links: [
-    {
-      id: 'what',
-      text: 'Allons à la question du qu’est-ce ?',
-    },
-    {
-      id: 'how',
-      text: 'Allons à la question du comment ?',
-    },
-  ],
-  title: 'Qu’est-ce que le Lorem Ipsum ?',
-}
-LiensDEvitement.play = async ({ canvasElement }) => {
-  const canvas = within(canvasElement)
-  const title = canvas.getAllByRole('heading', { level: 2 }).at(0) as HTMLHeadingElement
-  const lien1 = canvas.getByText(LiensDEvitement.args.links.at(0)!.text)
-  const lien2 = canvas.getByText(LiensDEvitement.args.links.at(1)!.text)
-  expect(lien1).not.toBeVisible()
-  expect(lien2).not.toBeVisible()
-  title.click()
-  await userEvent.tab({ shift: true })
-  await userEvent.tab({ shift: true })
-  await userEvent.tab({ shift: true })
-  await userEvent.tab({ shift: true })
-  await userEvent.tab({ shift: true })
-  expect(lien2).toHaveFocus()
+  }),
+  args: {
+    links: [
+      {
+        id: 'what',
+        text: 'Allons à la question du qu’est-ce ?',
+      },
+      {
+        id: 'how',
+        text: 'Allons à la question du pourquoi ?',
+      },
+    ],
+    title: 'Qu’est-ce que le Lorem Ipsum ?',
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement)
+    const title = canvas.getAllByRole('heading', { level: 2 }).at(0) as HTMLHeadingElement
+    const lien1 = canvas.getByText('Allons à la question du qu’est-ce ?')
+    const lien2 = canvas.getByText('Allons à la question du comment ?')
+    expect(lien1).not.toBeVisible()
+    expect(lien2).not.toBeVisible()
+    title.click()
+    await userEvent.tab({ shift: true })
+    await userEvent.tab({ shift: true })
+    await userEvent.tab({ shift: true })
+    await userEvent.tab({ shift: true })
+    await userEvent.tab({ shift: true })
+    expect(lien2).toHaveFocus()
+  },
 }

@@ -1,44 +1,38 @@
-import { Meta } from '@storybook/blocks'
+import { Meta } from '@storybook/addon-docs/blocks'
 
 import GithubIcon from './github-fill.svg'
 import MailIcon from './mail-fill.svg'
 
 <Meta title="Docs/1. Introduction" />
 
-<div style={{border: 'solid 3px red', fontWeight: 700, padding: '1em', marginBottom: '2rem'}}>
-
-## Cette documentation est obsolète !
+# VueDsfr - Introduction
 
 Nous vous recommandons de regarder la **nouvelle documentation ici** : [vue-ds.fr](https://vue-ds.fr).
-<p>Les stories des composants sont bien à jour (en tout cas pour l’instant), cependant le reste de la documentation n’est plus maintenue ici.</p>
+<p>Les stories des composants sont bien à jour.</p>
 
 Si vous recherchez:
 
-* le [storybook](https://stories.vue-ds.fr), le plus à jour est ici : [https://storybook.vue-ds.fr](https://storybook.vue-ds.fr) ;
-* l’[application de demo](https://demo.vue-ds.fr) avec plusieurs composants utilisés dans une vraie app Vue 3, c’est ici [https://demo.vue-ds.fr](https://demo.vue-ds.fr) ;
-* la [nouvelle documentation](https://vue-ds.fr), c’est ici [https://docs.vue-ds.fr](https://docs.vue-ds.fr) ou plus simplement [https://vue-ds.fr](https://vue-ds.fr) ;
-
-</div>
-
-
+* la [nouvelle documentation](https://vue-ds.fr), c’est ici [vue-ds.fr](https://vue-ds.fr)
+* l’[application de demo](https://demo.vue-ds.fr) avec plusieurs composants utilisés dans une vraie app Vue 3, c’est ici [demo.vue-ds.fr](https://demo.vue-ds.fr) ;
 
 
 ## Qu'est-ce que VueDsfr
 
 VueDsfr est un **portage** du [**Système de design français**](https://www.systeme-de-design.gouv.fr/)
-en [**Vue 3**](https://v3.vuejs.org/) sous forme de **bibliothèque de composants**.
+en [**Vue 3**](https://vuejs.org/) sous forme de **bibliothèque de composants**.
 
 Le code est [ouvert et disponible sur <img src={GithubIcon} style={{height: '1.25rem', 'position': 'relative', top: '0.25rem' }} /> GitHub](https://github.com/dnum-mi/vue-dsfr)
 
 ## Comment débuter
 
-Pour commencer à l’utiliser, [c’est par ici  !](/story/docs-2-guide-d-utilisation--page)
+Pour commencer à l’utiliser, [consulter le guide de l’utilisateur](https://vue-ds.fr/guide)
 
-Pour **migrer vers la version 3.x, [c’est par ici  !](/docs/docs-4-migrations--docs)**
+Pour commencer à contribuer, [consulter le guide du contributeur](https://vue-ds.fr/guide/guide-developpeur)
 
 ## Rejoindre le serveur Discord
 
-Si vous souhaitez participer au projet, poser une question, émettre une critique (ou nous faire des éloges, elles seront bienvenues aussi), nous vous invitons à rejoindre le serveur Discord grâce à ce lien d’invitation :
+Si vous souhaitez participer au projet, poser une question, émettre une critique (ou nous faire des éloges, elles seront bienvenues aussi),
+nous vous invitons à rejoindre le serveur Discord grâce à ce lien d’invitation :
 
 <div style={{textAlign: 'center'}}>
   <a href="https://discord.gg/jbBJ9769ZZ" className="fr-btn">
@@ -46,64 +40,17 @@ Si vous souhaitez participer au projet, poser une question, émettre une critiqu
   </a>
 </div>
 
-## Les acteurs du projet
+## Les initiateurs du projet
 
+* **[Stanislas Ormières](https://stormier.ninja)** [<img src={MailIcon} style={{height: '1.25rem', 'position': 'relative', top: '0.25rem' }} />](mailto:stan@stormier.ninja) [<img src={GithubIcon} style={{height: '1.25rem', 'position': 'relative', top: '0.25rem' }} />](https://github.com/laruiss) *(Lead dev, architecte, ops, mainteneur principal)*
 * **Clément Debroize** [<img src={MailIcon} style={{height: '1.25rem', 'position': 'relative', top: '0.25rem' }} />](mailto:clement.debroize@interieur.gouv.fr) [<img src={GithubIcon} style={{height: '1.25rem', 'position': 'relative', top: '0.25rem' }} />](https://github.com/DaBadBunny)
 * **Pierre-Louis Egaud** [<img src={MailIcon} style={{height: '1.25rem', 'position': 'relative', top: '0.25rem' }} />](mailto:pierre-louis.egaud@interieur.gouv.fr) [<img src={GithubIcon} style={{height: '1.25rem', 'position': 'relative', top: '0.25rem' }} />](https://github.com/plegaud)
-* **Stanislas Ormières** [<img src={MailIcon} style={{height: '1.25rem', 'position': 'relative', top: '0.25rem' }} />](mailto:stan@stormier.ninja) [<img src={GithubIcon} style={{height: '1.25rem', 'position': 'relative', top: '0.25rem' }} />](https://github.com/laruiss) *(Lead dev, architecte, devops, mainteneur principal)*
 
 Le projet a pu bénéficier des retours et de contributions de
 
 * [Gildéric Deruette](https://github.com/gideruette) ;
 * [Sophie Aitis](https://github.com/sophieaitis) ;
-* et [Ambroise Maupate](https://github.com/ambroisemaupate)
+* [Ambroise Maupate](https://github.com/ambroisemaupate)
+* et de **beaucoup d’autres**
 
 Merci à vous !
-
-## Pourquoi VueDsfr
-
-Le Bureau des ressources et réalisations (BRR) a choisi sa stack technique pour le front, et elle inclut
-Vue 3. Le Système de design français (DSFR) est développé en JavaScript natif et en SCSS (SASS).
-
-Le BRR a donc besoin d'un portage en Vue 3 de ce DSFR pour ses futurs projets qui devront le respecter.
-
-## VueDsfr en quelques mots
-
-Ce projet de bibliothèque de composants
-
-* reproduit le plus fidèlement possible les composants du [DSFR](https://www.systeme-de-design.gouv.fr/)
-* est fait avec [Vue 3](https://vuejs.org)
-* est utilisable facilement en tant que plugin Vue 3 ou Nuxt 3
-* exporte les types (TypeScript) du plugin, des composants et des composables
-* est utilisable facilement dans un projet [npm](https://www.npmjs.com/package/@gouvminint/vue-dsfr)
-* met à disposition deux parties dans la documentation :
-  * une pour [aider au développement](/?path=/story/docs-3-guide-du-développeur--page)
-  * une autre pour l'[utilisation](/?path=/story/docs-2-guide-d-utilisation--page)
-* publie un [site complet](vue-dsfr.netlify.app/) disponible pour tous avec les composants et leurs variants testables dans celui-ci dans un storybook
-* a une couverture de test optimale
-* met à disposition les composants individuellement sans avoir à importer toute la bibliothèque
-  (pour les petits projets)
-
-# Les choix techniques retenus
-
-La bibliothèque est faite avec [Vue 3](https://vuejs.org/) et [Vue-router 4](https://router.vuejs.org/).
-
-Le JavaScript est linté avec [ESLint](https://eslint.org/) et formatté selon [StandardJS](https://standardjs.org)
-avec une seule modification : les virgules doivent être ajoutées pour tout ce qui est en multiligne
-(`"comma-dangle": ["error", "always-multiline"]` cf. [Documentation ESLint](\(https://eslint.org/docs/rules/comma-dangle#options\))).
-
-Le serveur de développement est celui de [Storybook](https://storybook.js.org/), toute la documentation est faite avec
-Storybook, et le site pour tester les composants est le storybook lui-même.
-
-Le CSS est transpilé avec [LightningCSS](https://lightningcss.dev/) (mais très peu de CSS est propre à la bibliothèque).
-
-Storybook est configuré pour utiliser PostCSS.
-
-Les tests sont faits avec [Vitest](https://vitest.dev) et [Vue Testing Library](https://testing-library.com/docs/vue-testing-library/intro/),
-et des tests d’accessibilité sont faits avec [Cypress](https://www.cypress.io/) grâce aux
-[tests de composants](https://docs.cypress.io/guides/component-testing/introduction).
-
-Les icônes sont toujours celles de [RemixIcon](https://remixicon.com/), grâce au DSFR et parfois grâce à
-[@iconify/vue!](https://iconify.design/docs/icon-components/vue/).
-
-La bibliothèque est mise en paquet grâce à [Vite](https://vitejs.dev/) en [mode bibliothèque](https://vitejs.dev/guide/build.html#library-mode).

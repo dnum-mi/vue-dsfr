@@ -10,6 +10,17 @@ withDefaults(defineProps<DsfrNoticeProps>(), {
 })
 
 defineEmits<{ (event: 'close'): void }>()
+
+defineSlots<{
+  /**
+   * Slot pour le contenu du titre du bandeau.
+   */
+  default: () => any
+  /**
+   * Slot pour le contenu de la description du bandeau.
+   */
+  desc: () => any
+}>()
 </script>
 
 <template>

@@ -1,13 +1,15 @@
-import { expect, fn, within } from '@storybook/test'
+import type { Meta, StoryObj } from '@storybook/vue3-vite'
+
+import { expect, within } from 'storybook/test'
 
 import VIcon from '../VIcon/VIcon.vue'
 
 import DsfrButtonGroup from './DsfrButtonGroup.vue'
 
 /**
- * [Voir quand l’utiliser sur la documentation du DSFR](https://www.systeme-de-design.gouv.fr/version-courante/fr/composants/groupe-de-boutons)
+ * [Voir quand l'utiliser sur la documentation du DSFR](https://www.systeme-de-design.gouv.fr/version-courante/fr/composants/groupe-de-boutons)
  */
-export default {
+const meta = {
   component: DsfrButtonGroup,
   title: 'Composants/DsfrButtonGroup',
   tags: ['bouton'],
@@ -15,13 +17,7 @@ export default {
     buttons: {
       control: 'object',
       description:
-        'Tableau d’objets, chaque objet contiendra les props à passer à DsfrButton',
-    },
-    inline: {
-      control: 'boolean',
-      deprecated: true,
-      description:
-        '**Déprécié:** Indique si le groupe de boutons doit toujours apparaître en empilement horizontal. *Utiliser `inlineLayoutWhen` à la place.*',
+        'Tableau d\'objets, chaque objet contiendra les props à passer à DsfrButton',
     },
     inlineLayoutWhen: {
       control: 'radio',
@@ -52,68 +48,69 @@ export default {
     align: {
       control: 'radio',
       options: ['default', 'center', 'right'],
-      description: 'Indique l’alignement du groupe de boutons',
+      description: 'Indique l\'alignement du groupe de boutons',
     },
-    onClick: { action: fn() },
   },
-}
+} satisfies Meta<typeof DsfrButtonGroup>
 
-export const GroupeDeBoutons = (args) => ({
-  components: {
-    DsfrButtonGroup,
-    VIcon,
+export default meta
+
+type Story = StoryObj<typeof meta>
+
+export const GroupeDeBoutons: Story = {
+  args: {
+    align: 'center',
+    inlineLayoutWhen: 'never',
+    reverse: false,
+    iconRight: false,
+    size: 'medium',
+    buttons: [
+      {
+        label: 'Label 1',
+        icon: 'ri-checkbox-circle-line',
+      },
+      {
+        label: 'Label 2',
+        secondary: true,
+        icon: 'ri-checkbox-circle-line',
+      },
+      {
+        label: 'Label 3',
+        icon: 'ri-checkbox-circle-line',
+      },
+      {
+        label: 'Label 4',
+        secondary: true,
+        icon: 'ri-checkbox-circle-line',
+      },
+    ],
   },
-  data () {
-    return {
-      ...args,
-      buttons: args.buttons.map((btn) => ({ ...btn, onClick: args.onClick })),
+  render: (args) => ({
+    components: {
+      DsfrButtonGroup,
+      VIcon,
+    },
+    setup () {
+      const buttons = (args.buttons || []).map((btn) => ({ ...btn, onClick: () => {} }))
+      return { args, buttons }
+    },
+    template: `
+      <DsfrButtonGroup
+        :buttons="buttons"
+        :size="args.size"
+        :align="args.align"
+        :inline-layout-when="args.inlineLayoutWhen"
+        :icon-right="args.iconRight"
+        :reverse="args.reverse"
+      />
+    `,
+  }),
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement)
+    const buttons = canvas.getAllByRole('button')
+    expect(buttons).toHaveLength(4)
+    for (const button of buttons) {
+      expect(button).toBeVisible()
     }
   },
-  template: `
-    <DsfrButtonGroup
-      :buttons="buttons"
-      :size="size"
-      :align="align"
-      :inline="inline"
-      :inline-layout-when="inlineLayoutWhen"
-      :icon-right="iconRight"
-      :reverse="reverse"
-    />
-  `,
-})
-GroupeDeBoutons.args = {
-  align: 'center',
-  inlineLayoutWhen: 'never',
-  reverse: false,
-  iconRight: false,
-  size: 'medium',
-  inline: undefined,
-  buttons: [
-    {
-      label: 'Label 1',
-      icon: 'ri-checkbox-circle-line',
-    },
-    {
-      label: 'Label 2',
-      secondary: true,
-      icon: 'ri-checkbox-circle-line',
-    },
-    {
-      label: 'Label 3',
-      icon: 'ri-checkbox-circle-line',
-    },
-    {
-      label: 'Label 4',
-      secondary: true,
-      icon: 'ri-checkbox-circle-line',
-    },
-  ],
-}
-GroupeDeBoutons.play = async ({ canvasElement }) => {
-  const canvas = within(canvasElement)
-  const buttons = canvas.getAllByRole('button')
-  expect(buttons).toHaveLength(4)
-  for (const button of buttons) {
-    expect(button).toBeVisible()
-  }
 }

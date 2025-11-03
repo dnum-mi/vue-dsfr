@@ -15,7 +15,10 @@ const props = withDefaults(defineProps<DsfrLanguageSelectorProps>(), {
   title: 'Sélectionner une langue',
 })
 
-const emit = defineEmits<{ (e: 'select', payload: DsfrLanguageSelectorElement): void }>()
+const emit = defineEmits<{
+  /** Événement émis lors du changement de la langue sélectionnée */
+  (e: 'select', payload: DsfrLanguageSelectorElement): void
+}>()
 
 const {
   collapse,

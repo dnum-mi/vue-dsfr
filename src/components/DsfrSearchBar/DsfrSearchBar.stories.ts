@@ -1,9 +1,16 @@
+import type { Meta, StoryObj } from '@storybook/vue3-vite'
+
+import { fn } from 'storybook/test'
+import { ref } from 'vue'
+
 import DsfrSearchBar from './DsfrSearchBar.vue'
 
 /**
+ * `DsfrSearchBar` composant barre de recherche du DSFR.
+ *
  * [Voir quand l’utiliser sur la documentation du DSFR](https://www.systeme-de-design.gouv.fr/version-courante/fr/composants/barre-de-recherche)
  */
-export default {
+const meta = {
   component: DsfrSearchBar,
   title: 'Composants/DsfrSearchBar',
   argTypes: {
@@ -15,11 +22,6 @@ export default {
       control: 'text',
       description:
         '(optionnel) Valeur de l’attribut `id` de l’input au sein d. Par défaut, un id pseudo-aléatoire sera donné.',
-    },
-    hideIcon: {
-      control: 'boolean',
-      description:
-        'Indique si l’icône doit être masqué (`true`) ou non (`false`, défaut)',
     },
     placeholder: {
       control: 'text',
@@ -43,94 +45,73 @@ export default {
       description:
         'Indique si la barre de recherche doit prendre plus de hauteur (`true`) ou non (`false`, défaut)',
     },
-    'update:modelValue': {
+    'onUpdate:modelValue': {
+      action: fn(),
       description:
         'Événement émis à chaque changement de la valeur du champ de saisie de la recherche',
     },
-    search: {
+    onSearch: {
+      action: fn(),
       description: 'Événement émis lors de la validation de la recherche',
     },
   },
-}
+} satisfies Meta<typeof DsfrSearchBar>
 
-export const BarreDeRecherche = (args) => ({
+export default meta
+type Story = StoryObj<typeof meta>
+
+const render = (args) => ({
   components: {
     DsfrSearchBar,
   },
-  data () {
-    return args
+  setup () {
+    const modelValue = ref(args.modelValue)
+    return {
+      ...args,
+      modelValue,
+    }
   },
   template: `
       <DsfrSearchBar
         :label="label"
         :placeholder="placeholder"
         :button-text="buttonText"
-        :hide-icon="hideIcon"
-        v-model="modelValue"
-        :large="large"
-      />
-  `,
-})
-BarreDeRecherche.args = {
-  label: 'Label de search bar',
-  hideIcon: false,
-  placeholder: 'Rechercher',
-  buttonText: '',
-  modelValue: '',
-  large: false,
-}
-
-export const BarreDeRechercheLarge = (args) => ({
-  components: {
-    DsfrSearchBar,
-  },
-  data () {
-    return args
-  },
-  template: `
-    <DsfrSearchBar
-      :label="label"
-      :placeholder="placeholder"
-      :hide-icon="hideIcon"
-      :button-text="buttonText"
-      :large="large"
-    />
-  `,
-})
-BarreDeRechercheLarge.args = {
-  label: 'Label de search bar',
-  hideIcon: true,
-  placeholder: 'Rechercher',
-  buttonText: 'Rechercher',
-  modelValue: '',
-  large: true,
-}
-
-export const BarreDeRechercheDesactivee = (args) => ({
-  components: {
-    DsfrSearchBar,
-  },
-  data () {
-    return args
-  },
-  template: `
-      <DsfrSearchBar
-        :label="label"
-        :placeholder="placeholder"
-        :button-text="buttonText"
-        :hide-icon="hideIcon"
         v-model="modelValue"
         :large="large"
         :disabled="disabled"
+        @search="onSearch"
       />
   `,
 })
-BarreDeRechercheDesactivee.args = {
-  label: 'Label de search bar',
-  hideIcon: false,
-  placeholder: 'Rechercher',
-  buttonText: '',
-  modelValue: '',
-  large: false,
-  disabled: true,
+
+export const BarreDeRecherche: Story = {
+  render,
+  args: {
+    label: 'Label de search bar',
+    placeholder: 'Rechercher',
+    buttonText: '',
+    modelValue: '',
+    large: false,
+    disabled: false,
+  },
+}
+
+export const BarreDeRechercheLarge: Story = {
+  render,
+  args: {
+    ...BarreDeRecherche.args,
+    label: 'Label de search bar',
+    placeholder: 'Rechercher',
+    buttonText: 'Rechercher',
+    large: true,
+  },
+}
+
+export const BarreDeRechercheDesactivee: Story = {
+  render,
+  args: {
+    ...BarreDeRecherche.args,
+    label: 'Label de search bar',
+    disabled: true,
+  },
 }

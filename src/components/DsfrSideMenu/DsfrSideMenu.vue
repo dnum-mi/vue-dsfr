@@ -22,7 +22,17 @@ withDefaults(defineProps<DsfrSideMenuProps>(), {
   focusOnExpanding: true,
 })
 
-defineEmits<{ (e: 'toggleExpand', payload: string): void }>()
+const emit = defineEmits<{
+  /** Événement émis lors du basculement de l'expansion d'un élément de menu */
+  toggleExpand: [payload: string]
+}>()
+
+defineSlots<{
+  /**
+   * Contenu personnalisé du menu latéral (remplace la liste des éléments par défaut)
+   */
+  default?: any
+}>()
 
 const {
   collapse,
@@ -79,7 +89,7 @@ watch(expanded, (newValue, oldValue) => {
           <DsfrSideMenuList
             :id="sideMenuListId"
             :menu-items="menuItems"
-            @toggle-expand="$emit('toggleExpand', $event)"
+            @toggle-expand="emit('toggleExpand', $event)"
           />
         </slot>
       </div>

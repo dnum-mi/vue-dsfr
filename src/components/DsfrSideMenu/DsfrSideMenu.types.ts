@@ -2,6 +2,11 @@ import type { RouteLocationRaw } from 'vue-router'
 
 export type DsfrSideMenuListItemProps = { active?: boolean }
 
+export type DsfrSideMenuLinkProps = {
+  active?: boolean
+  to: string
+}
+
 export type DsfrSideMenuProps = {
   buttonLabel?: string
   id?: string

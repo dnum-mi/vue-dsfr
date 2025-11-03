@@ -18,11 +18,22 @@ const props = withDefaults(defineProps<DsfrInputProps>(), {
   hint: '',
   label: '',
   labelClass: '',
-  modelValue: '',
   wrapperClass: '',
 })
 
-defineEmits<{ (e: 'update:modelValue', payload: string): void }>()
+defineEmits<{
+  /** Événement émis lors du changement de la valeur du champ de saisie */
+  (e: 'update:modelValue', payload: string | number | undefined): void
+}>()
+
+defineSlots<{
+  /** Slot pour personnaliser tout le contenu de la balise `<label>` */
+  label?: () => any
+  /** * Slot pour indiquer que le champ est obligatoire. Par défaut, met une astérisque si `required` est à true (dans un `<span class="required">`) */
+  'required-tip'?: () => any
+}>()
+
+const value = defineModel<string | number>()
 
 const attrs = useAttrs()
 
@@ -38,6 +49,7 @@ const finalLabelClass = computed(() => [
 ])
 
 defineExpose({
+  /** Méthode pour mettre le focus sur le champ de saisie */
   focus,
 })
 </script>
@@ -47,10 +59,8 @@ defineExpose({
     :class="finalLabelClass"
     :for="id"
   >
-    <!-- @slot Slot pour personnaliser tout le contenu de la balise <label> -->
     <slot name="label">
       {{ label }}
-      <!-- @slot Slot pour indiquer que le champ est obligatoire. Par défaut, met une astérisque si `required` est à true (dans un `<span class="required">`) -->
       <slot name="required-tip">
         <span
           v-if="'required' in $attrs && $attrs.required !== false"
@@ -76,9 +86,9 @@ defineExpose({
       'fr-input--error': isInvalid,
       'fr-input--valid': isValid,
     }"
-    :value="modelValue"
+    :value="value"
     :aria-describedby="descriptionId || undefined"
-    @input="$emit('update:modelValue', $event.target.value)"
+    @input="value = $event.target.value"
   />
 
   <div

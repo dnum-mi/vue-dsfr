@@ -1,14 +1,14 @@
-import { expect, within } from '@storybook/test'
+import type { Meta, StoryObj } from '@storybook/vue3-vite'
+
+import { expect, within } from 'storybook/test'
+import { ref } from 'vue'
 
 import DsfrAlert from './DsfrAlert.vue'
 
 const delay = (timeout = 100) =>
   new Promise((resolve) => setTimeout(resolve, timeout))
 
-/**
- * [Voir quand l’utiliser sur la documentation du DSFR](https://www.systeme-de-design.gouv.fr/version-courante/fr/composants/alerte)
- */
-export default {
+const meta = {
   component: DsfrAlert,
   title: 'Composants/DsfrAlert',
   tags: ['message'],
@@ -37,9 +37,6 @@ export default {
       control: 'boolean',
       description: 'Permet d\'obtenir une version minimaliste de l\'alerte',
     },
-    close: {
-      description: 'Event de fermeture de l\'alerte',
-    },
     closed: {
       control: 'boolean',
       description: 'Permet d\'alterner entre l\'état ouvert ou fermé de l\'alerte',
@@ -50,7 +47,8 @@ export default {
         'Ajoute la possibilité de fermer l\'alerte via un bouton en forme de croix',
     },
     titleTag: {
-      control: 'text',
+      control: { type: 'select' },
+      options: ['h2', 'h3', 'h4', 'h5', 'h6'],
       description:
         'Permet de choisir la balise contenant le titre de l\'alerte (h3 par défaut)',
     },
@@ -60,311 +58,302 @@ export default {
         'Valeur du bouton cliquable permettant la fermeture de l\'alerte',
     },
   },
-}
+} satisfies Meta<typeof DsfrAlert>
 
-export const Alerte = (args) => ({
-  components: { DsfrAlert },
-  data () {
-    return { ...args, type: args.type || 'error' }
+export default meta
+type Story = StoryObj<typeof meta>
+
+export const AlerteSimple: Story = {
+  name: 'Alerte avec contrôles',
+  args: {
+    type: 'info',
+    title: 'Titre de l’alerte',
+    description: 'Description de l’alerte',
+    closeable: false,
+    small: false,
+    closeButtonLabel: 'Fermer l’alerte',
+    titleTag: 'h2',
+    alert: true,
   },
+  render: (args) => ({
+    components: { DsfrAlert },
+    setup () {
+      const closed = ref(args.closed)
+      const close = () => {
+        closed.value = true
+        setTimeout(() => {
+          closed.value = false
+        }, 2000)
+      }
 
-  template: `
-    <DsfrAlert
-      :title="title"
-      :description="description"
-      :type="type"
-      :small="small"
-      :closeable="closeable"
-      :closed="closed"
-      :is="titleTag"
-      @close="close"
-    />
-  `,
-
-  methods: {
-    close () {
-      this.closed = true
-      setTimeout(() => {
-        this.closed = false
-      }, 2000)
+      return {
+        args,
+        closed,
+        close,
+      }
     },
+    template: `
+      <DsfrAlert
+        :title="args.title"
+        :description="args.description"
+        :type="args.type"
+        :small="args.small"
+        :closeable="args.closeable"
+        :closed="closed"
+        :is="args.titleTag"
+        @close="close"
+      />
+    `,
+  }),
+  play: async ({ canvasElement }: { canvasElement: HTMLElement }) => {
+    const canvas = within(canvasElement)
+    const alert = canvas.getByText('Titre alerte')
+    expect(alert).toBeVisible()
+    expect(alert).toContainHTML('Titre alerte')
+    expect(alert.parentElement).toContainHTML('Description du message')
+    const closeButton = alert.parentElement?.querySelector('button') as HTMLButtonElement
+    closeButton?.click()
+    await delay(500)
+    expect(alert).not.toBeVisible()
   },
-})
-Alerte.args = {
-  title: 'Titre alerte',
-  description: 'Description du message',
-  type: 'error',
-  small: false,
-  closed: false,
-  closeable: true,
-  titleTag: undefined,
 }
-Alerte.play = async ({ canvasElement }) => {
-  const canvas = within(canvasElement)
-  const alert = canvas.getByText(Alerte.args.title)
-  expect(alert).toBeVisible()
-  expect(alert).toContainHTML(Alerte.args.title)
-  expect(alert.parentElement).toContainHTML(Alerte.args.description)
-  const closeButton = alert.parentElement?.querySelector('button') as HTMLButtonElement
-  closeButton?.click()
-  await delay(500)
-  expect(alert).not.toBeVisible()
+
+export const Alertes = {
+  render: () => ({
+    components: { DsfrAlert },
+    template: `
+      <div style="margin: 1rem 0;">
+        <DsfrAlert
+          type="info"
+          title="Titre de l’info"
+          description="Description de l’info"
+        />
+      </div>
+      <div style="margin: 1rem 0;">
+        <DsfrAlert
+        type="warning"
+          title="Titre de l’avertissement"
+          description="Description de l’avertissement"
+        />
+      </div>
+      <div style="margin: 1rem 0;">
+        <DsfrAlert
+          type="success"
+          title="Titre du succès"
+          description="Description du succès"
+        />
+      </div>
+      <div style="margin: 1rem 0;">
+        <DsfrAlert
+          type="error"
+          title="Titre de l’erreur"
+          description="Description de l’erreur"
+        />
+      </div>
+    `,
+  }),
 }
 
-export const Alertes = (args) => ({
-  components: { DsfrAlert },
-  data () {
-    return {
-      ...args,
-    }
+export const PetitesAlertes = {
+  render: () => ({
+    components: { DsfrAlert },
+    template: `
+      <div style="margin: 1rem 0;">
+        <DsfrAlert
+          type="info"
+          description="Description de l’info"
+          small="small"
+        />
+      </div>
+      <div style="margin: 1rem 0;">
+        <DsfrAlert
+          type="warning"
+          description="Description de l’avertissement"
+          small="small"
+        />
+      </div>
+      <div style="margin: 1rem 0;">
+        <DsfrAlert
+          type="success"
+          description="Description du succès"
+          small="small"
+        />
+      </div>
+      <div style="margin: 1rem 0;">
+        <DsfrAlert
+          type="error"
+          description="Description de l’erreur"
+          small="small"
+        />
+      </div>
+    `,
+  }),
+}
+
+export const AlertesFermables = {
+  args: {
+    closeable: true,
+    small: true,
   },
-  template: `
-    <div style="margin: 1rem 0;">
-      <DsfrAlert
-        type="info"
-        title="Titre de l’info"
-        description="Description de l’info"
-      />
-    </div>
-    <div style="margin: 1rem 0;">
-      <DsfrAlert
-      type="warning"
-        title="Titre de l’avertissement"
-        description="Description de l’avertissement"
-      />
-    </div>
-    <div style="margin: 1rem 0;">
-      <DsfrAlert
-        type="success"
-        title="Titre du succès"
-        description="Description du succès"
-      />
-    </div>
-    <div style="margin: 1rem 0;">
-      <DsfrAlert
-        type="error"
-        title="Titre de l’erreur"
-        description="Description de l’erreur"
-      />
-    </div>
-  `,
-})
-Alertes.args = {}
-
-export const PetitesAlertes = (args) => ({
-  components: { DsfrAlert },
-  data () {
-    return {
-      ...args,
-    }
-  },
-  template: `
-    <div style="margin: 1rem 0;">
-      <DsfrAlert
-        type="info"
-        description="Description de l’info"
-        small="small"
-      />
-    </div>
-    <div style="margin: 1rem 0;">
-      <DsfrAlert
-        type="warning"
-        description="Description de l’avertissement"
-        small="small"
-      />
-    </div>
-    <div style="margin: 1rem 0;">
-      <DsfrAlert
-        type="success"
-        description="Description du succès"
-        small="small"
-      />
-    </div>
-    <div style="margin: 1rem 0;">
-      <DsfrAlert
-        type="error"
-        description="Description de l’erreur"
-        small="small"
-      />
-    </div>
-  `,
-})
-PetitesAlertes.args = {}
-
-export const AlertesFermables = (args) => ({
-  components: { DsfrAlert },
-  data () {
-    return {
-      ...args,
-      closed: Array.from({ length: 6 }).map(() => false),
-    }
-  },
-  template: `
-    <div style="margin: 1rem 0;">
-      <DsfrAlert
-        type="info"
-        title="Titre de l’info"
-        description="Description de l’info"
-        :closed="closed[0]"
-        :closeable="closeable"
-        @close="close(0)"
-      />
-    </div>
-    <div style="margin: 1rem 0;">
-      <DsfrAlert
-        type="info"
-        description="Description de l’info"
-        :closed="closed[1]"
-        :closeable="closeable"
-        :small="small"
-        @close="close(1)"
-      />
-    </div>
-
-    <div style="margin: 1rem 0;">
-      <DsfrAlert
-        type="warning"
-        title="Titre de l’avertissement"
-        description="Description de l’avertissement"
-        :closed="closed[4]"
-        :closeable="closeable"
-        @close="close(4)"
-      />
-    </div>
-    <div style="margin: 1rem 0;">
-      <DsfrAlert
-        type="warning"
-        description="Description de l’avertissement"
-        :closed="closed[5]"
-        :closeable="closeable"
-        :small="small"
-        @close="close(5)"
-      />
-    </div>
-
-    <div style="margin: 1rem 0;">
-      <DsfrAlert
-        type="success"
-        title="Titre du succès"
-        description="Description du succès"
-        :closed="closed[2]"
-        :closeable="closeable"
-        @close="close(2)"
-      />
-    </div>
-    <div style="margin: 1rem 0;">
-      <DsfrAlert
-        type="success"
-        description="Description du succès"
-        :closed="closed[3]"
-        :closeable="closeable"
-        :small="small"
-        @close="close(3)"
-      />
-    </div>
-    <div style="margin: 1rem 0;">
-      <DsfrAlert
-        type="error"
-        title="Titre de l’erreur"
-        description="Description de l’erreur"
-        :closed="closed[4]"
-        :closeable="closeable"
-        @close="close(4)"
-      />
-    </div>
-    <div style="margin: 1rem 0;">
-      <DsfrAlert
-        type="error"
-        description="Description de l’erreur"
-        :closed="closed[5]"
-        :closeable="closeable"
-        :small="small"
-        @close="close(5)"
-      />
-    </div>
-  `,
-
-  methods: {
-    close (idx) {
-      this.closed[idx] = true
-      setTimeout(() => {
-        this.closed[idx] = false
-      }, 3000)
+  render: (args: any) => ({
+    components: { DsfrAlert },
+    setup () {
+      const closed = ref(Array.from({ length: 6 }).map(() => false))
+      const close = (idx: number) => {
+        closed.value[idx] = true
+        setTimeout(() => {
+          closed.value[idx] = false
+        }, 3000)
+      }
+      return {
+        ...args,
+        closed,
+        close,
+      }
     },
+    template: `
+      <div style="margin: 1rem 0;">
+        <DsfrAlert
+          type="info"
+          title="Titre de l’info"
+          description="Description de l’info"
+          :closed="closed[0]"
+          :closeable="closeable"
+          @close="close(0)"
+        />
+      </div>
+      <div style="margin: 1rem 0;">
+        <DsfrAlert
+          type="info"
+          description="Description de l’info"
+          :closed="closed[1]"
+          :closeable="closeable"
+          :small="small"
+          @close="close(1)"
+        />
+      </div>
+
+      <div style="margin: 1rem 0;">
+        <DsfrAlert
+          type="warning"
+          title="Titre de l’avertissement"
+          description="Description de l’avertissement"
+          :closed="closed[4]"
+          :closeable="closeable"
+          @close="close(4)"
+        />
+      </div>
+      <div style="margin: 1rem 0;">
+        <DsfrAlert
+          type="warning"
+          description="Description de l’avertissement"
+          :closed="closed[5]"
+          :closeable="closeable"
+          :small="small"
+          @close="close(5)"
+        />
+      </div>
+
+      <div style="margin: 1rem 0;">
+        <DsfrAlert
+          type="success"
+          title="Titre du succès"
+          description="Description du succès"
+          :closed="closed[2]"
+          :closeable="closeable"
+          @close="close(2)"
+        />
+      </div>
+      <div style="margin: 1rem 0;">
+        <DsfrAlert
+          type="success"
+          description="Description du succès"
+          :closed="closed[3]"
+          :closeable="closeable"
+          :small="small"
+          @close="close(3)"
+        />
+      </div>
+      <div style="margin: 1rem 0;">
+        <DsfrAlert
+          type="error"
+          title="Titre de l’erreur"
+          description="Description de l’erreur"
+          :closed="closed[4]"
+          :closeable="closeable"
+          @close="close(4)"
+        />
+      </div>
+      <div style="margin: 1rem 0;">
+        <DsfrAlert
+          type="error"
+          description="Description de l’erreur"
+          :closed="closed[5]"
+          :closeable="closeable"
+          :small="small"
+          @close="close(5)"
+        />
+      </div>
+    `,
+  }),
+  play: async ({ canvasElement }: { canvasElement: HTMLElement }) => {
+    const canvas = within(canvasElement)
+    const alert = canvas.getByText('Titre de l’info')
+    expect(alert).toBeVisible()
+    const closeButton = alert.parentElement?.querySelector('button') as HTMLButtonElement
+    closeButton.click()
+    await delay(500)
+    expect(alert).not.toBeVisible()
   },
-})
-AlertesFermables.args = {
-  title: 'Titre alerte',
-  description: 'Description du message',
-  type: 'error',
-  closeable: true,
-  small: true,
-}
-AlertesFermables.play = async ({ canvasElement }) => {
-  const canvas = within(canvasElement)
-  const alert = canvas.getByText('Titre de l’info')
-  expect(alert).toBeVisible()
-  const closeButton = alert.parentElement?.querySelector('button') as HTMLButtonElement
-  closeButton.click()
-  await delay(500)
-  expect(alert).not.toBeVisible()
 }
 
-export const AlertesSlot = (args) => ({
-  components: { DsfrAlert },
-  data () {
-    return {
-      ...args,
-    }
+export const AlertesSlot = {
+  render: () => ({
+    components: { DsfrAlert },
+    template: `
+      <div style="margin: 1rem 0;">
+        <DsfrAlert
+          type="info"
+          title="Titre de l’info"
+        >
+          Description de l’info
+          <br/>
+          Saut de ligne
+        </DsfrAlert>
+      </div>
+    `,
+  }),
+  play: async ({ canvasElement }: { canvasElement: HTMLElement }) => {
+    const canvas = within(canvasElement)
+    const alert = canvas.getByText('Titre de l’info')
+    expect(alert.parentElement).toContainHTML('Description de l’info')
+    expect(alert.parentElement).toContainHTML('<br />')
+    expect(alert.parentElement).toContainHTML('Saut de ligne')
   },
-  template: `
-    <div style="margin: 1rem 0;">
-      <DsfrAlert
-        type="info"
-        title="Titre de l’info"
-      >
-        Description de l’info
-        <br/>
-        Saut de ligne
-      </DsfrAlert>
-    </div>
-  `,
-})
-AlertesSlot.args = {}
-AlertesSlot.play = async ({ canvasElement }) => {
-  const canvas = within(canvasElement)
-  const alert = canvas.getByText('Titre de l’info')
-  expect(alert.parentElement).toContainHTML('Description de l’info')
-  expect(alert.parentElement).toContainHTML('<br />')
-  expect(alert.parentElement).toContainHTML('Saut de ligne')
 }
 
-export const AlertesAvecRoleAlert = (args) => ({
-  components: { DsfrAlert },
-  data () {
-    return {
-      ...args,
-    }
+export const AlertesAvecRoleAlert = {
+  render: () => ({
+    components: { DsfrAlert },
+    template: `
+      <div style="margin: 1rem 0;">
+        <DsfrAlert
+          alert
+          type="info"
+          title="Titre de l’avertissement"
+        >
+          Description de l’avertissement
+          <br/>
+          Saut de ligne
+        </DsfrAlert>
+      </div>
+    `,
+  }),
+  play: async ({ canvasElement }: { canvasElement: HTMLElement }) => {
+    const canvas = within(canvasElement)
+    const alert = canvas.getByRole('alert')
+    expect(alert).toBeVisible()
+    expect(alert.firstChild).toContainHTML('Titre de l’avertissement')
+    expect(alert).toContainHTML('Description de l’avertissement')
   },
-  template: `
-    <div style="margin: 1rem 0;">
-      <DsfrAlert
-        alert
-        type="info"
-        title="Titre de l’avertissement"
-      >
-        Description de l’avertissement
-        <br/>
-        Saut de ligne
-      </DsfrAlert>
-    </div>
-  `,
-})
-AlertesAvecRoleAlert.args = {}
-AlertesAvecRoleAlert.play = async ({ canvasElement }) => {
-  const canvas = within(canvasElement)
-  const alert = canvas.getByRole('alert')
-  expect(alert).toBeVisible()
-  expect(alert.firstChild).toContainHTML('Titre de l’avertissement')
-  expect(alert).toContainHTML('Description de l’avertissement')
 }

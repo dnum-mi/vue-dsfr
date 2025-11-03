@@ -16,8 +16,13 @@ const props = withDefaults(defineProps<DsfrCalloutProps>(), {
   accent: undefined,
 })
 
+defineSlots<{
+  /** Slot par défaut pour le contenu de la mise en avant. Sera dans `<div class="fr-callout">` */
+  default?: () => any
+}>()
+
 const dsfrIcon = computed(() => typeof props.icon === 'string' && props.icon.startsWith('fr-icon-'))
-const iconProps = computed(() => dsfrIcon.value ? undefined : typeof props.icon === 'string' ? { name: props.icon } : { ...(props.icon ?? {}) })
+const iconProps = computed(() => dsfrIcon.value ? undefined : typeof props.icon === 'string' ? { name: props.icon } : props.icon)
 </script>
 
 <template>
@@ -49,7 +54,6 @@ const iconProps = computed(() => dsfrIcon.value ? undefined : typeof props.icon 
       v-bind="button"
     />
 
-    <!-- @slot Slot par défaut pour le contenu de la mise en avant. Sera dans `<div class="fr-callout">` -->
     <div
       v-if="$slots.default && !content"
       class="fr-callout__text"

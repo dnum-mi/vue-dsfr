@@ -20,9 +20,21 @@ const props = withDefaults(defineProps<DsfrCheckboxSetProps>(), {
   modelValue: () => [],
 })
 
+/**
+ * Slots disponibles pour DsfrCheckboxSet
+ */
 defineSlots<{
+  /**
+   * Slot par défaut pour personnaliser l'ensemble des checkboxes
+   */
   default?: () => any
+  /**
+   * Slot pour personnaliser tout le contenu de la balise <legend>
+   */
   legend?: () => any
+  /**
+   * Slot pour indiquer que le champ est obligatoire
+   */
   'required-tip'?: () => any
 }>()
 

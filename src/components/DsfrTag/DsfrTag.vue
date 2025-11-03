@@ -14,6 +14,7 @@ const props = withDefaults(defineProps<DsfrTagProps<T>>(), {
 })
 
 defineEmits<{
+  /** Émis lors de la sélection et désélection du tag */
   select: [[unknown, boolean]]
 }>()
 
@@ -47,7 +48,7 @@ const iconProps = computed(() => typeof props.icon === 'string'
     }"
     :aria-pressed="selectable ? selected : undefined"
     v-bind="{ ...linkProps, ...$attrs }"
-    @click="!disabled && $emit('select', [value, selected])"
+    @click="!disabled && selectable && $emit('select', [value, selected || false])"
   >
     <VIcon
       v-if="props.icon && !dsfrIcon"

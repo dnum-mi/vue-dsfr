@@ -14,6 +14,13 @@ const props = withDefaults(defineProps<DsfrFollowProps>(), {
   networks: () => [],
 })
 
+/**
+ * @slot default - Slot par défaut pour le contenu. Sera dans `<div class="fr-grid-row">`
+ */
+defineSlots<{
+  default?: () => any
+}>()
+
 const hasNetworks = computed(() => {
   return props.networks && props.networks.length
 })
@@ -26,7 +33,6 @@ const hasNewsletter = computed(() => {
   <div class="fr-follow">
     <div class="fr-container">
       <div class="fr-grid-row">
-        <!-- @slot Slot par défaut pour le contenu. Sera dans `<div class="fr-grid-row">` -->
         <slot>
           <div
             v-if="newsletterData"

@@ -1,9 +1,14 @@
+import type { Meta, StoryObj } from '@storybook/vue3-vite'
+
+import { expect, userEvent, within } from 'storybook/test'
+import { ref, watch } from 'vue'
+
 import DsfrLanguageSelector from './DsfrLanguageSelector.vue'
 
 /**
- * [Voir quand l’utiliser sur la documentation du DSFR](https://www.systeme-de-design.gouv.fr/version-courante/fr/composants/selecteur-de-langue)
+ * [Voir quand l'utiliser sur la documentation du DSFR](https://www.systeme-de-design.gouv.fr/version-courante/fr/composants/selecteur-de-langue)
  */
-export default {
+const meta = {
   component: DsfrLanguageSelector,
   title: 'Composants/DsfrLanguageSelector',
   argTypes: {
@@ -20,39 +25,61 @@ export default {
     currentLanguage: {
       control: 'text',
       description:
-        'Code ISO du language courant (doit correspondre au `codeIso` d’un des objets de la props `languages`',
+        'Code ISO du language courant (doit correspondre au `codeIso` d\'un des objets de la props `languages`',
     },
-    select: {
-      description:
-        'Événement émis lors du clic sur l’une des langues proposées après dépliage de la liste',
+    title: {
+      control: 'text',
+      description: 'Titre accessible du sélecteur de langue',
     },
     onSelect: {
-      action: 'Clic sur une langue',
+      action: 'select',
     },
   },
-}
+} satisfies Meta<typeof DsfrLanguageSelector>
 
-export const SelecteurDeLangue = (args) => ({
-  components: { DsfrLanguageSelector },
-  data () {
-    return args
+export default meta
+
+type Story = StoryObj<typeof meta>
+
+export const SelecteurDeLangue: Story = {
+  name: 'Sélecteur de langue',
+  render: (args) => ({
+    components: { DsfrLanguageSelector },
+    setup () {
+      const currentLanguage = ref(args.currentLanguage)
+      watch(() => args.currentLanguage, (val) => {
+        currentLanguage.value = val
+      })
+
+      return { ...args, currentLanguage, onSelect: args.onSelect }
+    },
+    template: `
+      <DsfrLanguageSelector
+        :id="id"
+        :languages="languages"
+        :current-language="currentLanguage"
+        @select="currentLanguage = $event.codeIso; onSelect($event)"
+      />
+    `,
+  }),
+  args: {
+    id: 'translate-1',
+    currentLanguage: 'fr',
+    languages: [
+      { label: 'Français', codeIso: 'fr' },
+      { label: 'English', codeIso: 'en' },
+      { label: 'Deutsch', codeIso: 'de' },
+      { label: 'Dutch', codeIso: 'nl' },
+    ],
   },
-  template: `
-    <DsfrLanguageSelector
-      :id="id"
-      :languages="languages"
-      :currentLanguage="currentLanguage"
-      @select="currentLanguage = $event.codeIso"
-    />
-  `,
-})
-SelecteurDeLangue.args = {
-  id: 'translate-1',
-  currentLanguage: 'fr',
-  languages: [
-    { label: 'Français', codeIso: 'fr' },
-    { label: 'English', codeIso: 'en' },
-    { label: 'Deutsch', codeIso: 'de' },
-    { label: 'Dutch', codeIso: 'nl' },
-  ],
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement)
+    const languageSelectorFR = canvas.getByText('FR')
+    expect(languageSelectorFR).toBeVisible()
+    await userEvent.click(languageSelectorFR)
+    const languageSelectorEN = canvas.getByText('EN - English')
+    await userEvent.click(languageSelectorEN)
+    const languageSelectorSelectedEN = canvas.getByText('EN')
+    expect(languageSelectorSelectedEN).toBeVisible()
+  },
 }

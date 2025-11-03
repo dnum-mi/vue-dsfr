@@ -1,36 +1,40 @@
-import type { Meta, StoryFn } from '@storybook/vue3'
+import type { Meta, StoryObj } from '@storybook/vue3-vite'
 
-import { expect, within } from '@storybook/test'
+import { expect, within } from 'storybook/test'
 
 import DsfrBreadcrumb from './DsfrBreadcrumb.vue'
 
 /**
- * [Voir quand l’utiliser sur la documentation du DSFR](https://www.systeme-de-design.gouv.fr/version-courante/fr/composants/fil-d-ariane)
+ * [Voir quand l'utiliser sur la documentation du DSFR](https://www.systeme-de-design.gouv.fr/version-courante/fr/composants/fil-d-ariane)
  */
-export default {
+const meta = {
   component: DsfrBreadcrumb,
   title: 'Composants/DsfrBreadcrumb',
   argTypes: {
     links: {
       control: 'object',
       description:
-        'Tableau d’objets, chaque objet contiendra 2 propriétés : `to` avec le lien et `text` avec le texte à afficher',
+        'Tableau d\'objets, chaque objet contiendra 2 propriétés : `to` avec le lien et `text` avec le texte à afficher',
     },
     breadcrumbId: {
       control: 'text',
       description:
-        'Id de la balise `div` à l’intérieur de la balise `nav` du fil d’Ariane',
+        'Id de la balise `div` à l\'intérieur de la balise `nav` du fil d\'Ariane',
     },
     navigationLabel: {
       control: 'text',
-      description: 'Label affiché sur la balise `nav` du fil d’Ariane',
+      description: 'Label affiché sur la balise `nav` du fil d\'Ariane',
     },
     showBreadcrumbLabel: {
       control: 'text',
-      description: 'Label du bouton d\'affichage du fil d’Ariane',
+      description: 'Label du bouton d\'affichage du fil d\'Ariane',
     },
   },
-} as Meta<typeof DsfrBreadcrumb>
+} satisfies Meta<typeof DsfrBreadcrumb>
+
+export default meta
+
+type Story = StoryObj<typeof meta>
 
 const secondLinkText = 'Lien deux'
 const currentPageText = 'Lien 3 avec plein de texte et patati et patata'
@@ -49,33 +53,35 @@ const links = [
   },
 ]
 
-export const FilDAriane: StoryFn<typeof DsfrBreadcrumb> = (args) => ({
-  components: { DsfrBreadcrumb },
-  data () {
-    return args
+export const FilDAriane: Story = {
+  args: {
+    links,
   },
-  template: `
-    <DsfrBreadcrumb
-      :links="links"
-    />
-  `,
-})
-FilDAriane.args = {
-  links,
-}
-FilDAriane.play = async ({ canvasElement }) => {
-  const canvas = within(canvasElement)
-  const breadcrumb1 = canvas.getByText(FilDAriane.args?.links?.at(0)?.text as string)
-  expect(breadcrumb1).toBeVisible()
-  expect(breadcrumb1).toHaveProperty('href')
-  expect(breadcrumb1).not.toHaveAttribute('aria-current', 'page')
-  const breadcrumb2 = canvas.getByText(FilDAriane.args?.links?.at(1)?.text as string)
-  expect(breadcrumb2).toBeVisible()
-  expect(breadcrumb2).toHaveAttribute('href')
-  expect(breadcrumb2.href).toContain(FilDAriane.args?.links?.at(1)?.to)
-  expect(breadcrumb2).not.toHaveAttribute('aria-current', 'page')
-  const breadcrumb3 = canvas.getByText(FilDAriane.args?.links?.at(2)?.text as string)
-  expect(breadcrumb3).toBeVisible()
-  expect(breadcrumb3).not.toHaveAttribute('href')
-  expect(breadcrumb3).toHaveAttribute('aria-current', 'page')
+  render: (args) => ({
+    components: { DsfrBreadcrumb },
+    setup () {
+      return { args }
+    },
+    template: `
+      <DsfrBreadcrumb
+        :links="args.links"
+      />
+    `,
+  }),
+  play: async ({ canvasElement, args }) => {
+    const canvas = within(canvasElement)
+    const breadcrumb1 = canvas.getByText(args.links?.at(0)?.text as string)
+    expect(breadcrumb1).toBeVisible()
+    expect(breadcrumb1).toHaveProperty('href')
+    expect(breadcrumb1).not.toHaveAttribute('aria-current', 'page')
+    const breadcrumb2 = canvas.getByText(args.links?.at(1)?.text as string)
+    expect(breadcrumb2).toBeVisible()
+    expect(breadcrumb2).toHaveAttribute('href')
+    expect(breadcrumb2.href).toContain(args.links?.at(1)?.to)
+    expect(breadcrumb2).not.toHaveAttribute('aria-current', 'page')
+    const breadcrumb3 = canvas.getByText(args.links?.at(2)?.text as string)
+    expect(breadcrumb3).toBeVisible()
+    expect(breadcrumb3).not.toHaveAttribute('href')
+    expect(breadcrumb3).toHaveAttribute('aria-current', 'page')
+  },
 }

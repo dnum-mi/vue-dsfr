@@ -3,6 +3,10 @@
 ## Vue d'ensemble du projet
 VueDsfr est une bibliothèque de composants Vue 3 qui porte le Système de Design Français (DSFR) vers Vue.js. Elle fournit ~50 composants accessibles et prêts pour la production suivant les normes de design du gouvernement français.
 
+## Pour les tâches que je vais te demander
+
+Voir le fichier `.github/copilot-tasks.instructions.md` pour les instructions spécifiques aux tâches.
+
 ## Architecture et structure des fichiers
 
 ### Organisation des composants
@@ -91,9 +95,10 @@ pnpm format              # Corriger automatiquement ESLint
 ## 🎯 Conventions Git & Commits
 
 ### Format des commits
+
 Utilise **TOUJOURS** le format : `type(scope): gitmoji description`
 
-**Exemple** : `feat(auth): ✨ add user authentication system`
+**Exemple** : `feat(auth): ✨ ajoute la fonctionnalité de connexion OAuth2`
 
 ### Types de commits conventionnels
 - `feat`: ✨ Nouvelles fonctionnalités
