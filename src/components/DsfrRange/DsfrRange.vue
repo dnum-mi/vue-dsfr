@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import type { DsfrRangeProps } from './DsfrRange.types'
 
-import { computed, onMounted, ref, watch } from 'vue'
+import { computed, onMounted, onUnmounted, ref, useTemplateRef, watch } from 'vue'
 
 import { useRandomId } from '../../utils/random-utils'
 
@@ -33,9 +33,10 @@ defineSlots<{
   /** Pour les messages d’erreur ou de succès */
   messages?: (props: Record<string, never>) => any
 }>()
-const input = ref<HTMLInputElement>()
-const output = ref<HTMLSpanElement>()
+
+const input = useTemplateRef('input')
 const inputWidth = ref()
+let resizeObserver: ResizeObserver | null = null
 
 const double = computed(() => props.lowerValue !== undefined)
 const stepped = computed(() => props.step !== undefined)
@@ -45,8 +46,10 @@ const outputStyle = computed(() => {
     const translateXValue = (props.modelValue - props.min) / (props.max - props.min) * inputWidth.value
     return `transform: translateX(${translateXValue}px) translateX(-${translateXValue / inputWidth.value * 100}%);`
   }
-  const translateXValue = (props.modelValue + props.lowerValue - props.min) / 2 / (props.max - props.min) * inputWidth.value
-  return `transform: translateX(${translateXValue}px) translateX(-${props.lowerValue + ((props.modelValue - props.lowerValue) / 2)}%);`
+  // Pour le mode double : calculer la position au milieu des deux valeurs
+  const middleValue = (props.modelValue + props.lowerValue) / 2
+  const translateXValue = (middleValue - props.min) / (props.max - props.min) * inputWidth.value
+  return `transform: translateX(${translateXValue}px) translateX(-${translateXValue / inputWidth.value * 100}%);`
 })
 
 const rangeStyle = computed(() => {
@@ -88,6 +91,26 @@ const outputValue = computed(() => {
 
 onMounted(() => {
   inputWidth.value = input.value?.offsetWidth
+
+  // Observer le redimensionnement de l'input avec ResizeObserver natif
+  if (input.value && 'ResizeObserver' in window) {
+    resizeObserver = new ResizeObserver((entries) => {
+      const { width } = entries[0]?.contentRect || {}
+      if (width !== undefined) {
+        inputWidth.value = width
+      }
+    })
+
+    resizeObserver.observe(input.value)
+  }
+})
+
+onUnmounted(() => {
+  // Nettoyer l'observer au démontage
+  if (resizeObserver) {
+    resizeObserver.disconnect()
+    resizeObserver = null
+  }
 })
 </script>
 
@@ -131,7 +154,6 @@ onMounted(() => {
       :style="rangeStyle"
     >
       <span
-        ref="output"
         class="fr-range__output"
         data-fr-js-range-output="true"
         :style="outputStyle"
