@@ -131,6 +131,15 @@ const cbOptions: DsfrCheckboxSetProps['options'] = [
       </template>
     </DsfrInput>
 
+    <DsfrRange
+      label="Exemple de DsfrRange"
+      v-model="rangeValue"
+      :min="0"
+      :max="100"
+      :step="5"
+      :small="false"
+    />
+
     <h2>ChecboxSet :</h2>
     <DsfrCheckboxSet
       v-model="selectedCheckboxes"
