@@ -33,7 +33,7 @@ defineSlots<{
    * Slot pour le pied-de-page de la modale.
    * Sera dans `<div class="fr-modal__footer">`
    */
-  footer: () => any
+  footer?: () => any
 }>()
 
 const closeIfEscape = ($event: KeyboardEvent) => {

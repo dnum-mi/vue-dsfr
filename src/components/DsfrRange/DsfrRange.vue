@@ -31,7 +31,7 @@ defineSlots<{
   /** Pour remplacer l’astérisque par autre chose pour un champ requis */
   'required-tip': (props: Record<string, never>) => any
   /** Pour les messages d’erreur ou de succès */
-  messages: (props: Record<string, never>) => any
+  messages?: (props: Record<string, never>) => any
 }>()
 const input = ref<HTMLInputElement>()
 const output = ref<HTMLSpanElement>()

@@ -48,7 +48,7 @@ const iconProps = computed(() => typeof props.icon === 'string'
     }"
     :aria-pressed="selectable ? selected : undefined"
     v-bind="{ ...linkProps, ...$attrs }"
-    @click="!disabled && $emit('select', [value, selected])"
+    @click="!disabled && selectable && $emit('select', [value, selected || false])"
   >
     <VIcon
       v-if="props.icon && !dsfrIcon"

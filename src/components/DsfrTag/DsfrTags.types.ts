@@ -10,7 +10,7 @@ export type DsfrTagProps<T = string> = {
   iconOnly?: boolean
 } & ({
   selectable: true
-  selected: boolean
+  selected: boolean | undefined
   value: T
 } | {
   selectable?: false

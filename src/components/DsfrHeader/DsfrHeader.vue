@@ -37,9 +37,12 @@ const props = withDefaults(defineProps<DsfrHeaderProps>(), {
 })
 
 const emit = defineEmits<{
-  (e: 'update:modelValue', payload: string): void
-  (e: 'search', payload: string): void
-  (e: 'languageSelect', payload: DsfrLanguageSelectorElement): void
+  /** Émis lors du changement de la valeur de recherche */
+  'update:modelValue': [payload: string | number | undefined]
+  /** Émis lors de la validation de la recherche */
+  search: [payload: string]
+  /** Émis lors de la sélection d'une langue */
+  languageSelect: [payload: DsfrLanguageSelectorElement]
 }>()
 
 const slots = defineSlots<{
@@ -240,10 +243,10 @@ provide(registerNavigationLinkKey, () => {
               <DsfrSearchBar
                 :id="searchbarId"
                 :label="searchLabel"
-                :model-value="modelValue"
+                :model-value="String(modelValue || '')"
                 :placeholder="placeholder"
                 style="justify-content: flex-end"
-                @update:model-value="emit('update:modelValue', $event)"
+                @update:model-value="emit('update:modelValue', $event!)"
                 @search="emit('search', $event)"
               />
             </div>
@@ -308,7 +311,7 @@ provide(registerNavigationLinkKey, () => {
               >
                 <DsfrSearchBar
                   :searchbar-id="searchbarId"
-                  :model-value="modelValue"
+                  :model-value="String(modelValue || '')"
                   :placeholder="placeholder"
                   @update:model-value="emit('update:modelValue', $event)"
                   @search="emit('search', $event)"
