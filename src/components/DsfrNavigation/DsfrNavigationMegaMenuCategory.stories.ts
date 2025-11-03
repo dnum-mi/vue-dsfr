@@ -18,7 +18,7 @@ const meta = {
     links: {
       control: 'object',
       description:
-        'Liste d\'objets contenant les props de lien direct <a href="/?path=/docs/composants-dsfrnavigationmenulink--docs">DsfrNavigationMenuLink</a> de navigation (`to` et `text`)',
+        'Liste d’objets contenant les props de lien direct <a href="/?path=/docs/composants-dsfrnavigationmenulink--docs">DsfrNavigationMenuLink</a> de navigation (`to` et `text`)',
     },
   },
 } as Meta<typeof DsfrNavigationMegaMenuCategory>
