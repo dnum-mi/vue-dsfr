@@ -1,9 +1,11 @@
+import type { Meta, StoryObj } from '@storybook/vue3'
+
 import DsfrFileDownloadList from './DsfrFileDownloadList.vue'
 
 /**
- * [Voir quand l’utiliser sur la documentation du DSFR](https://www.systeme-de-design.gouv.fr/version-courante/fr/composants/telechargement-de-fichier)
+ * [Voir quand l'utiliser sur la documentation du DSFR](https://www.systeme-de-design.gouv.fr/version-courante/fr/composants/telechargement-de-fichier)
  */
-export default {
+const meta = {
   component: DsfrFileDownloadList,
   title: 'Composants/DsfrFileDownloadList',
   argTypes: {
@@ -18,47 +20,48 @@ export default {
         'Chaîne de caractères optionnelle permettant d\'ajouter un titre à la liste des liens de téléchargement',
     },
   },
-}
+} as Meta<typeof DsfrFileDownloadList>
 
-export const ListeDeTelechargements = (args) => ({
-  components: {
-    DsfrFileDownloadList,
+export default meta
+type Story = StoryObj<typeof meta>
+
+export const ListeDeTelechargements: Story = {
+  args: {
+    files: [
+      {
+        title: 'Télécharger document 1',
+        format: 'PNG',
+        size: '250 Mo',
+        href: '#',
+        download: 'document1.md',
+      },
+      {
+        title: 'Télécharger document 2',
+        format: 'GIF',
+        size: '107 Ko',
+        href: '#',
+        download: 'document2.md',
+      },
+      {
+        title: 'Télécharger document 3',
+        format: 'ZIP',
+        size: '1,5 Go',
+        href: '#',
+        download: 'document3.md',
+      },
+    ],
+    title: 'Titre facultatif',
   },
-  data () {
-    return {
-      ...args,
-    }
-  },
-  template: `
-    <DsfrFileDownloadList
-      :files="files"
-      :title="title"
-    />
-  `,
-})
-ListeDeTelechargements.args = {
-  files: [
-    {
-      title: 'Télécharger document 1',
-      format: 'PNG',
-      size: '250 Mo',
-      href: '#',
-      download: 'document1.md',
+  render: (args) => ({
+    components: { DsfrFileDownloadList },
+    setup () {
+      return { args }
     },
-    {
-      title: 'Télécharger document 2',
-      format: 'GIF',
-      size: '107 Ko',
-      href: '#',
-      download: 'document2.md',
-    },
-    {
-      title: 'Télécharger document 3',
-      format: 'ZIP',
-      size: '1,5 Go',
-      href: '#',
-      download: 'document3.md',
-    },
-  ],
-  title: 'Titre facultatif',
+    template: `
+      <DsfrFileDownloadList
+        :files="args.files"
+        :title="args.title"
+      />
+    `,
+  }),
 }
