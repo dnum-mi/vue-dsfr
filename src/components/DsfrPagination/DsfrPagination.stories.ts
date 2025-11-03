@@ -43,6 +43,11 @@ const meta = {
       description:
         'Permet de limiter le nombre de pages affichées dans la pagination (avec un maximum de 5 pages)',
     },
+    currentPageTitleSuffix: {
+      control: 'text',
+      description:
+        'Permet d’ajouter un suffixe au titre de la page courante pour indiquer à l’utilisateur qu’il se trouve sur cette page',
+    },
     'onUpdate:currentPage': fn(),
   },
 } satisfies Meta<typeof DsfrPagination>
@@ -68,6 +73,8 @@ const render = (args: any) => ({
       <DsfrPagination
         :pages="args.pages"
         v-model:current-page="currentPage"
+        :trunc-limit="args.truncLimit"
+        :current-page-title-suffix="args.currentPageTitleSuffix"
       />
   `,
 })
@@ -102,6 +109,7 @@ export const Pagination: Story = {
         title: 'Page 5',
       },
     ],
+    truncLimit: 5,
     currentPage: 0,
   },
   play: async ({ canvasElement, args }) => {
@@ -167,6 +175,7 @@ export const PaginationTronquee: Story = {
         title: 'Page 9',
       },
     ],
-    currentPage: 4,
+    truncLimit: 3,
+    currentPage: 3,
   },
 }
