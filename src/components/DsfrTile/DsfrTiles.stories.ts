@@ -1,9 +1,11 @@
+import type { Meta, StoryObj } from '@storybook/vue3-vite'
+
 import DsfrTiles from './DsfrTiles.vue'
 
 /**
- * [Voir quand l’utiliser sur la documentation du DSFR](https://www.systeme-de-design.gouv.fr/version-courante/fr/composants/tuile)
+ * [Voir quand l'utiliser sur la documentation du DSFR](https://www.systeme-de-design.gouv.fr/version-courante/fr/composants/tuile)
  */
-export default {
+const meta = {
   component: DsfrTiles,
   title: 'Composants/DsfrTiles',
   argTypes: {
@@ -15,51 +17,53 @@ export default {
     horizontal: {
       control: 'boolean',
       description:
-        'Permet de mettre chaque tuile sur une ligne entière, et d’envoyer aussi par défaut cette valeur à chacune des tuiles enfant (Surchargeable éventuellement par chaque objet du tableau `tiles`)',
+        'Permet de mettre chaque tuile sur une ligne entière, et d\'envoyer aussi par défaut cette valeur à chacune des tuiles enfant (Surchargeable éventuellement par chaque objet du tableau `tiles`)',
     },
   },
-}
+} as Meta<typeof DsfrTiles>
 
-export const JeuDeTuiles = (args) => ({
-  components: {
-    DsfrTiles,
+export default meta
+
+type Story = StoryObj<typeof meta>
+
+export const JeuDeTuiles: Story = {
+  args: {
+    tiles: [
+      {
+        title: 'Ma formidable tuile 1',
+        imgSrc: 'https://loremflickr.com/80/80/cat?random=1',
+        description: 'Une tuile absolument formidable',
+      },
+      {
+        title: 'Ma formidable tuile 2',
+        imgSrc: 'https://loremflickr.com/80/80/cat?random=2',
+        description: 'Une tuile absolument formidable',
+      },
+      {
+        title: 'Ma formidable tuile 3',
+        imgSrc: 'https://loremflickr.com/80/80/cat?random=3',
+        description: 'Une tuile absolument formidable',
+      },
+      {
+        title: 'Ma formidable tuile 4',
+        imgSrc: 'https://loremflickr.com/80/80/cat?random=4',
+        description: 'Une tuile absolument formidable',
+      },
+    ],
+    horizontal: false,
   },
-
-  data () {
-    return {
-      ...args,
-    }
-  },
-
-  template: `
-    <DsfrTiles
-      :tiles="tiles"
-      :horizontal="horizontal"
-    />
-  `,
-})
-JeuDeTuiles.args = {
-  tiles: [
-    {
-      title: 'Ma formidable tuile 1',
-      imgSrc: 'https://loremflickr.com/80/80/cat?random=1',
-      description: 'Une tuile absolument formidable',
+  render: (args) => ({
+    components: {
+      DsfrTiles,
     },
-    {
-      title: 'Ma formidable tuile 2',
-      imgSrc: 'https://loremflickr.com/80/80/cat?random=2',
-      description: 'Une tuile absolument formidable',
+    setup () {
+      return { args }
     },
-    {
-      title: 'Ma formidable tuile 3',
-      imgSrc: 'https://loremflickr.com/80/80/cat?random=3',
-      description: 'Une tuile absolument formidable',
-    },
-    {
-      title: 'Ma formidable tuile 4',
-      imgSrc: 'https://loremflickr.com/80/80/cat?random=4',
-      description: 'Une tuile absolument formidable',
-    },
-  ],
-  horizontal: false,
+    template: `
+      <DsfrTiles
+        :tiles="args.tiles"
+        :horizontal="args.horizontal"
+      />
+    `,
+  }),
 }

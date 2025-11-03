@@ -19,6 +19,13 @@ const props = withDefaults(defineProps<DsfrTileProps>(), {
   icon: true,
 })
 
+defineSlots<{
+  /** Slot pour les détails d’une tuile sous forme de tags (cliquables ou non) ou de badges (4 maximum) */
+  'start-details'?: (props: Record<string, never>) => void
+  /** Slot pour l’en-tête d’une tuile */
+  header?: (props: Record<string, never>) => void
+}>()
+
 const defaultSvgAttrs = { viewBox: '0 0 80 80', width: '80px', height: '80px' }
 
 const isExternalLink = computed(() => {
@@ -84,7 +91,6 @@ const isExternalLink = computed(() => {
           v-if="$slots['start-details']"
           class="fr-tile__start"
         >
-          <!-- @slot Slot pour les détails d’une tuile sous forme de tags (cliquables ou non) ou de badges (4 maximum) -->
           <slot name="start-details" />
         </div>
       </div>
