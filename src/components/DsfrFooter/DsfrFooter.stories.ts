@@ -1,4 +1,6 @@
-import { expect, within } from '@storybook/test'
+import type { Meta, StoryObj } from '@storybook/vue3-vite'
+
+import { expect, within } from 'storybook/test'
 
 import VIcon from '../VIcon/VIcon.vue'
 
@@ -8,7 +10,7 @@ import DsfrFooterLinkList from './DsfrFooterLinkList.vue'
 /**
  * [Voir quand l’utiliser sur la documentation du DSFR](https://www.systeme-de-design.gouv.fr/version-courante/fr/composants/pied-de-page)
  */
-export default {
+const meta = {
   component: DsfrFooter,
   title: 'Composants/DsfrFooter',
   argTypes: {
@@ -28,7 +30,7 @@ export default {
         'Liste de liens relatifs au gouvernement (par défaut si la props n\'est pas renseignée elle contient les quatre liens obligatoires pour un site public)',
     },
     a11yCompliance: {
-      control: 'radio',
+      control: 'select',
       options: [
         'non conforme',
         'partiellement conforme',
@@ -128,35 +130,96 @@ export default {
       description: 'Nom de la licence',
     },
   },
-}
+} satisfies Meta<typeof DsfrFooter>
 
-export const PiedDePageSimple = (args) => ({
-  components: {
-    DsfrFooter,
-    DsfrFooterLinkList,
-    VIcon,
+export default meta
+
+type Story = StoryObj<typeof meta>
+
+export const PiedDePageSimple: Story = {
+  args: {
+    beforeMandatoryLinks: [{ label: 'Avant', to: '/avant' }],
+    afterMandatoryLinks: [{ label: 'Après', to: '/apres' }],
+    a11yCompliance: 'partiellement conforme',
+    logoText: ['République', 'des châtons'],
+    legalLink: '/mentions-legales',
+    personalDataLink: '/donnees-personnelles',
+    cookiesLink: '/cookies',
+    a11yComplianceLink: '/a11y-conformite',
+    descText: 'Description',
+    homeLink: '/',
+    licenceText: undefined,
+    licenceTo: 'https://github.com/etalab/licence-ouverte/blob/master/LO.md',
+    licenceName: undefined,
+    licenceLinkProps: undefined,
+    ecosystemLinks: [
+      {
+        label: 'legifrance.gouv.fr',
+        href: 'https://legifrance.gouv.fr',
+      },
+      {
+        label: 'info.gouv.fr',
+        href: 'https://info.gouv.fr',
+      },
+      {
+        label: 'service-public.fr',
+        href: 'https://service-public.fr',
+      },
+      {
+        label: 'data.gouv.fr',
+        href: 'https://data.gouv.fr',
+      },
+    ],
+    partners: {
+      mainPartner: {
+        name: 'Partenaire principal',
+        href: 'https://www.youtube.com',
+        logo: 'https://loremflickr.com/150/150/cat?random=1',
+        alt: 'Partenaire principal',
+      },
+      subPartners: [
+        {
+          name: 'Partenaire secondaire 1',
+          href: 'https://www.youtube.com',
+          logo: 'https://loremflickr.com/150/150/cat?random=2',
+          alt: 'Partenaire secondaire 1',
+        },
+        {
+          name: 'Partenaire secondaire 2',
+          href: 'https://www.youtube.com',
+          logo: 'https://loremflickr.com/150/150/cat?random=3',
+          alt: 'Partenaire secondaire 2',
+        },
+      ],
+    },
   },
-  data () {
-    return args
-  },
-  template: `
+  render: (args) => ({
+    components: {
+      DsfrFooter,
+      DsfrFooterLinkList,
+      VIcon,
+    },
+    setup () {
+      return { args }
+    },
+    template: `
   <DsfrFooter
-    :a11y-compliance="a11yCompliance"
-    :before-mandatory-links="beforeMandatoryLinks"
-    :after-mandatory-links="afterMandatoryLinks"
-    :logo-text="logoText"
-    :legal-link="legalLink"
-    :personal-data-link="personalDataLink"
-    :cookies-link="cookiesLink"
-    :a11y-compliance-link="a11yComplianceLink"
-    :desc-text="descText"
-    :home-link="homeLink"
-    :partners="partners"
-    :ecosystem-links="ecosystemLinks"
-    :licence-text="licenceText"
-    :licence-to="licenceTo"
-    :licence-name="licenceName"
-    :licence-link-props="licenceLinkProps"
+    :a11y-compliance="args.a11yCompliance"
+    :before-mandatory-links="args.beforeMandatoryLinks"
+    :after-mandatory-links="args.afterMandatoryLinks"
+    :logo-text="args.logoText"
+    :legal-link="args.legalLink"
+    :personal-data-link="args.personalDataLink"
+    :cookies-link="args.cookiesLink"
+    :a11y-compliance-link="args.a11yComplianceLink"
+    :desc-text="args.descText"
+    :home-link="args.homeLink"
+    :partners="args.partners"
+    :ecosystem-links="args.ecosystemLinks"
+    :licence-text="args.licenceText"
+    :licence-to="args.licenceTo"
+    :licence-name="args.licenceName"
+    :licence-link-props="args.licenceLinkProps"
   >
     <template v-slot:description>
       <p>
@@ -169,133 +232,154 @@ export const PiedDePageSimple = (args) => ({
     </template>
   </DsfrFooter>
   `,
-})
-PiedDePageSimple.args = {
-  beforeMandatoryLinks: [{ label: 'Before', to: '/before' }],
-  afterMandatoryLinks: [{ label: 'After', to: '/after' }],
-  a11yCompliance: 'partiellement conforme',
-  logoText: ['République', 'des châtons'],
-  legalLink: '/mentions-legales',
-  personalDataLink: '/donnees-personnelles',
-  cookiesLink: '/cookies',
-  a11yComplianceLink: '/a11y-conformite',
-  descText: 'Description',
-  homeLink: '/',
-  licenceText: undefined,
-  licenceTo: 'https://github.com/etalab/licence-ouverte/blob/master/LO.md',
-  licenceName: undefined,
-  licenceLinkProps: undefined,
-  ecosystemLinks: [
-    {
-      label: 'legifrance.gouv.fr',
-      href: 'https://legifrance.gouv.fr',
-    },
-    {
-      label: 'info.gouv.fr',
-      href: 'https://info.gouv.fr',
-    },
-    {
-      label: 'service-public.fr',
-      href: 'https://service-public.fr',
-    },
-    {
-      label: 'data.gouv.fr',
-      href: 'https://data.gouv.fr',
-    },
-  ],
-  partners: {
-    mainPartner: {
-      name: 'Partenaire principal',
-      href: 'https://www.youtube.com',
-      logo: 'https://loremflickr.com/150/150/cat?random=1',
-      alt: 'Partenaire principal',
-    },
-    subPartners: [
+  }),
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement)
+    const links = canvas.getAllByRole('link')
+
+    const knownLinks = [
+      { name: '', href: PiedDePageSimple.args.homeLink },
+      { name: 'ici', href: 'http://www.duckduckgo.com' },
+      ...PiedDePageSimple.args.ecosystemLinks,
+      PiedDePageSimple.args.partners.mainPartner,
+      ...PiedDePageSimple.args.partners.subPartners,
+      ...PiedDePageSimple.args.beforeMandatoryLinks.map(({ to }) => ({ href: to })),
+      { name: '', href: PiedDePageSimple.args.a11yComplianceLink },
+      { name: '', href: PiedDePageSimple.args.legalLink },
+      { name: '', href: PiedDePageSimple.args.personalDataLink },
+      { name: '', href: PiedDePageSimple.args.cookiesLink },
+      ...PiedDePageSimple.args.afterMandatoryLinks.map(({ to }) => ({ href: to })),
+      { href: PiedDePageSimple.args.licenceTo },
+    ]
+
+    let i = 0
+
+    for (const link of links) {
+      expect(link).toHaveAttribute('href', knownLinks.at(i)?.href)
+      i++
+    }
+  },
+}
+
+export const PiedDePageAvecLogoOperateurEtListeDeLiens: Story = {
+  args: {
+    beforeMandatoryLinks: [{ label: 'Avant', to: '/avant' }],
+    afterMandatoryLinks: [{ label: 'Après', to: '/apres' }],
+    a11yCompliance: 'partiellement conforme',
+    logoText: ['République', 'des châtons'],
+    legalLink: '/mentions-legales',
+    personalDataLink: '/donnees-personnelles',
+    cookiesLink: '/cookies',
+    a11yComplianceLink: '/a11y-conformite',
+    descText: 'Description',
+    homeLink: '/',
+    licenceText: undefined,
+    licenceTo: undefined,
+    licenceName: undefined,
+    licenceLinkProps: undefined,
+    categoryName1: 'Nom de la categorie 1',
+    linkList1: [
+      { label: 'Lien 1.1', to: '/#lien1-1' },
+      { label: 'Lien 1.2', to: '/#lien1-2' },
+    ],
+    categoryName2: 'Nom de la categorie 2',
+    linkList2: [
+      { label: 'Lien 2.1', to: '/#lien2-1' },
+      { label: 'Lien 2.2', to: '/#lien2-2' },
+    ],
+    ecosystemLinks: [
       {
-        name: 'Partenaire secondaire 1',
-        href: 'https://www.youtube.com',
-        logo: 'https://loremflickr.com/150/150/cat?random=2',
-        alt: 'Partenaire secondaire 1',
+        label: 'legifrance.gouv.fr',
+        href: 'https://legifrance.gouv.fr',
       },
       {
-        name: 'Partenaire secondaire 2',
-        href: 'https://www.youtube.com',
-        logo: 'https://loremflickr.com/150/150/cat?random=3',
-        alt: 'Partenaire secondaire 2',
+        label: 'info.gouv.fr',
+        href: 'https://info.gouv.fr',
+      },
+      {
+        label: 'service-public.fr',
+        href: 'https://service-public.fr',
+      },
+      {
+        label: 'data.gouv.fr',
+        href: 'https://data.gouv.fr',
       },
     ],
+    partners: {
+      mainPartner: {
+        name: 'Partenaire principal',
+        href: 'https://www.youtube.com',
+        logo: 'https://loremflickr.com/150/150/cat?random=1',
+        alt: 'Partenaire principal',
+      },
+      subPartners: [
+        {
+          name: 'Partenaire secondaire 1',
+          href: 'https://www.youtube.com',
+          logo: 'https://loremflickr.com/150/150/cat?random=2',
+          alt: 'Partenaire secondaire 1',
+        },
+        {
+          name: 'Partenaire secondaire 2',
+          href: 'https://www.youtube.com',
+          logo: 'https://loremflickr.com/150/150/cat?random=3',
+          alt: 'Partenaire secondaire 2',
+        },
+      ],
+    },
+    operatorLinkText: 'Logo opérateur',
+    operatorTo: 'https://github.com/dnum-mi/vue-dsfr',
+    operatorImgStyle: {
+      'margin-left': '0.5px',
+      padding: '1rem',
+      height: '150px',
+    },
+    operatorImgSrc: '/cat.svg',
+    operatorImgAlt: 'Logo opérateur',
   },
-}
-PiedDePageSimple.play = async ({ canvasElement }) => {
-  const canvas = within(canvasElement)
-  const links = canvas.getAllByRole('link')
-
-  const knownLinks = [
-    { name: '', href: PiedDePageSimple.args.homeLink },
-    { name: 'ici', href: 'http://www.duckduckgo.com' },
-    ...PiedDePageSimple.args.ecosystemLinks,
-    PiedDePageSimple.args.partners.mainPartner,
-    ...PiedDePageSimple.args.partners.subPartners,
-    ...PiedDePageSimple.args.beforeMandatoryLinks.map(({ to }) => ({ href: to })),
-    { name: '', href: PiedDePageSimple.args.a11yComplianceLink },
-    { name: '', href: PiedDePageSimple.args.legalLink },
-    { name: '', href: PiedDePageSimple.args.personalDataLink },
-    { name: '', href: PiedDePageSimple.args.cookiesLink },
-    ...PiedDePageSimple.args.afterMandatoryLinks.map(({ to }) => ({ href: to })),
-    { href: PiedDePageSimple.args.licenceTo },
-  ]
-
-  let i = 0
-
-  for (const link of links) {
-    expect(link).toHaveAttribute('href', knownLinks.at(i)?.href)
-    i++
-  }
-}
-
-export const PiedDePageAvecLogoOperateurEtListeDeLiens = (args) => ({
-  components: {
-    DsfrFooter,
-    DsfrFooterLinkList,
-    VIcon,
-  },
-  data () {
-    return args
-  },
-  template: `
+  render: (args) => ({
+    components: {
+      DsfrFooter,
+      DsfrFooterLinkList,
+      VIcon,
+    },
+    setup () {
+      return { args }
+    },
+    template: `
   <DsfrFooter
-    :a11y-compliance="a11yCompliance"
-    :before-mandatory-links="beforeMandatoryLinks"
-    :after-mandatory-links="afterMandatoryLinks"
-    :ecosystem-links="ecosystemLinks"
-    :logo-text="logoText"
-    :legal-link="legalLink"
-    :personal-data-link="personalDataLink"
-    :cookies-link="cookiesLink"
-    :a11y-compliance-link="a11yComplianceLink"
-    :desc-text="descText"
-    :home-link="homeLink"
-    :partners="partners"
-    :licence-text="licenceText"
-    :licence-to="licenceTo"
-    :licence-name="licenceName"
-    :licence-link-props="licenceLinkProps"
-    :operator-link-text="operatorLinkText"
-    :operator-to="operatorTo"
-    :operator-img-style="operatorImgStyle"
-    :operator-img-src="operatorImgSrc"
-    :operator-img-alt="operatorImgAlt"
+    :a11y-compliance="args.a11yCompliance"
+    :before-mandatory-links="args.beforeMandatoryLinks"
+    :after-mandatory-links="args.afterMandatoryLinks"
+    :ecosystem-links="args.ecosystemLinks"
+    :logo-text="args.logoText"
+    :legal-link="args.legalLink"
+    :personal-data-link="args.personalDataLink"
+    :cookies-link="args.cookiesLink"
+    :a11y-compliance-link="args.a11yComplianceLink"
+    :desc-text="args.descText"
+    :home-link="args.homeLink"
+    :partners="args.partners"
+    :licence-text="args.licenceText"
+    :licence-to="args.licenceTo"
+    :licence-name="args.licenceName"
+    :licence-link-props="args.licenceLinkProps"
+    :operator-link-text="args.operatorLinkText"
+    :operator-to="args.operatorTo"
+    :operator-img-style="args.operatorImgStyle"
+    :operator-img-src="args.operatorImgSrc"
+    :operator-img-alt="args.operatorImgAlt"
   >
     <template #footer-link-lists>
       <DsfrFooterLinkList
         class="fr-col-6"
-        :category-name="categoryName1"
-        :links="linkList1"
+        :category-name="args.categoryName1"
+        :links="args.linkList1"
       />
       <DsfrFooterLinkList
         class="fr-col-6"
-        :category-name="categoryName2"
-        :links="linkList2"
+        :category-name="args.categoryName2"
+        :links="args.linkList2"
       />
     </template>
     <template #description>
@@ -309,109 +393,35 @@ export const PiedDePageAvecLogoOperateurEtListeDeLiens = (args) => ({
     </template>
   </DsfrFooter>
   `,
-})
-PiedDePageAvecLogoOperateurEtListeDeLiens.args = {
-  beforeMandatoryLinks: [{ label: 'Before', to: '/before' }],
-  afterMandatoryLinks: [{ label: 'After', to: '/after' }],
-  a11yCompliance: 'partiellement conforme',
-  logoText: ['République', 'des châtons'],
-  legalLink: '/mentions-legales',
-  personalDataLink: '/donnees-personnelles',
-  cookiesLink: '/cookies',
-  a11yComplianceLink: '/a11y-conformite',
-  descText: 'Description',
-  homeLink: '/',
-  licenceText: undefined,
-  licenceTo: undefined,
-  licenceName: undefined,
-  licenceLinkProps: undefined,
-  categoryName1: 'Nom de la categorie 1',
-  linkList1: [
-    { label: 'Lien 1.1', to: '/#lien1-1' },
-    { label: 'Lien 1.2', to: '/#lien1-2' },
-  ],
-  categoryName2: 'Nom de la categorie 2',
-  linkList2: [
-    { label: 'Lien 2.1', to: '/#lien2-1' },
-    { label: 'Lien 2.2', to: '/#lien2-2' },
-  ],
-  ecosystemLinks: [
-    {
-      label: 'legifrance.gouv.fr',
-      href: 'https://legifrance.gouv.fr',
-    },
-    {
-      label: 'info.gouv.fr',
-      href: 'https://info.gouv.fr',
-    },
-    {
-      label: 'service-public.fr',
-      href: 'https://service-public.fr',
-    },
-    {
-      label: 'data.gouv.fr',
-      href: 'https://data.gouv.fr',
-    },
-  ],
-  partners: {
-    mainPartner: {
-      name: 'Partenaire principal',
-      href: 'https://www.youtube.com',
-      logo: 'https://loremflickr.com/150/150/cat?random=1',
-      alt: 'Partenaire principal',
-    },
-    subPartners: [
-      {
-        name: 'Partenaire secondaire 1',
-        href: 'https://www.youtube.com',
-        logo: 'https://loremflickr.com/150/150/cat?random=2',
-        alt: 'Partenaire secondaire 1',
-      },
-      {
-        name: 'Partenaire secondaire 2',
-        href: 'https://www.youtube.com',
-        logo: 'https://loremflickr.com/150/150/cat?random=3',
-        alt: 'Partenaire secondaire 2',
-      },
-    ],
+  }),
+  play: async ({ canvasElement, args }) => {
+    const canvas = within(canvasElement)
+    const links = canvas.getAllByRole('link')
+    expect(links).toHaveLength(20)
+
+    const knownLinks = [
+      ...args.linkList1.map(({ to }) => ({ href: to })),
+      ...args.linkList2.map(({ to }) => ({ href: to })),
+      { name: '', href: args.operatorTo },
+      { name: 'ici', href: 'http://www.duckduckgo.com' },
+      ...args.ecosystemLinks,
+      args.partners.mainPartner,
+      ...args.partners.subPartners,
+      ...args.beforeMandatoryLinks.map(({ to }) => ({ href: to })),
+      { name: '', href: args.a11yComplianceLink },
+      { name: '', href: args.legalLink },
+      { name: '', href: args.personalDataLink },
+      { name: '', href: args.cookiesLink },
+      ...args.afterMandatoryLinks.map(({ to }) => ({ href: to })),
+      { href: args.licenceTo },
+    ]
+
+    let i = 0
+
+    for (const link of links) {
+      expect(link).toBeVisible()
+      expect(link).toHaveAttribute('href', knownLinks.at(i)?.href)
+      i++
+    }
   },
-  operatorLinkText: 'Logo opérateur',
-  operatorTo: 'https://github.com/dnum-mi/vue-dsfr',
-  operatorImgStyle: {
-    'margin-left': '0.5px',
-    padding: '1rem',
-    height: '150px',
-  },
-  operatorImgSrc: '/cat.svg',
-  operatorImgAlt: 'Logo opérateur',
-}
-PiedDePageAvecLogoOperateurEtListeDeLiens.play = async ({ canvasElement }) => {
-  const canvas = within(canvasElement)
-  const links = canvas.getAllByRole('link')
-  expect(links).toHaveLength(20)
-
-  const knownLinks = [
-    ...PiedDePageAvecLogoOperateurEtListeDeLiens.args.linkList1.map(({ to }) => ({ href: to })),
-    ...PiedDePageAvecLogoOperateurEtListeDeLiens.args.linkList2.map(({ to }) => ({ href: to })),
-    { name: '', href: PiedDePageAvecLogoOperateurEtListeDeLiens.args.operatorTo },
-    { name: 'ici', href: 'http://www.duckduckgo.com' },
-    ...PiedDePageAvecLogoOperateurEtListeDeLiens.args.ecosystemLinks,
-    PiedDePageAvecLogoOperateurEtListeDeLiens.args.partners.mainPartner,
-    ...PiedDePageAvecLogoOperateurEtListeDeLiens.args.partners.subPartners,
-    ...PiedDePageAvecLogoOperateurEtListeDeLiens.args.beforeMandatoryLinks.map(({ to }) => ({ href: to })),
-    { name: '', href: PiedDePageAvecLogoOperateurEtListeDeLiens.args.a11yComplianceLink },
-    { name: '', href: PiedDePageAvecLogoOperateurEtListeDeLiens.args.legalLink },
-    { name: '', href: PiedDePageAvecLogoOperateurEtListeDeLiens.args.personalDataLink },
-    { name: '', href: PiedDePageAvecLogoOperateurEtListeDeLiens.args.cookiesLink },
-    ...PiedDePageAvecLogoOperateurEtListeDeLiens.args.afterMandatoryLinks.map(({ to }) => ({ href: to })),
-    { href: PiedDePageAvecLogoOperateurEtListeDeLiens.args.licenceTo },
-  ]
-
-  let i = 0
-
-  for (const link of links) {
-    expect(link).toBeVisible()
-    expect(link).toHaveAttribute('href', knownLinks.at(i)?.href)
-    i++
-  }
 }

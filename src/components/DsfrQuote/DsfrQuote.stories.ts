@@ -1,9 +1,11 @@
+import type { Meta, StoryObj } from '@storybook/vue3-vite'
+
 import DsfrQuote from './DsfrQuote.vue'
 
 /**
  * [Voir quand l’utiliser sur la documentation du DSFR](https://www.systeme-de-design.gouv.fr/version-courante/fr/composants/citation)
  */
-export default {
+const meta = {
   component: DsfrQuote,
   title: 'Composants/DsfrQuote',
   tags: ['message'],
@@ -33,72 +35,45 @@ export default {
       description: '**URL** de l\'image',
     },
   },
+} satisfies Meta<typeof DsfrQuote>
+
+export default meta
+type Story = StoryObj<typeof meta>
+
+export const Citation: Story = {
+  args: {
+    quote: 'LA citation',
+    author: 'Pierre-Louis EGAUD',
+    details: [
+      'Détail 1',
+      'Détail 2',
+      'Détail 3',
+      {
+        url: 'https://www.wikipedia.fr',
+        label: 'wikipedia',
+      },
+    ],
+    source: 'Duckduckgo',
+    sourceUrl: 'https://www.duckduckgo.com',
+    quoteImage: 'https://loremflickr.com/g/150/150/cat?random=1',
+  },
 }
 
-export const Citation = (args) => ({
-  components: { DsfrQuote },
-  data () {
-    return {
-      ...args,
-    }
+export const CitationSansImage: Story = {
+  name: 'Citation sans image',
+  args: {
+    quote: 'LA citation',
+    author: 'Pierre-Louis EGAUD',
+    details: [
+      'Détail 1',
+      'Détail 2',
+      'Détail 3',
+      {
+        url: 'https://www.wikipedia.fr',
+        label: 'wikipedia',
+      },
+    ],
+    source: 'Duckduckgo',
+    sourceUrl: 'https://www.duckduckgo.com',
   },
-  template: `
-    <DsfrQuote
-      :quote="quote"
-      :author="author"
-      :details="details"
-      :source="source"
-      :sourceUrl="sourceUrl"
-      :quoteImage="quoteImage"
-    />
-  `,
-})
-Citation.args = {
-  quote: 'LA citation',
-  author: 'Pierre-Louis EGAUD',
-  details: [
-    'Détail 1',
-    'Détail 2',
-    'Détail 3',
-    {
-      url: 'https://www.wikipedia.fr',
-      label: 'wikipedia',
-    },
-  ],
-  source: 'Duckduckgo',
-  sourceUrl: 'https://www.duckduckgo.com',
-  quoteImage: 'https://loremflickr.com/g/150/150/cat?random=1',
-}
-
-export const CitationSansImage = (args) => ({
-  components: { DsfrQuote },
-  data () {
-    return {
-      ...args,
-    }
-  },
-  template: `
-    <DsfrQuote
-      :quote="quote"
-      :author="author"
-      :details="details"
-      :source="source"
-      :sourceUrl="sourceUrl"
-    />
-  `,
-})
-CitationSansImage.args = {
-  quote: 'LA citation',
-  author: 'Pierre-Louis EGAUD',
-  details: [
-    'Détail 1',
-    'Détail 2',
-    'Détail 3',
-    {
-      url: 'https://www.wikipedia.fr',
-      label: 'wikipedia',
-    },
-  ],
-  source: 'Duckduckgo',
-  sourceUrl: 'https://www.duckduckgo.com',
 }

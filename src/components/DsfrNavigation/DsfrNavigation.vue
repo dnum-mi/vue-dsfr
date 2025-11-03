@@ -1,12 +1,4 @@
 <script lang="ts" setup>
-import { onMounted, onUnmounted, ref } from 'vue'
-
-import { useRandomId } from '../../utils/random-utils'
-
-import DsfrNavigationItem from './DsfrNavigationItem.vue'
-import DsfrNavigationMegaMenu from './DsfrNavigationMegaMenu.vue'
-import DsfrNavigationMenu from './DsfrNavigationMenu.vue'
-import DsfrNavigationMenuLink from './DsfrNavigationMenuLink.vue'
 import type {
   DsfrNavigationMegaMenuProps,
   DsfrNavigationMenuLinkProps,
@@ -15,6 +7,15 @@ import type {
   DsfrNavigationProps,
 } from './DsfrNavigation.types'
 
+import { onMounted, onUnmounted, ref } from 'vue'
+
+import { useRandomId } from '../../utils/random-utils'
+
+import DsfrNavigationItem from './DsfrNavigationItem.vue'
+import DsfrNavigationMegaMenu from './DsfrNavigationMegaMenu.vue'
+import DsfrNavigationMenu from './DsfrNavigationMenu.vue'
+import DsfrNavigationMenuLink from './DsfrNavigationMenuLink.vue'
+
 export type { DsfrNavigationMenuLinks, DsfrNavigationProps }
 
 const props = withDefaults(defineProps<DsfrNavigationProps>(), {
@@ -22,6 +23,14 @@ const props = withDefaults(defineProps<DsfrNavigationProps>(), {
   label: 'Menu principal',
   navItems: () => [],
 })
+
+defineSlots<{
+  /**
+   * Slot par défaut pour le contenu de la liste.
+   * Sera dans `<ul class="fr-nav__list">`
+   */
+  default: () => any
+}>()
 
 const expandedMenuId = ref<string | undefined>(undefined)
 
@@ -74,7 +83,6 @@ onUnmounted(() => {
     :aria-label="label"
   >
     <ul class="fr-nav__list">
-      <!-- @slot Slot par défaut pour le contenu de la liste. Sera dans `<ul class="fr-nav__list">` -->
       <slot />
       <DsfrNavigationItem
         v-for="(navItem, idx) of navItems"
@@ -87,14 +95,12 @@ onUnmounted(() => {
           :expanded-id="expandedMenuId"
           @toggle-id="toggle($event)"
         />
-        <!-- @vue-ignore -->
         <DsfrNavigationMenu
           v-else-if="(navItem as DsfrNavigationMenuProps).title && (navItem as DsfrNavigationMenuProps).links"
           v-bind="(navItem as DsfrNavigationMenuProps)"
           :expanded-id="expandedMenuId"
           @toggle-id="toggle($event)"
         />
-        <!-- @vue-ignore -->
         <DsfrNavigationMegaMenu
           v-else-if="(navItem as DsfrNavigationMegaMenuProps).title && (navItem as DsfrNavigationMegaMenuProps).menus"
           v-bind="(navItem as DsfrNavigationMegaMenuProps)"

@@ -1,8 +1,9 @@
 <script lang="ts" setup>
+import type { DsfrButtonGroupProps } from './DsfrButton.types'
+
 import { computed, onMounted, ref } from 'vue'
 
 import DsfrButton from './DsfrButton.vue'
-import type { DsfrButtonGroupProps } from './DsfrButton.types'
 
 export type { DsfrButtonGroupProps }
 
@@ -12,6 +13,11 @@ const props = withDefaults(defineProps<DsfrButtonGroupProps>(), {
   size: 'md',
   align: undefined,
 })
+
+defineSlots<{
+  /** Slot par défaut pour le contenu de la liste de boutons. Sera dans `<ul class="fr-btns-group">` */
+  default: () => any
+}>()
 
 const buttonsEl = ref<HTMLUListElement | null>(null)
 
@@ -84,7 +90,6 @@ onMounted(async () => {
         @click="onClick"
       />
     </li>
-    <!-- @slot Slot par défaut pour le contenu de la liste de boutons. Sera dans `<ul class="fr-btns-group">` -->
     <slot />
   </ul>
 </template>

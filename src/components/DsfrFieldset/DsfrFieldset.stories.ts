@@ -1,6 +1,8 @@
+import type { Meta, StoryObj } from '@storybook/vue3-vite'
+
 import DsfrFieldset from './DsfrFieldset.vue'
 
-export default {
+const meta = {
   component: DsfrFieldset,
   title: 'Composants/DsfrFieldset',
   tags: ['formulaire'],
@@ -30,76 +32,70 @@ export default {
         'Classe(s) à ajouter à l’élément <span class="fr-hint-text">',
     },
   },
-}
+} satisfies Meta<typeof DsfrFieldset>
 
-export const EnsembleDeChamps = (args) => ({
-  components: {
-    DsfrFieldset,
+export default meta
+
+type Story = StoryObj<typeof meta>
+
+export const EnsembleDeChamps: Story = {
+  args: {
+    legend: 'Titre de l\'ensemble des champs',
+    legendId: 'legend-id',
+    legendClass: '',
+    hintClass: '',
+    hint: 'Texte d\'indice',
   },
-
-  data () {
-    return {
-      ...args,
-      expandedId: undefined,
-      title1: `${args.title} 1`,
-      title2: `${args.title} 2`,
-    }
-  },
-
-  template: `
+  render: (args) => ({
+    components: {
+      DsfrFieldset,
+    },
+    setup () {
+      return { args }
+    },
+    template: `
     <DsfrFieldset
-      :legend="legend"
-      :hint="hint"
-      :legend-class="legendClass"
-      :hint-class="hintClass"
-      :legend-id="legendId"
+      :legend="args.legend"
+      :hint="args.hint"
+      :legend-class="args.legendClass"
+      :hint-class="args.hintClass"
+      :legend-id="args.legendId"
     >
       Contenu du fieldset
     </DsfrFieldset>
   `,
-})
-EnsembleDeChamps.args = {
-  legend: 'Titre de l’ensemble des champs',
-  legendId: 'legend-id',
-  legendClass: '',
-  hintClass: '',
-  hint: 'Texte d’indice',
+  }),
 }
 
-export const EnsemblePersonnaliseDeChamps = (args) => ({
-  components: {
-    DsfrFieldset,
+export const EnsemblePersonnaliseDeChamps: Story = {
+  args: {
+    legend: 'Contenu personnalisé du titre de l\'ensemble des champs',
+    legendId: 'legend-id',
+    legendClass: '',
+    hintClass: '',
+    hint: 'Contenu personnalisé de l\'indice',
   },
-
-  data () {
-    return {
-      ...args,
-      expandedId: undefined,
-      title1: `${args.title} 1`,
-      title2: `${args.title} 2`,
-    }
-  },
-
-  template: `
+  render: (args) => ({
+    components: {
+      DsfrFieldset,
+    },
+    setup () {
+      return { args }
+    },
+    template: `
     <DsfrFieldset
-      :legend-id="legendId"
-      :legend-class="legendClass"
-      :hint-class="hintClass"
+      :legend-id="args.legendId"
+      :legend-class="args.legendClass"
+      :hint-class="args.hintClass"
     >
       <template #legend>
-        <h6>{{ legend }} avec <em>de l’italique</em> dans un titre</h6>
+        <h6>{{ args.legend }} avec <em>de l'italique</em> dans un titre</h6>
       </template>
       <template #hint>
-        {{ hint }} avec <strong>du gras</strong>
+        {{ args.hint }} avec <strong>du gras</strong>
       </template>
       Contenu du fieldset
     </DsfrFieldset>
   `,
-})
-EnsemblePersonnaliseDeChamps.args = {
-  legend: 'Contenu personnalisé du titre de l’ensemble des champs',
-  legendId: 'legend-id',
-  legendClass: '',
-  hintClass: '',
-  hint: 'Contenu personnalisé de l’indice',
+  }),
 }

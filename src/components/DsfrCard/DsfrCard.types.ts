@@ -1,8 +1,7 @@
-import type { RouteLocationRaw } from 'vue-router'
-
 import type { DsfrBadgeProps } from '../DsfrBadge/DsfrBadge.types'
 import type { DsfrButtonProps } from '../DsfrButton/DsfrButton.types'
 import type VIcon from '../VIcon/VIcon.vue'
+import type { RouteLocationRaw } from 'vue-router'
 
 export type DsfrCardDetailProps = {
   icon?: string | InstanceType<typeof VIcon>['$props']

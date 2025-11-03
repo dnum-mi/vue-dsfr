@@ -1,9 +1,11 @@
+import type { Meta, StoryObj } from '@storybook/vue3-vite'
+
 import DsfrBackToTop from './DsfrBackToTop.vue'
 
 /**
  * [Voir quand l’utiliser sur la documentation du DSFR](https://www.systeme-de-design.gouv.fr/version-courante/fr/composants/retour-en-haut-de-page/)
  */
-export default {
+const meta = {
   component: DsfrBackToTop,
   title: 'Composants/DsfrBackToTop',
   argTypes: {
@@ -18,41 +20,45 @@ export default {
         '(Optionnel) **Position** de la fleche îcone : `left` (à gauche), `right` (à droite)',
     },
   },
+} satisfies Meta<typeof DsfrBackToTop>
+
+export default meta
+
+export const BackToTop: StoryObj<typeof meta> = {
+  args: {
+    position: 'left',
+    label: 'Haut de page',
+  },
+  render: (args) => ({
+    components: {
+      DsfrBackToTop,
+    },
+    setup () {
+      return { args }
+    },
+    template: `
+      <DsfrBackToTop v-bind="args" />
+    `,
+  }),
 }
 
-export const BackToTop = (args) => ({
-  components: {
-    DsfrBackToTop,
-  },
-  data () {
-    return args
-  },
-  template: `
-      <DsfrBackToTop :label="label" :position="position"/>
+export const TousLesBacktoTop: StoryObj<typeof meta> = {
+  render: () => ({
+    components: {
+      DsfrBackToTop,
+    },
+    template: `
+      <div>
+        <p>
+          <DsfrBackToTop label="Haut de page" position="left"/>
+        </p>
+        <p>
+          <DsfrBackToTop label="Haut de page" position="right"/>
+        </p>
+        <p>
+          <DsfrBackToTop label="Haut" position="right"/>
+        </p>
+      </div>
     `,
-})
-BackToTop.args = {
-  position: 'left',
-  label: 'Haut de page',
+  }),
 }
-
-export const TousLesBacktoTop = (args) => ({
-  components: {
-    DsfrBackToTop,
-  },
-  data () {
-    return args
-  },
-  template: `
-      <p>
-      <DsfrBackToTop label="Haut de page" position="left"/>
-      </p>
-      <p>
-      <DsfrBackToTop label="Haut de page" position="right"/>
-      </p>
-      <p>
-      <DsfrBackToTop label="Haut" position="right"/>
-      </p>
-    `,
-})
-TousLesBacktoTop.args = {}

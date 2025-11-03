@@ -1,8 +1,13 @@
+import type { Meta, StoryObj } from '@storybook/vue3-vite'
+
+import { fn } from 'storybook/test'
+import { ref } from 'vue'
+
 import DsfrNavigation from './DsfrNavigation.vue'
 import DsfrNavigationItem from './DsfrNavigationItem.vue'
 import DsfrNavigationMenu from './DsfrNavigationMenu.vue'
 
-export default {
+const meta = {
   component: DsfrNavigationMenu,
   title: 'Composants/DsfrNavigationMenu',
   argTypes: {
@@ -11,10 +16,7 @@ export default {
       description:
         '(Optionnel) Valeur de l’attribut `id` de ce sous-menu. *N.B. : Il est recommandé de ne pas le donner, la bibliothèque lui en donnera un pseudo-aléatoire*.',
     },
-    'toggle-id': {
-      description:
-        'Événement émis lors du click sur le lien, avec en argument l’id de l’élément cliqué',
-    },
+    onToggleId: fn(),
     links: {
       control: 'object',
       description:
@@ -35,59 +37,66 @@ export default {
         'Indique l’id de l’élément "ouvert" ou "déplié" dans le menu. Permet au composant de savoir s’il doit être déplié (si `expandedId` est identique à son `id`) ou non (si `expandedId` est différent de son `id`)',
     },
   },
-}
-
-export const NavigationSousMenu = (args) => ({
-  components: {
-    DsfrNavigation,
-    DsfrNavigationItem,
-    DsfrNavigationMenu,
-  },
-
-  data () {
-    return {
-      ...args,
-      expandedMenuId: undefined,
-    }
-  },
-
-  methods: {
-    toggle (id) {
-      if (id === this.expandedMenuId) {
-        this.expandedMenuId = undefined
-        return
-      }
-      this.expandedMenuId = id
+  render: (args) => ({
+    components: {
+      DsfrNavigation,
+      DsfrNavigationItem,
+      DsfrNavigationMenu,
     },
-  },
+    setup () {
+      const expandedMenuId = ref(args.expandedId)
 
-  template: `
+      function toggle (id: string) {
+        if (id === expandedMenuId.value) {
+          expandedMenuId.value = undefined
+        } else {
+          expandedMenuId.value = id
+        }
+        args.onToggleId(id)
+      }
+
+      return {
+        args,
+        expandedMenuId,
+        toggle,
+      }
+    },
+    template: `
     <DsfrNavigation>
       <DsfrNavigationItem>
         <DsfrNavigationMenu
-          :title="title"
-          :links="links"
+          :title="args.title"
+          :links="args.links"
           :expanded-id="expandedMenuId"
-          @toggle-id="toggle($event)"
+          @toggle-id="toggle"
         />
       </DsfrNavigationItem>
     </DsfrNavigation>
   `,
-})
-NavigationSousMenu.args = {
-  title: 'Nom de menu original',
-  links: [
-    {
-      text: 'Valeur 1',
-      to: '#val1',
-    },
-    {
-      text: 'Valeur 2',
-      to: '#val2',
-    },
-    {
-      text: 'Valeur 3',
-      to: '#val3',
-    },
-  ],
+  }),
+} satisfies Meta<typeof DsfrNavigationMenu>
+
+export default meta
+type Story = StoryObj<typeof meta>
+
+export const SousMenu: Story = {
+  name: 'Sous-menu',
+  args: {
+    title: 'Nom de menu original',
+    links: [
+      {
+        text: 'Valeur 1',
+        to: '#val1',
+      },
+      {
+        text: 'Valeur 2',
+        to: '#val2',
+      },
+      {
+        text: 'Valeur 3',
+        to: '#val3',
+      },
+    ],
+    onToggleId: fn(),
+  },
 }

@@ -1,7 +1,7 @@
 <script lang="ts" setup>
-import DsfrButtonGroup from '../DsfrButton/DsfrButtonGroup.vue'
-
 import type { DsfrErrorPageProps } from './DsfrErrorPage.types'
+
+import DsfrButtonGroup from '../DsfrButton/DsfrButtonGroup.vue'
 
 export type { DsfrErrorPageProps }
 
@@ -12,6 +12,13 @@ withDefaults(defineProps<DsfrErrorPageProps>(), {
   help: 'Si vous avez tapé l\'adresse web dans le navigateur, vérifiez qu\'elle est correcte. La page n\'est peut être plus disponible.',
   buttons: undefined,
 })
+
+/**
+ * @slot default - Slot par défaut : sera après ou à la place des boutons
+ */
+defineSlots<{
+  default?: () => any
+}>()
 </script>
 
 <template>
@@ -30,7 +37,6 @@ withDefaults(defineProps<DsfrErrorPageProps>(), {
         :buttons="buttons"
         inline-layout-when="always"
       />
-      <!-- @slot Slot par défaut : sera après ou à la place des boutons -->
       <slot />
     </div>
     <div class="half  self-center  text-center">

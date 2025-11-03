@@ -98,8 +98,8 @@ Si vous importiez vous-même `OhVueIcon` de `oh-vue-icons` dans certains composa
 
 ```vue
 <script lang="ts" setup>
-import { OhVueIcon as VIcon } from 'oh-vue-icons' // [!code --]
 import { VIcon } from '@gouvminint/vue-dsfr' // [!code ++]
+import { OhVueIcon as VIcon } from 'oh-vue-icons' // [!code --]
 </script>
 ```
 

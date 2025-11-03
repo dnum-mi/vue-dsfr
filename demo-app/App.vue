@@ -1,15 +1,16 @@
 <script setup lang="ts">
+import type { DsfrHeaderProps } from '../src/components/DsfrHeader/DsfrHeader.vue'
+import type { DsfrNavigationProps } from '../src/components/DsfrNavigation/DsfrNavigation.vue'
+import type { DsfrSkipLinksProps } from '../src/components/DsfrSkipLinks/DsfrSkipLinks.vue'
+
 import { computed, ref, useId } from 'vue'
 import { useRoute } from 'vue-router'
 
 import DsfrBreadcrumb from '../src/components/DsfrBreadcrumb/DsfrBreadcrumb.vue'
 import DsfrFooter from '../src/components/DsfrFooter/DsfrFooter.vue'
-import type { DsfrHeaderProps } from '../src/components/DsfrHeader/DsfrHeader.vue'
 import DsfrHeader from '../src/components/DsfrHeader/DsfrHeader.vue'
 import DsfrModal from '../src/components/DsfrModal/DsfrModal.vue'
-import type { DsfrNavigationProps } from '../src/components/DsfrNavigation/DsfrNavigation.vue'
 import DsfrNavigation from '../src/components/DsfrNavigation/DsfrNavigation.vue'
-import type { DsfrSkipLinksProps } from '../src/components/DsfrSkipLinks/DsfrSkipLinks.vue'
 import DsfrSkipLinks from '../src/components/DsfrSkipLinks/DsfrSkipLinks.vue'
 
 import AppToaster from './components/AppToaster.vue'
@@ -273,6 +274,19 @@ const ecosystemLinks = [
 
 const search = ref('')
 const currentRoute = computed(() => route.name)
+const language = ref('fr')
+const languageSelector = ref({
+  currentLanguage: 'fr',
+  languages: [
+    { label: 'Français', codeIso: 'fr' },
+    { label: 'English', codeIso: 'en' },
+    { label: 'Español', codeIso: 'es' },
+  ],
+  onLanguageSelect: (languageCode: string) => {
+    toaster.addMessage({ description: `Langue changée en ${languageCode}`, type: 'info' })
+    language.value = languageCode
+  },
+})
 </script>
 
 <template>
@@ -286,6 +300,8 @@ const currentRoute = computed(() => route.name)
       show-search
       service-title="VueDSFR demo App"
       placeholder="Rechercher placeholder"
+      :language-selector="languageSelector"
+      @language-select="languageSelector.currentLanguage = $event.codeIso"
     >
       <template #mainnav>
         <DsfrNavigation

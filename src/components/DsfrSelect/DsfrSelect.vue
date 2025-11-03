@@ -1,9 +1,9 @@
 <script lang="ts" setup>
+import type { DsfrSelectProps } from './DsfrSelect.types'
+
 import { computed } from 'vue'
 
 import { useRandomId } from '../../utils/random-utils'
-
-import type { DsfrSelectProps } from './DsfrSelect.types'
 
 export type { DsfrSelectProps }
 
@@ -15,6 +15,7 @@ const props = withDefaults(defineProps<DsfrSelectProps>(), {
   selectId: () => useRandomId('select'),
   modelValue: undefined,
   options: () => [],
+  optionGroups: () => [],
   label: '',
   name: undefined,
   description: undefined,
@@ -24,7 +25,24 @@ const props = withDefaults(defineProps<DsfrSelectProps>(), {
   defaultUnselectedText: 'Sélectionner une option',
 })
 
-defineEmits<{ (e: 'update:modelValue', payload: string | number): void }>()
+defineEmits<{
+  /** Événement émis lors du changement de l'option sélectionnée */
+  'update:modelValue': [payload: string | number]
+}>()
+
+defineSlots<{
+  /**
+   * Slot pour personnaliser tout le contenu de la balise <label>
+   * cf. [DsfrInput](/?path=/story/composants-champ-de-saisie-champ-simple-dsfrinput--champ-avec-label-personnalise).
+   * Une **props porte le même nom pour un label simple** (texte sans mise en forme)
+   */
+  label: () => any
+  /**
+   * Slot pour indiquer que le champ est obligatoire.
+   * Par défaut, met une astérisque si `required` est à true (dans un `<span class="required">`)
+   */
+  'required-tip': () => any
+}>()
 
 if (props.description) {
   console.warn(
@@ -49,10 +67,8 @@ const messageType = computed(() => {
       class="fr-label"
       :for="selectId"
     >
-      <!-- @slot Slot pour personnaliser tout le contenu de la balise <label> cf. [DsfrInput](/?path=/story/composants-champ-de-saisie-champ-simple-dsfrinput--champ-avec-label-personnalise). Une **props porte le même nom pour un label simple** (texte sans mise en forme) -->
       <slot name="label">
         {{ label }}
-        <!-- @slot Slot pour indiquer que le champ est obligatoire. Par défaut, met une astérisque si `required` est à true (dans un `<span class="required">`) -->
         <slot name="required-tip">
           <span
             v-if="required"
@@ -92,11 +108,29 @@ const messageType = computed(() => {
         :key="index"
         :selected="modelValue === option || (typeof option === 'object' && option!.value === modelValue)"
         :value="typeof option === 'object' ? option!.value : option"
-        :disabled="!!(typeof option === 'object' && option!.disabled)"
-        :aria-disabled="!!(typeof option === 'object' && option!.disabled)"
+        :disabled="!!(disabled || typeof option === 'object' && option!.disabled)"
+        :aria-disabled="!!(disabled || typeof option === 'object' && option!.disabled)"
       >
         {{ typeof option === 'object' ? option!.text : option }}
       </option>
+      <optgroup
+        v-for="(optionGroup, index) in optionGroups"
+        :key="index"
+        :label="optionGroup.label"
+        :disabled="optionGroup.disabled"
+        :aria-disabled="!!optionGroup.disabled"
+      >
+        <option
+          v-for="(option, idx) in optionGroup.options"
+          :key="idx"
+          :selected="modelValue === option || (typeof option === 'object' && option!.value === modelValue)"
+          :value="typeof option === 'object' ? option!.value : option"
+          :disabled="!!(disabled || typeof option === 'object' && option!.disabled || optionGroup.disabled)"
+          :aria-disabled="!!(disabled || typeof option === 'object' && option!.disabled || optionGroup.disabled)"
+        >
+          {{ typeof option === 'object' ? option!.text : option }}
+        </option>
+      </optgroup>
     </select>
 
     <p

@@ -1,11 +1,12 @@
 <script lang="ts" setup>
+import type { DsfrCardProps } from './DsfrCard.types'
+
 import { computed, ref } from 'vue'
 
 import DsfrBadge from '../DsfrBadge/DsfrBadge.vue'
 import DsfrButtonGroup from '../DsfrButton/DsfrButtonGroup.vue'
 
 import DsfrCardDetail from './DsfrCardDetail.vue'
-import type { DsfrCardProps } from './DsfrCard.types'
 
 export type { DsfrCardProps }
 
@@ -26,6 +27,20 @@ const props = withDefaults(defineProps<DsfrCardProps>(), {
   imgRatio: 'md',
 })
 
+/**
+ * Slots disponibles pour DsfrCard
+ */
+defineSlots<{
+  /**
+   * Slot pour ajouter du contenu au début des détails (ex: tags, badges)
+   */
+  'start-details': () => any
+  /**
+   * Slot pour ajouter du contenu à la fin des détails
+   */
+  'end-details': () => any
+}>()
+
 const sm = computed(() => {
   return ['sm', 'small'].includes(props.size)
 })
@@ -45,7 +60,8 @@ const externalLink = computed(() => {
 
 const titleElt = ref<HTMLElement | null>(null)
 const goToTargetLink = () => {
-  (titleElt.value?.querySelector('.fr-card__link') as HTMLDivElement).click()
+  const link = titleElt.value?.querySelector('.fr-card__link') as HTMLDivElement | null
+  link?.click()
 }
 defineExpose({ goToTargetLink })
 </script>

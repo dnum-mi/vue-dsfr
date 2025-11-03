@@ -1,8 +1,9 @@
-import { themes } from '@storybook/theming'
-import { setup } from '@storybook/vue3'
+import type { Preview } from '@storybook/vue3-vite'
+
+import { setup } from '@storybook/vue3-vite'
 import { FocusTrap } from 'focus-trap-vue'
+import { themes } from 'storybook/theming'
 import { defineComponent } from 'vue'
-import type { Preview } from '@storybook/vue3'
 
 import VIcon from '../src/components/VIcon/VIcon.vue'
 
@@ -22,7 +23,7 @@ import './theme.css'
 const preview: Preview = {
   parameters: {
     backgrounds: {
-      disable: true,
+      disabled: true,
     },
     docs: {
       theme: { ...themes.normal, ...VueDsfrTheme },
@@ -34,7 +35,7 @@ const preview: Preview = {
       },
     },
     viewport: {
-      viewports: {
+      options: {
         DSFR_XS: {
           name: 'DSFR XS',
           styles: {

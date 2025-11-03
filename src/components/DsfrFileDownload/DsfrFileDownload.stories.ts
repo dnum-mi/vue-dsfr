@@ -1,9 +1,11 @@
+import type { Meta, StoryObj } from '@storybook/vue3-vite'
+
 import DsfrFileDownload from './DsfrFileDownload.vue'
 
 /**
- * [Voir quand l’utiliser sur la documentation du DSFR](https://www.systeme-de-design.gouv.fr/version-courante/fr/composants/telechargement-de-fichier)
+ * [Voir quand l\'utiliser sur la documentation du DSFR](https://www.systeme-de-design.gouv.fr/version-courante/fr/composants/telechargement-de-fichier)
  */
-export default {
+const meta = {
   component: DsfrFileDownload,
   title: 'Composants/DsfrFileDownload',
   argTypes: {
@@ -29,31 +31,35 @@ export default {
       description: 'Nom de la ressource à télécharger',
     },
   },
-}
+} satisfies Meta<typeof DsfrFileDownload>
 
-export const LienDeTelechargement = (args) => ({
-  components: {
-    DsfrFileDownload,
+export default meta
+
+type Story = StoryObj<typeof meta>
+
+export const LienDeTelechargement: Story = {
+  args: {
+    format: 'PDF',
+    size: '250 Go',
+    href: 'src/assets/icone-marianne-seule.png',
+    download: 'marianne.png',
+    title: 'Titre du téléchargement',
   },
-  data () {
-    return {
-      ...args,
-    }
-  },
-  template: `
-    <DsfrFileDownload
-      :format="format"
-      :size="size"
-      :href="href"
-      :download="download"
-      :title="title"
-    />
-  `,
-})
-LienDeTelechargement.args = {
-  format: 'PDF',
-  size: '250 Go',
-  href: 'src/assets/icone-marianne-seule.png',
-  download: 'marianne.png',
-  title: 'Titre du téléchargement',
+  render: (args) => ({
+    components: {
+      DsfrFileDownload,
+    },
+    setup () {
+      return { args }
+    },
+    template: `
+      <DsfrFileDownload
+        :format="args.format"
+        :size="args.size"
+        :href="args.href"
+        :download="args.download"
+        :title="args.title"
+      />
+    `,
+  }),
 }

@@ -1,7 +1,9 @@
+import type { Meta, StoryObj } from '@storybook/vue3-vite'
+
 import DsfrNavigation from './DsfrNavigation.vue'
 import DsfrNavigationMenuLink from './DsfrNavigationMenuLink.vue'
 
-export default {
+const meta = {
   component: DsfrNavigationMenuLink,
   title: 'Composants/DsfrNavigationMenuLink',
   argTypes: {
@@ -28,31 +30,36 @@ export default {
         'Événement émis lors du click sur le lien, avec en argument l’id de l’élément cliqué',
     },
   },
-}
+} as Meta<typeof DsfrNavigationMenuLink>
 
-export const NavigationLienMenu = (args) => ({
-  components: {
-    DsfrNavigation,
-    DsfrNavigationMenuLink,
+export default meta
+type Story = StoryObj<typeof meta>
+
+export const NavigationLienMenu: Story = {
+  args: {
+    to: '#test-navigation-menu-link',
+    text: 'Lien de menu',
+    icon: 'ri-check-line',
   },
+  render: (args) => ({
+    components: {
+      DsfrNavigation,
+      DsfrNavigationMenuLink,
+    },
 
-  data () {
-    return args
-  },
+    setup () {
+      return { args }
+    },
 
-  template: `
-  <DsfrNavigation>
-    <DsfrNavigationMenuLink
-      :to="to"
-      :text="text"
-      :icon="icon"
-      @click.prevent.stop=""
-    />
-  </DsfrNavigation>
-  `,
-})
-NavigationLienMenu.args = {
-  to: '#test-navigation-menu-link',
-  text: 'Lien de menu',
-  icon: 'ri-check-line',
+    template: `
+      <DsfrNavigation>
+        <DsfrNavigationMenuLink
+          :to="args.to"
+          :text="args.text"
+          :icon="args.icon"
+          @click.prevent.stop=""
+        />
+      </DsfrNavigation>
+    `,
+  }),
 }

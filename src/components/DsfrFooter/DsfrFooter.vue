@@ -1,13 +1,13 @@
 <script setup lang="ts">
+import type { DsfrFooterProps } from './DsfrFooter.types'
 import type { VNode } from 'vue'
 import type { RouteLocationRaw, RouterLink } from 'vue-router'
+
 import { computed, useSlots } from 'vue'
 
 import DsfrFooterLink from '../DsfrFooter/DsfrFooterLink.vue'
 import DsfrFooterPartners from '../DsfrFooter/DsfrFooterPartners.vue'
 import DsfrLogo from '../DsfrLogo/DsfrLogo.vue'
-
-import type { DsfrFooterProps } from './DsfrFooter.types'
 
 export type { DsfrFooterProps }
 export type {
@@ -85,15 +85,40 @@ const props = withDefaults(defineProps<DsfrFooterProps>(), {
 })
 
 defineSlots<{
+  /** Slot pour pouvoir changer les liens dans la rubrique en haut du pied de page */
   'footer-link-lists': () => VNode
+  /** Slot pour le contenu de la description du footer. Sera dans `<p class="fr-footer__content-desc">` */
   description: () => VNode
+  /** Slot pour le contenu des partenaires du footer */
   'footer-partners': () => VNode
 }>()
+
+const mandatoryLinks = computed(() => {
+  return [
+    {
+      label: `Accessibilité : ${props.a11yCompliance}`,
+      to: props.a11yComplianceLink,
+    },
+    {
+      label: 'Mentions légales',
+      to: props.legalLink,
+      'data-testid': '/mentions-legales',
+    },
+    {
+      label: 'Données personnelles',
+      to: props.personalDataLink,
+    },
+    {
+      label: 'Gestion des cookies',
+      to: props.cookiesLink,
+    },
+  ]
+})
 
 const allLinks = computed(() => {
   return [
     ...props.beforeMandatoryLinks,
-    ...props.mandatoryLinks,
+    ...mandatoryLinks.value,
     ...props.afterMandatoryLinks,
   ]
 })
@@ -136,7 +161,6 @@ const externalOperatorLink = computed(() => {
     >
       <div class="fr-container">
         <div class="fr-grid-row fr-grid-row--start fr-grid-row--gutters">
-          <!-- @slot Slot #footer-link-lists pour pouvoir changer les liens dans la rubrique en haut du pied de page  -->
           <slot name="footer-link-lists" />
         </div>
       </div>
@@ -194,7 +218,6 @@ const externalOperatorLink = computed(() => {
           <p
             class="fr-footer__content-desc"
           >
-            <!-- @slot Slot #description pour le contenu de la description du footer. Sera dans `<p class="fr-footer__content-desc">` -->
             <slot name="description">
               {{ descText }}
             </slot>
@@ -219,7 +242,6 @@ const externalOperatorLink = computed(() => {
           </ul>
         </div>
       </div>
-      <!-- @slot Slot #description pour le contenu de la description du footer. Sera dans `<p class="fr-footer__content-desc">` -->
       <slot name="footer-partners">
         <DsfrFooterPartners
           v-if="partners"

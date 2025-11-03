@@ -1,3 +1,5 @@
+import type { Meta, StoryObj } from '@storybook/vue3-vite'
+
 import DsfrTile from './DsfrTile.vue'
 
 /**
@@ -5,7 +7,7 @@ import DsfrTile from './DsfrTile.vue'
  *
  * Nous vous invitons à regarder plutôt la [nouvelle documentation](https://vue-ds.fr/composants/DsfrTile) pour ce composant
  */
-export default {
+const meta = {
   component: DsfrTile,
   title: 'Composants/DsfrTile',
   argTypes: {
@@ -48,7 +50,8 @@ export default {
         'Lien vers lequel la tuile pointe. Peut être une string ou objet à donner à `RouterLink` ou un lien externe (`string` commençant par `"http"`)',
     },
     titleTag: {
-      control: 'text',
+      control: { type: 'select' },
+      options: ['h2', 'h3', 'h4', 'h5', 'h6'],
       description:
         'Permet de choisir la balise contenant le titre de la tuile (h3 par défaut)',
     },
@@ -81,53 +84,55 @@ export default {
       description: 'Permet de passer le fond de la tuile en gris',
     },
   },
-}
+} as Meta<typeof DsfrTile>
 
-export const TuileSimple = (args) => ({
-  components: {
-    DsfrTile,
+export default meta
+
+type Story = StoryObj<typeof meta>
+
+export const TuileSimple: Story = {
+  render: (args) => ({
+    components: {
+      DsfrTile,
+    },
+    setup () {
+      return { args }
+    },
+    template: `
+      <DsfrTile
+        :title="args.title"
+        :imgSrc="args.imgSrc"
+        :description="args.description"
+        :details="args.details"
+        :horizontal="args.horizontal"
+        :vertical="args.vertical"
+        :disabled="args.disabled"
+        :to="args.to"
+        :title-tag="args.titleTag"
+        :download="args.download"
+        :small="args.small"
+        :icon="args.icon"
+        :no-border="args.noBorder"
+        :shadow="args.shadow"
+        :no-background="args.noBackground"
+        :grey="args.grey"
+      />
+    `,
+  }),
+  args: {
+    title: 'Ma formidable tuile',
+    imgSrc: 'https://loremflickr.com/80/80/cat',
+    description: 'Une tuile absolument formidable',
+    horizontal: false,
+    disabled: false,
+    to: '#',
+    titleTag: 'h2',
+    download: false,
+    small: false,
+    icon: false,
+    noBorder: false,
+    shadow: false,
+    noBackground: false,
+    grey: false,
   },
-
-  data () {
-    return {
-      ...args,
-    }
-  },
-
-  template: `
-    <DsfrTile
-      :title="title"
-      :imgSrc="imgSrc"
-      :description="description"
-      :details="details"
-      :horizontal="horizontal"
-      :vertical="vertical"
-      :disabled="false"
-      :to="to"
-      :title-tag="titleTag"
-      :download="download"
-      :small="small"
-      :icon="icon"
-      :no-border="noBorder"
-      :shadow="shadow"
-      :no-background="noBackground"
-      :grey="grey"
-    />
-  `,
-})
-TuileSimple.args = {
-  title: 'Ma formidable tuile',
-  imgSrc: 'https://loremflickr.com/80/80/cat',
-  description: 'Une tuile absolument formidable',
-  horizontal: false,
-  disabled: false,
-  to: '#',
-  titleTag: 'h2',
-  download: false,
-  small: false,
-  icon: false,
-  noBorder: false,
-  shadow: false,
-  noBackground: false,
-  grey: false,
 }

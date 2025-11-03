@@ -1,5 +1,3 @@
-import type { VNode } from 'vue'
-
 export type DsfrMultiSelectProps<T> = {
   modelValue: (string | number)[]
   options: T[]
@@ -23,14 +21,4 @@ export type DsfrMultiSelectProps<T> = {
   }
   filteringKeys?: (keyof T)[]
   maxOverflowHeight?: CSSStyleDeclaration['maxHeight']
-}
-
-export type DsfrMultiSelectSlots<T> = {
-  label?: () => VNode
-  'required-tip'?: () => VNode
-  hint?: () => VNode
-  'button-label'?: () => VNode
-  legend?: () => VNode
-  'checkbox-label'?: (props: { option: T }) => VNode
-  'no-results'?: () => VNode
 }

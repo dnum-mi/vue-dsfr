@@ -1,7 +1,7 @@
 <script lang="ts" setup>
-import DsfrTranscription from '../DsfrTranscription/DsfrTranscription.vue'
-
 import type { DsfrVideoProps } from './DsfrMedia.types'
+
+import DsfrTranscription from '../DsfrTranscription/DsfrTranscription.vue'
 
 export type { DsfrVideoProps }
 

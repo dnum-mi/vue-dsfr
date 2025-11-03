@@ -1,10 +1,10 @@
 <script lang="ts" setup>
+import type { DsfrCalloutProps } from './DsfrCallout.types'
+
 import { computed } from 'vue'
 
 import DsfrButton from '../DsfrButton/DsfrButton.vue'
 import VIcon from '../VIcon/VIcon.vue'
-
-import type { DsfrCalloutProps } from './DsfrCallout.types'
 
 export type { DsfrCalloutProps }
 
@@ -13,16 +13,22 @@ const props = withDefaults(defineProps<DsfrCalloutProps>(), {
   button: () => undefined,
   titleTag: 'h3',
   icon: undefined,
+  accent: undefined,
 })
 
+defineSlots<{
+  /** Slot par défaut pour le contenu de la mise en avant. Sera dans `<div class="fr-callout">` */
+  default?: () => any
+}>()
+
 const dsfrIcon = computed(() => typeof props.icon === 'string' && props.icon.startsWith('fr-icon-'))
-const iconProps = computed(() => dsfrIcon.value ? undefined : typeof props.icon === 'string' ? { name: props.icon } : { ...(props.icon ?? {}) })
+const iconProps = computed(() => dsfrIcon.value ? undefined : typeof props.icon === 'string' ? { name: props.icon } : props.icon)
 </script>
 
 <template>
   <div
     class="fr-callout"
-    :class="{ [String(icon)]: dsfrIcon }"
+    :class="{ [String(icon)]: dsfrIcon, [`fr-callout--${accent}`]: !!accent }"
   >
     <VIcon
       v-if="icon && iconProps"
@@ -48,7 +54,6 @@ const iconProps = computed(() => dsfrIcon.value ? undefined : typeof props.icon 
       v-bind="button"
     />
 
-    <!-- @slot Slot par défaut pour le contenu de la mise en avant. Sera dans `<div class="fr-callout">` -->
     <div
       v-if="$slots.default && !content"
       class="fr-callout__text"

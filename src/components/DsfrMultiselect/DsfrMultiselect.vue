@@ -1,4 +1,7 @@
 <script lang="ts" setup generic="T extends Object | string | number">
+import type { DsfrMultiSelectProps } from './DsfrMultiselect.types'
+import type { VNode } from 'vue'
+
 import { computed, onUnmounted, ref } from 'vue'
 
 import { useCollapsable } from '../../composables'
@@ -6,8 +9,6 @@ import DsfrButton from '../DsfrButton/DsfrButton.vue'
 import DsfrCheckbox from '../DsfrCheckbox/DsfrCheckbox.vue'
 import DsfrFieldset from '../DsfrFieldset/DsfrFieldset.vue'
 import DsfrInput from '../DsfrInput/DsfrInput.vue'
-
-import type { DsfrMultiSelectProps, DsfrMultiSelectSlots } from './DsfrMultiselect.types'
 
 import { useRandomId } from '@/utils/random-utils'
 
@@ -36,7 +37,36 @@ const props = withDefaults(
   },
 )
 
-defineSlots<DsfrMultiSelectSlots<T>>()
+defineSlots<{
+  /**
+   * Slot pour personnaliser le label.
+   */
+  label?: () => VNode
+  /**
+   * Slot pour personnaliser l'indicateur de champ requis.
+   */
+  'required-tip'?: () => VNode
+  /**
+   * Slot pour ajouter un texte d'aide.
+   */
+  hint?: () => VNode
+  /**
+   * Slot pour personnaliser le label du bouton.
+   */
+  'button-label'?: () => VNode
+  /**
+   * Slot pour ajouter une légende au fieldset des cases à cocher.
+   */
+  legend?: () => VNode
+  /**
+   * Slot pour personnaliser le label de chaque case à cocher.
+   */
+  'checkbox-label'?: (props: { option: T }) => VNode
+  /**
+   * Slot pour afficher un message quand il n'y a pas de résultats de recherche.
+   */
+  'no-results'?: () => VNode
+}>()
 
 const isObjectWithIdKey = (
   option: unknown,

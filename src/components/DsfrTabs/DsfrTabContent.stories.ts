@@ -1,7 +1,9 @@
+import type { Meta, StoryObj } from '@storybook/vue3-vite'
+
 import DsfrTabContent from './DsfrTabContent.vue'
 import DsfrTabs from './DsfrTabs.vue'
 
-export default {
+const meta = {
   component: DsfrTabContent,
   title: 'Composants/DsfrTabs',
   argTypes: {
@@ -15,30 +17,47 @@ export default {
       description:
         'Props de et `DsfrTabContent`: Identifiant du titre de l’onglet ̛ ; doit être identique à la props `panel-id` du `DsfrTabContent` correspondant - **Obligatoire**',
     },
-    selected: {
-      control: 'boolean',
+    selectedTabIndex: {
+      control: 'number',
       description:
-        'Indique si cet onglet est celui sélectionné (`true`) ou non (`false`, défaut)',
+        'Index de l’onglet sélectionné (0 pour le premier onglet)',
+      table: {
+        category: 'Props du parent (DsfrTabs)',
+      },
     },
-    asc: {
-      control: 'boolean',
-      description:
-        'Indique si l’onglet suivant à afficher est à droite (`true`, ascendant) ou à gauche (`false`)',
+    tabListName: {
+      control: 'text',
+      description: 'Nom de la liste d’onglet (utilisée dans le aria-label de la liste `<ul>`)',
+      table: {
+        category: 'Props du parent (DsfrTabs)',
+      },
+    },
+    tabTitles: {
+      control: 'object',
+      description: 'Titres des onglets',
+      table: {
+        category: 'Props du parent (DsfrTabs)',
+      },
     },
   },
-}
+} satisfies Meta<typeof DsfrTabContent>
 
-export const ContenuDOnglet = (args) => ({
-  components: {
-    DsfrTabs,
-    DsfrTabContent,
-  },
+export default meta
 
-  data () {
-    return args
-  },
+type Story = StoryObj<typeof meta>
 
-  template: `
+export const ContenuDOnglet: Story = {
+  render: (args) => ({
+    components: {
+      DsfrTabs,
+      DsfrTabContent,
+    },
+
+    setup () {
+      return args
+    },
+
+    template: `
     <DsfrTabs
       v-model="selectedTabIndex"
       :tab-list-name="tabListName"
@@ -52,13 +71,19 @@ export const ContenuDOnglet = (args) => ({
       </DsfrTabContent>
     </DsfrTabs>
   `,
-})
-ContenuDOnglet.args = {
-  panelId: 'tab-content-0',
-  tabId: 'tab-0',
-  selectedTabIndex: 0,
-  tabListName: 'Liste d’onglet',
-  tabTitles: [
-    { title: 'Titre 1', icon: 'ri-checkbox-circle-line', tabId: 'tab-0', panelId: 'tab-content-0' },
-  ],
+  }),
+  args: {
+    panelId: 'tab-content-0',
+    selectedTabIndex: 0,
+    tabId: 'tab-0',
+    tabListName: 'Liste d\'onglet',
+    tabTitles: [
+      {
+        title: 'Titre 1',
+        icon: 'ri-checkbox-circle-line',
+        tabId: 'tab-0',
+        panelId: 'tab-content-0',
+      },
+    ],
+  },
 }

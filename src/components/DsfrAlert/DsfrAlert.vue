@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import { computed } from 'vue'
+import type { DsfrAlertProps } from './DsfrAlert.types'
 
-import type { DsfrAlertProps } from './DsfrAlert.types.js'
+import { computed } from 'vue'
 
 import { useRandomId } from '@/utils/random-utils'
 
-export type { DsfrAlertProps, DsfrAlertType } from './DsfrAlert.types.js'
+export type { DsfrAlertProps, DsfrAlertType } from './DsfrAlert.types'
 
 const props = withDefaults(defineProps<DsfrAlertProps>(), {
   id: () => useRandomId('basic', 'alert'),
@@ -15,7 +15,16 @@ const props = withDefaults(defineProps<DsfrAlertProps>(), {
   closeButtonLabel: 'Fermer le message',
 })
 
-const emit = defineEmits<{ (e: 'close'): void }>()
+const emit = defineEmits<{
+  /** Émis lors de la fermeture de l’alerte */
+  close: []
+}>()
+
+defineSlots<{
+  /** Slot par défaut pour le contenu de l’alerte. Utilisable si pas de description en props */
+  default: () => any
+}>()
+
 const onClick = () => emit('close')
 
 const classes = computed(

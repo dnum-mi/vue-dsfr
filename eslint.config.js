@@ -1,3 +1,5 @@
+// For more info, see https://github.com/storybookjs/eslint-plugin-storybook#configuration-flat-config-format
+
 import antfu from '@antfu/eslint-config'
 
 export default antfu({
@@ -7,10 +9,25 @@ export default antfu({
     rules: {
       'test/prefer-lowercase-title': 'off',
       'sort-imports': 'off', // Should be 'error'
-      'import/order': ['error', {
-        'newlines-between': 'always',
-        groups: ['builtin', 'external', 'internal', 'parent', 'sibling', 'index'],
-      }],
+      'import/order': [
+        'error',
+        {
+          'newlines-between': 'always',
+          alphabetize: {
+            order: 'asc',
+            caseInsensitive: true,
+          },
+          groups: [
+            'type',
+            'builtin',
+            'external',
+            'internal',
+            'parent',
+            'sibling',
+            'index',
+          ],
+        },
+      ],
       'antfu/top-level-function': 'off', // Should be 'error'
       'style/quote-props': ['error', 'as-needed'], // Should be ['error', 'consistent-as-needed']
       'vue/quote-props': ['error', 'as-needed'], // Should be ['error', 'consistent-as-needed']

@@ -1,5 +1,7 @@
 <script lang="ts" setup>
+import type { DsfrTabsProps } from './DsfrTabs.types'
 import type { Ref } from 'vue'
+
 import { computed, onMounted, onUnmounted, provide, reactive, ref, watch } from 'vue'
 
 import { useRandomId } from '../../utils/random-utils'
@@ -7,7 +9,6 @@ import { useRandomId } from '../../utils/random-utils'
 import DsfrTabContent from './DsfrTabContent.vue'
 import DsfrTabItem from './DsfrTabItem.vue'
 import { registerTabKey } from './injection-key'
-import type { DsfrTabsProps } from './DsfrTabs.types'
 
 export type { DsfrTabsProps }
 
@@ -18,7 +19,21 @@ const props = withDefaults(defineProps<DsfrTabsProps>(), {
 })
 
 const emit = defineEmits<{
+  /**
+   * Émis lorsque l'onglet actif change, avec en argument l'index de l'onglet sélectionné
+   */
   'update:modelValue': [tabIndex: number]
+}>()
+
+defineSlots<{
+  /**
+   * Slot nommé `tab-items` pour y mettre des Titres d'onglets personnalisés. S'il est rempli, la props `tabTitles` n'aura aucun effet
+   */
+  'tab-items'?: () => any
+  /**
+   * Slot par défaut pour le contenu des onglets
+   */
+  default?: () => any
 }>()
 
 const asc = ref(false)

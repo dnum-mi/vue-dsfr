@@ -1,15 +1,20 @@
 <script setup lang="ts">
+import type { DsfrTooltipProps } from './DsfrTooltip.types'
+
 import { computed, onMounted, onUnmounted, ref, watch } from 'vue'
 
 import { useRandomId } from '../../utils/random-utils'
-
-import type { DsfrTooltipProps } from './DsfrTooltip.types'
 
 export type { DsfrTooltipProps }
 
 const props = withDefaults(defineProps<DsfrTooltipProps>(), {
   id: () => useRandomId('tooltip'),
 })
+
+defineSlots<{
+  /** Slot par défaut pour le contenu sur lequel sera l'infobulle */
+  default?: () => any
+}>()
 
 const show = ref(false)
 
@@ -155,7 +160,6 @@ onUnmounted(() => {
     @focus="onMouseEnterHandler($event)"
     @blur="onMouseLeave()"
   >
-    <!-- @slot Slot par défaut pour le contenu de l’infobulle -->
     <slot />
   </component>
   <span

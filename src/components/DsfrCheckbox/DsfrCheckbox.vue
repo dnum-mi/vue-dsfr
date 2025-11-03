@@ -1,9 +1,9 @@
 <script lang="ts" setup>
+import type { DsfrCheckboxProps } from './DsfrCheckbox.types'
+
 import { computed } from 'vue'
 
 import { useRandomId } from '../../utils/random-utils'
-
-import type { DsfrCheckboxProps } from './DsfrCheckbox.types'
 
 export type { DsfrCheckboxProps }
 
@@ -19,6 +19,20 @@ const props = withDefaults(defineProps<DsfrCheckboxProps>(), {
   label: '',
   readonlyOpacity: 0.75,
 })
+
+/**
+ * Slots disponibles pour DsfrCheckbox
+ */
+defineSlots<{
+  /**
+   * Slot pour personnaliser tout le contenu de la balise <label>
+   */
+  label?: () => any
+  /**
+   * Slot pour indiquer que le champ est obligatoire
+   */
+  'required-tip'?: () => any
+}>()
 
 const message = computed(() => props.errorMessage || props.validMessage)
 const messageId = computed(() => message.value ? useRandomId('message', 'checkbox') : undefined)

@@ -1,4 +1,6 @@
 <script lang="ts" setup>
+import type { DsfrNavigationMenuProps } from './DsfrNavigation.types'
+
 import { computed, onMounted, watch } from 'vue'
 
 import { useCollapsable } from '../../composables'
@@ -6,7 +8,6 @@ import { useRandomId } from '../../utils/random-utils'
 
 import DsfrNavigationMenuItem from './DsfrNavigationMenuItem.vue'
 import DsfrNavigationMenuLink from './DsfrNavigationMenuLink.vue'
-import type { DsfrNavigationMenuProps } from './DsfrNavigation.types'
 
 export type { DsfrNavigationMenuProps }
 
@@ -17,6 +18,14 @@ const props = withDefaults(defineProps<DsfrNavigationMenuProps>(), {
 })
 
 defineEmits<{ (event: 'toggleId', id: string): void }>()
+
+defineSlots<{
+  /**
+   * Slot par défaut pour le contenu de l’item de liste.
+   * Sera dans `<ul class="fr-menu__list">`
+   */
+  default: () => any
+}>()
 
 const {
   collapse,
@@ -65,7 +74,6 @@ onMounted(() => {
     <ul
       class="fr-menu__list"
     >
-      <!-- @slot Slot par défaut pour le contenu de l’item de liste. Sera dans `<ul class="fr-menu__list">` -->
       <slot />
       <DsfrNavigationMenuItem
         v-for="(link, idx) of links"

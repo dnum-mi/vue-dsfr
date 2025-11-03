@@ -1,10 +1,12 @@
+import type { Meta, StoryObj } from '@storybook/vue3-vite'
+
 import DsfrSideMenu from './DsfrSideMenu.vue'
 import DsfrSideMenuButton from './DsfrSideMenuButton.vue'
 import DsfrSideMenuLink from './DsfrSideMenuLink.vue'
 import DsfrSideMenuList from './DsfrSideMenuList.vue'
 import DsfrSideMenuListItem from './DsfrSideMenuListItem.vue'
 
-export default {
+const meta = {
   component: DsfrSideMenuButton,
   title: 'Composants/DsfrSideMenuButton',
   argTypes: {
@@ -23,25 +25,29 @@ export default {
         'Valeur de l’id du menu associé qui sera plié et déplié lors du clic sur ce bouton',
     },
   },
-}
+} satisfies Meta<typeof DsfrSideMenuButton>
 
-export const BoutonDeMenuDepliable = (args) => ({
-  components: {
-    DsfrSideMenu,
-    DsfrSideMenuList,
-    DsfrSideMenuListItem,
-    DsfrSideMenuLink,
-    DsfrSideMenuButton,
-  },
+export default meta
 
-  data () {
-    return {
-      ...args,
-      isExpanded: args.expanded,
-    }
-  },
+type Story = StoryObj<typeof meta>
 
-  template: `
+export const BoutonDeMenuDepliable: Story = {
+  render: (args) => ({
+    components: {
+      DsfrSideMenu,
+      DsfrSideMenuList,
+      DsfrSideMenuListItem,
+      DsfrSideMenuLink,
+      DsfrSideMenuButton,
+    },
+
+    setup () {
+      return {
+        args,
+      }
+    },
+
+    template: `
   <DsfrSideMenu
     heading-title="Menu latéral exemplaire"
     buttonLabel="Bouton exemplaire"
@@ -49,17 +55,17 @@ export const BoutonDeMenuDepliable = (args) => ({
     <DsfrSideMenuList :id="id">
       <DsfrSideMenuListItem>
         <DsfrSideMenuButton
-          :active="active"
-          :expanded="isExpanded"
-          :control-id="controlId"
-          @toggle-expand="isExpanded = !isExpanded"
+          :active="args.active"
+          :expanded="args.expanded"
+          :control-id="args.controlId"
+          @toggle-expand="args.expanded = !args.expanded"
         >
-          Item de menu actifavec sous-menu
+          Item de menu actif avec sous-menu
         </DsfrSideMenuButton>
         <DsfrSideMenuList
-          :id="controlId"
-          :expanded="expanded"
-          :collapsable="true"
+          :id="args.controlId"
+          :expanded="args.expanded"
+          collapsable
         >
           <DsfrSideMenuListItem>
             <DsfrSideMenuLink
@@ -80,10 +86,11 @@ export const BoutonDeMenuDepliable = (args) => ({
     </DsfrSideMenuList>
   </DsfrSideMenu>
   `,
-})
-BoutonDeMenuDepliable.args = {
-  active: false,
-  expanded: false,
-  controlId: 'sidemenu-1',
-  id: 'list-id',
+  }),
+  args: {
+    active: false,
+    expanded: false,
+    controlId: 'sidemenu-1',
+    id: 'list-id',
+  },
 }

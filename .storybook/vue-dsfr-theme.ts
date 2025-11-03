@@ -1,4 +1,4 @@
-import { create } from '@storybook/theming'
+import { create } from 'storybook/theming'
 
 import brandImage from '../src/assets/icone-marianne-seule.png'
 

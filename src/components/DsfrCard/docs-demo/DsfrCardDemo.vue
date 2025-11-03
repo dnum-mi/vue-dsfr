@@ -1,10 +1,11 @@
 <script lang="ts" setup>
+import type { DsfrBadgeProps } from '../../DsfrBadge/DsfrBadge.types'
+
 import { getCurrentInstance } from 'vue'
 
 import DsfrTags from '../../DsfrTag/DsfrTags.vue'
 import VICon from '../../VIcon/VIcon.vue'
 import DsfrCard from '../DsfrCard.vue'
-import type { DsfrBadgeProps } from '../../DsfrBadge/DsfrBadge.types'
 
 const app = getCurrentInstance()
 app?.appContext.app.component('VICon', VICon)

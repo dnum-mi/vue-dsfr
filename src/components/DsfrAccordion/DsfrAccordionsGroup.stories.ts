@@ -1,4 +1,6 @@
-import { expect, within } from '@storybook/test'
+import type { Meta, StoryObj } from '@storybook/vue3-vite'
+
+import { expect, within } from 'storybook/test'
 
 import DsfrAccordion from './DsfrAccordion.vue'
 import DsfrAccordionsGroup from './DsfrAccordionsGroup.vue'
@@ -6,90 +8,62 @@ import DsfrAccordionsGroup from './DsfrAccordionsGroup.vue'
 const delay = (timeout = 100) =>
   new Promise((resolve) => setTimeout(resolve, timeout))
 
-/**
- * [Voir quand l’utiliser sur la documentation du DSFR](https://www.systeme-de-design.gouv.fr/version-courante/fr/composants/accordeon/)
- */
-export default {
+const meta = {
   component: DsfrAccordionsGroup,
   title: 'Composants/DsfrAccordionsGroup',
   argTypes: {
-    id: {
-      control: 'text',
-      description:
-        '(optionnel) Valeur de l’attribut `id` de l’accordéon. Par défaut, un id pseudo-aléatoire sera donné.',
-    },
-    expandedId: {
-      control: 'radio',
-      options: ['none', 'accordion-1', 'accordion-2', 'accordion-3'],
-      description: 'Valeur de l’`id` de l’accordéon déplié',
-    },
-    title1: {
-      control: 'text',
-      description: 'Titre du premier accordéon',
-    },
-    title2: {
-      control: 'text',
-      description: 'Titre du deuxième accordéon',
-    },
-    title3: {
-      control: 'text',
-      description: 'Titre du troisième accordéon',
+    modelValue: {
+      control: 'number',
+      description: 'Index de l’accordéon actuellement ouvert (-1 pour aucun)',
     },
   },
-}
+} satisfies Meta<typeof DsfrAccordionsGroup>
 
-export const AccordeonGroupe = (args) => ({
-  components: {
-    DsfrAccordionsGroup,
-    DsfrAccordion,
+export default meta
+
+export const AccordeonGroupe: StoryObj<typeof meta> = {
+  args: {
+    modelValue: -1,
   },
-
-  data () {
-    return {
-      ...args,
-    }
+  render: (args) => ({
+    components: {
+      DsfrAccordionsGroup,
+      DsfrAccordion,
+    },
+    setup () {
+      return { args }
+    },
+    template: `
+      <DsfrAccordionsGroup v-model="args.modelValue">
+        <DsfrAccordion
+          title="Un titre d'accordéon 1"
+        >
+          Contenu de l'accordéon 1
+        </DsfrAccordion>
+        <DsfrAccordion
+          title="Un titre d'accordéon 2"
+        >
+          Contenu de l'accordéon 2
+        </DsfrAccordion>
+        <DsfrAccordion
+          title="Un titre d'accordéon 3"
+        >
+          Contenu de l'accordéon 3
+        </DsfrAccordion>
+      </DsfrAccordionsGroup>
+    `,
+  }),
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement)
+    const title1 = canvas.getByText('Un titre d\'accordéon 1')
+    expect(title1).toBeVisible()
+    const content1 = canvas.getByText('Contenu de l\'accordéon 1')
+    expect(content1).not.toBeVisible()
+    await title1.click()
+    await delay(500)
+    expect(content1).toBeVisible()
+    await title1.click()
+    await delay(500)
+    expect(content1).not.toBeVisible()
   },
-
-  template: `
-  <DsfrAccordionsGroup v-model="selectedAccordion">
-    <DsfrAccordion
-      id="accordion-1"
-      :title="title1"
-    >
-      Contenu de l’accordéon 1
-    </DsfrAccordion>
-    <DsfrAccordion
-      id="accordion-2"
-      :title="title2"
-    >
-      Contenu de l’accordéon 2
-    </DsfrAccordion>
-    <DsfrAccordion
-      id="accordion-3"
-      :title="title3"
-    >
-      Contenu de l’accordéon 3
-    </DsfrAccordion>
-  </DsfrAccordionsGroup>
-  `,
-})
-AccordeonGroupe.args = {
-  title1: 'Un titre d’accordéon 1',
-  title2: 'Un titre d’accordéon 2',
-  title3: 'Un titre d’accordéon 3',
-  selectedAccordion: undefined,
-}
-
-AccordeonGroupe.play = async ({ canvasElement }) => {
-  const canvas = within(canvasElement)
-  const title1 = canvas.getByText('Un titre d’accordéon 1')
-  expect(title1).toBeVisible()
-  const content1 = canvas.getByText('Contenu de l’accordéon 1')
-  expect(content1).not.toBeVisible()
-  title1.click()
-  await delay(500)
-  expect(content1).toBeVisible()
-  title1.click()
-  await delay(500)
-  expect(content1).not.toBeVisible()
 }

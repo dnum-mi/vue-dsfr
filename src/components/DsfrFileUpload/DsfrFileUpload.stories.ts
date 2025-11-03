@@ -1,9 +1,11 @@
+import type { Meta, StoryObj } from '@storybook/vue3-vite'
+
 import DsfrFileUpload from './DsfrFileUpload.vue'
 
 /**
- * [Voir quand l’utiliser sur la documentation du DSFR](https://www.systeme-de-design.gouv.fr/version-courante/fr/composants/ajout-de-fichier)
+ * [Voir quand l\'utiliser sur la documentation du DSFR](https://www.systeme-de-design.gouv.fr/version-courante/fr/composants/ajout-de-fichier)
  */
-export default {
+const meta = {
   component: DsfrFileUpload,
   title: 'Composants/DsfrFileUpload',
   tags: ['formulaire'],
@@ -48,122 +50,134 @@ export default {
     },
     change: {
       description:
-        'Événement émis lors du changement de valeur de `modelValue` : le paramètre passé est la valeur de la propriété `files` de l’input',
+        'Événement émis lors du changement de valeur de `modelValue` : le paramètre passé est la valeur de la propriété `files` de l\'input',
     },
   },
-}
+} satisfies Meta<typeof DsfrFileUpload>
 
-export const Televersement = (args) => ({
-  components: {
-    DsfrFileUpload,
+export default meta
+
+type Story = StoryObj<typeof meta>
+
+export const Televersement: Story = {
+  args: {
+    id: undefined,
+    label: 'Ajouter un fichier',
+    hint: 'Pas trop volumineux svp',
+    error: undefined,
+    validMessage: undefined,
+    disabled: false,
+    accept: '.pdf,.doc,.docx',
   },
-  data () {
-    return args
-  },
-  template: `
+  render: (args) => ({
+    components: {
+      DsfrFileUpload,
+    },
+    setup () {
+      return { args }
+    },
+    template: `
     <DsfrFileUpload
-      :id="id"
-      :label="label"
-      :hint="hint"
-      :error="error"
-      :validMessage="validMessage"
-      :disabled="disabled"
-      :accept="accept"
+      :id="args.id"
+      :label="args.label"
+      :hint="args.hint"
+      :error="args.error"
+      :valid-message="args.validMessage"
+      :disabled="args.disabled"
+      :accept="args.accept"
     />
   `,
-})
-Televersement.args = {
-  id: undefined,
-  label: 'Ajouter un fichier',
-  hint: 'Pas trop volumineux svp',
-  error: undefined,
-  validMessage: undefined,
-  disabled: false,
-  accept: '.pdf,.doc,.docx',
+  }),
 }
 
-export const TeleversementAvecErreur = (args) => ({
-  components: {
-    DsfrFileUpload,
+export const TeleversementAvecErreur: Story = {
+  args: {
+    id: undefined,
+    label: 'Ajouter un fichier',
+    hint: 'Pas trop volumineux svp',
+    error: 'Message d\'erreur',
+    accept: ['.pdf', '.doc', '.docx'],
   },
-  data () {
-    return args
-  },
-  template: `
-  <div :data-fr-theme="dark ? 'dark' : ''" style="background-color: var(--grey-1000-50);">
+  render: (args) => ({
+    components: {
+      DsfrFileUpload,
+    },
+    setup () {
+      return { args }
+    },
+    template: `
+  <div style="background-color: var(--grey-1000-50);">
     <DsfrFileUpload
-      :id="id"
-      :label="label"
-      :hint="hint"
-      :error="error"
-      :accept="accept"
+      :id="args.id"
+      :label="args.label"
+      :hint="args.hint"
+      :error="args.error"
+      :accept="args.accept"
       required
     />
   </div>
   `,
-})
-TeleversementAvecErreur.args = {
-  id: undefined,
-  label: 'Ajouter un fichier',
-  hint: 'Pas trop volumineux svp',
-  error: 'Message d’erreur',
-  accept: ['.pdf', '.doc', '.docx'],
+  }),
 }
 
-export const TeleversementAvecSucces = (args) => ({
-  components: {
-    DsfrFileUpload,
+export const TeleversementAvecSucces: Story = {
+  args: {
+    id: undefined,
+    label: 'Ajouter un fichier',
+    hint: 'Pas trop volumineux svp',
+    error: undefined,
+    validMessage: 'Téléversement effectué !',
+    disabled: false,
   },
-  data () {
-    return args
-  },
-  template: `
-  <div :data-fr-theme="dark ? 'dark' : ''" style="background-color: var(--grey-1000-50);">
+  render: (args) => ({
+    components: {
+      DsfrFileUpload,
+    },
+    setup () {
+      return { args }
+    },
+    template: `
+  <div style="background-color: var(--grey-1000-50);">
     <DsfrFileUpload
-      :id="id"
-      :label="label"
-      :hint="hint"
-      :error="error"
-      :validMessage="validMessage"
-      :disabled="disabled"
+      :id="args.id"
+      :label="args.label"
+      :hint="args.hint"
+      :error="args.error"
+      :valid-message="args.validMessage"
+      :disabled="args.disabled"
     />
   </div>
   `,
-})
-TeleversementAvecSucces.args = {
-  id: undefined,
-  label: 'Ajouter un fichier',
-  hint: 'Pas trop volumineux svp',
-  error: undefined,
-  validMessage: 'Téléversement effectué !',
-  disabled: false,
+  }),
 }
 
-export const TeleversementDesactive = (args) => ({
-  components: {
-    DsfrFileUpload,
+export const TeleversementDesactive: Story = {
+  args: {
+    id: undefined,
+    label: 'Ajouter un fichier',
+    hint: 'Pas trop volumineux svp',
+    error: undefined,
+    validMessage: undefined,
+    disabled: true,
   },
-  data () {
-    return args
-  },
-  template: `
-  <div :data-fr-theme="dark ? 'dark' : ''" style="background-color: var(--grey-1000-50);">
+  render: (args) => ({
+    components: {
+      DsfrFileUpload,
+    },
+    setup () {
+      return { args }
+    },
+    template: `
+  <div style="background-color: var(--grey-1000-50);">
     <DsfrFileUpload
-      :id="id"
-      :label="label"
-      :hint="hint"
-      :error="error"
-      :validMessage="validMessage"
-      :disabled="disabled"
+      :id="args.id"
+      :label="args.label"
+      :hint="args.hint"
+      :error="args.error"
+      :valid-message="args.validMessage"
+      :disabled="args.disabled"
     />
   </div>
   `,
-})
-TeleversementDesactive.args = {
-  id: undefined,
-  label: 'Ajouter un fichier',
-  hint: 'Pas trop volumineux svp',
-  error: undefined,
-  validMessage: undefined,
-  disabled: true,
+  }),
 }

@@ -1,9 +1,11 @@
+import type { Meta, StoryObj } from '@storybook/vue3-vite'
+
 import DsfrSideMenu from './DsfrSideMenu.vue'
 import DsfrSideMenuLink from './DsfrSideMenuLink.vue'
 import DsfrSideMenuList from './DsfrSideMenuList.vue'
 import DsfrSideMenuListItem from './DsfrSideMenuListItem.vue'
 
-export default {
+const meta = {
   component: DsfrSideMenuLink,
   title: 'Composants/DsfrSideMenuLink',
   argTypes: {
@@ -18,23 +20,28 @@ export default {
         'Indique si le lien correspond à la page courante (`true`) ou non (`false`)',
     },
   },
-}
+} satisfies Meta<typeof DsfrSideMenuLink>
 
-export const LienDansUnElementDeListeDeMenuLateral = (args) => ({
-  components: {
-    DsfrSideMenu,
-    DsfrSideMenuList,
-    DsfrSideMenuListItem,
-    DsfrSideMenuLink,
-  },
+export default meta
 
-  data () {
-    return {
-      ...args,
-    }
-  },
+type Story = StoryObj<typeof meta>
 
-  template: `
+export const LienDansUnElementDeListeDeMenuLateral: Story = {
+  render: (args) => ({
+    components: {
+      DsfrSideMenu,
+      DsfrSideMenuList,
+      DsfrSideMenuListItem,
+      DsfrSideMenuLink,
+    },
+
+    setup () {
+      return {
+        ...args,
+      }
+    },
+
+    template: `
   <DsfrSideMenu
     heading-title="Menu latéral exemplaire"
     buttonLabel="Bouton exemplaire"
@@ -51,9 +58,10 @@ export const LienDansUnElementDeListeDeMenuLateral = (args) => ({
     </DsfrSideMenuList>
   </DsfrSideMenu>
   `,
-})
-LienDansUnElementDeListeDeMenuLateral.args = {
-  active: false,
-  to: '/',
-  id: 'list-id',
+  }),
+  args: {
+    active: false,
+    to: '/',
+    id: 'list-id',
+  },
 }

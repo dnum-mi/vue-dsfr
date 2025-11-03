@@ -1,12 +1,12 @@
 <script lang="ts" setup>
+import type { DsfrHeaderProps } from '../DsfrHeader.vue'
+import type { DsfrLanguageSelectorElement } from '@/components/DsfrLanguageSelector/DsfrLanguageSelector.types'
+
 import { getCurrentInstance, ref, watch } from 'vue'
 import { createRouter, createWebHistory } from 'vue-router'
 
 import VIcon from '../../VIcon/VIcon.vue'
 import DsfrHeader from '../DsfrHeader.vue'
-import type { DsfrHeaderProps } from '../DsfrHeader.vue'
-
-import type { DsfrLanguageSelectorElement } from '@/components/DsfrLanguageSelector/DsfrLanguageSelector.types'
 
 const logoText = ['Ministère', 'de l’intérieur']
 const serviceTitle = 'Nom du Site/Service'

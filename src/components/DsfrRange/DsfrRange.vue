@@ -1,9 +1,9 @@
 <script lang="ts" setup>
+import type { DsfrRangeProps } from './DsfrRange.types'
+
 import { computed, onMounted, ref, watch } from 'vue'
 
 import { useRandomId } from '../../utils/random-utils'
-
-import type { DsfrRangeProps } from './DsfrRange.types'
 
 const props = withDefaults(defineProps<DsfrRangeProps>(), {
   id: () => useRandomId('range'),
@@ -23,6 +23,16 @@ const emit = defineEmits<{
   (e: 'update:lowerValue', payload: string | number): void
 }>()
 
+defineSlots<{
+  /** Pour un libellé plus personnalisé du champ */
+  label: (props: Record<string, never>) => any
+  /** Pour une indication plus personnalisée sur le champ */
+  hint: (props: Record<string, never>) => any
+  /** Pour remplacer l’astérisque par autre chose pour un champ requis */
+  'required-tip': (props: Record<string, never>) => any
+  /** Pour les messages d’erreur ou de succès */
+  messages?: (props: Record<string, never>) => any
+}>()
 const input = ref<HTMLInputElement>()
 const output = ref<HTMLSpanElement>()
 const inputWidth = ref()
@@ -93,11 +103,18 @@ onMounted(() => {
     >
       <slot name="label">
         {{ label }}
-      </slot>
-      <span class="fr-hint-text">
-        <slot name="hint">
-          {{ hint }}
+        <slot name="required-tip">
+          <span
+            v-if="$attrs.required"
+            class="required"
+          >&nbsp;*</span>
         </slot>
+      </slot>
+      <span
+        v-if="hint"
+        class="fr-hint-text"
+      >
+        {{ hint }}
       </span>
     </label>
     <div

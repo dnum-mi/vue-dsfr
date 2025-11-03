@@ -1,7 +1,7 @@
 <script lang="ts" setup>
-import { computed } from 'vue'
-
 import type { DsfrTileProps } from './DsfrTiles.types'
+
+import { computed } from 'vue'
 
 export type { DsfrTileProps }
 
@@ -18,6 +18,13 @@ const props = withDefaults(defineProps<DsfrTileProps>(), {
   titleTag: 'h3',
   icon: true,
 })
+
+defineSlots<{
+  /** Slot pour les détails d’une tuile sous forme de tags (cliquables ou non) ou de badges (4 maximum) */
+  'start-details'?: (props: Record<string, never>) => void
+  /** Slot pour l’en-tête d’une tuile */
+  header?: (props: Record<string, never>) => void
+}>()
 
 const defaultSvgAttrs = { viewBox: '0 0 80 80', width: '80px', height: '80px' }
 
@@ -84,7 +91,6 @@ const isExternalLink = computed(() => {
           v-if="$slots['start-details']"
           class="fr-tile__start"
         >
-          <!-- @slot Slot pour les détails d’une tuile sous forme de tags (cliquables ou non) ou de badges (4 maximum) -->
           <slot name="start-details" />
         </div>
       </div>

@@ -1,10 +1,11 @@
 <script lang="ts" setup>
+import type { DsfrInputGroupProps } from './DsfrInput.types'
+
 import { computed } from 'vue'
 
 import { useRandomId } from '../../utils/random-utils'
 
 import DsfrInput from './DsfrInput.vue'
-import type { DsfrInputGroupProps } from './DsfrInput.types'
 
 export type { DsfrInputGroupProps }
 
@@ -25,7 +26,17 @@ const props = withDefaults(defineProps<DsfrInputGroupProps>(), {
   validMessage: undefined,
 })
 
-defineEmits<{ (e: 'update:modelValue', payload: string): void }>()
+defineEmits<{
+  /** Événement émis lors du changement de la valeur du champ de saisie */
+  (e: 'update:modelValue', payload: string | number | undefined): void
+}>()
+
+defineSlots<{
+  /** Slot pour ajouter du contenu avant le champ de saisie */
+  'before-input'?: () => any
+  /** Slot par défaut pour le contenu du groupe de champ. Reçoit les props `isValid`, `isInvalid`, et `descriptionId` */
+  default?: (props: { isValid: boolean, isInvalid: boolean, descriptionId: string | undefined }) => any
+}>()
 
 function getDescriptionIdFromArray (messages: string[], baseId: string): string {
   return Array.from(Array.from({ length: messages.length })).map((_, idx) => `${baseId}-${idx + 1}`).join(' ')
@@ -55,7 +66,7 @@ const descId = computed(() => {
     class="fr-input-group"
     :class="[
       {
-        'fr-input-group--disabled': 'disabled' in $attrs,
+        'fr-input-group--disabled': 'disabled' in $attrs && $attrs.disabled !== false && $attrs.disabled !== undefined,
         'fr-input-group--error': errorMessage,
         'fr-input-group--valid': (validMessage && !errorMessage),
       },
@@ -64,7 +75,6 @@ const descId = computed(() => {
     :data-testid="inputGroupId"
   >
     <slot name="before-input" />
-    <!-- @slot Slot par défaut pour le contenu du groupe de champ -->
     <slot
       :is-valid="!!validMessage"
       :is-invalid="!!errorMessage"

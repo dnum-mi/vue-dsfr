@@ -1,9 +1,10 @@
 <script lang="ts" setup>
+import type { DsfrFollowProps } from './DsfrFollow.types'
+
 import { computed } from 'vue'
 
 import DsfrNewsLetter from './DsfrNewsLetter.vue'
 import DsfrSocialNetworks from './DsfrSocialNetworks.vue'
-import type { DsfrFollowProps } from './DsfrFollow.types'
 
 export type { DsfrFollowProps }
 
@@ -12,6 +13,13 @@ const props = withDefaults(defineProps<DsfrFollowProps>(), {
   newsletterData: () => undefined,
   networks: () => [],
 })
+
+/**
+ * @slot default - Slot par défaut pour le contenu. Sera dans `<div class="fr-grid-row">`
+ */
+defineSlots<{
+  default?: () => any
+}>()
 
 const hasNetworks = computed(() => {
   return props.networks && props.networks.length
@@ -25,7 +33,6 @@ const hasNewsletter = computed(() => {
   <div class="fr-follow">
     <div class="fr-container">
       <div class="fr-grid-row">
-        <!-- @slot Slot par défaut pour le contenu. Sera dans `<div class="fr-grid-row">` -->
         <slot>
           <div
             v-if="newsletterData"

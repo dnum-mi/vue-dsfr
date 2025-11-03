@@ -1,7 +1,8 @@
+import type { Plugin } from 'vitepress'
+
 import { fileURLToPath } from 'node:url'
 
 import fullReload from 'vite-plugin-full-reload'
-import type { Plugin } from 'vitepress'
 
 const styles = fileURLToPath(
   new URL('../../src/styles/index.css', import.meta.url),

@@ -1,11 +1,11 @@
 <script lang="ts" setup>
+import type { DsfrTranscriptionProps } from './DsfrTranscription.types'
+
 import { computed, ref, watch } from 'vue'
 
 import { useCollapsable } from '../../composables'
 import { useRandomId } from '../../utils/random-utils'
 import DsfrModal from '../DsfrModal/DsfrModal.vue'
-
-import type { DsfrTranscriptionProps } from './DsfrTranscription.types'
 
 export type { DsfrTranscriptionProps }
 
@@ -14,6 +14,14 @@ const props = withDefaults(defineProps<DsfrTranscriptionProps>(), {
   title: 'Titre de la vidéo',
   content: 'Transcription du contenu de la vidéo',
 })
+
+defineSlots<{
+  /**
+   * Contenu de la transcription
+   * @default content prop
+   */
+  default?: () => any
+}>()
 
 const {
   collapse,

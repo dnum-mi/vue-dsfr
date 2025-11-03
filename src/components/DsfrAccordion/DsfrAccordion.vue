@@ -1,11 +1,12 @@
 <script lang="ts" setup>
+import type { DsfrAccordionProps } from './DsfrAccordion.types'
+
 import { inject, onMounted, ref, toRef, watch } from 'vue'
 
 import { useCollapsable } from '../../composables'
 import { useRandomId } from '../../utils/random-utils'
 
 import { registerAccordionKey } from './injection-key'
-import type { DsfrAccordionProps } from './DsfrAccordion.types'
 
 export type { DsfrAccordionProps }
 
@@ -17,6 +18,13 @@ const props = withDefaults(
     titleTag: 'h3',
   },
 )
+
+defineSlots<{
+  /** Slot pour le contenu personnalisé du titre de l’accordéon. Une **props du même nom est utilisable pour du texte simple** sans mise en forme. */
+  title: () => any
+  /** Slot par défaut pour le contenu de l’accordéon: sera dans `<div class="fr-collapse">` */
+  default: () => any
+}>()
 
 const {
   collapse,
@@ -62,7 +70,6 @@ watch(isActive, (newValue, oldValue) => {
         type="button"
         @click="expand()"
       >
-        <!-- @slot Slot pour le contenu personnalisé du titre de l’accordéon. Une **props du même nom est utilisable pour du texte simple** sans mise en forme. -->
         <slot name="title">
           {{ title }}
         </slot>
@@ -78,7 +85,6 @@ watch(isActive, (newValue, oldValue) => {
       }"
       @transitionend="onTransitionEnd(isActive, false)"
     >
-      <!-- @slot Slot par défaut pour le contenu de l’accordéon: sera dans `<div class="fr-collapse">` -->
       <slot />
     </div>
   </section>

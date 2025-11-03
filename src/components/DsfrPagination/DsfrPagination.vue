@@ -1,7 +1,7 @@
 <script lang="ts" setup>
-import { computed } from 'vue'
-
 import type { DsfrPaginationProps, Page } from './DsfrPagination.types'
+
+import { computed } from 'vue'
 
 export type { DsfrPaginationProps, Page }
 
@@ -15,7 +15,10 @@ const props = withDefaults(defineProps<DsfrPaginationProps>(), {
   ariaLabel: 'Pagination',
 })
 
-const emit = defineEmits<{ (e: 'update:current-page', payload: number): void }>()
+const emit = defineEmits<{
+  /** Émis lors de la mise à jour de la page courante */
+  'update:current-page': [payload: number]
+}>()
 
 const startIndex = computed(() => {
   return Math.min(props.pages.length - 1 - props.truncLimit, Math.max(props.currentPage - (props.truncLimit - props.truncLimit % 2) / 2, 0))
@@ -48,7 +51,6 @@ const isCurrentPage = (page: Page) => props.pages.indexOf(page) === props.curren
           :href="pages[0]?.href"
           class="fr-pagination__link fr-pagination__link--first"
           :class="{ 'fr-pagination__link--disabled': currentPage === 0 }"
-          :title="firstPageTitle"
           :aria-disabled="currentPage === 0 ? true : undefined"
           @click.prevent="currentPage === 0 ? null : tofirstPage()"
         >
@@ -60,7 +62,6 @@ const isCurrentPage = (page: Page) => props.pages.indexOf(page) === props.curren
           :href="pages[Math.max(currentPage - 1, 0)]?.href"
           class="fr-pagination__link fr-pagination__link--prev fr-pagination__link--lg-label"
           :class="{ 'fr-pagination__link--disabled': currentPage === 0 }"
-          :title="prevPageTitle"
           :aria-disabled="currentPage === 0 ? true : undefined"
           @click.prevent="currentPage === 0 ? null : toPreviousPage()"
         >{{ prevPageTitle }}</a>
@@ -72,7 +73,6 @@ const isCurrentPage = (page: Page) => props.pages.indexOf(page) === props.curren
         <a
           :href="page?.href"
           class="fr-pagination__link fr-unhidden-lg"
-          :title="page.title"
           :aria-current="isCurrentPage(page) ? 'page' : undefined"
           @click.prevent="toPage(pages.indexOf(page))"
         >
@@ -86,7 +86,6 @@ const isCurrentPage = (page: Page) => props.pages.indexOf(page) === props.curren
           :href="pages[Math.min(currentPage + 1, pages.length - 1)]?.href"
           class="fr-pagination__link fr-pagination__link--next fr-pagination__link--lg-label"
           :class="{ 'fr-pagination__link--disabled': currentPage === pages.length - 1 }"
-          :title="nextPageTitle"
           :disabled="currentPage === pages.length - 1 ? true : undefined"
           :aria-disabled="currentPage === pages.length - 1 ? true : undefined"
           @click.prevent="currentPage === pages.length - 1 ? null : toNextPage()"
@@ -97,7 +96,6 @@ const isCurrentPage = (page: Page) => props.pages.indexOf(page) === props.curren
           :href="pages.at(-1)?.href"
           class="fr-pagination__link fr-pagination__link--last"
           :class="{ 'fr-pagination__link--disabled': currentPage === pages.length - 1 }"
-          :title="lastPageTitle"
           :disabled="currentPage === pages.length - 1 ? true : undefined"
           :aria-disabled="currentPage === pages.length - 1 ? true : undefined"
           @click.prevent="currentPage === pages.length - 1 ? null : toLastPage()"
@@ -112,7 +110,7 @@ const isCurrentPage = (page: Page) => props.pages.indexOf(page) === props.curren
 <style scoped>
 .fr-pagination__link:hover {
   background-image: linear-gradient(
-  deg, rgba(224,224,224,0.5), rgba(224,224,224,0.5));
+    deg, rgba(224,224,224,0.5), rgba(224,224,224,0.5));
 }
 .fr-pagination__link--disabled {
   color: currentColor;

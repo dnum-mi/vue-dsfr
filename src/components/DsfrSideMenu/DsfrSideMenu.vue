@@ -1,11 +1,12 @@
 <script lang="ts" setup>
+import type { DsfrSideMenuProps } from './DsfrSideMenu.types'
+
 import { ref, watch } from 'vue'
 
 import { useCollapsable } from '../../composables'
 import { useRandomId } from '../../utils/random-utils'
 
 import DsfrSideMenuList from './DsfrSideMenuList.vue'
-import type { DsfrSideMenuProps } from './DsfrSideMenu.types'
 
 export type { DsfrSideMenuProps }
 
@@ -21,7 +22,17 @@ withDefaults(defineProps<DsfrSideMenuProps>(), {
   focusOnExpanding: true,
 })
 
-defineEmits<{ (e: 'toggleExpand', payload: string): void }>()
+const emit = defineEmits<{
+  /** Événement émis lors du basculement de l'expansion d'un élément de menu */
+  toggleExpand: [payload: string]
+}>()
+
+defineSlots<{
+  /**
+   * Contenu personnalisé du menu latéral (remplace la liste des éléments par défaut)
+   */
+  default?: any
+}>()
 
 const {
   collapse,
@@ -62,7 +73,7 @@ watch(expanded, (newValue, oldValue) => {
         ref="collapse"
         class="fr-collapse"
         :class="{
-          'fr-collapse--expanded': cssExpanded, // Need to use a separate data to add/remove the class after a RAF
+          'fr-collapse--expanded': cssExpanded, // Need to use a separate data to add/remove the class after a requestAnimationFrame (RAF)
           'fr-collapsing': collapsing,
         }"
         @transitionend="onTransitionEnd(expanded, focusOnExpanding)"
@@ -78,7 +89,7 @@ watch(expanded, (newValue, oldValue) => {
           <DsfrSideMenuList
             :id="sideMenuListId"
             :menu-items="menuItems"
-            @toggle-expand="$emit('toggleExpand', $event)"
+            @toggle-expand="emit('toggleExpand', $event)"
           />
         </slot>
       </div>

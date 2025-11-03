@@ -1,9 +1,9 @@
 <script lang="ts" setup>
+import type { DsfrHeaderMenuLinkProps } from './DsfrHeader.types'
+
 import { computed } from 'vue'
 
 import VIcon from '../VIcon/VIcon.vue'
-
-import type { DsfrHeaderMenuLinkProps } from './DsfrHeader.types'
 
 export type { DsfrHeaderMenuLinkProps }
 

@@ -1,16 +1,18 @@
 <script lang="ts" setup>
+import type { DsfrSideMenuLinkProps } from './DsfrSideMenu.types'
+
 import { computed } from 'vue'
 
-export type DsfrSideMenuLinkProps = {
-  active?: boolean
-  to: string
-}
+export type { DsfrSideMenuLinkProps }
 
 const props = withDefaults(defineProps<DsfrSideMenuLinkProps>(), {
   to: '',
 })
 
-defineEmits<{ (e: 'toggle-expand', payload: string): void }>()
+defineSlots<{
+  /** Slot par défaut pour le contenu d'une liste du menu latéral */
+  default?: () => any
+}>()
 
 const isExternalLink = computed(() => {
   return typeof props.to === 'string' && props.to.startsWith('http')
@@ -30,7 +32,6 @@ const linkProps = computed(() => {
     class="fr-sidemenu__link"
     v-bind="linkProps"
   >
-    <!-- @slot Slot par défaut pour le contenu d’une liste du menu latéral -->
     <slot />
   </component>
 </template>

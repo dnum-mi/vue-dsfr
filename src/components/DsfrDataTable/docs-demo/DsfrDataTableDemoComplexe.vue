@@ -1,8 +1,9 @@
 <script lang="ts" setup>
+import type { DsfrDataTableProps } from '../DsfrDataTable.types'
+
 import { ref } from 'vue'
 
 import DsfrDataTable from '../DsfrDataTable.vue'
-import type { DsfrDataTableProps } from '../DsfrDataTable.types'
 
 const headers: DsfrDataTableProps['headersRow'] = [
   {
@@ -41,7 +42,7 @@ const selection = ref<string[]>([])
       :rows="rows"
       selectable-rows
       sortable-rows
-      :row-key="0"
+      row-key="id"
     >
       <template #header="{ key, label }">
         <div @click="click($event, key)">

@@ -1,5 +1,8 @@
-import { expect, fn, userEvent, within } from '@storybook/test'
-import { setup } from '@storybook/vue3'
+import type { Meta, StoryObj } from '@storybook/vue3-vite'
+
+import { setup } from '@storybook/vue3-vite'
+import { expect, fn, userEvent, within } from 'storybook/test'
+import { computed, ref } from 'vue'
 
 import DsfrButton from '../DsfrButton/DsfrButton.vue'
 import VIcon from '../VIcon/VIcon.vue'
@@ -7,7 +10,7 @@ import VIcon from '../VIcon/VIcon.vue'
 import DsfrModal from './DsfrModal.vue'
 
 const delay = (timeout = 100) =>
-  new Promise((resolve) => setTimeout(resolve, timeout))
+  new Promise(resolve => setTimeout(resolve, timeout))
 
 setup((app) => {
   app.component('VIcon', VIcon)
@@ -16,9 +19,10 @@ setup((app) => {
 /**
  * [Voir quand l’utiliser sur la documentation du DSFR](https://www.systeme-de-design.gouv.fr/version-courante/fr/composants/modale)
  */
-export default {
+const meta = {
   component: DsfrModal,
   title: 'Composants/DsfrModal',
+  tags: ['autodocs'],
   argTypes: {
     actions: {
       control: 'object',
@@ -29,11 +33,6 @@ export default {
       control: 'boolean',
       description:
         'Booléen permettant de mettre un `role="alert"` (si `true`) sur la modal ou non (`false`, défaut)',
-    },
-    origin: {
-      control: 'text',
-      description:
-        'Valeur de l’attribut `id` du bouton qui déclenche l’ouverture de la modale',
     },
     opened: {
       control: 'boolean',
@@ -54,12 +53,6 @@ export default {
       description:
         'Taille de la modale : `SM` (Small), `MD` (Medium), `LG` (Large), `XL`(Extra large). Attention la taille `XL` ne fait pas partie du Design System de l’État',
     },
-    close: {
-      description: 'Événement déclenché à la fermeture de la modale',
-    },
-    onClick: {
-      action: fn(),
-    },
     closeButtonLabel: {
       control: 'text',
       description:
@@ -70,32 +63,97 @@ export default {
       description:
         'Valeur du texte informatif au survol du bouton cliquable permettant la fermeture de la modale',
     },
+    onClose: fn(),
+    onActionClick: fn(),
   },
-}
+} satisfies Meta<typeof DsfrModal>
 
-export const ModalAvecActions = (args) => ({
+export default meta
+type Story = StoryObj<typeof meta>
+
+const baseRender = (args: any) => ({
   components: {
     DsfrModal,
     DsfrButton,
     VIcon,
   },
+  setup () {
+    const opened = ref(args.opened)
+    const modalOrigin = ref(null)
 
-  data () {
-    return args
-  },
-
-  computed: {
-    modifiedActions () {
-      return this.actions.map((action) => ({
+    const modifiedActions = computed(() => {
+      return args.actions?.map((action: any) => ({
         ...action,
         onClick: () => {
-          this.onClick?.(action.actionArg)
-          this.onClose()
+          args.onActionClick(action.label)
+          opened.value = false
         },
       }))
-    },
-  },
+    })
 
+    function close () {
+      args.onClose()
+      opened.value = false
+    }
+
+    return {
+      args,
+      opened,
+      modalOrigin,
+      modifiedActions,
+      open: () => { opened.value = true },
+      close,
+    }
+  },
+})
+
+export const ModaleAvecActions: Story = {
+  name: 'Modale avec actions',
+  render: baseRender,
+  args: {
+    opened: false,
+    title: 'Titre de la modale',
+    isAlert: false,
+    icon: 'ri-checkbox-circle-line',
+    size: 'md',
+    actions: [
+      {
+        label: 'Valider',
+      },
+      {
+        label: 'Annuler',
+        secondary: true,
+      },
+    ],
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement)
+    const openModalButton = canvas.getByRole('button', { name: 'Ouvre la modale' })
+    await userEvent.click(openModalButton)
+    await delay()
+
+    let closeModalButton = canvas.getByTitle('Fermer la fenêtre modale')
+    expect(closeModalButton).toHaveFocus()
+    await userEvent.click(closeModalButton)
+    await delay()
+
+    await userEvent.click(openModalButton)
+    await delay()
+    await userEvent.tab()
+    await delay()
+
+    const validateButton = canvas.getByText('Valider').parentElement
+    expect(validateButton).toHaveFocus()
+    await userEvent.tab()
+    await userEvent.tab()
+    await delay()
+
+    closeModalButton = canvas.getByTitle('Fermer la fenêtre modale')
+    expect(closeModalButton).toHaveFocus()
+    await userEvent.click(closeModalButton)
+    await delay()
+    expect(openModalButton).toHaveFocus()
+  },
   template: `
     <DsfrButton
       label="Ouvre la modale"
@@ -106,57 +164,29 @@ export const ModalAvecActions = (args) => ({
       ref="modal"
       :opened="opened"
       :actions="modifiedActions"
-      :is-alert="isAlert"
-      :icon="icon"
-      :title="title"
-      :origin="$refs.modalOrigin"
-      :size="size"
-      @close="onClose()"
+      :is-alert="args.isAlert"
+      :icon="args.icon"
+      :title="args.title"
+      :origin="modalOrigin"
+      :size="args.size"
+      @close="close()"
     >
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas varius tortor nibh, sit amet tempor nibh finibus et. Aenean eu enim justo. Vestibulum aliquam hendrerit molestie. Mauris malesuada nisi sit amet augue accumsan tincidunt. Maecenas tincidunt, velit ac porttitor pulvinar, tortor eros facilisis libero, vitae commodo nunc quam et ligula. Ut nec ipsum sapien. Interdum et malesuada fames ac ante ipsum primis in faucibus. Integer id nisi nec nulla luctus lacinia non eu turpis. Etiam in ex imperdiet justo tincidunt egestas. Ut porttitor urna ac augue cursus tincidunt sit amet sed orci.</p>
     </DsfrModal>
   `,
-
-  methods: {
-    onClose () {
-      args.onClick('Fermer')
-      this.opened = false
-    },
-    open () {
-      this.opened = true
-    },
-  },
-})
-ModalAvecActions.args = {
-  opened: false,
-  title: 'Titre de la modale',
-  isAlert: false,
-  icon: 'ri-checkbox-circle-line',
-  size: 'md',
-  actions: [
-    {
-      label: 'Valider',
-      actionArg: 'Valider',
-    },
-    {
-      label: 'Annuler',
-      actionArg: 'Annuler',
-      secondary: true,
-    },
-  ],
 }
 
-export const ModalSansPiedDePage = (args) => ({
-  components: {
-    DsfrModal,
-    DsfrButton,
-    VIcon,
+export const ModaleSansPiedDePage: Story = {
+  name: 'Modale sans pied de page',
+  render: baseRender,
+  args: {
+    opened: false,
+    title: 'Titre de la modale',
+    isAlert: false,
+    icon: 'ri-checkbox-circle-line',
+    size: 'md',
+    actions: undefined,
   },
-
-  data () {
-    return args
-  },
-
   template: `
     <DsfrButton
       label="Ouvre la modale"
@@ -166,57 +196,29 @@ export const ModalSansPiedDePage = (args) => ({
     <DsfrModal
       ref="modal"
       :opened="opened"
-      :is-alert="isAlert"
-      :icon="icon"
-      :title="title"
-      :origin="$refs.modalOrigin"
-      :size="size"
-      @close="onClose()"
+      :is-alert="args.isAlert"
+      :icon="args.icon"
+      :title="args.title"
+      :origin="modalOrigin"
+      :size="args.size"
+      @close="close()"
     >
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas varius tortor nibh, sit amet tempor nibh finibus et. Aenean eu enim justo. Vestibulum aliquam hendrerit molestie. Mauris malesuada nisi sit amet augue accumsan tincidunt. Maecenas tincidunt, velit ac porttitor pulvinar, tortor eros facilisis libero, vitae commodo nunc quam et ligula. Ut nec ipsum sapien. Interdum et malesuada fames ac ante ipsum primis in faucibus. Integer id nisi nec nulla luctus lacinia non eu turpis. Etiam in ex imperdiet justo tincidunt egestas. Ut porttitor urna ac augue cursus tincidunt sit amet sed orci.</p>
     </DsfrModal>
   `,
-
-  methods: {
-    onClose () {
-      args.onClick('Fermer')
-      this.opened = false
-    },
-    open () {
-      this.opened = true
-    },
-  },
-})
-ModalSansPiedDePage.args = {
-  opened: false,
-  title: 'Titre de la modale',
-  isAlert: false,
-  icon: 'ri-checkbox-circle-line',
-  size: 'md',
-  actions: [
-    {
-      label: 'Valider',
-      actionArg: 'Valider',
-    },
-    {
-      label: 'Annuler',
-      actionArg: 'Annuler',
-      secondary: true,
-    },
-  ],
 }
 
-export const ModalAvecFooterPersonnalise = (args) => ({
-  components: {
-    DsfrModal,
-    DsfrButton,
-    VIcon,
+export const ModaleAvecFooterPersonnalise: Story = {
+  name: 'Modale avec footer personnalisé',
+  render: baseRender,
+  args: {
+    opened: false,
+    title: 'Titre de la modale',
+    isAlert: false,
+    icon: 'ri-checkbox-circle-line',
+    size: 'md',
+    actions: undefined,
   },
-
-  data () {
-    return args
-  },
-
   template: `
     <DsfrButton
       label="Ouvre la modale"
@@ -226,13 +228,12 @@ export const ModalAvecFooterPersonnalise = (args) => ({
     <DsfrModal
       ref="modal"
       :opened="opened"
-      :actions="modifiedActions"
-      :is-alert="isAlert"
-      :icon="icon"
-      :title="title"
-      :origin="$refs.modalOrigin"
-      :size="size"
-      @close="onClose()"
+      :is-alert="args.isAlert"
+      :icon="args.icon"
+      :title="args.title"
+      :origin="modalOrigin"
+      :size="args.size"
+      @close="close()"
     >
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas varius tortor nibh, sit amet tempor nibh finibus et. Aenean eu enim justo. Vestibulum aliquam hendrerit molestie. Mauris malesuada nisi sit amet augue accumsan tincidunt. Maecenas tincidunt, velit ac porttitor pulvinar, tortor eros facilisis libero, vitae commodo nunc quam et ligula. Ut nec ipsum sapien. Interdum et malesuada fames ac ante ipsum primis in faucibus. Integer id nisi nec nulla luctus lacinia non eu turpis. Etiam in ex imperdiet justo tincidunt egestas. Ut porttitor urna ac augue cursus tincidunt sit amet sed orci.</p>
       <template #footer>
@@ -240,47 +241,4 @@ export const ModalAvecFooterPersonnalise = (args) => ({
       </template>
     </DsfrModal>
   `,
-
-  methods: {
-    onClose () {
-      args.onClick('Fermer')
-      this.opened = false
-    },
-    open () {
-      this.opened = true
-    },
-  },
-})
-ModalAvecFooterPersonnalise.args = {
-  opened: false,
-  title: 'Titre de la modale',
-  isAlert: false,
-  icon: 'ri-checkbox-circle-line',
-  size: 'md',
-}
-
-ModalAvecActions.play = async ({ canvasElement }) => {
-  const canvas = within(canvasElement)
-  const openModalButton = canvas.getByRole('button')
-  await userEvent.type(openModalButton, '{enter}')
-  let closeModalButton = canvas.getByTitle('Fermer la fenêtre modale')
-  await delay()
-  expect(closeModalButton).toHaveFocus()
-  await userEvent.type(closeModalButton, '{enter}')
-  await delay()
-
-  await userEvent.type(openModalButton, '{space}')
-  await delay()
-  await userEvent.tab()
-  await delay()
-  const validateButton = canvas.getByText('Valider').parentElement
-  expect(validateButton).toHaveFocus()
-  await userEvent.tab()
-  await userEvent.tab()
-  await delay()
-  closeModalButton = canvas.getByTitle('Fermer la fenêtre modale')
-  expect(closeModalButton).toHaveFocus()
-  await userEvent.type(closeModalButton, '{space}')
-  await delay()
-  expect(openModalButton).toHaveFocus()
 }

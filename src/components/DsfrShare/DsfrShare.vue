@@ -49,7 +49,7 @@ const openWindow = ({ url, label }: { url: string, label: string }) => {
         <a
           class="fr-btn fr-btn--mail"
           :href="mail.to"
-          :title="mail.label"
+          :title="`${mail.label} - nouvelle fenêtre`"
           target="_blank"
           rel="noopener noreferrer"
         >

@@ -2,46 +2,64 @@
 
 ## 🌟 Introduction
 
-Le composant `DsfrNavigation`, est le système central de navigation au sein d’un site. Elle permet d’orienter aisément l’usager à travers l'application voire même jusqu'aux confins de la galaxie !
+Le système de navigation principal permet d'orienter les utilisateurs à travers l'application. Il constitue l'épine dorsale de la navigation d'un site, offrant une structure claire et accessible pour explorer les différentes sections et fonctionnalités.
 
-## 🛠️Props
+Le composant `DsfrNavigation` est le système central de navigation au sein d'un site. Il permet d'orienter aisément l'usager à travers l'application avec une structure hiérarchique claire et des menus déroulants.
 
-| Nom             | Type          | Défaut                  | Obligatoire   | Description                                                                                                 |
-|-----------------|---------------|-------------------------|---------------|-------------------------------------------------------------------------------------------------------------|
-| `id`            | `string`      | `() => useRandomId(...)`|               | Identifiant unique pour la nav. Si non spécifié, un ID aléatoire est généré.                                |
-| `label`         | `string`      | `Menu principal`        |               | Nom associé à la navigation. Utile pour l'accessibilité.                                                    |
-| `navItems`      | `array`       | `() => []`              | ✅            | Tableau contenant les liens ou sous menus accessibles depuis la navigation.                                 |
+🏅 La documentation sur la navigation sur le [DSFR](https://www.systeme-de-design.gouv.fr/version-courante/fr/composants/navigation-principale/)
 
-## 📡Événements
+<VIcon name="vi-file-type-storybook" /> La story sur la navigation sur le storybook de [VueDsfr](https://storybook.vue-ds.fr/?path=/docs/composants-dsfrnavigation--docs)
 
-| Nom                 | Description                                                                                     |
-|---------------------|-------------------------------------------------------------------------------------------------|
-| `click`             | Événement émis au clic qui déclence l'ouverture ou la fermeture d'un menu.                      |
-| `keydown`           | Événement émis en appuyant sur la touche "Echap" qui déclence lla fermeture d'un menu ouvert.   |
+## 📐 Structure
 
----
+La navigation principale est composée des éléments suivants :
+
+- un conteneur principal avec un identifiant unique (prop `id`)
+- un label d'accessibilité (prop `label`)
+- une liste de liens et sous-menus (prop `navItems`) organisée hiérarchiquement
+- des menus déroulants qui s'ouvrent/ferment au clic
+- une gestion des événements clavier pour l'accessibilité (touches Échap, flèches)
+
+## 🛠️ Props
+
+| nom         | type          | défaut                  | obligatoire | description                                                                 |
+|-------------|---------------|-------------------------|-------------|-----------------------------------------------------------------------------|
+| `id`        | `string`      | `() => useRandomId(...)`|             | Identifiant unique pour la navigation                                       |
+| `label`     | `string`      | `'Menu principal'`      |             | Nom associé à la navigation pour l'accessibilité                            |
+| `navItems`  | `array`       | `() => []`              | ✅          | Tableau contenant les liens ou sous-menus de la navigation                  |
+
+## 📡 Événements
+
+`DsfrNavigation` déclenche les événements suivants :
+
+| nom      | donnée (payload) | description                                                  |
+|----------|------------------|--------------------------------------------------------------|
+| `click`  | *aucune*        | Émis au clic qui déclenche l'ouverture ou la fermeture d'un menu |
+| `keydown`| *aucune*        | Émis en appuyant sur Échap qui déclenche la fermeture d'un menu ouvert |
 
 ## 🧩 Slots
 
-| Nom              | Description                                                                                                |
-|------------------|------------------------------------------------------------------------------------------------------------|
-| `default`        | Slot par défaut pour le contenu de la navigation, il se trouve dans la balise `<ul class="fr-nav__list">`. |
+`DsfrNavigation` possède un slot par défaut pour le contenu personnalisé de la navigation.
 
----
+| nom       | description                                                                 |
+|-----------|-----------------------------------------------------------------------------|
+| `default` | Slot par défaut pour le contenu personnalisé de la navigation               |
 
 ## 📝 Exemples
 
 Exemple simple d'utilisation de `DsfrNavigation` :
 
 ::: code-group
+
 <Story data-title="Démo" minH="500px">
   <DsfrNavigationDemo />
 </Story>
 
 <<< docs-demo/DsfrNavigationDemo.vue [Code de la démo]
+
 :::
 
-## ⚙️ Code source du composant
+## ⚙️ Code source du composant
 
 ::: code-group
 
@@ -53,5 +71,3 @@ Exemple simple d'utilisation de `DsfrNavigation` :
 <script setup>
 import DsfrNavigationDemo from './docs-demo/DsfrNavigationDemo.vue'
 </script>
-
-Avec `DsfrNavigation`, toute destination est à portée de clic, Bon voyage !

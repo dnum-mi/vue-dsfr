@@ -1,11 +1,14 @@
-import { expect, within } from '@storybook/test'
+import type { Meta, StoryObj } from '@storybook/vue3-vite'
+
+import { expect, fn, within } from 'storybook/test'
+import { ref, watch } from 'vue'
 
 import DsfrPagination from './DsfrPagination.vue'
 
 /**
  * [Voir quand l’utiliser sur la documentation du DSFR](https://www.systeme-de-design.gouv.fr/version-courante/fr/composants/pagination)
  */
-export default {
+const meta = {
   component: DsfrPagination,
   title: 'Composants/DsfrPagination',
   argTypes: {
@@ -40,133 +43,130 @@ export default {
       description:
         'Permet de limiter le nombre de pages affichées dans la pagination (avec un maximum de 5 pages)',
     },
-    'update:currentPage': {
-      description:
-        'Événement émis lors du changement de page courante, avec en argument le numéro de page sélectionné',
-    },
+    'onUpdate:currentPage': fn(),
   },
-}
+} satisfies Meta<typeof DsfrPagination>
 
-export const Pagination = (args) => ({
+export default meta
+type Story = StoryObj<typeof meta>
+
+const render = (args: any) => ({
   components: {
     DsfrPagination,
   },
-
-  data () {
-    return { ...args }
+  setup () {
+    const currentPage = ref(args.currentPage)
+    watch(currentPage, (newPage) => {
+      args['onUpdate:currentPage'](newPage)
+    })
+    return {
+      args,
+      currentPage,
+    }
   },
-
   template: `
       <DsfrPagination
-        :pages="pages"
+        :pages="args.pages"
         v-model:current-page="currentPage"
       />
   `,
 })
-Pagination.args = {
-  pages: [
-    {
-      label: '1',
-      href: '/?path=/story/composants-pagination-pagination--pagination&args=currentPage:0',
-      title: 'Page 1',
-    },
-    {
-      label: '2',
-      href: '/?path=/story/composants-pagination-pagination--pagination&args=currentPage:1',
-      title: 'Page 2',
-    },
-    {
-      label: '3',
-      href: '/?path=/story/composants-pagination-pagination--pagination&args=currentPage:2',
-      title: 'Page 3',
-    },
-    {
-      label: '4',
-      href: '/?path=/story/composants-pagination-pagination--pagination&args=currentPage:3',
-      title: 'Page 4',
-    },
-    {
-      label: '5',
-      href: '/?path=/story/composants-pagination-pagination--pagination&args=currentPage:4',
-      title: 'Page 5',
-    },
-  ],
-  currentPage: 0,
-}
-Pagination.play = async ({ canvasElement }) => {
-  const canvas = within(canvasElement)
-  const links = canvas.getAllByRole('link')
-  expect(links).toHaveLength(9)
 
-  const currentPageLink = canvas.getByText(`${Pagination.args.currentPage + 1}`)
-  expect(currentPageLink).toHaveAttribute('aria-current', 'page')
-  const secondPageLink = canvas.getByText(`${Pagination.args.currentPage + 2}`)
-  expect(secondPageLink).not.toHaveAttribute('aria-current', 'page')
-}
-
-export const PaginationTruncated = (args) => ({
-  components: {
-    DsfrPagination,
+export const Pagination: Story = {
+  render,
+  args: {
+    pages: [
+      {
+        label: '1',
+        href: '/?path=/story/composants-pagination-pagination--pagination&args=currentPage:0',
+        title: 'Page 1',
+      },
+      {
+        label: '2',
+        href: '/?path=/story/composants-pagination-pagination--pagination&args=currentPage:1',
+        title: 'Page 2',
+      },
+      {
+        label: '3',
+        href: '/?path=/story/composants-pagination-pagination--pagination&args=currentPage:2',
+        title: 'Page 3',
+      },
+      {
+        label: '4',
+        href: '/?path=/story/composants-pagination-pagination--pagination&args=currentPage:3',
+        title: 'Page 4',
+      },
+      {
+        label: '5',
+        href: '/?path=/story/composants-pagination-pagination--pagination&args=currentPage:4',
+        title: 'Page 5',
+      },
+    ],
+    currentPage: 0,
   },
+  play: async ({ canvasElement, args }) => {
+    const canvas = within(canvasElement)
+    const links = canvas.getAllByRole('link')
+    expect(links).toHaveLength(9)
 
-  data () {
-    return { ...args }
+    const currentPageLink = canvas.getByText(`${(args.currentPage || 0) + 1}`)
+    expect(currentPageLink).toHaveAttribute('aria-current', 'page')
+    const secondPageLink = canvas.getByText(`${(args.currentPage || 0) + 2}`)
+    expect(secondPageLink).not.toHaveAttribute('aria-current', 'page')
   },
+}
 
-  template: `
-      <DsfrPagination
-        :pages="pages"
-        v-model:currentPage="currentPage"
-      />
-  `,
-})
-PaginationTruncated.args = {
-  pages: [
-    {
-      label: '1',
-      href: '?path=/story/composants-pagination-pagination--pagination-truncated&args=currentPage:0',
-      title: 'Page 1',
-    },
-    {
-      label: '2',
-      href: '?path=/story/composants-pagination-pagination--pagination-truncated&args=currentPage:1',
-      title: 'Page 2',
-    },
-    {
-      label: '3',
-      href: '?path=/story/composants-pagination-pagination--pagination-truncated&args=currentPage:2',
-      title: 'Page 3',
-    },
-    {
-      label: '4',
-      href: '?path=/story/composants-pagination-pagination--pagination-truncated&args=currentPage:3',
-      title: 'Page 4',
-    },
-    {
-      label: '5',
-      href: '?path=/story/composants-pagination-pagination--pagination-truncated&args=currentPage:4',
-      title: 'Page 5',
-    },
-    {
-      label: '6',
-      href: '?path=/story/composants-pagination-pagination--pagination-truncated&args=currentPage:5',
-      title: 'Page 6',
-    },
-    {
-      label: '7',
-      href: '?path=/story/composants-pagination-pagination--pagination-truncated&args=currentPage:6',
-      title: 'Page 7',
-    },
-    {
-      label: '8',
-      href: '?path=/story/composants-pagination-pagination--pagination-truncated&args=currentPage:7',
-      title: 'Page 8',
-    },
-    {
-      label: '9',
-      href: '?path=/story/composants-pagination-pagination--pagination-truncated&args=currentPage:8',
-      title: 'Page 9',
-    },
-  ],
-  currentPage: 4,
+export const PaginationTronquee: Story = {
+  name: 'Pagination tronquée',
+  render,
+  args: {
+    pages: [
+      {
+        label: '1',
+        href: '?path=/story/composants-pagination-pagination--pagination-truncated&args=currentPage:0',
+        title: 'Page 1',
+      },
+      {
+        label: '2',
+        href: '?path=/story/composants-pagination-pagination--pagination-truncated&args=currentPage:1',
+        title: 'Page 2',
+      },
+      {
+        label: '3',
+        href: '?path=/story/composants-pagination-pagination--pagination-truncated&args=currentPage:2',
+        title: 'Page 3',
+      },
+      {
+        label: '4',
+        href: '?path=/story/composants-pagination-pagination--pagination-truncated&args=currentPage:3',
+        title: 'Page 4',
+      },
+      {
+        label: '5',
+        href: '?path=/story/composants-pagination-pagination--pagination-truncated&args=currentPage:4',
+        title: 'Page 5',
+      },
+      {
+        label: '6',
+        href: '?path=/story/composants-pagination-pagination--pagination-truncated&args=currentPage:5',
+        title: 'Page 6',
+      },
+      {
+        label: '7',
+        href: '?path=/story/composants-pagination-pagination--pagination-truncated&args=currentPage:6',
+        title: 'Page 7',
+      },
+      {
+        label: '8',
+        href: '?path=/story/composants-pagination-pagination--pagination-truncated&args=currentPage:7',
+        title: 'Page 8',
+      },
+      {
+        label: '9',
+        href: '?path=/story/composants-pagination-pagination--pagination-truncated&args=currentPage:8',
+        title: 'Page 9',
+      },
+    ],
+    currentPage: 4,
+  },
 }

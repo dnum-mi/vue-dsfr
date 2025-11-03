@@ -1,4 +1,7 @@
-import { expect, fn, userEvent, within } from '@storybook/test'
+import type { Meta, StoryObj } from '@storybook/vue3-vite'
+
+import { expect, userEvent, within } from 'storybook/test'
+import { ref } from 'vue'
 
 import DsfrAccordion from '../DsfrAccordion/DsfrAccordion.vue'
 import DsfrAccordionsGroup from '../DsfrAccordion/DsfrAccordionsGroup.vue'
@@ -33,7 +36,6 @@ const meta = {
   title: 'Composants/DsfrTabs',
   args: {
     tabListName,
-    title1,
     tabTitles,
     tabContents,
   },
@@ -58,71 +60,72 @@ const meta = {
       description:
         'Index de l’onglet selectionné',
     },
-    'select-tab': {
-      description:
-        'Événement émis lorsque l’onglet actif change, avec en argument l’index de l’onglet sélectionné',
-    },
-    onSelectTab: {
-      action: fn(),
-    },
   },
-}
+} satisfies Meta<typeof DsfrTabs>
+
 export default meta
 
-export const OngletsSimples = (args) => ({
-  components: { DsfrTabs },
-  data () {
-    return args
-  },
-  template: `
+type Story = StoryObj<typeof meta>
+
+/**
+ * [Voir quand l'utiliser sur la documentation du DSFR](https://www.systeme-de-design.gouv.fr/version-courante/fr/composants/onglet)
+ */
+export const OngletsSimples: Story = {
+  render: (args: typeof meta.args) => ({
+    components: { DsfrTabs },
+
+    setup () {
+      return args
+    },
+
+    template: `
     <DsfrTabs
       :tab-list-name="tabListName"
       :tab-titles="tabTitles"
       :tab-contents="tabContents"
-      v-model="selectedIndex"
+      v-model="modelValue"
     />
   `,
-})
-OngletsSimples.args = {
-  tabListName,
-  tabTitles,
-  tabContents,
-  selectedIndex: 0,
-}
-OngletsSimples.play = async ({ canvasElement }) => {
-  const canvas = within(canvasElement)
-  // const firstTab = await canvas.getByLabelText(tabTitles[0].title)
-  // await userEvent.click(firstTab)
-  const tabs = canvas.getAllByRole('tab')
-  const firstTab = tabs[0]
-  const secondTab = tabs[1]
-  const thirdTab = tabs[2]
-  const fourthTab = tabs[3]
-  const firstTabPanel = canvas.getByLabelText(tabTitles[0].title)
-  const secondTabPanel = canvas.getByLabelText(tabTitles[1].title)
-  const thirdTabPanel = canvas.getByLabelText(tabTitles[2].title)
-  const fourthTabPanel = canvas.getByLabelText(tabTitles[3].title)
-  await userEvent.click(secondTab)
-  await userEvent.type(secondTab, '{arrowright}')
-  expect(firstTabPanel).not.toHaveClass('fr-tabs__panel--selected')
-  expect(secondTabPanel).not.toHaveClass('fr-tabs__panel--selected')
-  expect(thirdTabPanel).toHaveClass('fr-tabs__panel--selected')
-  expect(thirdTab).toHaveAttribute('aria-selected', 'true')
-  await userEvent.type(thirdTab, '{arrowright}')
-  await userEvent.type(fourthTab, '{arrowright}')
-  expect(thirdTabPanel).not.toHaveClass('fr-tabs__panel--selected')
-  expect(thirdTab).not.toHaveAttribute('aria-selected', 'true')
-  expect(firstTabPanel).toHaveClass('fr-tabs__panel--selected')
-  expect(firstTab).toHaveAttribute('aria-selected', 'true')
-  await userEvent.type(firstTab, '{arrowup}')
-  expect(firstTabPanel).not.toHaveClass('fr-tabs__panel--selected')
-  expect(firstTab).not.toHaveAttribute('aria-selected', 'true')
-  expect(fourthTabPanel).toHaveClass('fr-tabs__panel--selected')
-  expect(fourthTab).toHaveAttribute('aria-selected', 'true')
-  await userEvent.type(fourthTab, '{arrowdown}')
-  await userEvent.tab()
-  expect(firstTabPanel).toHaveFocus()
-  await userEvent.tab()
+  }),
+  args: {
+    tabListName,
+    tabTitles,
+    tabContents,
+    modelValue: 0,
+  },
+  play: async ({ canvasElement }: { canvasElement: HTMLElement }) => {
+    const canvas = within(canvasElement)
+    const tabs = canvas.getAllByRole('tab')
+    const firstTab = tabs[0]
+    const secondTab = tabs[1]
+    const thirdTab = tabs[2]
+    const fourthTab = tabs[3]
+    const firstTabPanel = canvas.getByLabelText(tabTitles[0].title)
+    const secondTabPanel = canvas.getByLabelText(tabTitles[1].title)
+    const thirdTabPanel = canvas.getByLabelText(tabTitles[2].title)
+    const fourthTabPanel = canvas.getByLabelText(tabTitles[3].title)
+    await userEvent.click(secondTab)
+    await userEvent.type(secondTab, '{arrowright}')
+    expect(firstTabPanel).not.toHaveClass('fr-tabs__panel--selected')
+    expect(secondTabPanel).not.toHaveClass('fr-tabs__panel--selected')
+    expect(thirdTabPanel).toHaveClass('fr-tabs__panel--selected')
+    expect(thirdTab).toHaveAttribute('aria-selected', 'true')
+    await userEvent.type(thirdTab, '{arrowright}')
+    await userEvent.type(fourthTab, '{arrowright}')
+    expect(thirdTabPanel).not.toHaveClass('fr-tabs__panel--selected')
+    expect(thirdTab).not.toHaveAttribute('aria-selected', 'true')
+    expect(firstTabPanel).toHaveClass('fr-tabs__panel--selected')
+    expect(firstTab).toHaveAttribute('aria-selected', 'true')
+    await userEvent.type(firstTab, '{arrowup}')
+    expect(firstTabPanel).not.toHaveClass('fr-tabs__panel--selected')
+    expect(firstTab).not.toHaveAttribute('aria-selected', 'true')
+    expect(fourthTabPanel).toHaveClass('fr-tabs__panel--selected')
+    expect(fourthTab).toHaveAttribute('aria-selected', 'true')
+    await userEvent.type(fourthTab, '{arrowdown}')
+    await userEvent.tab()
+    expect(firstTabPanel).toHaveFocus()
+    await userEvent.tab()
+  },
 }
 
 const customTabTitles = [
@@ -152,21 +155,19 @@ const customTabTitles = [
   },
 ]
 
-export const OngletsComplexes = (args) => ({
-  components: { DsfrTabs, DsfrTabContent, DsfrButton },
-  data () {
-    return {
-      ...args,
-      asc: true,
-    }
-  },
+export const OngletsComplexes: Story = {
+  render: (args: typeof meta.args) => ({
+    components: { DsfrTabs, DsfrTabContent, DsfrButton },
 
-  template: `
+    setup () {
+      return args
+    },
+
+    template: `
     <DsfrTabs
-      ref="tabs"
       :tab-list-name="tabListName"
       :tab-titles="tabTitles"
-      v-model="selectedIndex"
+      v-model="modelValue"
     >
       <DsfrTabContent
         panel-id="tab-content-0"
@@ -199,87 +200,84 @@ export const OngletsComplexes = (args) => ({
     <div style="display: flex; gap: 1rem; margin-block: 1rem;">
       <DsfrButton
         label="Activer le 1er onglet"
-        @click="selectedIndex = 0"
+        @click="modelValue = 0"
       />
       <DsfrButton
         label="Activer le 2è onglet"
-        @click="selectedIndex = 1"
+        @click="modelValue = 1"
       />
       <DsfrButton
         label="Activer le 3è onglet"
-        @click="selectedIndex = 2"
+        @click="modelValue = 2"
       />
       <DsfrButton
         label="Activer le dernier onglet"
-        @click="selectedIndex = 3"
+        @click="modelValue = 3"
       />
     </div>
   `,
+  }),
+  args: {
+    tabContents: [],
+    tabListName,
+    tabTitles: customTabTitles,
+  },
+  play: async ({ canvasElement }: { canvasElement: HTMLElement }) => {
+    const canvas = within(canvasElement)
+    const buttons = canvas.getAllByRole('button')
+    const tabs = canvas.getAllByRole('tab')
+    const firstTab = tabs[0]
+    const secondTab = tabs[1]
+    const thirdTab = tabs[2]
+    const fourthTab = tabs[3]
+    const firstTabPanel = canvas.getByLabelText(tabTitles[0].title)
+    const secondTabPanel = canvas.getByLabelText(tabTitles[1].title)
+    const thirdTabPanel = canvas.getByLabelText(tabTitles[2].title)
+    const fourthTabPanel = canvas.getByLabelText(tabTitles[3].title)
+    await userEvent.click(buttons[1] as HTMLButtonElement)
+    await userEvent.type(secondTab, '{arrowright}')
+    expect(firstTabPanel).not.toHaveClass('fr-tabs__panel--selected')
+    expect(secondTabPanel).not.toHaveClass('fr-tabs__panel--selected')
+    expect(thirdTabPanel).toHaveClass('fr-tabs__panel--selected')
+    expect(thirdTab).toHaveAttribute('aria-selected', 'true')
+    await userEvent.type(thirdTab, '{arrowright}')
+    await userEvent.type(fourthTab, '{arrowright}')
+    expect(thirdTabPanel).not.toHaveClass('fr-tabs__panel--selected')
+    expect(thirdTab).not.toHaveAttribute('aria-selected', 'true')
+    expect(firstTabPanel).toHaveClass('fr-tabs__panel--selected')
+    expect(firstTab).toHaveAttribute('aria-selected', 'true')
+    await userEvent.type(firstTab, '{arrowup}')
+    expect(firstTabPanel).not.toHaveClass('fr-tabs__panel--selected')
+    expect(firstTab).not.toHaveAttribute('aria-selected', 'true')
+    expect(fourthTabPanel).toHaveClass('fr-tabs__panel--selected')
+    expect(fourthTab).toHaveAttribute('aria-selected', 'true')
+    await userEvent.type(fourthTab, '{arrowdown}')
+    await userEvent.tab()
+    expect(firstTabPanel).toHaveFocus()
+    await userEvent.tab()
+    await userEvent.click(buttons[2] as HTMLButtonElement)
+    expect(firstTab).not.toHaveAttribute('aria-selected', 'true')
+    expect(secondTab).not.toHaveAttribute('aria-selected', 'true')
+    expect(thirdTab).toHaveAttribute('aria-selected', 'true')
+    expect(fourthTab).not.toHaveAttribute('aria-selected', 'true')
+  },
+}
 
-  watch: {
-    selectedIndex (idx) {
-      this.onSelectTab(idx)
+export const OngletsAvecAccordeon: Story = {
+  render: (args: typeof meta.args) => ({
+    components: { DsfrTabs, DsfrTabContent, DsfrAccordionsGroup, DsfrAccordion },
+
+    setup () {
+      const selectedTabIndex = ref(0)
+      const selectedAccordion = ref()
+      return {
+        ...args,
+        selectedTabIndex,
+        selectedAccordion,
+      }
     },
-  },
-})
-OngletsComplexes.args = {
-  tabContents: [],
-  tabListName,
-  tabTitles: customTabTitles,
-  selectedIndex: 1,
-}
-OngletsComplexes.play = async ({ canvasElement }) => {
-  const canvas = within(canvasElement)
-  // const firstTab = await canvas.getByLabelText(tabTitles[0].title)
-  // await userEvent.click(firstTab)
-  const buttons = canvas.getAllByRole('button')
-  const tabs = canvas.getAllByRole('tab')
-  const firstTab = tabs[0]
-  const secondTab = tabs[1]
-  const thirdTab = tabs[2]
-  const fourthTab = tabs[3]
-  const firstTabPanel = canvas.getByLabelText(tabTitles[0].title)
-  const secondTabPanel = canvas.getByLabelText(tabTitles[1].title)
-  const thirdTabPanel = canvas.getByLabelText(tabTitles[2].title)
-  const fourthTabPanel = canvas.getByLabelText(tabTitles[3].title)
-  await userEvent.click(buttons.at(1) as HTMLButtonElement)
-  await userEvent.type(secondTab, '{arrowright}')
-  expect(firstTabPanel).not.toHaveClass('fr-tabs__panel--selected')
-  expect(secondTabPanel).not.toHaveClass('fr-tabs__panel--selected')
-  expect(thirdTabPanel).toHaveClass('fr-tabs__panel--selected')
-  expect(thirdTab).toHaveAttribute('aria-selected', 'true')
-  await userEvent.type(thirdTab, '{arrowright}')
-  await userEvent.type(fourthTab, '{arrowright}')
-  expect(thirdTabPanel).not.toHaveClass('fr-tabs__panel--selected')
-  expect(thirdTab).not.toHaveAttribute('aria-selected', 'true')
-  expect(firstTabPanel).toHaveClass('fr-tabs__panel--selected')
-  expect(firstTab).toHaveAttribute('aria-selected', 'true')
-  await userEvent.type(firstTab, '{arrowup}')
-  expect(firstTabPanel).not.toHaveClass('fr-tabs__panel--selected')
-  expect(firstTab).not.toHaveAttribute('aria-selected', 'true')
-  expect(fourthTabPanel).toHaveClass('fr-tabs__panel--selected')
-  expect(fourthTab).toHaveAttribute('aria-selected', 'true')
-  await userEvent.type(fourthTab, '{arrowdown}')
-  await userEvent.tab()
-  expect(firstTabPanel).toHaveFocus()
-  await userEvent.tab()
-  await userEvent.click(buttons.at(2) as HTMLButtonElement)
-  expect(firstTab).not.toHaveAttribute('aria-selected', 'true')
-  expect(secondTab).not.toHaveAttribute('aria-selected', 'true')
-  expect(thirdTab).toHaveAttribute('aria-selected', 'true')
-  expect(fourthTab).not.toHaveAttribute('aria-selected', 'true')
-}
 
-export const OngletsAvecAccordeon = (args) => ({
-  components: { DsfrTabs, DsfrTabContent, DsfrAccordionsGroup, DsfrAccordion },
-  data () {
-    return {
-      ...args,
-      asc: true,
-    }
-  },
-
-  template: `
+    template: `
     <DsfrTabs
       :tab-list-name="tabListName"
       :tab-titles="tabTitles"
@@ -319,32 +317,23 @@ export const OngletsAvecAccordeon = (args) => ({
       </DsfrTabContent>
     </DsfrTabs>
   `,
-
-  methods: {
-    selectTab (idx) {
-      this.onSelectTab(idx)
-      this.asc = this.selectedTabIndex < idx
-      this.selectedTabIndex = idx
-    },
+  }),
+  args: {
+    tabContents: [],
+    tabListName,
+    tabTitles: customTabTitles.slice(0, 2),
+    title1: 'Un titre d’accordéon 1',
+    title2: 'Un titre d’accordéon 2',
+    title3: 'Un titre d’accordéon 3',
   },
-})
-OngletsAvecAccordeon.args = {
-  tabContents: [],
-  tabListName,
-  tabTitles: customTabTitles.slice(0, 2),
-  selectedTabIndex: 0,
-  title1: 'Un titre d’accordéon 1',
-  title2: 'Un titre d’accordéon 2',
-  title3: 'Un titre d’accordéon 3',
-  selectedAccordion: undefined,
-}
-OngletsAvecAccordeon.play = async ({ canvasElement }) => {
-  const canvas = within(canvasElement)
-  const thirdAccordionTitle = canvas.getByText(OngletsAvecAccordeon.args.title3)
-  const thirdAccordion = canvas.getByText('Contenu de l’accordéon 3')
-  expect(thirdAccordionTitle).toBeVisible()
-  expect(thirdAccordion).not.toBeVisible()
-  userEvent.click(thirdAccordionTitle)
-  await delay(500)
-  expect(thirdAccordion).toBeVisible()
+  play: async ({ canvasElement }: { canvasElement: HTMLElement }) => {
+    const canvas = within(canvasElement)
+    const thirdAccordionTitle = canvas.getByText('Un titre d\'accordéon 3')
+    const thirdAccordion = canvas.getByText('Contenu de l\'accordéon 3')
+    expect(thirdAccordionTitle).toBeVisible()
+    expect(thirdAccordion).not.toBeVisible()
+    await userEvent.click(thirdAccordionTitle)
+    await delay(500)
+    expect(thirdAccordion).toBeVisible()
+  },
 }

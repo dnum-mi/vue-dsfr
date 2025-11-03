@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import type { DsfrSocialNetwork } from '../DsfrFollow.types'
+
 import DsfrSocialNetworks from '../DsfrSocialNetworks.vue'
 
 const titleTag = 'h2'

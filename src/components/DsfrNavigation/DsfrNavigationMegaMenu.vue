@@ -1,11 +1,12 @@
 <script lang="ts" setup>
+import type { DsfrNavigationMegaMenuProps } from './DsfrNavigation.types'
+
 import { computed, onMounted, watch } from 'vue'
 
 import { useCollapsable } from '../../composables'
 import { useRandomId } from '../../utils/random-utils'
 
 import DsfrNavigationMegaMenuCategory from './DsfrNavigationMegaMenuCategory.vue'
-import type { DsfrNavigationMegaMenuProps } from './DsfrNavigation.types'
 
 export type { DsfrNavigationMegaMenuProps }
 
@@ -18,6 +19,19 @@ const props = withDefaults(defineProps<DsfrNavigationMegaMenuProps>(), {
 })
 
 defineEmits<{ (event: 'toggleId', id: string): void }>()
+
+defineSlots<{
+  /**
+   * Slot pour le contenu de la description du mega-menu.
+   * Sera dans `<p class="fr-hidden fr-displayed-lg">`
+   */
+  description: () => any
+  /**
+   * Slot par défaut pour le contenu du mega-menu.
+   * Sera dans `<div class="fr-grid-row fr-grid-row--gutters">`
+   */
+  default: () => any
+}>()
 
 const {
   collapse,
@@ -89,7 +103,6 @@ onMounted(() => {
             </h4>
             <p class="fr-hidden fr-displayed-lg">
               {{ description }}
-              <!-- @slot Slot par défaut pour le contenu de la description du mega-menu. Sera dans `<p class="fr-text--sm">` -->
               <slot name="description" />
             </p>
             <RouterLink
@@ -100,7 +113,6 @@ onMounted(() => {
             </RouterLink>
           </div>
         </div>
-        <!-- @slot Slot par défaut pour le contenu du mega-menu. Sera dans `<div class="fr-grid-row fr-grid-row--gutters">` -->
         <slot />
         <DsfrNavigationMegaMenuCategory
           v-for="(menu, idx) of menus"

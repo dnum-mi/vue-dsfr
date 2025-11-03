@@ -1,8 +1,8 @@
 <script lang="ts" setup>
+import type { VIconProps } from './VIcon.types'
+
 import { Icon } from '@iconify/vue'
 import { computed, nextTick, onMounted, ref, watch } from 'vue'
-
-import type { VIconProps } from './VIcon.types'
 
 export type { VIconProps }
 
@@ -76,7 +76,7 @@ const finalColor = computed(() => {
 
 <style scoped>
 .vicon-inverse {
-  color: #fff;
+  color: #fff !important;
 }
 /* ---------------- spin ---------------- */
 .vicon-spin:not(.vicon-hover),

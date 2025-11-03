@@ -1,9 +1,10 @@
 <script lang="ts" setup>
+import type { DsfrTagProps } from '../../src/components/DsfrTag/DsfrTags.types'
+
 import { ref } from 'vue'
 
 import DsfrTag from '../../src/components/DsfrTag/DsfrTag.vue'
 import DsfrTags from '../../src/components/DsfrTag/DsfrTags.vue'
-import type { DsfrTagProps } from '../../src/components/DsfrTag/DsfrTags.types'
 
 const tags = [
   {
