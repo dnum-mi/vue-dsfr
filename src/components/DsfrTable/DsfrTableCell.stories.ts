@@ -1,5 +1,7 @@
+import type { Meta, StoryObj } from '@storybook/vue3'
+
+import { fn } from '@storybook/test'
 import { setup } from '@storybook/vue3-vite'
-import { fn } from 'storybook/test'
 
 import DsfrTag from '../DsfrTag/DsfrTag.vue'
 
@@ -11,7 +13,7 @@ setup((app) => {
   app.component('DsfrTag', DsfrTag) // Composant utilisé dans les stories CelluleDeTableauAvecComposant et CelluleDeTableauComplexe
 })
 
-export default {
+const meta = {
   component: DsfrTableCell,
   title: 'Composants/DsfrTableCell',
   argTypes: {
@@ -19,7 +21,7 @@ export default {
     headers: {
       control: 'object',
       description:
-        'Liste des en-têtes du tableau (tableau de string). *N.B. : Ne fait pas partie du composant.*',
+        'Liste des en-têtes du tableau (tableau de string). *N.B. : Ne fait pas partie du composant.*',
     },
     field: {
       control: 'string',
@@ -31,7 +33,10 @@ export default {
         'Fonction pour montrer le clic sur une cellule (Ici seulement pour "Cellule de tableau complexe")',
     },
   },
-}
+} as Meta<typeof DsfrTableCell>
+
+export default meta
+type Story = StoryObj<typeof meta>
 
 const title = 'Utilisateurs'
 const headers = ['Nom']
@@ -55,132 +60,125 @@ const cellAttrs = {
   style: 'font-style: italic',
 }
 
-export const CelluleDeTableauSimple = (args) => ({
-  components: {
-    DsfrTable,
-    DsfrTableCell,
-    DsfrTableHeaders,
+export const CelluleDeTableauSimple: Story = {
+  args: {
+    title,
+    headers,
+    field: simpleField,
   },
-
-  data () {
-    return {
-      ...args,
-    }
-  },
-
-  template: `
-    <DsfrTable
-      :title="title"
-    >
-      <template #header>
-        <DsfrTableHeaders :headers="headers" />
-      </template>
-      <tr>
-        <DsfrTableCell :field="field" />
-      </tr>
-    </DsfrTable>
-  `,
-})
-CelluleDeTableauSimple.args = {
-  title,
-  headers,
-  field: simpleField,
-}
-
-export const CelluleDeTableauAvecElementHtml = (args) => ({
-  components: {
-    DsfrTable,
-    DsfrTableCell,
-    DsfrTableHeaders,
-  },
-
-  data () {
-    return {
-      ...args,
-    }
-  },
-
-  template: `
+  render: (args) => ({
+    components: {
+      DsfrTable,
+      DsfrTableCell,
+      DsfrTableHeaders,
+    },
+    setup () {
+      return { args }
+    },
+    template: `
       <DsfrTable
-        :title="title"
+        :title="args.title"
       >
         <template #header>
-          <DsfrTableHeaders :headers="headers" />
+          <DsfrTableHeaders :headers="args.headers" />
         </template>
         <tr>
-          <DsfrTableCell :field="field" />
+          <DsfrTableCell :field="args.field" />
         </tr>
       </DsfrTable>
-  `,
-})
-CelluleDeTableauAvecElementHtml.args = {
-  title,
-  headers,
-  field: fieldWithComponentSimple,
+    `,
+  }),
 }
 
-export const CelluleDeTableauAvecComposant = (args) => ({
-  components: {
-    DsfrTable,
-    DsfrTableCell,
-    DsfrTableHeaders,
+export const CelluleDeTableauAvecElementHtml: Story = {
+  args: {
+    title,
+    headers,
+    field: fieldWithComponentSimple,
   },
-
-  data () {
-    return {
-      ...args,
-    }
-  },
-
-  template: `
+  render: (args) => ({
+    components: {
+      DsfrTable,
+      DsfrTableCell,
+      DsfrTableHeaders,
+    },
+    setup () {
+      return { args }
+    },
+    template: `
       <DsfrTable
-        :title="title"
+        :title="args.title"
       >
         <template #header>
-          <DsfrTableHeaders :headers="headers" />
+          <DsfrTableHeaders :headers="args.headers" />
         </template>
         <tr>
-          <DsfrTableCell :field="field" />
+          <DsfrTableCell :field="args.field" />
         </tr>
       </DsfrTable>
-  `,
-})
-CelluleDeTableauAvecComposant.args = {
-  title,
-  headers,
-  field: fieldWithComponent,
+    `,
+  }),
 }
 
-export const CelluleDeTableauComplexe = (args) => ({
-  components: {
-    DsfrTable,
-    DsfrTableCell,
-    DsfrTableHeaders,
+export const CelluleDeTableauAvecComposant: Story = {
+  args: {
+    title,
+    headers,
+    field: fieldWithComponent,
   },
-
-  data () {
-    return {
-      ...args,
-      cellAttrs: { ...cellAttrs, onClick: () => args.onClickCell(args.field) },
-    }
-  },
-
-  template: `
+  render: (args) => ({
+    components: {
+      DsfrTable,
+      DsfrTableCell,
+      DsfrTableHeaders,
+    },
+    setup () {
+      return { args }
+    },
+    template: `
       <DsfrTable
-        :title="title"
+        :title="args.title"
       >
         <template #header>
-          <DsfrTableHeaders :headers="headers" />
+          <DsfrTableHeaders :headers="args.headers" />
         </template>
         <tr>
-          <DsfrTableCell :field="field" :cell-attrs="cellAttrs" />
+          <DsfrTableCell :field="args.field" />
         </tr>
       </DsfrTable>
-  `,
-})
-CelluleDeTableauComplexe.args = {
-  title,
-  headers,
-  field: fieldWithComponent,
-  cellAttrs,
+    `,
+  }),
+}
+
+export const CelluleDeTableauComplexe: Story = {
+  args: {
+    title,
+    headers,
+    field: fieldWithComponent,
+    cellAttrs,
+    onClickCell: fn(),
+  },
+  render: (args) => ({
+    components: {
+      DsfrTable,
+      DsfrTableCell,
+      DsfrTableHeaders,
+    },
+    setup () {
+      const computedCellAttrs = { ...args.cellAttrs, onClick: () => args.onClickCell(args.field) }
+      return { args, computedCellAttrs }
+    },
+    template: `
+      <DsfrTable
+        :title="args.title"
+      >
+        <template #header>
+          <DsfrTableHeaders :headers="args.headers" />
+        </template>
+        <tr>
+          <DsfrTableCell :field="args.field" :cell-attrs="computedCellAttrs" />
+        </tr>
+      </DsfrTable>
+    `,
+  }),
 }
