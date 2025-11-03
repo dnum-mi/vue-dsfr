@@ -94,7 +94,7 @@ const linkProps = (to: string | RouteLocationRaw | undefined) => {
             :active="!!menuItem.active"
             :expanded="!!menuItem.expanded"
             :control-id="(menuItem.id as string)"
-            @toggle-expand="emit('toggleExpand', $event)"
+            @toggle-expand="menuItem.expanded = !menuItem.expanded"
           >
             {{ menuItem.text }}
           </DsfrSideMenuButton>
