@@ -18,6 +18,34 @@ jobs:
               pull_number: context.issue.number,
             });
 
+            // Vérifier les issues liées via l'interface GitHub avec GraphQL
+            const query = `
+              query($owner: String!, $repo: String!, $number: Int!) {
+                repository(owner: $owner, name: $repo) {
+                  pullRequest(number: $number) {
+                    closingIssuesReferences(first: 50) {
+                      nodes {
+                        number
+                        title
+                      }
+                    }
+                  }
+                }
+              }
+            `;
+
+            let linkedIssuesFromUI = [];
+            try {
+              const result = await github.graphql(query, {
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                number: context.issue.number,
+              });
+              linkedIssuesFromUI = result.repository.pullRequest.closingIssuesReferences.nodes;
+            } catch (error) {
+              console.log('Erreur lors de la récupération des issues liées via GraphQL:', error.message);
+            }
+
             // Vérifier dans le corps de la PR (mots-clés comme "closes #123", "fixes #456")
             const prBody = pullRequest.body || '';
             const prTitle = pullRequest.title || '';
@@ -32,12 +60,15 @@ jobs:
             const simpleIssueRef = /(?:^|\s)#(\d+)(?:\s|$|-)/g;
             const titleIssueRefs = prTitle.match(simpleIssueRef);
 
-            const hasLinkedIssues = bodyMatches || titleMatches || titleIssueRefs;
+            const hasLinkedIssues = linkedIssuesFromUI.length > 0 || bodyMatches || titleMatches || titleIssueRefs;
 
             if (!hasLinkedIssues) {
-              core.setFailed('❌ Cette PR doit être liée à une issue. Utilisez des mots-clés comme "closes #123" ou "fixes #456" dans la description, ou référencez une issue dans le titre avec "#123".');
+              core.setFailed('❌ Cette PR doit être liée à une issue. Utilisez des mots-clés comme "closes #123" ou "fixes #456" dans la description, référencez une issue dans le titre avec "#123", ou liez une issue via l\'interface GitHub.');
             } else {
               console.log('✅ PR correctement liée à une ou plusieurs issues');
+              if (linkedIssuesFromUI.length > 0) {
+                console.log('Issues liées via l\'interface GitHub:', linkedIssuesFromUI.map(issue => `#${issue.number} - ${issue.title}`));
+              }
               if (bodyMatches) console.log('Issues trouvées dans le body:', bodyMatches);
               if (titleMatches) console.log('Issues trouvées dans le titre:', titleMatches);
               if (titleIssueRefs) console.log('Références d\'issues dans le titre:', titleIssueRefs);
