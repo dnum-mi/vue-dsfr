@@ -93,7 +93,7 @@ Vous devriez voir 20.x.x
 - Cloner le projet et créer des [pull-request](https://docs.github.com/en/github/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
 - Indiquer les bugs dans des [issues](https://github.com/dnum-mi/vue-dsfr/issues)
 - Faire des demandes dans [discussions](https://github.com/dnum-mi/vue-dsfr/discussions)
-- Rejoindre le [server Discord](https://discord.gg/jbBJ9769ZZ)
+- Rejoindre le [server Discord](https://discord.gg/cCS5MGWZ)
 
 ### Àpropos des pull-requests
 
