@@ -552,7 +552,7 @@ export default defineConfig({
 
     socialLinks: [
       { icon: 'github', link: 'https://github.com/dnum-mi/vue-dsfr' },
-      { icon: 'discord', link: 'https://discord.gg/jbBJ9769ZZ' },
+      { icon: 'discord', link: 'https://discord.gg/cCS5MGWZ' },
     ],
   },
 
