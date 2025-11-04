@@ -1,4 +1,8 @@
-export type Page = { href?: string, label: string, title: string }
+export type Page = {
+  href?: string
+  label: string
+  title: string
+}
 
 export type DsfrPaginationProps = {
   pages: Page[]
@@ -7,6 +11,7 @@ export type DsfrPaginationProps = {
   lastPageTitle?: string
   nextPageTitle?: string
   prevPageTitle?: string
+  currentPageTitleSuffix?: string
   truncLimit?: number
   ariaLabel?: string
 }
