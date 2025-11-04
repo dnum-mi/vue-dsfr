@@ -1,0 +1,19 @@
+name: Enforce merge policy to main
+
+on:
+  pull_request:
+    branches: [main]
+    types: [opened, reopened, synchronize, ready_for_review]
+
+jobs:
+  check-merge-source:
+    name: Verify source branch
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ensure PR comes only from develop
+        if: github.head_ref != 'develop'
+        run: |
+          echo "❌ Cette PR ne peut pas être fusionnée directement dans main."
+          echo "➡️  Seule la branche 'develop' est autorisée à merger vers 'main'."
+          echo "Branche actuelle : '${{ github.head_ref }}'"
+          exit 1
