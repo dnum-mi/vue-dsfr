@@ -10,19 +10,24 @@ Le composant `DsfrPagination` est un système de pagination conforme aux bonnes 
 
 ## 📐 Structure
 
-Ce composant affiche des liens pour la première page, la précédente, les pages centrales, la suivante, et la dernière, avec des contrôles adaptatifs selon l'état de la pagination.
+Ce composant affiche des liens vers les pages avoisinant la page courante (mise en avant).
+Il affiche aussi la dernière page de la liste comme dernier élément de la pagination afin que l’usager connaisse le nombre total de pages.
+Il présente un accès rapide vers la première page, la précédente, la suivante, et la dernière, avec des contrôles adaptatifs selon l'état de la pagination.
+Des troncatures sont affichées (éventuellement masquées pour de petits écrans) pour matérialiser les pages ommises.
+Le composant propose aussi l'ajout d'un suffixe au texte du titre (`title` qui sert nottament à l'affichage d'une bulle d'aide) de la page courante pour la mettre en valeur.
 
 ## 🛠️ Props
 
 | Nom              | Type                  | Défaut              | Description                                                                                      |
 |-------------------|-----------------------|---------------------|--------------------------------------------------------------------------------------------------|
-| `pages`          | `Page[]`             | **requis**          | Liste des pages, où chaque page est un objet contenant des informations comme `href` et `label`. |
+| `pages`          | `Page[]`             | **requis**          | Liste des pages, où chaque page est un objet contenant des informations comme `href`, `label` et `title`. |
 | `truncLimit`     | `number`             | `5`                 | Nombre maximum de pages affichées simultanément.                                                |
 | `currentPage`    | `number`             | `0`                 | Index de la page actuellement sélectionnée (commence à `0`).                                    |
 | `firstPageTitle` | `string`             | `'Première page'`   | Texte d'info-bulle pour le lien de la première page.                                            |
 | `lastPageTitle`  | `string`             | `'Dernière page'`   | Texte d'info-bulle pour le lien de la dernière page.                                            |
 | `nextPageTitle`  | `string`             | `'Page suivante'`   | Texte d'info-bulle pour le lien de la page suivante.                                            |
 | `prevPageTitle`  | `string`             | `'Page précédente'` | Texte d'info-bulle pour le lien de la page précédente.                                          |
+| `currentPageTitleSuffix`  | `string`             | `undefined` | Texte aditionnel d'info-bulle de la page courante.                                          |
 
 ## 📡Événements
 
