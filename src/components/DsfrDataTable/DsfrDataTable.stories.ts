@@ -1,7 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/vue3-vite'
 
-import { ref } from 'vue'
-
 import DsfrDataTable from './DsfrDataTable.vue'
 
 const meta = {
@@ -76,9 +74,7 @@ export const Simple: Story = {
     components: { DsfrDataTable },
 
     setup () {
-      return {
-        ...args,
-      }
+      return args
     },
 
     template: `
@@ -120,11 +116,7 @@ export const Complexe: Story = {
     components: { DsfrDataTable },
 
     setup () {
-      const selection = ref([])
-      return {
-        ...args,
-        selection,
-      }
+      return args
     },
 
     template: `
@@ -136,6 +128,8 @@ export const Complexe: Story = {
         :rows="rows"
         selectable-rows
         sortable-rows
+        v-model:sorted-by="sortedBy"
+        v-model:sorted-desc="sortedDesc"
         row-key="id"
       >
         <template #header="{ key, label }">
@@ -154,6 +148,7 @@ export const Complexe: Story = {
         </template>
       </DsfrDataTable>
       <p>IDs sélectionnées : {{ selection }}</p>
+      <p>Tri courant : {{ sortedBy ? (sortedBy + ' — ' + (sortedDesc ? 'descendant' : 'ascendant')) : 'aucun' }}</p>
     </div>
   `,
   }),
@@ -186,7 +181,9 @@ export const Complexe: Story = {
       [11, 'Henry Moore', 'henry.moore@example.com'],
       [12, 'Iris Taylor', 'iris.taylor@example.com'],
     ],
-    rowKey: 'key',
+    selection: [],
+    sortedBy: 'id',
+    sortedDesc: false,
   },
 }
 
@@ -212,8 +209,8 @@ export const PlusComplexe: Story = {
         :rows-per-page
         :pagination-options
         :sorted
-        :sorted-by
-        :sorted-desc
+        v-model:sorted-by="sortedBy"
+        v-model:sorted-desc="sortedDesc"
         :sortable-rows
       >
         <template #header="{ label }">
@@ -230,6 +227,7 @@ export const PlusComplexe: Story = {
         </template>
       </DsfrDataTable>
       <p>IDs sélectionnées : {{ selection }}</p>
+      <p>Tri courant : {{ sortedBy ? (sortedBy + ' — ' + (sortedDesc ? 'descendant' : 'ascendant')) : 'aucun' }}</p>
     </div>
   `,
   }),
