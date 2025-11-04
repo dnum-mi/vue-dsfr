@@ -1,14 +1,31 @@
-# Guide du développeur
+# Guide du contributeur
 
 ## Comment contribuer
 
 ::: info NOTE
 
-Ceci est le guide du développeur pour contribuer au projet de cette bibliothèque.
+Ceci est le guide du contributeur pour contribuer au projet de cette bibliothèque.
 Si vous cherchez à utiliser cette bibliothèque, veuillez vous référer au
-[Guide d’utilisation](./pour-commencer.md).
+[Guide d'utilisation](./pour-commencer.md).
 
 :::
+
+## Langue et communication
+
+**Tout le contenu de ce projet doit être rédigé en français**, y compris :
+
+- Messages de commits
+- Commentaires dans le code
+- Documentation
+- Échanges sur GitHub (issues, pull requests, discussions)
+- Noms de fichiers lorsque c'est pertinent
+
+**Seules exceptions autorisées et même recommandées :**
+
+- **Noms de branches** : en anglais pour qu'ils soient plus courts et standardisés (ex: `feat/button-component`, `fix/accessibility-issue`)
+- **Noms de variables et fonctions** : en anglais selon les conventions de développement (ex: `handleClick`, `isVisible`, `userConfig`)
+
+Cette approche permet de maintenir la cohérence du projet tout en respectant les bonnes pratiques de développement internationales.
 
 ### TL;DR
 
