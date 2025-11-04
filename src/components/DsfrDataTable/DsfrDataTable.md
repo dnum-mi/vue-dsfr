@@ -16,9 +16,19 @@ Si vous avez des propositions, veuillez lancer une [**discussion**](https://gith
 
 <VIcon name="vi-file-type-storybook" /> La story sur le tableau de données sur le storybook de [VueDsfr](https://storybook.vue-ds.fr/?path=/docs/composants-dsfrdatatable--docs)
 
-## 📐 Structure
+## 📐 Structure
 
 Le composant `DsfrDataTable` s'utilise pour afficher des données structurées sous forme de tableau. Il prend en charge le tri des colonnes, la pagination des lignes, et l'ajout de boutons ou d'icônes pour effectuer des actions spécifiques sur les données.
+
+### Accessibilité
+
+Le composant gère automatiquement l'attribut `aria-sort` sur les en-têtes de colonnes triables :
+- `aria-sort="ascending"` pour une colonne triée en ordre croissant
+- `aria-sort="descending"` pour une colonne triée en ordre décroissant
+- `aria-sort="none"` pour les colonnes triables non actuellement triées
+- Pas d'attribut `aria-sort` pour les colonnes non triables
+
+Cela permet aux lecteurs d'écran d'annoncer correctement l'état de tri de chaque colonne aux utilisateurs.
 
 ## 🛠️Props
 

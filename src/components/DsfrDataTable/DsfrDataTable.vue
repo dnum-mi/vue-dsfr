@@ -97,6 +97,20 @@ function sortBy (key: string) {
   sortedDesc.value = false
   sortedBy.value = key
 }
+function getAriaSort (header: DsfrDataTableHeaderCell, idx: number): 'ascending' | 'descending' | 'none' | undefined {
+  const headerKey = (header as DsfrDataTableHeaderCellObject).key ?? (props.rows[0] && Array.isArray(props.rows[0]) ? idx : header)
+  const isSortable = props.sortableRows === true || (Array.isArray(props.sortableRows) && props.sortableRows.includes(String(headerKey)))
+
+  if (!isSortable) {
+    return undefined
+  }
+
+  if (sortedBy.value === headerKey) {
+    return sortedDesc.value ? 'descending' : 'ascending'
+  }
+
+  return 'none'
+}
 const sortedRows = computed(() => {
   const _sortedRows = sortedBy.value ? props.rows.slice().sort(props.sortFn ?? defaultSortFn) : props.rows.slice()
   if (sortedDesc.value) {
@@ -188,6 +202,7 @@ function copyToClipboard (text: string) {
                   scope="col"
                   v-bind="typeof header === 'object' && header.headerAttrs"
                   :tabindex="sortableRows ? 0 : undefined"
+                  :aria-sort="getAriaSort(header, idx)"
                   @click="sortBy((header as DsfrDataTableHeaderCellObject).key ?? (Array.isArray(rows[0]) ? idx : header))"
                   @keydown.enter="sortBy((header as DsfrDataTableHeaderCellObject).key ?? header)"
                   @keydown.space="sortBy((header as DsfrDataTableHeaderCellObject).key ?? header)"
