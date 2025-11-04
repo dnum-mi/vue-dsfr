@@ -52,7 +52,7 @@ Son code source disponible sur <VIconLink href="https://github.com/laruiss/vue-d
 Le serveur Discord dédié permet parler de la bibliothèque, de sa documentation, des problèmes que vous rencontrez avec, des suggestions que vous voulez nous donner, et des évolutions de la bibliothèque elle-même et de sa documentation, ainsi que de l’extension VSCode.
 
 <div style="text-align: center">
-  <a href="https://discord.gg/jbBJ9769ZZ">
+  <a href="https://discord.gg/cCS5MGWZ">
     Rejoindre le serveur Discord
     <VIcon name="si-discord" />
   </a>
