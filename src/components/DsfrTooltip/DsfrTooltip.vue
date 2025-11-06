@@ -155,6 +155,7 @@ onUnmounted(() => {
     :class="onHover ? 'fr-link' : 'fr-btn  fr-btn--tooltip'"
     :aria-describedby="id"
     :href="onHover ? '#' : undefined"
+    :type="onHover ? undefined : 'button'"
     @click="onClick()"
     @mouseleave="onMouseLeave()"
     @focus="onMouseEnterHandler($event)"
