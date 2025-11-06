@@ -5,11 +5,10 @@ import VIcon from '../VIcon/VIcon.vue'
 
 import { registerTabKey } from './injection-key'
 
-export type DsfrTabItemProps = {
-  panelId: string
-  tabId: string
-  icon?: string
-}
+defineOptions({
+  inheritAttrs: false,
+})
+
 const props = withDefaults(defineProps<DsfrTabItemProps>(), {
   icon: undefined,
 })
@@ -31,6 +30,12 @@ defineSlots<{
   /** Slot par défaut pour le contenu de l’onglet. Sera dans `<button class="fr-tabs__tab">` */
   default?: () => any
 }>()
+
+export type DsfrTabItemProps = {
+  panelId: string
+  tabId: string
+  icon?: string
+}
 
 const button = ref<HTMLButtonElement | null>(null)
 
