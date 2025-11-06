@@ -18,7 +18,7 @@ jobs:
         with:
           script: |
             let pullRequests = [];
-            
+
             if (context.eventName === 'issues') {
               // Si l'événement vient d'une issue, vérifier toutes les PR ouvertes
               const { data: prs } = await github.rest.pulls.list({
@@ -39,7 +39,7 @@ jobs:
 
             for (const pullRequest of pullRequests) {
               console.log(`🔍 Vérification de la PR #${pullRequest.number}: ${pullRequest.title}`);
-              
+
               // Vérifier les issues liées via l'interface GitHub avec GraphQL
               const query = `
                 query($owner: String!, $repo: String!, $number: Int!) {
@@ -71,13 +71,13 @@ jobs:
               // Vérifier dans le corps de la PR (mots-clés comme "closes #123", "fixes #456")
               const prBody = pullRequest.body || '';
               const prTitle = pullRequest.title || '';
-              
+
               // Pattern pour détecter les références aux issues
               const issueKeywords = /(?:close[sd]?|fix(?:e[sd])?|resolve[sd]?|ref(?:erences?)?|see|relate[sd]?(?:\s+to)?)\s*(?:#(\d+)|https?:\/\/github\.com\/[^\/]+\/[^\/]+\/issues\/(\d+))/gi;
-              
+
               const bodyMatches = prBody.match(issueKeywords);
               const titleMatches = prTitle.match(issueKeywords);
-              
+
               // Vérifier aussi les numéros d'issues simples dans le titre (ex: "feat: #123 - nouvelle fonctionnalité")
               const simpleIssueRef = /(?:^|\s)#(\d+)(?:\s|$|-)/g;
               const titleIssueRefs = prTitle.match(simpleIssueRef);
