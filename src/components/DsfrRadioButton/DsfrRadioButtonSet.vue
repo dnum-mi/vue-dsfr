@@ -83,6 +83,7 @@ const describedByElement = computed(() => message.value ? `messages-${props.titl
           :small="small"
           :inline="inline"
           :model-value="modelValue"
+          :rich="rich"
           @update:model-value="onChange($event as string)"
         />
       </slot>
