@@ -3,6 +3,14 @@
     "releases",
     "dx"
   ],
+  "github.copilot.chat.commitMessageGeneration.instructions": [
+    {
+      "file": ".copilot-commit-message-instructions.md"
+    },
+    {
+      "text": "Use conventional commit message format."
+    }
+  ],
   "editor.bracketPairColorization.enabled": true,
   "emmet.includeLanguages": {
     "vue-html": "html",
