@@ -3,7 +3,7 @@
 ::: info NOTE
 
 Ceci est le guide d̛'utilisation de la bibliothèque. Si vous cherchez à contribuer, se référer au
-[Guide du contributeur](./guide-developpeur).
+[Guide du contributeur](./guide-contributeur).
 
 :::
 
