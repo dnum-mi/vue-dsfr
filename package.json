@@ -2,6 +2,7 @@
   "name": "@gouvminint/vue-dsfr",
   "type": "module",
   "version": "3.7.5",
+  "packageManager": "pnpm@10.2.1",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -41,8 +42,8 @@
     "types"
   ],
   "engines": {
-    "node": ">=20.x.x",
-    "npm": ">=10.x.x"
+    "node": ">=22.0.0",
+    "pnpm": ">=10.0.0"
   },
   "publishConfig": {
     "@gouvminint:registry": "https://registry.npmjs.com",
