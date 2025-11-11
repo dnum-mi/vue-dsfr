@@ -201,6 +201,7 @@
               { "type": "perf", "section": "⚡ Améliorations de performance" },
               { "type": "ci", "section": "👷 CI/CD" },
               { "type": "test", "section": "✅ Tests" },
+              { "type": "refactor", "hidden": true },
               { "type": "style", "hidden": true }
             ]
           }
