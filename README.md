@@ -39,7 +39,7 @@ et **la fusion doit être demandée dans `develop`.**
 
 ### Détails
 
-Cf [le site officiel](https://vue-ds.fr/guide/guide-developpeur)
+Cf [le site officiel](https://vue-ds.fr/guide/guide-contributeur)
 
 ## Projets utilisant VueDsfr
 
