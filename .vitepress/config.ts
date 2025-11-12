@@ -69,7 +69,7 @@ const guideItems = [
   },
   {
     text: 'Guide du contributeur',
-    link: '/guide/guide-developpeur.md',
+    link: '/guide/guide-contributeur.md',
   },
 ]
 
@@ -488,7 +488,7 @@ export default defineConfig({
         text: 'Guides',
         items: [
           { text: 'Guide de l’utilisateur', link: '/guide/pour-commencer' },
-          { text: 'Guide du contributeur', link: '/guide/guide-developpeur' },
+          { text: 'Guide du contributeur', link: '/guide/guide-contributeur' },
         ],
       },
       {
