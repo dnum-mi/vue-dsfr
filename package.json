@@ -62,7 +62,7 @@
     "dev": "storybook dev -p 6006",
     "vitest": "vitest",
     "coverage": "vitest run --coverage",
-    "test-storybook": "cross-env test-storybook --url ${TEST_STORYBOOK_URL:-http://localhost:6006} --browsers firefox",
+    "test-storybook": "cross-env test-storybook --url ${TEST_STORYBOOK_URL:-http://localhost:6006} --browsers chromium",
     "test": "run-s test:unit",
     "test:watch": "vitest",
     "test:unit": "vitest run",

@@ -70,7 +70,7 @@ export const LiensDEvitement: Story = {
     const canvas = within(canvasElement)
     const title = canvas.getAllByRole('heading', { level: 2 }).at(0) as HTMLHeadingElement
     const lien1 = canvas.getByText('Allons à la question du qu’est-ce ?')
-    const lien2 = canvas.getByText('Allons à la question du comment ?')
+    const lien2 = canvas.getByText('Allons à la question du pourquoi ?')
     expect(lien1).not.toBeVisible()
     expect(lien2).not.toBeVisible()
     title.click()

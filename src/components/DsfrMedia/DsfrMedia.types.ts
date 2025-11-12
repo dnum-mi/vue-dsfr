@@ -1,4 +1,5 @@
 export type DsfrVideoProps = {
+  ariaLabelledbyId?: string
   src: string
   legend?: string
   size?: 'small' | 'medium' | 'large'

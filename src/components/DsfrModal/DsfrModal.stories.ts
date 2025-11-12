@@ -71,51 +71,70 @@ const meta = {
 export default meta
 type Story = StoryObj<typeof meta>
 
-const baseRender = (args: any) => ({
-  components: {
-    DsfrModal,
-    DsfrButton,
-    VIcon,
-  },
-  setup () {
-    const opened = ref(args.opened)
-    const modalOrigin = ref(null)
-
-    const modifiedActions = computed(() => {
-      return args.actions?.map((action: any) => ({
-        ...action,
-        onClick: () => {
-          args.onActionClick(action.label)
-          opened.value = false
-        },
-      }))
-    })
-
-    function close () {
-      args.onClose()
-      opened.value = false
-    }
-
-    return {
-      args,
-      opened,
-      modalOrigin,
-      modifiedActions,
-      open: () => { opened.value = true },
-      close,
-    }
-  },
-})
-
 export const ModaleAvecActions: Story = {
   name: 'Modale avec actions',
-  render: baseRender,
+  render: (args: any) => ({
+    components: {
+      DsfrModal,
+      DsfrButton,
+      VIcon,
+    },
+    setup () {
+      const opened = ref(args.opened)
+      const modalOrigin = ref(null)
+
+      const modifiedActions = computed(() => {
+        return args.actions?.map((action: any) => ({
+          ...action,
+          onClick: () => {
+            args.onActionClick(action.label)
+            opened.value = false
+          },
+        }))
+      })
+
+      function close () {
+        args.onClose()
+        opened.value = false
+      }
+
+      return {
+        args,
+        opened,
+        modalOrigin,
+        modifiedActions,
+        open: () => { opened.value = true },
+        close,
+      }
+    },
+    template: `
+      <DsfrButton
+        label="Ouvre la modale"
+        @click="open()"
+        ref="modalOrigin"
+      />
+      <DsfrModal
+        ref="modal"
+        :opened="opened"
+        :actions="modifiedActions"
+        :is-alert="args.isAlert"
+        :icon="args.icon"
+        :title="args.title"
+        :origin="modalOrigin"
+        :size="args.size"
+        @close="close()"
+      >
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas varius tortor nibh, sit amet tempor nibh finibus et. Aenean eu enim justo. Vestibulum aliquam hendrerit molestie. Mauris malesuada nisi sit amet augue accumsan tincidunt. Maecenas tincidunt, velit ac porttitor pulvinar, tortor eros facilisis libero, vitae commodo nunc quam et ligula. Ut nec ipsum sapien. Interdum et malesuada fames ac ante ipsum primis in faucibus. Integer id nisi nec nulla luctus lacinia non eu turpis. Etiam in ex imperdiet justo tincidunt egestas. Ut porttitor urna ac augue cursus tincidunt sit amet sed orci.</p>
+      </DsfrModal>
+    `,
+  }),
   args: {
     opened: false,
     title: 'Titre de la modale',
     isAlert: false,
     icon: 'ri-checkbox-circle-line',
     size: 'md',
+    onClose: fn(),
     actions: [
       {
         label: 'Valider',
@@ -154,31 +173,53 @@ export const ModaleAvecActions: Story = {
     await delay()
     expect(openModalButton).toHaveFocus()
   },
-  template: `
-    <DsfrButton
-      label="Ouvre la modale"
-      @click="open()"
-      ref="modalOrigin"
-    />
-    <DsfrModal
-      ref="modal"
-      :opened="opened"
-      :actions="modifiedActions"
-      :is-alert="args.isAlert"
-      :icon="args.icon"
-      :title="args.title"
-      :origin="modalOrigin"
-      :size="args.size"
-      @close="close()"
-    >
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas varius tortor nibh, sit amet tempor nibh finibus et. Aenean eu enim justo. Vestibulum aliquam hendrerit molestie. Mauris malesuada nisi sit amet augue accumsan tincidunt. Maecenas tincidunt, velit ac porttitor pulvinar, tortor eros facilisis libero, vitae commodo nunc quam et ligula. Ut nec ipsum sapien. Interdum et malesuada fames ac ante ipsum primis in faucibus. Integer id nisi nec nulla luctus lacinia non eu turpis. Etiam in ex imperdiet justo tincidunt egestas. Ut porttitor urna ac augue cursus tincidunt sit amet sed orci.</p>
-    </DsfrModal>
-  `,
 }
 
 export const ModaleSansPiedDePage: Story = {
   name: 'Modale sans pied de page',
-  render: baseRender,
+  render: (args: any) => ({
+    components: {
+      DsfrModal,
+      DsfrButton,
+      VIcon,
+    },
+    setup () {
+      const opened = ref(args.opened)
+      const modalOrigin = ref(null)
+
+      function close () {
+        args.onClose()
+        opened.value = false
+      }
+
+      return {
+        args,
+        opened,
+        modalOrigin,
+        open: () => { opened.value = true },
+        close,
+      }
+    },
+    template: `
+      <DsfrButton
+        label="Ouvre la modale"
+        @click="open()"
+        ref="modalOrigin"
+      />
+      <DsfrModal
+        ref="modal"
+        :opened="opened"
+        :is-alert="args.isAlert"
+        :icon="args.icon"
+        :title="args.title"
+        :origin="modalOrigin"
+        :size="args.size"
+        @close="close()"
+      >
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas varius tortor nibh, sit amet tempor nibh finibus et. Aenean eu enim justo. Vestibulum aliquam hendrerit molestie. Mauris malesuada nisi sit amet augue accumsan tincidunt. Maecenas tincidunt, velit ac porttitor pulvinar, tortor eros facilisis libero, vitae commodo nunc quam et ligula. Ut nec ipsum sapien. Interdum et malesuada fames ac ante ipsum primis in faucibus. Integer id nisi nec nulla luctus lacinia non eu turpis. Etiam in ex imperdiet justo tincidunt egestas. Ut porttitor urna ac augue cursus tincidunt sit amet sed orci.</p>
+      </DsfrModal>
+    `,
+  }),
   args: {
     opened: false,
     title: 'Titre de la modale',
@@ -187,30 +228,56 @@ export const ModaleSansPiedDePage: Story = {
     size: 'md',
     actions: undefined,
   },
-  template: `
-    <DsfrButton
-      label="Ouvre la modale"
-      @click="open()"
-      ref="modalOrigin"
-    />
-    <DsfrModal
-      ref="modal"
-      :opened="opened"
-      :is-alert="args.isAlert"
-      :icon="args.icon"
-      :title="args.title"
-      :origin="modalOrigin"
-      :size="args.size"
-      @close="close()"
-    >
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas varius tortor nibh, sit amet tempor nibh finibus et. Aenean eu enim justo. Vestibulum aliquam hendrerit molestie. Mauris malesuada nisi sit amet augue accumsan tincidunt. Maecenas tincidunt, velit ac porttitor pulvinar, tortor eros facilisis libero, vitae commodo nunc quam et ligula. Ut nec ipsum sapien. Interdum et malesuada fames ac ante ipsum primis in faucibus. Integer id nisi nec nulla luctus lacinia non eu turpis. Etiam in ex imperdiet justo tincidunt egestas. Ut porttitor urna ac augue cursus tincidunt sit amet sed orci.</p>
-    </DsfrModal>
-  `,
 }
 
 export const ModaleAvecFooterPersonnalise: Story = {
   name: 'Modale avec footer personnalisé',
-  render: baseRender,
+  render: (args: any) => ({
+    components: {
+      DsfrModal,
+      DsfrButton,
+      VIcon,
+    },
+    setup () {
+      const opened = ref(args.opened)
+      const modalOrigin = ref(null)
+
+      function close () {
+        args.onClose()
+        opened.value = false
+      }
+
+      return {
+        args,
+        opened,
+        modalOrigin,
+        open: () => { opened.value = true },
+        close,
+      }
+    },
+    template: `
+      <DsfrButton
+        label="Ouvre la modale"
+        @click="open()"
+        ref="modalOrigin"
+      />
+      <DsfrModal
+        ref="modal"
+        :opened="opened"
+        :is-alert="args.isAlert"
+        :icon="args.icon"
+        :title="args.title"
+        :origin="modalOrigin"
+        :size="args.size"
+        @close="close()"
+      >
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas varius tortor nibh, sit amet tempor nibh finibus et. Aenean eu enim justo. Vestibulum aliquam hendrerit molestie. Mauris malesuada nisi sit amet augue accumsan tincidunt. Maecenas tincidunt, velit ac porttitor pulvinar, tortor eros facilisis libero, vitae commodo nunc quam et ligula. Ut nec ipsum sapien. Interdum et malesuada fames ac ante ipsum primis in faucibus. Integer id nisi nec nulla luctus lacinia non eu turpis. Etiam in ex imperdiet justo tincidunt egestas. Ut porttitor urna ac augue cursus tincidunt sit amet sed orci.</p>
+        <template #footer>
+          Ici pied de page personnalisé
+        </template>
+      </DsfrModal>
+    `,
+  }),
   args: {
     opened: false,
     title: 'Titre de la modale',
@@ -219,26 +286,4 @@ export const ModaleAvecFooterPersonnalise: Story = {
     size: 'md',
     actions: undefined,
   },
-  template: `
-    <DsfrButton
-      label="Ouvre la modale"
-      @click="open()"
-      ref="modalOrigin"
-    />
-    <DsfrModal
-      ref="modal"
-      :opened="opened"
-      :is-alert="args.isAlert"
-      :icon="args.icon"
-      :title="args.title"
-      :origin="modalOrigin"
-      :size="args.size"
-      @close="close()"
-    >
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas varius tortor nibh, sit amet tempor nibh finibus et. Aenean eu enim justo. Vestibulum aliquam hendrerit molestie. Mauris malesuada nisi sit amet augue accumsan tincidunt. Maecenas tincidunt, velit ac porttitor pulvinar, tortor eros facilisis libero, vitae commodo nunc quam et ligula. Ut nec ipsum sapien. Interdum et malesuada fames ac ante ipsum primis in faucibus. Integer id nisi nec nulla luctus lacinia non eu turpis. Etiam in ex imperdiet justo tincidunt egestas. Ut porttitor urna ac augue cursus tincidunt sit amet sed orci.</p>
-      <template #footer>
-        Ici pied de page personnalisé
-      </template>
-    </DsfrModal>
-  `,
 }

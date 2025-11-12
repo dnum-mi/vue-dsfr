@@ -2,8 +2,6 @@ import type { Meta, StoryObj } from '@storybook/vue3-vite'
 
 import { expect, fn, within } from 'storybook/test'
 
-import VIcon from '../VIcon/VIcon.vue'
-
 import DsfrButton from './DsfrButton.vue'
 
 /**
@@ -68,16 +66,12 @@ export const BoutonPrimaire: Story = {
     iconRight: false,
     noOutline: false,
     size: undefined,
-    theClick: fn(),
+    onClick: fn(),
   },
   render: (args) => ({
     components: { DsfrButton },
     setup () {
-      const onClickWrapper = () => {
-        args.theClick()
-        args.onClick()
-      }
-      return { args, onClickWrapper }
+      return { args }
     },
     template: `
       <DsfrButton
@@ -90,16 +84,16 @@ export const BoutonPrimaire: Story = {
         :no-outline="args.noOutline"
         :icon-only="args.iconOnly"
         :icon-right="args.iconRight"
-        @click="onClickWrapper()"
+        @click="args.onClick()"
       />
     `,
   }),
   play: async ({ canvasElement, args }) => {
     const canvas = within(canvasElement)
     const button = canvas.getByRole('button')
-    expect(args.theClick).not.toHaveBeenCalled()
+    expect(args.onClick).not.toHaveBeenCalled()
     button.click()
-    expect(args.theClick).toHaveBeenCalledOnce()
+    expect(args.onClick).toHaveBeenCalledOnce()
   },
 }
 
@@ -256,11 +250,6 @@ export const BoutonTertiaireSansBordure: Story = {
     expect(button).toHaveClass('fr-btn--tertiary-no-outline')
   },
 }
-BoutonTertiaireSansBordure.play = async ({ canvasElement }) => {
-  const canvas = within(canvasElement)
-  const button = canvas.getByRole('button')
-  expect(button).toHaveClass('fr-btn--tertiary-no-outline')
-}
 
 export const SuiteDeBoutons: Story = {
   args: {
@@ -292,7 +281,6 @@ export const SuiteDeBoutons: Story = {
   render: (args) => ({
     components: {
       DsfrButton,
-      VIcon,
     },
     setup () {
       return { args }

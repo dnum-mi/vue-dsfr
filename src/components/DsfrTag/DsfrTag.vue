@@ -74,19 +74,19 @@ const iconProps = computed(() => typeof props.icon === 'string'
 }
 
 .success {
-  color: var(--success);
-  background-color: var(--bg-success);
+  color: var(--success-425-625);
+  background-color: var(--success-975-75);
 }
 .error {
-  color: var(--error);
-  background-color: var(--bg-error);
+  color: var(--error-425-625);
+  background-color: var(--error-950-100);
 }
 .warning {
-  color: var(--warning);
-  background-color: var(--bg-warning);
+  color: var(--warning-425-625);
+  background-color: var(--warning-950-100);
 }
 .info {
-  color: var(--info);
-  background-color: var(--bg-info);
+  color: var(--info-425-625);
+  background-color: var(--info-950-100);
 }
 </style>
