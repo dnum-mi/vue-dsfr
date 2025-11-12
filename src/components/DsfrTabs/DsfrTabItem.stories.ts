@@ -1,15 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/vue3-vite'
 
-import { setup } from '@storybook/vue3-vite'
-
-import VIcon from '../VIcon/VIcon.vue'
-
+import DsfrTabContent from './DsfrTabContent.vue'
 import DsfrTabItem from './DsfrTabItem.vue'
 import DsfrTabs from './DsfrTabs.vue'
-
-setup((app) => {
-  app.component('VIcon', VIcon)
-})
 
 const meta = {
   component: DsfrTabItem,
@@ -49,6 +42,7 @@ export const TitreDOnglet: Story = {
   render: (args) => ({
     components: {
       DsfrTabs,
+      DsfrTabContent,
       DsfrTabItem,
     },
 
@@ -57,7 +51,7 @@ export const TitreDOnglet: Story = {
     },
 
     template: `
-    <DsfrTabs :model-value="0">
+    <DsfrTabs v-model="0">
       <template #tab-items>
         <DsfrTabItem
           :panel-id="panelId"
@@ -67,6 +61,12 @@ export const TitreDOnglet: Story = {
           {{ tabTitle }}
         </DsfrTabItem>
       </template>
+      <DsfrTabContent
+        :panel-id="panelId"
+        :tab-id="tabId"
+      >
+        Contenu de l’onglet
+      </DsfrTabContent>
     </DsfrTabs>
   `,
   }),

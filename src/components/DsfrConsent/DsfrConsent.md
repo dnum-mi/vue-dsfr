@@ -20,6 +20,7 @@ Le gestionnaire de consentement est constitué des éléments suivants :
 |  nom                    |   type        |  défaut          | obligatoire |
 | ----------------------- | ---------     | ---------------- | --------    |
 | `url`                   | *`string`*    | `''`             |             |
+| `ariaControlsId`        | *`string`*    | `''`             |             |
 
 ## 📡 Évenements
 

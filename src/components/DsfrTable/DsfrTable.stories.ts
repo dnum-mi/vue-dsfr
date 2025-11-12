@@ -133,8 +133,8 @@ export const TableauEntier: Story = {
         '06 07 03 19 84',
         {
           component: 'DsfrTag',
-          label: 'Erreur',
-          class: 'error',
+          label: 'Danger',
+          class: 'warning',
         },
       ],
       [
@@ -229,8 +229,8 @@ export const TableauEntier: Story = {
         '06 00 00 19 96',
         {
           component: 'DsfrTag',
-          label: 'Erreur',
-          class: 'error',
+          label: 'Danger',
+          class: 'warning',
         },
       ],
       [
@@ -272,7 +272,7 @@ export const TableauEntier: Story = {
     ],
     noCaption: false,
     pagination: true,
-    currentPage: 2,
+    currentPage: 1,
     resultsDisplayed: 5,
     onClickCell: fn(),
     onClickRow: fn(),

@@ -47,8 +47,7 @@ watch(expanded, (newValue, oldValue) => {
 </script>
 
 <template>
-  <nav
-    role="navigation"
+  <div
     class="fr-translate  fr-nav"
   >
     <div class="fr-nav__item">
@@ -86,5 +85,5 @@ watch(expanded, (newValue, oldValue) => {
         </ul>
       </div>
     </div>
-  </nav>
+  </div>
 </template>

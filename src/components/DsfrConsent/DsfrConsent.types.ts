@@ -1,1 +1,4 @@
-export type DsfrConsentProps = { url?: string }
+export type DsfrConsentProps = {
+  url?: string
+  ariaControlsId?: string
+}

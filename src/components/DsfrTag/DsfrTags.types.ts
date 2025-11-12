@@ -13,7 +13,9 @@ export type DsfrTagProps<T = string> = {
   selected: boolean | undefined
   value: T
 } | {
-  selectable?: false
+  selectable?: false | undefined
+  selected?: never
+  value?: never
 })
 
 export type DsfrTagsProps<T = string> = {

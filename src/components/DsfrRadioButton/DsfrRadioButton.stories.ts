@@ -70,6 +70,7 @@ export const BoutonRadio: Story = {
       return {
         ...args,
         modelValue,
+        onUpdateModelValue: args['onUpdate:modelValue'], // Expose explicitement la fonction
       }
     },
     template: `
@@ -87,7 +88,7 @@ export const BoutonRadio: Story = {
             v-model="modelValue"
             v-bind="option"
             :small="small"
-            @update:model-value="args['onUpdate:modelValue']"
+            @update:model-value="onUpdateModelValue"
           />
         </div>
       </fieldset>
@@ -97,6 +98,7 @@ export const BoutonRadio: Story = {
   args: {
     modelValue: '3',
     small: false,
+    'onUpdate:modelValue': fn(),
     options: [
       {
         label: 'Valeur 1',
@@ -118,43 +120,40 @@ export const BoutonRadio: Story = {
       },
     ],
   },
-}
-
-BoutonRadio.play = async ({ canvasElement, args }) => {
-  const canvas = within(canvasElement)
-  const firstInputLabel = canvas.getByText(args.options.at(0).label)
-  const initialCheckedInputLabel = canvas.getByText(args.options.at(2).label)
-  expect(initialCheckedInputLabel).toHaveClass('fr-label')
-  expect(firstInputLabel).toHaveClass('fr-label')
-  const firstInput = canvas.getAllByRole('radio').at(0) as HTMLInputElement
-  const initialCheckedInput = canvas.getAllByRole('radio').at(2) as HTMLInputElement
-  expect(initialCheckedInput.parentElement).toHaveClass('fr-radio-group')
-  expect(firstInput).not.toBeChecked()
-  expect(initialCheckedInput).toBeChecked()
-  await firstInputLabel.click()
-  expect(firstInput).toBeChecked()
-  expect(initialCheckedInput).not.toBeChecked()
-  expect(args['onUpdate:modelValue']).toHaveBeenCalledWith('1')
+  play: async ({ canvasElement, args }) => {
+    const canvas = within(canvasElement)
+    const firstInputLabel = canvas.getByText(args.options.at(0).label)
+    const initialCheckedInputLabel = canvas.getByText(args.options.at(2).label)
+    expect(initialCheckedInputLabel).toHaveClass('fr-label')
+    expect(firstInputLabel).toHaveClass('fr-label')
+    const firstInput = canvas.getAllByRole('radio').at(0) as HTMLInputElement
+    const initialCheckedInput = canvas.getAllByRole('radio').at(2) as HTMLInputElement
+    expect(initialCheckedInput.parentElement).toHaveClass('fr-radio-group')
+    expect(firstInput).not.toBeChecked()
+    expect(initialCheckedInput).toBeChecked()
+    await firstInputLabel.click()
+    expect(firstInput).toBeChecked()
+    expect(initialCheckedInput).not.toBeChecked()
+    expect(args['onUpdate:modelValue']).toHaveBeenCalledWith('1')
+  },
 }
 
 export const BoutonRadioRiche: Story = {
   render: (args) => ({
     components: { DsfrRadioButton, DsfrRadioButtonSet },
     setup () {
-      const modelValue = ref(args.modelValue)
       return {
-        ...args,
-        modelValue,
+        args,
       }
     },
     template: `
       <DsfrRadioButtonSet>
         <DsfrRadioButton
-          v-for="(option, i) of options"
+          v-for="(option, i) of args.options"
           :key="i"
-          v-model="modelValue"
+          v-model="args.modelValue"
           v-bind="option"
-          :small="small"
+          :small="args.small"
           @update:model-value="args['onUpdate:modelValue']"
         />
       </DsfrRadioButtonSet>
@@ -163,6 +162,7 @@ export const BoutonRadioRiche: Story = {
   args: {
     modelValue: '3',
     small: false,
+    'onUpdate:modelValue': fn(),
     options: [
       {
         label: 'Valeur 1',
@@ -190,25 +190,25 @@ export const BoutonRadioRiche: Story = {
       },
     ],
   },
-}
-BoutonRadioRiche.play = async ({ canvasElement, args }) => {
-  const canvas = within(canvasElement)
-  const firstInputLabel = canvas.getByText(args.options.at(0)!.label)
-  const initialCheckedInputLabel = canvas.getByText(args.options.at(2)!.label)
-  const firstInput = canvas.getAllByRole('radio').at(0) as HTMLInputElement
-  const initialCheckedInput = canvas.getAllByRole('radio').at(2) as HTMLInputElement
-  const firstInputImg = canvas.getByTitle(args.options.at(0)!.imgTitle)
-  const initialCheckedInputImg = canvas.getByTitle(args.options.at(2)!.imgTitle)
+  play: async ({ canvasElement, args }) => {
+    const canvas = within(canvasElement)
+    const firstInputLabel = canvas.getByText(args.options.at(0)!.label)
+    const initialCheckedInputLabel = canvas.getByText(args.options.at(2)!.label)
+    const firstInput = canvas.getAllByRole('radio').at(0) as HTMLInputElement
+    const initialCheckedInput = canvas.getAllByRole('radio').at(2) as HTMLInputElement
+    const firstInputImg = canvas.getByTitle(args.options.at(0)!.imgTitle)
+    const initialCheckedInputImg = canvas.getByTitle(args.options.at(2)!.imgTitle)
 
-  expect(firstInputImg).toHaveAttribute('src', args.options.at(0)!.img)
-  expect(initialCheckedInputImg).toHaveAttribute('src', args.options.at(2)!.img)
-  expect(initialCheckedInputLabel).toHaveClass('fr-label')
-  expect(firstInputLabel).toHaveClass('fr-label')
-  expect(initialCheckedInput.parentElement).toHaveClass('fr-radio-group')
-  expect(firstInput).not.toBeChecked()
-  expect(initialCheckedInput).toBeChecked()
-  await firstInputLabel.click()
-  expect(firstInput).toBeChecked()
-  expect(initialCheckedInput).not.toBeChecked()
-  expect(args['onUpdate:modelValue']).toHaveBeenCalledWith('1')
+    expect(firstInputImg).toHaveAttribute('src', args.options.at(0)!.img)
+    expect(initialCheckedInputImg).toHaveAttribute('src', args.options.at(2)!.img)
+    expect(initialCheckedInputLabel).toHaveClass('fr-label')
+    expect(firstInputLabel).toHaveClass('fr-label')
+    expect(initialCheckedInput.parentElement).toHaveClass('fr-radio-group')
+    expect(firstInput).not.toBeChecked()
+    expect(initialCheckedInput).toBeChecked()
+    await firstInputLabel.click()
+    expect(firstInput).toBeChecked()
+    expect(initialCheckedInput).not.toBeChecked()
+    expect(args['onUpdate:modelValue']).toHaveBeenCalledWith('1')
+  },
 }

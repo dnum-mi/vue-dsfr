@@ -36,17 +36,15 @@ jobs:
         run: pnpm check-exports-ci
       - name: Test
         run: pnpm test
-      # - name: Install Playwright with dependencies
-      #   run: pnpx playwright install --with-deps firefox
-
-      - name: Build Storybook
-        run: pnpm build-storybook --quiet
-      # - name: Serve Storybook and run tests
-      #   env:
-      #     TEST_STORYBOOK_URL: http://localhost:6006
+      # - name: Build Storybook
+      #   run: pnpm build-storybook --quiet
+      # - name: Install Playwright browsers (ensuring compatibility)
       #   run: |
-      #     pnpx concurrently -k -s first -n "SB,TEST" -c "magenta,blue" \
-      #       "pnpx http-server storybook-static --port 6006 --silent" \
-      #       "pnpx wait-on tcp:6006 && pnpm test-storybook"
+      #     # Install via the project's playwright version to ensure compatibility
+      #     pnpm exec playwright install chromium
+      #     # Also install system dependencies
+      #     pnpm exec playwright install-deps chromium
+      # - name: Run Storybook tests
+      #   run: pnpx start-server-and-test 'pnpx http-server storybook-static --port 6006 --silent' http://localhost:6006 'pnpm test-storybook'
       - name: Build
         run: pnpm build

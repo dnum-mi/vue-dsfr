@@ -33,6 +33,7 @@ const meta = {
 export default meta
 
 export const Accordeon: StoryObj<typeof meta> = {
+  name: 'Accordéon',
   args: {
     title: 'Un titre d’accordéon',
     id: 'accordeon-1',
@@ -77,6 +78,7 @@ export const Accordeon: StoryObj<typeof meta> = {
 }
 
 export const AccordeonSimple: StoryObj<typeof meta> = {
+  name: 'Accordéon simple',
   args: {
     title: 'Un titre d’accordéon',
   },
@@ -109,6 +111,7 @@ export const AccordeonSimple: StoryObj<typeof meta> = {
 }
 
 export const AccordeonDejaOuvert: StoryObj<typeof meta> = {
+  name: 'Accordéon déjà ouvert',
   args: {
     title: 'Un titre d’accordéon',
   },
@@ -155,6 +158,7 @@ export const AccordeonDejaOuvert: StoryObj<typeof meta> = {
 }
 
 export const AccordeonDansUnAccordeon: StoryObj<typeof meta> = {
+  name: 'Accordéon dans un accordéon',
   args: {
     title: 'Un titre d’accordéon',
   },
@@ -209,6 +213,7 @@ export const AccordeonDansUnAccordeon: StoryObj<typeof meta> = {
 }
 
 export const AccordeonTitreCustom: StoryObj<typeof meta> = {
+  name: 'Accordéon avec titre customisé',
   render: () => ({
     components: {
       DsfrAccordion,
@@ -223,7 +228,7 @@ export const AccordeonTitreCustom: StoryObj<typeof meta> = {
     template: `
       <DsfrAccordionsGroup v-model="selectedAccordion">
         <DsfrAccordion>
-          <template #title><h1>{{title1}}</h1></template>
+          <template #title><h4 class="fr-text--xl" style="color: var(--success-425-625)">{{title1}}</h4></template>
           Contenu de l’accordéon avec titre customisé
         </DsfrAccordion>
         <DsfrAccordion
@@ -237,7 +242,7 @@ export const AccordeonTitreCustom: StoryObj<typeof meta> = {
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement)
     const title1 = canvas.getByText('Un titre d’accordéon customisé')
-    expect(title1.tagName).toBe('H1')
+    expect(title1.tagName).toBe('H4')
     const content1 = canvas.getByText('Contenu de l’accordéon avec titre customisé')
     expect(content1).not.toBeVisible()
     await title1.click()
