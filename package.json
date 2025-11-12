@@ -133,6 +133,7 @@
     "eslint-plugin-storybook": "10.0.2",
     "eslint-plugin-vue": "^9.32.0",
     "globby": "^14.1.0",
+    "http-server": "^14.1.1",
     "husky": "^9.1.7",
     "inquirer": "^12.4.1",
     "jsdom": "^26.0.0",
@@ -184,9 +185,18 @@
         {
           "preset": "conventionalcommits",
           "releaseRules": [
-            { "type": "docs", "release": "patch" },
-            { "type": "refactor", "release": false },
-            { "type": "style", "release": false }
+            {
+              "type": "docs",
+              "release": "patch"
+            },
+            {
+              "type": "refactor",
+              "release": false
+            },
+            {
+              "type": "style",
+              "release": false
+            }
           ]
         }
       ],
@@ -196,14 +206,38 @@
           "preset": "conventionalcommits",
           "presetConfig": {
             "types": [
-              { "type": "feat", "section": "✨ Nouvelles fonctionnalités" },
-              { "type": "fix", "section": "🐛 Corrections de bugs" },
-              { "type": "docs", "section": "📚 Documentation" },
-              { "type": "perf", "section": "⚡ Améliorations de performance" },
-              { "type": "ci", "section": "👷 CI/CD" },
-              { "type": "test", "section": "✅ Tests" },
-              { "type": "refactor", "hidden": true },
-              { "type": "style", "hidden": true }
+              {
+                "type": "feat",
+                "section": "✨ Nouvelles fonctionnalités"
+              },
+              {
+                "type": "fix",
+                "section": "🐛 Corrections de bugs"
+              },
+              {
+                "type": "docs",
+                "section": "📚 Documentation"
+              },
+              {
+                "type": "perf",
+                "section": "⚡ Améliorations de performance"
+              },
+              {
+                "type": "ci",
+                "section": "👷 CI/CD"
+              },
+              {
+                "type": "test",
+                "section": "✅ Tests"
+              },
+              {
+                "type": "refactor",
+                "hidden": true
+              },
+              {
+                "type": "style",
+                "hidden": true
+              }
             ]
           }
         }
