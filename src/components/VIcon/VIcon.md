@@ -57,8 +57,33 @@ Voici les différentes propriétés que vous pouvez utiliser avec ce composant :
 | `color`        | `string`                            | `undefined`     | Couleur principale de l'icône.                                                                                                                           |
 | `fill`         | `string`                            | `undefined`     | Couleur de remplissage de l'icône (utilise *in fine* `color` comme conseillé dans la doc de @iconify/vue). Cette prop n’existe que pour la rétrocompatibilité avec OhVueIcon, préférer l’utilisation de la prop `color`.                                                                                                                      |
 | `inverse`      | `boolean`                           | `false`         | Applique une couleur inversée à l'icône.                                                                                                                 |
-| `ssr`          | `boolean`                           | `false`         | Active le rendu côté serveur (Server-Side Rendering).                                                                                                     |
+| `ssr`          | `boolean`                           | `false`         | Active le rendu côté serveur (Server-Side Rendering).                                |
 | `display`      | `'block' \| 'inline-block' \| 'inline'` | `'inline-block'` | Définit le mode d'affichage de l'icône.                                                                                                                |
+
+## 🔄 Optimisation SSR (🆕 Amélioré)
+
+Le composant VIcon gère intelligemment les problèmes d'hydratation SSR avec une approche simplifiée :
+
+- **`ssr: false` (défaut)** : L'icône est rendue uniquement côté client, évitant tous les problèmes d'hydratation
+- **`ssr: true`** : L'icône est rendue côté serveur avec un fallback temporaire jusqu'à la fin du montage du composant
+- Un symbole temporaire (⏳) est affiché brièvement avant l'affichage de l'icône si `ssr: true`
+
+```vue
+<!-- Recommandé pour la plupart des cas -->
+<VIcon name="ri:home-line" />
+
+<!-- Pour les icônes critiques nécessitant un SSR -->
+<VIcon name="ri:menu-line" :ssr="true" />
+```
+
+::: tip Bonnes pratiques
+
+- Utilisez `ssr: false` (défaut) pour la plupart des icônes
+- Utilisez `ssr: true` seulement pour les icônes critiques (navigation, logo, etc.)
+- Le fallback temporaire disparaît automatiquement après le montage du composant
+- Aucun délai artificiel n'est utilisé, optimisant les performances
+
+:::
 
 ## 📡Événements
 
