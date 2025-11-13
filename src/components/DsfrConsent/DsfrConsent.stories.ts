@@ -35,17 +35,22 @@ type Story = StoryObj<typeof meta>
 export const GestionnaireDeConsentementSimple: Story = {
   args: {
     url: '/',
-  } as any,
+  },
   render: (args) => ({
     components: { DsfrConsent },
     setup () {
-      return { args }
+      return {
+        args,
+        onAcceptAll: args.onAcceptAll,
+        onRefuseAll: args.onRefuseAll,
+        onCustomize: args.onCustomize,
+      }
     },
     template: `
       <DsfrConsent
-        @accept-all="(args as any).onAcceptAll()"
-        @refuse-all="(args as any).onRefuseAll()"
-        @customize="(args as any).onCustomize()"
+        @accept-all="onAcceptAll"
+        @refuse-all="onRefuseAll"
+        @customize="onCustomize"
         :url="args.url"
       />
     `,

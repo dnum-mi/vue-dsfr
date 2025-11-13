@@ -1,16 +1,14 @@
 import type { Meta, StoryObj } from '@storybook/vue3-vite'
 
 import { setup } from '@storybook/vue3-vite'
-import { expect, fn, within } from 'storybook/test'
+import { expect, within } from 'storybook/test'
 
 import DsfrModal from '../DsfrModal/DsfrModal.vue'
-import VIcon from '../VIcon/VIcon.vue'
 
 import DsfrVideo from './DsfrVideo.vue'
 
 setup((app) => {
   app.component('DsfrModal', DsfrModal)
-  app.component('VIcon', VIcon)
 })
 
 const delay = (timeout = 100) =>
@@ -48,9 +46,6 @@ const meta = {
       control: 'text',
       description:
         'Permet d’alterner entre les différents ratio possibles pour le contenu ("32x9", "16x9", "3x2", "4x3", "1x1", "3x4", "2x3") la chaine de caractères changera la classe associée, "16x9" par défaut',
-    },
-    onExpandTranscription: {
-      action: fn(),
     },
   },
 } satisfies Meta<typeof DsfrVideo>

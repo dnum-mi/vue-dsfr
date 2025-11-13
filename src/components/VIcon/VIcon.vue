@@ -10,9 +10,11 @@ const props = withDefaults(defineProps<VIconProps>(), {
   scale: 1,
   verticalAlign: '-0.2em',
   display: 'inline-block',
+  ssr: false, // Changement : ssr false par défaut pour éviter les problèmes d'hydratation
 })
 
 const icon = ref<{ $el: SVGElement } | null>(null)
+const isMounted = ref(false)
 
 const fontSize = computed(() => `${+props.scale * 1.2}rem`)
 const flip = computed(() => {
@@ -40,7 +42,12 @@ async function setTitle () {
     (icon.value?.$el as SVGElement).firstChild?.before(titleEl)
   }
 }
-onMounted(setTitle)
+
+onMounted(() => {
+  // Hydratation terminée, on peut maintenant afficher l'icône en toute sécurité
+  isMounted.value = true
+  setTitle()
+})
 
 const finalName = computed(() => {
   return props.name?.startsWith('vi-') ? props.name.replace(/vi-(.*)/, 'vscode-icons:$1') : props.name ?? ''
@@ -51,11 +58,15 @@ const finalColor = computed(() => {
 </script>
 
 <template>
+  <!-- Rendu conditionnel simple :
+       - Si ssr=false (défaut) : affiche directement l'icône
+       - Si ssr=true : attend que le composant soit monté (hydratation terminée) -->
   <Icon
+    v-if="!props.ssr || isMounted"
     ref="icon"
     :icon="finalName"
     :style="{ fontSize, verticalAlign, display, color: finalColor }"
-    :aria-label="label"
+    :aria-label="props.label"
     class="vicon"
     :class="{
       'vicon-spin': props.animation === 'spin',
@@ -70,14 +81,31 @@ const finalColor = computed(() => {
       'vicon-inverse': props.inverse,
     }"
     :flip
-    :ssr
+    :ssr="props.ssr && isMounted"
   />
+  <!-- Placeholder pendant l'attente du montage (seulement si ssr=true) -->
+  <span
+    v-else-if="props.ssr"
+    :style="{ fontSize, verticalAlign, display, color: finalColor, opacity: 0.7 }"
+    :aria-label="props.label"
+    class="vicon vicon-loading"
+    role="img"
+  >
+    ⏳
+  </span>
 </template>
 
 <style scoped>
 .vicon-inverse {
   color: #fff !important;
 }
+
+.vicon-loading {
+  /* Styles pour le fallback pendant l'hydratation */
+  transition: opacity 0.2s ease;
+  user-select: none;
+}
+
 /* ---------------- spin ---------------- */
 .vicon-spin:not(.vicon-hover),
 .vicon-spin.vicon-hover:hover,

@@ -162,23 +162,20 @@ export const MenuLateralAvecAccordeonEtCheckbox: Story = {
         button-label="Afficher les filtres"
       >
         <DsfrAccordionsGroup>
-          <li
-            v-for="(accordion, name) in args.accordions"
-            :id="\`accordion_\${name}\`"
-            :key="name"
+        <DsfrAccordion
+          v-for="(accordion, name) in args.accordions"
+          :id="\`accordion_\${name}\`"
+          :key="name"
+            :id="name"
+            :title="name"
+            :expanded-id="expandedId"
+            @expand="id => expandedId = id"
           >
-            <DsfrAccordion
-              :id="name"
-              :title="name"
-              :expanded-id="expandedId"
-              @expand="id => expandedId = id"
-            >
-              <DsfrCheckboxSet
-                :options="accordion.options"
-                small
-              />
-            </DsfrAccordion>
-          </li>
+            <DsfrCheckboxSet
+              :options="accordion.options"
+              small
+            />
+          </DsfrAccordion>
         </DsfrAccordionsGroup>
       </DsfrSideMenu>
     `,

@@ -97,7 +97,7 @@ export const MiseEnExergueAvecSlot: Story = {
   }),
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement)
-    const highlight = canvas.getByText('Le fameux slot mis en exergue')
+    const highlight = canvas.getByText('Texte personnalisé de la mise en exergue')
     expect(highlight).toBeVisible()
   },
 }

@@ -3,6 +3,8 @@ import type { DsfrVideoProps } from './DsfrMedia.types'
 
 import DsfrTranscription from '../DsfrTranscription/DsfrTranscription.vue'
 
+import { useRandomId } from '@/utils/random-utils'
+
 export type { DsfrVideoProps }
 
 withDefaults(defineProps<DsfrVideoProps>(), {
@@ -12,6 +14,8 @@ withDefaults(defineProps<DsfrVideoProps>(), {
   ratio: '16x9',
   size: 'medium',
 })
+
+const ariaLabelledbyId = useRandomId('dsfr-video', 'caption')
 </script>
 
 <template>
@@ -28,13 +32,17 @@ withDefaults(defineProps<DsfrVideoProps>(), {
     >
       <iframe
         :src="src"
+        :aria-labelledby="`${ariaLabelledbyId}-caption`"
         class="fr-responsive-vid__player"
         width="100%"
         height="100%"
         allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; fullscreen"
       />
     </div>
-    <div class="fr-content-media__caption">
+    <div
+      :id="`${ariaLabelledbyId}-caption`"
+      class="fr-content-media__caption"
+    >
       {{ legend }}
     </div>
   </figure>

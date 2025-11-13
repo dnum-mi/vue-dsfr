@@ -41,6 +41,7 @@ defineSlots<{
     </div>
     <div class="half  self-center  text-center">
       <img
+        role="presentation"
         class="error-img"
         src="../../assets/img/technical-error.png"
       >

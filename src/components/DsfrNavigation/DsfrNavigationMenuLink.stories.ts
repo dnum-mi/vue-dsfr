@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/vue3-vite'
 
 import DsfrNavigation from './DsfrNavigation.vue'
+import DsfrNavigationItem from './DsfrNavigationItem.vue'
 import DsfrNavigationMenuLink from './DsfrNavigationMenuLink.vue'
 
 const meta = {
@@ -44,6 +45,7 @@ export const NavigationLienMenu: Story = {
   render: (args) => ({
     components: {
       DsfrNavigation,
+      DsfrNavigationItem,
       DsfrNavigationMenuLink,
     },
 
@@ -53,12 +55,14 @@ export const NavigationLienMenu: Story = {
 
     template: `
       <DsfrNavigation>
-        <DsfrNavigationMenuLink
-          :to="args.to"
-          :text="args.text"
-          :icon="args.icon"
-          @click.prevent.stop=""
-        />
+        <DsfrNavigationItem>
+          <DsfrNavigationMenuLink
+            :to="args.to"
+            :text="args.text"
+            :icon="args.icon"
+            @click.prevent.stop=""
+          />
+        </DsfrNavigationItem>
       </DsfrNavigation>
     `,
   }),

@@ -5,7 +5,6 @@ import { ref } from 'vue'
 
 import DsfrAlert from '../DsfrAlert/DsfrAlert.vue'
 import DsfrButton from '../DsfrButton/DsfrButton.vue'
-import VIcon from '../VIcon/VIcon.vue'
 
 import DsfrInput from './DsfrInput.vue'
 
@@ -133,7 +132,7 @@ export const ChampRequis: Story = {
 export const ChampAvecLabelPersonnalise: Story = {
   name: 'Champ avec label personnalisé',
   render: (args) => ({
-    components: { DsfrAlert, DsfrInput, VIcon },
+    components: { DsfrAlert, DsfrInput },
     setup () {
       const show = ref(false)
       return { args, show }
@@ -144,6 +143,7 @@ export const ChampAvecLabelPersonnalise: Story = {
           <div style="display: flex; align-items: center; gap: 0.5rem;">
             <span>{{ args.label }}<span style="color: red;">&nbsp;*</span></span>
             <button
+              aria-label="Afficher l’indice contextuel"
               @mouseover="show = true"
               @mouseout="show = false"
               @focus="show = true"
@@ -153,7 +153,7 @@ export const ChampAvecLabelPersonnalise: Story = {
               <VIcon name="ri-question-fill" />
               <DsfrAlert
                 type="info"
-                :show="show"
+                v-show="show"
                 style="position: absolute; top: 1.5rem; right: -1rem; width: 250px; z-index: 1;"
                 description="Indice contextuel"
               />
@@ -195,6 +195,12 @@ export const ChampDeSaisieDeDate: Story = {
     label: 'Date de naissance',
     hint: 'JJ/MM/AAAA',
   },
+  play: async ({ canvasElement, args }) => {
+    const canvas = within(canvasElement)
+    const input = canvas.getByText(args.label)
+    await userEvent.type(input, '1976-12-12', { delay: 100 })
+    expect(args['onUpdate:modelValue']).toHaveBeenCalledTimes(1)
+  },
 }
 
 export const ZoneDeTexte: Story = {
@@ -228,25 +234,25 @@ export const FocusSurChamp: Story = {
       <div style="display: flex; gap: 1rem; align-items: flex-start;">
         <div style="display: flex; flex-direction: column; gap: 1rem;">
           <DsfrButton @click="focusInput">Focus sur l’input</DsfrButton>
-          <DsfrInput ref="inputRef" v-bind="args" />
+          <DsfrInput ref="inputRef" v-bind="args.input" />
         </div>
         <div style="display: flex; flex-direction: column; gap: 1rem;">
           <DsfrButton @click="focusTextarea">Focus sur le textarea</DsfrButton>
-          <DsfrInput ref="textareaRef" v-bind="args" :is-textarea="true" />
+          <DsfrInput ref="textareaRef" v-bind="args.textarea" :is-textarea="true" />
         </div>
       </div>
     `,
   }),
   args: {
-    ...baseArgs,
+    input: { ...baseArgs, label: 'Label pour le champ de saisie' },
+    textarea: { ...baseArgs, label: 'Label pour la zone de texte' },
   },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement)
     const focusInputButton = canvas.getByText('Focus sur l’input')
     const focusTextareaButton = canvas.getByText('Focus sur le textarea')
-    const inputs = canvas.getAllByLabelText(baseArgs.label)
-    const input = inputs[0]
-    const textarea = inputs[1]
+    const input = canvas.getByLabelText('Label pour le champ de saisie Texte de description additionnel')
+    const textarea = canvas.getByLabelText('Label pour la zone de texte Texte de description additionnel')
 
     await userEvent.click(focusInputButton)
     await expect(input).toHaveFocus()

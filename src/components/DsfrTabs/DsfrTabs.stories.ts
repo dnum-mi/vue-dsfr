@@ -116,15 +116,11 @@ export const OngletsSimples: Story = {
     expect(thirdTab).not.toHaveAttribute('aria-selected', 'true')
     expect(firstTabPanel).toHaveClass('fr-tabs__panel--selected')
     expect(firstTab).toHaveAttribute('aria-selected', 'true')
-    await userEvent.type(firstTab, '{arrowup}')
-    expect(firstTabPanel).not.toHaveClass('fr-tabs__panel--selected')
-    expect(firstTab).not.toHaveAttribute('aria-selected', 'true')
-    expect(fourthTabPanel).toHaveClass('fr-tabs__panel--selected')
-    expect(fourthTab).toHaveAttribute('aria-selected', 'true')
-    await userEvent.type(fourthTab, '{arrowdown}')
     await userEvent.tab()
     expect(firstTabPanel).toHaveFocus()
+    await userEvent.type(firstTab, '{arrowleft}')
     await userEvent.tab()
+    expect(fourthTabPanel).toHaveFocus()
   },
 }
 
@@ -221,6 +217,7 @@ export const OngletsComplexes: Story = {
     tabContents: [],
     tabListName,
     tabTitles: customTabTitles,
+    modelValue: 0,
   },
   play: async ({ canvasElement }: { canvasElement: HTMLElement }) => {
     const canvas = within(canvasElement)
@@ -246,15 +243,11 @@ export const OngletsComplexes: Story = {
     expect(thirdTab).not.toHaveAttribute('aria-selected', 'true')
     expect(firstTabPanel).toHaveClass('fr-tabs__panel--selected')
     expect(firstTab).toHaveAttribute('aria-selected', 'true')
-    await userEvent.type(firstTab, '{arrowup}')
-    expect(firstTabPanel).not.toHaveClass('fr-tabs__panel--selected')
-    expect(firstTab).not.toHaveAttribute('aria-selected', 'true')
-    expect(fourthTabPanel).toHaveClass('fr-tabs__panel--selected')
-    expect(fourthTab).toHaveAttribute('aria-selected', 'true')
-    await userEvent.type(fourthTab, '{arrowdown}')
     await userEvent.tab()
     expect(firstTabPanel).toHaveFocus()
+    await userEvent.type(firstTab, '{arrowleft}')
     await userEvent.tab()
+    expect(fourthTabPanel).toHaveFocus()
     await userEvent.click(buttons[2] as HTMLButtonElement)
     expect(firstTab).not.toHaveAttribute('aria-selected', 'true')
     expect(secondTab).not.toHaveAttribute('aria-selected', 'true')
@@ -328,8 +321,8 @@ export const OngletsAvecAccordeon: Story = {
   },
   play: async ({ canvasElement }: { canvasElement: HTMLElement }) => {
     const canvas = within(canvasElement)
-    const thirdAccordionTitle = canvas.getByText('Un titre d\'accordéon 3')
-    const thirdAccordion = canvas.getByText('Contenu de l\'accordéon 3')
+    const thirdAccordionTitle = canvas.getByText('Un titre d’accordéon 3')
+    const thirdAccordion = canvas.getByText('Contenu de l’accordéon 3')
     expect(thirdAccordionTitle).toBeVisible()
     expect(thirdAccordion).not.toBeVisible()
     await userEvent.click(thirdAccordionTitle)

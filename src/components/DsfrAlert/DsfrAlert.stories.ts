@@ -69,7 +69,7 @@ export const AlerteSimple: Story = {
     type: 'info',
     title: 'Titre de l’alerte',
     description: 'Description de l’alerte',
-    closeable: false,
+    closeable: true,
     small: false,
     closeButtonLabel: 'Fermer l’alerte',
     titleTag: 'h2',
@@ -107,10 +107,10 @@ export const AlerteSimple: Story = {
   }),
   play: async ({ canvasElement }: { canvasElement: HTMLElement }) => {
     const canvas = within(canvasElement)
-    const alert = canvas.getByText('Titre alerte')
+    const alert = canvas.getByText('Titre de l’alerte')
     expect(alert).toBeVisible()
-    expect(alert).toContainHTML('Titre alerte')
-    expect(alert.parentElement).toContainHTML('Description du message')
+    expect(alert).toContainHTML('Titre de l’alerte')
+    expect(alert.parentElement).toContainHTML('Description de l’alerte')
     const closeButton = alert.parentElement?.querySelector('button') as HTMLButtonElement
     closeButton?.click()
     await delay(500)

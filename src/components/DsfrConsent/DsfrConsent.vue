@@ -74,7 +74,7 @@ const linkProps = computed(() => ({ [isExternalLink.value ? 'href' : 'to']: prop
       <button
         class="fr-btn fr-btn--secondary"
         data-fr-opened="false"
-        aria-controls="fr-consent-modal"
+        :aria-controls="ariaControlsId"
         title="Personnaliser les cookies"
         @click.stop="$emit('customize')"
       >
