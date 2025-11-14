@@ -1,0 +1,74 @@
+name: Release Please
+
+on:
+  push:
+    paths:
+      - 'packages/nuxt-module/**'
+    branches:
+      - main
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  release-please:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: 'Guard: Only run if commits touch nuxt-module'
+        shell: bash
+        run: |
+          echo "Vérification des commits pour packages/nuxt-module..."
+          # Récupère la liste des commits depuis le dernier tag
+          LAST_TAG=$(git describe --tags --abbrev=0 2>/dev/null || echo "")
+          if [ -n "$LAST_TAG" ]; then
+            RANGE="$LAST_TAG..HEAD"
+          else
+            RANGE="HEAD"
+          fi
+          # Filtre les commits qui modifient le dossier
+          MATCH=$(git log --pretty=format:'%H' $RANGE | while read COMMIT; do
+            if git show --pretty="" --name-only $COMMIT | grep -qE '^packages/nuxt-module/'; then
+              echo $COMMIT
+            fi
+          done)
+          if [ -z "$MATCH" ]; then
+            echo "Aucun commit ne modifie packages/nuxt-module. Annulation du job."
+            exit 0
+          fi
+          echo "Commits concernés : $MATCH"
+
+      - name: Release Please
+        id: release
+        uses: google-github-actions/release-please-action@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          release-type: node
+          target-branch: main
+
+      - name: Install node 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          registry-url: 'https://registry.npmjs.org'
+        if: ${{ steps.release.outputs.release_created }}
+
+      - run: npm i -g --force corepack@latest && corepack enable
+        if: ${{ steps.release.outputs.release_created }}
+
+      - name: Install dependencies
+        run: npx nypm@latest i
+        if: ${{ steps.release.outputs.release_created }}
+
+      - run: npm run dev:prepare
+        if: ${{ steps.release.outputs.release_created }}
+
+      - run: npm run release
+        if: ${{ steps.release.outputs.release_created }}
+        env:
+          NPM_TOKEN: ${{secrets.NPM_TOKEN}}
