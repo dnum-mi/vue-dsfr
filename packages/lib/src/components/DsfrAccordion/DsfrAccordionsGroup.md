@@ -28,6 +28,7 @@ Il est donc possible (et recommandé) d’utiliser la directive `v-model` sur ce
 
 ## 🧩 Slots
 
+- **`default`** : Slot par défaut pour le contenu du groupe d'accordéons. Ce slot contiendra les composants `DsfrAccordion` enfants.
 
 ## 📝 Exemple
 
