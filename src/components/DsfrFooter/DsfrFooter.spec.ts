@@ -142,7 +142,7 @@ describe('DsfrFooter', () => {
     expect(getByTestId(testIdMentionsLegales)).toHaveClass('fr-footer__bottom-link')
   })
 
-   it('should render provided mandatoryLinks when passed as prop', async () => {
+  it('should render provided mandatoryLinks when passed as prop', async () => {
     // Given
     const mandatoryLinks = [
       { label: 'Cookies', to: '/cookies' },
