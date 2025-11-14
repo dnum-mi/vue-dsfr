@@ -18,10 +18,10 @@ const toaster = useToaster()
  *
  * @returns {Promise.<CommuneResponse[]>} - Promesse contenant la liste des communes correspondant à la recherche
  */
-const getCityListByQuery = (query) =>
+const getCityListByQuery = query =>
   fetch(
     `https://geo.api.gouv.fr/communes?nom=${query}&fields=codesPostaux`,
-  ).then((res) => res.json())
+  ).then(res => res.json())
 
 /**
  * @async
@@ -33,14 +33,14 @@ const getCityListByQuery = (query) =>
  *                                 sous la forme "Nom (codePostal)". Une même ville peut apparaître plusieurs fois
  *                                 si elle a plusieurs codes postaux.
  */
-const getCityListWithZipCodeByQuery = async (query) =>
+const getCityListWithZipCodeByQuery = async query =>
   (await getCityListByQuery(query))
     .map(({ nom, codesPostaux }) => {
       if (codesPostaux.length === 1) {
         return `${nom} (${codesPostaux[0]})`
       }
 
-      return codesPostaux.map((codePostal) => `${nom} (${codePostal})`)
+      return codesPostaux.map(codePostal => `${nom} (${codePostal})`)
     })
     .flat()
 
@@ -49,13 +49,13 @@ const cityQuery = ref('')
 watch(
   cityQuery,
   pDebounce(async (query) => {
-    cityList.value =
-      cityQuery.value === '' ? [] : await getCityListWithZipCodeByQuery(query)
+    cityList.value
+      = cityQuery.value === '' ? [] : await getCityListWithZipCodeByQuery(query)
   }, 300),
 )
 
 const selectAddress = (address) => {
-  console.log(address) // eslint-disable-line no-console
+  console.log(address)
 }
 
 const isLoading = ref(false)

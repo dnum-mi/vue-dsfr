@@ -14,7 +14,7 @@ const config: UserConfig = {
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./', import.meta.url)),
-      vue: 'vue/dist/vue.esm-bundler.js',
+      'vue': 'vue/dist/vue.esm-bundler.js',
     },
   },
 }

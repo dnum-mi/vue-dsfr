@@ -20,7 +20,7 @@ const languages = [
 ]
 
 const changeLanguage = (language) => {
-  console.log('Select ', JSON.stringify(language)) // eslint-disable-line no-console
+  console.log('Select ', JSON.stringify(language))
 }
 </script>
 

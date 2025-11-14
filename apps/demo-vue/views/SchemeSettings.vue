@@ -26,7 +26,9 @@ onMounted(() => {
   const { theme, scheme, setScheme } = useScheme()
   preferences.scheme = scheme.value
 
-  watchEffect(() => { preferences.theme = theme.value })
+  watchEffect(() => {
+    preferences.theme = theme.value
+  })
 
   watchEffect(() => setScheme(preferences.scheme))
 })

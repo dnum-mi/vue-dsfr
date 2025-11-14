@@ -29,7 +29,9 @@ function selectOption (option) {
 const displayAtTheTop = ref(false)
 
 const looseFocus = () => {
-  setTimeout(() => { hasFocus.value = false }, 100)
+  setTimeout(() => {
+    hasFocus.value = false
+  }, 100)
 }
 
 watch(displayOptions, () => {
@@ -84,9 +86,11 @@ function checkKeyboardNav ($event) {
   if ($event.key === 'Enter') {
     selectOption(props.options[activeOption.value])
     hasFocus.value = false
-  } else if ($event.key === 'ArrowUp') {
+  }
+  else if ($event.key === 'ArrowUp') {
     moveToPreviousOption()
-  } else if ($event.key === 'ArrowDown') {
+  }
+  else if ($event.key === 'ArrowDown') {
     moveToNextOption()
   }
 }
