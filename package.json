@@ -27,18 +27,12 @@
     "docs:dev": "cross-env VITEPRESS=true vitepress dev",
     "docs:build": "cross-env VITEPRESS=true vitepress build",
     "docs:preview": "cross-env VITEPRESS=true vitepress preview",
-    "commitlint": "commitlint --edit",
-    "semantic-release": "semantic-release"
+    "commitlint": "commitlint --edit"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^4.1.1",
     "@commitlint/cli": "^19.7.1",
     "@commitlint/config-conventional": "^19.7.1",
-    "@semantic-release/changelog": "^6.0.3",
-    "@semantic-release/commit-analyzer": "^13.0.0",
-    "@semantic-release/github": "^11.0.0",
-    "@semantic-release/npm": "^12.0.0",
-    "@semantic-release/release-notes-generator": "^14.0.0",
     "commitlint": "^19.7.1",
     "cross-env": "^7.0.3",
     "eslint": "^9.20.0",
@@ -46,98 +40,11 @@
     "husky": "^9.1.7",
     "lint-staged": "^15.4.3",
     "pnpm": "^10.2.1",
-    "semantic-release": "^24.0.0",
     "turbo": "^2.3.4",
     "vitepress": "^1.6.3"
   },
   "lint-staged": {
     "*.{vue,js,jsx,ts,tsx}": "turbo run lint --"
-  },
-  "release": {
-    "branches": [
-      "main",
-      {
-        "name": "beta",
-        "prerelease": true,
-        "channel": "beta"
-      },
-      {
-        "name": "next",
-        "prerelease": true,
-        "channel": "next"
-      }
-    ],
-    "assets": [
-      "dist/*.js",
-      "dist/*.css"
-    ],
-    "plugins": [
-      [
-        "@semantic-release/commit-analyzer",
-        {
-          "preset": "conventionalcommits",
-          "releaseRules": [
-            {
-              "type": "docs",
-              "release": "patch"
-            },
-            {
-              "type": "refactor",
-              "release": false
-            },
-            {
-              "type": "style",
-              "release": false
-            }
-          ]
-        }
-      ],
-      [
-        "@semantic-release/release-notes-generator",
-        {
-          "preset": "conventionalcommits",
-          "presetConfig": {
-            "types": [
-              {
-                "type": "feat",
-                "section": "✨ Nouvelles fonctionnalités"
-              },
-              {
-                "type": "fix",
-                "section": "🐛 Corrections de bugs"
-              },
-              {
-                "type": "docs",
-                "section": "📚 Documentation"
-              },
-              {
-                "type": "perf",
-                "section": "⚡ Améliorations de performance"
-              },
-              {
-                "type": "ci",
-                "section": "👷 CI/CD"
-              },
-              {
-                "type": "test",
-                "section": "✅ Tests"
-              },
-              {
-                "type": "refactor",
-                "hidden": true
-              },
-              {
-                "type": "style",
-                "hidden": true
-              }
-            ]
-          }
-        }
-      ],
-      "@semantic-release/changelog",
-      "@semantic-release/npm",
-      "@semantic-release/github"
-    ]
   },
   "volta": {
     "node": "22.13.1"

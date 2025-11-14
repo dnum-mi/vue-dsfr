@@ -1,0 +1,115 @@
+name: Release Please (Beta)
+
+on:
+  push:
+    branches:
+      - beta
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  release-please:
+    runs-on: ubuntu-latest
+    outputs:
+      releases_created: ${{ steps.release.outputs.releases_created }}
+      lib_release_created: ${{ steps.release.outputs['packages/lib--release_created'] }}
+      nuxt_module_release_created: ${{ steps.release.outputs['packages/nuxt-module--release_created'] }}
+      create_vue_dsfr_release_created: ${{ steps.release.outputs['packages/create-vue-dsfr--release_created'] }}
+    steps:
+      - name: Run Release Please
+        id: release
+        uses: google-github-actions/release-please-action@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          target-branch: beta
+
+  publish-lib:
+    needs: release-please
+    if: ${{ needs.release-please.outputs.lib_release_created }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10.2.1
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build
+        run: pnpm --filter @gouvminint/vue-dsfr build
+
+      - name: Publish to npm (beta tag)
+        run: pnpm --filter @gouvminint/vue-dsfr publish --tag beta --no-git-checks
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_MININT_TOKEN }}
+
+  publish-nuxt-module:
+    needs: release-please
+    if: ${{ needs.release-please.outputs.nuxt_module_release_created }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10.2.1
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Prepare & Build
+        run: |
+          pnpm --filter @gouvminint/vue-dsfr-nuxt-module run dev:prepare
+          pnpm --filter @gouvminint/vue-dsfr-nuxt-module run prepack
+
+      - name: Publish to npm (beta tag)
+        run: pnpm --filter @gouvminint/vue-dsfr-nuxt-module publish --tag beta --no-git-checks
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_MININT_TOKEN }}
+
+  publish-create-vue-dsfr:
+    needs: release-please
+    if: ${{ needs.release-please.outputs.create_vue_dsfr_release_created }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10.2.1
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Publish to npm (beta tag)
+        run: pnpm --filter create-vue-dsfr publish --tag beta --no-git-checks
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_MININT_TOKEN }}
