@@ -1,0 +1,3 @@
+<template>
+  Mentions légales
+</template>

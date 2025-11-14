@@ -1,0 +1,9 @@
+html,
+body,
+#app {
+  height: 100%;
+}
+
+.h-full {
+  height: 100%;
+}
