@@ -1,5 +1,5 @@
 {
-  "packages/lib": "8.12.0-beta.0",
+  "packages/lib": "8.12.1-beta.0",
   "packages/nuxt-module": "3.1.2-beta.0",
   "packages/create-vue-dsfr": "1.11.0-beta.0"
 }
