@@ -1,0 +1,20 @@
+{
+  "packages": {
+    ".": {
+      "changelog-path": "CHANGELOG.md",
+      "bump-minor-pre-major": false,
+      "bump-patch-for-minor-pre-major": false,
+      "draft": false,
+      "prerelease": false,
+      "changelog-sections": [
+        { "type": "feat", "section": "✨ Fonctionnalités" },
+        { "type": "fix", "section": "✨ Corrections d’anomalies" },
+        { "type": "perf", "section": "⚡ Améliorations des performances" },
+        { "type": "docs", "section": "📖 Documentation" },
+        { "type": "chore", "section": "🧰 Tâches diverses" },
+        { "type": "refactor", "section": "♻️ Remaniement de code" },
+        { "type": "test", "section": "✅ Tests" }
+      ]
+    }
+  }
+}

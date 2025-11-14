@@ -1,0 +1,3 @@
+<template>
+  Données personnelles
+</template>

@@ -1,0 +1,3 @@
+<template>
+  Cookies Policy
+</template>

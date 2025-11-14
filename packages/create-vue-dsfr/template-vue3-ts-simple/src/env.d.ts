@@ -1,0 +1,74 @@
+declare module 'vue' {
+  export interface GlobalComponents {
+    RouterLink: typeof import('vue-router').RouterLink
+    RouterView: typeof import('vue-router').RouterView
+    DsfrAccordion: typeof import ('@gouvminint/vue-dsfr').DsfrAccordion
+    DsfrAccordionsGroup: typeof import ('@gouvminint/vue-dsfr').DsfrAccordionsGroup
+    DsfrAlert: typeof import ('@gouvminint/vue-dsfr').DsfrAlert
+    DsfrBackToTop: typeof import ('@gouvminint/vue-dsfr').DsfrBackToTop
+    DsfrBadge: typeof import ('@gouvminint/vue-dsfr').DsfrBadge
+    DsfrBreadcrumb: typeof import ('@gouvminint/vue-dsfr').DsfrBreadcrumb
+    DsfrButton: typeof import ('@gouvminint/vue-dsfr').DsfrButton
+    DsfrButtonGroup: typeof import ('@gouvminint/vue-dsfr').DsfrButtonGroup
+    DsfrCallout: typeof import ('@gouvminint/vue-dsfr').DsfrCallout
+    DsfrCard: typeof import ('@gouvminint/vue-dsfr').DsfrCard
+    DsfrCheckbox: typeof import ('@gouvminint/vue-dsfr').DsfrCheckbox
+    DsfrCheckboxSet: typeof import ('@gouvminint/vue-dsfr').DsfrCheckboxSet
+    DsfrConsent: typeof import ('@gouvminint/vue-dsfr').DsfrConsent
+    DsfrFieldset: typeof import ('@gouvminint/vue-dsfr').DsfrFieldset
+    DsfrFileUpload: typeof import ('@gouvminint/vue-dsfr').DsfrFileUpload
+    DsfrFollow: typeof import ('@gouvminint/vue-dsfr').DsfrFollow
+    DsfrFooter: typeof import ('@gouvminint/vue-dsfr').DsfrFooter
+    DsfrFooterLinkList: typeof import ('@gouvminint/vue-dsfr').DsfrFooterLinkList
+    DsfrFooterPartners: typeof import ('@gouvminint/vue-dsfr').DsfrFooterPartners
+    DsfrFranceConnect: typeof import ('@gouvminint/vue-dsfr').DsfrFranceConnect
+    DsfrHeader: typeof import ('@gouvminint/vue-dsfr').DsfrHeader
+    DsfrHeaderMenuLink: typeof import ('@gouvminint/vue-dsfr').DsfrHeaderMenuLink
+    DsfrHeaderMenuLinks: typeof import ('@gouvminint/vue-dsfr').DsfrHeaderMenuLinks
+    DsfrHighlight: typeof import ('@gouvminint/vue-dsfr').DsfrHighlight
+    DsfrInput: typeof import ('@gouvminint/vue-dsfr').DsfrInput
+    DsfrInputGroup: typeof import ('@gouvminint/vue-dsfr').DsfrInputGroup
+    DsfrLogo: typeof import ('@gouvminint/vue-dsfr').DsfrLogo
+    DsfrModal: typeof import ('@gouvminint/vue-dsfr').DsfrModal
+    DsfrNavigation: typeof import ('@gouvminint/vue-dsfr').DsfrNavigation
+    DsfrNavigationItem: typeof import ('@gouvminint/vue-dsfr').DsfrNavigationItem
+    DsfrNavigationMegaMenu: typeof import ('@gouvminint/vue-dsfr').DsfrNavigationMegaMenu
+    DsfrNavigationMegaMenuCategory: typeof import ('@gouvminint/vue-dsfr').DsfrNavigationMegaMenuCategory
+    DsfrNavigationMenu: typeof import ('@gouvminint/vue-dsfr').DsfrNavigationMenu
+    DsfrNavigationMenuItem: typeof import ('@gouvminint/vue-dsfr').DsfrNavigationMenuItem
+    DsfrNavigationMenuLink: typeof import ('@gouvminint/vue-dsfr').DsfrNavigationMenuLink
+    DsfrNewsLetter: typeof import ('@gouvminint/vue-dsfr').DsfrNewsLetter
+    DsfrNotice: typeof import ('@gouvminint/vue-dsfr').DsfrNotice
+    DsfrPagination: typeof import ('@gouvminint/vue-dsfr').DsfrPagination
+    DsfrPicture: typeof import ('@gouvminint/vue-dsfr').DsfrPicture
+    DsfrQuote: typeof import ('@gouvminint/vue-dsfr').DsfrQuote
+    DsfrRadioButton: typeof import ('@gouvminint/vue-dsfr').DsfrRadioButton
+    DsfrRadioButtonSet: typeof import ('@gouvminint/vue-dsfr').DsfrRadioButtonSet
+    DsfrSearchBar: typeof import ('@gouvminint/vue-dsfr').DsfrSearchBar
+    DsfrSelect: typeof import ('@gouvminint/vue-dsfr').DsfrSelect
+    DsfrShare: typeof import ('@gouvminint/vue-dsfr').DsfrShare
+    DsfrSideMenu: typeof import ('@gouvminint/vue-dsfr').DsfrSideMenu
+    DsfrSideMenuButton: typeof import ('@gouvminint/vue-dsfr').DsfrSideMenuButton
+    DsfrSideMenuLink: typeof import ('@gouvminint/vue-dsfr').DsfrSideMenuLink
+    DsfrSideMenuList: typeof import ('@gouvminint/vue-dsfr').DsfrSideMenuList
+    DsfrSideMenuListItem: typeof import ('@gouvminint/vue-dsfr').DsfrSideMenuListItem
+    DsfrSkipLinks: typeof import ('@gouvminint/vue-dsfr').DsfrSkipLinks
+    DsfrSocialNetworks: typeof import ('@gouvminint/vue-dsfr').DsfrSocialNetworks
+    DsfrTabContent: typeof import ('@gouvminint/vue-dsfr').DsfrTabContent
+    DsfrTabItem: typeof import ('@gouvminint/vue-dsfr').DsfrTabItem
+    DsfrTable: typeof import ('@gouvminint/vue-dsfr').DsfrTable
+    DsfrTableCell: typeof import ('@gouvminint/vue-dsfr').DsfrTableCell
+    DsfrTableHeader: typeof import ('@gouvminint/vue-dsfr').DsfrTableHeader
+    DsfrTableHeaders: typeof import ('@gouvminint/vue-dsfr').DsfrTableHeaders
+    DsfrTableRow: typeof import ('@gouvminint/vue-dsfr').DsfrTableRow
+    DsfrTabs: typeof import ('@gouvminint/vue-dsfr').DsfrTabs
+    DsfrTag: typeof import ('@gouvminint/vue-dsfr').DsfrTag
+    DsfrTags: typeof import ('@gouvminint/vue-dsfr').DsfrTags
+    DsfrTile: typeof import ('@gouvminint/vue-dsfr').DsfrTile
+    DsfrTiles: typeof import ('@gouvminint/vue-dsfr').DsfrTiles
+    DsfrToggleSwitch: typeof import ('@gouvminint/vue-dsfr').DsfrToggleSwitch
+    DsfrVideo: typeof import ('@gouvminint/vue-dsfr').DsfrVideo
+  }
+}
+
+export {}

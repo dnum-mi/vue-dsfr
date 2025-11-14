@@ -328,3 +328,6 @@ meta-dts/
 # Vitepress
 .vitepress/dist
 .vitepress/cache
+
+# TurboRepo cache
+.turbo/

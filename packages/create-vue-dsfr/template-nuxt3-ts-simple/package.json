@@ -1,0 +1,25 @@
+{
+  "name": "vue-dsfr-nuxt-ts-starter",
+  "type": "module",
+  "version": "0.0.0",
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare",
+    "lint": "eslint ."
+  },
+  "dependencies": {
+    "@gouvfr/dsfr": "~1.12.1",
+    "@gouvminint/vue-dsfr": "^6.0.0",
+    "nuxt": "^3.13.1",
+    "vue": "^3.5.1",
+    "vue-dsfr-nuxt-module": "^2.0.0",
+    "vue-router": "^4.4.3"
+  },
+  "devDependencies": {
+    "@antfu/eslint-config": "^3.2.0",
+    "eslint": "9.9.1"
+  }
+}
