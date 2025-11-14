@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.12.0](https://github.com/dnum-mi/vue-dsfr/compare/create-vue-dsfr-v1.11.0...create-vue-dsfr@1.12.0) (2025-11-14)
+
+
+### ✨ Nouvelles fonctionnalités
+
+* **create-vue-dsfr:** ➕ intègre create-vue-dsfr dans le monorepo ([e6335e8](https://github.com/dnum-mi/vue-dsfr/commit/e6335e8b6c3099fafe3023da2886a49ce0401d5f))
+
 ## [1.11.0](https://github.com/laruiss/create-vue-dsfr/compare/v1.10.0...v1.11.0) (2024-09-05)
 
 
