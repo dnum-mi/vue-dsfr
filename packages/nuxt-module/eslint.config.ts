@@ -17,6 +17,7 @@ export default createConfigForNuxt({
 })
   .append({
     rules: {
+      'vue/multi-word-component-names': 'off',
       // 'style/comma-dangle': ['error', 'always-multiline'],
       'no-irregular-whitespace': 'warn',
       'vue/no-irregular-whitespace': 'warn',
