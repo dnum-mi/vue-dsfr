@@ -14,9 +14,7 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       releases_created: ${{ steps.release.outputs.releases_created }}
-      lib_release_created: ${{ steps.release.outputs['packages/lib--release_created'] }}
-      nuxt_module_release_created: ${{ steps.release.outputs['packages/nuxt-module--release_created'] }}
-      create_vue_dsfr_release_created: ${{ steps.release.outputs['packages/create-vue-dsfr--release_created'] }}
+      packages: ${{ steps.set-matrix.outputs.packages }}
     steps:
       - name: Run Release Please
         id: release
@@ -24,73 +22,34 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           target-branch: beta
+          config-file: .github/release-please-config-beta.json
 
-  publish-lib:
-    needs: release-please
-    if: ${{ needs.release-please.outputs.lib_release_created }}
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 22
-          registry-url: 'https://registry.npmjs.org'
-
-      - name: Install pnpm
-        uses: pnpm/action-setup@v4
-        with:
-          version: 10.2.1
-
-      - name: Install dependencies
-        run: pnpm install --frozen-lockfile
-
-      - name: Build
-        run: pnpm --filter @gouvminint/vue-dsfr build
-
-      - name: Publish to npm (beta tag)
-        run: pnpm --filter @gouvminint/vue-dsfr publish --tag beta --no-git-checks
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_MININT_TOKEN }}
-
-  publish-nuxt-module:
-    needs: release-please
-    if: ${{ needs.release-please.outputs.nuxt_module_release_created }}
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 22
-          registry-url: 'https://registry.npmjs.org'
-
-      - name: Install pnpm
-        uses: pnpm/action-setup@v4
-        with:
-          version: 10.2.1
-
-      - name: Install dependencies
-        run: pnpm install --frozen-lockfile
-
-      - name: Prepare & Build
+      - name: Set matrix for releases
+        id: set-matrix
         run: |
-          pnpm --filter @gouvminint/vue-dsfr-nuxt-module run dev:prepare
-          pnpm --filter @gouvminint/vue-dsfr-nuxt-module run prepack
+          PACKAGES="[]"
 
-      - name: Publish to npm (beta tag)
-        run: pnpm --filter @gouvminint/vue-dsfr-nuxt-module publish --tag beta --no-git-checks
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_MININT_TOKEN }}
+          if [ "${{ steps.release.outputs['packages/lib--release_created'] }}" = "true" ]; then
+            PACKAGES=$(echo "$PACKAGES" | jq -c '. += [{"name": "lib", "filter": "@gouvminint/vue-dsfr", "build": "pnpm --filter @gouvminint/vue-dsfr build"}]')
+          fi
 
-  publish-create-vue-dsfr:
+          if [ "${{ steps.release.outputs['packages/nuxt-module--release_created'] }}" = "true" ]; then
+            PACKAGES=$(echo "$PACKAGES" | jq -c '. += [{"name": "nuxt-module", "filter": "@gouvminint/vue-dsfr-nuxt-module", "build": "pnpm --filter @gouvminint/vue-dsfr-nuxt-module run dev:prepare && pnpm --filter @gouvminint/vue-dsfr-nuxt-module run prepack"}]')
+          fi
+
+          if [ "${{ steps.release.outputs['packages/create-vue-dsfr--release_created'] }}" = "true" ]; then
+            PACKAGES=$(echo "$PACKAGES" | jq -c '. += [{"name": "create-vue-dsfr", "filter": "create-vue-dsfr", "build": ""}]')
+          fi
+
+          echo "packages=$PACKAGES" >> $GITHUB_OUTPUT
+
+  publish:
     needs: release-please
-    if: ${{ needs.release-please.outputs.create_vue_dsfr_release_created }}
+    if: ${{ needs.release-please.outputs.releases_created }}
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        package: ${{ fromJson(needs.release-please.outputs.packages) }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -105,11 +64,28 @@ jobs:
         uses: pnpm/action-setup@v4
         with:
           version: 10.2.1
+          run_install: false
+
+      - name: Get pnpm store directory
+        shell: bash
+        run: echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
+
+      - name: Setup pnpm cache
+        uses: actions/cache@v4
+        with:
+          path: ${{ env.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
+      - name: Build package
+        if: matrix.package.build != ''
+        run: ${{ matrix.package.build }}
+
       - name: Publish to npm (beta tag)
-        run: pnpm --filter create-vue-dsfr publish --tag beta --no-git-checks
+        run: pnpm --filter ${{ matrix.package.filter }} publish --tag beta --no-git-checks
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_MININT_TOKEN }}
