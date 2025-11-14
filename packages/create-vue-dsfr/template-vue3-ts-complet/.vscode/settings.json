@@ -1,0 +1,34 @@
+{
+  "editor.codeActionsOnSave": {
+    "source.fixAll": true
+  },
+  "emmet.includeLanguages": {
+    "postcss": "css"
+  },
+  "npm-intellisense.importES6": true,
+  "npm-intellisense.importQuotes": "'",
+  "npm-intellisense.importLinebreak": "\n",
+  "npm-intellisense.importDeclarationType": "const",
+  "stylelint.enable": true,
+  "stylelint.validate": [
+    "css",
+    "html",
+    "less",
+    "markdown",
+    "postcss",
+    "sass",
+    "scss",
+    "source.css.styled",
+    "source.markdown.math",
+    "sugarss",
+    "vue",
+    "vue-html",
+    "vue-postcss",
+    "xml",
+    "xsl"
+  ],
+  "css.validate": false,
+  "scss.validate": false,
+  "[vue]": { "editor.defaultFormatter": "dbaeumer.vscode-eslint" },
+  "[css]": { "editor.defaultFormatter": "stylelint.vscode-stylelint" },
+}

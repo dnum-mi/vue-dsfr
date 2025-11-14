@@ -1,0 +1,58 @@
+{
+  "name": "create-vue-dsfr",
+  "version": "1.11.0",
+  "type": "module",
+  "description": "Assistant d'installation pour les projets utilisant VueDsfr",
+  "author": "Stanislas Ormières <stan@stormier.ninja>",
+  "bin": {
+    "create-vue-dsfr": "index.js",
+    "cvd": "index.js",
+    "vue-dsfr-icons": "update-icons.js",
+    "vue-dsfr-update-icons": "update-icons.js"
+  },
+  "bugs": {
+    "url": "https://github.com/dnum-mi/vue-dsfr/issues"
+  },
+  "engines": {
+    "node": ">=22.0.0",
+    "pnpm": ">=10.0.0"
+  },
+  "files": [
+    "index.js",
+    "template-*/**"
+  ],
+  "homepage": "https://github.com/dnum-mi/vue-dsfr#readme",
+  "keywords": [
+    "vue",
+    "dsfr",
+    "design-system",
+    "cli",
+    "scaffolding",
+    "template"
+  ],
+  "license": "MIT",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dnum-mi/vue-dsfr.git",
+    "directory": "packages/create-vue-dsfr"
+  },
+  "scripts": {},
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "adm-zip": "^0.5.16",
+    "archiver": "^5.3.2",
+    "kolorist": "^1.8.0",
+    "minimist": "^1.2.8",
+    "ohmyfetch": "^0.4.21",
+    "prompts": "^2.4.2",
+    "rimraf": "^6.0.1"
+  },
+  "devDependencies": {
+    "@antfu/eslint-config": "^6.2.0",
+    "@types/node": "^24.10.0",
+    "eslint": "^9.39.1"
+  }
+}
