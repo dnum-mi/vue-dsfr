@@ -10,6 +10,9 @@ describe('ssr', async () => {
   it('renders the index page', async () => {
     // Get response to a server-rendered page with `$fetch`.
     const html = await $fetch('/')
-    expect(html).toContain('<div>basic</div>')
+    expect(html).toContain('<a aria-current="page" href="/" class="router-link-active router-link-exact-active fr-btn" target="_self">')
+    expect(html).toContain('Accueil')
+    expect(html).toContain('À propos')
+    expect(html).toContain('Onglets')
   })
 })
