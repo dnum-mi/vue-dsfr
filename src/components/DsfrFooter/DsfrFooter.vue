@@ -94,7 +94,7 @@ defineSlots<{
 }>()
 
 const mandatoryLinks = computed(() => {
-  return [
+  return props.mandatoryLinks ?? [
     {
       label: `Accessibilité : ${props.a11yCompliance}`,
       to: props.a11yComplianceLink,
