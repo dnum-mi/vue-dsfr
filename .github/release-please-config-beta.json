@@ -7,9 +7,7 @@
       "changelog-path": "CHANGELOG.md",
       "extra-files": [
         "package.json"
-      ],
-      "prerelease": true,
-      "prerelease-type": "beta"
+      ]
     },
     "packages/nuxt-module": {
       "release-type": "node",
@@ -17,9 +15,7 @@
       "changelog-path": "CHANGELOG.md",
       "extra-files": [
         "package.json"
-      ],
-      "prerelease": true,
-      "prerelease-type": "beta"
+      ]
     },
     "packages/create-vue-dsfr": {
       "release-type": "node",
@@ -27,9 +23,7 @@
       "changelog-path": "CHANGELOG.md",
       "extra-files": [
         "package.json"
-      ],
-      "prerelease": true,
-      "prerelease-type": "beta"
+      ]
     }
   },
   "bootstrap-sha": "0e04911a35d308a380e371d11746dbf8fd50dad7",
