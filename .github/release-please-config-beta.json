@@ -1,0 +1,90 @@
+{
+  "$schema": "https://raw.githubusercontent.com/googleapis/release-please/main/schemas/config.json",
+  "packages": {
+    "packages/lib": {
+      "release-type": "node",
+      "package-name": "@gouvminint/vue-dsfr",
+      "changelog-path": "CHANGELOG.md",
+      "extra-files": [
+        "package.json"
+      ]
+    },
+    "packages/nuxt-module": {
+      "release-type": "node",
+      "package-name": "vue-dsfr-nuxt-module",
+      "changelog-path": "CHANGELOG.md",
+      "extra-files": [
+        "package.json"
+      ]
+    },
+    "packages/create-vue-dsfr": {
+      "release-type": "node",
+      "package-name": "create-vue-dsfr",
+      "changelog-path": "CHANGELOG.md",
+      "extra-files": [
+        "package.json"
+      ]
+    }
+  },
+  "bootstrap-sha": "0e04911a35d308a380e371d11746dbf8fd50dad7",
+  "release-search-depth": 500,
+  "changelog-sections": [
+    {
+      "type": "feat",
+      "section": "✨ Nouvelles fonctionnalités",
+      "hidden": false
+    },
+    {
+      "type": "fix",
+      "section": "🐛 Corrections de bugs",
+      "hidden": false
+    },
+    {
+      "type": "docs",
+      "section": "📚 Documentation",
+      "hidden": false
+    },
+    {
+      "type": "perf",
+      "section": "⚡ Améliorations de performance",
+      "hidden": false
+    },
+    {
+      "type": "ci",
+      "section": "👷 CI/CD",
+      "hidden": false
+    },
+    {
+      "type": "test",
+      "section": "✅ Tests",
+      "hidden": false
+    },
+    {
+      "type": "refactor",
+      "section": "Refactoring",
+      "hidden": true
+    },
+    {
+      "type": "style",
+      "section": "Style",
+      "hidden": true
+    },
+    {
+      "type": "chore",
+      "section": "Chores",
+      "hidden": true
+    }
+  ],
+  "include-v-in-tag": false,
+  "bump-minor-pre-major": true,
+  "bump-patch-for-minor-pre-major": false,
+  "draft": false,
+  "pull-request-title-pattern": "chore: 🔖 release ${component} ${version}",
+  "tag-separator": "@",
+  "prerelease": true,
+  "prerelease-type": "beta",
+  "separate-pull-requests": true,
+  "group-pull-request-title-pattern": "chore: 🔖 release ${version}",
+  "release-label": "autorelease: pending",
+  "skip-github-release": false
+}

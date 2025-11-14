@@ -24,6 +24,7 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           target-branch: beta
+          config-file: .github/release-please-config-beta.json
 
   publish-lib:
     needs: release-please
