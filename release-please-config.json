@@ -28,7 +28,7 @@
   },
   "bootstrap-sha": "0e04911a35d308a380e371d11746dbf8fd50dad7",
   "release-search-depth": 500,
-  "changelog-types": [
+  "changelog-sections": [
     {
       "type": "feat",
       "section": "✨ Nouvelles fonctionnalités",
@@ -84,6 +84,6 @@
   "prerelease": false,
   "separate-pull-requests": true,
   "group-pull-request-title-pattern": "chore: 🔖 release ${version}",
-  "release-labels": ["autorelease: pending"],
+  "release-label": "autorelease: pending",
   "skip-github-release": false
 }
