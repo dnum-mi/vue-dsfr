@@ -24,7 +24,7 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           target-branch: next
-          prerelease: true
+          config-file: .github/release-please-config-next.json
 
   publish-lib:
     needs: release-please
