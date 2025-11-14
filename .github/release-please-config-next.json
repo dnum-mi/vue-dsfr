@@ -7,7 +7,9 @@
       "changelog-path": "CHANGELOG.md",
       "extra-files": [
         "package.json"
-      ]
+      ],
+      "prerelease": true,
+      "prerelease-type": "next"
     },
     "packages/nuxt-module": {
       "release-type": "node",
@@ -15,7 +17,9 @@
       "changelog-path": "CHANGELOG.md",
       "extra-files": [
         "package.json"
-      ]
+      ],
+      "prerelease": true,
+      "prerelease-type": "next"
     },
     "packages/create-vue-dsfr": {
       "release-type": "node",
@@ -23,7 +27,9 @@
       "changelog-path": "CHANGELOG.md",
       "extra-files": [
         "package.json"
-      ]
+      ],
+      "prerelease": true,
+      "prerelease-type": "next"
     }
   },
   "bootstrap-sha": "0e04911a35d308a380e371d11746dbf8fd50dad7",
@@ -81,8 +87,6 @@
   "draft": false,
   "pull-request-title-pattern": "chore: 🔖 release ${component} ${version}",
   "tag-separator": "@",
-  "prerelease": true,
-  "prerelease-type": "next",
   "separate-pull-requests": true,
   "group-pull-request-title-pattern": "chore: 🔖 release ${version}",
   "release-label": "autorelease: pending",
