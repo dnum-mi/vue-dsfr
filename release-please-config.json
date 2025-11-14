@@ -11,7 +11,7 @@
     },
     "packages/nuxt-module": {
       "release-type": "node",
-      "package-name": "@gouvminint/vue-dsfr-nuxt-module",
+      "package-name": "vue-dsfr-nuxt-module",
       "changelog-path": "CHANGELOG.md",
       "extra-files": [
         "package.json"
