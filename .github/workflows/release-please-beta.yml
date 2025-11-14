@@ -24,6 +24,7 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           target-branch: beta
+          prerelease: true
 
   publish-lib:
     needs: release-please
