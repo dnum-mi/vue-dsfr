@@ -32,10 +32,12 @@ jobs:
         run: pnpm install --frozen-lockfile
       - name: Lint (show only errors)
         run: pnpm lint --quiet
-      - name: Check exports
-        run: pnpm check-exports-ci
+      - name: Check exports (lib only)
+        run: pnpm --filter=@gouvminint/vue-dsfr check-exports-ci
       - name: Test
         run: pnpm test
+      - name: Build
+        run: pnpm build
       # - name: Build Storybook
       #   run: pnpm build-storybook --quiet
       # - name: Install Playwright browsers (ensuring compatibility)
@@ -46,5 +48,3 @@ jobs:
       #     pnpm exec playwright install-deps chromium
       # - name: Run Storybook tests
       #   run: pnpx start-server-and-test 'pnpx http-server storybook-static --port 6006 --silent' http://localhost:6006 'pnpm test-storybook'
-      - name: Build
-        run: pnpm build

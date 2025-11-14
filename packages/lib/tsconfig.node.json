@@ -1,0 +1,9 @@
+{
+  "extends": "@vue/tsconfig/tsconfig.json",
+  "compilerOptions": {
+    "composite": true,
+    "lib": ["ES2023"],
+    "types": ["node"]
+  },
+  "include": ["vite.config.*", "vitest.config.*", "cypress.config.*", "playwright.config.*"]
+}

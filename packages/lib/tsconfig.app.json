@@ -1,0 +1,33 @@
+{
+  "extends": "@vue/tsconfig/tsconfig.dom.json",
+  "compilerOptions": {
+    "composite": true,
+    "lib": [
+      "ES2023",
+      "DOM",
+      "DOM.Iterable"
+    ],
+    "baseUrl": ".",
+    "rootDir": "./src",
+    "paths": {
+      "@/*": ["./src/*"],
+      "@tests/*": ["./tests/*"]
+    },
+    "declaration": true,
+    "declarationDir": "./types",
+    "noEmit": false
+  },
+  "include": [
+    "env.d.ts",
+    "src/**/*",
+    "src/**/*.vue"
+  ],
+  "exclude": [
+    "node_modules",
+    "src/**/__tests__/*",
+    "src/**/*.spec.ts",
+    "src/**/*.e2e.ts",
+    "src/**/*.stories.ts",
+    "src/**/docs-demo/**"
+  ]
+}

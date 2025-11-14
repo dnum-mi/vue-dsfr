@@ -1,0 +1,33 @@
+{
+  "name": "demo-vue-dsfr",
+  "type": "module",
+  "version": "3.7.5",
+  "private": true,
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "lint": "eslint .",
+    "format": "eslint . --fix"
+  },
+  "dependencies": {
+    "@gouvfr/dsfr": "^1.14.0",
+    "@gouvminint/vue-dsfr": "workspace:*",
+    "@iconify/vue": "^4.3.0",
+    "p-debounce": "^4.0.0",
+    "vue": "^3.5.13",
+    "vue-router": "^4.5.0"
+  },
+  "devDependencies": {
+    "@antfu/eslint-config": "^4.1.1",
+    "@types/node": "^22.13.1",
+    "@vitejs/plugin-vue": "^5.2.1",
+    "@vitejs/plugin-vue-jsx": "^4.1.1",
+    "@vue/tsconfig": "^0.7.0",
+    "eslint": "^9.20.0",
+    "eslint-plugin-vue": "^9.32.0",
+    "typescript": "~5.7.3",
+    "vite": "^6.1.0",
+    "vue-tsc": "^2.2.0"
+  }
+}
