@@ -142,6 +142,35 @@ describe('DsfrFooter', () => {
     expect(getByTestId(testIdMentionsLegales)).toHaveClass('fr-footer__bottom-link')
   })
 
+   it('should render provided mandatoryLinks when passed as prop', async () => {
+    // Given
+    const mandatoryLinks = [
+      { label: 'Cookies', to: '/cookies' },
+      { label: 'Accessibilité', to: '/a11y' },
+    ]
+
+    // When
+    const { container } = render(DsfrFooter, {
+      global: {
+        plugins: [router],
+        components: {
+          VIcon,
+        },
+      },
+      props: {
+        mandatoryLinks,
+      },
+    })
+
+    await router.isReady()
+
+    const linkEls = container.querySelectorAll('.fr-footer__bottom-item')
+
+    // Then
+    expect(linkEls).toHaveLength(mandatoryLinks.length)
+    expect(linkEls[0]).toHaveTextContent(mandatoryLinks[0].label)
+  })
+
   it('should not display div.fr-footer__bottom-copy if licenceText is empty string', async () => {
     // Given
     const testIdMentionsLegales = '/mentions-legales'
