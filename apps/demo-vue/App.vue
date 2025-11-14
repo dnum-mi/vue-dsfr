@@ -233,7 +233,7 @@ const afterMandatoryLinks = [
     button: true,
     class: 'fr-icon-theme-fill fr-link--icon-left',
     to: '/settings',
-    onclick: () => console.log('Settings'), // eslint-disable-line no-console
+    onclick: () => console.log('Settings'),
   },
 ]
 const a11yCompliance = 'partiellement conforme'
@@ -338,7 +338,7 @@ const languageSelector = ref({
       operator-img-src="https://loremflickr.com/300/200/cat"
       operator-img-alt="L'opérateur petit chat"
       operator-to="/"
-      :operator-img-style="{ 'margin-left': '0.5px', padding: '1rem', 'max-width': '15rem' }"
+      :operator-img-style="{ 'margin-left': '0.5px', 'padding': '1rem', 'max-width': '15rem' }"
     />
   </div>
 

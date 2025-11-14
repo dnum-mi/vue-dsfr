@@ -7,14 +7,18 @@ const noticeClosed = ref(false)
 
 const closeNotice = () => {
   noticeClosed.value = true
-  setTimeout(() => { noticeClosed.value = false }, 2000)
+  setTimeout(() => {
+    noticeClosed.value = false
+  }, 2000)
 }
 
 const alertClosed = ref(false)
 
 const closeAlert = () => {
   alertClosed.value = true
-  setTimeout(() => { alertClosed.value = false }, 2000)
+  setTimeout(() => {
+    alertClosed.value = false
+  }, 2000)
 }
 </script>
 

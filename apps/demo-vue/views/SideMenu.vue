@@ -61,7 +61,7 @@ const menuItems = ref([
 ])
 
 function toggleExpandedForMenuWithId (menuItems, id: string) {
-  menuItems.forEach(menuItem => {
+  menuItems.forEach((menuItem) => {
     if (menuItem.id === id) {
       menuItem.expanded = !menuItem.expanded
       return

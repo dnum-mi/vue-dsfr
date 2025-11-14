@@ -16,12 +16,12 @@ const showAlert = ref(true)
 const filesToUpload = ref(undefined)
 
 const updateFiles = (files) => {
-  console.log(files) // eslint-disable-line no-console
+  console.log(files)
 }
 
 const sendFile = () => {
-  console.log('inputValue:', inputValue.value) // eslint-disable-line no-console
-  console.log('filesToUpload:', filesToUpload.value) // eslint-disable-line no-console
+  console.log('inputValue:', inputValue.value)
+  console.log('filesToUpload:', filesToUpload.value)
 }
 
 const isGood = ref<boolean>()
