@@ -8,8 +8,7 @@
       "extra-files": [
         "package.json"
       ],
-      "prerelease": true,
-      "prerelease-type": "beta"
+      "prerelease": true
     },
     "packages/nuxt-module": {
       "release-type": "node",
@@ -18,8 +17,7 @@
       "extra-files": [
         "package.json"
       ],
-      "prerelease": true,
-      "prerelease-type": "beta"
+      "prerelease": true
     },
     "packages/create-vue-dsfr": {
       "release-type": "node",
@@ -28,8 +26,7 @@
       "extra-files": [
         "package.json"
       ],
-      "prerelease": true,
-      "prerelease-type": "beta"
+      "prerelease": true
     }
   },
   "bootstrap-sha": "0e04911a35d308a380e371d11746dbf8fd50dad7",
