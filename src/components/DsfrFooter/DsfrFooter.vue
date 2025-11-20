@@ -57,9 +57,9 @@ const props = withDefaults(defineProps<DsfrFooterProps>(), {
       title: 'info.gouv.fr, Informations gouvernementales, ouvre une nouvelle fenêtre',
     },
     {
-      label: 'service-public.fr',
-      href: 'https://service-public.fr',
-      title: 'service-public.fr, Informations et démarches administratives, ouvre une nouvelle fenêtre',
+      label: 'service-public.gouv.fr',
+      href: 'https://service-public.gouv.fr',
+      title: 'service-public.gouv.fr, Informations et démarches administratives, ouvre une nouvelle fenêtre',
     },
     {
       label: 'legifrance.gouv.fr',

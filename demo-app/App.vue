@@ -256,8 +256,8 @@ const ecosystemLinks = [
     title: 'Informations gouvernementales, nouvelle fenêtre',
   },
   {
-    label: 'service-public.fr',
-    href: 'https://service-public.fr',
+    label: 'service-public.gouv.fr',
+    href: 'https://service-public.gouv.fr',
     title: 'Informations et démarches administratives, nouvelle fenêtre',
   },
   {

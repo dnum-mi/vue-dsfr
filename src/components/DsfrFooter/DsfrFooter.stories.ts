@@ -162,8 +162,8 @@ export const PiedDePageSimple: Story = {
         href: 'https://info.gouv.fr',
       },
       {
-        label: 'service-public.fr',
-        href: 'https://service-public.fr',
+        label: 'service-public.gouv.fr',
+        href: 'https://service-public.gouv.fr',
       },
       {
         label: 'data.gouv.fr',
@@ -297,8 +297,8 @@ export const PiedDePageAvecLogoOperateurEtListeDeLiens: Story = {
         href: 'https://info.gouv.fr',
       },
       {
-        label: 'service-public.fr',
-        href: 'https://service-public.fr',
+        label: 'service-public.gouv.fr',
+        href: 'https://service-public.gouv.fr',
       },
       {
         label: 'data.gouv.fr',
