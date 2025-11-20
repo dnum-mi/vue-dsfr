@@ -32,7 +32,7 @@ export type DsfrColorAccent =
 export type DsfrCalloutProps = {
   title?: string
   content?: string
-  titleTag?: TitleTag
+  titleTag?: TitleTag | 'p'
   button?: DsfrButtonProps
   icon?: string | VIconProps
   accent?: DsfrColorAccent
