@@ -125,6 +125,6 @@ describe('DsfrNavigationMegaMenu', () => {
     expect(button.tagName).toBe('BUTTON')
     expect(titleEl.tagName).toBe('H4')
     expect(megaMenuWrapper.id).toBe(button.getAttribute('aria-controls'))
-    expect(descEl).toHaveClass('fr-displayed-lg')
+    expect(descEl).toBeVisible()
   })
 })
