@@ -23,7 +23,7 @@ defineEmits<{ (event: 'toggleId', id: string): void }>()
 defineSlots<{
   /**
    * Slot pour le contenu de la description du mega-menu.
-   * Sera dans `<p class="fr-hidden fr-displayed-lg">`
+   * Sera dans `div.fr-mega-menu__leader p:first-of-type`
    */
   description: () => any
   /**
@@ -101,7 +101,7 @@ onMounted(() => {
             <h4 class="fr-h4 fr-mb-2v">
               {{ title }}
             </h4>
-            <p class="fr-hidden fr-displayed-lg">
+            <p>
               {{ description }}
               <slot name="description" />
             </p>
