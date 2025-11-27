@@ -118,7 +118,6 @@ describe('DsfrSelect', () => {
       },
     })
     const selectEl = container.querySelector('select')
-    console.log(selectEl?.innerHTML) // eslint-disable-line no-console
 
     const optGroupEls = selectEl.querySelectorAll('optgroup')
     const optionEl1 = getByText('Text 1')
@@ -138,8 +137,5 @@ describe('DsfrSelect', () => {
     expect(optionEl3?.ariaDisabled).toBe('false')
     expect(optionEl4?.ariaDisabled).toBe('true')
     expect(optionEl4.disabled).toBe(true)
-
-    console.log(optGroupEls[0]?.ariaDisabled) // eslint-disable-line no-console
-    console.log(optionEl1?.ariaDisabled) // eslint-disable-line no-console
   })
 })

@@ -19,6 +19,7 @@ describe('DsfrCheckbox', () => {
         },
       },
       props: {
+        value: 1,
         label,
         modelValue,
         name: 'label-1',
@@ -54,6 +55,7 @@ describe('DsfrCheckbox', () => {
         },
       },
       props: {
+        value: 1,
         label,
         modelValue,
         name: 'label-1',
