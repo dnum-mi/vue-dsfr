@@ -1,4 +1,22 @@
-export type DsfrSocialNetworkName = 'facebook' | 'twitter-x' | 'instagram' | 'linkedin' | 'youtube'
+export enum DsfrSocialNetworkIcon {
+  bluesky,
+  dailymotion,
+  facebook,
+  github,
+  instagram,
+  linkedin,
+  mastodon,
+  snapchat,
+  telegram,
+  threads,
+  tiktok,
+  twitch,
+  'twitter-x',
+  vimeo,
+  youtube,
+}
+
+export type DsfrSocialNetworkName = keyof typeof DsfrSocialNetworkIcon
 export type DsfrSocialNetwork = {
   type: DsfrSocialNetworkName
   name: string

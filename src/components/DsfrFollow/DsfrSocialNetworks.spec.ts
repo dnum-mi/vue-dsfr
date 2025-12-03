@@ -18,6 +18,11 @@ describe('DsfrSocialNetworks', () => {
         type: 'twitter-x',
         href: 'https://www.twitter.com',
       },
+      {
+        name: 'Bluesky',
+        type: 'bluesky',
+        href: 'https://bsky.app',
+      },
     ]
 
     // When
@@ -34,10 +39,12 @@ describe('DsfrSocialNetworks', () => {
     const liElts = container.querySelectorAll('.fr-btn')
     const facebookIcon = container.querySelector('.fr-btn--facebook')
     const twitterIcon = container.querySelector('.fr-btn--twitter-x')
+    const blueskyIcon = container.querySelector('.fr-btn--bluesky')
 
     // Then
-    expect(liElts).toHaveLength(2)
+    expect(liElts).toHaveLength(3)
     expect(facebookIcon).toBeInTheDocument()
     expect(twitterIcon).toBeInTheDocument()
+    expect(blueskyIcon).toBeInTheDocument()
   })
 })
