@@ -58,6 +58,11 @@ export const Suivre: Story = {
         type: 'instagram',
         href: 'https://www.instagram.com',
       },
+      {
+        name: 'Bluesky',
+        type: 'bluesky',
+        href: 'https://bsky.app',
+      },
     ],
     newsletterData: {
       title: 'Titre de la lettre d\'informations',
@@ -94,7 +99,7 @@ export const Suivre: Story = {
     const follow = newsletter?.parentElement?.parentElement?.parentElement?.parentElement
     expect(follow).toHaveClass('fr-follow')
     const networks = canvas.getAllByRole('link')
-    expect(networks).toHaveLength(5)
+    expect(networks).toHaveLength(6)
 
     let i = 0
     for (const network of networks) {

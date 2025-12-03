@@ -31,17 +31,26 @@ const networks: DsfrSocialNetwork[] = [
     type: 'instagram',
     href: 'https://www.instagram.com',
   },
+  {
+    name: 'Bluesky',
+    type: 'bluesky',
+    href: 'https://bsky.app/',
+  },
 ]
 </script>
 
 <template>
   <DsfrFollow>
-    <!-- Important, car ce div est dans un div.fr-grid-row -->
-    <div class="fr-col-12">
-      <DsfrSocialNetworks
-        :is="titleTag"
-        :networks="networks"
-      />
+    <!-- ajout d'une div de class `fr-follow` (incluse dans DsfrFollow) pour un affichage correct des icones pour cette démo
+    C'est lié au css des icônes de réseau pour `follow` qui ne sont pas dans `share` du DSFR -->
+    <div class="fr-follow">
+      <!-- Important, car ce div est dans un div.fr-grid-row -->
+      <div class="fr-col-12">
+        <DsfrSocialNetworks
+          :is="titleTag"
+          :networks="networks"
+        />
+      </div>
     </div>
   </DsfrFollow>
 </template>

@@ -1,7 +1,12 @@
 <script lang="ts" setup>
+import { ref } from 'vue'
+
+import DsfrFollow from '../DsfrFollow.vue'
+import DsfrNewsLetter from '../DsfrNewsLetter.vue'
+
 const title = 'Titre de la lettre d’information'
 const description = 'Description de la lettre d’information'
-const email = 'email.super@chouette.fr'
+const email = ref<string>('email.super@chouette.fr')
 const labelEmail = 'Votre adresse électronique'
 const inputTitle = 'Adresse électronique'
 const placeholder = 'james.bond@mi6.gov.uk'
