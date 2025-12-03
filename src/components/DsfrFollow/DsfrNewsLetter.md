@@ -2,7 +2,7 @@
 
 ## 🌟 Introduction
 
-Le composant `DsfrNewsLetter` est conçu pour afficher un formulaire d'inscription à une lettre d'information (newsletter) respectant les standards du [Design System de l'État Français (DSFR)](https://www.systeme-de-design.gouv.fr/). Flexible et accessible, il s'adapte à différents cas d'usage grâce à ses props personnalisables.
+Le composant `DsfrNewsLetter` est conçu pour afficher un formulaire d'inscription à une lettre d'information (newsletter). Pour avoir un style conforme au [Design System de l'État Français (DSFR)](https://www.systeme-de-design.gouv.fr/) il doit être impérativement être appelé par le composant `DsfrFollow`. Flexible et accessible, il s'adapte à différents cas d'usage grâce à ses props personnalisables.
 
 🏅 La documentation sur la lettre d’information sur le [DSFR](https://www.systeme-de-design.gouv.fr/composants-et-modeles/composants/lettre-d-information-et-reseaux-sociaux)
 

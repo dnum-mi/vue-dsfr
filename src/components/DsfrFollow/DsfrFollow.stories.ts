@@ -58,6 +58,11 @@ export const Suivre: Story = {
         type: 'instagram',
         href: 'https://www.instagram.com',
       },
+      {
+        name: 'Bluesky',
+        type: 'bluesky',
+        href: 'https://bsky.app',
+      },
     ],
     newsletterData: {
       title: 'Titre de la lettre d\'informations',
