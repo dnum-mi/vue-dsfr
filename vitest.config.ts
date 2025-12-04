@@ -50,6 +50,7 @@ export default mergeConfig(viteConfig, defineConfig({
             browser: 'chromium',
           }],
         },
+        retry: 2, // Retry twice on CI
         setupFiles: ['.storybook/vitest.setup.ts'],
       },
     }],
