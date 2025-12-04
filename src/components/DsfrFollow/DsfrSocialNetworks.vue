@@ -19,7 +19,7 @@ withDefaults(defineProps<DsfrSocialNetworksProps>(), {
       <br> sur les réseaux sociaux
     </component>
     <ul
-      v-if="networks.length"
+      v-if="networks?.length"
       class="fr-btns-group fr-btns-group--lg"
     >
       <li

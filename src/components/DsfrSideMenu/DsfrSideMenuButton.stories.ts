@@ -52,7 +52,7 @@ export const BoutonDeMenuDepliable: Story = {
     heading-title="Menu latéral exemplaire"
     buttonLabel="Bouton exemplaire"
   >
-    <DsfrSideMenuList :id="id">
+    <DsfrSideMenuList :id="args.id">
       <DsfrSideMenuListItem>
         <DsfrSideMenuButton
           :active="args.active"

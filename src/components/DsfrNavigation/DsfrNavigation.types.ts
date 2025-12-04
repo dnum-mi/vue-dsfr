@@ -47,7 +47,7 @@ export type DsfrNavigationMenuLinks = (DsfrNavigationMenuLinkProps | DsfrNavigat
 export type DsfrNavigationProps = {
   id?: string
   label?: string
-  navItems: (
+  navItems?: (
     DsfrNavigationMenuLinkProps
     | DsfrNavigationMenuProps
     | DsfrNavigationMegaMenuProps

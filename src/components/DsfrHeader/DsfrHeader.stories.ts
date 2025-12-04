@@ -158,7 +158,6 @@ const render = (args) => ({
       :operator-img-alt="args.operatorImgAlt"
       :operator-img-style="args.operatorImgStyle"
       :show-beta="args.showBeta"
-      :language-selector="languageSelector ?? undefined"
       v-model="args.modelValue"
       @search="args.search"
       @update:model-value="args['onUpdate:modelValue']"

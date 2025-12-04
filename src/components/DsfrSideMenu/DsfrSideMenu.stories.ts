@@ -166,10 +166,9 @@ export const MenuLateralAvecAccordeonEtCheckbox: Story = {
             v-for="(accordion, name) in args.accordions"
             :id="\`accordion_\${name}\`"
             :key="name"
-              :id="name"
-              :title="name"
-              :expanded-id="expandedId"
-              @expand="id => expandedId = id"
+            :title="name"
+            :expanded-id="expandedId"
+            @expand="id => expandedId = id"
           >
             <DsfrCheckboxSet
               :options="accordion.options"
