@@ -51,7 +51,7 @@ export const TitreDOnglet: Story = {
     },
 
     template: `
-    <DsfrTabs v-model="0">
+    <DsfrTabs v-model="selectedTabIndex" tab-list-name="Exemple d’onglets avec un seul DsfrTabItem">
       <template #tab-items>
         <DsfrTabItem
           :panel-id="panelId"
@@ -75,5 +75,6 @@ export const TitreDOnglet: Story = {
     tabId: 'tab-0',
     icon: 'ri-checkbox-circle-line',
     tabTitle: 'Titre onglet seul',
+    selectedTabIndex: 0,
   },
 }

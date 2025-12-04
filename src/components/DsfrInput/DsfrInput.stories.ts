@@ -141,7 +141,7 @@ export const ChampAvecLabelPersonnalise: Story = {
       <DsfrInput v-bind="args">
         <template #label>
           <div style="display: flex; align-items: center; gap: 0.5rem;">
-            <span>{{ args.label }}<span style="color: red;">&nbsp;*</span></span>
+            <span>{{ args.label }}<span style="color: red;"> *</span></span>
             <button
               aria-label="Afficher l’indice contextuel"
               @mouseover="show = true"

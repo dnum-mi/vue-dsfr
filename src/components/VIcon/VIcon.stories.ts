@@ -101,7 +101,7 @@ export const IconeDefaut: Story = {
     color: 'currentColor',
     fill: 'currentColor',
     flip: undefined,
-    ssr: 'currentColor',
+    ssr: true,
     verticalAlign: '-0.2em',
     inverse: false,
   },
@@ -130,6 +130,7 @@ export const IconeAvecAnimation: Story = {
   `,
   }),
   args: {
+    ...IconeDefaut.args,
     name: 'mdi-loading',
     scale: 1.5,
     animation: 'spin',
@@ -155,7 +156,7 @@ export const IconeDifferentesEchelles: Story = {
     </div>
   `,
   }),
-  args: {},
+  args: IconeDefaut.args,
 }
 
 export const IconeAvecRetournement: Story = {
@@ -187,7 +188,7 @@ export const IconeAvecRetournement: Story = {
     </div>
   `,
   }),
-  args: {},
+  args: IconeDefaut.args,
 }
 
 export const IconeVsCode: Story = {
@@ -213,6 +214,7 @@ export const IconeVsCode: Story = {
   `,
   }),
   args: {
+    ...IconeDefaut.args,
     name: 'vi-github',
     scale: 2,
     color: '#181717',

@@ -37,7 +37,7 @@ export const LienDansUnElementDeListeDeMenuLateral: Story = {
 
     setup () {
       return {
-        ...args,
+        args,
       }
     },
 
@@ -46,11 +46,11 @@ export const LienDansUnElementDeListeDeMenuLateral: Story = {
     heading-title="Menu latéral exemplaire"
     buttonLabel="Bouton exemplaire"
   >
-    <DsfrSideMenuList :id="id">
-      <DsfrSideMenuListItem :active="active">
+    <DsfrSideMenuList :id="args.id">
+      <DsfrSideMenuListItem :active="args.active">
         <DsfrSideMenuLink
-          :active="active"
-          :to="to"
+          :active="args.active"
+          :to="args.to"
         >
           Lien 1
         </DsfrSideMenuLink>

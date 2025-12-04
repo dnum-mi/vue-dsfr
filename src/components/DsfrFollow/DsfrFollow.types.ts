@@ -6,7 +6,7 @@ export type DsfrSocialNetwork = {
 }
 
 export type DsfrSocialNetworksProps = {
-  networks: DsfrSocialNetwork[]
+  networks?: DsfrSocialNetwork[]
   titleTag?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'
 }
 
@@ -27,6 +27,6 @@ export type DsfrNewsLetterProps = {
 }
 
 export type DsfrFollowProps = {
-  newsletterData: DsfrNewsLetterProps
-  networks: DsfrSocialNetwork[]
+  newsletterData?: DsfrNewsLetterProps
+  networks?: DsfrSocialNetwork[]
 }

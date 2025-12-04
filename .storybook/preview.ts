@@ -9,14 +9,12 @@ import VIcon from '../src/components/VIcon/VIcon.vue'
 
 import VueDsfrTheme from './vue-dsfr-theme.js'
 import '../src/assets/variables-fdr.css'
+import '../src/main.css'
 import '@gouvfr/dsfr/dist/core/core.main.min.css'
 import '@gouvfr/dsfr/dist/scheme/scheme.min.css'
 import '@gouvfr/dsfr/dist/component/component.main.min.css'
 import '@gouvfr/dsfr/dist/utility/utility.main.min.css'
 import '@gouvfr/dsfr/dist/utility/icons/icons.main.min.css'
-
-import '../src/main.css'
-
 import './theme.css'
 // import '@gouvfr/dsfr/dist/core/core.min.css'
 
@@ -25,15 +23,18 @@ const preview: Preview = {
     backgrounds: {
       disabled: true,
     },
+
     docs: {
       theme: { ...themes.normal, ...VueDsfrTheme },
     },
+
     controls: {
       matchers: {
         color: /(background|color)$/i,
         date: /Date$/i,
       },
     },
+
     viewport: {
       options: {
         DSFR_XS: {
@@ -73,16 +74,19 @@ const preview: Preview = {
         },
       },
     },
+
     options: {
       storySort: {
         method: 'alphabetical',
-        order: [
-          'Docs',
-          'Fondamentaux',
-          'Composables',
-          'Composants',
-        ],
+        order: ['Docs', 'Fondamentaux', 'Composables', 'Composants'],
       },
+    },
+
+    a11y: {
+      // 'todo' - show a11y violations in the test UI only
+      // 'error' - fail CI on a11y violations
+      // 'off' - skip a11y checks entirely
+      test: 'todo',
     },
   },
 
@@ -108,7 +112,9 @@ const preview: Preview = {
   },
   decorators: [
     (story, context) => {
-      const selectedTheme = context.globals.theme.includes('clair') ? 'light' : 'dark'
+      const selectedTheme = context.globals.theme.includes('clair')
+        ? 'light'
+        : 'dark'
       document.documentElement.setAttribute('data-fr-theme', selectedTheme)
       return story()
     },
@@ -125,7 +131,7 @@ const RouterLink = defineComponent({
   `,
 })
 
-setup(app => {
+setup((app) => {
   app.component('RouterLink', RouterLink)
   app.component('VIcon', VIcon)
   app.component('FocusTrap', FocusTrap)

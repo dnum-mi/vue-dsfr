@@ -34,6 +34,8 @@ jobs:
         run: pnpm lint --quiet
       - name: Check exports
         run: pnpm check-exports-ci
+      - name: Install Playwright browsers
+        run: pnpm exec playwright install --with-deps chromium
       - name: Test
         run: pnpm test
       # - name: Build Storybook

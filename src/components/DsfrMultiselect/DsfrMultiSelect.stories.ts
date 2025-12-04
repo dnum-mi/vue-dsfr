@@ -1,312 +1,236 @@
 import type { Meta, StoryObj } from '@storybook/vue3-vite'
 
-import { fn } from 'storybook/test'
-import { ref, watch } from 'vue'
+import { ref } from 'vue'
 
 import DsfrMultiSelect from './DsfrMultiselect.vue'
 
-/**
- * [Voir quand l’utiliser sur la documentation du DSFR](https://www.systeme-de-design.gouv.fr/version-courante/fr/composants/liste-deroulante)
- */
 const meta = {
   component: DsfrMultiSelect,
   title: 'Composants/DsfrMultiSelect',
   tags: ['formulaire'],
   argTypes: {
-    selectId: {
+    label: {
       control: 'text',
-      description: 'Valeur de l’attribut `id` de la balise `<select>`',
+      description: '**Label** du composant',
     },
-    required: {
-      control: 'boolean',
-      description:
-        'Option permettant de rendre ce champ de formulaire obligatoire et d’assigner au label un astérisque afin de rendre ce changement visible',
+    modelValue: {
+      control: 'object',
+      description: '**Valeurs** sélectionnées (v-model)',
     },
     options: {
       control: 'object',
-      description:
-        'Liste des options proposées par le `<select>` à lui passer sous forme de tableau de string ou de tableau d’objets avec une propriété `"text"` et une propriété `"value"`',
+      description: '**Liste des options** du composant',
     },
-    description: {
+    hint: {
       control: 'text',
-      description: 'Description optionnelle du `select`',
+      description: 'Texte d\'aide optionnel',
     },
-    successMessage: {
+    legend: {
       control: 'text',
-      description:
-        'Message à afficher en situation de succès, sa présence change la couleur de la police d’écriture',
-    },
-    defaultUnselectedText: {
-      control: 'text',
-      description:
-        'Texte de l’option sélectionnée par défaut si aucune option valide n’est sélectionnée',
+      description: 'Légende du groupe de cases à cocher',
     },
     errorMessage: {
       control: 'text',
-      description:
-        'Message à afficher en cas d’erreur, sa présence change la couleur de la police d’écriture',
+      description: 'Message d\'erreur à afficher',
     },
-    modelValue: {
+    successMessage: {
       control: 'text',
-      description: 'Valeur présélectionnée',
+      description: 'Message de succès à afficher',
     },
-    disabled: {
+    selectAll: {
       control: 'boolean',
-      description: 'Option empêchant toute interaction avec le `select`',
+      description: 'Affiche l\'option « Tout sélectionner »',
     },
-    'onUpdate:modelValue': fn(),
+    search: {
+      control: 'boolean',
+      description: 'Active la recherche dans les options',
+    },
+    labelVisible: {
+      control: 'boolean',
+      description: 'Affiche le label',
+    },
   },
 } satisfies Meta<typeof DsfrMultiSelect>
 
 export default meta
 type Story = StoryObj<typeof meta>
 
-const render = (args: any) => ({
-  components: {
-    DsfrMultiSelect,
-  },
-  setup () {
-    const modelValue = ref(args.modelValue)
-    watch(modelValue, (newVal) => {
-      args['onUpdate:modelValue'](newVal)
-    })
-    return {
-      args,
-      modelValue,
-    }
-  },
-})
-
-export const ListeDeroulante: Story = {
-  render,
-  name: 'Liste déroulante',
+export const SélectionMultiple: Story = {
+  name: 'Sélection multiple',
   args: {
+    label: 'Sélection d\'options',
+    modelValue: ['0', '1'],
     options: [
-      'Option 1',
-      'Option 2',
-      'Option 3',
-      'Option 4',
-      'Option 5',
-      'Option 6',
+      { label: 'Option 1', id: '0' },
+      { label: 'Option 2', id: '1' },
+      { label: 'Option 3', id: '2' },
+      { label: 'Option 4', id: '3' },
+      { label: 'Option 5', id: '4' },
+      { label: 'Option 6', id: '5' },
     ],
-    label: 'Selection d’options',
-    description: 'Je suis une description, je décris, c’est ma raison d’être',
-    successMessage: '',
+    hint: 'Je suis une description, je décris, c\'est ma raison d\'être',
     errorMessage: '',
-    disabled: false,
-    modelValue: 'Option 2',
-    required: false,
-  },
-  template: `
-    <DsfrMultiSelect
-      :required="args.required"
-      :label="args.label"
-      :options="args.options"
-      :description="args.description"
-      :success-message="args.successMessage"
-      :error-message="args.errorMessage"
-      :disabled="args.disabled"
-      v-model="modelValue"
-    />
-  `,
-}
-
-export const ListeDeroulanteEnAnglais: Story = {
-  render,
-  name: 'Liste déroulante en anglais',
-  args: {
-    options: [
-      'Option 1',
-      'Option 2',
-      'Option 3',
-      'Option 4',
-      'Option 5',
-      'Option 6',
-    ],
-    label: 'Those are the options:',
-    description: 'I am a description',
     successMessage: '',
-    errorMessage: '',
-    defaultUnselectedText: 'Please select an option',
-    disabled: false,
-    required: false,
+    selectAll: false,
+    search: false,
+    labelVisible: true,
   },
-  template: `
-    <DsfrMultiSelect
-      :required="args.required"
-      :label="args.label"
-      :options="args.options"
-      :description="args.description"
-      :success-message="args.successMessage"
-      :error-message="args.errorMessage"
-      :disabled="args.disabled"
-      :defaultUnselectedText="args.defaultUnselectedText"
-      v-model="modelValue"
-    />
-  `,
-}
-
-export const ListeDeroulanteRequise: Story = {
-  render,
-  name: 'Liste déroulante requise',
-  args: {
-    options: [
-      'Option 1',
-      'Option 2',
-      'Option 3',
-      'Option 4',
-      'Option 5',
-      'Option 6',
-    ],
-    label: 'Selection d’options',
-    description: 'Je suis une description, je décris, c’est ma raison d’être',
-    successMessage: '',
-    errorMessage: '',
-    disabled: false,
-    modelValue: 'Option 2',
-    required: true,
-  },
-  template: `
-    <DsfrMultiSelect
-      :required="args.required"
-      :label="args.label"
-      :options="args.options"
-      :description="args.description"
-      :success-message="args.successMessage"
-      :error-message="args.errorMessage"
-      :disabled="args.disabled"
-      v-model="modelValue"
-    />
-  `,
-}
-
-export const ListeDeroulanteRequisePersonnalisee: Story = {
-  render,
-  name: 'Liste déroulante requise personnalisée',
-  args: {
-    options: [
-      'Option 1',
-      'Option 2',
-      'Option 3',
-      'Option 4',
-      'Option 5',
-      'Option 6',
-    ],
-    label: 'Selection d’options',
-    description: 'Je suis une description, je décris, c’est ma raison d’être',
-    successMessage: '',
-    errorMessage: '',
-    disabled: false,
-    modelValue: 'Option 2',
-    required: true,
-  },
-  template: `
-    <DsfrMultiSelect
-      :required="args.required"
-      :label="args.label"
-      :options="args.options"
-      :description="args.description"
-      :success-message="args.successMessage"
-      :error-message="args.errorMessage"
-      :disabled="args.disabled"
-      v-model="modelValue"
-    >
-    <template #required-tip>
-      <em> (obligatoire)</em>
-    </template>
-  </DsfrMultiSelect>
-  `,
-}
-
-export const ListeDeroulanteInactive: Story = {
-  render,
-  name: 'Liste déroulante inactive',
-  args: {
-    options: [
-      'Option 1',
-      'Option 2',
-      'Option 3',
-      'Option 4',
-      'Option 5',
-      'Option 6',
-    ],
-    label: 'Selection d’options',
-    description: 'Je suis une description, je décris, c’est ma raison d’être',
-    successMessage: '',
-    errorMessage: '',
-    disabled: true,
-    modelValue: 'Option 2',
-    required: false,
-  },
-  template: `
-  <div style="background-color: var(--grey-1000-50); padding: 1rem;">
-    <DsfrMultiSelect
-      :required="args.required"
-      :label="args.label"
-      :options="args.options"
-      :description="args.description"
-      :success-message="args.successMessage"
-      :error-message="args.errorMessage"
-      :disabled="args.disabled"
-      v-model="modelValue"
-    />
-  </div>
-  `,
-}
-
-export const ListeDeroulanteAvecOptionsInactives: Story = {
-  render,
-  name: 'Liste déroulante avec options inactives',
-  args: {
-    options: [
-      {
-        text: 'Option 1',
-        value: 0,
-      },
-      {
-        text: 'Option 2',
-        value: 0,
-        disabled: true,
-      },
-      {
-        text: 'Option 3',
-        value: 0,
-        disabled: false,
-      },
-      {
-        text: 'Option 4',
-        value: 0,
-      },
-      {
-        text: 'Option 5',
-        value: 0,
-        disabled: true,
-      },
-      {
-        text: 'Option 6',
-        value: 0,
-      },
-    ],
-    label: 'Selection d’options',
-    description: 'Je suis une description, je décris, c’est ma raison d’être',
-    successMessage: '',
-    errorMessage: '',
-    disabled: false,
-    modelValue: 'Option 2',
-    required: false,
-  },
-  template: `
-    <div style="background-color: var(--grey-1000-50); padding: 1rem;">
+  render: (args) => ({
+    components: { DsfrMultiSelect },
+    setup () {
+      const modelValue = ref(args.modelValue)
+      return {
+        args,
+        modelValue,
+      }
+    },
+    template: `
       <DsfrMultiSelect
-        :required="args.required"
         :label="args.label"
         :options="args.options"
-        :description="args.description"
-        :success-message="args.successMessage"
+        :hint="args.hint"
         :error-message="args.errorMessage"
-        :disabled="args.disabled"
+        :success-message="args.successMessage"
+        :select-all="args.selectAll"
+        :search="args.search"
+        :label-visible="args.labelVisible"
         v-model="modelValue"
       />
-    </div>
     `,
+  }),
+}
+
+export const AvecSearchEtSelectAll: Story = {
+  name: 'Avec recherche et « Tout sélectionner »',
+  args: {
+    label: 'Sélection d\'options',
+    modelValue: [],
+    options: [
+      { label: 'Option 1', id: '0' },
+      { label: 'Option 2', id: '1' },
+      { label: 'Option 3', id: '2' },
+      { label: 'Option 4', id: '3' },
+      { label: 'Option 5', id: '4' },
+      { label: 'Option 6', id: '5' },
+    ],
+    hint: 'Vous pouvez rechercher et sélectionner/désélectionner toutes les options',
+    errorMessage: '',
+    successMessage: '',
+    selectAll: true,
+    search: true,
+    labelVisible: true,
+  },
+  render: (args) => ({
+    components: { DsfrMultiSelect },
+    setup () {
+      const modelValue = ref(args.modelValue)
+      return {
+        args,
+        modelValue,
+      }
+    },
+    template: `
+      <DsfrMultiSelect
+        :label="args.label"
+        :options="args.options"
+        :hint="args.hint"
+        :error-message="args.errorMessage"
+        :success-message="args.successMessage"
+        :select-all="args.selectAll"
+        :search="args.search"
+        :label-visible="args.labelVisible"
+        v-model="modelValue"
+      />
+    `,
+  }),
+}
+
+export const AvecMessageDeSuccès: Story = {
+  name: 'Avec message de succès',
+  args: {
+    label: 'Sélection d\'options',
+    modelValue: ['0', '1'],
+    options: [
+      { label: 'Option 1', id: '0' },
+      { label: 'Option 2', id: '1' },
+      { label: 'Option 3', id: '2' },
+      { label: 'Option 4', id: '3' },
+      { label: 'Option 5', id: '4' },
+      { label: 'Option 6', id: '5' },
+    ],
+    hint: 'Vos choix ont été enregistrés',
+    errorMessage: '',
+    successMessage: 'Validation réussie',
+    selectAll: false,
+    search: false,
+    labelVisible: true,
+  },
+  render: (args) => ({
+    components: { DsfrMultiSelect },
+    setup () {
+      const modelValue = ref(args.modelValue)
+      return {
+        args,
+        modelValue,
+      }
+    },
+    template: `
+      <DsfrMultiSelect
+        :label="args.label"
+        :options="args.options"
+        :hint="args.hint"
+        :error-message="args.errorMessage"
+        :success-message="args.successMessage"
+        :select-all="args.selectAll"
+        :search="args.search"
+        :label-visible="args.labelVisible"
+        v-model="modelValue"
+      />
+    `,
+  }),
+}
+
+export const AvecMessageDErreur: Story = {
+  name: 'Avec message d\'erreur',
+  args: {
+    label: 'Sélection d\'options',
+    modelValue: [],
+    options: [
+      { label: 'Option 1', id: '0' },
+      { label: 'Option 2', id: '1' },
+      { label: 'Option 3', id: '2' },
+      { label: 'Option 4', id: '3' },
+      { label: 'Option 5', id: '4' },
+      { label: 'Option 6', id: '5' },
+    ],
+    hint: 'Veuillez sélectionner au moins une option',
+    errorMessage: 'Vous devez sélectionner au moins une option',
+    successMessage: '',
+    selectAll: false,
+    search: false,
+    labelVisible: true,
+  },
+  render: (args) => ({
+    components: { DsfrMultiSelect },
+    setup () {
+      const modelValue = ref(args.modelValue)
+      return {
+        args,
+        modelValue,
+      }
+    },
+    template: `
+      <DsfrMultiSelect
+        :label="args.label"
+        :options="args.options"
+        :hint="args.hint"
+        :error-message="args.errorMessage"
+        :success-message="args.successMessage"
+        :select-all="args.selectAll"
+        :search="args.search"
+        :label-visible="args.labelVisible"
+        v-model="modelValue"
+      />
+    `,
+  }),
 }

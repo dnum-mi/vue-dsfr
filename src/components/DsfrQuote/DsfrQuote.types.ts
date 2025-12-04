@@ -4,5 +4,5 @@ export type DsfrQuoteProps = {
   details: { label: string, url: string }[]
   source: string
   sourceUrl: string
-  quoteImage: string
+  quoteImage?: string
 }
