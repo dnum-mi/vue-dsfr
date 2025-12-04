@@ -29,7 +29,7 @@ const iconProps = computed(() => (dsfrIcon.value || !props.icon)
       : { scale: defaultScale, ...((props.icon as Record<string, string>) || {}) },
 )
 
-const useHeader = hasInjectionContext() ? inject(registerNavigationLinkKey)! : undefined
+const useHeader = hasInjectionContext() ? inject(registerNavigationLinkKey, undefined)! : undefined
 const closeModal = useHeader?.() ?? (() => {})
 </script>
 

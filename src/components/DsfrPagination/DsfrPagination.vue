@@ -29,7 +29,7 @@ const endIndex = computed(() => {
 const displayedPages = computed(() => {
   return props.pages.length > props.truncLimit ? props.pages.slice(startIndex.value, endIndex.value + 1) : props.pages
 })
-const lastPage = props.pages[props.pages.length - 1]
+const lastPage = computed(() => props.pages[props.pages.length - 1])
 
 const updatePage = (index: number) => emit('update:current-page', index)
 const toPage = (index: number) => updatePage(index)
@@ -89,14 +89,14 @@ const isCurrentPage = (page: Page) => props.pages.indexOf(page) === props.curren
       <li v-if="endIndex < pages.length - 2">
         <span class="fr-pagination__link fr-unhidden-lg">...</span>
       </li>
-      <li v-if="endIndex < pages.length - 1">
+      <li v-if="endIndex < pages.length - 1 && lastPage">
         <a
-          :href="lastPage.href"
+          :href="lastPage?.href"
           class="fr-pagination__link fr-unhidden-lg"
-          :title="(lastPage.title !== lastPage.label) ? lastPage.title : undefined"
-          :aria-current="isCurrentPage(lastPage) ? 'page' : undefined"
-          @click.prevent="toPage(props.pages.indexOf(lastPage))"
-        >{{ lastPage.label }}</a>
+          :title="lastPage && (lastPage.title !== lastPage.label) ? lastPage.title : undefined"
+          :aria-current="lastPage && isCurrentPage(lastPage) ? 'page' : undefined"
+          @click.prevent="lastPage && toPage(props.pages.indexOf(lastPage))"
+        >{{ lastPage?.label }}</a>
       </li>
       <li>
         <a

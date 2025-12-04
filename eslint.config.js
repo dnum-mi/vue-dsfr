@@ -1,15 +1,19 @@
 // For more info, see https://github.com/storybookjs/eslint-plugin-storybook#configuration-flat-config-format
 
 import antfu from '@antfu/eslint-config'
+import importX from 'eslint-plugin-import-x'
 
 export default antfu({
   vue: true,
 }, [
   {
+    plugins: {
+      'import-x': importX,
+    },
     rules: {
       'test/prefer-lowercase-title': 'off',
       'sort-imports': 'off', // Should be 'error'
-      'import/order': [
+      'import-x/order': [
         'error',
         {
           'newlines-between': 'always',
@@ -33,7 +37,7 @@ export default antfu({
       'vue/quote-props': ['error', 'as-needed'], // Should be ['error', 'consistent-as-needed']
       'ts/consistent-type-definitions': 'off', // Should be 'on'
       'style/arrow-parens': 'off', // Should be ['error', 'as-needed']
-      'style/operator-linebreak': ['error', 'after', { overrides: { '?': 'before', ':': 'before' } }],
+      'style/operator-linebreak': ['error', 'after', { overrides: { '?': 'before', ':': 'before', '|': 'before', '&': 'before' } }],
       'style/max-statements-per-line': 'off', // Should be 'error'
       'vue/no-irregular-whitespace': 'warn',
       'no-irregular-whitespace': 'warn',

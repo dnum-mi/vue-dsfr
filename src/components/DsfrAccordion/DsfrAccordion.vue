@@ -36,7 +36,7 @@ const {
 
 const isStandaloneActive = ref()
 
-const useAccordion = inject(registerAccordionKey)!
+const useAccordion = inject(registerAccordionKey, undefined)!
 const { isActive, expand } = useAccordion?.(toRef(() => props.title)) ?? { isActive: isStandaloneActive, expand: () => isStandaloneActive.value = !isStandaloneActive.value }
 
 onMounted(() => {

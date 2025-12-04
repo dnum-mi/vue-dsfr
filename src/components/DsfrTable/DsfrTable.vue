@@ -95,8 +95,8 @@ const goLastPage = () => {
             :key="
               rowKey && getRowData(row as string[][])
                 ? typeof rowKey === 'string'
-                  ? getRowData(row as string[][])![headers.indexOf(rowKey)].toString()
-                  : rowKey(getRowData(row as string[][]))
+                  ? getRowData(row as string[][])?.[headers.indexOf(rowKey)]?.toString()
+                  : rowKey(getRowData(row as string[][]) ?? [])
                 : i
             "
             :row-data="getRowData(row as string[][])"
