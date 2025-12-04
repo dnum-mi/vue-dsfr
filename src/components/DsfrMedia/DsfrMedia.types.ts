@@ -12,7 +12,7 @@ export type DsfrPictureProps = {
   alt?: string
   legend?: string
   size?: 'small' | 'medium' | 'large' | undefined
-  src: string
+  src?: string
   title?: string
   ratio?: string
 }

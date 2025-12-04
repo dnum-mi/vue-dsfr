@@ -120,6 +120,7 @@ export const CheckboxRequis: Story = {
     disabled: false,
     modelValue: false,
     required: true,
+    value: 'name1',
     label: 'En cochant vous acceptez...',
     name: 'name1',
     hint: 'Description 1',
@@ -141,6 +142,7 @@ export const CheckboxRequis: Story = {
       :required="args.required"
       :hint="args.hint"
       :name="args.name || 'name1'"
+      :value="args.value"
       v-model="args.modelValue"
     />
   `,
@@ -166,6 +168,7 @@ export const CheckboxRequisPersonnalise: Story = {
     required: true,
     label: 'En cochant vous acceptez...',
     name: 'name1',
+    value: 'name1',
     hint: 'Description 1',
   } as any,
   render: (args) => ({
@@ -185,6 +188,7 @@ export const CheckboxRequisPersonnalise: Story = {
       :required="args.required"
       :hint="args.hint"
       :name="args.name || 'name1'"
+      :value="args.value"
       v-model="args.modelValue"
     >
       <template #required-tip>
@@ -218,6 +222,7 @@ export const CheckboxAvecErreur: Story = {
     hint: 'Description 1',
     errorMessage: 'Erreur formulaire',
     name: 'cb-error',
+    value: 'name-error',
   } as any,
   render: (args) => ({
     components: { DsfrCheckbox },
@@ -232,6 +237,7 @@ export const CheckboxAvecErreur: Story = {
         :hint="args.hint"
         :error-message="args.errorMessage"
         :name="args.name || 'name-error'"
+        :value="args.value"
         v-model="args.modelValue"
       />
   `,
@@ -260,6 +266,7 @@ export const CheckboxAvecSucces: Story = {
     label: 'Checkbox 1',
     hint: 'Description 1',
     validMessage: 'Formulaire valide',
+    value: 'name-success',
     name: 'cb-success',
   } as any,
   render: (args) => ({
@@ -274,6 +281,7 @@ export const CheckboxAvecSucces: Story = {
         :hint="args.hint"
         :valid-message="args.validMessage"
         :name="args.name || 'name-success'"
+        :value="args.value"
         v-model="args.modelValue"
       />
   `,

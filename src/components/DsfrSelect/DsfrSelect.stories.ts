@@ -191,7 +191,7 @@ export const ListeDeroulanteRequise: StoryObj<typeof meta> = {
         :required="args.required"
         :label="args.label"
         :options="args.options"
-        :description="args.description"
+        :hint="args.description"
         :success-message="args.successMessage"
         :error-message="args.errorMessage"
         :disabled="args.disabled"
@@ -231,7 +231,7 @@ export const ListeDeroulanteRequisePersonnalisee: StoryObj<typeof meta> = {
         :required="args.required"
         :label="args.label"
         :options="args.options"
-        :description="args.description"
+        :hint="args.description"
         :success-message="args.successMessage"
         :error-message="args.errorMessage"
         :disabled="args.disabled"
@@ -272,12 +272,12 @@ export const ListeDeroulanteInactive: StoryObj<typeof meta> = {
       return { args }
     },
     template: `
-      <div :data-fr-theme="dark ? 'dark' : ''" style="background-color: var(--grey-1000-50); padding: 1rem;">
+      <div>
         <DsfrSelect
           :required="args.required"
           :label="args.label"
           :options="args.options"
-          :description="args.description"
+          :hint="args.description"
           :success-message="args.successMessage"
           :error-message="args.errorMessage"
           :disabled="args.disabled"
@@ -336,12 +336,12 @@ export const ListeDeroulanteAvecOptionsInactives: StoryObj<typeof meta> = {
       return { args }
     },
     template: `
-      <div :data-fr-theme="dark ? 'dark' : ''" style="background-color: var(--grey-1000-50); padding: 1rem;">
+      <div>
         <DsfrSelect
           :required="args.required"
           :label="args.label"
           :options="args.options"
-          :description="args.description"
+          :hint="args.description"
           :success-message="args.successMessage"
           :error-message="args.errorMessage"
           :disabled="args.disabled"
@@ -389,12 +389,12 @@ export const ListeDeroulanteAvecOptionsGroupees: StoryObj<typeof meta> = {
       return { args }
     },
     template: `
-      <div :data-fr-theme="args.dark ? 'dark' : ''" style="background-color: var(--grey-1000-50); padding: 1rem;">
+      <div>
         <DsfrSelect
           :required="args.required"
           :label="args.label"
           :optionGroups="args.optionGroups"
-          :description="args.description"
+          :hint="args.description"
           :success-message="args.successMessage"
           :error-message="args.errorMessage"
           :disabled="args.disabled"

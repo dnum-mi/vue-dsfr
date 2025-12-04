@@ -97,4 +97,10 @@ export default antfu({
       'antfu/no-top-level-await': 'off',
     },
   },
+  {
+    files: ['**/docs/**/*.md'],
+    rules: {
+      'import-x/order': 'off',
+    },
+  },
 ])
