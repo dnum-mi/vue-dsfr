@@ -17,6 +17,7 @@ describe('DsfrMultiselect', () => {
     // When
     const { getByRole, getAllByRole } = render(DsfrMultiselect, {
       props: {
+        label: 'Test multiselect',
         modelValue: values,
         options,
       },
@@ -44,6 +45,7 @@ describe('DsfrMultiselect', () => {
     // When
     const { getByRole, getAllByRole } = render(DsfrMultiselect, {
       props: {
+        label: 'Test multiselect avec options sélectionnées',
         modelValue: values,
         options,
       },
@@ -73,6 +75,7 @@ describe('DsfrMultiselect', () => {
     // When
     const { getByRole, getAllByRole } = render(DsfrMultiselect, {
       props: {
+        label: 'Test multiselect avec recherche',
         modelValue: values,
         options,
         search: true,
@@ -106,6 +109,7 @@ describe('DsfrMultiselect', () => {
     // When
     const { getByRole, getAllByRole } = render(DsfrMultiselect, {
       props: {
+        label: 'Test multiselect avec recherche pour filtrer',
         modelValue: values,
         options,
         search: true,
@@ -139,6 +143,7 @@ describe('DsfrMultiselect', () => {
     // When
     const { getByRole } = render(DsfrMultiselect, {
       props: {
+        label: 'Test multiselect avec sélection de tout',
         modelValue: values,
         options,
         selectAll: true,
@@ -191,6 +196,7 @@ describe('DsfrMultiselect', () => {
     // When
     const { getByRole, getByText } = render(DsfrMultiselect, {
       props: {
+        label: 'Test multiselect avec options sous forme d’objets',
         modelValue: values,
         options,
         idKey: 'nom',

@@ -54,6 +54,7 @@ describe('DsfrCard', () => {
         },
       },
       props: {
+        titleLinkAttrs: {},
         altImg,
         detail,
         title,

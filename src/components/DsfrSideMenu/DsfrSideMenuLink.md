@@ -55,7 +55,7 @@ Exemple d'utilisation de `DsfrSideMenuLink` dans un élément de menu :
     </DsfrSideMenuLink>
   </DsfrSideMenuListItem>
   <DsfrSideMenuListItem>
-    <DsfrSideMenuLink to="https://www.service-public.fr">
+    <DsfrSideMenuLink to="https://www.service-public.gouv.fr">
       Service Public
     </DsfrSideMenuLink>
   </DsfrSideMenuListItem>

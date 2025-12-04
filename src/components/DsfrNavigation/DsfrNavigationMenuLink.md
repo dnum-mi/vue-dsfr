@@ -61,7 +61,7 @@ Exemple d'utilisation de `DsfrNavigationMenuLink` dans un menu :
     </DsfrNavigationMenuItem>
     <DsfrNavigationMenuItem>
       <DsfrNavigationMenuLink
-        to="https://www.service-public.fr"
+        to="https://www.service-public.gouv.fr"
         text="Service Public"
         icon="fr-icon-external-link-line"
       />

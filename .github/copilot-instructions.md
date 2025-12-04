@@ -158,7 +158,7 @@ const props = withDefaults(defineProps<{
   size?: 'sm' | 'md' | 'lg'
   disabled?: boolean
 }>(), {
-  size: 'md',           // Valeur par défaut custom
+  size: 'md', // --------  Valeur par défaut custom
   // disabled: false    // Pas besoin, false par défaut
 })
 </script>
