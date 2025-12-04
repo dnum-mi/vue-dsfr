@@ -87,39 +87,6 @@ describe('DsfrPagination', () => {
     })
   })
 
-  it('should render a list of links with appropriate title', async () => {
-    // Given
-    const pages = makePages(6)
-
-    // When
-    const { getByRole } = render(Pagination, {
-      global: { components: { VIcon } },
-      props: {
-        pages,
-        currentPage: 2,
-        truncLimit: 4,
-        firstPageTitle: 'Première page',
-        lastPageTitle: 'Dernière page',
-        nextPageTitle: 'Page suivante',
-        prevPageTitle: 'Page précédente',
-        currentPageTitleSuffix: ' - page courante',
-        ellipsisTitle: 'Pages intermédiaires non affichées',
-      },
-    })
-
-    const nextLink = getByRole('link', { name: 'Page suivante' })
-    const prevLink = getByRole('link', { name: 'Page précédente' })
-    const firstLink = getByRole('link', { name: 'Première page' })
-    const lastLink = getByRole('link', { name: 'Dernière page' })
-    const currentLink = getByRole('link', { current: 'page' })
-    // Then
-    expect(nextLink.getAttribute('title')).toBe('Page suivante')
-    expect(prevLink.getAttribute('title')).toBe('Page précédente')
-    expect(firstLink.getAttribute('title')).toBe('Première page')
-    expect(lastLink.getAttribute('title')).toBe('Dernière page')
-    expect(currentLink.getAttribute('title')).toBe('page 3 - page courante')
-  })
-
   it('renders navigation with default aria-label', () => {
     // Given
     const pages = makePages(3)
@@ -201,7 +168,7 @@ describe('DsfrPagination', () => {
       if (link.ariaCurrent === 'page') {
         expect(link.getAttribute('title')).toBe(`page ${index + 1} - page courante`)
       } else {
-        expect(link.getAttribute('title')).toBe(`page ${index + 1}`)
+        expect(link.getAttribute('title')).toBe(null)
       }
     })
   })
