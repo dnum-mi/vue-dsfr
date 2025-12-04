@@ -98,7 +98,7 @@ export default antfu({
     },
   },
   {
-    files: ['**/docs/**/*.md'],
+    files: ['**/*.md', '**/*.md/**'],
     rules: {
       'import-x/order': 'off',
     },

@@ -160,7 +160,7 @@
     "vite-node": "^3.2.4",
     "vite-plugin-full-reload": "^1.2.0",
     "vitepress": "^1.6.4",
-    "vitest": "^4.0.14",
+    "vitest": "^4.0.15",
     "vue-demi": "^0.14.10",
     "vue-tsc": "^2.2.12"
   },

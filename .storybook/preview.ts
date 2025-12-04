@@ -9,14 +9,12 @@ import VIcon from '../src/components/VIcon/VIcon.vue'
 
 import VueDsfrTheme from './vue-dsfr-theme.js'
 import '../src/assets/variables-fdr.css'
+import '../src/main.css'
 import '@gouvfr/dsfr/dist/core/core.main.min.css'
 import '@gouvfr/dsfr/dist/scheme/scheme.min.css'
 import '@gouvfr/dsfr/dist/component/component.main.min.css'
 import '@gouvfr/dsfr/dist/utility/utility.main.min.css'
 import '@gouvfr/dsfr/dist/utility/icons/icons.main.min.css'
-
-import '../src/main.css'
-
 import './theme.css'
 // import '@gouvfr/dsfr/dist/core/core.min.css'
 
