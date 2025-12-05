@@ -2,7 +2,7 @@
 
 Ci-dessous sont listées les icônes standards du DSFR disponibles directement via le CSS du DSFR.
 
-[Site officiel](https://www.systeme-de-design.gouv.fr/version-courante/fr/fondamentaux-techniques/icones)
+[Site officiel](https://www.systeme-de-design.gouv.fr/version-courante/fr/fondamentaux/icone)
 
 ## Les icônes par section
 
