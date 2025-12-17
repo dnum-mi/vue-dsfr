@@ -1,8 +1,6 @@
 import { fireEvent, render } from '@testing-library/vue'
 import { expect } from 'vitest'
 
-import VIcon from '../VIcon/VIcon.vue'
-
 import DsfrDataTable from './DsfrDataTable.vue'
 
 describe('DsfrDataTable', () => {
@@ -20,7 +18,6 @@ describe('DsfrDataTable', () => {
     const { getByText, container } = render(DsfrDataTable, {
       global: {
         components: {
-          VIcon,
         },
       },
       props: {
@@ -49,7 +46,7 @@ describe('DsfrDataTable', () => {
     const headerCells = theadEl?.querySelectorAll('th[scope="col"]')
     expect(headerCells?.length).toBe(headersRow.length)
     headersRow.forEach((header, index) => {
-      expect(headerCells?.[index].textContent).toBe(header)
+      expect(headerCells?.[index].textContent).toContain(header)
     })
     const tbodyEl = tableEl?.querySelector('tbody')
     expect(tbodyEl).toBeTruthy()
@@ -79,7 +76,6 @@ describe('DsfrDataTable', () => {
     const { getByText, container } = render(DsfrDataTable, {
       global: {
         components: {
-          VIcon,
         },
       },
       props: {
@@ -115,7 +111,6 @@ describe('DsfrDataTable', () => {
     const { container } = render(DsfrDataTable, {
       global: {
         components: {
-          VIcon,
         },
       },
       props: {
@@ -143,7 +138,39 @@ describe('DsfrDataTable', () => {
     expect(captionEl).toBeTruthy()
     const captionDetailEl = captionEl?.querySelector('.fr-table__caption__desc')
     expect(captionDetailEl).toBeTruthy()
-    expect(captionDetailEl?.textContent).toBe(captionDetail)
+    expect(captionDetailEl?.textContent).toContain(captionDetail)
+  })
+  it('should render sortable columns with appropriate markup', async () => {
+    // Given
+    const title = 'Sortable Table'
+    const headersRow = ['Name', 'Age', 'City']
+    const rows = [
+      ['Alice', '25', 'Paris'],
+      ['Bob', '30', 'Lyon'],
+    ]
+
+    // When
+    const { getByText } = render(DsfrDataTable, {
+      global: {
+        components: {
+        },
+      },
+      props: {
+        title,
+        headersRow,
+        rows,
+        sortableRows: ['Name'],
+      },
+    })
+    // Then
+
+    const nameHeader = getByText('Name')
+    const nameHeaderButton = nameHeader.querySelector('button')
+
+    expect(nameHeader).toBeTruthy()
+    expect(nameHeader?.textContent).toContain('Name')
+    expect(nameHeaderButton).toBeTruthy()
+    expect(nameHeaderButton?.classList.contains('fr-btn--sort')).toBe(true)
   })
 
   it('should set aria-sort="none" on sortable columns that are not currently sorted', () => {
@@ -159,7 +186,6 @@ describe('DsfrDataTable', () => {
     const { container } = render(DsfrDataTable, {
       global: {
         components: {
-          VIcon,
         },
       },
       props: {
@@ -190,7 +216,6 @@ describe('DsfrDataTable', () => {
     const { getByText } = render(DsfrDataTable, {
       global: {
         components: {
-          VIcon,
         },
       },
       props: {
@@ -202,10 +227,17 @@ describe('DsfrDataTable', () => {
     })
 
     const nameHeader = getByText('Name').closest('th')
-    await fireEvent.click(nameHeader!)
+    const nameHeaderButton = nameHeader?.querySelector('button')
+
+    // Click to sort ascending
+    if (nameHeaderButton) {
+      await fireEvent.click(nameHeaderButton)
+    }
 
     // Then
     expect(nameHeader!.getAttribute('aria-sort')).toBe('ascending')
+    expect(nameHeaderButton).toBeTruthy()
+    expect(nameHeaderButton?.getAttribute('aria-sort')).toBe('ascending')
 
     const ageHeader = getByText('Age').closest('th')
     const cityHeader = getByText('City').closest('th')
@@ -226,7 +258,6 @@ describe('DsfrDataTable', () => {
     const { getByText } = render(DsfrDataTable, {
       global: {
         components: {
-          VIcon,
         },
       },
       props: {
@@ -238,16 +269,20 @@ describe('DsfrDataTable', () => {
     })
 
     const nameHeader = getByText('Name').closest('th')
+    const nameHeaderButton = nameHeader?.querySelector('button')
 
     // Click once for ascending
-    await fireEvent.click(nameHeader!)
+    await fireEvent.click(nameHeaderButton!)
+    await setTimeout(() => {}, 1000) // Wait for DOM update
     expect(nameHeader!.getAttribute('aria-sort')).toBe('ascending')
+    expect(nameHeaderButton?.getAttribute('aria-sort')).toBe('ascending')
 
     // Click twice for descending
-    await fireEvent.click(nameHeader!)
+    await fireEvent.click(nameHeaderButton!)
 
     // Then
     expect(nameHeader!.getAttribute('aria-sort')).toBe('descending')
+    expect(nameHeaderButton?.getAttribute('aria-sort')).toBe('descending')
   })
 
   it('should not set aria-sort on non-sortable tables', () => {
@@ -263,7 +298,6 @@ describe('DsfrDataTable', () => {
     const { container } = render(DsfrDataTable, {
       global: {
         components: {
-          VIcon,
         },
       },
       props: {
@@ -298,7 +332,6 @@ describe('DsfrDataTable', () => {
     const { getByText } = render(DsfrDataTable, {
       global: {
         components: {
-          VIcon,
         },
       },
       props: {
@@ -311,15 +344,18 @@ describe('DsfrDataTable', () => {
 
     // Then
     const nameHeader = getByText('Name').closest('th')
+    const nameHeaderButton = nameHeader!.querySelector('button')
     const ageHeader = getByText('Age').closest('th')
     const cityHeader = getByText('City').closest('th')
+    const cityHeaderButton = cityHeader!.querySelector('button')
 
     expect(nameHeader!.getAttribute('aria-sort')).toBe('none')
     expect(ageHeader!.getAttribute('aria-sort')).toBe('none')
     expect(cityHeader!.getAttribute('aria-sort')).toBeNull() // Not sortable
+    expect(cityHeaderButton).toBeNull() // No button for non-sortable column
 
     // Click on name to sort
-    await fireEvent.click(nameHeader!)
+    await fireEvent.click(nameHeaderButton!)
     expect(nameHeader!.getAttribute('aria-sort')).toBe('ascending')
     expect(ageHeader!.getAttribute('aria-sort')).toBe('none')
     expect(cityHeader!.getAttribute('aria-sort')).toBeNull()
@@ -335,7 +371,6 @@ describe('DsfrDataTable', () => {
     const { getByText } = render(DsfrDataTable, {
       global: {
         components: {
-          VIcon,
         },
       },
       props: {
@@ -347,21 +382,26 @@ describe('DsfrDataTable', () => {
     })
 
     const nameHeader = getByText('Name').closest('th')
+    const nameHeaderButton = nameHeader?.querySelector('button')
 
     // Initial state
     expect(nameHeader!.getAttribute('aria-sort')).toBe('none')
+    expect(nameHeaderButton!.getAttribute('aria-sort')).toBe('none')
 
     // First click - ascending
-    await fireEvent.click(nameHeader!)
+    await fireEvent.click(nameHeaderButton!)
     expect(nameHeader!.getAttribute('aria-sort')).toBe('ascending')
+    expect(nameHeaderButton!.getAttribute('aria-sort')).toBe('ascending')
 
     // Second click - descending
-    await fireEvent.click(nameHeader!)
+    await fireEvent.click(nameHeaderButton!)
     expect(nameHeader!.getAttribute('aria-sort')).toBe('descending')
+    expect(nameHeaderButton!.getAttribute('aria-sort')).toBe('descending')
 
     // Third click - back to none (unsorted)
-    await fireEvent.click(nameHeader!)
+    await fireEvent.click(nameHeaderButton!)
     expect(nameHeader!.getAttribute('aria-sort')).toBe('none')
+    expect(nameHeaderButton!.getAttribute('aria-sort')).toBe('none')
   })
 
   it('should handle empty rows array without errors', () => {
@@ -374,7 +414,6 @@ describe('DsfrDataTable', () => {
     const { container } = render(DsfrDataTable, {
       global: {
         components: {
-          VIcon,
         },
       },
       props: {
@@ -391,5 +430,39 @@ describe('DsfrDataTable', () => {
     headers.forEach((header) => {
       expect(header.getAttribute('aria-sort')).toBe('none')
     })
+  })
+
+  it('should handle single row table correctly', () => {
+    // Given
+    const title = 'Single Row Table'
+    const headersRow = ['Name', 'Age']
+    const rows = [['Alice', '25']]
+
+    // When
+    const { container } = render(DsfrDataTable, {
+      global: {
+        components: {
+        },
+      },
+      props: {
+        title,
+        headersRow,
+        rows,
+        sortableRows: true,
+      },
+    })
+
+    // Then
+    const headers = container.querySelectorAll('th[scope="col"]')
+    expect(headers.length).toBe(2)
+    headers.forEach((header) => {
+      expect(header.getAttribute('aria-sort')).toBe('none')
+    })
+    const rowElements = container.querySelectorAll('tbody tr')
+    expect(rowElements.length).toBe(1)
+    const cells = rowElements[0].querySelectorAll('td')
+    expect(cells.length).toBe(2)
+    expect(cells[0].textContent).toContain('Alice')
+    expect(cells[1].textContent).toContain('25')
   })
 })

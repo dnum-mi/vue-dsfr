@@ -2,7 +2,6 @@
 import { computed } from 'vue'
 
 import DsfrPagination from '../DsfrPagination/DsfrPagination.vue'
-import VIcon from '../VIcon/VIcon.vue'
 
 import { useRandomId } from '@/utils/random-utils'
 
@@ -214,11 +213,9 @@ function copyToClipboard (text: string) {
                   v-bind="typeof header === 'object' && header.headerAttrs"
                   :tabindex="sortableRows ? 0 : undefined"
                   :aria-sort="getAriaSort(header, idx)"
-                  @click="sortBy((header as DsfrDataTableHeaderCellObject).key ?? (Array.isArray(rows[0]) ? idx : header))"
-                  @keydown.enter="sortBy((header as DsfrDataTableHeaderCellObject).key ?? header)"
-                  @keydown.space="sortBy((header as DsfrDataTableHeaderCellObject).key ?? header)"
                 >
                   <div
+                    class="fr-cell-sort"
                     :class="{ 'sortable-header': sortableRows === true || (Array.isArray(sortableRows) && sortableRows.includes((header as DsfrDataTableHeaderCellObject).key ?? header)) }"
                   >
                     <slot
@@ -227,15 +224,17 @@ function copyToClipboard (text: string) {
                     >
                       {{ typeof header === 'object' ? header.label : header }}
                     </slot>
-                    <span v-if="sortedBy !== ((header as DsfrDataTableHeaderCellObject).key ?? header) && (sortableRows === true || (Array.isArray(sortableRows) && sortableRows.includes((header as DsfrDataTableHeaderCellObject).key ?? header)))">
-                      <VIcon
-                        name="ri-sort-asc"
-                        color="var(--grey-625-425)"
-                      />
-                    </span>
-                    <span v-else-if="sortedBy === ((header as DsfrDataTableHeaderCellObject).key ?? header)">
-                      <VIcon :name="sortedDesc ? 'ri-sort-desc' : 'ri-sort-asc'" />
-                    </span>
+                    <button
+                      v-if="sortableRows === true || (Array.isArray(sortableRows) && sortableRows.includes((header as DsfrDataTableHeaderCellObject).key ?? header))"
+                      type="button"
+                      :aria-sort="getAriaSort(header, idx)"
+                      class="fr-btn--sort fr-btn fr-btn-sm"
+                      @click="sortBy((header as DsfrDataTableHeaderCellObject).key ?? (Array.isArray(rows[0]) ? idx : header))"
+                      @keydown.enter="sortBy((header as DsfrDataTableHeaderCellObject).key ?? header)"
+                      @keydown.space="sortBy((header as DsfrDataTableHeaderCellObject).key ?? header)"
+                    >
+                      Trier
+                    </button>
                   </div>
                 </th>
               </tr>
