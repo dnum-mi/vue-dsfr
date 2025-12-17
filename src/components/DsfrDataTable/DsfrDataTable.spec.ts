@@ -1,11 +1,12 @@
 import { fireEvent, render } from '@testing-library/vue'
+import { expect } from 'vitest'
 
 import VIcon from '../VIcon/VIcon.vue'
 
 import DsfrDataTable from './DsfrDataTable.vue'
 
 describe('DsfrDataTable', () => {
-  it('should render a simple data table with headers and rows', () => {
+  it('should render a simple data table with headers and rows according to dsfr markup', () => {
     // Given
     const title = 'Test Table'
     const headersRow = ['Name', 'Age', 'City']
@@ -16,7 +17,7 @@ describe('DsfrDataTable', () => {
     ]
 
     // When
-    const { getByText } = render(DsfrDataTable, {
+    const { getByText, container } = render(DsfrDataTable, {
       global: {
         components: {
           VIcon,
@@ -30,9 +31,119 @@ describe('DsfrDataTable', () => {
     })
 
     // Then
+    const mainContainer = container.querySelector('div.fr-table')
+    expect(mainContainer).toBeTruthy()
+    const firstSubContainer = mainContainer?.querySelector('div.fr-table__wrapper')
+    expect(firstSubContainer).toBeTruthy()
+    const secondSubContainer = firstSubContainer?.querySelector('div.fr-table__container')
+    expect(secondSubContainer).toBeTruthy()
+    const thirdSubContainer = secondSubContainer?.querySelector('div.fr-table__content')
+    expect(thirdSubContainer).toBeTruthy()
+    const tableEl = thirdSubContainer?.querySelector('table')
+    expect(tableEl).toBeTruthy()
+    const captionEL = tableEl?.querySelector('caption')
+    expect(captionEL).toBeTruthy()
+    expect(captionEL).toBe(getByText(title))
+    const theadEl = tableEl?.querySelector('thead')
+    expect(theadEl).toBeTruthy()
+    const headerCells = theadEl?.querySelectorAll('th[scope="col"]')
+    expect(headerCells?.length).toBe(headersRow.length)
+    headersRow.forEach((header, index) => {
+      expect(headerCells?.[index].textContent).toBe(header)
+    })
+    const tbodyEl = tableEl?.querySelector('tbody')
+    expect(tbodyEl).toBeTruthy()
+    const rowElements = tbodyEl?.querySelectorAll('tr')
+    expect(rowElements?.length).toBe(rows.length)
+    rows.forEach((row, rowIndex) => {
+      const cells = rowElements?.[rowIndex].querySelectorAll(['th', 'td'].join(','))
+      expect(cells?.length).toBe(row.length)
+    })
+
     expect(getByText('Alice')).toBeTruthy()
     expect(getByText('Bob')).toBeTruthy()
     expect(getByText('Charlie')).toBeTruthy()
+  })
+
+  it('should render caption even if noCaption is true', () => {
+    // Given
+    const title = 'Test Table with Caption undisplayed'
+    const headersRow = ['Name', 'Age', 'City']
+    const rows = [
+      ['Alice', '25', 'Paris'],
+      ['Bob', '30', 'Lyon'],
+    ]
+    const noCaption = true
+
+    // When
+    const { getByText, container } = render(DsfrDataTable, {
+      global: {
+        components: {
+          VIcon,
+        },
+      },
+      props: {
+        title,
+        headersRow,
+        rows,
+        noCaption,
+      },
+    })
+
+    // Then
+    const captionEl = container.querySelector('caption')
+    expect(captionEl).toBeTruthy()
+    expect(captionEl).toBe(getByText(title))
+  })
+
+  it('should render table classes based on props', () => {
+    // Given
+    const title = 'Test Table with Classes'
+    const headersRow = ['Name', 'Age', 'City']
+    const rows = [
+      ['Alice', '25', 'Paris'],
+      ['Bob', '30', 'Lyon'],
+    ]
+    const bottomCaption = true
+    const captionDetail = 'Table detail text'
+    const verticalBorders = true
+    const multilineTable = true
+    const size = 'sm'
+    const noScroll = true
+
+    // When
+    const { container } = render(DsfrDataTable, {
+      global: {
+        components: {
+          VIcon,
+        },
+      },
+      props: {
+        title,
+        headersRow,
+        rows,
+        bottomCaption,
+        captionDetail,
+        verticalBorders,
+        multilineTable,
+        size,
+        noScroll,
+      },
+    })
+
+    // Then
+    const tableDiv = container.querySelector('div.fr-table')
+    expect(tableDiv).toBeTruthy()
+    expect(tableDiv?.classList.contains('fr-table--caption-bottom')).toBe(true)
+    expect(tableDiv?.classList.contains('fr-table--bordered')).toBe(true)
+    expect(tableDiv?.classList.contains('fr-table--no-scroll')).toBe(true)
+    expect(tableDiv?.classList.contains('fr-table--multiline')).toBe(true)
+    expect(tableDiv?.classList.contains('fr-table--sm')).toBe(true)
+    const captionEl = container.querySelector('caption')
+    expect(captionEl).toBeTruthy()
+    const captionDetailEl = captionEl?.querySelector('.fr-table__caption__desc')
+    expect(captionDetailEl).toBeTruthy()
+    expect(captionDetailEl?.textContent).toBe(captionDetail)
   })
 
   it('should set aria-sort="none" on sortable columns that are not currently sorted', () => {

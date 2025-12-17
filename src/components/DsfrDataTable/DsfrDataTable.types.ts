@@ -21,6 +21,10 @@ export type DsfrDataTableProps = {
   verticalBorders?: boolean
   bottomCaption?: boolean
   noCaption?: boolean
+  captionDetail?: string
+  multilineTable?: boolean
+  noScroll?: boolean
+  size?: 'sm' | 'md' | 'lg'
   pages?: Page[]
   pagination?: boolean
   paginationOptions?: number[]

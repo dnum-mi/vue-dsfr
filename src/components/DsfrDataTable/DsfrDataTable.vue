@@ -29,6 +29,10 @@ export type DsfrDataTableProps = {
   verticalBorders?: boolean
   bottomCaption?: boolean
   noCaption?: boolean
+  captionDetail?: string
+  noScroll?: boolean
+  multilineTable?: boolean
+  size?: 'sm' | 'md' | 'lg'
   pages?: Page[]
   pagination?: boolean
   paginationOptions?: number[]
@@ -165,13 +169,20 @@ function copyToClipboard (text: string) {
 <template>
   <div
     class="fr-table"
+    :class="{ 'fr-table--sm': size === 'sm', 'fr-table--lg': size === 'lg', 'fr-table--no-caption': noCaption, 'fr-table--bordered': verticalBorders, 'fr-table--no-scroll': noScroll, 'fr-table--multiline': multilineTable, 'fr-table--caption-bottom': bottomCaption && !noCaption }"
   >
     <div class="fr-table__wrapper">
       <div class="fr-table__container">
         <div class="fr-table__content">
           <table :id="id">
-            <caption v-if="!noCaption">
+            <caption>
               {{ title }}
+              <div
+                v-if="captionDetail"
+                class="fr-table__caption__desc"
+              >
+                {{ captionDetail }}
+              </div>
             </caption>
             <thead>
               <tr>
