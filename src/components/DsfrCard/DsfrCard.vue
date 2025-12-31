@@ -108,7 +108,7 @@ defineExpose({ goToTargetLink })
             {{ title }}
           </template>
         </component>
-        <p class="fr-card__desc">
+        <p v-if="description" class="fr-card__desc">
           {{ description }}
         </p>
         <div
