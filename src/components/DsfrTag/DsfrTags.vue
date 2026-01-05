@@ -40,27 +40,12 @@ function onSelect ([value, selected]: [unknown, boolean]) {
     >
       <DsfrTag
         v-if="tag.selectable"
-        :label="tag.label"
-        :link="tag.link"
-        :tag-name="tag.tagName"
-        :icon="tag.icon"
-        :disabled="tag.disabled"
-        :small="tag.small"
-        :icon-only="tag.iconOnly"
-        :selectable="true"
-        :selected="modelValue?.includes(tag.value) || false"
-        :value="tag.value"
+        v-bind="tag"
         @select="onSelect($event as [unknown, boolean])"
       />
       <DsfrTag
         v-else
-        :label="tag.label"
-        :link="tag.link"
-        :tag-name="tag.tagName"
-        :icon="tag.icon"
-        :disabled="tag.disabled"
-        :small="tag.small"
-        :icon-only="tag.iconOnly"
+        v-bind="tag"
       />
     </li>
   </ul>

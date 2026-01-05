@@ -1,4 +1,5 @@
 import type VIcon from '../VIcon/VIcon.vue'
+import type { HTMLAttributes } from 'vue'
 
 export type DsfrTagProps<T = string> = {
   label?: string
@@ -21,4 +22,4 @@ export type DsfrTagProps<T = string> = {
 export type DsfrTagsProps<T = string> = {
   tags: DsfrTagProps<T>[]
   modelValue?: T[]
-}
+} & HTMLAttributes
