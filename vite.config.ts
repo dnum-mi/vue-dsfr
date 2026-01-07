@@ -5,7 +5,6 @@ import process from 'node:process'
 import { fileURLToPath, URL } from 'node:url'
 
 import vue from '@vitejs/plugin-vue'
-import vueJsx from '@vitejs/plugin-vue-jsx'
 import browserslist from 'browserslist'
 import { browserslistToTargets } from 'lightningcss'
 import LightningCSS from 'unplugin-lightningcss/vite'
@@ -18,7 +17,6 @@ const isVitepress = process.env.VITEPRESS === 'true'
 const config: UserConfig = {
   plugins: [
     vue(),
-    vueJsx(),
     LightningCSS({
       options: {
         targets: browserslistToTargets(browserslist('>= 0.25%')),
