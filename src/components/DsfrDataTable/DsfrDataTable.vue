@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { computed } from 'vue'
+import { computed, nextTick, onBeforeUnmount, onMounted, ref } from 'vue'
 
 import DsfrPagination from '../DsfrPagination/DsfrPagination.vue'
 
@@ -163,6 +163,44 @@ function onPaginationOptionsChange () {
 function copyToClipboard (text: string) {
   navigator.clipboard.writeText(text)
 }
+
+// rendu tenant compte du JS table DSFR
+const captionRef = ref<HTMLTableCaptionElement | null>(null)
+const containerStyle = ref({})
+
+let resizeObserver: ResizeObserver | null = null
+
+onMounted(async () => {
+  await nextTick()
+
+  if (!captionRef.value) {
+    return
+  }
+
+  const height = captionRef.value.offsetHeight
+
+  containerStyle.value = {
+    '--table-offset': `calc(${height}px + 1rem)`,
+  }
+
+  resizeObserver = new ResizeObserver(() => {
+    if (!captionRef.value) {
+      return
+    }
+    const newHeight = captionRef.value.offsetHeight
+    containerStyle.value = {
+      '--table-offset': `calc(${newHeight}px + 1rem)`,
+    }
+  })
+
+  if (captionRef.value) {
+    resizeObserver.observe(captionRef.value)
+  }
+})
+
+onBeforeUnmount(() => {
+  resizeObserver?.disconnect()
+})
 </script>
 
 <template>
@@ -170,17 +208,24 @@ function copyToClipboard (text: string) {
     class="fr-table"
     :class="{ 'fr-table--sm': size === 'sm', 'fr-table--lg': size === 'lg', 'fr-table--no-caption': noCaption, 'fr-table--bordered': verticalBorders, 'fr-table--no-scroll': noScroll, 'fr-table--multiline': multilineTable, 'fr-table--caption-bottom': bottomCaption && !noCaption }"
   >
-    <div class="fr-table__wrapper">
+    <div
+      class="fr-table__wrapper"
+      :style="containerStyle"
+    >
       <div class="fr-table__container">
         <div class="fr-table__content">
           <table :id="id">
-            <caption>
+            <caption
+              ref="captionRef"
+            >
               {{ title }}
               <div
-                v-if="captionDetail"
+                v-if="captionDetail || $slots['caption-description']"
                 class="fr-table__caption__desc"
               >
-                {{ captionDetail }}
+                <slot name="caption-description">
+                  {{ captionDetail }}
+                </slot>
               </div>
             </caption>
             <thead>
@@ -371,5 +416,16 @@ function copyToClipboard (text: string) {
   display: flex;
   justify-content: space-between;
   cursor: pointer;
+}
+.fr-table {
+  position: relative;
+  height: 100%;
+}
+
+.fr-table caption {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
 }
 </style>
