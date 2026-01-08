@@ -73,96 +73,102 @@ const goLastPage = () => {
     class="fr-table"
     :class="{ 'fr-table--no-caption': noCaption }"
   >
-    <table>
-      <caption class="caption">
-        {{ title }}
-      </caption>
-      <thead>
-        <!-- @slot Slot "header" pour les en-têtes du tableau. Sera dans `<thead>` -->
-        <slot name="header">
-          <DsfrTableHeaders
-            v-if="headers && headers.length"
-            :headers="headers"
-          />
-        </slot>
-      </thead>
-      <tbody>
-        <!-- @slot Slot par défaut pour le corps du tableau. Sera dans `<tbody>` -->
-        <slot />
-        <template v-if="rows && rows.length">
-          <DsfrTableRow
-            v-for="(row, i) of truncatedResults"
-            :key="
-              rowKey && getRowData(row as string[][])
-                ? typeof rowKey === 'string'
-                  ? getRowData(row as string[][])?.[headers.indexOf(rowKey)]?.toString()
-                  : rowKey(getRowData(row as string[][]) ?? [])
-                : i
-            "
-            :row-data="getRowData(row as string[][])"
-            :row-attrs="'rowAttrs' in row ? row.rowAttrs : {}"
-          />
-        </template>
-        <tr v-if="pagination">
-          <td :colspan="headers.length">
-            <div class="flex justify-right">
-              <div class="self-center">
-                <label :for="selectId">Résultats par page : </label>
-                <select
-                  :id="selectId"
-                  v-model="optionSelected"
-                  title="Résultats par page - le nombre résultats est mis à jour dès sélection d’une valeur"
-                  @change="emit('update:currentPage')"
-                >
-                  <option
-                    v-for="(option, idx) in paginationOptions"
-                    :key="idx"
-                    :value="option"
-                  >
-                    {{ option }}
-                  </option>
-                </select>
-              </div>
-              <div
-                class="flex ml-1"
-                aria-live="polite"
-                aria-atomic="true"
-              >
-                <p class="self-center fr-m-0">
-                  Page {{ currentPage }} sur {{ pageCount }}
-                </p>
-              </div>
-              <div class="flex ml-1">
-                <button
-                  class="fr-icon-arrow-left-s-first-line"
-                  @click="goFirstPage()"
-                >
-                  <span class="fr-sr-only">Première page du tableau</span>
-                </button>
-                <button
-                  class="fr-icon-arrow-left-s-line"
-                  @click="goPreviousPage()"
-                >
-                  <span class="fr-sr-only">Page précédente du tableau</span>
-                </button>
-                <button
-                  class="fr-icon-arrow-right-s-line"
-                  @click="goNextPage()"
-                >
-                  <span class="fr-sr-only">Page suivante du tableau</span>
-                </button>
-                <button
-                  class="fr-icon-arrow-right-s-last-line"
-                  @click="goLastPage()"
-                >
-                  <span class="fr-sr-only">Dernière page du tableau</span>
-                </button>
-              </div>
-            </div>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+    <div class="fr-table__wrapper">
+      <div class="fr-table__container">
+        <div class="fr-table__content">
+          <table>
+            <caption class="caption">
+              {{ title }}
+            </caption>
+            <thead>
+              <!-- @slot Slot "header" pour les en-têtes du tableau. Sera dans `<thead>` -->
+              <slot name="header">
+                <DsfrTableHeaders
+                  v-if="headers && headers.length"
+                  :headers="headers"
+                />
+              </slot>
+            </thead>
+            <tbody>
+              <!-- @slot Slot par défaut pour le corps du tableau. Sera dans `<tbody>` -->
+              <slot />
+              <template v-if="rows && rows.length">
+                <DsfrTableRow
+                  v-for="(row, i) of truncatedResults"
+                  :key="
+                    rowKey && getRowData(row as string[][])
+                      ? typeof rowKey === 'string'
+                        ? getRowData(row as string[][])?.[headers.indexOf(rowKey)]?.toString()
+                        : rowKey(getRowData(row as string[][]) ?? [])
+                      : i
+                  "
+                  :row-data="getRowData(row as string[][])"
+                  :row-attrs="'rowAttrs' in row ? row.rowAttrs : {}"
+                />
+              </template>
+              <tr v-if="pagination">
+                <td :colspan="headers.length">
+                  <div class="flex justify-right">
+                    <div class="self-center">
+                      <label :for="selectId">Résultats par page : </label>
+                      <select
+                        :id="selectId"
+                        v-model="optionSelected"
+                        title="Résultats par page - le nombre résultats est mis à jour dès sélection d’une valeur"
+                        @change="emit('update:currentPage')"
+                      >
+                        <option
+                          v-for="(option, idx) in paginationOptions"
+                          :key="idx"
+                          :value="option"
+                        >
+                          {{ option }}
+                        </option>
+                      </select>
+                    </div>
+                    <div
+                      class="flex ml-1"
+                      aria-live="polite"
+                      aria-atomic="true"
+                    >
+                      <p class="self-center fr-m-0">
+                        Page {{ currentPage }} sur {{ pageCount }}
+                      </p>
+                    </div>
+                    <div class="flex ml-1">
+                      <button
+                        class="fr-icon-arrow-left-s-first-line"
+                        @click="goFirstPage()"
+                      >
+                        <span class="fr-sr-only">Première page du tableau</span>
+                      </button>
+                      <button
+                        class="fr-icon-arrow-left-s-line"
+                        @click="goPreviousPage()"
+                      >
+                        <span class="fr-sr-only">Page précédente du tableau</span>
+                      </button>
+                      <button
+                        class="fr-icon-arrow-right-s-line"
+                        @click="goNextPage()"
+                      >
+                        <span class="fr-sr-only">Page suivante du tableau</span>
+                      </button>
+                      <button
+                        class="fr-icon-arrow-right-s-last-line"
+                        @click="goLastPage()"
+                      >
+                        <span class="fr-sr-only">Dernière page du tableau</span>
+                      </button>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
