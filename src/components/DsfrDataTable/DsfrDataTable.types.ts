@@ -1,3 +1,4 @@
+import type { DsfrButtonGroupProps, DsfrButtonProps } from '../DsfrButton/DsfrButton.types'
 import type { Page } from '../DsfrPagination/DsfrPagination.types'
 
 export type DsfrDataTableRow = (string | number | boolean | bigint | symbol)[]
@@ -10,13 +11,13 @@ export type DsfrDataTableProps = {
   id?: string
   title: string
   rowKey?: string | number
-  headersRow: DsfrDataTableHeaderCell[]
-  rows: DsfrDataTableRow[]
+  headersRow?: DsfrDataTableHeaderCell[]
+  rows?: DsfrDataTableRow[]
   topActionsRow?: string[]
   bottomActionsRow?: string[]
   selectableRows?: boolean
-  sortableRows?: boolean
-  sorted: string
+  sortableRows?: boolean | string[]
+  sorted?: string
   sortFn?: (a: unknown, b: unknown) => number
   verticalBorders?: boolean
   bottomCaption?: boolean
@@ -25,11 +26,19 @@ export type DsfrDataTableProps = {
   multilineTable?: boolean
   noScroll?: boolean
   size?: 'sm' | 'md' | 'lg'
+  topBarDetail?: string
+  topBarButtons?: Omit<DsfrButtonProps, 'tertiary'>[]
+  topBarButtonsSize?: DsfrButtonGroupProps['size']
   pages?: Page[]
   pagination?: boolean
   paginationOptions?: number[]
+  paginationAriaLabel?: string
+  paginationSelectLabel?: string
   currentPage?: number
   rowsPerPage?: number
   bottomActionBarClass?: string | Record<string, boolean> | Array<string | Record<string, boolean>>
   paginationWrapperClass?: string | Record<string, boolean> | Array<string | Record<string, boolean>>
+  bottomBarDetail?: string
+  bottomBarButtons?: DsfrButtonProps[]
+  bottomBarButtonsSize?: DsfrButtonGroupProps['size']
 }

@@ -1,5 +1,6 @@
 import { fireEvent, render } from '@testing-library/vue'
-import { expect } from 'vitest'
+import { describe, expect, it, vi } from 'vitest'
+import { nextTick } from 'vue'
 
 import DsfrDataTable from './DsfrDataTable.vue'
 
@@ -30,13 +31,17 @@ describe('DsfrDataTable', () => {
     // Then
     const mainContainer = container.querySelector('div.fr-table')
     expect(mainContainer).toBeTruthy()
-    const firstSubContainer = mainContainer?.querySelector('div.fr-table__wrapper')
-    expect(firstSubContainer).toBeTruthy()
-    const secondSubContainer = firstSubContainer?.querySelector('div.fr-table__container')
-    expect(secondSubContainer).toBeTruthy()
-    const thirdSubContainer = secondSubContainer?.querySelector('div.fr-table__content')
-    expect(thirdSubContainer).toBeTruthy()
-    const tableEl = thirdSubContainer?.querySelector('table')
+    const headerContainer = mainContainer?.querySelector('div.fr-table__header')
+    expect(headerContainer).toBeNull()
+    const footerxContainer = mainContainer?.querySelector('div.fr-table__header')
+    expect(footerxContainer).toBeNull()
+    const wrapperContainer = mainContainer?.querySelector('div.fr-table__wrapper')
+    expect(wrapperContainer).toBeTruthy()
+    const containerContainer = wrapperContainer?.querySelector('div.fr-table__container')
+    expect(containerContainer).toBeTruthy()
+    const contentContainer = containerContainer?.querySelector('div.fr-table__content')
+    expect(contentContainer).toBeTruthy()
+    const tableEl = contentContainer?.querySelector('table')
     expect(tableEl).toBeTruthy()
     const captionEL = tableEl?.querySelector('caption')
     expect(captionEL).toBeTruthy()
@@ -237,7 +242,7 @@ describe('DsfrDataTable', () => {
     // Then
     expect(nameHeader!.getAttribute('aria-sort')).toBe('ascending')
     expect(nameHeaderButton).toBeTruthy()
-    expect(nameHeaderButton?.getAttribute('aria-sort')).toBe('ascending')
+    expect(nameHeaderButton?.classList.contains('fr-btn--sort-asc')).toBe(true)
 
     const ageHeader = getByText('Age').closest('th')
     const cityHeader = getByText('City').closest('th')
@@ -275,14 +280,14 @@ describe('DsfrDataTable', () => {
     await fireEvent.click(nameHeaderButton!)
     await setTimeout(() => {}, 1000) // Wait for DOM update
     expect(nameHeader!.getAttribute('aria-sort')).toBe('ascending')
-    expect(nameHeaderButton?.getAttribute('aria-sort')).toBe('ascending')
+    expect(nameHeaderButton?.classList.contains('fr-btn--sort-asc')).toBe(true)
 
     // Click twice for descending
     await fireEvent.click(nameHeaderButton!)
 
     // Then
     expect(nameHeader!.getAttribute('aria-sort')).toBe('descending')
-    expect(nameHeaderButton?.getAttribute('aria-sort')).toBe('descending')
+    expect(nameHeaderButton?.classList.contains('fr-btn--sort-desc')).toBe(true)
   })
 
   it('should not set aria-sort on non-sortable tables', () => {
@@ -386,22 +391,24 @@ describe('DsfrDataTable', () => {
 
     // Initial state
     expect(nameHeader!.getAttribute('aria-sort')).toBe('none')
-    expect(nameHeaderButton!.getAttribute('aria-sort')).toBe('none')
+    expect(nameHeaderButton!.classList.contains('fr-btn--sort-asc')).toBe(false)
+    expect(nameHeaderButton!.classList.contains('fr-btn--sort-desc')).toBe(false)
 
     // First click - ascending
     await fireEvent.click(nameHeaderButton!)
     expect(nameHeader!.getAttribute('aria-sort')).toBe('ascending')
-    expect(nameHeaderButton!.getAttribute('aria-sort')).toBe('ascending')
+    expect(nameHeaderButton!.classList.contains('fr-btn--sort-asc')).toBe(true)
 
     // Second click - descending
     await fireEvent.click(nameHeaderButton!)
     expect(nameHeader!.getAttribute('aria-sort')).toBe('descending')
-    expect(nameHeaderButton!.getAttribute('aria-sort')).toBe('descending')
+    expect(nameHeaderButton!.classList.contains('fr-btn--sort-desc')).toBe(true)
 
     // Third click - back to none (unsorted)
     await fireEvent.click(nameHeaderButton!)
     expect(nameHeader!.getAttribute('aria-sort')).toBe('none')
-    expect(nameHeaderButton!.getAttribute('aria-sort')).toBe('none')
+    expect(nameHeaderButton!.classList.contains('fr-btn--sort-asc')).toBe(false)
+    expect(nameHeaderButton!.classList.contains('fr-btn--sort-desc')).toBe(false)
   })
 
   it('should handle empty rows array without errors', () => {
@@ -464,5 +471,423 @@ describe('DsfrDataTable', () => {
     expect(cells.length).toBe(2)
     expect(cells[0].textContent).toContain('Alice')
     expect(cells[1].textContent).toContain('25')
+  })
+
+  it('should render selectable rows with checkboxes', () => {
+    // Given
+    const title = 'Selectable Table'
+    const headersRow = ['Name', 'Age']
+    const rows = [
+      ['Alice', '25'],
+      ['Bob', '30'],
+    ]
+
+    // When
+    const { container } = render(DsfrDataTable, {
+      props: {
+        title,
+        headersRow,
+        rows,
+        selectableRows: true,
+      },
+    })
+
+    // Then
+    const selectAllCheckbox = container.querySelector('input[type="checkbox"]')
+    expect(selectAllCheckbox).toBeTruthy()
+    expect(selectAllCheckbox?.getAttribute('id')).toContain('table-select')
+    const rowCheckboxes = container.querySelectorAll('tbody input[type="checkbox"]')
+    expect(rowCheckboxes.length).toBe(rows.length)
+  })
+
+  it('should handle row selection with v-model', async () => {
+    // Given
+    const title = 'Selectable Table'
+    const headersRow = ['Name', 'Age']
+    const rows = [
+      ['Alice', '25'],
+      ['Bob', '30'],
+    ]
+    const selection: string[] = []
+
+    // When
+    const { container } = render(DsfrDataTable, {
+      props: {
+        title,
+        headersRow,
+        rows,
+        selectableRows: true,
+        selection,
+      },
+    })
+
+    // Then
+    const rowCheckboxes = container.querySelectorAll('tbody input[type="checkbox"]')
+    expect(rowCheckboxes.length).toBe(2)
+    expect((rowCheckboxes[0] as HTMLInputElement).checked).toBe(false)
+  })
+
+  it('should select all rows when clicking select all checkbox', async () => {
+    // Given
+    const title = 'Selectable Table'
+    const headersRow = ['Name', 'Age']
+    const rows = [
+      ['Alice', '25'],
+      ['Bob', '30'],
+    ]
+
+    // When
+    const { container } = render(DsfrDataTable, {
+      props: {
+        title,
+        headersRow,
+        rows,
+        selectableRows: true,
+      },
+    })
+
+    const selectAllCheckbox = container.querySelector('thead tr th input[type="checkbox"]') as HTMLInputElement
+    await fireEvent.click(selectAllCheckbox)
+    await nextTick()
+
+    // Then
+    const rowCheckboxes = container.querySelectorAll('tbody input[type="checkbox"]') as NodeListOf<HTMLInputElement>
+    rowCheckboxes.forEach((checkbox) => {
+      expect(checkbox.value).toBeTruthy()
+    })
+  })
+
+  it('should handle pagination with rowsPerPage model', () => {
+    // Given
+    const title = 'Paginated Table'
+    const headersRow = ['Name', 'Age']
+    const rows = Array.from({ length: 25 }).map((_, i) => [`Name ${i}`, `${20 + i}`])
+    const rowsPerPage = 10
+
+    // When
+    const { container } = render(DsfrDataTable, {
+      props: {
+        title,
+        headersRow,
+        rows,
+        pagination: true,
+        rowsPerPage,
+      },
+    })
+
+    // Then
+    const displayedRows = container.querySelectorAll('tbody tr')
+    expect(displayedRows.length).toBe(10)
+  })
+
+  it('should display pagination controls when pagination is enabled', () => {
+    // Given
+    const title = 'Paginated Table'
+    const headersRow = ['Name', 'Age']
+    const rows = Array.from({ length: 25 }).map((_, i) => [`Name ${i}`, `${20 + i}`])
+
+    // When
+    const { container } = render(DsfrDataTable, {
+      props: {
+        title,
+        headersRow,
+        rows,
+        pagination: true,
+        rowsPerPage: 5,
+        paginationOptions: [5, 10, 20],
+      },
+    })
+
+    // Then
+    const footer = container.querySelector('div.fr-table__footer')
+    expect(footer).toBeTruthy()
+    // Verify pagination select and controls are present
+    expect(container.querySelector('.fr-table__footer--start')).toBeTruthy()
+  })
+
+  it('should display table top bar when topBarDetail is provided', () => {
+    // Given
+    const title = 'Table with Top Bar'
+    const headersRow = ['Name']
+    const rows = [['Alice']]
+    const topBarDetail = 'Top bar detail text'
+
+    // When
+    const { container } = render(DsfrDataTable, {
+      props: {
+        title,
+        headersRow,
+        rows,
+        topBarDetail,
+      },
+    })
+
+    // Then
+    const header = container.querySelector('div.fr-table__header')
+    expect(header).toBeTruthy()
+    expect(header?.textContent).toContain(topBarDetail)
+  })
+
+  it('should hide caption when noCaption is true', () => {
+    // Given
+    const title = 'Table with Hidden Caption'
+    const headersRow = ['Name']
+    const rows = [['Alice']]
+
+    // When
+    const { container } = render(DsfrDataTable, {
+      props: {
+        title,
+        headersRow,
+        rows,
+        noCaption: true,
+      },
+    })
+
+    // Then
+    const tableDiv = container.querySelector('div.fr-table')
+    expect(tableDiv?.classList.contains('fr-table--no-caption')).toBe(true)
+  })
+
+  it('should apply lg size class when size is lg', () => {
+    // Given
+    const title = 'Large Table'
+    const headersRow = ['Name']
+    const rows = [['Alice']]
+
+    // When
+    const { container } = render(DsfrDataTable, {
+      props: {
+        title,
+        headersRow,
+        rows,
+        size: 'lg',
+      },
+    })
+
+    // Then
+    const tableDiv = container.querySelector('div.fr-table')
+    expect(tableDiv?.classList.contains('fr-table--lg')).toBe(true)
+  })
+
+  it('should handle custom header attributes from headerAttrs', () => {
+    // Given
+    const title = 'Table with Custom Header Attrs'
+    const headersRow = [
+      { key: 'name', label: 'Name', headerAttrs: { 'data-test': 'custom' } },
+      'Age',
+    ]
+    const rows = [
+      { name: 'Alice', age: 25 },
+    ]
+
+    // When
+    const { container } = render(DsfrDataTable, {
+      props: {
+        title,
+        headersRow,
+        rows,
+      },
+    })
+
+    // Then
+    const headers = container.querySelectorAll('th[scope="col"]')
+    expect(headers[0].getAttribute('data-test')).toBe('custom')
+  })
+
+  it('should handle object rows format with key and label headers', () => {
+    // Given
+    const title = 'Table with Object Rows'
+    const headersRow = [
+      { key: 'name', label: 'Full Name' },
+      { key: 'email', label: 'Email Address' },
+    ]
+    const rows = [
+      { name: 'Alice', email: 'alice@example.com' },
+      { name: 'Bob', email: 'bob@example.com' },
+    ]
+
+    // When
+    const { getByText } = render(DsfrDataTable, {
+      props: {
+        title,
+        headersRow,
+        rows,
+      },
+    })
+
+    // Then
+    expect(getByText('Full Name')).toBeTruthy()
+    expect(getByText('Email Address')).toBeTruthy()
+    expect(getByText('alice@example.com')).toBeTruthy()
+    expect(getByText('bob@example.com')).toBeTruthy()
+  })
+
+  it('should render custom header slot', () => {
+    // Given
+    const title = 'Table with Custom Header Slot'
+    const headersRow = ['Name', 'Age']
+    const rows = [['Alice', '25']]
+
+    // When
+    const { container } = render(DsfrDataTable, {
+      props: {
+        title,
+        headersRow,
+        rows,
+      },
+      slots: {
+        header: ({ label }) => `Custom: ${label}`,
+      },
+    })
+    console.log(container.innerHTML) // eslint-disable-line no-console
+    // Then
+    const headers = container.querySelectorAll('th[scope="col"]')
+    expect(headers[0].textContent).toContain('Custom: Name')
+  })
+
+  it('should render custom cell slot', () => {
+    // Given
+    const title = 'Table with Custom Cell Slot'
+    const headersRow = ['Name', 'Status']
+    const rows = [['Alice', 'active']]
+
+    // When
+    const { container } = render(DsfrDataTable, {
+      props: {
+        title,
+        headersRow,
+        rows,
+      },
+      slots: {
+        cell: ({ cell }) => `Status: ${cell}`,
+      },
+    })
+
+    // Then
+    const cells = container.querySelectorAll('tbody td')
+    expect(cells[1].textContent).toContain('Status: active')
+  })
+
+  it('should apply caption-bottom class when bottomCaption is true', () => {
+    // Given
+    const title = 'Table with Bottom Caption'
+    const headersRow = ['Name']
+    const rows = [['Alice']]
+
+    // When
+    const { container } = render(DsfrDataTable, {
+      props: {
+        title,
+        headersRow,
+        rows,
+        bottomCaption: true,
+      },
+    })
+
+    // Then
+    const tableDiv = container.querySelector('div.fr-table')
+    expect(tableDiv?.classList.contains('fr-table--caption-bottom')).toBe(true)
+  })
+
+  it('should render rows with correct data attributes', () => {
+    // Given
+    const title = 'Table with Data Attributes'
+    const headersRow = ['Name']
+    const rows = [['Alice'], ['Bob'], ['Charlie']]
+
+    // When
+    const { container } = render(DsfrDataTable, {
+      props: {
+        title,
+        headersRow,
+        rows,
+      },
+    })
+
+    // Then
+    const tbodyRows = container.querySelectorAll('tbody tr')
+    tbodyRows.forEach((row, idx) => {
+      expect(row.getAttribute('data-row-key')).toBe(`${idx + 1}`)
+    })
+  })
+
+  it('should handle sorting with custom sortFn', async () => {
+    // Given
+    const title = 'Table with Custom Sort'
+    const headersRow = ['Name', 'Score']
+    const rows = [
+      { name: 'Alice', score: 100 },
+      { name: 'Bob', score: 50 },
+      { name: 'Charlie', score: 75 },
+    ]
+    const customSortFn = vi.fn((a, b) => {
+      if (a.score < b.score) { return -1 }
+      if (a.score > b.score) { return 1 }
+      return 0
+    })
+
+    // When
+    const { getByText } = render(DsfrDataTable, {
+      props: {
+        title,
+        headersRow,
+        rows,
+        sortableRows: true,
+        sortFn: customSortFn,
+      },
+    })
+
+    const scoreHeader = getByText('Score').closest('th')
+    const scoreHeaderButton = scoreHeader?.querySelector('button')
+
+    // Click to sort
+    await fireEvent.click(scoreHeaderButton!)
+
+    // Then
+    expect(customSortFn).toHaveBeenCalled()
+  })
+
+  it('should use custom id when provided', () => {
+    // Given
+    const title = 'Table with Custom ID'
+    const headersRow = ['Name']
+    const rows = [['Alice']]
+    const customId = 'my-custom-table-id'
+
+    // When
+    const { container } = render(DsfrDataTable, {
+      props: {
+        title,
+        headersRow,
+        rows,
+        id: customId,
+      },
+    })
+
+    // Then
+    const table = container.querySelector('table')
+    expect(table?.id).toBe(customId)
+  })
+
+  it('should handle multiline rows correctly', () => {
+    // Given
+    const title = 'Multiline Table'
+    const headersRow = ['Name', 'Description']
+    const rows = [['Alice', 'Line1\nLine2\nLine3']]
+
+    // When
+    const { container } = render(DsfrDataTable, {
+      props: {
+        title,
+        headersRow,
+        rows,
+        multilineTable: true,
+      },
+    })
+
+    // Then
+    const tableDiv = container.querySelector('div.fr-table')
+    expect(tableDiv?.classList.contains('fr-table--multiline')).toBe(true)
   })
 })

@@ -65,6 +65,7 @@ const messageType = computed(() => {
   >
     <label
       class="fr-label"
+      :class="{ 'fr-sr-only': hideLabel }"
       :for="selectId"
     >
       <slot name="label">
@@ -98,7 +99,6 @@ const messageType = computed(() => {
         :selected="!options.some(option => (typeof option !== 'object' || option === null) ? option === modelValue : option.value === modelValue)"
         disabled
         value=""
-        hidden=""
       >
         {{ defaultUnselectedText }}
       </option>
