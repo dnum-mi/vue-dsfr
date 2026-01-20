@@ -46,7 +46,7 @@ defineSlots<{
 
 if (props.description) {
   console.warn(
-    '[DsfrSelect] : La prop `description` est dépréciée. Veuillez utiliser `hint` à la place.',
+    '[DsfrSelect] : La prop `description` est obsolète. Veuillez utiliser `hint` à la place.',
   )
 }
 

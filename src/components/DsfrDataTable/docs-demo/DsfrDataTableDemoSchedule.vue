@@ -12,11 +12,11 @@ const title = 'Emploi du temps complexe avec cellules fusionnées et rowspan et 
 <template>
   <DsfrDataTable
     :title="title"
-    :vertical-borders="true"
+    vertical-borders
     :headers-row="[]"
     :rows="[]"
   >
-    <template #caption-description>
+    <template #captionDescription>
       (Résumé) Emploi du temps horaire des Groupes 1 et 2, le matin des jours de la semaine ouvrée (Lundi au Vendredi) :
       <ul>
         <li>la première colonne représente le planning de la journée de Lundi pour les groupes 1 et 2,</li>

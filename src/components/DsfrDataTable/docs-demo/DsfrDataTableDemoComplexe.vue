@@ -43,6 +43,7 @@ const selection = ref<string[]>([])
       selectable-rows
       sortable-rows
       row-key="id"
+      vertical-borders
     >
       <template #header="{ key, label }">
         <div @click="click($event, key)">

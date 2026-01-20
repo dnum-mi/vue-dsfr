@@ -40,17 +40,27 @@ const getTopDetail = (selRef: Ref<string[]>) => {
   }
   return detail
 }
-const tableTopBarDetail = computed(() => getTopDetail(selection))
+const topBarDetail = computed(() => getTopDetail(selection))
 
 const clicked = ref(0)
 const actions = ref([]) as Ref<Array<[number, string[]]>>
-const tableTopBarButtons: DsfrDataTableProps['tableTopBarButtons'] = [
+const topBarButtons: DsfrDataTableProps['topBarButtons'] = [
   {
     label: 'Action sur la selection',
     secondary: true,
     onClick: () => {
       clicked.value += 1
       actions.value.push([clicked.value, selection.value])
+    },
+  },
+]
+const bottomBarButtons: DsfrDataTableProps['bottomBarButtons'] = [
+  {
+    label: 'Action globale',
+    secondary: false,
+    onClick: () => {
+      clicked.value += 1
+      actions.value.push([clicked.value, ['toutes']])
     },
   },
 ]
@@ -68,13 +78,12 @@ const tableTopBarButtons: DsfrDataTableProps['tableTopBarButtons'] = [
       title="Titre du tableau (caption)"
       pagination
       :pagination-options="[1, 2, 3]"
-      bottom-action-bar-class="bottom-action-bar-class"
-      pagination-wrapper-class="pagination-wrapper-class"
       sorted="id"
       :sortable-rows="['id']"
-      :table-top-bar-buttons="tableTopBarButtons"
-      :table-bottom-bar-detail="`${rows.length} lignes au total`"
-      :table-top-bar-detail="tableTopBarDetail"
+      :top-bar-detail="topBarDetail"
+      :top-bar-buttons="topBarButtons"
+      :bottom-bar-detail="`${rows.length} lignes au total`"
+      :bottom-bar-buttons="bottomBarButtons"
     >
       <template #tableTopBarDetail />
       <template #header="{ label }">

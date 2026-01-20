@@ -10,6 +10,8 @@ import DsfrSelect from '../DsfrSelect/DsfrSelect.vue'
 
 import { useRandomId } from '@/utils/random-utils'
 
+export type { DsfrDataTableHeaderCell, DsfrDataTableHeaderCellObject, DsfrDataTableProps, DsfrDataTableRow, Page }
+
 const props = withDefaults(defineProps<DsfrDataTableProps>(), {
   id: () => useRandomId('table'),
   headersRow: () => [],
@@ -217,6 +219,7 @@ onBeforeUnmount(() => {
       >
         <slot
           name="tableTopBarDetail"
+          class="fr-table__detail"
         >
           <p
             v-if="topBarDetail"
@@ -250,7 +253,7 @@ onBeforeUnmount(() => {
             >
               {{ title }}
               <div
-                v-if="captionDetail || $slots['caption-description']"
+                v-if="captionDetail || $slots.captionDescription"
                 class="fr-table__caption__desc"
               >
                 <slot name="captionDescription">
