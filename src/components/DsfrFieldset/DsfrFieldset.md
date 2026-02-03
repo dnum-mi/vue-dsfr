@@ -21,8 +21,10 @@ Le regroupement de champs est constitué des éléments suivants :
 
 |  nom                    |   type        |  défaut          | obligatoire |
 | ----------------------- | ---------     | ---------------- | --------    |
+| `legend`                | *`string`*    | `''`             |             |
 | `legendId`              | *`string`*    | `''`             |             |
 | `legendClass`           | *`string`*    | `''`             |             |
+| `hint`                  | *`string`*    | `''`             |             |
 | `hintClass`             | *`string`*    | `''`             |             |
 
 ## 🧩 Slots
