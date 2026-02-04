@@ -8,6 +8,7 @@ export type DsfrSelectProps = {
   hint?: string
   modelValue?: DsfrSelectOption
   label?: string
+  hideLabel?: boolean
   options?: (DsfrSelectOption | { value: DsfrSelectOption, text: string, disabled?: boolean })[]
   successMessage?: string
   errorMessage?: string

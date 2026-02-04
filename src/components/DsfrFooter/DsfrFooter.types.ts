@@ -6,6 +6,7 @@ export type DsfrFooterPartner = {
   href: string
   logo: string
   name: string
+  alt?: string
 }
 
 export type DsfrFooterPartnersProps = {

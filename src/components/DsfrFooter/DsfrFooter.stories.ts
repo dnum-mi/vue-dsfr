@@ -155,18 +155,22 @@ export const PiedDePageSimple: Story = {
     ecosystemLinks: [
       {
         label: 'legifrance.gouv.fr',
+        title: 'legifrance.gouv.fr',
         href: 'https://legifrance.gouv.fr',
       },
       {
         label: 'info.gouv.fr',
+        title: 'info.gouv.fr',
         href: 'https://info.gouv.fr',
       },
       {
         label: 'service-public.gouv.fr',
+        title: 'service-public.gouv.fr',
         href: 'https://service-public.gouv.fr',
       },
       {
         label: 'data.gouv.fr',
+        title: 'data.gouv.fr',
         href: 'https://data.gouv.fr',
       },
     ],
@@ -290,18 +294,22 @@ export const PiedDePageAvecLogoOperateurEtListeDeLiens: Story = {
     ecosystemLinks: [
       {
         label: 'legifrance.gouv.fr',
+        title: 'legifrance.gouv.fr',
         href: 'https://legifrance.gouv.fr',
       },
       {
         label: 'info.gouv.fr',
+        title: 'info.gouv.fr',
         href: 'https://info.gouv.fr',
       },
       {
         label: 'service-public.gouv.fr',
+        title: 'service-public.gouv.fr',
         href: 'https://service-public.gouv.fr',
       },
       {
         label: 'data.gouv.fr',
+        title: 'data.gouv.fr',
         href: 'https://data.gouv.fr',
       },
     ],
