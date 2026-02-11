@@ -22,6 +22,8 @@ describe('DsfrQuote', () => {
     const source = 'Duckduckgo'
     const sourceUrl = 'https://www.duckduckgo.com'
     const quoteImage = 'https://loremflickr.com/g/150/150/cat?random=1'
+    const size = 'lg'
+    const accent = 'blue-cumulus'
 
     const { container, getByText } = render(DsfrQuote, {
       global: {
@@ -37,9 +39,12 @@ describe('DsfrQuote', () => {
         source,
         sourceUrl,
         quoteImage,
+        size,
+        accent,
       },
     })
     const imgEl = container.querySelector('.fr-responsive-img')
+    const figureEl = container.querySelector('figure')
     const quoteEl = container.querySelector('blockquote p')
     const citeEl = container.querySelector('cite')
     const firstLink = getByText('Détail 1')
@@ -47,7 +52,10 @@ describe('DsfrQuote', () => {
 
     expect(quoteEl).toBeInTheDocument()
     expect(citeEl).toBeInTheDocument()
+
+    expect(figureEl).toHaveClass(`fr-quote--${accent}`)
     expect(quoteEl.innerHTML).toContain(quote)
+    expect(quoteEl).toHaveClass(`fr-text--${size}`)
     expect(imgEl).toHaveAttribute('src', quoteImage)
     expect(firstLink).not.toHaveAttribute('href')
     expect(firstLink.innerHTML).toContain(firstSourceText)

@@ -10,16 +10,23 @@ withDefaults(defineProps<DsfrQuoteProps>(), {
   source: '',
   sourceUrl: '',
   quoteImage: '',
+  size: 'md',
+  accent: undefined,
 })
 </script>
 
 <template>
-  <figure class="fr-quote fr-quote--column">
+  <figure
+    class="fr-quote fr-quote--column"
+    :class="{ [`fr-quote--${accent}`]: accent }"
+  >
     <blockquote
       v-if="quote"
       :cite="sourceUrl"
     >
-      <p>« {{ quote }} »</p>
+      <p :class="`fr-text--${size}`">
+        «{{ '\xa0' }}{{ quote }}{{ '\xa0' }}»
+      </p>
     </blockquote>
 
     <figcaption>
