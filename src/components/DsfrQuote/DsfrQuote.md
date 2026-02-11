@@ -28,6 +28,8 @@ Le composant affiche :
 | `source`     | `string`                          | `''`         | Nom de la source de la citation.                                           |
 | `sourceUrl`  | `string`                          | `''`         | URL de la source, utilisée pour l’attribut `cite` du bloc de citation.     |
 | `quoteImage` | `string`                          | `''`         | URL de l’image illustrative associée à la citation.                        |
+| `size`       | `xs / sm / md / lg / xl`          | `md`         | taille du texte                                                            |
+| `accent`     | `couleur dsfr`                    | `undefined`  | couleur d'accentuation                                                     |
 
 ## 📡Événements
 
@@ -58,7 +60,7 @@ Aucun slot disponible pour ce composant.
 
 ::: code-group
 
-<Story data-title="Démo" min-h="120px">
+<Story data-title="Démo" min-h="184px">
   <DsfrQuoteDemo />
 </Story>
 
