@@ -120,7 +120,7 @@ provide(registerNavigationLinkKey, () => {
             <div class="fr-header__brand-top">
               <div class="fr-header__logo">
                 <RouterLink
-                  v-if="!serviceTitle"
+                  v-if="!serviceTitle && (!operatorImgSrc || $slots.operator)"
                   :to="homeTo"
                   :title
                 >
@@ -140,13 +140,19 @@ provide(registerNavigationLinkKey, () => {
                 class="fr-header__operator"
               >
                 <slot name="operator">
-                  <img
+                  <RouterLink
                     v-if="operatorImgSrc"
-                    class="fr-responsive-img"
-                    :src="operatorImgSrc"
-                    :alt="operatorImgAlt"
-                    :style="operatorImgStyle"
+                    :to="homeTo"
+                    :title
                   >
+                    <img
+                      v-if="operatorImgSrc"
+                      class="fr-responsive-img"
+                      :src="operatorImgSrc"
+                      :alt="operatorImgAlt"
+                      :style="operatorImgStyle"
+                    >
+                  </RouterLink>
                 </slot>
               </div>
               <div
