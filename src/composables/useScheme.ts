@@ -10,9 +10,11 @@ export const DARK_SCHEME = 'dark'
 export const SYSTEM_SCHEME = 'system'
 const DEFAULT_DATA_THEME_ATTRIBUTE = 'data-fr-theme'
 
+export type Scheme = 'light' | 'dark' | 'system'
+export type Theme = 'light' | 'dark'
 export type Preferences = {
-  theme: 'light' | 'dark'
-  scheme: 'light' | 'dark' | 'system'
+  theme: Theme
+  scheme: Scheme
 }
 
 /**
@@ -22,8 +24,8 @@ export type Preferences = {
  */
 export declare type UseSchemeResult = {
   setScheme: (scheme: string) => void
-  scheme: ComputedRef<string>
-  theme: ComputedRef<string>
+  scheme: ComputedRef<Scheme>
+  theme: ComputedRef<Theme>
 }
 
 /**
@@ -145,7 +147,7 @@ export const useScheme = (options?: UseThemeOptions): UseSchemeResult | undefine
 
   return {
     setScheme,
-    theme: computed(() => theme.value),
-    scheme: computed(() => scheme.value),
+    theme: computed(() => theme.value as Theme),
+    scheme: computed(() => scheme.value as Scheme),
   }
 }
