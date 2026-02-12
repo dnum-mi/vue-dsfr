@@ -1,9 +1,10 @@
 <script lang="ts" setup>
-import type { DsfrSocialNetwork } from '../DsfrFollow.types'
+import type { DsfrSocialNetwork as DsfrSocialNetworkType } from '../DsfrFollow.types'
 
 import DsfrFollow from '../DsfrFollow.vue'
 
-const networks: DsfrSocialNetwork[] = [
+const networks: DsfrSocialNetworkType[] = [
+
   {
     name: 'Facebook',
     type: 'facebook',
@@ -15,11 +16,6 @@ const networks: DsfrSocialNetwork[] = [
     href: 'https://www.x.com',
   },
   {
-    name: 'Youtube',
-    type: 'youtube',
-    href: 'https://www.youtube.com',
-  },
-  {
     name: 'Linkedin',
     type: 'linkedin',
     href: 'https://www.linkedin.com',
@@ -28,6 +24,16 @@ const networks: DsfrSocialNetwork[] = [
     name: 'Instagram',
     type: 'instagram',
     href: 'https://www.instagram.com',
+  },
+  {
+    name: 'Youtube',
+    type: 'youtube',
+    href: 'https://www.youtube.com',
+  },
+  {
+    name: 'Bluesky',
+    type: 'bluesky',
+    href: 'https://bsky.app/',
   },
 ]
 const newsletterData = {
