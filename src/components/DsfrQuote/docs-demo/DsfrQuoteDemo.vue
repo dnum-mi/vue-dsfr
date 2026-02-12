@@ -12,6 +12,8 @@ const details = [
 const source = 'Duckduckgo'
 const sourceUrl = 'https://www.duckduckgo.com'
 const quoteImage = 'https://loremflickr.com/g/150/150/cat?random=1'
+const size = 'lg'
+const accent = 'orange-terre-battue'
 </script>
 
 <template>
@@ -22,5 +24,7 @@ const quoteImage = 'https://loremflickr.com/g/150/150/cat?random=1'
     :source="source"
     :source-url="sourceUrl"
     :quote-image="quoteImage"
+    :size="size"
+    :accent="accent"
   />
 </template>

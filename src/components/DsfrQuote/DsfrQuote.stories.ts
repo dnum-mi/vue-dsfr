@@ -34,6 +34,16 @@ const meta = {
       control: 'text',
       description: '**URL** de l\'image',
     },
+    size: {
+      control: 'select',
+      options: ['xs', 'sm', 'md', 'lg', 'xl'],
+      description: '**Taille** de la citation',
+    },
+    accent: {
+      control: 'select',
+      options: ['blue-cumulus', 'green-tilleul-verveine', 'orange-terre-battue'],
+      description: '**Couleur** de la citation',
+    },
   },
 } satisfies Meta<typeof DsfrQuote>
 
