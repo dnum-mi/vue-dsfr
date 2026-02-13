@@ -23,7 +23,7 @@ const meta = {
     },
     labelLeft: {
       control: 'boolean',
-      description: 'Positionne le label à gauche de l’interrupteur',
+      description: 'Obslolète (désactivé)',
     },
     borderBottom: {
       control: 'boolean',
@@ -99,40 +99,6 @@ export const Interrupteur: Story = {
     disabled: false,
     inputId: 'toggle-1',
     modelValue: true,
-  },
-}
-
-export const InterrupteurAvecLabelAGauche: Story = {
-  name: 'Interrupteur Avec Label À Gauche',
-  render: (args) => ({
-    components: { DsfrToggleSwitch },
-    setup () {
-      watch(() => args.modelValue, (newVal) => {
-        args.onChange?.(newVal)
-      })
-
-      return {
-        args,
-      }
-    },
-    template: `
-    <DsfrToggleSwitch
-      v-model="args.modelValue"
-      :label="args.label"
-      :hint="args.hint"
-      :disabled="args.disabled"
-      :input-id="args.inputId"
-      :labelLeft="args.labelLeft"
-    />
-  `,
-  }),
-  args: {
-    label: 'Interrupteur 1',
-    hint: 'Indice',
-    disabled: false,
-    inputId: 'toggle-2',
-    modelValue: true,
-    labelLeft: true,
   },
 }
 
@@ -217,7 +183,7 @@ export const InterrupteurAvecTextePersonnalise: Story = {
   },
 }
 
-export const InterrupteurSansTexte: Story = {
+export const InterrupteurDésactivé: Story = {
   render: (args) => ({
     components: { DsfrToggleSwitch },
     setup () {

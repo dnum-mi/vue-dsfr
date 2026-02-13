@@ -70,7 +70,7 @@ describe('DsfrToggleSwitch', () => {
     expect(hintEl).toBeInTheDocument()
   })
 
-  it('should render toggle switch with label left and border', () => {
+  it('should render toggle switch with label border never left', () => {
     // Given
     const label = 'Label du switch'
     const hint = 'Indice du switch'
@@ -105,7 +105,7 @@ describe('DsfrToggleSwitch', () => {
     expect(hintEl).toBeInTheDocument()
     expect(inputEl).toBeInTheDocument()
     expect(inputEl).not.toBeDisabled()
-    expect(labelEl.closest('div')).toHaveClass('fr-toggle--label-left')
+    expect(labelEl.closest('div')).not.toHaveClass('fr-toggle--label-left')
     expect(labelEl.closest('div')).toHaveClass('fr-toggle--border-bottom')
   })
 })
