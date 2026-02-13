@@ -148,8 +148,7 @@ const finalRows = computed(() => {
 
 function selectAll (bool: boolean) {
   if (bool) {
-    const keyIndex = props.headersRow.findIndex(header => (header as DsfrDataTableHeaderCellObject).key ?? header)
-    selection.value = finalRows.value.map(row => row[keyIndex] as string)
+    selection.value = finalRows.value.map(row => row[rowKeyIndex.value] as string)
   } else {
     selection.value.length = 0
   }
