@@ -10,7 +10,9 @@
   },
   "publishConfig": {
     "registry": "https://registry.npmjs.org/",
-    "access": "public"
+    "access": "public",
+    "provenance": true,
+    "tag": "latest"
   },
   "exports": {
     ".": {
@@ -248,8 +250,13 @@
         }
       ],
       "@semantic-release/changelog",
-      "@semantic-release/npm",
-      "@semantic-release/github"
+      "./node_modules/@semantic-release/npm",
+      [
+        "@semantic-release/github",
+        {
+          "failCommentCondition": false
+        }
+      ]
     ]
   },
   "volta": {
