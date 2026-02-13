@@ -8,6 +8,10 @@
     "type": "git",
     "url": "https://github.com/dnum-mi/vue-dsfr.git"
   },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/",
+    "access": "public"
+  },
   "exports": {
     ".": {
       "import": {
@@ -44,10 +48,6 @@
   "engines": {
     "node": ">=22.0.0",
     "pnpm": ">=10.0.0"
-  },
-  "publishConfig": {
-    "@gouvminint:registry": "https://registry.npmjs.com",
-    "access": "public"
   },
   "scripts": {
     "check-exports": "node ./ci/check-exports.mjs",
