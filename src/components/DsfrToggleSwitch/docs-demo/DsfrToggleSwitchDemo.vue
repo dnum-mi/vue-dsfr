@@ -12,7 +12,6 @@ import DsfrToggleSwitch from '../DsfrToggleSwitch.vue'
     <div>
       <DsfrToggleSwitch
         label="Label action interrupteur"
-        label-left
       />
     </div>
     <div>

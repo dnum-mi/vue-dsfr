@@ -33,7 +33,6 @@ const labelId = computed(() => {
   <div
     class="fr-toggle"
     :class="{
-      'fr-toggle--label-left': labelLeft,
       'fr-toggle--border-bottom': borderBottom,
     }"
   >
