@@ -10,4 +10,7 @@ export type DsfrToggleSwitchProps = {
   inactiveText?: string
   noText?: boolean
   name?: string
+  status?: undefined | 'valid' | 'error'
+  validMessage?: string
+  errorMessage?: string
 }
