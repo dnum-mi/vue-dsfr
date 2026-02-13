@@ -31,6 +31,20 @@ jobs:
           version: 10.24.0
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
+      - name: Debug OIDC context
+        run: |
+          node -e "
+            const pkg = JSON.parse(require('fs').readFileSync('package.json', 'utf8'));
+            console.log('publishConfig:', JSON.stringify(pkg.publishConfig));
+          "
+          pnpm exec node --input-type=module -e "
+            const { default: envCi } = await import('env-ci');
+            console.log('env-ci:', JSON.stringify(envCi()));
+          "
+          echo "ACTIONS_ID_TOKEN_REQUEST_URL set: ${ACTIONS_ID_TOKEN_REQUEST_URL:+yes}"
+          echo "GITHUB_ACTIONS: $GITHUB_ACTIONS"
+          cat .npmrc
+          pnpm list @semantic-release/npm --depth=0
       - name: Release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
