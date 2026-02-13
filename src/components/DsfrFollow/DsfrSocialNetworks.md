@@ -2,7 +2,7 @@
 
 ## 🌟 Introduction
 
-Le composant `DsfrSocialNetworks` est conçu pour afficher une liste de boutons vers des réseaux sociaux, avec un style conforme au [Design System de l'État Français (DSFR)](https://www.systeme-de-design.gouv.fr/). Il permet d'encourager les utilisateurs à suivre votre organisation sur les plateformes sociales.
+Le sous composant `DsfrSocialNetworks` est conçu pour afficher une liste de boutons vers des réseaux sociaux. Pour avoir un style conforme au [Design System de l'État Français (DSFR)](https://www.systeme-de-design.gouv.fr/) il doit être impérativement être appelé par le composant `DsfrFollow`. Il permet d'encourager les utilisateurs à suivre votre organisation sur les plateformes sociales.
 
 🏅 La documentation sur Réseaux Sociaux sur le [DSFR](https://www.systeme-de-design.gouv.fr/composants-et-modeles/composants/lettre-d-information-et-reseaux-sociaux)
 
@@ -64,7 +64,7 @@ Aucun slot disponible pour ce composant.
 
 ::: code-group
 
-<Story data-title="Démo" min-h="400px">
+<Story data-title="Démo" min-h="164px">
   <DsfrSocialNetworksDemo />
 </Story>
 

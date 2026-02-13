@@ -1,3 +1,5 @@
+import type { DsfrColorAccent } from '../DsfrCallout/DsfrCallout.types'
+
 export type DsfrQuoteProps = {
   quote?: string
   author?: string
@@ -5,4 +7,6 @@ export type DsfrQuoteProps = {
   source: string
   sourceUrl: string
   quoteImage?: string
+  size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl'
+  accent?: DsfrColorAccent
 }

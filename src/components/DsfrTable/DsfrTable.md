@@ -2,15 +2,12 @@
 
 ## 🌟 Introduction
 
-Le composant `DsfrTable` est un élément puissant et polyvalent pour afficher des données sous forme de tableaux dans vos applications Vue. Utilisant une combinaison de slots, de props, et d'événements personnalisés, ce composant offre une flexibilité remarquable. Plongeons dans les détails !
+**Le composant `DsfrTable` est obsolète.**
+Il n’est plus maintenu. Il reste utilisable pour des tableaux simples. Pour tout tableau plus complexe et/ou plus personnalisé, veuillez utiliser le composant [DsfrDataTable](/composants/DsfrDataTable).
 
-🏅 La documentation sur le tableau sur le [DSFR](https://www.systeme-de-design.gouv.fr/version-courante/fr/composants/tableau/)
+Il est remplacé par le composant [DsfrDataTable](/composants/DsfrDataTable) qui a été enrichi pour répondre aux besoins en matière de tableaux conforme à la version 1.14.3 du DSFR
 
-<VIcon name="vi-file-type-storybook" /> La story sur le tableau sur le storybook de [VueDsfr](https://storybook.vue-ds.fr/?path=/docs/composants-dsfrtable--docs)
-
-::: warning CONSEIL
-
-Pour des tableaux complexes, nous vous recommandons d’utiliser [DsfrDataTable](/composants/DsfrDataTable)
+Bien qu'il soit déconseillé de l'utiliser nous laissons la docmentation.
 
 :::
 
@@ -72,10 +69,6 @@ Pour des tableaux complexes, nous vous recommandons d’utiliser [DsfrDataTable]
 
 <<< DsfrTable.vue
 <<< DsfrTable.types.ts
-
-:::
-
-C'est tout, amis développeurs ! Avec DsfrTable, donnez vie à vos données comme jamais auparavant ! 🎉
 
 <script setup lang="ts">
 import DsfrTableDemoSimple from './docs-demo/DsfrTableDemoSimple.vue'

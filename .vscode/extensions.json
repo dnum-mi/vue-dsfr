@@ -26,10 +26,6 @@
     // https://github.com/DavidAnson/vscode-markdownlint
     "DavidAnson.vscode-markdownlint",
 
-    // npm support for VS Code
-    // https://github.com/Microsoft/vscode-npm-scripts
-    "eg2.vscode-npm-script",
-
     // Visual Studio Code plugin that autocompletes npm modules in import statements
     // https://github.com/ChristianKohler/NpmIntellisense
     "christian-kohler.npm-intellisense",

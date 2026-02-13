@@ -7,6 +7,7 @@ import type { VIconProps } from '../VIcon/VIcon.vue'
  * Représente les noms des thèmes de couleur (avant "-main")
  */
 export type DsfrColorAccent =
+  | 'grey'
   | 'blue-france'
   | 'red-marianne'
   | 'info'
@@ -28,6 +29,8 @@ export type DsfrColorAccent =
   | 'orange-terre-battue'
   | 'brown-cafe-creme'
   | 'brown-caramel'
+  | 'brown-opera'
+  | 'beige-gris-galet'
 
 export type DsfrCalloutProps = {
   title?: string

@@ -36,7 +36,7 @@ Autres props :
 |  Nom                   |   Type      |  Défaut         | Obligatoire        | Description |
 | ---------------------- | ---------   | --------------- | ------------------ | ---- |
 | `title`                | *`string`*  |                 | ✅                 | Titre de la carte |
-| `description`          | *`string`*  |                 | ✅                 | Description de la carte |
+| `description`          | *`string`*  |                 |                    | Description de la carte |
 | `titleLinkAttrs`       | *`Record<string, unknown>`* | |                    | Attributs à passer au lien du titre |
 | `altImg`               | *`string`*  | `''`            |                    | Contenu de l’attribut `alt` de l’image de la carte |
 | `buttons`              | [*`DsfrButtonProps[]`*](/types#dsfrbutton-et-dsfrbuttongroup)  | `[]`            |                    | Tableau de props à donner à DsfrButton |

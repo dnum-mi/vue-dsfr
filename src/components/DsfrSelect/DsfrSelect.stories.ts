@@ -42,7 +42,7 @@ const meta = {
     },
     description: {
       control: 'text',
-      description: 'Description optionnelle du `select` (déprécié, utiliser `hint`)',
+      description: 'Description optionnelle du `select` (obsolète, utiliser `hint`)',
     },
     successMessage: {
       control: 'text',

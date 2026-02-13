@@ -1,7 +1,8 @@
 <script lang="ts" setup>
 import type { DsfrDataTableProps } from '../DsfrDataTable.types'
+import type { Ref } from 'vue'
 
-import { ref } from 'vue'
+import { computed, ref } from 'vue'
 
 import DsfrDataTable from '../DsfrDataTable.vue'
 
@@ -28,6 +29,41 @@ const rows = [
 
 const selection = ref<string[]>([])
 const currentPage = ref<number>(0)
+
+const getTopDetail = (selRef: Ref<string[]>) => {
+  const selectionLengthText = String(selRef.value.length)
+  const isPlural = selRef.value.length > 1
+  const plural = isPlural ? 's' : ''
+  let detail = 'Selectionnez des lignes pour y appliquer des actions de groupe'
+  if (selRef.value.length > 0) {
+    detail = selectionLengthText.concat(' ligne', plural, ' sélectionnée', plural)
+  }
+  return detail
+}
+const topBarDetail = computed(() => getTopDetail(selection))
+
+const clicked = ref(0)
+const actions = ref([]) as Ref<Array<[number, string[]]>>
+const topBarButtons: DsfrDataTableProps['topBarButtons'] = [
+  {
+    label: 'Action sur la selection',
+    secondary: true,
+    onClick: () => {
+      clicked.value += 1
+      actions.value.push([clicked.value, selection.value])
+    },
+  },
+]
+const bottomBarButtons: DsfrDataTableProps['bottomBarButtons'] = [
+  {
+    label: 'Action globale',
+    secondary: false,
+    onClick: () => {
+      clicked.value += 1
+      actions.value.push([clicked.value, ['toutes']])
+    },
+  },
+]
 </script>
 
 <template>
@@ -41,13 +77,15 @@ const currentPage = ref<number>(0)
       row-key="id"
       title="Titre du tableau (caption)"
       pagination
-      :rows-per-page="2"
       :pagination-options="[1, 2, 3]"
-      bottom-action-bar-class="bottom-action-bar-class"
-      pagination-wrapper-class="pagination-wrapper-class"
       sorted="id"
       :sortable-rows="['id']"
+      :top-bar-detail="topBarDetail"
+      :top-bar-buttons="topBarButtons"
+      :bottom-bar-detail="`${rows.length} lignes au total`"
+      :bottom-bar-buttons="bottomBarButtons"
     >
+      <template #tableTopBarDetail />
       <template #header="{ label }">
         <em>{{ label }}</em>
       </template>
@@ -62,14 +100,16 @@ const currentPage = ref<number>(0)
       </template>
     </DsfrDataTable>
     IDs sélectionnées : {{ selection }}
+    <div class="fr-mt-2v">
+      <strong>Actions déclenchées :</strong>
+      <ul>
+        <li
+          v-for="(action, index) in actions"
+          :key="index"
+        >
+          {{ action[0] }} action déclanchée sur les IDs : [{{ action[1].join(', ') }}]
+        </li>
+      </ul>
+    </div>
   </div>
 </template>
-
-<style scoped>
-:deep(.bottom-action-bar-class) {
-  width: 860px;
-}
-:deep(.pagination-wrapper-class) {
-  width: 860px;
-}
-</style>

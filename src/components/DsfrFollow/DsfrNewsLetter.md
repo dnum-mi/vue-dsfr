@@ -2,7 +2,7 @@
 
 ## 🌟 Introduction
 
-Le composant `DsfrNewsLetter` est conçu pour afficher un formulaire d'inscription à une lettre d'information (newsletter) respectant les standards du [Design System de l'État Français (DSFR)](https://www.systeme-de-design.gouv.fr/). Flexible et accessible, il s'adapte à différents cas d'usage grâce à ses props personnalisables.
+Le composant `DsfrNewsLetter` est conçu pour afficher un formulaire d'inscription à une lettre d'information (newsletter). Pour avoir un style conforme au [Design System de l'État Français (DSFR)](https://www.systeme-de-design.gouv.fr/) il doit être impérativement être appelé par le composant `DsfrFollow`. Flexible et accessible, il s'adapte à différents cas d'usage grâce à ses props personnalisables.
 
 🏅 La documentation sur la lettre d’information sur le [DSFR](https://www.systeme-de-design.gouv.fr/composants-et-modeles/composants/lettre-d-information-et-reseaux-sociaux)
 
@@ -44,15 +44,31 @@ Le composant offre deux modes :
 
 Aucun slot disponible pour ce composant.
 
-## 📝 Exemple
+## 📝 Exemples
+
+### Exemple de base
+
+```vue
+<DsfrNewsLetter
+        email="prenom.nom@example.com"
+        title="Abonnez-vous à notre lettre d’information"
+        label-email="Votre adresse électronique (ex. : prenom.nom@example.com)"
+        input-title="Adresse courriel"
+        placeholder="prenom.nom@example.com"
+        button-text="S’abonner"
+        button-title="S‘abonner à notre lettre d’information"
+/>
+```
+
+### Exemple complet
 
 ::: code-group
 
-<Story data-title="Démo" min-h="400px">
-  <DsfrFollowDemo />
+<Story data-title="Démo" min-h="220px">
+  <DsfrNewsLetterDemo />
 </Story>
 
-<<< docs-demo/DsfrFollowDemo.vue [Code de la démo]
+<<< docs-demo/DsfrNewsLetterDemo.vue [Code de la démo]
 
 :::
 
@@ -60,11 +76,11 @@ Aucun slot disponible pour ce composant.
 
 ::: code-group
 
-<<< DsfrFollow.vue
+<<< DsfrNewsLetter.vue
 <<< DsfrFollow.types.ts
 
 :::
 
 <script setup lang="ts">
-import DsfrFollowDemo from './docs-demo/DsfrFollowDemo.vue'
+import DsfrNewsLetterDemo from './docs-demo/DsfrNewsLetterDemo.vue'
 </script>

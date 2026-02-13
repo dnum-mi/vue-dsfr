@@ -46,7 +46,7 @@ defineSlots<{
 
 if (props.description) {
   console.warn(
-    '[DsfrSelect] : La prop `description` est dépréciée. Veuillez utiliser `hint` à la place.',
+    '[DsfrSelect] : La prop `description` est obsolète. Veuillez utiliser `hint` à la place.',
   )
 }
 
@@ -65,6 +65,7 @@ const messageType = computed(() => {
   >
     <label
       class="fr-label"
+      :class="{ 'fr-sr-only': hideLabel }"
       :for="selectId"
     >
       <slot name="label">
@@ -98,7 +99,6 @@ const messageType = computed(() => {
         :selected="!options.some(option => (typeof option !== 'object' || option === null) ? option === modelValue : option.value === modelValue)"
         disabled
         value=""
-        hidden=""
       >
         {{ defaultUnselectedText }}
       </option>
