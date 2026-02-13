@@ -33,19 +33,19 @@ jobs:
         run: pnpm install --frozen-lockfile
       - name: Debug OIDC context
         run: |
-          node -e "
-            const pkg = JSON.parse(require('fs').readFileSync('package.json', 'utf8'));
-            console.log('publishConfig:', JSON.stringify(pkg.publishConfig));
-          "
-          pnpm exec node --input-type=module -e "
-            const { default: envCi } = await import('env-ci');
-            console.log('env-ci:', JSON.stringify(envCi()));
-          "
-          echo "ACTIONS_ID_TOKEN_REQUEST_URL set: ${ACTIONS_ID_TOKEN_REQUEST_URL:+yes}"
-          echo "GITHUB_ACTIONS: $GITHUB_ACTIONS"
+          echo "=== publishConfig ==="
+          node -e "const p=JSON.parse(require('fs').readFileSync('package.json','utf8')); console.log(JSON.stringify(p.publishConfig))"
+          echo "=== .npmrc ==="
           cat .npmrc
+          echo "=== @semantic-release/npm version ==="
           pnpm list @semantic-release/npm --depth=0
+          echo "=== OIDC env vars ==="
+          echo "GITHUB_ACTIONS: $GITHUB_ACTIONS"
+          echo "ACTIONS_ID_TOKEN_REQUEST_URL set: ${ACTIONS_ID_TOKEN_REQUEST_URL:+yes}"
+          echo "ACTIONS_ID_TOKEN_REQUEST_TOKEN set: ${ACTIONS_ID_TOKEN_REQUEST_TOKEN:+yes}"
+          echo "CI: $CI"
       - name: Release
         env:
+          DEBUG: semantic-release:*,@semantic-release/npm:*
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: pnpm run semantic-release
