@@ -33,19 +33,15 @@ defineSlots<{
     >
       {{ legend }}
       <slot name="legend" />
-    </legend>
-    <div
-      v-if="hint || $slots.hint"
-      class="fr-fieldset__element"
-    >
       <span
+        v-if="hint || $slots.hint"
         class="fr-hint-text"
         :class="hintClass"
       >
         {{ hint }}
         <slot name="hint" />
       </span>
-    </div>
+    </legend>
     <div class="fr-fieldset__element">
       <slot />
     </div>
