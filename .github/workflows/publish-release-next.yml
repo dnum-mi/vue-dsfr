@@ -24,6 +24,8 @@ jobs:
         with:
           node-version: 24
           registry-url: 'https://registry.npmjs.org'
+      - name: Upgrade npm
+        run: npm install -g npm@11.7.0
       - name: Install pnpm
         uses: pnpm/action-setup@v4
         with:
@@ -33,5 +35,4 @@ jobs:
       - name: Release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_CONFIG_PROVENANCE: true
         run: pnpm run semantic-release
