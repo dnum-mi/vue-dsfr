@@ -8,4 +8,5 @@ export type DsfrLanguageSelectorProps = {
   languages: DsfrLanguageSelectorElement[]
   currentLanguage?: string
   title?: string
+  wrapperTag?: 'div' | 'nav'
 }

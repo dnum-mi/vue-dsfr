@@ -13,6 +13,7 @@ const props = withDefaults(defineProps<DsfrLanguageSelectorProps>(), {
   languages: () => [],
   currentLanguage: 'fr',
   title: 'Sélectionner une langue',
+  wrapperTag: 'div',
 })
 
 const emit = defineEmits<{
@@ -47,7 +48,8 @@ watch(expanded, (newValue, oldValue) => {
 </script>
 
 <template>
-  <div
+  <component
+    :is="wrapperTag"
     class="fr-translate  fr-nav"
   >
     <div class="fr-nav__item">
@@ -85,5 +87,5 @@ watch(expanded, (newValue, oldValue) => {
         </ul>
       </div>
     </div>
-  </div>
+  </component>
 </template>
