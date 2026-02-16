@@ -3,6 +3,8 @@ import type { DsfrTileProps } from './DsfrTiles.types'
 
 import { computed } from 'vue'
 
+import { useRandomId } from '../../utils/random-utils'
+
 export type { DsfrTileProps }
 
 const props = withDefaults(defineProps<DsfrTileProps>(), {
@@ -30,6 +32,36 @@ const defaultSvgAttrs = { viewBox: '0 0 80 80', width: '80px', height: '80px' }
 
 const isExternalLink = computed(() => {
   return typeof props.to === 'string' && props.to.startsWith('http')
+})
+const svgDataUriComputed = computed(() => !!props.svgPath?.match(/^data:image\/svg\+xml(?:;[^,]*)?,/i))
+const stripEmbeddedSvgStyles = (markup: string) => markup.replace(/<style[\s\S]*?<\/style>/gi, '')
+const inlineSvgIdSuffix = useRandomId('tile', 'artwork').replace(/[^\w-]/gi, '_')
+const rewriteEmbeddedArtworkIds = (markup: string) => markup.replace(
+  /(id|href|xlink:href)=(['"])(#?)artwork-(decorative|minor|major)\2/g,
+  (_match, attr: string, quote: string, hashPrefix: string, artworkName: string) =>
+    `${attr}=${quote}${hashPrefix}artwork-${artworkName}-${inlineSvgIdSuffix}${quote}`,
+)
+const svgDataUriMarkupComputed = computed(() => {
+  if (!svgDataUriComputed.value || !props.svgPath) {
+    return ''
+  }
+
+  const svgDataUriRegex = /^data:image\/svg\+xml(?:;([^,]*))?,(.*)$/i
+  const match = props.svgPath.match(svgDataUriRegex)
+  if (!match) {
+    return ''
+  }
+
+  const metadata = (match[1] ?? '').toLowerCase()
+  const payload = match[2] ?? ''
+  const isBase64 = metadata.split(';').filter(Boolean).includes('base64')
+
+  try {
+    const decodedMarkup = isBase64 ? globalThis.atob(payload) : decodeURIComponent(payload)
+    return rewriteEmbeddedArtworkIds(stripEmbeddedSvgStyles(decodedMarkup))
+  } catch {
+    return ''
+  }
 })
 </script>
 
@@ -107,6 +139,18 @@ const isExternalLink = computed(() => {
           class="fr-artwork"
           alt=""
         >
+        <span
+          v-else-if="svgDataUriMarkupComputed"
+          aria-hidden="true"
+          class="fr-artwork fr-artwork--inline"
+          v-html="svgDataUriMarkupComputed"
+        />
+        <img
+          v-else-if="svgDataUriComputed"
+          :src="svgPath"
+          class="fr-artwork"
+          alt=""
+        >
         <svg
           v-else
           aria-hidden="true"
@@ -139,5 +183,10 @@ const isExternalLink = computed(() => {
 }
 .fr-tile.fr-tile--disabled a {
   cursor: not-allowed;
+}
+
+.fr-artwork--inline :deep(svg) {
+  width: 100%;
+  height: 100%;
 }
 </style>
