@@ -10,17 +10,19 @@ export type {
 withDefaults(defineProps<{
   links?: DsfrHeaderMenuLinkProps[]
   navAriaLabel?: string
+  wrapperTag?: 'div' | 'nav'
 }>(), {
   links: () => [],
   navAriaLabel: 'Menu secondaire',
+  wrapperTag: 'div',
 })
 
 const emit = defineEmits<{ linkClick: [event: MouseEvent] }>()
 </script>
 
 <template>
-  <nav
-    role="navigation"
+  <component
+    :is="wrapperTag"
     :aria-label="navAriaLabel"
   >
     <ul
@@ -36,5 +38,5 @@ const emit = defineEmits<{ linkClick: [event: MouseEvent] }>()
         />
       </li>
     </ul>
-  </nav>
+  </component>
 </template>
