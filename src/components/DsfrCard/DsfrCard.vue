@@ -14,6 +14,7 @@ const props = withDefaults(defineProps<DsfrCardProps>(), {
   titleLinkAttrs: () => ({}),
   imgSrc: undefined,
   link: undefined,
+  description: undefined,
   detail: undefined,
   detailIcon: undefined,
   endDetail: undefined,
