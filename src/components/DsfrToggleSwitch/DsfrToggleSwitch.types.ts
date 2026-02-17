@@ -1,3 +1,5 @@
+import type { InputHTMLAttributes } from 'vue'
+
 export type DsfrToggleSwitchProps = {
   modelValue?: boolean
   inputId?: string
@@ -10,6 +12,18 @@ export type DsfrToggleSwitchProps = {
   inactiveText?: string
   noText?: boolean
   name?: string
+  status?: undefined | 'valid' | 'error'
+  validMessage?: string
+  errorMessage?: string
+}
+export type DsfrToggleSwitchGroupProps = {
+  id?: string
+  legend?: string
+  toggleSwitches?: (DsfrToggleSwitchProps & InputHTMLAttributes)[]
+  borders?: boolean
+  activeText?: string
+  inactiveText?: string
+  noText?: boolean
   status?: undefined | 'valid' | 'error'
   validMessage?: string
   errorMessage?: string
