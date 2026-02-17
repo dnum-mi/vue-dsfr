@@ -439,6 +439,12 @@ const composants = [
   {
     text: 'DsfrToggleSwitch',
     link: '/composants/DsfrToggleSwitch.md',
+    items: [
+      {
+        text: 'DsfrToggleSwitchGroup',
+        link: '/composants/DsfrToggleSwitchGroup.md',
+      },
+    ],
   },
   {
     text: 'DsfrTooltip',

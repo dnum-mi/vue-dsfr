@@ -36,7 +36,7 @@ const meta = {
     },
     modelValue: {
       control: 'boolean',
-      description: 'État On/Off de l’interrupteur (On `false`, ou Off `true`)',
+      description: 'État Désactivé/Activé de l’interrupteur (Désactivé `false`, ou Activé `true`)',
     },
     inputId: {
       control: 'text',
@@ -59,6 +59,20 @@ const meta = {
     noText: {
       control: 'boolean',
       description: 'Désactive l\'affichage de activeText et inactiveText',
+    },
+    status: {
+      control: 'radio',
+      options: [undefined, 'valid', 'error'],
+      description:
+        'Indique le statut de l\'interrupteur (valide, ou en erreur)',
+    },
+    validMessage: {
+      control: 'text',
+      description: 'Message de validation de l\'interrupteur',
+    },
+    errorMessage: {
+      control: 'text',
+      description: 'Message d\'erreur de l\'interrupteur',
     },
     'update:modelValue': {
       description:
@@ -90,6 +104,13 @@ export const Interrupteur: Story = {
       :hint="args.hint"
       :disabled="args.disabled"
       :input-id="args.inputId"
+      :border-bottom="args.borderBottom"
+      :active-text="args.activeText"
+      :inactive-text="args.inactiveText"
+      :no-text="args.noText"
+      :status="args.status"
+      :valid-message="args.validMessage"
+      :error-message="args.errorMessage"
     />
   `,
   }),
