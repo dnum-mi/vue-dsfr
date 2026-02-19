@@ -17,12 +17,15 @@ Le `DsfrToggleSwitch` est un composant Vue versatile, conçu pour permettre à l
 | `hint`         | `string`  |                         |             | Texte d'information complémentaire affiché en dessous de l'interrupteur   |
 | `label`        | `string`  | `''`                    |             | Texte du label associé à l'interrupteur                                   |
 | `name`         | `string`  | `undefined`             |             | Attribut `name` de l’input                                                |
-| `labelLeft`    | `boolean` | `false`                 |             | Permet d'afficher le label à gauche de l'interrupteur                     |
+| `labelLeft`    | `boolean` | `false`                 |             | ⚠️ prop obsolète (donc désactivée) ♿️                                      |
 | `borderBottom` | `boolean` | `false`                 |             | Affiche une bordure sous l'interrupteur et le label                       |
 | `inputId`      | `string`  | `useRandomId('toggle')` |             | Identifiant unique pour le toggle. Utilisé pour l'accessibilité.          |
 | `activeText`   | `string`  | `Activé`                |             | Texte à afficher sous l'interrupteur lorsqu'il est activé                 |
 | `inactiveText` | `string`  | `Désactivé`             |             | Texte à afficher sous l'interrupteur lorsqu'il est désactivé              |
-| `noText`       | `boolean`  | `false`                |             | Désactive l'affichage de activeText et inactiveText                       |
+| `noText`       | `boolean` | `false`                 |             | Désactive l'affichage de activeText et inactiveText                       |
+| `status`       | `string`  | `undefined`             |             | statut du message.                                                        |
+| `validMessage` | `string`  |                         |             | Message de validité                                                       |
+| `errorMessage` | `string`  |                         |             | Message d'erreur                                                          |
 
 ## 📡Évenements
 
@@ -38,6 +41,8 @@ Aucun slot n'est prévu dans ce composant. Le contenu est entièrement basé sur
 
 ## 📝 Exemples
 
+### Exemple Basique
+
 ::: code-group
 
 <Story data-title="Démo" min-h="300px">
@@ -45,6 +50,18 @@ Aucun slot n'est prévu dans ce composant. Le contenu est entièrement basé sur
 </Story>
 
 <<< docs-demo/DsfrToggleSwitchDemo.vue
+
+:::
+
+### Exemple en erreur
+
+::: code-group
+
+<Story data-title="Démo" min-h="300px">
+  <DsfrToggleSwitchDemoStatutErreur label="Label action interrupteur" />
+</Story>
+
+<<< docs-demo/DsfrToggleSwitchDemoStatutErreur.vue
 
 :::
 
@@ -59,4 +76,5 @@ Aucun slot n'est prévu dans ce composant. Le contenu est entièrement basé sur
 
 <script setup lang="ts">
 import DsfrToggleSwitchDemo from './docs-demo/DsfrToggleSwitchDemo.vue'
+import DsfrToggleSwitchDemoStatutErreur from './docs-demo/DsfrToggleSwitchDemoStatutErreur.vue'
 </script>

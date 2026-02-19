@@ -17,6 +17,7 @@ const props = withDefaults(defineProps<DsfrToggleSwitchProps>(), {
   inactiveText: 'Désactivé',
   noText: false,
   name: undefined,
+  status: undefined,
 })
 
 const emit = defineEmits<{
@@ -25,7 +26,17 @@ const emit = defineEmits<{
 }>()
 
 const labelId = computed(() => {
-  return `${props.inputId}-hint-text`
+  return `${props.inputId}-label`
+})
+
+const message = computed(() => {
+  if (props.status === 'valid') {
+    return props.validMessage
+  }
+  if (props.status === 'error') {
+    return props.errorMessage
+  }
+  return undefined
 })
 </script>
 
@@ -33,7 +44,7 @@ const labelId = computed(() => {
   <div
     class="fr-toggle"
     :class="{
-      'fr-toggle--label-left': labelLeft,
+      [`fr-toggle--${status}`]: status,
       'fr-toggle--border-bottom': borderBottom,
     }"
   >
@@ -66,5 +77,22 @@ const labelId = computed(() => {
     >
       {{ hint }}
     </p>
+    <div
+      v-if="status"
+      :id="`${labelId}-messages`"
+      class="fr-messages-group"
+      aria-live="polite"
+    >
+      <p
+        :id="`${labelId}-message-${status}`"
+        class="fr-message"
+        :class="{
+          'fr-message--error': status === 'error',
+          'fr-message--valid': status === 'valid',
+        }"
+      >
+        {{ message }}
+      </p>
+    </div>
   </div>
 </template>
