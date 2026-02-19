@@ -23,7 +23,8 @@ const emit = defineEmits<{ linkClick: [event: MouseEvent] }>()
 <template>
   <component
     :is="wrapperTag"
-    :aria-label="navAriaLabel"
+    :role="wrapperTag === 'nav' ? 'navigation' : undefined"
+    :aria-label="wrapperTag === 'nav' ? navAriaLabel : undefined"
   >
     <ul
       class="fr-btns-group"
