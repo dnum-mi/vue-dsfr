@@ -4,6 +4,7 @@ import type { DsfrRadioButtonProps } from './DsfrRadioButton.types'
 import { computed } from 'vue'
 
 import { useRandomId } from '../../utils/random-utils'
+import { sanitizeInlineSvgMarkupFromDataUri } from '../../utils/svg-data-uri-utils'
 
 export type { DsfrRadioButtonProps }
 
@@ -35,35 +36,10 @@ const defaultSvgAttrs = { viewBox: '0 0 80 80', width: '80px', height: '80px' }
 
 const richComputed = computed(() => props.rich || (!!props.img || !!props.svgPath))
 const svgDataUriComputed = computed(() => !!props.svgPath?.match(/^data:image\/svg\+xml(?:;[^,]*)?,/i))
-const stripEmbeddedSvgStyles = (markup: string) => markup.replace(/<style[\s\S]*?<\/style>/gi, '')
 const inlineSvgIdSuffix = useRandomId('radio', 'artwork').replace(/[^\w-]/gi, '_')
-const rewriteEmbeddedArtworkIds = (markup: string) => markup.replace(
-  /(id|href|xlink:href)=(['"])(#?)artwork-(decorative|minor|major)\2/g,
-  (_match, attr: string, quote: string, hashPrefix: string, artworkName: string) =>
-    `${attr}=${quote}${hashPrefix}artwork-${artworkName}-${inlineSvgIdSuffix}${quote}`,
-)
-const svgDataUriMarkupComputed = computed(() => {
-  if (!svgDataUriComputed.value || !props.svgPath) {
-    return ''
-  }
-
-  const svgDataUriRegex = /^data:image\/svg\+xml(?:;([^,]*))?,(.*)$/i
-  const match = props.svgPath.match(svgDataUriRegex)
-  if (!match) {
-    return ''
-  }
-
-  const metadata = (match[1] ?? '').toLowerCase()
-  const payload = match[2] ?? ''
-  const isBase64 = metadata.split(';').filter(Boolean).includes('base64')
-
-  try {
-    const decodedMarkup = isBase64 ? globalThis.atob(payload) : decodeURIComponent(payload)
-    return rewriteEmbeddedArtworkIds(stripEmbeddedSvgStyles(decodedMarkup))
-  } catch {
-    return ''
-  }
-})
+const svgDataUriMarkupComputed = computed(() => (
+  sanitizeInlineSvgMarkupFromDataUri(props.svgPath, inlineSvgIdSuffix)
+))
 </script>
 
 <template>
