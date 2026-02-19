@@ -19,6 +19,7 @@ export type DsfrToggleSwitchProps = {
 export type DsfrToggleSwitchGroupProps = {
   id?: string
   legend?: string
+  disabled?: boolean
   toggleSwitches?: (DsfrToggleSwitchProps & InputHTMLAttributes)[]
   borders?: boolean
   activeText?: string

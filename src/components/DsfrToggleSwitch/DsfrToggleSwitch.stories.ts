@@ -23,7 +23,7 @@ const meta = {
     },
     labelLeft: {
       control: 'boolean',
-      description: 'Obslolète (désactivé)',
+      description: 'Obsolète (désactivé)',
     },
     borderBottom: {
       control: 'boolean',
@@ -64,15 +64,15 @@ const meta = {
       control: 'radio',
       options: [undefined, 'valid', 'error'],
       description:
-        'Indique le statut de l\'interrupteur (valide, ou en erreur)',
+        'Indique le statut de l’interrupteur (valide, ou en erreur)',
     },
     validMessage: {
       control: 'text',
-      description: 'Message de validation de l\'interrupteur',
+      description: 'Message de validation de l’interrupteur',
     },
     errorMessage: {
       control: 'text',
-      description: 'Message d\'erreur de l\'interrupteur',
+      description: 'Message d’erreur de l’interrupteur',
     },
     'update:modelValue': {
       description:
@@ -204,7 +204,8 @@ export const InterrupteurAvecTextePersonnalise: Story = {
   },
 }
 
-export const InterrupteurDésactivé: Story = {
+export const InterrupteurDesactive: Story = {
+  name: 'Interrupteur Désactivé',
   render: (args) => ({
     components: { DsfrToggleSwitch },
     setup () {

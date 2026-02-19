@@ -12,51 +12,51 @@ const meta = {
   argTypes: {
     legend: {
       control: 'text',
-      description: 'Légende du groupe d\'interrupteurs',
+      description: 'Légende du groupe d’interrupteurs',
     },
     borders: {
       control: 'boolean',
-      description: 'Affiche une bordure en bas de chaqueinterrupteur du groupe',
+      description: 'Affiche une bordure en bas de chaque interrupteur du groupe',
     },
     disabled: {
       control: 'boolean',
       description:
-        'État activé/désactivé du groupe d\'interrupteurs',
+        'État activé/désactivé du groupe d’interrupteurs',
     },
     id: {
       control: 'text',
-      description: 'Id du groupe d\'interrupteurs',
+      description: 'Id du groupe d’interrupteurs',
     },
     activeText: {
       control: 'text',
-      description: 'Texte à afficher sous chaque interrupteur lorsqu\'il est activé',
+      description: 'Texte à afficher sous chaque interrupteur lorsqu’il est activé',
     },
     inactiveText: {
       control: 'text',
-      description: 'Texte à afficher sous chaque interrupteur lorsqu\'il est désactivé',
+      description: 'Texte à afficher sous chaque interrupteur lorsqu’il est désactivé',
     },
     noText: {
       control: 'boolean',
-      description: 'Désactive l\'affichage de activeText et inactiveText',
+      description: 'Désactive l’affichage de `activeText` et `inactiveText`',
     },
     toggleSwitches: {
       control: 'object',
       description:
-        'Tableau d\'objets, chaque objet contiendra les props à passer à DsfrToggleSwitch',
+        'Tableau d’objets, chaque objet contiendra les props à passer à `DsfrToggleSwitch`',
     },
     status: {
       control: 'radio',
       options: [undefined, 'valid', 'error'],
       description:
-        'Indique le statut du groupe d\'interrupteurs (valide, ou en erreur - undefined pour aucun statut)',
+        'Indique le statut du groupe d’interrupteurs (valide, ou en erreur - undefined pour aucun statut)',
     },
     validMessage: {
       control: 'text',
-      description: 'Message de validation du groupe d\'interrupteurs',
+      description: 'Message de validation du groupe d’interrupteurs',
     },
     errorMessage: {
       control: 'text',
-      description: 'Message d\'erreur du groupe d\'interrupteurs',
+      description: 'Message d’erreur du groupe d’interrupteurs',
     },
   },
 } satisfies Meta<typeof DsfrToggleSwitchGroup>
@@ -90,7 +90,7 @@ export const GroupeDInterrupteurs: Story = {
   `,
   }),
   args: {
-    legend: 'Légende pour l\'ensemble des éléments du groupe',
+    legend: 'Légende pour l’ensemble des éléments du groupe',
     id: 'toggle-group-1',
     toggleSwitches: [
       {
@@ -134,7 +134,7 @@ export const GroupeDInterrupteursAvecTextePersonalisé: Story = {
   `,
   }),
   args: {
-    legend: 'Légende pour l\'ensemble des éléments du groupe',
+    legend: 'Légende pour l’ensemble des éléments du groupe',
     id: 'toggle-group-1',
     activeText: 'Oui',
     inactiveText: 'Non',
@@ -180,7 +180,7 @@ export const GroupeDInterrupteursAvecBordures: Story = {
   `,
   }),
   args: {
-    legend: 'Légende pour l\'ensemble des éléments du groupe',
+    legend: 'Légende pour l’ensemble des éléments du groupe',
     id: 'toggle-group-1',
     borders: true,
     toggleSwitches: [
@@ -218,14 +218,14 @@ export const GroupeDInterrupteursDésactivé: Story = {
       :disabled="args.disabled"
       :id="args.id"
       :active-text="args.activeText"
-      :inactive-text  ="args.inactiveText"
+      :inactive-text="args.inactiveText"
       :no-text="args.noText"
       :toggle-switches="args.toggleSwitches"
     />
   `,
   }),
   args: {
-    legend: 'Légende pour l\'ensemble des éléments du groupe',
+    legend: 'Légende pour l’ensemble des éléments du groupe',
     id: 'toggle-group-1',
     disabled: true,
     toggleSwitches: [
@@ -263,7 +263,7 @@ export const GroupeDInterrupteursAvecMessageDErreur: Story = {
       :disabled="args.disabled"
       :id="args.id"
       :active-text="args.activeText"
-      :inactive-text  ="args.inactiveText"
+      :inactive-text="args.inactiveText"
       :no-text="args.noText"
       :toggle-switches="args.toggleSwitches"
       :status="args.status"
@@ -272,10 +272,10 @@ export const GroupeDInterrupteursAvecMessageDErreur: Story = {
   `,
   }),
   args: {
-    legend: 'Légende pour l\'ensemble des éléments du groupe',
+    legend: 'Légende pour l’ensemble des éléments du groupe',
     id: 'toggle-group-1',
     status: 'error',
-    errorMessage: 'Il y a une erreur sur ce groupe d\'interrupteurs',
+    errorMessage: 'Il y a une erreur sur ce groupe d’interrupteurs',
     toggleSwitches: [
       {
         modelValue: true,

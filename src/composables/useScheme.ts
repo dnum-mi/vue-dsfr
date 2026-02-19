@@ -38,19 +38,27 @@ export declare type UseThemeOptions = {
   localStorageKey?: string
 }
 
-const getProperSchemeValue = (desiredScheme: string): string => {
+const isScheme = (value: string): value is Scheme => {
+  return [LIGHT_SCHEME, DARK_SCHEME, SYSTEM_SCHEME].includes(value)
+}
+
+const isTheme = (value: string): value is Theme => {
+  return [LIGHT_SCHEME, DARK_SCHEME].includes(value)
+}
+
+const getProperSchemeValue = (desiredScheme?: string | null): Scheme => {
   const scheme = desiredScheme ?? (localStorage.getItem(localStorageKey) || SYSTEM_SCHEME)
-  return [LIGHT_SCHEME, DARK_SCHEME, SYSTEM_SCHEME].includes(scheme)
+  return isScheme(scheme)
     ? scheme
     : SYSTEM_SCHEME
 }
 
-const getThemeMatchingScheme = (scheme: string, mediaQuery: MediaQueryList): string => {
-  scheme = getProperSchemeValue(scheme)
-  if (scheme === SYSTEM_SCHEME) {
+const getThemeMatchingScheme = (scheme: string, mediaQuery?: MediaQueryList): Theme => {
+  const normalizedScheme = getProperSchemeValue(scheme)
+  if (normalizedScheme === SYSTEM_SCHEME) {
     return mediaQuery?.matches ? DARK_SCHEME : LIGHT_SCHEME
   }
-  return scheme
+  return normalizedScheme
 }
 
 /**
@@ -80,11 +88,11 @@ export const useScheme = (options?: UseThemeOptions): UseSchemeResult | undefine
   const mediaQuery =
     window.matchMedia && window.matchMedia(PREFERS_DARK_MEDIA_QUERY)
 
-  const scheme = ref(getProperSchemeValue(opts.scheme))
+  const scheme = ref<Scheme>(getProperSchemeValue(opts.scheme))
 
   localStorage.setItem(localStorageKey, scheme.value)
 
-  const theme = ref(getThemeMatchingScheme(scheme.value, mediaQuery))
+  const theme = ref<Theme>(getThemeMatchingScheme(scheme.value, mediaQuery))
   const force = ref(scheme.value !== SYSTEM_SCHEME)
 
   watchEffect(() => {
@@ -112,7 +120,7 @@ export const useScheme = (options?: UseThemeOptions): UseSchemeResult | undefine
   const setScheme = (newScheme: string): void => {
     scheme.value = getProperSchemeValue(newScheme)
     localStorage.setItem(localStorageKey, scheme.value)
-    if ([LIGHT_SCHEME, DARK_SCHEME].includes(scheme.value)) {
+    if (isTheme(scheme.value)) {
       theme.value = scheme.value
       force.value = true
       return
@@ -130,9 +138,9 @@ export const useScheme = (options?: UseThemeOptions): UseSchemeResult | undefine
 
   const observer = new MutationObserver((mutationList /* , observer */) => {
     for (const mutation of mutationList) {
-      if (mutation.type === 'attributes' && mutation.attributeName === 'data-fr-theme') {
-        const newScheme = (mutation.target as HTMLElement).getAttribute(mutation.attributeName) as 'light' | 'dark'
-        if (newScheme !== scheme.value) {
+      if (mutation.type === 'attributes' && mutation.attributeName === (opts.dataThemeAttribute || DEFAULT_DATA_THEME_ATTRIBUTE)) {
+        const newScheme = (mutation.target as HTMLElement).getAttribute(mutation.attributeName)
+        if (newScheme && newScheme !== scheme.value) {
           setScheme(newScheme)
         }
       }
@@ -147,7 +155,7 @@ export const useScheme = (options?: UseThemeOptions): UseSchemeResult | undefine
 
   return {
     setScheme,
-    theme: computed(() => theme.value as Theme),
-    scheme: computed(() => scheme.value as Scheme),
+    theme: computed(() => theme.value),
+    scheme: computed(() => scheme.value),
   }
 }

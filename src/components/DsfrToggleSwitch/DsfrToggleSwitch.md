@@ -17,13 +17,13 @@ Le `DsfrToggleSwitch` est un composant Vue versatile, conçu pour permettre à l
 | `hint`         | `string`  |                         |             | Texte d'information complémentaire affiché en dessous de l'interrupteur   |
 | `label`        | `string`  | `''`                    |             | Texte du label associé à l'interrupteur                                   |
 | `name`         | `string`  | `undefined`             |             | Attribut `name` de l’input                                                |
-| `labelLeft`    | `boolean` | `false`                 |             | ⚠️ prop obsoléte (donc désactivée) ♿️                                      |
+| `labelLeft`    | `boolean` | `false`                 |             | ⚠️ prop obsolète (donc désactivée) ♿️                                      |
 | `borderBottom` | `boolean` | `false`                 |             | Affiche une bordure sous l'interrupteur et le label                       |
 | `inputId`      | `string`  | `useRandomId('toggle')` |             | Identifiant unique pour le toggle. Utilisé pour l'accessibilité.          |
 | `activeText`   | `string`  | `Activé`                |             | Texte à afficher sous l'interrupteur lorsqu'il est activé                 |
 | `inactiveText` | `string`  | `Désactivé`             |             | Texte à afficher sous l'interrupteur lorsqu'il est désactivé              |
 | `noText`       | `boolean` | `false`                 |             | Désactive l'affichage de activeText et inactiveText                       |
-| `status`       | `string`  | `undefined`.            |             | statut du message.                                                        |
+| `status`       | `string`  | `undefined`             |             | statut du message.                                                        |
 | `validMessage` | `string`  |                         |             | Message de validité                                                       |
 | `errorMessage` | `string`  |                         |             | Message d'erreur                                                          |
 

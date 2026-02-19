@@ -22,7 +22,7 @@ Aucune prop n’est obligatoire
 | align            | 'right' / 'center' / String   | undefined                 | Définit l'alignement des boutons dans le groupe. Peut être 'right' ou 'center'. |
 | buttons          | `(DsfrButtonProps & ButtonHTMLAttributes)[]`                    | () => []           | Liste des boutons à afficher. Chaque bouton est un objet qui peut inclure toutes les props d’un [DsfrButton](/composants/DsfrButton), y compris un gestionnaire `onClick`. |
 | equisized        | `boolean`                       | false                  | Si `true`, tous les boutons du groupe auront la même largeur. |
-| inlineLayoutWhen | `string \| boolean`         | 'never'                  | Détermine quand les boutons doivent être affichés sur une seule linge. Peut être `'always'`, `'never'`, ou correspondre à une taille spécifique (`'sm'`, `'md'`, `'lg'`). |
+| inlineLayoutWhen | `string \| boolean`         | 'never'                  | Détermine quand les boutons doivent être affichés sur une seule ligne. Peut être `'always'`, `'never'`, ou correspondre à une taille spécifique (`'sm'`, `'md'`, `'lg'`). |
 | iconRight        | `boolean`                       | false             | Si `true`, place les icônes à droite du texte dans tous les boutons. |
 | size             | `'sm' \| 'md' \| 'lg'`   | 'md'                 | Détermine la taille des boutons. Peut être `'sm'` (petit), `'md`' (moyen, défaut), `'lg'` (grand). |
 

@@ -100,8 +100,10 @@ describe('DsfrToggleSwitchGroup', () => {
     })
 
     const legendEl = getByText(legend)
+    const fieldsetEl = document.querySelector('fieldset')
     // Then
     expect(legendEl).toBeInTheDocument()
+    expect(fieldsetEl).toBeDisabled()
     toggleSwitches.forEach((toggleSwitch) => {
       const inputEl = getByTestId(`${id}-${toggleSwitch.inputId!}`)
       expect(inputEl).toBeInTheDocument()
@@ -111,7 +113,7 @@ describe('DsfrToggleSwitchGroup', () => {
 
   it('should not render toggle group error status if status is not error nor valid', () => {
     // Given
-    const legend = 'légende du groupe d\'interrupteurs'
+    const legend = 'légende du groupe d’interrupteurs'
     const toggleSwitches = [
       {
         modelValue: true,
@@ -150,9 +152,9 @@ describe('DsfrToggleSwitchGroup', () => {
     expect(validMessageEl).not.toBeInTheDocument()
   })
 
-  it('should render toggle swtich group error status if status is error', () => {
+  it('should render toggle switch group error status if status is error', () => {
     // Given
-    const legend = 'légende du groupe d\'interrupteurs'
+    const legend = 'légende du groupe d’interrupteurs'
     const disabled = false
     const toggleSwitches = [
       {
@@ -169,7 +171,7 @@ describe('DsfrToggleSwitchGroup', () => {
       },
     ]
     const status = 'error'
-    const errorMessage = 'Il y a une erreur dans ce groupe d\'interrupteurs'
+    const errorMessage = 'Il y a une erreur dans ce groupe d’interrupteurs'
 
     // When
     const { getByText } = render(DsfrToggleSwitchGroup, {
@@ -193,9 +195,9 @@ describe('DsfrToggleSwitchGroup', () => {
     expect(errorMessageEl).toHaveClass('fr-message--error')
   })
 
-  it('should render toggle swtich group valid status if status is valid', () => {
+  it('should render toggle switch group valid status if status is valid', () => {
     // Given
-    const legend = 'légende du groupe d\'interrupteurs'
+    const legend = 'légende du groupe d’interrupteurs'
     const disabled = false
     const toggleSwitches = [
       {
@@ -212,7 +214,7 @@ describe('DsfrToggleSwitchGroup', () => {
       },
     ]
     const status = 'valid'
-    const validMessage = 'Ce groupe d\'interrupteurs est valide'
+    const validMessage = 'Ce groupe d’interrupteurs est valide'
 
     // When
     const { getByText } = render(DsfrToggleSwitchGroup, {

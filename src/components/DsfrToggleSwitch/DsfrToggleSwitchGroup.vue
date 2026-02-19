@@ -12,6 +12,7 @@ export type { DsfrToggleSwitchGroupProps }
 const props = withDefaults(defineProps<DsfrToggleSwitchGroupProps>(), {
   id: () => useRandomId('toggle-group'),
   legend: '',
+  disabled: false,
   toggleSwitches: () => [],
 })
 
@@ -24,6 +25,15 @@ const message = computed(() => {
   }
   return undefined
 })
+
+const toggleSwitchesWithInputId = computed(() => (
+  props.toggleSwitches.map((toggleSwitch, index) => ({
+    ...toggleSwitch,
+    resolvedInputId: toggleSwitch.inputId
+      ? `${props.id}-${toggleSwitch.inputId}`
+      : `${props.id}-toggle-${index}`,
+  }))
+))
 </script>
 
 <template>
@@ -32,8 +42,10 @@ const message = computed(() => {
     :class="{
       [`fr-fieldset--${status}`]: status,
     }"
+    :disabled="disabled"
     role="group"
-    :aria-labelledby="status ? `${id}-legend ${id}-message-${status}` : `${id}-legend`"
+    :aria-labelledby="`${id}-legend`"
+    :aria-describedby="message ? `${id}-message-${status}` : undefined"
   >
     <legend
       :id="`${id}-legend`"
@@ -44,12 +56,13 @@ const message = computed(() => {
     <div class="fr-fieldset__element">
       <ul class="fr-toggle__list">
         <li
-          v-for="(toggleSwitch, index) in toggleSwitches"
+          v-for="(toggleSwitch, index) in toggleSwitchesWithInputId"
           :key="index"
         >
           <DsfrToggleSwitch
             v-bind="toggleSwitch"
-            :input-id="toggleSwitch.inputId ? `${id}-${toggleSwitch.inputId}` : `${id}-${useRandomId('toggle')}`"
+            :input-id="toggleSwitch.resolvedInputId"
+            :disabled="disabled || toggleSwitch.disabled"
             :border-bottom="borders"
             :active-text="activeText"
             :inactive-text="inactiveText"

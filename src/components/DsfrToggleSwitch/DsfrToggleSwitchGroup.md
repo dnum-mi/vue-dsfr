@@ -2,9 +2,9 @@
 
 ## 🌟 Introduction
 
-Le groupe d'interrupteurs est utilisé pour constituer une liste d’actions de même nature.
-Les interrupteurs du groupe auront un comportement uniforme pour la bordure basse et pour le texte à afficher sous l'interrupteur lorsqu'il est activé ou désactivé.
-Le Statut d'erreur est commun pour l'ensemble du groupe
+Le groupe d’interrupteurs est utilisé pour constituer une liste d’actions de même nature.
+Les interrupteurs du groupe auront un comportement uniforme pour la bordure basse et pour le texte à afficher sous l'interrupteur lorsqu’il est activé ou désactivé.
+Le Statut d’erreur est commun pour l’ensemble du groupe
 
 ## 🛠️ Props
 
@@ -12,16 +12,17 @@ Aucune prop n’est obligatoire
 
 | Nom              | Type                          | Défaut             | Description                                                               |
 |------------------|-------------------------------|--------------------|---------------------------------------------------------------------------|
-| id               | string                        |                    | Identifiant unique pour le groupe. Utilisé pour l'accessibilité.          |
-| legend           | string                        |                    | Légende pour l'ensemble des éléments                                      |
-| toggleSwitches   | DsfrToggleSwitchProps[]       |                    | Tableau d'interrupteurs à afficher. Chaque interrupteur est un objet [DsfrToggleSwitch](/composants/DsfrToggleSwitch) `borderBottom`, `activeText`, `inactiveText`, `noText` sont gérés au niveau du groupe et sont inutiles |
-| borders          | boolean                       |                    | Affiche une bordure sous chaque interrupteur et label.                    |
-| activeText       | string                        |                    | Texte à afficher sous le groupe d'interrupteurs lorsqu'il est activé      |
-| inactiveText     | string                        |                    | Texte à afficher sous le groupe d'interrupteurs  lorsqu'il est désactivé  |
-| noText           | boolean                       |                    | Désactive l'affichage de activeText et inactiveText                       |
-| status           | undefined / 'valid' / 'error' |                    | statut du message du groupe d'interrupteurs                               |
-| validMessage     | string                        |                    | Message de validité du groupe d'interrupteurs                             |
-| errorMessage     | string                        |                    | Message d'erreur du groupe d'interrupteurs                                |
+| id               | `string`                        |                    | Identifiant unique pour le groupe. Utilisé pour l’accessibilité.          |
+| legend           | `string`                        |                    | Légende pour l’ensemble des éléments                                      |
+| disabled         | `boolean`                       | `false`            | Désactive tous les interrupteurs du groupe                                 |
+| toggleSwitches   | `DsfrToggleSwitchProps[]`       |                    | Tableau d’interrupteurs à afficher. Chaque interrupteur est un objet [DsfrToggleSwitch](/composants/DsfrToggleSwitch) `borderBottom`, `activeText`, `inactiveText`, `noText` sont gérés au niveau du groupe et sont inutiles |
+| borders          | `boolean`                       |                    | Affiche une bordure sous chaque interrupteur et label.                    |
+| activeText       | `string`                        |                    | Texte à afficher sous le groupe d’interrupteurs lorsqu’il est activé      |
+| inactiveText     | `string`                        |                    | Texte à afficher sous le groupe d’interrupteurs lorsqu’il est désactivé   |
+| noText           | `boolean`                       |                    | Désactive l’affichage de activeText et inactiveText                       |
+| status           | `undefined \| 'valid' \| 'error'` |                    | statut du message du groupe d’interrupteurs                               |
+| validMessage     | `string`                        |                    | Message de validité du groupe d’interrupteurs                             |
+| errorMessage     | `string`                        |                    | Message d’erreur du groupe d’interrupteurs                                |
 
 ## 📝 Exemples
 
