@@ -73,6 +73,41 @@ provide(registerTabKey, (tabId: Ref<string>) => {
 const $el = ref<HTMLElement | null>(null)
 const tablist = ref<HTMLUListElement | null>(null)
 
+const SCROLL_OFFSET = 16
+const isScrolling = ref(false)
+const shadowLeft = ref(false)
+const shadowRight = ref(false)
+
+const updateShadow = () => {
+  const el = tablist.value
+  if (!el) { return }
+  const scrollLeft = Math.abs(el.scrollLeft)
+  const isRtl = getComputedStyle(el).direction === 'rtl'
+  const isMin = scrollLeft <= SCROLL_OFFSET
+  const max = el.scrollWidth - el.clientWidth - SCROLL_OFFSET
+  const isMax = scrollLeft >= max
+
+  if (isRtl) {
+    shadowRight.value = !isMin
+    shadowLeft.value = !isMax
+  } else {
+    shadowLeft.value = !isMin
+    shadowRight.value = !isMax
+  }
+}
+
+const updateIsScrolling = () => {
+  const el = tablist.value
+  if (!el) { return }
+  isScrolling.value = el.scrollWidth > el.clientWidth + SCROLL_OFFSET
+  if (isScrolling.value) {
+    updateShadow()
+  } else {
+    shadowLeft.value = false
+    shadowRight.value = false
+  }
+}
+
 const generatedIds: Record<string, string> = reactive({})
 const getIdFromIndex = (idx: number) => {
   if (generatedIds[idx]) {
@@ -132,6 +167,7 @@ onMounted(() => {
   if (window.ResizeObserver) {
     resizeObserver.value = new window.ResizeObserver(() => {
       renderTabs()
+      updateIsScrolling()
     })
   }
 
@@ -140,14 +176,14 @@ onMounted(() => {
       resizeObserver.value?.observe(element)
     }
   })
+
+  if (tablist.value) {
+    resizeObserver.value?.observe(tablist.value)
+  }
 })
 
 onUnmounted(() => {
-  $el.value?.querySelectorAll('.fr-tabs__panel').forEach((element) => {
-    if (element) {
-      resizeObserver.value?.unobserve(element)
-    }
-  })
+  resizeObserver.value?.disconnect()
 })
 
 defineExpose({
@@ -166,8 +202,14 @@ defineExpose({
     <ul
       ref="tablist"
       class="fr-tabs__list"
+      :class="{
+        'fr-tabs__shadow': isScrolling,
+        'fr-tabs__shadow--left': shadowLeft,
+        'fr-tabs__shadow--right': shadowRight,
+      }"
       role="tablist"
       :aria-label="tabListName"
+      @scroll="updateShadow"
     >
       <!-- @slot Slot nommé `tab-items` pour y mettre des Titres d’onglets personnalisés. S’il est rempli, la props `tabTitles° n’aura aucun effet -->
       <slot name="tab-items">
