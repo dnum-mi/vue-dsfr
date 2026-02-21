@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import type { DsfrDataTableHeaderCell, DsfrDataTableHeaderCellObject, DsfrDataTableProps, DsfrDataTableRow } from './DsfrDataTable.types'
+import type { DsfrDataTableColumn, DsfrDataTableHeaderCell, DsfrDataTableHeaderCellObject, DsfrDataTableProps, DsfrDataTableRow } from './DsfrDataTable.types'
 import type { Page } from '../DsfrPagination/DsfrPagination.types'
 
 import { computed, nextTick, onBeforeUnmount, onMounted, ref } from 'vue'
@@ -10,7 +10,7 @@ import DsfrSelect from '../DsfrSelect/DsfrSelect.vue'
 
 import { useRandomId } from '@/utils/random-utils'
 
-export type { DsfrDataTableHeaderCell, DsfrDataTableHeaderCellObject, DsfrDataTableProps, DsfrDataTableRow, Page }
+export type { DsfrDataTableColumn, DsfrDataTableHeaderCell, DsfrDataTableHeaderCellObject, DsfrDataTableProps, DsfrDataTableRow, Page }
 
 const props = withDefaults(defineProps<DsfrDataTableProps>(), {
   id: () => useRandomId('table'),
@@ -123,10 +123,27 @@ const sortedRows = computed(() => {
   }
   return _sortedRows
 })
-const rowKeys = computed(() => props.headersRow.map((header) => {
-  if (typeof header !== 'object') {
-    return header
+const computedHeadersRow = computed(() => {
+  if (props.columns && props.columns.length > 0) {
+    return props.columns.map((column) => {
+      return {
+        key: column.key ?? column.label as string,
+        label: column.label,
+        headerAttrs: column.attrs,
+      }
+    })
   }
+  return props.headersRow.map((header) => {
+    if (typeof header === 'object') {
+      return header
+    }
+    return {
+      key: header,
+      label: header,
+    }
+  })
+})
+const rowKeys = computed(() => computedHeadersRow.value.map((header) => {
   return header.key
 }))
 const rowKeyIndex = computed(() => rowKeys.value.findIndex(key => key === props.rowKey))
@@ -285,9 +302,10 @@ onBeforeUnmount(() => {
                     </div>
                   </th>
                   <th
-                    v-for="(header, idx) of headersRow"
-                    :key="typeof header === 'object' ? header.key : header"
+                    v-for="(header, idx) of computedHeadersRow"
+                    :key="header.key"
                     scope="col"
+                    :role="(columns && columns[idx]?.isHeader) ? 'columnheader' : undefined"
                     v-bind="typeof header === 'object' && header.headerAttrs"
                     :tabindex="sortableRows ? 0 : undefined"
                     :aria-sort="getAriaSort(header, idx)"
@@ -347,26 +365,29 @@ onBeforeUnmount(() => {
                   </th>
 
                   <!-- @vue-expect-error TS2538 -->
-                  <td
+                  <template
                     v-for="(cell, cellIdx) of row"
-                    :key="typeof cell === 'object' ? cell[rowKey] : cell"
-                    tabindex="0"
-                    @keydown.ctrl.c="copyToClipboard(typeof cell === 'object' ? cell[rowKey] : cell)"
-                    @keydown.meta.c="copyToClipboard(typeof cell === 'object' ? cell[rowKey] : cell)"
+                    :key="cell[rowKey]"
                   >
-                    <slot
-                      name="cell"
-                      v-bind="{
-                        colKey: typeof headersRow[cellIdx] === 'object'
-                          ? headersRow[cellIdx].key
-                          : headersRow[cellIdx],
-                        cell,
-                      }"
+                    <component
+                      :is="(columns && columns[cellIdx].isHeader) ? 'th' : 'td'"
+                      :scope="(columns && columns[cellIdx].isHeader) ? 'row' : undefined"
+                      tabindex="0"
+                      @keydown.ctrl.c="copyToClipboard(cell[rowKey])"
+                      @keydown.meta.c="copyToClipboard(cell[rowKey])"
                     >
-                      <!-- @vue-expect-error TS2538 -->
-                      {{ typeof cell === 'object' ? cell[rowKey] : cell }}
-                    </slot>
-                  </td>
+                      <slot
+                        name="cell"
+                        v-bind="{
+                          colKey: computedHeadersRow[cellIdx]?.key,
+                          cell,
+                        }"
+                      >
+                        <!-- @vue-expect-error TS2538 -->
+                        {{ typeof cell === 'object' ? cell[rowKey] : cell }}
+                      </slot>
+                    </component>
+                  </template>
                 </tr>
               </slot>
             </tbody>
