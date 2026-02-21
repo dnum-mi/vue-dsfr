@@ -740,7 +740,6 @@ describe('DsfrDataTable', () => {
         header: ({ label }) => `Custom: ${label}`,
       },
     })
-    console.log(container.innerHTML) // eslint-disable-line no-console
     // Then
     const headers = container.querySelectorAll('th[scope="col"]')
     expect(headers[0].textContent).toContain('Custom: Name')
@@ -889,5 +888,49 @@ describe('DsfrDataTable', () => {
     // Then
     const tableDiv = container.querySelector('div.fr-table')
     expect(tableDiv?.classList.contains('fr-table--multiline')).toBe(true)
+  })
+  it('should render multiple-row header elements correctly', () => {
+    // Given
+    const title = 'Multiple Row Header Table'
+    const id = 'multi-row-table'
+    // headersRow contient à la fois les row headers (les N premières entrées)
+    // et ensuite les labels de colonnes
+    const columns = [
+      { phone: 'phone', label: 'Téléphone' },
+      { id: 'nom', label: 'Nom', isHeader: true },
+      { id: 'prenom', label: 'Prénom', isHeader: true },
+      { id: 'donnee1', label: 'donnée1' },
+      { id: 'donnee2', label: 'donnée2' },
+    ]
+    const rows = [
+      ['01 23 45 67 89', 'Dupont', 'Jean', 'Valeur 1', 'Valeur 2'],
+      ['01 23 45 67 90', 'Martin', 'Claire', 'Valeur 3', 'Valeur 4'],
+    ]
+
+    // When
+    const { container } = render(DsfrDataTable, {
+      props: { title, id, columns, rows },
+    })
+
+    // Then
+    const tableEl = container.querySelector('table')
+    const theadEl = tableEl?.querySelector('thead')
+    expect(theadEl).toBeTruthy()
+    const headerRows = theadEl?.querySelectorAll('tr')
+    expect(headerRows?.length).toBe(1)
+    for (let i = 0; i < columns.length; i++) {
+      const thEl = headerRows?.[0].querySelectorAll(`th`)[i]
+      expect(thEl).toBeTruthy()
+      expect(thEl?.textContent).toContain(columns[i].label)
+      expect(thEl?.getAttribute('scope')).toBe('col')
+    }
+
+    const tbodyEl = tableEl?.querySelector('tbody')
+    expect(tbodyEl).toBeTruthy()
+    const bodyRows = tbodyEl?.querySelectorAll('tr')
+
+    const firstBodyRowCells = bodyRows?.[0].querySelectorAll('th[scope="row"]')
+    const colCount = columns.filter(col => col.isHeader).length
+    expect(firstBodyRowCells?.length).toBe(colCount)
   })
 })
