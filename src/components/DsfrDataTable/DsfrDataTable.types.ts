@@ -52,9 +52,9 @@ export type DsfrDataTableProps =
 
 /**
  * Décrit une colonne du tableau.
- * id: identifiant de la colonne (optionnel, sera dérivé si absent)
+ * key: identifiant de la colonne (optionnel, sera dérivé si absent)
  * label: texte affiché dans l'en-tête
- * isHeader: true si la colonne doit être rendue en tant qu'en-tête de colonne (<th scope="col">)
+ * isHeader: true si les cellules de cette colonne doivent être rendues en tant qu'en-têtes de ligne (<th scope="row">)
  */
 export interface DsfrDataTableColumn {
   key?: string

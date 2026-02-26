@@ -305,7 +305,7 @@ onBeforeUnmount(() => {
                     v-for="(header, idx) of computedHeadersRow"
                     :key="header.key"
                     scope="col"
-                    :role="(columns && columns[idx]?.isHeader) ? 'columnheader' : undefined"
+                    :role="columns?.[idx]?.isHeader ? 'columnheader' : undefined"
                     v-bind="typeof header === 'object' && header.headerAttrs"
                     :tabindex="sortableRows ? 0 : undefined"
                     :aria-sort="getAriaSort(header, idx)"
@@ -367,14 +367,14 @@ onBeforeUnmount(() => {
                   <!-- @vue-expect-error TS2538 -->
                   <template
                     v-for="(cell, cellIdx) of row"
-                    :key="cell[rowKey]"
+                    :key="cell[rowKeyIndex]"
                   >
                     <component
-                      :is="(columns && columns[cellIdx].isHeader) ? 'th' : 'td'"
-                      :scope="(columns && columns[cellIdx].isHeader) ? 'row' : undefined"
+                      :is="columns?.[cellIdx]?.isHeader ? 'th' : 'td'"
+                      :scope="columns?.[cellIdx]?.isHeader ? 'row' : undefined"
                       tabindex="0"
-                      @keydown.ctrl.c="copyToClipboard(cell[rowKey])"
-                      @keydown.meta.c="copyToClipboard(cell[rowKey])"
+                      @keydown.ctrl.c="copyToClipboard(typeof cell === 'object' ? cell[rowKeyIndex] : cell)"
+                      @keydown.meta.c="copyToClipboard(typeof cell === 'object' ? cell[rowKeyIndex] : cell)"
                     >
                       <slot
                         name="cell"
@@ -384,7 +384,7 @@ onBeforeUnmount(() => {
                         }"
                       >
                         <!-- @vue-expect-error TS2538 -->
-                        {{ typeof cell === 'object' ? cell[rowKey] : cell }}
+                        {{ typeof cell === 'object' ? cell[rowKeyIndex] : cell }}
                       </slot>
                     </component>
                   </template>

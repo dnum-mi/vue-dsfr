@@ -893,14 +893,14 @@ describe('DsfrDataTable', () => {
     // Given
     const title = 'Multiple Row Header Table'
     const id = 'multi-row-table'
-    // headersRow contient à la fois les row headers (les N premières entrées)
-    // et ensuite les labels de colonnes
+    // columns définit toutes les colonnes du tableau :
+    // certaines sont marquées isHeader pour être rendues comme en-têtes de ligne
     const columns = [
-      { phone: 'phone', label: 'Téléphone' },
-      { id: 'nom', label: 'Nom', isHeader: true },
-      { id: 'prenom', label: 'Prénom', isHeader: true },
-      { id: 'donnee1', label: 'donnée1' },
-      { id: 'donnee2', label: 'donnée2' },
+      { key: 'phone', label: 'Téléphone' },
+      { key: 'nom', label: 'Nom', isHeader: true },
+      { key: 'prenom', label: 'Prénom', isHeader: true },
+      { key: 'donnee1', label: 'donnée1' },
+      { key: 'donnee2', label: 'donnée2' },
     ]
     const rows = [
       ['01 23 45 67 89', 'Dupont', 'Jean', 'Valeur 1', 'Valeur 2'],
@@ -918,19 +918,27 @@ describe('DsfrDataTable', () => {
     expect(theadEl).toBeTruthy()
     const headerRows = theadEl?.querySelectorAll('tr')
     expect(headerRows?.length).toBe(1)
+
     for (let i = 0; i < columns.length; i++) {
       const thEl = headerRows?.[0].querySelectorAll(`th`)[i]
       expect(thEl).toBeTruthy()
       expect(thEl?.textContent).toContain(columns[i].label)
       expect(thEl?.getAttribute('scope')).toBe('col')
+      if (columns[i].isHeader) {
+        expect(thEl?.getAttribute('role')).toBe('columnheader')
+      } else {
+        expect(thEl?.getAttribute('role')).toBeNull()
+      }
     }
 
     const tbodyEl = tableEl?.querySelector('tbody')
     expect(tbodyEl).toBeTruthy()
     const bodyRows = tbodyEl?.querySelectorAll('tr')
 
-    const firstBodyRowCells = bodyRows?.[0].querySelectorAll('th[scope="row"]')
+    const firstBodyRowHeader = bodyRows?.[0].querySelectorAll('th[scope="row"]')
     const colCount = columns.filter(col => col.isHeader).length
-    expect(firstBodyRowCells?.length).toBe(colCount)
+    expect(firstBodyRowHeader?.length).toBe(colCount)
+    const firstBodyRowCells = bodyRows?.[0].querySelectorAll('td')
+    expect(firstBodyRowCells?.length).toBe(columns.length - colCount)
   })
 })

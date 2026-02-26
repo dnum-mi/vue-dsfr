@@ -40,7 +40,7 @@ Cela permet aux lecteurs d'écran d'annoncer correctement l'état de tri de chaq
 | `id`                        | `string`                                             | `undefined`              |             | Identifiant unique du tableau.                                                                                                               |
 | `title`                     | `string`                                            |                          | ✅          | Titre du tableau.                                                                                                                         |
 | `headersRow`                | `Array<string \| DsfrDataTableHeaderCellObject>`     | `[]`                     |             | Les en-têtes de votre tableau. Peut être remplacé par le slot `thead`. Peut aussi être remplacé par la prop `columns`|
-| `columns`                   | `Array<DsfrDataTableColumn>`                         | `undefined`              |             | défini pour chaque colonne (clé,) libellé, si c'est une colonne d'entête |
+| `columns`                   | `Array<DsfrDataTableColumn>`                         | `undefined`              |             | Tableau de colonnes définissant pour chacune : la clé (optionnelle), le libellé, les attributs HTML (optionnels) et si les cellules doivent être des en-têtes de ligne |
 | `rows`                      | `DsfrDataTableRow[]`                                 | `[]`                     |             | Les données de chaque rangée dans le tableau.                                                                                                |
 | `rowKey`                    | `string \| number`                                   | `undefined`              |             | Une clé unique pour chaque rangée, utilisée pour optimiser la mise à jour du DOM.                                                           |
 | `topActionsRow`             | `string[]`                                           | `undefined`              |             | Actions affichées en haut du tableau.                                                                                                        |
@@ -163,11 +163,11 @@ Vous pouvez utiliser `v-model` pour les propriétés suivantes :
 
 :::
 
-### Exemple Colonnes d'en-tete multiple
+### Exemple Colonnes d'en-tête multiple
 
 ::: code-group
 
-<Story data-title="Démo colonnes d'en-tete multiple" min-h="400px">
+<Story data-title="Démo colonnes d'en-tête multiple" min-h="400px">
   <div class="fr-container">
     <DsfrDataTableDemoColonnesEnteteMultiple />
   </div>
