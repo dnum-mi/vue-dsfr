@@ -65,10 +65,11 @@ const afterMandatoryLinks = [
 ]
 ```
 
-C’est le cas dans [l’exemple](#📝-exemple).
+C’est le cas dans [l’exemple](#exemple).
+
 :::
 
-## 📡Événements
+## 📡 Événements
 
 Aucun événement spécifique pour ce composant.
 

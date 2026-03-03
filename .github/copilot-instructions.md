@@ -208,8 +208,6 @@ export function useFeatureName () {
 - Utiliser les types génériques pour la réutilisabilité
 - Interfaces plutôt que types pour les objets
 
-# copilot-instructions.md
-
 ## 🎯 Objectif
 
 Ces instructions guident Copilot pour générer un code cohérent avec les conventions du projet.
