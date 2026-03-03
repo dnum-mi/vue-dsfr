@@ -34,12 +34,10 @@ export default antfu({
       ],
       'antfu/top-level-function': 'off', // Should be 'error'
       'style/quote-props': ['error', 'as-needed'], // Should be ['error', 'consistent-as-needed']
-      'vue/quote-props': ['error', 'as-needed'], // Should be ['error', 'consistent-as-needed']
       'ts/consistent-type-definitions': 'off', // Should be 'on'
       'style/arrow-parens': 'off', // Should be ['error', 'as-needed']
       'style/operator-linebreak': ['error', 'after', { overrides: { '?': 'before', ':': 'before', '|': 'before', '&': 'before' } }],
       'style/max-statements-per-line': 'off', // Should be 'error'
-      'vue/no-irregular-whitespace': 'warn',
       'no-irregular-whitespace': 'warn',
       'perfectionist/sort-imports': 'off', // import/order is better
       'perfectionist/sort-exports': 'off', // Think about it
@@ -51,17 +49,6 @@ export default antfu({
         'error',
         'always-multiline',
       ],
-      'vue/max-attributes-per-line': [
-        'error',
-        {
-          singleline: {
-            max: 1,
-          },
-          multiline: {
-            max: 1,
-          },
-        },
-      ],
       'style/spaced-comment': [
         'error',
         'always',
@@ -71,6 +58,24 @@ export default antfu({
             '#endregion',
             '/',
           ],
+        },
+      ],
+    },
+  },
+  {
+    files: ['**/*.vue'],
+    rules: {
+      'vue/quote-props': ['error', 'as-needed'], // Should be ['error', 'consistent-as-needed']
+      'vue/no-irregular-whitespace': 'warn',
+      'vue/max-attributes-per-line': [
+        'error',
+        {
+          singleline: {
+            max: 1,
+          },
+          multiline: {
+            max: 1,
+          },
         },
       ],
     },
@@ -101,6 +106,8 @@ export default antfu({
     files: ['**/*.md', '**/*.md/**'],
     rules: {
       'import-x/order': 'off',
+      // no-irregular-whitespace uses getAllComments() removed in ESLint 10 for markdown processor SourceCode
+      'no-irregular-whitespace': 'off',
     },
   },
 ])

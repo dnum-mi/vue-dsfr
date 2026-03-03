@@ -44,7 +44,7 @@ Les réseaux sociaux (`networks`) sont des objets de type :
 
 | Nom   | Type                   | Description                                                               |
 |-------|------------------------|---------------------------------------------------------------------------|
-| `type` | `'facebook' | 'twitter-x' | 'instagram' | 'linkedin' | 'youtube'` | Type de réseau social (icône associée). |
+| `type` | `'facebook' \| 'twitter-x' \| 'instagram' \| 'linkedin' \| 'youtube'` | Type de réseau social (icône associée). |
 | `name` | `string`              | Nom à afficher pour le réseau social.                                     |
 | `href` | `string`              | URL vers le profil ou la page sociale.                                    |
 

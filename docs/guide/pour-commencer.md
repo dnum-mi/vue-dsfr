@@ -71,7 +71,7 @@ Cette méthode est facile à mettre en place et permet de tester rapidement les 
 On peut avoir le meilleur des deux mondes (**import automatique** des composants et un **bundle final optimisé** qui ne contient que les composants réellement utilisés) avec l’auto-import et le component resolver livrés avec les versions [5.5+ de VueDsfr](https://github.com/dnum-mi/vue-dsfr/releases/tag/v5.5.0).
 C’est le défaut depuis la version [1.7.0](https://github.com/laruiss/create-vue-dsfr) de l’assistant officiel [create-vue-dsfr](https://github.com/laruiss/create-vue-dsfr).
 
-Voir plus loin la [section correspondante](#avoir-un-bundle-optimise-et-une-dx-optimale).
+Voir plus loin la [section correspondante](#avoir-un-bundle-optimisé-et-une-dx-optimale).
 
 :::
 
