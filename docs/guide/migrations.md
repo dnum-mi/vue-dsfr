@@ -167,19 +167,19 @@ dont voici la liste que nous espérons exhaustive.
 Que vous utilisiez simplement Vue.js ou que vous l’utilisiez avec Nuxt, il faudra ajouter dans
 vos dépendances la bibliothèque officielle du DSFR pour ajouter le CSS de cette bibliothèque.
 
-```
+```sh
 pnpm i @gouvfr/dsfr
 ```
 
 Ou
 
-```
+```sh
 npm i @gouvfr/dsfr
 ```
 
 Ou
 
-```
+```sh
 yarn add @gouvfr/dsfr
 ```
 

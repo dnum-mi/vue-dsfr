@@ -34,7 +34,7 @@ Chaque réseau est un objet de type :
 
 | Nom   | Type                   | Description                                                                 |
 |-------|------------------------|-----------------------------------------------------------------------------|
-| `type` | `'facebook' | 'twitter-x' | 'instagram' | 'linkedin' | 'youtube'` | Type de réseau social (icône et style associés).                          |
+| `type` | `'facebook' \| 'twitter-x' \| 'instagram' \| 'linkedin' \| 'youtube'` | Type de réseau social (icône et style associés).                          |
 | `name` | `string`              | Nom affiché pour le réseau social.                                          |
 | `href` | `string`              | URL vers le profil ou la page sociale.                                      |
 

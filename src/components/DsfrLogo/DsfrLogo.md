@@ -16,7 +16,7 @@ Le composant affiche un élément `<p>` avec la classe CSS `fr-logo`, et des cla
 |-------------|---------------------|-----------------|-----------------------------------------------------------------------------|
 | `small`     | `boolean`           | `false`         | Affiche le logo en petite taille (`fr-logo--sm`).                           |
 | `large`     | `boolean`           | `false`         | Affiche le logo en grande taille (`fr-logo--lg`).                           |
-| `logoText`  | `string | string[]` | `'Gouvernement'` | Texte ou tableau de textes à afficher comme logo. Les éléments du tableau sont séparés par un saut de ligne (`<br>`). |
+| `logoText`  | `string \| string[]` | `'Gouvernement'` | Texte ou tableau de textes à afficher comme logo. Les éléments du tableau sont séparés par un saut de ligne (`<br>`). |
 
 ## 📡Événements
 

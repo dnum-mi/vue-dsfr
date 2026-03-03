@@ -86,7 +86,7 @@
   "peerDependencies": {
     "@iconify/vue": "^4.2.0",
     "vue": "^3.5.27",
-    "vue-router": "^4.6.4"
+    "vue-router": "^5.0.3"
   },
   "dependencies": {
     "@gouvfr/dsfr": "~1.14.3",
@@ -96,7 +96,7 @@
     "vue-router": "^5.0.3"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^5.4.1",
+    "@antfu/eslint-config": "^7.6.1",
     "@chromatic-com/storybook": "^4.1.3",
     "@commitlint/cli": "^20.4.2",
     "@commitlint/config-conventional": "^20.4.2",
@@ -135,10 +135,10 @@
     "commitlint": "^20.4.2",
     "conventional-changelog-conventionalcommits": "^9.2.0",
     "cross-env": "^10.1.0",
-    "eslint": "^9.39.3",
+    "eslint": "^10.0.2",
     "eslint-plugin-import-x": "^4.16.1",
     "eslint-plugin-storybook": "10.0.2",
-    "eslint-plugin-vue": "^9.33.0",
+    "eslint-plugin-vue": "^10.8.0",
     "globby": "^16.1.1",
     "http-server": "^14.1.1",
     "husky": "^9.1.7",
