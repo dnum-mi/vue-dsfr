@@ -130,5 +130,6 @@ export { default as DsfrToggleSwitch } from './DsfrToggleSwitch/DsfrToggleSwitch
 export { default as DsfrToggleSwitchGroup } from './DsfrToggleSwitch/DsfrToggleSwitchGroup.vue'
 export { default as DsfrTooltip } from './DsfrTooltip/DsfrTooltip.vue'
 export { default as DsfrTranscription } from './DsfrTranscription/DsfrTranscription.vue'
+export { default as DsfrUserMenu } from './DsfrUserMenu/DsfrUserMenu.vue'
 export { default as DsfrVideo } from './DsfrMedia/DsfrVideo.vue'
 export { default as VIcon } from './VIcon/VIcon.vue'
