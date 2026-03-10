@@ -455,6 +455,10 @@ const composants = [
     link: '/composants/DsfrTranscription.md',
   },
   {
+    text: 'DsfrUserMenu',
+    link: '/composants/DsfrUserMenu.md',
+  },
+  {
     text: 'DsfrVideo',
     link: '/composants/DsfrVideo.md',
   },
