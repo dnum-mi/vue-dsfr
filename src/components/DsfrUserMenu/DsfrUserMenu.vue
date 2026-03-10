@@ -5,6 +5,19 @@ export type { DsfrUserMenuProps }
 
 const props = withDefaults(defineProps<DsfrUserMenuProps>(), {
   id: undefined,
+  isConnected: false,
+  unconnectedLabel: 'Me connecter',
+  unconnectedTitle: 'Me connecter',
+  connectedLabel: 'Mon espace',
+  connectedTitle: 'Mon espace',
+  connectionIcon: false,
+  userLabel: '',
+  userInfo: '',
+  links: () => [],
+  hasDisconnectButton: false,
+  disconnectButtonLabel: 'Me déconnecter',
+  hasUserInfo: false,
+  noOutline: false,
 })
 </script>
 
