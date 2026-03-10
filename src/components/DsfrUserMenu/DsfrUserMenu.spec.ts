@@ -10,4 +10,10 @@ describe('DsfrUserMenu', () => {
     })
     expect(container.querySelector('nav')).toBeTruthy()
   })
+
+  it('use default props', () => {
+    const { getByText } = render(DsfrUserMenu)
+    // le bouton de connexion non connecté devrait exister
+    expect(getByText('Me connecter')).toBeTruthy()
+  })
 })
