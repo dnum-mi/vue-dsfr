@@ -2,7 +2,7 @@
 import type { DsfrModalProps } from './DsfrModal.types'
 
 import { FocusTrap } from 'focus-trap-vue'
-import { computed, nextTick, onBeforeUnmount, onMounted, ref, useTemplateRef, watch } from 'vue'
+import { computed, nextTick, onBeforeUnmount, onMounted, useTemplateRef, watch } from 'vue'
 
 import DsfrButtonGroup from '../DsfrButton/DsfrButtonGroup.vue'
 import VIcon from '../VIcon/VIcon.vue'
@@ -41,6 +41,15 @@ const closeIfEscape = ($event: KeyboardEvent) => {
     return
   }
   if ($event.key === 'Escape') {
+    close()
+  }
+}
+
+function closeIfOutside (event: MouseEvent) {
+  if (props.isAlert) {
+    return
+  }
+  if (!(event.target as HTMLElement).closest('.fr-modal__body')) {
     close()
   }
 }
@@ -118,6 +127,7 @@ const iconProps = computed(() => dsfrIcon.value
       class="fr-modal"
       :class="{ 'fr-modal--opened': opened }"
       :open="opened"
+      @click="closeIfOutside"
     >
       <div class="fr-container fr-container--fluid fr-container-md">
         <div class="fr-grid-row fr-grid-row--center">
