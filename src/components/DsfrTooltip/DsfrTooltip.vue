@@ -125,6 +125,14 @@ const onMouseLeave = () => {
   }
 }
 
+const onBlur = () => {
+  show.value = false
+}
+
+const onFocus = () => {
+  show.value = true
+}
+
 const onClick = () => {
   if (!props.onHover) {
     show.value = true
@@ -158,8 +166,8 @@ onUnmounted(() => {
     :type="onHover ? undefined : 'button'"
     @click="onClick()"
     @mouseleave="onMouseLeave()"
-    @focus="onMouseEnterHandler($event)"
-    @blur="onMouseLeave()"
+    @focus="onFocus()"
+    @blur="onBlur()"
   >
     <slot />
   </component>

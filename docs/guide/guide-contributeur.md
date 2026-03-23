@@ -214,7 +214,7 @@ et **la fusion doit être demandée dans `develop`.**
 
 ### Structure du projet
 
-```
+```t
 vue-dsfr/
 ├── src/
 │   ├── components/        # Composants DSFR (DsfrButton/, DsfrCard/, etc.)

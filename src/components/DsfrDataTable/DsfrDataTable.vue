@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import type { DsfrDataTableHeaderCell, DsfrDataTableHeaderCellObject, DsfrDataTableProps, DsfrDataTableRow } from './DsfrDataTable.types'
+import type { DsfrDataTableColumn, DsfrDataTableHeaderCell, DsfrDataTableHeaderCellObject, DsfrDataTableProps, DsfrDataTableRow } from './DsfrDataTable.types'
 import type { Page } from '../DsfrPagination/DsfrPagination.types'
 
 import { computed, nextTick, onBeforeUnmount, onMounted, ref } from 'vue'
@@ -10,7 +10,7 @@ import DsfrSelect from '../DsfrSelect/DsfrSelect.vue'
 
 import { useRandomId } from '@/utils/random-utils'
 
-export type { DsfrDataTableHeaderCell, DsfrDataTableHeaderCellObject, DsfrDataTableProps, DsfrDataTableRow, Page }
+export type { DsfrDataTableColumn, DsfrDataTableHeaderCell, DsfrDataTableHeaderCellObject, DsfrDataTableProps, DsfrDataTableRow, Page }
 
 const props = withDefaults(defineProps<DsfrDataTableProps>(), {
   id: () => useRandomId('table'),
@@ -72,7 +72,7 @@ const pages = computed<Page[]>(() => props.pages ?? Array.from({ length: pageCou
 const lowestLimit = computed(() => currentPage.value * rowsPerPage.value)
 const highestLimit = computed(() => (currentPage.value + 1) * rowsPerPage.value)
 
-const sortedBy = defineModel<string | undefined>('sortedBy', { default: undefined })
+const sortedBy = defineModel<string | number | undefined>('sortedBy', { default: undefined })
 const sortedDesc = defineModel('sortedDesc', { default: false })
 function defaultSortFn (a: string | DsfrDataTableRow, b: string | DsfrDataTableRow) {
   const key = sortedBy.value ?? props.sorted
@@ -86,8 +86,40 @@ function defaultSortFn (a: string | DsfrDataTableRow, b: string | DsfrDataTableR
   }
   return 0
 }
-function sortBy (key: string) {
-  if (!props.sortableRows || (Array.isArray(props.sortableRows) && !props.sortableRows.includes(key))) {
+const computedHeadersRow = computed(() => {
+  if (props.columns && props.columns.length > 0) {
+    return props.columns.map((column) => {
+      return {
+        key: column.key ?? column.label as string,
+        label: column.label,
+        headerAttrs: column.attrs,
+      }
+    })
+  }
+  return props.headersRow.map((header, idx) => {
+    if (typeof header === 'object') {
+      return header
+    }
+    return {
+      key: (props.rows[0] && Array.isArray(props.rows[0])) ? idx : header,
+      label: header,
+    }
+  })
+})
+function isColumnSortable (header: DsfrDataTableHeaderCellObject): boolean {
+  if (!props.sortableRows) {
+    return false
+  }
+  if (props.sortableRows === true) {
+    return true
+  }
+  // For array rows the key is numeric: also match against the column label
+  // so that sortableRows: ['Name'] works with both array and object rows
+  return props.sortableRows.includes(String(header.key)) || props.sortableRows.includes(header.label)
+}
+function sortBy (key: string | number) {
+  const header = computedHeadersRow.value.find(h => h.key === key)
+  if (!header || !isColumnSortable(header)) {
     return
   }
   if (sortedBy.value === key) {
@@ -102,15 +134,14 @@ function sortBy (key: string) {
   sortedDesc.value = false
   sortedBy.value = key
 }
-function getAriaSort (header: DsfrDataTableHeaderCell, idx: number): 'ascending' | 'descending' | 'none' | undefined {
-  const headerKey = (header as DsfrDataTableHeaderCellObject).key ?? (props.rows[0] && Array.isArray(props.rows[0]) ? idx : header)
-  const isSortable = props.sortableRows === true || (Array.isArray(props.sortableRows) && props.sortableRows.includes(String(headerKey)))
+function getAriaSort (header: DsfrDataTableHeaderCellObject): 'ascending' | 'descending' | 'none' | undefined {
+  const isSortable = isColumnSortable(header)
 
   if (!isSortable) {
     return undefined
   }
 
-  if (sortedBy.value === headerKey) {
+  if (sortedBy.value === header.key) {
     return sortedDesc.value ? 'descending' : 'ascending'
   }
 
@@ -123,10 +154,7 @@ const sortedRows = computed(() => {
   }
   return _sortedRows
 })
-const rowKeys = computed(() => props.headersRow.map((header) => {
-  if (typeof header !== 'object') {
-    return header
-  }
+const rowKeys = computed(() => computedHeadersRow.value.map((header) => {
   return header.key
 }))
 const rowKeyIndex = computed(() => rowKeys.value.findIndex(key => key === props.rowKey))
@@ -285,31 +313,32 @@ onBeforeUnmount(() => {
                     </div>
                   </th>
                   <th
-                    v-for="(header, idx) of headersRow"
-                    :key="typeof header === 'object' ? header.key : header"
+                    v-for="(header, idx) of computedHeadersRow"
+                    :key="header.key"
                     scope="col"
-                    v-bind="typeof header === 'object' && header.headerAttrs"
+                    :role="columns?.[idx]?.isHeader ? 'columnheader' : undefined"
+                    v-bind="header.headerAttrs"
                     :tabindex="sortableRows ? 0 : undefined"
-                    :aria-sort="getAriaSort(header, idx)"
+                    :aria-sort="getAriaSort(header)"
                   >
                     <div
                       class="fr-cell-sort"
-                      :class="{ 'sortable-header': sortableRows === true || (Array.isArray(sortableRows) && sortableRows.includes((header as DsfrDataTableHeaderCellObject).key ?? header)) }"
+                      :class="{ 'sortable-header': isColumnSortable(header) }"
                     >
                       <slot
                         name="header"
-                        v-bind="typeof header === 'object' ? header : { key: header, label: header }"
+                        v-bind="header"
                       >
-                        {{ typeof header === 'object' ? header.label : header }}
+                        {{ header.label }}
                       </slot>
                       <button
-                        v-if="sortableRows === true || (Array.isArray(sortableRows) && sortableRows.includes((header as DsfrDataTableHeaderCellObject).key ?? header))"
+                        v-if="isColumnSortable(header)"
                         type="button"
                         class="fr-btn--sort fr-btn fr-btn-sm"
-                        :class="{ 'fr-btn--sort-asc': getAriaSort(header, idx) === 'ascending', 'fr-btn--sort-desc': getAriaSort(header, idx) === 'descending' }"
-                        @click="sortBy((header as DsfrDataTableHeaderCellObject).key ?? (Array.isArray(rows[0]) ? idx : header))"
-                        @keydown.enter="sortBy((header as DsfrDataTableHeaderCellObject).key ?? header)"
-                        @keydown.space="sortBy((header as DsfrDataTableHeaderCellObject).key ?? header)"
+                        :class="{ 'fr-btn--sort-asc': getAriaSort(header) === 'ascending', 'fr-btn--sort-desc': getAriaSort(header) === 'descending' }"
+                        @click="sortBy(header.key)"
+                        @keydown.enter="sortBy(header.key)"
+                        @keydown.space="sortBy(header.key)"
                       >
                         Trier
                       </button>
@@ -346,27 +375,29 @@ onBeforeUnmount(() => {
                     </div>
                   </th>
 
-                  <!-- @vue-expect-error TS2538 -->
-                  <td
+                  <template
                     v-for="(cell, cellIdx) of row"
-                    :key="typeof cell === 'object' ? cell[rowKey] : cell"
-                    tabindex="0"
-                    @keydown.ctrl.c="copyToClipboard(typeof cell === 'object' ? cell[rowKey] : cell)"
-                    @keydown.meta.c="copyToClipboard(typeof cell === 'object' ? cell[rowKey] : cell)"
+                    :key="cellIdx"
                   >
-                    <slot
-                      name="cell"
-                      v-bind="{
-                        colKey: typeof headersRow[cellIdx] === 'object'
-                          ? headersRow[cellIdx].key
-                          : headersRow[cellIdx],
-                        cell,
-                      }"
+                    <component
+                      :is="columns?.[cellIdx]?.isHeader ? 'th' : 'td'"
+                      :scope="columns?.[cellIdx]?.isHeader ? 'row' : undefined"
+                      tabindex="0"
+                      @keydown.ctrl.c="copyToClipboard(typeof cell === 'object' ? (cell as Record<number, string>)[rowKeyIndex] : String(cell))"
+                      @keydown.meta.c="copyToClipboard(typeof cell === 'object' ? (cell as Record<number, string>)[rowKeyIndex] : String(cell))"
                     >
-                      <!-- @vue-expect-error TS2538 -->
-                      {{ typeof cell === 'object' ? cell[rowKey] : cell }}
-                    </slot>
-                  </td>
+                      <slot
+                        name="cell"
+                        v-bind="{
+                          colKey: computedHeadersRow[cellIdx]?.key,
+                          cell,
+                        }"
+                      >
+                        <!-- @vue-expect-error TS2538 -->
+                        {{ typeof cell === 'object' ? cell[rowKeyIndex] : cell }}
+                      </slot>
+                    </component>
+                  </template>
                 </tr>
               </slot>
             </tbody>

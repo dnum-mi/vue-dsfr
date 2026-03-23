@@ -4,14 +4,13 @@ import type { Page } from '../DsfrPagination/DsfrPagination.types'
 export type DsfrDataTableRow = (string | number | boolean | bigint | symbol)[]
   | Record<string | symbol | number, unknown>
 
-export type DsfrDataTableHeaderCellObject = { key: string, label: string, headerAttrs?: Record<string, unknown> }
+export type DsfrDataTableHeaderCellObject = { key: string | number, label: string, headerAttrs?: Record<string, unknown> }
 export type DsfrDataTableHeaderCell = (string | DsfrDataTableHeaderCellObject)
 
-export type DsfrDataTableProps = {
+export type DsfrDataTableCommonProps = {
   id?: string
   title: string
   rowKey?: string | number
-  headersRow?: DsfrDataTableHeaderCell[]
   rows?: DsfrDataTableRow[]
   topActionsRow?: string[]
   bottomActionsRow?: string[]
@@ -41,4 +40,25 @@ export type DsfrDataTableProps = {
   bottomBarDetail?: string
   bottomBarButtons?: DsfrButtonProps[]
   bottomBarButtonsSize?: DsfrButtonGroupProps['size']
+}
+
+/**
+ * Mutuellement exclusif : soit `columns` (et `headersRow` interdit),
+ * soit `headersRow` (et `columns` interdit).
+ */
+export type DsfrDataTableProps =
+  | (DsfrDataTableCommonProps & { columns: DsfrDataTableColumn[], headersRow?: never })
+  | (DsfrDataTableCommonProps & { headersRow?: DsfrDataTableHeaderCell[], columns?: never })
+
+/**
+ * Décrit une colonne du tableau.
+ * key: identifiant de la colonne (optionnel, sera dérivé si absent)
+ * label: texte affiché dans l'en-tête
+ * isHeader: true si les cellules de cette colonne doivent être rendues en tant qu'en-têtes de ligne (<th scope="row">)
+ */
+export interface DsfrDataTableColumn {
+  key?: string
+  label: string
+  attrs?: Record<string, unknown>
+  isHeader?: boolean
 }

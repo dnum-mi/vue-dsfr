@@ -145,7 +145,7 @@ function camelize (icon) {
 
 /**
  * @function
- * @param {import('@iconify/vue/dist/iconify.js').IconifyJSON} collection
+ * @param {import('@iconify/vue').IconifyJSON} collection
  *
  * @returns {string} stringified collection
  */
