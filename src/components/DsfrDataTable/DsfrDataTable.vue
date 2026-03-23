@@ -86,42 +86,6 @@ function defaultSortFn (a: string | DsfrDataTableRow, b: string | DsfrDataTableR
   }
   return 0
 }
-function sortBy (key: string | number) {
-  if (!props.sortableRows || (Array.isArray(props.sortableRows) && !props.sortableRows.includes(String(key)))) {
-    return
-  }
-  if (sortedBy.value === key) {
-    if (sortedDesc.value) {
-      sortedBy.value = undefined
-      sortedDesc.value = false
-      return
-    }
-    sortedDesc.value = true
-    return
-  }
-  sortedDesc.value = false
-  sortedBy.value = key
-}
-function getAriaSort (header: DsfrDataTableHeaderCellObject): 'ascending' | 'descending' | 'none' | undefined {
-  const isSortable = props.sortableRows === true || (Array.isArray(props.sortableRows) && props.sortableRows.includes(String(header.key)))
-
-  if (!isSortable) {
-    return undefined
-  }
-
-  if (sortedBy.value === header.key) {
-    return sortedDesc.value ? 'descending' : 'ascending'
-  }
-
-  return 'none'
-}
-const sortedRows = computed(() => {
-  const _sortedRows = sortedBy.value ? props.rows.slice().sort(props.sortFn ?? defaultSortFn) : props.rows.slice()
-  if (sortedDesc.value) {
-    _sortedRows.reverse()
-  }
-  return _sortedRows
-})
 const computedHeadersRow = computed(() => {
   if (props.columns && props.columns.length > 0) {
     return props.columns.map((column) => {
@@ -141,6 +105,54 @@ const computedHeadersRow = computed(() => {
       label: header,
     }
   })
+})
+function isColumnSortable (header: DsfrDataTableHeaderCellObject): boolean {
+  if (!props.sortableRows) {
+    return false
+  }
+  if (props.sortableRows === true) {
+    return true
+  }
+  // For array rows the key is numeric: also match against the column label
+  // so that sortableRows: ['Name'] works with both array and object rows
+  return props.sortableRows.includes(String(header.key)) || props.sortableRows.includes(header.label)
+}
+function sortBy (key: string | number) {
+  const header = computedHeadersRow.value.find(h => h.key === key)
+  if (!header || !isColumnSortable(header)) {
+    return
+  }
+  if (sortedBy.value === key) {
+    if (sortedDesc.value) {
+      sortedBy.value = undefined
+      sortedDesc.value = false
+      return
+    }
+    sortedDesc.value = true
+    return
+  }
+  sortedDesc.value = false
+  sortedBy.value = key
+}
+function getAriaSort (header: DsfrDataTableHeaderCellObject): 'ascending' | 'descending' | 'none' | undefined {
+  const isSortable = isColumnSortable(header)
+
+  if (!isSortable) {
+    return undefined
+  }
+
+  if (sortedBy.value === header.key) {
+    return sortedDesc.value ? 'descending' : 'ascending'
+  }
+
+  return 'none'
+}
+const sortedRows = computed(() => {
+  const _sortedRows = sortedBy.value ? props.rows.slice().sort(props.sortFn ?? defaultSortFn) : props.rows.slice()
+  if (sortedDesc.value) {
+    _sortedRows.reverse()
+  }
+  return _sortedRows
 })
 const rowKeys = computed(() => computedHeadersRow.value.map((header) => {
   return header.key
@@ -311,7 +323,7 @@ onBeforeUnmount(() => {
                   >
                     <div
                       class="fr-cell-sort"
-                      :class="{ 'sortable-header': sortableRows === true || (Array.isArray(sortableRows) && sortableRows.includes(String(header.key))) }"
+                      :class="{ 'sortable-header': isColumnSortable(header) }"
                     >
                       <slot
                         name="header"
@@ -320,7 +332,7 @@ onBeforeUnmount(() => {
                         {{ header.label }}
                       </slot>
                       <button
-                        v-if="sortableRows === true || (Array.isArray(sortableRows) && sortableRows.includes(String(header.key)))"
+                        v-if="isColumnSortable(header)"
                         type="button"
                         class="fr-btn--sort fr-btn fr-btn-sm"
                         :class="{ 'fr-btn--sort-asc': getAriaSort(header) === 'ascending', 'fr-btn--sort-desc': getAriaSort(header) === 'descending' }"
