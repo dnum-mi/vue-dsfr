@@ -52,11 +52,11 @@ const actions: DsfrButtonProps[] = [
       Veut des patates : {{ validated ? 'Oui' : 'Non' }}
     </p>
     <DsfrModal
-      v-model:opened="opened"
-      :title="title"
-      :icon="icon"
-      :is-alert="isAlert"
-      :actions="actions"
+      :opened
+      :title
+      :icon
+      :is-alert
+      :actions
       @close="opened = false"
     >
       <template #default>
