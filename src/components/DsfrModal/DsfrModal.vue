@@ -2,7 +2,7 @@
 import type { DsfrModalProps } from './DsfrModal.types'
 
 import { FocusTrap } from 'focus-trap-vue'
-import { computed, nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue'
+import { computed, nextTick, onBeforeUnmount, onMounted, ref, useTemplateRef, watch } from 'vue'
 
 import DsfrButtonGroup from '../DsfrButton/DsfrButtonGroup.vue'
 import VIcon from '../VIcon/VIcon.vue'
@@ -37,6 +37,9 @@ defineSlots<{
 }>()
 
 const closeIfEscape = ($event: KeyboardEvent) => {
+  if (!props.opened) {
+    return
+  }
   if ($event.key === 'Escape') {
     close()
   }
@@ -46,8 +49,8 @@ const role = computed(() => {
   return props.isAlert ? 'alertdialog' : 'dialog'
 })
 
-const closeBtn = ref<HTMLButtonElement | null>(null)
-const modal = ref()
+const closeBtn = useTemplateRef('closeBtn')
+const modal = useTemplateRef('modal')
 watch(() => props.opened, (newValue) => {
   if (newValue) {
     modal.value?.showModal()
