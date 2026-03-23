@@ -4,7 +4,7 @@ import type { Page } from '../DsfrPagination/DsfrPagination.types'
 export type DsfrDataTableRow = (string | number | boolean | bigint | symbol)[]
   | Record<string | symbol | number, unknown>
 
-export type DsfrDataTableHeaderCellObject = { key: string, label: string, headerAttrs?: Record<string, unknown> }
+export type DsfrDataTableHeaderCellObject = { key: string | number, label: string, headerAttrs?: Record<string, unknown> }
 export type DsfrDataTableHeaderCell = (string | DsfrDataTableHeaderCellObject)
 
 export type DsfrDataTableCommonProps = {

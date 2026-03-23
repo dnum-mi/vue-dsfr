@@ -72,7 +72,7 @@ const pages = computed<Page[]>(() => props.pages ?? Array.from({ length: pageCou
 const lowestLimit = computed(() => currentPage.value * rowsPerPage.value)
 const highestLimit = computed(() => (currentPage.value + 1) * rowsPerPage.value)
 
-const sortedBy = defineModel<string | undefined>('sortedBy', { default: undefined })
+const sortedBy = defineModel<string | number | undefined>('sortedBy', { default: undefined })
 const sortedDesc = defineModel('sortedDesc', { default: false })
 function defaultSortFn (a: string | DsfrDataTableRow, b: string | DsfrDataTableRow) {
   const key = sortedBy.value ?? props.sorted
@@ -86,8 +86,8 @@ function defaultSortFn (a: string | DsfrDataTableRow, b: string | DsfrDataTableR
   }
   return 0
 }
-function sortBy (key: string) {
-  if (!props.sortableRows || (Array.isArray(props.sortableRows) && !props.sortableRows.includes(key))) {
+function sortBy (key: string | number) {
+  if (!props.sortableRows || (Array.isArray(props.sortableRows) && !props.sortableRows.includes(String(key)))) {
     return
   }
   if (sortedBy.value === key) {
@@ -102,15 +102,14 @@ function sortBy (key: string) {
   sortedDesc.value = false
   sortedBy.value = key
 }
-function getAriaSort (header: DsfrDataTableHeaderCell, idx: number): 'ascending' | 'descending' | 'none' | undefined {
-  const headerKey = (header as DsfrDataTableHeaderCellObject).key ?? (props.rows[0] && Array.isArray(props.rows[0]) ? idx : header)
-  const isSortable = props.sortableRows === true || (Array.isArray(props.sortableRows) && props.sortableRows.includes(String(headerKey)))
+function getAriaSort (header: DsfrDataTableHeaderCellObject): 'ascending' | 'descending' | 'none' | undefined {
+  const isSortable = props.sortableRows === true || (Array.isArray(props.sortableRows) && props.sortableRows.includes(String(header.key)))
 
   if (!isSortable) {
     return undefined
   }
 
-  if (sortedBy.value === headerKey) {
+  if (sortedBy.value === header.key) {
     return sortedDesc.value ? 'descending' : 'ascending'
   }
 
@@ -133,12 +132,12 @@ const computedHeadersRow = computed(() => {
       }
     })
   }
-  return props.headersRow.map((header) => {
+  return props.headersRow.map((header, idx) => {
     if (typeof header === 'object') {
       return header
     }
     return {
-      key: header,
+      key: (props.rows[0] && Array.isArray(props.rows[0])) ? idx : header,
       label: header,
     }
   })
@@ -306,28 +305,28 @@ onBeforeUnmount(() => {
                     :key="header.key"
                     scope="col"
                     :role="columns?.[idx]?.isHeader ? 'columnheader' : undefined"
-                    v-bind="typeof header === 'object' && header.headerAttrs"
+                    v-bind="header.headerAttrs"
                     :tabindex="sortableRows ? 0 : undefined"
-                    :aria-sort="getAriaSort(header, idx)"
+                    :aria-sort="getAriaSort(header)"
                   >
                     <div
                       class="fr-cell-sort"
-                      :class="{ 'sortable-header': sortableRows === true || (Array.isArray(sortableRows) && sortableRows.includes((header as DsfrDataTableHeaderCellObject).key ?? header)) }"
+                      :class="{ 'sortable-header': sortableRows === true || (Array.isArray(sortableRows) && sortableRows.includes(String(header.key))) }"
                     >
                       <slot
                         name="header"
-                        v-bind="typeof header === 'object' ? header : { key: header, label: header }"
+                        v-bind="header"
                       >
-                        {{ typeof header === 'object' ? header.label : header }}
+                        {{ header.label }}
                       </slot>
                       <button
-                        v-if="sortableRows === true || (Array.isArray(sortableRows) && sortableRows.includes((header as DsfrDataTableHeaderCellObject).key ?? header))"
+                        v-if="sortableRows === true || (Array.isArray(sortableRows) && sortableRows.includes(String(header.key)))"
                         type="button"
                         class="fr-btn--sort fr-btn fr-btn-sm"
-                        :class="{ 'fr-btn--sort-asc': getAriaSort(header, idx) === 'ascending', 'fr-btn--sort-desc': getAriaSort(header, idx) === 'descending' }"
-                        @click="sortBy((header as DsfrDataTableHeaderCellObject).key ?? (Array.isArray(rows[0]) ? idx : header))"
-                        @keydown.enter="sortBy((header as DsfrDataTableHeaderCellObject).key ?? header)"
-                        @keydown.space="sortBy((header as DsfrDataTableHeaderCellObject).key ?? header)"
+                        :class="{ 'fr-btn--sort-asc': getAriaSort(header) === 'ascending', 'fr-btn--sort-desc': getAriaSort(header) === 'descending' }"
+                        @click="sortBy(header.key)"
+                        @keydown.enter="sortBy(header.key)"
+                        @keydown.space="sortBy(header.key)"
                       >
                         Trier
                       </button>
@@ -364,17 +363,16 @@ onBeforeUnmount(() => {
                     </div>
                   </th>
 
-                  <!-- @vue-expect-error TS2538 -->
                   <template
                     v-for="(cell, cellIdx) of row"
-                    :key="cell[rowKeyIndex]"
+                    :key="cellIdx"
                   >
                     <component
                       :is="columns?.[cellIdx]?.isHeader ? 'th' : 'td'"
                       :scope="columns?.[cellIdx]?.isHeader ? 'row' : undefined"
                       tabindex="0"
-                      @keydown.ctrl.c="copyToClipboard(typeof cell === 'object' ? cell[rowKeyIndex] : cell)"
-                      @keydown.meta.c="copyToClipboard(typeof cell === 'object' ? cell[rowKeyIndex] : cell)"
+                      @keydown.ctrl.c="copyToClipboard(typeof cell === 'object' ? (cell as Record<number, string>)[rowKeyIndex] : String(cell))"
+                      @keydown.meta.c="copyToClipboard(typeof cell === 'object' ? (cell as Record<number, string>)[rowKeyIndex] : String(cell))"
                     >
                       <slot
                         name="cell"
