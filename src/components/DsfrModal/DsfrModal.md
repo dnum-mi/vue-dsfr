@@ -6,6 +6,8 @@ La modale permet de concentrer l’attention de l’utilisateur exclusivement su
 
 Le composant `DsfrModal` est une fenêtre modale configurable, offrant des fonctionnalités avancées telles que le piégeage de focus, l'écoute des touches d'échappement pour la fermeture, et la gestion des boutons d'action. Ce composant est conçu pour afficher des dialogues et des alertes de manière accessible et ergonomique.
 
+Le composant n'intègre pas de `Teleport` par défaut. Vous pouvez envelopper `DsfrModal` dans un `Teleport` côté application (par exemple vers `body`) selon vos contraintes de structure, de stacking context ou d'intégration. Ce choix est volontaire pour laisser un maximum de latitude au développeur.
+
 🏅 La documentation sur la modale sur le [DSFR](https://www.systeme-de-design.gouv.fr/version-courante/fr/composants/modale/)
 
 <VIcon name="vi-file-type-storybook" /> La story sur la modale sur le storybook de [VueDsfr](https://storybook.vue-ds.fr/?path=/docs/composants-dsfrmodal--docs)
@@ -35,6 +37,9 @@ Elle se compose des éléments suivants :
 | `size`               | `'sm' \| 'md' \| 'lg' \| 'xl'` | Taille de la modale.                                                                                           | `'md'`                                                         |              |
 | `closeButtonLabel`   | `string`                       | Label du bouton de fermeture˘.                                                                                 | `'Fermer'`                                                     |              |
 | `closeButtonTitle`   | `string`                       | Titre pour le bouton de fermeture (pour l'accessibilité).                                                      | `'Fermer la fenêtre modale'`                                   |              |
+| `disableOutsideInteraction` | `boolean`              | Désactive la fermeture de la modale au clic en dehors de son contenu (overlay).                               | `false`                                                        |              |
+
+Lorsque `disableOutsideInteraction` vaut `true`, la modale ne se ferme pas lors d'un clic à l'extérieur de `.fr-modal__body`. La fermeture reste possible via le bouton de fermeture, les actions de votre interface, ou `Escape` (sauf comportement spécifique applicatif).
 
 ## 📡Événements
 
@@ -77,6 +82,18 @@ la modale apparaît ici **en bas de l’écran** parce que l’iframe qui les co
 
 :::
 
+### Modale avec interaction exterieure désactivée
+
+::: code-group
+
+<Story data-title="Démo" min-h="400px">
+  <DsfrModalDemoInteractionExterieureDesactivee />
+</Story>
+
+<<< docs-demo/DsfrModalDemoInteractionExterieureDesactivee.vue [Code de la démo]
+
+:::
+
 ### Modale pour changer le thème
 
 ::: code-group
@@ -107,4 +124,5 @@ la modale apparaît ici **en bas de l’écran** et avec les **boutons d’actio
 import DsfrModalDemo from './docs-demo/DsfrModalDemo.vue'
 import DsfrModalDemoActions from './docs-demo/DsfrModalDemoActions.vue'
 import DsfrModalDemoTheme from './docs-demo/DsfrModalDemoTheme.vue'
+import DsfrModalDemoInteractionExterieureDesactivee from './docs-demo/DsfrModalDemoInteractionExterieureDesactivee.vue'
 </script>

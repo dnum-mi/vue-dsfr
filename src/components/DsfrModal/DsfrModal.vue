@@ -46,7 +46,7 @@ const closeIfEscape = ($event: KeyboardEvent) => {
 }
 
 function closeIfOutside (event: MouseEvent) {
-  if (props.isAlert) {
+  if (props.isAlert || props.disableOutsideInteraction) {
     return
   }
   if (!(event.target as HTMLElement).closest('.fr-modal__body')) {
