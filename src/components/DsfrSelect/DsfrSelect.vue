@@ -50,18 +50,17 @@ if (props.description) {
   )
 }
 
-const message = computed(() => {
-  return props.errorMessage || props.successMessage
-})
-const messageType = computed(() => {
-  return props.errorMessage ? 'error' : 'valid'
-})
+const hasError = computed(() => !!(props.errorMessage || props.isInvalid))
+const hasSuccess = computed(() => !!(props.successMessage || props.isValid) && !hasError.value)
+const message = computed(() =>
+  hasError.value ? props.errorMessage : hasSuccess.value ? props.successMessage : undefined,
+)
 </script>
 
 <template>
   <div
     class="fr-select-group"
-    :class="{ [`fr-select-group--${messageType}`]: message }"
+    :class="{ 'fr-select-group--error': hasError, 'fr-select-group--valid': hasSuccess }"
   >
     <label
       class="fr-label"
@@ -86,13 +85,14 @@ const messageType = computed(() => {
 
     <select
       :id="selectId"
-      :class="{ [`fr-select--${messageType}`]: message }"
+      :class="{ 'fr-select--error': hasError, 'fr-select--valid': hasSuccess }"
       class="fr-select"
       :name="name || selectId"
       :disabled="disabled"
       :aria-disabled="disabled"
       :required="required"
       v-bind="$attrs"
+      :aria-describedby="descriptionId || undefined"
       @change="$emit('update:modelValue', ($event.target as HTMLInputElement)?.value)"
     >
       <option
@@ -135,8 +135,8 @@ const messageType = computed(() => {
 
     <p
       v-if="message"
-      :id="`select-${messageType}-desc-${messageType}`"
-      :class="`fr-${messageType}-text`"
+      :id="`select-${hasError ? 'error' : 'valid'}-desc-${hasError ? 'error' : 'valid'}`"
+      :class="hasError ? 'fr-error-text' : 'fr-valid-text'"
     >
       {{ message }}
     </p>
