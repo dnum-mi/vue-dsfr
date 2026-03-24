@@ -20,6 +20,7 @@ const props = withDefaults(defineProps<DsfrTileProps>(), {
   to: '#',
   titleTag: 'h3',
   icon: true,
+  titleLinkAttrs: () => ({}),
 })
 
 defineSlots<{
@@ -73,12 +74,14 @@ const svgDataUriMarkupComputed = computed(() => (
             rel="noopener noreferrer"
             :download="download"
             :href="disabled ? '' : (to as string)"
+            v-bind="titleLinkAttrs"
           >{{ title }}</a>
           <RouterLink
             v-if="!isExternalLink"
             :download="download"
             class="fr-tile__link"
             :to="disabled ? '' : to"
+            v-bind="titleLinkAttrs"
           >
             {{ title }}
           </RouterLink>

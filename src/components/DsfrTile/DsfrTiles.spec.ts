@@ -188,4 +188,45 @@ describe('DsfrTiles', () => {
     expect(titleEl1).toHaveAttribute('download', 'true')
     expect(titleEl2).toHaveAttribute('download', 'false')
   })
+
+  it('should display a tile with title and one tile without title', async () => {
+    const title1 = 'Titre de la tuile 1'
+    const title2 = 'Titre de la tuile 2'
+    const titleAttribute1 = `Lien vers ${title1}`
+    const imgSrc = 'https://loremflickr.com/80/80/cat?random=7'
+
+    const tiles = [
+      {
+        title: title1,
+        imgSrc,
+        to: '/one',
+        download: false,
+        titleLinkAttrs: {
+          title: titleAttribute1,
+        },
+      },
+      {
+        title: title2,
+        imgSrc,
+        to: '/two',
+        download: false,
+      },
+    ]
+
+    const { getByText } = render(DsfrTiles, {
+      global: {
+        plugins: [router],
+      },
+      props: {
+        tiles,
+      },
+    })
+
+    await router.isReady()
+
+    const titleEl1 = getByText(title1)
+    const titleEl2 = getByText(title2)
+    expect(titleEl1).toHaveAttribute('title', 'Lien vers Titre de la tuile 1')
+    expect(titleEl2).not.toHaveAttribute('title')
+  })
 })

@@ -20,6 +20,7 @@ export type DsfrTileProps = {
   noBackground?: boolean
   grey?: boolean
   enlarge?: boolean
+  titleLinkAttrs?: Record<string, unknown>
 }
 
 export type DsfrTilesProps = {
