@@ -4,6 +4,7 @@ import { fileURLToPath } from 'node:url'
 
 import fullReload from 'vite-plugin-full-reload'
 
+const vueFileRegex = /[\\/]src[\\/].*\.vue$/
 const styles = fileURLToPath(
   new URL('../../src/styles/index.css', import.meta.url),
 )
@@ -13,7 +14,7 @@ export const hmrFix = () => {
     {
       name: 'tw:hmr-fix',
       async handleHotUpdate ({ file, modules, server }) {
-        if (/[\\/]src[\\/].*\.vue$/.test(file)) {
+        if (vueFileRegex.test(file)) {
           return [
             ...modules,
             ...(server.moduleGraph.getModulesByFile(styles) || []),

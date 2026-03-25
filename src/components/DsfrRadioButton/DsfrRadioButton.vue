@@ -32,10 +32,11 @@ defineSlots<{
   'required-tip': (props: Record<string, never>) => any
 }>()
 
+const dataImageRegex = /^data:image\/svg\+xml(?:;[^,]*)?,/i
 const defaultSvgAttrs = { viewBox: '0 0 80 80', width: '80px', height: '80px' }
 
 const richComputed = computed(() => props.rich || (!!props.img || !!props.svgPath))
-const svgDataUriComputed = computed(() => !!props.svgPath?.match(/^data:image\/svg\+xml(?:;[^,]*)?,/i))
+const svgDataUriComputed = computed(() => !!props.svgPath?.match(dataImageRegex))
 const inlineSvgIdSuffix = useRandomId('radio', 'artwork').replace(/[^\w-]/gi, '_')
 const svgDataUriMarkupComputed = computed(() => (
   sanitizeInlineSvgMarkupFromDataUri(props.svgPath, inlineSvgIdSuffix)

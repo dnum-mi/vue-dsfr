@@ -288,3 +288,12 @@ Quand l’utilisateur demande :
 - "Refactorise" → Proposer une version plus claire, typée et conforme aux règles ci-dessus.
 - "Ajoute des tests" → Générer des tests Vitest minimalistes et lisibles.
 - "Ajoute la doc" → Produire du JSDoc complet et concis.
+
+## Montée de version de dépendances
+
+- Toujours vérifier les notes de version pour les breaking changes.
+- Tester localement avant de committer les mises à jour.
+- Utiliser `npx taze -I` pour les mises à jour
+- Vérifier que les tests passent après la mise à jour.
+- Mettre à jour les types si nécessaire après une mise à jour majeure.
+- Vérifier la cohérence de la version de pnpm utilisée dans les workflows CI par rapport à la version du `package.json`.

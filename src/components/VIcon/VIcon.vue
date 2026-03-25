@@ -13,6 +13,7 @@ const props = withDefaults(defineProps<VIconProps>(), {
   ssr: false, // Changement : ssr false par défaut pour éviter les problèmes d'hydratation
 })
 
+const viRegex = /vi-(.*)/
 const icon = ref<{ $el: SVGElement } | null>(null)
 const isMounted = ref(false)
 
@@ -50,7 +51,7 @@ onMounted(() => {
 })
 
 const finalName = computed(() => {
-  return props.name?.startsWith('vi-') ? props.name.replace(/vi-(.*)/, 'vscode-icons:$1') : props.name ?? ''
+  return props.name?.startsWith('vi-') ? props.name.replace(viRegex, 'vscode-icons:$1') : props.name ?? ''
 })
 const finalColor = computed(() => {
   return props.color ?? props.fill ?? 'inherit'
