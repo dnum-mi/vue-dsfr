@@ -6,8 +6,6 @@ import { themes } from 'storybook/theming'
 import { defineComponent } from 'vue'
 
 import VIcon from '../src/components/VIcon/VIcon.vue'
-
-import VueDsfrTheme from './vue-dsfr-theme.js'
 import '../src/assets/variables-fdr.css'
 import '../src/main.css'
 import '@gouvfr/dsfr/dist/core/core.main.min.css'
@@ -16,7 +14,8 @@ import '@gouvfr/dsfr/dist/component/component.main.min.css'
 import '@gouvfr/dsfr/dist/utility/utility.main.min.css'
 import '@gouvfr/dsfr/dist/utility/icons/icons.main.min.css'
 import './theme.css'
-// import '@gouvfr/dsfr/dist/core/core.min.css'
+
+import VueDsfrTheme from './vue-dsfr-theme.js'
 
 const preview: Preview = {
   parameters: {

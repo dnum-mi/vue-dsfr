@@ -47,6 +47,18 @@ pnpm lint                # Exécuter ESLint
 pnpm format              # Corriger automatiquement ESLint
 ```
 
+### Contournement temporaire Storybook
+
+- `pnpm run build-storybook` ne lance pas le binaire Storybook de la racine directement.
+- Le build Storybook passe par le sous-répertoire `.storybook-build/`, qui embarque une version isolée de `vite@7`.
+- Ce contournement est **temporaire**.
+- Raison : avec `storybook@10.3.x` et `vite@8`/Rolldown, le build Storybook échoue actuellement sur une erreur de bundling CSS.
+- Tant que ce bug n'est pas corrigé côté Storybook, il ne faut pas "simplifier" ce montage ni supprimer `.storybook-build/`.
+- Dès que Storybook corrigera le problème, il faudra **revenir sur ce contournement** :
+  - supprimer `.storybook-build/`
+  - remettre `build-storybook` sur un appel Storybook standard depuis la racine
+  - vérifier que le build fonctionne de nouveau avec la stack principale du projet
+
 ### Pattern de création de composant
 
 1. Créer le répertoire `src/components/DsfrNewComponent/`
