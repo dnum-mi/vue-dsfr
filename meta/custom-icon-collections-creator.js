@@ -133,6 +133,8 @@ export async function runShellCommand (command) {
   }
 }
 
+const dashAndCharRegex = /-./g
+
 /**
  * @function
  * @param {string} icon
@@ -140,7 +142,7 @@ export async function runShellCommand (command) {
  * @returns {string} a camelCase icon
  */
 function camelize (icon) {
-  return icon.replace(/-./g, x => x[1].toUpperCase())
+  return icon.replace(dashAndCharRegex, x => x[1].toUpperCase())
 }
 
 /**

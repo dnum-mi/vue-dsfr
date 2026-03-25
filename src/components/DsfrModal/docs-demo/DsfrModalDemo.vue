@@ -17,10 +17,10 @@ const icon = ref('ri-checkbox-circle-line')
       Ouvrir la modale
     </DsfrButton>
     <DsfrModal
-      v-model:opened="opened"
-      :title="title"
-      :icon="icon"
-      :is-alert="isAlert"
+      :opened
+      :title
+      :icon
+      :is-alert
       @close="opened = false"
     >
       <template #default>

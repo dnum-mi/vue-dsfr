@@ -56,5 +56,4 @@ const config: UserConfig = {
   },
 }
 
-// https://vitejs.dev/config/
 export default defineConfig(isVitepress ? {} : config)

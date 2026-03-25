@@ -12,14 +12,17 @@ import inquirer from 'inquirer'
 const isCI = process.argv.includes('--ci')
 
 const getNormalizedDir = (relativeDir) => fileURLToPath(new URL(relativeDir, import.meta.url))
+const demoOrExampleRegex = /Demo|Example|stories|spec\.ts|index\.ts/
+const typesRegex = /^(.*).types.ts$/
+const tsExtensionRegex = /\.ts$/
 
 // const sfcs = await globby(fileURLToPath(new URL('../src/components/**/*.vue', import.meta.url)))
 const sfcs = (await globby('src/components/**/*.{vue,ts}'))
-  .filter(path => !/Demo|Example|stories|spec\.ts|index\.ts/.test(path))
-  .map(path => path.replace(/^(.*).types.ts$/, '$1.types'))
+  .filter(path => !demoOrExampleRegex.test(path))
+  .map(path => path.replace(typesRegex, '$1.types'))
 
 const projectFn = component => (component.endsWith('types') || component.includes('injection-key.ts'))
-  ? `export * from '${component.replace('src/components', '.').replace(/\.ts$/, '')}'`
+  ? `export * from '${component.replace('src/components', '.').replace(tsExtensionRegex, '')}'`
   : `export { default as ${path.basename(component, '.vue')} } from '${component.replace('src/components', '.')}'`
 
 const correctComponentList = sfcs.map(projectFn).sort()

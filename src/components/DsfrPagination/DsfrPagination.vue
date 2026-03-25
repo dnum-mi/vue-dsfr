@@ -29,7 +29,7 @@ const endIndex = computed(() => {
 const displayedPages = computed(() => {
   return props.pages.length > props.truncLimit ? props.pages.slice(startIndex.value, endIndex.value + 1) : props.pages
 })
-const lastPage = computed(() => props.pages[props.pages.length - 1])
+const lastPage = computed(() => props.pages.at(-1))
 
 const updatePage = (index: number) => emit('update:current-page', index)
 const toPage = (index: number) => updatePage(index)
