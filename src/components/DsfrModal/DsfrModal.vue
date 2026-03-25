@@ -2,7 +2,7 @@
 import type { DsfrModalProps } from './DsfrModal.types'
 
 import { FocusTrap } from 'focus-trap-vue'
-import { computed, nextTick, onBeforeUnmount, onMounted, useTemplateRef, watch } from 'vue'
+import { computed, nextTick, onBeforeUnmount, onMounted, ref, useTemplateRef, watch } from 'vue'
 
 import DsfrButtonGroup from '../DsfrButton/DsfrButtonGroup.vue'
 import VIcon from '../VIcon/VIcon.vue'
@@ -66,15 +66,33 @@ const isTestEnvironment = import.meta.env.MODE === 'test' || import.meta.env.VIT
 const tabbableOptions = isTestEnvironment
   ? { displayCheck: 'none' as const }
   : undefined
+const modalBody = useTemplateRef<HTMLElement>('modalBody')
+const modalContent = useTemplateRef<HTMLElement>('modalContent')
+const hasScrollDivider = ref(false)
+
+function updateScrollDivider () {
+  if (!modalBody.value || !modalContent.value) {
+    hasScrollDivider.value = false
+    return
+  }
+
+  const hasVerticalScroll = modalBody.value.scrollHeight > modalBody.value.clientHeight
+  const isAtBottom = modalBody.value.scrollTop + modalBody.value.clientHeight >= modalBody.value.scrollHeight - 1
+  hasScrollDivider.value = hasVerticalScroll && !isAtBottom
+}
 
 watch(() => props.opened, (newValue) => {
   if (newValue) {
     modal.value?.showModal()
+    nextTick(() => {
+      updateScrollDivider()
+    })
     setTimeout(() => {
       closeBtn.value?.focus()
     }, 100)
   } else {
     modal.value?.close()
+    hasScrollDivider.value = false
   }
   setAppropriateClassOnBody(newValue)
 })
@@ -88,11 +106,13 @@ function setAppropriateClassOnBody (on: boolean) {
 onMounted(() => {
   startListeningToEscape()
   setAppropriateClassOnBody(props.opened)
+  window.addEventListener('resize', updateScrollDivider)
 })
 
 onBeforeUnmount(() => {
   stopListeningToEscape()
   setAppropriateClassOnBody(false)
+  window.removeEventListener('resize', updateScrollDivider)
 })
 
 function startListeningToEscape () {
@@ -149,11 +169,18 @@ const iconProps = computed(() => dsfrIcon.value
               'fr-col-md-4': size === 'sm',
             }"
           >
-            <div class="fr-modal__body">
-              <div class="fr-modal__header">
+            <div
+              ref="modalBody"
+              class="fr-modal__body"
+              :class="{ 'fr-scroll-divider': hasScrollDivider }"
+              @scroll="updateScrollDivider"
+            >
+              <div
+                class="fr-modal__header"
+              >
                 <button
-                  ref="closeBtn"
                   :id="closeButtonId"
+                  ref="closeBtn"
                   class="fr-btn fr-btn--close"
                   :title="closeButtonTitle"
                   aria-controls="fr-modal-1"
@@ -165,7 +192,10 @@ const iconProps = computed(() => dsfrIcon.value
                   </span>
                 </button>
               </div>
-              <div class="fr-modal__content">
+              <div
+                ref="modalContent"
+                class="fr-modal__content"
+              >
                 <h1
                   :id="modalId"
                   class="fr-modal__title"

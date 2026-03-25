@@ -55,7 +55,8 @@ describe('DsfrModal', () => { // Skipped because of this issue: https://github.c
     })
 
     const modalContentEl = wrapper.find('.fr-modal__content').element
-    const modalEl = wrapper.find('[role="dialog"]').element
+    // const modalEl = wrapper.find('[role="dialog"]').element
+    const modalEl = wrapper.find('.fr-modal').element
     // const labelledByTitleEl = wrapper.find('.fr-modal')
 
     // expect(modalEl).toBe(labelledByTitleEl)
