@@ -7,8 +7,7 @@ import VIcon from '../VIcon/VIcon.vue'
 
 import DsfrTable from './DsfrTable.vue'
 import DsfrTableHeader from './DsfrTableHeader.vue'
-
-import './table.stories.css'
+import './table.stories.styles'
 
 const meta = {
   component: DsfrTableHeader,

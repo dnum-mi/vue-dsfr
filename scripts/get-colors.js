@@ -7,16 +7,22 @@ const schemeCss = await readFile('node_modules/@gouvfr/dsfr/dist/scheme/scheme.c
 const colorsCss = coreCss.match(/--(\D+)-\d[^:;]+: #[a-f0-9]+;\n/g)
 const colors = etlColors(colorsCss)
 
+const cssVarRegex1 = /--(\D+)/
+const cssVarRegex2 = /(--\D+-[^:;]+)/g
+const endsWithMainOrSunRegex = /-(main|sun)$/
+const endsWith$ = /(.*)-$/
+const startsWithHashRegex = /#[a-f0-9]+/
+
 function etlColors (colorsCss) {
   return colorsCss.reduce((acc, cssLine) => {
-    const color = cssLine.match(/--(\D+)/)[1].replace(/(.*)-$/, '$1').replace(/-(main|sun)/, '')
+    const color = cssLine.match(cssVarRegex1)[1].replace(endsWith$, '$1').replace(endsWithMainOrSunRegex, '')
     if (!acc[color]) {
       acc[color] = []
     }
     acc[color].push({
-      cssVar: cssLine.match(/(--\D+-[^:;]+)/)[1],
-      name: cssLine.match(/--(\D+-[^:;]+)/)[1].replace(/(.*)-$/, '$1'),
-      hex: cssLine.match(/#[a-f0-9]+/)[0],
+      cssVar: cssLine.match(cssVarRegex2)[1],
+      name: cssLine.match(cssVarRegex2)[1].replace(endsWith$, '$1'),
+      hex: cssLine.match(startsWithHashRegex)[0],
       line: cssLine,
     })
     return acc

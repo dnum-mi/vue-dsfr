@@ -47,6 +47,18 @@ pnpm lint                # Exécuter ESLint
 pnpm format              # Corriger automatiquement ESLint
 ```
 
+### Contournement temporaire Storybook
+
+- `pnpm run build-storybook` ne lance pas le binaire Storybook de la racine directement.
+- Le build Storybook passe par le sous-répertoire `.storybook-build/`, qui embarque une version isolée de `vite@7`.
+- Ce contournement est **temporaire**.
+- Raison : avec `storybook@10.3.x` et `vite@8`/Rolldown, le build Storybook échoue actuellement sur une erreur de bundling CSS.
+- Tant que ce bug n'est pas corrigé côté Storybook, il ne faut pas "simplifier" ce montage ni supprimer `.storybook-build/`.
+- Dès que Storybook corrigera le problème, il faudra **revenir sur ce contournement** :
+  - supprimer `.storybook-build/`
+  - remettre `build-storybook` sur un appel Storybook standard depuis la racine
+  - vérifier que le build fonctionne de nouveau avec la stack principale du projet
+
 ### Pattern de création de composant
 
 1. Créer le répertoire `src/components/DsfrNewComponent/`
@@ -288,3 +300,12 @@ Quand l’utilisateur demande :
 - "Refactorise" → Proposer une version plus claire, typée et conforme aux règles ci-dessus.
 - "Ajoute des tests" → Générer des tests Vitest minimalistes et lisibles.
 - "Ajoute la doc" → Produire du JSDoc complet et concis.
+
+## Montée de version de dépendances
+
+- Toujours vérifier les notes de version pour les breaking changes.
+- Tester localement avant de committer les mises à jour.
+- Utiliser `npx taze -I` pour les mises à jour
+- Vérifier que les tests passent après la mise à jour.
+- Mettre à jour les types si nécessaire après une mise à jour majeure.
+- Vérifier la cohérence de la version de pnpm utilisée dans les workflows CI par rapport à la version du `package.json`.

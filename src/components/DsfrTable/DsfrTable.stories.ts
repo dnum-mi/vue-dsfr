@@ -6,8 +6,7 @@ import { fn } from 'storybook/test'
 import DsfrTag from '../DsfrTag/DsfrTag.vue'
 
 import DsfrTable from './DsfrTable.vue'
-
-import './table.stories.css'
+import './table.stories.styles'
 
 setup((app) => {
   app.component('DsfrTag', DsfrTag)

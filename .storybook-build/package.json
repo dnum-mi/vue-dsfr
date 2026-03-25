@@ -1,0 +1,14 @@
+{
+  "name": "vue-dsfr-storybook-build",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "build": "storybook build -c ../.storybook -o ../storybook-static"
+  },
+  "dependencies": {
+    "@storybook/vue3-vite": "10.3.3",
+    "@vitejs/plugin-vue": "^6.0.5",
+    "storybook": "10.3.3",
+    "vite": "7.3.1"
+  }
+}

@@ -30,12 +30,13 @@ defineSlots<{
   header?: (props: Record<string, never>) => void
 }>()
 
+const dataImageRegex = /^data:image\/svg\+xml(?:;[^,]*)?,/i
 const defaultSvgAttrs = { viewBox: '0 0 80 80', width: '80px', height: '80px' }
 
 const isExternalLink = computed(() => {
   return typeof props.to === 'string' && props.to.startsWith('http')
 })
-const svgDataUriComputed = computed(() => !!props.svgPath?.match(/^data:image\/svg\+xml(?:;[^,]*)?,/i))
+const svgDataUriComputed = computed(() => !!props.svgPath?.match(dataImageRegex))
 const inlineSvgIdSuffix = useRandomId('tile', 'artwork').replace(/[^\w-]/gi, '_')
 const svgDataUriMarkupComputed = computed(() => (
   sanitizeInlineSvgMarkupFromDataUri(props.svgPath, inlineSvgIdSuffix)
