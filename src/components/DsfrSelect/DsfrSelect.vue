@@ -92,7 +92,7 @@ const message = computed(() =>
       :aria-disabled="disabled"
       :required="required"
       v-bind="$attrs"
-      :aria-describedby="descriptionId || undefined"
+      :aria-describedby="[($attrs['aria-describedby'] as string), descriptionId].filter(Boolean).join(' ') || undefined"
       @change="$emit('update:modelValue', ($event.target as HTMLInputElement)?.value)"
     >
       <option
