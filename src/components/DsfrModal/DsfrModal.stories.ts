@@ -1,20 +1,18 @@
 import type { Meta, StoryObj } from '@storybook/vue3-vite'
 
-import { setup } from '@storybook/vue3-vite'
 import { expect, fn, userEvent, within } from 'storybook/test'
 import { computed, ref } from 'vue'
 
 import DsfrButton from '../DsfrButton/DsfrButton.vue'
-import VIcon from '../VIcon/VIcon.vue'
 
 import DsfrModal from './DsfrModal.vue'
 
+type DsfrModalStoryArgs = InstanceType<typeof DsfrModal>['$props'] & {
+  onActionClick?: (label: string) => void
+}
+
 const delay = (timeout = 100) =>
   new Promise(resolve => setTimeout(resolve, timeout))
-
-setup((app) => {
-  app.component('VIcon', VIcon)
-})
 
 /**
  * [Voir quand l’utiliser sur la documentation du DSFR](https://www.systeme-de-design.gouv.fr/version-courante/fr/composants/modale)
@@ -64,12 +62,11 @@ const meta = {
         'Valeur du texte informatif au survol du bouton cliquable permettant la fermeture de la modale',
     },
     onClose: fn(),
-    onActionClick: fn(),
   },
-} satisfies Meta<typeof DsfrModal>
+} satisfies Meta<DsfrModalStoryArgs>
 
 export default meta
-type Story = StoryObj<typeof meta>
+type Story = StoryObj<DsfrModalStoryArgs>
 
 export const ModaleAvecActions: Story = {
   name: 'Modale avec actions',
@@ -77,7 +74,6 @@ export const ModaleAvecActions: Story = {
     components: {
       DsfrModal,
       DsfrButton,
-      VIcon,
     },
     setup () {
       const opened = ref(args.opened)
@@ -135,6 +131,7 @@ export const ModaleAvecActions: Story = {
     icon: 'ri-checkbox-circle-line',
     size: 'md',
     onClose: fn(),
+    onActionClick: fn(),
     actions: [
       {
         label: 'Valider',
@@ -181,7 +178,6 @@ export const ModaleSansPiedDePage: Story = {
     components: {
       DsfrModal,
       DsfrButton,
-      VIcon,
     },
     setup () {
       const opened = ref(args.opened)
@@ -236,7 +232,6 @@ export const ModaleAvecFooterPersonnalise: Story = {
     components: {
       DsfrModal,
       DsfrButton,
-      VIcon,
     },
     setup () {
       const opened = ref(args.opened)
