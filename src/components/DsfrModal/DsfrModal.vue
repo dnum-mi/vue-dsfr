@@ -57,9 +57,16 @@ function closeIfOutside (event: MouseEvent) {
 const role = computed(() => {
   return props.isAlert ? 'alertdialog' : 'dialog'
 })
+const closeButtonId = computed(() => `${props.modalId}-close-button`)
 
 const closeBtn = useTemplateRef('closeBtn')
 const modal = useTemplateRef('modal')
+const getCloseButton = () => closeBtn.value ?? `#${closeButtonId.value}`
+const isTestEnvironment = import.meta.env.MODE === 'test' || import.meta.env.VITEST
+const tabbableOptions = isTestEnvironment
+  ? { displayCheck: 'none' as const }
+  : undefined
+
 watch(() => props.opened, (newValue) => {
   if (newValue) {
     modal.value?.showModal()
@@ -117,6 +124,9 @@ const iconProps = computed(() => dsfrIcon.value
 <template>
   <FocusTrap
     v-if="opened"
+    :initial-focus="getCloseButton"
+    :fallback-focus="getCloseButton"
+    :tabbable-options="tabbableOptions"
   >
     <dialog
       id="fr-modal-1"
@@ -143,6 +153,7 @@ const iconProps = computed(() => dsfrIcon.value
               <div class="fr-modal__header">
                 <button
                   ref="closeBtn"
+                  :id="closeButtonId"
                   class="fr-btn fr-btn--close"
                   :title="closeButtonTitle"
                   aria-controls="fr-modal-1"
