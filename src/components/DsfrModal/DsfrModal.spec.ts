@@ -93,7 +93,31 @@ describe('DsfrModal', () => { // Skipped because of this issue: https://github.c
     // expect(wrapper.emitted().close).toBeTruthy()
   })
 
-  it('should render modal with role alertdialog', async () => {
+  it('should render modal without role', async () => {
+    const content = 'Contenu de la modale'
+    const title = 'Titre de la modale'
+
+    const wrapper = mount(DsfrModal, {
+      global: {
+        components: {
+          VIcon,
+        },
+      },
+      props: {
+        opened: true,
+        title,
+        isAlert: false,
+      },
+      slots: {
+        default: content,
+      },
+    })
+
+    const modal = wrapper.find('dialog.fr-modal')
+    expect(modal.attributes('role')).toBeUndefined()
+  })
+
+  it('should render modal with role="alertdialog" when isAlert is true and actions are provided', async () => {
     const content = 'Contenu de la modale'
     const title = 'Titre de la modale'
 
@@ -107,13 +131,38 @@ describe('DsfrModal', () => { // Skipped because of this issue: https://github.c
         opened: true,
         title,
         isAlert: true,
+        actions: [{ label: 'Action 1' }],
       },
       slots: {
         default: content,
       },
     })
 
-    const dialog = wrapper.find('[role="alertdialog"]')
-    expect(dialog.element).toHaveClass('fr-modal--opened')
+    const modal = wrapper.find('dialog.fr-modal')
+    expect(modal.attributes('role')).toBe('alertdialog')
+  })
+  it('should render modal with role="alert" when isAlert is true and no action provided', async () => {
+    const content = 'Contenu de la modale'
+    const title = 'Titre de la modale'
+
+    const wrapper = mount(DsfrModal, {
+      global: {
+        components: {
+          VIcon,
+        },
+      },
+      props: {
+        opened: true,
+        title,
+        isAlert: true,
+        actions: [],
+      },
+      slots: {
+        default: content,
+      },
+    })
+
+    const modal = wrapper.find('dialog.fr-modal')
+    expect(modal.attributes('role')).toBe('alert')
   })
 })

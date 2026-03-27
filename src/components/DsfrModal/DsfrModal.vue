@@ -55,7 +55,13 @@ function closeIfOutside (event: MouseEvent) {
 }
 
 const role = computed(() => {
-  return props.isAlert ? 'alertdialog' : 'dialog'
+  if (!props.isAlert) {
+    return undefined
+  }
+  if (props.actions.length) {
+    return 'alertdialog'
+  }
+  return 'alert'
 })
 const closeButtonId = computed(() => `${props.modalId}-close-button`)
 
