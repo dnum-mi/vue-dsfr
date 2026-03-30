@@ -317,6 +317,7 @@ onBeforeUnmount(() => {
                     :key="header.key"
                     scope="col"
                     :role="columns?.[idx]?.isHeader ? 'columnheader' : undefined"
+                    :class="{ 'fr-cell--fixed': columns?.[idx]?.fixed }"
                     v-bind="header.headerAttrs"
                     :tabindex="sortableRows ? 0 : undefined"
                     :aria-sort="getAriaSort(header)"
@@ -382,6 +383,7 @@ onBeforeUnmount(() => {
                     <component
                       :is="columns?.[cellIdx]?.isHeader ? 'th' : 'td'"
                       :scope="columns?.[cellIdx]?.isHeader ? 'row' : undefined"
+                      :class="{ 'fr-cell--fixed': columns?.[cellIdx]?.fixed }"
                       tabindex="0"
                       @keydown.ctrl.c="copyToClipboard(typeof cell === 'object' ? (cell as Record<number, string>)[rowKeyIndex] : String(cell))"
                       @keydown.meta.c="copyToClipboard(typeof cell === 'object' ? (cell as Record<number, string>)[rowKeyIndex] : String(cell))"
