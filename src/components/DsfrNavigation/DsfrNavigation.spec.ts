@@ -271,4 +271,55 @@ describe('DsfrNavigation', () => {
 
     expect(menuContainer).not.toHaveClass('fr-collapse--expanded')
   })
+
+  it('should close mega menu when clicking on a mega menu link', async () => {
+    const navItemsWithMegaMenu = [
+      {
+        title: 'Mega Menu test',
+        link: {
+          to: '/',
+          text: 'Lien leader',
+        },
+        menus: [
+          {
+            title: 'Catégorie test',
+            links: [
+              {
+                text: 'Lien mega unique',
+                to: '/',
+              },
+            ],
+          },
+        ],
+      },
+    ]
+
+    const { getByRole, getByText, getByTestId } = render(DsfrNavigation, {
+      global: {
+        plugins: [router],
+        components: {
+          VIcon,
+        },
+      },
+      props: {
+        navItems: navItemsWithMegaMenu,
+      },
+    })
+
+    await router.isReady()
+
+    const megaMenuButton = getByRole('button', { name: 'Mega Menu test' })
+    const megaMenuWrapper = getByTestId('mega-menu-wrapper')
+    const megaMenuLink = getByText('Lien mega unique')
+
+    await fireEvent.click(megaMenuButton)
+    await (new Promise(resolve => setTimeout(resolve, 100)))
+
+    expect(megaMenuWrapper).toHaveClass('fr-collapse--expanded')
+
+    await fireEvent.click(megaMenuLink)
+    await (new Promise(resolve => setTimeout(resolve, 100)))
+
+    expect(megaMenuWrapper).not.toHaveClass('fr-collapse--expanded')
+  })
 })
