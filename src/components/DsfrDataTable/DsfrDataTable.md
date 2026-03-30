@@ -40,7 +40,7 @@ Cela permet aux lecteurs d'écran d'annoncer correctement l'état de tri de chaq
 | `id`                        | `string`                                             | `undefined`              |             | Identifiant unique du tableau.                                                                                                               |
 | `title`                     | `string`                                            |                          | ✅          | Titre du tableau.                                                                                                                         |
 | `headersRow`                | `Array<string \| DsfrDataTableHeaderCellObject>`     | `[]`                     |             | Les en-têtes de votre tableau. Peut être remplacé par le slot `thead`. Peut aussi être remplacé par la prop `columns`|
-| `columns`                   | `Array<DsfrDataTableColumn>`                         | `undefined`              |             | Tableau de colonnes définissant pour chacune : la clé (optionnelle), le libellé, les attributs HTML (optionnels) et si les cellules doivent être des en-têtes de ligne |
+| `columns`                   | `Array<DsfrDataTableColumn>`                         | `undefined`              |             | Tableau de colonnes définissant pour chacune : la clé (optionnelle), le libellé, les attributs HTML (optionnels), si la colonne est fixe (`fixed`) et si les cellules doivent être des en-têtes de ligne |
 | `rows`                      | `DsfrDataTableRow[]`                                 | `[]`                     |             | Les données de chaque rangée dans le tableau.                                                                                                |
 | `rowKey`                    | `string \| number`                                   | `undefined`              |             | Une clé unique pour chaque rangée, utilisée pour optimiser la mise à jour du DOM.                                                           |
 | `topActionsRow`             | `string[]`                                           | `undefined`              |             | Actions affichées en haut du tableau.                                                                                                        |
@@ -177,6 +177,20 @@ Vous pouvez utiliser `v-model` pour les propriétés suivantes :
 
 :::
 
+### Exemple Colonnes Fixes
+
+::: code-group
+
+<Story data-title="Démo colonnes fixes" min-h="320px">
+  <div class="fr-container">
+    <DsfrDataTableDemoColonnesFixes />
+  </div>
+</Story>
+
+<<< ./docs-demo/DsfrDataTableDemoColonnesFixes.vue
+
+:::
+
 ### Exemple Emploi du temps
 
 ::: code-group
@@ -207,5 +221,6 @@ import DsfrDataTableDemoSimple from './docs-demo/DsfrDataTableDemoSimple.vue'
 import DsfrDataTableDemoComplexe from './docs-demo/DsfrDataTableDemoComplexe.vue'
 import DsfrDataTableDemoPlusComplexe from './docs-demo/DsfrDataTableDemoPlusComplexe.vue'
 import DsfrDataTableDemoColonnesEnteteMultiple from './docs-demo/DsfrDataTableDemoColonnesEnteteMultiple.vue'
+import DsfrDataTableDemoColonnesFixes from './docs-demo/DsfrDataTableDemoColonnesFixes.vue'
 import DsfrDataTableDemoSchedule from './docs-demo/DsfrDataTableDemoSchedule.vue'
 </script>
