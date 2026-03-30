@@ -219,4 +219,56 @@ describe('DsfrNavigation', () => {
     expect(megaMenu.parentElement.querySelector('.fr-mega-menu')).not.toHaveClass('fr-collapse--expanded')
     expect(menuContainer).not.toHaveClass('fr-collapse--expanded')
   })
+
+  it('should close expanded menu when focus moves outside of it', async () => {
+    const menuTitle = 'Menu clavier'
+    const navItemsWithOneMenu = [
+      {
+        title: menuTitle,
+        links: [
+          {
+            text: 'Lien clavier 1',
+            to: '/',
+          },
+          {
+            text: 'Lien clavier 2',
+            to: '/',
+          },
+        ],
+      },
+    ]
+
+    const { getByText, getByTestId } = render(DsfrNavigation, {
+      global: {
+        plugins: [router],
+        components: {
+          VIcon,
+        },
+      },
+      props: {
+        navItems: navItemsWithOneMenu,
+      },
+      slots: {
+        default: '<li><button data-testid="outside-focus-target">Outside</button></li>',
+      },
+    })
+
+    await router.isReady()
+
+    const menuButton = getByText(menuTitle)
+    const menuContainer = getByTestId('navigation-menu')
+    const lastMenuItemLink = getByText('Lien clavier 2')
+    const outsideFocusTarget = getByTestId('outside-focus-target')
+
+    await fireEvent.click(menuButton)
+    await (new Promise(resolve => setTimeout(resolve, 100)))
+
+    expect(menuContainer).toHaveClass('fr-collapse--expanded')
+
+    await fireEvent.focusIn(lastMenuItemLink)
+    await fireEvent.focusIn(outsideFocusTarget)
+    await (new Promise(resolve => setTimeout(resolve, 100)))
+
+    expect(menuContainer).not.toHaveClass('fr-collapse--expanded')
+  })
 })
