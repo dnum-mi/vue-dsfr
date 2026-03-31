@@ -199,7 +199,67 @@ const containerStyle = ref({})
 
 const tableRef = ref<HTMLTableElement | null>(null)
 const fixedColumnsOffsets = ref<Record<number, string>>({})
-const hasFixedColumns = computed(() => !!props.columns?.some(column => column.fixed))
+
+// Keep these values aligned with DSFR breakpoints.
+// Source of truth in DSFR (internal path, may move in future versions):
+// @gouvfr/dsfr/src/dsfr/core/script/api/modules/register/breakpoints.js
+const breakpointQueries: Record<'sm' | 'md' | 'lg', string> = {
+  sm: '(min-width: 36em)',
+  md: '(min-width: 48em)',
+  lg: '(min-width: 62em)',
+}
+
+function isColumnFixed (column?: DsfrDataTableColumn): boolean {
+  return column?.fixed !== undefined && column.fixed !== false
+}
+
+function isColumnFixedActive (column?: DsfrDataTableColumn): boolean {
+  if (!isColumnFixed(column)) {
+    return false
+  }
+
+  if (typeof column?.fixed !== 'string') {
+    return true
+  }
+
+  if (typeof window === 'undefined' || typeof window.matchMedia !== 'function') {
+    return true
+  }
+
+  return window.matchMedia(breakpointQueries[column.fixed]).matches
+}
+
+function isColumnFixedActiveForCell (column: DsfrDataTableColumn | undefined, cell: HTMLTableCellElement): boolean {
+  if (!isColumnFixed(column)) {
+    return false
+  }
+
+  const position = window.getComputedStyle(cell).position
+  if (position) {
+    return position === 'sticky'
+  }
+
+  return isColumnFixedActive(column)
+}
+
+function getFixedClassName (column?: DsfrDataTableColumn): string | undefined {
+  if (!isColumnFixed(column)) {
+    return undefined
+  }
+
+  if (typeof column?.fixed === 'string') {
+    return `fr-cell--fixed@${column.fixed}`
+  }
+
+  return 'fr-cell--fixed'
+}
+
+function getFixedClassObject (column?: DsfrDataTableColumn): Record<string, boolean> {
+  const fixedClassName = getFixedClassName(column)
+  return fixedClassName ? { [fixedClassName]: true } : {}
+}
+
+const hasFixedColumns = computed(() => !!props.columns?.some(column => isColumnFixed(column)))
 
 function getFixedColumnStyle (columnIndex: number): Record<string, string> | undefined {
   const left = fixedColumnsOffsets.value[columnIndex]
@@ -225,17 +285,22 @@ function updateFixedColumnsOffsets () {
   const offsets: Record<number, string> = {}
   const selectionHeaderCell = headerRow.querySelector('th[data-selection-fixed]') as HTMLTableCellElement | null
   let leftOffset = selectionHeaderCell?.offsetWidth ?? 0
+  const borderCompensation = props.verticalBorders ? 1 : 0
+
+  if (selectionHeaderCell && borderCompensation > 0) {
+    leftOffset += borderCompensation
+  }
 
   const headerCells = Array.from(headerRow.querySelectorAll('th[data-col-idx]')) as HTMLTableCellElement[]
 
   for (const cell of headerCells) {
     const index = Number(cell.dataset.colIdx)
-    if (Number.isNaN(index) || !props.columns?.[index]?.fixed) {
+    if (Number.isNaN(index) || !isColumnFixedActiveForCell(props.columns?.[index], cell)) {
       continue
     }
 
     offsets[index] = `${leftOffset}px`
-    leftOffset += cell.offsetWidth
+    leftOffset += cell.offsetWidth + borderCompensation
   }
 
   fixedColumnsOffsets.value = offsets
@@ -277,6 +342,7 @@ onMounted(async () => {
   }
 
   updateFixedColumnsOffsets()
+  window.addEventListener('resize', updateFixedColumnsOffsets)
 })
 
 watch(
@@ -295,6 +361,7 @@ watch(
 
 onBeforeUnmount(() => {
   resizeObserver?.disconnect()
+  window.removeEventListener('resize', updateFixedColumnsOffsets)
 })
 </script>
 
@@ -387,8 +454,8 @@ onBeforeUnmount(() => {
                     :key="header.key"
                     scope="col"
                     :role="columns?.[idx]?.isHeader ? 'columnheader' : undefined"
-                    :class="{ 'fr-cell--fixed': columns?.[idx]?.fixed, 'dsfr-data-table__generated-fixed-col': columns?.[idx]?.fixed }"
-                    :style="columns?.[idx]?.fixed ? getFixedColumnStyle(idx) : undefined"
+                    :class="[getFixedClassObject(columns?.[idx]), { 'dsfr-data-table__generated-fixed-col': isColumnFixed(columns?.[idx]) }]"
+                    :style="isColumnFixed(columns?.[idx]) ? getFixedColumnStyle(idx) : undefined"
                     :data-col-idx="idx"
                     v-bind="header.headerAttrs"
                     :tabindex="sortableRows ? 0 : undefined"
@@ -455,8 +522,8 @@ onBeforeUnmount(() => {
                     <component
                       :is="columns?.[cellIdx]?.isHeader ? 'th' : 'td'"
                       :scope="columns?.[cellIdx]?.isHeader ? 'row' : undefined"
-                      :class="{ 'fr-cell--fixed': columns?.[cellIdx]?.fixed, 'dsfr-data-table__generated-fixed-col': columns?.[cellIdx]?.fixed }"
-                      :style="columns?.[cellIdx]?.fixed ? getFixedColumnStyle(cellIdx) : undefined"
+                      :class="[getFixedClassObject(columns?.[cellIdx]), { 'dsfr-data-table__generated-fixed-col': isColumnFixed(columns?.[cellIdx]) }]"
+                      :style="isColumnFixed(columns?.[cellIdx]) ? getFixedColumnStyle(cellIdx) : undefined"
                       :data-col-idx="cellIdx"
                       tabindex="0"
                       @keydown.ctrl.c="copyToClipboard(typeof cell === 'object' ? (cell as Record<number, string>)[rowKeyIndex] : String(cell))"
@@ -578,5 +645,40 @@ position: relative;
   top: 0;
   left: 0;
   width: 100%;
+}
+
+/* Keep these breakpoints aligned with DSFR.
+   Reference (internal DSFR source, may move/rename over time):
+   @gouvfr/dsfr/src/dsfr/core/script/api/modules/register/breakpoints.js */
+@media (min-width: 36em) {
+  :deep(.fr-table__content .fr-cell--fixed\@sm) {
+    position: sticky;
+    left: 0;
+    z-index: 1;
+  }
+}
+
+@media (min-width: 48em) {
+  :deep(.fr-table__content .fr-cell--fixed\@md) {
+    position: sticky;
+    left: 0;
+    z-index: 1;
+  }
+}
+
+@media (min-width: 62em) {
+  :deep(.fr-table__content .fr-cell--fixed\@lg) {
+    position: sticky;
+    left: 0;
+    z-index: 1;
+  }
+}
+
+:deep(thead .dsfr-data-table__generated-fixed-col) {
+  z-index: 3;
+}
+
+:deep(tbody .dsfr-data-table__generated-fixed-col) {
+  z-index: 2;
 }
 </style>

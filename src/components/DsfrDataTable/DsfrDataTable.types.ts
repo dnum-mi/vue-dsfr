@@ -54,13 +54,15 @@ export type DsfrDataTableProps =
  * Décrit une colonne du tableau.
  * key: identifiant de la colonne (optionnel, sera dérivé si absent)
  * label: texte affiché dans l'en-tête
- * fixed: true pour figer la colonne (classe DSFR `fr-cell--fixed` sur en-tête + cellules)
+ * fixed: active le mode colonne fixe.
+ *   - `true` => classe `fr-cell--fixed`
+ *   - `sm` | `md` | `lg` => classe `fr-cell--fixed@{breakpoint}`
  * isHeader: true si les cellules de cette colonne doivent être rendues en tant qu'en-têtes de ligne (<th scope="row">)
  */
 export interface DsfrDataTableColumn {
   key?: string
   label: string
   attrs?: Record<string, unknown>
-  fixed?: boolean
+  fixed?: boolean | 'sm' | 'md' | 'lg'
   isHeader?: boolean
 }

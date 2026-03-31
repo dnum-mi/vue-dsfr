@@ -5,9 +5,9 @@ import DsfrDataTable from '../DsfrDataTable.vue'
 
 const columns: DsfrDataTableColumn[] = [
   { key: 'agent', label: 'Agent', isHeader: true, fixed: true },
-  { key: 'service', label: 'Service', fixed: true },
-  { key: 'site', label: 'Site', fixed: true },
-  { key: 'poste', label: 'Poste' },
+  { key: 'service', label: 'Service', fixed: 'md' },
+  { key: 'site', label: 'Site', fixed: 'sm' },
+  { key: 'poste', label: 'Poste', fixed: true },
   { key: 'email', label: 'Email' },
   { key: 'telephone', label: 'Téléphone' },
   { key: 'statut', label: 'Statut' },
