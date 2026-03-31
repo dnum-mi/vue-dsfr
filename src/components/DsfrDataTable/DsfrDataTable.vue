@@ -2,7 +2,7 @@
 import type { DsfrDataTableColumn, DsfrDataTableHeaderCell, DsfrDataTableHeaderCellObject, DsfrDataTableProps, DsfrDataTableRow } from './DsfrDataTable.types'
 import type { Page } from '../DsfrPagination/DsfrPagination.types'
 
-import { computed, nextTick, onBeforeUnmount, onMounted, ref } from 'vue'
+import { computed, nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 
 import DsfrButtonGroup from '../DsfrButton/DsfrButtonGroup.vue'
 import DsfrPagination from '../DsfrPagination/DsfrPagination.vue'
@@ -88,7 +88,7 @@ function defaultSortFn (a: string | DsfrDataTableRow, b: string | DsfrDataTableR
 }
 const computedHeadersRow = computed(() => {
   if (props.columns && props.columns.length > 0) {
-    return props.columns.map((column) => {
+    return props.columns.map((column: DsfrDataTableColumn) => {
       return {
         key: column.key ?? column.label as string,
         label: column.label,
@@ -96,7 +96,7 @@ const computedHeadersRow = computed(() => {
       }
     })
   }
-  return props.headersRow.map((header, idx) => {
+  return props.headersRow.map((header: DsfrDataTableHeaderCell, idx: number) => {
     if (typeof header === 'object') {
       return header
     }
@@ -154,7 +154,7 @@ const sortedRows = computed(() => {
   }
   return _sortedRows
 })
-const rowKeys = computed(() => computedHeadersRow.value.map((header) => {
+const rowKeys = computed(() => computedHeadersRow.value.map((header: DsfrDataTableHeaderCellObject) => {
   return header.key
 }))
 const rowKeyIndex = computed(() => rowKeys.value.findIndex(key => key === props.rowKey))
@@ -197,6 +197,50 @@ function copyToClipboard (text: string) {
 const captionRef = ref<HTMLTableCaptionElement | null>(null)
 const containerStyle = ref({})
 
+const tableRef = ref<HTMLTableElement | null>(null)
+const fixedColumnsOffsets = ref<Record<number, string>>({})
+const hasFixedColumns = computed(() => !!props.columns?.some(column => column.fixed))
+
+function getFixedColumnStyle (columnIndex: number): Record<string, string> | undefined {
+  const left = fixedColumnsOffsets.value[columnIndex]
+  return left ? { left } : undefined
+}
+
+function updateFixedColumnsOffsets () {
+  if (!hasFixedColumns.value) {
+    fixedColumnsOffsets.value = {}
+    return
+  }
+
+  const tableEl = tableRef.value
+  if (!tableEl) {
+    return
+  }
+
+  const headerRow = tableEl.querySelector('thead tr')
+  if (!headerRow) {
+    return
+  }
+
+  const offsets: Record<number, string> = {}
+  const selectionHeaderCell = headerRow.querySelector('th[data-selection-fixed]') as HTMLTableCellElement | null
+  let leftOffset = selectionHeaderCell?.offsetWidth ?? 0
+
+  const headerCells = Array.from(headerRow.querySelectorAll('th[data-col-idx]')) as HTMLTableCellElement[]
+
+  for (const cell of headerCells) {
+    const index = Number(cell.dataset.colIdx)
+    if (Number.isNaN(index) || !props.columns?.[index]?.fixed) {
+      continue
+    }
+
+    offsets[index] = `${leftOffset}px`
+    leftOffset += cell.offsetWidth
+  }
+
+  fixedColumnsOffsets.value = offsets
+}
+
 let resizeObserver: ResizeObserver | null = null
 
 onMounted(async () => {
@@ -220,12 +264,34 @@ onMounted(async () => {
     containerStyle.value = {
       '--table-offset': `calc(${newHeight}px + 1rem)`,
     }
+
+    updateFixedColumnsOffsets()
   })
 
   if (captionRef.value) {
     resizeObserver.observe(captionRef.value)
   }
+
+  if (tableRef.value) {
+    resizeObserver.observe(tableRef.value)
+  }
+
+  updateFixedColumnsOffsets()
 })
+
+watch(
+  [
+    () => props.columns,
+    () => props.selectableRows,
+    () => props.pagination,
+    finalRows,
+  ],
+  async () => {
+    await nextTick()
+    updateFixedColumnsOffsets()
+  },
+  { deep: true },
+)
 
 onBeforeUnmount(() => {
   resizeObserver?.disconnect()
@@ -274,7 +340,10 @@ onBeforeUnmount(() => {
     >
       <div class="fr-table__container">
         <div class="fr-table__content">
-          <table :id="id">
+          <table
+            :id="id"
+            ref="tableRef"
+          >
             <caption
               ref="captionRef"
             >
@@ -295,6 +364,7 @@ onBeforeUnmount(() => {
                     v-if="selectableRows"
                     class="fr-cell--fixed"
                     role="columnheader"
+                    data-selection-fixed
                   >
                     <div class="fr-checkbox-group fr-checkbox-group--sm">
                       <!-- @vue-expect-error TS2538 -->
@@ -317,7 +387,9 @@ onBeforeUnmount(() => {
                     :key="header.key"
                     scope="col"
                     :role="columns?.[idx]?.isHeader ? 'columnheader' : undefined"
-                    :class="{ 'fr-cell--fixed': columns?.[idx]?.fixed }"
+                    :class="{ 'fr-cell--fixed': columns?.[idx]?.fixed, 'dsfr-data-table__generated-fixed-col': columns?.[idx]?.fixed }"
+                    :style="columns?.[idx]?.fixed ? getFixedColumnStyle(idx) : undefined"
+                    :data-col-idx="idx"
                     v-bind="header.headerAttrs"
                     :tabindex="sortableRows ? 0 : undefined"
                     :aria-sort="getAriaSort(header)"
@@ -383,7 +455,9 @@ onBeforeUnmount(() => {
                     <component
                       :is="columns?.[cellIdx]?.isHeader ? 'th' : 'td'"
                       :scope="columns?.[cellIdx]?.isHeader ? 'row' : undefined"
-                      :class="{ 'fr-cell--fixed': columns?.[cellIdx]?.fixed }"
+                      :class="{ 'fr-cell--fixed': columns?.[cellIdx]?.fixed, 'dsfr-data-table__generated-fixed-col': columns?.[cellIdx]?.fixed }"
+                      :style="columns?.[cellIdx]?.fixed ? getFixedColumnStyle(cellIdx) : undefined"
+                      :data-col-idx="cellIdx"
                       tabindex="0"
                       @keydown.ctrl.c="copyToClipboard(typeof cell === 'object' ? (cell as Record<number, string>)[rowKeyIndex] : String(cell))"
                       @keydown.meta.c="copyToClipboard(typeof cell === 'object' ? (cell as Record<number, string>)[rowKeyIndex] : String(cell))"
