@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/vue3-vite'
 
 import { action } from 'storybook/actions'
+import { computed } from 'vue'
 
 import DsfrDataTable from './DsfrDataTable.vue'
 
@@ -18,9 +19,22 @@ const meta = {
     },
     headersRow: {
       description: 'En-têtes des colonnes du tableau (array de strings ou objects { key, label })',
+      control: 'object',
+    },
+    columns: {
+      description: 'Définition des colonnes (key, label, attrs, isHeader, fixed). fixed accepte true ou un breakpoint (sm, md, lg).',
+      control: 'object',
+    },
+    useColumns: {
+      description: 'Contrôle Storybook uniquement : permet de choisir entre `columns` (true) et `headersRow` (false), deux modes incompatibles entre eux. `columns` est le mode recommandé ; `headersRow` est conservé pour la rétrocompatibilité.',
+      control: 'boolean',
     },
     rows: {
       description: 'Données du tableau (array de tableaux ou objets)',
+    },
+    rowKey: {
+      control: 'text',
+      description: 'Clé unique d\'identification d\'une ligne (index de colonne ou clé objet)',
     },
     selectableRows: {
       control: 'boolean',
@@ -82,6 +96,10 @@ const meta = {
     pagination: {
       control: 'boolean',
       description: 'Activer la pagination',
+    },
+    pages: {
+      description: 'Pages personnalisées pour la pagination',
+      control: 'object',
     },
     paginationWrapperClass: {
       description: 'Classes CSS pour le wrapper de pagination',
@@ -147,40 +165,81 @@ export const Simple: Story = {
     components: { DsfrDataTable },
 
     setup () {
-      return args
+      const normalizedArgs = computed(() => {
+        const _args = { ...args }
+        // columns et headersRow sont mutuellement exclusifs
+        if (_args.useColumns) {
+          delete _args.headersRow
+        } else {
+          delete _args.columns
+        }
+        delete _args.useColumns
+        return _args
+      })
+
+      return {
+        normalizedArgs,
+      }
     },
 
     template: `
     <div class="fr-container fr-my-2v">
       <DsfrDataTable
-        :title="title"
-        :headers-row="headersRow"
+        v-bind="normalizedArgs"
         no-caption
-        :rows="rows"
       />
     </div>
   `,
   }),
   args: {
+    useColumns: true,
     title: 'Titre du tableau (caption)',
-    headersRow: [
-      'ID',
-      'Name',
-      'Email',
-    ],
+
     rows: [
-      [1, 'John Doe', 'john.doe@gmail.com'],
-      [2, 'Jane Doe', 'jane.doe@gmail.com'],
-      [3, 'James Bond', 'james.bond@mi6.gov.uk'],
-      [4, 'Alice Johnson', 'alice.johnson@example.com'],
-      [5, 'Bob Smith', 'bob.smith@example.com'],
-      [6, 'Carol Williams', 'carol.williams@example.com'],
-      [7, 'David Brown', 'david.brown@example.com'],
-      [8, 'Emma Davis', 'emma.davis@example.com'],
-      [9, 'Frank Miller', 'frank.miller@example.com'],
-      [10, 'Grace Wilson', 'grace.wilson@example.com'],
-      [11, 'Henry Moore', 'henry.moore@example.com'],
-      [12, 'Iris Taylor', 'iris.taylor@example.com'],
+      { agent: 'Camille Martin', service: 'Numérique', site: 'Paris', poste: 'Dev front', email: 'camille.martin@example.fr', telephone: '01 44 10 00 01', statut: 'Actif' },
+      { agent: 'Thomas Petit', service: 'Juridique', site: 'Lille', poste: 'Juriste', email: 'thomas.petit@example.fr', telephone: '03 20 10 00 02', statut: 'Actif' },
+      { agent: 'Nadia Lopez', service: 'RH', site: 'Bordeaux', poste: 'Chargée RH', email: 'nadia.lopez@example.fr', telephone: '05 56 10 00 03', statut: 'Absence' },
+      { agent: 'Inès Robert', service: 'Numérique', site: 'Lyon', poste: 'UX designer', email: 'ines.robert@example.fr', telephone: '04 78 10 00 04', statut: 'Actif' },
+      { agent: 'Yanis Dupont', service: 'Finances', site: 'Paris', poste: 'Contrôleur', email: 'yanis.dupont@example.fr', telephone: '01 44 10 00 05', statut: 'Actif' },
+    ],
+    headersRow: [
+      {
+        key: 'agent',
+        label: 'Agent',
+      },
+      {
+        key: 'service',
+        label: 'Service',
+      },
+      {
+        key: 'site',
+        label: 'Site',
+      },
+      {
+        key: 'poste',
+        label: 'Poste',
+      },
+      {
+        key: 'email',
+        label: 'Email',
+      },
+      {
+        key: 'telephone',
+        label: 'Téléphone',
+      },
+      {
+        key: 'statut',
+        label: 'Statut',
+      },
+    ],
+    columns: [
+      { key: 'agent', label: 'Agent', fixed: true },
+      { key: 'service', label: 'Service' },
+      { key: 'site', label: 'Site' },
+      { key: 'poste', label: 'Poste' },
+      { key: 'email', label: 'Email' },
+      { key: 'telephone', label: 'Téléphone' },
+      { key: 'statut', label: 'Statut' },
     ],
   },
 }
@@ -346,7 +405,6 @@ export const PlusComplexe: Story = {
     paginationOptions: [3, 5, 10],
     rowsPerPage: 5,
     title: 'Titre du tableau (caption)',
-    selectable: true,
     sorted: 'id',
     sortedBy: 'id',
     sortedDesc: false,
@@ -367,6 +425,89 @@ export const PlusComplexe: Story = {
         secondary: false,
         onClick: action('bouton d\'action globale cliqué'),
       },
+    ],
+  },
+}
+
+export const ColonnesFixes: Story = {
+  name: 'Colonnes Fixes',
+  render: (args) => ({
+    components: { DsfrDataTable },
+    setup () {
+      return args
+    },
+    template: `
+    <div class="fr-container fr-my-2v" style="width: 760px;">
+      <DsfrDataTable
+        :title="title"
+        :columns="columns"
+        :rows="rows"
+        no-caption
+        vertical-borders
+      />
+    </div>
+  `,
+  }),
+  args: {
+    title: 'Tableau avec colonnes fixes',
+    columns: [
+      { key: 'agent', label: 'Agent', fixed: true },
+      { key: 'service', label: 'Service', fixed: true },
+      { key: 'site', label: 'Site' },
+      { key: 'poste', label: 'Poste' },
+      { key: 'email', label: 'Email' },
+      { key: 'telephone', label: 'Téléphone' },
+      { key: 'statut', label: 'Statut' },
+    ],
+    rows: [
+      { agent: 'Camille Martin', service: 'Numérique', site: 'Paris', poste: 'Dev front', email: 'camille.martin@example.fr', telephone: '01 44 10 00 01', statut: 'Actif' },
+      { agent: 'Thomas Petit', service: 'Juridique', site: 'Lille', poste: 'Juriste', email: 'thomas.petit@example.fr', telephone: '03 20 10 00 02', statut: 'Actif' },
+      { agent: 'Nadia Lopez', service: 'RH', site: 'Bordeaux', poste: 'Chargée RH', email: 'nadia.lopez@example.fr', telephone: '05 56 10 00 03', statut: 'Absence' },
+      { agent: 'Inès Robert', service: 'Numérique', site: 'Lyon', poste: 'UX designer', email: 'ines.robert@example.fr', telephone: '04 78 10 00 04', statut: 'Actif' },
+      { agent: 'Yanis Dupont', service: 'Finances', site: 'Paris', poste: 'Contrôleur', email: 'yanis.dupont@example.fr', telephone: '01 44 10 00 05', statut: 'Actif' },
+    ],
+  },
+}
+
+export const ColonnesFixesResponsives: Story = {
+  name: 'Colonnes Fixes Responsives',
+  render: (args) => ({
+    components: { DsfrDataTable },
+    setup () {
+      return args
+    },
+    template: `
+    <div class="fr-container fr-my-2v" style="width: 760px;">
+      <DsfrDataTable
+        :title="title"
+        :columns="columns"
+        :rows="rows"
+        no-caption
+        vertical-borders
+      />
+      <p class="fr-text--xs fr-mt-2v">
+        Astuce: redimensionner la fenêtre pour vérifier fixed "sm"/"md".
+      </p>
+    </div>
+  `,
+  }),
+  args: {
+    title: 'Tableau avec colonnes fixes responsives',
+    columns: [
+      { key: 'agent', label: 'Agent', fixed: true },
+      { key: 'service', label: 'Service', fixed: 'md' },
+      { key: 'site', label: 'Site', fixed: 'sm' },
+      { key: 'poste', label: 'Poste', fixed: true },
+      { key: 'email', label: 'Email' },
+      { key: 'telephone', label: 'Téléphone' },
+      { key: 'statut', label: 'Statut' },
+    ],
+    rows: [
+      { agent: 'Camille Martin', service: 'Numérique', site: 'Paris', poste: 'Dev front', email: 'camille.martin@example.fr', telephone: '01 44 10 00 01', statut: 'Actif' },
+      { agent: 'Thomas Petit', service: 'Juridique', site: 'Lille', poste: 'Juriste', email: 'thomas.petit@example.fr', telephone: '03 20 10 00 02', statut: 'Actif' },
+      { agent: 'Nadia Lopez', service: 'RH', site: 'Bordeaux', poste: 'Chargée RH', email: 'nadia.lopez@example.fr', telephone: '05 56 10 00 03', statut: 'Absence' },
+      { agent: 'Inès Robert', service: 'Numérique', site: 'Lyon', poste: 'UX designer', email: 'ines.robert@example.fr', telephone: '04 78 10 00 04', statut: 'Actif' },
+      { agent: 'Yanis Dupont', service: 'Finances', site: 'Paris', poste: 'Contrôleur', email: 'yanis.dupont@example.fr', telephone: '01 44 10 00 05', statut: 'Actif' },
     ],
   },
 }
