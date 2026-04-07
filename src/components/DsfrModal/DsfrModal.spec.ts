@@ -1,7 +1,5 @@
 import { mount } from '@vue/test-utils'
 
-import VIcon from '../VIcon/VIcon.vue'
-
 import DsfrModal from './DsfrModal.vue'
 
 describe('DsfrModal', () => { // Skipped because of this issue: https://github.com/focus-trap/focus-trap-react/issues/785
@@ -10,11 +8,6 @@ describe('DsfrModal', () => { // Skipped because of this issue: https://github.c
     const title = 'Titre de la modale'
 
     const wrapper = mount(DsfrModal, {
-      global: {
-        components: {
-          VIcon,
-        },
-      },
       props: {
         opened: true,
         title,
@@ -40,11 +33,6 @@ describe('DsfrModal', () => { // Skipped because of this issue: https://github.c
     const title = 'Titre de la modale'
 
     const wrapper = mount(DsfrModal, {
-      global: {
-        components: {
-          VIcon,
-        },
-      },
       props: {
         opened: true,
         title,
@@ -55,11 +43,8 @@ describe('DsfrModal', () => { // Skipped because of this issue: https://github.c
     })
 
     const modalContentEl = wrapper.find('.fr-modal__content').element
-    // const modalEl = wrapper.find('[role="dialog"]').element
     const modalEl = wrapper.find('.fr-modal').element
-    // const labelledByTitleEl = wrapper.find('.fr-modal')
 
-    // expect(modalEl).toBe(labelledByTitleEl)
     expect(modalEl).toBeInstanceOf(Element)
     expect(modalEl).toContainHTML(title)
     expect(modalContentEl).toContainHTML(content)
@@ -70,11 +55,6 @@ describe('DsfrModal', () => { // Skipped because of this issue: https://github.c
     const title = 'Titre de la modale'
 
     const wrapper = mount(DsfrModal, {
-      global: {
-        components: {
-          VIcon,
-        },
-      },
       props: {
         opened: true,
         title,
@@ -86,11 +66,9 @@ describe('DsfrModal', () => { // Skipped because of this issue: https://github.c
 
     expect(wrapper.emitted().close).not.toBeTruthy()
 
-    // await wrapper.find('#test-button').element.focus()
     await wrapper.trigger('keydown.esc')
 
     expect(wrapper.emitted().keydown).toBeTruthy()
-    // expect(wrapper.emitted().close).toBeTruthy()
   })
 
   it('should render modal without role', async () => {
@@ -98,11 +76,6 @@ describe('DsfrModal', () => { // Skipped because of this issue: https://github.c
     const title = 'Titre de la modale'
 
     const wrapper = mount(DsfrModal, {
-      global: {
-        components: {
-          VIcon,
-        },
-      },
       props: {
         opened: true,
         title,
@@ -122,11 +95,6 @@ describe('DsfrModal', () => { // Skipped because of this issue: https://github.c
     const title = 'Titre de la modale'
 
     const wrapper = mount(DsfrModal, {
-      global: {
-        components: {
-          VIcon,
-        },
-      },
       props: {
         opened: true,
         title,
@@ -146,11 +114,6 @@ describe('DsfrModal', () => { // Skipped because of this issue: https://github.c
     const title = 'Titre de la modale'
 
     const wrapper = mount(DsfrModal, {
-      global: {
-        components: {
-          VIcon,
-        },
-      },
       props: {
         opened: true,
         title,
