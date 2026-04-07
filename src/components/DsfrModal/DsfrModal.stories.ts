@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/vue3-vite'
 
 import { expect, fn, userEvent, within } from 'storybook/test'
-import { computed, ref, watch } from 'vue'
+import { computed, ref } from 'vue'
 
 import DsfrButton from '../DsfrButton/DsfrButton.vue'
 
@@ -93,33 +93,27 @@ export const ModaleAvecActions: Story = {
       DsfrButton,
     },
     setup () {
-      const opened = ref(args.opened)
       const modalOrigin = ref(null)
-      watch(() => args.opened, (value) => {
-        opened.value = value
-      })
-
       const modifiedActions = computed(() => {
         return args.actions?.map((action: any) => ({
           ...action,
           onClick: () => {
+            args.opened = false
             args.onActionClick(action.label)
-            opened.value = false
           },
         }))
       })
 
       function close () {
+        args.opened = false
         args.onClose()
-        opened.value = false
       }
 
       return {
         args,
-        opened,
         modalOrigin,
         modifiedActions,
-        open: () => { opened.value = true },
+        open: () => { args.opened = true },
         close,
       }
     },
@@ -131,7 +125,7 @@ export const ModaleAvecActions: Story = {
       />
       <DsfrModal
         ref="modal"
-        :opened="opened"
+        :opened="args.opened"
         :actions="modifiedActions"
         :is-alert="args.isAlert"
         :icon="args.icon"
@@ -204,22 +198,16 @@ export const ModaleSansPiedDePage: Story = {
       DsfrButton,
     },
     setup () {
-      const opened = ref(args.opened)
       const modalOrigin = ref(null)
-      watch(() => args.opened, (value) => {
-        opened.value = value
-      })
 
       function close () {
-        args.onClose()
-        opened.value = false
+        args.opened = false
       }
 
       return {
         args,
-        opened,
         modalOrigin,
-        open: () => { opened.value = true },
+        open: () => { args.opened = true },
         close,
       }
     },
@@ -231,7 +219,7 @@ export const ModaleSansPiedDePage: Story = {
       />
       <DsfrModal
         ref="modal"
-        :opened="opened"
+        :opened="args.opened"
         :is-alert="args.isAlert"
         :icon="args.icon"
         :title="args.title"
@@ -265,22 +253,16 @@ export const ModaleAvecFooterPersonnalise: Story = {
       DsfrButton,
     },
     setup () {
-      const opened = ref(args.opened)
       const modalOrigin = ref(null)
-      watch(() => args.opened, (value) => {
-        opened.value = value
-      })
 
       function close () {
-        args.onClose()
-        opened.value = false
+        args.opened = false
       }
 
       return {
         args,
-        opened,
         modalOrigin,
-        open: () => { opened.value = true },
+        open: () => { args.opened = true },
         close,
       }
     },
@@ -292,7 +274,7 @@ export const ModaleAvecFooterPersonnalise: Story = {
       />
       <DsfrModal
         ref="modal"
-        :opened="opened"
+        :opened="args.opened"
         :is-alert="args.isAlert"
         :icon="args.icon"
         :title="args.title"
