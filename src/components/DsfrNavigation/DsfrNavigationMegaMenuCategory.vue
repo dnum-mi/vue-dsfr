@@ -6,6 +6,7 @@ import DsfrNavigationMenuLink from './DsfrNavigationMenuLink.vue'
 export type { DsfrNavigationMegaMenuCategoryProps }
 
 defineProps<DsfrNavigationMegaMenuCategoryProps>()
+defineEmits<{ (event: 'toggleId', id: string): void }>()
 </script>
 
 <template>
@@ -27,6 +28,7 @@ defineProps<DsfrNavigationMegaMenuCategoryProps>()
       >
         <DsfrNavigationMenuLink
           v-bind="link"
+          @toggle-id="$emit('toggleId', $event)"
         />
       </li>
     </ul>

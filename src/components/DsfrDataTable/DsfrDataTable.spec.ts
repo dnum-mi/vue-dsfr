@@ -1,4 +1,4 @@
-import { fireEvent, render } from '@testing-library/vue'
+import { fireEvent, render, waitFor } from '@testing-library/vue'
 import { describe, expect, it, vi } from 'vitest'
 import { nextTick } from 'vue'
 
@@ -940,5 +940,251 @@ describe('DsfrDataTable', () => {
     expect(firstBodyRowHeader?.length).toBe(colCount)
     const firstBodyRowCells = bodyRows?.[0].querySelectorAll('td')
     expect(firstBodyRowCells?.length).toBe(columns.length - colCount)
+  })
+
+  it('should apply fixed classes on header and body cells when columns.fixed is true', async () => {
+    // Given
+    const columns = [
+      { key: 'name', label: 'Name', fixed: true },
+      { key: 'role', label: 'Role', fixed: true },
+      { key: 'city', label: 'City' },
+    ]
+    const rows = [
+      { name: 'Alice', role: 'Dev', city: 'Paris' },
+    ]
+
+    // When
+    const { container } = render(DsfrDataTable, {
+      props: {
+        title: 'Fixed columns',
+        columns,
+        rows,
+      },
+    })
+
+    // Then
+    const headerCells = container.querySelectorAll('thead th[scope="col"]')
+    await waitFor(() => {
+      expect(headerCells[0].classList.contains('fr-cell--fixed')).toBe(true)
+      expect(headerCells[1].classList.contains('fr-cell--fixed')).toBe(true)
+      expect(headerCells[2].classList.contains('fr-cell--fixed')).toBe(false)
+    })
+
+    const firstRowCells = container.querySelectorAll('tbody tr:first-child [data-col-idx]')
+    await waitFor(() => {
+      expect(firstRowCells[0].classList.contains('fr-cell--fixed')).toBe(true)
+      expect(firstRowCells[1].classList.contains('fr-cell--fixed')).toBe(true)
+      expect(firstRowCells[2].classList.contains('fr-cell--fixed')).toBe(false)
+    })
+  })
+
+  it('should compute non-overlapping left offsets for multiple fixed columns', async () => {
+    // Given
+    const columns = [
+      { key: 'name', label: 'Name', fixed: true },
+      { key: 'role', label: 'Role', fixed: true },
+      { key: 'city', label: 'City' },
+    ]
+    const rows = [
+      { name: 'Alice', role: 'Dev', city: 'Paris' },
+    ]
+
+    const offsetWidthSpy = vi.spyOn(HTMLElement.prototype, 'offsetWidth', 'get')
+      .mockImplementation(function (this: HTMLElement) {
+        if (this.matches('th[data-selection-fixed]')) {
+          return 48
+        }
+        if (this.matches('th[data-col-idx="0"]')) {
+          return 120
+        }
+        if (this.matches('th[data-col-idx="1"]')) {
+          return 90
+        }
+        return 0
+      })
+
+    try {
+      // When
+      const { container } = render(DsfrDataTable, {
+        props: {
+          title: 'Fixed offsets',
+          columns,
+          rows,
+          selectableRows: true,
+        },
+      })
+
+      // Then
+      const firstFixedHeader = container.querySelector('thead th[data-col-idx="0"]') as HTMLTableCellElement
+      const secondFixedHeader = container.querySelector('thead th[data-col-idx="1"]') as HTMLTableCellElement
+      const firstFixedBodyCell = container.querySelector('tbody tr:first-child [data-col-idx="0"]') as HTMLTableCellElement
+      const secondFixedBodyCell = container.querySelector('tbody tr:first-child [data-col-idx="1"]') as HTMLTableCellElement
+
+      await waitFor(() => {
+        expect(firstFixedHeader.style.left).toBe('48px')
+        expect(secondFixedHeader.style.left).toBe('168px')
+        expect(firstFixedBodyCell.style.left).toBe('48px')
+        expect(secondFixedBodyCell.style.left).toBe('168px')
+      })
+    } finally {
+      offsetWidthSpy.mockRestore()
+    }
+  })
+
+  it('should use responsive fixed class when fixed is a breakpoint value', async () => {
+    // Given
+    const columns = [
+      { key: 'name', label: 'Name', fixed: 'md' as const },
+      { key: 'role', label: 'Role', fixed: 'lg' as const },
+      { key: 'city', label: 'City' },
+    ]
+    const rows = [
+      { name: 'Alice', role: 'Dev', city: 'Paris' },
+    ]
+
+    const matchMediaSpy = vi.spyOn(window, 'matchMedia')
+      .mockImplementation((query: string) => ({
+        matches: query.includes('48em') || query.includes('62em'),
+      }) as MediaQueryList)
+
+    const offsetWidthSpy = vi.spyOn(HTMLElement.prototype, 'offsetWidth', 'get')
+      .mockImplementation(function (this: HTMLElement) {
+        if (this.matches('th[data-col-idx="0"]')) {
+          return 100
+        }
+        if (this.matches('th[data-col-idx="1"]')) {
+          return 80
+        }
+        return 0
+      })
+
+    try {
+      // When
+      const { container } = render(DsfrDataTable, {
+        props: {
+          title: 'Responsive fixed',
+          columns,
+          rows,
+        },
+      })
+
+      // Then
+      const firstFixedHeader = container.querySelector('thead th[data-col-idx="0"]') as HTMLTableCellElement
+      const secondFixedHeader = container.querySelector('thead th[data-col-idx="1"]') as HTMLTableCellElement
+      const firstFixedBodyCell = container.querySelector('tbody tr:first-child [data-col-idx="0"]') as HTMLTableCellElement
+
+      await waitFor(() => {
+        expect(firstFixedHeader.classList.contains('fr-cell--fixed@md')).toBe(true)
+        expect(secondFixedHeader.classList.contains('fr-cell--fixed@lg')).toBe(true)
+        expect(firstFixedBodyCell.classList.contains('fr-cell--fixed@md')).toBe(true)
+
+        expect(firstFixedHeader.style.left).toBe('0px')
+        expect(secondFixedHeader.style.left).toBe('100px')
+      })
+    } finally {
+      offsetWidthSpy.mockRestore()
+      matchMediaSpy.mockRestore()
+    }
+  })
+
+  it('should ignore fixed breakpoint columns in offsets when breakpoint is not reached', async () => {
+    // Given
+    const columns = [
+      { key: 'col1', label: 'Col 1', fixed: true as const },
+      { key: 'col2', label: 'Col 2', fixed: 'md' as const },
+      { key: 'col3', label: 'Col 3', fixed: true as const },
+      { key: 'col4', label: 'Col 4' },
+    ]
+    const rows = [
+      { col1: 'A1', col2: 'A2', col3: 'A3', col4: 'A4' },
+    ]
+
+    const matchMediaSpy = vi.spyOn(window, 'matchMedia')
+      .mockImplementation(() => ({ matches: false }) as MediaQueryList)
+
+    const offsetWidthSpy = vi.spyOn(HTMLElement.prototype, 'offsetWidth', 'get')
+      .mockImplementation(function (this: HTMLElement) {
+        if (this.matches('th[data-col-idx="0"]')) {
+          return 100
+        }
+        if (this.matches('th[data-col-idx="1"]')) {
+          return 80
+        }
+        if (this.matches('th[data-col-idx="2"]')) {
+          return 70
+        }
+        return 0
+      })
+
+    try {
+      // When
+      const { container } = render(DsfrDataTable, {
+        props: {
+          title: 'Mixed fixed',
+          columns,
+          rows,
+        },
+      })
+
+      // Then
+      const firstFixedHeader = container.querySelector('thead th[data-col-idx="0"]') as HTMLTableCellElement
+      const secondResponsiveHeader = container.querySelector('thead th[data-col-idx="1"]') as HTMLTableCellElement
+      const thirdFixedHeader = container.querySelector('thead th[data-col-idx="2"]') as HTMLTableCellElement
+
+      await waitFor(() => {
+        expect(firstFixedHeader.style.left).toBe('0px')
+        expect(secondResponsiveHeader.style.left).toBe('')
+        expect(thirdFixedHeader.style.left).toBe('100px')
+      })
+    } finally {
+      offsetWidthSpy.mockRestore()
+      matchMediaSpy.mockRestore()
+    }
+  })
+
+  it('should add 1px offset compensation per fixed column when verticalBorders is enabled', async () => {
+    // Given
+    const columns = [
+      { key: 'col1', label: 'Col 1', fixed: true as const },
+      { key: 'col2', label: 'Col 2', fixed: true as const },
+      { key: 'col3', label: 'Col 3' },
+    ]
+    const rows = [
+      { col1: 'A1', col2: 'A2', col3: 'A3' },
+    ]
+
+    const offsetWidthSpy = vi.spyOn(HTMLElement.prototype, 'offsetWidth', 'get')
+      .mockImplementation(function (this: HTMLElement) {
+        if (this.matches('th[data-col-idx="0"]')) {
+          return 100
+        }
+        if (this.matches('th[data-col-idx="1"]')) {
+          return 80
+        }
+        return 0
+      })
+
+    try {
+      // When
+      const { container } = render(DsfrDataTable, {
+        props: {
+          title: 'Bordered fixed',
+          columns,
+          rows,
+          verticalBorders: true,
+        },
+      })
+
+      // Then
+      const firstFixedHeader = container.querySelector('thead th[data-col-idx="0"]') as HTMLTableCellElement
+      const secondFixedHeader = container.querySelector('thead th[data-col-idx="1"]') as HTMLTableCellElement
+
+      await waitFor(() => {
+        expect(firstFixedHeader.style.left).toBe('0px')
+        expect(secondFixedHeader.style.left).toBe('101px')
+      })
+    } finally {
+      offsetWidthSpy.mockRestore()
+    }
   })
 })

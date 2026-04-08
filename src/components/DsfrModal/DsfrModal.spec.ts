@@ -1,20 +1,13 @@
 import { mount } from '@vue/test-utils'
 
-import VIcon from '../VIcon/VIcon.vue'
-
 import DsfrModal from './DsfrModal.vue'
 
-describe.skip('DsfrModal', () => { // Skipped because of this issue: https://github.com/focus-trap/focus-trap-react/issues/785
+describe('DsfrModal', () => { // Skipped because of this issue: https://github.com/focus-trap/focus-trap-react/issues/785
   it('should render modal and emit "close" on click on close button', async () => {
     const content = 'Contenu de la modale'
     const title = 'Titre de la modale'
 
     const wrapper = mount(DsfrModal, {
-      global: {
-        components: {
-          VIcon,
-        },
-      },
       props: {
         opened: true,
         title,
@@ -40,11 +33,6 @@ describe.skip('DsfrModal', () => { // Skipped because of this issue: https://git
     const title = 'Titre de la modale'
 
     const wrapper = mount(DsfrModal, {
-      global: {
-        components: {
-          VIcon,
-        },
-      },
       props: {
         opened: true,
         title,
@@ -55,10 +43,8 @@ describe.skip('DsfrModal', () => { // Skipped because of this issue: https://git
     })
 
     const modalContentEl = wrapper.find('.fr-modal__content').element
-    const modalEl = wrapper.find('[role="dialog"]').element
-    // const labelledByTitleEl = wrapper.find('.fr-modal')
+    const modalEl = wrapper.find('.fr-modal').element
 
-    // expect(modalEl).toBe(labelledByTitleEl)
     expect(modalEl).toBeInstanceOf(Element)
     expect(modalEl).toContainHTML(title)
     expect(modalContentEl).toContainHTML(content)
@@ -69,11 +55,6 @@ describe.skip('DsfrModal', () => { // Skipped because of this issue: https://git
     const title = 'Titre de la modale'
 
     const wrapper = mount(DsfrModal, {
-      global: {
-        components: {
-          VIcon,
-        },
-      },
       props: {
         opened: true,
         title,
@@ -85,34 +66,66 @@ describe.skip('DsfrModal', () => { // Skipped because of this issue: https://git
 
     expect(wrapper.emitted().close).not.toBeTruthy()
 
-    // await wrapper.find('#test-button').element.focus()
     await wrapper.trigger('keydown.esc')
 
     expect(wrapper.emitted().keydown).toBeTruthy()
-    // expect(wrapper.emitted().close).toBeTruthy()
   })
 
-  it('should render modal with role alertdialog', async () => {
+  it('should render modal without role', async () => {
     const content = 'Contenu de la modale'
     const title = 'Titre de la modale'
 
     const wrapper = mount(DsfrModal, {
-      global: {
-        components: {
-          VIcon,
-        },
-      },
       props: {
         opened: true,
         title,
-        isAlert: true,
+        isAlert: false,
       },
       slots: {
         default: content,
       },
     })
 
-    const dialog = wrapper.find('[role="alertdialog"]')
-    expect(dialog.element).toHaveClass('fr-modal--opened')
+    const modal = wrapper.find('dialog.fr-modal')
+    expect(modal.attributes('role')).toBeUndefined()
+  })
+
+  it('should render modal with role="alertdialog" when isAlert is true and actions are provided', async () => {
+    const content = 'Contenu de la modale'
+    const title = 'Titre de la modale'
+
+    const wrapper = mount(DsfrModal, {
+      props: {
+        opened: true,
+        title,
+        isAlert: true,
+        actions: [{ label: 'Action 1' }],
+      },
+      slots: {
+        default: content,
+      },
+    })
+
+    const modal = wrapper.find('dialog.fr-modal')
+    expect(modal.attributes('role')).toBe('alertdialog')
+  })
+  it('should render modal with role="alert" when isAlert is true and no action provided', async () => {
+    const content = 'Contenu de la modale'
+    const title = 'Titre de la modale'
+
+    const wrapper = mount(DsfrModal, {
+      props: {
+        opened: true,
+        title,
+        isAlert: true,
+        actions: [],
+      },
+      slots: {
+        default: content,
+      },
+    })
+
+    const modal = wrapper.find('dialog.fr-modal')
+    expect(modal.attributes('role')).toBe('alert')
   })
 })
