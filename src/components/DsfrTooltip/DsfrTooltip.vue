@@ -104,6 +104,10 @@ const clickHandler = (event: MouseEvent) => {
 
 const keydownHandler = (event: KeyboardEvent) => {
   if (event.key === 'Escape') {
+    if (!show.value) {
+      return
+    }
+    event.stopPropagation()
     show.value = false
   }
 }
