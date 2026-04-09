@@ -84,7 +84,7 @@ Ces types couvrent 90% des cas d'usage courants dans le projet :
 
 Ces types sont à utiliser dans des cas spécifiques :
 
-#### � **Corrections spéciales**
+#### 🩹 **Corrections spéciales**
 
 - `revert`: ⏪ Annulation de commit
 - `breaking`: 💥 Changements incompatibles (breaking changes)
@@ -104,11 +104,11 @@ Ces types sont à utiliser dans des cas spécifiques :
 - `deps-upgrade`: ⬆️ Mise à jour des dépendances
 - `deps-remove`: ➖ Suppression d'une dépendance
 
-#### � **Interface utilisateur**
+#### 🎨 **Interface utilisateur**
 
-- `ui`: � Interface utilisateur et fichiers de style
+- `ui`: 🎨 Interface utilisateur et fichiers de style
 - `accessibility`: ♿ Améliorations d'accessibilité
-- `responsive`: � Design responsive
+- `responsive`: 📱 Design responsive
 
 #### 🔧 **Développement**
 
