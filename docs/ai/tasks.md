@@ -33,11 +33,9 @@ Elles respectent les conventions définies dans `docs/ai/instructions.md`, `fron
 > Il faut s’assurer que les stories sont au format attendu par Storybook 9, CSF3, et qu’elles utilisent les bonnes pratiques du projet.
 > Utilise les conventions de nommage et d’organisation du projet.
 > Génère des exemples d’utilisation clairs et typés.
-> Utilise les apostrophes françaises `’` et les espaces insécables ` ` devant `:` et les espaces fines insécables ` ` devant les autres ponctuations doubles `; ! ?` dans les stories et les commentaires.
-> Garde les règles typographiques françaises comme les apostrophes françaises `’` et les espaces insécables ` ` devant `:` et les espaces fines insécables ` ` devant les autres ponctuations doubles `; ! ?` dans tes refactorisations.
-> Les apostrophes françaises `’` ne posent pas de problème dans le code TypeScript ou les fichiers stories et doivent être utilisées partout où c’est pertinent, et laissées inchangées lors de la refactorisation.
+> Applique la typographie française dans les stories et commentaires : apostrophe `’`, espace insécable ` ` avant `:`, espace fine insécable ` ` avant `;`, `!` et `?`.
+> Conserve ces règles lors des refactorisations et ne remplace pas ces caractères par des équivalents ASCII.
 > Prends exemple sur les stories de DsfrAlert.stories.ts
-> Il faut s’assurer que les stories sont au format attendu par Storybook 9.
 > Il faut aussi remanier le fichier Vue correspondant (il porte le même nom que la story, mais avec l’extension .vue au lieu de .stories.ts) pour qu’il utilise defineSlots au lieu du commentaire HTML pour documenter les slots : `<!-- @slotName Ici la description -->`
 > Dans le commit, si les fichiers remaniés ne concernent qu’un seul composant (par exemple DsfrAlert.vue et DsfrAlert.stories.ts), indique le nom du composant en entier dans le scope du message de commit : `refactor(DsfrAlert): remanie les stories et ajoute defineSlots`
 

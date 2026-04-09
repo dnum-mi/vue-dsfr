@@ -53,32 +53,52 @@ feat(DsfrRadioButtonSet): ✨ ajoute la propriété rich pour les boutons radio 
 closes #1170
 ```
 
-### Types de commits principaux (à utiliser en priorité)
+### Gitmojis et types de commits principaux (à utiliser en priorité)
 
-Ces types couvrent 90% des cas d'usage courants dans le projet :
+Ces Gitmojis couvrent 90% des cas d'usage courants dans le projet.
+
+#### Règles liées au contexte
+
+1. Si le changement corrige un comportement observé incorrect (bug), alors le type est `fix`.
+2. Cette règle prime sur toutes les autres intentions (même si le changement ressemble à `feat`, `style` ou `chore`).
+3. Utiliser `feat` uniquement si le comportement ajouté n’existait pas auparavant et n’est pas la correction d’un bug.
+4. En cas de doute entre `fix` et un autre type, choisir `fix`.
+
+Test rapide :
+
+- "Avant le changement, quelque chose fonctionnait mal ?" → `fix`
+- "Avant le changement, tout fonctionnait, on ajoute une capacité ?" → type non-`fix` (souvent `feat`)
 
 #### 🔄 **Développement quotidien**
 
-- `feat`: ✨ Nouvelles fonctionnalités
-- `fix`: 🐛 Corrections de bugs
-- `refactor`: ♻️ Refactoring (ni feat ni fix)
-- `style`: 💄 Formatage, style (pas de changement de logique)
+| Intention | code gitmoji | gitmoji | type (conventional commits) |
+| --- | --- | --- | --- |
+| Nouvelles fonctionnalités | `:sparkles:` | ✨ | `feat` |
+| Corrections de bugs | `:bug:` | 🐛 | `fix` |
+| Refactoring (ni feat ni fix) | `:recycle:` | ♻️ | `refactor` |
+| Formatage, style (pas de changement de logique) | `:lipstick:` | 💄 | `style` |
 
 #### 📚 **Documentation et maintenance**
 
-- `docs`: 📝 Documentation
-- `test`: ✅ Ajout/modification de tests
-- `chore`: 🔧 Maintenance, configuration, dépendances
+| Intention | code gitmoji | gitmoji | type (conventional commits) |
+| --- | --- | --- | --- |
+| Documentation | `:memo:` | 📝 | `docs` |
+| Ajout/modification de tests | `:white_check_mark:` | ✅ | `test` |
+| Maintenance, configuration, dépendances | `:wrench:` | 🔧 | `chore` |
 
 #### 🚀 **Build et déploiement**
 
-- `build`: 📦️ Changements qui affectent le système de build ou dépendances externes
-- `ci`: 👷 CI/CD, GitHub Actions
+| Intention | code gitmoji | gitmoji | type (conventional commits) |
+| --- | --- | --- | --- |
+| Changements qui affectent le système de build ou dépendances externes | `:package:` | 📦️ | `build` |
+| CI/CD, GitHub Actions | `:construction_worker:` | 👷 | `ci` |
 
 #### 🚨 **Urgences**
 
-- `hotfix`: 🚑️ Corrections critiques en urgence
-- `perf`: ⚡ Améliorations de performance
+| Intention | code gitmoji | gitmoji | type (conventional commits) |
+| --- | --- | --- | --- |
+| Corrections critiques en urgence | `:ambulance:` | 🚑️ | `fix` |
+| Améliorations de performance | `:zap:` | ⚡ | `perf` |
 
 ### Types de commits spécialisés (usage occasionnel)
 
@@ -86,35 +106,47 @@ Ces types sont à utiliser dans des cas spécifiques :
 
 #### 🩹 **Corrections spéciales**
 
-- `revert`: ⏪ Annulation de commit
-- `breaking`: 💥 Changements incompatibles (breaking changes)
-- `security`: 🔒️ Corrections de sécurité
-- `typo`: ✏️ Correction de fautes de frappe
-- `lint`: 🚨 Correction des warnings du linter/compilateur
+| Intention | code gitmoji | gitmoji | type (conventional commits) |
+| --- | --- | --- | --- |
+| Annulation de commit | `:rewind:` | ⏪ | `revert` |
+| Changements incompatibles (breaking changes) | `:boom:` | 💥 | `feat` ou `fix` avec `!` dans l’en-tête |
+| Corrections de sécurité | `:lock:` | 🔒️ | `fix` |
+| Correction de fautes de frappe | `:pencil2:` | ✏️ | `docs` |
+| Correction des warnings du linter/compilateur | `:rotating_light:` | 🚨 | `style` |
+
+⚠️ pour les breaking changes 💥 ajouter obligatoirement un footer à la description du commit `BREAKING CHANGE:` ... avec impact + migration
 
 #### 🏗️ **Structure et architecture**
 
-- `move`: 🚚 Déplacement ou renommage de fichiers
-- `remove`: 🔥 Suppression de code ou fichiers
-- `merge`: 🔀 Fusion de branches
+| Intention | code gitmoji | gitmoji | type (conventional commits) |
+| --- | --- | --- | --- |
+| Déplacement ou renommage de fichiers | `:truck:` | 🚚 | `refactor` |
+| Suppression de code ou fichiers | `:fire:` | 🔥 | `refactor` |
+| Fusion de branches | `:twisted_rightwards_arrows:` | 🔀 | `chore` |
 
 #### 📦 **Dépendances**
 
-- `deps-add`: ➕ Ajout d'une dépendance
-- `deps-upgrade`: ⬆️ Mise à jour des dépendances
-- `deps-remove`: ➖ Suppression d'une dépendance
+| Intention | code gitmoji | gitmoji | type (conventional commits) |
+| --- | --- | --- | --- |
+| Ajout d'une dépendance | `:heavy_plus_sign:` | ➕ | `build` |
+| Mise à jour des dépendances | `:arrow_up:` | ⬆️ | `build` |
+| Suppression d'une dépendance | `:heavy_minus_sign:` | ➖ | `build` |
 
 #### 🎨 **Interface utilisateur**
 
-- `ui`: 🎨 Interface utilisateur et fichiers de style
-- `accessibility`: ♿ Améliorations d'accessibilité
-- `responsive`: 📱 Design responsive
+| Intention | code gitmoji | gitmoji | type (conventional commits) |
+| --- | --- | --- | --- |
+| Interface utilisateur et fichiers de style | `:art:` | 🎨 | `style` ou `fix` selon le contexte |
+| Améliorations d'accessibilité | `:wheelchair:` | ♿ | `feat` ou `fix` selon le contexte |
+| Design responsive | `:iphone:` | 📱 | `style` ou `fix` selon le contexte |
 
 #### 🔧 **Développement**
 
-- `types`: 🏷️ Types TypeScript
-- `config`: 🔧 Fichiers de configuration
-- `wip`: 🚧 Travail en cours (Work In Progress)
+| Intention | code gitmoji | gitmoji | type (conventional commits) |
+| --- | --- | --- | --- |
+| Types TypeScript | `:label:` | 🏷️ | `refactor` |
+| Fichiers de configuration | `:wrench:` | 🔧 | `chore` ou `fix` selon le contexte |
+| Travail en cours (Work In Progress) | `:construction:` | 🚧 | `chore` |
 
 ## 📝 Exemples pratiques par contexte
 
