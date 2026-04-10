@@ -233,7 +233,7 @@ Le projet utilise **Vue 3 (Composition API)**, **TypeScript strict**, **Fastify*
 - Activer les **types stricts** : `strict: true` dans `tsconfig.json`.
 - Ne jamais utiliser `any`, `as unknown`, ou les assertions de type non justifiées.
 - Préférer les **types explicites** aux inférences implicites si cela améliore la lisibilité.
-- Toujours suivre les conventions ESLint du projet : **Airbnb + Prettier**.
+- Toujours suivre les conventions ESLint du projet : **flat config basée sur `@antfu/eslint-config`**.
 - Les imports doivent être **ESM** (`import` / `export`) — pas de `require`.
 - Toujours penser en **code modulaire**, éviter les fonctions globales.
 - Les noms de variables et fonctions doivent être clairs, descriptifs et en anglais.
