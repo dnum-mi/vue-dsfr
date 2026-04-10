@@ -2,16 +2,39 @@
 
 Ce fichier est la porte d'entrée commune pour tous les agents IA (Codex, Claude, Copilot, etc.).
 
-## Source de vérité commune
+## Chargement des règles par contexte
 
-Les règles partagées du projet sont centralisées dans :
+Source de vérité commune :
 
 1. `docs/ai/README.md`
 2. `docs/ai/instructions.md`
 3. `docs/ai/tasks.md`
 4. `docs/ai/commit-message.md`
 
-Ces fichiers sont l'unique référence fonctionnelle et doivent rester uniformes pour tous les agents.
+Règle générale :
+
+- Toujours charger `docs/ai/instructions.md`.
+
+Détection de contexte et chargement obligatoire :
+
+- Contexte `implémentation / refactor / bugfix`
+  - Déclencheurs : implémente, corrige, refactorise, modification de code.
+  - Charger : `docs/ai/instructions.md` + `docs/ai/tasks.md`.
+- Contexte `tests`
+  - Déclencheurs : test, spec, coverage, vitest.
+  - Charger : `docs/ai/instructions.md` + `docs/ai/tasks.md`.
+- Contexte `documentation`
+  - Déclencheurs : doc, md, storybook, vitepress.
+  - Charger : `docs/ai/instructions.md` + `docs/ai/tasks.md`.
+- Contexte `commit / PR title`
+  - Déclencheurs : commit, conventional commit, gitmoji, PR title.
+  - Charger : `docs/ai/commit-message.md`.
+
+Règles de priorité :
+
+1. Si plusieurs contextes sont détectés, charger l'union des fichiers requis.
+2. En cas de conflit, `docs/ai/commit-message.md` prime pour les commits ; sinon `docs/ai/instructions.md`.
+3. Ne pas répondre sans avoir chargé les fichiers obligatoires du contexte détecté.
 
 ## Fichiers spécifiques par agent
 

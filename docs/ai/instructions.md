@@ -292,15 +292,6 @@ function increment () {
 - Éviter les raccourcis ou la micro-optimisation prématurée.
 - Toujours nommer les fonctions selon leur intention (`getUserProfile` plutôt que `fetchData`).
 
-## 💬 Pour les agents IA conversationnels (Copilot Chat, Claude, Codex)
-
-Quand l’utilisateur demande :
-
-- "Explique ce code" → Fournir une explication pédagogique claire, sans jargon excessif.
-- "Refactorise" → Proposer une version plus claire, typée et conforme aux règles ci-dessus.
-- "Ajoute des tests" → Générer des tests Vitest minimalistes et lisibles.
-- "Ajoute la doc" → Produire du JSDoc complet et concis.
-
 ## Montée de version de dépendances
 
 - Toujours vérifier les notes de version pour les breaking changes.
