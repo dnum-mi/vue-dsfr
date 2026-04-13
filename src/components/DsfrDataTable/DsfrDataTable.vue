@@ -393,7 +393,7 @@ onBeforeUnmount(() => {
           name="tableTopBarButtons"
         >
           <DsfrButtonGroup
-            v-if="topBarButtons"
+            v-if="topBarButtons && selection.length > 0"
             :buttons="topBarButtons"
             :size="topBarButtonsSize"
           />

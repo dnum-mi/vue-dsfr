@@ -557,6 +557,60 @@ describe('DsfrDataTable', () => {
     })
   })
 
+  it('should not render top bar buttons when no line is selected', () => {
+    // Given
+    const title = 'Selectable Table'
+    const headersRow = ['Name', 'Age']
+    const rows = [
+      ['Alice', '25'],
+      ['Bob', '30'],
+    ]
+    const topBarButtons = [{ label: 'Action groupée' }]
+
+    // When
+    const { queryByText } = render(DsfrDataTable, {
+      props: {
+        title,
+        headersRow,
+        rows,
+        selectableRows: true,
+        topBarButtons,
+      },
+    })
+
+    // Then
+    expect(queryByText('Action groupée')).toBeNull()
+  })
+
+  it('should render top bar buttons when a row is selected (and appropriate props are provided)', async () => {
+    // Given
+    const title = 'Selectable Table'
+    const headersRow = ['Name', 'Age']
+    const rows = [
+      ['Alice', '25'],
+      ['Bob', '30'],
+    ]
+    const topBarButtons = [{ label: 'Action groupée' }]
+
+    // When
+    const { container, getByText } = render(DsfrDataTable, {
+      props: {
+        title,
+        headersRow,
+        rows,
+        selectableRows: true,
+        topBarButtons,
+      },
+    })
+
+    const firstRowCheckbox = container.querySelector('tbody input[id*="row-select-"]') as HTMLInputElement
+    await fireEvent.click(firstRowCheckbox)
+    await nextTick()
+
+    // Then
+    expect(getByText('Action groupée')).toBeTruthy()
+  })
+
   it('should handle pagination with rowsPerPage model', () => {
     // Given
     const title = 'Paginated Table'
