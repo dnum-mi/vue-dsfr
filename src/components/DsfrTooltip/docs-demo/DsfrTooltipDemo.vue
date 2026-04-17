@@ -5,7 +5,7 @@ import DsfrTooltip from '../DsfrTooltip.vue'
 <template>
   <div
     class="flex flex-col justify-between w-full"
-    style="height: 300px"
+    style="height: 1000px"
   >
     <div class="flex justify-between w-full">
       <DsfrTooltip
@@ -27,8 +27,11 @@ import DsfrTooltip from '../DsfrTooltip.vue'
 
     <div class="flex  justify-between w-full">
       <DsfrTooltip
+        on-hover
         content="Texte de l’info-bulle en bas à gauche qui peut être très très long"
-      />
+      >
+        lien qui pointe vers l'id du tooltip
+      </DsfrTooltip>
       <DsfrTooltip
         content="Texte de l’info-bulle en bas à droite qui peut être très très long"
       />
