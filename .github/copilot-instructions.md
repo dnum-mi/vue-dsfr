@@ -1,20 +1,19 @@
-# Adaptateur Copilot - Instructions VueDsfr
+# Adaptateur Copilot
 
-Source de vérité commune :
+Extensions spécifiques à Copilot pour le projet VueDsfr.
 
-- `docs/ai/README.md`
-- `docs/ai/instructions.md`
-- `docs/ai/tasks.md`
-- `docs/ai/commit-message.md`
+## Règles communes
 
-Chargement contextuel (obligatoire) :
+Consulter [`AGENTS.md`](../AGENTS.md) pour le guide central agnostique.
 
-- Appliquer les règles de `AGENTS.md` pour détecter le contexte et charger les fichiers requis.
-- Toujours charger `docs/ai/instructions.md`.
-- Pour code/tests/doc : charger aussi `docs/ai/tasks.md`.
-- Pour commit/PR title : charger `docs/ai/commit-message.md`.
+Les **Skills** du projet s'appliquent automatiquement :
+- `.agents/skills/code-implementation/` — implémentation & refactoring
+- `.agents/skills/test-writing/` — tests
+- `.agents/skills/documentation/` — documentation
+- `.agents/skills/commit-conventions/` — commits & PR (priorité absolue)
 
 ## Agent-only (Copilot)
-- Raison : aucun besoin spécifique documenté à ce jour.
-- Impact : Copilot applique uniquement les consignes communes.
-- Fallback : suivre `docs/ai/*`.
+
+- Raison : aucun besoin spécifique documenté à ce jour
+- Impact : Copilot utilise uniquement les skills communes
+- Fallback : consulter `.agents/*` et `AGENTS.md`

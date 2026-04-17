@@ -6,7 +6,7 @@ VueDsfr est une bibliothèque de composants Vue 3 qui porte le Système de Desig
 
 ## Pour les tâches que je vais te demander
 
-Voir le fichier `docs/ai/tasks.md` pour les instructions spécifiques aux tâches.
+Voir le fichier [`tasks.md`](tasks.md) pour les instructions spécifiques aux tâches.
 
 ## Architecture et structure des fichiers
 
@@ -106,7 +106,7 @@ pnpm format              # Corriger automatiquement ESLint
 
 ### Qualité du code et commits
 
-- **Commits** : Suivre les commits conventionnels (voir `docs/ai/commit-message.md`)
+- **Commits** : Suivre les commits conventionnels (voir [`commit-message.md`](commit-message.md))
 - **Linting** : @antfu/eslint-config avec règles spécifiques à Vue
 - **Pre-commit** : Husky exécute lint-staged sur `*.{vue,ts}`
 - **CI** : GitHub Actions exécute les tests, le linting et la vérification de build

@@ -1,36 +1,44 @@
-# Guide du projet VueDsfr
+# Guide des Agents IA
 
-Ce fichier est la porte d'entrée commune pour tous les agents IA (Codex, Claude, Copilot, etc.).
+Guide central agnostique pour tous les agents IA contribuant au projet VueDsfr.
 
-## Référence de gouvernance
+## Gouvernance
 
-Pour les règles de gouvernance communes (hiérarchie des documents, maintenance, format `Agent-only`), se référer à :
+Pour les principes généraux et la hiérarchie des documents, voir `.agents/README.md`.
 
-- `docs/ai/README.md`
+## Découverte automatique des Skills
 
-## Chargement des règles par contexte
+Les agents chargent automatiquement les **Skills** appropriés en fonction du contexte. Chaque skill est décrit et auto-découvrable.
 
-Règle générale :
+### Skills du projet
 
-- Toujours charger `docs/ai/instructions.md`.
+| Domain | Skill | Docs associées |
+|--------|-------|---|
+| Implémentation & Refactoring | `.agents/skills/code-implementation/` | `.agents/instructions.md` + `.agents/tasks.md` |
+| Tests | `.agents/skills/test-writing/` | `.agents/instructions.md` + `.agents/tasks.md` |
+| Documentation | `.agents/skills/documentation/` | `.agents/instructions.md` + `.agents/tasks.md` |
+| Commits & PR | `.agents/skills/commit-conventions/` | `.agents/commit-message.md` |
 
-Détection de contexte et chargement obligatoire :
+**Localisation** : `.agents/skills/<name>/SKILL.md`
 
-- Contexte `implémentation / refactor / bugfix`
-  - Déclencheurs : implémente, corrige, refactorise, modification de code.
-  - Charger : `docs/ai/instructions.md` + `docs/ai/tasks.md`.
-- Contexte `tests`
-  - Déclencheurs : test, spec, coverage, vitest.
-  - Charger : `docs/ai/instructions.md` + `docs/ai/tasks.md`.
-- Contexte `documentation`
-  - Déclencheurs : doc, md, storybook, vitepress.
-  - Charger : `docs/ai/instructions.md` + `docs/ai/tasks.md`.
-- Contexte `commit / PR title`
-  - Déclencheurs : commit, conventional commit, gitmoji, PR title.
-  - Charger : `docs/ai/commit-message.md`.
+### Principes de chargement
 
-Règles de priorité :
+1. **Contexte détecté** → **Skill automatiquement chargé** selon sa description
+2. **Multiples contextes** → Charger l'union des skills (ex: refactoring + tests → 2 skills)
+3. **Priorité absolue** : `commit-conventions` prime pour tout commit/PR
+4. **Fallback** : Si un skill est indisponible, consulter `.agents/*`
 
-1. Si plusieurs contextes sont détectés, charger l'union des fichiers requis.
-2. En cas de conflit, `docs/ai/commit-message.md` prime pour les commits ; sinon `docs/ai/instructions.md`.
-3. Ne pas répondre sans avoir chargé les fichiers obligatoires du contexte détecté.
+## Pour les adaptateurs agent spécifiques
+
+Certains agents peuvent avoir des besoins spécifiques documentés dans :
+- `.github/copilot-instructions.md` — Extensions Copilot
+- `CLAUDE.md` — Extensions Claude
+
+**Format obligatoire** pour toute extension spécifique :
+
+```markdown
+## Agent-only (NomAgent)
+- Raison : ...
+- Impact : ...
+- Fallback : ...
+```
