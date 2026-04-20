@@ -31,17 +31,6 @@
 > Garde la même logique métier.
 > Garde les règles typographiques françaises comme les apostrophes françaises `'` et les espaces insécables ` ` devant `:` et les espaces fines insécables ` ` devant les autres ponctuations doubles `; ! ?`.
 
-## 🧰 Nouvelle route (Fastify)
-
-> Crée une route Fastify avec validation via Zod (`@fastify/type-provider-zod`)
-> Typage strict des requêtes et réponses, séparation handler / service.
-> Suis la structure `src/api/routes/` et `src/api/services/`.
-
-## 🧩 Refactor service
-
-> Sépare la logique métier de ce handler dans un service (`src/api/services/`).
-> Garde la signature et les types stricts.
-
 ## 🙏 Revue de code
 
 > Fais une revue technique de ce fichier : lisibilité, typage, conventions, complexité, cohérence.

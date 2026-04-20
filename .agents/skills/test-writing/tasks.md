@@ -4,11 +4,7 @@
 
 > Écris un test Vitest pour ce composant.
 > Vérifie le rendu, les événements émis, et les comportements principaux.
-
-## 🧾 Test de route (Fastify)
-
-> Génère un test Vitest pour cette route Fastify en utilisant `app.inject()`.
-> Vérifie le code de réponse, la validation et le format des données.
+> Applique la typographie française dans les messages de test.
 
 ## 🧪 Vérification de la couverture de tests
 

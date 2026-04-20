@@ -223,7 +223,69 @@ export function useFeatureName () {
 ## 🎯 Objectif
 
 Ces instructions guident les agents IA (par exemple Copilot, Claude, Codex) pour générer un code cohérent avec les conventions du projet.
-Le projet utilise **Vue 3 (Composition API)**, **TypeScript strict**, **Fastify** côté serveur, et **ESM** comme module system.
+Le projet utilise **Vue 3 (Composition API)**, **TypeScript strict**, et **ESM** comme module system.
+
+---
+
+## 📝 Langue et Communication
+
+Il s'agit d'un projet dédié aux sites officiels français. **Tout le contenu doit être en français** sauf :
+
+**Seules exceptions (en anglais)** :
+
+- **Noms de branches** : kebab-case avec numéro d'issue (ex: `1337-add-new-feature`)
+- **Noms de variables et fonctions** : camelCase/PascalCase (conventions dev internationales)
+- **Noms de fichiers** : kebab-case en anglais (ex: `button-group.vue`)
+- **Noms de classes CSS** : conventions DSFR (ex: `fr-btn`, `fr-header`)
+
+**Toujours en français** :
+
+- ✅ Messages de commit
+- ✅ Commentaires dans le code
+- ✅ Strings/labels/messages d'erreur visibles aux utilisateurs
+- ✅ Documentation VitePress et JSDoc
+- ✅ Discussions GitHub (issues, PR, discussions)
+
+---
+
+## 🇫🇷 Typographie Française (règle globale)
+
+**Ces règles s'appliquent partout** : code, commentaires, strings, documentation, commits.
+
+### Ponctuation double
+
+Appliquer une **espace insécable** avant les ponctuations doubles `:`, `;`, `!`, `?`
+
+- ✅ `error : le champ est obligatoire` (espace insécable avant `:`)
+- ❌ `error: le champ est obligatoire` (pas d'espace)
+
+### Apostrophes
+
+Utilisertoujours la **curly apostrophe française** `'` (U+2019), jamais l'apostrophe ASCII `'`
+
+- ✅ `const itemName = 'element'`
+- ⚠️ Au lieu de `` `element` `` (backtick), préférer une vraie typographie
+
+### Points de suspension
+
+Utiliser `…` (U+2026) au lieu de `...`
+
+- ✅ `"Chargement…"`
+- ❌ `"Chargement..."`
+
+### Espace fine insécable
+
+Avant `!`, `;`, `?` (espaces fines insécables U+202F) **dans les textes affichés**
+
+- Tipiquement appliqué dans les messages d'erreur, labels, et documentation
+- Dans le code source (commentaires), l'espace insécable normale suffit
+
+### Guillemets
+
+Utiliser les **guillemets français** « » (U+00AB U+00BB) avec espaces :
+
+- ✅ `« Validez avant de continuer »`
+- ❌ `"Direct sans espace"`
 
 ---
 
