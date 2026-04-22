@@ -85,7 +85,7 @@ watch(expanded, (newValue, oldValue) => {
 </script>
 
 <template>
-  <nav class="fr-nav fr-nav--expanded">
+  <nav class="fr-nav fr-nav--expanded usermenu__nav">
     <div class="fr-nav__item">
       <!-- Bouton non connecté -->
       <button
@@ -193,6 +193,10 @@ watch(expanded, (newValue, oldValue) => {
 </template>
 
 <style scoped>
+.fr-nav.usermenu__nav {
+  position: relative;
+}
+
 .fr-menu.usermenu__menu {
   width:fit-content
 }
