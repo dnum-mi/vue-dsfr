@@ -85,7 +85,10 @@ watch(expanded, (newValue, oldValue) => {
 </script>
 
 <template>
-  <nav class="fr-nav fr-nav--expanded usermenu__nav">
+  <nav
+    class="fr-nav fr-nav--expanded usermenu__nav"
+    :aria-label="props.isConnected ? 'Menu utilisateur connecté' : 'Menu utilisateur'"
+  >
     <div class="fr-nav__item">
       <!-- Bouton non connecté -->
       <button
@@ -131,12 +134,15 @@ watch(expanded, (newValue, oldValue) => {
             'fr-collapse--expanded': cssExpanded, // Need to use a separate data to add/remove the class after a requestAnimationFrame (RAF)
             'fr-collapsing': collapsing,
           }"
+          :aria-hidden="!expanded"
           @transitionend="onTransitionEnd(expanded, true)"
         >
           <!-- En-tête utilisateur -->
           <div
             v-if="props.userLabel"
             class="usermenu__header"
+            role="region"
+            :aria-label="props.userLabel"
           >
             <p>
               <span class="usermenu__user-label">{{ props.userLabel }}</span>
@@ -153,16 +159,20 @@ watch(expanded, (newValue, oldValue) => {
           <ul
             v-if="props.links.length > 0"
             class="fr-menu__list usermenu__links"
+            role="menubar"
           >
             <li
               v-for="link, idx in props.links"
               :key="idx"
               class="fr-nav__item"
+              role="none"
             >
               <a
                 class="fr-nav__link"
                 :class="{ [`${link.icon}`]: link.icon, 'fr-link--icon-left': !!link.icon }"
                 :href="link.to?.toString() ?? '#'"
+                :aria-label="link.text"
+                role="menuitem"
                 @click="expanded = false"
               >
                 {{ link.text }}
@@ -178,6 +188,7 @@ watch(expanded, (newValue, oldValue) => {
             <button
               type="button"
               class="fr-btn fr-btn--secondary fr-btn--sm fr-icon-logout-box-r-line fr-btn--icon-left usermenu__btn"
+              role="menuitem"
               @click="() => {
                 emit('disconnect')
                 expanded = false
