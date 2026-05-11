@@ -64,6 +64,10 @@ const guideItems = [
     link: '/guide/icones.md',
   },
   {
+    text: 'Les pictogrammes officiels',
+    link: '/guide/pictogrammes.md',
+  },
+  {
     text: 'Migrations',
     link: '/guide/migrations.md',
   },

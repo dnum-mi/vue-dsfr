@@ -7,10 +7,12 @@ import VIcon from '../../src/components/VIcon/VIcon.vue'
 
 import AppColors from './AppColors.vue'
 import AppIcons from './AppIcons.vue'
+import AppPictograms from './AppPictograms.vue'
 import Story from './Story.vue'
 import VIconLink from './VIconLink.vue'
 import './official-icons.css'
 import '@gouvfr/dsfr/dist/utility/icons/icons.main.css'
+import '@gouvfr/dsfr/dist/core/core.main.css'
 import './style.css'
 
 export default {
@@ -22,5 +24,6 @@ export default {
     app.component('RouterLink', RouterLink)
     app.component('AppColors', AppColors)
     app.component('AppIcons', AppIcons)
+    app.component('AppPictograms', AppPictograms)
   },
 } satisfies Theme
