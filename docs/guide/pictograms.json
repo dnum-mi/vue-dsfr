@@ -1,0 +1,164 @@
+[
+  {
+    "category": "accessibility",
+    "description": "Pictogrammes d'accessibilité",
+    "pictograms": [
+      { "name": "accessibility", "id": "svgAccessibility" },
+      { "name": "ear-off", "id": "svgEarOff" },
+      { "name": "eye-off", "id": "svgEyeOff" },
+      { "name": "mental-disabilities", "id": "svgMentalDisabilities" },
+      { "name": "wheelchair", "id": "svgWheelchair" }
+    ]
+  },
+  {
+    "category": "buildings",
+    "description": "Bâtiments",
+    "pictograms": [
+      { "name": "base", "id": "svgBase" },
+      { "name": "city-hall", "id": "svgCityHall" },
+      { "name": "companie", "id": "svgCompanie" },
+      { "name": "factory", "id": "svgFactory" },
+      { "name": "house", "id": "svgHouse" },
+      { "name": "nuclear-plant", "id": "svgNuclearPlant" },
+      { "name": "school", "id": "svgSchool" }
+    ]
+  },
+  {
+    "category": "digital",
+    "description": "Numérique",
+    "pictograms": [
+      { "name": "application", "id": "svgApplication" },
+      { "name": "avatar", "id": "svgAvatar" },
+      { "name": "calendar", "id": "svgCalendar" },
+      { "name": "data-visualization", "id": "svgDataVisualization" },
+      { "name": "coding", "id": "svgCoding" },
+      { "name": "ecosystem", "id": "svgEcosystem" },
+      { "name": "in-progress", "id": "svgInProgress" },
+      { "name": "innovation", "id": "svgInnovation" },
+      { "name": "internet", "id": "svgInternet" },
+      { "name": "mail-send", "id": "svgMailSend" },
+      { "name": "search", "id": "svgSearch" },
+      { "name": "smartphone", "id": "svgSmartphone" },
+      { "name": "self-training", "id": "svgSelfTraining" }
+    ]
+  },
+  {
+    "category": "document",
+    "description": "Documents",
+    "pictograms": [
+      { "name": "archive", "id": "svgArchive" },
+      { "name": "binders", "id": "svgBinders" },
+      { "name": "conclusion", "id": "svgConclusion" },
+      { "name": "contract", "id": "svgContract" },
+      { "name": "document", "id": "svgDocument" },
+      { "name": "document-add", "id": "svgDocumentAdd" },
+      { "name": "document-download", "id": "svgDocumentDownload" },
+      { "name": "document-search", "id": "svgDocumentSearch" },
+      { "name": "document-signature", "id": "svgDocumentSignature" },
+      { "name": "sign-document", "id": "svgSignDocument" },
+      { "name": "driving-licence", "id": "svgDrivingLicence" },
+      { "name": "driving-license-new", "id": "svgDrivingLicenseNew" },
+      { "name": "international-driving-license", "id": "svgInternationalDrivingLicense" },
+      { "name": "international-driving-license-new", "id": "svgInternationalDrivingLicenseNew" },
+      { "name": "national-identity-card", "id": "svgNationalIdentityCard" },
+      { "name": "national-identity-card-passport", "id": "svgNationalIdentityCardPassport" },
+      { "name": "passport", "id": "svgPassport" },
+      { "name": "presse-card", "id": "svgPresseCard" },
+      { "name": "tax-stamp", "id": "svgTaxStamp" },
+      { "name": "vehicle-registration", "id": "svgVehicleRegistration" }
+    ]
+  },
+  {
+    "category": "environment",
+    "description": "Environnement",
+    "pictograms": [
+      { "name": "environment", "id": "svgEnvironment" },
+      { "name": "leaf", "id": "svgLeaf" },
+      { "name": "food", "id": "svgFood" },
+      { "name": "grocery", "id": "svgGrocery" },
+      { "name": "human-cooperation", "id": "svgHumanCooperation" },
+      { "name": "moon", "id": "svgMoon" },
+      { "name": "mountain", "id": "svgMountain" },
+      { "name": "sun", "id": "svgSun" },
+      { "name": "tree", "id": "svgTree" }
+    ]
+  },
+  {
+    "category": "health",
+    "description": "Santé",
+    "pictograms": [
+      { "name": "doctor", "id": "svgDoctor" },
+      { "name": "health", "id": "svgHealth" },
+      { "name": "hospital", "id": "svgHospital" },
+      { "name": "medical-research", "id": "svgMedicalResearch" },
+      { "name": "vaccine", "id": "svgVaccine" },
+      { "name": "virus", "id": "svgVirus" }
+    ]
+  },
+  {
+    "category": "institutions",
+    "description": "Institutions",
+    "pictograms": [
+      { "name": "army-tank", "id": "svgArmyTank" },
+      { "name": "firefighter", "id": "svgFirefighter" },
+      { "name": "justice", "id": "svgJustice" },
+      { "name": "navy-anchor", "id": "svgNavyAnchor" },
+      { "name": "police", "id": "svgPolice" },
+      { "name": "astronaut", "id": "svgAstronaut" },
+      { "name": "gendarmerie", "id": "svgGendarmerie" },
+      { "name": "money", "id": "svgMoney" },
+      { "name": "navy-bachi", "id": "svgNavyBachi" }
+    ]
+  },
+  {
+    "category": "leisure",
+    "description": "Loisirs et culture",
+    "pictograms": [
+      { "name": "art", "id": "svgArt" },
+      { "name": "book", "id": "svgBook" },
+      { "name": "community", "id": "svgCommunity" },
+      { "name": "digital-art", "id": "svgDigitalArt" },
+      { "name": "pictures", "id": "svgPictures" },
+      { "name": "video-games", "id": "svgVideoGames" },
+      { "name": "audio", "id": "svgAudio" },
+      { "name": "catalog", "id": "svgCatalog" },
+      { "name": "culture", "id": "svgCulture" },
+      { "name": "paint", "id": "svgPaint" },
+      { "name": "podcast", "id": "svgPodcast" },
+      { "name": "video", "id": "svgVideo" }
+    ]
+  },
+  {
+    "category": "map",
+    "description": "Carte et voyage",
+    "pictograms": [
+      { "name": "airport", "id": "svgAirport" },
+      { "name": "backpack", "id": "svgBackpack" },
+      { "name": "compass", "id": "svgCompass" },
+      { "name": "location-france", "id": "svgLocationFrance" },
+      { "name": "location-overseas-france", "id": "svgLocationOverseasFrance" },
+      { "name": "luggage", "id": "svgLuggage" },
+      { "name": "map-pin", "id": "svgMapPin" },
+      { "name": "map", "id": "svgMap" },
+      { "name": "travel-back", "id": "svgTravelBack" }
+    ]
+  },
+  {
+    "category": "system",
+    "description": "Système",
+    "pictograms": [
+      { "name": "connection-lost", "id": "svgConnectionLost" },
+      { "name": "error", "id": "svgError" },
+      { "name": "flow-list", "id": "svgFlowList" },
+      { "name": "flow-settings", "id": "svgFlowSettings" },
+      { "name": "information", "id": "svgInformation" },
+      { "name": "language", "id": "svgLanguage" },
+      { "name": "notification", "id": "svgNotification" },
+      { "name": "padlock", "id": "svgPadlock" },
+      { "name": "success", "id": "svgSuccess" },
+      { "name": "system", "id": "svgSystem" },
+      { "name": "technical-error", "id": "svgTechnicalError" },
+      { "name": "warning", "id": "svgWarning" }
+    ]
+  }
+]
