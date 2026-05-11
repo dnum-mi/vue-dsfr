@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useData } from 'vitepress'
-import { computed, ref } from 'vue'
+import { ref, watchEffect } from 'vue'
 
 import * as svgs from '../../docs/guide/pictograms'
 
@@ -8,12 +8,14 @@ defineProps<{
   pictograms: PictogramCategory[]
 }>()
 const { isDark } = useData()
-const frTheme = computed(() => isDark.value ? 'dark' : 'light')
+
+watchEffect(() => {
+  document.documentElement.setAttribute('data-fr-theme', isDark.value ? 'dark' : 'light')
+})
 
 type Pictogram = {
   name: string
   id: keyof typeof svgs
-  alt: string
 }
 
 type PictogramCategory = {
@@ -23,43 +25,61 @@ type PictogramCategory = {
 }
 
 const copied = ref<string>()
+const copyError = ref<string>()
 const timeoutId = ref<number>()
 
-function copyImport (id: keyof typeof svgs, name: string, category: string) {
+async function copyImport (id: keyof typeof svgs, name: string, category: string) {
   const importStatement = `import ${id} from '@gouvfr/dsfr/dist/artwork/pictograms/${category}/${name}.svg'`
-  navigator.clipboard.writeText(importStatement)
-  copied.value = id
   window.clearTimeout(timeoutId.value)
-  timeoutId.value = window.setTimeout(() => { copied.value = undefined }, 2000)
+  try {
+    await navigator.clipboard.writeText(importStatement)
+    copied.value = id
+    copyError.value = undefined
+  } catch {
+    copyError.value = id
+    copied.value = undefined
+  }
+  timeoutId.value = window.setTimeout(() => {
+    copied.value = undefined
+    copyError.value = undefined
+  }, 2000)
 }
 </script>
 
 <template>
-  <div :data-fr-theme="frTheme">
-    <div
-      v-for="category in pictograms"
-      :key="category.category"
-    >
-      <h3>{{ category.description }} ({{ category.category }})</h3>
-      <ul class="picto-grid">
-        <li
-          v-for="picto in category.pictograms"
-          :key="picto.id"
-          class="picto-item"
-          :title="`Cliquer pour copier l'import : ${picto.id}`"
+  <div
+    v-for="category in pictograms"
+    :key="category.category"
+  >
+    <h3>{{ category.description }} ({{ category.category }})</h3>
+    <ul class="picto-grid">
+      <li
+        v-for="picto in category.pictograms"
+        :key="picto.id"
+        class="picto-item"
+      >
+        <button
+          type="button"
+          class="picto-btn"
+          :aria-label="`Copier l'import de ${picto.name}`"
+          :aria-pressed="copied === picto.id"
           @click="copyImport(picto.id, picto.name, category.category)"
         >
           <div class="picto-artwork">
             <Transition name="fade">
               <div
-                v-if="copied === picto.id"
+                v-if="copied === picto.id || copyError === picto.id"
                 class="overlay"
+                :class="{ 'overlay--error': copyError === picto.id }"
+                aria-live="polite"
               >
-                Import copié !
+                {{ copyError === picto.id ? 'Échec de la copie' : 'Import copié !' }}
               </div>
             </Transition>
             <svg
+              class="fr-artwork"
               aria-hidden="true"
+              focusable="false"
               viewBox="0 0 80 80"
               width="80"
               height="80"
@@ -79,9 +99,9 @@ function copyImport (id: keyof typeof svgs, name: string, category: string) {
             </svg>
           </div>
           <span class="picto-label">{{ picto.name }}</span>
-        </li>
-      </ul>
-    </div>
+        </button>
+      </li>
+    </ul>
   </div>
 </template>
 
@@ -98,10 +118,31 @@ function copyImport (id: keyof typeof svgs, name: string, category: string) {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: 0;
+}
+
+.picto-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   gap: 0.5rem;
   width: 100px;
   cursor: pointer;
-  margin-top: 0;
+  background: none;
+  border: 2px solid transparent;
+  border-radius: 4px;
+  padding: 0.25rem;
+  color: inherit;
+  transition: border-color 0.2s;
+}
+
+.picto-btn:focus-visible {
+  outline: none;
+  border-color: var(--vp-c-brand-1, #3451b2);
+}
+
+.picto-btn:hover .picto-artwork {
+  opacity: 0.85;
 }
 
 .picto-artwork {
@@ -122,6 +163,10 @@ function copyImport (id: keyof typeof svgs, name: string, category: string) {
   text-align: center;
   border-radius: 4px;
   z-index: 1;
+}
+
+.overlay--error {
+  background: rgba(180, 0, 0, 0.85);
 }
 
 .picto-label {
