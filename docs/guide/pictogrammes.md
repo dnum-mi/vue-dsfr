@@ -7,12 +7,15 @@ La librairie d’images au format SVG est accessible dans la librairie DSFR, dan
 
 Vous pouvez copier le code d'import en cliquant sur le pictogramme.
 
-*Par exemple, en cliquant sur `city-hall`, vous copierez `import svgCityHall from '@gouvfr/dsfr/dist/artwork/pictograms/buildings/city-hall.svg'` dans le presse-papiers.*
+::: info Astuce
+
+Par exemple, en cliquant sur `city-hall`, vous copierez `import svgCityHall from '@gouvfr/dsfr/dist/artwork/pictograms/buildings/city-hall.svg'` dans le presse-papiers.
+
+:::
 
 ## Les pictogrammes par section
 
   <AppPictograms :pictograms/>
-
 
 <script setup>
 import pictograms from './pictograms.json' with { type: 'json' }
