@@ -106,6 +106,23 @@ async function copyImport (id: keyof typeof svgs, name: string, category: string
 </template>
 
 <style scoped>
+.fr-artwork-decorative {
+  fill: #ececfe;
+}
+.fr-artwork-minor {
+  fill: #e1000f;
+}
+.fr-artwork-major {
+  fill: #000091;
+}
+
+:global([data-fr-theme="dark"]) .fr-artwork-decorative {
+  fill: #21213f;
+}
+:global([data-fr-theme="dark"]) .fr-artwork-major {
+  fill: #8585f6;
+}
+
 .picto-grid {
   list-style: none;
   padding: 0;
