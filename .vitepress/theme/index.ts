@@ -12,7 +12,6 @@ import Story from './Story.vue'
 import VIconLink from './VIconLink.vue'
 import './official-icons.css'
 import '@gouvfr/dsfr/dist/utility/icons/icons.main.css'
-import '@gouvfr/dsfr/dist/core/core.main.css'
 import './style.css'
 
 export default {
