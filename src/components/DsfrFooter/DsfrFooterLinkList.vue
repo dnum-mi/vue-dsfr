@@ -8,7 +8,7 @@ export type {
 withDefaults(defineProps<DsfrFooterLinkListProps>(), {
   categoryName: 'Nom de la catégorie',
   links: () => [],
-  titleTag: 'h3',
+  titleTag: 'h2',
 })
 </script>
 
