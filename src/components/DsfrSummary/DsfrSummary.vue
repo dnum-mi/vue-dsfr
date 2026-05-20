@@ -5,6 +5,7 @@ export type { DsfrSummaryProps }
 
 withDefaults(defineProps<DsfrSummaryProps>(), {
   title: 'Sommaire',
+  titleTag: 'h2',
   anchors: () => [],
 })
 </script>
@@ -15,12 +16,13 @@ withDefaults(defineProps<DsfrSummaryProps>(), {
     role="navigation"
     aria-labelledby="fr-summary-title"
   >
-    <h2
+    <component
+      :is="titleTag"
       id="fr-summary-title"
       class="fr-summary__title"
     >
       {{ title }}
-    </h2>
+    </component>
     <ol class="fr-summary__list">
       <li
         v-for="(anchor, idx) in anchors"
