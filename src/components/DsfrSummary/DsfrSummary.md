@@ -17,10 +17,11 @@ Le composant affiche :
 
 ## 🛠️ Props
 
-| Nom      | Type                           | Défaut        | Description                                                                 |
-|----------|--------------------------------|---------------|-----------------------------------------------------------------------------|
-| `title`  | `string`                       | `'Sommaire'`  | Titre du sommaire, affiché au-dessus de la liste des liens.                 |
-| `anchors`| `{ link: string, name: string }[]` | `[]`          | Liste des ancres à afficher dans le sommaire. Chaque élément correspond à un lien. |
+| Nom        | Type                                      | Défaut        | Description                                                                 |
+|------------|-------------------------------------------|---------------|-----------------------------------------------------------------------------|
+| `title`    | `string`                                  | `'Sommaire'`  | Titre du sommaire, affiché au-dessus de la liste des liens.                 |
+| `titleTag` | `'h2' \| 'h3' \| 'h4' \| 'h5' \| 'p'`   | `'h2'`        | Balise HTML utilisée pour le titre du sommaire. Permet d'adapter le niveau sémantique selon le contexte de la page. |
+| `anchors`  | `{ link: string, name: string }[]`        | `[]`          | Liste des ancres à afficher dans le sommaire. Chaque élément correspond à un lien. |
 
 ### Format de `anchors`
 
@@ -48,6 +49,21 @@ Aucun slot disponible pour ce composant.
     { link: '#introduction', name: 'Introduction' },
     { link: '#chapitre1', name: 'Chapitre 1' },
     { link: '#chapitre2', name: 'Chapitre 2' }
+  ]"
+/>
+```
+
+### Exemple avec un niveau de titre personnalisé
+
+Si le sommaire est imbriqué dans une page où `<h2>` est déjà utilisé pour les titres de section, il est possible d'utiliser `titleTag="h3"` :
+
+```vue
+<DsfrSummary
+  title="Sommaire"
+  title-tag="h3"
+  :anchors="[
+    { link: '#section1', name: 'Section 1' },
+    { link: '#section2', name: 'Section 2' }
   ]"
 />
 ```

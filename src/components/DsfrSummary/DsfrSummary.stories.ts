@@ -13,6 +13,11 @@ const meta = {
       control: 'text',
       description: 'Titre du sommaire',
     },
+    titleTag: {
+      control: 'select',
+      options: ['h2', 'h3', 'h4', 'h5', 'p'],
+      description: 'Balise HTML utilisée pour le titre du sommaire',
+    },
     anchors: {
       control: 'object',
       description:
@@ -34,12 +39,14 @@ export const Sommaire: Story = {
     template: `
     <DsfrSummary
       :title="args.title"
+      :title-tag="args.titleTag"
       :anchors="args.anchors"
     />
   `,
   }),
   args: {
-    title: 'Exemple de sommaire',
+    title: 'Exemple de sommaire avec niveau de titre personnalisé',
+    titleTag: 'h3',
     anchors: [
       { link: '#', name: 'Première étape' },
       { link: '#', name: 'Deuxième étape' },
