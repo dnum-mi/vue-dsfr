@@ -579,6 +579,11 @@ export default defineConfig({
       },
     },
 
+    build: {
+      // SVG files used with <use href="...#symbol"> cannot use data URI inlining
+      assetsInlineLimit: (filePath) => !filePath.endsWith('.svg'),
+    },
+
     // not needed, just there to prevent reload on cold start
     optimizeDeps: {
       include: [
