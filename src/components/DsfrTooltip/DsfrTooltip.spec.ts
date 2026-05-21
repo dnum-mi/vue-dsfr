@@ -5,7 +5,7 @@ import DsfrTooltip from './DsfrTooltip.vue'
 describe('DsfrTooltip', () => {
   it('should render tooltip trigger and content', () => {
     const content = 'Aide contextuelle'
-    const label = 'Afficher l‘aide'
+    const label = 'Afficher l’aide'
 
     const { container, getByRole } = render(DsfrTooltip, {
       props: {

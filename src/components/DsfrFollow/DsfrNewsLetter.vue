@@ -13,7 +13,7 @@ withDefaults(defineProps<DsfrNewsLetterProps>(), {
   inputTitle: 'Adresse courriel',
   hintText: '',
   buttonText: 'S’abonner',
-  buttonTitle: 'S‘abonner à notre lettre d’information',
+  buttonTitle: 'S’abonner à notre lettre d’information',
   buttonAction: () => {},
   onSubmit: () => {},
   onlyCallout: false,

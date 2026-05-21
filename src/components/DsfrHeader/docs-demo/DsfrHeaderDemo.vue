@@ -10,7 +10,7 @@ import DsfrHeader from '../DsfrHeader.vue'
 
 const logoText = ['Ministère', 'de l’intérieur']
 const serviceTitle = 'Nom du Site/Service'
-const serviceDescription = 'baseline - précisions sur l‘organisation'
+const serviceDescription = 'baseline - précisions sur l’organisation'
 const placeholder = ''
 const homeTo = '/'
 const quickLinks: DsfrHeaderProps['quickLinks'] = [

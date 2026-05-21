@@ -109,7 +109,7 @@ const baseArgs: Partial<DsfrHeaderProps> & { search: () => void } = {
   showSearch: true,
   logoText: ['Ministère', 'de l’intérieur'],
   serviceTitle: 'Nom du Site/Service',
-  serviceDescription: 'baseline - précisions sur l‘organisation',
+  serviceDescription: 'baseline - précisions sur l’organisation',
   modelValue: '',
   placeholder: 'Rechercher...',
   homeTo: '/',

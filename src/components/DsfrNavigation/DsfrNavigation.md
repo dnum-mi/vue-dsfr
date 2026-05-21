@@ -38,7 +38,7 @@ Le composant écoute les événements DOM globaux suivants (pour gérer l’ouve
 | nom      | donnée (payload) | description                                                  |
 |----------|------------------|--------------------------------------------------------------|
 | `click`  | *aucune*         | déclenche l'ouverture ou la fermeture d'un menu              |
-| `keydown`| *aucune*         | l‘appui sur Échap qui déclenche la fermeture d'un menu ouvert|
+| `keydown`| *aucune*         | l’appui sur Échap qui déclenche la fermeture d'un menu ouvert|
 | `focusin`| *aucune*         | Au changement de focus : si le focus sort du menu ouvert, celui-ci est refermé automatiquement |
 
 ## 🧩 Slots

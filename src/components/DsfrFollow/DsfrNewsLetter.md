@@ -56,7 +56,7 @@ Aucun slot disponible pour ce composant.
         input-title="Adresse courriel"
         placeholder="prenom.nom@example.com"
         button-text="S’abonner"
-        button-title="S‘abonner à notre lettre d’information"
+        button-title="S’abonner à notre lettre d’information"
 />
 ```
 
