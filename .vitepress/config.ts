@@ -155,6 +155,16 @@ const composants = [
     ],
   },
   {
+    text: 'DsfrConnect',
+    link: '/composants/DsfrConnect.md',
+    items: [
+      {
+        text: 'DsfrFranceConnect (obsolète)',
+        link: '/composants/DsfrFranceConnect.md',
+      },
+    ],
+  },
+  {
     text: 'DsfrConsent',
     link: '/composants/DsfrConsent.md',
   },
@@ -213,10 +223,6 @@ const composants = [
       {
         text: 'DsfrFooterPartners',
         link: '/composants/DsfrFooterPartners.md',
-      },
-      {
-        text: 'DsfrFranceConnect',
-        link: '/composants/DsfrFranceConnect.md',
       },
     ],
   },
