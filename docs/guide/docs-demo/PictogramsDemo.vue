@@ -1,17 +1,11 @@
 <script setup lang="ts">
-import { useData } from 'vitepress'
-import { ref, watchEffect } from 'vue'
+import { ref } from 'vue'
 
-import * as svgs from '../../docs/guide/pictograms'
+import * as svgs from '../pictograms'
 
 defineProps<{
   pictograms: PictogramCategory[]
 }>()
-const { isDark } = useData()
-
-watchEffect(() => {
-  document.documentElement.setAttribute('data-fr-theme', isDark.value ? 'dark' : 'light')
-})
 
 type Pictogram = {
   name: string
@@ -106,23 +100,6 @@ async function copyImport (id: keyof typeof svgs, name: string, category: string
 </template>
 
 <style scoped>
-.fr-artwork-decorative {
-  fill: #ececfe;
-}
-.fr-artwork-minor {
-  fill: #e1000f;
-}
-.fr-artwork-major {
-  fill: #000091;
-}
-
-:global([data-fr-theme="dark"]) .fr-artwork-decorative {
-  fill: #21213f;
-}
-:global([data-fr-theme="dark"]) .fr-artwork-major {
-  fill: #8585f6;
-}
-
 .picto-grid {
   list-style: none;
   padding: 0;

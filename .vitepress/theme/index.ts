@@ -7,7 +7,6 @@ import VIcon from '../../src/components/VIcon/VIcon.vue'
 
 import AppColors from './AppColors.vue'
 import AppIcons from './AppIcons.vue'
-import AppPictograms from './AppPictograms.vue'
 import Story from './Story.vue'
 import VIconLink from './VIconLink.vue'
 import './official-icons.css'
@@ -23,6 +22,5 @@ export default {
     app.component('RouterLink', RouterLink)
     app.component('AppColors', AppColors)
     app.component('AppIcons', AppIcons)
-    app.component('AppPictograms', AppPictograms)
   },
 } satisfies Theme

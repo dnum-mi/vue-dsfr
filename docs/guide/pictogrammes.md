@@ -15,8 +15,11 @@ Par exemple, en cliquant sur `city-hall`, vous copierez `import svgCityHall from
 
 ## Les pictogrammes par section
 
-  <AppPictograms :pictograms/>
+<Story data-title="Pictogrammes officiels" min-h="600px">
+  <PictogramsDemo :pictograms/>
+</Story>
 
 <script setup>
 import pictograms from './pictograms.json' with { type: 'json' }
+import PictogramsDemo from './docs-demo/PictogramsDemo.vue'
 </script>
