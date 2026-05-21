@@ -32,7 +32,7 @@ Le `DsfrTooltip` est un composant Vue versatile, conçu pour fournir des infobul
 
 ::: code-group
 
-<Story data-title="Démo" min-h="300px">
+<Story data-title="Démo" min-h="1000px">
   <DsfrTooltipDemo />
 </Story>
 
