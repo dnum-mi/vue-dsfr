@@ -24,5 +24,12 @@ import DsfrConnect from '../DsfrConnect.vue'
         lang="es"
       />
     </p>
+
+    <h2>FranceConnect (désactivé)</h2>
+    <p class="fr-my-2v">
+      <DsfrConnect
+        disabled
+      />
+    </p>
   </div>
 </template>

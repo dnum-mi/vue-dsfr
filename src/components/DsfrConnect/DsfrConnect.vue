@@ -1,11 +1,13 @@
 <script lang="ts" setup>
-import type { DsfrConnectProps, DsfrConnectVariant } from './DsfrConnect.types'
+import type { DsfrConnectProps } from './DsfrConnect.types'
 
 import { computed } from 'vue'
 
 import { connectI18n } from './DsfrConnect.i18n'
 
 export type { DsfrConnectProps }
+
+defineOptions({ inheritAttrs: false })
 
 const props = withDefaults(defineProps<DsfrConnectProps>(), {
   lang: 'fr',

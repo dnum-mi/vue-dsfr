@@ -27,7 +27,15 @@ Le fonctionnement en détail : <https://franceconnect.gouv.fr/partenaires>
 |------------|-----------------------------------------|-------------|--------------------------------------------------------------------------------------------------------------------------------------|
 | `variant`  | `'plus' \| 'pro'`                       | `undefined` | Variante du bouton : `'plus'` pour FranceConnect+, `'pro'` pour ProConnect. Sans valeur, affiche FranceConnect standard.             |
 | `lang`     | `'fr' \| 'en' \| 'es' \| 'de'`          | `'fr'`      | Langue utilisée pour le texte du lien d'aide. Toute valeur non reconnue revient à `'fr'`.                                            |
-| `id`       | `string`                                | `undefined` | Identifiant HTML du composant.                                                                                                       |
+
+### Attributs HTML natifs du bouton
+
+Les attributs HTML natifs passés au composant sont transmis directement au `<button>` sous-jacent (via `$attrs`). Exemples utiles :
+
+| Attribut   | Type      | Description                                              |
+|------------|-----------|----------------------------------------------------------|
+| `id`       | `string`  | Identifiant HTML du bouton.                              |
+| `disabled` | `boolean` | Désactive le bouton.                                     |
 
 ### Variantes et URLs associées
 
@@ -73,11 +81,27 @@ Pas de slot.
 <DsfrConnect variant="pro" lang="de" />
 ```
 
+### Bouton désactivé
+
+```vue
+<DsfrConnect disabled />
+
+<DsfrConnect variant="plus" disabled />
+```
+
+### Avec un `id` sur le bouton
+
+L'`id` est transmis directement au `<button>` sous-jacent :
+
+```vue
+<DsfrConnect id="btn-connexion" />
+```
+
 ### Démo interactive
 
 ::: code-group
 
-<Story data-title="Démo" min-h="520px">
+<Story data-title="Démo" min-h="684px">
   <DsfrConnectDemo />
 </Story>
 
