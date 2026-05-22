@@ -13,7 +13,10 @@ const props = withDefaults(defineProps<DsfrConnectProps>(), {
   lang: 'fr',
 })
 
-const i18n = computed(() => connectI18n[props.lang ?? 'fr']?.[props.variant ?? 'default'])
+const i18n = computed(() => {
+  const lang = (props.lang && connectI18n[props.lang]) ? props.lang : 'fr'
+  return connectI18n[lang][props.variant ?? 'default']
+})
 
 const variantConfig = computed<{ href: string, brand: string }>(() => {
   if (props.variant === 'pro') {
