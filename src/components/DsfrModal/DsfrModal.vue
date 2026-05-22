@@ -23,7 +23,7 @@ const props = withDefaults(defineProps<DsfrModalProps>(), {
 
 const emit = defineEmits<{ (e: 'close'): void }>()
 
-defineSlots<{
+const slots = defineSlots<{
   /**
    * Slot par défaut pour le contenu de la modale.
    * Sera dans `<div class="fr-modal__content">`
@@ -58,10 +58,7 @@ const role = computed(() => {
   if (!props.isAlert) {
     return undefined
   }
-  if (props.actions.length) {
-    return 'alertdialog'
-  }
-  return 'alert'
+  return 'alertdialog'
 })
 const closeButtonId = computed(() => `${props.modalId}-close-button`)
 
@@ -113,6 +110,9 @@ onMounted(() => {
   startListeningToEscape()
   setAppropriateClassOnBody(props.opened)
   window.addEventListener('resize', updateScrollDivider)
+  if (import.meta.env.DEV && !slots.default) {
+    console.warn('[DsfrModal] Le slot par défaut est obligatoire selon les spécifications DSFR. La modale doit contenir du contenu.')
+  }
 })
 
 onBeforeUnmount(() => {
@@ -155,10 +155,11 @@ const iconProps = computed(() => dsfrIcon.value
     :tabbable-options="tabbableOptions"
   >
     <dialog
-      id="fr-modal-1"
+      :id="`dialog-${modalId}`"
       ref="modal"
       aria-modal="true"
       :aria-labelledby="modalId"
+      :aria-describedby="`${modalId}-description`"
       :role="role"
       class="fr-modal"
       :class="{ 'fr-modal--opened': opened }"
@@ -189,7 +190,7 @@ const iconProps = computed(() => dsfrIcon.value
                   ref="closeBtn"
                   class="fr-btn fr-btn--close"
                   :title="closeButtonTitle"
-                  aria-controls="fr-modal-1"
+                  :aria-controls="`dialog-${modalId}`"
                   type="button"
                   @click="close()"
                 >
@@ -220,7 +221,9 @@ const iconProps = computed(() => dsfrIcon.value
                   {{ title }}
                 </h1>
                 <!-- @slot Slot par défaut pour le contenu de la liste. Sera dans `<ul class="fr-modal__title">` -->
-                <slot />
+                <div :id="`${modalId}-description`">
+                  <slot />
+                </div>
               </div>
               <div
                 v-if="actions?.length || $slots.footer"

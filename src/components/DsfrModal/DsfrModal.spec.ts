@@ -3,14 +3,16 @@ import { mount } from '@vue/test-utils'
 import DsfrModal from './DsfrModal.vue'
 
 describe('DsfrModal', () => { // Skipped because of this issue: https://github.com/focus-trap/focus-trap-react/issues/785
-  it('should render modal and emit "close" on click on close button', async () => {
+  it('should render close button with correct aria-controls and emit "close" on click', async () => {
     const content = 'Contenu de la modale'
     const title = 'Titre de la modale'
+    const modalId = 'test-modal'
 
     const wrapper = mount(DsfrModal, {
       props: {
         opened: true,
         title,
+        modalId,
       },
       slots: {
         default: content,
@@ -18,13 +20,11 @@ describe('DsfrModal', () => { // Skipped because of this issue: https://github.c
     })
 
     const closeBtn = wrapper.find('button.fr-btn--close')
+    expect(closeBtn.attributes('aria-controls')).toBe(`dialog-${modalId}`)
 
     expect(wrapper.emitted().close).not.toBeTruthy()
-
     await closeBtn.trigger('click')
-
     await new Promise((resolve) => setTimeout(resolve, 300))
-
     expect(wrapper.emitted().close).toBeTruthy()
   })
 
@@ -109,7 +109,8 @@ describe('DsfrModal', () => { // Skipped because of this issue: https://github.c
     const modal = wrapper.find('dialog.fr-modal')
     expect(modal.attributes('role')).toBe('alertdialog')
   })
-  it('should render modal with role="alert" when isAlert is true and no action provided', async () => {
+
+  it('should render modal with role="alertdialog" when isAlert is true even without actions', async () => {
     const content = 'Contenu de la modale'
     const title = 'Titre de la modale'
 
@@ -126,6 +127,69 @@ describe('DsfrModal', () => { // Skipped because of this issue: https://github.c
     })
 
     const modal = wrapper.find('dialog.fr-modal')
-    expect(modal.attributes('role')).toBe('alert')
+    expect(modal.attributes('role')).toBe('alertdialog')
+  })
+
+  it('should render modal with correct aria attributes', async () => {
+    const content = 'Contenu de la modale'
+    const title = 'Titre de la modale'
+    const modalId = 'test-modal'
+
+    const wrapper = mount(DsfrModal, {
+      props: {
+        opened: true,
+        title,
+        modalId,
+      },
+      slots: {
+        default: content,
+      },
+    })
+
+    const modal = wrapper.find('dialog.fr-modal')
+    expect(modal.attributes('id')).toBe(`dialog-${modalId}`)
+    expect(modal.attributes('aria-modal')).toBe('true')
+    expect(modal.attributes('aria-labelledby')).toBe(modalId)
+    expect(modal.attributes('aria-describedby')).toBe(`${modalId}-description`)
+  })
+
+  it('should render the title with the correct id for aria-labelledby', async () => {
+    const title = 'Titre de la modale'
+    const modalId = 'test-modal'
+
+    const wrapper = mount(DsfrModal, {
+      props: {
+        opened: true,
+        title,
+        modalId,
+      },
+      slots: {
+        default: 'contenu',
+      },
+    })
+
+    const heading = wrapper.find(`#${modalId}`)
+    expect(heading.exists()).toBe(true)
+    expect(heading.text()).toContain(title)
+  })
+
+  it('should render the description wrapper with the correct id for aria-describedby', async () => {
+    const content = 'Description de la modale'
+    const modalId = 'test-modal'
+
+    const wrapper = mount(DsfrModal, {
+      props: {
+        opened: true,
+        title: 'Titre',
+        modalId,
+      },
+      slots: {
+        default: content,
+      },
+    })
+
+    const descriptionEl = wrapper.find(`#${modalId}-description`)
+    expect(descriptionEl.exists()).toBe(true)
+    expect(descriptionEl.text()).toContain(content)
   })
 })
