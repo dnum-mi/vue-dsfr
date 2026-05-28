@@ -235,8 +235,8 @@ function isColumnFixedActiveForCell (column: DsfrDataTableColumn | undefined, ce
   }
 
   const position = window.getComputedStyle(cell).position
-  if (position) {
-    return position === 'sticky'
+  if (position === 'sticky') {
+    return true
   }
 
   return isColumnFixedActive(column)
@@ -346,17 +346,25 @@ onMounted(async () => {
 })
 
 watch(
+  () => props.columns,
+  async () => {
+    await nextTick()
+    updateFixedColumnsOffsets()
+  },
+  { deep: true },
+)
+
+watch(
   [
-    () => props.columns,
     () => props.selectableRows,
     () => props.pagination,
+    () => props.verticalBorders,
     finalRows,
   ],
   async () => {
     await nextTick()
     updateFixedColumnsOffsets()
   },
-  { deep: true },
 )
 
 onBeforeUnmount(() => {
