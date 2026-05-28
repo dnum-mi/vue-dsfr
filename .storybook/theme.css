@@ -397,3 +397,11 @@ a[href] {
   background-color: var(--background-default-grey);
 }
 
+/* corrige la hauteur du modal__body car l'iframe de storybook est plus grande que la modal */
+#storybook-docs .fr-modal > .fr-container,
+#storybook-docs .fr-modal > .fr-container > .fr-grid-row,
+#storybook-docs .fr-modal > .fr-container > .fr-grid-row > .fr-col-12,
+#storybook-docs .fr-modal__body {
+  height: 100%;
+  max-height: 100%;
+}

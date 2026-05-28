@@ -104,6 +104,10 @@ const clickHandler = (event: MouseEvent) => {
 
 const keydownHandler = (event: KeyboardEvent) => {
   if (event.key === 'Escape') {
+    if (!show.value) {
+      return
+    }
+    event.stopPropagation()
     show.value = false
   }
 }
@@ -162,7 +166,7 @@ onUnmounted(() => {
     ref="source"
     :class="onHover ? 'fr-link' : 'fr-btn  fr-btn--tooltip'"
     :aria-describedby="id"
-    :href="onHover ? '#' : undefined"
+    :href="onHover ? `#${id}` : undefined"
     :type="onHover ? undefined : 'button'"
     @click="onClick()"
     @mouseleave="onMouseLeave()"

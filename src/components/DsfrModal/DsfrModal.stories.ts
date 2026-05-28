@@ -1,20 +1,18 @@
 import type { Meta, StoryObj } from '@storybook/vue3-vite'
 
-import { setup } from '@storybook/vue3-vite'
 import { expect, fn, userEvent, within } from 'storybook/test'
 import { computed, ref } from 'vue'
 
 import DsfrButton from '../DsfrButton/DsfrButton.vue'
-import VIcon from '../VIcon/VIcon.vue'
 
 import DsfrModal from './DsfrModal.vue'
 
+type DsfrModalStoryArgs = InstanceType<typeof DsfrModal>['$props'] & {
+  onActionClick?: (label: string) => void
+}
+
 const delay = (timeout = 100) =>
   new Promise(resolve => setTimeout(resolve, timeout))
-
-setup((app) => {
-  app.component('VIcon', VIcon)
-})
 
 /**
  * [Voir quand l’utiliser sur la documentation du DSFR](https://www.systeme-de-design.gouv.fr/version-courante/fr/composants/modale)
@@ -23,6 +21,18 @@ const meta = {
   component: DsfrModal,
   title: 'Composants/DsfrModal',
   tags: ['autodocs'],
+  decorators: [
+    () => ({
+      template: `
+        <div style="padding: 1.5rem;">
+          <div style="max-height: 55vh; overflow: auto; padding: 0.5rem; border: 1px solid var(--border-default-grey);">
+            <story />
+          </div>
+          <div style="height: 24vh;" />
+        </div>
+      `,
+    }),
+  ],
   argTypes: {
     actions: {
       control: 'object',
@@ -63,13 +73,17 @@ const meta = {
       description:
         'Valeur du texte informatif au survol du bouton cliquable permettant la fermeture de la modale',
     },
+    disableOutsideInteraction: {
+      control: 'boolean',
+      description:
+        'Désactive la fermeture de la modale au clic en dehors de son contenu',
+    },
     onClose: fn(),
-    onActionClick: fn(),
   },
-} satisfies Meta<typeof DsfrModal>
+} satisfies Meta<DsfrModalStoryArgs>
 
 export default meta
-type Story = StoryObj<typeof meta>
+type Story = StoryObj<DsfrModalStoryArgs>
 
 export const ModaleAvecActions: Story = {
   name: 'Modale avec actions',
@@ -77,33 +91,29 @@ export const ModaleAvecActions: Story = {
     components: {
       DsfrModal,
       DsfrButton,
-      VIcon,
     },
     setup () {
-      const opened = ref(args.opened)
       const modalOrigin = ref(null)
-
       const modifiedActions = computed(() => {
         return args.actions?.map((action: any) => ({
           ...action,
           onClick: () => {
+            args.opened = false
             args.onActionClick(action.label)
-            opened.value = false
           },
         }))
       })
 
       function close () {
+        args.opened = false
         args.onClose()
-        opened.value = false
       }
 
       return {
         args,
-        opened,
         modalOrigin,
         modifiedActions,
-        open: () => { opened.value = true },
+        open: () => { args.opened = true },
         close,
       }
     },
@@ -115,13 +125,16 @@ export const ModaleAvecActions: Story = {
       />
       <DsfrModal
         ref="modal"
-        :opened="opened"
+        :opened="args.opened"
         :actions="modifiedActions"
         :is-alert="args.isAlert"
         :icon="args.icon"
         :title="args.title"
         :origin="modalOrigin"
         :size="args.size"
+        :close-button-label="args.closeButtonLabel"
+        :close-button-title="args.closeButtonTitle"
+        :disable-outside-interaction="args.disableOutsideInteraction"
         @close="close()"
       >
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas varius tortor nibh, sit amet tempor nibh finibus et. Aenean eu enim justo. Vestibulum aliquam hendrerit molestie. Mauris malesuada nisi sit amet augue accumsan tincidunt. Maecenas tincidunt, velit ac porttitor pulvinar, tortor eros facilisis libero, vitae commodo nunc quam et ligula. Ut nec ipsum sapien. Interdum et malesuada fames ac ante ipsum primis in faucibus. Integer id nisi nec nulla luctus lacinia non eu turpis. Etiam in ex imperdiet justo tincidunt egestas. Ut porttitor urna ac augue cursus tincidunt sit amet sed orci.</p>
@@ -135,6 +148,7 @@ export const ModaleAvecActions: Story = {
     icon: 'ri-checkbox-circle-line',
     size: 'md',
     onClose: fn(),
+    onActionClick: fn(),
     actions: [
       {
         label: 'Valider',
@@ -144,6 +158,7 @@ export const ModaleAvecActions: Story = {
         secondary: true,
       },
     ],
+    disableOutsideInteraction: false,
   },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement)
@@ -181,22 +196,18 @@ export const ModaleSansPiedDePage: Story = {
     components: {
       DsfrModal,
       DsfrButton,
-      VIcon,
     },
     setup () {
-      const opened = ref(args.opened)
       const modalOrigin = ref(null)
 
       function close () {
-        args.onClose()
-        opened.value = false
+        args.opened = false
       }
 
       return {
         args,
-        opened,
         modalOrigin,
-        open: () => { opened.value = true },
+        open: () => { args.opened = true },
         close,
       }
     },
@@ -208,12 +219,15 @@ export const ModaleSansPiedDePage: Story = {
       />
       <DsfrModal
         ref="modal"
-        :opened="opened"
+        :opened="args.opened"
         :is-alert="args.isAlert"
         :icon="args.icon"
         :title="args.title"
         :origin="modalOrigin"
         :size="args.size"
+        :close-button-label="args.closeButtonLabel"
+        :close-button-title="args.closeButtonTitle"
+        :disable-outside-interaction="args.disableOutsideInteraction"
         @close="close()"
       >
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas varius tortor nibh, sit amet tempor nibh finibus et. Aenean eu enim justo. Vestibulum aliquam hendrerit molestie. Mauris malesuada nisi sit amet augue accumsan tincidunt. Maecenas tincidunt, velit ac porttitor pulvinar, tortor eros facilisis libero, vitae commodo nunc quam et ligula. Ut nec ipsum sapien. Interdum et malesuada fames ac ante ipsum primis in faucibus. Integer id nisi nec nulla luctus lacinia non eu turpis. Etiam in ex imperdiet justo tincidunt egestas. Ut porttitor urna ac augue cursus tincidunt sit amet sed orci.</p>
@@ -227,6 +241,7 @@ export const ModaleSansPiedDePage: Story = {
     icon: 'ri-checkbox-circle-line',
     size: 'md',
     actions: undefined,
+    disableOutsideInteraction: false,
   },
 }
 
@@ -236,22 +251,18 @@ export const ModaleAvecFooterPersonnalise: Story = {
     components: {
       DsfrModal,
       DsfrButton,
-      VIcon,
     },
     setup () {
-      const opened = ref(args.opened)
       const modalOrigin = ref(null)
 
       function close () {
-        args.onClose()
-        opened.value = false
+        args.opened = false
       }
 
       return {
         args,
-        opened,
         modalOrigin,
-        open: () => { opened.value = true },
+        open: () => { args.opened = true },
         close,
       }
     },
@@ -263,12 +274,15 @@ export const ModaleAvecFooterPersonnalise: Story = {
       />
       <DsfrModal
         ref="modal"
-        :opened="opened"
+        :opened="args.opened"
         :is-alert="args.isAlert"
         :icon="args.icon"
         :title="args.title"
         :origin="modalOrigin"
         :size="args.size"
+        :close-button-label="args.closeButtonLabel"
+        :close-button-title="args.closeButtonTitle"
+        :disable-outside-interaction="args.disableOutsideInteraction"
         @close="close()"
       >
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas varius tortor nibh, sit amet tempor nibh finibus et. Aenean eu enim justo. Vestibulum aliquam hendrerit molestie. Mauris malesuada nisi sit amet augue accumsan tincidunt. Maecenas tincidunt, velit ac porttitor pulvinar, tortor eros facilisis libero, vitae commodo nunc quam et ligula. Ut nec ipsum sapien. Interdum et malesuada fames ac ante ipsum primis in faucibus. Integer id nisi nec nulla luctus lacinia non eu turpis. Etiam in ex imperdiet justo tincidunt egestas. Ut porttitor urna ac augue cursus tincidunt sit amet sed orci.</p>
@@ -285,5 +299,6 @@ export const ModaleAvecFooterPersonnalise: Story = {
     icon: 'ri-checkbox-circle-line',
     size: 'md',
     actions: undefined,
+    disableOutsideInteraction: false,
   },
 }

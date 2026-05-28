@@ -108,6 +108,7 @@ onMounted(() => {
             <RouterLink
               class="fr-link fr-icon-arrow-right-line fr-link--icon-right fr-link--align-on-content"
               :to="link.to"
+              @click="$emit('toggleId', expandedId)"
             >
               {{ link.text }}
             </RouterLink>
@@ -118,6 +119,7 @@ onMounted(() => {
           v-for="(menu, idx) of menus"
           :key="idx"
           v-bind="menu"
+          @toggle-id="$emit('toggleId', expandedId)"
         />
       </div>
     </div>

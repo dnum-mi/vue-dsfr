@@ -38,7 +38,11 @@ export default antfu({
       'style/arrow-parens': 'off', // Should be ['error', 'as-needed']
       'style/operator-linebreak': ['error', 'after', { overrides: { '?': 'before', ':': 'before', '|': 'before', '&': 'before' } }],
       'style/max-statements-per-line': 'off', // Should be 'error'
-      'no-irregular-whitespace': 'warn',
+      'no-irregular-whitespace': ['warn', {
+        skipComments: true,
+        skipStrings: true,
+        skipRegExps: true,
+      }],
       'perfectionist/sort-imports': 'off', // import/order is better
       'perfectionist/sort-exports': 'off', // Think about it
       'style/space-before-function-paren': ['error', 'always'],
@@ -66,7 +70,13 @@ export default antfu({
     files: ['**/*.vue'],
     rules: {
       'vue/quote-props': ['error', 'as-needed'], // Should be ['error', 'consistent-as-needed']
-      'vue/no-irregular-whitespace': 'warn',
+      // éviter le doublon avec vue/no-irregular-whitespace
+      'no-irregular-whitespace': 'off',
+      'vue/no-irregular-whitespace': ['warn', {
+        skipComments: true,
+        skipStrings: true,
+        skipHTMLTextContents: true,
+      }],
       'vue/max-attributes-per-line': [
         'error',
         {
@@ -94,6 +104,8 @@ export default antfu({
       'storybook/story-exports': 'error',
       'storybook/use-storybook-expect': 'error',
       'storybook/use-storybook-testing-library': 'error',
+      'no-irregular-whitespace': 'off',
+      'vue/no-irregular-whitespace': 'off',
     },
   },
   {
@@ -108,6 +120,17 @@ export default antfu({
       'import-x/order': 'off',
       // no-irregular-whitespace uses getAllComments() removed in ESLint 10 for markdown processor SourceCode
       'no-irregular-whitespace': 'off',
+    },
+  },
+  {
+    files: [
+      '**/docs-demo/**/*.vue',
+      '.vitepress/theme/**/*.vue',
+      'demo-app/**/*.vue',
+    ],
+    rules: {
+      'no-irregular-whitespace': 'off',
+      'vue/no-irregular-whitespace': 'off',
     },
   },
 ])

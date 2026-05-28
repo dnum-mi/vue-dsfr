@@ -20,6 +20,7 @@ La catégorie de méga-menu est composée des éléments suivants :
 - un titre de catégorie dans un élément `<h5>` avec lien
 - une liste non-ordonnée (`<ul>`) de liens de navigation
 - chaque lien utilise le composant `DsfrNavigationMenuLink`
+- les clics sur les liens remontent l'événement `toggleId` vers le méga-menu parent pour fermer le menu ouvert
 
 ## 🛠️ Props
 
@@ -31,7 +32,11 @@ La catégorie de méga-menu est composée des éléments suivants :
 
 ## 📡 Événements
 
-`DsfrNavigationMegaMenuCategory` ne déclenche pas d'événements spécifiques.
+`DsfrNavigationMegaMenuCategory` déclenche l'événement suivant :
+
+| nom       | donnée (payload) | description                                                                 |
+|-----------|------------------|-----------------------------------------------------------------------------|
+| `toggleId`| `string`         | Émis au clic sur un lien de catégorie, puis relayé par le méga-menu parent |
 
 ## 🧩 Slots
 

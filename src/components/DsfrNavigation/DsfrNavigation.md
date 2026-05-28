@@ -18,7 +18,9 @@ La navigation principale est composée des éléments suivants :
 - un label d'accessibilité (prop `label`)
 - une liste de liens et sous-menus (prop `navItems`) organisée hiérarchiquement
 - des menus déroulants qui s'ouvrent/ferment au clic
-- une gestion des événements clavier pour l'accessibilité (touches Échap, flèches)
+- une gestion des interactions clavier et focus pour l'accessibilité
+  - touche Échap : fermeture du menu ouvert
+  - sortie de focus du menu ouvert (ex: `Tab` depuis le dernier élément vers l'extérieur) : fermeture automatique du menu
 
 ## 🛠️ Props
 
@@ -28,14 +30,16 @@ La navigation principale est composée des éléments suivants :
 | `label`     | `string`      | `'Menu principal'`      |             | Nom associé à la navigation pour l'accessibilité                            |
 | `navItems`  | `array`       | `() => []`              | ✅          | Tableau contenant les liens ou sous-menus de la navigation                  |
 
-## 📡 Événements
+## 📡 Événements écoutés (internes)
 
-`DsfrNavigation` déclenche les événements suivants :
+`DsfrNavigation` n’émet pas d’événements spécifiques.
+Le composant écoute les événements DOM globaux suivants (pour gérer l’ouverture/fermeture des menus):
 
 | nom      | donnée (payload) | description                                                  |
 |----------|------------------|--------------------------------------------------------------|
-| `click`  | *aucune*        | Émis au clic qui déclenche l'ouverture ou la fermeture d'un menu |
-| `keydown`| *aucune*        | Émis en appuyant sur Échap qui déclenche la fermeture d'un menu ouvert |
+| `click`  | *aucune*         | déclenche l'ouverture ou la fermeture d'un menu              |
+| `keydown`| *aucune*         | l‘appui sur Échap qui déclenche la fermeture d'un menu ouvert|
+| `focusin`| *aucune*         | Au changement de focus : si le focus sort du menu ouvert, celui-ci est refermé automatiquement |
 
 ## 🧩 Slots
 

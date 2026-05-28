@@ -41,7 +41,7 @@ Le méga-menu de navigation est composé des éléments suivants :
 
 | nom       | donnée (payload) | description                                                  |
 |-----------|------------------|--------------------------------------------------------------|
-| `toggleId`| `string`        | Émis lors du clic sur le bouton pour ouvrir/fermer le menu   |
+| `toggleId`| `string`        | Émis lors du clic sur le bouton pour ouvrir/fermer le menu  et sur le bouton "Fermer" ou un lien interne du méga-menu pour fermer le menu |
 
 ## 🧩 Slots
 

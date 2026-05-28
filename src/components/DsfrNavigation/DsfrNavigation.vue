@@ -65,13 +65,37 @@ const onKeyDown = (e: KeyboardEvent) => {
   }
 }
 
+const onDocumentFocusIn = (e: FocusEvent) => {
+  if (!expandedMenuId.value) {
+    return
+  }
+
+  const expandedMenu = document.getElementById(expandedMenuId.value)
+  const target = e.target as HTMLElement | null
+
+  if (!expandedMenu || !target) {
+    return
+  }
+
+  // Keep menu state when focusing its controlling button.
+  if (target.getAttribute('aria-controls') === expandedMenuId.value) {
+    return
+  }
+
+  if (!expandedMenu.contains(target)) {
+    toggle(expandedMenuId.value)
+  }
+}
+
 onMounted(() => {
   document.addEventListener('click', onDocumentClick)
   document.addEventListener('keydown', onKeyDown)
+  document.addEventListener('focusin', onDocumentFocusIn)
 })
 onUnmounted(() => {
   document.removeEventListener('click', onDocumentClick)
   document.removeEventListener('keydown', onKeyDown)
+  document.removeEventListener('focusin', onDocumentFocusIn)
 })
 </script>
 

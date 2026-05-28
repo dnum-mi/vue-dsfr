@@ -60,7 +60,7 @@
     "build:vite": "vite build",
     "build:meta": "tsc -p tsconfig.meta.json",
     "demo": "vite",
-    "build:demo": "vite -c vite.config.demo.js build",
+    "build:demo": "vite -c vite.config.demo.ts build",
     "dev": "storybook dev -p 6006",
     "vitest": "vitest",
     "coverage": "vitest run --coverage",

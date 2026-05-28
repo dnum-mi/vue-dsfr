@@ -64,6 +64,10 @@ const guideItems = [
     link: '/guide/icones.md',
   },
   {
+    text: 'Les pictogrammes officiels',
+    link: '/guide/pictogrammes.md',
+  },
+  {
     text: 'Migrations',
     link: '/guide/migrations.md',
   },
@@ -573,6 +577,11 @@ export default defineConfig({
       alias: {
         '@': fileURLToPath(new URL('../src', import.meta.url)),
       },
+    },
+
+    build: {
+      // SVG files used with <use href="...#symbol"> cannot use data URI inlining
+      assetsInlineLimit: (filePath) => !filePath.endsWith('.svg'),
     },
 
     // not needed, just there to prevent reload on cold start

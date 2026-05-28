@@ -11,4 +11,5 @@ export type DsfrModalProps = {
   size?: 'sm' | 'md' | 'lg' | 'xl'
   closeButtonLabel?: string
   closeButtonTitle?: string
+  disableOutsideInteraction?: boolean
 }

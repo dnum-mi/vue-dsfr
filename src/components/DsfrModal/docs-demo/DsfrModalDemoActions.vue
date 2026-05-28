@@ -61,6 +61,11 @@ const actions: DsfrButtonProps[] = [
     >
       <template #default>
         <p>Êtes-vous sur de vouloir des patates ?</p>
+        <p><em>Ajout de Lorem Ipsum pour le comportement du scroll et affichage de la classe fr-scroll-divider</em></p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad atque debitis laudantium expedita, inventore corporis ut magnam explicabo eum eveniet rerum repellendus fugiat porro, itaque illum voluptas labore soluta provident?</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad atque debitis laudantium expedita, inventore corporis ut magnam explicabo eum eveniet rerum repellendus fugiat porro, itaque illum voluptas labore soluta provident?</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad atque debitis laudantium expedita, inventore corporis ut magnam explicabo eum eveniet rerum repellendus fugiat porro, itaque illum voluptas labore soluta provident?</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad atque debitis laudantium expedita, inventore corporis ut magnam explicabo eum eveniet rerum repellendus fugiat porro, itaque illum voluptas labore soluta provident?</p>
       </template>
     </DsfrModal>
   </div>

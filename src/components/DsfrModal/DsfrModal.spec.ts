@@ -1,23 +1,18 @@
 import { mount } from '@vue/test-utils'
 
-import VIcon from '../VIcon/VIcon.vue'
-
 import DsfrModal from './DsfrModal.vue'
 
-describe.skip('DsfrModal', () => { // Skipped because of this issue: https://github.com/focus-trap/focus-trap-react/issues/785
-  it('should render modal and emit "close" on click on close button', async () => {
+describe('DsfrModal', () => { // Skipped because of this issue: https://github.com/focus-trap/focus-trap-react/issues/785
+  it('should render close button with correct aria-controls and emit "close" on click', async () => {
     const content = 'Contenu de la modale'
     const title = 'Titre de la modale'
+    const modalId = 'test-modal'
 
     const wrapper = mount(DsfrModal, {
-      global: {
-        components: {
-          VIcon,
-        },
-      },
       props: {
         opened: true,
         title,
+        modalId,
       },
       slots: {
         default: content,
@@ -25,13 +20,11 @@ describe.skip('DsfrModal', () => { // Skipped because of this issue: https://git
     })
 
     const closeBtn = wrapper.find('button.fr-btn--close')
+    expect(closeBtn.attributes('aria-controls')).toBe(`dialog-${modalId}`)
 
     expect(wrapper.emitted().close).not.toBeTruthy()
-
     await closeBtn.trigger('click')
-
     await new Promise((resolve) => setTimeout(resolve, 300))
-
     expect(wrapper.emitted().close).toBeTruthy()
   })
 
@@ -40,11 +33,6 @@ describe.skip('DsfrModal', () => { // Skipped because of this issue: https://git
     const title = 'Titre de la modale'
 
     const wrapper = mount(DsfrModal, {
-      global: {
-        components: {
-          VIcon,
-        },
-      },
       props: {
         opened: true,
         title,
@@ -55,10 +43,8 @@ describe.skip('DsfrModal', () => { // Skipped because of this issue: https://git
     })
 
     const modalContentEl = wrapper.find('.fr-modal__content').element
-    const modalEl = wrapper.find('[role="dialog"]').element
-    // const labelledByTitleEl = wrapper.find('.fr-modal')
+    const modalEl = wrapper.find('.fr-modal').element
 
-    // expect(modalEl).toBe(labelledByTitleEl)
     expect(modalEl).toBeInstanceOf(Element)
     expect(modalEl).toContainHTML(title)
     expect(modalContentEl).toContainHTML(content)
@@ -69,11 +55,6 @@ describe.skip('DsfrModal', () => { // Skipped because of this issue: https://git
     const title = 'Titre de la modale'
 
     const wrapper = mount(DsfrModal, {
-      global: {
-        components: {
-          VIcon,
-        },
-      },
       props: {
         opened: true,
         title,
@@ -85,34 +66,130 @@ describe.skip('DsfrModal', () => { // Skipped because of this issue: https://git
 
     expect(wrapper.emitted().close).not.toBeTruthy()
 
-    // await wrapper.find('#test-button').element.focus()
     await wrapper.trigger('keydown.esc')
 
     expect(wrapper.emitted().keydown).toBeTruthy()
-    // expect(wrapper.emitted().close).toBeTruthy()
   })
 
-  it('should render modal with role alertdialog', async () => {
+  it('should render modal without role', async () => {
     const content = 'Contenu de la modale'
     const title = 'Titre de la modale'
 
     const wrapper = mount(DsfrModal, {
-      global: {
-        components: {
-          VIcon,
-        },
-      },
       props: {
         opened: true,
         title,
-        isAlert: true,
+        isAlert: false,
       },
       slots: {
         default: content,
       },
     })
 
-    const dialog = wrapper.find('[role="alertdialog"]')
-    expect(dialog.element).toHaveClass('fr-modal--opened')
+    const modal = wrapper.find('dialog.fr-modal')
+    expect(modal.attributes('role')).toBeUndefined()
+  })
+
+  it('should render modal with role="alertdialog" when isAlert is true and actions are provided', async () => {
+    const content = 'Contenu de la modale'
+    const title = 'Titre de la modale'
+
+    const wrapper = mount(DsfrModal, {
+      props: {
+        opened: true,
+        title,
+        isAlert: true,
+        actions: [{ label: 'Action 1' }],
+      },
+      slots: {
+        default: content,
+      },
+    })
+
+    const modal = wrapper.find('dialog.fr-modal')
+    expect(modal.attributes('role')).toBe('alertdialog')
+  })
+
+  it('should render modal with role="alertdialog" when isAlert is true even without actions', async () => {
+    const content = 'Contenu de la modale'
+    const title = 'Titre de la modale'
+
+    const wrapper = mount(DsfrModal, {
+      props: {
+        opened: true,
+        title,
+        isAlert: true,
+        actions: [],
+      },
+      slots: {
+        default: content,
+      },
+    })
+
+    const modal = wrapper.find('dialog.fr-modal')
+    expect(modal.attributes('role')).toBe('alertdialog')
+  })
+
+  it('should render modal with correct aria attributes', async () => {
+    const content = 'Contenu de la modale'
+    const title = 'Titre de la modale'
+    const modalId = 'test-modal'
+
+    const wrapper = mount(DsfrModal, {
+      props: {
+        opened: true,
+        title,
+        modalId,
+      },
+      slots: {
+        default: content,
+      },
+    })
+
+    const modal = wrapper.find('dialog.fr-modal')
+    expect(modal.attributes('id')).toBe(`dialog-${modalId}`)
+    expect(modal.attributes('aria-modal')).toBe('true')
+    expect(modal.attributes('aria-labelledby')).toBe(modalId)
+    expect(modal.attributes('aria-describedby')).toBe(`${modalId}-description`)
+  })
+
+  it('should render the title with the correct id for aria-labelledby', async () => {
+    const title = 'Titre de la modale'
+    const modalId = 'test-modal'
+
+    const wrapper = mount(DsfrModal, {
+      props: {
+        opened: true,
+        title,
+        modalId,
+      },
+      slots: {
+        default: 'contenu',
+      },
+    })
+
+    const heading = wrapper.find(`#${modalId}`)
+    expect(heading.exists()).toBe(true)
+    expect(heading.text()).toContain(title)
+  })
+
+  it('should render the description wrapper with the correct id for aria-describedby', async () => {
+    const content = 'Description de la modale'
+    const modalId = 'test-modal'
+
+    const wrapper = mount(DsfrModal, {
+      props: {
+        opened: true,
+        title: 'Titre',
+        modalId,
+      },
+      slots: {
+        default: content,
+      },
+    })
+
+    const descriptionEl = wrapper.find(`#${modalId}-description`)
+    expect(descriptionEl.exists()).toBe(true)
+    expect(descriptionEl.text()).toContain(content)
   })
 })

@@ -69,5 +69,6 @@
     "gql",
     "graphql",
     "astro"
-  ]
+  ],
+  "js/ts.tsdk.path": "node_modules/typescript/lib"
 }
