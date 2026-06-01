@@ -14,12 +14,12 @@ const meta = {
     content: {
       control: 'text',
       description:
-        'Contenu de votre bulle d\'aide : il s\'agit d\'un texte sans mise en forme.',
+        'Contenu de votre bulle d\'aide : il s\'agit d\'un texte sans mise en forme. Le texte peut être sélectionné par l\'utilisateur.',
     },
     onHover: {
       control: 'boolean',
       description:
-        'Permet de définir si l\'infobulle doit s\'afficher au survol de l\'élément (`true`) ou au clic (`false`, défaut).',
+        'Permet de définir si l\'infobulle doit s\'afficher au survol de l\'élément (`true`) ou au clic (`false`, défaut). Dans les deux cas, l\'infobulle reste visible lorsque le curseur ou le focus se déplace sur elle, permettant la sélection de son contenu.',
     },
   },
 } satisfies Meta<typeof DsfrTooltip>
