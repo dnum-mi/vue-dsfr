@@ -123,13 +123,20 @@ const onMouseEnterHandler = (event: MouseEvent) => {
   }
 }
 
-const onMouseLeave = () => {
+const onMouseLeave = (event: MouseEvent) => {
   if (props.onHover) {
+    const relatedTarget = event.relatedTarget as Node | null
+    if (tooltip.value && (relatedTarget === tooltip.value || tooltip.value.contains(relatedTarget))) {
+      return
+    }
     show.value = false
   }
 }
 
-const onBlur = () => {
+const onBlur = (event: FocusEvent) => {
+  if (tooltip.value && (event.relatedTarget === tooltip.value || tooltip.value.contains(event.relatedTarget as Node))) {
+    return
+  }
   show.value = false
 }
 
@@ -169,9 +176,9 @@ onUnmounted(() => {
     :href="onHover ? `#${id}` : undefined"
     :type="onHover ? undefined : 'button'"
     @click="onClick()"
-    @mouseleave="onMouseLeave()"
+    @mouseleave="onMouseLeave($event)"
     @focus="onFocus()"
-    @blur="onBlur()"
+    @blur="onBlur($event)"
   >
     <slot />
   </component>
@@ -183,6 +190,8 @@ onUnmounted(() => {
     :style="tooltipStyle"
     role="tooltip"
     aria-hidden="true"
+    tabindex="-1"
+    @mouseleave="onMouseLeave($event)"
   >
     {{ content }}
   </span>
