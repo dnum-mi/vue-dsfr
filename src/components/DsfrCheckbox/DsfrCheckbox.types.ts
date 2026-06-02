@@ -9,6 +9,7 @@ export type DsfrCheckboxProps = {
   modelValue: Array<unknown>
   small?: boolean
   inline?: boolean
+  indeterminate?: boolean
   readonly?: boolean
   readonlyOpacity?: number
   label?: string
