@@ -116,4 +116,18 @@ const modelValue = defineModel()
   cursor: not-allowed;
   opacity: v-bind('readonlyOpacity');
 }
+
+/* Styles temporaires pour visualiser l'état indeterminate (en attente DSFR 1.15.0) */
+:deep(input[type="checkbox"]:indeterminate + label::before) {
+  background-color: var(--blue-france-sun-113-625, #000091);
+  border-color: var(--blue-france-sun-113-625, #000091);
+}
+
+:deep(input[type="checkbox"]:indeterminate + label::after) {
+  /* Tiret horizontal blanc sur fond bleu, remplace le checkmark SVG DSFR */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath stroke='%23fff' stroke-width='2.5' stroke-linecap='round' d='M6 12h12'/%3E%3C/svg%3E");
+  background-size: 1.5rem 1.5rem;
+  background-repeat: no-repeat;
+  background-position: center;
+}
 </style>

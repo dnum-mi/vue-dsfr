@@ -28,6 +28,7 @@ Le composant `DsfrCheckbox` est composé des éléments suivants :
 | `id`                    | *`string`*                 | chaîne pseudo-aléatoire     |           | Identifiant unique du composant (générée automatiquement si non fournie) |
 | `inline`                | *`boolean`*                | `false`     |           | Affiche la case à cocher en ligne (par défaut : `false`) |
 | `required`              | *`boolean`*                | `false`     |           | Indique si la case à cocher est obligatoire (par défaut : `false`)             |
+| `indeterminate`         | *`boolean`*                | `false`     |           | Indique si la case à cocher est dans un état indéterminé (ni cochée, ni décochée). Disponible à partir du DSFR 1.15.0. |
 | `readonly`              | *`boolean`*                | `false`     |           | Indique si la case à cocher est en lecture seule*              |
 | `readonlyOpacity`              | *`number`*                | `0.75`     |           | Indique l’opacité du conteneur si la case à cocher est en lecture seule*             |
 | `small`                 | *`boolean`*                | `false`     |           | Affiche la case à cocher en taille réduite     s|

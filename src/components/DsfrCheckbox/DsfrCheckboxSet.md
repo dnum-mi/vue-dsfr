@@ -15,7 +15,7 @@ Le composant `DsfrCheckboxSet` est composé des éléments suivants :
 
 | Nom                   | Type                                    | Description                                                   | Obligatoire |
 |-----------------------|-------------------------------------------|----------------------------------------------------------------|--------------|
-| `options`               | *`(DsfrCheckboxProps & InputHTMLAttributes)[]`* | Tableau d'options définissant les cases à cocher individuelles   | ✅           |
+| `options`               | *`(DsfrCheckboxProps & InputHTMLAttributes)[]`* | Tableau d'options définissant les cases à cocher individuelles. Chaque option peut recevoir la prop `indeterminate` pour mettre une case dans l'état indéterminé (DSFR 1.15.0).   | ✅           |
 | `modelValue`            | *`string[]`*                                | Valeur courante du composant, un tableau de valeurs (propriété `value` de chaque option de la prop `options`) des cases cochées | ✅           |
 | `disabled`              | *`boolean`*                                | Indique si l'ensemble des cases à cocher est désactivé           |           |
 | `errorMessage`         | *`string`*                                 | Message d'erreur global à afficher                             |           |
@@ -57,6 +57,8 @@ Cf. les exemples ci-dessous
 
 ## 📝 Exemples
 
+### Exemples simples
+
 ::: code-group
 
 <Story data-title="Démo" min-h="1500px">
@@ -66,6 +68,18 @@ Cf. les exemples ci-dessous
 <<< docs-demo/DsfrCheckboxSetDemo.vue
 
 :::
+
+### Exemple avec état indéterminé
+::: code-group
+
+<Story data-title="Démo" min-h="400px">
+  <DsfrCheckboxIndeterminateDemo />
+</Story>
+
+<<< docs-demo/DsfrCheckboxIndeterminateDemo.vue
+
+:::
+
 
 ## ⚙️ Code source du composant
 
@@ -78,4 +92,5 @@ Cf. les exemples ci-dessous
 
 <script setup>
 import DsfrCheckboxSetDemo from './docs-demo/DsfrCheckboxSetDemo.vue'
+import DsfrCheckboxIndeterminateDemo from './docs-demo/DsfrCheckboxIndeterminateDemo.vue'
 </script>
