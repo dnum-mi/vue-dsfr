@@ -470,6 +470,7 @@ const composants = [
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
+  lang: 'fr-FR',
   title: 'VueDsfr',
   description: 'Une documentation pour les utilisateurs de VueDsfr',
 
