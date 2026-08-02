@@ -37,7 +37,7 @@ closes #1234
 **Directives appliquées** :
 
 - ✅ **Tous les textes en français** (description, sections, explications)
-- ✅ **Typographie française** : apostrophes courbes `'` (U+2019), espaces insécables ` ` avant `:;!?`, guillemets « »
+- ✅ **Typographie française** : apostrophes courbes `’` (U+2019), espaces insécables ` ` avant `:;!?`, guillemets « »
 - ✅ **Troisième personne du singulier présent** pour la description courte (ex : « ajoute », « corrige », « améliore »)
 - ✅ **Pas de majuscule** au début de la description courte
 - ✅ **Gitmoji obligatoire** correspondant au type (voir liste ci-dessus)
