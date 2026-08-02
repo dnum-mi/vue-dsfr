@@ -6,7 +6,7 @@ Create a GitHub pull request from the current branch, using the GitHub CLI (`gh`
 Input:
 
 - Optional first argument: the base branch to compare against.
-- If no base branch is provided, use `main`.
+- If no base branch is provided, use `develop`.
 - Infer the issue ID from the numeric suffix at the end of the current branch name.
 - Valid branch suffix examples: `docs/add-shared-llm-workflow-commands-2`, `feat/add-login-42`, `fix/correct-label-103`.
 
@@ -15,7 +15,7 @@ Expected behavior:
 1. Read the current branch name.
 2. Determine the base branch:
    - Use the first command argument when provided.
-   - Otherwise use `main`.
+   - Otherwise use `develop`.
 3. Extract the issue ID from the final numeric suffix of the current branch name.
 4. Compare the current branch against the base branch.
 5. Read the commits that are present on the current branch and absent from the base branch.
