@@ -7,6 +7,7 @@ Ce document définit comment maintenir des consignes uniformes pour tous les age
 - garantir un socle unique de règles pour tous les agents
 - autoriser des extensions limitées pour les capacités spécifiques d'un agent
 - éviter la duplication de consignes
+- rendre les workflows importants découvrables par les LLMs via des skills courtes et ciblées
 
 ## Hiérarchie des documents
 
@@ -16,11 +17,16 @@ Ce document définit comment maintenir des consignes uniformes pour tous les age
 2. **`tasks.md`** : attentes communes par type de tâche
 3. **`commit-message.md`** : conventions de commit communes
 4. **`skills/`** : workflows spécialisés découvrables par contexte
+5. **`../agent-instructions/`** : workflows de commandes custom communs
 
 ### Niveau 2 : Adaptateurs d'agent
 
 - **`.github/copilot-instructions.md`** : compléments Copilot (si besoin)
+- **`.github/prompts/*`** : commandes custom GitHub Copilot vers `agent-instructions/*`
 - **`CLAUDE.md`** : compléments Claude (si besoin)
+- **`.claude/commands/*`** : commandes custom Claude Code vers `agent-instructions/*`
+- **`.codex/skills/*`** : wrappers Codex vers les skills communes
+- **`.codex/commands/*`** : commandes custom Codex vers `agent-instructions/*` ou les consignes communes
 - etc.
 
 ## Dossier `skills/`
@@ -48,7 +54,7 @@ Chaque skill dispose de :
 - **SKILL.md** : description, contexte d'usage, documentation associée
 - **tasks.md** : tâches courantes pour ce skill
 
-**Chargement** : Les agents chargent automatiquement les skills correspondants en fonction du contexte de la demande.
+**Chargement** : chaque agent doit lire entièrement le `SKILL.md` sélectionné, puis les fichiers qu'il référence (`tasks.md`, `instructions.md`, `commit-message.md`, etc.).
 
 Voir [`../AGENTS.md`](../AGENTS.md) pour le guide de sélection des skills.
 
@@ -56,6 +62,9 @@ Voir [`../AGENTS.md`](../AGENTS.md) pour le guide de sélection des skills.
 
 - Les règles communes vivent uniquement dans `.agents/*` (incluant `.agents/skills/`).
 - Les adaptateurs agents ne doivent pas recopier les règles communes.
+- Un nouveau workflow commun doit être ajouté dans `.agents/skills/<nom>/`.
+- Un wrapper Codex doit rester minimal : frontmatter, courte description, renvoi vers la skill commune.
+- Une commande custom d'agent (`.codex/commands/*`, `.claude/commands/*`, `.github/prompts/*`) doit rester minimale et renvoyer vers la commande ou la consigne commune correspondante.
 - Une règle spécifique à un agent doit être marquée `Agent-only (NomAgent)`.
 
 ## Ajouter une nouvelle consigne

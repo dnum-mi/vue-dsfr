@@ -12,8 +12,18 @@ Les **Skills** du projet s'appliquent automatiquement :
 - `.agents/skills/documentation/` — documentation
 - `.agents/skills/commit-conventions/` — commits & PR (priorité absolue)
 
+## Commandes custom
+
+Les workflows communs vivent dans `agent-instructions/*`.
+
+Les commandes Copilot sont exposées comme prompt files dans `.github/prompts/*.prompt.md` :
+- `/commit-staged`
+- `/create-branch`
+- `/create-issue`
+- `/create-pr`
+
 ## Agent-only (Copilot)
 
-- Raison : aucun besoin spécifique documenté à ce jour
-- Impact : Copilot utilise uniquement les skills communes
+- Raison : GitHub Copilot expose les workflows réutilisables via des prompt files.
+- Impact : Copilot utilise les skills communes et les commandes custom de `.github/prompts/*`.
 - Fallback : consulter `.agents/*` et `AGENTS.md`

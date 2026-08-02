@@ -19,8 +19,18 @@ Les **Skills** du projet s'appliquent automatiquement :
 - `.agents/skills/documentation/` — documentation
 - `.agents/skills/commit-conventions/` — commits & PR (priorité absolue)
 
+## Commandes custom
+
+Les workflows communs vivent dans `agent-instructions/*`.
+
+Les commandes Claude Code sont exposées dans `.claude/commands/*` :
+- `/commit-staged`
+- `/create-branch`
+- `/create-issue`
+- `/create-pr`
+
 ## Agent-only (Claude)
 
-- Raison : aucun besoin spécifique documenté à ce jour
-- Impact : Claude utilise uniquement les skills communes
+- Raison : Claude Code expose les workflows réutilisables via `.claude/commands/*`.
+- Impact : Claude utilise les skills communes et les commandes custom de `.claude/commands/*`.
 - Fallback : consulter `.agents/*` et `AGENTS.md`

@@ -1,12 +1,13 @@
 # Instructions de codage IA pour VueDsfr
 
-## Vue d'ensemble du projet
+## Vue d’ensemble du projet
 
 VueDsfr est une bibliothèque de composants Vue 3 qui porte le Système de Design Français (DSFR) vers Vue.js. Elle fournit ~50 composants accessibles et prêts pour la production suivant les normes de design du gouvernement français.
 
-## Pour les tâches que je vais te demander
+## Pour les tâches demandées
 
 Voir le fichier [`tasks.md`](tasks.md) pour les instructions spécifiques aux tâches.
+Avant toute modification, identifier la skill pertinente dans `skills/` et lire son `SKILL.md` ainsi que son `tasks.md`.
 
 ## Architecture et structure des fichiers
 
@@ -30,6 +31,7 @@ Voir le fichier [`tasks.md`](tasks.md) pour les instructions spécifiques aux t�
 - `demo-app/` - Application de développement/démonstration
 - `docs/` - Documentation VitePress
 - `tests/unit/` - Utilitaires et configuration des tests
+- `dist/`, `lib/`, `types/`, `meta-dts/`, `storybook-static/` - Artefacts générés à ne pas modifier manuellement sauf demande explicite de build ou de release
 
 ## Workflow de développement
 
@@ -66,6 +68,8 @@ pnpm format              # Corriger automatiquement ESLint
 3. Exporter depuis `src/components/index.ts` (types et composant)
 4. Ajouter à `src/index.ts` s'il s'agit d'une nouvelle exportation racine
 5. Exécuter `pnpm check-exports` pour vérifier les exportations
+
+Avant de créer ou modifier un composant, inspecter un composant voisin comparable pour reprendre les conventions locales de props, stories, tests, exports et documentation.
 
 ### Patterns TypeScript
 
@@ -229,10 +233,13 @@ Le projet utilise **Vue 3 (Composition API)**, **TypeScript strict**, et **ESM**
 
 ## 📝 Langue et Communication
 
-Il s'agit d'un projet dédié aux sites officiels français. **Tout le contenu doit être en français** sauf :
+Il s'agit d'un projet dédié aux sites officiels français. **Tout le contenu généré pour le projet doit être en français**.
+
+Les instructions destinées aux agents IA peuvent être rédigées en anglais lorsqu'elles décrivent un workflow ou une commande. Cette exception ne s'applique pas aux contenus que l'agent produit ensuite pour le dépôt, GitHub ou les utilisateurs.
 
 **Seules exceptions (en anglais)** :
 
+- **Instructions IA et workflows internes** : fichiers de consignes, skills et commandes custom destinés aux agents
 - **Noms de branches** : kebab-case avec numéro d'issue (ex: `1337-add-new-feature`)
 - **Noms de variables et fonctions** : camelCase/PascalCase (conventions dev internationales)
 - **Noms de fichiers** : kebab-case en anglais (ex: `button-group.vue`)
@@ -244,7 +251,10 @@ Il s'agit d'un projet dédié aux sites officiels français. **Tout le contenu d
 - ✅ Commentaires dans le code
 - ✅ Strings/labels/messages d'erreur visibles aux utilisateurs
 - ✅ Documentation VitePress et JSDoc
-- ✅ Discussions GitHub (issues, PR, discussions)
+- ✅ Documentation projet hors instructions IA
+- ✅ Titres et descriptions d'issues GitHub
+- ✅ Titres et descriptions de Pull Requests
+- ✅ Discussions GitHub
 
 ---
 
@@ -261,10 +271,11 @@ Appliquer une **espace insécable** avant les ponctuations doubles `:`, `;`, `!`
 
 ### Apostrophes
 
-Utilisertoujours la **curly apostrophe française** `'` (U+2019), jamais l'apostrophe ASCII `'`
+Utiliser la **curly apostrophe française** `’` (U+2019) dans les textes rédigés, jamais l'apostrophe ASCII `'`.
 
-- ✅ `const itemName = 'element'`
-- ⚠️ Au lieu de `` `element` `` (backtick), préférer une vraie typographie
+- ✅ `l’utilisateur`
+- ❌ `l'utilisateur`
+- Les identifiants, chaînes techniques, commandes, exemples de code et noms de fichiers peuvent conserver l'apostrophe ASCII si c'est nécessaire.
 
 ### Points de suspension
 
@@ -309,30 +320,10 @@ Utiliser les **guillemets français** « » (U+00AB U+00BB) avec espaces :
 - Respecter les conventions de nommage :
   - Composants : `PascalCase`
   - Props / emits : `camelCase`
-- Tous les composants doivent être typés (`defineProps`, `defineEmits` avec interfaces ou `zod`).
+- Tous les composants doivent être typés (`defineProps`, `defineEmits` avec interfaces TypeScript).
 - Utiliser `ref` et `computed` de manière déclarative et concise.
-- Préférer **Pinia** pour le store global (si besoin).
+- Éviter d'ajouter un store global sans besoin explicite ; le projet n'utilise pas Pinia aujourd'hui.
 - Les tests unitaires doivent être écrits avec **Vitest**.
-
-### Exemple attendu
-
-```vue
-<script setup lang="ts">
-import { computed, ref } from 'vue'
-
-import { useCounterStore } from '@/stores/counter'
-
-const count = ref(0)
-const double = computed(() => count.value * 2)
-
-const store = useCounterStore()
-
-function increment () {
-  count.value++
-  store.logAction('increment')
-}
-</script>
-```
 
 ---
 
