@@ -68,6 +68,9 @@ Rules:
 - Do not create a PR if there are no commits on the current branch compared to the base branch.
 - Do not invent verification steps. If no tests or checks were run, write `Non exécuté`.
 - Write the generated pull request title and body in French, except for technical identifiers, branch names, URLs, commands, and code symbols.
+- Do not interpolate the generated title or body directly into a shell command.
+- Write the generated body to a temporary file and pass it with `--body-file`.
+- Pass the title through an argument-safe API. If only a shell is available, write the title to a temporary file and read that file as a single quoted argument instead of embedding the generated title directly in the command.
 - Keep the title concise and specific.
 - Link the newly created PR to the issue through the closing reference in the PR body.
 - After creating the PR, explicitly verify that the PR is linked to the issue in GitHub's Development section.
@@ -99,10 +102,10 @@ git log --oneline <base branch>..HEAD
 git show --stat --summary <commit>
 ```
 
-- Create the pull request with:
+- Write the generated title to `<title-file>`, write the generated body to `<body-file>`, then create the pull request with:
 
 ```text
-gh pr create --base <base branch> --head <current branch> --title "<title>" --body "<body>"
+gh pr create --base <base branch> --head <current branch> --title "$(cat <title-file>)" --body-file <body-file>
 ```
 
 - After creating the PR, verify the issue's Development linkage:

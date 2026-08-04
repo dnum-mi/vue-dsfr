@@ -100,8 +100,8 @@ Avant de créer ou modifier un composant, inspecter un composant voisin comparab
   - **Ne pas exécuter la commande** - la fournir à l'utilisateur pour qu'il l'exécute
   - Format du titre : `type(scope): 🔧 description courte du problème`
 - **Nommage des branches** :
-  - Préfixe obligatoire avec numéro d'issue : `{numéro-issue}-{type}-{description-kebab-case}`
-  - Exemple : `1172-fix-semantic-release-refactor-config`
+  - Suffixe obligatoire avec numéro d'issue : `{type}/{description-kebab-case}-{numéro-issue}`
+  - Exemple : `fix/semantic-release-refactor-config-1172`
 - **Pull Requests** :
   - Titre reprenant le message de commit principal
   - Corps commençant par Fixes avec référence à l'issue
@@ -240,7 +240,7 @@ Les instructions destinées aux agents IA peuvent être rédigées en anglais lo
 **Seules exceptions (en anglais)** :
 
 - **Instructions IA et workflows internes** : fichiers de consignes, skills et commandes custom destinés aux agents
-- **Noms de branches** : kebab-case avec numéro d'issue (ex: `1337-add-new-feature`)
+- **Noms de branches** : kebab-case en anglais avec numéro d'issue en suffixe (ex: `feat/add-new-feature-1337`)
 - **Noms de variables et fonctions** : camelCase/PascalCase (conventions dev internationales)
 - **Noms de fichiers** : kebab-case en anglais (ex: `button-group.vue`)
 - **Noms de classes CSS** : conventions DSFR (ex: `fr-btn`, `fr-header`)
