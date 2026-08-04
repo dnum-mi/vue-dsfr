@@ -63,10 +63,10 @@ Le dépôt fournit des aides communes pour automatiser les étapes GitHub couran
 
 | Action | Codex | Claude Code | GitHub Copilot | Rôle |
 | --- | --- | --- | --- | --- |
-| Créer un commit depuis les fichiers indexés | `$commit-staged` | `/commit-staged` | prompt `commit-staged` | Analyse le diff indexé et crée un commit conforme aux conventions du projet. |
-| Créer une issue depuis les fichiers indexés | `$create-issue` | `/create-issue` | prompt `create-issue` | Rédige puis crée une issue GitHub en français à partir des changements indexés. |
-| Créer une branche depuis une issue | `$create-branch <numéro>` | `/create-branch <numéro>` | prompt `create-branch` | Lit l’issue GitHub et crée une branche locale au format `type/description-numéro`. |
-| Créer une pull request | `$create-pr` | `/create-pr` | prompt `create-pr` | Crée la PR vers `develop`, ajoute le lien d’issue et met à jour les projets GitHub attendus. |
+| Créer un commit depuis les fichiers indexés | `$commit-staged` | `/commit-staged` | `/commit-staged` | Analyse le diff indexé et crée un commit conforme aux conventions du projet. |
+| Créer une issue depuis les fichiers indexés | `$create-issue` | `/create-issue` | `/create-issue` | Rédige puis crée une issue GitHub en français à partir des changements indexés. |
+| Créer une branche depuis une issue | `$create-branch <numéro>` | `/create-branch <numéro>` | `/create-branch <numéro>` | Lit l’issue GitHub et crée une branche locale au format `type/description-numéro`. |
+| Créer une pull request | `$create-pr` | `/create-pr` | `/create-pr` | Crée la PR vers `develop`, ajoute le lien d’issue et met à jour les projets GitHub attendus. |
 
 Dans Copilot, ces aides sont des prompts disponibles dans `.github/prompts/`. Dans Claude Code, ce sont des commandes slash dans `.claude/commands/`. Dans Codex, ce sont des commandes custom dans `.codex/commands/`.
 
