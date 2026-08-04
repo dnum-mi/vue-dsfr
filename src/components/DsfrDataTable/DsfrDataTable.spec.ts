@@ -1241,4 +1241,98 @@ describe('DsfrDataTable', () => {
       offsetWidthSpy.mockRestore()
     }
   })
+
+  it('copie la valeur de cellule avec le raccourci Ctrl+C', async () => {
+    // Given
+    const writeText = vi.fn().mockResolvedValue(undefined)
+    const clipboardDescriptor = Object.getOwnPropertyDescriptor(navigator, 'clipboard')
+    Object.defineProperty(navigator, 'clipboard', {
+      configurable: true,
+      value: { writeText },
+    })
+
+    try {
+      const { container } = render(DsfrDataTable, {
+        props: {
+          title: 'Table avec copie',
+          headersRow: ['Nom', 'Ville'],
+          rows: [['Alice', 'Paris']],
+        },
+      })
+      const firstCell = container.querySelector('tbody td') as HTMLTableCellElement
+
+      // When
+      await fireEvent.keyDown(firstCell, { code: 'KeyC', ctrlKey: true, key: 'c' })
+
+      // Then
+      expect(writeText).toHaveBeenCalledWith('Alice')
+    } finally {
+      if (clipboardDescriptor) {
+        Object.defineProperty(navigator, 'clipboard', clipboardDescriptor)
+      } else {
+        delete (navigator as Partial<Navigator>).clipboard
+      }
+    }
+  })
+
+  it('ignore le refus navigateur lors de la copie au clavier', async () => {
+    // Given
+    const writeText = vi.fn().mockRejectedValue(new DOMException('Clipboard write is not allowed', 'NotAllowedError'))
+    const clipboardDescriptor = Object.getOwnPropertyDescriptor(navigator, 'clipboard')
+    Object.defineProperty(navigator, 'clipboard', {
+      configurable: true,
+      value: { writeText },
+    })
+
+    try {
+      const { container } = render(DsfrDataTable, {
+        props: {
+          title: 'Table avec copie refusée',
+          headersRow: ['Nom', 'Ville'],
+          rows: [['Alice', 'Paris']],
+        },
+      })
+      const firstCell = container.querySelector('tbody td') as HTMLTableCellElement
+
+      // When
+      await fireEvent.keyDown(firstCell, { code: 'KeyC', ctrlKey: true, key: 'c' })
+      await nextTick()
+
+      // Then
+      expect(writeText).toHaveBeenCalledWith('Alice')
+    } finally {
+      if (clipboardDescriptor) {
+        Object.defineProperty(navigator, 'clipboard', clipboardDescriptor)
+      } else {
+        delete (navigator as Partial<Navigator>).clipboard
+      }
+    }
+  })
+
+  it('ignore la copie clavier lorsque l’API presse-papiers est absente', async () => {
+    // Given
+    const clipboardDescriptor = Object.getOwnPropertyDescriptor(navigator, 'clipboard')
+    delete (navigator as Partial<Navigator>).clipboard
+
+    try {
+      const { container } = render(DsfrDataTable, {
+        props: {
+          title: 'Table sans presse-papiers',
+          headersRow: ['Nom', 'Ville'],
+          rows: [['Alice', 'Paris']],
+        },
+      })
+      const firstCell = container.querySelector('tbody td') as HTMLTableCellElement
+
+      // When
+      await fireEvent.keyDown(firstCell, { code: 'KeyC', ctrlKey: true, key: 'c' })
+
+      // Then
+      expect(firstCell).toBeTruthy()
+    } finally {
+      if (clipboardDescriptor) {
+        Object.defineProperty(navigator, 'clipboard', clipboardDescriptor)
+      }
+    }
+  })
 })

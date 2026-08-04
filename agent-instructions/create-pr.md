@@ -28,7 +28,10 @@ closes #<issue ID>
 
 8. Create the pull request with `gh pr create`.
 9. Link the newly created PR to the issue in GitHub's Development section.
-10. Show a summary with the PR URL, title, base branch, current branch, issue ID, and whether the Development link was verified.
+10. Add the newly created PR to both GitHub Projects:
+   - private project `VueDsfr`, in the `Revue de code en cours` column
+   - public project `Vue Dsfr`, in the `In progress` column
+11. Show a summary with the PR URL, title, base branch, current branch, issue ID, whether the Development link was verified, and whether both project links were updated.
 
 Required title format:
 
@@ -67,8 +70,11 @@ Rules:
 - Write the generated pull request title and body in French, except for technical identifiers, branch names, URLs, commands, and code symbols.
 - Keep the title concise and specific.
 - Link the newly created PR to the issue through the closing reference in the PR body.
-- Do not try to link the branch to the issue before creating the PR.
+- After creating the PR, explicitly verify that the PR is linked to the issue in GitHub's Development section.
+- After creating the PR, add it to the private GitHub Project `VueDsfr`, then move it to the `Revue de code en cours` column.
+- After creating the PR, add it to the public GitHub Project `Vue Dsfr`, then move it to the `In progress` column.
 - Do not invent or call unsupported REST or GraphQL endpoints for directly linking an existing PR to an issue.
+- If the project update cannot be completed because a project is not visible, the field names differ, or permissions are missing, report the blocker clearly and keep the PR creation result.
 - Use `gh pr create` to create the pull request.
 - Do not commit, push, edit files, stage files, or unstage files as part of this workflow.
 - Preserve the user's existing worktree changes.
@@ -105,4 +111,8 @@ gh pr create --base <base branch> --head <current branch> --title "<title>" --bo
 gh issue develop --list <issue ID>
 ```
 
-- Show the created PR URL and a concise summary, including whether the branch or PR appears linked to the issue in Development.
+- Add the PR to both GitHub Projects and set its status:
+  - private project `VueDsfr`: `Revue de code en cours`
+  - public project `Vue Dsfr`: `In progress`
+
+- Show the created PR URL and a concise summary, including whether the branch or PR appears linked to the issue in Development and whether both GitHub Projects were updated.
