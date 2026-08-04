@@ -57,13 +57,18 @@ fix(DsfrRadioButton): 🐛 corrige le type des props
 fixes #1080
 ```
 
-::: tip Astuce
+### Commandes et prompts d’assistance
 
-Demander à copilot de créer le commit.
+Le dépôt fournit des aides communes pour automatiser les étapes GitHub courantes avec Codex, Claude Code et GitHub Copilot. Elles s’appuient sur les mêmes instructions sources dans `agent-instructions/`.
 
-En effet, le projet contient des instructions qui sont normalement automatiquement par copilot et qui écriront des messages de commit formattés selon les conventions du projet.
+| Action | Codex | Claude Code | GitHub Copilot | Rôle |
+| --- | --- | --- | --- | --- |
+| Créer un commit depuis les fichiers indexés | `$commit-staged` | `/commit-staged` | prompt `commit-staged` | Analyse le diff indexé et crée un commit conforme aux conventions du projet. |
+| Créer une issue depuis les fichiers indexés | `$create-issue` | `/create-issue` | prompt `create-issue` | Rédige puis crée une issue GitHub en français à partir des changements indexés. |
+| Créer une branche depuis une issue | `$create-branch <numéro>` | `/create-branch <numéro>` | prompt `create-branch` | Lit l’issue GitHub et crée une branche locale au format `type/description-numéro`. |
+| Créer une pull request | `$create-pr` | `/create-pr` | prompt `create-pr` | Crée la PR vers `develop`, ajoute le lien d’issue et met à jour les projets GitHub attendus. |
 
-:::
+Dans Copilot, ces aides sont des prompts disponibles dans `.github/prompts/`. Dans Claude Code, ce sont des commandes slash dans `.claude/commands/`. Dans Codex, ce sont des commandes custom dans `.codex/commands/`.
 
 ### Langue et communication
 
