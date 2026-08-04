@@ -127,6 +127,18 @@ closes #1337
 > Vérifie que la Pull Request cible bien `develop` (jamais `main` ni d’autres branches).
 > Si la cible est incorrecte, indique la correction à appliquer.
 
+## 📋 Mettre à jour les projets GitHub après une Pull Request
+
+> Après la création d’une Pull Request, appliquer le workflow commun décrit dans [`../../../agent-instructions/create-pr.md`](../../../agent-instructions/create-pr.md).
+>
+> - Découvrir les numéros des projets `VueDsfr` et `Vue Dsfr` avec `gh project list --owner dnum-mi --limit 200 --format json`.
+> - Ajouter la Pull Request par son URL avec `gh project item-add`.
+> - Définir le statut par son nom avec `gh project item-edit <numéro> --owner dnum-mi --url <URL de PR> --field Status --value <statut>`.
+> - Vérifier l’état final avec `gh project item-list`.
+> - Ne recourir aux identifiants GraphQL que lorsqu’une commande ne permet pas d’utiliser le numéro du projet, l’URL et le nom du champ.
+>
+> L’ajout au projet privé `VueDsfr` est facultatif : si le projet n’est pas visible ou si les permissions manquent, l’ignorer après un seul essai et poursuivre avec le projet public `Vue Dsfr`. Pour le lien avec l’issue, conserver `closes #<numéro>` dans le corps de la Pull Request. `gh issue develop --list` vérifie les branches liées, pas les Pull Requests.
+
 ## 🧭 Arbitrer le type de commit
 
 > En cas d’hésitation entre plusieurs types (`fix`, `feat`, `refactor`, `docs`, etc.),
