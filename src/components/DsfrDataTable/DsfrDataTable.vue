@@ -189,8 +189,12 @@ function onPaginationOptionsChange () {
   selection.value.length = 0
 }
 
-function copyToClipboard (text: string) {
-  navigator.clipboard.writeText(text)
+async function copyToClipboard (text: string) {
+  try {
+    await navigator.clipboard?.writeText?.(text)
+  } catch {
+    // L'écriture dans le presse-papiers peut être refusée par le navigateur.
+  }
 }
 
 // rendu tenant compte du JS table DSFR

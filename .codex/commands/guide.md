@@ -1,5 +1,7 @@
 # Guide des instructions IA
 
+Commande Codex équivalente à [`../../.claude/commands/guide.md`](../../.claude/commands/guide.md).
+
 Références à utiliser pour toutes les contributions :
 
 - `AGENTS.md` (porte d'entrée commune)
