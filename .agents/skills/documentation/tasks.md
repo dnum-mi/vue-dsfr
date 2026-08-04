@@ -23,7 +23,7 @@
 > Conserve ces règles lors des refactorisations et ne remplace pas ces caractères par des équivalents ASCII.
 > Prends exemple sur les stories de DsfrAlert.stories.ts
 > Il faut aussi remanier le fichier Vue correspondant (il porte le même nom que la story, mais avec l'extension .vue au lieu de .stories.ts) pour qu'il utilise defineSlots au lieu du commentaire HTML pour documenter les slots : `<!-- @slotName Ici la description -->`
-> Dans le commit, si les fichiers remaniés ne concernent qu'un seul composant (par exemple DsfrAlert.vue et DsfrAlert.stories.ts), indique le nom du composant en entier dans le scope du message de commit : `refactor(DsfrAlert): remanie les stories et ajoute defineSlots`
+> Dans le commit, le scope est optionnel. Si tu en utilises un pour des fichiers qui ne concernent qu'un seul composant (par exemple DsfrAlert.vue et DsfrAlert.stories.ts), indique le nom du composant en entier : `refactor(DsfrAlert): remanie les stories et ajoute defineSlots`
 
 ## 📄 Ajouter JSDoc
 

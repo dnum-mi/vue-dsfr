@@ -18,13 +18,19 @@ Expected behavior:
 Required title format:
 
 ```text
+<type>: <gitmoji> <short description>
 <type>(<scope>): <gitmoji> <short description>
 ```
 
+The scope is optional. Use it only when it adds useful context, such as a component name or a shared technical area.
+
 Valid title examples:
 
+- feat: ✨ ajoute un sélecteur de langue bilingue
 - feat(language-selector): ✨ ajoute un sélecteur de langue bilingue
+- docs: 📝 met à jour les principes du manifeste
 - docs(manifest): 📝 met à jour les principes du manifeste
+- fix: 🐛 corrige la cible du lien GitHub
 - fix(github-link): 🐛 corrige la cible du lien GitHub
 
 Required body structure:

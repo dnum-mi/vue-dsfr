@@ -3,6 +3,7 @@
 ## Format obligatoire du commit
 
 ```
+type: gitmoji description courte en français
 type(scope): gitmoji description courte en français
 
 ## Pourquoi :
@@ -26,13 +27,15 @@ closes #1234
 - `docs` 📝 — documentation, commentaires
 - `chore` 🔧 — configuration, tooling, dépendances
 
-**Scope** (exemples) :
+**Scope optionnel** (exemples) :
 
 - Nom du composant : `feat(DsfrButton): …`
 - Système applicatif : `refactor(composables): …`
 - Global : `chore(project): …`
 - Types : `feat(types): …`
 - Tests : `test(components): …`
+
+Le scope n’est pas obligatoire. Utilise-le lorsqu’il apporte un contexte utile, par exemple pour un composant unique ou une zone technique partagée.
 
 **Directives appliquées** :
 
@@ -70,8 +73,8 @@ closes #1337
 ## ✍️ Créer un message de commit
 
 > Propose un message de commit conforme au standard du projet à partir des fichiers modifiés.
-> Respecte le format Conventional Commit + gitmoji et choisis un scope pertinent.
-> Si le changement ne concerne qu’un composant, utilise le nom complet du composant comme scope.
+> Respecte le format Conventional Commit + gitmoji. Le scope est optionnel.
+> Si un scope est utile et que le changement ne concerne qu’un composant, utilise le nom complet du composant comme scope.
 >
 > **Obligatoire** : Intègre la typographie française (apostrophes `’`, espaces insécables ` `) dans toutes les sections textuelles. Tous les textes doivent être en français.
 
@@ -82,7 +85,7 @@ closes #1337
 > - Type Conventional Commit valide (`feat`, `fix`, `refactor`, `style`, `test`, `docs`, `chore`)
 > - Gitmoji cohérent avec l’intention
 > - Description courte au bon format (troisième personne, pas de majuscule initiale)
-> - Scope correct (composant, système, global)
+> - Scope correct s’il est présent (composant, système, global)
 > - Sections "Pourquoi" et "Quoi" présentes et significatives
 > - **Typographie française appliquée** : apostrophes courbes, espaces insécables, guillemets
 > - **Textes en français** (sauf noms de variables, branches, URLs)
@@ -94,6 +97,7 @@ closes #1337
 
 > Vérifie que la branche respecte les conventions du projet :
 >
+> - Préfixe par le type et un slash (ex : `fix/`)
 > - Description en anglais et en kebab-case
 > - Suffixe par le numéro d’issue GitHub
 > - Pas d’indentation, tirets au lieu d’underscores
@@ -115,8 +119,8 @@ closes #1337
 ## 🧾 Rédiger un titre de Pull Request
 
 > Propose un titre de Pull Request aligné avec le commit principal.
-> Assure la cohérence entre le type, le scope, la description courte.
-> Format conseillé: `type(scope): description courte` (reprend le commit principal).
+> Assure la cohérence entre le type, le scope optionnel et la description courte.
+> Formats conseillés : `type: description courte` ou `type(scope): description courte` (reprend le commit principal).
 
 ## 🎯 Vérifier la cible de Pull Request
 

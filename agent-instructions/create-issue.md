@@ -62,11 +62,11 @@ Implementation:
 - Inspect staged files with `git diff --cached --name-status`.
 - Inspect staged content with `git diff --cached`.
 - Generate the final title and body.
-- Write the generated body to a temporary file.
+- Write the generated title to `<title-file>` and the generated body to `<body-file>`.
 - Create the issue without embedding generated Markdown in the shell command:
 
 ```text
-gh issue create --title <title passed safely> --body-file <body-file>
+gh issue create --title "$(cat <title-file>)" --body-file <body-file>
 ```
 
 - Show the created issue URL and the staged files that informed it.
