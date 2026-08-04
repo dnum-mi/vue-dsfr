@@ -17,13 +17,13 @@ Si vous cherchez à **utiliser** cette bibliothèque, veuillez vous référer au
 - chaque commit doit respecter les **[Commits Conventionnels](https://www.conventionalcommits.org/fr/v1.0.0/)** ;
 - une PR doit être faite avec une branche **à jour avec la branche `develop` en `rebase` (et sans `merge`) avant demande de fusion** ;
 - et **la fusion doit être demandée dans `develop`** ;
-- le nom de la branche doit être préfixé par le numéro de l’issue GitHub correspondante.
+- le nom de la branche doit être suffixé par le numéro de l’issue GitHub correspondante.
 
 Un commit qui répond à l’ajout d’une fonctionnalité doit contenir (à la fin, généralement) le mot-clé `closes` suivi de l’issue GitHub correspondante.
 
 Exemple entier :
 
-sur la branche **`1170-radio-button-set-rich`**, ajouter un commit comme suit :
+sur la branche **`feat/radio-button-set-rich-1170`**, ajouter un commit comme suit :
 
 ```text
 feat(DsfrRadioButtonSet): ✨ ajoute la propriété rich pour les boutons radio enrichis
@@ -42,7 +42,7 @@ Un commit qui répond à l’ajout d’une fonctionnalité doit contenir (à la 
 
 Exemple :
 
-sur la branche **`1170-radio-button-prop-types`**, ajouter un commit :
+sur la branche **`fix/radio-button-prop-types-1080`**, ajouter un commit :
 
 ```text
 fix(DsfrRadioButton): 🐛 corrige le type des props
@@ -79,7 +79,7 @@ Ainsi, **tout le contenu de ce projet doit être rédigé en français**, y comp
 
 **Seules exceptions autorisées et même recommandées :**
 
-- **Noms de branches** : en anglais pour qu'ils soient plus courts et standardisés (ex: `180-button-component`, `123-accessibility-issue-on-dsfr-tab`)
+- **Noms de branches** : en anglais pour qu'ils soient plus courts et standardisés, avec le numéro d'issue en suffixe (ex: `feat/button-component-180`, `fix/accessibility-issue-on-dsfr-tab-123`)
 - **Noms de variables et fonctions** : en anglais selon les conventions de développement (ex: `handleClick`, `isVisible`, `userConfig`)
 
 Cette approche permet de maintenir la cohérence du projet tout en respectant les bonnes pratiques de développement internationales.

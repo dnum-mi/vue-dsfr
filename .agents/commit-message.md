@@ -9,6 +9,7 @@ Le projet utilise le format conventional commit avec des gitmojis.
 ## Structure des messages de commit
 
 ```text
+type: gitmoji description courte
 type(scope): gitmoji description courte
 
 ## Pourquoi les changements ont été faits :
@@ -26,7 +27,8 @@ Pas de majuscule au début de la description courte.
 
 Utilise la troisième personne du singulier au présent de l'indicatif pour la description courte.
 
-Si le commit ne concerne qu’un composant, le scope doit être le nom de ce composant.
+Le scope est optionnel. Utilise-le lorsqu’il apporte un contexte utile au titre du commit.
+Si tu choisis d’utiliser un scope pour un commit qui ne concerne qu’un composant, le scope recommandé est le nom de ce composant.
 Exemple: si un commit ne touche qu’à
 
 - src/components/DsfrCheckbox/DsfrCheckbox.vue
@@ -36,7 +38,7 @@ Exemple: si un commit ne touche qu’à
 - et/ou src/components/DsfrCheckbox/DsfrCheckbox.spec.ts
 - et/ou src/components/DsfrCheckbox/DsfrCheckbox.types.ts
 
-alors le scope du titre du commit doit être `DsfrCheckbox`.
+alors le scope recommandé pour le titre du commit est `DsfrCheckbox`.
 
 Exemple :
 
@@ -274,6 +276,8 @@ closes #789
 
 ### 🎯 **Scopes appropriés pour ce projet**
 
+Le scope n’est pas obligatoire. Lorsqu’il est présent, privilégier les valeurs suivantes :
+
 - **Composant unique** : `DsfrButton`, `DsfrModal`, `DsfrCard`, etc.
 - **Groupe de composants** : `DsfrTabs` (quand ça touche TabItem + TabContent + Tabs)
 - **Système** : `build`, `ci`, `types`, `docs`
@@ -283,12 +287,15 @@ closes #789
 
 ```text
 ❌ feat: ajoute un bouton
+✅ feat: ✨ ajoute un bouton
 ✅ feat(DsfrButton): ✨ ajoute la propriété disabled
 
 ❌ fix: Bug dans la modale
+✅ fix: 🐛 corrige la fermeture au clic extérieur
 ✅ fix(DsfrModal): 🐛 corrige la fermeture au clic extérieur
 
 ❌ update: Change des trucs
+✅ refactor: ♻️ simplifie la structure des slots
 ✅ refactor(DsfrCard): ♻️ simplifie la structure des slots
 
 ❌ feat(DsfrButton): Ajoute disabled prop

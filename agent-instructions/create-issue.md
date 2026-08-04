@@ -49,6 +49,9 @@ Rules:
 - Do not create an issue if the staging area is empty; explain that files must be staged first.
 - Do not invent unrelated requirements or implementation details.
 - Write the generated issue title and body in French, except for technical identifiers, branch names, URLs, commands, and code symbols.
+- Do not interpolate the generated title or body directly into a shell command.
+- Write the generated body to a temporary file and pass it with `--body-file`.
+- Pass the title through an argument-safe API. If only a shell is available, write the title to a temporary file and read that file as a single quoted argument instead of embedding the generated title directly in the command.
 - Keep the issue title concise and specific.
 - Use `gh issue create` to create the issue.
 - If `gh` is not installed, not authenticated, or the repository remote cannot be resolved by `gh`, do not create the issue and explain the blocking step.
@@ -59,5 +62,11 @@ Implementation:
 - Inspect staged files with `git diff --cached --name-status`.
 - Inspect staged content with `git diff --cached`.
 - Generate the final title and body.
-- Run: `gh issue create --title "<title>" --body "<body>"`.
+- Write the generated title to `<title-file>` and the generated body to `<body-file>`.
+- Create the issue without embedding generated Markdown in the shell command:
+
+```text
+gh issue create --title "$(cat <title-file>)" --body-file <body-file>
+```
+
 - Show the created issue URL and the staged files that informed it.

@@ -19,13 +19,19 @@ Required title format:
 
 ```text
 <type>: <gitmoji> <short description>
+<type>(<scope>): <gitmoji> <short description>
 ```
+
+The scope is optional. Use it only when it adds useful context, such as a component name or a shared technical area.
 
 Valid title examples:
 
 - feat: ✨ ajoute un sélecteur de langue bilingue
+- feat(language-selector): ✨ ajoute un sélecteur de langue bilingue
 - docs: 📝 met à jour les principes du manifeste
+- docs(manifest): 📝 met à jour les principes du manifeste
 - fix: 🐛 corrige la cible du lien GitHub
+- fix(github-link): 🐛 corrige la cible du lien GitHub
 
 Required body structure:
 
@@ -46,6 +52,8 @@ Rules:
 - Do not add anything to or remove anything from the staging area.
 - Never use an empty or generic message.
 - Write the generated commit title and body in French, except for technical identifiers, branch names, URLs, commands, and code symbols.
+- Do not interpolate the generated title or body directly into a shell command.
+- Write the full generated commit message to a temporary file, or pass it through an argument-safe API.
 - Avoid overly long titles (ideally <= 72 characters).
 - If the staging area is empty, do not commit and explain what to do.
 - Do not run `git commit --amend`.
@@ -53,5 +61,13 @@ Rules:
 Implementation:
 
 - Generate the final message.
-- Run: `git commit -m "<title>" -m "<body>"`.
+- Write the complete commit message to a temporary file with this structure:
+
+```text
+<title>
+
+<body>
+```
+
+- Run: `git commit --file <message-file>`.
 - Show a summary with the commit hash, the title, and the list of included files.
