@@ -16,9 +16,9 @@ Avant toute action, lire dans cet ordre :
 
 Pour les principes généraux et la hiérarchie des documents, voir `.agents/README.md`.
 
-## Découverte des Skills
+## Découverte des Skills et commandes custom
 
-Les agents doivent sélectionner les **Skills** appropriées en fonction du contexte. Chaque skill est décrite et découvrable par son `SKILL.md`.
+Les agents doivent sélectionner les **Skills** et commandes custom appropriées en fonction du contexte. Chaque skill est décrite et découvrable par son `SKILL.md`, et chaque commande custom est décrite dans `agent-instructions/*`.
 
 ### Skills du projet
 
@@ -93,3 +93,27 @@ Certains agents peuvent avoir des besoins spécifiques documentés dans :
 - Impact : ...
 - Fallback : ...
 ```
+
+## Contexte icônes Iconify SSR/SSG
+
+Lors d’un test Nuxt SSG avec VueDsfr, `VIcon` + prop `ssr` n’a pas rendu le SVG Iconify dans le HTML généré. Le composant a rendu un placeholder côté serveur, puis l’icône après hydratation. `VIcon` sans `ssr` a rendu vide côté SSG.
+
+La solution robuste testée est d’utiliser `@iconify/vue/offline` avec les données d’icônes locales générées par `vue-dsfr-icons`, puis de passer directement l’objet `IconifyIcon` au composant `Icon`.
+
+Piste bibliothèque :
+- fournir un composant type `VIconOffline` / `VIconStatic` ;
+- recevoir les collections via injection/plugin, sans importer un fichier applicatif ;
+- exposer un helper du type `createVueDsfrIconPlugin(collections)` ;
+- documenter l’usage Nuxt avec un plugin applicatif.
+
+Exemple API envisagée :
+
+```ts
+app.use(createVueDsfrIconPlugin(collections))
+```
+
+```vue
+<VIconOffline name="ri:flag-line" />
+```
+
+Important : la bibliothèque ne doit pas importer `~/icon-collections`, car ce fichier appartient à l’application.

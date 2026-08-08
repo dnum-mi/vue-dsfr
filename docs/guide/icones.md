@@ -9,7 +9,7 @@ title: Utiliser des icônes
 Pour utiliser les icônes officielles avec les classes CSS du DSFR, il n’y a pas d’actions en plus à faire,
 puisque c’est le CSS officiel du DSFR qui est utilisé.
 
-Ci-dessous un exemple :
+Ci-dessous un exemple :
 
 ::: code-group
 
@@ -24,14 +24,21 @@ Ci-dessous un exemple :
 
 Plusieurs composants (`DsfrButton`, `DsfrBadge`, `DsfrCallout`...) ont la prop `icon` qui permet d’ajouter une icône.
 
-Attention, cette icône n’est pas forcément une icône officielle du DSFR. En effet, VueDsfr utilise désormais (depuis la v6) la bibliothèque [`@iconify/vue`](https://iconify.design/docs/icon-components/vue/). Cette prop `icon` est donc :
+Attention, cette icône n’est pas forcément une icône officielle du DSFR. En effet, VueDsfr utilise désormais (depuis la v6) la bibliothèque [`@iconify/vue`](https://iconify.design/docs/icon-components/vue/). Cette prop `icon` est donc :
 
 - soit une `string` qui doit être un nom de classe valide pour une icône du DSFR (qui commence par `'fr-icon-'`) ;
 - soit une `string` qui doit être un nom d’icône valide pour [iconify](https://icon-sets.iconify.design);
-- soit la prop complète attendue par le composant `VIcon` de la bibliothèque dont voici le type :
+- soit la prop complète attendue par le composant `VIcon` de la bibliothèque dont voici le type :
   :::code-group
   <<< ../../src/components/VIcon/VIcon.types.ts
   :::
+
+::: warning
+La prop `ssr` de `VIcon` ne garantit pas que le SVG de l’icône sera présent dans le HTML généré en SSR ou en SSG.
+Selon le contexte, elle peut afficher un placeholder pendant le rendu serveur, puis remplacer ce placeholder après le montage côté client.
+
+Si vous voulez que le SVG soit directement présent dans le HTML généré, notamment avec Nuxt en génération statique, consultez la section [Pour Nuxt en SSG ou en SSR](#pour-nuxt-en-ssg-ou-en-ssr).
+:::
 
 ## Démo
 
@@ -47,11 +54,11 @@ Attention, cette icône n’est pas forcément une icône officielle du DSFR. En
 ::: warning
 Il faut normalement utiliser le nom en **kebab-case** et avec le nom de la collection en prefix séparé par un caractère `:` comme par exemple `ri:close-line`
 
-exemple :
+exemple :
 
 ```vue
 <template>
-  Nom d’icône correct : <VIcon name="ri:close-line" />
+  Nom d’icône correct : <VIcon name="ri:close-line" />
 </template>
 ```
 
@@ -59,14 +66,14 @@ Cependant, si le préfixe est lui-même sans tiret `-`, alors l’écriture tout
 
 ```vue
 <template>
-  Nom d’icône accepté : <VIcon name="ri-close-line" />
+  Nom d’icône accepté : <VIcon name="ri-close-line" />
 </template>
 ```
 
 :::
 
 ::: info Les collections disponibles
-Vous pouvez utiliser toutes les icônes disponibles ici : [icon-sets.iconify.design](https://icon-sets.iconify.design/)
+Vous pouvez utiliser toutes les icônes disponibles ici : [icon-sets.iconify.design](https://icon-sets.iconify.design/)
 :::
 
 ```typescript{10-16}
@@ -180,7 +187,7 @@ Avec cette modification, il est possible d’ajouter des collections d’icônes
 
   ```ts
   // (...)
-  import { collections } from './icon-collections.js'
+  import collections from './icon-collections.js'
   // (...)
 
   for (const collection of collections) {
@@ -247,11 +254,83 @@ Nous vous invitons à regarder les fichiers suivants :
 
 :::
 
-## Pour Nuxt 3
+## Pour Nuxt en SSG ou en SSR
 
-Veillez simplement à utiliser la prop `ssr` à `true`.
+Avec Nuxt, notamment avec `nuxt generate`, il y a deux besoins différents :
 
-Plus de détails dans la [documentation officielle de @iconify/vue pour le SSR](https://iconify.design/docs/icon-components/vue/#ssr-attribute).
+- éviter les appels réseaux vers l’API Iconify ;
+- avoir le SVG complet directement dans le HTML généré.
+
+L’ajout des collections avec `addCollection()` répond au premier besoin. En revanche, cela ne garantit pas toujours que le SVG sera déjà présent dans le HTML généré.
+De même, la prop `ssr` de `VIcon` ne doit pas être comprise comme “rendre le SVG en SSR” : selon le contexte, elle peut rendre un placeholder côté serveur puis laisser le client afficher l’icône après hydratation.
+
+Pour avoir le SVG directement dans le HTML SSG/SSR, utilisez le composant offline d’Iconify avec les données d’icônes locales générées par `vue-dsfr-icons`.
+
+### Exemple direct
+
+```vue
+<script setup lang="ts">
+import { Icon } from '@iconify/vue/offline'
+import collections from '~/icon-collections'
+
+const [riCollection] = collections
+
+const flagIcon = {
+  ...riCollection.icons['flag-line'],
+  width: riCollection.width,
+  height: riCollection.height,
+}
+</script>
+
+<template>
+  <Icon
+    :icon="flagIcon"
+    class="vicon"
+  />
+</template>
+```
+
+Cette approche rend un `<svg>` complet dès le HTML généré, sans placeholder et sans appel réseau.
+
+### Composant `VIconOffline` de VueDsfr
+
+VueDsfr fournit `VIconOffline` pour éviter de reproduire ce composant dans chaque application. Les collections restent dans votre application et sont fournies une seule fois avec `createVueDsfrIconPlugin`.
+
+Dans Nuxt, créez par exemple `plugins/vue-dsfr-icons.ts` :
+
+```ts
+import { createVueDsfrIconPlugin } from '@gouvminint/vue-dsfr'
+import collections from '~/icon-collections'
+
+export default defineNuxtPlugin((nuxtApp) => {
+  nuxtApp.vueApp.use(createVueDsfrIconPlugin(collections))
+})
+```
+
+Vous pouvez ensuite utiliser le composant dans vos pages et composants :
+
+```vue
+<template>
+  <VIconOffline
+    name="ri:flag-line"
+    label="Drapeau français"
+    class="vicon"
+  />
+</template>
+```
+
+`VIconOffline` cherche l’icône dans les collections injectées, puis passe directement son objet à `@iconify/vue/offline`. Le rendu est donc un SVG complet pendant le SSG et le SSR, sans appel réseau.
+
+Pour ajouter une icône :
+
+1. ajoutez son nom, sans le préfixe de collection, dans `scripts/icons.js` ;
+2. relancez le script `icons`, par exemple `npm run icons` ;
+3. utilisez son nom complet dans `VIconOffline`, par exemple `ri:search-line`.
+
+::: tip
+Cette approche est surtout utile pour les icônes Iconify qui doivent être rendues directement en SSG ou en SSR.
+Pour les icônes officielles du DSFR, les classes CSS `fr-icon-*` restent la solution la plus simple.
+:::
 
 <script lang="ts" setup>
 import IconesOfficielles from '../docs-demo/IconesOfficielles.vue'
