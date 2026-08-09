@@ -34,8 +34,8 @@ const icon = computed<IconifyIcon | null>(() => {
   return {
     ...iconData,
     height: iconData.height ?? collection.height,
-    left: iconData.left ?? collection.left,
-    top: iconData.top ?? collection.top,
+    left: iconData.left ?? collection.left ?? 0,
+    top: iconData.top ?? collection.top ?? 0,
     width: iconData.width ?? collection.width,
   }
 })
