@@ -296,16 +296,27 @@ Cette approche rend un `<svg>` complet dès le HTML généré, sans placeholder 
 
 VueDsfr fournit `VIconOffline` pour éviter de reproduire ce composant dans chaque application. Les collections restent dans votre application et sont fournies une seule fois avec `createVueDsfrIconPlugin`.
 
-Dans Nuxt, créez par exemple `plugins/vue-dsfr-icons.ts` :
+`createVueDsfrIconPlugin` se contente d’injecter les collections dans `VIconOffline` ; il n’enregistre rien auprès du registre global d’Iconify. Si votre application utilise aussi `VIcon` ou la prop `icon` de composants VueDsfr avec des icônes Iconify classiques, ceux-ci dépendent toujours du registre global et nécessitent donc `addCollection()` en plus. Dans Nuxt, créez par exemple `plugins/vue-dsfr-icons.ts` qui combine les deux usages :
 
 ```ts
+import { addCollection } from '@iconify/vue'
 import { createVueDsfrIconPlugin } from '@gouvminint/vue-dsfr'
 import collections from '~/icon-collections'
 
 export default defineNuxtPlugin((nuxtApp) => {
+  for (const collection of collections) {
+    addCollection(collection)
+  }
+
   nuxtApp.vueApp.use(createVueDsfrIconPlugin(collections))
 })
 ```
+
+::: tip
+
+`addCollection()` n’est nécessaire que si votre application utilise encore `VIcon` ou une prop `icon` avec des icônes Iconify classiques. Si vous n’utilisez que `VIconOffline`, `createVueDsfrIconPlugin` suffit.
+
+:::
 
 Vous pouvez ensuite utiliser le composant dans vos pages et composants :
 
