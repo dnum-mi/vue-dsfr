@@ -1,8 +1,7 @@
 import type { UserConfig } from 'vite'
 
-import { dirname, resolve } from 'node:path'
+import { resolve } from 'node:path'
 import process from 'node:process'
-import { fileURLToPath, URL } from 'node:url'
 
 import vue from '@vitejs/plugin-vue'
 import browserslist from 'browserslist'
@@ -10,7 +9,7 @@ import { browserslistToTargets } from 'lightningcss'
 import LightningCSS from 'unplugin-lightningcss/vite'
 import { defineConfig } from 'vite'
 
-const projectDir = dirname(new URL(import.meta.url).pathname)
+const projectDir = import.meta.dirname
 
 const isVitepress = process.env.VITEPRESS === 'true'
 
@@ -25,7 +24,7 @@ const config: UserConfig = {
   ],
   resolve: {
     alias: {
-      '@': fileURLToPath(new URL('./src', import.meta.url)),
+      '@': resolve(import.meta.dirname, 'src'),
       vue: 'vue/dist/vue.esm-bundler.js',
     },
   },

@@ -43,8 +43,8 @@ describe('DsfrPagination', () => {
     const pageLinks = getAllByRole('link', { name: /\d+/ })
 
     // Then
-    expect(emitted()['update:current-page']).toBeTruthy()
-    expect(emitted()['update:current-page'][0][0]).toBe(2)
+    expect(emitted()['update:currentPage']).toBeTruthy()
+    expect(emitted()['update:currentPage'][0][0]).toBe(2)
     pageLinks.forEach((link) => {
       expect(link.getAttribute('title')).toBe(null)
     })
@@ -101,7 +101,7 @@ describe('DsfrPagination', () => {
     expect(getByRole('navigation', { name: 'Pagination' })).toBeTruthy()
   })
 
-  it('emits update:current-page when using navigation controls and page links', async () => {
+  it('emits update:currentPage when using navigation controls and page links', async () => {
     // Given
     const pages = makePages(5)
 
@@ -118,7 +118,7 @@ describe('DsfrPagination', () => {
     await fireEvent.click(getByText('3')) // specific page -> index 2
 
     // Then
-    const emits = emitted()['update:current-page']
+    const emits = emitted()['update:currentPage']
     expect(emits).toBeTruthy()
     expect(emits![0][0]).toBe(2)
     expect(emits![1][0]).toBe(0)

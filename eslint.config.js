@@ -34,7 +34,7 @@ export default antfu({
       ],
       'antfu/top-level-function': 'off', // Should be 'error'
       'style/quote-props': ['error', 'as-needed'], // Should be ['error', 'consistent-as-needed']
-      'ts/consistent-type-definitions': 'off', // Should be 'on'
+      'ts/consistent-type-definitions': 'off', // Should be 'error'
       'style/arrow-parens': 'off', // Should be ['error', 'as-needed']
       'style/operator-linebreak': ['error', 'after', { overrides: { '?': 'before', ':': 'before', '|': 'before', '&': 'before' } }],
       'style/max-statements-per-line': 'off', // Should be 'error'
@@ -112,6 +112,13 @@ export default antfu({
     files: ['ci/**/*.mjs'],
     rules: {
       'antfu/no-top-level-await': 'off',
+    },
+  },
+  {
+    files: ['pnpm-workspace.yaml'],
+    rules: {
+      // trustPolicy: no-downgrade bloque pnpm sur des packages légitimes dont les métadonnées ont changé sur le registry
+      'pnpm/yaml-enforce-settings': 'off',
     },
   },
   {

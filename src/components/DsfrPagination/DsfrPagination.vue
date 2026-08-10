@@ -17,7 +17,7 @@ const props = withDefaults(defineProps<DsfrPaginationProps>(), {
 
 const emit = defineEmits<{
   /** Émis lors de la mise à jour de la page courante */
-  'update:current-page': [payload: number]
+  'update:currentPage': [payload: number]
 }>()
 
 const startIndex = computed(() => {
@@ -31,7 +31,7 @@ const displayedPages = computed(() => {
 })
 const lastPage = computed(() => props.pages.at(-1))
 
-const updatePage = (index: number) => emit('update:current-page', index)
+const updatePage = (index: number) => emit('update:currentPage', index)
 const toPage = (index: number) => updatePage(index)
 const tofirstPage = () => toPage(0)
 const toPreviousPage = () => toPage(Math.max(0, props.currentPage - 1))
