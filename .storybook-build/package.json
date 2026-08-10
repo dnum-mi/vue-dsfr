@@ -3,12 +3,12 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "build": "storybook build -c ../.storybook -o ../storybook-static"
+    "build": "storybook build -c $INIT_CWD/.storybook -o $INIT_CWD/storybook-static"
   },
   "dependencies": {
-    "@storybook/vue3-vite": "10.3.3",
-    "@vitejs/plugin-vue": "^6.0.5",
-    "storybook": "10.3.3",
-    "vite": "7.3.1"
+    "@storybook/vue3-vite": "10.5.7",
+    "@vitejs/plugin-vue": "^6.0.8",
+    "storybook": "10.5.7",
+    "vite": "7.3.6"
   }
 }
