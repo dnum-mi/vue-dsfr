@@ -22,7 +22,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 22
+          node-version: 24
       - name: Upgrade npm
         run: npm install -g npm@11.7.0
       - name: Install pnpm
