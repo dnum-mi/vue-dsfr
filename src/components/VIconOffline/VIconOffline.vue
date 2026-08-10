@@ -5,6 +5,8 @@ import type { IconifyIcon } from '@iconify/vue'
 import { Icon } from '@iconify/vue/offline'
 import { computed, inject } from 'vue'
 
+import { resolveOfflineIcon } from '../../utils/resolve-offline-icon'
+
 import { vueDsfrIconCollectionsKey } from './injection-key'
 
 export type { VIconOfflineProps } from './VIconOffline.types'
@@ -16,29 +18,7 @@ defineOptions({
 const props = defineProps<VIconOfflineProps>()
 const collections = inject(vueDsfrIconCollectionsKey, [])
 
-const icon = computed<IconifyIcon | null>(() => {
-  const separatorIndex = props.name.indexOf(':')
-  if (separatorIndex <= 0 || separatorIndex === props.name.length - 1) {
-    return null
-  }
-
-  const prefix = props.name.slice(0, separatorIndex)
-  const iconName = props.name.slice(separatorIndex + 1)
-  const collection = collections.find(item => item.prefix === prefix)
-  const iconData = collection?.icons[iconName]
-
-  if (!collection || !iconData) {
-    return null
-  }
-
-  return {
-    ...iconData,
-    height: iconData.height ?? collection.height,
-    left: iconData.left ?? collection.left ?? 0,
-    top: iconData.top ?? collection.top ?? 0,
-    width: iconData.width ?? collection.width,
-  }
-})
+const icon = computed<IconifyIcon | null>(() => resolveOfflineIcon(props.name, collections))
 </script>
 
 <template>

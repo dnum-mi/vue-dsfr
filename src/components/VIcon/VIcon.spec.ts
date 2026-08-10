@@ -1,5 +1,9 @@
+import type { IconifyJSON } from '@iconify/vue'
+
 import { flushPromises, mount } from '@vue/test-utils'
 import { beforeEach, describe, expect, it, vi } from 'vitest'
+
+import { vueDsfrIconCollectionsKey, vueDsfrPreferOfflineIconsKey } from '../VIconOffline/injection-key'
 
 import VIcon from './VIcon.vue'
 
@@ -149,6 +153,75 @@ describe('VIcon', () => {
       const fallback = wrapper.find('.vicon-loading')
       expect(fallback.attributes('aria-label')).toBe('Accueil')
       expect(fallback.attributes('role')).toBe('img')
+    })
+  })
+
+  describe('Résolution offline (option globale preferOffline)', () => {
+    const collections: IconifyJSON[] = [{
+      height: 24,
+      icons: {
+        'flag-line': {
+          body: '<path d="M3 3h18v18H3z" />',
+        },
+      },
+      prefix: 'ri',
+      width: 24,
+    }]
+
+    it('résout l\'icône depuis les collections locales quand preferOffline est actif', () => {
+      const wrapper = mount(VIcon, {
+        props: {
+          name: 'ri:flag-line',
+        },
+        global: {
+          provide: {
+            [vueDsfrIconCollectionsKey as symbol]: collections,
+            [vueDsfrPreferOfflineIconsKey as symbol]: true,
+          },
+        },
+      })
+
+      const iconComponent = wrapper.findComponent({ name: 'MockedIcon' })
+      expect(iconComponent.props('icon')).toEqual({
+        body: '<path d="M3 3h18v18H3z" />',
+        height: 24,
+        left: 0,
+        top: 0,
+        width: 24,
+      })
+    })
+
+    it('retombe silencieusement sur le nom de l\'icône si elle est absente des collections locales', () => {
+      const wrapper = mount(VIcon, {
+        props: {
+          name: 'ri:missing-icon',
+        },
+        global: {
+          provide: {
+            [vueDsfrIconCollectionsKey as symbol]: collections,
+            [vueDsfrPreferOfflineIconsKey as symbol]: true,
+          },
+        },
+      })
+
+      const iconComponent = wrapper.findComponent({ name: 'MockedIcon' })
+      expect(iconComponent.props('icon')).toBe('ri:missing-icon')
+    })
+
+    it('utilise le nom de l\'icône quand preferOffline n\'est pas actif, même si des collections sont fournies', () => {
+      const wrapper = mount(VIcon, {
+        props: {
+          name: 'ri:flag-line',
+        },
+        global: {
+          provide: {
+            [vueDsfrIconCollectionsKey as symbol]: collections,
+          },
+        },
+      })
+
+      const iconComponent = wrapper.findComponent({ name: 'MockedIcon' })
+      expect(iconComponent.props('icon')).toBe('ri:flag-line')
     })
   })
 })
