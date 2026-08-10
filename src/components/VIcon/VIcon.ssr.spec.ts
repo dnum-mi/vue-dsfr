@@ -41,6 +41,14 @@ describe('VIcon (résolution offline en SSR)', () => {
     expect(html).not.toContain('vicon-loading')
   })
 
+  it('rend le SVG résolu localement pour le format prefix-nom utilisé par DsfrButton/DsfrTag/etc.', async () => {
+    const html = await renderIcon({ name: 'ri-flag-line', ssr: true })
+
+    expect(html).toContain('<svg')
+    expect(html).toContain('<path d="M3 3h18v18H3z"')
+    expect(html).not.toContain('vicon-loading')
+  })
+
   it('n’effectue aucun appel réseau pour une icône résolue localement', async () => {
     const fetch = vi.fn()
     vi.stubGlobal('fetch', fetch)
