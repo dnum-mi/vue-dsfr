@@ -296,7 +296,7 @@ Cette approche rend un `<svg>` complet dès le HTML généré, sans placeholder 
 
 VueDsfr fournit `VIconOffline` pour éviter de reproduire ce composant dans chaque application. Les collections restent dans votre application et sont fournies une seule fois avec `createVueDsfrIconPlugin`.
 
-`createVueDsfrIconPlugin` se contente d’injecter les collections dans `VIconOffline` ; il n’enregistre rien auprès du registre global d’Iconify. Si votre application utilise aussi `VIcon` ou la prop `icon` de composants VueDsfr avec des icônes Iconify classiques, ceux-ci dépendent toujours du registre global et nécessitent donc `addCollection()` en plus. Dans Nuxt, créez par exemple `plugins/vue-dsfr-icons.ts` qui combine les deux usages :
+Par défaut, `createVueDsfrIconPlugin` se contente d’injecter les collections dans `VIconOffline` ; il n’enregistre rien auprès du registre global d’Iconify. Si votre application utilise aussi `VIcon` ou la prop `icon` de composants VueDsfr avec des icônes Iconify classiques, ceux-ci dépendent toujours du registre global et nécessitent donc `addCollection()` en plus (voir plus bas l’option `preferOffline` pour une alternative). Dans Nuxt, créez par exemple `plugins/vue-dsfr-icons.ts` qui combine les deux usages :
 
 ```ts
 import { addCollection } from '@iconify/vue'
@@ -341,6 +341,41 @@ Pour ajouter une icône :
 ::: tip
 Cette approche est surtout utile pour les icônes Iconify qui doivent être rendues directement en SSG ou en SSR.
 Pour les icônes officielles du DSFR, les classes CSS `fr-icon-*` restent la solution la plus simple.
+:::
+
+### Option `preferOffline` : faire résoudre `VIcon` automatiquement
+
+`createVueDsfrIconPlugin` accepte une option `preferOffline`. Quand elle est active, `VIcon` — y compris celui utilisé en interne par `DsfrButton`, `DsfrTag`, `DsfrModal` et les autres composants VueDsfr exposant une prop `icon` — tente de résoudre l’icône depuis les mêmes collections locales avant de recourir au registre Iconify en ligne :
+
+```ts
+import { createVueDsfrIconPlugin } from '@gouvminint/vue-dsfr'
+import collections from '~/icon-collections'
+
+export default defineNuxtPlugin((nuxtApp) => {
+  nuxtApp.vueApp.use(createVueDsfrIconPlugin(collections, { preferOffline: true }))
+})
+```
+
+Avec cette option, `createVueDsfrIconPlugin` seul suffit pour les icônes présentes dans vos collections locales, aussi bien pour `VIconOffline` que pour `VIcon` — plus besoin d’appeler `addCollection()` en complément pour ces icônes-là.
+
+::: tip
+
+Si une icône demandée par `VIcon` est absente des collections locales, le composant retombe silencieusement sur son comportement en ligne habituel (appel réseau, éventuel placeholder selon la prop `ssr`). Combinez `preferOffline` avec `addCollection()` si vous voulez aussi couvrir ces icônes-là sans appel réseau.
+
+`preferOffline` est désactivé par défaut, pour ne rien changer au comportement existant des applications qui utilisent déjà `createVueDsfrIconPlugin`.
+
+:::
+
+::: warning Compromis choisi : comportement implicite
+
+`preferOffline` simplifie l’intégration (un seul appel de plugin au lieu de deux), mais au prix d’un comportement moins explicite qu’avec `addCollection()` seul :
+
+- le rendu d’une icône (offline ou réseau) dépend silencieusement de sa présence dans la collection locale, sans avertissement en cas d’absence ;
+- si vous oubliez de déclarer une icône dans `scripts/icons.js`, l’application continue de fonctionner (repli réseau), ce qui peut masquer l’oubli au lieu de le révéler immédiatement ;
+- deux applications avec des collections locales différentes peuvent faire percevoir un même composant VueDsfr comme se comportant différemment (offline ici, réseau là), ce qui peut compliquer le débogage.
+
+Ce compromis a été jugé acceptable parce que le repli reste fonctionnel dans tous les cas (aucune icône ne disparaît), mais gardez-le en tête si vous devez diagnostiquer pourquoi une icône déclenche un appel réseau alors que `preferOffline` est actif : vérifiez d’abord qu’elle est bien listée dans `scripts/icons.js` et que le script `icons` a été relancé.
+
 :::
 
 <script lang="ts" setup>
