@@ -1,8 +1,12 @@
 <script lang="ts" setup>
 import type { VIconProps } from './VIcon.types'
+import type { IconifyIcon } from '@iconify/vue'
 
 import { Icon } from '@iconify/vue'
-import { computed, nextTick, onMounted, ref, watch } from 'vue'
+import { computed, inject, nextTick, onMounted, ref, watch } from 'vue'
+
+import { resolveOfflineIcon } from '../../utils/resolve-offline-icon'
+import { vueDsfrIconCollectionsKey, vueDsfrPreferOfflineIconsKey } from '../VIconOffline/injection-key'
 
 export type { VIconProps }
 
@@ -12,6 +16,9 @@ const props = withDefaults(defineProps<VIconProps>(), {
   display: 'inline-block',
   ssr: false, // Changement : ssr false par défaut pour éviter les problèmes d'hydratation
 })
+
+const collections = inject(vueDsfrIconCollectionsKey, [])
+const preferOffline = inject(vueDsfrPreferOfflineIconsKey, false)
 
 const viRegex = /vi-(.*)/
 const icon = ref<{ $el: SVGElement } | null>(null)
@@ -56,6 +63,15 @@ const finalName = computed(() => {
 const finalColor = computed(() => {
   return props.color ?? props.fill ?? 'inherit'
 })
+const resolvedIcon = computed<IconifyIcon | string>(() => {
+  if (!preferOffline) {
+    return finalName.value
+  }
+  return resolveOfflineIcon(finalName.value, collections) ?? finalName.value
+})
+// Une icône résolue localement est disponible de façon synchrone et identique
+// entre le serveur et le client : elle n'a donc pas besoin d'attendre l'hydratation.
+const hasOfflineIcon = computed(() => typeof resolvedIcon.value !== 'string')
 </script>
 
 <template>
@@ -63,9 +79,9 @@ const finalColor = computed(() => {
        - Si ssr=false (défaut) : affiche directement l'icône
        - Si ssr=true : attend que le composant soit monté (hydratation terminée) -->
   <Icon
-    v-if="!props.ssr || isMounted"
+    v-if="!props.ssr || isMounted || hasOfflineIcon"
     ref="icon"
-    :icon="finalName"
+    :icon="resolvedIcon"
     :style="{ fontSize, verticalAlign, display, color: finalColor }"
     :aria-label="props.label"
     class="vicon"
@@ -82,7 +98,7 @@ const finalColor = computed(() => {
       'vicon-inverse': props.inverse,
     }"
     :flip
-    :ssr="props.ssr && isMounted"
+    :ssr="hasOfflineIcon || (props.ssr && isMounted)"
   />
   <!-- Placeholder pendant l'attente du montage (seulement si ssr=true) -->
   <span
