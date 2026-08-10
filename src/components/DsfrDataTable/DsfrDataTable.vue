@@ -73,7 +73,7 @@ const lowestLimit = computed(() => currentPage.value * rowsPerPage.value)
 const highestLimit = computed(() => (currentPage.value + 1) * rowsPerPage.value)
 
 const sortedBy = defineModel<string | number | undefined>('sortedBy', { default: undefined })
-const sortedDesc = defineModel('sortedDesc', { default: false })
+const sortedDesc = defineModel<boolean>('sortedDesc', { default: false })
 function defaultSortFn (a: string | DsfrDataTableRow, b: string | DsfrDataTableRow) {
   const key = sortedBy.value ?? props.sorted
   // @ts-expect-error TS7015
