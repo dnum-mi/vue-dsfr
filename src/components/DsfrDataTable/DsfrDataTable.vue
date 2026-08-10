@@ -31,7 +31,7 @@ const props = withDefaults(defineProps<DsfrDataTableProps>(), {
 })
 
 const emit = defineEmits<{
-  'update:current-page': [page: number]
+  'update:currentPage': [page: number]
 }>()
 
 defineSlots<{
@@ -63,7 +63,7 @@ defineSlots<{
   tableBottomBarActions: () => any
 }>()
 
-const selection = defineModel<string[]>('selection', { default: [] })
+const selection = defineModel<string[]>('selection', { default: () => [] })
 const rowsPerPage = defineModel<number>('rowsPerPage', { default: 10 })
 const currentPage = defineModel<number>('currentPage', { default: 0 })
 const pageCount = computed(() => Math.ceil(props.rows.length / rowsPerPage.value))
@@ -185,7 +185,7 @@ function selectAll (bool: boolean) {
 const wholeSelection = computed(() => selection.value.length === finalRows.value.length)
 
 function onPaginationOptionsChange () {
-  emit('update:current-page', 0)
+  emit('update:currentPage', 0)
   selection.value.length = 0
 }
 

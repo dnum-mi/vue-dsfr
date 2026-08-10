@@ -37,7 +37,7 @@ const isExternalLink = computed(() => {
   return typeof props.to === 'string' && props.to.startsWith('http')
 })
 const svgDataUriComputed = computed(() => !!props.svgPath?.match(dataImageRegex))
-const inlineSvgIdSuffix = useRandomId('tile', 'artwork').replace(/[^\w-]/gi, '_')
+const inlineSvgIdSuffix = useRandomId('tile', 'artwork').replace(/[^\w-]/g, '_')
 const svgDataUriMarkupComputed = computed(() => (
   sanitizeInlineSvgMarkupFromDataUri(props.svgPath, inlineSvgIdSuffix)
 ))
