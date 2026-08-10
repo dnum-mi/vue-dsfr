@@ -54,11 +54,12 @@ pnpm format              # Corriger automatiquement ESLint
 - `pnpm run build-storybook` ne lance pas le binaire Storybook de la racine directement.
 - Le build Storybook passe par le sous-répertoire `.storybook-build/`, qui embarque une version isolée de `vite@7`.
 - Ce contournement est **temporaire**.
-- Raison : avec `storybook@10.3.x` et `vite@8`/Rolldown, le build Storybook échoue actuellement sur une erreur de bundling CSS.
-- Tant que ce bug n'est pas corrigé côté Storybook, il ne faut pas "simplifier" ce montage ni supprimer `.storybook-build/`.
-- Dès que Storybook corrigera le problème, il faudra **revenir sur ce contournement** :
+- Raison principale : avec `vite@8`/Rolldown, le build Storybook échoue sur `[UNSUPPORTED_FEATURE] Bundling CSS is no longer supported` (rolldown/rolldown#4271). Storybook 10.5.7 n'a pas encore corrigé ce bug avec rolldown.
+- Raison secondaire de l'isolation via **npm** (pas pnpm) : pnpm 11 introduit `pnpm-workspace.yaml` pour `allowBuilds` ; sa présence met pnpm en mode workspace, ce qui empêche la création d'un `node_modules` isolé dans les sous-répertoires via `pnpm --dir`. npm ignore ce fichier et installe correctement de façon isolée.
+- Tant que ces bugs ne sont pas corrigés, il ne faut pas "simplifier" ce montage ni supprimer `.storybook-build/`.
+- Dès que Storybook corrigera le problème rolldown, il faudra **revenir sur ce contournement** :
   - supprimer `.storybook-build/`
-  - remettre `build-storybook` sur un appel Storybook standard depuis la racine
+  - remettre `build-storybook` sur un appel Storybook standard depuis la racine (`storybook build`)
   - vérifier que le build fonctionne de nouveau avec la stack principale du projet
 
 ### Pattern de création de composant

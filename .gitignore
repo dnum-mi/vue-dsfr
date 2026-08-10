@@ -248,6 +248,10 @@ dist
 .storybook-out
 storybook-static
 
+# .storybook-build isolation (npm, pas pnpm — voir .agents/instructions.md)
+.storybook-build/node_modules
+.storybook-build/package-lock.json
+
 # rollup.js default build output
 dist/
 

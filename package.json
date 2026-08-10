@@ -76,7 +76,7 @@
     "semantic-release": "semantic-release",
     "type-gen": "vue-tsc -p tsconfig.app.json --declaration --emitDeclarationOnly",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "pnpm --dir .storybook-build install --frozen-lockfile && pnpm --dir .storybook-build run build",
+    "build-storybook": "npm --prefix .storybook-build install && (cd .storybook-build && npm run build)",
     "docs:dev": "cross-env VITEPRESS=true vitepress dev",
     "docs:build": "cross-env VITEPRESS=true vitepress build",
     "docs:build-only": "cross-env VITEPRESS=true vitepress build",
