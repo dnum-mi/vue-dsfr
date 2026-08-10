@@ -3,7 +3,7 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "build": "storybook build -c ../.storybook -o ../storybook-static"
+    "build": "storybook build -c $INIT_CWD/.storybook -o $INIT_CWD/storybook-static"
   },
   "dependencies": {
     "@storybook/vue3-vite": "10.5.7",

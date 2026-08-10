@@ -5,3 +5,5 @@ allowBuilds:
   vue-demi: true
 minimumReleaseAgeExclude:
   - pnpm@11.21.0
+  - '@testing-library/jest-dom@7.0.1'
+shellEmulator: true

@@ -115,6 +115,13 @@ export default antfu({
     },
   },
   {
+    files: ['pnpm-workspace.yaml'],
+    rules: {
+      // trustPolicy: no-downgrade bloque pnpm sur des packages légitimes dont les métadonnées ont changé sur le registry
+      'pnpm/yaml-enforce-settings': 'off',
+    },
+  },
+  {
     files: ['**/*.md', '**/*.md/**'],
     rules: {
       'import-x/order': 'off',
