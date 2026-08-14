@@ -79,7 +79,7 @@ export const Badge: Story = {
       return { args }
     },
     template: `
-      <DsfrBadge :label="args.label" :small="args.small" :type="args.type" :no-icon="args.noIcon" />
+      <DsfrBadge :label="args.label" :small="args.small" :type="args.type" :color-accent="args.colorAccent" :no-icon="args.noIcon" />
     `,
   }),
 }
