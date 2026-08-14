@@ -1,15 +1,16 @@
 <script lang="ts" setup>
-import type { DsfrTagProps } from '@/components/DsfrTag/DsfrTags.types.ts'
+import type { DsfrTagsTagProps } from '@/components/DsfrTag/DsfrTags.types.ts'
 
 import { computed, ref } from 'vue'
 
 import DsfrTags from '@/components/DsfrTag/DsfrTags.vue'
 
-const tagSet: (DsfrTagProps)[] = [
+type FruitOrVegetable = 'fruit' | 'legume'
+
+const tagSet: (DsfrTagsTagProps<FruitOrVegetable>)[] = [
   {
     label: 'Les fruits',
     selectable: true,
-    selected: true,
     value: 'fruit',
   },
   {
@@ -18,8 +19,6 @@ const tagSet: (DsfrTagProps)[] = [
     value: 'legume',
   },
 ]
-
-type FruitOrVegetable = 'fruit' | 'legume'
 
 const items: { name: string, type: FruitOrVegetable }[] = [
   {

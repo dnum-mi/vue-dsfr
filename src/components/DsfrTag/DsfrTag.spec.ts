@@ -1,3 +1,5 @@
+import type { DsfrTagsProps } from './DsfrTags.types'
+
 import { render } from '@testing-library/vue'
 // import '@gouvfr/dsfr/dist/core/core.module.js'
 
@@ -91,5 +93,42 @@ describe('DsfrTags', () => {
     // Then
     expect(firstTagEl).toHaveClass('fr-tag')
     expect(secondTagEl).toHaveClass('fr-tag')
+  })
+
+  it('déduit l’état sélectionné depuis modelValue', () => {
+    // Étant donné
+    type TagValue = 'fruit' | 'legume'
+    const tags: DsfrTagsProps<TagValue>['tags'] = [
+      {
+        label: 'Les fruits',
+        selectable: true,
+        value: 'fruit',
+      },
+      {
+        label: 'Les légumes',
+        selectable: true,
+        value: 'legume',
+      },
+    ]
+
+    // Quand
+    const { getByRole } = render(DsfrTags, {
+      global: {
+        components: {
+          VIcon,
+        },
+      },
+      props: {
+        modelValue: ['fruit'],
+        tags,
+      },
+    })
+
+    const selectedTag = getByRole('button', { name: 'Les fruits' })
+    const unselectedTag = getByRole('button', { name: 'Les légumes' })
+
+    // Alors
+    expect(selectedTag).toHaveAttribute('aria-pressed', 'true')
+    expect(unselectedTag).toHaveAttribute('aria-pressed', 'false')
   })
 })

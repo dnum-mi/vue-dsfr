@@ -1,6 +1,6 @@
 import type VIcon from '../VIcon/VIcon.vue'
 
-export type DsfrTagProps<T = string> = {
+interface DsfrTagCommonProps {
   label?: string
   link?: string
   tagName?: string
@@ -8,17 +8,33 @@ export type DsfrTagProps<T = string> = {
   disabled?: boolean
   small?: boolean
   iconOnly?: boolean
-} & ({
+}
+
+type DsfrTagSelectableProps<T = string> = {
   selectable: true
   selected: boolean | undefined
   value: T
-} | {
+}
+
+type DsfrTagNonSelectableProps = {
   selectable?: false | undefined
   selected?: never
   value?: never
-})
+}
+
+type DsfrTagsSelectableProps<T = string> = Omit<DsfrTagSelectableProps<T>, 'selected'> & {
+  selected?: boolean
+}
+
+export type DsfrTagProps<T = string> = DsfrTagCommonProps & (
+  DsfrTagSelectableProps<T> | DsfrTagNonSelectableProps
+)
+
+export type DsfrTagsTagProps<T = string> = DsfrTagCommonProps & (
+  DsfrTagsSelectableProps<T> | DsfrTagNonSelectableProps
+)
 
 export type DsfrTagsProps<T = string> = {
-  tags: DsfrTagProps<T>[]
+  tags: DsfrTagsTagProps<T>[]
   modelValue?: T[]
 }
