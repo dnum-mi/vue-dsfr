@@ -25,8 +25,9 @@ import DsfrBadge from '../DsfrBadge.vue'
         type="info"
       />
       <DsfrBadge
-        label="Badge 'none'"
-        type="none"
+        label="Badge standard glycine"
+        type="standard"
+        color-accent="purple-glycine"
       />
     </div>
     <div class="demo-container-col">
@@ -55,8 +56,9 @@ import DsfrBadge from '../DsfrBadge.vue'
         small
       />
       <DsfrBadge
-        label="Badge petit 'none'"
-        type="none"
+        label="Badge petit standard glycine"
+        type="standard"
+        color-accent="purple-glycine"
         small
       />
     </div>
