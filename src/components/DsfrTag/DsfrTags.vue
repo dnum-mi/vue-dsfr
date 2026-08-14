@@ -23,7 +23,6 @@ function onSelect ([value, selected]: [unknown, boolean]) {
     return
   }
   // Ajouter la valeur si elle n'est pas déjà présente
-  // eslint-disable-next-line unicorn/prefer-includes
   const alreadyExists = currentValue.some(v => v === value)
   if (!alreadyExists) {
     const newValue = [...currentValue, value]
@@ -40,13 +39,7 @@ function onSelect ([value, selected]: [unknown, boolean]) {
     >
       <DsfrTag
         v-if="tag.selectable"
-        :label="tag.label"
-        :link="tag.link"
-        :tag-name="tag.tagName"
-        :icon="tag.icon"
-        :disabled="tag.disabled"
-        :small="tag.small"
-        :icon-only="tag.iconOnly"
+        v-bind="tag"
         :selectable="true"
         :selected="modelValue?.includes(tag.value) || false"
         :value="tag.value"
@@ -54,13 +47,7 @@ function onSelect ([value, selected]: [unknown, boolean]) {
       />
       <DsfrTag
         v-else
-        :label="tag.label"
-        :link="tag.link"
-        :tag-name="tag.tagName"
-        :icon="tag.icon"
-        :disabled="tag.disabled"
-        :small="tag.small"
-        :icon-only="tag.iconOnly"
+        v-bind="tag"
       />
     </li>
   </ul>

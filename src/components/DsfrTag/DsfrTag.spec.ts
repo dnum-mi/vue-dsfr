@@ -100,7 +100,9 @@ describe('DsfrTags', () => {
     type TagValue = 'fruit' | 'legume'
     const tags: DsfrTagsProps<TagValue>['tags'] = [
       {
+        class: 'tag-personnalise',
         label: 'Les fruits',
+        selected: false,
         selectable: true,
         value: 'fruit',
       },
@@ -128,6 +130,7 @@ describe('DsfrTags', () => {
     const unselectedTag = getByRole('button', { name: 'Les légumes' })
 
     // Alors
+    expect(selectedTag).toHaveClass('tag-personnalise')
     expect(selectedTag).toHaveAttribute('aria-pressed', 'true')
     expect(unselectedTag).toHaveAttribute('aria-pressed', 'false')
   })

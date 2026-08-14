@@ -1,4 +1,7 @@
 import type VIcon from '../VIcon/VIcon.vue'
+import type { HTMLAttributes } from 'vue'
+
+type DsfrTagHtmlAttributes = Omit<HTMLAttributes, 'onSelect'>
 
 interface DsfrTagCommonProps {
   label?: string
@@ -32,7 +35,7 @@ export type DsfrTagProps<T = string> = DsfrTagCommonProps & (
 
 export type DsfrTagsTagProps<T = string> = DsfrTagCommonProps & (
   DsfrTagsSelectableProps<T> | DsfrTagNonSelectableProps
-)
+) & DsfrTagHtmlAttributes
 
 export type DsfrTagsProps<T = string> = {
   tags: DsfrTagsTagProps<T>[]
