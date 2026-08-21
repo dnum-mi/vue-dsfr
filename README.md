@@ -6,6 +6,10 @@ de composants. Il peut s'utiliser facilement en tant que plugin.
 
 ## Comment l’utiliser
 
+> ⚠️ Depuis le DSFR 1.15, l'installation nécessite de valider les CGU du DSFR (script de pré-installation).
+> Voir le [guide d'installation détaillé](https://vue-ds.fr/guide/pour-commencer) en cas d'échec de
+> `npm install`/`pnpm install`.
+
 La façon la plus simple de commencer un projet est d’utiliser le package `create-vue-dsfr`, qui permet de créer un projet NPM avec le nécessaire et suffisant (ou plus, selon votre choix) pour développer un projet utilisant VueDsfr, que ce soit pour Vite (Vue3) ou pour Nuxt (Nuxt3), avec TypeScript et ESLint.
 
 Avec npm :

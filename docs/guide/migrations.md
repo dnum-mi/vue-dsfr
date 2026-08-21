@@ -1,5 +1,63 @@
 # Migrations
 
+## Migration vers 9.x (DSFR 1.15+)
+
+::: danger Changement de comportement à l'installation
+
+À partir de `@gouvfr/dsfr` 1.15 (utilisé par VueDsfr 9.x), **`npm install` / `pnpm install` / `yarn install`
+peut désormais échouer** si les CGU du DSFR n'ont pas été validées dans votre projet. Ce n'est pas un bug :
+c'est une contrainte introduite par le DSFR lui-même, que VueDsfr ne peut pas contourner.
+
+:::
+
+### Ce qui change
+
+- `@gouvfr/dsfr` embarque un script `preinstall` qui vérifie la présence et la validité d'un fichier
+  `.dsfr.yml` à la racine de votre projet.
+- Ce fichier est créé/mis à jour par l'assistant officiel du DSFR (`pnpm create @gouvfr/dsfr` /
+  `npm create @gouvfr/dsfr` / `yarn create @gouvfr/dsfr`), qui vous présente les CGU à valider.
+- Avec **pnpm ≥ 10**, il faut en plus autoriser explicitement l'exécution de ce script (bloqué par défaut) :
+  `pnpm approve-builds @gouvfr/dsfr` ou `pnpm add ... --allow-build=@gouvfr/dsfr`.
+
+Voir la procédure complète dans le [guide « Pour commencer »](./pour-commencer.md#ajouter-la-bibliothèque-à-un-projet-existant).
+
+### Comment migrer
+
+1. Mettez à jour VueDsfr :
+
+   ```shell
+   npm install @gouvminint/vue-dsfr@latest
+   ```
+
+2. Si l'installation échoue avec un message mentionnant `.dsfr.yml` ou une version de CGU obsolète,
+   lancez :
+
+   ```shell
+   npm create @gouvfr/dsfr
+   ```
+
+   et validez les CGU à jour.
+
+3. Avec pnpm, si vous obtenez `ERR_PNPM_IGNORED_BUILDS: Ignored build scripts: @gouvfr/dsfr`, lancez :
+
+   ```shell
+   pnpm approve-builds @gouvfr/dsfr
+   ```
+
+4. Relancez l'installation.
+
+### CI/CD
+
+Pour éviter que vos pipelines échouent sur la validation interactive, utilisez la variable
+d'environnement `DSFR_ACCEPT_LICENSE=1` (après avoir vous-même validé les CGU au moins une fois côté
+développement), et pré-approuvez le build dans le `pnpm-workspace.yaml` **versionné** du projet (en
+l'ajoutant au fichier existant, sans l'écraser) :
+
+```yaml
+allowBuilds:
+  '@gouvfr/dsfr': true
+```
+
 ## Migration vers 8.x (depuis 7.x)
 
 Avant la v8, certaines fonctions qui ne devaient pas être dans le bundle final l’étaient : `vueDsfrComponentResolver` et `vueDsfrAutoimportPreset`.
