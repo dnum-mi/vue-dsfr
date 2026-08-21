@@ -89,7 +89,7 @@
     "vue-router": "^5.0.3"
   },
   "dependencies": {
-    "@gouvfr/dsfr": "~1.14.4",
+    "@gouvfr/dsfr": "1.15.2",
     "focus-trap": "^8.2.2",
     "focus-trap-vue": "^4.1.0",
     "vue": "^3.5.41",

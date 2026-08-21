@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@gouvfr/dsfr':
-        specifier: ~1.14.4
-        version: 1.14.4
+        specifier: 1.15.2
+        version: 1.15.2
       focus-trap:
         specifier: ^8.2.2
         version: 8.2.2
@@ -1205,8 +1205,8 @@ packages:
       '@noble/hashes':
         optional: true
 
-  '@gouvfr/dsfr@1.14.4':
-    resolution: {integrity: sha512-Ca17apmTyAF2tMFwMcLwQN7fTlbfMFeyYSLUIUmjoSg1XVF4vDDkbvvKBpWJWaoTLDSFZBbvvHzcDyxw9wSkLA==}
+  '@gouvfr/dsfr@1.15.2':
+    resolution: {integrity: sha512-IrV/a/eV6KE06Az8Ky3wN2h0INka+ntk5UWuJg/T+ST7/tMUvIWC8fZi9azx+2YsqMFGgAkocIHxeVbPoLHAUQ==}
     engines: {node: ^20.19.0 || ^22.12.0 || >=24.0.0}
 
   '@hapi/address@5.1.1':
@@ -8673,7 +8673,7 @@ snapshots:
 
   '@exodus/bytes@1.15.1': {}
 
-  '@gouvfr/dsfr@1.14.4': {}
+  '@gouvfr/dsfr@1.15.2': {}
 
   '@hapi/address@5.1.1':
     dependencies:
