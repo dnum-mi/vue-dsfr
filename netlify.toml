@@ -1,2 +1,3 @@
 [build.environment]
 NODE_VERSION = "24"
+DSFR_ACCEPT_LICENSE = "1"
