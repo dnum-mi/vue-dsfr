@@ -52,7 +52,8 @@ const config: StorybookConfigWithPreviewAnnotations = {
     config.customLogger = {
       ...baseLogger,
       warn (msg, options) {
-        if (typeof msg === 'string' && msg.includes('decodeEntities option is passed but will be ignored in non-browser builds')) {
+        const text = typeof msg === 'string' ? msg : msg instanceof Error ? msg.message : String(msg)
+        if (text.includes('decodeEntities option is passed but will be ignored in non-browser builds')) {
           return
         }
         baseLogger.warn(msg, options)
