@@ -3,6 +3,7 @@ import type { StorybookConfig } from '@storybook/vue3-vite'
 import process from 'node:process'
 
 import vue from '@vitejs/plugin-vue'
+import { createLogger } from 'vite'
 
 type StorybookConfigWithPreviewAnnotations = StorybookConfig & {
   previewAnnotations?: (entries: string[]) => string[] | Promise<string[]>
@@ -39,6 +40,25 @@ const config: StorybookConfigWithPreviewAnnotations = {
     if (vuePluginIndex !== undefined && vuePluginIndex >= 0) {
       config.plugins![vuePluginIndex] = vue({})
     }
+
+    // Le remplacement ci-dessus ne suffit pas à empêcher le warning
+    // « decodeEntities option is passed but will be ignored in non-browser
+    // builds » : il est émis par @vue/compiler-core lors de la compilation de
+    // templates dans le navigateur (Chromium, via les tests Storybook/Vitest)
+    // et relayé par le logger Vite. Il est inoffensif (le code s’exécute bien
+    // dans un navigateur), donc on le filtre spécifiquement sans masquer les
+    // autres avertissements.
+    const baseLogger = config.customLogger ?? createLogger(config.logLevel ?? 'info')
+    config.customLogger = {
+      ...baseLogger,
+      warn (msg, options) {
+        if (typeof msg === 'string' && msg.includes('decodeEntities option is passed but will be ignored in non-browser builds')) {
+          return
+        }
+        baseLogger.warn(msg, options)
+      },
+    }
+
     return config
   },
 }
