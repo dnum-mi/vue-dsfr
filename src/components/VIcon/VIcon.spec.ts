@@ -1,7 +1,7 @@
 import type { IconifyJSON } from '@iconify/vue'
 
 import { flushPromises, mount } from '@vue/test-utils'
-import { beforeEach, describe, expect, it, vi } from 'vitest'
+import { describe, expect, it, vi } from 'vitest'
 
 import { vueDsfrIconCollectionsKey, vueDsfrPreferOfflineIconsKey } from '../VIconOffline/injection-key'
 
@@ -18,16 +18,6 @@ vi.mock('@iconify/vue', () => ({
 }))
 
 describe('VIcon', () => {
-  beforeEach(() => {
-    vi.mock('@iconify/vue', () => ({
-      Icon: {
-        name: 'MockedIcon',
-        props: ['icon', 'ssr', 'style', 'aria-label', 'flip'],
-        template: '<div data-testid="mocked-icon"></div>',
-      },
-    }))
-  })
-
   describe('Gestion de l\'hydratation', () => {
     it('devrait afficher un fallback pendant l\'hydratation quand ssr=true', async () => {
       const wrapper = mount(VIcon, {
