@@ -16,7 +16,7 @@ Ce composant affiche une liste de tags sous forme de `<ul>` et permet d'associer
 
 | Nom           | Type                          | Par défaut | Description |
 |--------------|------------------------------|-----------|-------------|
-| `tags`       | `DsfrTagProps<T>[]`          | `[]`      | Liste des tags à afficher. |
+| `tags`       | `DsfrTagsTagProps<T>[]`      | `[]`      | Liste des tags à afficher. |
 | `modelValue` | `T[]`                        | `undefined` | Liste des valeurs des tags sélectionnés (si les tags sont sélectionnables). |
 
 ## 📡 Événements

@@ -173,6 +173,45 @@ describe('DsfrModal', () => { // Skipped because of this issue: https://github.c
     expect(heading.text()).toContain(title)
   })
 
+  it('should render the title as an h1 by default', async () => {
+    const title = 'Titre de la modale'
+    const modalId = 'test-modal'
+
+    const wrapper = mount(DsfrModal, {
+      props: {
+        opened: true,
+        title,
+        modalId,
+      },
+      slots: {
+        default: 'contenu',
+      },
+    })
+
+    const heading = wrapper.find(`#${modalId}`)
+    expect(heading.element.tagName).toBe('H1')
+  })
+
+  it('should render the title with the tag given by titleTag', async () => {
+    const title = 'Titre de la modale'
+    const modalId = 'test-modal'
+
+    const wrapper = mount(DsfrModal, {
+      props: {
+        opened: true,
+        title,
+        titleTag: 'h2',
+        modalId,
+      },
+      slots: {
+        default: 'contenu',
+      },
+    })
+
+    const heading = wrapper.find(`#${modalId}`)
+    expect(heading.element.tagName).toBe('H2')
+  })
+
   it('should render the description wrapper with the correct id for aria-describedby', async () => {
     const content = 'Description de la modale'
     const modalId = 'test-modal'

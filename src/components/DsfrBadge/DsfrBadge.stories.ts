@@ -15,10 +15,35 @@ const meta = {
       description: 'Label (texte) du badge',
     },
     type: {
-      options: ['error', 'success', 'new', 'info', 'warning', undefined],
+      options: ['error', 'success', 'new', 'info', 'warning', 'standard', undefined],
       control: 'radio',
       description:
-        '(Optionnel) **Type** du badge : `error` (Erreur), `success` (Succès), `new` (Nouveau), `info` (Information), `warning` (Avertissement)',
+        '(Optionnel) **Type** du badge : `error` (Erreur), `success` (Succès), `new` (Nouveau), `info` (Information), `warning` (Avertissement), `standard` (couleur d’accent personnalisée via `colorAccent`)',
+    },
+    colorAccent: {
+      options: [
+        'green-tilleul-verveine',
+        'green-bourgeon',
+        'green-emeraude',
+        'green-menthe',
+        'green-archipel',
+        'blue-ecume',
+        'blue-cumulus',
+        'purple-glycine',
+        'pink-macaron',
+        'pink-tuile',
+        'yellow-tournesol',
+        'yellow-moutarde',
+        'orange-terre-battue',
+        'brown-cafe-creme',
+        'brown-caramel',
+        'brown-opera',
+        'beige-gris-galet',
+        undefined,
+      ],
+      control: 'select',
+      description:
+        '(Optionnel) Couleur d’accent du badge, utilisée uniquement quand `type` vaut `standard`',
     },
     noIcon: {
       control: 'boolean',
@@ -54,7 +79,7 @@ export const Badge: Story = {
       return { args }
     },
     template: `
-      <DsfrBadge :label="args.label" :small="args.small" :type="args.type" :no-icon="args.noIcon" />
+      <DsfrBadge :label="args.label" :small="args.small" :type="args.type" :color-accent="args.colorAccent" :no-icon="args.noIcon" />
     `,
   }),
 }
@@ -88,6 +113,12 @@ export const TousLesBadges: Story = {
       </p>
       <p>
         <DsfrBadge label="Nouveauté" type="new" />
+      </p>
+      <p>
+        <DsfrBadge label="Standard" type="standard" />
+      </p>
+      <p>
+        <DsfrBadge label="Standard glycine" type="standard" color-accent="purple-glycine" />
       </p>
     `,
   }),
