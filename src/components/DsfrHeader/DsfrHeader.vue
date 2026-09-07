@@ -76,11 +76,33 @@ const onKeyDown = (e: KeyboardEvent) => {
   }
 }
 
+// Keep this value aligned with DSFR breakpoints.
+// @gouvfr/dsfr/src/dsfr/core/script/api/modules/register/breakpoints.js
+const lgBreakpointQuery = '(min-width: 62em)'
+
+const isDesktopViewport = () => {
+  if (typeof window === 'undefined' || typeof window.matchMedia !== 'function') {
+    return false
+  }
+  return window.matchMedia(lgBreakpointQuery).matches
+}
+
+const closeSearchModalOnDesktop = () => {
+  if (!searchModalOpened.value || !isDesktopViewport()) {
+    return
+  }
+  modalOpened.value = false
+  menuOpened.value = false
+  searchModalOpened.value = false
+}
+
 onMounted(() => {
   document.addEventListener('keydown', onKeyDown)
+  window.addEventListener('resize', closeSearchModalOnDesktop)
 })
 onUnmounted(() => {
   document.removeEventListener('keydown', onKeyDown)
+  window.removeEventListener('resize', closeSearchModalOnDesktop)
 })
 
 const showMenu = () => {
