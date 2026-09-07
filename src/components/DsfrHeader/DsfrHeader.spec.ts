@@ -1,5 +1,5 @@
 import { fireEvent } from '@testing-library/dom'
-import { render } from '@testing-library/vue'
+import { render, waitFor } from '@testing-library/vue'
 import { createRouter, createWebHistory } from 'vue-router'
 
 import VIcon from '../VIcon/VIcon.vue'
@@ -133,5 +133,52 @@ describe.skip('DsfrHeader', () => { // Skipped because of this issue: https://gi
 
     // Then
     expect(betaBadge).toHaveClass('fr-badge')
+  })
+})
+
+describe('DsfrHeader - bascule du mode mobile vers le mode desktop', () => {
+  it('ne laisse qu’une seule barre de recherche après le passage en desktop', async () => {
+    // Given
+    const matchMediaSpy = vi.spyOn(window, 'matchMedia')
+      .mockImplementation(() => ({ matches: false }) as MediaQueryList)
+
+    try {
+      const { container, getByTitle } = render(DsfrHeader, {
+        global: {
+          plugins: [router],
+          components: {
+            VIcon,
+          },
+          stubs: {
+            FocusTrap: {
+              template: '<div><slot /></div>',
+            },
+          },
+        },
+        props: {
+          serviceTitle: 'Nom du service',
+          showSearch: true,
+        },
+      })
+
+      await router.isReady()
+
+      // When
+      await fireEvent.click(getByTitle('Recherche'))
+
+      // Then
+      expect(container.querySelectorAll('.fr-search-bar')).toHaveLength(2)
+
+      // When
+      matchMediaSpy.mockImplementation(() => ({ matches: true }) as MediaQueryList)
+      window.dispatchEvent(new Event('resize'))
+
+      // Then
+      await waitFor(() => {
+        expect(container.querySelectorAll('.fr-search-bar')).toHaveLength(1)
+      })
+    } finally {
+      matchMediaSpy.mockRestore()
+    }
   })
 })
