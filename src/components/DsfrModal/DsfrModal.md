@@ -28,6 +28,7 @@ Elle se compose des éléments suivants :
 | Propriété            | Type                           | Description                                                                                                    | Valeur par défaut                                              | Obligatoire  |
 |----------------------|--------------------------------|----------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------|--------------|
 | `title`              | `string`                       | Titre de la modale.                                                                                            |                                                                | ✅            |
+| `titleTag`           | `'h1' \| 'h2' \| 'h3' \| 'h4' \| 'h5' \| 'h6'` | Balise HTML du titre de la modale.                                                             | `'h1'`                                                         |              |
 | `modalId`            | `string`                       | Identifiant unique pour la modale.                                                                             | `useRandomId('modal', 'dialog')`                               |              |
 | `opened`             | `boolean`                      | Indique si la modale est ouverte.                                                                              | `false`                                                        |              |
 | `actions`            | `DsfrButtonProps[]`            | Liste des boutons d'action pour le pied de page de la modale.                                                  | `[]`                                                           |              |
@@ -40,6 +41,16 @@ Elle se compose des éléments suivants :
 | `disableOutsideInteraction` | `boolean`              | Désactive la fermeture de la modale au clic en dehors de son contenu (overlay).                               | `false`                                                        |              |
 
 Lorsque `disableOutsideInteraction` vaut `true`, la modale ne se ferme pas lors d'un clic à l'extérieur de `.fr-modal__body`. La fermeture reste possible via le bouton de fermeture, les actions de votre interface, ou `Escape` (sauf comportement spécifique applicatif).
+
+::: tip ♿ Accessibilité — niveau de titre de la modale
+
+La [documentation DSFR](https://www.systeme-de-design.gouv.fr/version-courante/fr/composants/modale/accessibilite-de-la-modale) indique que la modale doit avoir un titre de niveau `h1` à `h6` (jamais une balise `<p>`, qui n'a pas de valeur de titre pour les technologies d'assistance).
+
+Le niveau par défaut est `h1` : la modale étant considérée comme hors du flux normal de la page (elle capte l'intégralité de l'attention), ce choix garantit une accessibilité correcte même si vous ne personnalisez pas `titleTag`.
+
+Si vous préférez considérer la modale comme faisant partie du flux du document, adaptez `titleTag` au niveau de titre cohérent avec la hiérarchie de votre page (par exemple `h2` si la modale est ouverte depuis une section de niveau `h1`).
+
+:::
 
 ## 📡Événements
 

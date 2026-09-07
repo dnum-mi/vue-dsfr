@@ -17,6 +17,7 @@ const props = withDefaults(defineProps<DsfrModalProps>(), {
   origin: () => ({ focus () {} }),
   icon: undefined,
   size: 'md',
+  titleTag: 'h1',
   closeButtonLabel: 'Fermer',
   closeButtonTitle: 'Fermer la fenêtre modale',
 })
@@ -203,7 +204,8 @@ const iconProps = computed(() => dsfrIcon.value
                 ref="modalContent"
                 class="fr-modal__content"
               >
-                <h1
+                <component
+                  :is="titleTag"
                   :id="modalId"
                   class="fr-modal__title"
                 >
@@ -219,7 +221,7 @@ const iconProps = computed(() => dsfrIcon.value
                     />
                   </span>
                   {{ title }}
-                </h1>
+                </component>
                 <!-- @slot Slot par défaut pour le contenu de la liste. Sera dans `<ul class="fr-modal__title">` -->
                 <div :id="`${modalId}-description`">
                   <slot />
