@@ -53,6 +53,12 @@ const meta = {
       control: 'text',
       description: 'Titre de la modale',
     },
+    titleTag: {
+      control: 'radio',
+      options: ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'],
+      description:
+        'Balise de titre à utiliser pour le titre de la modale. À adapter selon la position de la modale dans le flux du document ; conservez un vrai niveau de titre (jamais `p`) pour l’accessibilité',
+    },
     icon: {
       control: 'text',
       description: 'Icone à afficher au début du titre de la modale',
@@ -130,6 +136,7 @@ export const ModaleAvecActions: Story = {
         :is-alert="args.isAlert"
         :icon="args.icon"
         :title="args.title"
+        :title-tag="args.titleTag"
         :origin="modalOrigin"
         :size="args.size"
         :close-button-label="args.closeButtonLabel"
@@ -144,6 +151,7 @@ export const ModaleAvecActions: Story = {
   args: {
     opened: false,
     title: 'Titre de la modale',
+    titleTag: 'h1',
     isAlert: false,
     icon: 'ri-checkbox-circle-line',
     size: 'md',
@@ -223,6 +231,7 @@ export const ModaleSansPiedDePage: Story = {
         :is-alert="args.isAlert"
         :icon="args.icon"
         :title="args.title"
+        :title-tag="args.titleTag"
         :origin="modalOrigin"
         :size="args.size"
         :close-button-label="args.closeButtonLabel"
@@ -237,6 +246,7 @@ export const ModaleSansPiedDePage: Story = {
   args: {
     opened: false,
     title: 'Titre de la modale',
+    titleTag: 'h1',
     isAlert: false,
     icon: 'ri-checkbox-circle-line',
     size: 'md',
@@ -278,6 +288,7 @@ export const ModaleAvecFooterPersonnalise: Story = {
         :is-alert="args.isAlert"
         :icon="args.icon"
         :title="args.title"
+        :title-tag="args.titleTag"
         :origin="modalOrigin"
         :size="args.size"
         :close-button-label="args.closeButtonLabel"
@@ -295,6 +306,7 @@ export const ModaleAvecFooterPersonnalise: Story = {
   args: {
     opened: false,
     title: 'Titre de la modale',
+    titleTag: 'h1',
     isAlert: false,
     icon: 'ri-checkbox-circle-line',
     size: 'md',
