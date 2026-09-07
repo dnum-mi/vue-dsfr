@@ -40,4 +40,39 @@ describe('DsfrBadge', () => {
     expect(badge).toHaveClass('fr-badge--sm')
     expect(badge).toHaveClass(`fr-badge--${type}`)
   })
+
+  it('should render a standard badge without color accent', async () => {
+    const label = 'Standard'
+
+    const { getByText } = render(DsfrBadge, {
+      props: {
+        label,
+        type: 'standard',
+      },
+    })
+
+    const badge = getByText(label).parentElement
+
+    expect(badge).toHaveClass('fr-badge')
+    expect(badge).not.toHaveClass('fr-badge--standard')
+  })
+
+  it('should render a standard badge with a color accent', async () => {
+    const label = 'Standard glycine'
+    const colorAccent = 'purple-glycine'
+
+    const { getByText } = render(DsfrBadge, {
+      props: {
+        label,
+        type: 'standard',
+        colorAccent,
+      },
+    })
+
+    const badge = getByText(label).parentElement
+
+    expect(badge).toHaveClass('fr-badge')
+    expect(badge).toHaveClass(`fr-badge--${colorAccent}`)
+    expect(badge).not.toHaveClass('fr-badge--standard')
+  })
 })

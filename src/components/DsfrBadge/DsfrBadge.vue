@@ -12,7 +12,8 @@ withDefaults(defineProps<DsfrBadgeProps>(), {
   <p
     class="fr-badge"
     :class="{
-      [`fr-badge--${type}`]: type,
+      [`fr-badge--${type}`]: type && type !== 'standard',
+      [`fr-badge--${colorAccent}`]: type === 'standard' && colorAccent,
       'fr-badge--no-icon': noIcon,
       'fr-badge--sm': small,
     }"
