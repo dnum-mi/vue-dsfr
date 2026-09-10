@@ -42,7 +42,11 @@ Avec yarn :
 ```shell
 yarn create vue-dsfr
 ```
+Avec bun :
 
+```shell
+bun create vue-dsfr
+```
 Et suivez les indications de l’assistant.
 
 ## Ajouter la bibliothèque à un projet existant
@@ -53,12 +57,12 @@ Depuis la version 1.15, `@gouvfr/dsfr` embarque un script de pré-installation q
 accepté les Conditions Générales d'Utilisation (CGU) du DSFR**. VueDsfr distribue `@gouvfr/dsfr` en dépendance
 mais ne peut pas valider ces CGU à votre place — c'est à vous, développeur·se utilisant VueDsfr, de le faire.
 
-Sans cette validation, `npm install` / `pnpm install` / `yarn install` **échouera** avec un message d'erreur
+Sans cette validation, `npm install` / `pnpm install` / `yarn install` / `bun install` **échouera** avec un message d'erreur
 explicite plutôt que de s'installer silencieusement.
 
 :::
 
-### Étape 1 — Accepter les CGU du DSFR (une seule fois par projet)
+### Étape 1 — Accepter les CGU du DSFR
 
 Avant d'ajouter VueDsfr à un projet (nouveau ou existant), initialisez/validez le DSFR avec son propre
 assistant :
@@ -69,6 +73,8 @@ npm create @gouvfr/dsfr
 pnpm create @gouvfr/dsfr
 # ou
 yarn create @gouvfr/dsfr
+# ou
+bun create @gouvfr/dsfr
 ```
 
 Cet assistant vous présente les CGU et écrit un fichier `.dsfr.yml` à la racine de votre projet (contenant
@@ -92,7 +98,12 @@ Afin d'installer la bibliothèque, taper ces commandes dans votre console au sei
 
 ```shell
 npm install @gouvfr/dsfr @gouvminint/vue-dsfr
-```
+# ou
+pnpm add @gouvfr/dsfr @gouvminint/vue-dsfr
+# ou
+yarn add @gouvfr/dsfr @gouvminint/vue-dsfr
+# ou
+bun add @gouvfr/dsfr @gouvminint/vue-dsfr```
 
 ::: info Pourquoi `@gouvfr/dsfr` ?
 
@@ -459,6 +470,10 @@ const searchQuery = ref('')
 
 ### Nuxt
 
+::: warning CGU du DSFR
+Avant d'installer les dépendances, assurez-vous d'avoir accepté les CGU du DSFR. Sans le fichier `.dsfr.yml`, l'installation échouera.
+:::
+
 1. Ajouter les dépendances `@gouvfr/dsfr` et `@gouvminint/vue-dsfr` au projet
 
 ```bash
@@ -466,10 +481,13 @@ const searchQuery = ref('')
 pnpm add @gouvfr/dsfr @gouvminint/vue-dsfr
 
 # Avec yarn
-yard add @gouvfr/dsfr @gouvminint/vue-dsfr
+yarn add @gouvfr/dsfr @gouvminint/vue-dsfr
 
 # Avec npm
 npm i @gouvfr/dsfr @gouvminint/vue-dsfr
+
+# Avec bun
+bun add @gouvfr/dsfr @gouvminint/vue-dsfr
 ```
 
 2. Ajouter le CSS de DSFR et de VueDsfr dans la section `css` de `nuxt.config.ts`
@@ -481,7 +499,7 @@ export default defineNuxtConfig({
     '@gouvfr/dsfr/dist/component/component.main.min.css', // Styles de tous les composants du DSFR
     '@gouvfr/dsfr/dist/utility/utility.main.min.css',     // Classes utilitaires : les composants de VueDsfr en ont besoin, contient aussi les icônes
 
-    '@gouvfr/dsfr/dist/scheme/scheme.min.css',            // Facultatif : Si les thèmes sont utilisés (thème sombre, thème en bernes)
+    '@gouvfr/dsfr/dist/scheme/scheme.min.css',            // Facultatif : Si les thèmes sont utilisés (thème sombre, thème en berne)
 
     '@gouvminint/vue-dsfr/styles',                        // Styles des composants VueDsfr
   ],
