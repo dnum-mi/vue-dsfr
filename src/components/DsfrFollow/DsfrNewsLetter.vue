@@ -1,14 +1,19 @@
 <script lang="ts" setup>
 import type { DsfrNewsLetterProps } from './DsfrFollow.types'
 
+import { computed } from 'vue'
+
+import { useRandomId } from '../../utils/random-utils'
+
 export type { DsfrNewsLetterProps }
 
-withDefaults(defineProps<DsfrNewsLetterProps>(), {
+const props = withDefaults(defineProps<DsfrNewsLetterProps>(), {
+  id: () => useRandomId('newsletter', 'email'),
   title: 'Abonnez-vous à notre lettre d’information',
   description: '',
   email: '',
   error: '',
-  labelEmail: 'Votre adresse électronique (ex. : prenom.nom@example.com)',
+  labelEmail: 'Votre adresse électronique (ex. : prenom.nom@example.com)',
   placeholder: 'prenom.nom@example.com',
   inputTitle: 'Adresse courriel',
   hintText: '',
@@ -20,6 +25,16 @@ withDefaults(defineProps<DsfrNewsLetterProps>(), {
 })
 
 const emailValue = defineModel<string>('email')
+
+const buttonId = computed(() => `${props.id}-button`)
+const hintId = computed(() => `${props.id}-hint`)
+const errorId = computed(() => `${props.id}-desc-error`)
+const describedById = computed(() => {
+  if (props.error) {
+    return errorId.value
+  }
+  return props.hintText ? hintId.value : undefined
+})
 </script>
 
 <template>
@@ -45,16 +60,18 @@ const emailValue = defineModel<string>('email')
       <form @submit.prevent="onSubmit(emailValue)">
         <label
           class="fr-label"
-          for="newsletter-email"
+          :for="id"
         >
           {{ labelEmail }}
         </label>
         <div class="fr-input-wrap fr-input-wrap--addon">
           <input
-            id="newsletter-email"
+            :id="id"
             v-model="emailValue"
             class="fr-input"
-            aria-describedby="fr-newsletter-hint-text"
+            :class="{ 'fr-input--error': error }"
+            :aria-describedby="describedById"
+            :aria-invalid="error ? true : undefined"
             :title="inputTitle || labelEmail"
             :placeholder="placeholder || labelEmail"
             type="email"
@@ -62,7 +79,7 @@ const emailValue = defineModel<string>('email')
             autocomplete="email"
           >
           <button
-            id="newsletter-button"
+            :id="buttonId"
             class="fr-btn"
             :title="buttonTitle"
             type="submit"
@@ -76,14 +93,15 @@ const emailValue = defineModel<string>('email')
           role="alert"
         >
           <p
-            id="newsletter-email-desc-error"
+            :id="errorId"
             class="fr-error-text"
           >
             {{ error }}
           </p>
         </div>
         <p
-          id="fr-newsletter-hint-text"
+          v-if="hintText"
+          :id="hintId"
           class="fr-hint-text"
         >
           {{ hintText }}
