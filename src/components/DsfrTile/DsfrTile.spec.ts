@@ -92,4 +92,27 @@ describe('DsfrTile', () => {
     const titleEl = getByText(title)
     expect(titleEl).toHaveAttribute('download', 'true')
   })
+
+  it('should display the three artwork layers of a pictogram', async () => {
+    const title = 'Titre de la tuile'
+    const svgPath = '/artwork/pictograms/buildings/school.svg'
+
+    const { container } = render(DsfrTile, {
+      global: {
+        plugins: [router],
+      },
+      props: {
+        title,
+        svgPath,
+        to: '/',
+      },
+    })
+
+    await router.isReady()
+
+    const uses = container.querySelectorAll('.fr-tile__pictogram use')
+
+    expect(uses).toHaveLength(3)
+    expect(uses[0]).toHaveAttribute('href', `${svgPath}#artwork-decorative`)
+  })
 })
