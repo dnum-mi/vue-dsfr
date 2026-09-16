@@ -76,4 +76,31 @@ describe('DsfrCheckbox', () => {
     expect(inputCheckBox.getAttribute('type')).toBe('checkbox')
     expect(inputCheckBox).toHaveAttribute('disabled')
   })
+
+  it('should render an indeterminate checkbox', () => {
+    // Given
+    const label = 'Check box label'
+
+    // When
+    const { getByRole } = render(CheckBox, {
+      global: {
+        components: {
+          VIcon,
+        },
+      },
+      props: {
+        value: 1,
+        label,
+        modelValue: false,
+        name: 'label-1',
+        indeterminate: true,
+      },
+    })
+
+    const input = getByRole('checkbox') as HTMLInputElement
+
+    // Then
+    expect(input.indeterminate).toBe(true)
+    expect(input.checked).toBe(false)
+  })
 })
