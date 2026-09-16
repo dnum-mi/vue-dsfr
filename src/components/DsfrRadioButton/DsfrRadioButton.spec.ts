@@ -68,4 +68,30 @@ describe('DsfrRadioButton', () => {
     expect(labelEl.getAttribute('for')).toBe(inputRadio.id)
     expect(imgEl.firstChild.getAttribute('src')).toBe(img)
   })
+
+  it('should display the pictogram of a rich radio button with its title', () => {
+    // Given
+    const label = 'Rich radio button label'
+    const svgPath = '/artwork/pictograms/buildings/school.svg'
+    const imgTitle = 'École'
+
+    // When
+    const { container } = render(RadioButton, {
+      props: {
+        label,
+        modelValue: undefined,
+        value: 1,
+        name: 'radio-button-name',
+        svgPath,
+        imgTitle,
+      },
+    })
+
+    const uses = container.querySelectorAll('.fr-radio-rich__pictogram use')
+
+    // Then
+    expect(uses).toHaveLength(3)
+    expect(uses[0]).toHaveAttribute('href', `${svgPath}#artwork-decorative`)
+    expect(container.querySelector('.fr-radio-rich__pictogram title')).toHaveTextContent(imgTitle)
+  })
 })
