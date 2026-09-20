@@ -2,12 +2,12 @@
 
 **VueDsfr** est un portage en [Vue 3](https://v3.vuejs.org) du
 [Système de Design Français](https://www.systeme-de-design.gouv.fr/) (ou DSFR) sous forme de bibliothèque
-de composants. Il peut s'utiliser facilement en tant que plugin.
+de composants. Il peut s’utiliser facilement en tant que plugin.
 
 ## Comment l’utiliser
 
-> ⚠️ Depuis le DSFR 1.15, l'installation nécessite de valider les CGU du DSFR (script de pré-installation).
-> Voir le [guide d'installation détaillé](https://vue-ds.fr/guide/pour-commencer) en cas d'échec de
+> ⚠️ Depuis le DSFR 1.15, l’installation nécessite de valider les CGU du DSFR (script de pré-installation).
+> Voir le [guide d’installation détaillé](https://vue-ds.fr/guide/pour-commencer) en cas d’échec de
 > `npm install`/`pnpm install`.
 
 La façon la plus simple de commencer un projet est d’utiliser le package `create-vue-dsfr`, qui permet de créer un projet NPM avec le nécessaire et suffisant (ou plus, selon votre choix) pour développer un projet utilisant VueDsfr, que ce soit pour Vite (Vue3) ou pour Nuxt (Nuxt3), avec TypeScript et ESLint.
@@ -58,6 +58,6 @@ Cf [le site officiel](https://vue-ds.fr/guide/guide-contributeur)
 - [Cynodex](https://www.cynodex.interieur.gouv.fr) : (programme de certification)
 - et bien d’autres (Bibliothèque numérique, ...)
 
-## Plus d'informations
+## Plus d’informations
 
 Veuillez consulter [le site officiel](https://vue-ds.fr/) pour plus d'informations.

@@ -42,11 +42,13 @@ Avec yarn :
 ```shell
 yarn create vue-dsfr
 ```
+
 Avec bun :
 
 ```shell
 bun create vue-dsfr
 ```
+
 Et suivez les indications de l’assistant.
 
 ## Ajouter la bibliothèque à un projet existant
@@ -103,7 +105,8 @@ pnpm add @gouvfr/dsfr @gouvminint/vue-dsfr
 # ou
 yarn add @gouvfr/dsfr @gouvminint/vue-dsfr
 # ou
-bun add @gouvfr/dsfr @gouvminint/vue-dsfr```
+bun add @gouvfr/dsfr @gouvminint/vue-dsfr
+```
 
 ::: info Pourquoi `@gouvfr/dsfr` ?
 
@@ -476,34 +479,34 @@ Avant d'installer les dépendances, assurez-vous d'avoir accepté les CGU du DSF
 
 1. Ajouter les dépendances `@gouvfr/dsfr` et `@gouvminint/vue-dsfr` au projet
 
-```bash
-# Avec pnpm
-pnpm add @gouvfr/dsfr @gouvminint/vue-dsfr
+    ```bash
+    # Avec pnpm
+    pnpm add @gouvfr/dsfr @gouvminint/vue-dsfr
 
-# Avec yarn
-yarn add @gouvfr/dsfr @gouvminint/vue-dsfr
+    # Avec yarn
+    yarn add @gouvfr/dsfr @gouvminint/vue-dsfr
 
-# Avec npm
-npm i @gouvfr/dsfr @gouvminint/vue-dsfr
+    # Avec npm
+    npm i @gouvfr/dsfr @gouvminint/vue-dsfr
 
-# Avec bun
-bun add @gouvfr/dsfr @gouvminint/vue-dsfr
-```
+    # Avec bun
+    bun add @gouvfr/dsfr @gouvminint/vue-dsfr
+    ```
 
 2. Ajouter le CSS de DSFR et de VueDsfr dans la section `css` de `nuxt.config.ts`
 
-```ts{3-9}
-export default defineNuxtConfig({
-  css: [
-    '@gouvfr/dsfr/dist/core/core.main.min.css',           // Le CSS minimal du DSFR
-    '@gouvfr/dsfr/dist/component/component.main.min.css', // Styles de tous les composants du DSFR
-    '@gouvfr/dsfr/dist/utility/utility.main.min.css',     // Classes utilitaires : les composants de VueDsfr en ont besoin, contient aussi les icônes
+    ```ts{3-9}
+    export default defineNuxtConfig({
+      css: [
+        '@gouvfr/dsfr/dist/core/core.main.min.css',           // Le CSS minimal du DSFR
+        '@gouvfr/dsfr/dist/component/component.main.min.css', // Styles de tous les composants du DSFR
+        '@gouvfr/dsfr/dist/utility/utility.main.min.css',     // Classes utilitaires : les composants de VueDsfr en ont besoin, contient aussi les icônes
 
-    '@gouvfr/dsfr/dist/scheme/scheme.min.css',            // Facultatif : Si les thèmes sont utilisés (thème sombre, thème en berne)
+        '@gouvfr/dsfr/dist/scheme/scheme.min.css',            // Facultatif : Si les thèmes sont utilisés (thème sombre, thème en berne)
 
-    '@gouvminint/vue-dsfr/styles',                        // Styles des composants VueDsfr
-  ],
-})
-```
+        '@gouvminint/vue-dsfr/styles',                        // Styles des composants VueDsfr
+      ],
+    })
+    ```
 
 Et voilà ! Vous êtes prêts à utiliser VueDsfr dans votre app Nuxt ✨
