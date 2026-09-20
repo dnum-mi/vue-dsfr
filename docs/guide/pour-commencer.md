@@ -43,16 +43,69 @@ Avec yarn :
 yarn create vue-dsfr
 ```
 
+Avec bun :
+
+```shell
+bun create vue-dsfr
+```
+
 Et suivez les indications de l’assistant.
 
 ## Ajouter la bibliothèque à un projet existant
 
-### Installer la bibliothèque en tant que dépendance du projet
+::: warning DSFR ≥ 1.15 : validation des CGU obligatoire
+
+Depuis la version 1.15, `@gouvfr/dsfr` embarque un script de pré-installation qui **vérifie que vous avez
+accepté les Conditions Générales d'Utilisation (CGU) du DSFR**. VueDsfr distribue `@gouvfr/dsfr` en dépendance
+mais ne peut pas valider ces CGU à votre place — c'est à vous, développeur·se utilisant VueDsfr, de le faire.
+
+Sans cette validation, `npm install` / `pnpm install` / `yarn install` / `bun install` **échouera** avec un message d'erreur
+explicite plutôt que de s'installer silencieusement.
+
+:::
+
+### Étape 1 — Accepter les CGU du DSFR
+
+Avant d'ajouter VueDsfr à un projet (nouveau ou existant), initialisez/validez le DSFR avec son propre
+assistant :
+
+```shell
+npm create @gouvfr/dsfr
+# ou
+pnpm create @gouvfr/dsfr
+# ou
+yarn create @gouvfr/dsfr
+# ou
+bun create @gouvfr/dsfr
+```
+
+Cet assistant vous présente les CGU et écrit un fichier `.dsfr.yml` à la racine de votre projet (contenant
+la version des CGU acceptée). **Ne supprimez pas ce fichier** : il est relu à chaque installation.
+
+::: info CI / intégration continue
+
+Pour un environnement non interactif (CI/CD), vous pouvez court-circuiter la validation avec la variable
+d'environnement `DSFR_ACCEPT_LICENSE=1` (à n'utiliser qu'après avoir vous-même validé les CGU au moins une
+fois en local) :
+
+```shell
+DSFR_ACCEPT_LICENSE=1 npm install
+```
+
+:::
+
+### Étape 2 — Installer la bibliothèque en tant que dépendance du projet
 
 Afin d'installer la bibliothèque, taper ces commandes dans votre console au sein du répertoire du projet :
 
 ```shell
 npm install @gouvfr/dsfr @gouvminint/vue-dsfr
+# ou
+pnpm add @gouvfr/dsfr @gouvminint/vue-dsfr
+# ou
+yarn add @gouvfr/dsfr @gouvminint/vue-dsfr
+# ou
+bun add @gouvfr/dsfr @gouvminint/vue-dsfr
 ```
 
 ::: info Pourquoi `@gouvfr/dsfr` ?
@@ -60,6 +113,61 @@ npm install @gouvfr/dsfr @gouvminint/vue-dsfr
 `@gouvminint/vue-dsfr` utilise le CSS de `@gouvfr/dsfr`, c’est pourquoi il faut l’installer aussi.
 
 :::
+
+::: warning Spécifique à pnpm ≥ 10
+
+Depuis pnpm 10, les scripts d'installation (`preinstall`/`postinstall`) des dépendances sont **bloqués par
+défaut** pour des raisons de sécurité (supply-chain). Il faut explicitement autoriser celui de
+`@gouvfr/dsfr` :
+
+```shell
+pnpm add @gouvfr/dsfr @gouvminint/vue-dsfr --allow-build=@gouvfr/dsfr
+```
+
+Ou, si `@gouvfr/dsfr` est déjà présent dans votre lockfile et que pnpm affiche
+`ERR_PNPM_IGNORED_BUILDS` :
+
+```shell
+pnpm approve-builds @gouvfr/dsfr
+pnpm install
+```
+
+`pnpm approve-builds` ajoute (sans écraser le reste de votre configuration) une entrée dans le
+`pnpm-workspace.yaml` de **votre projet** :
+
+```yaml
+allowBuilds:
+  '@gouvfr/dsfr': true
+```
+
+Cette entrée reste valable pour toutes les futures versions de `@gouvfr/dsfr` : elle autorise
+l'exécution du script, mais **ne dispense pas** de la validation des CGU elle-même (voir Étape 1).
+
+⚠️ La commande `pnpm create @gouvfr/dsfr --allow-build=...` ne fonctionne **pas** : le flag
+`--allow-build` ne s'applique qu'au paquet exécuté via `dlx` (l'assistant `create-dsfr` lui-même), pas
+à l'installation qu'il déclenche ensuite dans le projet généré. Utilisez `pnpm approve-builds` une fois
+le projet créé.
+
+:::
+
+### Que se passe-t-il si les CGU changent lors d'une mise à jour ?
+
+Chaque version de `@gouvfr/dsfr` peut référencer une nouvelle version des CGU. Si vous montez de version
+(`@gouvfr/dsfr` ou `@gouvminint/vue-dsfr`) et que la version des CGU a changé, l'installation
+**échouera** avec un message du type :
+
+```text
+[UPDATE-1.0.1->1.1.0] La version des modalités d'utilisation acceptée (1.0.1) ne correspond pas
+à la dernière version des modalités d'utilisation (1.1.0). Lancez `pnpm create @gouvfr/dsfr`
+pour accepter les modalités d'utilisation à jour.
+```
+
+Il suffit de relancer l'assistant pour régénérer `.dsfr.yml` avec la nouvelle version acceptée, puis de
+relancer l'installation :
+
+```shell
+pnpm create @gouvfr/dsfr
+```
 
 ### ~~Utiliser la bibliothèque en tant que plugin~~
 
@@ -365,33 +473,40 @@ const searchQuery = ref('')
 
 ### Nuxt
 
+::: warning CGU du DSFR
+Avant d'installer les dépendances, assurez-vous d'avoir accepté les CGU du DSFR. Sans le fichier `.dsfr.yml`, l'installation échouera.
+:::
+
 1. Ajouter les dépendances `@gouvfr/dsfr` et `@gouvminint/vue-dsfr` au projet
 
-```bash
-# Avec pnpm
-pnpm add @gouvfr/dsfr @gouvminint/vue-dsfr
+    ```bash
+    # Avec pnpm
+    pnpm add @gouvfr/dsfr @gouvminint/vue-dsfr
 
-# Avec yarn
-yard add @gouvfr/dsfr @gouvminint/vue-dsfr
+    # Avec yarn
+    yarn add @gouvfr/dsfr @gouvminint/vue-dsfr
 
-# Avec npm
-npm i @gouvfr/dsfr @gouvminint/vue-dsfr
-```
+    # Avec npm
+    npm i @gouvfr/dsfr @gouvminint/vue-dsfr
+
+    # Avec bun
+    bun add @gouvfr/dsfr @gouvminint/vue-dsfr
+    ```
 
 2. Ajouter le CSS de DSFR et de VueDsfr dans la section `css` de `nuxt.config.ts`
 
-```ts{3-9}
-export default defineNuxtConfig({
-  css: [
-    '@gouvfr/dsfr/dist/core/core.main.min.css',           // Le CSS minimal du DSFR
-    '@gouvfr/dsfr/dist/component/component.main.min.css', // Styles de tous les composants du DSFR
-    '@gouvfr/dsfr/dist/utility/utility.main.min.css',     // Classes utilitaires : les composants de VueDsfr en ont besoin, contient aussi les icônes
+    ```ts{3-9}
+    export default defineNuxtConfig({
+      css: [
+        '@gouvfr/dsfr/dist/core/core.main.min.css',           // Le CSS minimal du DSFR
+        '@gouvfr/dsfr/dist/component/component.main.min.css', // Styles de tous les composants du DSFR
+        '@gouvfr/dsfr/dist/utility/utility.main.min.css',     // Classes utilitaires : les composants de VueDsfr en ont besoin, contient aussi les icônes
 
-    '@gouvfr/dsfr/dist/scheme/scheme.min.css',            // Facultatif : Si les thèmes sont utilisés (thème sombre, thème en bernes)
+        '@gouvfr/dsfr/dist/scheme/scheme.min.css',            // Facultatif : Si les thèmes sont utilisés (thème sombre, thème en berne)
 
-    '@gouvminint/vue-dsfr/styles',                        // Styles des composants VueDsfr
-  ],
-})
-```
+        '@gouvminint/vue-dsfr/styles',                        // Styles des composants VueDsfr
+      ],
+    })
+    ```
 
 Et voilà ! Vous êtes prêts à utiliser VueDsfr dans votre app Nuxt ✨

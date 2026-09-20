@@ -4,6 +4,8 @@ import { Meta } from '@storybook/addon-docs/blocks'
 
 # Les classes utilitaires
 
+> **⚠️ DSFR 1.15** — Le rouge Marianne a été retiré des classes utilitaires de couleur, de fond et de bordure (`fr-text-title--red-marianne`, `fr-text-label--red-marianne`, `fr-text-inverted--red-marianne`, `fr-background-alt--red-marianne`, `fr-background-contrast--red-marianne`), leur utilisation n'étant pas autorisée. Les classes utilitaires d'artwork (`fr-artwork-*--red-marianne`) restent disponibles.
+
 ```css
 .fr-m-n8v,
 .fr-m-n4w {
@@ -2164,11 +2166,6 @@ import { Meta } from '@storybook/addon-docs/blocks'
   background-color: var(--background-alt-blue-france) !important;
 }
 
-.fr-background-alt--red-marianne {
-  --blend: var(--background-alt-red-marianne-blend) !important;
-  background-color: var(--background-alt-red-marianne) !important;
-}
-
 .fr-background-alt--green-tilleul-verveine {
   --blend: var(--background-alt-green-tilleul-verveine-blend) !important;
   background-color: var(--background-alt-green-tilleul-verveine) !important;
@@ -2262,11 +2259,6 @@ import { Meta } from '@storybook/addon-docs/blocks'
 .fr-background-contrast--blue-france {
   --blend: var(--background-contrast-blue-france-blend) !important;
   background-color: var(--background-contrast-blue-france) !important;
-}
-
-.fr-background-contrast--red-marianne {
-  --blend: var(--background-contrast-red-marianne-blend) !important;
-  background-color: var(--background-contrast-red-marianne) !important;
 }
 
 .fr-background-contrast--green-tilleul-verveine {
@@ -2427,20 +2419,12 @@ import { Meta } from '@storybook/addon-docs/blocks'
   color: var(--text-title-blue-france) !important;
 }
 
-.fr-text-title--red-marianne {
-  color: var(--text-title-red-marianne) !important;
-}
-
 .fr-text-label--grey {
   color: var(--text-label-grey) !important;
 }
 
 .fr-text-label--blue-france {
   color: var(--text-label-blue-france) !important;
-}
-
-.fr-text-label--red-marianne {
-  color: var(--text-label-red-marianne) !important;
 }
 
 .fr-text-label--green-tilleul-verveine {
@@ -2521,10 +2505,6 @@ import { Meta } from '@storybook/addon-docs/blocks'
 
 .fr-text-inverted--blue-france {
   color: var(--text-inverted-blue-france) !important;
-}
-
-.fr-text-inverted--red-marianne {
-  color: var(--text-inverted-red-marianne) !important;
 }
 
 .fr-text-inverted--info {

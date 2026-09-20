@@ -30,6 +30,8 @@ jobs:
         with:
           version: 11.21.0
       - name: Install dependencies
+        env:
+          DSFR_ACCEPT_LICENSE: '1'
         run: pnpm install --frozen-lockfile
       - name: Debug OIDC context
         run: |
