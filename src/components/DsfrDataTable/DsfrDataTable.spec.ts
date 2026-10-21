@@ -901,6 +901,70 @@ describe('DsfrDataTable', () => {
     expect(customSortFn).toHaveBeenCalled()
   })
 
+  it('should not reorder rows locally when manualSort is true, even with sortedBy/sortedDesc set', () => {
+    // Given
+    const title = 'Serveur trie déjà les lignes'
+    const headersRow = [
+      { key: 'name', label: 'Name' },
+      { key: 'score', label: 'Score' },
+    ]
+    const rows = [
+      { name: 'Bob', score: 50 },
+      { name: 'Alice', score: 100 },
+      { name: 'Charlie', score: 75 },
+    ]
+
+    // When
+    const { container } = render(DsfrDataTable, {
+      props: {
+        title,
+        headersRow,
+        rows,
+        sortableRows: true,
+        manualSort: true,
+        sortedBy: 'score',
+        sortedDesc: false,
+      },
+    })
+
+    // Then
+    const displayedNames = Array.from(container.querySelectorAll('tbody tr td:first-child'))
+      .map(cell => cell.textContent?.trim())
+    expect(displayedNames).toEqual(['Bob', 'Alice', 'Charlie'])
+  })
+
+  it('should still update sortedBy/sortedDesc and aria-sort when manualSort is true', async () => {
+    // Given
+    const title = 'Tri délégué au serveur'
+    const headersRow = [
+      { key: 'name', label: 'Name' },
+      { key: 'score', label: 'Score' },
+    ]
+    const rows = [
+      { name: 'Bob', score: 50 },
+      { name: 'Alice', score: 100 },
+    ]
+
+    // When
+    const { emitted, getByText } = render(DsfrDataTable, {
+      props: {
+        title,
+        headersRow,
+        rows,
+        sortableRows: true,
+        manualSort: true,
+      },
+    })
+
+    const scoreHeader = getByText('Score').closest('th')
+    const scoreHeaderButton = scoreHeader?.querySelector('button')
+    await fireEvent.click(scoreHeaderButton!)
+
+    // Then
+    expect(emitted()['update:sortedBy']?.[0]).toEqual(['score'])
+    expect(scoreHeader!.getAttribute('aria-sort')).toBe('ascending')
+  })
+
   it('should use custom id when provided', () => {
     // Given
     const title = 'Table with Custom ID'
