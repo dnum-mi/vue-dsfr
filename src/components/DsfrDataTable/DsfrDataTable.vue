@@ -147,7 +147,12 @@ function getAriaSort (header: DsfrDataTableHeaderCellObject): 'ascending' | 'des
 
   return 'none'
 }
+// En mode manualSort, sortedBy/sortedDesc ne pilotent que l'UI des en-têtes (aria-sort, flèches) :
+// le tri effectif des lignes est délégué au parent (ex. tri appliqué côté serveur).
 const sortedRows = computed(() => {
+  if (props.manualSort) {
+    return props.rows.slice()
+  }
   const _sortedRows = sortedBy.value ? props.rows.slice().sort(props.sortFn ?? defaultSortFn) : props.rows.slice()
   if (sortedDesc.value) {
     _sortedRows.reverse()
