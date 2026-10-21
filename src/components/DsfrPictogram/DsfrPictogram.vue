@@ -23,6 +23,20 @@ const svgDataUriComputed = computed(() => !!props.svgPath?.match(dataImageRegex)
 const svgDataUriMarkupComputed = computed(() => (
   sanitizeInlineSvgMarkupFromDataUri(props.svgPath, inlineSvgIdSuffix)
 ))
+
+const toCssSize = (value: unknown): string | number | undefined => (
+  typeof value === 'string' || typeof value === 'number' ? value : undefined
+)
+
+// svgAttrs ne peut pas être posé sur le <svg> inliné via v-html : seules width/height
+// ont un sens pour dimensionner le conteneur, le reste de l’attribut (viewBox…) vient du SVG source.
+const inlineSvgWrapperStyle = computed(() => {
+  const mergedAttrs = { ...defaultSvgAttrs, ...props.svgAttrs }
+  return {
+    width: toCssSize(mergedAttrs.width),
+    height: toCssSize(mergedAttrs.height),
+  }
+})
 </script>
 
 <template>
@@ -37,6 +51,8 @@ const svgDataUriMarkupComputed = computed(() => (
     v-else-if="svgDataUriMarkupComputed"
     aria-hidden="true"
     class="fr-artwork fr-artwork--inline"
+    :style="inlineSvgWrapperStyle"
+    :title="title"
     v-html="svgDataUriMarkupComputed"
   />
   <img
