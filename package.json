@@ -1,7 +1,7 @@
 {
   "name": "@gouvminint/vue-dsfr",
   "type": "module",
-  "version": "3.7.5",
+  "version": "8.21.0",
   "packageManager": "pnpm@11.21.0",
   "license": "MIT",
   "repository": {
