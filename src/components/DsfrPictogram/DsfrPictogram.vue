@@ -29,7 +29,7 @@ const toCssSize = (value: unknown): string | number | undefined => (
 )
 
 // svgAttrs ne peut pas être posé sur le <svg> inliné via v-html : seules width/height
-// ont un sens pour dimensionner le conteneur, le reste de l’attribut (viewBox…) vient du SVG source.
+// ont un sens pour dimensionner le conteneur, le reste des attributs (viewBox…) vient du SVG source.
 const inlineSvgWrapperStyle = computed(() => {
   const mergedAttrs = { ...defaultSvgAttrs, ...props.svgAttrs }
   return {
