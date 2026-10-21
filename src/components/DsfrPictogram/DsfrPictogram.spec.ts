@@ -49,6 +49,30 @@ describe('DsfrPictogram', () => {
     expect(container.querySelector('use')).toBeNull()
   })
 
+  it('should apply svgAttrs width/height to the wrapper when svgPath is a data uri', () => {
+    // Given
+    const svgAttrs = { height: '40px', width: '40px' }
+
+    // When
+    const { container } = render(DsfrPictogram, { props: { svgAttrs, svgPath: svgDataUri } })
+    const inlined = container.querySelector('.fr-artwork--inline')
+
+    // Then
+    expect(inlined).toHaveStyle({ height: '40px', width: '40px' })
+  })
+
+  it('should expose the title as a hover tooltip on the wrapper when svgPath is a data uri', () => {
+    // Given
+    const title = 'Mairie'
+
+    // When
+    const { container } = render(DsfrPictogram, { props: { svgPath: svgDataUri, title } })
+    const inlined = container.querySelector('.fr-artwork--inline')
+
+    // Then
+    expect(inlined).toHaveAttribute('title', title)
+  })
+
   it('should suffix the artwork ids to keep two pictograms independent', () => {
     // When
     const { container } = render({
