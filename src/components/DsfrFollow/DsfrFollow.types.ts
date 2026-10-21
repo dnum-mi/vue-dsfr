@@ -29,6 +29,10 @@ export type DsfrSocialNetworksProps = {
 }
 
 export type DsfrNewsLetterProps = {
+  /**
+   * Identifiant du champ, dont sont dérivés ceux du bouton, de l’indice et du message d’erreur
+   */
+  id?: string
   title?: string
   description?: string
   email?: string

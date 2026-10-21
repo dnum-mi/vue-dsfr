@@ -107,4 +107,67 @@ describe('DsfrNewsLetter', () => {
     expect(buttonTextEl).toHaveClass('fr-btn')
     expect(buttonTextEl).toHaveAttribute('title', buttonTitle)
   })
+
+  it('should associate the label with its own input', () => {
+    // Given
+    const labelEmail = 'Votre adresse électronique'
+
+    // When
+    const { container } = render(DsfrNewsLetter, { props: { labelEmail } })
+    const label = container.querySelector('label')
+    const input = container.querySelector('input')
+
+    // Then
+    expect(label).toHaveAttribute('for', input.id)
+  })
+
+  it('should describe the input by the error message and mark it invalid', () => {
+    // Given
+    const error = 'Le format de l’adresse électronique est incorrect'
+
+    // When
+    const { container } = render(DsfrNewsLetter, { props: { error } })
+    const input = container.querySelector('input')
+    const errorEl = container.querySelector('.fr-error-text')
+
+    // Then
+    expect(input).toHaveAttribute('aria-describedby', errorEl.id)
+    expect(input).toHaveAttribute('aria-invalid', 'true')
+    expect(input).toHaveClass('fr-input--error')
+  })
+
+  it('should describe the input by the hint when there is no error', () => {
+    // Given
+    const hintText = 'Vous pouvez vous désabonner à tout moment'
+
+    // When
+    const { container } = render(DsfrNewsLetter, { props: { hintText } })
+    const input = container.querySelector('input')
+    const hintEl = container.querySelector('.fr-hint-text')
+
+    // Then
+    expect(input).toHaveAttribute('aria-describedby', hintEl.id)
+  })
+
+  it('should not describe the input by an empty hint', () => {
+    // When
+    const { container } = render(DsfrNewsLetter)
+
+    // Then
+    expect(container.querySelector('input')).not.toHaveAttribute('aria-describedby')
+    expect(container.querySelector('.fr-hint-text')).toBeNull()
+  })
+
+  it('should give two newsletters distinct ids', () => {
+    // When
+    const { container } = render({
+      components: { DsfrNewsLetter },
+      template: '<div><DsfrNewsLetter hint-text="Indice" error="Erreur" /><DsfrNewsLetter hint-text="Indice" error="Erreur" /></div>',
+    })
+    const ids = Array.from(container.querySelectorAll('[id]')).map(el => el.id)
+
+    // Then
+    expect(ids).toHaveLength(8)
+    expect(new Set(ids).size).toBe(ids.length)
+  })
 })

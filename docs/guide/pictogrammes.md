@@ -7,6 +7,8 @@ La librairie d’images au format SVG est accessible dans la librairie DSFR, dan
 
 Vous pouvez copier le code d'import en cliquant sur le pictogramme.
 
+Pour afficher l’un de ces pictogrammes dans vos pages, utilisez le composant [`DsfrPictogram`](../composants/DsfrPictogram.md).
+
 ::: info Astuce
 
 Par exemple, en cliquant sur `city-hall`, vous copierez `import svgCityHall from '@gouvfr/dsfr/dist/artwork/pictograms/buildings/city-hall.svg'` dans le presse-papiers.

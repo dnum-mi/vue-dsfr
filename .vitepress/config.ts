@@ -303,6 +303,10 @@ const composants = [
     link: '/composants/DsfrPagination.md',
   },
   {
+    text: 'DsfrPictogram',
+    link: '/composants/DsfrPictogram.md',
+  },
+  {
     text: 'DsfrPicture',
     link: '/composants/DsfrPicture.md',
   },

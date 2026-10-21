@@ -21,6 +21,7 @@ Le composant offre deux modes :
 
 | Nom            | Type                              | Défaut                                                                                      | Description                                                                 |
 |-----------------|-----------------------------------|--------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------|
+| `id`           | `string`                          | identifiant généré                                                                          | Identifiant du champ, dont sont dérivés ceux du bouton, de l’indice et du message d’erreur. |
 | `title`        | `string`                          | `'Abonnez-vous à notre lettre d’information'`                                              | Titre affiché en haut de la section newsletter.                            |
 | `description`  | `string`                          | `''`                                                                                       | Texte descriptif affiché sous le titre.                                     |
 | `email`        | `string`                          | `''`                                                                                       | Valeur initiale du champ email.                                             |

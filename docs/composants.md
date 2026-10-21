@@ -146,6 +146,10 @@ Le storybook est toujours disponible [ici](https://storybook.vue-ds.fr)
 
 - [DsfrErrorPage](./composants/DsfrErrorPage)
 
+## Pictogramme
+
+- [DsfrPictogram](./composants/DsfrPictogram)
+
 ## Retour en haut de page
 
 - [DsfrBackToTop](./composants/DsfrBackToTop)

@@ -3,8 +3,7 @@ import type { DsfrTileProps } from './DsfrTiles.types'
 
 import { computed } from 'vue'
 
-import { useRandomId } from '../../utils/random-utils'
-import { sanitizeInlineSvgMarkupFromDataUri } from '../../utils/svg-data-uri-utils'
+import DsfrPictogram from '../DsfrPictogram/DsfrPictogram.vue'
 
 export type { DsfrTileProps }
 
@@ -30,17 +29,9 @@ defineSlots<{
   header?: (props: Record<string, never>) => void
 }>()
 
-const dataImageRegex = /^data:image\/svg\+xml(?:;[^,]*)?,/i
-const defaultSvgAttrs = { viewBox: '0 0 80 80', width: '80px', height: '80px' }
-
 const isExternalLink = computed(() => {
   return typeof props.to === 'string' && props.to.startsWith('http')
 })
-const svgDataUriComputed = computed(() => !!props.svgPath?.match(dataImageRegex))
-const inlineSvgIdSuffix = useRandomId('tile', 'artwork').replace(/[^\w-]/g, '_')
-const svgDataUriMarkupComputed = computed(() => (
-  sanitizeInlineSvgMarkupFromDataUri(props.svgPath, inlineSvgIdSuffix)
-))
 </script>
 
 <template>
@@ -113,43 +104,11 @@ const svgDataUriMarkupComputed = computed(() => (
         v-if="imgSrc || svgPath"
         class="fr-tile__pictogram"
       >
-        <img
-          v-if="imgSrc"
-          :src="imgSrc"
-          class="fr-artwork"
-          alt=""
-        >
-        <span
-          v-else-if="svgDataUriMarkupComputed"
-          aria-hidden="true"
-          class="fr-artwork fr-artwork--inline"
-          v-html="svgDataUriMarkupComputed"
+        <DsfrPictogram
+          :img-src="imgSrc"
+          :svg-path="svgPath"
+          :svg-attrs="svgAttrs"
         />
-        <img
-          v-else-if="svgDataUriComputed"
-          :src="svgPath"
-          class="fr-artwork"
-          alt=""
-        >
-        <svg
-          v-else
-          aria-hidden="true"
-          class="fr-artwork"
-          v-bind="{ ...defaultSvgAttrs, ...svgAttrs }"
-        >
-          <use
-            class="fr-artwork-decorative"
-            :href="`${svgPath}#artwork-decorative`"
-          />
-          <use
-            class="fr-artwork-minor"
-            :href="`${svgPath}#artwork-minor`"
-          />
-          <use
-            class="fr-artwork-major"
-            :href="`${svgPath}#artwork-major`"
-          />
-        </svg>
       <!-- L'alternative de l'image (attribut alt) doit à priori rester vide car l'image est illustrative et ne doit pas être restituée aux technologies d’assistance. Vous pouvez toutefois remplir l'alternative si vous estimer qu'elle apporte une information essentielle à la compréhension du contenu non présente dans le texte -->
       </div>
     </div>
@@ -163,10 +122,5 @@ const svgDataUriMarkupComputed = computed(() => (
 }
 .fr-tile.fr-tile--disabled a {
   cursor: not-allowed;
-}
-
-.fr-artwork--inline :deep(svg) {
-  width: 100%;
-  height: 100%;
 }
 </style>
