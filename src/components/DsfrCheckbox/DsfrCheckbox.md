@@ -27,6 +27,7 @@ Le composant `DsfrCheckbox` est composé des éléments suivants :
 | `hint`                  | *`string`*                 | `''`     |           | Texte d'information complémentaire affiché en dessous de la case à cocher |
 | `id`                    | *`string`*                 | chaîne pseudo-aléatoire     |           | Identifiant unique du composant (générée automatiquement si non fournie) |
 | `inline`                | *`boolean`*                | `false`     |           | Affiche la case à cocher en ligne (par défaut : `false`) |
+| `indeterminate`          | *`boolean`*                | `false`     |           | Affiche la case à cocher dans un état indéterminé (ni cochée, ni décochée). État purement visuel, indépendant de `modelValue` : à calculer par l'appelant (ex. sélection partielle d'une liste) |
 | `required`              | *`boolean`*                | `false`     |           | Indique si la case à cocher est obligatoire (par défaut : `false`)             |
 | `readonly`              | *`boolean`*                | `false`     |           | Indique si la case à cocher est en lecture seule*              |
 | `readonlyOpacity`              | *`number`*                | `0.75`     |           | Indique l’opacité du conteneur si la case à cocher est en lecture seule*             |

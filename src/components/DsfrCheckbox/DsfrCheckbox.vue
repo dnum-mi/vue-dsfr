@@ -61,6 +61,7 @@ const modelValue = defineModel()
         type="checkbox"
         :value="value"
         :checked="modelValue === true || (Array.isArray(modelValue) && modelValue.includes(value))"
+        :indeterminate="indeterminate"
         :required
         v-bind="$attrs"
         :data-testid="`input-checkbox-${id}`"
