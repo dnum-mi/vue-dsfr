@@ -1,4 +1,4 @@
-FROM nexus.forge-dc.cloudmi.minint.fr/node:16.13.1-alpine3.14 as dev
+FROM node:16.13.1-alpine3.14 as dev
 
 WORKDIR /app
 
@@ -28,7 +28,7 @@ COPY ./.storybook ./.storybook
 
 RUN npm run build-storybook
 
-FROM nexus.forge-dc.cloudmi.minint.fr/nginx:1.21.4-alpine as storybook
+FROM nginx:1.21.4-alpine as storybook
 
 COPY --from=storybook-build /app/storybook-static /usr/share/nginx/html
 
