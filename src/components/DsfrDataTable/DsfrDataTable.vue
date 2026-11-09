@@ -54,7 +54,7 @@ defineSlots<{
   /** Slot pour le contenu du corps du tableau (`<tbody>`) */
   tbody: () => any
   /** Slot pour le contenu personnalisé des cellules. Reçoit les props `colKey` et `cell` */
-  cell: { colKey: string | number, cell: string | DsfrDataTableRow }
+  cell: { colKey: string | number, cell: string }
   /** Slot pour le contenu du pied de page du tableau (en dessous de la table div.fr-table__footer) */
   tableBottomBar: () => any
   /** Slot pour la pagination dans le pied de page du tableau (dans div.fr-table__footer */
@@ -169,7 +169,7 @@ const finalRows = computed(() => {
     if (Array.isArray(row)) {
       return row
     }
-    return rowKeys.value.map(key => typeof row !== 'object' ? row : row[key] ?? row)
+    return rowKeys.value.map(key => typeof row !== 'object' ? row : row[key] ?? '')
   })
 
   if (props.pagination) {
