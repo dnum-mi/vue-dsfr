@@ -553,8 +553,7 @@ onBeforeUnmount(() => {
                           cell,
                         }"
                       >
-                        <!-- @vue-expect-error TS2538 -->
-                        {{ typeof cell === 'object' ? cell[rowKeyIndex] : cell }}
+                        {{ cell }}
                       </slot>
                     </component>
                   </template>
