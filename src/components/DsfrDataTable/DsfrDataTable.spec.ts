@@ -822,6 +822,43 @@ describe('DsfrDataTable', () => {
     expect(cells[1].textContent).toContain('Status: active')
   })
 
+  it('should render custom cell slot using row data', () => {
+    // Given
+    const title = 'Table with Custom Cell Slot using Row Data'
+    const columns = [
+      { key: 'fullname', label: 'Name' },
+      { key: 'status', label: 'Status' },
+    ]
+    const rows = [{
+      firstname: 'Alice',
+      lastname: 'Dupond',
+      status: 'active',
+    }]
+
+    // When
+    const { container } = render(DsfrDataTable, {
+      props: {
+        title,
+        columns,
+        rows,
+      },
+      slots: {
+        cell: ({ colKey, cell, row }) => {
+          if (colKey === 'fullname') {
+            return `${row.firstname} ${row.lastname}`
+          } else {
+            return cell
+          }
+        },
+      },
+    })
+
+    // Then
+    const cells = container.querySelectorAll('tbody td')
+    expect(cells[0].textContent).toContain('Alice Dupond')
+    expect(cells[1].textContent).toContain('active')
+  })
+
   it('should apply caption-bottom class when bottomCaption is true', () => {
     // Given
     const title = 'Table with Bottom Caption'
