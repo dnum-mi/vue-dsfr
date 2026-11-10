@@ -115,7 +115,7 @@ Vous pouvez utiliser `v-model` pour les propriétés suivantes :
 | **`Thead`** | | Remplace l'en-tête complet du tableau (`<thead>` par défaut).                                      |
 | **`header`** | `{ key: string, label: string }` | Personnalisation du rendu de chaque en-tête de colonne.                       |
 | **`tbody`** | | Remplace le corps du tableau (`<tbody>` par défaut et toutes les lignes).                           |
-| **`cell`** | `{ colKey: string, cell: unknown }` | Personnalisation du rendu de chaque cellule.                                   |
+| **`cell`** | `{ colKey: string, cell: unknown, row: DsfrDataTableRow }` | Personnalisation du rendu de chaque cellule.                                   |
 | **`tableBottomBar`** | | Remplace l'ensemble de la barre inférieure du tableau. Permet de personnaliser complètement la structure.    |
 | **`pagination`** | | Remplace la pagination par défaut. Utile pour intégrer un composant de pagination personnalisé.   |
 | **`tableBottomBarActions`** | | Boutons d'action globaux affichés en bas du tableau (concernent l'ensemble des données).         |
