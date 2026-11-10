@@ -53,8 +53,8 @@ defineSlots<{
   header: { key: string | number, label: string }
   /** Slot pour le contenu du corps du tableau (`<tbody>`) */
   tbody: () => any
-  /** Slot pour le contenu personnalisé des cellules. Reçoit les props `colKey` et `cell` */
-  cell: { colKey: string | number, cell: string | DsfrDataTableRow }
+  /** Slot pour le contenu personnalisé des cellules. Reçoit les props `colKey`, `cell` et `row` */
+  cell: { colKey: string | number, cell: string | DsfrDataTableRow, row: DsfrDataTableRow }
   /** Slot pour le contenu du pied de page du tableau (en dessous de la table div.fr-table__footer) */
   tableBottomBar: () => any
   /** Slot pour la pagination dans le pied de page du tableau (dans div.fr-table__footer */
@@ -165,23 +165,30 @@ const rowKeys = computed(() => computedHeadersRow.value.map((header: DsfrDataTab
 const rowKeyIndex = computed(() => rowKeys.value.findIndex(key => key === props.rowKey))
 
 const finalRows = computed(() => {
-  const rows = sortedRows.value.map((row) => {
+  const cellsAndRows = sortedRows.value.map((row) => {
     if (Array.isArray(row)) {
-      return row
+      return {
+        row,
+        cells: row,
+      }
     }
-    return rowKeys.value.map(key => typeof row !== 'object' ? row : row[key] ?? row)
+    const cells = rowKeys.value.map(key => typeof row !== 'object' ? row : row[key] ?? row)
+    return {
+      row,
+      cells,
+    }
   })
 
   if (props.pagination) {
-    return rows.slice(lowestLimit.value, highestLimit.value)
+    return cellsAndRows.slice(lowestLimit.value, highestLimit.value)
   }
 
-  return rows
+  return cellsAndRows
 })
 
 function selectAll (bool: boolean) {
   if (bool) {
-    selection.value = finalRows.value.map(row => row[rowKeyIndex.value] as string)
+    selection.value = finalRows.value.map(({ row }) => row[rowKeyIndex.value] as string)
   } else {
     selection.value.length = 0
   }
@@ -507,7 +514,7 @@ onBeforeUnmount(() => {
             <tbody>
               <slot name="tbody">
                 <tr
-                  v-for="(row, idx) of finalRows"
+                  v-for="({ cells, row }, idx) of finalRows"
                   :key="`row-${idx}`"
                   :data-row-key="idx + 1"
                 >
@@ -520,7 +527,7 @@ onBeforeUnmount(() => {
                       <input
                         :id="`row-select-${id}-${idx}`"
                         v-model="selection"
-                        :value="row[rowKeyIndex] ?? `row-${idx}`"
+                        :value="cells[rowKeyIndex] ?? `row-${idx}`"
                         type="checkbox"
                       >
                       <label
@@ -533,7 +540,7 @@ onBeforeUnmount(() => {
                   </th>
 
                   <template
-                    v-for="(cell, cellIdx) of row"
+                    v-for="(cell, cellIdx) of cells"
                     :key="cellIdx"
                   >
                     <component
@@ -551,6 +558,7 @@ onBeforeUnmount(() => {
                         v-bind="{
                           colKey: computedHeadersRow[cellIdx]?.key,
                           cell,
+                          row,
                         }"
                       >
                         <!-- @vue-expect-error TS2538 -->
