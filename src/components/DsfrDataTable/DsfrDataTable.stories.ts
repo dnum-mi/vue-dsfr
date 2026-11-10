@@ -248,6 +248,99 @@ export const Simple: Story = {
   },
 }
 
+export const SlotAvecRow: Story = {
+  render: (args) => ({
+    components: { DsfrDataTable },
+
+    setup () {
+      const normalizedArgs = computed(() => {
+        const _args = { ...args }
+        // columns et headersRow sont mutuellement exclusifs
+        if (_args.useColumns) {
+          delete _args.headersRow
+        } else {
+          delete _args.columns
+        }
+        delete _args.useColumns
+        return _args
+      })
+
+      return {
+        normalizedArgs,
+      }
+    },
+
+    template: `
+    <div class="fr-container fr-my-2v">
+      <DsfrDataTable
+        v-bind="normalizedArgs"
+        no-caption
+      >
+        <template #cell="{ colKey, cell, row }">
+          <template v-if="colKey === 'agent'">
+            {{ row.firstname }} <strong>{{ row.lastname }}</strong>
+          </template>
+          <template v-else-if="colKey === 'com'">
+            <a :href="'mailto:' + row.email">{{ row.email }}</a>
+            <br>
+            <a :href="'tel:' + row.telephone">{{ row.telephone }}</a>
+          </template>
+          <template v-else>
+            {{ cell }}
+          </template>
+        </template>
+      </DsfrDataTable>
+    </div>
+  `,
+  }),
+  args: {
+    useColumns: true,
+    title: 'Titre du tableau (caption)',
+
+    rows: [
+      { firstname: 'Camille', lastname: 'Martin', service: 'Numérique', site: 'Paris', poste: 'Dev front', email: 'camille.martin@example.fr', telephone: '01 44 10 00 01', statut: 'Actif' },
+      { firstname: 'Thomas', lastname: 'Petit', service: 'Juridique', site: 'Lille', poste: 'Juriste', email: 'thomas.petit@example.fr', telephone: '03 20 10 00 02', statut: 'Actif' },
+      { firstname: 'Nadia', lastname: 'Lopez', service: 'RH', site: 'Bordeaux', poste: 'Chargée RH', email: 'nadia.lopez@example.fr', telephone: '05 56 10 00 03', statut: 'Absence' },
+      { firstname: 'Inès', lastname: 'Robert', service: 'Numérique', site: 'Lyon', poste: 'UX designer', email: 'ines.robert@example.fr', telephone: '04 78 10 00 04', statut: 'Actif' },
+      { firstname: 'Yanis', lastname: 'Dupont', service: 'Finances', site: 'Paris', poste: 'Contrôleur', email: 'yanis.dupont@example.fr', telephone: '01 44 10 00 05', statut: 'Actif' },
+    ],
+    headersRow: [
+      {
+        key: 'agent',
+        label: 'Agent',
+      },
+      {
+        key: 'service',
+        label: 'Service',
+      },
+      {
+        key: 'site',
+        label: 'Site',
+      },
+      {
+        key: 'poste',
+        label: 'Poste',
+      },
+      {
+        key: 'com',
+        label: 'Email / Téléphone',
+      },
+      {
+        key: 'statut',
+        label: 'Statut',
+      },
+    ],
+    columns: [
+      { key: 'agent', label: 'Agent', fixed: true },
+      { key: 'service', label: 'Service' },
+      { key: 'site', label: 'Site' },
+      { key: 'poste', label: 'Poste' },
+      { key: 'com', label: 'Email / Téléphone' },
+      { key: 'statut', label: 'Statut' },
+    ],
+  },
+}
+
 export const Selection: Story = {
   name: 'Sélection',
   render: (args) => ({
