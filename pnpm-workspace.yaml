@@ -1,4 +1,5 @@
 allowBuilds:
+  '@gouvfr/dsfr': true
   '@swc/core': true
   esbuild: true
   unrs-resolver: true

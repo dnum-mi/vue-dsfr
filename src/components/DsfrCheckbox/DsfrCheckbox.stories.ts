@@ -54,6 +54,11 @@ const meta = {
       description:
         'Valeur de la case à cocher : `true` si cochée, `false` sinon',
     },
+    indeterminate: {
+      control: 'boolean',
+      description:
+        'Affiche la case à cocher dans un état indéterminé (ni cochée, ni décochée). Purement visuel, indépendant de `modelValue` : à calculer par l\'appelant (ex. sélection partielle d\'une liste)',
+    },
     'update:modelValue': {
       description:
         'Événement émis lors du changement de l\'état coché (`true`) ou non (`false`)',
@@ -210,6 +215,48 @@ export const CheckboxRequisPersonnalise: Story = {
     expect(label).toHaveClass('fr-label')
     const input = canvas.getByRole('checkbox')
     expect(input).toHaveAttribute('required', '')
+  },
+}
+
+export const CheckboxIndetermine: Story = {
+  args: {
+    disabled: false,
+    modelValue: false,
+    required: false,
+    indeterminate: true,
+    label: 'Sélectionner tout',
+    name: 'name-indeterminate',
+    value: 'name-indeterminate',
+    hint: 'Certaines options de la liste sont sélectionnées',
+  } as any,
+  render: (args) => ({
+    components: { DsfrCheckbox },
+    setup () {
+      return { args }
+    },
+    template: `
+      <DsfrCheckbox
+        :label="args.label"
+        :disabled="args.disabled"
+        :required="args.required"
+        :indeterminate="args.indeterminate"
+        :hint="args.hint"
+        :value="args.value"
+        :name="args.name || 'name-indeterminate'"
+        v-model="args.modelValue"
+      />
+  `,
+    watch: {
+      'args.modelValue': (newValue: boolean) => {
+        if ((args as any).onChange) { (args as any).onChange(newValue) }
+      },
+    },
+  }),
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement)
+    const input = canvas.getByRole('checkbox') as HTMLInputElement
+    expect(input.indeterminate).toBe(true)
+    expect(input).not.toBeChecked()
   },
 }
 

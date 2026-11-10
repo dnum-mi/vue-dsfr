@@ -332,3 +332,6 @@ meta-dts/
 # Vitepress
 .vitepress/dist
 .vitepress/cache
+
+# DSFR
+.dsfr.yml
