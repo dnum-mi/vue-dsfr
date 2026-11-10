@@ -390,7 +390,7 @@ export const PlusComplexe: Story = {
       },
     ],
     rows: [
-      { id: 2, name: 'Jane Doe', email: 'jane.doe@gmail.com' },
+      { id: 2, name: 'Jane Doe', email: undefined },
       { id: 1, name: 'John Doe', email: 'john.doe@gmail.com' },
       { id: 3, name: 'James Bond', email: 'james.bond@mi6.gov.uk' },
       { id: 4, name: 'Alice Johnson', email: 'alice.johnson@example.com' },

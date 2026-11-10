@@ -1373,6 +1373,35 @@ describe('DsfrDataTable', () => {
     }
   })
 
+  it('passe une chaîne vide à la prop cell quand la clé de colonne est absente de la ligne', () => {
+    // Given
+    const title = 'Table avec clé manquante'
+    const headersRow = [
+      { key: 'name', label: 'Name' },
+      { key: 'email', label: 'Email' },
+    ]
+    const rows = [
+      { name: '' },
+    ]
+
+    // When
+    const { container } = render(DsfrDataTable, {
+      props: {
+        title,
+        headersRow,
+        rows,
+      },
+      slots: {
+        cell: ({ colKey, cell }) => `${String(colKey)}:"${cell}"`,
+      },
+    })
+
+    // Then
+    const cells = container.querySelectorAll('tbody td')
+    expect(cells[0].textContent?.trim()).toBe('name:""')
+    expect(cells[1].textContent?.trim()).toBe('email:""')
+  })
+
   it('ignore la copie clavier lorsque l’API presse-papiers est absente', async () => {
     // Given
     const clipboardDescriptor = Object.getOwnPropertyDescriptor(navigator, 'clipboard')
