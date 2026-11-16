@@ -9,7 +9,7 @@ importers:
   .:
     dependencies:
       '@gouvfr/dsfr':
-        specifier: ^1.15.2
+        specifier: 1.15.2
         version: 1.15.2
       focus-trap:
         specifier: ^8.2.2
