@@ -61,6 +61,33 @@ describe('DsfrCheckboxSet', () => {
     expect(container.querySelectorAll('.fr-checkbox-group')).toHaveLength(3)
   })
 
+  it('should render an option in an indeterminate state', () => {
+    const { getByRole } = render(DsfrCheckboxSet, {
+      global: {
+        components: {
+          VIcon,
+        },
+      },
+      props: {
+        options: [
+          {
+            id: 'indeterminate',
+            label: 'Option indéterminée',
+            name: 'indeterminate',
+            value: 'indeterminate',
+            indeterminate: true,
+          },
+        ],
+        modelValue: [],
+      },
+    })
+
+    const input = getByRole('checkbox') as HTMLInputElement
+
+    expect(input.indeterminate).toBe(true)
+    expect(input.checked).toBe(false)
+  })
+
   it('should render a group of checkboxes in fieldset', async () => {
     // Given
     const firstLabelText = 'Premier label'
