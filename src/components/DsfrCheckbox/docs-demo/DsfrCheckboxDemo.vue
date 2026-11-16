@@ -70,6 +70,15 @@ const validMessage = 'Message de validation'
 
     <DsfrCheckbox
       v-model="modelValue"
+      name="checkbox-indeterminate"
+      value="indeterminate"
+      label="Case à cocher indéterminée (DSFR 1.15.0)"
+      :indeterminate="true"
+      :hint="hint"
+    />
+
+    <DsfrCheckbox
+      v-model="modelValue"
       name="checkbox-valid"
       value="valide"
       label="Case à cocher avec message de validation"
