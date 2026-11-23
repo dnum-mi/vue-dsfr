@@ -50,3 +50,11 @@ jobs:
           DEBUG: semantic-release:*,@semantic-release/npm:*
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: pnpm run semantic-release
+      - name: Merge main into develop
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git fetch origin main develop
+          git checkout -B develop origin/develop
+          git merge --no-edit origin/main
+          git push origin develop

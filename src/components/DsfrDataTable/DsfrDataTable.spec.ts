@@ -554,7 +554,40 @@ describe('DsfrDataTable', () => {
     const rowCheckboxes = container.querySelectorAll('tbody input[type="checkbox"]') as NodeListOf<HTMLInputElement>
     rowCheckboxes.forEach((checkbox) => {
       expect(checkbox.value).toBeTruthy()
+      expect(checkbox.checked).toBe(true)
     })
+  })
+
+  it('should keep individual checkboxes checked after select all when no rowKey matches a column', async () => {
+    // Given : sans rowKey, selectAll() doit utiliser la même clé positionnelle (row-N)
+    // que les cases individuelles, pas row[rowKeyIndex] qui vaut undefined
+    const title = 'Selectable Table'
+    const headersRow = ['Name', 'Age']
+    const rows = [
+      ['Alice', '25'],
+      ['Bob', '30'],
+    ]
+
+    // When
+    const { container } = render(DsfrDataTable, {
+      props: {
+        title,
+        headersRow,
+        rows,
+        selectableRows: true,
+      },
+    })
+
+    const selectAllCheckbox = container.querySelector('thead tr th input[type="checkbox"]') as HTMLInputElement
+    await fireEvent.click(selectAllCheckbox)
+    await nextTick()
+
+    // Then
+    const rowCheckboxes = container.querySelectorAll('tbody input[type="checkbox"]') as NodeListOf<HTMLInputElement>
+    expect(rowCheckboxes[0].value).toBe('row-0')
+    expect(rowCheckboxes[1].value).toBe('row-1')
+    expect(rowCheckboxes[0].checked).toBe(true)
+    expect(rowCheckboxes[1].checked).toBe(true)
   })
 
   it('should not render top bar buttons when no line is selected', () => {
@@ -843,8 +876,8 @@ describe('DsfrDataTable', () => {
     expect(tableDiv?.classList.contains('fr-table--caption-bottom')).toBe(true)
   })
 
-  it('should render rows with correct data attributes', () => {
-    // Given
+  it('should fall back to a positional data-row-key when rowKey is not set, even if the first column could coincidentally match', () => {
+    // Given : la 1ère colonne ('Name') ne doit jamais être prise pour clé par défaut
     const title = 'Table with Data Attributes'
     const headersRow = ['Name']
     const rows = [['Alice'], ['Bob'], ['Charlie']]
@@ -861,8 +894,53 @@ describe('DsfrDataTable', () => {
     // Then
     const tbodyRows = container.querySelectorAll('tbody tr')
     tbodyRows.forEach((row, idx) => {
-      expect(row.getAttribute('data-row-key')).toBe(`${idx + 1}`)
+      expect(row.getAttribute('data-row-key')).toBe(`row-${idx}`)
     })
+  })
+
+  it('should fall back to a positional data-row-key when rowKey does not match any column', () => {
+    // Given
+    const title = 'Table with Data Attributes'
+    const headersRow = ['Name']
+    const rows = [['Alice'], ['Bob'], ['Charlie']]
+
+    // When
+    const { container } = render(DsfrDataTable, {
+      props: {
+        title,
+        headersRow,
+        rows,
+        rowKey: 'id-inexistant',
+      },
+    })
+
+    // Then
+    const tbodyRows = container.querySelectorAll('tbody tr')
+    tbodyRows.forEach((row, idx) => {
+      expect(row.getAttribute('data-row-key')).toBe(`row-${idx}`)
+    })
+  })
+
+  it('should use the rowKey column value for data-row-key when it matches a column', () => {
+    // Given
+    const title = 'Table with Data Attributes'
+    const columns = [{ key: 'id', label: 'ID' }, { key: 'name', label: 'Name' }]
+    const rows = [{ id: 'row-alice', name: 'Alice' }, { id: 'row-bob', name: 'Bob' }]
+
+    // When
+    const { container } = render(DsfrDataTable, {
+      props: {
+        title,
+        columns,
+        rows,
+        rowKey: 'id',
+      },
+    })
+
+    // Then
+    const tbodyRows = container.querySelectorAll('tbody tr')
+    expect(tbodyRows[0].getAttribute('data-row-key')).toBe('row-alice')
+    expect(tbodyRows[1].getAttribute('data-row-key')).toBe('row-bob')
   })
 
   it('should handle sorting with custom sortFn', async () => {
@@ -1058,6 +1136,96 @@ describe('DsfrDataTable', () => {
     expect(firstBodyRowHeader?.length).toBe(colCount)
     const firstBodyRowCells = bodyRows?.[0].querySelectorAll('td')
     expect(firstBodyRowCells?.length).toBe(columns.length - colCount)
+  })
+
+  it('should throw a descriptive error when both columns and headersRow are provided', () => {
+    // Given
+    const title = 'Table avec props invalides'
+    const columns = [{ key: 'name', label: 'Name' }]
+    const headersRow = ['Name']
+    const rows = [['Alice']]
+
+    // When / Then
+    expect(() => render(DsfrDataTable, {
+      props: { title, columns, headersRow, rows },
+    })).toThrow(/columns.*headersRow.*mutuellement exclusives/)
+  })
+
+  it('should pass row and rowIndex to the cell slot', () => {
+    // Given
+    const title = 'Table avec slot cell enrichi'
+    const columns = [{ key: 'id', label: 'ID' }, { key: 'name', label: 'Name' }]
+    const rows = [{ id: 'r1', name: 'Alice' }, { id: 'r2', name: 'Bob' }]
+
+    // When
+    const { container } = render(DsfrDataTable, {
+      props: { title, columns, rows },
+      slots: {
+        cell: ({ cell, row, rowIndex }: { cell: unknown, row: Record<string, unknown>, rowIndex: number }) => `${cell} (row:${row.id}, rowIndex:${rowIndex})`,
+      },
+    })
+
+    // Then
+    const bodyCells = container.querySelectorAll('tbody td')
+    expect(bodyCells[0].textContent).toContain('r1 (row:r1, rowIndex:0)')
+    expect(bodyCells[1].textContent).toContain('Alice (row:r1, rowIndex:0)')
+    expect(bodyCells[2].textContent).toContain('r2 (row:r2, rowIndex:1)')
+    expect(bodyCells[3].textContent).toContain('Bob (row:r2, rowIndex:1)')
+  })
+
+  it('should pass the full source row to the cell slot even when a field is not part of the displayed columns', () => {
+    // Given : seule la colonne "name" est affichée, mais "id" doit rester accessible via row
+    const title = 'Table avec identifiant non affiché'
+    const columns = [{ key: 'name', label: 'Name' }]
+    const rows = [{ id: 'r1', name: 'Alice' }, { id: 'r2', name: 'Bob' }]
+
+    // When
+    const { container } = render(DsfrDataTable, {
+      props: { title, columns, rows },
+      slots: {
+        cell: ({ cell, row }: { cell: unknown, row: Record<string, unknown> }) => `${cell}:${row.id}`,
+      },
+    })
+
+    // Then
+    const bodyCells = container.querySelectorAll('tbody td')
+    expect(bodyCells[0].textContent).toContain('Alice:r1')
+    expect(bodyCells[1].textContent).toContain('Bob:r2')
+  })
+
+  it('should pass the correct source row after sorting and pagination', async () => {
+    // Given
+    const title = 'Table triée et paginée'
+    const columns = [{ key: 'name', label: 'Name' }]
+    const rows = [
+      { id: 'r1', name: 'Charlie' },
+      { id: 'r2', name: 'Alice' },
+      { id: 'r3', name: 'Bob' },
+    ]
+
+    // When
+    const { container } = render(DsfrDataTable, {
+      props: {
+        title,
+        columns,
+        rows,
+        sortableRows: true,
+        pagination: true,
+        rowsPerPage: 1,
+        currentPage: 1,
+      },
+      slots: {
+        cell: ({ cell, row }: { cell: unknown, row: Record<string, unknown> }) => `${cell}:${row.id}`,
+      },
+    })
+
+    const nameHeaderButton = container.querySelector('thead button.fr-btn--sort') as HTMLButtonElement
+    await fireEvent.click(nameHeaderButton)
+    await nextTick()
+
+    // Then : triées par nom ascendant ['Alice', 'Bob', 'Charlie'], page 2 (1-indexed) -> 'Bob' (r3)
+    const bodyCells = container.querySelectorAll('tbody td')
+    expect(bodyCells[0].textContent).toContain('Bob:r3')
   })
 
   it('should apply fixed classes on header and body cells when columns.fixed is true', async () => {
@@ -1306,7 +1474,41 @@ describe('DsfrDataTable', () => {
     }
   })
 
-  it('copie la valeur de cellule avec le raccourci Ctrl+C', async () => {
+  it('ne rend pas les cellules focusables ni copiables par défaut', async () => {
+    // Given
+    const writeText = vi.fn().mockResolvedValue(undefined)
+    const clipboardDescriptor = Object.getOwnPropertyDescriptor(navigator, 'clipboard')
+    Object.defineProperty(navigator, 'clipboard', {
+      configurable: true,
+      value: { writeText },
+    })
+
+    try {
+      const { container } = render(DsfrDataTable, {
+        props: {
+          title: 'Table sans copie',
+          headersRow: ['Nom', 'Ville'],
+          rows: [['Alice', 'Paris']],
+        },
+      })
+      const firstCell = container.querySelector('tbody td') as HTMLTableCellElement
+
+      // When
+      await fireEvent.keyDown(firstCell, { code: 'KeyC', ctrlKey: true, key: 'c' })
+
+      // Then
+      expect(firstCell.getAttribute('tabindex')).toBeNull()
+      expect(writeText).not.toHaveBeenCalled()
+    } finally {
+      if (clipboardDescriptor) {
+        Object.defineProperty(navigator, 'clipboard', clipboardDescriptor)
+      } else {
+        delete (navigator as Partial<Navigator>).clipboard
+      }
+    }
+  })
+
+  it('copie la valeur de cellule avec le raccourci Ctrl+C quand copyableCells est activé', async () => {
     // Given
     const writeText = vi.fn().mockResolvedValue(undefined)
     const clipboardDescriptor = Object.getOwnPropertyDescriptor(navigator, 'clipboard')
@@ -1321,11 +1523,13 @@ describe('DsfrDataTable', () => {
           title: 'Table avec copie',
           headersRow: ['Nom', 'Ville'],
           rows: [['Alice', 'Paris']],
+          copyableCells: true,
         },
       })
       const firstCell = container.querySelector('tbody td') as HTMLTableCellElement
 
       // When
+      expect(firstCell.getAttribute('tabindex')).toBe('0')
       await fireEvent.keyDown(firstCell, { code: 'KeyC', ctrlKey: true, key: 'c' })
 
       // Then
@@ -1354,6 +1558,7 @@ describe('DsfrDataTable', () => {
           title: 'Table avec copie refusée',
           headersRow: ['Nom', 'Ville'],
           rows: [['Alice', 'Paris']],
+          copyableCells: true,
         },
       })
       const firstCell = container.querySelector('tbody td') as HTMLTableCellElement
@@ -1373,6 +1578,35 @@ describe('DsfrDataTable', () => {
     }
   })
 
+  it('passe une chaîne vide à la prop cell quand la clé de colonne est absente de la ligne', () => {
+    // Given
+    const title = 'Table avec clé manquante'
+    const headersRow = [
+      { key: 'name', label: 'Name' },
+      { key: 'email', label: 'Email' },
+    ]
+    const rows = [
+      { name: '' },
+    ]
+
+    // When
+    const { container } = render(DsfrDataTable, {
+      props: {
+        title,
+        headersRow,
+        rows,
+      },
+      slots: {
+        cell: ({ colKey, cell }) => `${String(colKey)}:"${cell}"`,
+      },
+    })
+
+    // Then
+    const cells = container.querySelectorAll('tbody td')
+    expect(cells[0].textContent?.trim()).toBe('name:""')
+    expect(cells[1].textContent?.trim()).toBe('email:""')
+  })
+
   it('ignore la copie clavier lorsque l’API presse-papiers est absente', async () => {
     // Given
     const clipboardDescriptor = Object.getOwnPropertyDescriptor(navigator, 'clipboard')
@@ -1382,6 +1616,7 @@ describe('DsfrDataTable', () => {
       const { container } = render(DsfrDataTable, {
         props: {
           title: 'Table sans presse-papiers',
+          copyableCells: true,
           headersRow: ['Nom', 'Ville'],
           rows: [['Alice', 'Paris']],
         },

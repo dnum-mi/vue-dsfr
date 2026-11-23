@@ -2,7 +2,7 @@
 import type { DsfrDataTableColumn, DsfrDataTableHeaderCell, DsfrDataTableHeaderCellObject, DsfrDataTableProps, DsfrDataTableRow } from './DsfrDataTable.types'
 import type { Page } from '../DsfrPagination/DsfrPagination.types'
 
-import { computed, nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue'
+import { computed, nextTick, onBeforeUnmount, onMounted, ref, watch, watchEffect } from 'vue'
 
 import DsfrButtonGroup from '../DsfrButton/DsfrButtonGroup.vue'
 import DsfrPagination from '../DsfrPagination/DsfrPagination.vue'
@@ -20,7 +20,6 @@ const props = withDefaults(defineProps<DsfrDataTableProps>(), {
   bottomActionsRow: () => [],
   currentPage: 0,
   rowsPerPage: 10,
-  rowKey: 0,
   paginationOptions: () => [
     5,
     10,
@@ -53,8 +52,8 @@ defineSlots<{
   header: { key: string | number, label: string }
   /** Slot pour le contenu du corps du tableau (`<tbody>`) */
   tbody: () => any
-  /** Slot pour le contenu personnalisé des cellules. Reçoit les props `colKey` et `cell` */
-  cell: { colKey: string | number, cell: string | DsfrDataTableRow }
+  /** Slot pour le contenu personnalisé des cellules. Reçoit les props `colKey`, `cell`, `row` et `rowIndex` */
+  cell: { colKey: string | number, cell: string | number | boolean | bigint | symbol, row: DsfrDataTableRow, rowIndex: number }
   /** Slot pour le contenu du pied de page du tableau (en dessous de la table div.fr-table__footer) */
   tableBottomBar: () => any
   /** Slot pour la pagination dans le pied de page du tableau (dans div.fr-table__footer */
@@ -66,6 +65,13 @@ defineSlots<{
 const selection = defineModel<string[]>('selection', { default: () => [] })
 const rowsPerPage = defineModel<number>('rowsPerPage', { default: 10 })
 const currentPage = defineModel<number>('currentPage', { default: 0 })
+
+watchEffect(() => {
+  if (props.columns && props.columns.length > 0 && props.headersRow && props.headersRow.length > 0) {
+    throw new Error('DsfrDataTable : les props "columns" et "headersRow" sont mutuellement exclusives, elles ne peuvent pas être fournies simultanément.')
+  }
+})
+
 const pageCount = computed(() => Math.ceil(props.rows.length / rowsPerPage.value))
 const pages = computed<Page[]>(() => props.pages ?? Array.from({ length: pageCount.value }).map((x, i) => ({ label: `${i + 1}`, title: `Page ${i + 1}`, href: `#${i + 1}` })))
 
@@ -165,11 +171,14 @@ const rowKeys = computed(() => computedHeadersRow.value.map((header: DsfrDataTab
 const rowKeyIndex = computed(() => rowKeys.value.findIndex(key => key === props.rowKey))
 
 const finalRows = computed(() => {
-  const rows = sortedRows.value.map((row) => {
-    if (Array.isArray(row)) {
-      return row
+  const rows = sortedRows.value.map((sourceRow) => {
+    if (Array.isArray(sourceRow)) {
+      return { sourceRow, cells: sourceRow }
     }
-    return rowKeys.value.map(key => typeof row !== 'object' ? row : row[key] ?? row)
+    return {
+      sourceRow,
+      cells: rowKeys.value.map(key => typeof sourceRow !== 'object' ? sourceRow : sourceRow[key] ?? ''),
+    }
   })
 
   if (props.pagination) {
@@ -179,9 +188,13 @@ const finalRows = computed(() => {
   return rows
 })
 
+function getRowKey (cells: (typeof finalRows.value)[number]['cells'], idx: number): string | number {
+  return (cells[rowKeyIndex.value] as string | number | undefined) ?? `row-${idx}`
+}
+
 function selectAll (bool: boolean) {
   if (bool) {
-    selection.value = finalRows.value.map(row => row[rowKeyIndex.value] as string)
+    selection.value = finalRows.value.map(({ cells }, idx) => getRowKey(cells, idx) as string)
   } else {
     selection.value.length = 0
   }
@@ -195,6 +208,9 @@ function onPaginationOptionsChange () {
 }
 
 async function copyToClipboard (text: string) {
+  if (!props.copyableCells) {
+    return
+  }
   try {
     await navigator.clipboard?.writeText?.(text)
   } catch {
@@ -507,9 +523,9 @@ onBeforeUnmount(() => {
             <tbody>
               <slot name="tbody">
                 <tr
-                  v-for="(row, idx) of finalRows"
-                  :key="`row-${idx}`"
-                  :data-row-key="idx + 1"
+                  v-for="({ sourceRow, cells }, idx) of finalRows"
+                  :key="getRowKey(cells, idx)"
+                  :data-row-key="getRowKey(cells, idx)"
                 >
                   <th
                     v-if="selectableRows"
@@ -520,7 +536,7 @@ onBeforeUnmount(() => {
                       <input
                         :id="`row-select-${id}-${idx}`"
                         v-model="selection"
-                        :value="row[rowKeyIndex] ?? `row-${idx}`"
+                        :value="getRowKey(cells, idx)"
                         type="checkbox"
                       >
                       <label
@@ -533,7 +549,7 @@ onBeforeUnmount(() => {
                   </th>
 
                   <template
-                    v-for="(cell, cellIdx) of row"
+                    v-for="(cell, cellIdx) of cells"
                     :key="cellIdx"
                   >
                     <component
@@ -542,7 +558,8 @@ onBeforeUnmount(() => {
                       :class="[getFixedClassObject(columns?.[cellIdx]), { 'dsfr-data-table__generated-fixed-col': isColumnFixed(columns?.[cellIdx]) }]"
                       :style="isColumnFixed(columns?.[cellIdx]) ? getFixedColumnStyle(cellIdx) : undefined"
                       :data-col-idx="cellIdx"
-                      tabindex="0"
+                      :tabindex="copyableCells ? 0 : undefined"
+                      :title="copyableCells ? 'Copier la valeur de la cellule (Ctrl+C ou Cmd+C)' : undefined"
                       @keydown.ctrl.c="copyToClipboard(typeof cell === 'object' ? (cell as Record<number, string>)[rowKeyIndex] : String(cell))"
                       @keydown.meta.c="copyToClipboard(typeof cell === 'object' ? (cell as Record<number, string>)[rowKeyIndex] : String(cell))"
                     >
@@ -551,10 +568,11 @@ onBeforeUnmount(() => {
                         v-bind="{
                           colKey: computedHeadersRow[cellIdx]?.key,
                           cell,
+                          row: sourceRow,
+                          rowIndex: idx,
                         }"
                       >
-                        <!-- @vue-expect-error TS2538 -->
-                        {{ typeof cell === 'object' ? cell[rowKeyIndex] : cell }}
+                        {{ cell }}
                       </slot>
                     </component>
                   </template>
