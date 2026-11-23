@@ -1,3 +1,30 @@
+## [9.0.0](https://github.com/dnum-mi/vue-dsfr/compare/v8.21.0...v9.0.0) (2026-11-23)
+
+### ⚠ BREAKING CHANGES
+
+* **DsfrDataTable:** 🐛 identifie les lignes par rowKey plutôt que par leur position
+
+### ✨ Nouvelles fonctionnalités
+
+* **DsfrDataTable:** ✨ ajoute row et rowIndex aux props du slot cell ([41cc35e](https://github.com/dnum-mi/vue-dsfr/commit/41cc35ed754715275258d28f821eff6eff9948d3)), closes [#cell](https://github.com/dnum-mi/vue-dsfr/issues/cell) [#1422](https://github.com/dnum-mi/vue-dsfr/issues/1422)
+
+### 🐛 Corrections de bugs
+
+* **DsfrDataTable:** 🐛 aligne selectAll() sur getRowKey() pour la sélection globale ([bc41952](https://github.com/dnum-mi/vue-dsfr/commit/bc4195227db9fb39b410323f8930addbba606711)), closes [#1423](https://github.com/dnum-mi/vue-dsfr/issues/1423) [#1422](https://github.com/dnum-mi/vue-dsfr/issues/1422)
+* **DsfrDataTable:** 🐛 corrige la perte de vérification de type sur les props ([836c7d3](https://github.com/dnum-mi/vue-dsfr/commit/836c7d380f177766e4290477dc2d0b5e03929c44)), closes [#1422](https://github.com/dnum-mi/vue-dsfr/issues/1422)
+* **DsfrDataTable:** 🐛 identifie les lignes par rowKey plutôt que par leur position ([50e0f0f](https://github.com/dnum-mi/vue-dsfr/commit/50e0f0f270c06c62040d2382a0619caf9fc1920d)), closes [#1422](https://github.com/dnum-mi/vue-dsfr/issues/1422)
+* **DsfrDataTable:** 🐛 la propriété cell du slot cell doit être chaine vide au lieu de l'objet row ([158e7fb](https://github.com/dnum-mi/vue-dsfr/commit/158e7fbc8f426e2ae127515750cb3bbfa381f8bf))
+* **DsfrDataTable:** 🐛 rend les cellules focusables et copiables seulement sur demande ([bbf8b15](https://github.com/dnum-mi/vue-dsfr/commit/bbf8b15210cbf3ffb13cf10c4bc7dd0b9d099c59)), closes [#1422](https://github.com/dnum-mi/vue-dsfr/issues/1422)
+* **DsfrDataTable:** 🐛 transmet la ligne source complète au slot cell ([6bd7ef3](https://github.com/dnum-mi/vue-dsfr/commit/6bd7ef3653dab344a897b14863da7454b417e3dd)), closes [#1423](https://github.com/dnum-mi/vue-dsfr/issues/1423) [#1425](https://github.com/dnum-mi/vue-dsfr/issues/1425)
+
+### 📚 Documentation
+
+* **DsfrDataTable:** 📚 modification de la story DsfrDataTable "Plus complexe" ([444b3c1](https://github.com/dnum-mi/vue-dsfr/commit/444b3c15c0d07dbafa84e45b261e853508fb02f3))
+
+### ✅ Tests
+
+* **DsfrDataTable:** 🚨 ajout test unitaire de cell lorsque la valeur est vide ou undefined ([5b0c7f4](https://github.com/dnum-mi/vue-dsfr/commit/5b0c7f43f3b06cce8d83d929039e79c2d0b3c42c))
+
 ## [8.21.0](https://github.com/dnum-mi/vue-dsfr/compare/v8.20.0...v8.21.0) (2026-10-21)
 
 ### ✨ Nouvelles fonctionnalités
