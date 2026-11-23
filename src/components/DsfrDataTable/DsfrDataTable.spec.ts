@@ -843,8 +843,8 @@ describe('DsfrDataTable', () => {
     expect(tableDiv?.classList.contains('fr-table--caption-bottom')).toBe(true)
   })
 
-  it('should render rows with correct data attributes', () => {
-    // Given
+  it('should fall back to a positional data-row-key when rowKey is not set, even if the first column could coincidentally match', () => {
+    // Given : la 1ère colonne ('Name') ne doit jamais être prise pour clé par défaut
     const title = 'Table with Data Attributes'
     const headersRow = ['Name']
     const rows = [['Alice'], ['Bob'], ['Charlie']]
@@ -861,8 +861,53 @@ describe('DsfrDataTable', () => {
     // Then
     const tbodyRows = container.querySelectorAll('tbody tr')
     tbodyRows.forEach((row, idx) => {
-      expect(row.getAttribute('data-row-key')).toBe(`${idx + 1}`)
+      expect(row.getAttribute('data-row-key')).toBe(`row-${idx}`)
     })
+  })
+
+  it('should fall back to a positional data-row-key when rowKey does not match any column', () => {
+    // Given
+    const title = 'Table with Data Attributes'
+    const headersRow = ['Name']
+    const rows = [['Alice'], ['Bob'], ['Charlie']]
+
+    // When
+    const { container } = render(DsfrDataTable, {
+      props: {
+        title,
+        headersRow,
+        rows,
+        rowKey: 'id-inexistant',
+      },
+    })
+
+    // Then
+    const tbodyRows = container.querySelectorAll('tbody tr')
+    tbodyRows.forEach((row, idx) => {
+      expect(row.getAttribute('data-row-key')).toBe(`row-${idx}`)
+    })
+  })
+
+  it('should use the rowKey column value for data-row-key when it matches a column', () => {
+    // Given
+    const title = 'Table with Data Attributes'
+    const columns = [{ key: 'id', label: 'ID' }, { key: 'name', label: 'Name' }]
+    const rows = [{ id: 'row-alice', name: 'Alice' }, { id: 'row-bob', name: 'Bob' }]
+
+    // When
+    const { container } = render(DsfrDataTable, {
+      props: {
+        title,
+        columns,
+        rows,
+        rowKey: 'id',
+      },
+    })
+
+    // Then
+    const tbodyRows = container.querySelectorAll('tbody tr')
+    expect(tbodyRows[0].getAttribute('data-row-key')).toBe('row-alice')
+    expect(tbodyRows[1].getAttribute('data-row-key')).toBe('row-bob')
   })
 
   it('should handle sorting with custom sortFn', async () => {

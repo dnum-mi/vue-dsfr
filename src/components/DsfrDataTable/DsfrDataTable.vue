@@ -20,7 +20,6 @@ const props = withDefaults(defineProps<DsfrDataTableProps>(), {
   bottomActionsRow: () => [],
   currentPage: 0,
   rowsPerPage: 10,
-  rowKey: 0,
   paginationOptions: () => [
     5,
     10,
@@ -185,6 +184,10 @@ const finalRows = computed(() => {
 
   return rows
 })
+
+function getRowKey (row: (typeof finalRows.value)[number], idx: number): string | number {
+  return (row[rowKeyIndex.value] as string | number | undefined) ?? `row-${idx}`
+}
 
 function selectAll (bool: boolean) {
   if (bool) {
@@ -518,8 +521,8 @@ onBeforeUnmount(() => {
               <slot name="tbody">
                 <tr
                   v-for="(row, idx) of finalRows"
-                  :key="`row-${idx}`"
-                  :data-row-key="idx + 1"
+                  :key="getRowKey(row, idx)"
+                  :data-row-key="getRowKey(row, idx)"
                 >
                   <th
                     v-if="selectableRows"
@@ -530,7 +533,7 @@ onBeforeUnmount(() => {
                       <input
                         :id="`row-select-${id}-${idx}`"
                         v-model="selection"
-                        :value="row[rowKeyIndex] ?? `row-${idx}`"
+                        :value="getRowKey(row, idx)"
                         type="checkbox"
                       >
                       <label
