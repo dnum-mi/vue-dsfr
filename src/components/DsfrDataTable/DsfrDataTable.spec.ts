@@ -554,7 +554,40 @@ describe('DsfrDataTable', () => {
     const rowCheckboxes = container.querySelectorAll('tbody input[type="checkbox"]') as NodeListOf<HTMLInputElement>
     rowCheckboxes.forEach((checkbox) => {
       expect(checkbox.value).toBeTruthy()
+      expect(checkbox.checked).toBe(true)
     })
+  })
+
+  it('should keep individual checkboxes checked after select all when no rowKey matches a column', async () => {
+    // Given : sans rowKey, selectAll() doit utiliser la même clé positionnelle (row-N)
+    // que les cases individuelles, pas row[rowKeyIndex] qui vaut undefined
+    const title = 'Selectable Table'
+    const headersRow = ['Name', 'Age']
+    const rows = [
+      ['Alice', '25'],
+      ['Bob', '30'],
+    ]
+
+    // When
+    const { container } = render(DsfrDataTable, {
+      props: {
+        title,
+        headersRow,
+        rows,
+        selectableRows: true,
+      },
+    })
+
+    const selectAllCheckbox = container.querySelector('thead tr th input[type="checkbox"]') as HTMLInputElement
+    await fireEvent.click(selectAllCheckbox)
+    await nextTick()
+
+    // Then
+    const rowCheckboxes = container.querySelectorAll('tbody input[type="checkbox"]') as NodeListOf<HTMLInputElement>
+    expect(rowCheckboxes[0].value).toBe('row-0')
+    expect(rowCheckboxes[1].value).toBe('row-1')
+    expect(rowCheckboxes[0].checked).toBe(true)
+    expect(rowCheckboxes[1].checked).toBe(true)
   })
 
   it('should not render top bar buttons when no line is selected', () => {

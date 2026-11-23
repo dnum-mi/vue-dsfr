@@ -191,7 +191,7 @@ function getRowKey (row: (typeof finalRows.value)[number], idx: number): string 
 
 function selectAll (bool: boolean) {
   if (bool) {
-    selection.value = finalRows.value.map(row => row[rowKeyIndex.value] as string)
+    selection.value = finalRows.value.map((row, idx) => getRowKey(row, idx) as string)
   } else {
     selection.value.length = 0
   }
