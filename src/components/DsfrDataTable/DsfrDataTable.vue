@@ -2,7 +2,7 @@
 import type { DsfrDataTableColumn, DsfrDataTableHeaderCell, DsfrDataTableHeaderCellObject, DsfrDataTableProps, DsfrDataTableRow } from './DsfrDataTable.types'
 import type { Page } from '../DsfrPagination/DsfrPagination.types'
 
-import { computed, nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue'
+import { computed, nextTick, onBeforeUnmount, onMounted, ref, watch, watchEffect } from 'vue'
 
 import DsfrButtonGroup from '../DsfrButton/DsfrButtonGroup.vue'
 import DsfrPagination from '../DsfrPagination/DsfrPagination.vue'
@@ -66,6 +66,13 @@ defineSlots<{
 const selection = defineModel<string[]>('selection', { default: () => [] })
 const rowsPerPage = defineModel<number>('rowsPerPage', { default: 10 })
 const currentPage = defineModel<number>('currentPage', { default: 0 })
+
+watchEffect(() => {
+  if (props.columns && props.columns.length > 0 && props.headersRow && props.headersRow.length > 0) {
+    throw new Error('DsfrDataTable : les props "columns" et "headersRow" sont mutuellement exclusives, elles ne peuvent pas être fournies simultanément.')
+  }
+})
+
 const pageCount = computed(() => Math.ceil(props.rows.length / rowsPerPage.value))
 const pages = computed<Page[]>(() => props.pages ?? Array.from({ length: pageCount.value }).map((x, i) => ({ label: `${i + 1}`, title: `Page ${i + 1}`, href: `#${i + 1}` })))
 

@@ -45,12 +45,18 @@ export type DsfrDataTableCommonProps = {
 }
 
 /**
- * Mutuellement exclusif : soit `columns` (et `headersRow` interdit),
- * soit `headersRow` (et `columns` interdit).
+ * `columns` et `headersRow` sont mutuellement exclusifs : fournir les deux
+ * à la fois déclenche une erreur à l'exécution (voir DsfrDataTable.vue).
+ *
+ * Note : l'exclusivité n'est pas exprimée par une union de types
+ * (`{ columns: T, headersRow?: never } | { headersRow: T, columns?: never }`)
+ * car ce pattern empêche vue-tsc d'extraire les props de `defineProps<DsfrDataTableProps>()`,
+ * qui retombe alors sur `Record<string, any>` (aucune prop vérifiée, y compris `title`).
  */
-export type DsfrDataTableProps =
-  | (DsfrDataTableCommonProps & { columns: DsfrDataTableColumn[], headersRow?: never })
-  | (DsfrDataTableCommonProps & { headersRow?: DsfrDataTableHeaderCell[], columns?: never })
+export interface DsfrDataTableProps extends DsfrDataTableCommonProps {
+  columns?: DsfrDataTableColumn[]
+  headersRow?: DsfrDataTableHeaderCell[]
+}
 
 /**
  * Décrit une colonne du tableau.

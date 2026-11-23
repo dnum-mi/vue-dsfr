@@ -1060,6 +1060,19 @@ describe('DsfrDataTable', () => {
     expect(firstBodyRowCells?.length).toBe(columns.length - colCount)
   })
 
+  it('should throw a descriptive error when both columns and headersRow are provided', () => {
+    // Given
+    const title = 'Table avec props invalides'
+    const columns = [{ key: 'name', label: 'Name' }]
+    const headersRow = ['Name']
+    const rows = [['Alice']]
+
+    // When / Then
+    expect(() => render(DsfrDataTable, {
+      props: { title, columns, headersRow, rows },
+    })).toThrow(/columns.*headersRow.*mutuellement exclusives/)
+  })
+
   it('should apply fixed classes on header and body cells when columns.fixed is true', async () => {
     // Given
     const columns = [
