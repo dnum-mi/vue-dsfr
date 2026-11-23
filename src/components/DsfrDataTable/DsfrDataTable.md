@@ -33,14 +33,16 @@ Le composant gère automatiquement l'attribut `aria-sort` sur les en-têtes de c
 
 Cela permet aux lecteurs d'écran d'annoncer correctement l'état de tri de chaque colonne aux utilisateurs.
 
+La copie de cellule au clavier (`Ctrl+C`/`Cmd+C`) est désactivée par défaut : les cellules ne sont pas focusables (pas de `tabindex`), pour éviter d'ajouter un arrêt de tabulation par cellule sur un grand tableau. Activez la prop `copyableCells` pour la rendre focusable et copiable ; un `title` indique alors le raccourci disponible.
+
 ## 🛠️Props
 
 | Nom               | Type                                           | Défaut    | Obligatoire | Description                                                                                         |
 |-------------------|------------------------------------------------|-----------|-------------|-----------------------------------------------------------------------------------------------------|
 | `id`                        | `string`                                             | `undefined`              |             | Identifiant unique du tableau.                                                                                                               |
 | `title`                     | `string`                                            |                          | ✅          | Titre du tableau.                                                                                                                         |
-| `headersRow`                | `Array<string \| DsfrDataTableHeaderCellObject>`     | `[]`                     |             | Les en-têtes de votre tableau. Peut être remplacé par le slot `thead`. Peut aussi être remplacé par la prop `columns`|
-| `columns`                   | `Array<DsfrDataTableColumn>`                         | `undefined`              |             | Tableau de colonnes définissant pour chacune : la clé (optionnelle), le libellé, les attributs HTML (optionnels), si la colonne est fixe (`fixed`: `true` ou `sm`, `md`, `lg`) et si les cellules doivent être des en-têtes de ligne |
+| `headersRow`                | `Array<string \| DsfrDataTableHeaderCellObject>`     | `[]`                     |             | Les en-têtes de votre tableau. Peut être remplacé par le slot `thead`. Mutuellement exclusif avec `columns` : fournir les deux en même temps lève une erreur. |
+| `columns`                   | `Array<DsfrDataTableColumn>`                         | `undefined`              |             | Tableau de colonnes définissant pour chacune : la clé (optionnelle), le libellé, les attributs HTML (optionnels), si la colonne est fixe (`fixed`: `true` ou `sm`, `md`, `lg`) et si les cellules doivent être des en-têtes de ligne. Mutuellement exclusif avec `headersRow`. |
 | `rows`                      | `DsfrDataTableRow[]`                                 | `[]`                     |             | Les données de chaque rangée dans le tableau.                                                                                                |
 | `rowKey`                    | `string \| number`                                   | `undefined`              |             | Une clé unique pour chaque rangée, utilisée pour optimiser la mise à jour du DOM.                                                           |
 | `topActionsRow`             | `string[]`                                           | `undefined`              |             | Actions affichées en haut du tableau.                                                                                                        |
@@ -50,6 +52,7 @@ Cela permet aux lecteurs d'écran d'annoncer correctement l'état de tri de chaq
 | `sorted`                    | `string`                                             | `undefined`              |             | Clé de la colonne actuellement triée.                                                                                                       |
 | `sortFn`                    | `(a: unknown, b: unknown) => number`                 | `undefined`              |             | Fonction de tri personnalisée pour les lignes du tableau.                                                                                    |
 | `manualSort`                | `boolean`                                            | `false`                  |             | Si `true`, désactive le tri local des lignes : `sortedBy`/`sortedDesc` et l'UI des en-têtes restent pilotables, mais `rows` est affiché tel quel. À utiliser quand le tri est délégué à une source externe (ex. tri appliqué côté serveur en pagination lazy). |
+| `copyableCells`             | `boolean`                                            | `false`                  |             | Si `true`, rend les cellules focusables (`tabindex="0"`) et copiables avec `Ctrl+C`/`Cmd+C`. Désactivé par défaut pour ne pas ajouter d'arrêts de tabulation superflus. |
 | `verticalBorders`           | `boolean`                                            | `false`                  |             | Si `true`, affiche des bordures verticales entre les colonnes.                                                                               |
 | `bottomCaption`             | `boolean`                                            | `false`                  |             | Si `true`, affiche une légende en bas du tableau.                                                                                            |
 | `noCaption`                 | `boolean`                                            | `false`                  |             | Si `true`, supprime la légende du tableau.                                                                                                   |
@@ -115,7 +118,7 @@ Vous pouvez utiliser `v-model` pour les propriétés suivantes :
 | **`Thead`** | | Remplace l'en-tête complet du tableau (`<thead>` par défaut).                                      |
 | **`header`** | `{ key: string, label: string }` | Personnalisation du rendu de chaque en-tête de colonne.                       |
 | **`tbody`** | | Remplace le corps du tableau (`<tbody>` par défaut et toutes les lignes).                           |
-| **`cell`** | `{ colKey: string \| number, cell: string \| number \| boolean \| bigint \| symbol }` | Personnalisation du rendu de chaque cellule.                                   |
+| **`cell`** | `{ colKey: string \| number, cell: string \| number \| boolean \| bigint \| symbol, row: DsfrDataTableRow, rowIndex: number }` | Personnalisation du rendu de chaque cellule. `row` et `rowIndex` permettent d'accéder aux autres colonnes de la même ligne (ex. construire un lien à partir d'un identifiant non affiché). |
 | **`tableBottomBar`** | | Remplace l'ensemble de la barre inférieure du tableau. Permet de personnaliser complètement la structure.    |
 | **`pagination`** | | Remplace la pagination par défaut. Utile pour intégrer un composant de pagination personnalisé.   |
 | **`tableBottomBarActions`** | | Boutons d'action globaux affichés en bas du tableau (concernent l'ensemble des données).         |

@@ -55,6 +55,10 @@ const meta = {
       control: 'boolean',
       description: 'Désactive le tri local des lignes : sortedBy/sortedDesc et l\'UI des en-têtes restent pilotables, mais rows est affiché tel quel (tri délégué à une source externe, ex. tri serveur)',
     },
+    copyableCells: {
+      control: 'boolean',
+      description: 'Rend les cellules focusables et copiables avec Ctrl+C/Cmd+C (désactivé par défaut pour ne pas ajouter d\'arrêts de tabulation superflus)',
+    },
     verticalBorders: {
       control: 'boolean',
       description: 'Afficher les bordures verticales du tableau',
@@ -276,9 +280,12 @@ export const Selection: Story = {
           </div>
         </template>
 
-        <template #cell="{ colKey, cell }">
+        <template #cell="{ colKey, cell, row }">
           <template v-if="colKey === 'email'">
             <a :href="'mailto:' + cell">{{ cell }}</a>
+          </template>
+          <template v-else-if="colKey === 'name'">
+            <a :href="'/demandes/' + row[1]">{{ cell }}</a>
           </template>
           <template v-else>
             {{ cell }} <em>({{ colKey }})</em>
