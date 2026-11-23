@@ -1161,7 +1161,7 @@ describe('DsfrDataTable', () => {
     const { container } = render(DsfrDataTable, {
       props: { title, columns, rows },
       slots: {
-        cell: ({ cell, row, rowIndex }: { cell: unknown, row: unknown[], rowIndex: number }) => `${cell} (row:${row[0]}, rowIndex:${rowIndex})`,
+        cell: ({ cell, row, rowIndex }: { cell: unknown, row: Record<string, unknown>, rowIndex: number }) => `${cell} (row:${row.id}, rowIndex:${rowIndex})`,
       },
     })
 
@@ -1171,6 +1171,61 @@ describe('DsfrDataTable', () => {
     expect(bodyCells[1].textContent).toContain('Alice (row:r1, rowIndex:0)')
     expect(bodyCells[2].textContent).toContain('r2 (row:r2, rowIndex:1)')
     expect(bodyCells[3].textContent).toContain('Bob (row:r2, rowIndex:1)')
+  })
+
+  it('should pass the full source row to the cell slot even when a field is not part of the displayed columns', () => {
+    // Given : seule la colonne "name" est affichée, mais "id" doit rester accessible via row
+    const title = 'Table avec identifiant non affiché'
+    const columns = [{ key: 'name', label: 'Name' }]
+    const rows = [{ id: 'r1', name: 'Alice' }, { id: 'r2', name: 'Bob' }]
+
+    // When
+    const { container } = render(DsfrDataTable, {
+      props: { title, columns, rows },
+      slots: {
+        cell: ({ cell, row }: { cell: unknown, row: Record<string, unknown> }) => `${cell}:${row.id}`,
+      },
+    })
+
+    // Then
+    const bodyCells = container.querySelectorAll('tbody td')
+    expect(bodyCells[0].textContent).toContain('Alice:r1')
+    expect(bodyCells[1].textContent).toContain('Bob:r2')
+  })
+
+  it('should pass the correct source row after sorting and pagination', async () => {
+    // Given
+    const title = 'Table triée et paginée'
+    const columns = [{ key: 'name', label: 'Name' }]
+    const rows = [
+      { id: 'r1', name: 'Charlie' },
+      { id: 'r2', name: 'Alice' },
+      { id: 'r3', name: 'Bob' },
+    ]
+
+    // When
+    const { container } = render(DsfrDataTable, {
+      props: {
+        title,
+        columns,
+        rows,
+        sortableRows: true,
+        pagination: true,
+        rowsPerPage: 1,
+        currentPage: 1,
+      },
+      slots: {
+        cell: ({ cell, row }: { cell: unknown, row: Record<string, unknown> }) => `${cell}:${row.id}`,
+      },
+    })
+
+    const nameHeaderButton = container.querySelector('thead button.fr-btn--sort') as HTMLButtonElement
+    await fireEvent.click(nameHeaderButton)
+    await nextTick()
+
+    // Then : triées par nom ascendant ['Alice', 'Bob', 'Charlie'], page 2 (1-indexed) -> 'Bob' (r3)
+    const bodyCells = container.querySelectorAll('tbody td')
+    expect(bodyCells[0].textContent).toContain('Bob:r3')
   })
 
   it('should apply fixed classes on header and body cells when columns.fixed is true', async () => {

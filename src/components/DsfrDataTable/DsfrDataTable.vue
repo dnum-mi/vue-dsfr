@@ -171,11 +171,14 @@ const rowKeys = computed(() => computedHeadersRow.value.map((header: DsfrDataTab
 const rowKeyIndex = computed(() => rowKeys.value.findIndex(key => key === props.rowKey))
 
 const finalRows = computed(() => {
-  const rows = sortedRows.value.map((row) => {
-    if (Array.isArray(row)) {
-      return row
+  const rows = sortedRows.value.map((sourceRow) => {
+    if (Array.isArray(sourceRow)) {
+      return { sourceRow, cells: sourceRow }
     }
-    return rowKeys.value.map(key => typeof row !== 'object' ? row : row[key] ?? '')
+    return {
+      sourceRow,
+      cells: rowKeys.value.map(key => typeof sourceRow !== 'object' ? sourceRow : sourceRow[key] ?? ''),
+    }
   })
 
   if (props.pagination) {
@@ -185,13 +188,13 @@ const finalRows = computed(() => {
   return rows
 })
 
-function getRowKey (row: (typeof finalRows.value)[number], idx: number): string | number {
-  return (row[rowKeyIndex.value] as string | number | undefined) ?? `row-${idx}`
+function getRowKey (cells: (typeof finalRows.value)[number]['cells'], idx: number): string | number {
+  return (cells[rowKeyIndex.value] as string | number | undefined) ?? `row-${idx}`
 }
 
 function selectAll (bool: boolean) {
   if (bool) {
-    selection.value = finalRows.value.map((row, idx) => getRowKey(row, idx) as string)
+    selection.value = finalRows.value.map(({ cells }, idx) => getRowKey(cells, idx) as string)
   } else {
     selection.value.length = 0
   }
@@ -520,9 +523,9 @@ onBeforeUnmount(() => {
             <tbody>
               <slot name="tbody">
                 <tr
-                  v-for="(row, idx) of finalRows"
-                  :key="getRowKey(row, idx)"
-                  :data-row-key="getRowKey(row, idx)"
+                  v-for="({ sourceRow, cells }, idx) of finalRows"
+                  :key="getRowKey(cells, idx)"
+                  :data-row-key="getRowKey(cells, idx)"
                 >
                   <th
                     v-if="selectableRows"
@@ -533,7 +536,7 @@ onBeforeUnmount(() => {
                       <input
                         :id="`row-select-${id}-${idx}`"
                         v-model="selection"
-                        :value="getRowKey(row, idx)"
+                        :value="getRowKey(cells, idx)"
                         type="checkbox"
                       >
                       <label
@@ -546,7 +549,7 @@ onBeforeUnmount(() => {
                   </th>
 
                   <template
-                    v-for="(cell, cellIdx) of row"
+                    v-for="(cell, cellIdx) of cells"
                     :key="cellIdx"
                   >
                     <component
@@ -565,7 +568,7 @@ onBeforeUnmount(() => {
                         v-bind="{
                           colKey: computedHeadersRow[cellIdx]?.key,
                           cell,
-                          row,
+                          row: sourceRow,
                           rowIndex: idx,
                         }"
                       >
