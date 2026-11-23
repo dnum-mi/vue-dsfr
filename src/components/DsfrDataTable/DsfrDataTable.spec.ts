@@ -1073,6 +1073,28 @@ describe('DsfrDataTable', () => {
     })).toThrow(/columns.*headersRow.*mutuellement exclusives/)
   })
 
+  it('should pass row and rowIndex to the cell slot', () => {
+    // Given
+    const title = 'Table avec slot cell enrichi'
+    const columns = [{ key: 'id', label: 'ID' }, { key: 'name', label: 'Name' }]
+    const rows = [{ id: 'r1', name: 'Alice' }, { id: 'r2', name: 'Bob' }]
+
+    // When
+    const { container } = render(DsfrDataTable, {
+      props: { title, columns, rows },
+      slots: {
+        cell: ({ cell, row, rowIndex }: { cell: unknown, row: unknown[], rowIndex: number }) => `${cell} (row:${row[0]}, rowIndex:${rowIndex})`,
+      },
+    })
+
+    // Then
+    const bodyCells = container.querySelectorAll('tbody td')
+    expect(bodyCells[0].textContent).toContain('r1 (row:r1, rowIndex:0)')
+    expect(bodyCells[1].textContent).toContain('Alice (row:r1, rowIndex:0)')
+    expect(bodyCells[2].textContent).toContain('r2 (row:r2, rowIndex:1)')
+    expect(bodyCells[3].textContent).toContain('Bob (row:r2, rowIndex:1)')
+  })
+
   it('should apply fixed classes on header and body cells when columns.fixed is true', async () => {
     // Given
     const columns = [

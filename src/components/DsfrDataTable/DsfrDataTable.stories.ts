@@ -280,9 +280,12 @@ export const Selection: Story = {
           </div>
         </template>
 
-        <template #cell="{ colKey, cell }">
+        <template #cell="{ colKey, cell, row }">
           <template v-if="colKey === 'email'">
             <a :href="'mailto:' + cell">{{ cell }}</a>
+          </template>
+          <template v-else-if="colKey === 'name'">
+            <a :href="'/demandes/' + row[1]">{{ cell }}</a>
           </template>
           <template v-else>
             {{ cell }} <em>({{ colKey }})</em>
