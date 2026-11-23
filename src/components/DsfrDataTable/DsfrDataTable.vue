@@ -195,6 +195,9 @@ function onPaginationOptionsChange () {
 }
 
 async function copyToClipboard (text: string) {
+  if (!props.copyableCells) {
+    return
+  }
   try {
     await navigator.clipboard?.writeText?.(text)
   } catch {
@@ -542,7 +545,8 @@ onBeforeUnmount(() => {
                       :class="[getFixedClassObject(columns?.[cellIdx]), { 'dsfr-data-table__generated-fixed-col': isColumnFixed(columns?.[cellIdx]) }]"
                       :style="isColumnFixed(columns?.[cellIdx]) ? getFixedColumnStyle(cellIdx) : undefined"
                       :data-col-idx="cellIdx"
-                      tabindex="0"
+                      :tabindex="copyableCells ? 0 : undefined"
+                      :title="copyableCells ? 'Copier la valeur de la cellule (Ctrl+C ou Cmd+C)' : undefined"
                       @keydown.ctrl.c="copyToClipboard(typeof cell === 'object' ? (cell as Record<number, string>)[rowKeyIndex] : String(cell))"
                       @keydown.meta.c="copyToClipboard(typeof cell === 'object' ? (cell as Record<number, string>)[rowKeyIndex] : String(cell))"
                     >

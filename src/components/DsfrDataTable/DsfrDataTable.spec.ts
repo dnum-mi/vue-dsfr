@@ -1306,7 +1306,41 @@ describe('DsfrDataTable', () => {
     }
   })
 
-  it('copie la valeur de cellule avec le raccourci Ctrl+C', async () => {
+  it('ne rend pas les cellules focusables ni copiables par défaut', async () => {
+    // Given
+    const writeText = vi.fn().mockResolvedValue(undefined)
+    const clipboardDescriptor = Object.getOwnPropertyDescriptor(navigator, 'clipboard')
+    Object.defineProperty(navigator, 'clipboard', {
+      configurable: true,
+      value: { writeText },
+    })
+
+    try {
+      const { container } = render(DsfrDataTable, {
+        props: {
+          title: 'Table sans copie',
+          headersRow: ['Nom', 'Ville'],
+          rows: [['Alice', 'Paris']],
+        },
+      })
+      const firstCell = container.querySelector('tbody td') as HTMLTableCellElement
+
+      // When
+      await fireEvent.keyDown(firstCell, { code: 'KeyC', ctrlKey: true, key: 'c' })
+
+      // Then
+      expect(firstCell.getAttribute('tabindex')).toBeNull()
+      expect(writeText).not.toHaveBeenCalled()
+    } finally {
+      if (clipboardDescriptor) {
+        Object.defineProperty(navigator, 'clipboard', clipboardDescriptor)
+      } else {
+        delete (navigator as Partial<Navigator>).clipboard
+      }
+    }
+  })
+
+  it('copie la valeur de cellule avec le raccourci Ctrl+C quand copyableCells est activé', async () => {
     // Given
     const writeText = vi.fn().mockResolvedValue(undefined)
     const clipboardDescriptor = Object.getOwnPropertyDescriptor(navigator, 'clipboard')
@@ -1321,11 +1355,13 @@ describe('DsfrDataTable', () => {
           title: 'Table avec copie',
           headersRow: ['Nom', 'Ville'],
           rows: [['Alice', 'Paris']],
+          copyableCells: true,
         },
       })
       const firstCell = container.querySelector('tbody td') as HTMLTableCellElement
 
       // When
+      expect(firstCell.getAttribute('tabindex')).toBe('0')
       await fireEvent.keyDown(firstCell, { code: 'KeyC', ctrlKey: true, key: 'c' })
 
       // Then
@@ -1354,6 +1390,7 @@ describe('DsfrDataTable', () => {
           title: 'Table avec copie refusée',
           headersRow: ['Nom', 'Ville'],
           rows: [['Alice', 'Paris']],
+          copyableCells: true,
         },
       })
       const firstCell = container.querySelector('tbody td') as HTMLTableCellElement
@@ -1411,6 +1448,7 @@ describe('DsfrDataTable', () => {
       const { container } = render(DsfrDataTable, {
         props: {
           title: 'Table sans presse-papiers',
+          copyableCells: true,
           headersRow: ['Nom', 'Ville'],
           rows: [['Alice', 'Paris']],
         },

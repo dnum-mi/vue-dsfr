@@ -33,6 +33,8 @@ Le composant gère automatiquement l'attribut `aria-sort` sur les en-têtes de c
 
 Cela permet aux lecteurs d'écran d'annoncer correctement l'état de tri de chaque colonne aux utilisateurs.
 
+La copie de cellule au clavier (`Ctrl+C`/`Cmd+C`) est désactivée par défaut : les cellules ne sont pas focusables (pas de `tabindex`), pour éviter d'ajouter un arrêt de tabulation par cellule sur un grand tableau. Activez la prop `copyableCells` pour la rendre focusable et copiable ; un `title` indique alors le raccourci disponible.
+
 ## 🛠️Props
 
 | Nom               | Type                                           | Défaut    | Obligatoire | Description                                                                                         |
@@ -50,6 +52,7 @@ Cela permet aux lecteurs d'écran d'annoncer correctement l'état de tri de chaq
 | `sorted`                    | `string`                                             | `undefined`              |             | Clé de la colonne actuellement triée.                                                                                                       |
 | `sortFn`                    | `(a: unknown, b: unknown) => number`                 | `undefined`              |             | Fonction de tri personnalisée pour les lignes du tableau.                                                                                    |
 | `manualSort`                | `boolean`                                            | `false`                  |             | Si `true`, désactive le tri local des lignes : `sortedBy`/`sortedDesc` et l'UI des en-têtes restent pilotables, mais `rows` est affiché tel quel. À utiliser quand le tri est délégué à une source externe (ex. tri appliqué côté serveur en pagination lazy). |
+| `copyableCells`             | `boolean`                                            | `false`                  |             | Si `true`, rend les cellules focusables (`tabindex="0"`) et copiables avec `Ctrl+C`/`Cmd+C`. Désactivé par défaut pour ne pas ajouter d'arrêts de tabulation superflus. |
 | `verticalBorders`           | `boolean`                                            | `false`                  |             | Si `true`, affiche des bordures verticales entre les colonnes.                                                                               |
 | `bottomCaption`             | `boolean`                                            | `false`                  |             | Si `true`, affiche une légende en bas du tableau.                                                                                            |
 | `noCaption`                 | `boolean`                                            | `false`                  |             | Si `true`, supprime la légende du tableau.                                                                                                   |

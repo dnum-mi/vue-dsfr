@@ -19,6 +19,7 @@ export type DsfrDataTableCommonProps = {
   sorted?: string
   sortFn?: (a: unknown, b: unknown) => number
   manualSort?: boolean
+  copyableCells?: boolean
   verticalBorders?: boolean
   bottomCaption?: boolean
   noCaption?: boolean
