@@ -1,5 +1,5 @@
-<script lang="ts" setup>
-import type { DsfrDataTableColumn, DsfrDataTableHeaderCell, DsfrDataTableHeaderCellObject, DsfrDataTableProps, DsfrDataTableRow } from './DsfrDataTable.types'
+<script lang="ts" setup generic="T extends DsfrDataTableRowConstraint = DsfrDataTableRow">
+import type { DsfrDataTableColumn, DsfrDataTableHeaderCell, DsfrDataTableHeaderCellObject, DsfrDataTableProps, DsfrDataTableRow, DsfrDataTableRowConstraint } from './DsfrDataTable.types'
 import type { Page } from '../DsfrPagination/DsfrPagination.types'
 
 import { computed, nextTick, onBeforeUnmount, onMounted, ref, watch, watchEffect } from 'vue'
@@ -10,9 +10,9 @@ import DsfrSelect from '../DsfrSelect/DsfrSelect.vue'
 
 import { useRandomId } from '@/utils/random-utils'
 
-export type { DsfrDataTableColumn, DsfrDataTableHeaderCell, DsfrDataTableHeaderCellObject, DsfrDataTableProps, DsfrDataTableRow, Page }
+export type { DsfrDataTableColumn, DsfrDataTableHeaderCell, DsfrDataTableHeaderCellObject, DsfrDataTableProps, DsfrDataTableRow, DsfrDataTableRowConstraint, Page }
 
-const props = withDefaults(defineProps<DsfrDataTableProps>(), {
+const props = withDefaults(defineProps<DsfrDataTableProps<T>>(), {
   id: () => useRandomId('table'),
   headersRow: () => [],
   rows: () => [],
@@ -35,31 +35,31 @@ const emit = defineEmits<{
 
 defineSlots<{
   /** Slot pour le contenu de l'en-tête du tableau (au-dessus de la table dans div.fr-table div.fr-table__header) */
-  tableTopBar: () => any
+  tableTopBar?: () => any
   /** Slot pour le détail dans l'en-tête du tableau (potentiellement premier élément de div.fr-table__header) */
-  tableTopBarDetail: () => any
+  tableTopBarDetail?: () => any
   /** Slot pour la barre de recherche dans l'en-tête du tableau (potentiellement second élément de div.fr-table__header) */
-  tableTopBarSearch: () => any
+  tableTopBarSearch?: () => any
   /** Slot pour les boutons dans l'en-tête du tableau (potentiellement troisième élément de div.fr-table__header) */
-  tableTopBarButtons: () => any
+  tableTopBarButtons?: () => any
   /** Slot pour les boutons segmentés dans l'en-tête du tableau destinés aux actions de groupe (selection) (potentiellement quatrième élément de div.fr-table__header) */
-  tableTopBarSegmented: () => any
+  tableTopBarSegmented?: () => any
   /** Slot pour la description dans la légende du tableau (dans caption div.fr-table__caption__desc)*/
-  captionDescription: () => any
+  captionDescription?: () => any
   /** Slot pour le contenu de l'en-tête du tableau (`<thead>`) */
-  thead: () => any
+  thead?: () => any
   /** Slot pour le contenu des cellules d'en-tête (<th>). Reçoit les props `key` et `label` */
-  header: { key: string | number, label: string }
+  header?: (props: { key: string | number, label: string }) => any
   /** Slot pour le contenu du corps du tableau (`<tbody>`) */
-  tbody: () => any
+  tbody?: () => any
   /** Slot pour le contenu personnalisé des cellules. Reçoit les props `colKey`, `cell`, `row` et `rowIndex` */
-  cell: { colKey: string | number, cell: string | number | boolean | bigint | symbol, row: DsfrDataTableRow, rowIndex: number }
+  cell?: (props: { colKey: string | number, cell: string | number | boolean | bigint | symbol, row: T, rowIndex: number }) => any
   /** Slot pour le contenu du pied de page du tableau (en dessous de la table div.fr-table__footer) */
-  tableBottomBar: () => any
+  tableBottomBar?: () => any
   /** Slot pour la pagination dans le pied de page du tableau (dans div.fr-table__footer */
-  tableBottomBarPagination: () => any
+  tableBottomBarPagination?: () => any
   /** Slot pour les actions dans le pied de page du tableau destinés aux actions globales (ensemble du tableau) */
-  tableBottomBarActions: () => any
+  tableBottomBarActions?: () => any
 }>()
 
 const selection = defineModel<string[]>('selection', { default: () => [] })
@@ -80,14 +80,25 @@ const highestLimit = computed(() => (currentPage.value + 1) * rowsPerPage.value)
 
 const sortedBy = defineModel<string | number | undefined>('sortedBy', { default: undefined })
 const sortedDesc = defineModel<boolean>('sortedDesc', { default: false })
-function defaultSortFn (a: string | DsfrDataTableRow, b: string | DsfrDataTableRow) {
+/**
+ * Lit la valeur d’une ligne pour une clé donnée.
+ * Le cast est nécessaire car `T` peut être une `interface` métier sans signature d’index.
+ */
+function getRowValue (row: T, key: string | number): unknown {
+  return (row as Record<string | number, unknown>)[key]
+}
+function getSortValue (row: T): string | number {
   const key = sortedBy.value ?? props.sorted
-  // @ts-expect-error TS7015
-  if (((a as DsfrDataTableRow)[key] ?? a) < ((b as DsfrDataTableRow)[key] ?? b)) {
+  // Valeurs comparées avec `<` / `>` comme auparavant : le tri par défaut reste volontairement permissif
+  return (key === undefined ? row : getRowValue(row, key) ?? row) as string | number
+}
+function defaultSortFn (a: T, b: T) {
+  const valueA = getSortValue(a)
+  const valueB = getSortValue(b)
+  if (valueA < valueB) {
     return -1
   }
-  // @ts-expect-error TS7015
-  if (((a as DsfrDataTableRow)[key] ?? a) > ((b as DsfrDataTableRow)[key] ?? b)) {
+  if (valueA > valueB) {
     return 1
   }
   return 0
@@ -177,7 +188,7 @@ const finalRows = computed(() => {
     }
     return {
       sourceRow,
-      cells: rowKeys.value.map(key => typeof sourceRow !== 'object' ? sourceRow : sourceRow[key] ?? ''),
+      cells: rowKeys.value.map(key => typeof sourceRow !== 'object' ? sourceRow : getRowValue(sourceRow, key) ?? ''),
     }
   })
 

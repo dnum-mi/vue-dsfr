@@ -43,14 +43,14 @@ La copie de cellule au clavier (`Ctrl+C`/`Cmd+C`) est désactivée par défaut :
 | `title`                     | `string`                                            |                          | ✅          | Titre du tableau.                                                                                                                         |
 | `headersRow`                | `Array<string \| DsfrDataTableHeaderCellObject>`     | `[]`                     |             | Les en-têtes de votre tableau. Peut être remplacé par le slot `thead`. Mutuellement exclusif avec `columns` : fournir les deux en même temps lève une erreur. |
 | `columns`                   | `Array<DsfrDataTableColumn>`                         | `undefined`              |             | Tableau de colonnes définissant pour chacune : la clé (optionnelle), le libellé, les attributs HTML (optionnels), si la colonne est fixe (`fixed`: `true` ou `sm`, `md`, `lg`) et si les cellules doivent être des en-têtes de ligne. Mutuellement exclusif avec `headersRow`. |
-| `rows`                      | `DsfrDataTableRow[]`                                 | `[]`                     |             | Les données de chaque rangée dans le tableau.                                                                                                |
+| `rows`                      | `T[]`                                                | `[]`                     |             | Les données de chaque rangée dans le tableau.                                                                                                |
 | `rowKey`                    | `string \| number`                                   | `undefined`              |             | Une clé unique pour chaque rangée, utilisée pour optimiser la mise à jour du DOM.                                                           |
 | `topActionsRow`             | `string[]`                                           | `undefined`              |             | Actions affichées en haut du tableau.                                                                                                        |
 | `bottomActionsRow`          | `string[]`                                           | `undefined`              |             | Actions affichées en bas du tableau.                                                                                                        |
 | `selectableRows`            | `boolean`                                            | `false`                  |             | Si `true`, permet la sélection des lignes via des cases à cocher.                                                                            |
 | `sortableRows`              | `boolean \| string[]`                                | `false`                  |             | Si `true`, permet le tri des lignes selon chaque colonne du header. Peut être un tableau de clés pour spécifier les colonnes triables.      |
 | `sorted`                    | `string`                                             | `undefined`              |             | Clé de la colonne actuellement triée.                                                                                                       |
-| `sortFn`                    | `(a: unknown, b: unknown) => number`                 | `undefined`              |             | Fonction de tri personnalisée pour les lignes du tableau.                                                                                    |
+| `sortFn`                    | `(a: T, b: T) => number`                             | `undefined`              |             | Fonction de tri personnalisée pour les lignes du tableau.                                                                                    |
 | `manualSort`                | `boolean`                                            | `false`                  |             | Si `true`, désactive le tri local des lignes : `sortedBy`/`sortedDesc` et l'UI des en-têtes restent pilotables, mais `rows` est affiché tel quel. À utiliser quand le tri est délégué à une source externe (ex. tri appliqué côté serveur en pagination lazy). |
 | `copyableCells`             | `boolean`                                            | `false`                  |             | Si `true`, rend les cellules focusables (`tabindex="0"`) et copiables avec `Ctrl+C`/`Cmd+C`. Désactivé par défaut pour ne pas ajouter d'arrêts de tabulation superflus. |
 | `verticalBorders`           | `boolean`                                            | `false`                  |             | Si `true`, affiche des bordures verticales entre les colonnes.                                                                               |
@@ -75,6 +75,35 @@ La copie de cellule au clavier (`Ctrl+C`/`Cmd+C`) est désactivée par défaut :
 | `tableBottomBarDetail`      | `string`                                             | `undefined`              |             | Détails qui concernent l'ensemble du tableau affichés dans la barre inférieure du tableau.                                                                                        |
 | `tableBottomBarButtons`     | `DsfrButtonProps[]`                                  | `undefined`              |             | Boutons d'action qui concernent l'ensemble du tableau affichés dans la barre inférieure du tableau.                                                                                        |
 | `tableBottomBarButtonsSize` | `DsfrButtonGroupProps['size']`                       | `undefined`              |             | Taille des boutons de la barre inférieure.                                                                                                   |
+
+### Typage générique des lignes
+
+`DsfrDataTable` est un composant générique (`generic="T"`) : le type `T` est déduit de la prop `rows` et propagé à `sortFn` et à la prop `row` du slot `cell`. Une `interface` métier est acceptée (inutile de la déclarer avec `type`), et aucun cast n’est nécessaire dans le slot :
+
+```vue
+<script setup lang="ts">
+interface Demande {
+  id: number
+  nom: string
+}
+
+const demandes: Demande[] = [/* … */]
+</script>
+
+<template>
+  <DsfrDataTable
+    title="Demandes"
+    :rows="demandes"
+    :columns="[{ key: 'nom', label: 'Nom' }]"
+    row-key="id"
+  >
+    <template #cell="{ row }">
+      <!-- row est typé Demande -->
+      <a :href="`/demandes/${row.id}`">{{ row.nom }}</a>
+    </template>
+  </DsfrDataTable>
+</template>
+```
 
 ## 📡 Events
 
@@ -116,9 +145,9 @@ Vous pouvez utiliser `v-model` pour les propriétés suivantes :
 | **`tableTopBarSegmented`** | | Espace pour ajouter des contrôles segmentés.              |
 | **`captionDescription`** | | Description/détails additionnels de la légende du tableau (`<caption>`).                          |
 | **`Thead`** | | Remplace l'en-tête complet du tableau (`<thead>` par défaut).                                      |
-| **`header`** | `{ key: string, label: string }` | Personnalisation du rendu de chaque en-tête de colonne.                       |
+| **`header`** | `{ key: string \| number, label: string }` | Personnalisation du rendu de chaque en-tête de colonne.                       |
 | **`tbody`** | | Remplace le corps du tableau (`<tbody>` par défaut et toutes les lignes).                           |
-| **`cell`** | `{ colKey: string \| number, cell: string \| number \| boolean \| bigint \| symbol, row: DsfrDataTableRow, rowIndex: number }` | Personnalisation du rendu de chaque cellule. `row` et `rowIndex` permettent d'accéder aux autres colonnes de la même ligne (ex. construire un lien à partir d'un identifiant non affiché). |
+| **`cell`** | `{ colKey: string \| number, cell: string \| number \| boolean \| bigint \| symbol, row: T, rowIndex: number }` | Personnalisation du rendu de chaque cellule. `row` et `rowIndex` permettent d'accéder aux autres colonnes de la même ligne (ex. construire un lien à partir d'un identifiant non affiché). |
 | **`tableBottomBar`** | | Remplace l'ensemble de la barre inférieure du tableau. Permet de personnaliser complètement la structure.    |
 | **`pagination`** | | Remplace la pagination par défaut. Utile pour intégrer un composant de pagination personnalisé.   |
 | **`tableBottomBarActions`** | | Boutons d'action globaux affichés en bas du tableau (concernent l'ensemble des données).         |
