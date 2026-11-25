@@ -90,7 +90,43 @@ describe('DsfrTile', () => {
     await router.isReady()
 
     const titleEl = getByText(title)
-    expect(titleEl).toHaveAttribute('download', 'true')
+    expect(titleEl).toHaveAttribute('download', '')
+  })
+
+  it('should not set the download attribute on a regular external link', async () => {
+    const title = 'Titre de la tuile'
+
+    const { getByText } = render(DsfrTile, {
+      global: {
+        plugins: [router],
+      },
+      props: {
+        title,
+        to: 'https://example.com',
+      },
+    })
+
+    await router.isReady()
+
+    expect(getByText(title)).not.toHaveAttribute('download')
+  })
+
+  it('should not set the download attribute on a regular internal link', async () => {
+    const title = 'Titre de la tuile'
+
+    const { getByText } = render(DsfrTile, {
+      global: {
+        plugins: [router],
+      },
+      props: {
+        title,
+        to: '/',
+      },
+    })
+
+    await router.isReady()
+
+    expect(getByText(title)).not.toHaveAttribute('download')
   })
 
   it('should display the three artwork layers of a pictogram', async () => {
