@@ -36,12 +36,11 @@ const router = createRouter({
 describe.skip('DsfrHeader', () => { // Skipped because of this issue: https://github.com/focus-trap/focus-trap-react/issues/785
   it('should render DsfrHeader with a logo', async () => {
     // Given
-    const logoText = 'Gouvernement'
     const serviceTitle = 'Nom du service'
     const serviceDescription = 'Description du service'
 
     // When
-    const { getByText } = render(DsfrHeader, {
+    const { getByTestId } = render(DsfrHeader, {
       global: {
         plugins: [router],
         components: {
@@ -56,10 +55,11 @@ describe.skip('DsfrHeader', () => { // Skipped because of this issue: https://gi
 
     await router.isReady()
 
-    const logo = getByText(logoText)
+    const logo = getByTestId('header-logo')
 
     // Then
     expect(logo).toHaveClass('fr-logo')
+    expect(logo.innerHTML).toBe('République<br>Française')
   })
 
   it('should render DsfrHeader with a logo and quicklinks', async () => {
