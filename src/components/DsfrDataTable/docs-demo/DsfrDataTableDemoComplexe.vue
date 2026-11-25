@@ -26,7 +26,7 @@ const rows = [
   [3, 'James Bond', 'james.bond@mi6.gov.uk'],
 ]
 
-const click = (event: MouseEvent, key: string) => {
+const click = (event: MouseEvent, key: string | number) => {
   console.warn(event, key)
 }
 
