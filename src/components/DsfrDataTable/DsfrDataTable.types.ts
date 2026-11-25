@@ -7,17 +7,24 @@ export type DsfrDataTableRow = (string | number | boolean | bigint | symbol)[]
 export type DsfrDataTableHeaderCellObject = { key: string | number, label: string, headerAttrs?: Record<string, unknown> }
 export type DsfrDataTableHeaderCell = (string | DsfrDataTableHeaderCellObject)
 
-export type DsfrDataTableCommonProps = {
+/**
+ * Contrainte acceptée pour une ligne du tableau : un tableau de valeurs ou n’importe quel objet.
+ * `object` (et non `Record<…, unknown>`) permet d’utiliser une `interface` métier,
+ * qui n’a pas de signature d’index implicite.
+ */
+export type DsfrDataTableRowConstraint = DsfrDataTableRow | object
+
+export type DsfrDataTableCommonProps<T extends DsfrDataTableRowConstraint = DsfrDataTableRow> = {
   id?: string
   title: string
   rowKey?: string | number
-  rows?: DsfrDataTableRow[]
+  rows?: T[]
   topActionsRow?: string[]
   bottomActionsRow?: string[]
   selectableRows?: boolean
   sortableRows?: boolean | string[]
   sorted?: string
-  sortFn?: (a: unknown, b: unknown) => number
+  sortFn?: (a: T, b: T) => number
   manualSort?: boolean
   copyableCells?: boolean
   verticalBorders?: boolean
@@ -53,7 +60,7 @@ export type DsfrDataTableCommonProps = {
  * car ce pattern empêche vue-tsc d'extraire les props de `defineProps<DsfrDataTableProps>()`,
  * qui retombe alors sur `Record<string, any>` (aucune prop vérifiée, y compris `title`).
  */
-export interface DsfrDataTableProps extends DsfrDataTableCommonProps {
+export interface DsfrDataTableProps<T extends DsfrDataTableRowConstraint = DsfrDataTableRow> extends DsfrDataTableCommonProps<T> {
   columns?: DsfrDataTableColumn[]
   headersRow?: DsfrDataTableHeaderCell[]
 }
