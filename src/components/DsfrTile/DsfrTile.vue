@@ -64,13 +64,13 @@ const isExternalLink = computed(() => {
             class="fr-tile__link"
             target="_blank"
             rel="noopener noreferrer"
-            :download="download"
+            :download="download ? '' : undefined"
             :href="disabled ? '' : (to as string)"
             v-bind="titleLinkAttrs"
           >{{ title }}</a>
           <RouterLink
             v-if="!isExternalLink"
-            :download="download"
+            :download="download ? '' : undefined"
             class="fr-tile__link"
             :to="disabled ? '' : to"
             v-bind="titleLinkAttrs"

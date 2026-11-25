@@ -2,7 +2,7 @@
 
 ## 🌟 Introduction
 
-Le composant `DsfrLogo` est utilisé pour afficher le logo institutionnel du Gouvernement français, en respectant les spécifications du [Design System de l'État Français (DSFR)](https://www.systeme-de-design.gouv.fr/). Ce composant permet d'afficher un texte simple ou multi-lignes représentant le logo, avec des options pour ajuster la taille.
+Le composant `DsfrLogo` est utilisé pour afficher le logo institutionnel de l’État français, en respectant les spécifications du [Design System de l'État Français (DSFR)](https://www.systeme-de-design.gouv.fr/). Ce composant permet d'afficher un texte simple ou multi-lignes représentant le logo, avec des options pour ajuster la taille.
 
 <VIcon name="vi-file-type-storybook" /> La story sur Logo sur le storybook de [VueDsfr](https://storybook.vue-ds.fr/?path=/docs/composants-dsfrlogo--docs)
 
@@ -16,7 +16,7 @@ Le composant affiche un élément `<p>` avec la classe CSS `fr-logo`, et des cla
 |-------------|---------------------|-----------------|-----------------------------------------------------------------------------|
 | `small`     | `boolean`           | `false`         | Affiche le logo en petite taille (`fr-logo--sm`).                           |
 | `large`     | `boolean`           | `false`         | Affiche le logo en grande taille (`fr-logo--lg`).                           |
-| `logoText`  | `string \| string[]` | `'Gouvernement'` | Texte ou tableau de textes à afficher comme logo. Les éléments du tableau sont séparés par un saut de ligne (`<br>`). |
+| `logoText`  | `string \| string[]` | `['République', 'Française']` | Texte ou tableau de textes à afficher comme logo. Les éléments du tableau sont séparés par un saut de ligne (`<br>`). |
 
 ## 📡Événements
 
@@ -34,7 +34,7 @@ Aucun slot disponible pour ce composant.
 <DsfrLogo />
 ```
 
-Résultat : Affiche le texte "Gouvernement" avec le style par défaut.
+Résultat : affiche le bloc-marque « République Française » sur deux lignes avec le style par défaut.
 
 ### Exemple avec un texte personnalisé
 

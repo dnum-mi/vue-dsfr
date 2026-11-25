@@ -138,4 +138,79 @@ describe('DsfrSelect', () => {
     expect(optionEl4?.ariaDisabled).toBe('true')
     expect(optionEl4.disabled).toBe(true)
   })
+  it('should link the error message to the select', () => {
+    const errorMessage = 'Veuillez choisir une option'
+
+    const { container, getByText } = render(DsfrSelect, {
+      props: {
+        selectId: 'pays',
+        errorMessage,
+      },
+    })
+
+    const selectEl = container.querySelector('select')
+    const messageEl = getByText(errorMessage)
+    const messagesGroupEl = container.querySelector('.fr-messages-group')
+
+    expect(messageEl).toHaveAttribute('id', 'pays-message-error')
+    expect(messagesGroupEl).toHaveAttribute('id', 'pays-messages')
+    expect(messagesGroupEl).toHaveAttribute('aria-live', 'polite')
+    expect(messagesGroupEl).toContainElement(messageEl)
+    expect(container.querySelector('.fr-select-group')).toContainElement(messagesGroupEl as HTMLElement)
+    expect(selectEl).toHaveAttribute('aria-describedby', 'pays-messages')
+    expect(selectEl).toHaveAttribute('aria-invalid', 'true')
+  })
+
+  it('should give distinct message ids to several selects in error', () => {
+    const { container } = render({
+      components: { DsfrSelect },
+      template: `
+        <DsfrSelect error-message="Erreur 1" />
+        <DsfrSelect error-message="Erreur 2" />
+      `,
+    })
+
+    const ids = Array.from(container.querySelectorAll('.fr-error-text')).map(el => el.id)
+
+    expect(ids).toHaveLength(2)
+    expect(ids[0]).not.toBe(ids[1])
+  })
+
+  it('should keep the provided aria-describedby and descriptionId', () => {
+    const { container } = render(DsfrSelect, {
+      props: {
+        selectId: 'pays',
+        descriptionId: 'aide-pays',
+        errorMessage: 'Erreur',
+      },
+      attrs: {
+        'aria-describedby': 'info-externe',
+      },
+    })
+
+    expect(container.querySelector('select')).toHaveAttribute('aria-describedby', 'info-externe aide-pays pays-messages')
+  })
+
+  it('should not set aria-invalid when the select is not in error', () => {
+    const { container } = render(DsfrSelect, {
+      props: {
+        selectId: 'pays',
+        successMessage: 'C’est bon',
+      },
+    })
+
+    const selectEl = container.querySelector('select')
+
+    expect(selectEl).not.toHaveAttribute('aria-invalid')
+    expect(container.querySelector('#pays-message-valid')).toHaveTextContent('C’est bon')
+  })
+  it('should keep an explicit aria-invalid attribute when the select is not in error', () => {
+    const { container } = render(DsfrSelect, {
+      attrs: {
+        'aria-invalid': 'true',
+      },
+    })
+
+    expect(container.querySelector('select')).toHaveAttribute('aria-invalid', 'true')
+  })
 })

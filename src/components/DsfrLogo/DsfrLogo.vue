@@ -6,7 +6,7 @@ import { computed } from 'vue'
 export type { DsfrLogoProps }
 
 const props = withDefaults(defineProps<DsfrLogoProps>(), {
-  logoText: () => 'Gouvernement',
+  logoText: () => ['République', 'Française'],
 })
 
 const text = computed(() => Array.isArray(props.logoText) ? props.logoText.join('<br>') : props.logoText)

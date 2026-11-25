@@ -1,7 +1,8 @@
 <script lang="ts" setup>
 import type { DsfrSelectProps } from './DsfrSelect.types'
+import type { SelectHTMLAttributes } from 'vue'
 
-import { computed } from 'vue'
+import { computed, useAttrs } from 'vue'
 
 import { useRandomId } from '../../utils/random-utils'
 
@@ -55,6 +56,22 @@ const hasSuccess = computed(() => !!(props.successMessage || props.isValid) && !
 const message = computed(() =>
   hasError.value ? props.errorMessage : hasSuccess.value ? props.successMessage : undefined,
 )
+
+// Identifiants dérivés de `selectId` pour rester uniques lorsque plusieurs selects coexistent
+const messagesGroupId = computed(() => `${props.selectId}-messages`)
+const messageId = computed(() => `${props.selectId}-message-${hasError.value ? 'error' : 'valid'}`)
+
+const attrs = useAttrs()
+const ariaDescribedby = computed(() =>
+  [attrs['aria-describedby'] as string | undefined, props.descriptionId, messagesGroupId.value]
+    .filter(Boolean)
+    .join(' '),
+)
+
+// L’état d’erreur force `aria-invalid`, sans écraser un `aria-invalid` transmis explicitement sinon
+const ariaInvalid = computed<SelectHTMLAttributes['aria-invalid']>(() =>
+  hasError.value ? true : attrs['aria-invalid'] as SelectHTMLAttributes['aria-invalid'],
+)
 </script>
 
 <template>
@@ -92,7 +109,8 @@ const message = computed(() =>
       :aria-disabled="disabled"
       :required="required"
       v-bind="$attrs"
-      :aria-describedby="[($attrs['aria-describedby'] as string), descriptionId].filter(Boolean).join(' ') || undefined"
+      :aria-describedby="ariaDescribedby"
+      :aria-invalid="ariaInvalid"
       @change="$emit('update:modelValue', ($event.target as HTMLInputElement)?.value)"
     >
       <option
@@ -133,12 +151,18 @@ const message = computed(() =>
       </optgroup>
     </select>
 
-    <p
-      v-if="message"
-      :id="`select-${hasError ? 'error' : 'valid'}-desc-${hasError ? 'error' : 'valid'}`"
-      :class="hasError ? 'fr-error-text' : 'fr-valid-text'"
+    <div
+      :id="messagesGroupId"
+      class="fr-messages-group"
+      aria-live="polite"
     >
-      {{ message }}
-    </p>
+      <p
+        v-if="message"
+        :id="messageId"
+        :class="hasError ? 'fr-error-text' : 'fr-valid-text'"
+      >
+        {{ message }}
+      </p>
+    </div>
   </div>
 </template>

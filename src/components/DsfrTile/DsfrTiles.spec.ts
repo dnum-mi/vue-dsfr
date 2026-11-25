@@ -185,8 +185,8 @@ describe('DsfrTiles', () => {
 
     const titleEl1 = getByText(title1)
     const titleEl2 = getByText(title2)
-    expect(titleEl1).toHaveAttribute('download', 'true')
-    expect(titleEl2).toHaveAttribute('download', 'false')
+    expect(titleEl1).toHaveAttribute('download', '')
+    expect(titleEl2).not.toHaveAttribute('download')
   })
 
   it('should display a tile with title and one tile without title', async () => {
