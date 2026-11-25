@@ -1,3 +1,9 @@
+## [9.0.1](https://github.com/dnum-mi/vue-dsfr/compare/v9.0.0...v9.0.1) (2026-11-25)
+
+### 🐛 Corrections de bugs
+
+* **DsfrDataTable:** 🐛 rend le composant générique pour typer les lignes ([3cd59b0](https://github.com/dnum-mi/vue-dsfr/commit/3cd59b0f5c30580fb583ac61b17eaa0901ad3069)), closes [#1427](https://github.com/dnum-mi/vue-dsfr/issues/1427)
+
 ## [9.0.0](https://github.com/dnum-mi/vue-dsfr/compare/v8.21.0...v9.0.0) (2026-11-23)
 
 ### ⚠ BREAKING CHANGES
