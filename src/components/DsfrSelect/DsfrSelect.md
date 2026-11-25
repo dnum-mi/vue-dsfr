@@ -25,9 +25,10 @@ La liste déroulante fournit une liste d’option parmi lesquelles l’utilisate
 | `description` obsolète | `string`                                                                                    |                             |             | Obsolète, utiliser hint plutôt.                                |
 | `hint`                   | `string`                                                                                    |                             |             | Texte d'indice pour guider.                                      |
 | `successMessage`         | `string`                                                                                    | `''`                        |             | Message de validation à afficher en dessous du select.           |
-| `errorMessage`           | `string`                                                                                    | `''`                        |             | Message d'erreur à afficher en dessous du select.                |
+| `errorMessage`           | `string`                                                                                    | `''`                        |             | Message d’erreur à afficher en dessous du select. Il est relié au select via `aria-describedby` et active `aria-invalid`. |
 | `defaultUnselectedText`  | `string`                                                                                    | `'Sélectionner une option'` |             | Si `true`, l'infobulle s'affiche au survol.                      |
 | `selectId`               | `string`                                                                                    | `useRandomId('select')`     |             | Identifiant unique pour le select. Utilisé pour l'accessibilité. |
+| `descriptionId`          | `string`                                                                                    |                             |             | Identifiant d’un élément externe décrivant le select, ajouté à son `aria-describedby` (en plus des messages d’erreur et de validation, reliés automatiquement). |
 
 ## 📡Évenements
 
