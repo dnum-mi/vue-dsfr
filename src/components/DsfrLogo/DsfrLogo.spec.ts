@@ -21,10 +21,11 @@ describe('DsfrLogo', () => {
 
   it('should render flag, text and motto, even without setting logoText prop', () => {
     // When
-    const { getByText } = render(DsfrLogo)
+    const { container } = render(DsfrLogo)
 
     // Then
-    expect(getByText('Gouvernement')).toBeInTheDocument()
-    expect(getByText('Gouvernement')).toHaveClass('fr-logo')
+    const logo = container.querySelector('.fr-logo')
+    expect(logo).toBeInTheDocument()
+    expect(logo?.innerHTML).toBe('République<br>Française')
   })
 })

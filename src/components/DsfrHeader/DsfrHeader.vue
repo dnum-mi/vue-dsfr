@@ -20,7 +20,7 @@ const props = withDefaults(defineProps<DsfrHeaderProps>(), {
   serviceTitle: undefined,
   serviceDescription: undefined,
   homeTo: '/',
-  logoText: () => 'Gouvernement',
+  logoText: () => ['République', 'Française'],
   modelValue: '',
   operatorImgAlt: '',
   operatorImgSrc: '',

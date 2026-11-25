@@ -40,6 +40,8 @@ const attrs = useAttrs()
 const __input: Ref<HTMLElement | null> = ref(null)
 const focus = () => __input.value?.focus()
 
+// `isInvalid` force `aria-invalid`, sans écraser un `aria-invalid` transmis explicitement sinon
+const ariaInvalid = computed(() => props.isInvalid ? true : attrs['aria-invalid'])
 const isComponent = computed(() => props.isTextarea ? 'textarea' : 'input')
 const wrapper = computed(() => props.isWithWrapper || attrs.type === 'date' || !!props.wrapperClass)
 const finalLabelClass = computed(() => [
@@ -81,6 +83,7 @@ defineExpose({
     :id="id"
     v-bind="$attrs"
     ref="__input"
+    :aria-invalid="ariaInvalid"
     class="fr-input"
     :class="{
       'fr-input--error': isInvalid,
@@ -103,6 +106,7 @@ defineExpose({
       :id="id"
       v-bind="$attrs"
       ref="__input"
+      :aria-invalid="ariaInvalid"
       class="fr-input"
       :class="{
         'fr-input--error': isInvalid,

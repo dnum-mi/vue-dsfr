@@ -67,4 +67,35 @@ describe('DsfrInput', () => {
     const inputNode = container.querySelector('input')
     expect(inputNode).not.toHaveAttribute('aria-describedby')
   })
+  it('should set aria-invalid when isInvalid is true', () => {
+    // When
+    const { container } = render(DsfrInput, {
+      props: {
+        isInvalid: true,
+      },
+    })
+
+    // Then
+    expect(container.querySelector('input')).toHaveAttribute('aria-invalid', 'true')
+  })
+
+  it('should keep an explicit aria-invalid attribute when isInvalid is not set', () => {
+    // When
+    const { container } = render(DsfrInput, {
+      attrs: {
+        'aria-invalid': 'true',
+      },
+    })
+
+    // Then
+    expect(container.querySelector('input')).toHaveAttribute('aria-invalid', 'true')
+  })
+
+  it('should not set aria-invalid by default', () => {
+    // When
+    const { container } = render(DsfrInput)
+
+    // Then
+    expect(container.querySelector('input')).not.toHaveAttribute('aria-invalid')
+  })
 })

@@ -25,7 +25,7 @@ L’en-tête est composé :
 | `serviceTitle`        | `string`                    | `undefined`          |             | Titre du service affiché dans l'en-tête.                                              |
 | `serviceDescription`  | `string`                    | `undefined`          |             | Description courte du service.                                                        |
 | `homeTo`              | `string`                    | `'/'`                |             | Lien de la page d'accueil.                                                            |
-| `logoText`            | `string` \| `string[]`      | `'Gouvernement'`     |             | Texte ou texte alternatif du logo.                                                    |
+| `logoText`            | `string` \| `string[]`      | `['République', 'Française']` |             | Texte ou texte alternatif du logo.                                                    |
 | `modelValue`          | `string`                    | `''`                 |             | Valeur pour la barre de recherche.                                                    |
 | `operatorImgAlt`      | `string`                    | `''`                 |             | Texte alternatif pour l'image de l'opérateur.                                         |
 | `operatorImgSrc`      | `string`                    | `''`                 |             | Source de l'image de l'opérateur.                                                     |
