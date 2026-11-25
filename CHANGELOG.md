@@ -1,3 +1,12 @@
+## [9.0.2](https://github.com/dnum-mi/vue-dsfr/compare/v9.0.1...v9.0.2) (2026-11-25)
+
+### 🐛 Corrections de bugs
+
+* **DsfrHeader:** 🐛 affiche « République Française » par défaut dans le bloc-marque ([fc491bb](https://github.com/dnum-mi/vue-dsfr/commit/fc491bbe539165df96aea0be64c22b587bc54057)), closes [#1431](https://github.com/dnum-mi/vue-dsfr/issues/1431)
+* **DsfrInputGroup:** 🐛 ajoute aria-invalid et ignore un tableau d’erreurs vide ([b76d834](https://github.com/dnum-mi/vue-dsfr/commit/b76d83487316e7aa4f2e0c656826c30541ba0237)), closes [#1433](https://github.com/dnum-mi/vue-dsfr/issues/1433)
+* **DsfrSelect:** 🐛 relie le message d’erreur au select avec un identifiant unique ([8b40126](https://github.com/dnum-mi/vue-dsfr/commit/8b401266fc7106b3faab9b15f0880aa3e5a45fcf)), closes [#1432](https://github.com/dnum-mi/vue-dsfr/issues/1432)
+* **DsfrTile:** 🐛 n’ajoute l’attribut download que pour une tuile de téléchargement ([7b79589](https://github.com/dnum-mi/vue-dsfr/commit/7b795897c67bcf2c8bc499dfa26106b43d7dd26c)), closes [#1430](https://github.com/dnum-mi/vue-dsfr/issues/1430)
+
 ## [9.0.1](https://github.com/dnum-mi/vue-dsfr/compare/v9.0.0...v9.0.1) (2026-11-25)
 
 ### 🐛 Corrections de bugs
