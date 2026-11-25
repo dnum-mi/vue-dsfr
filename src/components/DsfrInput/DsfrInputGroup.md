@@ -21,7 +21,7 @@ Ce composant est très utile si vous souhaitez afficher un message d’erreur ou
 | `modelValue`    | `string`             | `''`                    |               | La valeur liée au modèle du composant `DsfrInput`.            |
 | `wrapperClass`  | `string`             | `''`                    |               | Classe CSS pour le style du conteneur du groupe.              |
 | `placeholder`   | `string`             | `undefined`             |               | Texte de l'espace réservé pour l'input.                       |
-| `errorMessage`  | `string \| string[]` | `undefined`             |               | Message(s) d'erreur à afficher si une erreur est présente.       |
+| `errorMessage`  | `string \| string[]` | `undefined`             |               | Message(s) d’erreur à afficher si une erreur est présente. Une chaîne ou un tableau vide n’active pas l’état d’erreur. Le champ reçoit alors `aria-invalid="true"`. |
 | `validMessage`  | `string \| string[]` | `undefined`             |               | Message(s) de validation à afficher si l'input est valide.       |
 
 ### Attributs implicitement déclarés

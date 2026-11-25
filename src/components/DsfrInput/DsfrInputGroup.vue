@@ -39,25 +39,23 @@ defineSlots<{
 }>()
 
 function getDescriptionIdFromArray (messages: string[], baseId: string): string {
-  return Array.from(Array.from({ length: messages.length })).map((_, idx) => `${baseId}-${idx + 1}`).join(' ')
+  return messages.map((_, idx) => `${baseId}-${idx + 1}`).join(' ')
 }
+
+/** Un message n’est considéré comme présent que s’il est non vide (chaîne ou tableau) */
+function hasMessage (message: string | string[] | undefined): boolean {
+  return Array.isArray(message) ? message.length > 0 : !!message
+}
+
+const hasError = computed(() => hasMessage(props.errorMessage))
+const hasValid = computed(() => !hasError.value && hasMessage(props.validMessage))
+
 const descId = computed(() => {
-  if (!props.errorMessage && !props.validMessage) {
+  const messages = hasError.value ? props.errorMessage : hasValid.value ? props.validMessage : undefined
+  if (!messages) {
     return undefined
   }
-  if (Array.isArray(props.errorMessage)) {
-    return getDescriptionIdFromArray(props.errorMessage, props.descriptionId)
-  }
-  if (typeof props.errorMessage === 'string') {
-    return props.descriptionId
-  }
-  if (typeof props.validMessage === 'string') {
-    return props.descriptionId
-  }
-  if (Array.isArray(props.validMessage)) {
-    return getDescriptionIdFromArray(props.validMessage, props.descriptionId)
-  }
-  return undefined
+  return Array.isArray(messages) ? getDescriptionIdFromArray(messages, props.descriptionId) : props.descriptionId
 })
 </script>
 
@@ -67,8 +65,8 @@ const descId = computed(() => {
     :class="[
       {
         'fr-input-group--disabled': 'disabled' in $attrs && $attrs.disabled !== false && $attrs.disabled !== undefined,
-        'fr-input-group--error': errorMessage,
-        'fr-input-group--valid': (validMessage && !errorMessage),
+        'fr-input-group--error': hasError,
+        'fr-input-group--valid': hasValid,
       },
       wrapperClass,
     ]"
@@ -76,15 +74,15 @@ const descId = computed(() => {
   >
     <slot name="before-input" />
     <slot
-      :is-valid="!!validMessage"
-      :is-invalid="!!errorMessage"
+      :is-valid="hasValid"
+      :is-invalid="hasError"
       :description-id="descId"
     />
     <DsfrInput
       v-if="!$slots.default"
       v-bind="$attrs"
-      :is-valid="!!validMessage"
-      :is-invalid="!!errorMessage"
+      :is-valid="hasValid"
+      :is-invalid="hasError"
       :label="label"
       :hint="hint"
       :description-id="descId"
@@ -99,7 +97,7 @@ const descId = computed(() => {
       aria-live="polite"
     >
       <template
-        v-if="Array.isArray(errorMessage)"
+        v-if="hasError && Array.isArray(errorMessage)"
       >
         <p
           v-for="(message, idx) in errorMessage"
@@ -112,7 +110,7 @@ const descId = computed(() => {
         </p>
       </template>
       <p
-        v-else-if="errorMessage"
+        v-else-if="hasError && typeof errorMessage === 'string'"
         :id="descriptionId"
         :key="errorMessage"
         :data-testid="descriptionId"
@@ -122,7 +120,7 @@ const descId = computed(() => {
       </p>
 
       <template
-        v-else-if="Array.isArray(validMessage)"
+        v-else-if="hasValid && Array.isArray(validMessage)"
       >
         <p
           v-for="(message, idx) in validMessage"
@@ -135,7 +133,7 @@ const descId = computed(() => {
         </p>
       </template>
       <p
-        v-else-if="validMessage"
+        v-else-if="hasValid && typeof validMessage === 'string'"
         :id="descriptionId"
         :key="validMessage"
         :data-testid="descriptionId"
