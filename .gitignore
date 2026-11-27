@@ -336,3 +336,8 @@ meta-dts/
 
 # DSFR
 .dsfr.yml
+
+# OpenCode — slot personnel (config locale et plugins) : à ne jamais suivre.
+# Une config OpenCode partagée pour les contributeurs se propose à la racine :
+# via un `opencode.json` versionné (modèle : starter-kit dnum-mi).
+.opencode/

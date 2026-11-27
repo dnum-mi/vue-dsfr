@@ -58,6 +58,12 @@ Chaque skill dispose de :
 
 Voir [`../AGENTS.md`](../AGENTS.md) pour le guide de sélection des skills.
 
+## Configuration OpenCode
+
+- `.opencode/` est réservé aux réglages OpenCode personnels (providers, plugins locaux) et reste ignoré par git : ne jamais le committer.
+- Pour proposer une configuration OpenCode partagée (skills, instructions, permissions, MCP…), ajouter un `opencode.json` à la racine du dépôt (suivi), sur le modèle du starter-kit dnum-mi (`lsp`, `skills.urls`, `permission`, …).
+- Les clés API ne se configurent jamais ici : uniquement des placeholders `{env:…}`.
+
 ## Règles de maintenance
 
 - Les règles communes vivent uniquement dans `.agents/*` (incluant `.agents/skills/`).
