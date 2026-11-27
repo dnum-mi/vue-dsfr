@@ -57,6 +57,11 @@ const meta = {
       control: 'boolean',
       description: 'Permet de couper le texte avec des points de suspension si le texte est trop long',
     },
+    tagName: {
+      control: 'radio',
+      options: ['p', 'span'],
+      description: 'Balise HTML rendue par le badge (`p` par défaut, `span` dans un groupe)',
+    },
   },
 } satisfies Meta<typeof DsfrBadge>
 

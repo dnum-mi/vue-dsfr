@@ -5,11 +5,13 @@ export type { DsfrBadgeProps }
 
 withDefaults(defineProps<DsfrBadgeProps>(), {
   type: 'standard',
+  tagName: 'p',
 })
 </script>
 
 <template>
-  <p
+  <component
+    :is="tagName"
     class="fr-badge"
     :class="{
       [`fr-badge--${type}`]: type && type !== 'standard',
@@ -22,5 +24,5 @@ withDefaults(defineProps<DsfrBadgeProps>(), {
     <span :class="ellipsis ? 'fr-ellipsis' : ''">
       {{ label }}
     </span>
-  </p>
+  </component>
 </template>
