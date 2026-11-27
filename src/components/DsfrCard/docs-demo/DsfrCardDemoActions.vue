@@ -13,7 +13,7 @@ const detailIcon = 'Détails absolument essentiels'
 const endDetail = 'Autres détails absolument essentiels'
 const endDetailIcon = 'fr-icon-arrow-right-line'
 const altImg = 'Un adorable quoique redoutable chaton'
-const imgSrc = 'https://loremflickr.com/450/400/cat'
+const imgSrc = 'https://api.images.cat/450/400'
 
 const actions = [
   {

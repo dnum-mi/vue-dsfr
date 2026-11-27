@@ -8,7 +8,7 @@ const svgDataUri = `data:image/svg+xml,${encodeURIComponent(svgMarkup)}`
 describe('DsfrPictogram', () => {
   it('should render an image when imgSrc is given', () => {
     // Given
-    const imgSrc = 'https://loremflickr.com/80/80/cat'
+    const imgSrc = 'https://api.images.cat/80/80'
     const title = 'Un chat'
 
     // When

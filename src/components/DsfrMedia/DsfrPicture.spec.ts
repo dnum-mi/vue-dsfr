@@ -6,7 +6,7 @@ describe('DsfrPicture', () => {
   it('should render a figure with div and img with alt and src', () => {
     // Given
     const size = 'small'
-    const src = 'https://loremflickr.com/300/200/cat'
+    const src = 'https://api.images.cat/300/200'
     const alt = 'Alternative text'
     const legend = 'Photographie d’un chaton'
 

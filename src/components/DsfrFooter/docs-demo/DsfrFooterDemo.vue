@@ -82,7 +82,7 @@ const partners = {
   mainPartner: {
     name: 'Partenaire 1',
     href: '/partenaire-1',
-    logo: 'https://loremflickr.com/100/100/cat?random=1',
+    logo: 'https://api.images.cat/100/100?random=1',
   },
 }
 </script>

@@ -12,7 +12,7 @@ import DsfrTile from '../../src/components/DsfrTile/DsfrTile.vue'
       detail="Détail (optionnel) de la carte"
       link="/"
       alt-img="Texte alternatif pour l’image"
-      img-src="https://loremflickr.com/800/800/cat"
+      img-src="https://api.images.cat/800/800"
     />
   </div>
   <div class="fr-my-2v">

@@ -55,20 +55,20 @@ describe('DsfrFooter', () => {
     const mainPartner = {
       name: 'Partenaire principal',
       href: 'https://www.youtube.com',
-      logo: 'https://loremflickr.com/150/150/cat?random=1',
+      logo: 'https://api.images.cat/150/150?random=1',
       alt: 'Partenaire principal',
     }
     const subPartners = [
       {
         name: 'Partenaire secondaire 1',
         href: 'https://www.youtube.com',
-        logo: 'https://loremflickr.com/150/150/cat?random=2',
+        logo: 'https://api.images.cat/150/150?random=2',
         alt: 'Partenaire secondaire 1',
       },
       {
         name: 'Partenaire secondaire 2',
         href: 'https://www.youtube.com',
-        logo: 'https://loremflickr.com/150/150/cat?random=3',
+        logo: 'https://api.images.cat/150/150?random=3',
         alt: 'Partenaire secondaire 2',
       },
     ]

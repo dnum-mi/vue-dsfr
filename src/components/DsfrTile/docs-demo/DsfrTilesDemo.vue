@@ -11,22 +11,22 @@ const horizontal = ref(false)
 const tiles: DsfrTileProps[] = [
   {
     title: 'Ma formidable tuile 1',
-    imgSrc: 'https://loremflickr.com/80/80/cat?random=1',
+    imgSrc: 'https://api.images.cat/80/80?random=1',
     description: 'Une tuile absolument formidable',
   },
   {
     title: 'Ma formidable tuile 2',
-    imgSrc: 'https://loremflickr.com/80/80/cat?random=2',
+    imgSrc: 'https://api.images.cat/80/80?random=2',
     description: 'Une tuile absolument formidable',
   },
   {
     title: 'Ma formidable tuile 3',
-    imgSrc: 'https://loremflickr.com/80/80/cat?random=3',
+    imgSrc: 'https://api.images.cat/80/80?random=3',
     description: 'Une tuile absolument formidable',
   },
   {
     title: 'Ma formidable tuile 4',
-    imgSrc: 'https://loremflickr.com/80/80/cat?random=4',
+    imgSrc: 'https://api.images.cat/80/80?random=4',
     description: 'Une tuile absolument formidable',
   },
 ]
