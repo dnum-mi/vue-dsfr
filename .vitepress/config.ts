@@ -121,6 +121,12 @@ const composants = [
   {
     text: 'DsfrBadge',
     link: '/composants/DsfrBadge.md',
+    items: [
+      {
+        text: 'DsfrBadgeGroup',
+        link: '/composants/DsfrBadgeGroup.md',
+      },
+    ],
   },
   {
     text: 'DsfrBreadcrumb',
@@ -483,6 +489,7 @@ export default defineConfig({
   rewrites: {
     'src/composables/:comp': 'composables/:comp',
     'src/components/DsfrButton/DsfrButtonGroup.md': 'composants/DsfrButtonGroup.md',
+    'src/components/DsfrBadge/DsfrBadgeGroup.md': 'composants/DsfrBadgeGroup.md',
     'src/components/DsfrSegmented/DsfrSegmentedSet.md': 'composants/DsfrSegmentedSet.md',
     'src/components/:comp/:comp.md': 'composants/:comp.md',
     'docs/:splat*': ':splat*',
