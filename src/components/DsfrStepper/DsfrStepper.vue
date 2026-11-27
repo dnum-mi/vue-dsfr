@@ -6,15 +6,19 @@ export type { DsfrStepperProps }
 withDefaults(defineProps<DsfrStepperProps>(), {
   steps: () => [],
   currentStep: 1,
+  titleTag: 'h2',
 })
 </script>
 
 <template>
   <div class="fr-stepper">
-    <h2 class="fr-stepper__title">
+    <component
+      :is="titleTag"
+      class="fr-stepper__title"
+    >
       {{ steps[currentStep - 1] }}
       <span class="fr-stepper__state">Étape {{ currentStep }} sur {{ steps.length }}</span>
-    </h2>
+    </component>
     <div
       class="fr-stepper__steps"
       :data-fr-current-step="currentStep"

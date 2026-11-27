@@ -17,6 +17,11 @@ const meta = {
       control: 'number',
       description: 'Etape active idx de l’élément actif du tableau + 1',
     },
+    titleTag: {
+      control: 'select',
+      options: ['h2', 'h3', 'h4', 'h5', 'h6', 'p'],
+      description: 'Balise HTML du titre de l’étape en cours (par défaut `h2`)',
+    },
   },
 } satisfies Meta<typeof DsfrStepper>
 
@@ -34,6 +39,7 @@ export const IndicateurDesEtapes: Story = {
     <DsfrStepper
       :steps="steps"
       :currentStep="currentStep"
+      :titleTag="titleTag"
     />
   `,
   }),
@@ -45,5 +51,6 @@ export const IndicateurDesEtapes: Story = {
       'Quatrième étape',
     ],
     currentStep: 1,
+    titleTag: 'h2',
   },
 }
