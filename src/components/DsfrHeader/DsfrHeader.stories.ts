@@ -186,7 +186,7 @@ export const EnTeteAvecLogoOperateur: Story = {
   render,
   args: {
     ...baseArgs,
-    operatorImgSrc: '/cat.svg',
+    operatorImgSrc: '.svg',
     operatorImgAlt: 'Logo opérateur',
     operatorImgStyle: { height: '40px' },
   },

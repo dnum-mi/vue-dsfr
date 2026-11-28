@@ -15,7 +15,7 @@ Le composant `DsfrCheckboxSet` est composé des éléments suivants :
 
 | Nom                   | Type                                    | Description                                                   | Obligatoire |
 |-----------------------|-------------------------------------------|----------------------------------------------------------------|--------------|
-| `options`               | *`(DsfrCheckboxProps & InputHTMLAttributes)[]`* | Tableau d'options définissant les cases à cocher individuelles   | ✅           |
+| `options`               | *`(DsfrCheckboxProps & InputHTMLAttributes)[]`* | Tableau d'options définissant les cases à cocher individuelles. Une option peut préciser `indeterminate: true` pour afficher un état visuel « mixte ». Cette propriété ne modifie pas `modelValue` : si la valeur de l’option figure dans ce tableau, la case reste sélectionnée, même si elle est indéterminée. L’appelant calcule cet état et veille à sa cohérence avec la sélection. | ✅           |
 | `modelValue`            | *`string[]`*                                | Valeur courante du composant, un tableau de valeurs (propriété `value` de chaque option de la prop `options`) des cases cochées | ✅           |
 | `disabled`              | *`boolean`*                                | Indique si l'ensemble des cases à cocher est désactivé           |           |
 | `errorMessage`         | *`string`*                                 | Message d'erreur global à afficher                             |           |
@@ -51,11 +51,15 @@ Ce n’était ni une API idéale, ni le comportement attendu en Vue natif ou en 
 
 ## 🪆 Relation avec `DsfrCheckbox`
 
-`DsfrChecboxSet` utilise en interne `DsfrCheckbox`, et permet de récupérer dans `modelValue` sous forme de tableau les valeurs de la prop `value` de chaque case à cocher qui est cochée.
+`DsfrCheckboxSet` utilise en interne `DsfrCheckbox`, et permet de récupérer dans `modelValue` sous forme de tableau les valeurs de la prop `value` de chaque case à cocher qui est cochée.
+
+La propriété `indeterminate` peut être définie sur chaque option. Elle ne modifie pas `modelValue` : si la valeur de l’option est présente dans le tableau, la case reste sélectionnée même lorsqu’elle est indéterminée. L’appelant calcule cet état et maintient sa cohérence avec la sélection. Dans l’exemple ci-dessous, les préfectures et sous-préfectures sont les cases de dernier niveau ; l’état de chaque département est calculé à partir de leur sélection, puis celui de la région à partir de l’ensemble des établissements sélectionnés.
 
 Cf. les exemples ci-dessous
 
 ## 📝 Exemples
+
+### Exemples simples
 
 ::: code-group
 
@@ -64,6 +68,18 @@ Cf. les exemples ci-dessous
 </Story>
 
 <<< docs-demo/DsfrCheckboxSetDemo.vue
+
+:::
+
+### Exemple avec état indéterminé
+
+::: code-group
+
+<Story data-title="Démo" min-h="400px">
+  <DsfrCheckboxIndeterminateDemo />
+</Story>
+
+<<< docs-demo/DsfrCheckboxIndeterminateDemo.vue
 
 :::
 
@@ -78,4 +94,5 @@ Cf. les exemples ci-dessous
 
 <script setup>
 import DsfrCheckboxSetDemo from './docs-demo/DsfrCheckboxSetDemo.vue'
+import DsfrCheckboxIndeterminateDemo from './docs-demo/DsfrCheckboxIndeterminateDemo.vue'
 </script>

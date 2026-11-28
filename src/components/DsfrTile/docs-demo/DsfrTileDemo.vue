@@ -29,7 +29,7 @@ const grey = false
 
 function toggleSvgImg () {
   svgPath.value = svgPath.value === undefined ? getRandomSvg() : undefined
-  imgSrc.value = imgSrc.value === undefined ? `https://loremflickr.com/80/80/cat?random=${Math.round(Math.random() * 10)}` : undefined
+  imgSrc.value = imgSrc.value === undefined ? `https://api.images.cat/80/80?random=${Math.round(Math.random() * 10)}` : undefined
 }
 
 function setRandomSvg () {

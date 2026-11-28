@@ -23,11 +23,13 @@ Le composant affiche :
 |---------------|--------------|-----------|-----------------------------------------------------------------------------|
 | `steps`       | `string[]`   | `[]`      | Liste des noms ou titres des étapes. Chaque élément représente une étape.   |
 | `currentStep` | `number`     | `1`       | Index (1-based) de l'étape actuellement active dans le processus.           |
+| `titleTag`    | `'h2' \| 'h3' \| 'h4' \| 'h5' \| 'h6' \| 'p'` | `'h2'` | Balise HTML du titre de l'étape en cours, conforme DSFR (niveau d'en-tête variable, `h2` par défaut). |
 
 ### Détails
 
 - **`steps`** : La longueur de cette liste détermine le nombre total d'étapes.
 - **`currentStep`** : Le numéro d'étape actuel. Si sa valeur dépasse le nombre d'étapes, le composant affiche un état invalide.
+- **`titleTag`** : Niveau de titre du libellé de l'étape en cours. Le DSFR recommande d'adapter la hiérarchie (`h2` à `h6`, voire `p`) à la structure de la page.
 
 ## 📡Événements
 

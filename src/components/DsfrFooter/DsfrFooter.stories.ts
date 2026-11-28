@@ -178,20 +178,20 @@ export const PiedDePageSimple: Story = {
       mainPartner: {
         name: 'Partenaire principal',
         href: 'https://www.youtube.com',
-        logo: 'https://loremflickr.com/150/150/cat?random=1',
+        logo: 'https://api.images.cat/150/150?random=1',
         alt: 'Partenaire principal',
       },
       subPartners: [
         {
           name: 'Partenaire secondaire 1',
           href: 'https://www.youtube.com',
-          logo: 'https://loremflickr.com/150/150/cat?random=2',
+          logo: 'https://api.images.cat/150/150?random=2',
           alt: 'Partenaire secondaire 1',
         },
         {
           name: 'Partenaire secondaire 2',
           href: 'https://www.youtube.com',
-          logo: 'https://loremflickr.com/150/150/cat?random=3',
+          logo: 'https://api.images.cat/150/150?random=3',
           alt: 'Partenaire secondaire 2',
         },
       ],
@@ -317,20 +317,20 @@ export const PiedDePageAvecLogoOperateurEtListeDeLiens: Story = {
       mainPartner: {
         name: 'Partenaire principal',
         href: 'https://www.youtube.com',
-        logo: 'https://loremflickr.com/150/150/cat?random=1',
+        logo: 'https://api.images.cat/150/150?random=1',
         alt: 'Partenaire principal',
       },
       subPartners: [
         {
           name: 'Partenaire secondaire 1',
           href: 'https://www.youtube.com',
-          logo: 'https://loremflickr.com/150/150/cat?random=2',
+          logo: 'https://api.images.cat/150/150?random=2',
           alt: 'Partenaire secondaire 1',
         },
         {
           name: 'Partenaire secondaire 2',
           href: 'https://www.youtube.com',
-          logo: 'https://loremflickr.com/150/150/cat?random=3',
+          logo: 'https://api.images.cat/150/150?random=3',
           alt: 'Partenaire secondaire 2',
         },
       ],
@@ -342,7 +342,7 @@ export const PiedDePageAvecLogoOperateurEtListeDeLiens: Story = {
       padding: '1rem',
       height: '150px',
     },
-    operatorImgSrc: '/cat.svg',
+    operatorImgSrc: '.svg',
     operatorImgAlt: 'Logo opérateur',
   },
   render: (args) => ({

@@ -65,7 +65,7 @@ export const Citation: Story = {
     ],
     source: 'Duckduckgo',
     sourceUrl: 'https://www.duckduckgo.com',
-    quoteImage: 'https://loremflickr.com/g/150/150/cat?random=1',
+    quoteImage: 'https://api.images.cat/g/150/150?random=1',
   },
 }
 

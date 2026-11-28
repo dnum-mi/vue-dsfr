@@ -42,6 +42,7 @@ const emit = defineEmits<{
       @keydown.enter="emit('search', modelValue)"
     />
     <DsfrButton
+      type="submit"
       title="Rechercher"
       :disabled="disabled"
       :aria-disabled="disabled"

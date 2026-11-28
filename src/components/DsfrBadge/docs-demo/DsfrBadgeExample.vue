@@ -65,8 +65,8 @@ import DsfrBadge from '../DsfrBadge.vue'
     <div class="demo-container-col">
       <DsfrBadge
         label="Badge avec un titre un petit peu trop long"
-        type="info"
         ellipsis
+        type="standard"
         style="max-width: 200px;"
       />
     </div>

@@ -14,4 +14,6 @@ export type DsfrBadgeProps = {
   noIcon?: boolean
   small?: boolean
   ellipsis?: boolean
+  /** Balise HTML rendue par le badge (`p` par défaut, `span` dans un groupe) */
+  tagName?: 'p' | 'span'
 }

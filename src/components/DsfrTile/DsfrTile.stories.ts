@@ -121,7 +121,7 @@ export const TuileSimple: Story = {
   }),
   args: {
     title: 'Ma formidable tuile',
-    imgSrc: 'https://loremflickr.com/80/80/cat',
+    imgSrc: 'https://api.images.cat/80/80',
     description: 'Une tuile absolument formidable',
     horizontal: false,
     disabled: false,

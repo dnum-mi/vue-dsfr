@@ -2,7 +2,7 @@
 import DsfrPicture from '../DsfrPicture.vue'
 
 const size = 'medium'
-const src = 'https://loremflickr.com/300/200/cat'
+const src = 'https://api.images.cat/300/200'
 const alt = ''
 const title = 'Photographie d’un chaton'
 const legend = 'Photographie d’un chaton'

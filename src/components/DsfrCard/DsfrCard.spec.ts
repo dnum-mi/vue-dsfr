@@ -31,7 +31,7 @@ describe('DsfrCard', () => {
     const description = `La carte donne des aperçus cliquables d’une page de contenu
     à l’utilisateur. Elle fait généralement partie d'une collection ou liste d’aperçus
     de contenu similaires. La carte n’est jamais présentée de manière isolée.`
-    const imgSrc = 'https://loremflickr.com/300/200/cat'
+    const imgSrc = 'https://api.images.cat/300/200'
     const altImg = 'Alternative text for image'
     const badges = [
       {

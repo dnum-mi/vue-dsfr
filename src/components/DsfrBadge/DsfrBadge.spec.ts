@@ -75,4 +75,35 @@ describe('DsfrBadge', () => {
     expect(badge).toHaveClass(`fr-badge--${colorAccent}`)
     expect(badge).not.toHaveClass('fr-badge--standard')
   })
+
+  it('should render the badge in a p tag by default', async () => {
+    const label = 'Défaut'
+
+    const { getByText } = render(DsfrBadge, {
+      props: {
+        label,
+      },
+    })
+
+    const badge = getByText(label).parentElement
+
+    expect(badge?.tagName).toBe('P')
+    expect(badge).toHaveClass('fr-badge')
+  })
+
+  it('should render the badge in a span when tagName is span', async () => {
+    const label = 'Dans un groupe'
+
+    const { getByText } = render(DsfrBadge, {
+      props: {
+        label,
+        tagName: 'span',
+      },
+    })
+
+    const badge = getByText(label).parentElement
+
+    expect(badge?.tagName).toBe('SPAN')
+    expect(badge).toHaveClass('fr-badge')
+  })
 })

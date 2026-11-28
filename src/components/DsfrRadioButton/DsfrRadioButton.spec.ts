@@ -40,7 +40,7 @@ describe('DsfrRadioButton', () => {
     const label = 'Rich radio button label'
     const value = 1
     const name = 'rich-radio-button-name'
-    const img = 'https://loremflickr.com/150/200/cat'
+    const img = 'https://api.images.cat/150/200'
 
     // When
     const { getByText, getByDisplayValue, container } = render(RadioButton, {

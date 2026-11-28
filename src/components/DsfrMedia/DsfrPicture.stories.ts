@@ -48,7 +48,7 @@ export const ImageSrc: Story = {
   name: 'Image avec source',
   args: {
     size: 'medium',
-    src: 'https://loremflickr.com/300/200/cat',
+    src: 'https://api.images.cat/300/200',
     alt: '',
     title: 'Photographie d’un chaton',
     legend: 'Photographie d’un chaton',

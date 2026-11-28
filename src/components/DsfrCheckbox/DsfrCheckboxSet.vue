@@ -89,6 +89,7 @@ const modelValue = defineModel()
           :label="option.label"
           :disabled="option.disabled"
           :aria-disabled="option.disabled"
+          :indeterminate="option.indeterminate"
           :small="small"
           :inline="inline"
           :hint="option.hint"
