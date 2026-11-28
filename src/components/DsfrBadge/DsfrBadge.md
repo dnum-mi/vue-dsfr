@@ -19,7 +19,7 @@ Le `DsfrBadge` est le super-héros des petites étiquettes ! Ce composant Vue es
 | Nom | Type | Défaut | Obligatoire | Description |
 | --- | --- | --- | --- | --- |
 | `label` | `string` | | ✅ | Le texte à afficher dans le badge. |
-| `type` | `'success' \| 'warning' \| 'error' \| 'info' \| 'new' \| 'standard'` | `'info'` | | Définit le type de badge et change la couleur du badge en fonction du type. La valeur `standard` permet un badge sans couleur système, personnalisable avec `colorAccent`. |
+| `type` | `'success' \| 'warning' \| 'error' \| 'info' \| 'new' \| 'standard'` | `'standard'` | | Définit le type de badge et change la couleur du badge en fonction du type. La valeur `standard` permet un badge sans couleur système, personnalisable avec `colorAccent`. |
 | `colorAccent` | `'green-tilleul-verveine' \| 'green-bourgeon' \| 'green-emeraude' \| 'green-menthe' \| 'green-archipel' \| 'blue-ecume' \| 'blue-cumulus' \| 'purple-glycine' \| 'pink-macaron' \| 'pink-tuile' \| 'yellow-tournesol' \| 'yellow-moutarde' \| 'orange-terre-battue' \| 'brown-cafe-creme' \| 'brown-caramel' \| 'brown-opera' \| 'beige-gris-galet'` | | | Couleur d'accent du badge, prise en compte uniquement quand `type` vaut `standard`. |
 | `noIcon` | `boolean` | `false` | | Si `true`, le badge s'affiche sans icône. |
 | `small` | `boolean` | `false` | | Si `true`, affiche un badge de taille réduite. |

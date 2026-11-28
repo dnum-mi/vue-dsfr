@@ -1,10 +1,10 @@
 # Migrations
 
-## Migration vers 9.x (DSFR 1.15+)
+## Migration vers 10.x (DSFR 1.15+)
 
 ::: danger Changement de comportement à l'installation
 
-À partir de `@gouvfr/dsfr` 1.15 (utilisé par VueDsfr 9.x), **`npm install` / `pnpm install` / `yarn install`
+À partir de `@gouvfr/dsfr` 1.15 (utilisé par VueDsfr 10.x), **`npm install` / `pnpm install` / `yarn install`
 peut désormais échouer** si les CGU du DSFR n'ont pas été validées dans votre projet. Ce n'est pas un bug :
 c'est une contrainte introduite par le DSFR lui-même, que VueDsfr ne peut pas contourner.
 
@@ -18,6 +18,8 @@ c'est une contrainte introduite par le DSFR lui-même, que VueDsfr ne peut pas c
   `npm create @gouvfr/dsfr` / `yarn create @gouvfr/dsfr`), qui vous présente les CGU à valider.
 - Avec **pnpm ≥ 10**, il faut en plus autoriser explicitement l'exécution de ce script (bloqué par défaut) :
   `pnpm approve-builds @gouvfr/dsfr` ou `pnpm add ... --allow-build=@gouvfr/dsfr`.
+- `DsfrBadge` : le type par défaut passe de `info` à `standard` (le défaut du DSFR 1.15). Pour conserver
+  l'ancien rendu bleu, passez explicitement `type="info"`.
 
 Voir la procédure complète dans le [guide « Pour commencer »](./pour-commencer.md#ajouter-la-bibliothèque-à-un-projet-existant).
 
