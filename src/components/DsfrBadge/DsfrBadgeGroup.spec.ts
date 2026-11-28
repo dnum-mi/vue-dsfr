@@ -29,6 +29,24 @@ describe('DsfrBadgeGroup', () => {
     })
   })
 
+  it('should pass HTML attributes such as style to each badge', () => {
+    // Given
+    const badges = [
+      { label: 'Badge long', ellipsis: true, style: 'max-width: 150px' },
+    ]
+    // When
+    const { getByText } = render(DsfrBadgeGroup, {
+      props: {
+        badges,
+      },
+    })
+    const badge = getByText('Badge long').parentElement
+
+    // Then
+    expect(badge).not.toBeNull()
+    expect(badge?.getAttribute('style') ?? '').toContain('max-width')
+  })
+
   it('should render an empty group when no badges are given', () => {
     // When
     const { container } = render(DsfrBadgeGroup, {
